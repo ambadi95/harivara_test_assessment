@@ -1,0 +1,2685 @@
+{
+  "version": 2,
+  "projects": {
+    "core": {
+      "root": "libs/core",
+      "sourceRoot": "libs/core/src",
+      "projectType": "library",
+      "targets": {
+        "analyze": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter analyze",
+            "cwd": "libs/core"
+          }
+        },
+        "clean": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter clean",
+            "cwd": "libs/core"
+          }
+        },
+        "format": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter format libs/core/*",
+            "cwd": "libs/core"
+          }
+        },
+        "test": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter test --coverage",
+            "cwd": "libs/core"
+          }
+        },
+        "buildAar": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build aar",
+            "cwd": "libs/core"
+          }
+        },
+        "buildApk": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build apk",
+            "cwd": "libs/core"
+          }
+        },
+        "buildAppbundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build appbundle",
+            "cwd": "libs/core"
+          }
+        },
+        "buildBundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build bundle",
+            "cwd": "libs/core"
+          }
+        },
+        "buildIos": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios",
+            "cwd": "libs/core"
+          }
+        },
+        "buildIosFramework": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios-framework",
+            "cwd": "libs/core"
+          }
+        },
+        "buildIpa": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ipa",
+            "cwd": "libs/core"
+          }
+        },
+        "pub": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter pub get",
+            "cwd": "libs/core"
+          }
+        }
+      }
+    },
+    "customer": {
+      "root": "apps/customer",
+      "sourceRoot": "apps/customer/src",
+      "projectType": "application",
+      "targets": {
+        "analyze": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter analyze",
+            "cwd": "apps/customer"
+          }
+        },
+        "clean": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter clean",
+            "cwd": "apps/customer"
+          }
+        },
+        "format": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter format apps/customer/*",
+            "cwd": "apps/customer"
+          }
+        },
+        "assemble": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter assemble",
+            "cwd": "apps/customer"
+          }
+        },
+        "attach": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter attach",
+            "cwd": "apps/customer"
+          }
+        },
+        "drive": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter drive",
+            "cwd": "apps/customer"
+          }
+        },
+        "genL10n": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter gen-l10n",
+            "cwd": "apps/customer"
+          }
+        },
+        "install": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter install",
+            "cwd": "apps/customer"
+          }
+        },
+        "run": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter run",
+            "cwd": "apps/customer"
+          }
+        },
+        "buildAar": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build aar",
+            "cwd": "apps/customer"
+          }
+        },
+        "buildApk": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build apk",
+            "cwd": "apps/customer"
+          }
+        },
+        "buildAppbundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build appbundle",
+            "cwd": "apps/customer"
+          }
+        },
+        "buildBundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build bundle",
+            "cwd": "apps/customer"
+          }
+        },
+        "buildIos": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios",
+            "cwd": "apps/customer"
+          }
+        },
+        "buildIosFramework": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios-framework",
+            "cwd": "apps/customer"
+          }
+        },
+        "buildIpa": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ipa",
+            "cwd": "apps/customer"
+          }
+        },
+        "pub": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter pub get",
+            "cwd": "apps/customer"
+          }
+        }
+      }
+    },
+    "add_funds": {
+      "root": "libs/features/add_funds",
+      "sourceRoot": "libs/features/add_funds/src",
+      "projectType": "library",
+      "targets": {
+        "analyze": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter analyze",
+            "cwd": "libs/features/add_funds"
+          }
+        },
+        "clean": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter clean",
+            "cwd": "libs/features/add_funds"
+          }
+        },
+        "format": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter format libs/features/add_funds/*",
+            "cwd": "libs/features/add_funds"
+          }
+        },
+        "test": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter test --coverage",
+            "cwd": "libs/features/add_funds"
+          }
+        },
+        "buildAar": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build aar",
+            "cwd": "libs/features/add_funds"
+          }
+        },
+        "buildApk": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build apk",
+            "cwd": "libs/features/add_funds"
+          }
+        },
+        "buildAppbundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build appbundle",
+            "cwd": "libs/features/add_funds"
+          }
+        },
+        "buildBundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build bundle",
+            "cwd": "libs/login"
+          }
+        },
+        "buildIos": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios",
+            "cwd": "libs/features/add_funds"
+          }
+        },
+        "buildIosFramework": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios-framework",
+            "cwd": "libs/features/add_funds"
+          }
+        },
+        "buildIpa": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ipa",
+            "cwd": "libs/features/add_funds"
+          }
+        },
+        "pub": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter pub get",
+            "cwd": "libs/features/add_funds"
+          }
+        }
+      }
+    },
+    "login": {
+      "root": "libs/features/login",
+      "sourceRoot": "libs/features/login/src",
+      "projectType": "library",
+      "targets": {
+        "analyze": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter analyze",
+            "cwd": "libs/features/login"
+          }
+        },
+        "clean": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter clean",
+            "cwd": "libs/features/login"
+          }
+        },
+        "format": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter format libs/login/*",
+            "cwd": "libs/features/login"
+          }
+        },
+        "test": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter test --coverage",
+            "cwd": "libs/features/login"
+          }
+        },
+        "buildAar": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build aar",
+            "cwd": "libs/features/login"
+          }
+        },
+        "buildApk": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build apk",
+            "cwd": "libs/features/login"
+          }
+        },
+        "buildAppbundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build appbundle",
+            "cwd": "libs/features/login"
+          }
+        },
+        "buildBundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build bundle",
+            "cwd": "libs/features/login"
+          }
+        },
+        "buildIos": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios",
+            "cwd": "libs/features/login"
+          }
+        },
+        "buildIosFramework": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios-framework",
+            "cwd": "libs/features/login"
+          }
+        },
+        "buildIpa": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ipa",
+            "cwd": "libs/features/login"
+          }
+        },
+        "pub": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter pub get",
+            "cwd": "libs/features/login"
+          }
+        }
+      }
+    },
+    "merchant": {
+      "root": "apps/merchant",
+      "sourceRoot": "apps/merchant/src",
+      "projectType": "application",
+      "targets": {
+        "analyze": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter analyze",
+            "cwd": "apps/merchant"
+          }
+        },
+        "clean": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter clean",
+            "cwd": "apps/merchant"
+          }
+        },
+        "format": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter format apps/merchant/*",
+            "cwd": "apps/merchant"
+          }
+        },
+        "assemble": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter assemble",
+            "cwd": "apps/merchant"
+          }
+        },
+        "attach": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter attach",
+            "cwd": "apps/merchant"
+          }
+        },
+        "drive": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter drive",
+            "cwd": "apps/merchant"
+          }
+        },
+        "genL10n": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter gen-l10n",
+            "cwd": "apps/merchant"
+          }
+        },
+        "install": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter install",
+            "cwd": "apps/merchant"
+          }
+        },
+        "run": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter run",
+            "cwd": "apps/merchant"
+          }
+        },
+        "buildAar": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build aar",
+            "cwd": "apps/merchant"
+          }
+        },
+        "buildApk": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build apk",
+            "cwd": "apps/merchant"
+          }
+        },
+        "buildAppbundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build appbundle",
+            "cwd": "apps/merchant"
+          }
+        },
+        "buildBundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build bundle",
+            "cwd": "apps/merchant"
+          }
+        },
+        "buildIos": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios",
+            "cwd": "apps/merchant"
+          }
+        },
+        "buildIosFramework": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios-framework",
+            "cwd": "apps/merchant"
+          }
+        },
+        "buildIpa": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ipa",
+            "cwd": "apps/merchant"
+          }
+        },
+        "pub": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter pub get",
+            "cwd": "apps/merchant"
+          }
+        }
+      }
+    },
+    "network-manager": {
+      "root": "libs/network-manager",
+      "sourceRoot": "libs/network-manager/src",
+      "projectType": "library",
+      "targets": {
+        "analyze": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter analyze",
+            "cwd": "libs/network-manager"
+          }
+        },
+        "clean": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter clean",
+            "cwd": "libs/network-manager"
+          }
+        },
+        "format": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter format libs/network-manager/*",
+            "cwd": "libs/network-manager"
+          }
+        },
+        "test": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter test --coverage",
+            "cwd": "libs/network-manager"
+          }
+        },
+        "buildAar": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build aar",
+            "cwd": "libs/network-manager"
+          }
+        },
+        "buildApk": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build apk",
+            "cwd": "libs/network-manager"
+          }
+        },
+        "buildAppbundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build appbundle",
+            "cwd": "libs/network-manager"
+          }
+        },
+        "buildBundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build bundle",
+            "cwd": "libs/network-manager"
+          }
+        },
+        "buildIos": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios",
+            "cwd": "libs/network-manager"
+          }
+        },
+        "buildIosFramework": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios-framework",
+            "cwd": "libs/network-manager"
+          }
+        },
+        "buildIpa": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ipa",
+            "cwd": "libs/network-manager"
+          }
+        },
+        "pub": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter pub get",
+            "cwd": "libs/network-manager"
+          }
+        }
+      }
+    },
+    "task-manager": {
+      "root": "libs/task-manager",
+      "sourceRoot": "libs/task-manager/src",
+      "projectType": "library",
+      "targets": {
+        "analyze": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter analyze",
+            "cwd": "libs/task-manager"
+          }
+        },
+        "clean": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter clean",
+            "cwd": "libs/task-manager"
+          }
+        },
+        "format": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter format libs/task-manager/*",
+            "cwd": "libs/task-manager"
+          }
+        },
+        "test": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter test --coverage",
+            "cwd": "libs/task-manager"
+          }
+        },
+        "buildAar": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build aar",
+            "cwd": "libs/task-manager"
+          }
+        },
+        "buildApk": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build apk",
+            "cwd": "libs/task-manager"
+          }
+        },
+        "buildAppbundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build appbundle",
+            "cwd": "libs/task-manager"
+          }
+        },
+        "buildBundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build bundle",
+            "cwd": "libs/task-manager"
+          }
+        },
+        "buildIos": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios",
+            "cwd": "libs/task-manager"
+          }
+        },
+        "buildIosFramework": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios-framework",
+            "cwd": "libs/task-manager"
+          }
+        },
+        "buildIpa": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ipa",
+            "cwd": "libs/task-manager"
+          }
+        },
+        "pub": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter pub get",
+            "cwd": "libs/task-manager"
+          }
+        }
+      }
+    },
+    "widgets": {
+      "root": "libs/widgets",
+      "sourceRoot": "libs/widgets/src",
+      "projectType": "library",
+      "targets": {
+        "analyze": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter analyze",
+            "cwd": "libs/widgets"
+          }
+        },
+        "clean": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter clean",
+            "cwd": "libs/widgets"
+          }
+        },
+        "format": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter format libs/widgets/*",
+            "cwd": "libs/widgets"
+          }
+        },
+        "test": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter test --coverage",
+            "cwd": "libs/widgets"
+          }
+        },
+        "buildAar": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build aar",
+            "cwd": "libs/widgets"
+          }
+        },
+        "buildApk": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build apk",
+            "cwd": "libs/widgets"
+          }
+        },
+        "buildAppbundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build appbundle",
+            "cwd": "libs/widgets"
+          }
+        },
+        "buildBundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build bundle",
+            "cwd": "libs/widgets"
+          }
+        },
+        "buildIos": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios",
+            "cwd": "libs/widgets"
+          }
+        },
+        "buildIosFramework": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios-framework",
+            "cwd": "libs/widgets"
+          }
+        },
+        "buildIpa": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ipa",
+            "cwd": "libs/widgets"
+          }
+        },
+        "pub": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter pub get",
+            "cwd": "libs/widgets"
+          }
+        }
+      }
+    },
+    "shared-data-models": {
+      "root": "libs/shared-data-models",
+      "sourceRoot": "libs/shared-data-models/src",
+      "projectType": "library",
+      "targets": {
+        "analyze": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter analyze",
+            "cwd": "libs/shared-data-models"
+          }
+        },
+        "clean": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter clean",
+            "cwd": "libs/shared-data-models"
+          }
+        },
+        "format": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter format libs/shared-data-models/*",
+            "cwd": "libs/shared-data-models"
+          }
+        },
+        "test": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter test --coverage",
+            "cwd": "libs/shared-data-models"
+          }
+        },
+        "buildAar": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build aar",
+            "cwd": "libs/shared-data-models"
+          }
+        },
+        "buildApk": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build apk",
+            "cwd": "libs/shared-data-models"
+          }
+        },
+        "buildAppbundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build appbundle",
+            "cwd": "libs/shared-data-models"
+          }
+        },
+        "buildBundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build bundle",
+            "cwd": "libs/shared-data-models"
+          }
+        },
+        "buildIos": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios",
+            "cwd": "libs/shared-data-models"
+          }
+        },
+        "buildIosFramework": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios-framework",
+            "cwd": "libs/shared-data-models"
+          }
+        },
+        "buildIpa": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ipa",
+            "cwd": "libs/shared-data-models"
+          }
+        },
+        "pub": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter pub get",
+            "cwd": "libs/shared-data-models"
+          }
+        }
+      }
+    },
+    "add_card": {
+      "root": "libs/features/add_card",
+      "sourceRoot": "libs/features/add_card",
+      "projectType": "library",
+      "targets": {
+        "analyze": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter analyze",
+            "cwd": "libs/features/add_card"
+          }
+        },
+        "clean": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter clean",
+            "cwd": "libs/features/add_card"
+          }
+        },
+        "format": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter format libs/features/add_card/*",
+            "cwd": "libs/features/add_card"
+          }
+        },
+        "test": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter test --coverage",
+            "cwd": "libs/features/add_card"
+          }
+        },
+        "buildAar": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build aar",
+            "cwd": "libs/features/add_card"
+          }
+        },
+        "buildApk": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build apk",
+            "cwd": "libs/features/add_card"
+          }
+        },
+        "buildAppbundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build appbundle",
+            "cwd": "libs/features/add_card"
+          }
+        },
+        "buildBundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build bundle",
+            "cwd": "libs/features/add_card"
+          }
+        },
+        "buildIos": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios",
+            "cwd": "libs/features/add_card"
+          }
+        },
+        "buildIosFramework": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios-framework",
+            "cwd": "libs/features/add_card"
+          }
+        },
+        "buildIpa": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ipa",
+            "cwd": "libs/features/add_card"
+          }
+        },
+        "pub": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter pub get",
+            "cwd": "libs/features/add_card"
+          }
+        }
+      },
+      "tags": []
+    },
+    "CrayonPayment_bottom_sheet": {
+      "root": "libs/features/CrayonPayment_bottom_sheet",
+      "sourceRoot": "libs/features/CrayonPayment_bottom_sheet/src",
+      "projectType": "library",
+      "targets": {
+        "analyze": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter analyze",
+            "cwd": "libs/features/CrayonPayment_bottom_sheet"
+          }
+        },
+        "clean": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter clean",
+            "cwd": "libs/features/CrayonPayment_bottom_sheet"
+          }
+        },
+        "format": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter format libs/features/CrayonPayment_bottom_sheet/*",
+            "cwd": "libs/features/CrayonPayment_bottom_sheet"
+          }
+        },
+        "test": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter test --coverage",
+            "cwd": "libs/features/CrayonPayment_bottom_sheet"
+          }
+        },
+        "buildAar": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build aar",
+            "cwd": "libs/features/CrayonPayment_bottom_sheet"
+          }
+        },
+        "buildApk": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build apk",
+            "cwd": "libs/features/CrayonPayment_bottom_sheet"
+          }
+        },
+        "buildAppbundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build appbundle",
+            "cwd": "libs/features/CrayonPayment_bottom_sheet"
+          }
+        },
+        "buildBundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build bundle",
+            "cwd": "libs/features/CrayonPayment_bottom_sheet"
+          }
+        },
+        "buildIos": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios",
+            "cwd": "libs/features/CrayonPayment_bottom_sheet"
+          }
+        },
+        "buildIosFramework": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios-framework",
+            "cwd": "libs/features/CrayonPayment_bottom_sheet"
+          }
+        },
+        "buildIpa": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ipa",
+            "cwd": "libs/features/CrayonPayment_bottom_sheet"
+          }
+        },
+        "pub": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter pub get",
+            "cwd": "libs/features/CrayonPayment_bottom_sheet"
+          }
+        }
+      },
+      "tags": []
+    },
+    "kyc": {
+      "root": "libs/features/kyc",
+      "sourceRoot": "libs/features/kyc",
+      "projectType": "library",
+      "targets": {
+        "analyze": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter analyze",
+            "cwd": "libs/features/kyc"
+          }
+        },
+        "clean": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter clean",
+            "cwd": "libs/features/kyc"
+          }
+        },
+        "format": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter format libs/features/kyc/*",
+            "cwd": "libs/features/kyc"
+          }
+        },
+        "test": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter test --coverage",
+            "cwd": "libs/features/kyc"
+          }
+        },
+        "buildAar": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build aar",
+            "cwd": "libs/features/kyc"
+          }
+        },
+        "buildApk": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build apk",
+            "cwd": "libs/features/kyc"
+          }
+        },
+        "buildAppbundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build appbundle",
+            "cwd": "libs/features/kyc"
+          }
+        },
+        "buildBundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build bundle",
+            "cwd": "libs/features/kyc"
+          }
+        },
+        "buildIos": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios",
+            "cwd": "libs/features/kyc"
+          }
+        },
+        "buildIosFramework": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios-framework",
+            "cwd": "libs/features/kyc"
+          }
+        },
+        "buildIpa": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ipa",
+            "cwd": "libs/features/kyc"
+          }
+        },
+        "pub": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter pub get",
+            "cwd": "libs/features/kyc"
+          }
+        }
+      },
+      "tags": []
+    },
+    "p2p_payments": {
+      "root": "libs/features/p2p_payments",
+      "sourceRoot": "libs/features/p2p_payments/src",
+      "projectType": "library",
+      "targets": {
+        "analyze": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter analyze",
+            "cwd": "libs/features/p2p_payments"
+          }
+        },
+        "clean": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter clean",
+            "cwd": "libs/features/p2p_payments"
+          }
+        },
+        "format": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter format libs/features/p2p_payments/*",
+            "cwd": "libs/features/p2p_payments"
+          }
+        },
+        "test": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter test --coverage",
+            "cwd": "libs/features/p2p_payments"
+          }
+        },
+        "buildAar": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build aar",
+            "cwd": "libs/features/p2p_payments"
+          }
+        },
+        "buildApk": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build apk",
+            "cwd": "libs/features/p2p_payments"
+          }
+        },
+        "buildAppbundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build appbundle",
+            "cwd": "libs/features/p2p_payments"
+          }
+        },
+        "buildBundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build bundle",
+            "cwd": "libs/features/p2p_payments"
+          }
+        },
+        "buildIos": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios",
+            "cwd": "libs/features/p2p_payments"
+          }
+        },
+        "buildIosFramework": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios-framework",
+            "cwd": "libs/features/p2p_payments"
+          }
+        },
+        "buildIpa": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ipa",
+            "cwd": "libs/features/p2p_payments"
+          }
+        },
+        "pub": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter pub get",
+            "cwd": "libs/features/p2p_payments"
+          }
+        }
+      }
+    },
+    "welcome": {
+      "root": "libs/features/welcome",
+      "sourceRoot": "libs/features/welcome/src",
+      "projectType": "library",
+      "targets": {
+        "analyze": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter analyze",
+            "cwd": "libs/features/welcome"
+          }
+        },
+        "clean": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter clean",
+            "cwd": "libs/features/welcome"
+          }
+        },
+        "format": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter format libs/features/welcome/*",
+            "cwd": "libs/features/welcome"
+          }
+        },
+        "test": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter test --coverage",
+            "cwd": "libs/features/welcome"
+          }
+        },
+        "buildAar": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build aar",
+            "cwd": "libs/features/welcome"
+          }
+        },
+        "buildApk": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build apk",
+            "cwd": "libs/features/welcome"
+          }
+        },
+        "buildAppbundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build appbundle",
+            "cwd": "libs/features/welcome"
+          }
+        },
+        "buildBundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build bundle",
+            "cwd": "libs/features/welcome"
+          }
+        },
+        "buildIos": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios",
+            "cwd": "libs/features/welcome"
+          }
+        },
+        "buildIosFramework": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios-framework",
+            "cwd": "libs/features/welcome"
+          }
+        },
+        "buildIpa": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ipa",
+            "cwd": "libs/features/welcome"
+          }
+        },
+        "pub": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter pub get",
+            "cwd": "libs/features/welcome"
+          }
+        }
+      }
+    },
+    "welcome_business": {
+      "root": "apps/merchant/features/welcome_business",
+      "sourceRoot": "apps/merchant/features/welcome_business",
+      "projectType": "library",
+      "targets": {
+        "analyze": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter analyze",
+            "cwd": "apps/merchant/features/welcome_business"
+          }
+        },
+        "clean": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter clean",
+            "cwd": "apps/merchant/features/welcome_business"
+          }
+        },
+        "format": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter format apps/merchant/features/welcome_business/*",
+            "cwd": "apps/merchant/features/welcome_business"
+          }
+        },
+        "buildAar": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build aar",
+            "cwd": "apps/merchant/features/welcome_business"
+          }
+        },
+        "buildApk": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build apk",
+            "cwd": "apps/merchant/features/welcome_business"
+          }
+        },
+        "buildAppbundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build appbundle",
+            "cwd": "apps/merchant/features/welcome_business"
+          }
+        },
+        "buildBundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build bundle",
+            "cwd": "apps/merchant/features/welcome_business"
+          }
+        },
+        "buildIos": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios",
+            "cwd": "apps/merchant/features/welcome_business"
+          }
+        },
+        "buildIosFramework": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios-framework",
+            "cwd": "apps/merchant/features/welcome_business"
+          }
+        },
+        "buildIpa": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ipa",
+            "cwd": "apps/merchant/features/welcome_business"
+          }
+        },
+        "pub": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter pub get",
+            "cwd": "apps/merchant/features/welcome_business"
+          }
+        }
+      }
+    },
+    "transactions": {
+      "root": "libs/features/transactions",
+      "sourceRoot": "libs/features/transactions/src",
+      "projectType": "library",
+      "targets": {
+        "analyze": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter analyze",
+            "cwd": "libs/features/transactions"
+          }
+        },
+        "clean": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter clean",
+            "cwd": "libs/features/transactions"
+          }
+        },
+        "format": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter format libs/features/transactions/*",
+            "cwd": "libs/features/transactions"
+          }
+        },
+        "test": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter test --coverage",
+            "cwd": "libs/features/transactions"
+          }
+        },
+        "buildAar": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build aar",
+            "cwd": "libs/features/transactions"
+          }
+        },
+        "buildApk": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build apk",
+            "cwd": "libs/features/transactions"
+          }
+        },
+        "buildAppbundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build appbundle",
+            "cwd": "libs/features/transactions"
+          }
+        },
+        "buildBundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build bundle",
+            "cwd": "libs/features/transactions"
+          }
+        },
+        "buildIos": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios",
+            "cwd": "libs/features/transactions"
+          }
+        },
+        "buildIosFramework": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios-framework",
+            "cwd": "libs/features/transactions"
+          }
+        },
+        "buildIpa": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ipa",
+            "cwd": "libs/features/transactions"
+          }
+        },
+        "pub": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter pub get",
+            "cwd": "libs/features/transactions"
+          }
+        }
+      }
+    },
+    "passcode": {
+      "root": "libs/features/passcode",
+      "sourceRoot": "libs/features/passcode/src",
+      "projectType": "library",
+      "targets": {
+        "analyze": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter analyze",
+            "cwd": "libs/features/passcode"
+          }
+        },
+        "clean": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter clean",
+            "cwd": "libs/features/passcode"
+          }
+        },
+        "format": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter format libs/features/passcode/*",
+            "cwd": "libs/features/passcode"
+          }
+        },
+        "test": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter test --coverage",
+            "cwd": "libs/features/passcode"
+          }
+        },
+        "buildAar": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build aar",
+            "cwd": "libs/features/passcode"
+          }
+        },
+        "buildApk": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build apk",
+            "cwd": "libs/features/passcode"
+          }
+        },
+        "buildAppbundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build appbundle",
+            "cwd": "libs/features/passcode"
+          }
+        },
+        "buildBundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build bundle",
+            "cwd": "libs/features/passcode"
+          }
+        },
+        "buildIos": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios",
+            "cwd": "libs/features/passcode"
+          }
+        },
+        "buildIosFramework": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios-framework",
+            "cwd": "libs/features/passcode"
+          }
+        },
+        "buildIpa": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ipa",
+            "cwd": "libs/features/passcode"
+          }
+        },
+        "pub": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter pub get",
+            "cwd": "libs/features/passcode"
+          }
+        }
+      }
+    },
+    "setting": {
+      "root": "libs/features/setting",
+      "sourceRoot": "libs/features/setting/src",
+      "projectType": "library",
+      "targets": {
+        "analyze": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter analyze",
+            "cwd": "libs/features/setting"
+          }
+        },
+        "clean": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter clean",
+            "cwd": "libs/features/setting"
+          }
+        },
+        "format": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter format libs/features/setting/*",
+            "cwd": "libs/features/setting"
+          }
+        },
+        "buildAar": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build aar",
+            "cwd": "libs/features/setting"
+          }
+        },
+        "buildApk": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build apk",
+            "cwd": "libs/features/setting"
+          }
+        },
+        "buildAppbundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build appbundle",
+            "cwd": "libs/features/setting"
+          }
+        },
+        "buildBundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build bundle",
+            "cwd": "libs/features/setting"
+          }
+        },
+        "buildIos": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios",
+            "cwd": "libs/features/setting"
+          }
+        },
+        "buildIosFramework": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios-framework",
+            "cwd": "libs/features/setting"
+          }
+        },
+        "buildIpa": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ipa",
+            "cwd": "libs/features/setting"
+          }
+        },
+        "pub": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter pub get",
+            "cwd": "libs/features/setting"
+          }
+        }
+      }
+    },
+    "otp": {
+      "root": "libs/features/otp",
+      "sourceRoot": "libs/features/otp/src",
+      "projectType": "library",
+      "targets": {
+        "analyze": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter analyze",
+            "cwd": "libs/features/otp"
+          }
+        },
+        "clean": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter clean",
+            "cwd": "libs/features/otp"
+          }
+        },
+        "format": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter format libs/features/otp/*",
+            "cwd": "libs/features/otp"
+          }
+        },
+        "test": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter test --coverage",
+            "cwd": "libs/features/otp"
+          }
+        },
+        "buildAar": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build aar",
+            "cwd": "libs/features/otp"
+          }
+        },
+        "buildApk": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build apk",
+            "cwd": "libs/features/otp"
+          }
+        },
+        "buildAppbundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build appbundle",
+            "cwd": "libs/features/otp"
+          }
+        },
+        "buildBundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build bundle",
+            "cwd": "libs/features/otp"
+          }
+        },
+        "buildIos": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios",
+            "cwd": "libs/features/otp"
+          }
+        },
+        "buildIosFramework": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios-framework",
+            "cwd": "libs/features/otp"
+          }
+        },
+        "buildIpa": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ipa",
+            "cwd": "libs/features/otp"
+          }
+        },
+        "pub": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter pub get",
+            "cwd": "libs/features/otp"
+          }
+        }
+      }
+    },
+    "merchant_sign_in": {
+      "root": "libs/features/merchant_sign_in",
+      "sourceRoot": "libs/features/merchant_sign_in",
+      "projectType": "library",
+      "targets": {
+        "analyze": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter analyze",
+            "cwd": "libs/features/merchant_sign_in"
+          }
+        },
+        "clean": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter clean",
+            "cwd": "libs/features/merchant_sign_in"
+          }
+        },
+        "format": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter format libs/features/merchant_sign_in/*",
+            "cwd": "libs/features/merchant_sign_in"
+          }
+        },
+        "test": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter test --coverage",
+            "cwd": "libs/features/merchant_sign_in"
+          }
+        },
+        "buildAar": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build aar",
+            "cwd": "libs/features/merchant_sign_in"
+          }
+        },
+        "buildApk": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build apk",
+            "cwd": "libs/features/merchant_sign_in"
+          }
+        },
+        "buildAppbundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build appbundle",
+            "cwd": "libs/features/merchant_sign_in"
+          }
+        },
+        "buildBundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build bundle",
+            "cwd": "libs/features/merchant_sign_in"
+          }
+        },
+        "buildIos": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios",
+            "cwd": "libs/features/merchant_sign_in"
+          }
+        },
+        "buildIosFramework": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios-framework",
+            "cwd": "libs/features/merchant_sign_in"
+          }
+        },
+        "buildIpa": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ipa",
+            "cwd": "libs/features/merchant_sign_in"
+          }
+        },
+        "pub": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter pub get",
+            "cwd": "libs/features/merchant_sign_in"
+          }
+        }
+      },
+      "tags": []
+    },
+    "merchant_document": {
+      "root": "libs/features/merchant_document",
+      "sourceRoot": "libs/features/merchant_document",
+      "projectType": "library",
+      "targets": {
+        "analyze": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter analyze",
+            "cwd": "libs/features/merchant_document"
+          }
+        },
+        "clean": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter clean",
+            "cwd": "libs/features/merchant_document"
+          }
+        },
+        "format": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter format libs/features/merchant_document/*",
+            "cwd": "libs/features/merchant_document"
+          }
+        },
+        "test": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter test --coverage",
+            "cwd": "libs/features/merchant_document"
+          }
+        },
+        "buildAar": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build aar",
+            "cwd": "libs/features/merchant_document"
+          }
+        },
+        "buildApk": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build apk",
+            "cwd": "libs/features/merchant_document"
+          }
+        },
+        "buildAppbundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build appbundle",
+            "cwd": "libs/features/merchant_document"
+          }
+        },
+        "buildBundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build bundle",
+            "cwd": "libs/features/merchant_document"
+          }
+        },
+        "buildIos": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios",
+            "cwd": "libs/features/merchant_document"
+          }
+        },
+        "buildIosFramework": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios-framework",
+            "cwd": "libs/features/merchant_document"
+          }
+        },
+        "buildIpa": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ipa",
+            "cwd": "libs/features/merchant_document"
+          }
+        },
+        "pub": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter pub get",
+            "cwd": "libs/features/merchant_document"
+          }
+        }
+      },
+      "tags": []
+    },
+    "merchant_qr": {
+      "root": "libs/features/merchant_qr",
+      "sourceRoot": "libs/features/merchant_qr/src",
+      "projectType": "library",
+      "targets": {
+        "analyze": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter analyze",
+            "cwd": "libs/features/merchant_qr"
+          }
+        },
+        "clean": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter clean",
+            "cwd": "libs/features/merchant_qr"
+          }
+        },
+        "format": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter format libs/features/merchant_qr/*",
+            "cwd": "libs/features/merchant_qr"
+          }
+        },
+        "test": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter test --coverage",
+            "cwd": "libs/features/merchant_qr"
+          }
+        },
+        "buildAar": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build aar",
+            "cwd": "libs/features/merchant_qr"
+          }
+        },
+        "buildApk": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build apk",
+            "cwd": "libs/features/merchant_qr"
+          }
+        },
+        "buildAppbundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build appbundle",
+            "cwd": "libs/features/merchant_qr"
+          }
+        },
+        "buildBundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build bundle",
+            "cwd": "libs/login"
+          }
+        },
+        "buildIos": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios",
+            "cwd": "libs/features/merchant_qr"
+          }
+        },
+        "buildIosFramework": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios-framework",
+            "cwd": "libs/features/merchant_qr"
+          }
+        },
+        "buildIpa": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ipa",
+            "cwd": "libs/features/merchant_qr"
+          }
+        },
+        "pub": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter pub get",
+            "cwd": "libs/features/merchant_qr"
+          }
+        }
+      }
+    },
+    "my_store": {
+      "root": "libs/features/my_store",
+      "sourceRoot": "libs/features/my_store/src",
+      "projectType": "library",
+      "targets": {
+        "analyze": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter analyze",
+            "cwd": "libs/features/my_store"
+          }
+        },
+        "clean": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter clean",
+            "cwd": "libs/features/my_store"
+          }
+        },
+        "format": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter format libs/features/merchant_qr/*",
+            "cwd": "libs/features/my_store"
+          }
+        },
+        "buildAar": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build aar",
+            "cwd": "libs/features/my_store"
+          }
+        },
+        "buildApk": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build apk",
+            "cwd": "libs/features/my_store"
+          }
+        },
+        "buildAppbundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build appbundle",
+            "cwd": "libs/features/my_store"
+          }
+        },
+        "buildBundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build bundle",
+            "cwd": "libs/login"
+          }
+        },
+        "buildIos": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios",
+            "cwd": "libs/features/my_store"
+          }
+        },
+        "buildIosFramework": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios-framework",
+            "cwd": "libs/features/my_store"
+          }
+        },
+        "buildIpa": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ipa",
+            "cwd": "libs/features/my_store"
+          }
+        },
+        "pub": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter pub get",
+            "cwd": "libs/features/my_store"
+          }
+        }
+      }
+    },
+    "features-card-3-d-secure": {
+      "root": "libs/features/card-3-d-secure",
+      "sourceRoot": "libs/features/card-3-d-secure/src",
+      "projectType": "library",
+      "targets": {
+        "analyze": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter analyze",
+            "cwd": "libs/features/card-3-d-secure"
+          }
+        },
+        "clean": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter clean",
+            "cwd": "libs/features/card-3-d-secure"
+          }
+        },
+        "format": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter format libs/features/card-3-d-secure/*",
+            "cwd": "libs/features/card-3-d-secure"
+          }
+        },
+        "test": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter test --coverage",
+            "cwd": "libs/features/card-3-d-secure"
+          }
+        },
+        "buildAar": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build aar",
+            "cwd": "libs/features/card-3-d-secure"
+          }
+        },
+        "buildApk": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build apk",
+            "cwd": "libs/features/card-3-d-secure"
+          }
+        },
+        "buildAppbundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build appbundle",
+            "cwd": "libs/features/card-3-d-secure"
+          }
+        },
+        "buildBundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build bundle",
+            "cwd": "libs/features/card-3-d-secure"
+          }
+        },
+        "buildIos": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios",
+            "cwd": "libs/features/card-3-d-secure"
+          }
+        },
+        "buildIosFramework": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios-framework",
+            "cwd": "libs/features/card-3-d-secure"
+          }
+        },
+        "buildIpa": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ipa",
+            "cwd": "libs/features/card-3-d-secure"
+          }
+        },
+        "pub": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter pub get",
+            "cwd": "libs/features/card-3-d-secure"
+          }
+        }
+      },
+      "tags": []
+    },
+    "sign_in": {
+      "root": "apps/customer/features/sign_in",
+      "sourceRoot": "apps/customer/features/sign_in",
+      "projectType": "library",
+      "targets": {
+        "analyze": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter analyze",
+            "cwd": "apps/customer/features/sign_in"
+          }
+        },
+        "clean": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter clean",
+            "cwd": "apps/customer/features/sign_in"
+          }
+        },
+        "format": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter format apps/customer/features/sign_in/*",
+            "cwd": "apps/customer/features/sign_in"
+          }
+        },
+        "buildAar": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build aar",
+            "cwd": "apps/customer/features/sign_in"
+          }
+        },
+        "buildApk": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build apk",
+            "cwd": "apps/customer/features/sign_in"
+          }
+        },
+        "buildAppbundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build appbundle",
+            "cwd": "apps/customer/features/sign_in"
+          }
+        },
+        "buildBundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build bundle",
+            "cwd": "apps/customer/features/sign_in"
+          }
+        },
+        "buildIos": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios",
+            "cwd": "apps/customer/features/sign_in"
+          }
+        },
+        "buildIosFramework": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios-framework",
+            "cwd": "apps/customer/features/sign_in"
+          }
+        },
+        "buildIpa": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ipa",
+            "cwd": "apps/customer/features/sign_in"
+          }
+        },
+        "pub": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter pub get",
+            "cwd": "apps/customer/features/sign_in"
+          }
+        }
+      }
+    },
+    "features-ocr": {
+      "root": "libs/features/ocr",
+      "sourceRoot": "libs/features/ocr/src",
+      "projectType": "library",
+      "targets": {
+        "analyze": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter analyze",
+            "cwd": "libs/features/ocr"
+          }
+        },
+        "clean": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter clean",
+            "cwd": "libs/features/ocr"
+          }
+        },
+        "format": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter format libs/features/ocr/*",
+            "cwd": "libs/features/ocr"
+          }
+        },
+        "test": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter test --coverage",
+            "cwd": "libs/features/ocr"
+          }
+        },
+        "buildAar": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build aar",
+            "cwd": "libs/features/ocr"
+          }
+        },
+        "buildApk": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build apk",
+            "cwd": "libs/features/ocr"
+          }
+        },
+        "buildAppbundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build appbundle",
+            "cwd": "libs/features/ocr"
+          }
+        },
+        "buildBundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build bundle",
+            "cwd": "libs/features/ocr"
+          }
+        },
+        "buildIos": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios",
+            "cwd": "libs/features/ocr"
+          }
+        },
+        "buildIosFramework": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios-framework",
+            "cwd": "libs/features/ocr"
+          }
+        },
+        "buildIpa": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ipa",
+            "cwd": "libs/features/ocr"
+          }
+        }
+      },
+      "tags": []
+    },
+    "account-iban": {
+      "root": "libs/features/account_iban",
+      "sourceRoot": "libs/features/account_iban/src",
+      "projectType": "library",
+      "targets": {
+        "analyze": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter analyze",
+            "cwd": "libs/features/account_iban"
+          }
+        },
+        "clean": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter clean",
+            "cwd": "libs/features/account_iban"
+          }
+        },
+        "format": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter format libs/features/account_iban/*",
+            "cwd": "libs/features/account_iban"
+          }
+        },
+        "test": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter test --coverage",
+            "cwd": "libs/features/account_iban"
+          }
+        },
+        "buildAar": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build aar",
+            "cwd": "libs/features/account_iban"
+          }
+        },
+        "buildApk": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build apk",
+            "cwd": "libs/features/account_iban"
+          }
+        },
+        "buildAppbundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build appbundle",
+            "cwd": "libs/features/account_iban"
+          }
+        },
+        "buildBundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build bundle",
+            "cwd": "libs/features/account_iban"
+          }
+        },
+        "buildIos": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios",
+            "cwd": "libs/features/account_iban"
+          }
+        },
+        "buildIosFramework": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios-framework",
+            "cwd": "libs/features/account_iban"
+          }
+        },
+        "buildIpa": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ipa",
+            "cwd": "libs/features/account_iban"
+          }
+        }
+      },
+      "tags": []
+    },
+    "customer-settings": {
+      "root": "apps/customer/features/customer-settings",
+      "sourceRoot": "apps/customer/features/customer-settings/src",
+      "projectType": "library",
+      "targets": {
+        "analyze": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter analyze",
+            "cwd": "apps/customer/features/customer-settings"
+          }
+        },
+        "clean": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter clean",
+            "cwd": "apps/customer/features/customer-settings"
+          }
+        },
+        "format": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter format apps/customer/features/customer-settings/*",
+            "cwd": "apps/customer/features/customer-settings"
+          }
+        },
+        "test": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter test --coverage",
+            "cwd": "apps/customer/features/customer-settings"
+          }
+        },
+        "buildAar": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build aar",
+            "cwd": "apps/customer/features/customer-settings"
+          }
+        },
+        "buildApk": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build apk",
+            "cwd": "apps/customer/features/customer-settings"
+          }
+        },
+        "buildAppbundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build appbundle",
+            "cwd": "apps/customer/features/customer-settings"
+          }
+        },
+        "buildBundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build bundle",
+            "cwd": "apps/customer/features/customer-settings"
+          }
+        },
+        "buildIos": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios",
+            "cwd": "apps/customer/features/customer-settings"
+          }
+        },
+        "buildIosFramework": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios-framework",
+            "cwd": "apps/customer/features/customer-settings"
+          }
+        },
+        "buildIpa": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ipa",
+            "cwd": "apps/customer/features/customer-settings"
+          }
+        },
+        "pub": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter pub get",
+            "cwd": "apps/customer/features/customer-settings"
+          }
+        }
+      },
+      "tags": []
+    },
+    "merchant-settings": {
+      "root": "apps/merchant/features/merchant-settings",
+      "sourceRoot": "apps/merchant/features/merchant-settings/src",
+      "projectType": "library",
+      "targets": {
+        "analyze": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter analyze",
+            "cwd": "apps/merchant/features/merchant-settings"
+          }
+        },
+        "clean": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter clean",
+            "cwd": "apps/merchant/features/merchant-settings"
+          }
+        },
+        "format": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter format apps/merchant/features/merchant-settings/*",
+            "cwd": "apps/merchant/features/merchant-settings"
+          }
+        },
+        "test": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter test --coverage",
+            "cwd": "apps/merchant/features/merchant-settings"
+          }
+        },
+        "buildAar": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build aar",
+            "cwd": "apps/merchant/features/merchant-settings"
+          }
+        },
+        "buildApk": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build apk",
+            "cwd": "apps/merchant/features/merchant-settings"
+          }
+        },
+        "buildAppbundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build appbundle",
+            "cwd": "apps/merchant/features/merchant-settings"
+          }
+        },
+        "buildBundle": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build bundle",
+            "cwd": "apps/merchant/features/merchant-settings"
+          }
+        },
+        "buildIos": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios",
+            "cwd": "apps/merchant/features/merchant-settings"
+          }
+        },
+        "buildIosFramework": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ios-framework",
+            "cwd": "apps/merchant/features/merchant-settings"
+          }
+        },
+        "buildIpa": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter build ipa",
+            "cwd": "apps/merchant/features/merchant-settings"
+          }
+        },
+        "pub": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "flutter pub get",
+            "cwd": "apps/merchant/features/merchant-settings"
+          }
+        }
+      },
+      "tags": []
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/workspace"
+  }
+}

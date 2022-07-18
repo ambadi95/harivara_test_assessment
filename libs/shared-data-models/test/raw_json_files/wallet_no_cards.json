@@ -1,0 +1,9 @@
+{
+  "balance": {
+    "amount": 209,
+    "currency":"SAR"
+  },
+  "cardDetails" : null,
+  "walletId": 12345,
+  "limit":"2000"
+}

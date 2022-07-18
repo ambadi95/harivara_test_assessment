@@ -1,0 +1,12 @@
+pool:
+  vmImage: 'macOS-10.14'
+
+resources:
+  repositories: 
+    - repository: templates
+      type: git
+      name: neobank-platform/azure-platform-pipeline-archetypes
+      ref: master
+    
+stages:
+- template: .\archetypes\flutter\azure-pipeline-flutter-library.yml@templates 

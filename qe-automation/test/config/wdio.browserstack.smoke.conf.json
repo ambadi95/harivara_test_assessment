@@ -1,0 +1,14 @@
+{
+    "android": [
+        {
+            "platformVersion": "11.0",
+            "deviceName": "Samsung Galaxy S21 Ultra"
+        }
+    ],
+    "ios": [
+        {
+            "platformVersion": "15",
+            "deviceName": "iPhone 13 Pro Max"
+        }
+    ]
+}

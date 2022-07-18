@@ -1,0 +1,44 @@
+{
+  "name": "flutter-base-app",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {
+    "start": "nx serve",
+    "build": "nx build",
+    "test": "nx test",
+    "prepare": "husky install",
+    "pre-commit": "lint-staged",
+    "validate-commit-msg": "exec < /dev/tty && git cz --hook || true"
+  },
+  "private": true,
+  "devDependencies": {
+    "@nrwl/cli": "12.10.0",
+    "@nrwl/eslint-plugin-nx": "12.10.0",
+    "@nrwl/jest": "12.10.0",
+    "@nrwl/linter": "12.10.0",
+    "@nrwl/tao": "12.10.0",
+    "@nrwl/workspace": "12.10.0",
+    "@nxrocks/nx-flutter": "3.0.0",
+    "@types/jest": "27.0.2",
+    "@types/node": "14.14.33",
+    "@typescript-eslint/eslint-plugin": "~4.31.1",
+    "@typescript-eslint/parser": "~4.31.1",
+    "commitizen": "^4.2.4",
+    "eslint": "7.22.0",
+    "eslint-config-prettier": "8.1.0",
+    "husky": "^7.0.0",
+    "inquirer": "^8.2.0",
+    "jest": "27.2.3",
+    "prettier": "^2.3.1",
+    "ts-jest": "27.0.5",
+    "typescript": "~4.3.5"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./tools/scripts/commit-msg"
+    }
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  }
+}

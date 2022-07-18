@@ -1,0 +1,36 @@
+{
+  "balance": {
+    "amount": 209,
+    "currency":"SAR"
+  },
+  "cardDetails" : [
+    {
+      "walletId": 12345,
+      "brand": "Visa",
+      "cardId": "cardId1234",
+      "cardType": "debit",
+      "nickName": "Spending",
+      "cardImageUrl": "https://www.publicdomainpictures.net/pictures/160000/nahled/credit-card-front.jpg",
+      "expiryMonth": 12,
+      "expiryYear": 2025,
+      "favourite": true,
+      "cardNumber": "1234",
+      "cvs": "123"
+    },
+    {
+      "walletId": 12345,
+      "brand": "AMERICAN_EXPRESS",
+      "cardId": "cardId1234",
+      "cardType": "credit",
+      "nickName": "Spending number two",
+      "cardImageUrl": "https://www.publicdomainpictures.net/pictures/160000/nahled/credit-card-front.jpg",
+      "expiryMonth": 12,
+      "expiryYear": 2025,
+      "favourite": false,
+      "cardNumber": "1234",
+      "cvs": "124"
+    }
+  ],
+  "walletId": 12345,
+  "limit":"2000"
+}

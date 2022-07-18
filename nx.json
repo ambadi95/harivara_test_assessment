@@ -1,0 +1,82 @@
+{
+  "npmScope": "flutter-base-app",
+  "affected": {
+    "defaultBase": "master"
+  },
+  "implicitDependencies": {
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    ".eslintrc.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": [
+          "build",
+          "lint"
+        ]
+      }
+    }
+  },
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ]
+  },
+  "projects": {
+    "core": {
+      "tags": []
+    },
+    "customer": {
+      "tags": []
+    },
+    "add_funds": {
+      "tags": []
+    },
+    "login": {
+      "tags": []
+    },
+    "merchant": {
+      "tags": []
+    },
+    "network-manager": {
+      "tags": []
+    },
+    "task-manager": {
+      "tags": []
+    },
+    "widgets": {
+      "tags": []
+    },
+    "shared-data-models": {
+      "tags": []
+    },
+    "add_card": {
+      "tags": []
+    },
+    "p2p_payments": {
+      "tags": []
+    },
+    "transactions": {
+      "tags": []
+    },
+    "passcode": {
+      "tags": []
+    },
+    "welcome": {
+      "tags": []
+    },
+    "welcome_business": {
+      "tags": []
+    }
+  },
+  "plugins": [
+    "@nxrocks/nx-flutter"
+  ]
+}

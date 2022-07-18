@@ -1,0 +1,65 @@
+name: crayon_payment_agent
+description: CrayonPayment Merchant Base App
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.12.0 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+
+  config:
+    path: ../customer/config
+
+  core:
+    path: ../../libs/core/
+
+  network_manager:
+    path: ../../libs/network-manager/
+
+  task_manager:
+    path: ../../libs/task-manager/
+
+  widget_library:
+    path: ../../libs/widgets/
+
+
+
+dev_dependencies:
+  test: any
+  flutter_test:
+    sdk: flutter
+  integration_test:
+    sdk: flutter
+  pedantic: ^1.11.1
+  dart_code_metrics: ^4.11.0
+  build_runner:
+
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/configuration/network_configuration_dev.json
+    - assets/lang/
+    - assets/styles/
+    - assets/images/
+    - assets/configuration/network_config.json
+    - assets/configuration/static_auth.json
+
+  fonts:
+    - family: Brown
+      fonts:
+        - asset: assets/fonts/Brown-Regular.ttf
+    - family: Brown-Light
+      fonts:
+        - asset: assets/fonts/Brown-Light.ttf
+    - family: Zarid-Medium
+      fonts:
+        - asset: assets/fonts/Zarid-Medium.otf
+    - family: OCR-A
+      fonts:
+        - asset: assets/fonts/OCR-A-Regular.ttf
+

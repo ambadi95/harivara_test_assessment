@@ -1,0 +1,41 @@
+{
+    "customerName": null,
+    "customerPhNo": null,
+    "lastFourDigit": null,
+    "transactionId": "N/A",
+    "refundTransactionId": null,
+    "associatedTransactionId": null,
+    "refundTransactionDate": null,
+    "merchantName": "N/A",
+    "mcc": "N/A",
+    "refundId": [
+      "N/A"
+    ],
+    "transactionDate": "11/14/2021 7:45:06 AM",
+    "transactionType": "N/A",
+    "totalTransactionAmount": {
+      "amount": 100,
+      "currency": "SAR"
+    },
+    "orderId": "N/A",
+    "associatedOrderId": null,
+    "transactionCategory": null,
+    "status": "N/A",
+    "totalRefundAmount": null,
+    "processingFee": 2.5,
+    "discount": 10,
+    "vat": 7.5,
+    "balanceAfter": {
+      "amount": 1950,
+      "currency": "SAR"
+    },
+    "balanceBefore": {
+      "amount": 2050,
+      "currency": "SAR"
+    },
+    "nickName": null,
+    "brand": null,
+    "remarks": "N/A",
+    "originalTransaction": null
+  }
+  

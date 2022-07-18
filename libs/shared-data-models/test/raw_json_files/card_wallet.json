@@ -1,0 +1,13 @@
+{
+  "walletId": 12345,
+  "cardId": "cardId1234",
+  "brand": "VISA",
+  "cardType": "debit",
+  "nickName": "Spending",
+  "cardImageUrl": "https://www.publicdomainpictures.net/pictures/160000/nahled/credit-card-front.jpg",
+  "expiryMonth": 12,
+  "expiryYear": 2025,
+  "cardNumber": "1243",
+  "favourite": true,
+  "cvs": "123"
+}

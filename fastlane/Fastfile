@@ -1,0 +1,146 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+#export PATH='/Users/divthang/Documents/flutter/bin':$PATH
+
+appList = ['customer','merchant']
+
+lane :analyze do
+    sh("flutter analyze")
+end
+
+lane :unit_tests do
+ LIST=("'*.g.dart' '*view.dart' '*_model.dart' '*state.dart' ")
+    for app in appList
+        Dir.chdir("../apps/#{app}/app_features/libs/") do
+            modules = Dir.glob(’*’).select { |fn| File.directory?(fn) }
+            for feature in modules
+                Dir.chdir("#{feature}/") do
+                    sh("flutter test --coverage")
+                    sh("lcov --remove coverage/lcov.info #{LIST} -o coverage/lcov_trimmed.info")
+                end
+            end
+        end
+    end
+end
+
+lane :unit_tests_coverage_report do
+        Dir.chdir("../apps/customer/app_features/libs/login") do
+             #brew install lcov
+             sh(" genhtml -o coverage coverage/lcov_trimmed.info")
+        end
+        Dir.chdir("../apps/merchant/app_features/libs/merchant-login") do
+            #brew install lcov
+            sh(" genhtml -o coverage coverage/lcov_trimmed.info")
+       end
+ end
+
+lane :build_ios do
+    for app in appList
+        build_number = number_of_commits()
+        increment_version_number(
+            version_number: "1.0.#{build_number}",
+            #bump_type: "patch", # Automatically increment minor version number
+            xcodeproj: "ios/Runner.xcodeproj"
+        )
+        Dir.chdir("../apps/#{app}/ios") do
+            sh("xcodebuild -workspace Runner.xcworkspace -scheme RunnerQA archive -archivePath archive/CrayonPaymentpay.xcarchive")
+            sh("xcodebuild -exportArchive -archivePath archive/CrayonPaymentpay.xcarchive   archive  -exportOptionsPlist ExportOptions.plist -exportPath archive/")
+        end
+    end    
+end
+
+
+lane :integration_tests do
+    for app in appList
+        Dir.chdir("../apps/#{app}/") do
+            sh( "flutter drive --driver=test_driver/integration_test.dart --target=integration_test/login_test.dart")
+        end
+    end
+end
+
+# lane :upload_ipa do
+#     #Dir.chdir("../src/ios") do
+#         #sh("xcodebuild -exportArchive -archivePath archive/neobank.xcarchive   archive  -exportOptionsPlist ExportOptions.plist -exportPath archive/")
+#     #end
+# end
+
+lane :build_android do
+    for app in appList
+        Dir.chdir("../apps/#{app}/android") do
+            # Return the number of commits in current git branch
+            build_number = number_of_commits()
+            puts "build number = #{build_number}"
+            sh("flutter build apk -t lib/main.dart --obfuscate --split-debug-info=1.0.#{build_number} --build-number=#{build_number} --build-name=1.0.#{build_number}")
+        end
+    end
+ end
+
+# lane :build_android_and_upload do |options|
+#     #Dir.chdir("../src/android") do
+#     #    sh("flutter build apk")
+#     #end
+        
+#     #Dir.chdir("../") do
+    
+#         #sh("ls")
+        
+#         appcenter_upload(
+#             api_token: options[:appcenter_key],
+#             owner_name: options[:owner_name],
+#             owner_type: "organization", # Default is user - set to organization for appcenter organizations
+#             app_name: options[:app_name],
+#             file: options[:file_path],
+#             #notify_testers: true # Set to false if you don't want to notify testers of your new release (default: `false`)
+#             #release_notes: options[:branchName]
+#         )
+#     #end
+# end
+
+# default_platform(:ios)
+
+# platform :ios do
+#   desc "Description of what the lane does"
+#   lane :custom_lane do
+#     # add actions here: https://docs.fastlane.tools/actions
+#   end
+  
+#   lane :build_iOS do
+    
+#   end
+# end
+
+
+# platform :android do
+#   desc "Runs all the tests"
+#   lane :test do
+#     gradle(task: "test")
+#   end
+
+#   desc "Submit a new Beta Build to Crashlytics Beta"
+#   lane :beta do
+#     gradle(task: "clean assembleRelease")
+#     crashlytics
+  
+#     # sh "your_script.sh"
+#     # You can also use other beta testing services here
+#   end
+
+#   desc "Deploy a new version to the Google Play"
+#   lane :deploy do
+#     gradle(task: "clean assembleRelease")
+#     upload_to_play_store
+#   end
+# end

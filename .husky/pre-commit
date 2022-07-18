@@ -1,0 +1,6 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+sh tools/scripts/validate-branch-name.sh
+yarn nx affected --target=analyze --base=origin/master~1 --head=HEAD --parallel
+

@@ -1,0 +1,19 @@
+{
+  "test1@yopmail.com": "123456",
+  "test2@yopmail.com": "123456",
+  "test3@yopmail.com": "123456",
+  "test4@yopmail.com": "123456",
+  "test5@yopmail.com": "123456",
+  "test6@yopmail.com": "123456",
+  "test7@yopmail.com": "123456",
+  "test8@yopmail.com": "123456",
+  "test9@yopmail.com": "123456",
+
+  "with_cards_auth": "eyJhbGciOiJIUzI1NiJ9.eyJwYXJ0eUlkIjoidXNlcjIifQ._-A8FyQ2rI1CM7z09R8ndch662_KFKqv1KOZyR6HwIA",
+  "without_cards_auth": "eyJhbGciOiJIUzI1NiJ9.eyJwYXJ0eUlkIjoidXNlcjQifQ.ujgGtITqEOCmhUvLBFMs11MF4irtLOU1m7xOgQxjt8k",
+  "submit_card": "eyJhbGciOiJIUzI1NiJ9.eyJwYXJ0eUlkIjoidXNlcjcifQ.Lik3rxv5cpeGX9c8hU__hToeL5g21ATlPZ7YnMPWpME",
+
+  "test8_token": "eyJhbGciOiJIUzI1NiJ9.eyJwYXJ0eUlkIjoidXNlcjMifQ.u8TBAm4LHrZhcXSXfVo0ca-PJv9iF78XeJ-PmHcM_zg",
+  "test9_token": "eyJhbGciOiJIUzI1NiJ9.eyJwYXJ0eUlkIjoidXNlcjgifQ.ar6lv8g4TmRoIM8Np0GXibRVvG6qWhf4jtiVNcXRlsI",
+  "merchant_token": "eyJhbGciOiJIUzI1NiJ9.eyJwYXJ0eUlkIjoibWVyY2hhbnQgMSIsIndhbGxldElkIjoiNTExIn0.JCrl1JnQ6_ZGjYrNH1SLQkSrFTrfLrFDyrw8GpXIU_g"
+}

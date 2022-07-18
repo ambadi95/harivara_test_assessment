@@ -1,0 +1,42 @@
+{
+    "customerName": null,
+    "customerPhNo": null,
+    "lastFourDigit": null,
+    "transactionId": "asdfghjklstartbucks",
+    "refundTransactionId": null,
+    "associatedTransactionId": null,
+    "refundTransactionDate": null,
+    "merchantName": "Starbucks",
+    "mcc": "STA321",
+    "refundId": [
+      "sta321-97989",
+      "sta321-99001"
+    ],
+    "transactionDate": "11/14/2021 7:45:06 AM",
+    "transactionType": "DEBIT",
+    "totalTransactionAmount": {
+      "amount": 100,
+      "currency": "SAR"
+    },
+    "orderId": "startbucks0909",
+    "associatedOrderId": null,
+    "transactionCategory": "P2M",
+    "status": "success",
+    "totalRefundAmount": null,
+    "processingFee": 2.5,
+    "discount": 10,
+    "vat": 7.5,
+    "balanceAfter": {
+      "amount": 1950,
+      "currency": "SAR"
+    },
+    "balanceBefore": {
+      "amount": 2050,
+      "currency": "SAR"
+    },
+    "nickName": null,
+    "brand": null,
+    "remarks": "Send money to Starbucks0909",
+    "originalTransaction": null
+  }
+  

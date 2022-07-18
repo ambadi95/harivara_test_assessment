@@ -1,0 +1,43 @@
+analyzer:
+  exclude:
+    - "build/**"
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+    - "**/*.mocks.dart"
+  strong-mode:
+    implicit-casts: true
+  errors:
+    invalid_annotation_target: ignore
+    unawaited_futures: ignore
+    unnecessary_new: ignore
+    unnecessary_brace_in_string_interps: ignore
+    omit_local_variable_types: ignore
+    empty_catches: ignore
+  plugins:
+    - dart_code_metrics
+
+linter:
+  rules:
+    - camel_case_types
+    - prefer_single_quotes
+    - curly_braces_in_flow_control_structures
+    - avoid_relative_lib_imports
+    - eol_at_end_of_file
+    - require_trailing_commas
+
+dart_code_metrics:
+  anti-patterns:
+    - long-method
+    - long-parameter-list
+  metrics:
+    cyclomatic-complexity: 20
+    lines-of-code: 100
+    lines-of-executable-code: 50
+    number-of-parameters: 5
+    maximum-nesting-level: 5
+    number-of-methods: 20
+  metrics-exclude:
+    - test/**
+  rules:
+    - no-empty-block
+

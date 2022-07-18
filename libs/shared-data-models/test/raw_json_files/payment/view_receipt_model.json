@@ -1,0 +1,28 @@
+{
+  "merchantDetails": {
+    "name": "xyz",
+    "type": "test",
+    "logo": "/photo/xyz.png",
+    "address": "house no, street no, city,state,zipcode,country",
+    "contact": "1233456789",
+    "merchantID": "12585522"
+  },
+  "receiptData": {
+    "orderValue": "100",
+    "discountPercentage": "20",
+    "discountValue": "80",
+    "vatPercentage": "11",
+    "vatValue": "11",
+    "orderID": "13213",
+    "transferId": "124455DD"
+  },
+  "paymentMethod": "online",
+  "paymentDateTime": "15/1/2022",
+  "status": "Complete",
+  "codeType": "B",
+  "remarks": "Notes",
+  "postBalance": 200,
+  "preBalance": 220,
+  "entryType": "Entry",
+  "serviceName": "serviceName"
+}

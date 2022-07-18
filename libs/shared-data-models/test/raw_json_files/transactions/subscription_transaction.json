@@ -1,0 +1,40 @@
+{
+  "customerName": null,
+  "customerPhNo": null,
+  "lastFourDigit": null,
+  "transactionId": "ontdtguguyrutyi",
+  "refundTransactionId": null,
+  "associatedTransactionId": null,
+  "refundTransactionDate": null,
+  "merchantName": "Netflix",
+  "mcc": "NET465321",
+  "refundId": [
+    "netflix321-97989"
+  ],
+  "transactionDate": "11/30/2022 10:40:06 PM",
+  "transactionType": "DEBIT",
+  "totalTransactionAmount": {
+    "amount": 25,
+    "currency": "SAR"
+  },
+  "orderId": "netflix7645",
+  "associatedOrderId": null,
+  "transactionCategory": "Subscription",
+  "status": "success",
+  "totalRefundAmount": null,
+  "processingFee": 0,
+  "discount": 0,
+  "vat": 2.5,
+  "balanceAfter": {
+    "amount": 1375,
+    "currency": "SAR"
+  },
+  "balanceBefore": {
+    "amount": 1400,
+    "currency": "SAR"
+  },
+  "nickName": null,
+  "brand": null,
+  "remarks": "Send money to netflix7645",
+  "originalTransaction": null
+}

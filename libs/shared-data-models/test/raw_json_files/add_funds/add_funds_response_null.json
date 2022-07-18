@@ -1,0 +1,5 @@
+{
+    "paymentId": "123-ASD-123412",
+    "paymentStatus": null,
+    "payment3dSecureUrl": "https://3ds-secure-url.test"
+  }

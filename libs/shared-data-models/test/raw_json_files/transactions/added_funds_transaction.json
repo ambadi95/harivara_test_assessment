@@ -1,0 +1,38 @@
+{
+  "customerName": null,
+  "customerPhNo": null,
+  "lastFourDigit": "1234",
+  "transactionId": "xcfghuiokmnbg",
+  "refundTransactionId": null,
+  "associatedTransactionId": null,
+  "refundTransactionDate": null,
+  "merchantName": null,
+  "mcc": null,
+  "refundId": null,
+  "transactionDate": "12/14/2021 10:35:00 AM",
+  "transactionType": "CREDIT",
+  "totalTransactionAmount": {
+    "amount": 500,
+    "currency": "SAR"
+  },
+  "orderId": "Nick2323",
+  "associatedOrderId": null,
+  "transactionCategory": "Added funds",
+  "status": "success",
+  "totalRefundAmount": null,
+  "processingFee": null,
+  "discount": null,
+  "vat": null,
+  "balanceAfter": {
+    "amount": 1500,
+    "currency": "SAR"
+  },
+  "balanceBefore": {
+    "amount": 1000,
+    "currency": "SAR"
+  },
+  "nickName": "Primary Card",
+  "brand": "Visa",
+  "remarks": "Add money to Nick2323",
+  "originalTransaction": null
+}

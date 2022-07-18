@@ -1,0 +1,98 @@
+{
+  "customerName": null,
+  "customerPhNo": null,
+  "lastFourDigit": null,
+  "transactionId": "asdfghjklstartbucks",
+  "refundTransactionId": null,
+  "associatedTransactionId": null,
+  "refundTransactionDate": null,
+  "merchantName": "Starbucks",
+  "mcc": "STA321",
+  "refundId": [
+    "sta321-97989",
+    "sta321-99001"
+  ],
+  "transactionDate": "11/14/2021 7:45:06 AM",
+  "transactionType": "DEBIT",
+  "totalTransactionAmount": {
+    "amount": 100,
+    "currency": "SAR"
+  },
+  "orderId": "startbucks0909",
+  "associatedOrderId": null,
+  "transactionCategory": "Purchase",
+  "status": "success",
+  "totalRefundAmount": null,
+  "processingFee": 2.5,
+  "discount": 10,
+  "vat": 7.5,
+  "balanceAfter": {
+    "amount": 1950,
+    "currency": "SAR"
+  },
+  "balanceBefore": {
+    "amount": 2050,
+    "currency": "SAR"
+  },
+  "nickName": null,
+  "brand": null,
+  "remarks": "Send money to Starbucks0909",
+  "originalTransaction": [
+    {
+      "transactionId": null,
+      "merchantName": "Starbucks",
+      "mcc": "STA321",
+      "remarks": "Refund money from starbucks STA321",
+      "refundId": null,
+      "refundTransactionDate": "11/18/2021 9:45:06 PM",
+      "refundTransactionId": "sta321-97989",
+      "totalRefundAmount": "40",
+      "associatedOrderId": "startbucks0909",
+      "transactionDate": null,
+      "transactionType": "CREDIT",
+      "totalTransactionAmount": null,
+      "balanceAfter": {
+        "amount": 1990,
+        "currency": "SAR"
+      },
+      "balanceBefore": {
+        "amount": 1950,
+        "currency": "SAR"
+      },
+      "orderId": null,
+      "transactionCategory": "Refund",
+      "status": "success",
+      "processingFee": 0,
+      "discount": 50,
+      "vat": 0
+    },
+    {
+      "transactionId": null,
+      "merchantName": "Starbucks",
+      "mcc": "STA321",
+      "remarks": "Refund money from starbucks STA321",
+      "refundId": null,
+      "refundTransactionDate": "11/19/2021 11:30:06 AM",
+      "refundTransactionId": "sta321-99001",
+      "totalRefundAmount": "50",
+      "associatedOrderId": "startbucks0909",
+      "transactionDate": null,
+      "transactionType": "CREDIT",
+      "totalTransactionAmount": null,
+      "balanceAfter": {
+        "amount": 2050,
+        "currency": "SAR"
+      },
+      "balanceBefore": {
+        "amount": 2000,
+        "currency": "SAR"
+      },
+      "orderId": null,
+      "transactionCategory": "Refund",
+      "status": "success",
+      "processingFee": 0,
+      "discount": 50,
+      "vat": 0
+    }
+  ]
+}

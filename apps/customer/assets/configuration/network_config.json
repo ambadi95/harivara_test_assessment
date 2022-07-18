@@ -1,0 +1,11 @@
+{
+ "url" : "/v1/accounts:signInWithPassword?key=AIzaSyDQ3LipTP3RSbFOjlEXEeVzQs2gtq9b_VQ",
+ "requestKeyForEmail" : "email",
+ "requestKeyForPassword" : "password",
+ "additionalHeaders":{
+   "":""
+ },
+ "bodyParams":{
+"":""
+ }
+}

@@ -1,0 +1,27 @@
+{
+  "inititatePaymentTransferP2P": {
+    "note": "Send for lunch",
+    "reference": "321-AS-XZ",
+    "dateTime": "2022-01-14 21:34",
+    "authDetails": {
+      "authType": "MPIN",
+      "authValue": "1234"
+    },
+    "paymentContextType": "P2P",
+    "receiver": {
+      "mobileNumber": "7711687499",
+      "schemeType": "WALLET",
+      "schemeValue": "Wallet Type ID1"
+    },
+    "sender": {
+      "mobileNumber": "7712687499",
+      "schemeType": "IBAN",
+      "schemeValue": "Wallet Type ID2"
+    },
+    "amount": {
+      "amount": 1000.00,
+      "currency": "SAR"
+    },
+    "transactionInitiatorType": "SENDER"
+  }
+}

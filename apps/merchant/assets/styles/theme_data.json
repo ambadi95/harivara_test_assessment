@@ -1,0 +1,297 @@
+{
+    "colors": {
+        "primary": "0xFFFFFFFF",
+        "secondary": "0xFF0F1A38",
+        "tertiary": "0xFF5500F9",
+        "quaternary": "0xFFF7D7D0",
+        "quinary": "0xFFF9D100",
+        "senary": "0xFFF4F4FA",
+        "septenary": "0xFFF90069",
+        "octonary": "0xFF34CE97",
+        "nonary": "0xFFDFE0E4",
+        "denary": "0xFFEFEEE8",
+        "infoIcon": "0xFF5F667A",
+        "panelColorPrimary": "0xFFF5F6F7",
+        "panelColorSecondary": "0xFFF4F4F0",
+        "panelColorTertiary": "0xFFFCF2EF"
+    },
+    "screens": [
+        {
+            "screenName": "default",
+            "primaryColor": "0xFF0F1A38",
+            "primaryColorDark": "0xFF0F1A38",
+            "primaryColorLight": "0xFFF7D7D0",
+            "splashColor": "0xFFFCFCFA",
+            "scaffoldBackgroundColor": "0xFFFCFCFA",
+            "backgroundColor": "0xFFFFFFFF",
+            "errorColor": "0xFFF90069",
+            "bottomAppBarColor": "0xFFFFFFFF",
+            "toggleableActiveColor": "0xFF5500F9",
+            "dividerColor": "0xFFE7E8EB",
+            "highlightTextColor": "0xFF5500F9",
+            "textFieldBackgroundColor": "0xFFF5F6F7",
+            "actionButtonIconColor": "0xFFFFFFFF",
+            "segmentedThemeData": {
+                "color": "0xFFF5F6F7",
+                "textColor": "0xFF0F1A38"
+            },
+            "iconTheme": {
+                "color": "0xFF0F1A38"
+            },
+            "appBarTheme": {
+                "foregroundColor": "0xFF0F1A38",
+                "backgroundColor": "0xFFFFFFFF",
+                "iconTheme": {
+                    "color": "0xFF0C142B"
+                },
+                "titleTextStyle": {
+                    "color": "0xFF0F1A38",
+                    "fontFamily": "Brown",
+                    "fontSize": 17
+                },
+                "textTheme": {
+                    "bodyText1": {
+                        "color": "0xFFFF0000",
+                        "fontFamily": "Brown",
+                        "fontSize": 28
+                    }
+                }
+            },
+            "cardTheme": {
+                "color": "0x00000000",
+                "shadowColor": "0x00000000",
+                "elevation": 0.0
+            },
+            "textTheme": {
+                "headline1": {
+                    "color": "0xFF0F1A38",
+                    "fontFamily": "Brown",
+                    "fontSize": 44
+                },
+                "headline2": {
+                    "color": "0xFF0F1A38",
+                    "fontFamily": "Brown",
+                    "fontSize": 28
+                },
+                "headline3": {
+                    "color": "0xFF23211E",
+                    "fontFamily": "Brown",
+                    "fontWeight": 400,
+                    "fontSize": 24
+                },
+                "headline4": {
+                    "color": "0xFF0F1A38",
+                    "fontFamily": "Brown",
+                    "fontSize": 16
+                },
+                "headline5": {
+                    "color": "0xFF676767",
+                    "fontFamily": "Brown",
+                    "fontSize": 14
+                },
+                "headline6": {
+                    "color": "0xFF23211E",
+                    "fontFamily": "Brown",
+                    "fontSize": 12
+                },
+                "subtitle1": {
+                    "color": "0xFF0F1A38",
+                    "fontFamily": "Brown",
+                    "fontSize": 28
+                },
+                "subtitle2": {
+                    "color": "0xFF0F1A38",
+                    "fontFamily": "Brown",
+                    "fontSize": 14
+                },
+                "bodyText1": {
+                    "color": "0xFFFFFFFF",
+                    "fontFamily": "Brown",
+                    "fontSize": 20
+                },
+                "bodyText2": {
+                    "color": "0xFF1D2330",
+                    "fontFamily": "Brown",
+                    "fontSize": 17
+                }
+            },
+            "sliderTheme": {
+                "activeTrackColor": "0xFFEFEEE8",
+                "inactiveTrackColor": "0xFFFAF9F7"
+            },
+            "elevatedButtonTheme": {
+                "color": "0xFF0F1A38",
+                "fontFamily": "Brown",
+                "fontSize": 20,
+                "textColor": "0xFFFFFFFF",
+                "minimumSize": 56,
+                "borderRadius": 10
+            },
+            "textButtonTheme": {
+                "color": "0xFFF937206",
+                "fontFamily": "Brown",
+                "fontSize": 16,
+                "textColor": "0xFFFFFFFF"
+            },
+            "textSelectionTheme": {
+                "color": "0xFF5500F9"
+            },
+            "inputDecorationTheme": {
+                "hintStyle": {
+                    "fontFamily": "Brown",
+                    "fontSize": 14,
+                    "color": "0xFF0F1A38",
+                    "opacity": 0.64
+                },
+                "errorStyle": {
+                    "fontFamily": "Brown",
+                    "fontSize": 11,
+                    "color": "0xFFF90069"
+                },
+                "labelStyle": {
+                    "fontFamily": "Brown",
+                    "fontSize": 18,
+                    "color": "0xFF0F1A38",
+                    "opacity": 0.64
+                }
+            }
+        },
+        {
+            "screenName": "Home",
+            "scaffoldBackgroundColor": "0XFFF8FFDE",
+            "appBarTheme": {
+                "foregroundColor": "0xFF0F1A38",
+                "backgroundColor": "0xFFFFFFFF",
+                "iconTheme": {
+                    "color": "0xFF0C142B"
+                },
+                "titleTextStyle": {
+                    "color": "0xFF0F1A38",
+                    "fontFamily": "Brown",
+                    "fontSize": 30
+                },
+                "textTheme": {
+                    "bodyText1": {
+                        "color": "0xFFFF0000",
+                        "fontFamily": "Brown",
+                        "fontSize": 28
+                    }
+                }
+            },
+            "inputDecorationTheme": {
+                "hintStyle": {
+                    "fontFamily": "Brown",
+                    "fontSize": 14,
+                    "color": "0xFF0F1A38",
+                    "opacity": 0.64
+                },
+                "errorStyle": {
+                    "fontFamily": "Brown",
+                    "fontSize": 11,
+                    "color": "0xFFF90069"
+                },
+                "labelStyle": {
+                    "fontFamily": "Brown",
+                    "fontSize": 20,
+                    "color": "0xFF0F1A38",
+                    "opacity": 0.64
+                }
+            },
+            "elevatedButtonTheme": {
+                "color": "0xFF0F1A38",
+                "fontFamily": "Brown",
+                "fontSize": 24,
+                "textColor": "0xFFFFFFFF",
+                "minimumSize": 56,
+                "borderRadius": 10
+            },"textTheme": {
+            "headline1": {
+                "color": "0xFF0F1A38",
+                "fontFamily": "Brown",
+                "fontSize": 44
+            },
+            "headline2": {
+                "color": "0xFF2A476B",
+                "fontFamily": "Brown",
+                "fontSize": 28
+            },
+            "headline3": {
+                "color": "0xFFFFFFFF",
+                "fontFamily": "Brown",
+                "fontSize": 28
+            }
+        }
+        },
+        {
+            "screenName": "addCardScreen",
+            "scaffoldBackgroundColor": "0XFFFFFFFF",
+            "appBarTheme": {
+                "foregroundColor": "0xFFFFFFFF",
+                "backgroundColor": "0xFFFFFFFF",
+                "iconTheme": {
+                    "color": "0xFF0C142B"
+                },
+                "titleTextStyle": {
+                    "color": "0xFF1B1D1F",
+                    "fontFamily": "Brown",
+                    "fontSize": 20
+                },
+                "textTheme": {
+                    "bodyText1": {
+                        "color": "0xFFFF0000",
+                        "fontFamily": "Brown",
+                        "fontSize": 28
+                    }
+                }
+            },
+            "inputDecorationTheme": {
+                "hintStyle": {
+                    "fontFamily": "Brown",
+                    "fontSize": 14,
+                    "color": "0xFF0F1A38",
+                    "opacity": 0.64
+                },
+                "errorStyle": {
+                    "fontFamily": "Brown",
+                    "fontSize": 11,
+                    "color": "0xFFF90069"
+                },
+                "labelStyle": {
+                    "fontFamily": "Brown",
+                    "fontSize": 20,
+                    "color": "0xFF0F1A38",
+                    "opacity": 0.64
+                }
+            },
+            "elevatedButtonTheme": {
+                "color": "0xFF0F1A38",
+                "fontFamily": "Brown",
+                "fontSize": 24,
+                "textColor": "0xFFFFFFFF",
+                "minimumSize": 56,
+                "borderRadius": 10
+            },"textTheme": {
+            "headline1": {
+                "color": "0xFF0F1A38",
+                "fontFamily": "Brown",
+                "fontSize": 44
+            },
+            "headline2": {
+                "color": "0xFF2A476B",
+                "fontFamily": "Brown",
+                "fontSize": 28
+            },
+            "headline3": {
+                "color": "0xFFFFFFFF",
+                "fontFamily": "Brown",
+                "fontSize": 18
+            },
+            "headline4": {
+                "color": "0xFF1D2330",
+                "fontFamily": "Brown",
+                "fontSize": 14
+            }
+        }
+        }
+    ]
+}

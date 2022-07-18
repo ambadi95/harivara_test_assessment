@@ -1,0 +1,30 @@
+{
+  "environments": [
+    {
+      "name": "test",
+      "host": "https://api.CrayonPaymentpay-sbx-fss.CrayonPaymentos.online/"
+    },
+    {
+      "name": "Local",
+      "host": "localhost:8080"
+    }
+  ],
+  "gqlEnvironments": [
+    {
+      "name": "default",
+      "host": "https://api.CrayonPaymentpay-sbx-fss.CrayonPaymentos.online/federation/graphql"
+    },
+    {
+      "name": "mock",
+      "host": ""
+    }
+  ],
+  "gqlMappingOverrides": {
+    "account_details": "mock"
+  },
+  "headers": {},
+  "useMockNetworkClient": false,
+  "certificateType": "dev",
+  "certificatePath": "",
+  "otpServiceCode": "signup_m"
+}

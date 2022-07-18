@@ -1,0 +1,19 @@
+{
+    "getWallet": {
+        "__typename": "Wallet",
+        "cardDetails": [
+            {
+                "__typename": "CardWallet",
+                "walletId": 12,
+                "cardNumber": "4242",
+                "cardType": "Credit",
+                "brand": "VISA",
+                "nickName": "Test",
+                "cardId": "src_g2e54iaoeaxudchdffyt3wk7qe",
+                "expiryYear": 2022,
+                "expiryMonth": 2,
+                "favourite": false
+            }
+        ]
+    }
+}

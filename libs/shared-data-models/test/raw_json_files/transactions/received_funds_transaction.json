@@ -1,0 +1,38 @@
+{
+  "customerName": "Carl",
+  "customerPhNo": "+44 91234567800",
+  "lastFourDigit": null,
+  "transactionId": "sdfghjklpjfgn",
+  "refundTransactionId": null,
+  "associatedTransactionId": null,
+  "refundTransactionDate": null,
+  "merchantName": null,
+  "mcc": null,
+  "refundId": null,
+  "transactionDate": "02/23/2022 02:35:00 PM",
+  "transactionType": "CREDIT",
+  "totalTransactionAmount": {
+    "amount": 500,
+    "currency": "SAR"
+  },
+  "orderId": null,
+  "associatedOrderId": null,
+  "transactionCategory": "Received funds",
+  "status": "success",
+  "totalRefundAmount": null,
+  "processingFee": null,
+  "discount": null,
+  "vat": null,
+  "balanceAfter": {
+    "amount": 1500,
+    "currency": "SAR"
+  },
+  "balanceBefore": {
+    "amount": 1000,
+    "currency": "SAR"
+  },
+  "nickName": null,
+  "brand": null,
+  "remarks": "Received money from carl",
+  "originalTransaction": null
+}

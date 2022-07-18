@@ -1,0 +1,69 @@
+{
+  "customerName": null,
+  "customerPhNo": null,
+  "lastFourDigit": null,
+  "transactionId": null,
+  "refundTransactionId": "sta321-979894",
+  "associatedTransactionId": "asdfghjklsainsbury",
+  "refundTransactionDate": "12/10/2021 8:28:06 AM",
+  "merchantName": "Sainsbury",
+  "mcc": "SAN321",
+  "refundId": null,
+  "transactionDate": null,
+  "transactionType": "CREDIT",
+  "totalTransactionAmount": null,
+  "orderId": null,
+  "associatedOrderId": "sainsbury8760",
+  "transactionCategory": "Refund",
+  "status": "success",
+  "totalRefundAmount": 50,
+  "processingFee": 0,
+  "discount": 50,
+  "vat": 0,
+  "balanceAfter": {
+    "amount": 2000,
+    "currency": "SAR"
+  },
+  "balanceBefore": {
+    "amount": 1950,
+    "currency": "SAR"
+  },
+  "nickName": null,
+  "brand": null,
+  "remarks": "Refund money from Sainsbury",
+  "originalTransaction": [
+    {
+      "transactionId": "lkjhgfdsaSainsbury",
+      "merchantName": "Sainsbury",
+      "mcc": "SBI987",
+      "remarks": "Send money to sainsbury",
+      "refundId": [
+        "sta321-9798944"
+      ],
+      "refundTransactionDate": null,
+      "refundTransactionId": null,
+      "totalRefundAmount": null,
+      "associatedOrderId": null,
+      "transactionDate": "12/03/2021 2:40:06 PM",
+      "transactionType": "DEBIT",
+      "totalTransactionAmount": {
+        "amount": 100,
+        "currency": "SAR"
+      },
+      "balanceAfter": {
+        "amount": 2200,
+        "currency": "SAR"
+      },
+      "balanceBefore": {
+        "amount": 2300,
+        "currency": "SAR"
+      },
+      "orderId": "sainsbury8760",
+      "transactionCategory": "Purchase",
+      "status": "success",
+      "processingFee": 2.5,
+      "discount": 10,
+      "vat": 7.5
+    }
+  ]
+}

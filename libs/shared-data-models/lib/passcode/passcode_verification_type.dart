@@ -1,0 +1,20 @@
+enum PassCodeVerificationType {
+  create,
+  verify,
+  verifyMerchantPasscode,
+  customerSign,
+  payment,
+  reset,
+  newPasscode,
+  changePasscode,
+  changePasscodeMerchant,
+  changeNewPasscode,
+  changeNewMerchantPasscode,
+  changeConfirmMerchantPasscode,
+  reEnterPasscode,
+  activateBiometric,
+  resetNewPasscode,
+  resetReEnterPasscode,
+  merchantOneTimePasscode,
+  merchantSignIn
+}
