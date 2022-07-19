@@ -24,6 +24,7 @@ dependencies:
   permission_handler: ^9.1.0
   connectivity_for_web: 0.4.0+1
   scan: ^1.6.0
+  sqflite:
 
   config:
     path: ../customer/config
