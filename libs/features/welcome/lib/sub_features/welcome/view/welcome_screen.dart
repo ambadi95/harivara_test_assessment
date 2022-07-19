@@ -132,15 +132,14 @@ Widget _buildNonSignedInUI(
     return Image.asset(
       OB_AppLogo,
       key: const Key('welcomeLogoImage'),
-      height: 150,
-      width: 150,
+      height: 90,
+      width: 90,
       fit: BoxFit.fill,
     );
   }
 
   Widget _buildNeomPayTitle(BuildContext context) {
     return Container(
-      width: 250,
       child: Text('OB_WelcomeTitle'.tr,
           style: WELCOME_HEADING_STYLE
       ),
