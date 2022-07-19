@@ -5,7 +5,7 @@ import '../raw_json_files/raw_json_reader.dart';
 
 void main() {
   group('fromJson()', () {
-    test('should return merchant details Object', () async {
+    test('should return agent details Object', () async {
       // Arrange
       final json = rawJsonToMap('payment/merchant_details.json');
       // Act

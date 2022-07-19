@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'transaction_category.dart';
@@ -11,47 +12,7 @@ part of 'transaction_category.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$TransactionCategoryTearOff {
-  const _$TransactionCategoryTearOff();
-
-  PurchaseCategory purchase() {
-    return const PurchaseCategory();
-  }
-
-  RefundCategory refund() {
-    return const RefundCategory();
-  }
-
-  AddedFundsCategory addedFunds() {
-    return const AddedFundsCategory();
-  }
-
-  ReceivedFundsCategory receivedFunds() {
-    return const ReceivedFundsCategory();
-  }
-
-  SentFundsCategory sentFunds() {
-    return const SentFundsCategory();
-  }
-
-  SubscriptionCategory subscription() {
-    return const SubscriptionCategory();
-  }
-
-  P2MCategory p2m() {
-    return const P2MCategory();
-  }
-
-  NotAvailable notAvailable() {
-    return const NotAvailable();
-  }
-}
-
-/// @nodoc
-const $TransactionCategory = _$TransactionCategoryTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$TransactionCategory {
@@ -149,22 +110,22 @@ class _$TransactionCategoryCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class $PurchaseCategoryCopyWith<$Res> {
-  factory $PurchaseCategoryCopyWith(
-          PurchaseCategory value, $Res Function(PurchaseCategory) then) =
-      _$PurchaseCategoryCopyWithImpl<$Res>;
+abstract class _$$PurchaseCategoryCopyWith<$Res> {
+  factory _$$PurchaseCategoryCopyWith(
+          _$PurchaseCategory value, $Res Function(_$PurchaseCategory) then) =
+      __$$PurchaseCategoryCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$PurchaseCategoryCopyWithImpl<$Res>
+class __$$PurchaseCategoryCopyWithImpl<$Res>
     extends _$TransactionCategoryCopyWithImpl<$Res>
-    implements $PurchaseCategoryCopyWith<$Res> {
-  _$PurchaseCategoryCopyWithImpl(
-      PurchaseCategory _value, $Res Function(PurchaseCategory) _then)
-      : super(_value, (v) => _then(v as PurchaseCategory));
+    implements _$$PurchaseCategoryCopyWith<$Res> {
+  __$$PurchaseCategoryCopyWithImpl(
+      _$PurchaseCategory _value, $Res Function(_$PurchaseCategory) _then)
+      : super(_value, (v) => _then(v as _$PurchaseCategory));
 
   @override
-  PurchaseCategory get _value => super._value as PurchaseCategory;
+  _$PurchaseCategory get _value => super._value as _$PurchaseCategory;
 }
 
 /// @nodoc
@@ -175,7 +136,7 @@ class _$PurchaseCategory extends PurchaseCategory {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is PurchaseCategory);
+        (other.runtimeType == runtimeType && other is _$PurchaseCategory);
   }
 
   @override
@@ -286,22 +247,22 @@ abstract class PurchaseCategory extends TransactionCategory {
 }
 
 /// @nodoc
-abstract class $RefundCategoryCopyWith<$Res> {
-  factory $RefundCategoryCopyWith(
-          RefundCategory value, $Res Function(RefundCategory) then) =
-      _$RefundCategoryCopyWithImpl<$Res>;
+abstract class _$$RefundCategoryCopyWith<$Res> {
+  factory _$$RefundCategoryCopyWith(
+          _$RefundCategory value, $Res Function(_$RefundCategory) then) =
+      __$$RefundCategoryCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$RefundCategoryCopyWithImpl<$Res>
+class __$$RefundCategoryCopyWithImpl<$Res>
     extends _$TransactionCategoryCopyWithImpl<$Res>
-    implements $RefundCategoryCopyWith<$Res> {
-  _$RefundCategoryCopyWithImpl(
-      RefundCategory _value, $Res Function(RefundCategory) _then)
-      : super(_value, (v) => _then(v as RefundCategory));
+    implements _$$RefundCategoryCopyWith<$Res> {
+  __$$RefundCategoryCopyWithImpl(
+      _$RefundCategory _value, $Res Function(_$RefundCategory) _then)
+      : super(_value, (v) => _then(v as _$RefundCategory));
 
   @override
-  RefundCategory get _value => super._value as RefundCategory;
+  _$RefundCategory get _value => super._value as _$RefundCategory;
 }
 
 /// @nodoc
@@ -312,7 +273,7 @@ class _$RefundCategory extends RefundCategory {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is RefundCategory);
+        (other.runtimeType == runtimeType && other is _$RefundCategory);
   }
 
   @override
@@ -423,22 +384,22 @@ abstract class RefundCategory extends TransactionCategory {
 }
 
 /// @nodoc
-abstract class $AddedFundsCategoryCopyWith<$Res> {
-  factory $AddedFundsCategoryCopyWith(
-          AddedFundsCategory value, $Res Function(AddedFundsCategory) then) =
-      _$AddedFundsCategoryCopyWithImpl<$Res>;
+abstract class _$$AddedFundsCategoryCopyWith<$Res> {
+  factory _$$AddedFundsCategoryCopyWith(_$AddedFundsCategory value,
+          $Res Function(_$AddedFundsCategory) then) =
+      __$$AddedFundsCategoryCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$AddedFundsCategoryCopyWithImpl<$Res>
+class __$$AddedFundsCategoryCopyWithImpl<$Res>
     extends _$TransactionCategoryCopyWithImpl<$Res>
-    implements $AddedFundsCategoryCopyWith<$Res> {
-  _$AddedFundsCategoryCopyWithImpl(
-      AddedFundsCategory _value, $Res Function(AddedFundsCategory) _then)
-      : super(_value, (v) => _then(v as AddedFundsCategory));
+    implements _$$AddedFundsCategoryCopyWith<$Res> {
+  __$$AddedFundsCategoryCopyWithImpl(
+      _$AddedFundsCategory _value, $Res Function(_$AddedFundsCategory) _then)
+      : super(_value, (v) => _then(v as _$AddedFundsCategory));
 
   @override
-  AddedFundsCategory get _value => super._value as AddedFundsCategory;
+  _$AddedFundsCategory get _value => super._value as _$AddedFundsCategory;
 }
 
 /// @nodoc
@@ -449,7 +410,7 @@ class _$AddedFundsCategory extends AddedFundsCategory {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is AddedFundsCategory);
+        (other.runtimeType == runtimeType && other is _$AddedFundsCategory);
   }
 
   @override
@@ -560,22 +521,22 @@ abstract class AddedFundsCategory extends TransactionCategory {
 }
 
 /// @nodoc
-abstract class $ReceivedFundsCategoryCopyWith<$Res> {
-  factory $ReceivedFundsCategoryCopyWith(ReceivedFundsCategory value,
-          $Res Function(ReceivedFundsCategory) then) =
-      _$ReceivedFundsCategoryCopyWithImpl<$Res>;
+abstract class _$$ReceivedFundsCategoryCopyWith<$Res> {
+  factory _$$ReceivedFundsCategoryCopyWith(_$ReceivedFundsCategory value,
+          $Res Function(_$ReceivedFundsCategory) then) =
+      __$$ReceivedFundsCategoryCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$ReceivedFundsCategoryCopyWithImpl<$Res>
+class __$$ReceivedFundsCategoryCopyWithImpl<$Res>
     extends _$TransactionCategoryCopyWithImpl<$Res>
-    implements $ReceivedFundsCategoryCopyWith<$Res> {
-  _$ReceivedFundsCategoryCopyWithImpl(
-      ReceivedFundsCategory _value, $Res Function(ReceivedFundsCategory) _then)
-      : super(_value, (v) => _then(v as ReceivedFundsCategory));
+    implements _$$ReceivedFundsCategoryCopyWith<$Res> {
+  __$$ReceivedFundsCategoryCopyWithImpl(_$ReceivedFundsCategory _value,
+      $Res Function(_$ReceivedFundsCategory) _then)
+      : super(_value, (v) => _then(v as _$ReceivedFundsCategory));
 
   @override
-  ReceivedFundsCategory get _value => super._value as ReceivedFundsCategory;
+  _$ReceivedFundsCategory get _value => super._value as _$ReceivedFundsCategory;
 }
 
 /// @nodoc
@@ -586,7 +547,7 @@ class _$ReceivedFundsCategory extends ReceivedFundsCategory {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is ReceivedFundsCategory);
+        (other.runtimeType == runtimeType && other is _$ReceivedFundsCategory);
   }
 
   @override
@@ -697,22 +658,22 @@ abstract class ReceivedFundsCategory extends TransactionCategory {
 }
 
 /// @nodoc
-abstract class $SentFundsCategoryCopyWith<$Res> {
-  factory $SentFundsCategoryCopyWith(
-          SentFundsCategory value, $Res Function(SentFundsCategory) then) =
-      _$SentFundsCategoryCopyWithImpl<$Res>;
+abstract class _$$SentFundsCategoryCopyWith<$Res> {
+  factory _$$SentFundsCategoryCopyWith(
+          _$SentFundsCategory value, $Res Function(_$SentFundsCategory) then) =
+      __$$SentFundsCategoryCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$SentFundsCategoryCopyWithImpl<$Res>
+class __$$SentFundsCategoryCopyWithImpl<$Res>
     extends _$TransactionCategoryCopyWithImpl<$Res>
-    implements $SentFundsCategoryCopyWith<$Res> {
-  _$SentFundsCategoryCopyWithImpl(
-      SentFundsCategory _value, $Res Function(SentFundsCategory) _then)
-      : super(_value, (v) => _then(v as SentFundsCategory));
+    implements _$$SentFundsCategoryCopyWith<$Res> {
+  __$$SentFundsCategoryCopyWithImpl(
+      _$SentFundsCategory _value, $Res Function(_$SentFundsCategory) _then)
+      : super(_value, (v) => _then(v as _$SentFundsCategory));
 
   @override
-  SentFundsCategory get _value => super._value as SentFundsCategory;
+  _$SentFundsCategory get _value => super._value as _$SentFundsCategory;
 }
 
 /// @nodoc
@@ -723,7 +684,7 @@ class _$SentFundsCategory extends SentFundsCategory {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is SentFundsCategory);
+        (other.runtimeType == runtimeType && other is _$SentFundsCategory);
   }
 
   @override
@@ -834,22 +795,22 @@ abstract class SentFundsCategory extends TransactionCategory {
 }
 
 /// @nodoc
-abstract class $SubscriptionCategoryCopyWith<$Res> {
-  factory $SubscriptionCategoryCopyWith(SubscriptionCategory value,
-          $Res Function(SubscriptionCategory) then) =
-      _$SubscriptionCategoryCopyWithImpl<$Res>;
+abstract class _$$SubscriptionCategoryCopyWith<$Res> {
+  factory _$$SubscriptionCategoryCopyWith(_$SubscriptionCategory value,
+          $Res Function(_$SubscriptionCategory) then) =
+      __$$SubscriptionCategoryCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$SubscriptionCategoryCopyWithImpl<$Res>
+class __$$SubscriptionCategoryCopyWithImpl<$Res>
     extends _$TransactionCategoryCopyWithImpl<$Res>
-    implements $SubscriptionCategoryCopyWith<$Res> {
-  _$SubscriptionCategoryCopyWithImpl(
-      SubscriptionCategory _value, $Res Function(SubscriptionCategory) _then)
-      : super(_value, (v) => _then(v as SubscriptionCategory));
+    implements _$$SubscriptionCategoryCopyWith<$Res> {
+  __$$SubscriptionCategoryCopyWithImpl(_$SubscriptionCategory _value,
+      $Res Function(_$SubscriptionCategory) _then)
+      : super(_value, (v) => _then(v as _$SubscriptionCategory));
 
   @override
-  SubscriptionCategory get _value => super._value as SubscriptionCategory;
+  _$SubscriptionCategory get _value => super._value as _$SubscriptionCategory;
 }
 
 /// @nodoc
@@ -860,7 +821,7 @@ class _$SubscriptionCategory extends SubscriptionCategory {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is SubscriptionCategory);
+        (other.runtimeType == runtimeType && other is _$SubscriptionCategory);
   }
 
   @override
@@ -971,22 +932,22 @@ abstract class SubscriptionCategory extends TransactionCategory {
 }
 
 /// @nodoc
-abstract class $P2MCategoryCopyWith<$Res> {
-  factory $P2MCategoryCopyWith(
-          P2MCategory value, $Res Function(P2MCategory) then) =
-      _$P2MCategoryCopyWithImpl<$Res>;
+abstract class _$$P2MCategoryCopyWith<$Res> {
+  factory _$$P2MCategoryCopyWith(
+          _$P2MCategory value, $Res Function(_$P2MCategory) then) =
+      __$$P2MCategoryCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$P2MCategoryCopyWithImpl<$Res>
+class __$$P2MCategoryCopyWithImpl<$Res>
     extends _$TransactionCategoryCopyWithImpl<$Res>
-    implements $P2MCategoryCopyWith<$Res> {
-  _$P2MCategoryCopyWithImpl(
-      P2MCategory _value, $Res Function(P2MCategory) _then)
-      : super(_value, (v) => _then(v as P2MCategory));
+    implements _$$P2MCategoryCopyWith<$Res> {
+  __$$P2MCategoryCopyWithImpl(
+      _$P2MCategory _value, $Res Function(_$P2MCategory) _then)
+      : super(_value, (v) => _then(v as _$P2MCategory));
 
   @override
-  P2MCategory get _value => super._value as P2MCategory;
+  _$P2MCategory get _value => super._value as _$P2MCategory;
 }
 
 /// @nodoc
@@ -997,7 +958,7 @@ class _$P2MCategory extends P2MCategory {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is P2MCategory);
+        (other.runtimeType == runtimeType && other is _$P2MCategory);
   }
 
   @override
@@ -1108,22 +1069,22 @@ abstract class P2MCategory extends TransactionCategory {
 }
 
 /// @nodoc
-abstract class $NotAvailableCopyWith<$Res> {
-  factory $NotAvailableCopyWith(
-          NotAvailable value, $Res Function(NotAvailable) then) =
-      _$NotAvailableCopyWithImpl<$Res>;
+abstract class _$$NotAvailableCopyWith<$Res> {
+  factory _$$NotAvailableCopyWith(
+          _$NotAvailable value, $Res Function(_$NotAvailable) then) =
+      __$$NotAvailableCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$NotAvailableCopyWithImpl<$Res>
+class __$$NotAvailableCopyWithImpl<$Res>
     extends _$TransactionCategoryCopyWithImpl<$Res>
-    implements $NotAvailableCopyWith<$Res> {
-  _$NotAvailableCopyWithImpl(
-      NotAvailable _value, $Res Function(NotAvailable) _then)
-      : super(_value, (v) => _then(v as NotAvailable));
+    implements _$$NotAvailableCopyWith<$Res> {
+  __$$NotAvailableCopyWithImpl(
+      _$NotAvailable _value, $Res Function(_$NotAvailable) _then)
+      : super(_value, (v) => _then(v as _$NotAvailable));
 
   @override
-  NotAvailable get _value => super._value as NotAvailable;
+  _$NotAvailable get _value => super._value as _$NotAvailable;
 }
 
 /// @nodoc
@@ -1134,7 +1095,7 @@ class _$NotAvailable extends NotAvailable {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is NotAvailable);
+        (other.runtimeType == runtimeType && other is _$NotAvailable);
   }
 
   @override

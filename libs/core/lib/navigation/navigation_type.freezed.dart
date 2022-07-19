@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'navigation_type.dart';
@@ -11,47 +12,7 @@ part of 'navigation_type.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$NavigationTypeTearOff {
-  const _$NavigationTypeTearOff();
-
-  Push push() {
-    return const Push();
-  }
-
-  Replace replace() {
-    return const Replace();
-  }
-
-  ReplaceCurrent replaceCurrent() {
-    return const ReplaceCurrent();
-  }
-
-  FullScreenDialog fullScreenDialog() {
-    return const FullScreenDialog();
-  }
-
-  Dialog dialog() {
-    return const Dialog();
-  }
-
-  BottomSheet bottomSheet() {
-    return const BottomSheet();
-  }
-
-  Tooltip tooltip() {
-    return const Tooltip();
-  }
-
-  PopUntil popUntil() {
-    return const PopUntil();
-  }
-}
-
-/// @nodoc
-const $NavigationType = _$NavigationTypeTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$NavigationType {
@@ -149,19 +110,19 @@ class _$NavigationTypeCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class $PushCopyWith<$Res> {
-  factory $PushCopyWith(Push value, $Res Function(Push) then) =
-      _$PushCopyWithImpl<$Res>;
+abstract class _$$PushCopyWith<$Res> {
+  factory _$$PushCopyWith(_$Push value, $Res Function(_$Push) then) =
+      __$$PushCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$PushCopyWithImpl<$Res> extends _$NavigationTypeCopyWithImpl<$Res>
-    implements $PushCopyWith<$Res> {
-  _$PushCopyWithImpl(Push _value, $Res Function(Push) _then)
-      : super(_value, (v) => _then(v as Push));
+class __$$PushCopyWithImpl<$Res> extends _$NavigationTypeCopyWithImpl<$Res>
+    implements _$$PushCopyWith<$Res> {
+  __$$PushCopyWithImpl(_$Push _value, $Res Function(_$Push) _then)
+      : super(_value, (v) => _then(v as _$Push));
 
   @override
-  Push get _value => super._value as Push;
+  _$Push get _value => super._value as _$Push;
 }
 
 /// @nodoc
@@ -177,7 +138,7 @@ class _$Push implements Push {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Push);
+        (other.runtimeType == runtimeType && other is _$Push);
   }
 
   @override
@@ -287,19 +248,19 @@ abstract class Push implements NavigationType {
 }
 
 /// @nodoc
-abstract class $ReplaceCopyWith<$Res> {
-  factory $ReplaceCopyWith(Replace value, $Res Function(Replace) then) =
-      _$ReplaceCopyWithImpl<$Res>;
+abstract class _$$ReplaceCopyWith<$Res> {
+  factory _$$ReplaceCopyWith(_$Replace value, $Res Function(_$Replace) then) =
+      __$$ReplaceCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$ReplaceCopyWithImpl<$Res> extends _$NavigationTypeCopyWithImpl<$Res>
-    implements $ReplaceCopyWith<$Res> {
-  _$ReplaceCopyWithImpl(Replace _value, $Res Function(Replace) _then)
-      : super(_value, (v) => _then(v as Replace));
+class __$$ReplaceCopyWithImpl<$Res> extends _$NavigationTypeCopyWithImpl<$Res>
+    implements _$$ReplaceCopyWith<$Res> {
+  __$$ReplaceCopyWithImpl(_$Replace _value, $Res Function(_$Replace) _then)
+      : super(_value, (v) => _then(v as _$Replace));
 
   @override
-  Replace get _value => super._value as Replace;
+  _$Replace get _value => super._value as _$Replace;
 }
 
 /// @nodoc
@@ -315,7 +276,7 @@ class _$Replace implements Replace {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Replace);
+        (other.runtimeType == runtimeType && other is _$Replace);
   }
 
   @override
@@ -425,22 +386,22 @@ abstract class Replace implements NavigationType {
 }
 
 /// @nodoc
-abstract class $ReplaceCurrentCopyWith<$Res> {
-  factory $ReplaceCurrentCopyWith(
-          ReplaceCurrent value, $Res Function(ReplaceCurrent) then) =
-      _$ReplaceCurrentCopyWithImpl<$Res>;
+abstract class _$$ReplaceCurrentCopyWith<$Res> {
+  factory _$$ReplaceCurrentCopyWith(
+          _$ReplaceCurrent value, $Res Function(_$ReplaceCurrent) then) =
+      __$$ReplaceCurrentCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$ReplaceCurrentCopyWithImpl<$Res>
+class __$$ReplaceCurrentCopyWithImpl<$Res>
     extends _$NavigationTypeCopyWithImpl<$Res>
-    implements $ReplaceCurrentCopyWith<$Res> {
-  _$ReplaceCurrentCopyWithImpl(
-      ReplaceCurrent _value, $Res Function(ReplaceCurrent) _then)
-      : super(_value, (v) => _then(v as ReplaceCurrent));
+    implements _$$ReplaceCurrentCopyWith<$Res> {
+  __$$ReplaceCurrentCopyWithImpl(
+      _$ReplaceCurrent _value, $Res Function(_$ReplaceCurrent) _then)
+      : super(_value, (v) => _then(v as _$ReplaceCurrent));
 
   @override
-  ReplaceCurrent get _value => super._value as ReplaceCurrent;
+  _$ReplaceCurrent get _value => super._value as _$ReplaceCurrent;
 }
 
 /// @nodoc
@@ -456,7 +417,7 @@ class _$ReplaceCurrent implements ReplaceCurrent {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is ReplaceCurrent);
+        (other.runtimeType == runtimeType && other is _$ReplaceCurrent);
   }
 
   @override
@@ -566,22 +527,22 @@ abstract class ReplaceCurrent implements NavigationType {
 }
 
 /// @nodoc
-abstract class $FullScreenDialogCopyWith<$Res> {
-  factory $FullScreenDialogCopyWith(
-          FullScreenDialog value, $Res Function(FullScreenDialog) then) =
-      _$FullScreenDialogCopyWithImpl<$Res>;
+abstract class _$$FullScreenDialogCopyWith<$Res> {
+  factory _$$FullScreenDialogCopyWith(
+          _$FullScreenDialog value, $Res Function(_$FullScreenDialog) then) =
+      __$$FullScreenDialogCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$FullScreenDialogCopyWithImpl<$Res>
+class __$$FullScreenDialogCopyWithImpl<$Res>
     extends _$NavigationTypeCopyWithImpl<$Res>
-    implements $FullScreenDialogCopyWith<$Res> {
-  _$FullScreenDialogCopyWithImpl(
-      FullScreenDialog _value, $Res Function(FullScreenDialog) _then)
-      : super(_value, (v) => _then(v as FullScreenDialog));
+    implements _$$FullScreenDialogCopyWith<$Res> {
+  __$$FullScreenDialogCopyWithImpl(
+      _$FullScreenDialog _value, $Res Function(_$FullScreenDialog) _then)
+      : super(_value, (v) => _then(v as _$FullScreenDialog));
 
   @override
-  FullScreenDialog get _value => super._value as FullScreenDialog;
+  _$FullScreenDialog get _value => super._value as _$FullScreenDialog;
 }
 
 /// @nodoc
@@ -597,7 +558,7 @@ class _$FullScreenDialog implements FullScreenDialog {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is FullScreenDialog);
+        (other.runtimeType == runtimeType && other is _$FullScreenDialog);
   }
 
   @override
@@ -707,19 +668,19 @@ abstract class FullScreenDialog implements NavigationType {
 }
 
 /// @nodoc
-abstract class $DialogCopyWith<$Res> {
-  factory $DialogCopyWith(Dialog value, $Res Function(Dialog) then) =
-      _$DialogCopyWithImpl<$Res>;
+abstract class _$$DialogCopyWith<$Res> {
+  factory _$$DialogCopyWith(_$Dialog value, $Res Function(_$Dialog) then) =
+      __$$DialogCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$DialogCopyWithImpl<$Res> extends _$NavigationTypeCopyWithImpl<$Res>
-    implements $DialogCopyWith<$Res> {
-  _$DialogCopyWithImpl(Dialog _value, $Res Function(Dialog) _then)
-      : super(_value, (v) => _then(v as Dialog));
+class __$$DialogCopyWithImpl<$Res> extends _$NavigationTypeCopyWithImpl<$Res>
+    implements _$$DialogCopyWith<$Res> {
+  __$$DialogCopyWithImpl(_$Dialog _value, $Res Function(_$Dialog) _then)
+      : super(_value, (v) => _then(v as _$Dialog));
 
   @override
-  Dialog get _value => super._value as Dialog;
+  _$Dialog get _value => super._value as _$Dialog;
 }
 
 /// @nodoc
@@ -735,7 +696,7 @@ class _$Dialog implements Dialog {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Dialog);
+        (other.runtimeType == runtimeType && other is _$Dialog);
   }
 
   @override
@@ -845,21 +806,22 @@ abstract class Dialog implements NavigationType {
 }
 
 /// @nodoc
-abstract class $BottomSheetCopyWith<$Res> {
-  factory $BottomSheetCopyWith(
-          BottomSheet value, $Res Function(BottomSheet) then) =
-      _$BottomSheetCopyWithImpl<$Res>;
+abstract class _$$BottomSheetCopyWith<$Res> {
+  factory _$$BottomSheetCopyWith(
+          _$BottomSheet value, $Res Function(_$BottomSheet) then) =
+      __$$BottomSheetCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$BottomSheetCopyWithImpl<$Res> extends _$NavigationTypeCopyWithImpl<$Res>
-    implements $BottomSheetCopyWith<$Res> {
-  _$BottomSheetCopyWithImpl(
-      BottomSheet _value, $Res Function(BottomSheet) _then)
-      : super(_value, (v) => _then(v as BottomSheet));
+class __$$BottomSheetCopyWithImpl<$Res>
+    extends _$NavigationTypeCopyWithImpl<$Res>
+    implements _$$BottomSheetCopyWith<$Res> {
+  __$$BottomSheetCopyWithImpl(
+      _$BottomSheet _value, $Res Function(_$BottomSheet) _then)
+      : super(_value, (v) => _then(v as _$BottomSheet));
 
   @override
-  BottomSheet get _value => super._value as BottomSheet;
+  _$BottomSheet get _value => super._value as _$BottomSheet;
 }
 
 /// @nodoc
@@ -875,7 +837,7 @@ class _$BottomSheet implements BottomSheet {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is BottomSheet);
+        (other.runtimeType == runtimeType && other is _$BottomSheet);
   }
 
   @override
@@ -985,19 +947,19 @@ abstract class BottomSheet implements NavigationType {
 }
 
 /// @nodoc
-abstract class $TooltipCopyWith<$Res> {
-  factory $TooltipCopyWith(Tooltip value, $Res Function(Tooltip) then) =
-      _$TooltipCopyWithImpl<$Res>;
+abstract class _$$TooltipCopyWith<$Res> {
+  factory _$$TooltipCopyWith(_$Tooltip value, $Res Function(_$Tooltip) then) =
+      __$$TooltipCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$TooltipCopyWithImpl<$Res> extends _$NavigationTypeCopyWithImpl<$Res>
-    implements $TooltipCopyWith<$Res> {
-  _$TooltipCopyWithImpl(Tooltip _value, $Res Function(Tooltip) _then)
-      : super(_value, (v) => _then(v as Tooltip));
+class __$$TooltipCopyWithImpl<$Res> extends _$NavigationTypeCopyWithImpl<$Res>
+    implements _$$TooltipCopyWith<$Res> {
+  __$$TooltipCopyWithImpl(_$Tooltip _value, $Res Function(_$Tooltip) _then)
+      : super(_value, (v) => _then(v as _$Tooltip));
 
   @override
-  Tooltip get _value => super._value as Tooltip;
+  _$Tooltip get _value => super._value as _$Tooltip;
 }
 
 /// @nodoc
@@ -1013,7 +975,7 @@ class _$Tooltip implements Tooltip {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Tooltip);
+        (other.runtimeType == runtimeType && other is _$Tooltip);
   }
 
   @override
@@ -1123,19 +1085,20 @@ abstract class Tooltip implements NavigationType {
 }
 
 /// @nodoc
-abstract class $PopUntilCopyWith<$Res> {
-  factory $PopUntilCopyWith(PopUntil value, $Res Function(PopUntil) then) =
-      _$PopUntilCopyWithImpl<$Res>;
+abstract class _$$PopUntilCopyWith<$Res> {
+  factory _$$PopUntilCopyWith(
+          _$PopUntil value, $Res Function(_$PopUntil) then) =
+      __$$PopUntilCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$PopUntilCopyWithImpl<$Res> extends _$NavigationTypeCopyWithImpl<$Res>
-    implements $PopUntilCopyWith<$Res> {
-  _$PopUntilCopyWithImpl(PopUntil _value, $Res Function(PopUntil) _then)
-      : super(_value, (v) => _then(v as PopUntil));
+class __$$PopUntilCopyWithImpl<$Res> extends _$NavigationTypeCopyWithImpl<$Res>
+    implements _$$PopUntilCopyWith<$Res> {
+  __$$PopUntilCopyWithImpl(_$PopUntil _value, $Res Function(_$PopUntil) _then)
+      : super(_value, (v) => _then(v as _$PopUntil));
 
   @override
-  PopUntil get _value => super._value as PopUntil;
+  _$PopUntil get _value => super._value as _$PopUntil;
 }
 
 /// @nodoc
@@ -1151,7 +1114,7 @@ class _$PopUntil implements PopUntil {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is PopUntil);
+        (other.runtimeType == runtimeType && other is _$PopUntil);
   }
 
   @override

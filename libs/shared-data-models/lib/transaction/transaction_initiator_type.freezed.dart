@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'transaction_initiator_type.dart';
@@ -11,27 +12,7 @@ part of 'transaction_initiator_type.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$TransactionInitiatorTypeTearOff {
-  const _$TransactionInitiatorTypeTearOff();
-
-  Receiver receiver() {
-    return const Receiver();
-  }
-
-  Sender sender() {
-    return const Sender();
-  }
-
-  TransactionInitiatorNA notAvailable() {
-    return const TransactionInitiatorNA();
-  }
-}
-
-/// @nodoc
-const $TransactionInitiatorType = _$TransactionInitiatorTypeTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$TransactionInitiatorType {
@@ -99,20 +80,21 @@ class _$TransactionInitiatorTypeCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class $ReceiverCopyWith<$Res> {
-  factory $ReceiverCopyWith(Receiver value, $Res Function(Receiver) then) =
-      _$ReceiverCopyWithImpl<$Res>;
+abstract class _$$ReceiverCopyWith<$Res> {
+  factory _$$ReceiverCopyWith(
+          _$Receiver value, $Res Function(_$Receiver) then) =
+      __$$ReceiverCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$ReceiverCopyWithImpl<$Res>
+class __$$ReceiverCopyWithImpl<$Res>
     extends _$TransactionInitiatorTypeCopyWithImpl<$Res>
-    implements $ReceiverCopyWith<$Res> {
-  _$ReceiverCopyWithImpl(Receiver _value, $Res Function(Receiver) _then)
-      : super(_value, (v) => _then(v as Receiver));
+    implements _$$ReceiverCopyWith<$Res> {
+  __$$ReceiverCopyWithImpl(_$Receiver _value, $Res Function(_$Receiver) _then)
+      : super(_value, (v) => _then(v as _$Receiver));
 
   @override
-  Receiver get _value => super._value as Receiver;
+  _$Receiver get _value => super._value as _$Receiver;
 }
 
 /// @nodoc
@@ -123,7 +105,7 @@ class _$Receiver extends Receiver {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Receiver);
+        (other.runtimeType == runtimeType && other is _$Receiver);
   }
 
   @override
@@ -204,20 +186,20 @@ abstract class Receiver extends TransactionInitiatorType {
 }
 
 /// @nodoc
-abstract class $SenderCopyWith<$Res> {
-  factory $SenderCopyWith(Sender value, $Res Function(Sender) then) =
-      _$SenderCopyWithImpl<$Res>;
+abstract class _$$SenderCopyWith<$Res> {
+  factory _$$SenderCopyWith(_$Sender value, $Res Function(_$Sender) then) =
+      __$$SenderCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$SenderCopyWithImpl<$Res>
+class __$$SenderCopyWithImpl<$Res>
     extends _$TransactionInitiatorTypeCopyWithImpl<$Res>
-    implements $SenderCopyWith<$Res> {
-  _$SenderCopyWithImpl(Sender _value, $Res Function(Sender) _then)
-      : super(_value, (v) => _then(v as Sender));
+    implements _$$SenderCopyWith<$Res> {
+  __$$SenderCopyWithImpl(_$Sender _value, $Res Function(_$Sender) _then)
+      : super(_value, (v) => _then(v as _$Sender));
 
   @override
-  Sender get _value => super._value as Sender;
+  _$Sender get _value => super._value as _$Sender;
 }
 
 /// @nodoc
@@ -228,7 +210,7 @@ class _$Sender extends Sender {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Sender);
+        (other.runtimeType == runtimeType && other is _$Sender);
   }
 
   @override
@@ -309,22 +291,23 @@ abstract class Sender extends TransactionInitiatorType {
 }
 
 /// @nodoc
-abstract class $TransactionInitiatorNACopyWith<$Res> {
-  factory $TransactionInitiatorNACopyWith(TransactionInitiatorNA value,
-          $Res Function(TransactionInitiatorNA) then) =
-      _$TransactionInitiatorNACopyWithImpl<$Res>;
+abstract class _$$TransactionInitiatorNACopyWith<$Res> {
+  factory _$$TransactionInitiatorNACopyWith(_$TransactionInitiatorNA value,
+          $Res Function(_$TransactionInitiatorNA) then) =
+      __$$TransactionInitiatorNACopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$TransactionInitiatorNACopyWithImpl<$Res>
+class __$$TransactionInitiatorNACopyWithImpl<$Res>
     extends _$TransactionInitiatorTypeCopyWithImpl<$Res>
-    implements $TransactionInitiatorNACopyWith<$Res> {
-  _$TransactionInitiatorNACopyWithImpl(TransactionInitiatorNA _value,
-      $Res Function(TransactionInitiatorNA) _then)
-      : super(_value, (v) => _then(v as TransactionInitiatorNA));
+    implements _$$TransactionInitiatorNACopyWith<$Res> {
+  __$$TransactionInitiatorNACopyWithImpl(_$TransactionInitiatorNA _value,
+      $Res Function(_$TransactionInitiatorNA) _then)
+      : super(_value, (v) => _then(v as _$TransactionInitiatorNA));
 
   @override
-  TransactionInitiatorNA get _value => super._value as TransactionInitiatorNA;
+  _$TransactionInitiatorNA get _value =>
+      super._value as _$TransactionInitiatorNA;
 }
 
 /// @nodoc
@@ -335,7 +318,7 @@ class _$TransactionInitiatorNA extends TransactionInitiatorNA {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is TransactionInitiatorNA);
+        (other.runtimeType == runtimeType && other is _$TransactionInitiatorNA);
   }
 
   @override

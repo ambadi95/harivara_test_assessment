@@ -1,5 +1,5 @@
 name: crayon_payment_agent
-description: CrayonPayment Merchant Base App
+description: CrayonPayment Agent Base App
 publish_to: 'none'
 version: 1.0.0+1
 

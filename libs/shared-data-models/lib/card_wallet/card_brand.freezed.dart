@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'card_brand.dart';
@@ -11,63 +12,7 @@ part of 'card_brand.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$CardBrandTearOff {
-  const _$CardBrandTearOff();
-
-  Visa visa() {
-    return const Visa();
-  }
-
-  Mastercard mastercard() {
-    return const Mastercard();
-  }
-
-  Discover discover() {
-    return const Discover();
-  }
-
-  AMEX amex() {
-    return const AMEX();
-  }
-
-  DinersUSA dinersUSA() {
-    return const DinersUSA();
-  }
-
-  DinersInternational dinersInternational() {
-    return const DinersInternational();
-  }
-
-  ChinaUnionPay chinaUnionPay() {
-    return const ChinaUnionPay();
-  }
-
-  MadaVisa madaVisa() {
-    return const MadaVisa();
-  }
-
-  MadaMasterCard madaMasterCard() {
-    return const MadaMasterCard();
-  }
-
-  Mada mada() {
-    return const Mada();
-  }
-
-  Unknown unknown() {
-    return const Unknown();
-  }
-
-  Processing processing() {
-    return const Processing();
-  }
-}
-
-/// @nodoc
-const $CardBrand = _$CardBrandTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$CardBrand {
@@ -187,19 +132,19 @@ class _$CardBrandCopyWithImpl<$Res> implements $CardBrandCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class $VisaCopyWith<$Res> {
-  factory $VisaCopyWith(Visa value, $Res Function(Visa) then) =
-      _$VisaCopyWithImpl<$Res>;
+abstract class _$$VisaCopyWith<$Res> {
+  factory _$$VisaCopyWith(_$Visa value, $Res Function(_$Visa) then) =
+      __$$VisaCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$VisaCopyWithImpl<$Res> extends _$CardBrandCopyWithImpl<$Res>
-    implements $VisaCopyWith<$Res> {
-  _$VisaCopyWithImpl(Visa _value, $Res Function(Visa) _then)
-      : super(_value, (v) => _then(v as Visa));
+class __$$VisaCopyWithImpl<$Res> extends _$CardBrandCopyWithImpl<$Res>
+    implements _$$VisaCopyWith<$Res> {
+  __$$VisaCopyWithImpl(_$Visa _value, $Res Function(_$Visa) _then)
+      : super(_value, (v) => _then(v as _$Visa));
 
   @override
-  Visa get _value => super._value as Visa;
+  _$Visa get _value => super._value as _$Visa;
 }
 
 /// @nodoc
@@ -210,7 +155,7 @@ class _$Visa extends Visa {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Visa);
+        (other.runtimeType == runtimeType && other is _$Visa);
   }
 
   @override
@@ -345,20 +290,21 @@ abstract class Visa extends CardBrand {
 }
 
 /// @nodoc
-abstract class $MastercardCopyWith<$Res> {
-  factory $MastercardCopyWith(
-          Mastercard value, $Res Function(Mastercard) then) =
-      _$MastercardCopyWithImpl<$Res>;
+abstract class _$$MastercardCopyWith<$Res> {
+  factory _$$MastercardCopyWith(
+          _$Mastercard value, $Res Function(_$Mastercard) then) =
+      __$$MastercardCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$MastercardCopyWithImpl<$Res> extends _$CardBrandCopyWithImpl<$Res>
-    implements $MastercardCopyWith<$Res> {
-  _$MastercardCopyWithImpl(Mastercard _value, $Res Function(Mastercard) _then)
-      : super(_value, (v) => _then(v as Mastercard));
+class __$$MastercardCopyWithImpl<$Res> extends _$CardBrandCopyWithImpl<$Res>
+    implements _$$MastercardCopyWith<$Res> {
+  __$$MastercardCopyWithImpl(
+      _$Mastercard _value, $Res Function(_$Mastercard) _then)
+      : super(_value, (v) => _then(v as _$Mastercard));
 
   @override
-  Mastercard get _value => super._value as Mastercard;
+  _$Mastercard get _value => super._value as _$Mastercard;
 }
 
 /// @nodoc
@@ -369,7 +315,7 @@ class _$Mastercard extends Mastercard {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Mastercard);
+        (other.runtimeType == runtimeType && other is _$Mastercard);
   }
 
   @override
@@ -504,19 +450,20 @@ abstract class Mastercard extends CardBrand {
 }
 
 /// @nodoc
-abstract class $DiscoverCopyWith<$Res> {
-  factory $DiscoverCopyWith(Discover value, $Res Function(Discover) then) =
-      _$DiscoverCopyWithImpl<$Res>;
+abstract class _$$DiscoverCopyWith<$Res> {
+  factory _$$DiscoverCopyWith(
+          _$Discover value, $Res Function(_$Discover) then) =
+      __$$DiscoverCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$DiscoverCopyWithImpl<$Res> extends _$CardBrandCopyWithImpl<$Res>
-    implements $DiscoverCopyWith<$Res> {
-  _$DiscoverCopyWithImpl(Discover _value, $Res Function(Discover) _then)
-      : super(_value, (v) => _then(v as Discover));
+class __$$DiscoverCopyWithImpl<$Res> extends _$CardBrandCopyWithImpl<$Res>
+    implements _$$DiscoverCopyWith<$Res> {
+  __$$DiscoverCopyWithImpl(_$Discover _value, $Res Function(_$Discover) _then)
+      : super(_value, (v) => _then(v as _$Discover));
 
   @override
-  Discover get _value => super._value as Discover;
+  _$Discover get _value => super._value as _$Discover;
 }
 
 /// @nodoc
@@ -527,7 +474,7 @@ class _$Discover extends Discover {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Discover);
+        (other.runtimeType == runtimeType && other is _$Discover);
   }
 
   @override
@@ -662,19 +609,19 @@ abstract class Discover extends CardBrand {
 }
 
 /// @nodoc
-abstract class $AMEXCopyWith<$Res> {
-  factory $AMEXCopyWith(AMEX value, $Res Function(AMEX) then) =
-      _$AMEXCopyWithImpl<$Res>;
+abstract class _$$AMEXCopyWith<$Res> {
+  factory _$$AMEXCopyWith(_$AMEX value, $Res Function(_$AMEX) then) =
+      __$$AMEXCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$AMEXCopyWithImpl<$Res> extends _$CardBrandCopyWithImpl<$Res>
-    implements $AMEXCopyWith<$Res> {
-  _$AMEXCopyWithImpl(AMEX _value, $Res Function(AMEX) _then)
-      : super(_value, (v) => _then(v as AMEX));
+class __$$AMEXCopyWithImpl<$Res> extends _$CardBrandCopyWithImpl<$Res>
+    implements _$$AMEXCopyWith<$Res> {
+  __$$AMEXCopyWithImpl(_$AMEX _value, $Res Function(_$AMEX) _then)
+      : super(_value, (v) => _then(v as _$AMEX));
 
   @override
-  AMEX get _value => super._value as AMEX;
+  _$AMEX get _value => super._value as _$AMEX;
 }
 
 /// @nodoc
@@ -685,7 +632,7 @@ class _$AMEX extends AMEX {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is AMEX);
+        (other.runtimeType == runtimeType && other is _$AMEX);
   }
 
   @override
@@ -820,19 +767,21 @@ abstract class AMEX extends CardBrand {
 }
 
 /// @nodoc
-abstract class $DinersUSACopyWith<$Res> {
-  factory $DinersUSACopyWith(DinersUSA value, $Res Function(DinersUSA) then) =
-      _$DinersUSACopyWithImpl<$Res>;
+abstract class _$$DinersUSACopyWith<$Res> {
+  factory _$$DinersUSACopyWith(
+          _$DinersUSA value, $Res Function(_$DinersUSA) then) =
+      __$$DinersUSACopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$DinersUSACopyWithImpl<$Res> extends _$CardBrandCopyWithImpl<$Res>
-    implements $DinersUSACopyWith<$Res> {
-  _$DinersUSACopyWithImpl(DinersUSA _value, $Res Function(DinersUSA) _then)
-      : super(_value, (v) => _then(v as DinersUSA));
+class __$$DinersUSACopyWithImpl<$Res> extends _$CardBrandCopyWithImpl<$Res>
+    implements _$$DinersUSACopyWith<$Res> {
+  __$$DinersUSACopyWithImpl(
+      _$DinersUSA _value, $Res Function(_$DinersUSA) _then)
+      : super(_value, (v) => _then(v as _$DinersUSA));
 
   @override
-  DinersUSA get _value => super._value as DinersUSA;
+  _$DinersUSA get _value => super._value as _$DinersUSA;
 }
 
 /// @nodoc
@@ -843,7 +792,7 @@ class _$DinersUSA extends DinersUSA {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is DinersUSA);
+        (other.runtimeType == runtimeType && other is _$DinersUSA);
   }
 
   @override
@@ -978,22 +927,22 @@ abstract class DinersUSA extends CardBrand {
 }
 
 /// @nodoc
-abstract class $DinersInternationalCopyWith<$Res> {
-  factory $DinersInternationalCopyWith(
-          DinersInternational value, $Res Function(DinersInternational) then) =
-      _$DinersInternationalCopyWithImpl<$Res>;
+abstract class _$$DinersInternationalCopyWith<$Res> {
+  factory _$$DinersInternationalCopyWith(_$DinersInternational value,
+          $Res Function(_$DinersInternational) then) =
+      __$$DinersInternationalCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$DinersInternationalCopyWithImpl<$Res>
+class __$$DinersInternationalCopyWithImpl<$Res>
     extends _$CardBrandCopyWithImpl<$Res>
-    implements $DinersInternationalCopyWith<$Res> {
-  _$DinersInternationalCopyWithImpl(
-      DinersInternational _value, $Res Function(DinersInternational) _then)
-      : super(_value, (v) => _then(v as DinersInternational));
+    implements _$$DinersInternationalCopyWith<$Res> {
+  __$$DinersInternationalCopyWithImpl(
+      _$DinersInternational _value, $Res Function(_$DinersInternational) _then)
+      : super(_value, (v) => _then(v as _$DinersInternational));
 
   @override
-  DinersInternational get _value => super._value as DinersInternational;
+  _$DinersInternational get _value => super._value as _$DinersInternational;
 }
 
 /// @nodoc
@@ -1004,7 +953,7 @@ class _$DinersInternational extends DinersInternational {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is DinersInternational);
+        (other.runtimeType == runtimeType && other is _$DinersInternational);
   }
 
   @override
@@ -1139,21 +1088,21 @@ abstract class DinersInternational extends CardBrand {
 }
 
 /// @nodoc
-abstract class $ChinaUnionPayCopyWith<$Res> {
-  factory $ChinaUnionPayCopyWith(
-          ChinaUnionPay value, $Res Function(ChinaUnionPay) then) =
-      _$ChinaUnionPayCopyWithImpl<$Res>;
+abstract class _$$ChinaUnionPayCopyWith<$Res> {
+  factory _$$ChinaUnionPayCopyWith(
+          _$ChinaUnionPay value, $Res Function(_$ChinaUnionPay) then) =
+      __$$ChinaUnionPayCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$ChinaUnionPayCopyWithImpl<$Res> extends _$CardBrandCopyWithImpl<$Res>
-    implements $ChinaUnionPayCopyWith<$Res> {
-  _$ChinaUnionPayCopyWithImpl(
-      ChinaUnionPay _value, $Res Function(ChinaUnionPay) _then)
-      : super(_value, (v) => _then(v as ChinaUnionPay));
+class __$$ChinaUnionPayCopyWithImpl<$Res> extends _$CardBrandCopyWithImpl<$Res>
+    implements _$$ChinaUnionPayCopyWith<$Res> {
+  __$$ChinaUnionPayCopyWithImpl(
+      _$ChinaUnionPay _value, $Res Function(_$ChinaUnionPay) _then)
+      : super(_value, (v) => _then(v as _$ChinaUnionPay));
 
   @override
-  ChinaUnionPay get _value => super._value as ChinaUnionPay;
+  _$ChinaUnionPay get _value => super._value as _$ChinaUnionPay;
 }
 
 /// @nodoc
@@ -1164,7 +1113,7 @@ class _$ChinaUnionPay extends ChinaUnionPay {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is ChinaUnionPay);
+        (other.runtimeType == runtimeType && other is _$ChinaUnionPay);
   }
 
   @override
@@ -1299,19 +1248,20 @@ abstract class ChinaUnionPay extends CardBrand {
 }
 
 /// @nodoc
-abstract class $MadaVisaCopyWith<$Res> {
-  factory $MadaVisaCopyWith(MadaVisa value, $Res Function(MadaVisa) then) =
-      _$MadaVisaCopyWithImpl<$Res>;
+abstract class _$$MadaVisaCopyWith<$Res> {
+  factory _$$MadaVisaCopyWith(
+          _$MadaVisa value, $Res Function(_$MadaVisa) then) =
+      __$$MadaVisaCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$MadaVisaCopyWithImpl<$Res> extends _$CardBrandCopyWithImpl<$Res>
-    implements $MadaVisaCopyWith<$Res> {
-  _$MadaVisaCopyWithImpl(MadaVisa _value, $Res Function(MadaVisa) _then)
-      : super(_value, (v) => _then(v as MadaVisa));
+class __$$MadaVisaCopyWithImpl<$Res> extends _$CardBrandCopyWithImpl<$Res>
+    implements _$$MadaVisaCopyWith<$Res> {
+  __$$MadaVisaCopyWithImpl(_$MadaVisa _value, $Res Function(_$MadaVisa) _then)
+      : super(_value, (v) => _then(v as _$MadaVisa));
 
   @override
-  MadaVisa get _value => super._value as MadaVisa;
+  _$MadaVisa get _value => super._value as _$MadaVisa;
 }
 
 /// @nodoc
@@ -1322,7 +1272,7 @@ class _$MadaVisa extends MadaVisa {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is MadaVisa);
+        (other.runtimeType == runtimeType && other is _$MadaVisa);
   }
 
   @override
@@ -1457,21 +1407,21 @@ abstract class MadaVisa extends CardBrand {
 }
 
 /// @nodoc
-abstract class $MadaMasterCardCopyWith<$Res> {
-  factory $MadaMasterCardCopyWith(
-          MadaMasterCard value, $Res Function(MadaMasterCard) then) =
-      _$MadaMasterCardCopyWithImpl<$Res>;
+abstract class _$$MadaMasterCardCopyWith<$Res> {
+  factory _$$MadaMasterCardCopyWith(
+          _$MadaMasterCard value, $Res Function(_$MadaMasterCard) then) =
+      __$$MadaMasterCardCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$MadaMasterCardCopyWithImpl<$Res> extends _$CardBrandCopyWithImpl<$Res>
-    implements $MadaMasterCardCopyWith<$Res> {
-  _$MadaMasterCardCopyWithImpl(
-      MadaMasterCard _value, $Res Function(MadaMasterCard) _then)
-      : super(_value, (v) => _then(v as MadaMasterCard));
+class __$$MadaMasterCardCopyWithImpl<$Res> extends _$CardBrandCopyWithImpl<$Res>
+    implements _$$MadaMasterCardCopyWith<$Res> {
+  __$$MadaMasterCardCopyWithImpl(
+      _$MadaMasterCard _value, $Res Function(_$MadaMasterCard) _then)
+      : super(_value, (v) => _then(v as _$MadaMasterCard));
 
   @override
-  MadaMasterCard get _value => super._value as MadaMasterCard;
+  _$MadaMasterCard get _value => super._value as _$MadaMasterCard;
 }
 
 /// @nodoc
@@ -1482,7 +1432,7 @@ class _$MadaMasterCard extends MadaMasterCard {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is MadaMasterCard);
+        (other.runtimeType == runtimeType && other is _$MadaMasterCard);
   }
 
   @override
@@ -1617,19 +1567,19 @@ abstract class MadaMasterCard extends CardBrand {
 }
 
 /// @nodoc
-abstract class $MadaCopyWith<$Res> {
-  factory $MadaCopyWith(Mada value, $Res Function(Mada) then) =
-      _$MadaCopyWithImpl<$Res>;
+abstract class _$$MadaCopyWith<$Res> {
+  factory _$$MadaCopyWith(_$Mada value, $Res Function(_$Mada) then) =
+      __$$MadaCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$MadaCopyWithImpl<$Res> extends _$CardBrandCopyWithImpl<$Res>
-    implements $MadaCopyWith<$Res> {
-  _$MadaCopyWithImpl(Mada _value, $Res Function(Mada) _then)
-      : super(_value, (v) => _then(v as Mada));
+class __$$MadaCopyWithImpl<$Res> extends _$CardBrandCopyWithImpl<$Res>
+    implements _$$MadaCopyWith<$Res> {
+  __$$MadaCopyWithImpl(_$Mada _value, $Res Function(_$Mada) _then)
+      : super(_value, (v) => _then(v as _$Mada));
 
   @override
-  Mada get _value => super._value as Mada;
+  _$Mada get _value => super._value as _$Mada;
 }
 
 /// @nodoc
@@ -1640,7 +1590,7 @@ class _$Mada extends Mada {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Mada);
+        (other.runtimeType == runtimeType && other is _$Mada);
   }
 
   @override
@@ -1775,19 +1725,19 @@ abstract class Mada extends CardBrand {
 }
 
 /// @nodoc
-abstract class $UnknownCopyWith<$Res> {
-  factory $UnknownCopyWith(Unknown value, $Res Function(Unknown) then) =
-      _$UnknownCopyWithImpl<$Res>;
+abstract class _$$UnknownCopyWith<$Res> {
+  factory _$$UnknownCopyWith(_$Unknown value, $Res Function(_$Unknown) then) =
+      __$$UnknownCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$UnknownCopyWithImpl<$Res> extends _$CardBrandCopyWithImpl<$Res>
-    implements $UnknownCopyWith<$Res> {
-  _$UnknownCopyWithImpl(Unknown _value, $Res Function(Unknown) _then)
-      : super(_value, (v) => _then(v as Unknown));
+class __$$UnknownCopyWithImpl<$Res> extends _$CardBrandCopyWithImpl<$Res>
+    implements _$$UnknownCopyWith<$Res> {
+  __$$UnknownCopyWithImpl(_$Unknown _value, $Res Function(_$Unknown) _then)
+      : super(_value, (v) => _then(v as _$Unknown));
 
   @override
-  Unknown get _value => super._value as Unknown;
+  _$Unknown get _value => super._value as _$Unknown;
 }
 
 /// @nodoc
@@ -1798,7 +1748,7 @@ class _$Unknown extends Unknown {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Unknown);
+        (other.runtimeType == runtimeType && other is _$Unknown);
   }
 
   @override
@@ -1933,20 +1883,21 @@ abstract class Unknown extends CardBrand {
 }
 
 /// @nodoc
-abstract class $ProcessingCopyWith<$Res> {
-  factory $ProcessingCopyWith(
-          Processing value, $Res Function(Processing) then) =
-      _$ProcessingCopyWithImpl<$Res>;
+abstract class _$$ProcessingCopyWith<$Res> {
+  factory _$$ProcessingCopyWith(
+          _$Processing value, $Res Function(_$Processing) then) =
+      __$$ProcessingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$ProcessingCopyWithImpl<$Res> extends _$CardBrandCopyWithImpl<$Res>
-    implements $ProcessingCopyWith<$Res> {
-  _$ProcessingCopyWithImpl(Processing _value, $Res Function(Processing) _then)
-      : super(_value, (v) => _then(v as Processing));
+class __$$ProcessingCopyWithImpl<$Res> extends _$CardBrandCopyWithImpl<$Res>
+    implements _$$ProcessingCopyWith<$Res> {
+  __$$ProcessingCopyWithImpl(
+      _$Processing _value, $Res Function(_$Processing) _then)
+      : super(_value, (v) => _then(v as _$Processing));
 
   @override
-  Processing get _value => super._value as Processing;
+  _$Processing get _value => super._value as _$Processing;
 }
 
 /// @nodoc
@@ -1957,7 +1908,7 @@ class _$Processing extends Processing {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Processing);
+        (other.runtimeType == runtimeType && other is _$Processing);
   }
 
   @override

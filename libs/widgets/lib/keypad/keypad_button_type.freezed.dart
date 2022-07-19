@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'keypad_button_type.dart';
@@ -11,33 +12,7 @@ part of 'keypad_button_type.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$KeypadButtonTypeTearOff {
-  const _$KeypadButtonTypeTearOff();
-
-  KeypadDigit digit(int number) {
-    return KeypadDigit(
-      number,
-    );
-  }
-
-  KeypadBackSpace backspace() {
-    return const KeypadBackSpace();
-  }
-
-  KeypadDecimalPoint decimalPoint() {
-    return const KeypadDecimalPoint();
-  }
-
-  KeypadNone none() {
-    return const KeypadNone();
-  }
-}
-
-/// @nodoc
-const $KeypadButtonType = _$KeypadButtonTypeTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$KeypadButtonType {
@@ -111,29 +86,29 @@ class _$KeypadButtonTypeCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class $KeypadDigitCopyWith<$Res> {
-  factory $KeypadDigitCopyWith(
-          KeypadDigit value, $Res Function(KeypadDigit) then) =
-      _$KeypadDigitCopyWithImpl<$Res>;
+abstract class _$$KeypadDigitCopyWith<$Res> {
+  factory _$$KeypadDigitCopyWith(
+          _$KeypadDigit value, $Res Function(_$KeypadDigit) then) =
+      __$$KeypadDigitCopyWithImpl<$Res>;
   $Res call({int number});
 }
 
 /// @nodoc
-class _$KeypadDigitCopyWithImpl<$Res>
+class __$$KeypadDigitCopyWithImpl<$Res>
     extends _$KeypadButtonTypeCopyWithImpl<$Res>
-    implements $KeypadDigitCopyWith<$Res> {
-  _$KeypadDigitCopyWithImpl(
-      KeypadDigit _value, $Res Function(KeypadDigit) _then)
-      : super(_value, (v) => _then(v as KeypadDigit));
+    implements _$$KeypadDigitCopyWith<$Res> {
+  __$$KeypadDigitCopyWithImpl(
+      _$KeypadDigit _value, $Res Function(_$KeypadDigit) _then)
+      : super(_value, (v) => _then(v as _$KeypadDigit));
 
   @override
-  KeypadDigit get _value => super._value as KeypadDigit;
+  _$KeypadDigit get _value => super._value as _$KeypadDigit;
 
   @override
   $Res call({
     Object? number = freezed,
   }) {
-    return _then(KeypadDigit(
+    return _then(_$KeypadDigit(
       number == freezed
           ? _value.number
           : number // ignore: cast_nullable_to_non_nullable
@@ -153,19 +128,19 @@ class _$KeypadDigit extends KeypadDigit {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is KeypadDigit &&
-            (identical(other.number, number) ||
-                const DeepCollectionEquality().equals(other.number, number)));
+        (other.runtimeType == runtimeType &&
+            other is _$KeypadDigit &&
+            const DeepCollectionEquality().equals(other.number, number));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(number);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(number));
 
   @JsonKey(ignore: true)
   @override
-  $KeypadDigitCopyWith<KeypadDigit> get copyWith =>
-      _$KeypadDigitCopyWithImpl<KeypadDigit>(this, _$identity);
+  _$$KeypadDigitCopyWith<_$KeypadDigit> get copyWith =>
+      __$$KeypadDigitCopyWithImpl<_$KeypadDigit>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -243,32 +218,32 @@ class _$KeypadDigit extends KeypadDigit {
 }
 
 abstract class KeypadDigit extends KeypadButtonType {
-  const factory KeypadDigit(int number) = _$KeypadDigit;
+  const factory KeypadDigit(final int number) = _$KeypadDigit;
   const KeypadDigit._() : super._();
 
-  int get number => throw _privateConstructorUsedError;
+  int get number;
   @JsonKey(ignore: true)
-  $KeypadDigitCopyWith<KeypadDigit> get copyWith =>
+  _$$KeypadDigitCopyWith<_$KeypadDigit> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $KeypadBackSpaceCopyWith<$Res> {
-  factory $KeypadBackSpaceCopyWith(
-          KeypadBackSpace value, $Res Function(KeypadBackSpace) then) =
-      _$KeypadBackSpaceCopyWithImpl<$Res>;
+abstract class _$$KeypadBackSpaceCopyWith<$Res> {
+  factory _$$KeypadBackSpaceCopyWith(
+          _$KeypadBackSpace value, $Res Function(_$KeypadBackSpace) then) =
+      __$$KeypadBackSpaceCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$KeypadBackSpaceCopyWithImpl<$Res>
+class __$$KeypadBackSpaceCopyWithImpl<$Res>
     extends _$KeypadButtonTypeCopyWithImpl<$Res>
-    implements $KeypadBackSpaceCopyWith<$Res> {
-  _$KeypadBackSpaceCopyWithImpl(
-      KeypadBackSpace _value, $Res Function(KeypadBackSpace) _then)
-      : super(_value, (v) => _then(v as KeypadBackSpace));
+    implements _$$KeypadBackSpaceCopyWith<$Res> {
+  __$$KeypadBackSpaceCopyWithImpl(
+      _$KeypadBackSpace _value, $Res Function(_$KeypadBackSpace) _then)
+      : super(_value, (v) => _then(v as _$KeypadBackSpace));
 
   @override
-  KeypadBackSpace get _value => super._value as KeypadBackSpace;
+  _$KeypadBackSpace get _value => super._value as _$KeypadBackSpace;
 }
 
 /// @nodoc
@@ -278,7 +253,8 @@ class _$KeypadBackSpace extends KeypadBackSpace {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is KeypadBackSpace);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$KeypadBackSpace);
   }
 
   @override
@@ -365,22 +341,22 @@ abstract class KeypadBackSpace extends KeypadButtonType {
 }
 
 /// @nodoc
-abstract class $KeypadDecimalPointCopyWith<$Res> {
-  factory $KeypadDecimalPointCopyWith(
-          KeypadDecimalPoint value, $Res Function(KeypadDecimalPoint) then) =
-      _$KeypadDecimalPointCopyWithImpl<$Res>;
+abstract class _$$KeypadDecimalPointCopyWith<$Res> {
+  factory _$$KeypadDecimalPointCopyWith(_$KeypadDecimalPoint value,
+          $Res Function(_$KeypadDecimalPoint) then) =
+      __$$KeypadDecimalPointCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$KeypadDecimalPointCopyWithImpl<$Res>
+class __$$KeypadDecimalPointCopyWithImpl<$Res>
     extends _$KeypadButtonTypeCopyWithImpl<$Res>
-    implements $KeypadDecimalPointCopyWith<$Res> {
-  _$KeypadDecimalPointCopyWithImpl(
-      KeypadDecimalPoint _value, $Res Function(KeypadDecimalPoint) _then)
-      : super(_value, (v) => _then(v as KeypadDecimalPoint));
+    implements _$$KeypadDecimalPointCopyWith<$Res> {
+  __$$KeypadDecimalPointCopyWithImpl(
+      _$KeypadDecimalPoint _value, $Res Function(_$KeypadDecimalPoint) _then)
+      : super(_value, (v) => _then(v as _$KeypadDecimalPoint));
 
   @override
-  KeypadDecimalPoint get _value => super._value as KeypadDecimalPoint;
+  _$KeypadDecimalPoint get _value => super._value as _$KeypadDecimalPoint;
 }
 
 /// @nodoc
@@ -390,7 +366,8 @@ class _$KeypadDecimalPoint extends KeypadDecimalPoint {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is KeypadDecimalPoint);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$KeypadDecimalPoint);
   }
 
   @override
@@ -477,21 +454,22 @@ abstract class KeypadDecimalPoint extends KeypadButtonType {
 }
 
 /// @nodoc
-abstract class $KeypadNoneCopyWith<$Res> {
-  factory $KeypadNoneCopyWith(
-          KeypadNone value, $Res Function(KeypadNone) then) =
-      _$KeypadNoneCopyWithImpl<$Res>;
+abstract class _$$KeypadNoneCopyWith<$Res> {
+  factory _$$KeypadNoneCopyWith(
+          _$KeypadNone value, $Res Function(_$KeypadNone) then) =
+      __$$KeypadNoneCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$KeypadNoneCopyWithImpl<$Res>
+class __$$KeypadNoneCopyWithImpl<$Res>
     extends _$KeypadButtonTypeCopyWithImpl<$Res>
-    implements $KeypadNoneCopyWith<$Res> {
-  _$KeypadNoneCopyWithImpl(KeypadNone _value, $Res Function(KeypadNone) _then)
-      : super(_value, (v) => _then(v as KeypadNone));
+    implements _$$KeypadNoneCopyWith<$Res> {
+  __$$KeypadNoneCopyWithImpl(
+      _$KeypadNone _value, $Res Function(_$KeypadNone) _then)
+      : super(_value, (v) => _then(v as _$KeypadNone));
 
   @override
-  KeypadNone get _value => super._value as KeypadNone;
+  _$KeypadNone get _value => super._value as _$KeypadNone;
 }
 
 /// @nodoc
@@ -501,7 +479,8 @@ class _$KeypadNone extends KeypadNone {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is KeypadNone);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$KeypadNone);
   }
 
   @override

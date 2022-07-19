@@ -1,4 +1,4 @@
-import 'package:shared_data_models/merchant/file_model.dart';
+import 'package:shared_data_models/agent/file_model.dart';
 
 class SubmitMerchantApplicationRequest {
   final BusinessDetails? businessDetails;

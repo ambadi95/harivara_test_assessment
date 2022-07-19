@@ -60,7 +60,7 @@ ErrorNodeButton _$ErrorNodeButtonFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$ErrorNodeButtonToJson(ErrorNodeButton instance) =>
     <String, dynamic>{
-      'type': _$ErrorButtonTypeEnumMap[instance.type],
+      'type': _$ErrorButtonTypeEnumMap[instance.type]!,
       'title': instance.title,
     };
 

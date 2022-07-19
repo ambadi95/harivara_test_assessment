@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'auth_type.dart';
@@ -11,35 +12,7 @@ part of 'auth_type.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$AuthTypeTearOff {
-  const _$AuthTypeTearOff();
-
-  FaceId faceId() {
-    return const FaceId();
-  }
-
-  FingerPrint fingerPrint() {
-    return const FingerPrint();
-  }
-
-  MPIN mpin() {
-    return const MPIN();
-  }
-
-  PIN pin() {
-    return const PIN();
-  }
-
-  TPIN tpin() {
-    return const TPIN();
-  }
-}
-
-/// @nodoc
-const $AuthType = _$AuthTypeTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$AuthType {
@@ -117,19 +90,19 @@ class _$AuthTypeCopyWithImpl<$Res> implements $AuthTypeCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class $FaceIdCopyWith<$Res> {
-  factory $FaceIdCopyWith(FaceId value, $Res Function(FaceId) then) =
-      _$FaceIdCopyWithImpl<$Res>;
+abstract class _$$FaceIdCopyWith<$Res> {
+  factory _$$FaceIdCopyWith(_$FaceId value, $Res Function(_$FaceId) then) =
+      __$$FaceIdCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$FaceIdCopyWithImpl<$Res> extends _$AuthTypeCopyWithImpl<$Res>
-    implements $FaceIdCopyWith<$Res> {
-  _$FaceIdCopyWithImpl(FaceId _value, $Res Function(FaceId) _then)
-      : super(_value, (v) => _then(v as FaceId));
+class __$$FaceIdCopyWithImpl<$Res> extends _$AuthTypeCopyWithImpl<$Res>
+    implements _$$FaceIdCopyWith<$Res> {
+  __$$FaceIdCopyWithImpl(_$FaceId _value, $Res Function(_$FaceId) _then)
+      : super(_value, (v) => _then(v as _$FaceId));
 
   @override
-  FaceId get _value => super._value as FaceId;
+  _$FaceId get _value => super._value as _$FaceId;
 }
 
 /// @nodoc
@@ -140,7 +113,7 @@ class _$FaceId extends FaceId {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is FaceId);
+        (other.runtimeType == runtimeType && other is _$FaceId);
   }
 
   @override
@@ -233,21 +206,21 @@ abstract class FaceId extends AuthType {
 }
 
 /// @nodoc
-abstract class $FingerPrintCopyWith<$Res> {
-  factory $FingerPrintCopyWith(
-          FingerPrint value, $Res Function(FingerPrint) then) =
-      _$FingerPrintCopyWithImpl<$Res>;
+abstract class _$$FingerPrintCopyWith<$Res> {
+  factory _$$FingerPrintCopyWith(
+          _$FingerPrint value, $Res Function(_$FingerPrint) then) =
+      __$$FingerPrintCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$FingerPrintCopyWithImpl<$Res> extends _$AuthTypeCopyWithImpl<$Res>
-    implements $FingerPrintCopyWith<$Res> {
-  _$FingerPrintCopyWithImpl(
-      FingerPrint _value, $Res Function(FingerPrint) _then)
-      : super(_value, (v) => _then(v as FingerPrint));
+class __$$FingerPrintCopyWithImpl<$Res> extends _$AuthTypeCopyWithImpl<$Res>
+    implements _$$FingerPrintCopyWith<$Res> {
+  __$$FingerPrintCopyWithImpl(
+      _$FingerPrint _value, $Res Function(_$FingerPrint) _then)
+      : super(_value, (v) => _then(v as _$FingerPrint));
 
   @override
-  FingerPrint get _value => super._value as FingerPrint;
+  _$FingerPrint get _value => super._value as _$FingerPrint;
 }
 
 /// @nodoc
@@ -258,7 +231,7 @@ class _$FingerPrint extends FingerPrint {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is FingerPrint);
+        (other.runtimeType == runtimeType && other is _$FingerPrint);
   }
 
   @override
@@ -351,19 +324,19 @@ abstract class FingerPrint extends AuthType {
 }
 
 /// @nodoc
-abstract class $MPINCopyWith<$Res> {
-  factory $MPINCopyWith(MPIN value, $Res Function(MPIN) then) =
-      _$MPINCopyWithImpl<$Res>;
+abstract class _$$MPINCopyWith<$Res> {
+  factory _$$MPINCopyWith(_$MPIN value, $Res Function(_$MPIN) then) =
+      __$$MPINCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$MPINCopyWithImpl<$Res> extends _$AuthTypeCopyWithImpl<$Res>
-    implements $MPINCopyWith<$Res> {
-  _$MPINCopyWithImpl(MPIN _value, $Res Function(MPIN) _then)
-      : super(_value, (v) => _then(v as MPIN));
+class __$$MPINCopyWithImpl<$Res> extends _$AuthTypeCopyWithImpl<$Res>
+    implements _$$MPINCopyWith<$Res> {
+  __$$MPINCopyWithImpl(_$MPIN _value, $Res Function(_$MPIN) _then)
+      : super(_value, (v) => _then(v as _$MPIN));
 
   @override
-  MPIN get _value => super._value as MPIN;
+  _$MPIN get _value => super._value as _$MPIN;
 }
 
 /// @nodoc
@@ -374,7 +347,7 @@ class _$MPIN extends MPIN {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is MPIN);
+        (other.runtimeType == runtimeType && other is _$MPIN);
   }
 
   @override
@@ -467,19 +440,19 @@ abstract class MPIN extends AuthType {
 }
 
 /// @nodoc
-abstract class $PINCopyWith<$Res> {
-  factory $PINCopyWith(PIN value, $Res Function(PIN) then) =
-      _$PINCopyWithImpl<$Res>;
+abstract class _$$PINCopyWith<$Res> {
+  factory _$$PINCopyWith(_$PIN value, $Res Function(_$PIN) then) =
+      __$$PINCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$PINCopyWithImpl<$Res> extends _$AuthTypeCopyWithImpl<$Res>
-    implements $PINCopyWith<$Res> {
-  _$PINCopyWithImpl(PIN _value, $Res Function(PIN) _then)
-      : super(_value, (v) => _then(v as PIN));
+class __$$PINCopyWithImpl<$Res> extends _$AuthTypeCopyWithImpl<$Res>
+    implements _$$PINCopyWith<$Res> {
+  __$$PINCopyWithImpl(_$PIN _value, $Res Function(_$PIN) _then)
+      : super(_value, (v) => _then(v as _$PIN));
 
   @override
-  PIN get _value => super._value as PIN;
+  _$PIN get _value => super._value as _$PIN;
 }
 
 /// @nodoc
@@ -490,7 +463,7 @@ class _$PIN extends PIN {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is PIN);
+        (other.runtimeType == runtimeType && other is _$PIN);
   }
 
   @override
@@ -583,19 +556,19 @@ abstract class PIN extends AuthType {
 }
 
 /// @nodoc
-abstract class $TPINCopyWith<$Res> {
-  factory $TPINCopyWith(TPIN value, $Res Function(TPIN) then) =
-      _$TPINCopyWithImpl<$Res>;
+abstract class _$$TPINCopyWith<$Res> {
+  factory _$$TPINCopyWith(_$TPIN value, $Res Function(_$TPIN) then) =
+      __$$TPINCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$TPINCopyWithImpl<$Res> extends _$AuthTypeCopyWithImpl<$Res>
-    implements $TPINCopyWith<$Res> {
-  _$TPINCopyWithImpl(TPIN _value, $Res Function(TPIN) _then)
-      : super(_value, (v) => _then(v as TPIN));
+class __$$TPINCopyWithImpl<$Res> extends _$AuthTypeCopyWithImpl<$Res>
+    implements _$$TPINCopyWith<$Res> {
+  __$$TPINCopyWithImpl(_$TPIN _value, $Res Function(_$TPIN) _then)
+      : super(_value, (v) => _then(v as _$TPIN));
 
   @override
-  TPIN get _value => super._value as TPIN;
+  _$TPIN get _value => super._value as _$TPIN;
 }
 
 /// @nodoc
@@ -606,7 +579,7 @@ class _$TPIN extends TPIN {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is TPIN);
+        (other.runtimeType == runtimeType && other is _$TPIN);
   }
 
   @override

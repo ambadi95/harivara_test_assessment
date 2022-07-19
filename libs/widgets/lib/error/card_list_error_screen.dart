@@ -3,7 +3,6 @@ import 'package:core/navigation/navigation_manager.dart';
 import 'package:core/navigation/navigation_type.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
-import 'package:home/sub_features/home/view/home_screen.dart';
 import 'package:widget_library/buttons/docked_button.dart';
 import 'package:widget_library/buttons/crayon_payment_back_button.dart';
 import 'package:widget_library/dimensions/crayon_payment_dimensions.dart';

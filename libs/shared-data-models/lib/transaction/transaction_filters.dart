@@ -1,4 +1,3 @@
-import 'package:core/formatters/date_time_formatter.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:shared_data_models/transaction/transaction_type.dart';
 
@@ -19,17 +18,16 @@ class TransactionFilters with _$TransactionFilters {
   }) = FilterInput;
 
   Map<String, dynamic> toJson() {
-    final DateTimeFormatter formatter = DateTimeFormatter();
     final transactionRequest = {
       'fromDate': startDate == null
           ? DateTime.now()
-          : formatter.formatDashYMD(startDate!),
+          : DateTime.now(),
       'operationType': operationType,
       'pageNo': pageNo,
       'size': size,
       'toDate': endDate == null
           ? DateTime.now().subtract(Duration(days: 365))
-          : formatter.formatDashYMD(endDate!),
+          : DateTime.now(),
       'walletId': walletId,
     };
 

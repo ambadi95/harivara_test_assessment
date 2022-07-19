@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'payment_status.dart';
@@ -11,67 +12,7 @@ part of 'payment_status.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$PaymentStatusTearOff {
-  const _$PaymentStatusTearOff();
-
-  Abandoned abandoned() {
-    return const Abandoned();
-  }
-
-  Authorized authorized() {
-    return const Authorized();
-  }
-
-  Cancelled cancelled() {
-    return const Cancelled();
-  }
-
-  Captured captured() {
-    return const Captured();
-  }
-
-  Verified verified() {
-    return const Verified();
-  }
-
-  Declined declined() {
-    return const Declined();
-  }
-
-  Failed failed() {
-    return const Failed();
-  }
-
-  Paid paid() {
-    return const Paid();
-  }
-
-  Pending pending() {
-    return const Pending();
-  }
-
-  Restricted restricted() {
-    return const Restricted();
-  }
-
-  PaymentTimeout timeout() {
-    return const PaymentTimeout();
-  }
-
-  PaymentUnknown unknown() {
-    return const PaymentUnknown();
-  }
-
-  VoidPayment voidStatus() {
-    return const VoidPayment();
-  }
-}
-
-/// @nodoc
-const $PaymentStatus = _$PaymentStatusTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$PaymentStatus {
@@ -199,19 +140,21 @@ class _$PaymentStatusCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class $AbandonedCopyWith<$Res> {
-  factory $AbandonedCopyWith(Abandoned value, $Res Function(Abandoned) then) =
-      _$AbandonedCopyWithImpl<$Res>;
+abstract class _$$AbandonedCopyWith<$Res> {
+  factory _$$AbandonedCopyWith(
+          _$Abandoned value, $Res Function(_$Abandoned) then) =
+      __$$AbandonedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$AbandonedCopyWithImpl<$Res> extends _$PaymentStatusCopyWithImpl<$Res>
-    implements $AbandonedCopyWith<$Res> {
-  _$AbandonedCopyWithImpl(Abandoned _value, $Res Function(Abandoned) _then)
-      : super(_value, (v) => _then(v as Abandoned));
+class __$$AbandonedCopyWithImpl<$Res> extends _$PaymentStatusCopyWithImpl<$Res>
+    implements _$$AbandonedCopyWith<$Res> {
+  __$$AbandonedCopyWithImpl(
+      _$Abandoned _value, $Res Function(_$Abandoned) _then)
+      : super(_value, (v) => _then(v as _$Abandoned));
 
   @override
-  Abandoned get _value => super._value as Abandoned;
+  _$Abandoned get _value => super._value as _$Abandoned;
 }
 
 /// @nodoc
@@ -222,7 +165,7 @@ class _$Abandoned extends Abandoned {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Abandoned);
+        (other.runtimeType == runtimeType && other is _$Abandoned);
   }
 
   @override
@@ -363,20 +306,21 @@ abstract class Abandoned extends PaymentStatus {
 }
 
 /// @nodoc
-abstract class $AuthorizedCopyWith<$Res> {
-  factory $AuthorizedCopyWith(
-          Authorized value, $Res Function(Authorized) then) =
-      _$AuthorizedCopyWithImpl<$Res>;
+abstract class _$$AuthorizedCopyWith<$Res> {
+  factory _$$AuthorizedCopyWith(
+          _$Authorized value, $Res Function(_$Authorized) then) =
+      __$$AuthorizedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$AuthorizedCopyWithImpl<$Res> extends _$PaymentStatusCopyWithImpl<$Res>
-    implements $AuthorizedCopyWith<$Res> {
-  _$AuthorizedCopyWithImpl(Authorized _value, $Res Function(Authorized) _then)
-      : super(_value, (v) => _then(v as Authorized));
+class __$$AuthorizedCopyWithImpl<$Res> extends _$PaymentStatusCopyWithImpl<$Res>
+    implements _$$AuthorizedCopyWith<$Res> {
+  __$$AuthorizedCopyWithImpl(
+      _$Authorized _value, $Res Function(_$Authorized) _then)
+      : super(_value, (v) => _then(v as _$Authorized));
 
   @override
-  Authorized get _value => super._value as Authorized;
+  _$Authorized get _value => super._value as _$Authorized;
 }
 
 /// @nodoc
@@ -387,7 +331,7 @@ class _$Authorized extends Authorized {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Authorized);
+        (other.runtimeType == runtimeType && other is _$Authorized);
   }
 
   @override
@@ -528,19 +472,21 @@ abstract class Authorized extends PaymentStatus {
 }
 
 /// @nodoc
-abstract class $CancelledCopyWith<$Res> {
-  factory $CancelledCopyWith(Cancelled value, $Res Function(Cancelled) then) =
-      _$CancelledCopyWithImpl<$Res>;
+abstract class _$$CancelledCopyWith<$Res> {
+  factory _$$CancelledCopyWith(
+          _$Cancelled value, $Res Function(_$Cancelled) then) =
+      __$$CancelledCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$CancelledCopyWithImpl<$Res> extends _$PaymentStatusCopyWithImpl<$Res>
-    implements $CancelledCopyWith<$Res> {
-  _$CancelledCopyWithImpl(Cancelled _value, $Res Function(Cancelled) _then)
-      : super(_value, (v) => _then(v as Cancelled));
+class __$$CancelledCopyWithImpl<$Res> extends _$PaymentStatusCopyWithImpl<$Res>
+    implements _$$CancelledCopyWith<$Res> {
+  __$$CancelledCopyWithImpl(
+      _$Cancelled _value, $Res Function(_$Cancelled) _then)
+      : super(_value, (v) => _then(v as _$Cancelled));
 
   @override
-  Cancelled get _value => super._value as Cancelled;
+  _$Cancelled get _value => super._value as _$Cancelled;
 }
 
 /// @nodoc
@@ -551,7 +497,7 @@ class _$Cancelled extends Cancelled {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Cancelled);
+        (other.runtimeType == runtimeType && other is _$Cancelled);
   }
 
   @override
@@ -692,19 +638,20 @@ abstract class Cancelled extends PaymentStatus {
 }
 
 /// @nodoc
-abstract class $CapturedCopyWith<$Res> {
-  factory $CapturedCopyWith(Captured value, $Res Function(Captured) then) =
-      _$CapturedCopyWithImpl<$Res>;
+abstract class _$$CapturedCopyWith<$Res> {
+  factory _$$CapturedCopyWith(
+          _$Captured value, $Res Function(_$Captured) then) =
+      __$$CapturedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$CapturedCopyWithImpl<$Res> extends _$PaymentStatusCopyWithImpl<$Res>
-    implements $CapturedCopyWith<$Res> {
-  _$CapturedCopyWithImpl(Captured _value, $Res Function(Captured) _then)
-      : super(_value, (v) => _then(v as Captured));
+class __$$CapturedCopyWithImpl<$Res> extends _$PaymentStatusCopyWithImpl<$Res>
+    implements _$$CapturedCopyWith<$Res> {
+  __$$CapturedCopyWithImpl(_$Captured _value, $Res Function(_$Captured) _then)
+      : super(_value, (v) => _then(v as _$Captured));
 
   @override
-  Captured get _value => super._value as Captured;
+  _$Captured get _value => super._value as _$Captured;
 }
 
 /// @nodoc
@@ -715,7 +662,7 @@ class _$Captured extends Captured {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Captured);
+        (other.runtimeType == runtimeType && other is _$Captured);
   }
 
   @override
@@ -856,19 +803,20 @@ abstract class Captured extends PaymentStatus {
 }
 
 /// @nodoc
-abstract class $VerifiedCopyWith<$Res> {
-  factory $VerifiedCopyWith(Verified value, $Res Function(Verified) then) =
-      _$VerifiedCopyWithImpl<$Res>;
+abstract class _$$VerifiedCopyWith<$Res> {
+  factory _$$VerifiedCopyWith(
+          _$Verified value, $Res Function(_$Verified) then) =
+      __$$VerifiedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$VerifiedCopyWithImpl<$Res> extends _$PaymentStatusCopyWithImpl<$Res>
-    implements $VerifiedCopyWith<$Res> {
-  _$VerifiedCopyWithImpl(Verified _value, $Res Function(Verified) _then)
-      : super(_value, (v) => _then(v as Verified));
+class __$$VerifiedCopyWithImpl<$Res> extends _$PaymentStatusCopyWithImpl<$Res>
+    implements _$$VerifiedCopyWith<$Res> {
+  __$$VerifiedCopyWithImpl(_$Verified _value, $Res Function(_$Verified) _then)
+      : super(_value, (v) => _then(v as _$Verified));
 
   @override
-  Verified get _value => super._value as Verified;
+  _$Verified get _value => super._value as _$Verified;
 }
 
 /// @nodoc
@@ -879,7 +827,7 @@ class _$Verified extends Verified {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Verified);
+        (other.runtimeType == runtimeType && other is _$Verified);
   }
 
   @override
@@ -1020,19 +968,20 @@ abstract class Verified extends PaymentStatus {
 }
 
 /// @nodoc
-abstract class $DeclinedCopyWith<$Res> {
-  factory $DeclinedCopyWith(Declined value, $Res Function(Declined) then) =
-      _$DeclinedCopyWithImpl<$Res>;
+abstract class _$$DeclinedCopyWith<$Res> {
+  factory _$$DeclinedCopyWith(
+          _$Declined value, $Res Function(_$Declined) then) =
+      __$$DeclinedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$DeclinedCopyWithImpl<$Res> extends _$PaymentStatusCopyWithImpl<$Res>
-    implements $DeclinedCopyWith<$Res> {
-  _$DeclinedCopyWithImpl(Declined _value, $Res Function(Declined) _then)
-      : super(_value, (v) => _then(v as Declined));
+class __$$DeclinedCopyWithImpl<$Res> extends _$PaymentStatusCopyWithImpl<$Res>
+    implements _$$DeclinedCopyWith<$Res> {
+  __$$DeclinedCopyWithImpl(_$Declined _value, $Res Function(_$Declined) _then)
+      : super(_value, (v) => _then(v as _$Declined));
 
   @override
-  Declined get _value => super._value as Declined;
+  _$Declined get _value => super._value as _$Declined;
 }
 
 /// @nodoc
@@ -1043,7 +992,7 @@ class _$Declined extends Declined {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Declined);
+        (other.runtimeType == runtimeType && other is _$Declined);
   }
 
   @override
@@ -1184,19 +1133,19 @@ abstract class Declined extends PaymentStatus {
 }
 
 /// @nodoc
-abstract class $FailedCopyWith<$Res> {
-  factory $FailedCopyWith(Failed value, $Res Function(Failed) then) =
-      _$FailedCopyWithImpl<$Res>;
+abstract class _$$FailedCopyWith<$Res> {
+  factory _$$FailedCopyWith(_$Failed value, $Res Function(_$Failed) then) =
+      __$$FailedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$FailedCopyWithImpl<$Res> extends _$PaymentStatusCopyWithImpl<$Res>
-    implements $FailedCopyWith<$Res> {
-  _$FailedCopyWithImpl(Failed _value, $Res Function(Failed) _then)
-      : super(_value, (v) => _then(v as Failed));
+class __$$FailedCopyWithImpl<$Res> extends _$PaymentStatusCopyWithImpl<$Res>
+    implements _$$FailedCopyWith<$Res> {
+  __$$FailedCopyWithImpl(_$Failed _value, $Res Function(_$Failed) _then)
+      : super(_value, (v) => _then(v as _$Failed));
 
   @override
-  Failed get _value => super._value as Failed;
+  _$Failed get _value => super._value as _$Failed;
 }
 
 /// @nodoc
@@ -1207,7 +1156,7 @@ class _$Failed extends Failed {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Failed);
+        (other.runtimeType == runtimeType && other is _$Failed);
   }
 
   @override
@@ -1348,19 +1297,19 @@ abstract class Failed extends PaymentStatus {
 }
 
 /// @nodoc
-abstract class $PaidCopyWith<$Res> {
-  factory $PaidCopyWith(Paid value, $Res Function(Paid) then) =
-      _$PaidCopyWithImpl<$Res>;
+abstract class _$$PaidCopyWith<$Res> {
+  factory _$$PaidCopyWith(_$Paid value, $Res Function(_$Paid) then) =
+      __$$PaidCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$PaidCopyWithImpl<$Res> extends _$PaymentStatusCopyWithImpl<$Res>
-    implements $PaidCopyWith<$Res> {
-  _$PaidCopyWithImpl(Paid _value, $Res Function(Paid) _then)
-      : super(_value, (v) => _then(v as Paid));
+class __$$PaidCopyWithImpl<$Res> extends _$PaymentStatusCopyWithImpl<$Res>
+    implements _$$PaidCopyWith<$Res> {
+  __$$PaidCopyWithImpl(_$Paid _value, $Res Function(_$Paid) _then)
+      : super(_value, (v) => _then(v as _$Paid));
 
   @override
-  Paid get _value => super._value as Paid;
+  _$Paid get _value => super._value as _$Paid;
 }
 
 /// @nodoc
@@ -1371,7 +1320,7 @@ class _$Paid extends Paid {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Paid);
+        (other.runtimeType == runtimeType && other is _$Paid);
   }
 
   @override
@@ -1512,19 +1461,19 @@ abstract class Paid extends PaymentStatus {
 }
 
 /// @nodoc
-abstract class $PendingCopyWith<$Res> {
-  factory $PendingCopyWith(Pending value, $Res Function(Pending) then) =
-      _$PendingCopyWithImpl<$Res>;
+abstract class _$$PendingCopyWith<$Res> {
+  factory _$$PendingCopyWith(_$Pending value, $Res Function(_$Pending) then) =
+      __$$PendingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$PendingCopyWithImpl<$Res> extends _$PaymentStatusCopyWithImpl<$Res>
-    implements $PendingCopyWith<$Res> {
-  _$PendingCopyWithImpl(Pending _value, $Res Function(Pending) _then)
-      : super(_value, (v) => _then(v as Pending));
+class __$$PendingCopyWithImpl<$Res> extends _$PaymentStatusCopyWithImpl<$Res>
+    implements _$$PendingCopyWith<$Res> {
+  __$$PendingCopyWithImpl(_$Pending _value, $Res Function(_$Pending) _then)
+      : super(_value, (v) => _then(v as _$Pending));
 
   @override
-  Pending get _value => super._value as Pending;
+  _$Pending get _value => super._value as _$Pending;
 }
 
 /// @nodoc
@@ -1535,7 +1484,7 @@ class _$Pending extends Pending {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Pending);
+        (other.runtimeType == runtimeType && other is _$Pending);
   }
 
   @override
@@ -1676,20 +1625,21 @@ abstract class Pending extends PaymentStatus {
 }
 
 /// @nodoc
-abstract class $RestrictedCopyWith<$Res> {
-  factory $RestrictedCopyWith(
-          Restricted value, $Res Function(Restricted) then) =
-      _$RestrictedCopyWithImpl<$Res>;
+abstract class _$$RestrictedCopyWith<$Res> {
+  factory _$$RestrictedCopyWith(
+          _$Restricted value, $Res Function(_$Restricted) then) =
+      __$$RestrictedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$RestrictedCopyWithImpl<$Res> extends _$PaymentStatusCopyWithImpl<$Res>
-    implements $RestrictedCopyWith<$Res> {
-  _$RestrictedCopyWithImpl(Restricted _value, $Res Function(Restricted) _then)
-      : super(_value, (v) => _then(v as Restricted));
+class __$$RestrictedCopyWithImpl<$Res> extends _$PaymentStatusCopyWithImpl<$Res>
+    implements _$$RestrictedCopyWith<$Res> {
+  __$$RestrictedCopyWithImpl(
+      _$Restricted _value, $Res Function(_$Restricted) _then)
+      : super(_value, (v) => _then(v as _$Restricted));
 
   @override
-  Restricted get _value => super._value as Restricted;
+  _$Restricted get _value => super._value as _$Restricted;
 }
 
 /// @nodoc
@@ -1700,7 +1650,7 @@ class _$Restricted extends Restricted {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Restricted);
+        (other.runtimeType == runtimeType && other is _$Restricted);
   }
 
   @override
@@ -1841,22 +1791,22 @@ abstract class Restricted extends PaymentStatus {
 }
 
 /// @nodoc
-abstract class $PaymentTimeoutCopyWith<$Res> {
-  factory $PaymentTimeoutCopyWith(
-          PaymentTimeout value, $Res Function(PaymentTimeout) then) =
-      _$PaymentTimeoutCopyWithImpl<$Res>;
+abstract class _$$PaymentTimeoutCopyWith<$Res> {
+  factory _$$PaymentTimeoutCopyWith(
+          _$PaymentTimeout value, $Res Function(_$PaymentTimeout) then) =
+      __$$PaymentTimeoutCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$PaymentTimeoutCopyWithImpl<$Res>
+class __$$PaymentTimeoutCopyWithImpl<$Res>
     extends _$PaymentStatusCopyWithImpl<$Res>
-    implements $PaymentTimeoutCopyWith<$Res> {
-  _$PaymentTimeoutCopyWithImpl(
-      PaymentTimeout _value, $Res Function(PaymentTimeout) _then)
-      : super(_value, (v) => _then(v as PaymentTimeout));
+    implements _$$PaymentTimeoutCopyWith<$Res> {
+  __$$PaymentTimeoutCopyWithImpl(
+      _$PaymentTimeout _value, $Res Function(_$PaymentTimeout) _then)
+      : super(_value, (v) => _then(v as _$PaymentTimeout));
 
   @override
-  PaymentTimeout get _value => super._value as PaymentTimeout;
+  _$PaymentTimeout get _value => super._value as _$PaymentTimeout;
 }
 
 /// @nodoc
@@ -1867,7 +1817,7 @@ class _$PaymentTimeout extends PaymentTimeout {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is PaymentTimeout);
+        (other.runtimeType == runtimeType && other is _$PaymentTimeout);
   }
 
   @override
@@ -2008,22 +1958,22 @@ abstract class PaymentTimeout extends PaymentStatus {
 }
 
 /// @nodoc
-abstract class $PaymentUnknownCopyWith<$Res> {
-  factory $PaymentUnknownCopyWith(
-          PaymentUnknown value, $Res Function(PaymentUnknown) then) =
-      _$PaymentUnknownCopyWithImpl<$Res>;
+abstract class _$$PaymentUnknownCopyWith<$Res> {
+  factory _$$PaymentUnknownCopyWith(
+          _$PaymentUnknown value, $Res Function(_$PaymentUnknown) then) =
+      __$$PaymentUnknownCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$PaymentUnknownCopyWithImpl<$Res>
+class __$$PaymentUnknownCopyWithImpl<$Res>
     extends _$PaymentStatusCopyWithImpl<$Res>
-    implements $PaymentUnknownCopyWith<$Res> {
-  _$PaymentUnknownCopyWithImpl(
-      PaymentUnknown _value, $Res Function(PaymentUnknown) _then)
-      : super(_value, (v) => _then(v as PaymentUnknown));
+    implements _$$PaymentUnknownCopyWith<$Res> {
+  __$$PaymentUnknownCopyWithImpl(
+      _$PaymentUnknown _value, $Res Function(_$PaymentUnknown) _then)
+      : super(_value, (v) => _then(v as _$PaymentUnknown));
 
   @override
-  PaymentUnknown get _value => super._value as PaymentUnknown;
+  _$PaymentUnknown get _value => super._value as _$PaymentUnknown;
 }
 
 /// @nodoc
@@ -2034,7 +1984,7 @@ class _$PaymentUnknown extends PaymentUnknown {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is PaymentUnknown);
+        (other.runtimeType == runtimeType && other is _$PaymentUnknown);
   }
 
   @override
@@ -2175,21 +2125,22 @@ abstract class PaymentUnknown extends PaymentStatus {
 }
 
 /// @nodoc
-abstract class $VoidPaymentCopyWith<$Res> {
-  factory $VoidPaymentCopyWith(
-          VoidPayment value, $Res Function(VoidPayment) then) =
-      _$VoidPaymentCopyWithImpl<$Res>;
+abstract class _$$VoidPaymentCopyWith<$Res> {
+  factory _$$VoidPaymentCopyWith(
+          _$VoidPayment value, $Res Function(_$VoidPayment) then) =
+      __$$VoidPaymentCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$VoidPaymentCopyWithImpl<$Res> extends _$PaymentStatusCopyWithImpl<$Res>
-    implements $VoidPaymentCopyWith<$Res> {
-  _$VoidPaymentCopyWithImpl(
-      VoidPayment _value, $Res Function(VoidPayment) _then)
-      : super(_value, (v) => _then(v as VoidPayment));
+class __$$VoidPaymentCopyWithImpl<$Res>
+    extends _$PaymentStatusCopyWithImpl<$Res>
+    implements _$$VoidPaymentCopyWith<$Res> {
+  __$$VoidPaymentCopyWithImpl(
+      _$VoidPayment _value, $Res Function(_$VoidPayment) _then)
+      : super(_value, (v) => _then(v as _$VoidPayment));
 
   @override
-  VoidPayment get _value => super._value as VoidPayment;
+  _$VoidPayment get _value => super._value as _$VoidPayment;
 }
 
 /// @nodoc
@@ -2200,7 +2151,7 @@ class _$VoidPayment extends VoidPayment {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is VoidPayment);
+        (other.runtimeType == runtimeType && other is _$VoidPayment);
   }
 
   @override

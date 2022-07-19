@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'payment_context_type.dart';
@@ -11,27 +12,7 @@ part of 'payment_context_type.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$PaymentContextTypeTearOff {
-  const _$PaymentContextTypeTearOff();
-
-  M2M m2m() {
-    return const M2M();
-  }
-
-  P2M p2m() {
-    return const P2M();
-  }
-
-  P2P p2p() {
-    return const P2P();
-  }
-}
-
-/// @nodoc
-const $PaymentContextType = _$PaymentContextTypeTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$PaymentContextType {
@@ -99,19 +80,19 @@ class _$PaymentContextTypeCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class $M2MCopyWith<$Res> {
-  factory $M2MCopyWith(M2M value, $Res Function(M2M) then) =
-      _$M2MCopyWithImpl<$Res>;
+abstract class _$$M2MCopyWith<$Res> {
+  factory _$$M2MCopyWith(_$M2M value, $Res Function(_$M2M) then) =
+      __$$M2MCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$M2MCopyWithImpl<$Res> extends _$PaymentContextTypeCopyWithImpl<$Res>
-    implements $M2MCopyWith<$Res> {
-  _$M2MCopyWithImpl(M2M _value, $Res Function(M2M) _then)
-      : super(_value, (v) => _then(v as M2M));
+class __$$M2MCopyWithImpl<$Res> extends _$PaymentContextTypeCopyWithImpl<$Res>
+    implements _$$M2MCopyWith<$Res> {
+  __$$M2MCopyWithImpl(_$M2M _value, $Res Function(_$M2M) _then)
+      : super(_value, (v) => _then(v as _$M2M));
 
   @override
-  M2M get _value => super._value as M2M;
+  _$M2M get _value => super._value as _$M2M;
 }
 
 /// @nodoc
@@ -122,7 +103,7 @@ class _$M2M extends M2M {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is M2M);
+        (other.runtimeType == runtimeType && other is _$M2M);
   }
 
   @override
@@ -203,19 +184,19 @@ abstract class M2M extends PaymentContextType {
 }
 
 /// @nodoc
-abstract class $P2MCopyWith<$Res> {
-  factory $P2MCopyWith(P2M value, $Res Function(P2M) then) =
-      _$P2MCopyWithImpl<$Res>;
+abstract class _$$P2MCopyWith<$Res> {
+  factory _$$P2MCopyWith(_$P2M value, $Res Function(_$P2M) then) =
+      __$$P2MCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$P2MCopyWithImpl<$Res> extends _$PaymentContextTypeCopyWithImpl<$Res>
-    implements $P2MCopyWith<$Res> {
-  _$P2MCopyWithImpl(P2M _value, $Res Function(P2M) _then)
-      : super(_value, (v) => _then(v as P2M));
+class __$$P2MCopyWithImpl<$Res> extends _$PaymentContextTypeCopyWithImpl<$Res>
+    implements _$$P2MCopyWith<$Res> {
+  __$$P2MCopyWithImpl(_$P2M _value, $Res Function(_$P2M) _then)
+      : super(_value, (v) => _then(v as _$P2M));
 
   @override
-  P2M get _value => super._value as P2M;
+  _$P2M get _value => super._value as _$P2M;
 }
 
 /// @nodoc
@@ -226,7 +207,7 @@ class _$P2M extends P2M {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is P2M);
+        (other.runtimeType == runtimeType && other is _$P2M);
   }
 
   @override
@@ -307,19 +288,19 @@ abstract class P2M extends PaymentContextType {
 }
 
 /// @nodoc
-abstract class $P2PCopyWith<$Res> {
-  factory $P2PCopyWith(P2P value, $Res Function(P2P) then) =
-      _$P2PCopyWithImpl<$Res>;
+abstract class _$$P2PCopyWith<$Res> {
+  factory _$$P2PCopyWith(_$P2P value, $Res Function(_$P2P) then) =
+      __$$P2PCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$P2PCopyWithImpl<$Res> extends _$PaymentContextTypeCopyWithImpl<$Res>
-    implements $P2PCopyWith<$Res> {
-  _$P2PCopyWithImpl(P2P _value, $Res Function(P2P) _then)
-      : super(_value, (v) => _then(v as P2P));
+class __$$P2PCopyWithImpl<$Res> extends _$PaymentContextTypeCopyWithImpl<$Res>
+    implements _$$P2PCopyWith<$Res> {
+  __$$P2PCopyWithImpl(_$P2P _value, $Res Function(_$P2P) _then)
+      : super(_value, (v) => _then(v as _$P2P));
 
   @override
-  P2P get _value => super._value as P2P;
+  _$P2P get _value => super._value as _$P2P;
 }
 
 /// @nodoc
@@ -330,7 +311,7 @@ class _$P2P extends P2P {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is P2P);
+        (other.runtimeType == runtimeType && other is _$P2P);
   }
 
   @override

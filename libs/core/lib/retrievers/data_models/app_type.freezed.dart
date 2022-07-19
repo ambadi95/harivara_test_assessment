@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'app_type.dart';
@@ -11,23 +12,7 @@ part of 'app_type.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$AppTypeTearOff {
-  const _$AppTypeTearOff();
-
-  MerchantApp merchant() {
-    return const MerchantApp();
-  }
-
-  CustomerApp customer() {
-    return const CustomerApp();
-  }
-}
-
-/// @nodoc
-const $AppType = _$AppTypeTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$AppType {
@@ -87,21 +72,21 @@ class _$AppTypeCopyWithImpl<$Res> implements $AppTypeCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class $MerchantAppCopyWith<$Res> {
-  factory $MerchantAppCopyWith(
-          MerchantApp value, $Res Function(MerchantApp) then) =
-      _$MerchantAppCopyWithImpl<$Res>;
+abstract class _$$MerchantAppCopyWith<$Res> {
+  factory _$$MerchantAppCopyWith(
+          _$MerchantApp value, $Res Function(_$MerchantApp) then) =
+      __$$MerchantAppCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$MerchantAppCopyWithImpl<$Res> extends _$AppTypeCopyWithImpl<$Res>
-    implements $MerchantAppCopyWith<$Res> {
-  _$MerchantAppCopyWithImpl(
-      MerchantApp _value, $Res Function(MerchantApp) _then)
-      : super(_value, (v) => _then(v as MerchantApp));
+class __$$MerchantAppCopyWithImpl<$Res> extends _$AppTypeCopyWithImpl<$Res>
+    implements _$$MerchantAppCopyWith<$Res> {
+  __$$MerchantAppCopyWithImpl(
+      _$MerchantApp _value, $Res Function(_$MerchantApp) _then)
+      : super(_value, (v) => _then(v as _$MerchantApp));
 
   @override
-  MerchantApp get _value => super._value as MerchantApp;
+  _$MerchantApp get _value => super._value as _$MerchantApp;
 }
 
 /// @nodoc
@@ -112,7 +97,7 @@ class _$MerchantApp extends MerchantApp {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is MerchantApp);
+        (other.runtimeType == runtimeType && other is _$MerchantApp);
   }
 
   @override
@@ -187,21 +172,21 @@ abstract class MerchantApp extends AppType {
 }
 
 /// @nodoc
-abstract class $CustomerAppCopyWith<$Res> {
-  factory $CustomerAppCopyWith(
-          CustomerApp value, $Res Function(CustomerApp) then) =
-      _$CustomerAppCopyWithImpl<$Res>;
+abstract class _$$CustomerAppCopyWith<$Res> {
+  factory _$$CustomerAppCopyWith(
+          _$CustomerApp value, $Res Function(_$CustomerApp) then) =
+      __$$CustomerAppCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$CustomerAppCopyWithImpl<$Res> extends _$AppTypeCopyWithImpl<$Res>
-    implements $CustomerAppCopyWith<$Res> {
-  _$CustomerAppCopyWithImpl(
-      CustomerApp _value, $Res Function(CustomerApp) _then)
-      : super(_value, (v) => _then(v as CustomerApp));
+class __$$CustomerAppCopyWithImpl<$Res> extends _$AppTypeCopyWithImpl<$Res>
+    implements _$$CustomerAppCopyWith<$Res> {
+  __$$CustomerAppCopyWithImpl(
+      _$CustomerApp _value, $Res Function(_$CustomerApp) _then)
+      : super(_value, (v) => _then(v as _$CustomerApp));
 
   @override
-  CustomerApp get _value => super._value as CustomerApp;
+  _$CustomerApp get _value => super._value as _$CustomerApp;
 }
 
 /// @nodoc
@@ -212,7 +197,7 @@ class _$CustomerApp extends CustomerApp {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is CustomerApp);
+        (other.runtimeType == runtimeType && other is _$CustomerApp);
   }
 
   @override

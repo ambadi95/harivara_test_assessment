@@ -1,5 +1,4 @@
-import 'package:shared_data_models/passcode/passcode_request.dart';
-import 'package:shared_data_models/signup/create_response.dart';
+
 
 abstract class IUserClient {
   Future<dynamic> getUserInformation(
@@ -15,10 +14,6 @@ abstract class IUserClient {
     Function(String) onErrorCallback,
   );
 
-  Future<CreateResponse?> login(
-    PasscodeRequest passcodeRequest, [
-    Function(String)? onErrorCallback,
-  ]);
 
   Future<bool> signOut(
     String mobileNumber,

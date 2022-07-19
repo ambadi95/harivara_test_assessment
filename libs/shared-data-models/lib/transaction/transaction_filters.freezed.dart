@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'transaction_filters.dart';
@@ -11,34 +12,7 @@ part of 'transaction_filters.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$TransactionFiltersTearOff {
-  const _$TransactionFiltersTearOff();
-
-  FilterInput filterInput(
-      {DateTime? endDate,
-      DateTime? startDate,
-      String walletId = '12',
-      String operationType = 'COMPLETED',
-      TransactionType? transactionsType = null,
-      int pageNo = 1,
-      int size = 10}) {
-    return FilterInput(
-      endDate: endDate,
-      startDate: startDate,
-      walletId: walletId,
-      operationType: operationType,
-      transactionsType: transactionsType,
-      pageNo: pageNo,
-      size: size,
-    );
-  }
-}
-
-/// @nodoc
-const $TransactionFilters = _$TransactionFiltersTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$TransactionFilters {
@@ -49,7 +23,6 @@ mixin _$TransactionFilters {
   TransactionType? get transactionsType => throw _privateConstructorUsedError;
   int get pageNo => throw _privateConstructorUsedError;
   int get size => throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
@@ -193,11 +166,11 @@ class _$TransactionFiltersCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class $FilterInputCopyWith<$Res>
+abstract class _$$FilterInputCopyWith<$Res>
     implements $TransactionFiltersCopyWith<$Res> {
-  factory $FilterInputCopyWith(
-          FilterInput value, $Res Function(FilterInput) then) =
-      _$FilterInputCopyWithImpl<$Res>;
+  factory _$$FilterInputCopyWith(
+          _$FilterInput value, $Res Function(_$FilterInput) then) =
+      __$$FilterInputCopyWithImpl<$Res>;
   @override
   $Res call(
       {DateTime? endDate,
@@ -213,15 +186,15 @@ abstract class $FilterInputCopyWith<$Res>
 }
 
 /// @nodoc
-class _$FilterInputCopyWithImpl<$Res>
+class __$$FilterInputCopyWithImpl<$Res>
     extends _$TransactionFiltersCopyWithImpl<$Res>
-    implements $FilterInputCopyWith<$Res> {
-  _$FilterInputCopyWithImpl(
-      FilterInput _value, $Res Function(FilterInput) _then)
-      : super(_value, (v) => _then(v as FilterInput));
+    implements _$$FilterInputCopyWith<$Res> {
+  __$$FilterInputCopyWithImpl(
+      _$FilterInput _value, $Res Function(_$FilterInput) _then)
+      : super(_value, (v) => _then(v as _$FilterInput));
 
   @override
-  FilterInput get _value => super._value as FilterInput;
+  _$FilterInput get _value => super._value as _$FilterInput;
 
   @override
   $Res call({
@@ -233,7 +206,7 @@ class _$FilterInputCopyWithImpl<$Res>
     Object? pageNo = freezed,
     Object? size = freezed,
   }) {
-    return _then(FilterInput(
+    return _then(_$FilterInput(
       endDate: endDate == freezed
           ? _value.endDate
           : endDate // ignore: cast_nullable_to_non_nullable
@@ -283,20 +256,20 @@ class _$FilterInput extends FilterInput {
   final DateTime? endDate;
   @override
   final DateTime? startDate;
-  @JsonKey(defaultValue: '12')
   @override
+  @JsonKey()
   final String walletId;
-  @JsonKey(defaultValue: 'COMPLETED')
   @override
+  @JsonKey()
   final String operationType;
-  @JsonKey(defaultValue: null)
   @override
+  @JsonKey()
   final TransactionType? transactionsType;
-  @JsonKey(defaultValue: 1)
   @override
+  @JsonKey()
   final int pageNo;
-  @JsonKey(defaultValue: 10)
   @override
+  @JsonKey()
   final int size;
 
   @override
@@ -308,28 +281,33 @@ class _$FilterInput extends FilterInput {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is FilterInput &&
-            (identical(other.endDate, endDate) || other.endDate == endDate) &&
-            (identical(other.startDate, startDate) ||
-                other.startDate == startDate) &&
-            (identical(other.walletId, walletId) ||
-                other.walletId == walletId) &&
-            (identical(other.operationType, operationType) ||
-                other.operationType == operationType) &&
-            (identical(other.transactionsType, transactionsType) ||
-                other.transactionsType == transactionsType) &&
-            (identical(other.pageNo, pageNo) || other.pageNo == pageNo) &&
-            (identical(other.size, size) || other.size == size));
+            other is _$FilterInput &&
+            const DeepCollectionEquality().equals(other.endDate, endDate) &&
+            const DeepCollectionEquality().equals(other.startDate, startDate) &&
+            const DeepCollectionEquality().equals(other.walletId, walletId) &&
+            const DeepCollectionEquality()
+                .equals(other.operationType, operationType) &&
+            const DeepCollectionEquality()
+                .equals(other.transactionsType, transactionsType) &&
+            const DeepCollectionEquality().equals(other.pageNo, pageNo) &&
+            const DeepCollectionEquality().equals(other.size, size));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, endDate, startDate, walletId,
-      operationType, transactionsType, pageNo, size);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(endDate),
+      const DeepCollectionEquality().hash(startDate),
+      const DeepCollectionEquality().hash(walletId),
+      const DeepCollectionEquality().hash(operationType),
+      const DeepCollectionEquality().hash(transactionsType),
+      const DeepCollectionEquality().hash(pageNo),
+      const DeepCollectionEquality().hash(size));
 
   @JsonKey(ignore: true)
   @override
-  $FilterInputCopyWith<FilterInput> get copyWith =>
-      _$FilterInputCopyWithImpl<FilterInput>(this, _$identity);
+  _$$FilterInputCopyWith<_$FilterInput> get copyWith =>
+      __$$FilterInputCopyWithImpl<_$FilterInput>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -417,13 +395,13 @@ class _$FilterInput extends FilterInput {
 
 abstract class FilterInput extends TransactionFilters {
   const factory FilterInput(
-      {DateTime? endDate,
-      DateTime? startDate,
-      String walletId,
-      String operationType,
-      TransactionType? transactionsType,
-      int pageNo,
-      int size}) = _$FilterInput;
+      {final DateTime? endDate,
+      final DateTime? startDate,
+      final String walletId,
+      final String operationType,
+      final TransactionType? transactionsType,
+      final int pageNo,
+      final int size}) = _$FilterInput;
   const FilterInput._() : super._();
 
   @override
@@ -442,6 +420,6 @@ abstract class FilterInput extends TransactionFilters {
   int get size;
   @override
   @JsonKey(ignore: true)
-  $FilterInputCopyWith<FilterInput> get copyWith =>
+  _$$FilterInputCopyWith<_$FilterInput> get copyWith =>
       throw _privateConstructorUsedError;
 }

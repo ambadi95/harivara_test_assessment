@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'cards_state.dart';
@@ -11,36 +12,7 @@ part of 'cards_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$CardsStateTearOff {
-  const _$CardsStateTearOff();
-
-  NoCards noCards() {
-    return NoCards();
-  }
-
-  ExistingCards existingCards() {
-    return ExistingCards();
-  }
-
-  CardsDeleted cardsDeleted() {
-    return CardsDeleted();
-  }
-
-  CardsScanned cardScanned(String number, int month, int year, bool hasCards) {
-    return CardsScanned(
-      number,
-      month,
-      year,
-      hasCards,
-    );
-  }
-}
-
-/// @nodoc
-const $CardsState = _$CardsStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$CardsState {
@@ -116,19 +88,19 @@ class _$CardsStateCopyWithImpl<$Res> implements $CardsStateCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class $NoCardsCopyWith<$Res> {
-  factory $NoCardsCopyWith(NoCards value, $Res Function(NoCards) then) =
-      _$NoCardsCopyWithImpl<$Res>;
+abstract class _$$NoCardsCopyWith<$Res> {
+  factory _$$NoCardsCopyWith(_$NoCards value, $Res Function(_$NoCards) then) =
+      __$$NoCardsCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$NoCardsCopyWithImpl<$Res> extends _$CardsStateCopyWithImpl<$Res>
-    implements $NoCardsCopyWith<$Res> {
-  _$NoCardsCopyWithImpl(NoCards _value, $Res Function(NoCards) _then)
-      : super(_value, (v) => _then(v as NoCards));
+class __$$NoCardsCopyWithImpl<$Res> extends _$CardsStateCopyWithImpl<$Res>
+    implements _$$NoCardsCopyWith<$Res> {
+  __$$NoCardsCopyWithImpl(_$NoCards _value, $Res Function(_$NoCards) _then)
+      : super(_value, (v) => _then(v as _$NoCards));
 
   @override
-  NoCards get _value => super._value as NoCards;
+  _$NoCards get _value => super._value as _$NoCards;
 }
 
 /// @nodoc
@@ -144,7 +116,7 @@ class _$NoCards implements NoCards {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is NoCards);
+        (other.runtimeType == runtimeType && other is _$NoCards);
   }
 
   @override
@@ -233,21 +205,21 @@ abstract class NoCards implements CardsState {
 }
 
 /// @nodoc
-abstract class $ExistingCardsCopyWith<$Res> {
-  factory $ExistingCardsCopyWith(
-          ExistingCards value, $Res Function(ExistingCards) then) =
-      _$ExistingCardsCopyWithImpl<$Res>;
+abstract class _$$ExistingCardsCopyWith<$Res> {
+  factory _$$ExistingCardsCopyWith(
+          _$ExistingCards value, $Res Function(_$ExistingCards) then) =
+      __$$ExistingCardsCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$ExistingCardsCopyWithImpl<$Res> extends _$CardsStateCopyWithImpl<$Res>
-    implements $ExistingCardsCopyWith<$Res> {
-  _$ExistingCardsCopyWithImpl(
-      ExistingCards _value, $Res Function(ExistingCards) _then)
-      : super(_value, (v) => _then(v as ExistingCards));
+class __$$ExistingCardsCopyWithImpl<$Res> extends _$CardsStateCopyWithImpl<$Res>
+    implements _$$ExistingCardsCopyWith<$Res> {
+  __$$ExistingCardsCopyWithImpl(
+      _$ExistingCards _value, $Res Function(_$ExistingCards) _then)
+      : super(_value, (v) => _then(v as _$ExistingCards));
 
   @override
-  ExistingCards get _value => super._value as ExistingCards;
+  _$ExistingCards get _value => super._value as _$ExistingCards;
 }
 
 /// @nodoc
@@ -263,7 +235,7 @@ class _$ExistingCards implements ExistingCards {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is ExistingCards);
+        (other.runtimeType == runtimeType && other is _$ExistingCards);
   }
 
   @override
@@ -352,21 +324,21 @@ abstract class ExistingCards implements CardsState {
 }
 
 /// @nodoc
-abstract class $CardsDeletedCopyWith<$Res> {
-  factory $CardsDeletedCopyWith(
-          CardsDeleted value, $Res Function(CardsDeleted) then) =
-      _$CardsDeletedCopyWithImpl<$Res>;
+abstract class _$$CardsDeletedCopyWith<$Res> {
+  factory _$$CardsDeletedCopyWith(
+          _$CardsDeleted value, $Res Function(_$CardsDeleted) then) =
+      __$$CardsDeletedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$CardsDeletedCopyWithImpl<$Res> extends _$CardsStateCopyWithImpl<$Res>
-    implements $CardsDeletedCopyWith<$Res> {
-  _$CardsDeletedCopyWithImpl(
-      CardsDeleted _value, $Res Function(CardsDeleted) _then)
-      : super(_value, (v) => _then(v as CardsDeleted));
+class __$$CardsDeletedCopyWithImpl<$Res> extends _$CardsStateCopyWithImpl<$Res>
+    implements _$$CardsDeletedCopyWith<$Res> {
+  __$$CardsDeletedCopyWithImpl(
+      _$CardsDeleted _value, $Res Function(_$CardsDeleted) _then)
+      : super(_value, (v) => _then(v as _$CardsDeleted));
 
   @override
-  CardsDeleted get _value => super._value as CardsDeleted;
+  _$CardsDeleted get _value => super._value as _$CardsDeleted;
 }
 
 /// @nodoc
@@ -382,7 +354,7 @@ class _$CardsDeleted implements CardsDeleted {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is CardsDeleted);
+        (other.runtimeType == runtimeType && other is _$CardsDeleted);
   }
 
   @override
@@ -471,22 +443,22 @@ abstract class CardsDeleted implements CardsState {
 }
 
 /// @nodoc
-abstract class $CardsScannedCopyWith<$Res> {
-  factory $CardsScannedCopyWith(
-          CardsScanned value, $Res Function(CardsScanned) then) =
-      _$CardsScannedCopyWithImpl<$Res>;
+abstract class _$$CardsScannedCopyWith<$Res> {
+  factory _$$CardsScannedCopyWith(
+          _$CardsScanned value, $Res Function(_$CardsScanned) then) =
+      __$$CardsScannedCopyWithImpl<$Res>;
   $Res call({String number, int month, int year, bool hasCards});
 }
 
 /// @nodoc
-class _$CardsScannedCopyWithImpl<$Res> extends _$CardsStateCopyWithImpl<$Res>
-    implements $CardsScannedCopyWith<$Res> {
-  _$CardsScannedCopyWithImpl(
-      CardsScanned _value, $Res Function(CardsScanned) _then)
-      : super(_value, (v) => _then(v as CardsScanned));
+class __$$CardsScannedCopyWithImpl<$Res> extends _$CardsStateCopyWithImpl<$Res>
+    implements _$$CardsScannedCopyWith<$Res> {
+  __$$CardsScannedCopyWithImpl(
+      _$CardsScanned _value, $Res Function(_$CardsScanned) _then)
+      : super(_value, (v) => _then(v as _$CardsScanned));
 
   @override
-  CardsScanned get _value => super._value as CardsScanned;
+  _$CardsScanned get _value => super._value as _$CardsScanned;
 
   @override
   $Res call({
@@ -495,7 +467,7 @@ class _$CardsScannedCopyWithImpl<$Res> extends _$CardsStateCopyWithImpl<$Res>
     Object? year = freezed,
     Object? hasCards = freezed,
   }) {
-    return _then(CardsScanned(
+    return _then(_$CardsScanned(
       number == freezed
           ? _value.number
           : number // ignore: cast_nullable_to_non_nullable
@@ -539,7 +511,7 @@ class _$CardsScanned implements CardsScanned {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is CardsScanned &&
+            other is _$CardsScanned &&
             const DeepCollectionEquality().equals(other.number, number) &&
             const DeepCollectionEquality().equals(other.month, month) &&
             const DeepCollectionEquality().equals(other.year, year) &&
@@ -556,8 +528,8 @@ class _$CardsScanned implements CardsScanned {
 
   @JsonKey(ignore: true)
   @override
-  $CardsScannedCopyWith<CardsScanned> get copyWith =>
-      _$CardsScannedCopyWithImpl<CardsScanned>(this, _$identity);
+  _$$CardsScannedCopyWith<_$CardsScanned> get copyWith =>
+      __$$CardsScannedCopyWithImpl<_$CardsScanned>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -638,14 +610,14 @@ class _$CardsScanned implements CardsScanned {
 }
 
 abstract class CardsScanned implements CardsState {
-  factory CardsScanned(String number, int month, int year, bool hasCards) =
-      _$CardsScanned;
+  factory CardsScanned(final String number, final int month, final int year,
+      final bool hasCards) = _$CardsScanned;
 
   String get number;
   int get month;
   int get year;
   bool get hasCards;
   @JsonKey(ignore: true)
-  $CardsScannedCopyWith<CardsScanned> get copyWith =>
+  _$$CardsScannedCopyWith<_$CardsScanned> get copyWith =>
       throw _privateConstructorUsedError;
 }

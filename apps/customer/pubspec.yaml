@@ -28,9 +28,20 @@ dependencies:
   config:
     path: ../customer/config
 
+  core:
+    path: ../../libs/core/
 
+  network_manager:
+    path: ../../libs/network-manager/
 
+  task_manager:
+    path: ../../libs/task-manager/
 
+  shared_data_models:
+    path: ../../libs/shared-data-models/
+
+  widget_library:
+    path: ../../libs/widgets/
 
 
 dev_dependencies:

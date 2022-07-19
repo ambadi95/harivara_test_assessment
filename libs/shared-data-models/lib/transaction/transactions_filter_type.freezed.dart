@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'transactions_filter_type.dart';
@@ -11,39 +12,7 @@ part of 'transactions_filter_type.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$TransactionsFilterTypeTearOff {
-  const _$TransactionsFilterTypeTearOff();
-
-  PreviousMonth previousMonth() {
-    return const PreviousMonth();
-  }
-
-  LastThreeMotnhs lastThreeMonths() {
-    return const LastThreeMotnhs();
-  }
-
-  LastYear lastYear() {
-    return const LastYear();
-  }
-
-  AllTransactions allTransactions() {
-    return const AllTransactions();
-  }
-
-  SelectDates selectDates(
-      {required DateTime endDate, required DateTime startDate}) {
-    return SelectDates(
-      endDate: endDate,
-      startDate: startDate,
-    );
-  }
-}
-
-/// @nodoc
-const $TransactionsFilterType = _$TransactionsFilterTypeTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$TransactionsFilterType {
@@ -123,22 +92,22 @@ class _$TransactionsFilterTypeCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class $PreviousMonthCopyWith<$Res> {
-  factory $PreviousMonthCopyWith(
-          PreviousMonth value, $Res Function(PreviousMonth) then) =
-      _$PreviousMonthCopyWithImpl<$Res>;
+abstract class _$$PreviousMonthCopyWith<$Res> {
+  factory _$$PreviousMonthCopyWith(
+          _$PreviousMonth value, $Res Function(_$PreviousMonth) then) =
+      __$$PreviousMonthCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$PreviousMonthCopyWithImpl<$Res>
+class __$$PreviousMonthCopyWithImpl<$Res>
     extends _$TransactionsFilterTypeCopyWithImpl<$Res>
-    implements $PreviousMonthCopyWith<$Res> {
-  _$PreviousMonthCopyWithImpl(
-      PreviousMonth _value, $Res Function(PreviousMonth) _then)
-      : super(_value, (v) => _then(v as PreviousMonth));
+    implements _$$PreviousMonthCopyWith<$Res> {
+  __$$PreviousMonthCopyWithImpl(
+      _$PreviousMonth _value, $Res Function(_$PreviousMonth) _then)
+      : super(_value, (v) => _then(v as _$PreviousMonth));
 
   @override
-  PreviousMonth get _value => super._value as PreviousMonth;
+  _$PreviousMonth get _value => super._value as _$PreviousMonth;
 }
 
 /// @nodoc
@@ -154,7 +123,7 @@ class _$PreviousMonth extends PreviousMonth {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is PreviousMonth);
+        (other.runtimeType == runtimeType && other is _$PreviousMonth);
   }
 
   @override
@@ -247,22 +216,22 @@ abstract class PreviousMonth extends TransactionsFilterType {
 }
 
 /// @nodoc
-abstract class $LastThreeMotnhsCopyWith<$Res> {
-  factory $LastThreeMotnhsCopyWith(
-          LastThreeMotnhs value, $Res Function(LastThreeMotnhs) then) =
-      _$LastThreeMotnhsCopyWithImpl<$Res>;
+abstract class _$$LastThreeMotnhsCopyWith<$Res> {
+  factory _$$LastThreeMotnhsCopyWith(
+          _$LastThreeMotnhs value, $Res Function(_$LastThreeMotnhs) then) =
+      __$$LastThreeMotnhsCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$LastThreeMotnhsCopyWithImpl<$Res>
+class __$$LastThreeMotnhsCopyWithImpl<$Res>
     extends _$TransactionsFilterTypeCopyWithImpl<$Res>
-    implements $LastThreeMotnhsCopyWith<$Res> {
-  _$LastThreeMotnhsCopyWithImpl(
-      LastThreeMotnhs _value, $Res Function(LastThreeMotnhs) _then)
-      : super(_value, (v) => _then(v as LastThreeMotnhs));
+    implements _$$LastThreeMotnhsCopyWith<$Res> {
+  __$$LastThreeMotnhsCopyWithImpl(
+      _$LastThreeMotnhs _value, $Res Function(_$LastThreeMotnhs) _then)
+      : super(_value, (v) => _then(v as _$LastThreeMotnhs));
 
   @override
-  LastThreeMotnhs get _value => super._value as LastThreeMotnhs;
+  _$LastThreeMotnhs get _value => super._value as _$LastThreeMotnhs;
 }
 
 /// @nodoc
@@ -278,7 +247,7 @@ class _$LastThreeMotnhs extends LastThreeMotnhs {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is LastThreeMotnhs);
+        (other.runtimeType == runtimeType && other is _$LastThreeMotnhs);
   }
 
   @override
@@ -371,20 +340,21 @@ abstract class LastThreeMotnhs extends TransactionsFilterType {
 }
 
 /// @nodoc
-abstract class $LastYearCopyWith<$Res> {
-  factory $LastYearCopyWith(LastYear value, $Res Function(LastYear) then) =
-      _$LastYearCopyWithImpl<$Res>;
+abstract class _$$LastYearCopyWith<$Res> {
+  factory _$$LastYearCopyWith(
+          _$LastYear value, $Res Function(_$LastYear) then) =
+      __$$LastYearCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$LastYearCopyWithImpl<$Res>
+class __$$LastYearCopyWithImpl<$Res>
     extends _$TransactionsFilterTypeCopyWithImpl<$Res>
-    implements $LastYearCopyWith<$Res> {
-  _$LastYearCopyWithImpl(LastYear _value, $Res Function(LastYear) _then)
-      : super(_value, (v) => _then(v as LastYear));
+    implements _$$LastYearCopyWith<$Res> {
+  __$$LastYearCopyWithImpl(_$LastYear _value, $Res Function(_$LastYear) _then)
+      : super(_value, (v) => _then(v as _$LastYear));
 
   @override
-  LastYear get _value => super._value as LastYear;
+  _$LastYear get _value => super._value as _$LastYear;
 }
 
 /// @nodoc
@@ -400,7 +370,7 @@ class _$LastYear extends LastYear {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is LastYear);
+        (other.runtimeType == runtimeType && other is _$LastYear);
   }
 
   @override
@@ -493,22 +463,22 @@ abstract class LastYear extends TransactionsFilterType {
 }
 
 /// @nodoc
-abstract class $AllTransactionsCopyWith<$Res> {
-  factory $AllTransactionsCopyWith(
-          AllTransactions value, $Res Function(AllTransactions) then) =
-      _$AllTransactionsCopyWithImpl<$Res>;
+abstract class _$$AllTransactionsCopyWith<$Res> {
+  factory _$$AllTransactionsCopyWith(
+          _$AllTransactions value, $Res Function(_$AllTransactions) then) =
+      __$$AllTransactionsCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$AllTransactionsCopyWithImpl<$Res>
+class __$$AllTransactionsCopyWithImpl<$Res>
     extends _$TransactionsFilterTypeCopyWithImpl<$Res>
-    implements $AllTransactionsCopyWith<$Res> {
-  _$AllTransactionsCopyWithImpl(
-      AllTransactions _value, $Res Function(AllTransactions) _then)
-      : super(_value, (v) => _then(v as AllTransactions));
+    implements _$$AllTransactionsCopyWith<$Res> {
+  __$$AllTransactionsCopyWithImpl(
+      _$AllTransactions _value, $Res Function(_$AllTransactions) _then)
+      : super(_value, (v) => _then(v as _$AllTransactions));
 
   @override
-  AllTransactions get _value => super._value as AllTransactions;
+  _$AllTransactions get _value => super._value as _$AllTransactions;
 }
 
 /// @nodoc
@@ -524,7 +494,7 @@ class _$AllTransactions extends AllTransactions {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is AllTransactions);
+        (other.runtimeType == runtimeType && other is _$AllTransactions);
   }
 
   @override
@@ -617,30 +587,30 @@ abstract class AllTransactions extends TransactionsFilterType {
 }
 
 /// @nodoc
-abstract class $SelectDatesCopyWith<$Res> {
-  factory $SelectDatesCopyWith(
-          SelectDates value, $Res Function(SelectDates) then) =
-      _$SelectDatesCopyWithImpl<$Res>;
+abstract class _$$SelectDatesCopyWith<$Res> {
+  factory _$$SelectDatesCopyWith(
+          _$SelectDates value, $Res Function(_$SelectDates) then) =
+      __$$SelectDatesCopyWithImpl<$Res>;
   $Res call({DateTime endDate, DateTime startDate});
 }
 
 /// @nodoc
-class _$SelectDatesCopyWithImpl<$Res>
+class __$$SelectDatesCopyWithImpl<$Res>
     extends _$TransactionsFilterTypeCopyWithImpl<$Res>
-    implements $SelectDatesCopyWith<$Res> {
-  _$SelectDatesCopyWithImpl(
-      SelectDates _value, $Res Function(SelectDates) _then)
-      : super(_value, (v) => _then(v as SelectDates));
+    implements _$$SelectDatesCopyWith<$Res> {
+  __$$SelectDatesCopyWithImpl(
+      _$SelectDates _value, $Res Function(_$SelectDates) _then)
+      : super(_value, (v) => _then(v as _$SelectDates));
 
   @override
-  SelectDates get _value => super._value as SelectDates;
+  _$SelectDates get _value => super._value as _$SelectDates;
 
   @override
   $Res call({
     Object? endDate = freezed,
     Object? startDate = freezed,
   }) {
-    return _then(SelectDates(
+    return _then(_$SelectDates(
       endDate: endDate == freezed
           ? _value.endDate
           : endDate // ignore: cast_nullable_to_non_nullable
@@ -673,19 +643,21 @@ class _$SelectDates extends SelectDates {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is SelectDates &&
-            (identical(other.endDate, endDate) || other.endDate == endDate) &&
-            (identical(other.startDate, startDate) ||
-                other.startDate == startDate));
+            other is _$SelectDates &&
+            const DeepCollectionEquality().equals(other.endDate, endDate) &&
+            const DeepCollectionEquality().equals(other.startDate, startDate));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, endDate, startDate);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(endDate),
+      const DeepCollectionEquality().hash(startDate));
 
   @JsonKey(ignore: true)
   @override
-  $SelectDatesCopyWith<SelectDates> get copyWith =>
-      _$SelectDatesCopyWithImpl<SelectDates>(this, _$identity);
+  _$$SelectDatesCopyWith<_$SelectDates> get copyWith =>
+      __$$SelectDatesCopyWithImpl<_$SelectDates>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -770,12 +742,13 @@ class _$SelectDates extends SelectDates {
 
 abstract class SelectDates extends TransactionsFilterType {
   const factory SelectDates(
-      {required DateTime endDate, required DateTime startDate}) = _$SelectDates;
+      {required final DateTime endDate,
+      required final DateTime startDate}) = _$SelectDates;
   const SelectDates._() : super._();
 
   DateTime get endDate;
   DateTime get startDate;
   @JsonKey(ignore: true)
-  $SelectDatesCopyWith<SelectDates> get copyWith =>
+  _$$SelectDatesCopyWith<_$SelectDates> get copyWith =>
       throw _privateConstructorUsedError;
 }

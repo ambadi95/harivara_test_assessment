@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'card_type.dart';
@@ -11,23 +12,7 @@ part of 'card_type.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$CardTypeTearOff {
-  const _$CardTypeTearOff();
-
-  DebitCard debit() {
-    return const DebitCard();
-  }
-
-  CreditCard credit() {
-    return const CreditCard();
-  }
-}
-
-/// @nodoc
-const $CardType = _$CardTypeTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$CardType {
@@ -87,19 +72,21 @@ class _$CardTypeCopyWithImpl<$Res> implements $CardTypeCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class $DebitCardCopyWith<$Res> {
-  factory $DebitCardCopyWith(DebitCard value, $Res Function(DebitCard) then) =
-      _$DebitCardCopyWithImpl<$Res>;
+abstract class _$$DebitCardCopyWith<$Res> {
+  factory _$$DebitCardCopyWith(
+          _$DebitCard value, $Res Function(_$DebitCard) then) =
+      __$$DebitCardCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$DebitCardCopyWithImpl<$Res> extends _$CardTypeCopyWithImpl<$Res>
-    implements $DebitCardCopyWith<$Res> {
-  _$DebitCardCopyWithImpl(DebitCard _value, $Res Function(DebitCard) _then)
-      : super(_value, (v) => _then(v as DebitCard));
+class __$$DebitCardCopyWithImpl<$Res> extends _$CardTypeCopyWithImpl<$Res>
+    implements _$$DebitCardCopyWith<$Res> {
+  __$$DebitCardCopyWithImpl(
+      _$DebitCard _value, $Res Function(_$DebitCard) _then)
+      : super(_value, (v) => _then(v as _$DebitCard));
 
   @override
-  DebitCard get _value => super._value as DebitCard;
+  _$DebitCard get _value => super._value as _$DebitCard;
 }
 
 /// @nodoc
@@ -110,7 +97,7 @@ class _$DebitCard extends DebitCard {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is DebitCard);
+        (other.runtimeType == runtimeType && other is _$DebitCard);
   }
 
   @override
@@ -185,20 +172,21 @@ abstract class DebitCard extends CardType {
 }
 
 /// @nodoc
-abstract class $CreditCardCopyWith<$Res> {
-  factory $CreditCardCopyWith(
-          CreditCard value, $Res Function(CreditCard) then) =
-      _$CreditCardCopyWithImpl<$Res>;
+abstract class _$$CreditCardCopyWith<$Res> {
+  factory _$$CreditCardCopyWith(
+          _$CreditCard value, $Res Function(_$CreditCard) then) =
+      __$$CreditCardCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$CreditCardCopyWithImpl<$Res> extends _$CardTypeCopyWithImpl<$Res>
-    implements $CreditCardCopyWith<$Res> {
-  _$CreditCardCopyWithImpl(CreditCard _value, $Res Function(CreditCard) _then)
-      : super(_value, (v) => _then(v as CreditCard));
+class __$$CreditCardCopyWithImpl<$Res> extends _$CardTypeCopyWithImpl<$Res>
+    implements _$$CreditCardCopyWith<$Res> {
+  __$$CreditCardCopyWithImpl(
+      _$CreditCard _value, $Res Function(_$CreditCard) _then)
+      : super(_value, (v) => _then(v as _$CreditCard));
 
   @override
-  CreditCard get _value => super._value as CreditCard;
+  _$CreditCard get _value => super._value as _$CreditCard;
 }
 
 /// @nodoc
@@ -209,7 +197,7 @@ class _$CreditCard extends CreditCard {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is CreditCard);
+        (other.runtimeType == runtimeType && other is _$CreditCard);
   }
 
   @override

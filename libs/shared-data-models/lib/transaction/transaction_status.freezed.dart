@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'transaction_status.dart';
@@ -11,39 +12,7 @@ part of 'transaction_status.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$TransactionStatusTearOff {
-  const _$TransactionStatusTearOff();
-
-  Success success() {
-    return const Success();
-  }
-
-  Pending pending() {
-    return const Pending();
-  }
-
-  Failed failed() {
-    return const Failed();
-  }
-
-  Queued queued() {
-    return const Queued();
-  }
-
-  Cancelled cancelled() {
-    return const Cancelled();
-  }
-
-  TransactionStatusNA notAvailable() {
-    return const TransactionStatusNA();
-  }
-}
-
-/// @nodoc
-const $TransactionStatus = _$TransactionStatusTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$TransactionStatus {
@@ -129,19 +98,20 @@ class _$TransactionStatusCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class $SuccessCopyWith<$Res> {
-  factory $SuccessCopyWith(Success value, $Res Function(Success) then) =
-      _$SuccessCopyWithImpl<$Res>;
+abstract class _$$SuccessCopyWith<$Res> {
+  factory _$$SuccessCopyWith(_$Success value, $Res Function(_$Success) then) =
+      __$$SuccessCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$SuccessCopyWithImpl<$Res> extends _$TransactionStatusCopyWithImpl<$Res>
-    implements $SuccessCopyWith<$Res> {
-  _$SuccessCopyWithImpl(Success _value, $Res Function(Success) _then)
-      : super(_value, (v) => _then(v as Success));
+class __$$SuccessCopyWithImpl<$Res>
+    extends _$TransactionStatusCopyWithImpl<$Res>
+    implements _$$SuccessCopyWith<$Res> {
+  __$$SuccessCopyWithImpl(_$Success _value, $Res Function(_$Success) _then)
+      : super(_value, (v) => _then(v as _$Success));
 
   @override
-  Success get _value => super._value as Success;
+  _$Success get _value => super._value as _$Success;
 }
 
 /// @nodoc
@@ -152,7 +122,7 @@ class _$Success extends Success {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Success);
+        (other.runtimeType == runtimeType && other is _$Success);
   }
 
   @override
@@ -251,19 +221,20 @@ abstract class Success extends TransactionStatus {
 }
 
 /// @nodoc
-abstract class $PendingCopyWith<$Res> {
-  factory $PendingCopyWith(Pending value, $Res Function(Pending) then) =
-      _$PendingCopyWithImpl<$Res>;
+abstract class _$$PendingCopyWith<$Res> {
+  factory _$$PendingCopyWith(_$Pending value, $Res Function(_$Pending) then) =
+      __$$PendingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$PendingCopyWithImpl<$Res> extends _$TransactionStatusCopyWithImpl<$Res>
-    implements $PendingCopyWith<$Res> {
-  _$PendingCopyWithImpl(Pending _value, $Res Function(Pending) _then)
-      : super(_value, (v) => _then(v as Pending));
+class __$$PendingCopyWithImpl<$Res>
+    extends _$TransactionStatusCopyWithImpl<$Res>
+    implements _$$PendingCopyWith<$Res> {
+  __$$PendingCopyWithImpl(_$Pending _value, $Res Function(_$Pending) _then)
+      : super(_value, (v) => _then(v as _$Pending));
 
   @override
-  Pending get _value => super._value as Pending;
+  _$Pending get _value => super._value as _$Pending;
 }
 
 /// @nodoc
@@ -274,7 +245,7 @@ class _$Pending extends Pending {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Pending);
+        (other.runtimeType == runtimeType && other is _$Pending);
   }
 
   @override
@@ -373,19 +344,19 @@ abstract class Pending extends TransactionStatus {
 }
 
 /// @nodoc
-abstract class $FailedCopyWith<$Res> {
-  factory $FailedCopyWith(Failed value, $Res Function(Failed) then) =
-      _$FailedCopyWithImpl<$Res>;
+abstract class _$$FailedCopyWith<$Res> {
+  factory _$$FailedCopyWith(_$Failed value, $Res Function(_$Failed) then) =
+      __$$FailedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$FailedCopyWithImpl<$Res> extends _$TransactionStatusCopyWithImpl<$Res>
-    implements $FailedCopyWith<$Res> {
-  _$FailedCopyWithImpl(Failed _value, $Res Function(Failed) _then)
-      : super(_value, (v) => _then(v as Failed));
+class __$$FailedCopyWithImpl<$Res> extends _$TransactionStatusCopyWithImpl<$Res>
+    implements _$$FailedCopyWith<$Res> {
+  __$$FailedCopyWithImpl(_$Failed _value, $Res Function(_$Failed) _then)
+      : super(_value, (v) => _then(v as _$Failed));
 
   @override
-  Failed get _value => super._value as Failed;
+  _$Failed get _value => super._value as _$Failed;
 }
 
 /// @nodoc
@@ -396,7 +367,7 @@ class _$Failed extends Failed {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Failed);
+        (other.runtimeType == runtimeType && other is _$Failed);
   }
 
   @override
@@ -495,19 +466,19 @@ abstract class Failed extends TransactionStatus {
 }
 
 /// @nodoc
-abstract class $QueuedCopyWith<$Res> {
-  factory $QueuedCopyWith(Queued value, $Res Function(Queued) then) =
-      _$QueuedCopyWithImpl<$Res>;
+abstract class _$$QueuedCopyWith<$Res> {
+  factory _$$QueuedCopyWith(_$Queued value, $Res Function(_$Queued) then) =
+      __$$QueuedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$QueuedCopyWithImpl<$Res> extends _$TransactionStatusCopyWithImpl<$Res>
-    implements $QueuedCopyWith<$Res> {
-  _$QueuedCopyWithImpl(Queued _value, $Res Function(Queued) _then)
-      : super(_value, (v) => _then(v as Queued));
+class __$$QueuedCopyWithImpl<$Res> extends _$TransactionStatusCopyWithImpl<$Res>
+    implements _$$QueuedCopyWith<$Res> {
+  __$$QueuedCopyWithImpl(_$Queued _value, $Res Function(_$Queued) _then)
+      : super(_value, (v) => _then(v as _$Queued));
 
   @override
-  Queued get _value => super._value as Queued;
+  _$Queued get _value => super._value as _$Queued;
 }
 
 /// @nodoc
@@ -518,7 +489,7 @@ class _$Queued extends Queued {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Queued);
+        (other.runtimeType == runtimeType && other is _$Queued);
   }
 
   @override
@@ -617,20 +588,22 @@ abstract class Queued extends TransactionStatus {
 }
 
 /// @nodoc
-abstract class $CancelledCopyWith<$Res> {
-  factory $CancelledCopyWith(Cancelled value, $Res Function(Cancelled) then) =
-      _$CancelledCopyWithImpl<$Res>;
+abstract class _$$CancelledCopyWith<$Res> {
+  factory _$$CancelledCopyWith(
+          _$Cancelled value, $Res Function(_$Cancelled) then) =
+      __$$CancelledCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$CancelledCopyWithImpl<$Res>
+class __$$CancelledCopyWithImpl<$Res>
     extends _$TransactionStatusCopyWithImpl<$Res>
-    implements $CancelledCopyWith<$Res> {
-  _$CancelledCopyWithImpl(Cancelled _value, $Res Function(Cancelled) _then)
-      : super(_value, (v) => _then(v as Cancelled));
+    implements _$$CancelledCopyWith<$Res> {
+  __$$CancelledCopyWithImpl(
+      _$Cancelled _value, $Res Function(_$Cancelled) _then)
+      : super(_value, (v) => _then(v as _$Cancelled));
 
   @override
-  Cancelled get _value => super._value as Cancelled;
+  _$Cancelled get _value => super._value as _$Cancelled;
 }
 
 /// @nodoc
@@ -641,7 +614,7 @@ class _$Cancelled extends Cancelled {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Cancelled);
+        (other.runtimeType == runtimeType && other is _$Cancelled);
   }
 
   @override
@@ -740,22 +713,22 @@ abstract class Cancelled extends TransactionStatus {
 }
 
 /// @nodoc
-abstract class $TransactionStatusNACopyWith<$Res> {
-  factory $TransactionStatusNACopyWith(
-          TransactionStatusNA value, $Res Function(TransactionStatusNA) then) =
-      _$TransactionStatusNACopyWithImpl<$Res>;
+abstract class _$$TransactionStatusNACopyWith<$Res> {
+  factory _$$TransactionStatusNACopyWith(_$TransactionStatusNA value,
+          $Res Function(_$TransactionStatusNA) then) =
+      __$$TransactionStatusNACopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$TransactionStatusNACopyWithImpl<$Res>
+class __$$TransactionStatusNACopyWithImpl<$Res>
     extends _$TransactionStatusCopyWithImpl<$Res>
-    implements $TransactionStatusNACopyWith<$Res> {
-  _$TransactionStatusNACopyWithImpl(
-      TransactionStatusNA _value, $Res Function(TransactionStatusNA) _then)
-      : super(_value, (v) => _then(v as TransactionStatusNA));
+    implements _$$TransactionStatusNACopyWith<$Res> {
+  __$$TransactionStatusNACopyWithImpl(
+      _$TransactionStatusNA _value, $Res Function(_$TransactionStatusNA) _then)
+      : super(_value, (v) => _then(v as _$TransactionStatusNA));
 
   @override
-  TransactionStatusNA get _value => super._value as TransactionStatusNA;
+  _$TransactionStatusNA get _value => super._value as _$TransactionStatusNA;
 }
 
 /// @nodoc
@@ -766,7 +739,7 @@ class _$TransactionStatusNA extends TransactionStatusNA {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is TransactionStatusNA);
+        (other.runtimeType == runtimeType && other is _$TransactionStatusNA);
   }
 
   @override

@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'passcode_attempt_type.dart';
@@ -11,31 +12,7 @@ part of 'passcode_attempt_type.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$PasscodeAttemptTypeTearOff {
-  const _$PasscodeAttemptTypeTearOff();
-
-  InitialAttempt initialAttempt() {
-    return const InitialAttempt();
-  }
-
-  FirstAttempt firstAttempt() {
-    return const FirstAttempt();
-  }
-
-  SecondAttempt secondAttempt() {
-    return const SecondAttempt();
-  }
-
-  ThirdAttempt thirdAttempt() {
-    return const ThirdAttempt();
-  }
-}
-
-/// @nodoc
-const $PasscodeAttemptType = _$PasscodeAttemptTypeTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$PasscodeAttemptType {
@@ -109,22 +86,22 @@ class _$PasscodeAttemptTypeCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class $InitialAttemptCopyWith<$Res> {
-  factory $InitialAttemptCopyWith(
-          InitialAttempt value, $Res Function(InitialAttempt) then) =
-      _$InitialAttemptCopyWithImpl<$Res>;
+abstract class _$$InitialAttemptCopyWith<$Res> {
+  factory _$$InitialAttemptCopyWith(
+          _$InitialAttempt value, $Res Function(_$InitialAttempt) then) =
+      __$$InitialAttemptCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$InitialAttemptCopyWithImpl<$Res>
+class __$$InitialAttemptCopyWithImpl<$Res>
     extends _$PasscodeAttemptTypeCopyWithImpl<$Res>
-    implements $InitialAttemptCopyWith<$Res> {
-  _$InitialAttemptCopyWithImpl(
-      InitialAttempt _value, $Res Function(InitialAttempt) _then)
-      : super(_value, (v) => _then(v as InitialAttempt));
+    implements _$$InitialAttemptCopyWith<$Res> {
+  __$$InitialAttemptCopyWithImpl(
+      _$InitialAttempt _value, $Res Function(_$InitialAttempt) _then)
+      : super(_value, (v) => _then(v as _$InitialAttempt));
 
   @override
-  InitialAttempt get _value => super._value as InitialAttempt;
+  _$InitialAttempt get _value => super._value as _$InitialAttempt;
 }
 
 /// @nodoc
@@ -140,7 +117,7 @@ class _$InitialAttempt extends InitialAttempt {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is InitialAttempt);
+        (other.runtimeType == runtimeType && other is _$InitialAttempt);
   }
 
   @override
@@ -227,22 +204,22 @@ abstract class InitialAttempt extends PasscodeAttemptType {
 }
 
 /// @nodoc
-abstract class $FirstAttemptCopyWith<$Res> {
-  factory $FirstAttemptCopyWith(
-          FirstAttempt value, $Res Function(FirstAttempt) then) =
-      _$FirstAttemptCopyWithImpl<$Res>;
+abstract class _$$FirstAttemptCopyWith<$Res> {
+  factory _$$FirstAttemptCopyWith(
+          _$FirstAttempt value, $Res Function(_$FirstAttempt) then) =
+      __$$FirstAttemptCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$FirstAttemptCopyWithImpl<$Res>
+class __$$FirstAttemptCopyWithImpl<$Res>
     extends _$PasscodeAttemptTypeCopyWithImpl<$Res>
-    implements $FirstAttemptCopyWith<$Res> {
-  _$FirstAttemptCopyWithImpl(
-      FirstAttempt _value, $Res Function(FirstAttempt) _then)
-      : super(_value, (v) => _then(v as FirstAttempt));
+    implements _$$FirstAttemptCopyWith<$Res> {
+  __$$FirstAttemptCopyWithImpl(
+      _$FirstAttempt _value, $Res Function(_$FirstAttempt) _then)
+      : super(_value, (v) => _then(v as _$FirstAttempt));
 
   @override
-  FirstAttempt get _value => super._value as FirstAttempt;
+  _$FirstAttempt get _value => super._value as _$FirstAttempt;
 }
 
 /// @nodoc
@@ -258,7 +235,7 @@ class _$FirstAttempt extends FirstAttempt {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is FirstAttempt);
+        (other.runtimeType == runtimeType && other is _$FirstAttempt);
   }
 
   @override
@@ -345,22 +322,22 @@ abstract class FirstAttempt extends PasscodeAttemptType {
 }
 
 /// @nodoc
-abstract class $SecondAttemptCopyWith<$Res> {
-  factory $SecondAttemptCopyWith(
-          SecondAttempt value, $Res Function(SecondAttempt) then) =
-      _$SecondAttemptCopyWithImpl<$Res>;
+abstract class _$$SecondAttemptCopyWith<$Res> {
+  factory _$$SecondAttemptCopyWith(
+          _$SecondAttempt value, $Res Function(_$SecondAttempt) then) =
+      __$$SecondAttemptCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$SecondAttemptCopyWithImpl<$Res>
+class __$$SecondAttemptCopyWithImpl<$Res>
     extends _$PasscodeAttemptTypeCopyWithImpl<$Res>
-    implements $SecondAttemptCopyWith<$Res> {
-  _$SecondAttemptCopyWithImpl(
-      SecondAttempt _value, $Res Function(SecondAttempt) _then)
-      : super(_value, (v) => _then(v as SecondAttempt));
+    implements _$$SecondAttemptCopyWith<$Res> {
+  __$$SecondAttemptCopyWithImpl(
+      _$SecondAttempt _value, $Res Function(_$SecondAttempt) _then)
+      : super(_value, (v) => _then(v as _$SecondAttempt));
 
   @override
-  SecondAttempt get _value => super._value as SecondAttempt;
+  _$SecondAttempt get _value => super._value as _$SecondAttempt;
 }
 
 /// @nodoc
@@ -376,7 +353,7 @@ class _$SecondAttempt extends SecondAttempt {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is SecondAttempt);
+        (other.runtimeType == runtimeType && other is _$SecondAttempt);
   }
 
   @override
@@ -463,22 +440,22 @@ abstract class SecondAttempt extends PasscodeAttemptType {
 }
 
 /// @nodoc
-abstract class $ThirdAttemptCopyWith<$Res> {
-  factory $ThirdAttemptCopyWith(
-          ThirdAttempt value, $Res Function(ThirdAttempt) then) =
-      _$ThirdAttemptCopyWithImpl<$Res>;
+abstract class _$$ThirdAttemptCopyWith<$Res> {
+  factory _$$ThirdAttemptCopyWith(
+          _$ThirdAttempt value, $Res Function(_$ThirdAttempt) then) =
+      __$$ThirdAttemptCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$ThirdAttemptCopyWithImpl<$Res>
+class __$$ThirdAttemptCopyWithImpl<$Res>
     extends _$PasscodeAttemptTypeCopyWithImpl<$Res>
-    implements $ThirdAttemptCopyWith<$Res> {
-  _$ThirdAttemptCopyWithImpl(
-      ThirdAttempt _value, $Res Function(ThirdAttempt) _then)
-      : super(_value, (v) => _then(v as ThirdAttempt));
+    implements _$$ThirdAttemptCopyWith<$Res> {
+  __$$ThirdAttemptCopyWithImpl(
+      _$ThirdAttempt _value, $Res Function(_$ThirdAttempt) _then)
+      : super(_value, (v) => _then(v as _$ThirdAttempt));
 
   @override
-  ThirdAttempt get _value => super._value as ThirdAttempt;
+  _$ThirdAttempt get _value => super._value as _$ThirdAttempt;
 }
 
 /// @nodoc
@@ -494,7 +471,7 @@ class _$ThirdAttempt extends ThirdAttempt {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is ThirdAttempt);
+        (other.runtimeType == runtimeType && other is _$ThirdAttempt);
   }
 
   @override

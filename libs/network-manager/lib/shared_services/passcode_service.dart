@@ -134,7 +134,7 @@ class PasscodeService extends IPasscodeService {
   ) async {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
-    request.endpoint = 'merchant/merchants/v2.0/merchant/${mobileNo}/password';
+    request.endpoint = 'agent/merchants/v2.0/agent/${mobileNo}/password';
     request.customHeaders = {
       'Content-Type': 'application/json',
       'x-CrayonPayment-channel': 'app'
@@ -191,7 +191,7 @@ class PasscodeService extends IPasscodeService {
 
     var request = StandardRequest();
     request.requestType = RequestType.POST;
-    request.endpoint = 'merchant/merchants/v2.0/identity';
+    request.endpoint = 'agent/merchants/v2.0/identity';
     request.customHeaders = {
       'Content-Type': 'application/json',
       'x-CrayonPayment-channel': 'app'
@@ -241,7 +241,7 @@ class PasscodeService extends IPasscodeService {
   ) async {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
-    request.endpoint = 'merchant/merchants/v2.0/merchant/$mobileNo/password';
+    request.endpoint = 'agent/merchants/v2.0/agent/$mobileNo/password';
     request.customHeaders = {
       'Content-Type': 'application/json',
       'x-CrayonPayment-channel': 'app',

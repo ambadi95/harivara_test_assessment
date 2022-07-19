@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'transaction_type.dart';
@@ -11,27 +12,7 @@ part of 'transaction_type.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$TransactionTypeTearOff {
-  const _$TransactionTypeTearOff();
-
-  Debit debit() {
-    return const Debit();
-  }
-
-  Credit credit() {
-    return const Credit();
-  }
-
-  TransactionTypeNA notAvailable() {
-    return const TransactionTypeNA();
-  }
-}
-
-/// @nodoc
-const $TransactionType = _$TransactionTypeTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$TransactionType {
@@ -99,19 +80,19 @@ class _$TransactionTypeCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class $DebitCopyWith<$Res> {
-  factory $DebitCopyWith(Debit value, $Res Function(Debit) then) =
-      _$DebitCopyWithImpl<$Res>;
+abstract class _$$DebitCopyWith<$Res> {
+  factory _$$DebitCopyWith(_$Debit value, $Res Function(_$Debit) then) =
+      __$$DebitCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$DebitCopyWithImpl<$Res> extends _$TransactionTypeCopyWithImpl<$Res>
-    implements $DebitCopyWith<$Res> {
-  _$DebitCopyWithImpl(Debit _value, $Res Function(Debit) _then)
-      : super(_value, (v) => _then(v as Debit));
+class __$$DebitCopyWithImpl<$Res> extends _$TransactionTypeCopyWithImpl<$Res>
+    implements _$$DebitCopyWith<$Res> {
+  __$$DebitCopyWithImpl(_$Debit _value, $Res Function(_$Debit) _then)
+      : super(_value, (v) => _then(v as _$Debit));
 
   @override
-  Debit get _value => super._value as Debit;
+  _$Debit get _value => super._value as _$Debit;
 }
 
 /// @nodoc
@@ -122,7 +103,7 @@ class _$Debit extends Debit {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Debit);
+        (other.runtimeType == runtimeType && other is _$Debit);
   }
 
   @override
@@ -203,19 +184,19 @@ abstract class Debit extends TransactionType {
 }
 
 /// @nodoc
-abstract class $CreditCopyWith<$Res> {
-  factory $CreditCopyWith(Credit value, $Res Function(Credit) then) =
-      _$CreditCopyWithImpl<$Res>;
+abstract class _$$CreditCopyWith<$Res> {
+  factory _$$CreditCopyWith(_$Credit value, $Res Function(_$Credit) then) =
+      __$$CreditCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$CreditCopyWithImpl<$Res> extends _$TransactionTypeCopyWithImpl<$Res>
-    implements $CreditCopyWith<$Res> {
-  _$CreditCopyWithImpl(Credit _value, $Res Function(Credit) _then)
-      : super(_value, (v) => _then(v as Credit));
+class __$$CreditCopyWithImpl<$Res> extends _$TransactionTypeCopyWithImpl<$Res>
+    implements _$$CreditCopyWith<$Res> {
+  __$$CreditCopyWithImpl(_$Credit _value, $Res Function(_$Credit) _then)
+      : super(_value, (v) => _then(v as _$Credit));
 
   @override
-  Credit get _value => super._value as Credit;
+  _$Credit get _value => super._value as _$Credit;
 }
 
 /// @nodoc
@@ -226,7 +207,7 @@ class _$Credit extends Credit {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is Credit);
+        (other.runtimeType == runtimeType && other is _$Credit);
   }
 
   @override
@@ -307,22 +288,22 @@ abstract class Credit extends TransactionType {
 }
 
 /// @nodoc
-abstract class $TransactionTypeNACopyWith<$Res> {
-  factory $TransactionTypeNACopyWith(
-          TransactionTypeNA value, $Res Function(TransactionTypeNA) then) =
-      _$TransactionTypeNACopyWithImpl<$Res>;
+abstract class _$$TransactionTypeNACopyWith<$Res> {
+  factory _$$TransactionTypeNACopyWith(
+          _$TransactionTypeNA value, $Res Function(_$TransactionTypeNA) then) =
+      __$$TransactionTypeNACopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$TransactionTypeNACopyWithImpl<$Res>
+class __$$TransactionTypeNACopyWithImpl<$Res>
     extends _$TransactionTypeCopyWithImpl<$Res>
-    implements $TransactionTypeNACopyWith<$Res> {
-  _$TransactionTypeNACopyWithImpl(
-      TransactionTypeNA _value, $Res Function(TransactionTypeNA) _then)
-      : super(_value, (v) => _then(v as TransactionTypeNA));
+    implements _$$TransactionTypeNACopyWith<$Res> {
+  __$$TransactionTypeNACopyWithImpl(
+      _$TransactionTypeNA _value, $Res Function(_$TransactionTypeNA) _then)
+      : super(_value, (v) => _then(v as _$TransactionTypeNA));
 
   @override
-  TransactionTypeNA get _value => super._value as TransactionTypeNA;
+  _$TransactionTypeNA get _value => super._value as _$TransactionTypeNA;
 }
 
 /// @nodoc
@@ -333,7 +314,7 @@ class _$TransactionTypeNA extends TransactionTypeNA {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is TransactionTypeNA);
+        (other.runtimeType == runtimeType && other is _$TransactionTypeNA);
   }
 
   @override

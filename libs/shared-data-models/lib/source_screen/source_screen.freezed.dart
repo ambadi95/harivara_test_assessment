@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'source_screen.dart';
@@ -11,31 +12,7 @@ part of 'source_screen.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$SourceScreenTearOff {
-  const _$SourceScreenTearOff();
-
-  CustomerHomeScreen customerHome() {
-    return const CustomerHomeScreen();
-  }
-
-  MerchantHomeScreen merchantHome() {
-    return const MerchantHomeScreen();
-  }
-
-  PaymentScreen payment() {
-    return const PaymentScreen();
-  }
-
-  SettingsScreen settings() {
-    return const SettingsScreen();
-  }
-}
-
-/// @nodoc
-const $SourceScreen = _$SourceScreenTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$SourceScreen {
@@ -108,22 +85,22 @@ class _$SourceScreenCopyWithImpl<$Res> implements $SourceScreenCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class $CustomerHomeScreenCopyWith<$Res> {
-  factory $CustomerHomeScreenCopyWith(
-          CustomerHomeScreen value, $Res Function(CustomerHomeScreen) then) =
-      _$CustomerHomeScreenCopyWithImpl<$Res>;
+abstract class _$$CustomerHomeScreenCopyWith<$Res> {
+  factory _$$CustomerHomeScreenCopyWith(_$CustomerHomeScreen value,
+          $Res Function(_$CustomerHomeScreen) then) =
+      __$$CustomerHomeScreenCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$CustomerHomeScreenCopyWithImpl<$Res>
+class __$$CustomerHomeScreenCopyWithImpl<$Res>
     extends _$SourceScreenCopyWithImpl<$Res>
-    implements $CustomerHomeScreenCopyWith<$Res> {
-  _$CustomerHomeScreenCopyWithImpl(
-      CustomerHomeScreen _value, $Res Function(CustomerHomeScreen) _then)
-      : super(_value, (v) => _then(v as CustomerHomeScreen));
+    implements _$$CustomerHomeScreenCopyWith<$Res> {
+  __$$CustomerHomeScreenCopyWithImpl(
+      _$CustomerHomeScreen _value, $Res Function(_$CustomerHomeScreen) _then)
+      : super(_value, (v) => _then(v as _$CustomerHomeScreen));
 
   @override
-  CustomerHomeScreen get _value => super._value as CustomerHomeScreen;
+  _$CustomerHomeScreen get _value => super._value as _$CustomerHomeScreen;
 }
 
 /// @nodoc
@@ -134,7 +111,7 @@ class _$CustomerHomeScreen extends CustomerHomeScreen {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is CustomerHomeScreen);
+        (other.runtimeType == runtimeType && other is _$CustomerHomeScreen);
   }
 
   @override
@@ -221,22 +198,22 @@ abstract class CustomerHomeScreen extends SourceScreen {
 }
 
 /// @nodoc
-abstract class $MerchantHomeScreenCopyWith<$Res> {
-  factory $MerchantHomeScreenCopyWith(
-          MerchantHomeScreen value, $Res Function(MerchantHomeScreen) then) =
-      _$MerchantHomeScreenCopyWithImpl<$Res>;
+abstract class _$$MerchantHomeScreenCopyWith<$Res> {
+  factory _$$MerchantHomeScreenCopyWith(_$MerchantHomeScreen value,
+          $Res Function(_$MerchantHomeScreen) then) =
+      __$$MerchantHomeScreenCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$MerchantHomeScreenCopyWithImpl<$Res>
+class __$$MerchantHomeScreenCopyWithImpl<$Res>
     extends _$SourceScreenCopyWithImpl<$Res>
-    implements $MerchantHomeScreenCopyWith<$Res> {
-  _$MerchantHomeScreenCopyWithImpl(
-      MerchantHomeScreen _value, $Res Function(MerchantHomeScreen) _then)
-      : super(_value, (v) => _then(v as MerchantHomeScreen));
+    implements _$$MerchantHomeScreenCopyWith<$Res> {
+  __$$MerchantHomeScreenCopyWithImpl(
+      _$MerchantHomeScreen _value, $Res Function(_$MerchantHomeScreen) _then)
+      : super(_value, (v) => _then(v as _$MerchantHomeScreen));
 
   @override
-  MerchantHomeScreen get _value => super._value as MerchantHomeScreen;
+  _$MerchantHomeScreen get _value => super._value as _$MerchantHomeScreen;
 }
 
 /// @nodoc
@@ -247,7 +224,7 @@ class _$MerchantHomeScreen extends MerchantHomeScreen {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is MerchantHomeScreen);
+        (other.runtimeType == runtimeType && other is _$MerchantHomeScreen);
   }
 
   @override
@@ -334,21 +311,22 @@ abstract class MerchantHomeScreen extends SourceScreen {
 }
 
 /// @nodoc
-abstract class $PaymentScreenCopyWith<$Res> {
-  factory $PaymentScreenCopyWith(
-          PaymentScreen value, $Res Function(PaymentScreen) then) =
-      _$PaymentScreenCopyWithImpl<$Res>;
+abstract class _$$PaymentScreenCopyWith<$Res> {
+  factory _$$PaymentScreenCopyWith(
+          _$PaymentScreen value, $Res Function(_$PaymentScreen) then) =
+      __$$PaymentScreenCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$PaymentScreenCopyWithImpl<$Res> extends _$SourceScreenCopyWithImpl<$Res>
-    implements $PaymentScreenCopyWith<$Res> {
-  _$PaymentScreenCopyWithImpl(
-      PaymentScreen _value, $Res Function(PaymentScreen) _then)
-      : super(_value, (v) => _then(v as PaymentScreen));
+class __$$PaymentScreenCopyWithImpl<$Res>
+    extends _$SourceScreenCopyWithImpl<$Res>
+    implements _$$PaymentScreenCopyWith<$Res> {
+  __$$PaymentScreenCopyWithImpl(
+      _$PaymentScreen _value, $Res Function(_$PaymentScreen) _then)
+      : super(_value, (v) => _then(v as _$PaymentScreen));
 
   @override
-  PaymentScreen get _value => super._value as PaymentScreen;
+  _$PaymentScreen get _value => super._value as _$PaymentScreen;
 }
 
 /// @nodoc
@@ -359,7 +337,7 @@ class _$PaymentScreen extends PaymentScreen {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is PaymentScreen);
+        (other.runtimeType == runtimeType && other is _$PaymentScreen);
   }
 
   @override
@@ -446,22 +424,22 @@ abstract class PaymentScreen extends SourceScreen {
 }
 
 /// @nodoc
-abstract class $SettingsScreenCopyWith<$Res> {
-  factory $SettingsScreenCopyWith(
-          SettingsScreen value, $Res Function(SettingsScreen) then) =
-      _$SettingsScreenCopyWithImpl<$Res>;
+abstract class _$$SettingsScreenCopyWith<$Res> {
+  factory _$$SettingsScreenCopyWith(
+          _$SettingsScreen value, $Res Function(_$SettingsScreen) then) =
+      __$$SettingsScreenCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$SettingsScreenCopyWithImpl<$Res>
+class __$$SettingsScreenCopyWithImpl<$Res>
     extends _$SourceScreenCopyWithImpl<$Res>
-    implements $SettingsScreenCopyWith<$Res> {
-  _$SettingsScreenCopyWithImpl(
-      SettingsScreen _value, $Res Function(SettingsScreen) _then)
-      : super(_value, (v) => _then(v as SettingsScreen));
+    implements _$$SettingsScreenCopyWith<$Res> {
+  __$$SettingsScreenCopyWithImpl(
+      _$SettingsScreen _value, $Res Function(_$SettingsScreen) _then)
+      : super(_value, (v) => _then(v as _$SettingsScreen));
 
   @override
-  SettingsScreen get _value => super._value as SettingsScreen;
+  _$SettingsScreen get _value => super._value as _$SettingsScreen;
 }
 
 /// @nodoc
@@ -472,7 +450,7 @@ class _$SettingsScreen extends SettingsScreen {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is SettingsScreen);
+        (other.runtimeType == runtimeType && other is _$SettingsScreen);
   }
 
   @override

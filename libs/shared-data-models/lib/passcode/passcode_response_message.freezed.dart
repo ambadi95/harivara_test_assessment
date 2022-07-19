@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'passcode_response_message.dart';
@@ -11,23 +12,7 @@ part of 'passcode_response_message.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$PasscodeResponseMessageTearOff {
-  const _$PasscodeResponseMessageTearOff();
-
-  PasscodeMessageLoginSuccess loginSuccess() {
-    return const PasscodeMessageLoginSuccess();
-  }
-
-  PasscodeMessageLoginFailed loginFailed() {
-    return const PasscodeMessageLoginFailed();
-  }
-}
-
-/// @nodoc
-const $PasscodeResponseMessage = _$PasscodeResponseMessageTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$PasscodeResponseMessage {
@@ -89,24 +74,25 @@ class _$PasscodeResponseMessageCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class $PasscodeMessageLoginSuccessCopyWith<$Res> {
-  factory $PasscodeMessageLoginSuccessCopyWith(
-          PasscodeMessageLoginSuccess value,
-          $Res Function(PasscodeMessageLoginSuccess) then) =
-      _$PasscodeMessageLoginSuccessCopyWithImpl<$Res>;
+abstract class _$$PasscodeMessageLoginSuccessCopyWith<$Res> {
+  factory _$$PasscodeMessageLoginSuccessCopyWith(
+          _$PasscodeMessageLoginSuccess value,
+          $Res Function(_$PasscodeMessageLoginSuccess) then) =
+      __$$PasscodeMessageLoginSuccessCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$PasscodeMessageLoginSuccessCopyWithImpl<$Res>
+class __$$PasscodeMessageLoginSuccessCopyWithImpl<$Res>
     extends _$PasscodeResponseMessageCopyWithImpl<$Res>
-    implements $PasscodeMessageLoginSuccessCopyWith<$Res> {
-  _$PasscodeMessageLoginSuccessCopyWithImpl(PasscodeMessageLoginSuccess _value,
-      $Res Function(PasscodeMessageLoginSuccess) _then)
-      : super(_value, (v) => _then(v as PasscodeMessageLoginSuccess));
+    implements _$$PasscodeMessageLoginSuccessCopyWith<$Res> {
+  __$$PasscodeMessageLoginSuccessCopyWithImpl(
+      _$PasscodeMessageLoginSuccess _value,
+      $Res Function(_$PasscodeMessageLoginSuccess) _then)
+      : super(_value, (v) => _then(v as _$PasscodeMessageLoginSuccess));
 
   @override
-  PasscodeMessageLoginSuccess get _value =>
-      super._value as PasscodeMessageLoginSuccess;
+  _$PasscodeMessageLoginSuccess get _value =>
+      super._value as _$PasscodeMessageLoginSuccess;
 }
 
 /// @nodoc
@@ -118,7 +104,7 @@ class _$PasscodeMessageLoginSuccess extends PasscodeMessageLoginSuccess {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is PasscodeMessageLoginSuccess);
+            other is _$PasscodeMessageLoginSuccess);
   }
 
   @override
@@ -193,23 +179,25 @@ abstract class PasscodeMessageLoginSuccess extends PasscodeResponseMessage {
 }
 
 /// @nodoc
-abstract class $PasscodeMessageLoginFailedCopyWith<$Res> {
-  factory $PasscodeMessageLoginFailedCopyWith(PasscodeMessageLoginFailed value,
-          $Res Function(PasscodeMessageLoginFailed) then) =
-      _$PasscodeMessageLoginFailedCopyWithImpl<$Res>;
+abstract class _$$PasscodeMessageLoginFailedCopyWith<$Res> {
+  factory _$$PasscodeMessageLoginFailedCopyWith(
+          _$PasscodeMessageLoginFailed value,
+          $Res Function(_$PasscodeMessageLoginFailed) then) =
+      __$$PasscodeMessageLoginFailedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$PasscodeMessageLoginFailedCopyWithImpl<$Res>
+class __$$PasscodeMessageLoginFailedCopyWithImpl<$Res>
     extends _$PasscodeResponseMessageCopyWithImpl<$Res>
-    implements $PasscodeMessageLoginFailedCopyWith<$Res> {
-  _$PasscodeMessageLoginFailedCopyWithImpl(PasscodeMessageLoginFailed _value,
-      $Res Function(PasscodeMessageLoginFailed) _then)
-      : super(_value, (v) => _then(v as PasscodeMessageLoginFailed));
+    implements _$$PasscodeMessageLoginFailedCopyWith<$Res> {
+  __$$PasscodeMessageLoginFailedCopyWithImpl(
+      _$PasscodeMessageLoginFailed _value,
+      $Res Function(_$PasscodeMessageLoginFailed) _then)
+      : super(_value, (v) => _then(v as _$PasscodeMessageLoginFailed));
 
   @override
-  PasscodeMessageLoginFailed get _value =>
-      super._value as PasscodeMessageLoginFailed;
+  _$PasscodeMessageLoginFailed get _value =>
+      super._value as _$PasscodeMessageLoginFailed;
 }
 
 /// @nodoc
@@ -221,7 +209,7 @@ class _$PasscodeMessageLoginFailed extends PasscodeMessageLoginFailed {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is PasscodeMessageLoginFailed);
+            other is _$PasscodeMessageLoginFailed);
   }
 
   @override

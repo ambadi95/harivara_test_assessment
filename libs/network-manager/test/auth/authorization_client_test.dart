@@ -133,7 +133,7 @@ void main() {
   );
 
   test(
-    'when we call get merchant token information '
+    'when we call get agent token information '
     'application has connection to the internet and the network '
     'returns a successful response the result token response model.',
     () async {
@@ -174,7 +174,7 @@ void main() {
   );
 
   test(
-    'when we call get merchant token information '
+    'when we call get agent token information '
     'application has connection to the internet and the network '
     'returns a not found response the result is error.',
     () async {

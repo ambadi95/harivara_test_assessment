@@ -1,12 +1,12 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:shared_data_models/merchant/merchant_model.dart';
+import 'package:shared_data_models/agent/merchant_model.dart';
 import '../raw_json_files/raw_json_reader.dart';
 
 void main() {
   group('fromJson()', () {
-    test('should return merchant model Object', () async {
+    test('should return agent model Object', () async {
       // Arrange
-      final json = rawJsonToMap('merchant/merchant_model.json');
+      final json = rawJsonToMap('agent/merchant_model.json');
       // Act
       final result = MerchantModel.fromJson(json);
       // Assert

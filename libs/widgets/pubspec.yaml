@@ -43,11 +43,6 @@ dependencies:
   shared_data_models:
     path: ../shared-data-models/
 
-  CrayonPayment_tooltip:
-    path: ../features/CrayonPayment_tooltip
-
-  home:
-    path: ../features/home/
 
 dev_dependencies:
   flutter_test:

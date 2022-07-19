@@ -9,7 +9,7 @@ void main() {
     );
   });
 
-  test('[LengthTextFormatter] - for merchant should have the right values',
+  test('[LengthTextFormatter] - for agent should have the right values',
       () async {
     // Arrange
     final container = DIContainer.container.resolve<LengthTextFormatter>();

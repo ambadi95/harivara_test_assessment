@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'account_scheme_type.dart';
@@ -11,23 +12,7 @@ part of 'account_scheme_type.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$AccountSchemeTypeTearOff {
-  const _$AccountSchemeTypeTearOff();
-
-  WALLET wallet() {
-    return const WALLET();
-  }
-
-  IBAN iban() {
-    return const IBAN();
-  }
-}
-
-/// @nodoc
-const $AccountSchemeType = _$AccountSchemeTypeTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$AccountSchemeType {
@@ -89,19 +74,19 @@ class _$AccountSchemeTypeCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class $WALLETCopyWith<$Res> {
-  factory $WALLETCopyWith(WALLET value, $Res Function(WALLET) then) =
-      _$WALLETCopyWithImpl<$Res>;
+abstract class _$$WALLETCopyWith<$Res> {
+  factory _$$WALLETCopyWith(_$WALLET value, $Res Function(_$WALLET) then) =
+      __$$WALLETCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$WALLETCopyWithImpl<$Res> extends _$AccountSchemeTypeCopyWithImpl<$Res>
-    implements $WALLETCopyWith<$Res> {
-  _$WALLETCopyWithImpl(WALLET _value, $Res Function(WALLET) _then)
-      : super(_value, (v) => _then(v as WALLET));
+class __$$WALLETCopyWithImpl<$Res> extends _$AccountSchemeTypeCopyWithImpl<$Res>
+    implements _$$WALLETCopyWith<$Res> {
+  __$$WALLETCopyWithImpl(_$WALLET _value, $Res Function(_$WALLET) _then)
+      : super(_value, (v) => _then(v as _$WALLET));
 
   @override
-  WALLET get _value => super._value as WALLET;
+  _$WALLET get _value => super._value as _$WALLET;
 }
 
 /// @nodoc
@@ -112,7 +97,7 @@ class _$WALLET extends WALLET {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is WALLET);
+        (other.runtimeType == runtimeType && other is _$WALLET);
   }
 
   @override
@@ -187,19 +172,19 @@ abstract class WALLET extends AccountSchemeType {
 }
 
 /// @nodoc
-abstract class $IBANCopyWith<$Res> {
-  factory $IBANCopyWith(IBAN value, $Res Function(IBAN) then) =
-      _$IBANCopyWithImpl<$Res>;
+abstract class _$$IBANCopyWith<$Res> {
+  factory _$$IBANCopyWith(_$IBAN value, $Res Function(_$IBAN) then) =
+      __$$IBANCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$IBANCopyWithImpl<$Res> extends _$AccountSchemeTypeCopyWithImpl<$Res>
-    implements $IBANCopyWith<$Res> {
-  _$IBANCopyWithImpl(IBAN _value, $Res Function(IBAN) _then)
-      : super(_value, (v) => _then(v as IBAN));
+class __$$IBANCopyWithImpl<$Res> extends _$AccountSchemeTypeCopyWithImpl<$Res>
+    implements _$$IBANCopyWith<$Res> {
+  __$$IBANCopyWithImpl(_$IBAN _value, $Res Function(_$IBAN) _then)
+      : super(_value, (v) => _then(v as _$IBAN));
 
   @override
-  IBAN get _value => super._value as IBAN;
+  _$IBAN get _value => super._value as _$IBAN;
 }
 
 /// @nodoc
@@ -210,7 +195,7 @@ class _$IBAN extends IBAN {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is IBAN);
+        (other.runtimeType == runtimeType && other is _$IBAN);
   }
 
   @override

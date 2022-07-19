@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'field_to_highlight.dart';
@@ -11,23 +12,7 @@ part of 'field_to_highlight.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$FieldToHighlightTearOff {
-  const _$FieldToHighlightTearOff();
-
-  _TitleHighlight title() {
-    return const _TitleHighlight();
-  }
-
-  _SubTitleHighlight subtitle() {
-    return const _SubTitleHighlight();
-  }
-}
-
-/// @nodoc
-const $FieldToHighlight = _$FieldToHighlightTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$FieldToHighlight {
@@ -89,22 +74,22 @@ class _$FieldToHighlightCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$TitleHighlightCopyWith<$Res> {
-  factory _$TitleHighlightCopyWith(
-          _TitleHighlight value, $Res Function(_TitleHighlight) then) =
-      __$TitleHighlightCopyWithImpl<$Res>;
+abstract class _$$_TitleHighlightCopyWith<$Res> {
+  factory _$$_TitleHighlightCopyWith(
+          _$_TitleHighlight value, $Res Function(_$_TitleHighlight) then) =
+      __$$_TitleHighlightCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$TitleHighlightCopyWithImpl<$Res>
+class __$$_TitleHighlightCopyWithImpl<$Res>
     extends _$FieldToHighlightCopyWithImpl<$Res>
-    implements _$TitleHighlightCopyWith<$Res> {
-  __$TitleHighlightCopyWithImpl(
-      _TitleHighlight _value, $Res Function(_TitleHighlight) _then)
-      : super(_value, (v) => _then(v as _TitleHighlight));
+    implements _$$_TitleHighlightCopyWith<$Res> {
+  __$$_TitleHighlightCopyWithImpl(
+      _$_TitleHighlight _value, $Res Function(_$_TitleHighlight) _then)
+      : super(_value, (v) => _then(v as _$_TitleHighlight));
 
   @override
-  _TitleHighlight get _value => super._value as _TitleHighlight;
+  _$_TitleHighlight get _value => super._value as _$_TitleHighlight;
 }
 
 /// @nodoc
@@ -119,7 +104,8 @@ class _$_TitleHighlight implements _TitleHighlight {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _TitleHighlight);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_TitleHighlight);
   }
 
   @override
@@ -193,22 +179,22 @@ abstract class _TitleHighlight implements FieldToHighlight {
 }
 
 /// @nodoc
-abstract class _$SubTitleHighlightCopyWith<$Res> {
-  factory _$SubTitleHighlightCopyWith(
-          _SubTitleHighlight value, $Res Function(_SubTitleHighlight) then) =
-      __$SubTitleHighlightCopyWithImpl<$Res>;
+abstract class _$$_SubTitleHighlightCopyWith<$Res> {
+  factory _$$_SubTitleHighlightCopyWith(_$_SubTitleHighlight value,
+          $Res Function(_$_SubTitleHighlight) then) =
+      __$$_SubTitleHighlightCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$SubTitleHighlightCopyWithImpl<$Res>
+class __$$_SubTitleHighlightCopyWithImpl<$Res>
     extends _$FieldToHighlightCopyWithImpl<$Res>
-    implements _$SubTitleHighlightCopyWith<$Res> {
-  __$SubTitleHighlightCopyWithImpl(
-      _SubTitleHighlight _value, $Res Function(_SubTitleHighlight) _then)
-      : super(_value, (v) => _then(v as _SubTitleHighlight));
+    implements _$$_SubTitleHighlightCopyWith<$Res> {
+  __$$_SubTitleHighlightCopyWithImpl(
+      _$_SubTitleHighlight _value, $Res Function(_$_SubTitleHighlight) _then)
+      : super(_value, (v) => _then(v as _$_SubTitleHighlight));
 
   @override
-  _SubTitleHighlight get _value => super._value as _SubTitleHighlight;
+  _$_SubTitleHighlight get _value => super._value as _$_SubTitleHighlight;
 }
 
 /// @nodoc
@@ -223,7 +209,8 @@ class _$_SubTitleHighlight implements _SubTitleHighlight {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _SubTitleHighlight);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_SubTitleHighlight);
   }
 
   @override
