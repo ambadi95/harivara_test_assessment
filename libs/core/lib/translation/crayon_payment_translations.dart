@@ -11,7 +11,7 @@ class CrayonPaymentTranslations extends Translations {
 
   final List<Locale> _supportedLocales = [
     Locale('en'),
-    Locale('ar'),
+    Locale('sw'),
   ];
 
   final Map<String, Map<String, String>> _translationsMap = {};

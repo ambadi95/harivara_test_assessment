@@ -80,7 +80,12 @@ class AppModule {
     DIContainer.container.resolve<WidgetsModule>().registerDependencies();
 
 
-
+    DIContainer.container.registerSingleton<IInactivityService>(
+          (container) => InactivityService(
+        taskManager: container.resolve<TaskManager>(),
+        navigationManager: container.resolve<NavigationManager>(),
+      ),
+    );
 
 
 
