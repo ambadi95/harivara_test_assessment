@@ -39,7 +39,7 @@ class CrayonPaymentMaterialApp extends GetMaterialApp {
     Iterable<Locale> supportedLocales = const <Locale>[
       Locale(
         'en',
-        'ar',
+        'sw',
       ),
     ],
     bool showPerformanceOverlay = false,
