@@ -293,3 +293,13 @@ Base App Login Credentials:
 Email : test@yopmail.com Pw : 123456
 
 
+
+
+For the Database folder 
+
+
+Insert data in db lyk
+CustomerData customerData = await CustomerDBRepository.customerDBRepositoryInstance
+.insert(CustomerData(nidaNumber: "232343434", mobileNumber: ""));
+print(customerData.toJson());
+
