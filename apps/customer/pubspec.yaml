@@ -43,6 +43,9 @@ dependencies:
   widget_library:
     path: ../../libs/widgets/
 
+  welcome:
+    path: ../../libs/features/welcome
+
 
 dev_dependencies:
   flutter_test:
