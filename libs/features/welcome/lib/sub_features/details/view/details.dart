@@ -20,7 +20,8 @@ class DetailsScreen extends StatefulWidget {
 }
 
 class _DetailsScreenState extends State<DetailsScreen> {
-
+  bool _isBtnEnabled = false;
+  final FocusNode? focusNode = FocusNode();
   final TextEditingController name = TextEditingController();
   final TextEditingController dob = TextEditingController();
   final TextEditingController gender = TextEditingController();
@@ -53,6 +54,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
 
   @override
   Widget build(BuildContext context) =>BaseView<DetailsCoordinator, DetailsState>(
+    onStateListenCallback: (preState, newState) =>{
+      _listenToStateChanges(context, newState)
+    },
     setupViewModel: (coordinator) async {
     },
     builder: (context, state, coordinator) => SafeArea(
@@ -65,7 +69,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _buildMainUI(),
+              _buildMainUI(coordinator),
             ],
           ),
         ),
@@ -109,7 +113,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
     );
   }
 
-  Widget _buildMainUI(){
+  Widget _buildMainUI(DetailsCoordinator coordinator){
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
@@ -117,16 +121,16 @@ class _DetailsScreenState extends State<DetailsScreen> {
         children: [
           _title(),
           const SizedBox(height: 30,),
-          _buildLabelTextField('DV_name_label'.tr , name, TextInputType.text),
-          _buildLabelTextFieldDob('DV_dob_label'.tr , dob),
-          _buildLabelTextField('DV_gender_label'.tr , gender,TextInputType.name),
-          _buildLabelTextField('DV_profession_label'.tr , profession, TextInputType.name),
-          _buildLabelTextField('DV_contact_no_label'.tr , mobileNumber,TextInputType.number),
-          _buildLabelTextField('DV_email_label'.tr , emailId, TextInputType.emailAddress),
-          _buildLabelTextFieldAddress('DV_address_label'.tr , address),
-          _buildLabelTextField('DV_po_box_label'.tr , poBox, TextInputType.text),
-          _buildLabelTextField('DV_region_label'.tr , region, TextInputType.name),
-          _buildLabelTextField('DV_district_label'.tr , district, TextInputType.name),
+          _buildLabelTextField('DV_name_label'.tr , name, TextInputType.text,coordinator),
+          _buildLabelTextFieldDob('DV_dob_label'.tr , dob,coordinator),
+          _buildLabelTextField('DV_gender_label'.tr , gender,TextInputType.name,coordinator),
+          _buildLabelTextField('DV_profession_label'.tr , profession, TextInputType.name,coordinator),
+          _buildLabelTextField('DV_contact_no_label'.tr , mobileNumber,TextInputType.number,coordinator),
+          _buildLabelTextField('DV_email_label'.tr , emailId, TextInputType.emailAddress,coordinator),
+          _buildLabelTextFieldAddress('DV_address_label'.tr , address,coordinator),
+          _buildLabelTextField('DV_po_box_label'.tr , poBox, TextInputType.text,coordinator),
+          _buildLabelTextField('DV_region_label'.tr , region, TextInputType.name,coordinator),
+          _buildLabelTextField('DV_district_label'.tr , district, TextInputType.name,coordinator),
           _buildContinueButton()
         ],
       ),
@@ -139,7 +143,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
     );
   }
 
-  Widget _buildLabelTextField(String label, TextEditingController controller, TextInputType textInputType){
+  Widget _buildLabelTextField(String label, TextEditingController controller, TextInputType textInputType, DetailsCoordinator coordinator){
     return Padding(
       padding: const EdgeInsets.only(bottom: 34),
       child: Column(
@@ -156,13 +160,17 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 showCursor: true,
                 style: SU_text_input_style,
                 decoration: SU_text_input_border_style,
+                textCapitalization: TextCapitalization.words,
+              onChanged: (value){
+                _validateForm(coordinator);
+              },
             ),
           ]
       ),
     );
   }
 
-  Widget _buildLabelTextFieldDob(String label, TextEditingController controller){
+  Widget _buildLabelTextFieldDob(String label, TextEditingController controller,DetailsCoordinator coordinator){
     return Padding(
       padding: const EdgeInsets.only(bottom: 34),
       child: Column(
@@ -173,15 +181,18 @@ class _DetailsScreenState extends State<DetailsScreen> {
             TextField(
                 key: const Key('idNumberTextField'),
                 controller: controller,
-                keyboardType: TextInputType.datetime,
+                keyboardType: TextInputType.none,
                 textAlign: TextAlign.start,
+                onTap: (){
+                  _selectDate(context);
+                },
                 autofocus: false,
                 showCursor: true,
                 style: SU_text_input_style,
                 decoration: InputDecoration(
                   suffixIcon: InkWell(
                     onTap: (){
-                      _selectDate(context);
+
                     },
                       child: const Icon(Icons.calendar_month_outlined)),
                   border: const OutlineInputBorder(
@@ -189,13 +200,16 @@ class _DetailsScreenState extends State<DetailsScreen> {
                       borderSide:  BorderSide(color: config_color.SU_border_color)
                   ),
             ),
+              onChanged: (value){
+                _validateForm(coordinator);
+              },
             )
           ]
       ),
     );
   }
 
-  Widget _buildLabelTextFieldAddress(String label, TextEditingController controller){
+  Widget _buildLabelTextFieldAddress(String label, TextEditingController controller, DetailsCoordinator coordinator){
     return Padding(
       padding: const EdgeInsets.only(bottom: 34),
       child: Column(
@@ -215,6 +229,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 showCursor: true,
                 style: SU_text_input_style,
                 decoration: SU_text_input_address_style,
+                textCapitalization: TextCapitalization.words,
+                onChanged: (value){
+                  _validateForm(coordinator);
+                },
               ),
             ),
           ]
@@ -226,13 +244,16 @@ class _DetailsScreenState extends State<DetailsScreen> {
       ) {
     return GestureDetector(
       onTap: (){
-        // welcomeCoordinator.navigateToSignUpScreen();
+        if(_isBtnEnabled){
+          //navigate to next page
+          // welcomeCoordinator.navigateToSignUpScreen();
+        }
       },
       child: Container(
         width: double.infinity,
         height: 50,
         decoration: BoxDecoration(
-            color:  config_color.SU_button_color,
+            color: _isBtnEnabled ? config_color.SU_button_color : config_color.SU_grey_color,
             borderRadius: BorderRadius.circular(8.0)
         ),
         child: Center(
@@ -242,5 +263,18 @@ class _DetailsScreenState extends State<DetailsScreen> {
     );
   }
 
+  void _listenToStateChanges(BuildContext context, DetailsState state){
+      state.maybeWhen(
+        DetailsFormState: (isValid){
+          _isBtnEnabled = isValid;
+        },
+          orElse: ()=> null);
+  }
+
+  void _validateForm(DetailsCoordinator coordinator){
+    coordinator.validateForm(name.text, dob.text,gender.text,profession.text,mobileNumber.text,emailId.text,address.text,poBox.text,region.text,district.text);
+  }
+
 }
+
 

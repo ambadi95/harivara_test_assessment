@@ -85,3 +85,6 @@ flutter:
     - family: OCR-A
       fonts:
         - asset: assets/fonts/OCR-A-Regular.ttf
+    - family : Montserrat
+      fonts:
+        - asset: assets/fonts/Montserrat-Regular.ttf

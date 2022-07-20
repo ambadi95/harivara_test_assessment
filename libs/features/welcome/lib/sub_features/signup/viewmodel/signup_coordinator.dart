@@ -19,4 +19,15 @@ class SignUpCoordinator extends BaseViewModel<SignUpState>{
     _navigationHandler.navigateToDetailsScreen();
   }
 
+  bool _validateForm(String nidaNo, String mobNumber){
+      var isnidaNumberValid = nidaNo.isNotEmpty;
+      var ismobileNoValid = mobNumber.isNotEmpty;
+      var _isValid = isnidaNumberValid && ismobileNoValid;
+      return _isValid;
+  }
+
+  void validateForm(String nidaNo, String mobNumber){
+    state =SignUpState.SignUpFormState(_validateForm(nidaNo, mobNumber));
+  }
+
 }

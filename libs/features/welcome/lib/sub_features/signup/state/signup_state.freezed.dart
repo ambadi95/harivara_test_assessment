@@ -20,6 +20,7 @@ class _$SignUpStateTearOff {
   InitialState initialState() {
     return const InitialState();
   }
+
 }
 
 /// @nodoc
@@ -30,32 +31,38 @@ mixin _$SignUpState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
+    required TResult Function(bool isValid) SignUpFormState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialState,
+    TResult Function(bool isValid)? SignUpFormState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
+    TResult Function(bool isValid)? SignUpFormState,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(InitialState value) initialState,
+    required TResult Function(SignUpFormState value) SignUpFormState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
+    TResult Function(SignUpFormState value)? SignUpFormState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
+    TResult Function(SignUpFormState value)? SignUpFormState,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -118,6 +125,7 @@ class _$InitialState implements InitialState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
+    required TResult Function(bool isValid) SignUpFormState,
   }) {
     return initialState();
   }
@@ -126,6 +134,7 @@ class _$InitialState implements InitialState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialState,
+    TResult Function(bool isValid)? SignUpFormState,
   }) {
     return initialState?.call();
   }
@@ -134,6 +143,7 @@ class _$InitialState implements InitialState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
+    TResult Function(bool isValid)? SignUpFormState,
     required TResult orElse(),
   }) {
     if (initialState != null) {
@@ -146,6 +156,7 @@ class _$InitialState implements InitialState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(InitialState value) initialState,
+    required TResult Function(SignUpFormState value) SignUpFormState,
   }) {
     return initialState(this);
   }
@@ -154,6 +165,7 @@ class _$InitialState implements InitialState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
+    TResult Function(SignUpFormState value)? SignUpFormState,
   }) {
     return initialState?.call(this);
   }
@@ -162,6 +174,7 @@ class _$InitialState implements InitialState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
+    TResult Function(SignUpFormState value)? SignUpFormState,
     required TResult orElse(),
   }) {
     if (initialState != null) {
@@ -173,4 +186,138 @@ class _$InitialState implements InitialState {
 
 abstract class InitialState implements SignUpState {
   const factory InitialState() = _$InitialState;
+}
+
+/// @nodoc
+abstract class $SignUpFormStateCopyWith<$Res> {
+  factory $SignUpFormStateCopyWith(
+          SignUpFormState value, $Res Function(SignUpFormState) then) =
+      _$SignUpFormStateCopyWithImpl<$Res>;
+  $Res call({bool isValid});
+}
+
+/// @nodoc
+class _$SignUpFormStateCopyWithImpl<$Res>
+    extends _$SignUpStateCopyWithImpl<$Res>
+    implements $SignUpFormStateCopyWith<$Res> {
+  _$SignUpFormStateCopyWithImpl(
+      SignUpFormState _value, $Res Function(SignUpFormState) _then)
+      : super(_value, (v) => _then(v as SignUpFormState));
+
+  @override
+  SignUpFormState get _value => super._value as SignUpFormState;
+
+  @override
+  $Res call({
+    Object? isValid = freezed,
+  }) {
+    return _then(SignUpFormState(
+      isValid == freezed
+          ? _value.isValid
+          : isValid // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SignUpFormState implements SignUpFormState {
+  const _$SignUpFormState(this.isValid);
+
+  @override
+  final bool isValid;
+
+  @override
+  String toString() {
+    return 'SignUpState.SignUpFormState(isValid: $isValid)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is SignUpFormState &&
+            const DeepCollectionEquality().equals(other.isValid, isValid));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(isValid));
+
+  @JsonKey(ignore: true)
+  @override
+  $SignUpFormStateCopyWith<SignUpFormState> get copyWith =>
+      _$SignUpFormStateCopyWithImpl<SignUpFormState>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialState,
+    required TResult Function(bool isValid) SignUpFormState,
+  }) {
+    return SignUpFormState(isValid);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initialState,
+    TResult Function(bool isValid)? SignUpFormState,
+  }) {
+    return SignUpFormState?.call(isValid);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialState,
+    TResult Function(bool isValid)? SignUpFormState,
+    required TResult orElse(),
+  }) {
+    if (SignUpFormState != null) {
+      return SignUpFormState(isValid);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialState value) initialState,
+    required TResult Function(SignUpFormState value) SignUpFormState,
+  }) {
+    return SignUpFormState(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InitialState value)? initialState,
+    TResult Function(SignUpFormState value)? SignUpFormState,
+  }) {
+    return SignUpFormState?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialState value)? initialState,
+    TResult Function(SignUpFormState value)? SignUpFormState,
+    required TResult orElse(),
+  }) {
+    if (SignUpFormState != null) {
+      return SignUpFormState(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SignUpFormState implements SignUpState {
+  const factory SignUpFormState(bool isValid) = _$SignUpFormState;
+
+  bool get isValid;
+  @JsonKey(ignore: true)
+  $SignUpFormStateCopyWith<SignUpFormState> get copyWith =>
+      throw _privateConstructorUsedError;
 }

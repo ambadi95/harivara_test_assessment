@@ -20,11 +20,15 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  bool _isBtnEnabled = false;
   TextEditingController nidaNumber = TextEditingController();
   TextEditingController mobileNumber = TextEditingController();
   @override
   Widget build(BuildContext context) =>
       BaseView<SignUpCoordinator, SignUpState>(
+        onStateListenCallback: (preState, newState) =>{
+          _listenToStateChanges(context, newState)
+        },
         setupViewModel: (coordinator) async {
         },
         builder: (context, state, coordinator) => SafeArea(
@@ -43,8 +47,7 @@ class _SignUpState extends State<SignUp> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 _buildTopContainer(context,coordinator),
-                _buildMainUI(),
-
+                _buildMainUI(coordinator),
               ],
             ),
           ),
@@ -61,7 +64,7 @@ class _SignUpState extends State<SignUp> {
     );
   }
 
-  Widget _buildMainUI(){
+  Widget _buildMainUI(SignUpCoordinator coordinator){
     return Padding(
       padding: const EdgeInsets.only(right: 16, left: 16, top: 16),
       child: Column(
@@ -71,9 +74,9 @@ class _SignUpState extends State<SignUp> {
           const SizedBox(height: 16,),
           _sub_title(),
           const SizedBox(height: 69,),
-          _buildLabelTextField('SU_ID_no_label'.tr,nidaNumber),
+          _buildLabelTextField('SU_ID_no_label'.tr,nidaNumber, coordinator),
           const SizedBox(height: 48,),
-          _buildLabelTextField('SU_mobile_no_label'.tr,mobileNumber),
+          _buildLabelTextField('SU_mobile_no_label'.tr,mobileNumber, coordinator),
         ],
       ),
     );
@@ -121,7 +124,7 @@ class _SignUpState extends State<SignUp> {
     );
   }
 
-  Widget _buildLabelTextField(String label, TextEditingController controller){
+  Widget _buildLabelTextField(String label, TextEditingController controller, SignUpCoordinator coordinator){
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -138,7 +141,10 @@ class _SignUpState extends State<SignUp> {
             FilteringTextInputFormatter.digitsOnly
           ],
           style: SU_text_input_style,
-    decoration: SU_text_input_border_style
+    decoration: SU_text_input_border_style,
+          onChanged: (value){
+            _validateForm(coordinator);
+          },
     ),
     ]
     );
@@ -157,13 +163,15 @@ class _SignUpState extends State<SignUp> {
       padding: const EdgeInsets.only(left :16 , right : 16,bottom: 16),
       child: GestureDetector(
         onTap: (){
-          coordinator.navigateToDetailsScreen();
+          if( _isBtnEnabled){
+            coordinator.navigateToDetailsScreen();
+          }
         },
         child: Container(
           width: double.infinity,
           height: 50,
           decoration: BoxDecoration(
-              color:  config_color.SU_button_color,
+              color:  _isBtnEnabled ?  config_color.SU_button_color : config_color.SU_grey_color,
               borderRadius: BorderRadius.circular(8.0)
           ),
           child: Center(
@@ -172,6 +180,18 @@ class _SignUpState extends State<SignUp> {
         ),
       ),
     );
+  }
+
+  void _listenToStateChanges(BuildContext context, SignUpState state){
+    state.maybeWhen(
+      SignUpFormState: (isValid ){
+      _isBtnEnabled = isValid;
+      },
+        orElse: ()=> null);
+  }
+
+  void _validateForm(SignUpCoordinator coordinator){
+    coordinator.validateForm(nidaNumber.text, mobileNumber.text);
   }
 
 }

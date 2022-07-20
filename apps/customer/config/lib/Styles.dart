@@ -5,6 +5,8 @@ import 'Colors.dart';
 const WELCOME_HEADING_STYLE = TextStyle(
     fontSize: 36,
     color: SECONDARY_COLOR,
+    fontFamily: 'Montserrat',
+    fontWeight: FontWeight.w900,
     letterSpacing: 1,
 );
 
@@ -17,20 +19,20 @@ const WELCOME_SUBHEADING_STYLE = TextStyle(
 
 const WELCOME_THIRDHEADING_STYLE = TextStyle(
   fontSize: 20,
-  fontWeight: FontWeight.w400,
+  fontWeight: FontWeight.w500,
   fontFamily: 'Montserrat',
   color: OB_WelcomeThirdTtileColor,
 );
 
 const SU_title_style = TextStyle(
   fontSize: 32,
-  fontWeight: FontWeight.w500,
+  fontWeight: FontWeight.w900,
   fontFamily: 'Montserrat',
   color: SU_title_color,
 );
 
 const SU_subtitle_style = TextStyle(
-  fontSize: 20,
+  fontSize: 16,
   fontWeight: FontWeight.w400,
   fontFamily: 'Montserrat',
   color: SU_subtitle_color,
@@ -38,7 +40,7 @@ const SU_subtitle_style = TextStyle(
 );
 
 const SU_subtitle_terms_style = TextStyle(
-  fontSize: 20,
+  fontSize: 16,
   fontWeight: FontWeight.w400,
   fontFamily: 'Montserrat',
   color: SU_subtitle_terms_color,
@@ -46,7 +48,7 @@ const SU_subtitle_terms_style = TextStyle(
 
 const SU_label_style = TextStyle(
   fontSize: 14,
-  fontWeight: FontWeight.w500,
+  fontWeight: FontWeight.w600,
   fontFamily: 'Montserrat',
   color: SU_label_color,
 );
@@ -54,7 +56,7 @@ const SU_label_style = TextStyle(
 const SU_text_input_style =
 TextStyle(
   fontSize: 16,
-  fontWeight: FontWeight.w500,
+  fontWeight: FontWeight.w600,
   fontFamily: 'Montserrat',
   color: SECONDARY_COLOR,
 );
@@ -68,7 +70,7 @@ const SU_text_input_border_style = InputDecoration(
 
 const SU_carrier_message_style = TextStyle(
   fontSize: 14,
-  fontWeight: FontWeight.w500,
+  fontWeight: FontWeight.w600,
   fontFamily: 'Montserrat',
   color: SU_carrier_message_color,
 );
