@@ -1,5 +1,7 @@
 import 'package:core/navigation/i_route_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:welcome/sub_features/details/view/details.dart';
+import 'package:welcome/sub_features/signup/view/signup.dart';
 
 import 'package:welcome/sub_features/welcome/view/welcome_screen.dart';
 
@@ -14,6 +16,10 @@ class WelcomeRouteManager extends IRouteManager {
         return CrayonWelcomScreen(
           welcomeScreenArgs: arguments,
         );
+      case SignUp.viewPath :
+          return const SignUp();
+      case DetailsScreen.viewPath :
+        return const DetailsScreen();
       default:
         throw UnimplementedError();
     }

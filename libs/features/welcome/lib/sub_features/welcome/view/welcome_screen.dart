@@ -68,7 +68,7 @@ Widget _buildNonSignedInUI(
     ) {
   return Stack(
     children: [
-       _createBackgroundImage(),
+      // _createBackgroundImage(),
       // _createOverLay(),
       Padding(
         padding: const EdgeInsets.only(
@@ -78,18 +78,19 @@ Widget _buildNonSignedInUI(
           top: 15,
         ),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             _buildLanguageChangeButton(context, state , welcomeCoordinator),
             const SizedBox(height: 40),
             _buildLogo(context),
             _buildSizedBox(),
-            _buildNeomPayTitle(context),
+            _buildTitle(context),
             _buildSizedBox(),
-             _buildNeomPaySubTitle(context),
+             _buildSubTitle(context),
+            const SizedBox(height: 10),
+            _buildThirdTitle(context),
               const Spacer(),
-            _buildSignInButton(context, welcomeCoordinator, state),
-            _buildSignUpButton(context, welcomeCoordinator, state),
+            _buildButtons(context, welcomeCoordinator, state),
           ],
         ),
       ),
@@ -138,22 +139,39 @@ Widget _buildNonSignedInUI(
     );
   }
 
-  Widget _buildNeomPayTitle(BuildContext context) {
-    return Container(
-      width: 250,
-      child: Text('OB_WelcomeTitle'.tr,
-          style: WELCOME_HEADING_STYLE
-      ),
+  Widget _buildTitle(BuildContext context) {
+    return Text('OB_WelcomeTitle'.tr,
+        style: WELCOME_HEADING_STYLE
     );
   }
 
-  Widget _buildNeomPaySubTitle(BuildContext context) {
-    return Container(
-      width: 250,
-      child: Text('OB_WelcomeSubTitle'.tr,
-          style: WELCOME_SUBHEADING_STYLE
-      ),
+  Widget _buildSubTitle(BuildContext context) {
+    return Text('OB_WelcomeSubTitle'.tr,
+        style: WELCOME_SUBHEADING_STYLE
     );
+  }
+
+  Widget _buildThirdTitle(BuildContext context) {
+    return Text('OB_WelcomeThirdTitle'.tr,
+        style: WELCOME_THIRDHEADING_STYLE
+    );
+  }
+
+  Widget _buildButtons(
+      BuildContext context,
+      WelcomeCoordinator welcomeCoordinator,
+      WelcomeScreenState state,
+      ){
+      return Padding(
+        padding: const EdgeInsets.only(bottom: 42),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            _buildSignUpButton(context, welcomeCoordinator, state),
+            _buildSignInButton(context, welcomeCoordinator, state),
+          ],
+        ),
+      );
   }
 
   Widget _buildSignUpButton(
@@ -161,17 +179,19 @@ Widget _buildNonSignedInUI(
       WelcomeCoordinator welcomeCoordinator,
       WelcomeScreenState state,
       ) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 10),
+    return GestureDetector(
+      onTap: (){
+        welcomeCoordinator.navigateToSignUpScreen();
+      },
       child: Container(
-        width: double.infinity,
+        width: 170,
         height: 50,
         decoration: BoxDecoration(
             color:  config_color.PRIMARY_COLOR,
             borderRadius: BorderRadius.circular(8.0)
         ),
         child: Center(
-          child: Text('OB_SignIn'.tr, style: const TextStyle(
+          child: Text('OB_SignUp'.tr, style: const TextStyle(
               color: Colors.white
           ),),
         ),
@@ -184,32 +204,32 @@ Widget _buildNonSignedInUI(
       WelcomeCoordinator welcomeCoordinator,
       WelcomeScreenState state,
       ) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 20),
-      child: Container(
-        width: double.infinity,
-        height: 50,
-        decoration: BoxDecoration(
-          color:  Colors.white,
-          borderRadius: BorderRadius.circular(8.0),
-          border: Border.all(width: 1)
-        ),
-        child: Center(
-          child: Text('OB_SignUp'.tr, style: const TextStyle(
-            color: config_color.SECONDARY_COLOR
-          ),),
-        ),
+    return Container(
+      width: 170 ,
+      height: 50,
+      decoration: BoxDecoration(
+        color:  Colors.white,
+        borderRadius: BorderRadius.circular(8.0),
+        border: Border.all(width: 1)
+      ),
+      child: Center(
+        child: Text('OB_SignIn'.tr, style: const TextStyle(
+          color: config_color.SECONDARY_COLOR
+        ),),
       ),
     );
   }
 
   Widget _createBackgroundImage() {
-    return Image.asset(
-      OB_Background,
-      key: Key('welcomeBackgroundImage'),
-      width: double.infinity,
-      filterQuality: FilterQuality.high,
-      fit: BoxFit.fill,
+    return Padding(
+      padding: const EdgeInsets.only(top: 150),
+      child: Image.asset(
+        OB_Background,
+        key: Key('welcomeBackgroundImage'),
+        width: double.infinity,
+        filterQuality: FilterQuality.high,
+        fit: BoxFit.fill,
+      ),
     );
   }
 }

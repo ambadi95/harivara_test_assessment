@@ -1,4 +1,6 @@
 import 'dart:ui';
+import 'package:welcome/sub_features/signup/view/signup.dart';
+import 'package:welcome/sub_features/signup/view/signup.dart';
 import 'package:welcome/sub_features/welcome/state/welcome_screen_state.dart';
 import 'package:task_manager/base_classes/base_view_model.dart';
 import 'package:get/get.dart';
@@ -26,6 +28,10 @@ class WelcomeCoordinator extends BaseViewModel<WelcomeScreenState>{
     state = state.copyWith(
       currentLanguageCode: currentLanguageCode,
     );
+  }
+
+  Future navigateToSignUpScreen() async {
+    _navigationHandler.navigateToSignUpScreen();
   }
 
 }
