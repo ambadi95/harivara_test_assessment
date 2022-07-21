@@ -3,6 +3,7 @@ import 'package:config/Config.dart';
 import 'package:core/view/base_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
 import 'package:widget_library/app_bars/crayon_payment_app_bar_attributes.dart';
 import 'package:widget_library/app_bars/crayon_payment_app_bar_button_type.dart';
 import 'package:widget_library/buttons/docked_button.dart';
@@ -66,6 +67,7 @@ class Login extends StatelessWidget {
         'LS_Login',
         styleVariant: CrayonPaymentTextStyleVariant.headlineThirtyTwo,
         color: AN_TitleColor,
+        fontWeight: FontWeight.w800
       ),
     );
   }
@@ -90,10 +92,23 @@ class Login extends StatelessWidget {
               backgroundColor: AN_TextFieldBackground,
               prefixIcon: Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: Image.asset(
-                  LS_Flag,
-                  width: 22,
-                  height: 16,
+                child: Row(
+                  children: [
+                    Image.asset(
+                      LS_Flag,
+                      width: 22,
+                      height: 16,
+                    ),
+                    dynamicWSpacer(8),
+                    CrayonPaymentText(
+                      key: Key('${_identifier}_LS_Code'),
+                      text: const TextUIDataModel(
+                        '+255',
+                        styleVariant: CrayonPaymentTextStyleVariant.headline5,
+                        color: AN_TitleColor,
+                      ),
+                    ),
+                  ],
                 ),
               ),),
             dataModel: const SearchBarDataModel(
