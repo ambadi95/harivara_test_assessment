@@ -3,6 +3,7 @@ import 'package:config/Config.dart';
 import 'package:core/view/base_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
 import 'package:widget_library/app_bars/crayon_payment_app_bar_attributes.dart';
 import 'package:widget_library/app_bars/crayon_payment_app_bar_button_type.dart';
 import 'package:widget_library/buttons/docked_button.dart';
@@ -51,6 +52,7 @@ class Login extends StatelessWidget {
             dynamicHSpacer(36),
             _buildMobileField(context),
             dynamicHSpacer(36),
+          //  _buildOtpField(context),
             const Spacer(),
             actionButton(),
             dynamicHSpacer(20),
@@ -115,6 +117,24 @@ class Login extends StatelessWidget {
       ),
     ]);
   }
+
+  // Widget _buildOtpField(context){
+  //   return OTPTextField(
+  //      // controller: otpController,
+  //       length: 5,
+  //       width: MediaQuery.of(context).size.width,
+  //       textFieldAlignment: MainAxisAlignment.spaceAround,
+  //       fieldWidth: 45,
+  //       fieldStyle: FieldStyle.box,
+  //       outlineBorderRadius: 15,
+  //       style: TextStyle(fontSize: 17),
+  //       onChanged: (pin) {
+  //         print("Changed: " + pin);
+  //       },
+  //       onCompleted: (pin) {
+  //         print("Completed: " + pin);
+  //       });
+  // }
 
   Widget actionButton() {
     return CrayonPaymentDockedButton(

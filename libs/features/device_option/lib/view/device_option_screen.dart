@@ -12,7 +12,6 @@ import 'package:widget_library/search_bar/search_bar_widget_model.dart';
 import 'package:widget_library/spacers/crayon_payment_spacers.dart';
 import 'package:widget_library/static_text/crayon_payment_text.dart';
 import 'package:widget_library/widget_library.dart';
-
 import '../device_option_module.dart';
 import '../state/device_option_state.dart';
 import '../viewmodel/device_option_coordinator.dart';
