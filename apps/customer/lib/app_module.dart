@@ -98,13 +98,7 @@ class AppModule {
     LoginModule.registerDependencies();
 
     CustomerHomeModule.registerDependencies();
-    PasscodeModule.registerDependencies();
 
-    AgentNearByModule.registerDependencies();
-
-    DeviceOptionModule.registerDependencies();
-
-    LoginModule.registerDependencies();
 
 
     DIContainer.container.resolve<WidgetsModule>().registerDependencies();

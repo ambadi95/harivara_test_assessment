@@ -51,27 +51,3 @@ const WB_EnterPassCodeTitleColor = Color(0xFF565451);
 
 
 
-////Agent NearBy Screen
-
-const White = Color(0xFFFFFFFF);
-const Black = Color(0xFF000000);
-
-
-const AN_BackgroundColor = Color(0xFFFFFFFF);
-const AN_AppBarLeadingIcon = Color(0xFF2D2926);
-const AN_TitleColor = Color(0xFF040505);
-const AN_TextFieldLeadingIcon = Color(0xFF000000);
-const AN_TextFieldLabel = Color(0xFF000000);
-const AN_TextFieldBackground = Color(0xFFF3EEEB);
-const AN_CardTitle = Color(0xFF000000);
-const AN_CardSubTitle = Color(0xFF4B4B4B);
-const AN_CardDescription = Color(0xFF4B4B4B);
-const AN_CardActionBG1 = Color(0xFFF3EEEB);
-const AN_CardActionBG2 = Color(0xFFF3EEEB);
-const AN_CardActionIcon1 = Color(0xFFDA2228);
-const AN_CardActionIcon2 = Color(0xFFDA2228);
-const AN_Divider = Color(0xFFEFEEE9);
-const AN_ActionText = Color(0xFF4B4B4B);
-const LS_ButtonColor = Color(0xFFDA2228);
-
-

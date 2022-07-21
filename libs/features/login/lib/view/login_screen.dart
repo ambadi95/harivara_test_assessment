@@ -31,12 +31,13 @@ class Login extends StatelessWidget {
     return BaseView<LoginCoordinator, LoginState>(
       setupViewModel: (coordinator) {},
       builder: (context, state, coordinator) {
-        return _buildMainUI(context);
+        return _buildMainUI(context, coordinator);
       },
     );
   }
 
-  Widget _buildMainUI(context) {
+  Widget _buildMainUI(context,
+      LoginCoordinator coordinator) {
     return CrayonPaymentScaffold(
         appBarAttributes: CrayonPaymentAppBarAttributes(
           key: const Key('CardDetailsScreen_AppBarBackButton'),
@@ -52,7 +53,7 @@ class Login extends StatelessWidget {
             _buildMobileField(context),
             dynamicHSpacer(36),
             const Spacer(),
-            actionButton(),
+            actionButton(coordinator),
             dynamicHSpacer(20),
           ],
         ));
@@ -102,7 +103,9 @@ class Login extends StatelessWidget {
     ]);
   }
 
-  Widget actionButton() {
+  Widget actionButton(
+      LoginCoordinator coordinator
+      ) {
     return CrayonPaymentDockedButton(
       key: const Key('SignInButton'),
       title: 'LS_SignIn'.tr,
@@ -111,7 +114,9 @@ class Login extends StatelessWidget {
       buttonColor: LS_ButtonColor,
       textColor: White,
       textStyleVariant: CrayonPaymentTextStyleVariant.headline5,
-      onPressed: () {},
+      onPressed: () {
+        coordinator.navigateToWelcomeBackScreen();
+      },
     );
   }
 

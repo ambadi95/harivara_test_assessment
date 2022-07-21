@@ -238,17 +238,3 @@ const WB_enter_passcode_title_style = TextStyle(
     fontSize: 14);
 
 
-const ES_success_text = TextStyle(
-  fontSize: 20,
-  fontWeight: FontWeight.w500,
-  fontFamily: 'Montserrat',
-  color: SECONDARY_COLOR,
-);
-
-const ES_bold_text = TextStyle(
-  fontSize: 20,
-  fontWeight: FontWeight.bold,
-  fontFamily: 'Montserrat',
-  color: SECONDARY_COLOR,
-);
-

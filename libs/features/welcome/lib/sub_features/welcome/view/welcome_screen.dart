@@ -201,17 +201,6 @@ Widget _buildNonSignedInUI(
       WelcomeCoordinator welcomeCoordinator,
       WelcomeScreenState state,
       ) {
-    return Container(
-      height: 50,
-      decoration: BoxDecoration(
-        color:  Colors.white,
-        borderRadius: BorderRadius.circular(8.0),
-        border: Border.all(width: 1)
-      ),
-      child: Center(
-        child: Text('OB_SignIn'.tr, style: const TextStyle(
-          color: config_color.SECONDARY_COLOR
-        ),),
     return InkWell(
       onTap: (){
         welcomeCoordinator.navigateToLogin();

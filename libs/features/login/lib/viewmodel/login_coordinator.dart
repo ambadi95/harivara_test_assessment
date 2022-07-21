@@ -11,4 +11,9 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState>{
 
   LoginCoordinator(this._navigationHandler,
       this._loginUseCase,) : super(const LoginState());
+
+  Future navigateToWelcomeBackScreen() async {
+    _navigationHandler.navigateToWelcomeBack();
+
+  }
 }

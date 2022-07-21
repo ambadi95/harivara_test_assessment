@@ -85,19 +85,6 @@ class WelcomeNavigationHandler with ErrorHandler{
     );
   }
 
-  Future<void> navigateToNearByAgent() async {
-    await _navigationManager.navigateTo(
-      AgentNearBy.viewPath,
-      const NavigationType.push(),
-    );
-  }
-
-  Future<void> navigateToDeviceOption() async {
-    await _navigationManager.navigateTo(
-      DeviceOption.viewPath,
-      const NavigationType.push(),
-    );
-  }
 
   // Future<void> navigateToDestination(
   //     String? destination,

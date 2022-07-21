@@ -15,23 +15,23 @@ import '../../welcome/viewmodel/welcome_coordinatior.dart';
 
 class CrayonWelcomBackScreen extends StatefulWidget {
   static const viewPath = '${WelcomeModule.moduleIdentifier}/welcomeback';
-  final WelcomeScreenArgs welcomeScreenArgs;
+  // final WelcomeScreenArgs welcomeScreenArgs;
 
   const CrayonWelcomBackScreen({
     Key? key,
-    required this.welcomeScreenArgs,
+    // required this.welcomeScreenArgs,
   }) : super(key: key);
 
   @override
   State<CrayonWelcomBackScreen> createState() => _CrayonWelcomBackScreenState();
 
-  factory CrayonWelcomBackScreen.forCustomerBackApp() => CrayonWelcomBackScreen(
-        welcomeScreenArgs: WelcomeScreenArgs(
-          '',
-          '',
-          'Customer',
-        ),
-      );
+  // factory CrayonWelcomBackScreen.forCustomerBackApp() => CrayonWelcomBackScreen(
+  //       welcomeScreenArgs: WelcomeScreenArgs(
+  //         '',
+  //         '',
+  //         'Customer',
+  //       ),
+  //     );
 }
 
 class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
@@ -89,7 +89,7 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
               _userInfo(context),const SizedBox(height: 30),
               _enterPassCodeTitle(context),const SizedBox(height: 10),
               Image.asset(
-                "assets/welcomeback/orIcon.png",
+                WB_or_icon,
               ),const SizedBox(height: 10),
 
               const Spacer(),
