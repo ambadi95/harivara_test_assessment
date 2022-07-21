@@ -1,5 +1,5 @@
 class CrayonPaymentDimensions {
-  static const double defaultMargin = 20;
+  static const double defaultMargin = 16;
   static const double extraLargeMargin = 75;
   static const double largeMargin = 54;
   static const double mediumMargin = 34;

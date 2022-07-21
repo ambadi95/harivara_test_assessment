@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:shared_data_models/agent/merchant_model.dart';
+import 'package:shared_data_models/agent_nearby/agent_nearby_model.dart';
 import '../raw_json_files/raw_json_reader.dart';
 
 void main() {
@@ -8,14 +8,14 @@ void main() {
       // Arrange
       final json = rawJsonToMap('agent/merchant_model.json');
       // Act
-      final result = MerchantModel.fromJson(json);
+      final result = AgentNearbyModel.fromJson(json);
       // Assert
-      expect(result, isA<MerchantModel>());
-      expect(result.merchantId, json['merchantId']);
+      expect(result, isA<AgentNearbyModel>());
+      expect(result.agentId, json['merchantId']);
       expect(result.mobileNo, json['mobileNo']);
-      expect(result.email, json['email']);
-      expect(result.companyName, json['companyName']);
-      expect(result.registrationNo, json['registrationNo']);
+      expect(result.address, json['email']);
+      expect(result.imagePath, json['companyName']);
+      expect(result.distance, json['registrationNo']);
     });
   });
 }

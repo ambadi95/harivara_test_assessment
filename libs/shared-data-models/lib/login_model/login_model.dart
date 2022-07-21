@@ -2,13 +2,13 @@ import 'package:json_annotation/json_annotation.dart';
 
 @JsonSerializable()
 class LoginModel {
-  String? idToken;
-  String? email;
+  String? mobileNumber;
+  String? password;
 
-  LoginModel({this.email, this.idToken});
+  LoginModel({this.mobileNumber, this.password});
 
   factory LoginModel.fromJson(Map<String, dynamic> json) => LoginModel(
-        email: json['email'] as String,
-        idToken: json['idToken'] as String,
+    mobileNumber: json['mobileNumber'] as String,
+    password: json['password'] as String,
       );
 }
