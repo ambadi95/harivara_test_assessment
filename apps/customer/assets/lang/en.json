@@ -1,9 +1,9 @@
 {
-  "OB_WelcomeTitle" : "Welcome to the \nY9 app",
-  "OB_WelcomeSubTitle" : "Your dream digital bank y9bank.com",
+  "OB_WelcomeTitle" : "Welcome to Y9",
+  "OB_WelcomeSubTitle" : "Your dream digital bank",
+  "OB_WelcomeThirdTitle" : "y9bank.com",
   "OB_SignIn" : "Sign In",
   "OB_SignUp" : "Sign Up",
-  "OB_Lang" : "EN",
   "AN_Title" : "Agents Near by",
   "AN_Search" : "Search by Name / Id/ Region / District/ Po#",
   "AN_AgentName" : "Y9 Agent id:",
@@ -13,5 +13,26 @@
   "LS_Login" : "Login to your Y9 \napp",
   "LS_Mobile" : "Mobile number",
   "LS_Passcode" : "Passcode",
-  "LS_SignIn" : "Sign in"
+  "LS_SignIn" : "Sign in",
+  "OB_Lang" : "SW",
+
+  "SU_title" : "Enter NIDA Number",
+  "SU_subtitle" : "By signing up to Y9 Pay, you agree to the \n%{Terms & Conditions|https://www.google.com}%.",
+  "SU_ID_no_label" : "NIDA Number",
+  "SU_mobile_no_label" : "Mobile number",
+  "SU_carrier_message" : "Carrier SMS charges may apply.",
+  "SU_button_text" : "Continue",
+
+  "DV_title" : "Enter Personal Details",
+  "DV_name_label" : "Name",
+  "DV_dob_label" : "Date of birth",
+  "DV_gender_label" : "Gender",
+  "DV_profession_label" : "Profession",
+  "DV_contact_no_label" : "Mobile Number",
+  "DV_email_label" : "Email Id",
+  "DV_address_label" : "Address",
+  "DV_po_box_label" : "P.O. Box",
+  "DV_region_label" : "Region",
+  "DV_district_label" : "District",
+  "DV_button_text" : "Continue"
 }
