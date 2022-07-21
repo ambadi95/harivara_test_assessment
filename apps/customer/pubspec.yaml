@@ -10,6 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   firebase_core: ^1.12.0
+  json_serializable: ^6.1.4
   flutter_riverpod: ^1.0.3
   carousel_slider: ^4.0.0
   syncfusion_flutter_datepicker: ^19.4.53
@@ -24,9 +25,6 @@ dependencies:
   connectivity_for_web: 0.4.0+1
   scan: ^1.6.0
   sqflite:
-  freezed:
-  freezed_annotation:
-
 
   config:
     path: ../customer/config
@@ -49,6 +47,18 @@ dependencies:
   welcome:
     path: ../../libs/features/welcome
 
+  passcode:
+    path:  ../../libs/features/passcode
+
+  agent_nearby:
+    path: ../../libs/features/agent_nearby
+
+  device_option:
+    path: ../../libs/features/device_option
+
+  login:
+    path: ../../libs/features/login
+
 
 dev_dependencies:
   flutter_test:
@@ -58,7 +68,6 @@ dev_dependencies:
     sdk: flutter
 
   pedantic: ^1.11.1
-  json_serializable:
   dart_code_metrics: ^4.11.0
   build_runner:
   dartz: ^0.10.1
@@ -72,7 +81,6 @@ flutter:
     - assets/configuration/network_config.json
     - assets/lang/
     - assets/images/
-    - assets/home/
     - assets/configuration/static_auth.json
 
 

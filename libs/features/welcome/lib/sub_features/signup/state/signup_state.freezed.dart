@@ -21,6 +21,7 @@ class _$SignUpStateTearOff {
     return const InitialState();
   }
 
+
 }
 
 /// @nodoc

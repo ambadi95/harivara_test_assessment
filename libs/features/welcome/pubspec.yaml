@@ -35,19 +35,22 @@ dependencies:
   config:
     path: ../../../apps/customer/config/
 
+  agent_nearby:
+    path: ../agent_nearby
+
+  device_option:
+    path: ../device_option
+
+  passcode:
+    path: ../passcode
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^1.0.0
-  mocktail: ^0.2.0
-  freezed:
-  build_runner:
-  json_serializable:
-  network_image_mock: ^2.0.1
-  flutter_riverpod: ^1.0.3
+
 
 
 flutter:
   uses-material-design: true
-  assets:
-    - assets/welcome_back/
+

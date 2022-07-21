@@ -2,7 +2,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'home_screen_state.dart';
+part of 'enrollment_success_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,8 +14,8 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$CustomerHomeScreenStateTearOff {
-  const _$CustomerHomeScreenStateTearOff();
+class _$EnrollmentSuccessStateTearOff {
+  const _$EnrollmentSuccessStateTearOff();
 
   InitialState initialState() {
     return const InitialState();
@@ -23,10 +23,10 @@ class _$CustomerHomeScreenStateTearOff {
 }
 
 /// @nodoc
-const $CustomerHomeScreenState = _$CustomerHomeScreenStateTearOff();
+const $EnrollmentSuccessState = _$EnrollmentSuccessStateTearOff();
 
 /// @nodoc
-mixin _$CustomerHomeScreenState {
+mixin _$EnrollmentSuccessState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
@@ -62,20 +62,20 @@ mixin _$CustomerHomeScreenState {
 }
 
 /// @nodoc
-abstract class $CustomerHomeScreenStateCopyWith<$Res> {
-  factory $CustomerHomeScreenStateCopyWith(CustomerHomeScreenState value,
-          $Res Function(CustomerHomeScreenState) then) =
-      _$CustomerHomeScreenStateCopyWithImpl<$Res>;
+abstract class $EnrollmentSuccessStateCopyWith<$Res> {
+  factory $EnrollmentSuccessStateCopyWith(EnrollmentSuccessState value,
+          $Res Function(EnrollmentSuccessState) then) =
+      _$EnrollmentSuccessStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$CustomerHomeScreenStateCopyWithImpl<$Res>
-    implements $CustomerHomeScreenStateCopyWith<$Res> {
-  _$CustomerHomeScreenStateCopyWithImpl(this._value, this._then);
+class _$EnrollmentSuccessStateCopyWithImpl<$Res>
+    implements $EnrollmentSuccessStateCopyWith<$Res> {
+  _$EnrollmentSuccessStateCopyWithImpl(this._value, this._then);
 
-  final CustomerHomeScreenState _value;
+  final EnrollmentSuccessState _value;
   // ignore: unused_field
-  final $Res Function(CustomerHomeScreenState) _then;
+  final $Res Function(EnrollmentSuccessState) _then;
 }
 
 /// @nodoc
@@ -87,7 +87,7 @@ abstract class $InitialStateCopyWith<$Res> {
 
 /// @nodoc
 class _$InitialStateCopyWithImpl<$Res>
-    extends _$CustomerHomeScreenStateCopyWithImpl<$Res>
+    extends _$EnrollmentSuccessStateCopyWithImpl<$Res>
     implements $InitialStateCopyWith<$Res> {
   _$InitialStateCopyWithImpl(
       InitialState _value, $Res Function(InitialState) _then)
@@ -104,7 +104,7 @@ class _$InitialState implements InitialState {
 
   @override
   String toString() {
-    return 'CustomerHomeScreenState.initialState()';
+    return 'EnrollmentSuccessState.initialState()';
   }
 
   @override
@@ -173,6 +173,6 @@ class _$InitialState implements InitialState {
   }
 }
 
-abstract class InitialState implements CustomerHomeScreenState {
+abstract class InitialState implements EnrollmentSuccessState {
   const factory InitialState() = _$InitialState;
 }

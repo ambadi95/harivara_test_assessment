@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:welcome/sub_features/welcome/data_model/welcome_model.dart';
 import 'package:core/view/base_view.dart';
 import 'package:get/get.dart';
+import 'package:widget_library/spacers/crayon_payment_spacers.dart';
 
 import '../../../welcome_module.dart';
 import '../state/welcome_screen_state.dart';
@@ -162,15 +163,12 @@ Widget _buildNonSignedInUI(
       WelcomeCoordinator welcomeCoordinator,
       WelcomeScreenState state,
       ){
-      return Padding(
-        padding: const EdgeInsets.only(bottom: 42),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            _buildSignUpButton(context, welcomeCoordinator, state),
-            _buildSignInButton(context, welcomeCoordinator, state),
-          ],
-        ),
+      return Row(
+        children: [
+          Expanded(child: _buildSignUpButton(context, welcomeCoordinator, state)),
+          dynamicWSpacer(10),
+          Expanded(child: _buildSignInButton(context, welcomeCoordinator, state)),
+        ],
       );
   }
 
@@ -183,19 +181,18 @@ Widget _buildNonSignedInUI(
       onTap: (){
         welcomeCoordinator.navigateToSignUpScreen();
       },
-      child: Container(
-        width: 170,
-        height: 50,
-        decoration: BoxDecoration(
-            color:  config_color.PRIMARY_COLOR,
-            borderRadius: BorderRadius.circular(8.0)
+        child: Container(
+          height: 50,
+          decoration: BoxDecoration(
+              color:  config_color.PRIMARY_COLOR,
+              borderRadius: BorderRadius.circular(8.0)
+          ),
+          child: Center(
+            child: Text('OB_SignUp'.tr, style: const TextStyle(
+                color: Colors.white
+            ),),
+          ),
         ),
-        child: Center(
-          child: Text('OB_SignUp'.tr, style: const TextStyle(
-              color: Colors.white
-          ),),
-        ),
-      ),
     );
   }
 
@@ -205,7 +202,6 @@ Widget _buildNonSignedInUI(
       WelcomeScreenState state,
       ) {
     return Container(
-      width: 170 ,
       height: 50,
       decoration: BoxDecoration(
         color:  Colors.white,

@@ -7,6 +7,7 @@ import 'package:network_manager/auth/user_client.dart';
 import 'package:network_manager/auth/user_manager.dart';
 import 'package:task_manager/task_manager_impl.dart';
 import 'package:welcome/sub_features/details/viewmodel/details_usecase.dart';
+import 'package:welcome/sub_features/enrollment_success/viewmodel/enrollment_success_coordinator.dart';
 import 'package:welcome/sub_features/signup/viewmodel/signup_usecase.dart';
 import 'package:welcome/sub_features/signup/viewmodel/signup_viewmodel.dart';
 import 'package:welcome/sub_features/welcome/viewmodel/welcome_usecase.dart';
@@ -52,5 +53,12 @@ class WelcomeModule {
         ),
       ),
     );
+
+    DIContainer.container.registerFactory<EnrollmentSuccessCoordinator>(
+          (container) => EnrollmentSuccessCoordinator(
+        WelcomeNavigationHandler(container.resolve<NavigationManager>()),
+      ),
+    );
+
   }
 }

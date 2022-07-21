@@ -17,6 +17,51 @@ const WELCOME_SUBHEADING_STYLE = TextStyle(
   color: TERTIARY_COLOR,
 );
 
+const AN_Title_FF = TextStyle(
+  fontSize: 32,
+  fontWeight: FontWeight.w500,
+  fontFamily: 'Montserrat',
+  color: AN_TitleColor,
+);
+
+const AN_TextFieldLabel_FF = TextStyle(
+  fontSize: 12,
+  fontWeight: FontWeight.w500,
+  fontFamily: 'Montserrat',
+  color: AN_TextFieldLabel,
+);
+
+const AN_CardTitle_FF = TextStyle(
+  fontSize: 20,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Montserrat',
+  color: AN_CardTitle,
+);
+
+const AN_CardSubtitle_FF = TextStyle(
+  fontSize: 16,
+  fontWeight: FontWeight.w500,
+  fontFamily: 'Montserrat',
+  color: AN_CardSubTitle,
+);
+
+const AN_CardDescription_FF = TextStyle(
+  fontSize: 16,
+  fontWeight: FontWeight.w500,
+  fontFamily: 'Montserrat',
+  color: AN_CardDescription,
+);
+
+const AN_ActionText_FF = TextStyle(
+  fontSize: 10,
+  fontWeight: FontWeight.w500,
+  fontFamily: 'Montserrat',
+  color: AN_ActionText,
+);
+
+
+
+
 const WELCOME_THIRDHEADING_STYLE = TextStyle(
   fontSize: 20,
   fontWeight: FontWeight.w500,
@@ -89,94 +134,17 @@ const SU_text_input_address_style = InputDecoration(
   ),
 );
 
-
-
-const HS_name_text_style = TextStyle(
-  fontSize: 16,
-  fontWeight: FontWeight.w600,
+const ES_success_text = TextStyle(
+  fontSize: 20,
+  fontWeight: FontWeight.w500,
   fontFamily: 'Montserrat',
-  fontStyle: FontStyle.normal,
   color: SECONDARY_COLOR,
 );
 
-const HS_morning_text_style = TextStyle(
-  fontSize: 12,
-  fontWeight: FontWeight.w600,
-  fontFamily: 'Montserrat',
-  fontStyle: FontStyle.normal,
-  color: HS_MorningTextColor,
-);
-const HS_title_style = TextStyle(
-  fontSize: 12,
-  fontWeight: FontWeight.w500,
-  fontFamily: 'Montserrat',
-  fontStyle: FontStyle.normal,
-  color: Colors.white,
-);
-const HS_account_id_style = TextStyle(
+const ES_bold_text = TextStyle(
   fontSize: 20,
-  fontWeight: FontWeight.w600,
+  fontWeight: FontWeight.bold,
   fontFamily: 'Montserrat',
-  fontStyle: FontStyle.normal,
-  color: Colors.white,
+  color: SECONDARY_COLOR,
 );
-
-const HS_card_items_style = TextStyle(
-  fontSize: 12,
-  fontWeight: FontWeight.w500,
-  fontFamily: 'Montserrat',
-  fontStyle: FontStyle.normal,
-  color: Colors.black,
-);
-const HS_invite_your_friends_style = TextStyle(
-  fontSize: 18,
-  fontWeight: FontWeight.w600,
-  fontFamily: 'Montserrat',
-  fontStyle: FontStyle.normal,
-  color: Colors.black,
-  letterSpacing: -0.02
-);
-const HS_invite_friends_y9_style = TextStyle(
-    fontFamily: 'Montserrat',
-    fontStyle: FontStyle.normal,
-    color: Colors.black, fontWeight: FontWeight.w400, fontSize: 14);
-
-
-
-const HS_referal_code_title_style = TextStyle(
-    color: Colors.black,
-    fontWeight: FontWeight.w400,
-    fontFamily: 'Montserrat',
-    fontStyle: FontStyle.normal,
-    fontSize: 18);
-
-const HS_referal_code_style = TextStyle(
-    color: Colors.black,
-    fontWeight: FontWeight.w600,
-    fontFamily: 'Montserrat',
-    fontStyle: FontStyle.normal,
-    fontSize: 18);
-
-
-const WB_title_style = TextStyle(
-    color: WB_TitleColor,
-    fontWeight: FontWeight.w500,
-    fontFamily: 'Montserrat',
-    fontStyle: FontStyle.normal,
-    fontSize: 20);
-
-const WB_user_info_style = TextStyle(
-    color: Colors.black,
-    fontWeight: FontWeight.w400,
-    fontFamily: 'Montserrat',
-    fontStyle: FontStyle.normal,
-    fontSize: 16);
-
-const WB_enter_passcode_title_style = TextStyle(
-    color: WB_EnterPassCodeTitleColor,
-    fontWeight: FontWeight.w500,
-    fontFamily: 'Montserrat',
-    fontStyle: FontStyle.normal,
-    fontSize: 14);
-
 

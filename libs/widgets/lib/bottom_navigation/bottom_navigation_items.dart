@@ -12,6 +12,12 @@ List<BottomNavigationBarItem> buildBottomNavigationItems() {
     ),
     BottomNavigationBarItem(
       icon: SvgPicture.asset(
+        CrayonPaymentIconPath.iconQrScanPath,
+      ),
+      label: '',
+    ),
+    BottomNavigationBarItem(
+      icon: SvgPicture.asset(
         CrayonPaymentIconPath.iconPayPath,
       ),
       label: '',

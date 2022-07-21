@@ -71,8 +71,8 @@ mixin _$DetailsState {
 /// @nodoc
 abstract class $DetailsStateCopyWith<$Res> {
   factory $DetailsStateCopyWith(
-          DetailsState value, $Res Function(DetailsState) then) =
-      _$DetailsStateCopyWithImpl<$Res>;
+      DetailsState value, $Res Function(DetailsState) then) =
+  _$DetailsStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -87,8 +87,8 @@ class _$DetailsStateCopyWithImpl<$Res> implements $DetailsStateCopyWith<$Res> {
 /// @nodoc
 abstract class $InitialStateCopyWith<$Res> {
   factory $InitialStateCopyWith(
-          InitialState value, $Res Function(InitialState) then) =
-      _$InitialStateCopyWithImpl<$Res>;
+      InitialState value, $Res Function(InitialState) then) =
+  _$InitialStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -191,8 +191,8 @@ abstract class InitialState implements DetailsState {
 /// @nodoc
 abstract class $DetailsFormStateCopyWith<$Res> {
   factory $DetailsFormStateCopyWith(
-          DetailsFormState value, $Res Function(DetailsFormState) then) =
-      _$DetailsFormStateCopyWithImpl<$Res>;
+      DetailsFormState value, $Res Function(DetailsFormState) then) =
+  _$DetailsFormStateCopyWithImpl<$Res>;
   $Res call({bool isValid});
 }
 
@@ -215,7 +215,7 @@ class _$DetailsFormStateCopyWithImpl<$Res>
       isValid == freezed
           ? _value.isValid
           : isValid // ignore: cast_nullable_to_non_nullable
-              as bool,
+      as bool,
     ));
   }
 }

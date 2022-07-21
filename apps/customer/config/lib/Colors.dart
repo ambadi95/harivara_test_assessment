@@ -17,12 +17,27 @@ const SU_button_color = Color(0xFFDA2228);
 const SU_button_text_color = Color(0xFFFFFFFF);
 
 
+////Agent NearBy Screen
 
-const HS_MorningTextColor = Color(0xFF4B4B4B);
-const HS_NotificationCountColor = Color(0xFFE03C31);
-const HS_RedCardIconsBackColor = Color(0xFFF3EEEB);
-const HS_InviteBoxBackColor = Color(0xFFF3F4FA);
+const White = Color(0xFFFFFFFF);
+const Black = Color(0xFF000000);
 
-const WB_TitleColor = Color(0xFF160304);
-const WB_EnterPassCodeTitleColor = Color(0xFF565451);
+
+const AN_BackgroundColor = Color(0xFFFFFFFF);
+const AN_AppBarLeadingIcon = Color(0xFF2D2926);
+const AN_TitleColor = Color(0xFF040505);
+const AN_TextFieldLeadingIcon = Color(0xFF000000);
+const AN_TextFieldLabel = Color(0xFF000000);
+const AN_TextFieldBackground = Color(0xFFF3EEEB);
+const AN_CardTitle = Color(0xFF000000);
+const AN_CardSubTitle = Color(0xFF4B4B4B);
+const AN_CardDescription = Color(0xFF4B4B4B);
+const AN_CardActionBG1 = Color(0xFFF3EEEB);
+const AN_CardActionBG2 = Color(0xFFF3EEEB);
+const AN_CardActionIcon1 = Color(0xFFDA2228);
+const AN_CardActionIcon2 = Color(0xFFDA2228);
+const AN_Divider = Color(0xFFEFEEE9);
+const AN_ActionText = Color(0xFF4B4B4B);
+const LS_ButtonColor = Color(0xFFDA2228);
+
 
