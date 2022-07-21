@@ -4,17 +4,10 @@ import 'package:agent_nearby/navigation_handler/agent_nearby_route_manager.dart'
 import 'package:core/analytics/default_tracker_collection.dart';
 import 'package:core/analytics/tracker.dart';
 import 'package:core/contacts/get_contacts.dart';
-
-import 'package:core/environment/environment_resolver.dart';
-
 import 'package:core/ioc/di_container.dart';
-
 import 'package:core/native_document_directory/native_document_directory.dart';
-
 import 'package:core/navigation/navigation_manager.dart';
-
 import 'package:core/retrievers/app_info_retriever.dart';
-import 'package:core/retrievers/platform_retriever.dart';
 import 'package:core/session_management/inactivity_service.dart';
 import 'package:core/share_download/share_download_image.dart';
 import 'package:core/share_download/share_file_manager.dart';
@@ -24,11 +17,9 @@ import 'package:core/translation/crayon_payment_transaltions_loader.dart';
 import 'package:core/utils/input_formatters/length_text_formatter.dart';
 import 'package:core/validators/input_entry_validator/input_entry_validator.dart';
 import 'package:device_option/device_option_module.dart';
-
-import 'package:network_manager/auth/auth_manager.dart';
-import 'package:network_manager/auth/user_manager.dart';
-
-import 'package:network_manager/utils/connectivity/i_connectivity.dart';
+import 'package:device_option/navigation_handler/device_option_route_manager.dart';
+import 'package:login/login_module.dart';
+import 'package:login/navigation_handler/login_route_manager.dart';
 import 'package:task_manager/cache_manager/storage/file_storage/file_storage_service_impl.dart';
 import 'package:task_manager/cache_manager/storage/memory_storage/memory_storage_service_impl.dart';
 import 'package:task_manager/cache_manager/storage/crayon_payment_storage_service.dart';
@@ -38,7 +29,6 @@ import 'package:task_manager/task_manager.dart';
 import 'package:welcome/navigation_handler/welcome_route_manager.dart';
 import 'package:welcome/welcome_module.dart';
 import 'package:widget_library/app_mobile_widgets.dart';
-import 'package:widget_library/error/network_error.dart';
 import 'package:widget_library/keypad/utils/keypad_button_pressed_value_updater.dart';
 
 class AppModule {
@@ -91,6 +81,8 @@ class AppModule {
     AgentNearByModule.registerDependencies();
 
     DeviceOptionModule.registerDependencies();
+
+    LoginModule.registerDependencies();
 
 
     DIContainer.container.resolve<WidgetsModule>().registerDependencies();
@@ -155,7 +147,13 @@ void _registerRouteManagers() {
 
   navigationManagerContainer.registerRouteManager(
     DeviceOptionModule.moduleIdentifier,
-    AgentNearByRouteManager(),
+    DeviceOptionRouteManager(),
+  );
+
+
+  navigationManagerContainer.registerRouteManager(
+    LoginModule.moduleIdentifier,
+    LoginRouteManager(),
   );
 
 

@@ -7,5 +7,11 @@
   "AN_Title" : "Agents Near by",
   "AN_Search" : "Search by Name / Id/ Region / District/ Po#",
   "AN_AgentName" : "Y9 Agent id:",
-  "AN_Call" : "Call"
+  "AN_Call" : "Call",
+  "DO_Title": "Device Options",
+  "DO_Search": "Search by Name / Brand / price / storage / etc..",
+  "LS_Login" : "Login to your Y9 app",
+  "LS_Mobile" : "Mobile number",
+  "LS_Passcode" : "Passcode",
+  "LS_SignIn" : "Sign in"
 }

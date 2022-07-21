@@ -52,6 +52,9 @@ dependencies:
   device_option:
     path: ../../libs/features/device_option
 
+  login:
+    path: ../../libs/features/login
+
 
 dev_dependencies:
   flutter_test:

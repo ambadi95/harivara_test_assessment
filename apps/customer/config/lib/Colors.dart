@@ -7,6 +7,10 @@ const TERTIARY_COLOR = Color(0xff808284);
 
 ////Agent NearBy Screen
 
+const White = Color(0xFFFFFFFF);
+const Black = Color(0xFF000000);
+
+
 const AN_BackgroundColor = Color(0xFFFFFFFF);
 const AN_AppBarLeadingIcon = Color(0xFF2D2926);
 const AN_TitleColor = Color(0xFF040505);
@@ -22,4 +26,6 @@ const AN_CardActionIcon1 = Color(0xFFDA2228);
 const AN_CardActionIcon2 = Color(0xFFDA2228);
 const AN_Divider = Color(0xFFEFEEE9);
 const AN_ActionText = Color(0xFF4B4B4B);
+const LS_ButtonColor = Color(0xFFDA2228);
+
 
