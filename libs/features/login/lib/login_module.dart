@@ -8,7 +8,7 @@ import 'navigation_handler/login_navigation_handler.dart';
 
 
 class LoginModule {
-  static const moduleIdentifier = 'agentNearbyModule';
+  static const moduleIdentifier = 'loginModule';
 
   static void registerDependencies() {
 

@@ -11,4 +11,12 @@ class EnrollmentSuccessCoordinator extends BaseViewModel<EnrollmentSuccessState>
     _navigationHandler.openForNewPasscode();
   }
 
+  Future navigateToAgentNearBy() async {
+    _navigationHandler.navigateToNearByAgent();
+  }
+
+  Future navigateToDeviceOption() async {
+    _navigationHandler.navigateToDeviceOption();
+  }
+
 }

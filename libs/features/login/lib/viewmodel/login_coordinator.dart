@@ -7,8 +7,8 @@ import 'login_usecase.dart';
 class LoginCoordinator extends AnalyticsStateNotifier<LoginState>{
 
   final LoginNavigationHandler _navigationHandler;
-  final LoginUseCase _agentNearbyUseCase;
+  final LoginUseCase _loginUseCase;
 
-  LoginCoordinator( this._navigationHandler,
-      this._agentNearbyUseCase,) : super(const LoginState());
+  LoginCoordinator(this._navigationHandler,
+      this._loginUseCase,) : super(const LoginState());
 }

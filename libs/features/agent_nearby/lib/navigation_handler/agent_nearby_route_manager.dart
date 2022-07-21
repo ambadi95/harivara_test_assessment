@@ -6,8 +6,12 @@ import '../view/agent_nearby_screen.dart';
 class AgentNearByRouteManager extends IRouteManager {
   @override
   Widget getView(RouteSettings settings) {
-    if (settings.name == AgentNearBy.viewPath) {
-
+    switch (settings.name) {
+      case AgentNearBy.viewPath:
+        return const AgentNearBy();
+      default:
+      // TODO: implement getView
+        throw UnimplementedError();
     }
     throw Exception('Route ${settings.name} not found');
   }

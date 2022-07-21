@@ -24,7 +24,6 @@
   "DV_po_box_label" : "P.O. Box",
   "DV_region_label" : "Region",
   "DV_district_label" : "District",
-  "DV_button_text" : "Endelea",
 
   "PC_create_passcode" : "Unda nambari mpya ya siri",
   "PC_passcode_message" : "Hii itatumika kuingia",
@@ -37,7 +36,7 @@
   "ES_welcome_Text" : "HII %{Ennamual Jisula}% hongera kwa kujiandikisha kwa Y9",
   "ES_enroll_id" : "Kitambulisho chako cha Kujiandikisha %{“XXXXXX”}%",
   "ES_near_agent_button" : "Tazama Karibu na Wakala",
-  "ES_device_option" : "Gundua Chaguo za Kifaa"
+  "ES_device_option" : "Gundua Chaguo za Kifaa",
   "DV_button_text" : "Endelea",
   "AN_Title" : "Agents Near by",
   "AN_Search" : "Search by Name / Id/ Region / District/ Po#",

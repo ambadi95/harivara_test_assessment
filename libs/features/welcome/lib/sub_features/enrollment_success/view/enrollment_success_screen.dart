@@ -94,7 +94,7 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
       ) {
     return GestureDetector(
       onTap: (){
-
+        coordinator.navigateToAgentNearBy();
       },
       child: Container(
         width: double.infinity,
@@ -115,7 +115,7 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
       ) {
     return GestureDetector(
       onTap: (){
-
+        coordinator.navigateToDeviceOption();
       },
       child: Container(
         width: double.infinity,

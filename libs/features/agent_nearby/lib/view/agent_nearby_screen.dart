@@ -17,7 +17,6 @@ import '../agent_nearby_module.dart';
 import '../state/agent_nearby_state.dart';
 
 class AgentNearBy extends StatelessWidget {
-  factory AgentNearBy.forCustomerApp() => const AgentNearBy();
   final String _identifier = 'agent-nearby-screen';
   static const String viewPath =
       '${AgentNearByModule.moduleIdentifier}/agent-nearby-screen';
@@ -133,7 +132,7 @@ class AgentNearBy extends StatelessWidget {
             ),
             dynamicHSpacer(4),
             SizedBox(
-              width: 230,
+              width: 200,
               child: CrayonPaymentText(
                 key: Key('${_identifier}_'+agent.address!),
                 text: TextUIDataModel(
@@ -145,12 +144,14 @@ class AgentNearBy extends StatelessWidget {
             )
           ],
         ),
-        Row(
-          children: [
-            actionButton(context,AN_Call,'Call'),
-            dynamicWSpacer(10),
-            actionButton(context,AN_MapDirection,'0.17KM'),
-          ],
+        Expanded(
+          child: Row(
+            children: [
+              actionButton(context,AN_Call,'Call'),
+              dynamicWSpacer(10),
+              actionButton(context,AN_MapDirection,'0.17KM'),
+            ],
+          ),
         )
       ],
     );
