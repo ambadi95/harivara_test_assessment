@@ -16,3 +16,13 @@ const SU_carrier_message_color = Color(0xFF676767);
 const SU_button_color = Color(0xFFDA2228);
 const SU_button_text_color = Color(0xFFFFFFFF);
 
+
+
+const HS_MorningTextColor = Color(0xFF4B4B4B);
+const HS_NotificationCountColor = Color(0xFFE03C31);
+const HS_RedCardIconsBackColor = Color(0xFFF3EEEB);
+const HS_InviteBoxBackColor = Color(0xFFF3F4FA);
+
+const WB_TitleColor = Color(0xFF160304);
+const WB_EnterPassCodeTitleColor = Color(0xFF565451);
+

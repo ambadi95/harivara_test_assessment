@@ -11,7 +11,9 @@ Widget get buildBottomNavigationBar {
   return BottomNavigationBar(
     showSelectedLabels: false,
     showUnselectedLabels: false,
+
     backgroundColor: const Color(0xFFFFFFFF),
+
     items: buildBottomNavigationItems(),
   );
 }

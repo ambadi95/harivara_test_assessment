@@ -21,6 +21,7 @@ import 'package:core/storage/storage_service.dart';
 import 'package:core/translation/crayon_payment_transaltions_loader.dart';
 import 'package:core/utils/input_formatters/length_text_formatter.dart';
 import 'package:core/validators/input_entry_validator/input_entry_validator.dart';
+import 'package:crayon_payment_customer/home/home_module.dart';
 
 import 'package:network_manager/auth/auth_manager.dart';
 import 'package:network_manager/auth/user_manager.dart';
@@ -80,6 +81,7 @@ class AppModule {
     _registerUtils();
 
     WelcomeModule.registerDependencies();
+    CustomerHomeModule.registerDependencies();
 
     DIContainer.container.resolve<WidgetsModule>().registerDependencies();
 

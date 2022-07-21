@@ -24,5 +24,8 @@
   "DV_po_box_label" : "P.O. Box",
   "DV_region_label" : "Region",
   "DV_district_label" : "District",
-  "DV_button_text" : "Endelea"
+  "DV_button_text" : "Endelea",
+
+  "HS_GoodMorning": "Good Morning"
+
 }
