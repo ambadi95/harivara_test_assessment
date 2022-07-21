@@ -1,0 +1,48 @@
+name: passcode
+description: Mobile passcode module - create, verify and authorize passcode.
+publish_to: none
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.16.1 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+
+  core:
+    path: ../../core
+
+  network_manager:
+    path: ../../network-manager/
+
+  task_manager:
+    path: ../../task-manager/
+
+  widget_library:
+    path: ../../widgets/
+
+  shared_data_models:
+    path: ../../shared-data-models/
+
+  config:
+    path: ../../../apps/customer/config/
+
+  welcome:
+    path:  ../welcome
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints:
+  mocktail: ^0.2.0
+  mockito:
+  freezed:
+  build_runner:
+  json_serializable:
+
+flutter:
+  uses-material-design: true
