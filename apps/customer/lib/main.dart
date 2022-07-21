@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:agent_nearby/view/agent_nearby_screen.dart';
 import 'package:core/app/crayon_payment_material_app.dart';
 import 'package:core/ioc/di_container.dart';
 import 'package:core/navigation/navigation_manager.dart';
@@ -6,10 +7,12 @@ import 'package:core/session_management/inactivity_service.dart';
 import 'package:core/session_management/inactivity_watcher.dart';
 import 'package:core/translation/crayon_payment_transaltions_loader.dart';
 import 'package:core/translation/crayon_payment_translations.dart';
+import 'package:device_option/view/device_option_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/src/framework.dart';
 import 'package:get/get.dart';
+import 'package:login/view/login_screen.dart';
 import 'package:welcome/sub_features/welcome/view/welcome_screen.dart';
 import 'package:widget_library/theme/crayon_payment_theme.dart';
 import 'app_module.dart';
@@ -63,8 +66,8 @@ class HomeWidget extends StatelessWidget {
       child: CrayonPaymentMaterialApp(
         key: Key('AppMaterialApp'),
         home: !_status
-            ? CrayonWelcomScreen.forCustomerApp()
-            : CrayonWelcomScreen.forCustomerApp(),
+            ? Login.forCustomerApp()
+            : Login.forCustomerApp(),
         theme: CrayonPaymentTheme().defaultTheme,
         onGenerateRoute: _navigationManager.getRoute,
         translations: _translations,
