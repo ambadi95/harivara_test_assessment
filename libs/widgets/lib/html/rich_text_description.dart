@@ -7,6 +7,7 @@ class RichTextDescription extends StatelessWidget {
   final String description;
   final TextStyle? descriptionTextStyle;
   final TextStyle? linkTextStyle;
+  final TextAlign textAlign;
   final Function(String text, String path)? onLinkClicked;
 
   const RichTextDescription({
@@ -15,6 +16,7 @@ class RichTextDescription extends StatelessWidget {
     this.descriptionTextStyle,
     this.linkTextStyle,
     this.onLinkClicked,
+    this.textAlign = TextAlign.start,
   }) : super(key: key);
 
   @override
@@ -66,6 +68,7 @@ class RichTextDescription extends StatelessWidget {
     }
 
     return RichText(
+        textAlign: textAlign,
       text: TextSpan(children: textSpans),
     );
   }

@@ -143,7 +143,7 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
     var currentState = state as CreatePasscodeReady;
     if (oldPassCode == newPasscode) {
       await _passcodeUseCase.savePassCode(newPasscode);
-      //_navigateToDestinationPath(destinationPath);
+      _navigateToDestinationPath(destinationPath);
     } else {
       state = currentState.copyWith(
         pageDescription: 'PC_passcode_does_not_match',
@@ -153,6 +153,10 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
         currentPasscode: '',
       );
     }
+  }
+
+  Future<void> _navigateToDestinationPath(String destinationPath) async {
+    _navigationHandler.navigateToDestinationPath(destinationPath);
   }
 
 }

@@ -32,5 +32,10 @@
   "PC_confirm_passcode" : "Confirm passcode",
   "PC_passcode_does_not_match" : "Passcode does not match.",
   "PC_passcode_repetitive_message" : "Passcode should not contain repetitive numbers, or common patterns like 123456.",
-  "PC_passcode_tip" : "Tip: Avoid birthdays, and repetitive or consecutive numbers."
+  "PC_passcode_tip" : "Tip: Avoid birthdays, and repetitive or consecutive numbers.",
+
+  "ES_welcome_Text" : "Hi %{Ennamual Jisula | click}% congratulations you have successfully enrolled into Y9",
+  "ES_enroll_id" : "Your Enrollment ID %{“XXXXXX” | click}%",
+  "ES_near_agent_button" : "View Near by Agent",
+  "ES_device_option" : "Explore Device Options"
 }

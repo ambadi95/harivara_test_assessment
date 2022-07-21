@@ -87,7 +87,7 @@ class _ObscuredFieldState extends State<ObscuredField> {
   Divider get _buildDivider {
     return widget.shouldBeFocused
         ? Divider(
-            color: CrayonPaymentColors.crayonPaymentGold,
+            color: Colors.black,
             thickness: 4.0,
           )
         : _value.isNotEmpty

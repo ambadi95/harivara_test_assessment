@@ -34,7 +34,7 @@ class WelcomeNavigationHandler with ErrorHandler{
     var arguments = PasscodeScreenArgs(
       'PC_create_passcode',
       'PC_passcode_message',
-      '',
+      'welcomeModule/enrollmentSuccess',
       true,
       3,
       PassCodeVerificationType.create,

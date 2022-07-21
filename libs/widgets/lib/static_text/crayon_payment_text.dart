@@ -54,7 +54,7 @@ TextStyle buildTextStyle({
   final bool _isArabic = (Get.locale == const Locale('ar')) ? true : false;
 
   String _fontFamily() {
-    return _isArabic ? 'Zarid-Medium' : 'Brown';
+    return _isArabic ? 'Zarid-Medium' : 'Montserrat';
   }
 
   switch (variant) {
