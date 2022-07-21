@@ -3,5 +3,12 @@
   "OB_WelcomeSubTitle" : "Your dream digital bank y9bank.com",
   "OB_SignIn" : "Sign In",
   "OB_SignUp" : "Sign Up",
-  "OB_Lang" : "EN"
+  "OB_Lang" : "EN",
+  "AN_Title" : "Agents Near by",
+  "AN_Search" : "Search by Name / Id/ Region / District/ Po#",
+  "AN_AgentName" : "Y9 Agent id:",
+  "AN_Call" : "Call",
+  "DO_Title": "Device Options",
+  "DO_Search": "Search by Name / Brand / price / storage / etc.."
+
 }

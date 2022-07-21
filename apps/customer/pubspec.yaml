@@ -46,6 +46,12 @@ dependencies:
   welcome:
     path: ../../libs/features/welcome
 
+  agent_nearby:
+    path: ../../libs/features/agent_nearby
+
+  device_option:
+    path: ../../libs/features/device_option
+
 
 dev_dependencies:
   flutter_test:

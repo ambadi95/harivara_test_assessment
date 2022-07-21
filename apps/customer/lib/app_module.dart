@@ -1,4 +1,6 @@
 
+import 'package:agent_nearby/agent_nearby_module.dart';
+import 'package:agent_nearby/navigation_handler/agent_nearby_route_manager.dart';
 import 'package:core/analytics/default_tracker_collection.dart';
 import 'package:core/analytics/tracker.dart';
 import 'package:core/contacts/get_contacts.dart';
@@ -21,6 +23,7 @@ import 'package:core/storage/storage_service.dart';
 import 'package:core/translation/crayon_payment_transaltions_loader.dart';
 import 'package:core/utils/input_formatters/length_text_formatter.dart';
 import 'package:core/validators/input_entry_validator/input_entry_validator.dart';
+import 'package:device_option/device_option_module.dart';
 
 import 'package:network_manager/auth/auth_manager.dart';
 import 'package:network_manager/auth/user_manager.dart';
@@ -43,7 +46,11 @@ class AppModule {
 
   // ignore: long-method
   static Future<void> registerDependencies() async {
+    DefaultTrackerCollection collection = DefaultTrackerCollection();
 
+    DIContainer.container.registerSingleton<TrackerCollection>((container) {
+      return collection;
+    });
 
     DIContainer.container.registerSingleton<StorageService>(
       (container) => SecureStorageService(),
@@ -80,6 +87,11 @@ class AppModule {
     _registerUtils();
 
     WelcomeModule.registerDependencies();
+
+    AgentNearByModule.registerDependencies();
+
+    DeviceOptionModule.registerDependencies();
+
 
     DIContainer.container.resolve<WidgetsModule>().registerDependencies();
 
@@ -134,6 +146,16 @@ void _registerRouteManagers() {
   navigationManagerContainer.registerRouteManager(
     WelcomeModule.moduleIdentifier,
     WelcomeRouteManager(),
+  );
+
+  navigationManagerContainer.registerRouteManager(
+    AgentNearByModule.moduleIdentifier,
+    AgentNearByRouteManager(),
+  );
+
+  navigationManagerContainer.registerRouteManager(
+    DeviceOptionModule.moduleIdentifier,
+    AgentNearByRouteManager(),
   );
 
 
