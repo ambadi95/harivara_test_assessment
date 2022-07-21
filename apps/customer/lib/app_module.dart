@@ -26,6 +26,8 @@ import 'package:network_manager/auth/auth_manager.dart';
 import 'package:network_manager/auth/user_manager.dart';
 
 import 'package:network_manager/utils/connectivity/i_connectivity.dart';
+import 'package:passcode/navigation_handler/passcode_route_manager.dart';
+import 'package:passcode/passcode_module.dart';
 import 'package:task_manager/cache_manager/storage/file_storage/file_storage_service_impl.dart';
 import 'package:task_manager/cache_manager/storage/memory_storage/memory_storage_service_impl.dart';
 import 'package:task_manager/cache_manager/storage/crayon_payment_storage_service.dart';
@@ -80,6 +82,7 @@ class AppModule {
     _registerUtils();
 
     WelcomeModule.registerDependencies();
+    PasscodeModule.registerDependencies();
 
     DIContainer.container.resolve<WidgetsModule>().registerDependencies();
 
@@ -136,7 +139,10 @@ void _registerRouteManagers() {
     WelcomeRouteManager(),
   );
 
-
+  navigationManagerContainer.registerRouteManager(
+    PasscodeModule.moduleIdentifier,
+    PasscodeRouteManager(),
+  );
 
 
   DIContainer.container.registerSingleton<NativeDocumentDirectory>(

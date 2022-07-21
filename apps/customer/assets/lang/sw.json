@@ -24,5 +24,13 @@
   "DV_po_box_label" : "P.O. Box",
   "DV_region_label" : "Region",
   "DV_district_label" : "District",
-  "DV_button_text" : "Endelea"
+  "DV_button_text" : "Endelea",
+
+  "PC_create_passcode" : "Unda nambari mpya ya siri",
+  "PC_passcode_message" : "This will be used to sign-in",
+  "PC_re_enter_passcode" : "Hii itatumika kuingia",
+  "PC_confirm_passcode" : "Thibitisha nambari ya siri",
+  "PC_passcode_does_not_match" : "Nambari ya siri hailingani.",
+  "PC_passcode_repetitive_message" : "Nambari ya siri haipaswi kuwa na nambari zinazojirudia, au mifumo ya kawaida kama 123456.",
+  "PC_passcode_tip" : "Kidokezo: Epuka siku za kuzaliwa, na nambari zinazojirudia au zinazofuatana."
 }

@@ -47,6 +47,9 @@ dependencies:
   welcome:
     path: ../../libs/features/welcome
 
+  passcode:
+    path:  ../../libs/features/passcode
+
 
 dev_dependencies:
   flutter_test:

@@ -1,5 +1,8 @@
 import 'package:core/navigation/navigation_manager.dart';
 import 'package:core/navigation/navigation_type.dart';
+import 'package:passcode/sub_features/passcode/view/passcode.dart';
+import 'package:shared_data_models/passcode/passcode_screen_args.dart';
+import 'package:shared_data_models/passcode/passcode_verification_type.dart';
 import 'package:welcome/sub_features/details/view/details.dart';
 import 'package:welcome/sub_features/signup/view/signup.dart';
 import 'package:widget_library/helpers/error/helper/error_helper.dart';
@@ -17,6 +20,33 @@ class WelcomeNavigationHandler with ErrorHandler{
     await _navigationManager.navigateTo(
       SignUp.viewPath,
       const NavigationType.push(),
+    );
+  }
+
+  Future<void> navigateToCreatePasscodeScreen() async {
+    await _navigationManager.navigateTo(
+      CrayonPasscodeScreen.viewPath,
+      const NavigationType.push(),
+    );
+  }
+
+  Future<void> openForNewPasscode() async {
+    var arguments = PasscodeScreenArgs(
+      'PC_create_passcode',
+      'PC_passcode_message',
+      '',
+      true,
+      3,
+      PassCodeVerificationType.create,
+      false,
+      '',
+    );
+
+    _navigationManager.navigateTo(
+      CrayonPasscodeScreen.viewPath,
+      NavigationType.push(),
+      preventDuplicates: false,
+      arguments: arguments,
     );
   }
 
