@@ -32,6 +32,8 @@ import 'package:task_manager/cache_manager/storage/crayon_payment_storage_servic
 import 'package:task_manager/cache_manager/storage/unsecure_storage/unsecure_storage_service_impl.dart';
 import 'package:task_manager/session_management/inactivity_service_impl.dart';
 import 'package:task_manager/task_manager.dart';
+import 'package:welcome/navigation_handler/welcome_route_manager.dart';
+import 'package:welcome/welcome_module.dart';
 import 'package:widget_library/app_mobile_widgets.dart';
 import 'package:widget_library/error/network_error.dart';
 import 'package:widget_library/keypad/utils/keypad_button_pressed_value_updater.dart';
@@ -76,6 +78,8 @@ class AppModule {
     );
     _registerRouteManagers();
     _registerUtils();
+
+    WelcomeModule.registerDependencies();
 
     DIContainer.container.resolve<WidgetsModule>().registerDependencies();
 
@@ -126,6 +130,11 @@ void _registerUtils() {
 // ignore: long-method
 void _registerRouteManagers() {
   final navigationManagerContainer = DIContainer.container<NavigationManager>();
+
+  navigationManagerContainer.registerRouteManager(
+    WelcomeModule.moduleIdentifier,
+    WelcomeRouteManager(),
+  );
 
 
 

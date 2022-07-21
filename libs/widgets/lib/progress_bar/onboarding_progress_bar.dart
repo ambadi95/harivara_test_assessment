@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:widget_library/progress_bar/crayon_payment_progress_bar.dart';
+import 'package:config/Colors.dart' as config_color;
 
 class OnBoardingProgressBar extends StatelessWidget {
   final int totalSteps;
@@ -32,7 +33,7 @@ class OnBoardingProgressBar extends StatelessWidget {
                 child: CrayonPaymentProgressBar(
                   value: percentageInProgress,
                   height: 4,
-                  valueColor: Color(0xffDAAA00),
+                  valueColor: config_color.PRIMARY_COLOR,
                   backgroundColor: Color(0xffEFEEE9),
                 ),
               ),
