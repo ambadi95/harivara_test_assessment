@@ -53,6 +53,7 @@ class WelcomeModule {
         ),
       ),
     );
+    
 
     DIContainer.container.registerFactory<EnrollmentSuccessCoordinator>(
           (container) => EnrollmentSuccessCoordinator(

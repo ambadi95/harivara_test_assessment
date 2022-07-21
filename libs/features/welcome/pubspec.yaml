@@ -41,6 +41,9 @@ dependencies:
   device_option:
     path: ../device_option
 
+  login:
+    path: ../login
+
   passcode:
     path: ../passcode
 
