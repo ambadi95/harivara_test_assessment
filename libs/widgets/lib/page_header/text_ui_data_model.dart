@@ -8,6 +8,7 @@ class TextUIDataModel {
   final TextOverflow? overflow;
   final TextAlign? textAlign;
   final int? maxLines;
+  final FontWeight? fontWeight;
 
   const TextUIDataModel(
     this.text, {
@@ -15,7 +16,7 @@ class TextUIDataModel {
     this.styleVariant,
     this.overflow = TextOverflow.clip,
     this.textAlign = TextAlign.start,
-    this.maxLines,
+    this.maxLines, this.fontWeight,
   });
 
   TextUIDataModel copyWith({
@@ -24,6 +25,7 @@ class TextUIDataModel {
     final TextOverflow? overflow,
     final TextAlign? textAlign,
     final int? maxLines,
+    final FontWeight? fontWeight,
   }) =>
       TextUIDataModel(
         text ?? this.text,
@@ -31,5 +33,6 @@ class TextUIDataModel {
         overflow: overflow ?? this.overflow,
         textAlign: textAlign ?? this.textAlign,
         maxLines: maxLines ?? this.maxLines,
+        fontWeight: fontWeight ?? this.fontWeight,
       );
 }
