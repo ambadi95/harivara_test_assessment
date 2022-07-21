@@ -16,6 +16,11 @@ import 'package:core/storage/storage_service.dart';
 import 'package:core/translation/crayon_payment_transaltions_loader.dart';
 import 'package:core/utils/input_formatters/length_text_formatter.dart';
 import 'package:core/validators/input_entry_validator/input_entry_validator.dart';
+import 'package:crayon_payment_customer/home/home_module.dart';
+import 'package:device_option/device_option_module.dart';
+import 'package:device_option/navigation_handler/device_option_route_manager.dart';
+import 'package:login/login_module.dart';
+import 'package:login/navigation_handler/login_route_manager.dart';
 import 'package:device_option/device_option_module.dart';
 import 'package:device_option/navigation_handler/device_option_route_manager.dart';
 import 'package:login/login_module.dart';
@@ -84,6 +89,15 @@ class AppModule {
     _registerUtils();
 
     WelcomeModule.registerDependencies();
+    PasscodeModule.registerDependencies();
+
+    AgentNearByModule.registerDependencies();
+
+    DeviceOptionModule.registerDependencies();
+
+    LoginModule.registerDependencies();
+
+    CustomerHomeModule.registerDependencies();
     PasscodeModule.registerDependencies();
 
     AgentNearByModule.registerDependencies();

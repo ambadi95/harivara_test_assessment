@@ -1,5 +1,8 @@
 import 'package:core/navigation/navigation_manager.dart';
 import 'package:core/navigation/navigation_type.dart';
+import 'package:passcode/sub_features/passcode/view/passcode.dart';
+import 'package:shared_data_models/passcode/passcode_screen_args.dart';
+import 'package:shared_data_models/passcode/passcode_verification_type.dart';
 import 'package:login/view/login_screen.dart';
 import 'package:passcode/sub_features/passcode/view/passcode.dart';
 import 'package:shared_data_models/passcode/passcode_screen_args.dart';
@@ -57,6 +60,20 @@ class WelcomeNavigationHandler with ErrorHandler{
   Future<void> navigateToDetailsScreen() async {
     await _navigationManager.navigateTo(
       DetailsScreen.viewPath,
+      const NavigationType.push(),
+    );
+  }
+
+  Future<void> navigateToNearByAgent() async {
+    await _navigationManager.navigateTo(
+      AgentNearBy.viewPath,
+      const NavigationType.push(),
+    );
+  }
+
+  Future<void> navigateToDeviceOption() async {
+    await _navigationManager.navigateTo(
+      DeviceOption.viewPath,
       const NavigationType.push(),
     );
   }
