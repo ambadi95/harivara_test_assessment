@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'signup_state.dart';
@@ -11,20 +12,7 @@ part of 'signup_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$SignUpStateTearOff {
-  const _$SignUpStateTearOff();
-
-  InitialState initialState() {
-    return const InitialState();
-  }
-
-}
-
-/// @nodoc
-const $SignUpState = _$SignUpStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$SignUpState {
@@ -85,21 +73,21 @@ class _$SignUpStateCopyWithImpl<$Res> implements $SignUpStateCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class $InitialStateCopyWith<$Res> {
-  factory $InitialStateCopyWith(
-          InitialState value, $Res Function(InitialState) then) =
-      _$InitialStateCopyWithImpl<$Res>;
+abstract class _$$InitialStateCopyWith<$Res> {
+  factory _$$InitialStateCopyWith(
+          _$InitialState value, $Res Function(_$InitialState) then) =
+      __$$InitialStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$InitialStateCopyWithImpl<$Res> extends _$SignUpStateCopyWithImpl<$Res>
-    implements $InitialStateCopyWith<$Res> {
-  _$InitialStateCopyWithImpl(
-      InitialState _value, $Res Function(InitialState) _then)
-      : super(_value, (v) => _then(v as InitialState));
+class __$$InitialStateCopyWithImpl<$Res> extends _$SignUpStateCopyWithImpl<$Res>
+    implements _$$InitialStateCopyWith<$Res> {
+  __$$InitialStateCopyWithImpl(
+      _$InitialState _value, $Res Function(_$InitialState) _then)
+      : super(_value, (v) => _then(v as _$InitialState));
 
   @override
-  InitialState get _value => super._value as InitialState;
+  _$InitialState get _value => super._value as _$InitialState;
 }
 
 /// @nodoc
@@ -115,7 +103,7 @@ class _$InitialState implements InitialState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is InitialState);
+        (other.runtimeType == runtimeType && other is _$InitialState);
   }
 
   @override
@@ -189,29 +177,29 @@ abstract class InitialState implements SignUpState {
 }
 
 /// @nodoc
-abstract class $SignUpFormStateCopyWith<$Res> {
-  factory $SignUpFormStateCopyWith(
-          SignUpFormState value, $Res Function(SignUpFormState) then) =
-      _$SignUpFormStateCopyWithImpl<$Res>;
+abstract class _$$SignUpFormStateCopyWith<$Res> {
+  factory _$$SignUpFormStateCopyWith(
+          _$SignUpFormState value, $Res Function(_$SignUpFormState) then) =
+      __$$SignUpFormStateCopyWithImpl<$Res>;
   $Res call({bool isValid});
 }
 
 /// @nodoc
-class _$SignUpFormStateCopyWithImpl<$Res>
+class __$$SignUpFormStateCopyWithImpl<$Res>
     extends _$SignUpStateCopyWithImpl<$Res>
-    implements $SignUpFormStateCopyWith<$Res> {
-  _$SignUpFormStateCopyWithImpl(
-      SignUpFormState _value, $Res Function(SignUpFormState) _then)
-      : super(_value, (v) => _then(v as SignUpFormState));
+    implements _$$SignUpFormStateCopyWith<$Res> {
+  __$$SignUpFormStateCopyWithImpl(
+      _$SignUpFormState _value, $Res Function(_$SignUpFormState) _then)
+      : super(_value, (v) => _then(v as _$SignUpFormState));
 
   @override
-  SignUpFormState get _value => super._value as SignUpFormState;
+  _$SignUpFormState get _value => super._value as _$SignUpFormState;
 
   @override
   $Res call({
     Object? isValid = freezed,
   }) {
-    return _then(SignUpFormState(
+    return _then(_$SignUpFormState(
       isValid == freezed
           ? _value.isValid
           : isValid // ignore: cast_nullable_to_non_nullable
@@ -237,7 +225,7 @@ class _$SignUpFormState implements SignUpFormState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is SignUpFormState &&
+            other is _$SignUpFormState &&
             const DeepCollectionEquality().equals(other.isValid, isValid));
   }
 
@@ -247,8 +235,8 @@ class _$SignUpFormState implements SignUpFormState {
 
   @JsonKey(ignore: true)
   @override
-  $SignUpFormStateCopyWith<SignUpFormState> get copyWith =>
-      _$SignUpFormStateCopyWithImpl<SignUpFormState>(this, _$identity);
+  _$$SignUpFormStateCopyWith<_$SignUpFormState> get copyWith =>
+      __$$SignUpFormStateCopyWithImpl<_$SignUpFormState>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -314,10 +302,10 @@ class _$SignUpFormState implements SignUpFormState {
 }
 
 abstract class SignUpFormState implements SignUpState {
-  const factory SignUpFormState(bool isValid) = _$SignUpFormState;
+  const factory SignUpFormState(final bool isValid) = _$SignUpFormState;
 
   bool get isValid;
   @JsonKey(ignore: true)
-  $SignUpFormStateCopyWith<SignUpFormState> get copyWith =>
+  _$$SignUpFormStateCopyWith<_$SignUpFormState> get copyWith =>
       throw _privateConstructorUsedError;
 }

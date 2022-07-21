@@ -131,7 +131,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
           _buildLabelTextField('DV_po_box_label'.tr , poBox, TextInputType.text,coordinator),
           _buildLabelTextField('DV_region_label'.tr , region, TextInputType.name,coordinator),
           _buildLabelTextField('DV_district_label'.tr , district, TextInputType.name,coordinator),
-          _buildContinueButton()
+          _buildContinueButton(coordinator)
         ],
       ),
     );
@@ -241,12 +241,12 @@ class _DetailsScreenState extends State<DetailsScreen> {
   }
 
   Widget _buildContinueButton(
+      DetailsCoordinator coordinator
       ) {
     return GestureDetector(
       onTap: (){
         if(_isBtnEnabled){
-          //navigate to next page
-          // welcomeCoordinator.navigateToSignUpScreen();
+           coordinator.navigateToCreatePasscodeScreen();
         }
       },
       child: Container(

@@ -25,6 +25,20 @@
   "DV_region_label" : "Region",
   "DV_district_label" : "District",
   "DV_button_text" : "Endelea",
+
+  "PC_create_passcode" : "Unda nambari mpya ya siri",
+  "PC_passcode_message" : "Hii itatumika kuingia",
+  "PC_re_enter_passcode" : "Ingiza tena nambari mpya ya siri",
+  "PC_confirm_passcode" : "Thibitisha nambari ya siri",
+  "PC_passcode_does_not_match" : "Nambari ya siri hailingani.",
+  "PC_passcode_repetitive_message" : "Nambari ya siri haipaswi kuwa na nambari zinazojirudia, au mifumo ya kawaida kama 123456.",
+  "PC_passcode_tip" : "Kidokezo: Epuka siku za kuzaliwa, na nambari zinazojirudia au zinazofuatana.",
+
+  "ES_welcome_Text" : "HII %{Ennamual Jisula}% hongera kwa kujiandikisha kwa Y9",
+  "ES_enroll_id" : "Kitambulisho chako cha Kujiandikisha %{“XXXXXX”}%",
+  "ES_near_agent_button" : "Tazama Karibu na Wakala",
+  "ES_device_option" : "Gundua Chaguo za Kifaa"
+  "DV_button_text" : "Endelea",
   "AN_Title" : "Agents Near by",
   "AN_Search" : "Search by Name / Id/ Region / District/ Po#",
   "AN_AgentName" : "Y9 Agent id:",

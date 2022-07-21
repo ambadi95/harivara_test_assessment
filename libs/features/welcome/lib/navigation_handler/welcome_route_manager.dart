@@ -1,6 +1,7 @@
 import 'package:core/navigation/i_route_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:welcome/sub_features/details/view/details.dart';
+import 'package:welcome/sub_features/enrollment_success/view/enrollment_success_screen.dart';
 import 'package:welcome/sub_features/signup/view/signup.dart';
 
 import 'package:welcome/sub_features/welcome/view/welcome_screen.dart';
@@ -20,6 +21,8 @@ class WelcomeRouteManager extends IRouteManager {
           return const SignUp();
       case DetailsScreen.viewPath :
         return const DetailsScreen();
+      case EnrollmentSuccessScreen.viewPath :
+        return const EnrollmentSuccessScreen();
       default:
         throw UnimplementedError();
     }

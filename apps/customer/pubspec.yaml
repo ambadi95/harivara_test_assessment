@@ -47,6 +47,9 @@ dependencies:
   welcome:
     path: ../../libs/features/welcome
 
+  passcode:
+    path:  ../../libs/features/passcode
+
   agent_nearby:
     path: ../../libs/features/agent_nearby
 
