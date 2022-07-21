@@ -47,5 +47,18 @@
   "ES_welcome_Text" : "Hi %{Ennamual Jisula | click}% congratulations you have successfully enrolled into Y9",
   "ES_enroll_id" : "Your Enrollment ID %{“XXXXXX” | click}%",
   "ES_near_agent_button" : "View Near by Agent",
-  "ES_device_option" : "Explore Device Options"
+  "ES_device_option" : "Explore Device Options",
+
+
+  "HS_GoodMorning": "Good Morning",
+  "HS_YourBalance": "Your Balance",
+  "HS_AccountId": "Y9 Account Id",
+  "HS_LoadWallet": "Load Wallet",
+  "HS_SendMoney": "Send Money",
+  "HS_CollectMoney": "Collect Money",
+  "HS_LoanRepayment": "Loan Repayment",
+  "HS_InviteYourFriends": "Invite your friends to Y9",
+  "HS_InviteFriends": "Invite Friends to Y9 and get rewards when your friend sends their first payment.",
+  "HS_ReferalCode": "Referal Code",
+  "HS_Invite": "Invite"
 }

@@ -47,5 +47,17 @@
   "LS_Login" : "Login to your Y9 app",
   "LS_Mobile" : "Mobile number",
   "LS_Passcode" : "Passcode",
-  "LS_SignIn" : "Sign in"
+  "LS_SignIn" : "Sign in",
+
+  "HS_GoodMorning": "Good Morning",
+  "HS_YourBalance": "Your Balance",
+  "HS_AccountId": "Y9 Account Id",
+  "HS_LoadWallet": "Load Wallet",
+  "HS_SendMoney": "Send Money",
+  "HS_CollectMoney": "Collect Money",
+  "HS_LoanRepayment": "Loan Repayment",
+  "HS_InviteYourFriends": "Invite your friends to Y9",
+  "HS_InviteFriends": "Invite Friends to Y9 and get rewards when your friend sends their first payment.",
+  "HS_ReferalCode": "Referal Code",
+  "HS_Invite": "Invite"
 }

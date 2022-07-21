@@ -41,3 +41,12 @@ const AN_ActionText = Color(0xFF4B4B4B);
 const LS_ButtonColor = Color(0xFFDA2228);
 
 
+const HS_MorningTextColor = Color(0xFF4B4B4B);
+const HS_NotificationCountColor = Color(0xFFE03C31);
+const HS_RedCardIconsBackColor = Color(0xFFF3EEEB);
+const HS_InviteBoxBackColor = Color(0xFFF3F4FA);
+
+const WB_TitleColor = Color(0xFF160304);
+const WB_EnterPassCodeTitleColor = Color(0xFF565451);
+
+
