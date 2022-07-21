@@ -11,8 +11,7 @@ class LoginRouteManager extends IRouteManager {
         return const Login();
       default:
       // TODO: implement getView
-        throw UnimplementedError();
+        throw Exception('Route ${settings.name} not found');
     }
-    throw Exception('Route ${settings.name} not found');
   }
 }

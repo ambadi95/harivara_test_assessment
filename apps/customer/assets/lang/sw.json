@@ -25,6 +25,18 @@
   "DV_region_label" : "Region",
   "DV_district_label" : "District",
 
+  "HS_GoodMorning": "Good Morning",
+  "HS_YourBalance": "Your Balance",
+  "HS_AccountId": "Y9 Account Id",
+  "HS_LoadWallet": "Load Wallet",
+  "HS_SendMoney": "Send Money",
+  "HS_CollectMoney": "Collect Money",
+  "HS_LoanRepayment": "Loan Repayment",
+  "HS_InviteYourFriends": "Invite your friends to Y9",
+  "HS_InviteFriends": "Invite Friends to Y9 and get rewards when your friend sends their first payment.",
+  "HS_ReferalCode": "Referal Code",
+  "HS_Invite": "Invite",
+
   "PC_create_passcode" : "Unda nambari mpya ya siri",
   "PC_passcode_message" : "Hii itatumika kuingia",
   "PC_re_enter_passcode" : "Ingiza tena nambari mpya ya siri",

@@ -36,6 +36,9 @@ dependencies:
   config:
     path: ../../../apps/customer/config/
 
+  welcome:
+    path: ../welcome/
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

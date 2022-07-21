@@ -1,3 +1,4 @@
+import 'package:config/Config.dart';
 import 'package:config/Styles.dart';
 import 'package:core/view/base_view.dart';
 import 'package:flutter/material.dart';
@@ -76,7 +77,7 @@ class _SignUpState extends State<SignUp> {
           const SizedBox(height: 69,),
           _buildLabelTextField('SU_ID_no_label'.tr,nidaNumber, coordinator),
           const SizedBox(height: 48,),
-          _buildLabelTextField('SU_mobile_no_label'.tr,mobileNumber, coordinator),
+          _buildLabelTextFieldMobNumber('SU_mobile_no_label'.tr,mobileNumber, coordinator),
         ],
       ),
     );
@@ -147,6 +148,49 @@ class _SignUpState extends State<SignUp> {
           },
     ),
     ]
+    );
+  }
+
+  Widget _buildLabelTextFieldMobNumber(String label, TextEditingController controller, SignUpCoordinator coordinator){
+    return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(label,style: SU_label_style),
+          const SizedBox(height: 8,),
+          TextField(
+            key: const Key('idNumberTextField'),
+            controller: controller,
+            keyboardType: TextInputType.number,
+            textAlign: TextAlign.start,
+            autofocus: false,
+            showCursor: true,
+            inputFormatters: <TextInputFormatter>[
+              FilteringTextInputFormatter.digitsOnly
+            ],
+            style: SU_text_input_style,
+            decoration: InputDecoration(
+              prefix:  const Padding(
+                padding: EdgeInsets.only(top: 6),
+                child: Text('+255  ', style: SU_text_input_style),
+              ),
+              prefixIcon:  Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Image.asset(
+                  LS_Flag,
+                  width: 22,
+                  height: 16,
+                ),
+              ),
+              border: const OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                  borderSide:  BorderSide(color: config_color.SU_border_color)
+              ),
+            ),
+            onChanged: (value){
+              _validateForm(coordinator);
+            },
+          ),
+        ]
     );
   }
 
