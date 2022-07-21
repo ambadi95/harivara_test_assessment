@@ -7,6 +7,7 @@ import 'package:crayon_payment_customer/home/home_module.dart';
 import 'package:crayon_payment_customer/home/state/home_screen_state.dart';
 import 'package:crayon_payment_customer/home/viewmodel/home_coordinator.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CrayonCustomerHomeScreen extends StatefulWidget {
   static const viewPath =
@@ -80,9 +81,9 @@ class _CrayonCustomerHomeScreenState extends State<CrayonCustomerHomeScreen> {
           const SizedBox(width: 10),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
+            children:  [
               Text(
-                "Good Morning",
+                'HS_GoodMorning'.tr,
                 style: HS_morning_text_style,
               ),
               SizedBox(
@@ -151,9 +152,9 @@ class _CrayonCustomerHomeScreenState extends State<CrayonCustomerHomeScreen> {
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
+                children:  [
                   Text(
-                    "Y9 Account Id",
+                    'HS_AccountId'.tr,
                     style: HS_title_style,
                   ),
                   SizedBox(
@@ -176,9 +177,9 @@ class _CrayonCustomerHomeScreenState extends State<CrayonCustomerHomeScreen> {
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
+                children:  [
                   Text(
-                    "Your Balance",
+                    'HS_YourBalance'.tr,
                     style: HS_title_style,
                   ),
                   SizedBox(
@@ -200,10 +201,10 @@ class _CrayonCustomerHomeScreenState extends State<CrayonCustomerHomeScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                _actionCommonView("Load Wallet", HS_LoadWalletIcon),
-                _actionCommonView("Send Money", HS_SendMoneyIcon),
-                _actionCommonView("Loan Repayment", HS_LoanRepaymentIcon),
-                _actionCommonView("Loan Repayment", HS_LoanRepayment1Icon),
+                _actionCommonView('HS_LoadWallet'.tr, HS_LoadWalletIcon),
+                _actionCommonView('HS_SendMoney'.tr, HS_SendMoneyIcon),
+                _actionCommonView('HS_CollectMoney'.tr, HS_CollectMoneyIcon),
+                _actionCommonView('HS_LoanRepayment'.tr, HS_LoanRepaymentIcon),
               ],
             ),
             decoration: const BoxDecoration(
@@ -271,24 +272,24 @@ class _CrayonCustomerHomeScreenState extends State<CrayonCustomerHomeScreen> {
           const SizedBox(
             height: 10,
           ),
-          const Text(
-            "Invite your friends to Y9",
+           Text(
+            'HS_InviteYourFriends'.tr,
             style: HS_invite_your_friends_style
           ),
           const SizedBox(
             height: 10,
           ),
-          const Text(
-            "Invite Friends to Y9 and get rewards when your friend sends their first payment.",
+           Text(
+           'HS_InviteFriends'.tr,
             style: HS_invite_friends_y9_style,
           ),
           const SizedBox(
             height: 10,
           ),
           Row(
-            children: const [
+            children:  [
               Text(
-                "Referal code",
+                'HS_ReferalCode'.tr,
                 style: HS_referal_code_title_style,
               ),
               SizedBox(
