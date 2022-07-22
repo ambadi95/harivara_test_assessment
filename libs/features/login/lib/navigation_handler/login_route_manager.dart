@@ -8,7 +8,7 @@ class LoginRouteManager extends IRouteManager {
   Widget getView(RouteSettings settings) {
     switch (settings.name) {
       case Login.viewPath:
-        return const Login();
+        return Login();
       default:
       // TODO: implement getView
         throw Exception('Route ${settings.name} not found');
