@@ -1,9 +1,10 @@
 
 
-import 'package:crayon_payment_customer/home/navigation_handler/home_navigation_handler.dart';
-import 'package:crayon_payment_customer/home/state/home_screen_state.dart';
-import 'package:crayon_payment_customer/home/viewmodel/home_usecase.dart';
 import 'package:task_manager/base_classes/base_view_model.dart';
+
+import '../navigation_handler/home_navigation_handler.dart';
+import '../state/home_screen_state.dart';
+import 'home_usecase.dart';
 
 
 class CustomerHomeCoordinator extends BaseViewModel<CustomerHomeScreenState>{

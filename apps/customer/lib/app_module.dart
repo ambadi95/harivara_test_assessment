@@ -16,7 +16,6 @@ import 'package:core/storage/storage_service.dart';
 import 'package:core/translation/crayon_payment_transaltions_loader.dart';
 import 'package:core/utils/input_formatters/length_text_formatter.dart';
 import 'package:core/validators/input_entry_validator/input_entry_validator.dart';
-import 'package:crayon_payment_customer/home/home_module.dart';
 import 'package:device_option/device_option_module.dart';
 import 'package:device_option/navigation_handler/device_option_route_manager.dart';
 import 'package:login/login_module.dart';
@@ -42,6 +41,9 @@ import 'package:welcome/navigation_handler/welcome_route_manager.dart';
 import 'package:welcome/welcome_module.dart';
 import 'package:widget_library/app_mobile_widgets.dart';
 import 'package:widget_library/keypad/utils/keypad_button_pressed_value_updater.dart';
+
+import 'home/home_module.dart';
+import 'home/navigation_handler/home_route_manager.dart';
 
 class AppModule {
 
@@ -176,6 +178,11 @@ void _registerRouteManagers() {
   navigationManagerContainer.registerRouteManager(
     PasscodeModule.moduleIdentifier,
     PasscodeRouteManager(),
+  );
+
+  navigationManagerContainer.registerRouteManager(
+    CustomerHomeModule.moduleIdentifier,
+    CustomerHomeRouteManager(),
   );
 
 

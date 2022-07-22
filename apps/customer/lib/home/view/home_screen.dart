@@ -2,16 +2,18 @@ import 'package:config/Colors.dart';
 import 'package:config/Config.dart';
 import 'package:config/Styles.dart';
 import 'package:core/view/base_view.dart';
-import 'package:crayon_payment_customer/home/constants/image_constant.dart';
-import 'package:crayon_payment_customer/home/home_module.dart';
-import 'package:crayon_payment_customer/home/state/home_screen_state.dart';
-import 'package:crayon_payment_customer/home/viewmodel/home_coordinator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../constants/image_constant.dart';
+import '../home_module.dart';
+import '../state/home_screen_state.dart';
+import '../viewmodel/home_coordinator.dart';
 
 class CrayonCustomerHomeScreen extends StatefulWidget {
   static const viewPath =
       '${CustomerHomeModule.moduleIdentifier}/crayonCustomerHomeScreen';
+
+  const CrayonCustomerHomeScreen({Key? key}) : super(key: key);
 
   @override
   State<CrayonCustomerHomeScreen> createState() =>
