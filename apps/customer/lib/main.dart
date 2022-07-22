@@ -67,8 +67,8 @@ class HomeWidget extends StatelessWidget {
       child: CrayonPaymentMaterialApp(
         key: Key('AppMaterialApp'),
         home: !_status
-            ? DeviceOption.forCustomerApp()
-            : DeviceOption.forCustomerApp(),
+            ? AgentNearBy.forCustomerApp()
+            : AgentNearBy.forCustomerApp(),
         theme: CrayonPaymentTheme().defaultTheme,
         onGenerateRoute: _navigationManager.getRoute,
         translations: _translations,
