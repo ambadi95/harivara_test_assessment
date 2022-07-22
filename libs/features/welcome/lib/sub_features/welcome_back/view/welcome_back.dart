@@ -8,6 +8,7 @@ import 'package:shared_data_models/passcode/passcode_screen_args.dart';
 import 'package:welcome/sub_features/welcome/data_model/welcome_model.dart';
 import 'package:core/view/base_view.dart';
 import 'package:get/get.dart';
+import 'package:welcome/sub_features/welcome_back/constants/image_constant.dart';
 
 import '../../../welcome_module.dart';
 import '../../welcome/state/welcome_screen_state.dart';
@@ -86,12 +87,19 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
               _buildSizedBox(),
               _userImage(),
               const SizedBox(height: 10),
-              _userInfo(context),const SizedBox(height: 30),
-              _enterPassCodeTitle(context),const SizedBox(height: 10),
+              _userInfo(context),
+              const SizedBox(height: 30),
+              _enterPassCodeTitle(context),
+              const SizedBox(height: 10),
               Image.asset(
-                "assets/welcomeback/orIcon.png",
-              ),const SizedBox(height: 10),
-
+                WB_OrIcon,
+              ),
+              const SizedBox(height: 15),
+              Image.asset(
+                WB_touchIdIcon,
+                scale: 2.0,
+              ),
+              const SizedBox(height: 10),
               const Spacer(),
             ],
           ),
@@ -148,14 +156,15 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
   }
 
   Widget _buildTitle(BuildContext context) {
-    return Text('Welcome back to Y9', style: WB_title_style);
+    return Text('WB_WelcomeBack'.tr, style: WB_title_style);
   }
 
   Widget _userInfo(BuildContext context) {
-    return Text('${'Emmanual Jisula\n    (684029684)'}', style: WB_user_info_style);
+    return Text('${'Emmanual Jisula\n    (684029684)'}',
+        style: WB_user_info_style);
   }
 
   Widget _enterPassCodeTitle(BuildContext context) {
-    return Text('Enter Passcode', style: WB_enter_passcode_title_style);
+    return Text('WB_EnterPassCode'.tr, style: WB_enter_passcode_title_style);
   }
 }
