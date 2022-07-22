@@ -25,6 +25,18 @@
   "DV_region_label" : "Region",
   "DV_district_label" : "District",
 
+  "HS_GoodMorning": "Good Morning",
+  "HS_YourBalance": "Your Balance",
+  "HS_AccountId": "Y9 Account Id",
+  "HS_LoadWallet": "Load Wallet",
+  "HS_SendMoney": "Send Money",
+  "HS_CollectMoney": "Collect Money",
+  "HS_LoanRepayment": "Loan Repayment",
+  "HS_InviteYourFriends": "Invite your friends to Y9",
+  "HS_InviteFriends": "Invite Friends to Y9 and get rewards when your friend sends their first payment.",
+  "HS_ReferalCode": "Referal Code",
+  "HS_Invite": "Invite",
+
   "PC_create_passcode" : "Unda nambari mpya ya siri",
   "PC_passcode_message" : "Hii itatumika kuingia",
   "PC_re_enter_passcode" : "Ingiza tena nambari mpya ya siri",
@@ -33,8 +45,8 @@
   "PC_passcode_repetitive_message" : "Nambari ya siri haipaswi kuwa na nambari zinazojirudia, au mifumo ya kawaida kama 123456.",
   "PC_passcode_tip" : "Kidokezo: Epuka siku za kuzaliwa, na nambari zinazojirudia au zinazofuatana.",
 
-  "ES_welcome_Text" : "HII %{Ennamual Jisula}% hongera kwa kujiandikisha kwa Y9",
-  "ES_enroll_id" : "Kitambulisho chako cha Kujiandikisha %{“XXXXXX”}%",
+  "ES_welcome_Text" : "HII %{Ennamual Jisula | click}% hongera kwa kujiandikisha kwa Y9",
+  "ES_enroll_id" : "Kitambulisho chako cha Kujiandikisha %{“XXXXXX” | click}%",
   "ES_near_agent_button" : "Tazama Karibu na Wakala",
   "ES_device_option" : "Gundua Chaguo za Kifaa",
   "DV_button_text" : "Endelea",
@@ -49,18 +61,8 @@
   "LS_Passcode" : "Passcode",
   "LS_SignIn" : "Sign in",
 
-  "HS_GoodMorning": "Good Morning",
-  "HS_YourBalance": "Your Balance",
-  "HS_AccountId": "Y9 Account Id",
-  "HS_LoadWallet": "Load Wallet",
-  "HS_SendMoney": "Send Money",
-  "HS_CollectMoney": "Collect Money",
-  "HS_LoanRepayment": "Loan Repayment",
-  "HS_InviteYourFriends": "Invite your friends to Y9",
-  "HS_InviteFriends": "Invite Friends to Y9 and get rewards when your friend sends their first payment.",
-  "HS_ReferalCode": "Referal Code",
-  "HS_Invite": "Invite",
 
-  "WB_WelcomeBack": "Welcome back to Y9"
 
+  "WB_WelcomeBack": "Welcome back to Y9",
+  "WB_EnterPassCode": "Enter Passcode"
 }

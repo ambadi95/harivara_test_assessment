@@ -16,6 +16,7 @@ dependencies:
   network_image_mock: ^2.0.1
   flutter_riverpod: ^1.0.3
   cupertino_icons: ^1.0.2
+  pin_code_fields: ^7.4.0
 
   core:
     path: ../../core
@@ -34,6 +35,9 @@ dependencies:
 
   config:
     path: ../../../apps/customer/config/
+
+  welcome:
+    path: ../welcome/
 
 dev_dependencies:
   flutter_test:

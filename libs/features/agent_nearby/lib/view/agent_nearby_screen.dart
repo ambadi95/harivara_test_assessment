@@ -17,6 +17,8 @@ import '../agent_nearby_module.dart';
 import '../state/agent_nearby_state.dart';
 
 class AgentNearBy extends StatelessWidget {
+  factory AgentNearBy.forCustomerApp() => const AgentNearBy();
+
   final String _identifier = 'agent-nearby-screen';
   static const String viewPath =
       '${AgentNearByModule.moduleIdentifier}/agent-nearby-screen';
@@ -49,6 +51,7 @@ class AgentNearBy extends StatelessWidget {
             _buildSearchField(context),
             dynamicHSpacer(24),
             Expanded(child: _buildNearByAgentList(context)),
+            dynamicHSpacer(24),
           ],
         ));
   }
@@ -108,6 +111,7 @@ class AgentNearBy extends StatelessWidget {
                 agent.name!,
                 styleVariant: CrayonPaymentTextStyleVariant.headline4,
                 color: AN_CardTitle,
+                  fontWeight: FontWeight.w800
               ),
             ),
             Row(
@@ -118,6 +122,8 @@ class AgentNearBy extends StatelessWidget {
                     'AN_AgentName',
                     styleVariant: CrayonPaymentTextStyleVariant.headline4,
                     color: AN_CardSubTitle,
+                      fontWeight: FontWeight.w600
+
                   ),
                 ),
                 CrayonPaymentText(
@@ -126,6 +132,7 @@ class AgentNearBy extends StatelessWidget {
                     agent.agentId!,
                     styleVariant: CrayonPaymentTextStyleVariant.headline4,
                     color: AN_CardSubTitle,
+                      fontWeight: FontWeight.w600
                   ),
                 ),
               ],

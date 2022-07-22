@@ -17,4 +17,5 @@ const LS_Flag = 'assets/images/flag.png';
 
  // MockUp Data
 const agentMock = 'assets/images/agent_mock.png';
+const WB_or_icon = 'assets/images/orIcon.png';
 

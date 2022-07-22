@@ -5,6 +5,7 @@ import 'package:welcome/sub_features/enrollment_success/view/enrollment_success_
 import 'package:welcome/sub_features/signup/view/signup.dart';
 
 import 'package:welcome/sub_features/welcome/view/welcome_screen.dart';
+import 'package:welcome/sub_features/welcome_back/view/welcome_back.dart';
 
 import '../sub_features/welcome/data_model/welcome_model.dart';
 
@@ -23,6 +24,8 @@ class WelcomeRouteManager extends IRouteManager {
         return const DetailsScreen();
       case EnrollmentSuccessScreen.viewPath :
         return const EnrollmentSuccessScreen();
+      case CrayonWelcomBackScreen.viewPath :
+        return const CrayonWelcomBackScreen();
       default:
         throw UnimplementedError();
     }

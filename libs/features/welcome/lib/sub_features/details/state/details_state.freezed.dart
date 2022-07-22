@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'details_state.dart';
@@ -11,20 +12,7 @@ part of 'details_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$DetailsStateTearOff {
-  const _$DetailsStateTearOff();
-
-  InitialState initialState() {
-    return const InitialState();
-  }
-
-}
-
-/// @nodoc
-const $DetailsState = _$DetailsStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$DetailsState {
@@ -71,8 +59,8 @@ mixin _$DetailsState {
 /// @nodoc
 abstract class $DetailsStateCopyWith<$Res> {
   factory $DetailsStateCopyWith(
-      DetailsState value, $Res Function(DetailsState) then) =
-  _$DetailsStateCopyWithImpl<$Res>;
+          DetailsState value, $Res Function(DetailsState) then) =
+      _$DetailsStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -85,21 +73,22 @@ class _$DetailsStateCopyWithImpl<$Res> implements $DetailsStateCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class $InitialStateCopyWith<$Res> {
-  factory $InitialStateCopyWith(
-      InitialState value, $Res Function(InitialState) then) =
-  _$InitialStateCopyWithImpl<$Res>;
+abstract class _$$InitialStateCopyWith<$Res> {
+  factory _$$InitialStateCopyWith(
+          _$InitialState value, $Res Function(_$InitialState) then) =
+      __$$InitialStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$InitialStateCopyWithImpl<$Res> extends _$DetailsStateCopyWithImpl<$Res>
-    implements $InitialStateCopyWith<$Res> {
-  _$InitialStateCopyWithImpl(
-      InitialState _value, $Res Function(InitialState) _then)
-      : super(_value, (v) => _then(v as InitialState));
+class __$$InitialStateCopyWithImpl<$Res>
+    extends _$DetailsStateCopyWithImpl<$Res>
+    implements _$$InitialStateCopyWith<$Res> {
+  __$$InitialStateCopyWithImpl(
+      _$InitialState _value, $Res Function(_$InitialState) _then)
+      : super(_value, (v) => _then(v as _$InitialState));
 
   @override
-  InitialState get _value => super._value as InitialState;
+  _$InitialState get _value => super._value as _$InitialState;
 }
 
 /// @nodoc
@@ -115,7 +104,7 @@ class _$InitialState implements InitialState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is InitialState);
+        (other.runtimeType == runtimeType && other is _$InitialState);
   }
 
   @override
@@ -189,33 +178,33 @@ abstract class InitialState implements DetailsState {
 }
 
 /// @nodoc
-abstract class $DetailsFormStateCopyWith<$Res> {
-  factory $DetailsFormStateCopyWith(
-      DetailsFormState value, $Res Function(DetailsFormState) then) =
-  _$DetailsFormStateCopyWithImpl<$Res>;
+abstract class _$$DetailsFormStateCopyWith<$Res> {
+  factory _$$DetailsFormStateCopyWith(
+          _$DetailsFormState value, $Res Function(_$DetailsFormState) then) =
+      __$$DetailsFormStateCopyWithImpl<$Res>;
   $Res call({bool isValid});
 }
 
 /// @nodoc
-class _$DetailsFormStateCopyWithImpl<$Res>
+class __$$DetailsFormStateCopyWithImpl<$Res>
     extends _$DetailsStateCopyWithImpl<$Res>
-    implements $DetailsFormStateCopyWith<$Res> {
-  _$DetailsFormStateCopyWithImpl(
-      DetailsFormState _value, $Res Function(DetailsFormState) _then)
-      : super(_value, (v) => _then(v as DetailsFormState));
+    implements _$$DetailsFormStateCopyWith<$Res> {
+  __$$DetailsFormStateCopyWithImpl(
+      _$DetailsFormState _value, $Res Function(_$DetailsFormState) _then)
+      : super(_value, (v) => _then(v as _$DetailsFormState));
 
   @override
-  DetailsFormState get _value => super._value as DetailsFormState;
+  _$DetailsFormState get _value => super._value as _$DetailsFormState;
 
   @override
   $Res call({
     Object? isValid = freezed,
   }) {
-    return _then(DetailsFormState(
+    return _then(_$DetailsFormState(
       isValid == freezed
           ? _value.isValid
           : isValid // ignore: cast_nullable_to_non_nullable
-      as bool,
+              as bool,
     ));
   }
 }
@@ -237,7 +226,7 @@ class _$DetailsFormState implements DetailsFormState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is DetailsFormState &&
+            other is _$DetailsFormState &&
             const DeepCollectionEquality().equals(other.isValid, isValid));
   }
 
@@ -247,8 +236,8 @@ class _$DetailsFormState implements DetailsFormState {
 
   @JsonKey(ignore: true)
   @override
-  $DetailsFormStateCopyWith<DetailsFormState> get copyWith =>
-      _$DetailsFormStateCopyWithImpl<DetailsFormState>(this, _$identity);
+  _$$DetailsFormStateCopyWith<_$DetailsFormState> get copyWith =>
+      __$$DetailsFormStateCopyWithImpl<_$DetailsFormState>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -314,10 +303,10 @@ class _$DetailsFormState implements DetailsFormState {
 }
 
 abstract class DetailsFormState implements DetailsState {
-  const factory DetailsFormState(bool isValid) = _$DetailsFormState;
+  const factory DetailsFormState(final bool isValid) = _$DetailsFormState;
 
   bool get isValid;
   @JsonKey(ignore: true)
-  $DetailsFormStateCopyWith<DetailsFormState> get copyWith =>
+  _$$DetailsFormStateCopyWith<_$DetailsFormState> get copyWith =>
       throw _privateConstructorUsedError;
 }

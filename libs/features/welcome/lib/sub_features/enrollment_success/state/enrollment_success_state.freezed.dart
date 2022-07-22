@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'enrollment_success_state.dart';
@@ -11,19 +12,7 @@ part of 'enrollment_success_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$EnrollmentSuccessStateTearOff {
-  const _$EnrollmentSuccessStateTearOff();
-
-  InitialState initialState() {
-    return const InitialState();
-  }
-}
-
-/// @nodoc
-const $EnrollmentSuccessState = _$EnrollmentSuccessStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$EnrollmentSuccessState {
@@ -79,22 +68,22 @@ class _$EnrollmentSuccessStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class $InitialStateCopyWith<$Res> {
-  factory $InitialStateCopyWith(
-          InitialState value, $Res Function(InitialState) then) =
-      _$InitialStateCopyWithImpl<$Res>;
+abstract class _$$InitialStateCopyWith<$Res> {
+  factory _$$InitialStateCopyWith(
+          _$InitialState value, $Res Function(_$InitialState) then) =
+      __$$InitialStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$InitialStateCopyWithImpl<$Res>
+class __$$InitialStateCopyWithImpl<$Res>
     extends _$EnrollmentSuccessStateCopyWithImpl<$Res>
-    implements $InitialStateCopyWith<$Res> {
-  _$InitialStateCopyWithImpl(
-      InitialState _value, $Res Function(InitialState) _then)
-      : super(_value, (v) => _then(v as InitialState));
+    implements _$$InitialStateCopyWith<$Res> {
+  __$$InitialStateCopyWithImpl(
+      _$InitialState _value, $Res Function(_$InitialState) _then)
+      : super(_value, (v) => _then(v as _$InitialState));
 
   @override
-  InitialState get _value => super._value as InitialState;
+  _$InitialState get _value => super._value as _$InitialState;
 }
 
 /// @nodoc
@@ -110,7 +99,7 @@ class _$InitialState implements InitialState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is InitialState);
+        (other.runtimeType == runtimeType && other is _$InitialState);
   }
 
   @override

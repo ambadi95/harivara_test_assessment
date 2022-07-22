@@ -41,6 +41,9 @@ dependencies:
   device_option:
     path: ../device_option
 
+  login:
+    path: ../login
+
   passcode:
     path: ../passcode
 
@@ -53,6 +56,4 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-  assets:
-    - assets/welcomeback/
 

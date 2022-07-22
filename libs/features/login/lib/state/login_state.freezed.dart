@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'login_state.dart';
@@ -11,21 +12,7 @@ part of 'login_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$LoginStateTearOff {
-  const _$LoginStateTearOff();
-
-  _LoginState call({List<LoginModel> loginList = const []}) {
-    return _LoginState(
-      loginList: loginList,
-    );
-  }
-}
-
-/// @nodoc
-const $LoginState = _$LoginStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$LoginState {
@@ -66,31 +53,32 @@ class _$LoginStateCopyWithImpl<$Res> implements $LoginStateCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$LoginStateCopyWith<$Res> implements $LoginStateCopyWith<$Res> {
-  factory _$LoginStateCopyWith(
-          _LoginState value, $Res Function(_LoginState) then) =
-      __$LoginStateCopyWithImpl<$Res>;
+abstract class _$$_LoginStateCopyWith<$Res>
+    implements $LoginStateCopyWith<$Res> {
+  factory _$$_LoginStateCopyWith(
+          _$_LoginState value, $Res Function(_$_LoginState) then) =
+      __$$_LoginStateCopyWithImpl<$Res>;
   @override
   $Res call({List<LoginModel> loginList});
 }
 
 /// @nodoc
-class __$LoginStateCopyWithImpl<$Res> extends _$LoginStateCopyWithImpl<$Res>
-    implements _$LoginStateCopyWith<$Res> {
-  __$LoginStateCopyWithImpl(
-      _LoginState _value, $Res Function(_LoginState) _then)
-      : super(_value, (v) => _then(v as _LoginState));
+class __$$_LoginStateCopyWithImpl<$Res> extends _$LoginStateCopyWithImpl<$Res>
+    implements _$$_LoginStateCopyWith<$Res> {
+  __$$_LoginStateCopyWithImpl(
+      _$_LoginState _value, $Res Function(_$_LoginState) _then)
+      : super(_value, (v) => _then(v as _$_LoginState));
 
   @override
-  _LoginState get _value => super._value as _LoginState;
+  _$_LoginState get _value => super._value as _$_LoginState;
 
   @override
   $Res call({
     Object? loginList = freezed,
   }) {
-    return _then(_LoginState(
+    return _then(_$_LoginState(
       loginList: loginList == freezed
-          ? _value.loginList
+          ? _value._loginList
           : loginList // ignore: cast_nullable_to_non_nullable
               as List<LoginModel>,
     ));
@@ -100,11 +88,16 @@ class __$LoginStateCopyWithImpl<$Res> extends _$LoginStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_LoginState implements _LoginState {
-  const _$_LoginState({this.loginList = const []});
+  const _$_LoginState({final List<LoginModel> loginList = const []})
+      : _loginList = loginList;
 
-  @JsonKey()
+  final List<LoginModel> _loginList;
   @override
-  final List<LoginModel> loginList;
+  @JsonKey()
+  List<LoginModel> get loginList {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_loginList);
+  }
 
   @override
   String toString() {
@@ -115,27 +108,28 @@ class _$_LoginState implements _LoginState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _LoginState &&
-            const DeepCollectionEquality().equals(other.loginList, loginList));
+            other is _$_LoginState &&
+            const DeepCollectionEquality()
+                .equals(other._loginList, _loginList));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(loginList));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_loginList));
 
   @JsonKey(ignore: true)
   @override
-  _$LoginStateCopyWith<_LoginState> get copyWith =>
-      __$LoginStateCopyWithImpl<_LoginState>(this, _$identity);
+  _$$_LoginStateCopyWith<_$_LoginState> get copyWith =>
+      __$$_LoginStateCopyWithImpl<_$_LoginState>(this, _$identity);
 }
 
 abstract class _LoginState implements LoginState {
-  const factory _LoginState({List<LoginModel> loginList}) = _$_LoginState;
+  const factory _LoginState({final List<LoginModel> loginList}) = _$_LoginState;
 
   @override
   List<LoginModel> get loginList;
   @override
   @JsonKey(ignore: true)
-  _$LoginStateCopyWith<_LoginState> get copyWith =>
+  _$$_LoginStateCopyWith<_$_LoginState> get copyWith =>
       throw _privateConstructorUsedError;
 }

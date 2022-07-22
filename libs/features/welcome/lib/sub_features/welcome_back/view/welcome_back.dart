@@ -16,23 +16,24 @@ import '../../welcome/viewmodel/welcome_coordinatior.dart';
 
 class CrayonWelcomBackScreen extends StatefulWidget {
   static const viewPath = '${WelcomeModule.moduleIdentifier}/welcomeback';
-  final WelcomeScreenArgs welcomeScreenArgs;
+
+  // final WelcomeScreenArgs welcomeScreenArgs;
 
   const CrayonWelcomBackScreen({
     Key? key,
-    required this.welcomeScreenArgs,
+    // required this.welcomeScreenArgs,
   }) : super(key: key);
 
   @override
   State<CrayonWelcomBackScreen> createState() => _CrayonWelcomBackScreenState();
 
-  factory CrayonWelcomBackScreen.forCustomerBackApp() => CrayonWelcomBackScreen(
-        welcomeScreenArgs: WelcomeScreenArgs(
-          '',
-          '',
-          'Customer',
-        ),
-      );
+// factory CrayonWelcomBackScreen.forCustomerBackApp() => CrayonWelcomBackScreen(
+//       welcomeScreenArgs: WelcomeScreenArgs(
+//         '',
+//         '',
+//         'Customer',
+//       ),
+//     );
 }
 
 class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
@@ -99,7 +100,6 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
                 WB_touchIdIcon,
                 scale: 2.0,
               ),
-              const SizedBox(height: 10),
               const Spacer(),
             ],
           ),

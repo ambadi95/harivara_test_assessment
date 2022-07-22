@@ -21,6 +21,10 @@ import 'package:device_option/device_option_module.dart';
 import 'package:device_option/navigation_handler/device_option_route_manager.dart';
 import 'package:login/login_module.dart';
 import 'package:login/navigation_handler/login_route_manager.dart';
+import 'package:device_option/device_option_module.dart';
+import 'package:device_option/navigation_handler/device_option_route_manager.dart';
+import 'package:login/login_module.dart';
+import 'package:login/navigation_handler/login_route_manager.dart';
 
 import 'package:network_manager/auth/auth_manager.dart';
 import 'package:network_manager/auth/user_manager.dart';
@@ -94,6 +98,8 @@ class AppModule {
     LoginModule.registerDependencies();
 
     CustomerHomeModule.registerDependencies();
+
+
 
     DIContainer.container.resolve<WidgetsModule>().registerDependencies();
 

@@ -14,7 +14,6 @@ import 'package:flutter_riverpod/src/framework.dart';
 import 'package:get/get.dart';
 import 'package:login/view/login_screen.dart';
 import 'package:welcome/sub_features/welcome/view/welcome_screen.dart';
-import 'package:welcome/sub_features/welcome_back/view/welcome_back.dart';
 import 'package:widget_library/theme/crayon_payment_theme.dart';
 import 'app_module.dart';
 
@@ -67,7 +66,7 @@ class HomeWidget extends StatelessWidget {
       child: CrayonPaymentMaterialApp(
         key: Key('AppMaterialApp'),
         home: !_status
-            ? CrayonWelcomBackScreen.forCustomerBackApp()
+            ? CrayonWelcomScreen.forCustomerApp()
             : CrayonWelcomScreen.forCustomerApp(),
         theme: CrayonPaymentTheme().defaultTheme,
         onGenerateRoute: _navigationManager.getRoute,

@@ -34,4 +34,8 @@ class WelcomeCoordinator extends BaseViewModel<WelcomeScreenState>{
     _navigationHandler.navigateToSignUpScreen();
   }
 
+  Future navigateToLogin() async {
+    _navigationHandler.navigateToLogin();
+  }
+
 }

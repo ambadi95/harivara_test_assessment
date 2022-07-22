@@ -3,6 +3,10 @@ import 'package:core/navigation/navigation_type.dart';
 import 'package:passcode/sub_features/passcode/view/passcode.dart';
 import 'package:shared_data_models/passcode/passcode_screen_args.dart';
 import 'package:shared_data_models/passcode/passcode_verification_type.dart';
+import 'package:login/view/login_screen.dart';
+import 'package:passcode/sub_features/passcode/view/passcode.dart';
+import 'package:shared_data_models/passcode/passcode_screen_args.dart';
+import 'package:shared_data_models/passcode/passcode_verification_type.dart';
 import 'package:welcome/sub_features/details/view/details.dart';
 import 'package:welcome/sub_features/signup/view/signup.dart';
 import 'package:widget_library/helpers/error/helper/error_helper.dart';
@@ -73,6 +77,14 @@ class WelcomeNavigationHandler with ErrorHandler{
       const NavigationType.push(),
     );
   }
+
+  Future<void> navigateToLogin() async {
+    await _navigationManager.navigateTo(
+      Login.viewPath,
+      const NavigationType.push(),
+    );
+  }
+
 
   // Future<void> navigateToDestination(
   //     String? destination,

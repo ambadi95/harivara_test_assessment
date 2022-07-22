@@ -12,7 +12,6 @@ import 'package:widget_library/search_bar/search_bar_widget_model.dart';
 import 'package:widget_library/spacers/crayon_payment_spacers.dart';
 import 'package:widget_library/static_text/crayon_payment_text.dart';
 import 'package:widget_library/widget_library.dart';
-
 import '../device_option_module.dart';
 import '../state/device_option_state.dart';
 import '../viewmodel/device_option_coordinator.dart';
@@ -52,6 +51,7 @@ class DeviceOption extends StatelessWidget {
             _buildSearchField(context),
             dynamicHSpacer(24),
             Expanded(child: _buildNearByAgentList(context)),
+            dynamicHSpacer(16),
           ],
         ));
   }
@@ -63,6 +63,7 @@ class DeviceOption extends StatelessWidget {
         'DO_Title',
         styleVariant: CrayonPaymentTextStyleVariant.headlineThirtyTwo,
         color: AN_TitleColor,
+        fontWeight: FontWeight.w800
       ),
     );
   }
@@ -92,79 +93,137 @@ class DeviceOption extends StatelessWidget {
       separatorBuilder: (context, index)=> divider(),
       shrinkWrap: true,
       itemCount: deviceMockData.length,
-      itemBuilder: (context, index) => _buildDeviceCard(context,deviceMockData[index]),
+      itemBuilder: (context, index) => _buildDeviceCard(context,deviceMockData[index],index),
     );
   }
 
-  Widget _buildDeviceCard(context, DeviceOptionModel device){
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Image.asset(device.imagePath!,width: 95,package: 'shared_data_models',),
-        dynamicWSpacer(8),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CrayonPaymentText(
-              key: Key('${_identifier}_'+device.brand!),
-              text: TextUIDataModel(
-                device.brand!,
-                styleVariant: CrayonPaymentTextStyleVariant.headline4,
-                color: AN_CardTitle,
+  Widget _buildDeviceCard(context, DeviceOptionModel device, int index){
+    return InkWell(
+      onTap: (){},
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Image.asset(device.imagePath!,width: 95,package: 'shared_data_models',),
+          dynamicWSpacer(8),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      CrayonPaymentText(
+                        key: Key('${_identifier}_'+device.brand!),
+                        text: TextUIDataModel(
+                          device.brand!,
+                          styleVariant: CrayonPaymentTextStyleVariant.overline1,
+                          color: AN_CardTitle,
+                            fontWeight: FontWeight.bold
+
+                        ),
+                      ),
+                      dynamicHSpacer(4),
+                      CrayonPaymentText(
+                        key: Key('${_identifier}_'+device.model!),
+                        text: TextUIDataModel(
+                            device.model!,
+                            styleVariant: CrayonPaymentTextStyleVariant.headline4,
+                            color: AN_CardTitle,
+                            fontWeight: FontWeight.w900
+
+                        ),
+                      ),
+                    ],
+                  ),
+                  dynamicWSpacer(54),
+                  Image.asset(index.isOdd ? DO_selectFavorites : DO_favorites,width: 16,height: 16,)
+                ],
               ),
-            ),
-            dynamicHSpacer(4),
-            CrayonPaymentText(
-              key: Key('${_identifier}_'+device.model!),
-              text: TextUIDataModel(
-                device.model!,
-                styleVariant: CrayonPaymentTextStyleVariant.headline4,
-                color: AN_CardTitle,
-              ),
-            ),
-            dynamicHSpacer(6),
-            SizedBox(
-              width: 218,
-              child: CrayonPaymentText(
-                key: Key('${_identifier}_'+device.storage!),
-                text: TextUIDataModel(
-                  device.storage! + "|" + device.chip! + "|" + device.os!,
-                  styleVariant: CrayonPaymentTextStyleVariant.headline4,
-                  color: AN_CardTitle,
+
+              dynamicHSpacer(6),
+              SizedBox(
+                width: 218,
+                child: CrayonPaymentText(
+                  key: Key('${_identifier}_'+device.storage!),
+                  text: TextUIDataModel(
+                    device.storage! + "|" + device.chip! + "|" + device.os!,
+                    styleVariant: CrayonPaymentTextStyleVariant.headline4,
+                    color: SU_carrier_message_color,
+                  ),
                 ),
               ),
-            ),
-            dynamicHSpacer(6),
-            CrayonPaymentText(
-              key: Key('${_identifier}_color_label'),
-              text: const TextUIDataModel(
-                'Colour option - Alpine Green',
-                styleVariant: CrayonPaymentTextStyleVariant.headline4,
-                color: AN_CardSubTitle,
+              dynamicHSpacer(6),
+              CrayonPaymentText(
+                key: Key('${_identifier}_color_label'),
+                text: const TextUIDataModel(
+                  'Colour option - Alpine Green',
+                  styleVariant: CrayonPaymentTextStyleVariant.headline4,
+                  color: AN_CardSubTitle,
+                ),
               ),
-            ),
-            dynamicHSpacer(6),
-            CrayonPaymentText(
-              key: Key('${_identifier}_pricing_label'),
-              text: const TextUIDataModel(
-                'Pricing option',
-                styleVariant: CrayonPaymentTextStyleVariant.headline4,
-                color: AN_CardSubTitle,
+              dynamicHSpacer(6),
+              Row(
+                children: [
+                  Container(
+                    height: 16,
+                    width: 16,
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                        shape: BoxShape.circle,
+                        border: Border.all(width: 1, color: Colors.red)
+                    ),
+                  ),
+                  dynamicWSpacer(6),
+                  Container(
+                    height: 16,
+                    width: 16,
+                    decoration: BoxDecoration(
+                        color: Colors.deepPurpleAccent,
+                        shape: BoxShape.circle,
+                        border: Border.all(width: 1, color: Colors.deepPurpleAccent)
+                    ),
+                  ),
+                  dynamicWSpacer(6),
+                  Container(
+                    height: 16,
+                    width: 16,
+                    decoration: BoxDecoration(
+                        color: Colors.black,
+                        shape: BoxShape.circle,
+                        border: Border.all(width: 1, color: Colors.black)
+                    ),
+                  ),
+                ],
               ),
-            ),
-            dynamicHSpacer(4),
-            Row(
+              dynamicHSpacer(10),
+              CrayonPaymentText(
+                key: Key('${_identifier}_pricing_label'),
+                text: const TextUIDataModel(
+                  'Pricing option',
+                  styleVariant: CrayonPaymentTextStyleVariant.headline4,
+                  color: AN_CardSubTitle,
+                ),
+              ),
+              dynamicHSpacer(4),
+              Row(
 
-              children: [
-                priceButton(context,'TZS 94,666/mo.','Y9 loan 12 months '),
-                dynamicWSpacer(8),
-                priceButton(context,'TZS 2,300,000','Full Retail Price'),
+                children: [
+                  priceButton(context,'TZS 94,666/mo.','Y9 loan 12 months '),
+                  dynamicWSpacer(18),
+                  priceButton(context,'TZS 2,300,000','Full Retail Price'),
 
-              ],
-            )
-          ],
-        ),
-      ],
+                ],
+              )
+            ],
+          ),
+        ],
+      ),
     );
   }
 
@@ -177,9 +236,9 @@ class DeviceOption extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Text(price,style: const TextStyle(fontSize: 10,color: AN_ActionText),),
+          Text(price,style: const TextStyle(fontSize: 12,color: AN_ActionText,fontWeight: FontWeight.w600),),
           dynamicHSpacer(4),
-          Text(label,style: const TextStyle(fontSize: 10,color: AN_ActionText),),
+          Text(label,style: const TextStyle(fontSize: 10,color: AN_ActionText,fontWeight: FontWeight.w600),),
         ],
       ),
     );
