@@ -83,7 +83,6 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              _buildLanguageChangeButton(context, state, welcomeCoordinator),
               const SizedBox(height: 40),
               _buildLogo(context),
               _buildSizedBox(),
@@ -126,28 +125,6 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
         shape: BoxShape.circle,
       ),
       child: Image.network('https://picsum.photos/id/237/50/50'),
-    );
-  }
-
-  Widget _buildLanguageChangeButton(BuildContext context,
-      WelcomeScreenState state, WelcomeCoordinator welcomeCoordinator) {
-    return Align(
-      alignment: Alignment.topRight,
-      child: TextButton(
-          onPressed: () {
-            var languageCode = '';
-            if (state.currentLanguageCode == 'en') {
-              languageCode = 'sw';
-            } else {
-              languageCode = 'en';
-            }
-
-            welcomeCoordinator.setCurrentLocale(languageCode);
-          },
-          child: Text(
-            'OB_Lang'.tr,
-            style: const TextStyle(color: Colors.black),
-          )),
     );
   }
 

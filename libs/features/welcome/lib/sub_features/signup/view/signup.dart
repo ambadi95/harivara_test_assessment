@@ -8,12 +8,14 @@ import 'package:welcome/sub_features/signup/viewmodel/signup_coordinator.dart';
 import 'package:welcome/welcome_module.dart';
 import 'package:widget_library/html/rich_text_description.dart';
 import 'package:widget_library/progress_bar/onboarding_progress_bar.dart';
+import 'package:widget_library/input_fields/input_field_with_label.dart';
 import 'package:widget_library/buttons/crayon_back_button.dart';
 import 'package:config/Colors.dart' as config_color;
 import 'package:get/get.dart';
 
 class SignUp extends StatefulWidget {
   static const viewPath = '${WelcomeModule.moduleIdentifier}/signup';
+
   const SignUp({Key? key}) : super(key: key);
 
   @override
@@ -24,14 +26,13 @@ class _SignUpState extends State<SignUp> {
   bool _isBtnEnabled = false;
   TextEditingController nidaNumber = TextEditingController();
   TextEditingController mobileNumber = TextEditingController();
+
   @override
   Widget build(BuildContext context) =>
       BaseView<SignUpCoordinator, SignUpState>(
-        onStateListenCallback: (preState, newState) =>{
-          _listenToStateChanges(context, newState)
-        },
-        setupViewModel: (coordinator) async {
-        },
+        onStateListenCallback: (preState, newState) =>
+            {_listenToStateChanges(context, newState)},
+        setupViewModel: (coordinator) async {},
         builder: (context, state, coordinator) => SafeArea(
           child: Scaffold(
             bottomNavigationBar: SizedBox(
@@ -39,15 +40,17 @@ class _SignUpState extends State<SignUp> {
               child: Column(
                 children: [
                   _carrierText(),
-                  const SizedBox(height: 23,),
-                  _buildContinueButton(context,coordinator,state)
+                  const SizedBox(
+                    height: 23,
+                  ),
+                  _buildContinueButton(context, coordinator, state)
                 ],
               ),
             ),
             body: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _buildTopContainer(context,coordinator),
+                _buildTopContainer(context, coordinator),
                 _buildMainUI(coordinator),
               ],
             ),
@@ -55,8 +58,10 @@ class _SignUpState extends State<SignUp> {
         ),
       );
 
-  Widget _buildTopContainer( BuildContext context,
-      SignUpCoordinator coordinator,){
+  Widget _buildTopContainer(
+    BuildContext context,
+    SignUpCoordinator coordinator,
+  ) {
     return Column(
       children: [
         _onBoardingProgressBar(),
@@ -65,19 +70,26 @@ class _SignUpState extends State<SignUp> {
     );
   }
 
-  Widget _buildMainUI(SignUpCoordinator coordinator){
+  Widget _buildMainUI(SignUpCoordinator coordinator) {
     return Padding(
       padding: const EdgeInsets.only(right: 16, left: 16, top: 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _title(),
-          const SizedBox(height: 16,),
+          const SizedBox(
+            height: 16,
+          ),
           _sub_title(),
-          const SizedBox(height: 69,),
-          _buildLabelTextField('SU_ID_no_label'.tr,nidaNumber, coordinator),
-          const SizedBox(height: 48,),
-          _buildLabelTextFieldMobNumber('SU_mobile_no_label'.tr,mobileNumber, coordinator),
+          const SizedBox(
+            height: 69,
+          ),
+          _buildLabelTextField('SU_ID_no_label'.tr, nidaNumber, coordinator),
+          const SizedBox(
+            height: 48,
+          ),
+          _buildLabelTextFieldMobNumber(
+              'SU_mobile_no_label'.tr, mobileNumber, coordinator),
         ],
       ),
     );
@@ -94,120 +106,111 @@ class _SignUpState extends State<SignUp> {
   }
 
   Widget _buildBackBtn(
-      BuildContext context,
-      SignUpCoordinator coordinator,
-      ) {
+    BuildContext context,
+    SignUpCoordinator coordinator,
+  ) {
     return Align(
       alignment: Alignment.topLeft,
       child: CrayonBackButton(
         key: const Key('signup_backButton'),
         color: Colors.black,
         onPressed: () {
-            coordinator.goBack();
+          coordinator.goBack();
         },
       ),
     );
   }
-  
-  Widget _title(){
-    return Text('SU_title'.tr,
+
+  Widget _title() {
+    return Text(
+      'SU_title'.tr,
       style: SU_title_style,
     );
   }
 
-  Widget _sub_title(){
+  Widget _sub_title() {
     return RichTextDescription(
-      key: const Key('SU_SubTitle'),
-      description: 'SU_subtitle'.tr,
-      linkTextStyle: SU_subtitle_terms_style,
-      descriptionTextStyle: SU_subtitle_style
+        key: const Key('SU_SubTitle'),
+        description: 'SU_subtitle'.tr,
+        linkTextStyle: SU_subtitle_terms_style,
+        descriptionTextStyle: SU_subtitle_style);
+  }
 
+  Widget _buildLabelTextField(String label, TextEditingController controller,
+      SignUpCoordinator coordinator) {
+    return InputFieldWithLabel(
+      label: label,
+      controller: controller,
+      key: const Key('idNumberTextField'),
+      inputFormatters: <TextInputFormatter>[
+        FilteringTextInputFormatter.digitsOnly
+      ],
+      keyboardType: TextInputType.number,
+      onChanged: (value) {
+        _validateForm(coordinator);
+      },
     );
   }
 
-  Widget _buildLabelTextField(String label, TextEditingController controller, SignUpCoordinator coordinator){
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(label,style: SU_label_style),
-        const SizedBox(height: 8,),
-        TextField(
-          key: const Key('idNumberTextField'),
-         controller: controller,
-          keyboardType: TextInputType.number,
-          textAlign: TextAlign.start,
-          autofocus: false,
-          showCursor: true,
-          inputFormatters: <TextInputFormatter>[
-            FilteringTextInputFormatter.digitsOnly
-          ],
-          style: SU_text_input_style,
-    decoration: SU_text_input_border_style,
-          onChanged: (value){
-            _validateForm(coordinator);
-          },
-    ),
-    ]
-    );
-  }
-
-  Widget _buildLabelTextFieldMobNumber(String label, TextEditingController controller, SignUpCoordinator coordinator){
-    return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(label,style: SU_label_style),
-          const SizedBox(height: 8,),
-          TextField(
-            key: const Key('idNumberTextField'),
-            controller: controller,
-            keyboardType: TextInputType.number,
-            textAlign: TextAlign.start,
-            autofocus: false,
-            showCursor: true,
-            inputFormatters: <TextInputFormatter>[
-              FilteringTextInputFormatter.digitsOnly
-            ],
-            style: SU_text_input_style,
-            decoration: InputDecoration(
-              prefix:  const Padding(
-                padding: EdgeInsets.only(top: 6),
-                child: Text('+255  ', style: SU_text_input_style),
-              ),
-              prefixIcon:  Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Image.asset(
-                  LS_Flag,
-                  width: 22,
-                  height: 16,
-                ),
-              ),
-              border: const OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                  borderSide:  BorderSide(color: config_color.SU_border_color)
-              ),
-            ),
-            onChanged: (value){
-              _validateForm(coordinator);
-            },
+  Widget _buildLabelTextFieldMobNumber(String label,
+      TextEditingController controller, SignUpCoordinator coordinator) {
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Text(label, style: SU_label_style),
+      const SizedBox(
+        height: 8,
+      ),
+      TextField(
+        key: const Key('idNumberTextField'),
+        controller: controller,
+        keyboardType: TextInputType.number,
+        textAlign: TextAlign.start,
+        autofocus: false,
+        showCursor: true,
+        inputFormatters: <TextInputFormatter>[
+          FilteringTextInputFormatter.digitsOnly
+        ],
+        style: SU_text_input_style,
+        decoration: InputDecoration(
+          prefix: const Padding(
+            padding: EdgeInsets.only(top: 6),
+            child: Text('+255  ', style: SU_text_input_style),
           ),
-        ]
-    );
+          prefixIcon: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Image.asset(
+              LS_Flag,
+              width: 22,
+              height: 16,
+            ),
+          ),
+          border: const OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(8.0)),
+              borderSide: BorderSide(color: config_color.SU_border_color)),
+        ),
+        onChanged: (value) {
+          _validateForm(coordinator);
+        },
+      ),
+    ]);
   }
 
-  Widget _carrierText(){
-    return Text('SU_carrier_message'.tr,style: SU_carrier_message_style,);
+  Widget _carrierText() {
+    return Text(
+      'SU_carrier_message'.tr,
+      style: SU_carrier_message_style,
+    );
   }
 
   Widget _buildContinueButton(
-      BuildContext context,
-      SignUpCoordinator coordinator,
-      SignUpState state,
-      ) {
+    BuildContext context,
+    SignUpCoordinator coordinator,
+    SignUpState state,
+  ) {
     return Padding(
-      padding: const EdgeInsets.only(left :16 , right : 16,bottom: 16),
+      padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
-        onTap: (){
-          if( _isBtnEnabled){
+        onTap: () {
+          if (_isBtnEnabled) {
             coordinator.navigateToDetailsScreen();
           }
         },
@@ -215,27 +218,30 @@ class _SignUpState extends State<SignUp> {
           width: double.infinity,
           height: 50,
           decoration: BoxDecoration(
-              color:  _isBtnEnabled ?  config_color.SU_button_color : config_color.SU_grey_color,
-              borderRadius: BorderRadius.circular(8.0)
-          ),
+              color: _isBtnEnabled
+                  ? config_color.SU_button_color
+                  : config_color.SU_grey_color,
+              borderRadius: BorderRadius.circular(8.0)),
           child: Center(
-            child: Text('SU_button_text'.tr, style: SU_button_text_style,),
+            child: Text(
+              'SU_button_text'.tr,
+              style: SU_button_text_style,
+            ),
           ),
         ),
       ),
     );
   }
 
-  void _listenToStateChanges(BuildContext context, SignUpState state){
+  void _listenToStateChanges(BuildContext context, SignUpState state) {
     state.maybeWhen(
-      SignUpFormState: (isValid ){
-      _isBtnEnabled = isValid;
-      },
-        orElse: ()=> null);
+        SignUpFormState: (isValid) {
+          _isBtnEnabled = isValid;
+        },
+        orElse: () => null);
   }
 
-  void _validateForm(SignUpCoordinator coordinator){
+  void _validateForm(SignUpCoordinator coordinator) {
     coordinator.validateForm(nidaNumber.text, mobileNumber.text);
   }
-
 }
