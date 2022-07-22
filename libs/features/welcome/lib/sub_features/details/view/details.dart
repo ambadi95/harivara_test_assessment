@@ -39,7 +39,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
     final DateTime? picked = await showDatePicker(
         context: context,
         initialDate: selectedDate,
-        firstDate: DateTime(2015, 8),
+        firstDate: DateTime(1900, 1),
         lastDate: DateTime(2101));
     if (picked != null && picked != selectedDate) {
       final DateFormat inputFormat = DateFormat('yyyy-MM-dd');

@@ -45,8 +45,8 @@
   "PC_passcode_repetitive_message" : "Nambari ya siri haipaswi kuwa na nambari zinazojirudia, au mifumo ya kawaida kama 123456.",
   "PC_passcode_tip" : "Kidokezo: Epuka siku za kuzaliwa, na nambari zinazojirudia au zinazofuatana.",
 
-  "ES_welcome_Text" : "HII %{Ennamual Jisula}% hongera kwa kujiandikisha kwa Y9",
-  "ES_enroll_id" : "Kitambulisho chako cha Kujiandikisha %{“XXXXXX”}%",
+  "ES_welcome_Text" : "HII %{Ennamual Jisula | click}% hongera kwa kujiandikisha kwa Y9",
+  "ES_enroll_id" : "Kitambulisho chako cha Kujiandikisha %{“XXXXXX” | click}%",
   "ES_near_agent_button" : "Tazama Karibu na Wakala",
   "ES_device_option" : "Gundua Chaguo za Kifaa",
   "DV_button_text" : "Endelea",
