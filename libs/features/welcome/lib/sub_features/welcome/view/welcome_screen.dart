@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:widget_library/spacers/crayon_payment_spacers.dart';
 
 import '../../../welcome_module.dart';
+import '../../welcome_back/view/welcome_back.dart';
 import '../state/welcome_screen_state.dart';
 import '../viewmodel/welcome_coordinatior.dart';
 
@@ -34,6 +35,7 @@ class CrayonWelcomScreen extends StatefulWidget {
 }
 
 class _CrayonWelcomScreenState extends State<CrayonWelcomScreen> {
+  final bool _isSigned = false;
   @override
   Widget build(BuildContext context) =>
       BaseView<WelcomeCoordinator, WelcomeScreenState>(
@@ -59,7 +61,21 @@ class _CrayonWelcomScreenState extends State<CrayonWelcomScreen> {
       WelcomeCoordinator welcomeCoordinator,
       WelcomeScreenState state
       ) {
-      return _buildNonSignedInUI(context, state, welcomeCoordinator);
+      return Padding(
+        padding: const EdgeInsets.only(
+          left: 10,
+          right: 14,
+          bottom: 10,
+          top: 15,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            _buildLanguageChangeButton(context, state , welcomeCoordinator),
+            _isSigned ? Expanded(child: _buildSignedUI()) : Expanded(child: _buildNonSignedInUI(context, state, welcomeCoordinator)),
+          ],
+        ),
+      );
     }
 
 Widget _buildNonSignedInUI(
@@ -71,29 +87,20 @@ Widget _buildNonSignedInUI(
     children: [
       // _createBackgroundImage(),
       // _createOverLay(),
-      Padding(
-        padding: const EdgeInsets.only(
-          left: 10,
-          right: 14,
-          bottom: 10,
-          top: 15,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            _buildLanguageChangeButton(context, state , welcomeCoordinator),
-            const SizedBox(height: 40),
-            _buildLogo(context),
-            _buildSizedBox(),
-            _buildTitle(context),
-            _buildSizedBox(),
-             _buildSubTitle(context),
-            const SizedBox(height: 10),
-            _buildThirdTitle(context),
-              const Spacer(),
-            _buildButtons(context, welcomeCoordinator, state),
-          ],
-        ),
+      Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          const SizedBox(height: 40),
+          _buildLogo(context),
+          _buildSizedBox(),
+          _buildTitle(context),
+          _buildSizedBox(),
+           _buildSubTitle(context),
+          const SizedBox(height: 10),
+          _buildThirdTitle(context),
+            const Spacer(),
+          _buildButtons(context, welcomeCoordinator, state),
+        ],
       ),
     ],
   );
@@ -232,6 +239,10 @@ Widget _buildNonSignedInUI(
         fit: BoxFit.fill,
       ),
     );
+  }
+
+  Widget _buildSignedUI(){
+      return const CrayonWelcomBackScreen();
   }
 
 
