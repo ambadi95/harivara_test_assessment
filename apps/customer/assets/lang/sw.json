@@ -73,7 +73,8 @@
   "AN_Title" : "Wakala wa karibu",
   "AN_Search" : "Tafuta kwa Jina / Kitambulisho/ Mkoa / Wilaya/ Po#",
   "AN_AgentName" : "Y9 Kitambulisho cha wakala:",
-  "AN_Call" : "Wito"
+  "AN_Call" : "Wito",
 
-
+  "VO_OtpVerification": "OTP Verification",
+  "VO_DidNotGetCode": "Didn't get a code?"
 }

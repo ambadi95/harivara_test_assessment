@@ -1,0 +1,319 @@
+import 'package:config/Colors.dart';
+import 'package:config/Styles.dart';
+import 'package:core/view/base_view.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:shared_data_models/otp/otp_screen_args.dart';
+import 'package:verifyotp/constants/image_constant.dart';
+import 'package:verifyotp/verifyotp_module.dart';
+import 'package:widget_library/input_fields/obscured_digit_entry_input_field.dart';
+import 'package:widget_library/keypad/crayon_payment_keypad.dart';
+import 'package:widget_library/page_header/text_ui_data_model.dart';
+import 'package:widget_library/progress_bar/onboarding_progress_bar.dart';
+import 'package:widget_library/static_text/crayon_payment_text.dart';
+
+import '../state/verify_otp_state.dart';
+import '../view_model/verifyotp_coordinator.dart';
+
+class CrayonVerifyOtpScreen extends StatefulWidget {
+  static const viewPath = '${VerifyOtpModule.moduleIdentifier}/verifyotp';
+  final OtpScreenArgs otpScreenArgs;
+
+  const CrayonVerifyOtpScreen({Key? key, required this.otpScreenArgs})
+      : super(key: key);
+
+  @override
+  State<CrayonVerifyOtpScreen> createState() => _CrayonVerifyOtpScreenState();
+}
+
+class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
+  @override
+  Widget build(BuildContext context) =>
+      BaseView<VerifyOtpCoordinator, VerifyOtpState>(
+        setupViewModel: (coordinator) {
+          coordinator.initialiseState(
+            context,
+            widget.otpScreenArgs.title,
+            widget.otpScreenArgs.description,
+            widget.otpScreenArgs.destinationPath,
+            widget.otpScreenArgs.otpVerificationType,
+            '',
+          );
+        },
+        builder: (context, state, coordinator) => Scaffold(
+          body: SafeArea(
+            bottom: false,
+            child: state.when(
+              initialState: () => SizedBox(),
+              ready: (
+                _,
+                __,
+                ___,
+                ____,
+                _____,
+                ______,
+                _______,
+                ________,
+                _________,
+                __________,
+              ) =>
+                  _buildMainUIWithLoading(
+                context,
+                coordinator,
+                (state as VerifyOtpStateReady),
+              ),
+            ),
+          ),
+        ),
+      );
+
+  Widget _buildMainUIWithLoading(
+    BuildContext context,
+    VerifyOtpCoordinator coordinator,
+    VerifyOtpStateReady state,
+  ) {
+    return Stack(
+      children: [
+        _buildMainUI(context, coordinator, state),
+        // if (state.isLoading) _createLoading(state),
+      ],
+    );
+  }
+
+  Widget _buildMainUI(
+    BuildContext context,
+    VerifyOtpCoordinator coordinator,
+    VerifyOtpStateReady state,
+  ) {
+    return Scaffold(
+      bottomNavigationBar: _buildContinueButton(coordinator),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _onBoardingProgressBar(),
+              _buildHeader(context, coordinator, state),
+              _enterOtpInstruction(context, coordinator, state),
+              const SizedBox(
+                height: 60,
+              ),
+              _enterOtpWidget(context, coordinator, state),
+              const SizedBox(
+                height: 40,
+              ),
+              _keyPad(context, coordinator),
+              _didGetCode(context, coordinator)
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildContinueButton(VerifyOtpCoordinator coordinator) {
+    return GestureDetector(
+      onTap: () {},
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          width: double.infinity,
+          height: 50,
+          decoration: BoxDecoration(
+              color: SU_button_color, borderRadius: BorderRadius.circular(8.0)),
+          child: Center(
+            child: Text(
+              'SU_button_text'.tr,
+              style: SU_button_text_style,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _onBoardingProgressBar() {
+    if (!widget.otpScreenArgs.hasProgressBar) {
+      return Container();
+    }
+    return Padding(
+      key: Key('otp verify progress'),
+      padding: const EdgeInsets.only(
+        left: 16,
+        right: 16,
+        top: 16,
+      ),
+      child: OnBoardingProgressBar(
+        currentStep: widget.otpScreenArgs.currentStep ?? 1,
+        totalSteps: 4,
+      ),
+    );
+  }
+
+  Widget _enterOtpWidget(
+    BuildContext context,
+    VerifyOtpCoordinator coordinator,
+    VerifyOtpStateReady state,
+  ) {
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          _enterOtpInteractionWidgets(context, coordinator, state),
+        ],
+      ),
+    );
+  }
+
+  Widget _enterOtpInstruction(
+    BuildContext context,
+    VerifyOtpCoordinator coordinator,
+    VerifyOtpStateReady state,
+  ) {
+    return Container(
+      padding: const EdgeInsets.only(
+        left: 16,
+        right: 16,
+        top: 16,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          CrayonPaymentText(
+            key: const Key('otp verification description'),
+            text: TextUIDataModel(
+              state.pageDescription.tr,
+              styleVariant: CrayonPaymentTextStyleVariant.headline5,
+              color: VO_DescriptionColor,
+              textAlign: TextAlign.left,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _enterOtpInteractionWidgets(
+    BuildContext context,
+    VerifyOtpCoordinator coordinator,
+    VerifyOtpStateReady state,
+  ) {
+    return Container(
+      padding: const EdgeInsets.only(
+        left: 28,
+        right: 28,
+        top: 28,
+        bottom: 28,
+      ),
+      child: _otpInputWidget(context, coordinator, state),
+    );
+  }
+
+  Widget _otpInputWidget(
+    BuildContext context,
+    VerifyOtpCoordinator coordinator,
+    VerifyOtpStateReady state,
+  ) {
+    return Column(
+      children: [
+        Directionality(
+          textDirection: TextDirection.ltr,
+          child: ObscuredDigitEntryInputField(
+            6,
+            state.currentPasscode,
+            key: const Key('otpWidget'),
+          ),
+        ),
+        if (state.error.isNotEmpty) const SizedBox(height: 8),
+        if (state.error.isNotEmpty)
+          Padding(
+            padding: const EdgeInsets.only(
+              left: 16,
+              right: 16,
+            ),
+            child: Align(
+              alignment: Alignment.center,
+              child: CrayonPaymentText(
+                key: const Key('errorMessageText'),
+                text: TextUIDataModel(
+                  state.error.tr,
+                  color: Colors.black,
+                  styleVariant: CrayonPaymentTextStyleVariant.headline5,
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ),
+          ),
+      ],
+    );
+  }
+
+  Widget _keyPad(BuildContext context, VerifyOtpCoordinator coordinator) {
+    return Directionality(
+      textDirection: TextDirection.ltr,
+      child: CrayonPaymentKeyPad(
+        context,
+        coordinator.updatePasscodeInput,
+        hasActionButton: false,
+        showKeyPad: false,
+      ),
+    );
+  }
+
+  _buildHeader(BuildContext context, VerifyOtpCoordinator coordinator,
+      VerifyOtpStateReady state) {
+    return Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Image.asset(
+            backArrow,
+            scale: 3.0,
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          CrayonPaymentText(
+            key: const Key('verify otp title'),
+            text: TextUIDataModel(
+              'VO_OtpVerification'.tr,
+              styleVariant: CrayonPaymentTextStyleVariant.headline3,
+              color: VO_TitleColor,
+              textAlign: TextAlign.left,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  _didGetCode(BuildContext context, VerifyOtpCoordinator coordinator) {
+    return Align(
+      alignment: Alignment.center,
+      child: Column(
+        children: [
+          CrayonPaymentText(
+            key: const Key('verifyOtp Didnt Get Code'),
+            text: TextUIDataModel(
+              'VO_DidNotGetCode'.tr,
+              styleVariant: CrayonPaymentTextStyleVariant.headline5,
+              color: VO_ResendTextColor,
+              textAlign: TextAlign.center,
+            ),
+          ),
+          const SizedBox(height: 10.0),
+          CrayonPaymentText(
+            key: const Key('verifyOtp Resend Now'),
+            text: TextUIDataModel(
+              'VO_ResendNow'.tr,
+              styleVariant: CrayonPaymentTextStyleVariant.headline5,
+              color: SU_subtitle_terms_color,
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

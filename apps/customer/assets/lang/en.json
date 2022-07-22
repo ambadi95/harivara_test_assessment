@@ -73,7 +73,12 @@
   "AN_Title" : "Agents Near by",
   "AN_Search" : "Search by Name / Id/ Region / District/ Po#",
   "AN_AgentName" : "Y9 Agent id:",
-  "AN_Call" : "Call"
+  "AN_Call" : "Call",
+
+
+  "VO_OtpVerification": "OTP Verification",
+  "VO_DidNotGetCode": "Didn't get a code?",
+  "VO_ResendNow": "Resend Now"
 
 
 }

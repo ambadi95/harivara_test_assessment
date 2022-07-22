@@ -59,6 +59,9 @@ dependencies:
   login:
     path: ../../libs/features/login
 
+  verifyotp:
+    path: ../../libs/features/verifyotp
+
 
 dev_dependencies:
   flutter_test:

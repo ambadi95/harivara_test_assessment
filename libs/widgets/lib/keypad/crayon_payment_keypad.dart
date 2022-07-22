@@ -11,6 +11,7 @@ class CrayonPaymentKeyPad extends KeyPad {
   final Function? cancelButtonCallback;
   final Function? doneButtonCallback;
   final bool? hasActionButton;
+  final bool? showKeyPad;
 
   CrayonPaymentKeyPad(
     this.context,
@@ -19,6 +20,7 @@ class CrayonPaymentKeyPad extends KeyPad {
     this.cancelButtonCallback,
     this.doneButtonCallback,
     this.hasActionButton,
+        this.showKeyPad
   }) : super(onButtonPressedCallback, key: key);
 
   @override
@@ -58,22 +60,22 @@ class CrayonPaymentKeyPad extends KeyPad {
           ),
         if (hasActionButton != null && hasActionButton!)
           Container(height: 1, color: Color(0xffF6F5F2)),
-        _buildRow([
+        (this.showKeyPad==false) ? SizedBox() : _buildRow([
           KeypadButtonType.digit(1),
           KeypadButtonType.digit(2),
           KeypadButtonType.digit(3),
         ]),
-        _buildRow([
+        (this.showKeyPad==false) ? SizedBox() :_buildRow([
           KeypadButtonType.digit(4),
           KeypadButtonType.digit(5),
           KeypadButtonType.digit(6),
         ]),
-        _buildRow([
+        (this.showKeyPad==false) ? SizedBox() : _buildRow([
           KeypadButtonType.digit(7),
           KeypadButtonType.digit(8),
           KeypadButtonType.digit(9),
         ]),
-        _buildRow([
+        (this.showKeyPad==false) ? SizedBox() : _buildRow([
           KeypadButtonType.none(),
           KeypadButtonType.digit(0),
           KeypadButtonType.backspace()

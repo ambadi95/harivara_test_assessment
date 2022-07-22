@@ -38,6 +38,7 @@ import 'package:task_manager/cache_manager/storage/crayon_payment_storage_servic
 import 'package:task_manager/cache_manager/storage/unsecure_storage/unsecure_storage_service_impl.dart';
 import 'package:task_manager/session_management/inactivity_service_impl.dart';
 import 'package:task_manager/task_manager.dart';
+import 'package:verifyotp/verifyotp_module.dart';
 import 'package:welcome/navigation_handler/welcome_route_manager.dart';
 import 'package:welcome/welcome_module.dart';
 import 'package:widget_library/app_mobile_widgets.dart';
@@ -90,6 +91,7 @@ class AppModule {
 
     WelcomeModule.registerDependencies();
     PasscodeModule.registerDependencies();
+    VerifyOtpModule.registerDependencies();
 
     AgentNearByModule.registerDependencies();
 

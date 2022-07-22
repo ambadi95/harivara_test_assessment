@@ -13,6 +13,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/src/framework.dart';
 import 'package:get/get.dart';
 import 'package:login/view/login_screen.dart';
+import 'package:shared_data_models/otp/otp_screen_args.dart';
+import 'package:shared_data_models/otp/otp_verification_type.dart';
+import 'package:verifyotp/verifyotp/view/verifyotp.dart';
 import 'package:welcome/sub_features/welcome/view/welcome_screen.dart';
 import 'package:widget_library/theme/crayon_payment_theme.dart';
 import 'app_module.dart';
@@ -59,6 +62,7 @@ class HomeWidget extends StatelessWidget {
       this._status,
       );
 
+
   @override
   Widget build(BuildContext context) {
     return InactivityWatcher(
@@ -66,7 +70,7 @@ class HomeWidget extends StatelessWidget {
       child: CrayonPaymentMaterialApp(
         key: Key('AppMaterialApp'),
         home: !_status
-            ? CrayonWelcomScreen.forCustomerApp()
+            ? CrayonVerifyOtpScreen(otpScreenArgs: OtpScreenArgs('OTP Verification','An OTP will be send to your mobile number (ending with XXXXX)','',true,1,OtpVerificationType.mobile,'',6,'',false))
             : CrayonWelcomScreen.forCustomerApp(),
         theme: CrayonPaymentTheme().defaultTheme,
         onGenerateRoute: _navigationManager.getRoute,
