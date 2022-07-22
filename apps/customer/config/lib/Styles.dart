@@ -98,6 +98,13 @@ const SU_label_style = TextStyle(
   color: SU_label_color,
 );
 
+const label_input_error_style = TextStyle(
+  fontSize: 14,
+  fontWeight: FontWeight.w600,
+  fontFamily: 'Montserrat',
+  color: HS_NotificationCountColor,
+);
+
 const SU_text_input_style =
 TextStyle(
   fontSize: 16,

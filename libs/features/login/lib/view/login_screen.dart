@@ -1,5 +1,6 @@
 import 'package:config/Colors.dart';
 import 'package:config/Config.dart';
+import 'package:config/Styles.dart';
 import 'package:core/view/base_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -53,7 +54,7 @@ class Login extends StatelessWidget {
           children: [
             _buildTitle(context),
             dynamicHSpacer(36),
-            _buildMobileField(context),
+            _buildLabelTextFieldMobNumber(context, 'SU_mobile_no_label'.tr),
             dynamicHSpacer(48),
             _passcodeWidget(context, coordinator),
             const Spacer(),
@@ -73,6 +74,45 @@ class Login extends StatelessWidget {
         fontWeight: FontWeight.w800
       ),
     );
+  }
+
+  Widget _buildLabelTextFieldMobNumber(BuildContext context, String label) {
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Text(label, style: SU_label_style),
+      const SizedBox(
+        height: 8,
+      ),
+      TextField(
+        key: const Key('idNumberTextField'),
+        keyboardType: TextInputType.number,
+        textAlign: TextAlign.start,
+        autofocus: false,
+        showCursor: true,
+        inputFormatters: <TextInputFormatter>[
+          FilteringTextInputFormatter.digitsOnly
+        ],
+        style: SU_text_input_style,
+        decoration: InputDecoration(
+          prefix: const Padding(
+            padding: EdgeInsets.only(top: 6),
+            child: Text('+255  ', style: SU_text_input_style),
+          ),
+          prefixIcon: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Image.asset(
+              LS_Flag,
+              width: 22,
+              height: 16,
+            ),
+          ),
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(8.0)),
+              borderSide: BorderSide(color: SU_border_color)),
+        ),
+        onChanged: (value) {
+        },
+      ),
+    ]);
   }
 
   Widget _buildMobileField(context) {
