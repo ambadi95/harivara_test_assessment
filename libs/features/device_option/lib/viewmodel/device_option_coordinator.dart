@@ -12,4 +12,8 @@ class DeviceOptionCoordinator extends AnalyticsStateNotifier<DeviceOptionState>{
 
   DeviceOptionCoordinator( this._navigationHandler,
       this._DeviceOptionUseCase,) : super(const DeviceOptionState());
+
+  Future navigateToDeviceDetailScreen() async {
+    _navigationHandler.navigateToDeviceDetail();
+  }
 }
