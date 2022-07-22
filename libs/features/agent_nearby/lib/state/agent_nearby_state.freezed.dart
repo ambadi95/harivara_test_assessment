@@ -1,6 +1,5 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'agent_nearby_state.dart';
@@ -12,7 +11,21 @@ part of 'agent_nearby_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
+/// @nodoc
+class _$AgentNearByStateTearOff {
+  const _$AgentNearByStateTearOff();
+
+  _AgentNearByState call({List<AgentNearbyModel> agentNearbyList = const []}) {
+    return _AgentNearByState(
+      agentNearbyList: agentNearbyList,
+    );
+  }
+}
+
+/// @nodoc
+const $AgentNearByState = _$AgentNearByStateTearOff();
 
 /// @nodoc
 mixin _$AgentNearByState {
@@ -55,33 +68,33 @@ class _$AgentNearByStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$$_AgentNearByStateCopyWith<$Res>
+abstract class _$AgentNearByStateCopyWith<$Res>
     implements $AgentNearByStateCopyWith<$Res> {
-  factory _$$_AgentNearByStateCopyWith(
-          _$_AgentNearByState value, $Res Function(_$_AgentNearByState) then) =
-      __$$_AgentNearByStateCopyWithImpl<$Res>;
+  factory _$AgentNearByStateCopyWith(
+          _AgentNearByState value, $Res Function(_AgentNearByState) then) =
+      __$AgentNearByStateCopyWithImpl<$Res>;
   @override
   $Res call({List<AgentNearbyModel> agentNearbyList});
 }
 
 /// @nodoc
-class __$$_AgentNearByStateCopyWithImpl<$Res>
+class __$AgentNearByStateCopyWithImpl<$Res>
     extends _$AgentNearByStateCopyWithImpl<$Res>
-    implements _$$_AgentNearByStateCopyWith<$Res> {
-  __$$_AgentNearByStateCopyWithImpl(
-      _$_AgentNearByState _value, $Res Function(_$_AgentNearByState) _then)
-      : super(_value, (v) => _then(v as _$_AgentNearByState));
+    implements _$AgentNearByStateCopyWith<$Res> {
+  __$AgentNearByStateCopyWithImpl(
+      _AgentNearByState _value, $Res Function(_AgentNearByState) _then)
+      : super(_value, (v) => _then(v as _AgentNearByState));
 
   @override
-  _$_AgentNearByState get _value => super._value as _$_AgentNearByState;
+  _AgentNearByState get _value => super._value as _AgentNearByState;
 
   @override
   $Res call({
     Object? agentNearbyList = freezed,
   }) {
-    return _then(_$_AgentNearByState(
+    return _then(_AgentNearByState(
       agentNearbyList: agentNearbyList == freezed
-          ? _value._agentNearbyList
+          ? _value.agentNearbyList
           : agentNearbyList // ignore: cast_nullable_to_non_nullable
               as List<AgentNearbyModel>,
     ));
@@ -91,17 +104,11 @@ class __$$_AgentNearByStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_AgentNearByState implements _AgentNearByState {
-  const _$_AgentNearByState(
-      {final List<AgentNearbyModel> agentNearbyList = const []})
-      : _agentNearbyList = agentNearbyList;
+  const _$_AgentNearByState({this.agentNearbyList = const []});
 
-  final List<AgentNearbyModel> _agentNearbyList;
-  @override
   @JsonKey()
-  List<AgentNearbyModel> get agentNearbyList {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_agentNearbyList);
-  }
+  @override
+  final List<AgentNearbyModel> agentNearbyList;
 
   @override
   String toString() {
@@ -112,29 +119,29 @@ class _$_AgentNearByState implements _AgentNearByState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AgentNearByState &&
+            other is _AgentNearByState &&
             const DeepCollectionEquality()
-                .equals(other._agentNearbyList, _agentNearbyList));
+                .equals(other.agentNearbyList, agentNearbyList));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_agentNearbyList));
+      runtimeType, const DeepCollectionEquality().hash(agentNearbyList));
 
   @JsonKey(ignore: true)
   @override
-  _$$_AgentNearByStateCopyWith<_$_AgentNearByState> get copyWith =>
-      __$$_AgentNearByStateCopyWithImpl<_$_AgentNearByState>(this, _$identity);
+  _$AgentNearByStateCopyWith<_AgentNearByState> get copyWith =>
+      __$AgentNearByStateCopyWithImpl<_AgentNearByState>(this, _$identity);
 }
 
 abstract class _AgentNearByState implements AgentNearByState {
-  const factory _AgentNearByState(
-      {final List<AgentNearbyModel> agentNearbyList}) = _$_AgentNearByState;
+  const factory _AgentNearByState({List<AgentNearbyModel> agentNearbyList}) =
+      _$_AgentNearByState;
 
   @override
   List<AgentNearbyModel> get agentNearbyList;
   @override
   @JsonKey(ignore: true)
-  _$$_AgentNearByStateCopyWith<_$_AgentNearByState> get copyWith =>
+  _$AgentNearByStateCopyWith<_AgentNearByState> get copyWith =>
       throw _privateConstructorUsedError;
 }
