@@ -4,7 +4,17 @@
   "OB_WelcomeThirdTitle" : "y9bank.com",
   "OB_SignIn" : "Weka sahihi",
   "OB_SignUp" : "Jisajili",
-  "OB_Lang" : "EN",
+  "OB_Lang" : "SW",
+
+
+  "DO_Title": "Chaguo za Kifaa",
+  "DO_Search": "Tafuta kwa Jina / Chapa / bei / hifadhi / nk.",
+
+  "LS_Login" : "Ingia kwa yako Y9 \nprogramu",
+  "LS_Mobile" : "Namba ya simu ya mkononi",
+  "LS_Passcode" : "Nambari ya siri",
+  "LS_SignIn" : "Weka sahihi",
+
 
   "SU_title" : "Weka Nambari ya NIDA",
   "SU_subtitle" : "Kwa kujisajili kwenye Y9 Pay, unakubali Sheria na Masharti.",
@@ -14,28 +24,31 @@
   "SU_button_text" : "Endelea",
 
   "DV_title" : "Ingiza Maelezo ya Kibinafsi",
-  "DV_name_label" : "Name",
-  "DV_dob_label" : "Date of birth",
-  "DV_gender_label" : "Gender",
-  "DV_profession_label" : "Profession",
-  "DV_contact_no_label" : "Mobile Number",
-  "DV_email_label" : "Email Id",
-  "DV_address_label" : "Address",
-  "DV_po_box_label" : "P.O. Box",
-  "DV_region_label" : "Region",
-  "DV_district_label" : "District",
+  "DV_name_label" : "Jina",
+  "DV_dob_label" : "Tarehe ya kuzaliwa",
+  "DV_gender_label" : "Jinsia",
+  "DV_profession_label" : "Taaluma",
+  "DV_contact_no_label" : "Namba ya simu ya mkononi",
+  "DV_email_label" : "Kitambulisho cha barua pepe",
+  "DV_address_label" : "Anwani",
+  "DV_po_box_label" : "P.O. Sanduku",
+  "DV_region_label" : "Mkoa",
+  "DV_district_label" : "Wilaya",
 
-  "HS_GoodMorning": "Good Morning",
-  "HS_YourBalance": "Your Balance",
-  "HS_AccountId": "Y9 Account Id",
-  "HS_LoadWallet": "Load Wallet",
-  "HS_SendMoney": "Send Money",
-  "HS_CollectMoney": "Collect Money",
-  "HS_LoanRepayment": "Loan Repayment",
-  "HS_InviteYourFriends": "Invite your friends to Y9",
-  "HS_InviteFriends": "Invite Friends to Y9 and get rewards when your friend sends their first payment.",
-  "HS_ReferalCode": "Referal Code",
-  "HS_Invite": "Invite",
+
+  "HS_GoodMorning": "Habari za asubuhi",
+  "HS_YourBalance": "Mizani Yako",
+  "HS_AccountId": "Y9 Kitambulisho cha Akaunti",
+  "HS_LoadWallet": "Pakia Wallet",
+  "HS_SendMoney": "Tuma Pesa",
+  "HS_CollectMoney": "Kusanya Pesa",
+  "HS_LoanRepayment": "Urejeshaji wa mkopo",
+  "HS_InviteYourFriends": "Waalike marafiki zako Y9",
+  "HS_InviteFriends": "Alika Marafiki kwenye Y9 na upate zawadi rafiki yako atakapotuma malipo yake ya kwanza.",
+  "HS_ReferalCode": "Msimbo wa Rufaa",
+  "HS_Invite": "Alika",
+
+  "DV_button_text" : "Endelea",
 
   "PC_create_passcode" : "Unda nambari mpya ya siri",
   "PC_passcode_message" : "Hii itatumika kuingia",
@@ -49,15 +62,18 @@
   "ES_enroll_id" : "Kitambulisho chako cha Kujiandikisha %{“XXXXXX” | click}%",
   "ES_near_agent_button" : "Tazama Karibu na Wakala",
   "ES_device_option" : "Gundua Chaguo za Kifaa",
-  "DV_button_text" : "Endelea",
-  "AN_Title" : "Agents Near by",
-  "AN_Search" : "Search by Name / Id/ Region / District/ Po#",
-  "AN_AgentName" : "Y9 Agent id:",
-  "AN_Call" : "Call",
-  "DO_Title": "Device Options",
-  "DO_Search": "Search by Name / Brand / price / storage / etc..",
-  "LS_Login" : "Login to your Y9 app",
-  "LS_Mobile" : "Mobile number",
-  "LS_Passcode" : "Passcode",
-  "LS_SignIn" : "Sign in"
+
+
+
+  "WB_WelcomeBack": "Karibu tena Y9",
+  "WB_EnterPassCode": "Weka Nambari ya siri",
+
+
+
+  "AN_Title" : "Wakala wa karibu",
+  "AN_Search" : "Tafuta kwa Jina / Kitambulisho/ Mkoa / Wilaya/ Po#",
+  "AN_AgentName" : "Y9 Kitambulisho cha wakala:",
+  "AN_Call" : "Wito"
+
+
 }
