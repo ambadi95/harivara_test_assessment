@@ -150,7 +150,7 @@ class DeviceOption extends StatelessWidget {
 
               dynamicHSpacer(6),
               SizedBox(
-                width: 218,
+                width: MediaQuery.of(context).size.width * .6,
                 child: CrayonPaymentText(
                   key: Key('${_identifier}_'+device.storage!),
                   text: TextUIDataModel(
