@@ -30,12 +30,12 @@ class DeviceOption extends StatelessWidget {
     return BaseView<DeviceOptionCoordinator, DeviceOptionState>(
       setupViewModel: (coordinator) {},
       builder: (context, state, coordinator) {
-        return _buildMainUI(context);
+        return _buildMainUI(context,coordinator);
       },
     );
   }
 
-  Widget _buildMainUI(context) {
+  Widget _buildMainUI(context,DeviceOptionCoordinator coordinator) {
     return CrayonPaymentScaffold(
         appBarAttributes: CrayonPaymentAppBarAttributes(
           key: const Key('CardDetailsScreen_AppBarBackButton'),
@@ -50,7 +50,7 @@ class DeviceOption extends StatelessWidget {
             dynamicHSpacer(24),
             _buildSearchField(context),
             dynamicHSpacer(24),
-            Expanded(child: _buildNearByAgentList(context)),
+            Expanded(child: _buildDeviceList(context,coordinator)),
             dynamicHSpacer(16),
           ],
         ));
@@ -88,18 +88,20 @@ class DeviceOption extends StatelessWidget {
     );
   }
 
-  Widget _buildNearByAgentList(context) {
+  Widget _buildDeviceList(context,DeviceOptionCoordinator coordinator) {
     return ListView.separated(
       separatorBuilder: (context, index)=> divider(),
       shrinkWrap: true,
       itemCount: deviceMockData.length,
-      itemBuilder: (context, index) => _buildDeviceCard(context,deviceMockData[index],index),
+      itemBuilder: (context, index) => _buildDeviceCard(context,deviceMockData[index],index,coordinator),
     );
   }
 
-  Widget _buildDeviceCard(context, DeviceOptionModel device, int index){
+  Widget _buildDeviceCard(context, DeviceOptionModel device, int index,DeviceOptionCoordinator coordinator){
     return InkWell(
-      onTap: (){},
+      onTap: (){
+        coordinator.navigateToDeviceDetailScreen();
+      },
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.max,

@@ -73,7 +73,21 @@
   "AN_Title" : "Agents Near by",
   "AN_Search" : "Search by Name / Id/ Region / District/ Po#",
   "AN_AgentName" : "Y9 Agent id:",
-  "AN_Call" : "Call"
+  "AN_Call" : "Call",
 
+  "DD_product" : "Product Details",
+  "DD_Brand" : "Brand",
+  "DD_ModelNumber" : "Model Number",
+  "DD_HumanInterfaceInput" : "Human Interface Input",
+  "DD_WirelessCarrier" : "Wireless Carrier",
+  "DD_CellularTechnology" : "Cellular Technology",
+  "DD_OperatingSystem" : "Operating System",
+  "DD_MemoryStorage" : "Memory / Storage",
+  "DD_WaterResistanceLevel" : "Water Resistance Level",
+  "DD_Color" : "Colour",
+  "DD_Price" : "Price",
+  "DD_EMIMonth" : "EMI/ Month",
+  "DD_Interest" : "Interest %",
+  "DD_TotalAmountPaid" : "Total Amount to be Paid"
 
 }
