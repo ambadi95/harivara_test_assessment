@@ -4,17 +4,18 @@
   "OB_WelcomeThirdTitle" : "y9bank.com",
   "OB_SignIn" : "Sign In",
   "OB_SignUp" : "Sign Up",
-  "AN_Title" : "Agents Near by",
-  "AN_Search" : "Search by Name / Id/ Region / District/ Po#",
-  "AN_AgentName" : "Y9 Agent id:",
-  "AN_Call" : "Call",
+  "OB_Lang" : "EN",
+
+
   "DO_Title": "Device Options",
   "DO_Search": "Search by Name / Brand / price / storage / etc..",
+
+
   "LS_Login" : "Login to your Y9 \napp",
   "LS_Mobile" : "Mobile number",
   "LS_Passcode" : "Passcode",
   "LS_SignIn" : "Sign in",
-  "OB_Lang" : "SW",
+
 
   "SU_title" : "Enter NIDA Number",
   "SU_subtitle" : "By signing up to Y9 Pay, you agree to the \n%{Terms & Conditions|https://www.google.com}%.",
@@ -34,6 +35,7 @@
   "DV_po_box_label" : "P.O. Box",
   "DV_region_label" : "Region",
   "DV_district_label" : "District",
+
   "HS_GoodMorning": "Good Morning",
   "HS_YourBalance": "Your Balance",
   "HS_AccountId": "Y9 Account Id",
@@ -45,6 +47,7 @@
   "HS_InviteFriends": "Invite Friends to Y9 and get rewards when your friend sends their first payment.",
   "HS_ReferalCode": "Referal Code",
   "HS_Invite": "Invite",
+
   "DV_button_text" : "Continue",
 
   "PC_create_passcode" : "Create new passcode",
@@ -63,5 +66,14 @@
 
 
   "WB_WelcomeBack": "Welcome back to Y9",
-  "WB_EnterPassCode": "Enter Passcode"
+  "WB_EnterPassCode": "Enter Passcode",
+
+
+
+  "AN_Title" : "Agents Near by",
+  "AN_Search" : "Search by Name / Id/ Region / District/ Po#",
+  "AN_AgentName" : "Y9 Agent id:",
+  "AN_Call" : "Call"
+
+
 }
