@@ -3,6 +3,7 @@ import 'package:core/view/base_view.dart';
 import 'package:flutter/material.dart';
 import 'package:passcode/passcode_module.dart';
 import 'package:passcode/sub_features/passcode/state/passcode_state.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:shared_data_models/passcode/passcode_screen_args.dart';
 import 'package:shared_data_models/passcode/passcode_verification_type.dart';
 import 'package:widget_library/input_fields/obscured_digit_entry_input_field.dart';
@@ -26,6 +27,7 @@ class CrayonPasscodeScreen extends StatefulWidget {
 }
 
 class _CrayonPasscodeScreenState extends State<CrayonPasscodeScreen> {
+  TextEditingController passcodeController = TextEditingController(text: '');
   @override
   Widget build(BuildContext context) =>
       BaseView<PasscodeCoordinator, CreatePasscodeState>(
@@ -94,7 +96,7 @@ class _CrayonPasscodeScreenState extends State<CrayonPasscodeScreen> {
             const SizedBox(
               height: 30,
             ),
-            _keyPad(context, coordinator)
+            //_keyPad(context, coordinator)
           ],
         ),
       ),
@@ -203,8 +205,6 @@ class _CrayonPasscodeScreenState extends State<CrayonPasscodeScreen> {
       ) {
     return Container(
       padding: const EdgeInsets.only(
-        left: 28,
-        right: 28,
         top: 28,
         bottom:28,
       ),
@@ -221,11 +221,56 @@ class _CrayonPasscodeScreenState extends State<CrayonPasscodeScreen> {
       children: [
         Directionality(
           textDirection: TextDirection.ltr,
-          child: ObscuredDigitEntryInputField(
-            6,
-            state.currentPasscode,
-            key: Key('otpWidget'),
-          ),
+          child:   Padding(
+              padding: const EdgeInsets.symmetric(
+                  vertical: 8.0, horizontal: 30),
+              child: PinCodeTextField(
+                appContext: context,
+                pastedTextStyle: const TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
+                length: 6,
+                obscureText: true,
+                obscuringCharacter: '*',
+                blinkWhenObscuring: true,
+                animationType: AnimationType.none,
+                enabled: true,
+                pinTheme: PinTheme(
+                    shape: PinCodeFieldShape.underline,
+                    fieldHeight: 50,
+                    fieldWidth: 50,
+                    borderWidth: 3,
+                    activeFillColor: Colors.white,
+                    disabledColor: Colors.white,
+                    selectedColor: Colors.black,
+                    activeColor: Colors.black,
+                    inactiveColor: Colors.grey
+                ),
+                cursorColor: Colors.black,
+                enableActiveFill: false,
+                autoFocus: true,
+                autoDismissKeyboard : false,
+                //errorAnimationController: errorController,
+                controller: passcodeController,
+                keyboardType: TextInputType.number,
+                onCompleted: (v) {
+                  debugPrint("Completed");
+                  coordinator.onPasscodeCallback(passcodeController.text);
+                  passcodeController.clear();
+                }, onChanged: (String value) {  },
+                // onChanged: (value) {
+                //   debugPrint(value);
+                //   setState(() {
+                //     //currentText = value;
+                //   });
+                // },
+              )),
+          // ObscuredDigitEntryInputField(
+          //   6,
+          //   state.currentPasscode,
+          //   key: Key('otpWidget'),
+          // ),
         ),
         if (state.error.isNotEmpty) const SizedBox(height: 8),
         if (state.error.isNotEmpty)
@@ -291,7 +336,8 @@ class _CrayonPasscodeScreenState extends State<CrayonPasscodeScreen> {
       textDirection: TextDirection.ltr,
       child: SizedBox(
         height: 250,
-        child: CrayonPaymentKeyPad(
+        child:
+        CrayonPaymentKeyPad(
           context,
           coordinator.updatePasscodeInput,
           hasActionButton: false,

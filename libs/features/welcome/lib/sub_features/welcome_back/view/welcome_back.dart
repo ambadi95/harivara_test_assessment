@@ -4,6 +4,7 @@ import 'package:config/Colors.dart' as config_color;
 import 'package:core/validators/input_entry_validator/input_entry_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:passcode/sub_features/passcode/view/passcode.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:shared_data_models/passcode/passcode_screen_args.dart';
 import 'package:welcome/sub_features/welcome/data_model/welcome_model.dart';
 import 'package:core/view/base_view.dart';
@@ -35,6 +36,8 @@ class CrayonWelcomBackScreen extends StatefulWidget {
 //       ),
 //     );
 }
+
+ TextEditingController passcodeController = TextEditingController();
 
 class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
   @override
@@ -80,18 +83,18 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              _buildLanguageChangeButton(context, state, welcomeCoordinator),
               const SizedBox(height: 40),
               _buildLogo(context),
               _buildSizedBox(),
               _buildTitle(context),
-              _buildSizedBox(),
+              const SizedBox(height: 46),
               _userImage(),
               const SizedBox(height: 10),
               _userInfo(context),
-              const SizedBox(height: 30),
+              const SizedBox(height: 48),
               _enterPassCodeTitle(context),
-              const SizedBox(height: 10),
+              _passcodeWidget(context, welcomeCoordinator),
+              const SizedBox(height: 57),
               Image.asset(
                 WB_OrIcon,
               ),
@@ -125,28 +128,6 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
     );
   }
 
-  Widget _buildLanguageChangeButton(BuildContext context,
-      WelcomeScreenState state, WelcomeCoordinator welcomeCoordinator) {
-    return Align(
-      alignment: Alignment.topRight,
-      child: TextButton(
-          onPressed: () {
-            var languageCode = '';
-            if (state.currentLanguageCode == 'en') {
-              languageCode = 'sw';
-            } else {
-              languageCode = 'en';
-            }
-
-            welcomeCoordinator.setCurrentLocale(languageCode);
-          },
-          child: Text(
-            'OB_Lang'.tr,
-            style: const TextStyle(color: Colors.black),
-          )),
-    );
-  }
-
   Widget _buildLogo(BuildContext context) {
     return Image.asset(
       OB_AppLogo,
@@ -166,5 +147,48 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
 
   Widget _enterPassCodeTitle(BuildContext context) {
     return Text('WB_EnterPassCode'.tr, style: WB_enter_passcode_title_style);
+  }
+
+  Widget _passcodeWidget(BuildContext context, WelcomeCoordinator coordinator){
+    return Container(
+      child: Padding(
+          padding: const EdgeInsets.symmetric(
+              vertical: 8.0, horizontal: 8),
+          child: PinCodeTextField(
+            appContext: context,
+            pastedTextStyle: const TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+            ),
+            length: 6,
+            obscureText: true,
+            obscuringCharacter: '*',
+            blinkWhenObscuring: true,
+            animationType: AnimationType.none,
+            enabled: true,
+            pinTheme: PinTheme(
+                shape: PinCodeFieldShape.underline,
+                fieldHeight: 50,
+                fieldWidth: 50,
+                borderWidth: 3,
+                activeFillColor: Colors.white,
+                disabledColor: Colors.white,
+                selectedColor: Colors.black,
+                activeColor: Colors.black,
+                inactiveColor: Colors.grey
+            ),
+            cursorColor: Colors.black,
+            enableActiveFill: false,
+            autoFocus: false,
+            autoDismissKeyboard : true,
+            //errorAnimationController: errorController,
+            controller: passcodeController,
+            keyboardType: TextInputType.number,
+            onCompleted: (v) {
+              debugPrint("Completed");
+            }, onChanged: (String value) {  },
+          )),
+
+    );
   }
 }

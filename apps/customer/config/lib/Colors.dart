@@ -50,8 +50,18 @@ const WB_TitleColor = Color(0xFF160304);
 const WB_EnterPassCodeTitleColor = Color(0xFF565451);
 
 
+
+const DD_BackgroundColor = Color(0xFFFFFFFF);
+const DD_AppBarLeadingIcon = Color(0xFF2D2926);
+const DD_TitleColor = Color(0xFF040505);
+const DD_TextLabel = Color(0xFF000000);
+const DD_TextValue = Color(0xFF000000);
+
+
 const VO_TitleColor= Color(0xFF040505);
 const VO_DescriptionColor= Color(0xFF160304);
 const VO_ResendTextColor= Color(0xFF676767);
+
+
 
 

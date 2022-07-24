@@ -7,6 +7,7 @@ import 'package:core/session_management/inactivity_service.dart';
 import 'package:core/session_management/inactivity_watcher.dart';
 import 'package:core/translation/crayon_payment_transaltions_loader.dart';
 import 'package:core/translation/crayon_payment_translations.dart';
+import 'package:device_option/sub_features/device_details/view/device_detail_screen.dart';
 import 'package:device_option/view/device_option_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -71,7 +72,7 @@ class HomeWidget extends StatelessWidget {
         key: Key('AppMaterialApp'),
         home: !_status
             ? CrayonVerifyOtpScreen(otpScreenArgs: OtpScreenArgs('OTP Verification','An OTP will be send to your mobile number (ending with XXXXX)','',true,1,OtpVerificationType.mobile,'',6,'',false))
-            : CrayonWelcomScreen.forCustomerApp(),
+            :CrayonWelcomScreen.forCustomerApp(),
         theme: CrayonPaymentTheme().defaultTheme,
         onGenerateRoute: _navigationManager.getRoute,
         translations: _translations,

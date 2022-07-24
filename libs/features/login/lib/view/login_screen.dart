@@ -1,9 +1,10 @@
 import 'package:config/Colors.dart';
 import 'package:config/Config.dart';
+import 'package:config/Styles.dart';
 import 'package:core/view/base_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
+import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:widget_library/app_bars/crayon_payment_app_bar_attributes.dart';
 import 'package:widget_library/app_bars/crayon_payment_app_bar_button_type.dart';
 import 'package:widget_library/buttons/docked_button.dart';
@@ -20,12 +21,14 @@ import '../viewmodel/login_coordinator.dart';
 import 'package:get/get.dart';
 
 class Login extends StatelessWidget {
-  factory Login.forCustomerApp() => const Login();
-  final String _identifier = 'agent-nearby-screen';
+  factory Login.forCustomerApp() =>  Login();
+  final String _identifier = 'login';
   static const String viewPath =
-      '${LoginModule.moduleIdentifier}/agent-nearby-screen';
+      '${LoginModule.moduleIdentifier}/login';
 
-  const Login({Key? key}) : super(key: key);
+   Login({Key? key}) : super(key: key);
+
+  TextEditingController passcodeController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -51,8 +54,9 @@ class Login extends StatelessWidget {
           children: [
             _buildTitle(context),
             dynamicHSpacer(36),
-            _buildMobileField(context),
-            dynamicHSpacer(36),
+            _buildLabelTextFieldMobNumber(context, 'SU_mobile_no_label'.tr),
+            dynamicHSpacer(48),
+            _passcodeWidget(context, coordinator),
             const Spacer(),
             actionButton(coordinator),
             dynamicHSpacer(20),
@@ -70,6 +74,45 @@ class Login extends StatelessWidget {
         fontWeight: FontWeight.w800
       ),
     );
+  }
+
+  Widget _buildLabelTextFieldMobNumber(BuildContext context, String label) {
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Text(label, style: SU_label_style),
+      const SizedBox(
+        height: 8,
+      ),
+      TextField(
+        key: const Key('idNumberTextField'),
+        keyboardType: TextInputType.number,
+        textAlign: TextAlign.start,
+        autofocus: false,
+        showCursor: true,
+        inputFormatters: <TextInputFormatter>[
+          FilteringTextInputFormatter.digitsOnly
+        ],
+        style: SU_text_input_style,
+        decoration: InputDecoration(
+          prefix: const Padding(
+            padding: EdgeInsets.only(top: 6),
+            child: Text('+255  ', style: SU_text_input_style),
+          ),
+          prefixIcon: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Image.asset(
+              LS_Flag,
+              width: 22,
+              height: 16,
+            ),
+          ),
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(8.0)),
+              borderSide: BorderSide(color: SU_border_color)),
+        ),
+        onChanged: (value) {
+        },
+      ),
+    ]);
   }
 
   Widget _buildMobileField(context) {
@@ -113,7 +156,9 @@ class Login extends StatelessWidget {
               ),),
             dataModel: const SearchBarDataModel(
                 hint: '',
-                variant: CrayonPaymentTextStyleVariant.headline4)),
+                variant: CrayonPaymentTextStyleVariant.headline4,
+            )
+        ),
       ),
     ]);
   }
@@ -132,6 +177,65 @@ class Login extends StatelessWidget {
       onPressed: () {
         coordinator.navigateToWelcomeBackScreen();
       },
+    );
+  }
+
+  Widget _passcodeWidget(BuildContext context, LoginCoordinator coordinator){
+    return Container(
+      child: Padding(
+          padding: const EdgeInsets.symmetric(
+              vertical: 8.0, horizontal: 8),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CrayonPaymentText(
+                key: Key('${_identifier}_LS_Passcode'),
+                text: const TextUIDataModel(
+                  'LS_Passcode',
+                  styleVariant: CrayonPaymentTextStyleVariant.headline5,
+                  color: AN_TitleColor,
+                ),
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              PinCodeTextField(
+                appContext: context,
+                pastedTextStyle: const TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
+                length: 6,
+                obscureText: true,
+                obscuringCharacter: '*',
+                blinkWhenObscuring: true,
+                animationType: AnimationType.none,
+                enabled: true,
+                pinTheme: PinTheme(
+                    shape: PinCodeFieldShape.underline,
+                    fieldHeight: 50,
+                    fieldWidth: 50,
+                    borderWidth: 3,
+                    activeFillColor: Colors.white,
+                    disabledColor: Colors.white,
+                    selectedColor: Colors.black,
+                    activeColor: Colors.black,
+                    inactiveColor: Colors.grey
+                ),
+                cursorColor: Colors.black,
+                enableActiveFill: false,
+                autoFocus: false,
+                autoDismissKeyboard : true,
+                //errorAnimationController: errorController,
+                controller: passcodeController,
+                keyboardType: TextInputType.number,
+                onCompleted: (v) {
+                  debugPrint("Completed");
+                }, onChanged: (String value) {  },
+              ),
+            ],
+          )),
+
     );
   }
 

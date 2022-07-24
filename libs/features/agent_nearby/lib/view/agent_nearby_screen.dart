@@ -139,7 +139,7 @@ class AgentNearBy extends StatelessWidget {
             ),
             dynamicHSpacer(4),
             SizedBox(
-              width: 200,
+              width: MediaQuery.of(context).size.width * .55,
               child: CrayonPaymentText(
                 key: Key('${_identifier}_'+agent.address!),
                 text: TextUIDataModel(
