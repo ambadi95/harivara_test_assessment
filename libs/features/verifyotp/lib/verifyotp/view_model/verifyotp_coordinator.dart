@@ -45,16 +45,21 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
     state = currentState.copyWith(
       currentPasscode: updatedPasscode,
     );
-    if (updatedPasscode.length == currentState.passcodeLength) {
-      await onPasscodeCallback(updatedPasscode);
-    }
+
   }
 
-  Future<void> onPasscodeCallback(String passCode,) async {
+  Future<void> onVerifyPasscode(String passCode,) async {
     var currentState = state as VerifyOtpStateReady;
     switch (currentState.otpVerificationType) {
 
       case OtpVerificationType.mobile:
+        await verifyPasscode(
+          currentState.initialPasscode,
+          passCode,
+          currentState.destinationPath,
+        );
+        break;
+        case OtpVerificationType.retry:
         await verifyPasscode(
           currentState.initialPasscode,
           passCode,
@@ -66,25 +71,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
   }
 
 
-  Future<void> createPassCode(String passcode) async {
-    var currentState = state as VerifyOtpStateReady;
-    var error = await _verifyOtpUseCase.validateCustomerOTP(passcode);
-    if (error.isEmpty) {
-      state = currentState.copyWith(
-        otpVerificationType: OtpVerificationType.mobile,
-        pageTitle: 'PC_confirm_passcode',
-        pageDescription: 'PC_re_enter_passcode',
-        currentPasscode: '',
-        initialPasscode: passcode,
-      );
-    } else {
-      state = currentState.copyWith(
-        pageDescription: 'PC_passcode_repetitive_message',
-        currentPasscode: '',
-      );
-    }
-  }
-
+//verfiy passcode
   Future<void> verifyPasscode(
       String oldPassCode,
       String newPasscode,
@@ -92,7 +79,8 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
       ) async {
     // var currentState = state as VerifyOtpStateReady;
     //
-      _navigateToDestinationPath(destinationPath);
+    onVerifyPasscode(newPasscode);
+
 
   }
 

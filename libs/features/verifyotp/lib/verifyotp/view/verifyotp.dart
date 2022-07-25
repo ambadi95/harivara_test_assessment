@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:shared_data_models/otp/otp_screen_args.dart';
 import 'package:verifyotp/constants/image_constant.dart';
 import 'package:verifyotp/verifyotp_module.dart';
+import 'package:widget_library/bottom_sheet/alert_bottom_sheet.dart';
 import 'package:widget_library/input_fields/obscured_digit_entry_input_field.dart';
 import 'package:widget_library/keypad/crayon_payment_keypad.dart';
 import 'package:widget_library/page_header/text_ui_data_model.dart';
@@ -99,10 +100,15 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
                 height: 60,
               ),
               _enterOtpWidget(context, coordinator, state),
-              const SizedBox(
-                height: 40,
-              ),
+
               _keyPad(context, coordinator),
+              // const SizedBox(
+              //   height: 5,
+              // ),
+              // _errorAndAttemptLeft(context, coordinator),
+              const SizedBox(
+                height: 60,
+              ),
               _didGetCode(context, coordinator)
             ],
           ),
@@ -112,8 +118,10 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
   }
 
   Widget _buildContinueButton(VerifyOtpCoordinator coordinator) {
-    return GestureDetector(
-      onTap: () {},
+    return InkWell(
+      onTap: () {
+        _showAlertForOTPAttempts(coordinator);
+      },
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Container(
@@ -132,6 +140,13 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
     );
   }
 
+  _showAlertForOTPAttempts(VerifyOtpCoordinator coordinator){
+    Get.bottomSheet(
+      AlertBottomSheet(alertMessage: 'You have used all your attempts. Please sign up again.'.tr,alertTitle: 'Incorrect OTP'.tr,alertIcon:"assets/images/incorrect_otp.png" ,onClose: (){},packageName: ""),
+      isScrollControlled: false,
+      isDismissible: true,
+    );
+  }
   Widget _onBoardingProgressBar() {
     if (!widget.otpScreenArgs.hasProgressBar) {
       return Container();
@@ -144,7 +159,7 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
         top: 16,
       ),
       child: OnBoardingProgressBar(
-        currentStep: widget.otpScreenArgs.currentStep ?? 1,
+        currentStep: widget.otpScreenArgs.currentStep ,
         totalSteps: 4,
       ),
     );
@@ -183,7 +198,7 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
             key: const Key('otp verification description'),
             text: TextUIDataModel(
               state.pageDescription.tr,
-              styleVariant: CrayonPaymentTextStyleVariant.headline5,
+              styleVariant: CrayonPaymentTextStyleVariant.headline4,
               color: VO_DescriptionColor,
               textAlign: TextAlign.left,
             ),
@@ -278,11 +293,31 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
             key: const Key('verify otp title'),
             text: TextUIDataModel(
               'VO_OtpVerification'.tr,
-              styleVariant: CrayonPaymentTextStyleVariant.headline3,
+              styleVariant: CrayonPaymentTextStyleVariant.headline2,
               color: VO_TitleColor,
               textAlign: TextAlign.left,
             ),
           ),
+        ],
+      ),
+    );
+  }
+
+  _errorAndAttemptLeft(BuildContext context, VerifyOtpCoordinator coordinator) {
+    return Align(
+      alignment: Alignment.center,
+      child: Column(
+        children: [
+          CrayonPaymentText(
+            key: const Key('verifyOtp incorrect otp'),
+            text: TextUIDataModel(
+              'Incorrect OTP. Please try again.'.tr,
+              styleVariant: CrayonPaymentTextStyleVariant.headline5,
+              color: HS_NotificationCountColor,
+              textAlign: TextAlign.center,
+            ),
+          ),
+
         ],
       ),
     );

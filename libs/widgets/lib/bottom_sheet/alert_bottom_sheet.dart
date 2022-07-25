@@ -31,10 +31,12 @@ class AlertBottomSheet extends StatelessWidget {
       children: [
         Container(
           width: double.infinity,
+
           padding:
               const EdgeInsets.only(left: 30, right: 30, top: 47, bottom: 68),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(24.0),
+            color: Colors.white,
+            borderRadius: BorderRadius.only(topLeft:Radius.circular(20),topRight:Radius.circular(20)),
           ),
           child: Stack(
             alignment: Alignment.topCenter,
@@ -46,7 +48,7 @@ class AlertBottomSheet extends StatelessWidget {
                     height: 10,
                   ),
                   if (alertIcon != null)
-                    getSvg('$packageName:assets/icons/$alertIcon.svg'),
+                    Image.asset('$alertIcon',scale: 2.0,),
                   SizedBox(
                     height: 36,
                   ),
@@ -62,7 +64,7 @@ class AlertBottomSheet extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: 15,
+                    height: 25,
                   ),
                   Text(
                     alertMessage.tr,

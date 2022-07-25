@@ -77,22 +77,28 @@
 
 
 
-  "DD_product" : "Product Details",
-  "DD_Brand" : "Brand",
-  "DD_ModelNumber" : "Model Number",
-  "DD_HumanInterfaceInput" : "Human Interface Input",
-  "DD_WirelessCarrier" : "Wireless Carrier",
-  "DD_CellularTechnology" : "Cellular Technology",
-  "DD_OperatingSystem" : "Operating System",
-  "DD_MemoryStorage" : "Memory / Storage",
-  "DD_WaterResistanceLevel" : "Water Resistance Level",
-  "DD_Color" : "Colour",
-  "DD_Price" : "Price",
-  "DD_EMIMonth" : "EMI/ Month",
-  "DD_Interest" : "Interest %",
-  "DD_TotalAmountPaid" : "Total Amount to be Paid",
+  "DD_product" : "Maelezo ya bidhaa",
+  "DD_Brand" : "Chapa",
+  "DD_ModelNumber" : "Nambari ya Mfano",
+  "DD_HumanInterfaceInput" : "Ingizo la Kiolesura cha Binadamu",
+  "DD_WirelessCarrier" : "Mtoa huduma wa Wireless",
+  "DD_CellularTechnology" : "Teknolojia ya Simu",
+  "DD_OperatingSystem" : "Mfumo wa Uendeshaji",
+  "DD_MemoryStorage" : "Kumbukumbu / Hifadhi",
+  "DD_WaterResistanceLevel" : "Kiwango cha Upinzani wa Maji",
+  "DD_Color" : "Rangi",
+  "DD_Price" : "Bei",
+  "DD_EMIMonth" : "EMI/ Mwezi",
+  "DD_Interest" : "Hamu %",
+  "DD_TotalAmountPaid" : "Jumla ya Kiasi cha Kulipwa",
 
 
-  "VO_OtpVerification": "OTP Verification",
-  "VO_DidNotGetCode": "Didn't get a code?"
+  "VO_OtpVerification": "Uthibitishaji wa OTP",
+  "VO_DidNotGetCode": "Hukupata nambari ya kuthibitisha?",
+  "VO_ResendNow":"Tuma Upya Sasa",
+  "VO_Incorrect_OTP":"Incorrect OTP. Please try again.",
+  "VO_Incorrect_OTP_Title":"Incorrect OTP",
+  "VO_Incorrect_OTP_Alert_Msg":"You have used all your attempts. Please sign up again."
+
+
 }
