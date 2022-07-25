@@ -48,6 +48,9 @@ dependencies:
   passcode:
     path: ../passcode
 
+  verifyotp:
+    path: ../../features/verifyotp
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

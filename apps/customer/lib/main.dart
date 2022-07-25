@@ -71,8 +71,9 @@ class HomeWidget extends StatelessWidget {
       child: CrayonPaymentMaterialApp(
         key: Key('AppMaterialApp'),
         home: !_status
-            ? CrayonVerifyOtpScreen(otpScreenArgs: OtpScreenArgs('OTP Verification','An OTP will be send to your mobile number (ending with XXXXX)','',true,1,OtpVerificationType.mobile,'',6,'',false))
+            ? CrayonWelcomScreen.forCustomerApp()
             :CrayonWelcomScreen.forCustomerApp(),
+         // CrayonVerifyOtpScreen(otpScreenArgs: OtpScreenArgs('OTP Verification','An OTP will be send to your mobile number (ending with XXXXX)','welcomeModule/details',true,2,OtpVerificationType.mobile,'',6,'',false))
         theme: CrayonPaymentTheme().defaultTheme,
         onGenerateRoute: _navigationManager.getRoute,
         translations: _translations,

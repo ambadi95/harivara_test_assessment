@@ -1,20 +1,22 @@
 import 'package:core/navigation/navigation_manager.dart';
 import 'package:core/navigation/navigation_type.dart';
 import 'package:passcode/sub_features/passcode/view/passcode.dart';
+import 'package:shared_data_models/otp/otp_screen_args.dart';
+import 'package:shared_data_models/otp/otp_verification_type.dart';
 import 'package:shared_data_models/passcode/passcode_screen_args.dart';
 import 'package:shared_data_models/passcode/passcode_verification_type.dart';
 import 'package:login/view/login_screen.dart';
 import 'package:passcode/sub_features/passcode/view/passcode.dart';
 import 'package:shared_data_models/passcode/passcode_screen_args.dart';
 import 'package:shared_data_models/passcode/passcode_verification_type.dart';
+import 'package:verifyotp/verifyotp/view/verifyotp.dart';
 import 'package:welcome/sub_features/details/view/details.dart';
 import 'package:welcome/sub_features/signup/view/signup.dart';
 import 'package:widget_library/helpers/error/helper/error_helper.dart';
 import 'package:device_option/view/device_option_screen.dart';
 import 'package:agent_nearby/view/agent_nearby_screen.dart';
 
-
-class WelcomeNavigationHandler with ErrorHandler{
+class WelcomeNavigationHandler with ErrorHandler {
   final NavigationManager _navigationManager;
 
   WelcomeNavigationHandler(this._navigationManager);
@@ -85,27 +87,47 @@ class WelcomeNavigationHandler with ErrorHandler{
     );
   }
 
+  Future<void> navigateToOtpScreen() async {
+    var arguments = OtpScreenArgs(
+        'OTP Verification',
+        'An OTP will be send to your mobile number (ending with XXXXX)',
+        'welcomeModule/details',
+        true,
+        2,
+        OtpVerificationType.mobile,
+        '',
+        6,
+        '1234567890',
+        false);
 
-  // Future<void> navigateToDestination(
-  //     String? destination,
-  //     String userType,
-  //     ) async {
-  //   if (userType == 'Customer' &&
-  //       destination == 'otpModule/mobileRegistration') {
-  //     var arguments = new MobileScreenArgs(
-  //       'otp-register-with-your-mobile-number',
-  //       'otp-send-otp-to-confirm',
-  //       'signupModule/signup',
-  //       true,
-  //       1,
-  //       false,
-  //       MobileRegistrationType.customerSignUp,
-  //       false,
-  //     );
-  //
-  //     _navigationManager.navigateTo(
-  //       destination!,
-  //       NavigationType.push(),
-  //       arguments: arguments,
-  //     );
+    _navigationManager.navigateTo(
+      CrayonVerifyOtpScreen.viewPath,
+      const NavigationType.push(),
+      preventDuplicates: false,
+      arguments: arguments,
+    );
+  }
+
+// Future<void> navigateToDestination(
+//     String? destination,
+//     String userType,
+//     ) async {
+//   if (userType == 'Customer' &&
+//       destination == 'otpModule/mobileRegistration') {
+//     var arguments = new MobileScreenArgs(
+//       'otp-register-with-your-mobile-number',
+//       'otp-send-otp-to-confirm',
+//       'signupModule/signup',
+//       true,
+//       1,
+//       false,
+//       MobileRegistrationType.customerSignUp,
+//       false,
+//     );
+//
+//     _navigationManager.navigateTo(
+//       destination!,
+//       NavigationType.push(),
+//       arguments: arguments,
+//     );
 }

@@ -18,4 +18,8 @@ class VerifyOtpNavigationHandler with ErrorHandler{
     );
   }
 
+  Future<void> goBack() async {
+    _navigationManager.goBack();
+  }
+
 }

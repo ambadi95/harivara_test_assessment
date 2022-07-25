@@ -1,6 +1,6 @@
 {
   "OB_WelcomeTitle" : "Welcome to Y9",
-  "OB_WelcomeSubTitle" : "Your dream digital bank",
+  "OB_WelcomeSubTitle" : "Your Dream Digital Microfinance",
   "OB_WelcomeThirdTitle" : "y9bank.com",
   "OB_SignIn" : "Sign In",
   "OB_SignUp" : "Sign Up",
@@ -18,9 +18,9 @@
 
 
   "SU_title" : "Enter NIDA Number",
-  "SU_subtitle" : "By signing up to Y9 Pay, you agree to the \n%{Terms & Conditions|https://www.google.com}%.",
+  "SU_subtitle" : "By signing up to Y9, you agree to the \n%{Terms & Conditions|https://www.google.com}%.",
   "SU_ID_no_label" : "NIDA Number",
-  "SU_mobile_no_label" : "Mobile number",
+  "SU_mobile_no_label" : "Mobile Number",
   "SU_carrier_message" : "Carrier SMS charges may apply.",
   "SU_button_text" : "Continue",
 
@@ -97,5 +97,6 @@
   "VO_ResendNow": "Resend Now",
   "VO_Incorrect_OTP":"Incorrect OTP. Please try again.",
   "VO_Incorrect_OTP_Title":"Incorrect OTP",
-  "VO_Incorrect_OTP_Alert_Msg":"You have used all your attempts. Please sign up again."
+  "VO_Incorrect_OTP_Alert_Msg":"You have used all your attempts. Please sign up again.",
+  "VO_resend_otp" : "Resend in %s seconds."
 }

@@ -72,7 +72,7 @@ class _SignUpState extends State<SignUp> {
 
   Widget _buildMainUI(SignUpCoordinator coordinator) {
     return Padding(
-      padding: const EdgeInsets.only(right: 16, left: 16, top: 16),
+      padding: const EdgeInsets.only(right: 16, left: 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -171,16 +171,20 @@ class _SignUpState extends State<SignUp> {
         ],
         style: SU_text_input_style,
         decoration: InputDecoration(
-          prefix: const Padding(
-            padding: EdgeInsets.only(top: 6),
-            child: Text('+255  ', style: SU_text_input_style),
-          ),
-          prefixIcon: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Image.asset(
-              LS_Flag,
-              width: 22,
-              height: 16,
+          prefixIcon: SizedBox(
+            width: 100,
+            child: Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Image.asset(
+                    LS_Flag,
+                    width: 22,
+                    height: 16,
+                  ),
+                ),
+                Text('+255  ', style: SU_text_input_style)
+              ],
             ),
           ),
           border: const OutlineInputBorder(

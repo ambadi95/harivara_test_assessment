@@ -16,7 +16,7 @@ class SignUpCoordinator extends BaseViewModel<SignUpState>{
   }
 
   Future navigateToDetailsScreen() async {
-    _navigationHandler.navigateToDetailsScreen();
+    _navigationHandler.navigateToOtpScreen();
   }
 
   bool _validateForm(String nidaNo, String mobNumber){

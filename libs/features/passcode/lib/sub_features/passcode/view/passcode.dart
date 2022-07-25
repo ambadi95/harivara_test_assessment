@@ -18,9 +18,9 @@ import 'package:get/get.dart';
 class CrayonPasscodeScreen extends StatefulWidget {
   static const viewPath = '${PasscodeModule.moduleIdentifier}/passcode';
   final PasscodeScreenArgs passcodeScreenArgs;
-  const CrayonPasscodeScreen({Key? key,
-    required this.passcodeScreenArgs
-  }) : super(key: key);
+
+  const CrayonPasscodeScreen({Key? key, required this.passcodeScreenArgs})
+      : super(key: key);
 
   @override
   State<CrayonPasscodeScreen> createState() => _CrayonPasscodeScreenState();
@@ -28,6 +28,7 @@ class CrayonPasscodeScreen extends StatefulWidget {
 
 class _CrayonPasscodeScreenState extends State<CrayonPasscodeScreen> {
   TextEditingController passcodeController = TextEditingController(text: '');
+
   @override
   Widget build(BuildContext context) =>
       BaseView<PasscodeCoordinator, CreatePasscodeState>(
@@ -47,32 +48,32 @@ class _CrayonPasscodeScreenState extends State<CrayonPasscodeScreen> {
             child: state.when(
               initialState: () => SizedBox(),
               ready: (
-                  _,
-                  __,
-                  ___,
-                  ____,
-                  _____,
-                  ______,
-                  _______,
-                  ________,
-                  _________,
-                  __________,
-                  ) =>
+                _,
+                __,
+                ___,
+                ____,
+                _____,
+                ______,
+                _______,
+                ________,
+                _________,
+                __________,
+              ) =>
                   _buildMainUIWithLoading(
-                    context,
-                    coordinator,
-                    (state as CreatePasscodeReady),
-                  ),
+                context,
+                coordinator,
+                (state as CreatePasscodeReady),
+              ),
             ),
           ),
         ),
       );
 
   Widget _buildMainUIWithLoading(
-      BuildContext context,
-      PasscodeCoordinator coordinator,
-      CreatePasscodeReady state,
-      ) {
+    BuildContext context,
+    PasscodeCoordinator coordinator,
+    CreatePasscodeReady state,
+  ) {
     return Stack(
       children: [
         _buildMainUI(context, coordinator, state),
@@ -82,10 +83,10 @@ class _CrayonPasscodeScreenState extends State<CrayonPasscodeScreen> {
   }
 
   Widget _buildMainUI(
-      BuildContext context,
-      PasscodeCoordinator coordinator,
-      CreatePasscodeReady state,
-      ) {
+    BuildContext context,
+    PasscodeCoordinator coordinator,
+    CreatePasscodeReady state,
+  ) {
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -112,7 +113,7 @@ class _CrayonPasscodeScreenState extends State<CrayonPasscodeScreen> {
       padding: EdgeInsets.only(
         left: 16,
         right: 16,
-        top:16,
+        top: 16,
       ),
       child: OnBoardingProgressBar(
         currentStep: 4,
@@ -122,10 +123,10 @@ class _CrayonPasscodeScreenState extends State<CrayonPasscodeScreen> {
   }
 
   Widget _enterOtpWidget(
-      BuildContext context,
-      PasscodeCoordinator coordinator,
-      CreatePasscodeReady state,
-      ) {
+    BuildContext context,
+    PasscodeCoordinator coordinator,
+    CreatePasscodeReady state,
+  ) {
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -133,17 +134,17 @@ class _CrayonPasscodeScreenState extends State<CrayonPasscodeScreen> {
           _enterOtpInstruction(context, coordinator, state),
           _enterOtpInteractionWidgets(context, coordinator, state),
           _passcodeTipInstruction(context, state),
-         // if (_isForgot) _forgetPassword(context, coordinator, state)
+          // if (_isForgot) _forgetPassword(context, coordinator, state)
         ],
       ),
     );
   }
 
   Widget _enterOtpInstruction(
-      BuildContext context,
-      PasscodeCoordinator coordinator,
-      CreatePasscodeReady state,
-      ) {
+    BuildContext context,
+    PasscodeCoordinator coordinator,
+    CreatePasscodeReady state,
+  ) {
     return Container(
       padding: const EdgeInsets.only(
         left: 16,
@@ -171,7 +172,7 @@ class _CrayonPasscodeScreenState extends State<CrayonPasscodeScreen> {
           const SizedBox(height: 55.0),
           Padding(
             padding: const EdgeInsets.symmetric(
-               horizontal: 12,
+              horizontal: 12,
             ),
             child: CrayonPaymentText(
               key: const Key('passcodeDescription'),
@@ -199,31 +200,31 @@ class _CrayonPasscodeScreenState extends State<CrayonPasscodeScreen> {
   }
 
   Widget _enterOtpInteractionWidgets(
-      BuildContext context,
-      PasscodeCoordinator coordinator,
-      CreatePasscodeReady state,
-      ) {
+    BuildContext context,
+    PasscodeCoordinator coordinator,
+    CreatePasscodeReady state,
+  ) {
     return Container(
       padding: const EdgeInsets.only(
         top: 28,
-        bottom:28,
+        bottom: 28,
       ),
       child: _otpInputWidget(context, coordinator, state),
     );
   }
 
   Widget _otpInputWidget(
-      BuildContext context,
-      PasscodeCoordinator coordinator,
-      CreatePasscodeReady state,
-      ) {
+    BuildContext context,
+    PasscodeCoordinator coordinator,
+    CreatePasscodeReady state,
+  ) {
     return Column(
       children: [
         Directionality(
           textDirection: TextDirection.ltr,
-          child:   Padding(
-              padding: const EdgeInsets.symmetric(
-                  vertical: 8.0, horizontal: 30),
+          child: Padding(
+              padding:
+                  const EdgeInsets.symmetric(vertical: 8.0, horizontal: 30),
               child: PinCodeTextField(
                 appContext: context,
                 pastedTextStyle: const TextStyle(
@@ -245,12 +246,11 @@ class _CrayonPasscodeScreenState extends State<CrayonPasscodeScreen> {
                     disabledColor: Colors.white,
                     selectedColor: Colors.black,
                     activeColor: Colors.black,
-                    inactiveColor: Colors.grey
-                ),
+                    inactiveColor: Colors.grey),
                 cursorColor: Colors.black,
                 enableActiveFill: false,
                 autoFocus: true,
-                autoDismissKeyboard : false,
+                autoDismissKeyboard: false,
                 //errorAnimationController: errorController,
                 controller: passcodeController,
                 keyboardType: TextInputType.number,
@@ -258,13 +258,8 @@ class _CrayonPasscodeScreenState extends State<CrayonPasscodeScreen> {
                   debugPrint("Completed");
                   coordinator.onPasscodeCallback(passcodeController.text);
                   passcodeController.clear();
-                }, onChanged: (String value) {  },
-                // onChanged: (value) {
-                //   debugPrint(value);
-                //   setState(() {
-                //     //currentText = value;
-                //   });
-                // },
+                },
+                onChanged: (String value) {},
               )),
           // ObscuredDigitEntryInputField(
           //   6,
@@ -297,15 +292,15 @@ class _CrayonPasscodeScreenState extends State<CrayonPasscodeScreen> {
   }
 
   Widget _passcodeTipInstruction(
-      BuildContext context,
-      CreatePasscodeReady state,
-      ) {
+    BuildContext context,
+    CreatePasscodeReady state,
+  ) {
     if (state.passCodeVerificationType != PassCodeVerificationType.create) {
       return Container();
     }
     return Padding(
       padding: const EdgeInsets.only(
-        top : 64,
+        top: 64,
         left: 16,
         right: 16,
         bottom: 16,
@@ -323,10 +318,10 @@ class _CrayonPasscodeScreenState extends State<CrayonPasscodeScreen> {
   }
 
   Color _getDescriptionColor(
-      CreatePasscodeReady state,
-      ) {
+    CreatePasscodeReady state,
+  ) {
     return state.pageDescription.contains('PC_passcode_message') ||
-        state.pageDescription.contains('PC_re_enter_passcode')
+            state.pageDescription.contains('PC_re_enter_passcode')
         ? config_colors.SU_label_color
         : Colors.red;
   }
@@ -336,8 +331,7 @@ class _CrayonPasscodeScreenState extends State<CrayonPasscodeScreen> {
       textDirection: TextDirection.ltr,
       child: SizedBox(
         height: 250,
-        child:
-        CrayonPaymentKeyPad(
+        child: CrayonPaymentKeyPad(
           context,
           coordinator.updatePasscodeInput,
           hasActionButton: false,
@@ -345,5 +339,4 @@ class _CrayonPasscodeScreenState extends State<CrayonPasscodeScreen> {
       ),
     );
   }
-
 }

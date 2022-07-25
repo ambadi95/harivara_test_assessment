@@ -94,7 +94,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
     return const Padding(
       padding: EdgeInsets.only(left: 20.0, right: 20.0, top: 20.0, bottom: 0),
       child: OnBoardingProgressBar(
-        currentStep: 2,
+        currentStep: 3,
         totalSteps: 4,
       ),
     );

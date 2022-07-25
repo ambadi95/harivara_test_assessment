@@ -21,12 +21,11 @@ import '../viewmodel/login_coordinator.dart';
 import 'package:get/get.dart';
 
 class Login extends StatelessWidget {
-  factory Login.forCustomerApp() =>  Login();
+  factory Login.forCustomerApp() => Login();
   final String _identifier = 'login';
-  static const String viewPath =
-      '${LoginModule.moduleIdentifier}/login';
+  static const String viewPath = '${LoginModule.moduleIdentifier}/login';
 
-   Login({Key? key}) : super(key: key);
+  Login({Key? key}) : super(key: key);
 
   TextEditingController passcodeController = TextEditingController();
 
@@ -40,8 +39,7 @@ class Login extends StatelessWidget {
     );
   }
 
-  Widget _buildMainUI(context,
-      LoginCoordinator coordinator) {
+  Widget _buildMainUI(context, LoginCoordinator coordinator) {
     return CrayonPaymentScaffold(
         appBarAttributes: CrayonPaymentAppBarAttributes(
           key: const Key('CardDetailsScreen_AppBarBackButton'),
@@ -67,12 +65,10 @@ class Login extends StatelessWidget {
   Widget _buildTitle(context) {
     return CrayonPaymentText(
       key: Key('${_identifier}_LS_Login'),
-      text: const TextUIDataModel(
-        'LS_Login',
-        styleVariant: CrayonPaymentTextStyleVariant.headlineThirtyTwo,
-        color: AN_TitleColor,
-        fontWeight: FontWeight.w800
-      ),
+      text: const TextUIDataModel('LS_Login',
+          styleVariant: CrayonPaymentTextStyleVariant.headlineThirtyTwo,
+          color: AN_TitleColor,
+          fontWeight: FontWeight.w800),
     );
   }
 
@@ -93,24 +89,27 @@ class Login extends StatelessWidget {
         ],
         style: SU_text_input_style,
         decoration: InputDecoration(
-          prefix: const Padding(
-            padding: EdgeInsets.only(top: 6),
-            child: Text('+255  ', style: SU_text_input_style),
-          ),
-          prefixIcon: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Image.asset(
-              LS_Flag,
-              width: 22,
-              height: 16,
+          prefixIcon: SizedBox(
+            width: 100,
+            child: Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Image.asset(
+                    LS_Flag,
+                    width: 22,
+                    height: 16,
+                  ),
+                ),
+                Text('+255  ', style: SU_text_input_style)
+              ],
             ),
           ),
           border: OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(8.0)),
               borderSide: BorderSide(color: SU_border_color)),
         ),
-        onChanged: (value) {
-        },
+        onChanged: (value) {},
       ),
     ]);
   }
@@ -153,19 +152,17 @@ class Login extends StatelessWidget {
                     ),
                   ],
                 ),
-              ),),
+              ),
+            ),
             dataModel: const SearchBarDataModel(
-                hint: '',
-                variant: CrayonPaymentTextStyleVariant.headline4,
-            )
-        ),
+              hint: '',
+              variant: CrayonPaymentTextStyleVariant.headline4,
+            )),
       ),
     ]);
   }
 
-  Widget actionButton(
-      LoginCoordinator coordinator
-      ) {
+  Widget actionButton(LoginCoordinator coordinator) {
     return CrayonPaymentDockedButton(
       key: const Key('SignInButton'),
       title: 'LS_SignIn'.tr,
@@ -180,11 +177,10 @@ class Login extends StatelessWidget {
     );
   }
 
-  Widget _passcodeWidget(BuildContext context, LoginCoordinator coordinator){
+  Widget _passcodeWidget(BuildContext context, LoginCoordinator coordinator) {
     return Container(
       child: Padding(
-          padding: const EdgeInsets.symmetric(
-              vertical: 8.0, horizontal: 8),
+          padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -220,23 +216,21 @@ class Login extends StatelessWidget {
                     disabledColor: Colors.white,
                     selectedColor: Colors.black,
                     activeColor: Colors.black,
-                    inactiveColor: Colors.grey
-                ),
+                    inactiveColor: Colors.grey),
                 cursorColor: Colors.black,
                 enableActiveFill: false,
                 autoFocus: false,
-                autoDismissKeyboard : true,
+                autoDismissKeyboard: true,
                 //errorAnimationController: errorController,
                 controller: passcodeController,
                 keyboardType: TextInputType.number,
                 onCompleted: (v) {
                   debugPrint("Completed");
-                }, onChanged: (String value) {  },
+                },
+                onChanged: (String value) {},
               ),
             ],
           )),
-
     );
   }
-
 }
