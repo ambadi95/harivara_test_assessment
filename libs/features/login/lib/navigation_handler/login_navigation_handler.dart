@@ -22,8 +22,8 @@ class LoginNavigationHandler with ErrorHandler {
   Future<void> navigateToOtpScreen() async {
     var arguments = OtpScreenArgs(
         'OTP Verification',
-        'An OTP will be send to your mobile number (ending with XXXXX)',
-        'customerhomemodule/crayonCustomerHomeScreen',
+        'VO_otp_verification_description',
+        'welcomeModule/enrollmentSuccess',
         false,
         2,
         OtpVerificationType.mobile,
