@@ -1,6 +1,4 @@
 import 'package:config/Colors.dart';
-import 'package:config/Config.dart';
-import 'package:config/Styles.dart';
 import 'package:core/view/base_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -9,10 +7,9 @@ import 'package:widget_library/app_bars/crayon_payment_app_bar_attributes.dart';
 import 'package:widget_library/app_bars/crayon_payment_app_bar_button_type.dart';
 import 'package:widget_library/buttons/docked_button.dart';
 import 'package:widget_library/dimensions/crayon_payment_dimensions.dart';
+import 'package:widget_library/input_fields/input_number_field_with_label.dart';
 import 'package:widget_library/page_header/text_ui_data_model.dart';
 import 'package:widget_library/scaffold/crayon_payment_scaffold.dart';
-import 'package:widget_library/search_bar/search_bar_widget.dart';
-import 'package:widget_library/search_bar/search_bar_widget_model.dart';
 import 'package:widget_library/spacers/crayon_payment_spacers.dart';
 import 'package:widget_library/static_text/crayon_payment_text.dart';
 import '../login_module.dart';
@@ -27,11 +24,16 @@ class Login extends StatelessWidget {
 
   Login({Key? key}) : super(key: key);
 
+  bool isBtnEnabled = false;
+  String mobileNumberError = '';
+  TextEditingController mobileNumber = TextEditingController();
   TextEditingController passcodeController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return BaseView<LoginCoordinator, LoginState>(
+      onStateListenCallback: (preState, newState) =>
+      {_listenToStateChanges(context, newState)},
       setupViewModel: (coordinator) {},
       builder: (context, state, coordinator) {
         return _buildMainUI(context, coordinator);
@@ -52,7 +54,7 @@ class Login extends StatelessWidget {
           children: [
             _buildTitle(context),
             dynamicHSpacer(36),
-            _buildLabelTextFieldMobNumber(context, 'SU_mobile_no_label'.tr),
+            _buildLabelTextFieldMobNumber(context, 'SU_mobile_no_label'.tr,coordinator),
             dynamicHSpacer(48),
             _passcodeWidget(context, coordinator),
             const Spacer(),
@@ -72,94 +74,23 @@ class Login extends StatelessWidget {
     );
   }
 
-  Widget _buildLabelTextFieldMobNumber(BuildContext context, String label) {
-    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Text(label, style: SU_label_style),
-      const SizedBox(
-        height: 8,
-      ),
-      TextField(
-        key: const Key('idNumberTextField'),
-        keyboardType: TextInputType.number,
-        textAlign: TextAlign.start,
-        autofocus: false,
-        showCursor: true,
-        inputFormatters: <TextInputFormatter>[
-          FilteringTextInputFormatter.digitsOnly
-        ],
-        style: SU_text_input_style,
-        decoration: InputDecoration(
-          prefixIcon: SizedBox(
-            width: 100,
-            child: Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Image.asset(
-                    LS_Flag,
-                    width: 22,
-                    height: 16,
-                  ),
-                ),
-                Text('+255  ', style: SU_text_input_style)
-              ],
-            ),
-          ),
-          border: OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(8.0)),
-              borderSide: BorderSide(color: SU_border_color)),
-        ),
-        onChanged: (value) {},
-      ),
-    ]);
-  }
-
-  Widget _buildMobileField(context) {
-    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      CrayonPaymentText(
-        key: Key('${_identifier}_LS_Mobile'),
-        text: const TextUIDataModel(
-          'LS_Mobile',
-          styleVariant: CrayonPaymentTextStyleVariant.headline5,
-          color: AN_TitleColor,
-        ),
-      ),
-      const SizedBox(
-        height: 8,
-      ),
-      SearchBarWidget(
-        attributes: SearchBarAttributes(
-            appearance: SearchBarAppearance(
-              cornerRadius: 8,
-              backgroundColor: AN_TextFieldBackground,
-              prefixIcon: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Row(
-                  children: [
-                    Image.asset(
-                      LS_Flag,
-                      width: 22,
-                      height: 16,
-                    ),
-                    dynamicWSpacer(8),
-                    CrayonPaymentText(
-                      key: Key('${_identifier}_LS_Code'),
-                      text: const TextUIDataModel(
-                        '+255',
-                        styleVariant: CrayonPaymentTextStyleVariant.headline5,
-                        color: AN_TitleColor,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            dataModel: const SearchBarDataModel(
-              hint: '',
-              variant: CrayonPaymentTextStyleVariant.headline4,
-            )),
-      ),
-    ]);
+  Widget _buildLabelTextFieldMobNumber(BuildContext context, String label, LoginCoordinator coordinator) {
+    return  InputNumberFieldWithLabel(
+      label: label,
+      controller: mobileNumber,
+      errorText: mobileNumberError.tr,
+      hintText: 'SU_subtitle_hint'.tr,
+      key: const Key('mobileNumberTextField'),
+      inputFormatters: <TextInputFormatter>[
+        FilteringTextInputFormatter.digitsOnly
+      ],
+      keyboardType: TextInputType.number,
+      onChanged: (value) {
+        if(mobileNumberError.isNotEmpty || mobileNumber.text.length > 9){
+          coordinator.isMobileNumberValid(mobileNumber.text);
+        }
+      },
+    );
   }
 
   Widget actionButton(LoginCoordinator coordinator) {
@@ -168,11 +99,15 @@ class Login extends StatelessWidget {
       title: 'LS_SignIn'.tr,
       borderRadius: 8,
       height: CrayonPaymentDimensions.marginFortyEight,
-      buttonColor: LS_ButtonColor,
+      buttonColor: isBtnEnabled ?  LS_ButtonColor : SU_grey_color,
       textColor: White,
       textStyleVariant: CrayonPaymentTextStyleVariant.headline5,
       onPressed: () {
-        coordinator.navigateToWelcomeBackScreen();
+        coordinator.isMobileNumberValid(mobileNumber.text);
+        if(isBtnEnabled){
+          coordinator.navigateToWelcomeBackScreen();
+        }
+
       },
     );
   }
@@ -227,10 +162,31 @@ class Login extends StatelessWidget {
                 onCompleted: (v) {
                   debugPrint("Completed");
                 },
-                onChanged: (String value) {},
+                onChanged: (String value) {
+                  _validateForm(coordinator);
+                },
               ),
             ],
           )),
     );
+  }
+
+  void _listenToStateChanges(BuildContext context, LoginState state) {
+    state.maybeWhen(
+      (loginList) {
+
+      },
+        mobileNumberError: (message){
+          mobileNumberError = message;
+        },
+        loginFormState: (isValid){
+        isBtnEnabled = isValid;
+        },
+
+        orElse: () => null);
+  }
+
+  void _validateForm(LoginCoordinator coordinator) {
+    coordinator.validateForm(mobileNumber.text, passcodeController.text);
   }
 }

@@ -9,4 +9,13 @@ class LoginState with _$LoginState {
  const factory LoginState({
    @Default([]) List<LoginModel> loginList,
 }) = _LoginState;
+
+  const factory LoginState.mobileNumberError(
+      String mobileNumberError
+      ) = MobileNumberError;
+
+ const factory LoginState.loginFormState(
+     bool isValid
+     ) = LoginFormState;
+
 }

@@ -23,6 +23,16 @@ class DetailsScreen extends StatefulWidget {
 
 class _DetailsScreenState extends State<DetailsScreen> {
   bool _isBtnEnabled = false;
+  String nameError = '';
+  String emailError = '';
+  String poBoxError = '';
+  String dobError ='';
+  String genderError ='';
+  String professionError = '';
+  String addressError = '';
+  String regionError ='';
+  String districtError ='';
+
   final FocusNode? focusNode = FocusNode();
   final TextEditingController name = TextEditingController();
   final TextEditingController dob = TextEditingController();
@@ -54,12 +64,15 @@ class _DetailsScreenState extends State<DetailsScreen> {
     }
   }
 
+
   @override
   Widget build(BuildContext context) =>
       BaseView<DetailsCoordinator, DetailsState>(
         onStateListenCallback: (preState, newState) =>
             {_listenToStateChanges(context, newState)},
-        setupViewModel: (coordinator) async {},
+        setupViewModel: (coordinator) async {
+          coordinator.getMobileNumber();
+        },
         builder: (context, state, coordinator) => SafeArea(
           child: Scaffold(
             appBar: PreferredSize(
@@ -127,24 +140,24 @@ class _DetailsScreenState extends State<DetailsScreen> {
             height: 30,
           ),
           _buildLabelTextField(
-              'DV_name_label'.tr, name, TextInputType.text, coordinator),
+              'DV_name_label'.tr, name, TextInputType.text, coordinator,nameError,'DV_name_hint_text', true),
           _buildLabelTextFieldDob('DV_dob_label'.tr, dob, coordinator),
           _buildLabelTextField(
-              'DV_gender_label'.tr, gender, TextInputType.name, coordinator),
+              'DV_gender_label'.tr, gender, TextInputType.name, coordinator,genderError,'DV_gender_hint_text', true),
           _buildLabelTextField('DV_profession_label'.tr, profession,
-              TextInputType.name, coordinator),
+              TextInputType.name, coordinator,professionError,'DV_profession_hint_text',true),
           _buildLabelTextField('DV_contact_no_label'.tr, mobileNumber,
-              TextInputType.number, coordinator),
+              TextInputType.number, coordinator,'','Enter Your Mobile Number', false),
           _buildLabelTextField('DV_email_label'.tr, emailId,
-              TextInputType.emailAddress, coordinator),
+              TextInputType.emailAddress, coordinator,emailError,'DV_email_hint_text', true),
           _buildLabelTextFieldAddress(
-              'DV_address_label'.tr, address, coordinator),
+              'DV_address_label'.tr, address, coordinator, 'DV_address_hint_text'),
           _buildLabelTextField(
-              'DV_po_box_label'.tr, poBox, TextInputType.text, coordinator),
+              'DV_po_box_label'.tr, poBox, TextInputType.text,coordinator, poBoxError,'DV_poBox_hint_text', true),
           _buildLabelTextField(
-              'DV_region_label'.tr, region, TextInputType.name, coordinator),
+              'DV_region_label'.tr, region, TextInputType.name, coordinator,regionError,'DV_region_hint_text', true),
           _buildLabelTextField('DV_district_label'.tr, district,
-              TextInputType.name, coordinator),
+              TextInputType.name, coordinator,districtError,'DV_district_hint_text',true ),
           _buildContinueButton(coordinator)
         ],
       ),
@@ -159,17 +172,28 @@ class _DetailsScreenState extends State<DetailsScreen> {
   }
 
   Widget _buildLabelTextField(String label, TextEditingController controller,
-      TextInputType textInputType, DetailsCoordinator coordinator) {
+      TextInputType textInputType, DetailsCoordinator coordinator, String errorText, String hint, bool enabled) {
     return Padding(
         padding: const EdgeInsets.only(bottom: 34),
         child: InputFieldWithLabel(
           label: label,
           controller: controller,
-          errorText: '',
+          errorText: errorText.tr,
+          enabled: enabled,
+          hintText: hint.tr,
           key: const Key('detailsTextField'),
           keyboardType: textInputType,
           onChanged: (value) {
             _validateForm(coordinator);
+            if(errorText.isNotEmpty){
+              coordinator.isValidName(name.text);
+              coordinator.isValidEmail(emailId.text);
+              coordinator.isValidPoBox(poBox.text);
+              coordinator.isValidGender(gender.text);
+              coordinator.isValidDistrict(district.text);
+              coordinator.isValidRegion(region.text);
+              coordinator.isValidProfession(profession.text);
+            }
           },
         ));
   }
@@ -181,7 +205,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
         child: InputFieldWithLabel(
           label: label,
           controller: controller,
-          errorText: '',
+          errorText: dobError.tr,
+          hintText: 'DV_dob_hint_text'.tr,
           key: const Key('detailsTextFieldDob'),
           keyboardType: TextInputType.none,
           onChanged: (value) {
@@ -193,25 +218,32 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 borderRadius: BorderRadius.all(Radius.circular(8.0)),
                 borderSide: BorderSide(color: config_color.SU_border_color)),
           ),
-          onTap: () {
-            _selectDate(context);
+          onTap: () async {
+           await _selectDate(context);
+            if(dobError.isNotEmpty){
+              coordinator.isValidDob(dob.text);
+            }
           },
         ));
   }
 
   Widget _buildLabelTextFieldAddress(String label,
-      TextEditingController controller, DetailsCoordinator coordinator) {
+      TextEditingController controller, DetailsCoordinator coordinator,String hint) {
     return Padding(
         padding: const EdgeInsets.only(bottom: 34),
         child: InputFieldWithLabel(
           label: label,
           maxLines: 2,
           controller: controller,
-          errorText: '',
+          errorText: addressError.tr,
+          hintText: hint.tr,
           key: const Key('detailsTextFieldAddress'),
           keyboardType: TextInputType.streetAddress,
           onChanged: (value) {
             _validateForm(coordinator);
+            if(addressError.isNotEmpty){
+              coordinator.isValidAddress(value);
+            }
           },
         ));
   }
@@ -219,7 +251,16 @@ class _DetailsScreenState extends State<DetailsScreen> {
   Widget _buildContinueButton(DetailsCoordinator coordinator) {
     return GestureDetector(
       onTap: () {
-        if (_isBtnEnabled) {
+        coordinator.isValidPoBox(poBox.text);
+        coordinator.isValidEmail(emailId.text);
+        coordinator.isValidName(name.text);
+        coordinator.isValidGender(gender.text);
+        coordinator.isValidDistrict(district.text);
+        coordinator.isValidRegion(region.text);
+        coordinator.isValidProfession(profession.text);
+        coordinator.isValidAddress(address.text);
+        coordinator.isValidDob(dob.text);
+        if (_isBtnEnabled &&   coordinator.isValidPoBox(poBox.text) && coordinator.isValidEmail(emailId.text) &&coordinator.isValidName(name.text) ) {
           coordinator.navigateToCreatePasscodeScreen();
         }
       },
@@ -245,6 +286,36 @@ class _DetailsScreenState extends State<DetailsScreen> {
     state.maybeWhen(
         DetailsFormState: (isValid) {
           _isBtnEnabled = isValid;
+        },
+        emailError: (message){
+          emailError = message;
+        },
+        nameError: (message){
+          nameError = message;
+        },
+        poBoxError: (message){
+          poBoxError = message;
+        },
+        dobError: (message){
+          dobError = message;
+        },
+        addressError: (message){
+          addressError = message;
+        },
+        districtError: (message){
+          districtError = message;
+        },
+        genderError: (message){
+          genderError = message;
+        },
+        professionError: (message){
+          professionError = message;
+        },
+        regionError: (message){
+          regionError = message;
+        },
+        getMobileNumber: (value){
+          mobileNumber.text = value;
         },
         orElse: () => null);
   }

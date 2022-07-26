@@ -20,18 +20,24 @@ mixin _$SignUpState {
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
     required TResult Function(bool isValid) SignUpFormState,
+    required TResult Function(String nindaNumberError) nindaNumberError,
+    required TResult Function(String nindaNumberError) mobileNumberError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(bool isValid)? SignUpFormState,
+    TResult Function(String nindaNumberError)? nindaNumberError,
+    TResult Function(String nindaNumberError)? mobileNumberError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(bool isValid)? SignUpFormState,
+    TResult Function(String nindaNumberError)? nindaNumberError,
+    TResult Function(String nindaNumberError)? mobileNumberError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +45,24 @@ mixin _$SignUpState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitialState value) initialState,
     required TResult Function(SignUpFormState value) SignUpFormState,
+    required TResult Function(NindaNumberError value) nindaNumberError,
+    required TResult Function(MobileNumberError value) mobileNumberError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
     TResult Function(SignUpFormState value)? SignUpFormState,
+    TResult Function(NindaNumberError value)? nindaNumberError,
+    TResult Function(MobileNumberError value)? mobileNumberError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
     TResult Function(SignUpFormState value)? SignUpFormState,
+    TResult Function(NindaNumberError value)? nindaNumberError,
+    TResult Function(MobileNumberError value)? mobileNumberError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -114,6 +126,8 @@ class _$InitialState implements InitialState {
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
     required TResult Function(bool isValid) SignUpFormState,
+    required TResult Function(String nindaNumberError) nindaNumberError,
+    required TResult Function(String nindaNumberError) mobileNumberError,
   }) {
     return initialState();
   }
@@ -123,6 +137,8 @@ class _$InitialState implements InitialState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(bool isValid)? SignUpFormState,
+    TResult Function(String nindaNumberError)? nindaNumberError,
+    TResult Function(String nindaNumberError)? mobileNumberError,
   }) {
     return initialState?.call();
   }
@@ -132,6 +148,8 @@ class _$InitialState implements InitialState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(bool isValid)? SignUpFormState,
+    TResult Function(String nindaNumberError)? nindaNumberError,
+    TResult Function(String nindaNumberError)? mobileNumberError,
     required TResult orElse(),
   }) {
     if (initialState != null) {
@@ -145,6 +163,8 @@ class _$InitialState implements InitialState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitialState value) initialState,
     required TResult Function(SignUpFormState value) SignUpFormState,
+    required TResult Function(NindaNumberError value) nindaNumberError,
+    required TResult Function(MobileNumberError value) mobileNumberError,
   }) {
     return initialState(this);
   }
@@ -154,6 +174,8 @@ class _$InitialState implements InitialState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
     TResult Function(SignUpFormState value)? SignUpFormState,
+    TResult Function(NindaNumberError value)? nindaNumberError,
+    TResult Function(MobileNumberError value)? mobileNumberError,
   }) {
     return initialState?.call(this);
   }
@@ -163,6 +185,8 @@ class _$InitialState implements InitialState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
     TResult Function(SignUpFormState value)? SignUpFormState,
+    TResult Function(NindaNumberError value)? nindaNumberError,
+    TResult Function(MobileNumberError value)? mobileNumberError,
     required TResult orElse(),
   }) {
     if (initialState != null) {
@@ -243,6 +267,8 @@ class _$SignUpFormState implements SignUpFormState {
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
     required TResult Function(bool isValid) SignUpFormState,
+    required TResult Function(String nindaNumberError) nindaNumberError,
+    required TResult Function(String nindaNumberError) mobileNumberError,
   }) {
     return SignUpFormState(isValid);
   }
@@ -252,6 +278,8 @@ class _$SignUpFormState implements SignUpFormState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(bool isValid)? SignUpFormState,
+    TResult Function(String nindaNumberError)? nindaNumberError,
+    TResult Function(String nindaNumberError)? mobileNumberError,
   }) {
     return SignUpFormState?.call(isValid);
   }
@@ -261,6 +289,8 @@ class _$SignUpFormState implements SignUpFormState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(bool isValid)? SignUpFormState,
+    TResult Function(String nindaNumberError)? nindaNumberError,
+    TResult Function(String nindaNumberError)? mobileNumberError,
     required TResult orElse(),
   }) {
     if (SignUpFormState != null) {
@@ -274,6 +304,8 @@ class _$SignUpFormState implements SignUpFormState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitialState value) initialState,
     required TResult Function(SignUpFormState value) SignUpFormState,
+    required TResult Function(NindaNumberError value) nindaNumberError,
+    required TResult Function(MobileNumberError value) mobileNumberError,
   }) {
     return SignUpFormState(this);
   }
@@ -283,6 +315,8 @@ class _$SignUpFormState implements SignUpFormState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
     TResult Function(SignUpFormState value)? SignUpFormState,
+    TResult Function(NindaNumberError value)? nindaNumberError,
+    TResult Function(MobileNumberError value)? mobileNumberError,
   }) {
     return SignUpFormState?.call(this);
   }
@@ -292,6 +326,8 @@ class _$SignUpFormState implements SignUpFormState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
     TResult Function(SignUpFormState value)? SignUpFormState,
+    TResult Function(NindaNumberError value)? nindaNumberError,
+    TResult Function(MobileNumberError value)? mobileNumberError,
     required TResult orElse(),
   }) {
     if (SignUpFormState != null) {
@@ -307,5 +343,301 @@ abstract class SignUpFormState implements SignUpState {
   bool get isValid;
   @JsonKey(ignore: true)
   _$$SignUpFormStateCopyWith<_$SignUpFormState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$NindaNumberErrorCopyWith<$Res> {
+  factory _$$NindaNumberErrorCopyWith(
+          _$NindaNumberError value, $Res Function(_$NindaNumberError) then) =
+      __$$NindaNumberErrorCopyWithImpl<$Res>;
+  $Res call({String nindaNumberError});
+}
+
+/// @nodoc
+class __$$NindaNumberErrorCopyWithImpl<$Res>
+    extends _$SignUpStateCopyWithImpl<$Res>
+    implements _$$NindaNumberErrorCopyWith<$Res> {
+  __$$NindaNumberErrorCopyWithImpl(
+      _$NindaNumberError _value, $Res Function(_$NindaNumberError) _then)
+      : super(_value, (v) => _then(v as _$NindaNumberError));
+
+  @override
+  _$NindaNumberError get _value => super._value as _$NindaNumberError;
+
+  @override
+  $Res call({
+    Object? nindaNumberError = freezed,
+  }) {
+    return _then(_$NindaNumberError(
+      nindaNumberError == freezed
+          ? _value.nindaNumberError
+          : nindaNumberError // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$NindaNumberError implements NindaNumberError {
+  const _$NindaNumberError(this.nindaNumberError);
+
+  @override
+  final String nindaNumberError;
+
+  @override
+  String toString() {
+    return 'SignUpState.nindaNumberError(nindaNumberError: $nindaNumberError)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$NindaNumberError &&
+            const DeepCollectionEquality()
+                .equals(other.nindaNumberError, nindaNumberError));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(nindaNumberError));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$NindaNumberErrorCopyWith<_$NindaNumberError> get copyWith =>
+      __$$NindaNumberErrorCopyWithImpl<_$NindaNumberError>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialState,
+    required TResult Function(bool isValid) SignUpFormState,
+    required TResult Function(String nindaNumberError) nindaNumberError,
+    required TResult Function(String nindaNumberError) mobileNumberError,
+  }) {
+    return nindaNumberError(this.nindaNumberError);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initialState,
+    TResult Function(bool isValid)? SignUpFormState,
+    TResult Function(String nindaNumberError)? nindaNumberError,
+    TResult Function(String nindaNumberError)? mobileNumberError,
+  }) {
+    return nindaNumberError?.call(this.nindaNumberError);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialState,
+    TResult Function(bool isValid)? SignUpFormState,
+    TResult Function(String nindaNumberError)? nindaNumberError,
+    TResult Function(String nindaNumberError)? mobileNumberError,
+    required TResult orElse(),
+  }) {
+    if (nindaNumberError != null) {
+      return nindaNumberError(this.nindaNumberError);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialState value) initialState,
+    required TResult Function(SignUpFormState value) SignUpFormState,
+    required TResult Function(NindaNumberError value) nindaNumberError,
+    required TResult Function(MobileNumberError value) mobileNumberError,
+  }) {
+    return nindaNumberError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InitialState value)? initialState,
+    TResult Function(SignUpFormState value)? SignUpFormState,
+    TResult Function(NindaNumberError value)? nindaNumberError,
+    TResult Function(MobileNumberError value)? mobileNumberError,
+  }) {
+    return nindaNumberError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialState value)? initialState,
+    TResult Function(SignUpFormState value)? SignUpFormState,
+    TResult Function(NindaNumberError value)? nindaNumberError,
+    TResult Function(MobileNumberError value)? mobileNumberError,
+    required TResult orElse(),
+  }) {
+    if (nindaNumberError != null) {
+      return nindaNumberError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class NindaNumberError implements SignUpState {
+  const factory NindaNumberError(final String nindaNumberError) =
+      _$NindaNumberError;
+
+  String get nindaNumberError;
+  @JsonKey(ignore: true)
+  _$$NindaNumberErrorCopyWith<_$NindaNumberError> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$MobileNumberErrorCopyWith<$Res> {
+  factory _$$MobileNumberErrorCopyWith(
+          _$MobileNumberError value, $Res Function(_$MobileNumberError) then) =
+      __$$MobileNumberErrorCopyWithImpl<$Res>;
+  $Res call({String nindaNumberError});
+}
+
+/// @nodoc
+class __$$MobileNumberErrorCopyWithImpl<$Res>
+    extends _$SignUpStateCopyWithImpl<$Res>
+    implements _$$MobileNumberErrorCopyWith<$Res> {
+  __$$MobileNumberErrorCopyWithImpl(
+      _$MobileNumberError _value, $Res Function(_$MobileNumberError) _then)
+      : super(_value, (v) => _then(v as _$MobileNumberError));
+
+  @override
+  _$MobileNumberError get _value => super._value as _$MobileNumberError;
+
+  @override
+  $Res call({
+    Object? nindaNumberError = freezed,
+  }) {
+    return _then(_$MobileNumberError(
+      nindaNumberError == freezed
+          ? _value.nindaNumberError
+          : nindaNumberError // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$MobileNumberError implements MobileNumberError {
+  const _$MobileNumberError(this.nindaNumberError);
+
+  @override
+  final String nindaNumberError;
+
+  @override
+  String toString() {
+    return 'SignUpState.mobileNumberError(nindaNumberError: $nindaNumberError)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$MobileNumberError &&
+            const DeepCollectionEquality()
+                .equals(other.nindaNumberError, nindaNumberError));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(nindaNumberError));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$MobileNumberErrorCopyWith<_$MobileNumberError> get copyWith =>
+      __$$MobileNumberErrorCopyWithImpl<_$MobileNumberError>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialState,
+    required TResult Function(bool isValid) SignUpFormState,
+    required TResult Function(String nindaNumberError) nindaNumberError,
+    required TResult Function(String nindaNumberError) mobileNumberError,
+  }) {
+    return mobileNumberError(this.nindaNumberError);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initialState,
+    TResult Function(bool isValid)? SignUpFormState,
+    TResult Function(String nindaNumberError)? nindaNumberError,
+    TResult Function(String nindaNumberError)? mobileNumberError,
+  }) {
+    return mobileNumberError?.call(this.nindaNumberError);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialState,
+    TResult Function(bool isValid)? SignUpFormState,
+    TResult Function(String nindaNumberError)? nindaNumberError,
+    TResult Function(String nindaNumberError)? mobileNumberError,
+    required TResult orElse(),
+  }) {
+    if (mobileNumberError != null) {
+      return mobileNumberError(this.nindaNumberError);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialState value) initialState,
+    required TResult Function(SignUpFormState value) SignUpFormState,
+    required TResult Function(NindaNumberError value) nindaNumberError,
+    required TResult Function(MobileNumberError value) mobileNumberError,
+  }) {
+    return mobileNumberError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InitialState value)? initialState,
+    TResult Function(SignUpFormState value)? SignUpFormState,
+    TResult Function(NindaNumberError value)? nindaNumberError,
+    TResult Function(MobileNumberError value)? mobileNumberError,
+  }) {
+    return mobileNumberError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialState value)? initialState,
+    TResult Function(SignUpFormState value)? SignUpFormState,
+    TResult Function(NindaNumberError value)? nindaNumberError,
+    TResult Function(MobileNumberError value)? mobileNumberError,
+    required TResult orElse(),
+  }) {
+    if (mobileNumberError != null) {
+      return mobileNumberError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class MobileNumberError implements SignUpState {
+  const factory MobileNumberError(final String nindaNumberError) =
+      _$MobileNumberError;
+
+  String get nindaNumberError;
+  @JsonKey(ignore: true)
+  _$$MobileNumberErrorCopyWith<_$MobileNumberError> get copyWith =>
       throw _privateConstructorUsedError;
 }

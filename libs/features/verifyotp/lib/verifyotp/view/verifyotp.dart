@@ -187,8 +187,8 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
     Get.bottomSheet(
       AlertBottomSheet(
           alertMessage:
-              'You have used all your attempts. Please sign up again.'.tr,
-          alertTitle: 'Incorrect OTP'.tr,
+              'VO_Incorrect_OTP_Alert_Msg'.tr,
+          alertTitle: 'VO_Incorrect_OTP_Title'.tr,
           alertIcon: "assets/images/incorrect_otp.png",
           onClose: () {
             coordinator.goBack();
