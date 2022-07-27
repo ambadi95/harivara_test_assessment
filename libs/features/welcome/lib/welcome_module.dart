@@ -6,6 +6,9 @@ import 'package:network_manager/auth/authorization_client.dart';
 import 'package:network_manager/auth/user_client.dart';
 import 'package:network_manager/auth/user_manager.dart';
 import 'package:task_manager/task_manager_impl.dart';
+import 'package:welcome/sub_features/agent_details/viewmodel/agent_details_coordinator.dart';
+import 'package:welcome/sub_features/agent_details/viewmodel/agent_details_usecase.dart';
+import 'package:welcome/sub_features/agent_details/viewmodel/agent_details_view_model.dart';
 import 'package:welcome/sub_features/details/viewmodel/details_usecase.dart';
 import 'package:welcome/sub_features/enrollment_success/viewmodel/enrollment_success_coordinator.dart';
 import 'package:welcome/sub_features/signup/viewmodel/signup_usecase.dart';
@@ -49,6 +52,16 @@ class WelcomeModule {
         WelcomeNavigationHandler(container.resolve<NavigationManager>()),
         DetailsUseCase(
           DetailsViewModel(),
+          container.resolve<TaskManager>(),
+        ),
+      ),
+    );
+
+    DIContainer.container.registerFactory<AgentDetailsCoordinator>(
+          (container) => AgentDetailsCoordinator(
+        WelcomeNavigationHandler(container.resolve<NavigationManager>()),
+        AgentDetailsUseCase(
+          AgentDetailsViewModel(),
           container.resolve<TaskManager>(),
         ),
       ),

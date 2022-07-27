@@ -16,16 +16,23 @@ class DetailsCoordinator extends BaseViewModel<DetailsState>{
     _navigationHandler.goBack();
   }
 
+
+
+  Future<void> getMobileNumber() async {
+     String getMobileNo = await _detailsUseCase.getMobileNumber();
+      state = DetailsState.getMobileNumber(getMobileNo);
+  }
+
   bool _validateForm(String name, String dob, String gender, String profession, String mobNumber,
       String emailId, String address, String poBox, String region, String district){
-    var isnNameValid = name.isNotEmpty;
+    var isnNameValid = _detailsUseCase.isValidName(name);
     var isMobileNoValid = mobNumber.isNotEmpty;
     var isDobValid = dob.isNotEmpty;
     var isGenderValid = gender.isNotEmpty;
     var isProfessionValid = profession.isNotEmpty;
-    var isEmailIdValid = emailId.isNotEmpty;
+    var isEmailIdValid = _detailsUseCase.isValidEmail(emailId);
     var isAddressValid = address.isNotEmpty;
-    var isPoBoxValid = poBox.isNotEmpty;
+    var isPoBoxValid = _detailsUseCase.isValidPoBox(poBox);
     var isRegionValid = region.isNotEmpty;
     var isDistrictValid = district.isNotEmpty;
     var _isValid = isnNameValid && isMobileNoValid && isDobValid && isGenderValid
@@ -41,6 +48,96 @@ class DetailsCoordinator extends BaseViewModel<DetailsState>{
 
   Future navigateToCreatePasscodeScreen() async {
     _navigationHandler.openForNewPasscode();
+  }
+
+  bool isValidName(String name){
+    bool result = _detailsUseCase.isValidName(name);
+    if(!result){
+      state = const DetailsState.nameError('DV_name_error_text');
+    }else{
+      state = const DetailsState.nameError('');
+    }
+    return result;
+  }
+
+  bool isValidEmail(String emailId){
+    bool result = _detailsUseCase.isValidEmail(emailId);
+    if(!result){
+      state = const DetailsState.emailError('DV_email_error_text');
+    }else{
+      state = const DetailsState.emailError('');
+    }
+    return result;
+  }
+
+  bool isValidPoBox(String poBox){
+    bool result = _detailsUseCase.isValidPoBox(poBox);
+    if(!result){
+      state = const DetailsState.poBoxError('DV_poBox_error_text');
+    }else{
+      state = const DetailsState.poBoxError('');
+    }
+    return result;
+  }
+
+  bool isValidDob(String dob){
+    var result = dob.isNotEmpty;
+    if(!result){
+      state = const DetailsState.dobError('DV_dob_error_text');
+    }else{
+      state = const DetailsState.dobError('');
+    }
+    return result;
+  }
+
+  bool isValidGender(String gender){
+    var result = gender.isNotEmpty;
+    if(!result){
+      state = const DetailsState.genderError('DV_gender_error_text');
+    }else{
+      state = const DetailsState.genderError('');
+    }
+    return result;
+  }
+
+  bool isValidProfession(String prof){
+    var result = prof.isNotEmpty;
+    if(!result){
+      state = const DetailsState.professionError('DV_profession_error_text');
+    }else{
+      state = const DetailsState.professionError('');
+    }
+    return result;
+  }
+
+  bool isValidAddress(String address){
+    var result = address.isNotEmpty;
+    if(!result){
+      state = const DetailsState.addressError('DV_address_error_text');
+    }else{
+      state = const DetailsState.addressError('');
+    }
+    return result;
+  }
+
+  bool isValidRegion(String region){
+    var result = region.isNotEmpty;
+    if(!result){
+      state = const DetailsState.regionError('DV_region_error_text');
+    }else{
+      state = const DetailsState.regionError('');
+    }
+    return result;
+  }
+
+  bool isValidDistrict(String district){
+    var result = district.isNotEmpty;
+    if(!result){
+      state = const DetailsState.districtError('DV_district_error_text');
+    }else{
+      state = const DetailsState.districtError('');
+    }
+    return result;
   }
 
 }
