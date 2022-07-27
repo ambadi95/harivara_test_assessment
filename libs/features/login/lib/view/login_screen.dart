@@ -105,7 +105,7 @@ class Login extends StatelessWidget {
               ],
             ),
           ),
-          border: OutlineInputBorder(
+          border: const OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(8.0)),
               borderSide: BorderSide(color: SU_border_color)),
         ),
@@ -178,59 +178,57 @@ class Login extends StatelessWidget {
   }
 
   Widget _passcodeWidget(BuildContext context, LoginCoordinator coordinator) {
-    return Container(
-      child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CrayonPaymentText(
-                key: Key('${_identifier}_LS_Passcode'),
-                text: const TextUIDataModel(
-                  'LS_Passcode',
-                  styleVariant: CrayonPaymentTextStyleVariant.headline5,
-                  color: AN_TitleColor,
-                ),
+    return Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CrayonPaymentText(
+              key: Key('${_identifier}_LS_Passcode'),
+              text: const TextUIDataModel(
+                'LS_Passcode',
+                styleVariant: CrayonPaymentTextStyleVariant.headline5,
+                color: AN_TitleColor,
               ),
-              const SizedBox(
-                height: 8,
+            ),
+            const SizedBox(
+              height: 8,
+            ),
+            PinCodeTextField(
+              appContext: context,
+              pastedTextStyle: const TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
               ),
-              PinCodeTextField(
-                appContext: context,
-                pastedTextStyle: const TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                ),
-                length: 6,
-                obscureText: true,
-                obscuringCharacter: '*',
-                blinkWhenObscuring: true,
-                animationType: AnimationType.none,
-                enabled: true,
-                pinTheme: PinTheme(
-                    shape: PinCodeFieldShape.underline,
-                    fieldHeight: 50,
-                    fieldWidth: 50,
-                    borderWidth: 3,
-                    activeFillColor: Colors.white,
-                    disabledColor: Colors.white,
-                    selectedColor: Colors.black,
-                    activeColor: Colors.black,
-                    inactiveColor: Colors.grey),
-                cursorColor: Colors.black,
-                enableActiveFill: false,
-                autoFocus: false,
-                autoDismissKeyboard: true,
-                //errorAnimationController: errorController,
-                controller: passcodeController,
-                keyboardType: TextInputType.number,
-                onCompleted: (v) {
-                  debugPrint("Completed");
-                },
-                onChanged: (String value) {},
-              ),
-            ],
-          )),
-    );
+              length: 6,
+              obscureText: true,
+              obscuringCharacter: '*',
+              blinkWhenObscuring: true,
+              animationType: AnimationType.none,
+              enabled: true,
+              pinTheme: PinTheme(
+                  shape: PinCodeFieldShape.underline,
+                  fieldHeight: 50,
+                  fieldWidth: 50,
+                  borderWidth: 3,
+                  activeFillColor: Colors.white,
+                  disabledColor: Colors.white,
+                  selectedColor: Colors.black,
+                  activeColor: Colors.black,
+                  inactiveColor: Colors.grey),
+              cursorColor: Colors.black,
+              enableActiveFill: false,
+              autoFocus: false,
+              autoDismissKeyboard: true,
+              //errorAnimationController: errorController,
+              controller: passcodeController,
+              keyboardType: TextInputType.number,
+              onCompleted: (v) {
+                debugPrint("Completed");
+              },
+              onChanged: (String value) {},
+            ),
+          ],
+        ));
   }
 }

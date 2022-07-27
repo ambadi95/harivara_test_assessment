@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:shared_data_models/device_option/device_detail_mockup.dart';
 import 'package:widget_library/app_bars/crayon_payment_app_bar_attributes.dart';
 import 'package:widget_library/app_bars/crayon_payment_app_bar_button_type.dart';
+import 'package:widget_library/buttons/docked_button.dart';
+import 'package:widget_library/dimensions/crayon_payment_dimensions.dart';
 import 'package:widget_library/page_header/text_ui_data_model.dart';
 import 'package:widget_library/scaffold/crayon_payment_scaffold.dart';
 import 'package:widget_library/spacers/crayon_payment_spacers.dart';
@@ -40,6 +42,8 @@ class DeviceDetailScreen extends StatelessWidget {
       children: [
         _buildTitle(context),
         Image.asset('assets/mobile_1.png',width: 222,height: 300,package: 'shared_data_models',),
+        actionButton(),
+        dynamicHSpacer(22),
         productDetail(context)
       ],
       
@@ -60,6 +64,20 @@ class DeviceDetailScreen extends StatelessWidget {
     );
   }
 
+  Widget actionButton() {
+    return CrayonPaymentDockedButton(
+      key: const Key('SignInButton'),
+      title: 'Select Device',
+      borderRadius: 8,
+      height: CrayonPaymentDimensions.marginFortyEight,
+      buttonColor: LS_ButtonColor,
+      textColor: White,
+      textStyleVariant: CrayonPaymentTextStyleVariant.headline5,
+      onPressed: () {
+      },
+    );
+  }
+
   Widget productDetail(context){
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -76,30 +94,39 @@ class DeviceDetailScreen extends StatelessWidget {
         dynamicHSpacer(8),
         dynamicHSpacer(8),
         productSpecLabel(label: 'DD_Brand', value: getMockupData.brand!),
-        dynamicHSpacer(8),
+        divider(),
         productSpecLabel(label: 'DD_ModelNumber', value: getMockupData.model!),
-        dynamicHSpacer(8),
+        divider(),
         productSpecLabel(label: 'DD_HumanInterfaceInput', value:getMockupData.humanInterfaceInput!),
-        dynamicHSpacer(8),
+        divider(),
         productSpecLabel(label: 'DD_WirelessCarrier', value: getMockupData.wirelessCarrier!),
-        dynamicHSpacer(8),
+        divider(),
         productSpecLabel(label: 'DD_CellularTechnology', value: getMockupData.cellularTechnology!),
-        dynamicHSpacer(8),
+        divider(),
         productSpecLabel(label: 'DD_OperatingSystem', value: getMockupData.os!),
-        dynamicHSpacer(8),
+        divider(),
         productSpecLabel(label: 'DD_MemoryStorage', value: getMockupData.storage!),
-        dynamicHSpacer(8),
+        divider(),
         productSpecLabel(label: 'DD_WaterResistanceLevel', value: getMockupData.waterResistanceLevel!),
-        dynamicHSpacer(8),
+        divider(),
         productSpecLabel(label: 'DD_Color', value: getMockupData.colour!),
-        dynamicHSpacer(8),
+        divider(),
         productSpecLabel(label: 'DD_Price', value: getMockupData.price!),
-        dynamicHSpacer(8),
+        divider(),
         productSpecLabel(label: 'DD_EMIMonth', value: getMockupData.monthlyPrice!),
-        dynamicHSpacer(8),
+        divider(),
         productSpecLabel(label: 'DD_Interest', value: getMockupData.interest!),
-        dynamicHSpacer(8),
+        divider(),
         productSpecLabel(label: 'DD_TotalAmountPaid', value: getMockupData.amountToPaid!),
+        dynamicHSpacer(8),
+      ],
+    );
+  }
+
+  Widget divider(){
+    return Column(
+      children: [
+        const Divider(),
         dynamicHSpacer(8),
       ],
     );
