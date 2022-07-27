@@ -30,7 +30,7 @@ dependencies:
     path: ../../shared-data-models/
 
   config:
-    path: ../../../apps/customer/config/
+    path: ../../../config/
 
   welcome:
     path:  ../welcome
