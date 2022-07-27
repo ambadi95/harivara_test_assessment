@@ -47,8 +47,8 @@ class DeviceOption extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _buildTitle(context),
-            dynamicHSpacer(24),
-            _buildSearchField(context),
+            // dynamicHSpacer(24),
+            // _buildSearchField(context),
             dynamicHSpacer(24),
             Expanded(child: _buildDeviceList(context,coordinator)),
             dynamicHSpacer(16),
@@ -144,10 +144,14 @@ class DeviceOption extends StatelessWidget {
                     ],
                   ),
                   dynamicWSpacer(54),
-                  Image.asset(index.isOdd ? DO_selectFavorites : DO_favorites,width: 16,height: 16,)
+                  Radio(
+                    value: index,
+                    groupValue: 0,
+                    onChanged: (value) {
+                    },
+                  ),
                 ],
               ),
-
               dynamicHSpacer(6),
               SizedBox(
                 width: MediaQuery.of(context).size.width * .6,
@@ -213,14 +217,18 @@ class DeviceOption extends StatelessWidget {
                 ),
               ),
               dynamicHSpacer(4),
-              Row(
+              SizedBox(
+                width: MediaQuery.of(context).size.width *.60,
 
-                children: [
-                  priceButton(context,'TZS 94,666/mo.','Y9 loan 12 months '),
-                  dynamicWSpacer(18),
-                  priceButton(context,'TZS 2,300,000','Full Retail Price'),
+                child: Row(
 
-                ],
+                  children: [
+                    priceButton(context,'TZS 94,666/mo.','Y9 loan 12 months '),
+                    dynamicWSpacer(18),
+                    priceButton(context,'TZS 2,300,000','Full Retail Price'),
+
+                  ],
+                ),
               )
             ],
           ),
