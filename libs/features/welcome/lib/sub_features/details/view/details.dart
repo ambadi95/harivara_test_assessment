@@ -14,8 +14,9 @@ import 'package:config/Colors.dart' as config_color;
 
 class DetailsScreen extends StatefulWidget {
   static const viewPath = '${WelcomeModule.moduleIdentifier}/details';
+  final String userType;
 
-  const DetailsScreen({Key? key}) : super(key: key);
+  const DetailsScreen({Key? key, required this.userType}) : super(key: key);
 
   @override
   State<DetailsScreen> createState() => _DetailsScreenState();
@@ -261,7 +262,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
         coordinator.isValidAddress(address.text);
         coordinator.isValidDob(dob.text);
         if (_isBtnEnabled &&   coordinator.isValidPoBox(poBox.text) && coordinator.isValidEmail(emailId.text) &&coordinator.isValidName(name.text) ) {
-          coordinator.navigateToCreatePasscodeScreen();
+          coordinator.navigateToCreatePasscodeScreen(widget.userType);
         }
       },
       child: Container(

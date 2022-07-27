@@ -11,6 +11,7 @@ class OtpScreenArgs {
   final int otpNumber;
   final String phoneNumber;
   final bool isResetPasscode;
+  final String userType;
 
   OtpScreenArgs(
     this.title,
@@ -23,5 +24,6 @@ class OtpScreenArgs {
     this.otpNumber,
     this.phoneNumber,
     this.isResetPasscode,
+      this.userType,
   );
 }
