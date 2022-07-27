@@ -160,7 +160,7 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
       onTap: () {
         if (otpController.text.isNotEmpty && otpController.text.length == 6) {
           coordinator
-              .navigateToDestinationPath(widget.otpScreenArgs.destinationPath);
+              .navigateToDestinationPath(widget.otpScreenArgs.destinationPath, widget.otpScreenArgs.userType);
         } else {
           _showAlertForOTPAttempts(coordinator);
         }
@@ -187,8 +187,8 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
     Get.bottomSheet(
       AlertBottomSheet(
           alertMessage:
-              'You have used all your attempts. Please sign up again.'.tr,
-          alertTitle: 'Incorrect OTP'.tr,
+              'VO_Incorrect_OTP_Alert_Msg'.tr,
+          alertTitle: 'VO_Incorrect_OTP_Title'.tr,
           alertIcon: "assets/images/incorrect_otp.png",
           onClose: () {
             coordinator.goBack();

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'Colors.dart';
+import 'Config.dart';
 
 const WELCOME_HEADING_STYLE = TextStyle(
     fontSize: 36,
@@ -117,6 +118,48 @@ const SU_text_input_border_style = InputDecoration(
   border: OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(8.0)),
       borderSide:  BorderSide(color: SU_border_color)
+  ),
+  focusedBorder: OutlineInputBorder(
+    borderRadius: BorderRadius.all(Radius.circular(8.0)),
+    borderSide:  BorderSide(color: Colors.grey, width: 2),
+  ),
+);
+
+const input_text_border_style =  OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(8.0)),
+      borderSide:  BorderSide(color: SU_border_color),
+);
+
+const input_enabled_border_style =  OutlineInputBorder(
+    borderRadius: BorderRadius.all(Radius.circular(8.0)),
+    borderSide:  BorderSide(color: SU_border_color)
+);
+
+const input_text_error_border_style =  OutlineInputBorder(
+  borderRadius: BorderRadius.all(Radius.circular(8.0)),
+  borderSide:  BorderSide(color: SU_border_color),
+);
+
+var SU_text_input_number_border_style = InputDecoration(
+  border: OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(8.0)),
+      borderSide:  BorderSide(color: SU_border_color),
+  ),
+  prefixIcon: SizedBox(
+    width: 100,
+    child: Row(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Image.asset(
+            LS_Flag,
+            width: 22,
+            height: 16,
+          ),
+        ),
+        const Expanded(child: Text('+255  ', style: SU_text_input_style))
+      ],
+    ),
   ),
 );
 

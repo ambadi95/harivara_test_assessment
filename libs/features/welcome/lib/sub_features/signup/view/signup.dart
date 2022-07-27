@@ -1,4 +1,4 @@
-import 'package:config/Config.dart';
+
 import 'package:config/Styles.dart';
 import 'package:core/view/base_view.dart';
 import 'package:flutter/material.dart';
@@ -9,14 +9,16 @@ import 'package:welcome/welcome_module.dart';
 import 'package:widget_library/html/rich_text_description.dart';
 import 'package:widget_library/progress_bar/onboarding_progress_bar.dart';
 import 'package:widget_library/input_fields/input_field_with_label.dart';
+import 'package:widget_library/input_fields/input_number_field_with_label.dart';
 import 'package:widget_library/buttons/crayon_back_button.dart';
 import 'package:config/Colors.dart' as config_color;
 import 'package:get/get.dart';
 
 class SignUp extends StatefulWidget {
+  final String userType;
   static const viewPath = '${WelcomeModule.moduleIdentifier}/signup';
 
-  const SignUp({Key? key}) : super(key: key);
+  const SignUp({required this.userType,Key? key}) : super(key: key);
 
   @override
   State<SignUp> createState() => _SignUpState();
@@ -24,6 +26,8 @@ class SignUp extends StatefulWidget {
 
 class _SignUpState extends State<SignUp> {
   bool _isBtnEnabled = false;
+  String nidaNumberError = '';
+  String mobileNumberError = '';
   TextEditingController nidaNumber = TextEditingController();
   TextEditingController mobileNumber = TextEditingController();
 
@@ -33,21 +37,21 @@ class _SignUpState extends State<SignUp> {
         onStateListenCallback: (preState, newState) =>
             {_listenToStateChanges(context, newState)},
         setupViewModel: (coordinator) async {},
-        builder: (context, state, coordinator) => SafeArea(
-          child: Scaffold(
-            bottomNavigationBar: SizedBox(
-              height: 120,
-              child: Column(
-                children: [
-                  _carrierText(),
-                  const SizedBox(
-                    height: 23,
-                  ),
-                  _buildContinueButton(context, coordinator, state)
-                ],
-              ),
+        builder: (context, state, coordinator) => Scaffold(
+          bottomNavigationBar: SizedBox(
+            height: 120,
+            child: Column(
+              children: [
+                _carrierText(),
+                const SizedBox(
+                  height: 23,
+                ),
+                _buildContinueButton(context, coordinator, state)
+              ],
             ),
-            body: Column(
+          ),
+          body: SafeArea(
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 _buildTopContainer(context, coordinator),
@@ -140,7 +144,9 @@ class _SignUpState extends State<SignUp> {
       SignUpCoordinator coordinator) {
     return InputFieldWithLabel(
       label: label,
+      hintText: 'SU_title_hint'.tr,
       controller: controller,
+      errorText: nidaNumberError.tr,
       key: const Key('idNumberTextField'),
       inputFormatters: <TextInputFormatter>[
         FilteringTextInputFormatter.digitsOnly
@@ -148,54 +154,76 @@ class _SignUpState extends State<SignUp> {
       keyboardType: TextInputType.number,
       onChanged: (value) {
         _validateForm(coordinator);
+        if(nidaNumberError.isNotEmpty || nidaNumber.text.length > 12){
+          coordinator.isValidNidaNumber(nidaNumber.text);
+        }
       },
     );
   }
 
   Widget _buildLabelTextFieldMobNumber(String label,
       TextEditingController controller, SignUpCoordinator coordinator) {
-    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Text(label, style: SU_label_style),
-      const SizedBox(
-        height: 8,
-      ),
-      TextField(
-        key: const Key('idNumberTextField'),
-        controller: controller,
-        keyboardType: TextInputType.number,
-        textAlign: TextAlign.start,
-        autofocus: false,
-        showCursor: true,
-        inputFormatters: <TextInputFormatter>[
-          FilteringTextInputFormatter.digitsOnly
-        ],
-        style: SU_text_input_style,
-        decoration: InputDecoration(
-          prefixIcon: SizedBox(
-            width: 100,
-            child: Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Image.asset(
-                    LS_Flag,
-                    width: 22,
-                    height: 16,
-                  ),
-                ),
-                Text('+255  ', style: SU_text_input_style)
-              ],
-            ),
-          ),
-          border: const OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(8.0)),
-              borderSide: BorderSide(color: config_color.SU_border_color)),
-        ),
-        onChanged: (value) {
-          _validateForm(coordinator);
-        },
-      ),
-    ]);
+    return
+      InputNumberFieldWithLabel(
+      label: label,
+      controller: controller,
+      errorText: mobileNumberError.tr,
+      hintText: 'SU_subtitle_hint'.tr,
+      key: const Key('mobileNumberTextField'),
+      inputFormatters: <TextInputFormatter>[
+        FilteringTextInputFormatter.digitsOnly
+      ],
+      keyboardType: TextInputType.number,
+      onChanged: (value) {
+        _validateForm(coordinator);
+        if(mobileNumberError.isNotEmpty || mobileNumber.text.length > 9){
+          coordinator.isValidMobileNumber(mobileNumber.text);
+        }
+      },
+    );
+    //   Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+    //   Text(label, style: SU_label_style),
+    //   const SizedBox(
+    //     height: 8,
+    //   ),
+    //   TextField(
+    //     key: const Key('idNumberTextField'),
+    //     controller: controller,
+    //     keyboardType: TextInputType.number,
+    //     textAlign: TextAlign.start,
+    //     autofocus: false,
+    //     showCursor: true,
+    //     inputFormatters: <TextInputFormatter>[
+    //       FilteringTextInputFormatter.digitsOnly
+    //     ],
+    //     style: SU_text_input_style,
+    //     decoration: InputDecoration(
+    //       prefixIcon: SizedBox(
+    //         width: 100,
+    //         child: Row(
+    //           children: [
+    //             Padding(
+    //               padding: const EdgeInsets.all(16.0),
+    //               child: Image.asset(
+    //                 LS_Flag,
+    //                 width: 22,
+    //                 height: 16,
+    //               ),
+    //             ),
+    //             Text('+255  ', style: SU_text_input_style)
+    //           ],
+    //         ),
+    //       ),
+    //       border: const OutlineInputBorder(
+    //           borderRadius: BorderRadius.all(Radius.circular(8.0)),
+    //           borderSide: BorderSide(color: config_color.SU_border_color)),
+    //     ),
+    //     onChanged: (value) {
+    //       _validateForm(coordinator);
+    //     },
+    //   ),
+    // ]
+    //   );
   }
 
   Widget _carrierText() {
@@ -213,9 +241,12 @@ class _SignUpState extends State<SignUp> {
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
-        onTap: () {
-          if (_isBtnEnabled) {
-            coordinator.navigateToDetailsScreen();
+        onTap: () async{
+        coordinator.isValidNidaNumber(nidaNumber.text);
+        coordinator.isValidMobileNumber(mobileNumber.text);
+          if (_isBtnEnabled && coordinator.isValidNidaNumber(nidaNumber.text)) {
+            coordinator.navigateDestination(widget.userType);
+            await coordinator.continueToOtp(nidaNumber.text, mobileNumber.text);
           }
         },
         child: Container(
@@ -241,6 +272,12 @@ class _SignUpState extends State<SignUp> {
     state.maybeWhen(
         SignUpFormState: (isValid) {
           _isBtnEnabled = isValid;
+        },
+        nindaNumberError: (message){
+          nidaNumberError = message;
+        },
+        mobileNumberError: (message){
+          mobileNumberError = message;
         },
         orElse: () => null);
   }

@@ -27,7 +27,7 @@ dependencies:
   sqflite:
 
   config:
-    path: ../customer/config
+    path: ../../config
 
 
   crayon_payment_agent:

@@ -7,6 +7,7 @@ import 'package:welcome/sub_features/signup/view/signup.dart';
 import 'package:welcome/sub_features/welcome/view/welcome_screen.dart';
 import 'package:welcome/sub_features/welcome_back/view/welcome_back.dart';
 
+import '../sub_features/agent_details/view/agent_details.dart';
 import '../sub_features/welcome/data_model/welcome_model.dart';
 
 class WelcomeRouteManager extends IRouteManager {
@@ -19,13 +20,18 @@ class WelcomeRouteManager extends IRouteManager {
           welcomeScreenArgs: arguments,
         );
       case SignUp.viewPath :
-          return const SignUp();
+        var arguments = settings.arguments as String;
+          return SignUp(userType: arguments,);
       case DetailsScreen.viewPath :
-        return const DetailsScreen();
+        var arguments = settings.arguments as String;
+        return DetailsScreen(userType: arguments,);
       case EnrollmentSuccessScreen.viewPath :
         return const EnrollmentSuccessScreen();
       case CrayonWelcomBackScreen.viewPath :
         return const CrayonWelcomBackScreen();
+      case AgentDetailsScreen.viewPath :
+        var arguments = settings.arguments as String;
+        return AgentDetailsScreen(userType: arguments,);
       default:
         throw UnimplementedError();
     }

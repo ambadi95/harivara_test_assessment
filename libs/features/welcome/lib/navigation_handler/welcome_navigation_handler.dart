@@ -10,6 +10,7 @@ import 'package:passcode/sub_features/passcode/view/passcode.dart';
 import 'package:shared_data_models/passcode/passcode_screen_args.dart';
 import 'package:shared_data_models/passcode/passcode_verification_type.dart';
 import 'package:verifyotp/verifyotp/view/verifyotp.dart';
+import 'package:welcome/sub_features/agent_details/view/agent_details.dart';
 import 'package:welcome/sub_features/details/view/details.dart';
 import 'package:welcome/sub_features/signup/view/signup.dart';
 import 'package:widget_library/helpers/error/helper/error_helper.dart';
@@ -25,10 +26,11 @@ class WelcomeNavigationHandler with ErrorHandler {
     _navigationManager.goBack();
   }
 
-  Future<void> navigateToSignUpScreen() async {
+  Future<void> navigateToSignUpScreen(String userType) async {
     await _navigationManager.navigateTo(
       SignUp.viewPath,
       const NavigationType.push(),
+      arguments: userType
     );
   }
 
@@ -39,7 +41,7 @@ class WelcomeNavigationHandler with ErrorHandler {
     );
   }
 
-  Future<void> openForNewPasscode() async {
+  Future<void> openForNewPasscode(String userType) async {
     var arguments = PasscodeScreenArgs(
       'PC_create_passcode',
       'PC_passcode_message',
@@ -49,6 +51,7 @@ class WelcomeNavigationHandler with ErrorHandler {
       PassCodeVerificationType.create,
       false,
       '',
+      userType
     );
 
     _navigationManager.navigateTo(
@@ -80,25 +83,36 @@ class WelcomeNavigationHandler with ErrorHandler {
     );
   }
 
-  Future<void> navigateToLogin() async {
+  Future<void> navigateToLogin(String userType) async {
     await _navigationManager.navigateTo(
       Login.viewPath,
       const NavigationType.push(),
+      arguments: userType
     );
   }
 
-  Future<void> navigateToOtpScreen() async {
+  Future<void> navigateToAgentDetailScreen(String userType) async {
+    await _navigationManager.navigateTo(
+      AgentDetailsScreen.viewPath,
+      const NavigationType.push(),
+      arguments: userType
+    );
+  }
+
+  Future<void> navigateToOtpScreen(String userType) async {
     var arguments = OtpScreenArgs(
         'OTP Verification',
-        'An OTP will be send to your mobile number (ending with XXXXX)',
-        'welcomeModule/details',
+        'VO_otp_verification_description',
+        userType == 'Customer' ? 'welcomeModule/details' : 'welcomeModule/agentDetails',
         true,
         2,
         OtpVerificationType.mobile,
         '',
         6,
         '1234567890',
-        false);
+        false,
+        userType,
+    );
 
     _navigationManager.navigateTo(
       CrayonVerifyOtpScreen.viewPath,

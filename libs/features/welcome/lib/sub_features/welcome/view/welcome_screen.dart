@@ -32,6 +32,14 @@ class CrayonWelcomScreen extends StatefulWidget {
       'Customer',
     ),
   );
+
+  factory CrayonWelcomScreen.forMerchantApp() => CrayonWelcomScreen(
+    welcomeScreenArgs: WelcomeScreenArgs(
+      '',
+      '',
+      'Agent',
+    ),
+  );
 }
 
 class _CrayonWelcomScreenState extends State<CrayonWelcomScreen> {
@@ -149,7 +157,8 @@ Widget _buildNonSignedInUI(
 
   Widget _buildTitle(BuildContext context) {
     return Text('OB_WelcomeTitle'.tr,
-        style: WELCOME_HEADING_STYLE
+        style: WELCOME_HEADING_STYLE,
+      textAlign: TextAlign.center,
     );
   }
 
@@ -186,7 +195,7 @@ Widget _buildNonSignedInUI(
       ) {
     return GestureDetector(
       onTap: (){
-        welcomeCoordinator.navigateToSignUpScreen();
+        welcomeCoordinator.navigateToSignUpScreen(widget.welcomeScreenArgs.userType);
       },
         child: Container(
           height: 50,
@@ -210,7 +219,7 @@ Widget _buildNonSignedInUI(
       ) {
     return InkWell(
       onTap: (){
-        welcomeCoordinator.navigateToLogin();
+        welcomeCoordinator.navigateToLogin(widget.welcomeScreenArgs.userType);
       },
       child: Container(
         height: 50,

@@ -9,6 +9,7 @@ class PasscodeScreenArgs {
   final PassCodeVerificationType passCodeVerificationType;
   final bool isForgotPassword;
   final String initialPasscode;
+  final String userType;
 
   PasscodeScreenArgs(
     this.title,
@@ -19,5 +20,6 @@ class PasscodeScreenArgs {
     this.passCodeVerificationType,
     this.isForgotPassword,
     this.initialPasscode,
+      this.userType,
   );
 }
