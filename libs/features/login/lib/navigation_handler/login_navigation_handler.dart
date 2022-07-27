@@ -30,7 +30,9 @@ class LoginNavigationHandler with ErrorHandler {
         '',
         6,
         '1234567890',
-        false);
+        false,
+        'userType'
+    );
 
     _navigationManager.navigateTo(
       CrayonVerifyOtpScreen.viewPath,

@@ -88,7 +88,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
       }
 
 
-  Future<void> onVerifyPasscode(String passCode,) async {
+  Future<void> onVerifyPasscode(String passCode,String userType) async {
     var currentState = state as VerifyOtpStateReady;
     switch (currentState.otpVerificationType) {
 
@@ -97,6 +97,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
           currentState.initialPasscode,
           passCode,
           currentState.destinationPath,
+          userType,
         );
         break;
         case OtpVerificationType.retry:
@@ -104,6 +105,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
           currentState.initialPasscode,
           passCode,
           currentState.destinationPath,
+            userType,
         );
         break;
 
@@ -116,15 +118,21 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
       String oldPassCode,
       String newPasscode,
       String destinationPath,
+      String userType
       ) async {
     // var currentState = state as VerifyOtpStateReady;
     //
-    onVerifyPasscode(newPasscode);
-    navigateToDestinationPath( destinationPath);
+   // onVerifyPasscode(newPasscode);
+    navigateToDestinationPath(destinationPath, userType);
   }
 
-  Future<void> navigateToDestinationPath(String destinationPath) async {
-    _navigationHandler.navigateToDestinationPath(destinationPath);
+  Future<void> navigateToDestinationPath(String destinationPath, String userType) async {
+    if(userType == 'Customer'){
+      _navigationHandler.navigateToDestinationPath(destinationPath, userType);
+    }else{
+    _navigationHandler.openForNewPasscode(userType);
+    }
+
   }
 
   Future<void> goBack() async {

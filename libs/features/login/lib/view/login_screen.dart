@@ -1,6 +1,4 @@
 import 'package:config/Colors.dart';
-import 'package:config/Config.dart';
-import 'package:config/Styles.dart';
 import 'package:core/view/base_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -9,6 +7,7 @@ import 'package:widget_library/app_bars/crayon_payment_app_bar_attributes.dart';
 import 'package:widget_library/app_bars/crayon_payment_app_bar_button_type.dart';
 import 'package:widget_library/buttons/docked_button.dart';
 import 'package:widget_library/dimensions/crayon_payment_dimensions.dart';
+import 'package:widget_library/input_fields/input_field_with_label.dart';
 import 'package:widget_library/input_fields/input_number_field_with_label.dart';
 import 'package:widget_library/page_header/text_ui_data_model.dart';
 import 'package:widget_library/scaffold/crayon_payment_scaffold.dart';
@@ -20,16 +19,17 @@ import '../viewmodel/login_coordinator.dart';
 import 'package:get/get.dart';
 
 class Login extends StatelessWidget {
-  factory Login.forCustomerApp() => Login();
+  final String userType;
   final String _identifier = 'login';
   static const String viewPath = '${LoginModule.moduleIdentifier}/login';
 
-  Login({Key? key}) : super(key: key);
+  Login({Key? key, required this.userType}) : super(key: key);
 
   bool isBtnEnabled = false;
   String mobileNumberError = '';
   TextEditingController mobileNumber = TextEditingController();
   TextEditingController passcodeController = TextEditingController();
+  TextEditingController agentIdController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -56,9 +56,10 @@ class Login extends StatelessWidget {
           children: [
             _buildTitle(context),
             dynamicHSpacer(36),
-            _buildLabelTextFieldMobNumber(context, 'SU_mobile_no_label'.tr, coordinator),
+            _buildLabelTextFieldMobNumber(context, 'LS_Mobile'.tr, coordinator),
             dynamicHSpacer(48),
-            _passcodeWidget(context, coordinator),
+           userType =='Customer'?  _passcodeWidget(context, coordinator) :
+           _buildLabelTextField('SU_mobile_no_label'.tr,agentIdController, TextInputType.text,coordinator,'', 'SU_subtitle_hint', true),
             const Spacer(),
             actionButton(coordinator),
             dynamicHSpacer(20),
@@ -82,7 +83,7 @@ class Login extends StatelessWidget {
       label: label,
       controller: mobileNumber,
       errorText: mobileNumberError.tr,
-      hintText: 'SU_subtitle_hint'.tr,
+      hintText: 'LS_mobile_hint_text'.tr,
       key: const Key('mobileNumberTextField'),
       inputFormatters: <TextInputFormatter>[
         FilteringTextInputFormatter.digitsOnly
@@ -94,6 +95,27 @@ class Login extends StatelessWidget {
         }
       },
     );
+  }
+
+  Widget _buildLabelTextField(String label, TextEditingController controller,
+      TextInputType textInputType, LoginCoordinator coordinator, String errorText, String hint, bool enabled) {
+    return Padding(
+        padding: const EdgeInsets.only(bottom: 34),
+        child: InputFieldWithLabel(
+          label: label,
+          controller: controller,
+          errorText: errorText.tr,
+          enabled: enabled,
+          hintText: hint.tr,
+          key: const Key('detailsTextField'),
+          keyboardType: textInputType,
+          onChanged: (value) {
+          //  _validateForm(coordinator);
+            // if(errorText.isNotEmpty){
+            //
+            // }
+          },
+        ));
   }
 
   Widget actionButton(LoginCoordinator coordinator) {

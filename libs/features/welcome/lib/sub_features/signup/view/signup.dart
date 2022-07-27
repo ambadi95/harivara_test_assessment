@@ -15,9 +15,10 @@ import 'package:config/Colors.dart' as config_color;
 import 'package:get/get.dart';
 
 class SignUp extends StatefulWidget {
+  final String userType;
   static const viewPath = '${WelcomeModule.moduleIdentifier}/signup';
 
-  const SignUp({Key? key}) : super(key: key);
+  const SignUp({required this.userType,Key? key}) : super(key: key);
 
   @override
   State<SignUp> createState() => _SignUpState();
@@ -244,7 +245,7 @@ class _SignUpState extends State<SignUp> {
         coordinator.isValidNidaNumber(nidaNumber.text);
         coordinator.isValidMobileNumber(mobileNumber.text);
           if (_isBtnEnabled && coordinator.isValidNidaNumber(nidaNumber.text)) {
-            coordinator.navigateToDetailsScreen();
+            coordinator.navigateDestination(widget.userType);
             await coordinator.continueToOtp(nidaNumber.text, mobileNumber.text);
           }
         },
