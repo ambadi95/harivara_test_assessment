@@ -3,5 +3,15 @@
   "OB_WelcomeSubTitle" : "Your dream digital bank y9bank.com",
   "OB_SignIn" : "Sign In",
   "OB_SignUp" : "Sign Up",
-  "OB_Lang" : "EN"
+  "OB_Lang" : "EN",
+
+
+  "HS_Agent_Id" : "Y9 Agent Id",
+  "HS_TotalOnBoarderCustomers" : "Total Onboarded Customers",
+  "HS_PendingCustomerRequests" : "Pending Customer Request",
+  "HS_Customer_OnBoarding" : "Customer Onboarding",
+  "HS_Customer_DeviceSwap" : "Device swap / repair",
+  "HS_Customer_AgentSupport" : "Agent Support"
+
+
 }

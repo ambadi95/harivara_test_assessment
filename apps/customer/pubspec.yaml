@@ -29,6 +29,10 @@ dependencies:
   config:
     path: ../customer/config
 
+
+  crayon_payment_agent:
+    path: ../agent/
+
   core:
     path: ../../libs/core/
 
@@ -64,6 +68,9 @@ dependencies:
 
   splash:
     path: ../../libs/features/splash
+
+  home:
+    path: ../../libs/features/home
 
 
 

@@ -102,5 +102,13 @@
 
 
   "SP_ni": "ni",
-  "SP_bora": " Bora"
+  "SP_bora": " Bora",
+
+
+  "HS_Agent_Id" : "Y9 Agent Id",
+  "HS_TotalOnBoarderCustomers" : "Total Onboarded\nCustomers",
+  "HS_PendingCustomerRequests" : "Pending Customer\nRequest",
+  "HS_Customer_OnBoarding" : "Customer Onboarding",
+  "HS_Customer_DeviceSwap" : "Device swap",
+  "HS_Customer_AgentSupport" : "Agent Support"
 }

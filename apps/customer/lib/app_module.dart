@@ -38,6 +38,7 @@ import 'package:task_manager/task_manager.dart';
 import 'package:verifyotp/navigation_handler/verifyotp_route_manager.dart';
 import 'package:verifyotp/verifyotp_module.dart';
 import 'package:splash/splash_module.dart';
+import 'package:home/home/home_module.dart';
 import 'package:welcome/navigation_handler/welcome_route_manager.dart';
 import 'package:welcome/welcome_module.dart';
 import 'package:widget_library/app_mobile_widgets.dart';
@@ -94,6 +95,7 @@ class AppModule {
     SplashModule.registerDependencies();
     WelcomeModule.registerDependencies();
     PasscodeModule.registerDependencies();
+    HomeModule.registerDependencies();
     VerifyOtpModule.registerDependencies();
 
     AgentNearByModule.registerDependencies();
