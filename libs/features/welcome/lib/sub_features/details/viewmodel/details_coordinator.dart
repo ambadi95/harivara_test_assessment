@@ -46,8 +46,8 @@ class DetailsCoordinator extends BaseViewModel<DetailsState>{
     state =DetailsState.DetailsFormState(_validateForm(name, dob,gender,profession,mobNumber,emailId,address,poBox,region,district));
   }
 
-  Future navigateToCreatePasscodeScreen() async {
-    _navigationHandler.openForNewPasscode();
+  Future navigateToCreatePasscodeScreen(String userType) async {
+    _navigationHandler.openForNewPasscode(userType);
   }
 
   bool isValidName(String name){

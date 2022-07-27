@@ -7,9 +7,7 @@ class EnrollmentSuccessCoordinator extends BaseViewModel<EnrollmentSuccessState>
 
   EnrollmentSuccessCoordinator( this._navigationHandler) : super(const EnrollmentSuccessState.initialState()) ;
 
-  Future navigateToCreatePasscodeScreen() async {
-    _navigationHandler.openForNewPasscode();
-  }
+
 
   Future navigateToAgentNearBy() async {
     _navigationHandler.navigateToNearByAgent();

@@ -11,6 +11,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/internacionalization.dart';
 import 'package:welcome/sub_features/agent_details/view/agent_details.dart';
+import 'package:welcome/sub_features/welcome/view/welcome_screen.dart';
 import 'package:welcome/sub_features/agent_enrollment/view/agent_enrollment.dart';
 import 'package:widget_library/theme/crayon_payment_theme.dart';
 import 'package:flutter_riverpod/src/framework.dart';

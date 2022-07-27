@@ -22,7 +22,7 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState>{
   bool isMobileNumberValid(String mobileNumber){
     var result = _loginUseCase.isValidMobileNumber(mobileNumber);
     if(!result){
-      state = const LoginState.mobileNumberError('SU_subtitle_error_text');
+      state = const LoginState.mobileNumberError('LS_mobile_error_text');
     }else {
       state = const LoginState.mobileNumberError('');
     }

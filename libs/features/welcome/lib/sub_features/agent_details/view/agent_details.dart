@@ -17,8 +17,9 @@ import '../state/agent_details_state.dart';
 
 class AgentDetailsScreen extends StatefulWidget {
   static const viewPath = '${WelcomeModule.moduleIdentifier}/agentDetails';
+  final String userType;
 
-  const AgentDetailsScreen({Key? key}) : super(key: key);
+  const AgentDetailsScreen({Key? key, required this.userType}) : super(key: key);
 
   @override
   State<AgentDetailsScreen> createState() => _AgentDetailsScreenState();
@@ -248,7 +249,7 @@ class _AgentDetailsScreenState extends State<AgentDetailsScreen> {
         coordinator.isValidGender(gender.text);
         coordinator.isValidDob(dob.text);
         if (_isBtnEnabled && coordinator.isValidEmail(emailId.text) &&coordinator.isValidName(name.text) ) {
-          coordinator.navigateToCreatePasscodeScreen();
+          coordinator.navigateToOtpScreen(widget.userType);
         }
       },
       child: Container(

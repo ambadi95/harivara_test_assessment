@@ -8,7 +8,8 @@ class LoginRouteManager extends IRouteManager {
   Widget getView(RouteSettings settings) {
     switch (settings.name) {
       case Login.viewPath:
-        return Login();
+        var arguments = settings.arguments as String;
+        return Login(userType: arguments,);
       default:
       // TODO: implement getView
         throw Exception('Route ${settings.name} not found');

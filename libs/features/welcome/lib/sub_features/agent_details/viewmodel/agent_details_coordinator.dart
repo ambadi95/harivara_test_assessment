@@ -39,8 +39,8 @@ class AgentDetailsCoordinator extends BaseViewModel<AgentDetailsState>{
     state =AgentDetailsState.DetailsFormState(_validateForm(name, dob,gender,mobNumber,emailId));
   }
 
-  Future navigateToCreatePasscodeScreen() async {
-    _navigationHandler.openForNewPasscode();
+  Future navigateToOtpScreen(String userType) async {
+    _navigationHandler.navigateToOtpScreen(userType);
   }
 
   Future navigateToBottomSheet() async {
