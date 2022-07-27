@@ -1,7 +1,128 @@
 {
-  "OB_WelcomeTitle" : "Welcome to the Y9 app",
-  "OB_WelcomeSubTitle" : "Your dream digital bank y9bank.com",
-  "OB_SignIn" : "Sign In",
-  "OB_SignUp" : "Sign Up",
-  "OB_Lang" : "SW"
+  "OB_WelcomeTitle" : "Karibu na Y9",
+  "OB_WelcomeSubTitle" : "Ndoto yako ya benki ya kidijitali",
+  "OB_WelcomeThirdTitle" : "y9bank.com",
+  "OB_SignIn" : "Weka sahihi",
+  "OB_SignUp" : "Jisajili",
+  "OB_Lang" : "SW",
+
+
+  "DO_Title": "Chaguo za Kifaa",
+  "DO_Search": "Tafuta kwa Jina / Chapa / bei / hifadhi / nk.",
+
+  "LS_Login" : "Ingia kwa yako Y9 \nprogramu",
+  "LS_Mobile" : "Namba ya simu ya mkononi",
+  "LS_Passcode" : "Nambari ya siri",
+  "LS_SignIn" : "Weka sahihi",
+
+
+  "SU_title" : "Weka Nambari ya NIDA",
+  "SU_subtitle" : "Kwa kujisajili kwenye Y9 Pay, unakubali Sheria na Masharti.",
+  "SU_ID_no_label" : "Namba ya NIDA",
+  "SU_mobile_no_label" : "Namba ya simu ya mkononi",
+  "SU_carrier_message" : "Huenda ukatozwa ada za mtoa huduma za SMS.",
+  "SU_button_text" : "Endelea",
+  "SU_title_hint" : "Weka Nambari ya NIDA",
+  "SU_subtitle_hint" : "Weka Nambari ya Simu\n",
+  "SU_title_error_text" : "Nambari ya NINDA si sahihi",
+  "SU_subtitle_error_text" : "Nambari ya Simu batili",
+
+  "DV_title" : "Ingiza Maelezo ya Kibinafsi",
+  "DV_name_label" : "Jina",
+  "DV_name_error_text" : "Jina Batili",
+  "DV_name_hint_text" : "Ingiza Jina",
+  "DV_dob_label" : "Tarehe ya kuzaliwa",
+  "DV_dob_error_text" : "DoB batili",
+  "DV_dob_hint_text" : "Ingiza DoB",
+  "DV_gender_label" : "Jinsia",
+  "DV_gender_error_text" : "Jinsia Batili",
+  "DV_gender_hint_text" : "Ingiza Jinsia",
+  "DV_profession_label" : "Taaluma",
+  "DV_profession_error_text" : "Taaluma Batili",
+  "DV_profession_hint_text" : "Ingiza Taaluma",
+  "DV_contact_no_label" : "Namba ya simu ya mkononi",
+  "DV_email_label" : "Kitambulisho cha barua pepe",
+  "DV_email_error_text" : "Barua pepe Batili",
+  "DV_email_hint_text" : "Weka Barua Pepe",
+  "DV_address_label" : "Anwani",
+  "DV_address_error_text" : "Anwani Batili",
+  "DV_address_hint_text" : "Weka Anwani",
+  "DV_po_box_label" : "P.O. Sanduku",
+  "DV_poBox_error_text" : "P.O.Box batili",
+  "DV_poBox_hint_text" : "Ingiza P.O.Box",
+  "DV_region_label" : "Mkoa",
+  "DV_region_error_text" : "Mkoa Batili",
+  "DV_region_hint_text" : "Ingiza Mkoa",
+  "DV_district_label" : "Wilaya",
+  "DV_district_error_text" : "Wilaya Batili",
+  "DV_district_hint_text" : "Ingiza Wilaya",
+
+
+
+  "HS_GoodMorning": "Habari za asubuhi",
+  "HS_YourBalance": "Mizani Yako",
+  "HS_AccountId": "Y9 Kitambulisho cha Akaunti",
+  "HS_LoadWallet": "Pakia Wallet",
+  "HS_SendMoney": "Tuma Pesa",
+  "HS_CollectMoney": "Kusanya Pesa",
+  "HS_LoanRepayment": "Urejeshaji wa mkopo",
+  "HS_InviteYourFriends": "Waalike marafiki zako Y9",
+  "HS_InviteFriends": "Alika Marafiki kwenye Y9 na upate zawadi rafiki yako atakapotuma malipo yake ya kwanza.",
+  "HS_ReferalCode": "Msimbo wa Rufaa",
+  "HS_Invite": "Alika",
+
+  "DV_button_text" : "Endelea",
+
+  "PC_create_passcode" : "Unda nambari mpya ya siri",
+  "PC_passcode_message" : "Hii itatumika kuingia",
+  "PC_re_enter_passcode" : "Ingiza tena nambari mpya ya siri",
+  "PC_confirm_passcode" : "Thibitisha nambari ya siri",
+  "PC_passcode_does_not_match" : "Nambari ya siri hailingani.",
+  "PC_passcode_repetitive_message" : "Nambari ya siri haipaswi kuwa na nambari zinazojirudia, au mifumo ya kawaida kama 123456.",
+  "PC_passcode_tip" : "Kidokezo: Epuka siku za kuzaliwa, na nambari zinazojirudia au zinazofuatana.",
+
+  "ES_welcome_Text" : "HII %{Ennamual Jisula | click}% hongera kwa kujiandikisha kwa Y9",
+  "ES_enroll_id" : "Kitambulisho chako cha Kujiandikisha %{“XXXXXX” | click}%",
+  "ES_near_agent_button" : "Tazama Karibu na Wakala",
+  "ES_device_option" : "Gundua Chaguo za Kifaa",
+
+
+
+  "WB_WelcomeBack": "Karibu tena Y9",
+  "WB_EnterPassCode": "Weka Nambari ya siri",
+
+
+
+  "AN_Title" : "Wakala wa karibu",
+  "AN_Search" : "Tafuta kwa Jina / Kitambulisho/ Mkoa / Wilaya/ Po#",
+  "AN_AgentName" : "Y9 Kitambulisho cha wakala:",
+  "AN_Call" : "Wito",
+
+
+
+  "DD_product" : "Maelezo ya bidhaa",
+  "DD_Brand" : "Chapa",
+  "DD_ModelNumber" : "Nambari ya Mfano",
+  "DD_HumanInterfaceInput" : "Ingizo la Kiolesura cha Binadamu",
+  "DD_WirelessCarrier" : "Mtoa huduma wa Wireless",
+  "DD_CellularTechnology" : "Teknolojia ya Simu",
+  "DD_OperatingSystem" : "Mfumo wa Uendeshaji",
+  "DD_MemoryStorage" : "Kumbukumbu / Hifadhi",
+  "DD_WaterResistanceLevel" : "Kiwango cha Upinzani wa Maji",
+  "DD_Color" : "Rangi",
+  "DD_Price" : "Bei",
+  "DD_EMIMonth" : "EMI/ Mwezi",
+  "DD_Interest" : "Hamu %",
+  "DD_TotalAmountPaid" : "Jumla ya Kiasi cha Kulipwa",
+
+
+  "VO_OtpVerification": "Uthibitishaji wa OTP",
+  "VO_otp_verification_description" : "OTP itatumwa kwa nambari yako ya simu (kumalizia na XXXXX)",
+  "VO_DidNotGetCode": "Hukupata nambari ya kuthibitisha?",
+  "VO_ResendNow":"Tuma Upya Sasa",
+  "VO_Incorrect_OTP":"OTP si sahihi. Tafadhali jaribu tena.",
+  "VO_Incorrect_OTP_Title":"OTP si sahihi",
+  "VO_Incorrect_OTP_Alert_Msg":"Umetumia majaribio yako yote. Tafadhali jisajili tena.",
+  "VO_resend_otp" : "Tuma tena baada ya sekunde %s."
+
 }

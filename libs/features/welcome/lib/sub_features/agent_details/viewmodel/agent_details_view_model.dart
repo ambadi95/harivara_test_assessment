@@ -1,4 +1,4 @@
-class DetailsViewModel{
+class AgentDetailsViewModel{
 
   bool isValidName(String name) {
     var reg = RegExp(r"^\s*([A-Za-z]{1,}([\.,] |[-']| ))+[A-Za-z]+\.?\s*$");

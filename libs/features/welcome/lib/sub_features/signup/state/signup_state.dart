@@ -9,4 +9,12 @@ class SignUpState with _$SignUpState{
   const factory SignUpState.SignUpFormState(
       bool isValid,
       ) = SignUpFormState;
+
+    const factory SignUpState.nindaNumberError(
+        String nindaNumberError
+        ) = NindaNumberError;
+
+  const factory SignUpState.mobileNumberError(
+      String nindaNumberError
+      ) = MobileNumberError;
 }

@@ -20,14 +20,38 @@ class SignUpCoordinator extends BaseViewModel<SignUpState>{
   }
 
   bool _validateForm(String nidaNo, String mobNumber){
-      var isnidaNumberValid = nidaNo.isNotEmpty;
-      var ismobileNoValid = mobNumber.length == 10;
+      var isnidaNumberValid = _signupUseCase.isValidNINDAnumber(nidaNo);
+      var ismobileNoValid = _signupUseCase.isValidMobileNumber(mobNumber);
       var _isValid = isnidaNumberValid && ismobileNoValid;
       return _isValid;
   }
 
   void validateForm(String nidaNo, String mobNumber){
     state =SignUpState.SignUpFormState(_validateForm(nidaNo, mobNumber));
+  }
+
+  bool isValidNidaNumber(String nidaNumber){
+    bool result = _signupUseCase.isValidNINDAnumber(nidaNumber);
+    if(!result){
+      state = const SignUpState.nindaNumberError('SU_title_error_text');
+    }else{
+      state = const SignUpState.nindaNumberError('');
+    }
+    return result;
+  }
+
+  bool isValidMobileNumber(String mobileNumber){
+    bool result = _signupUseCase.isValidMobileNumber(mobileNumber);
+    if(!result){
+      state = const SignUpState.mobileNumberError('SU_subtitle_error_text');
+    }else{
+      state = const SignUpState.mobileNumberError('');
+    }
+    return result;
+  }
+
+  Future<void> continueToOtp(String nidaNumber, String mobileNumber) async{
+     await _signupUseCase.saveDetails(nidaNumber,'+255 ' + mobileNumber);
   }
 
 }

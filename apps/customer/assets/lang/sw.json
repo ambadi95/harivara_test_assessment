@@ -22,18 +22,41 @@
   "SU_mobile_no_label" : "Namba ya simu ya mkononi",
   "SU_carrier_message" : "Huenda ukatozwa ada za mtoa huduma za SMS.",
   "SU_button_text" : "Endelea",
+  "SU_title_hint" : "Weka Nambari ya NIDA",
+  "SU_subtitle_hint" : "Weka Nambari ya Simu\n",
+  "SU_title_error_text" : "Nambari ya NINDA si sahihi",
+  "SU_subtitle_error_text" : "Nambari ya Simu batili",
 
   "DV_title" : "Ingiza Maelezo ya Kibinafsi",
   "DV_name_label" : "Jina",
+  "DV_name_error_text" : "Jina Batili",
+  "DV_name_hint_text" : "Ingiza Jina",
   "DV_dob_label" : "Tarehe ya kuzaliwa",
+  "DV_dob_error_text" : "DoB batili",
+  "DV_dob_hint_text" : "Ingiza DoB",
   "DV_gender_label" : "Jinsia",
+  "DV_gender_error_text" : "Jinsia Batili",
+  "DV_gender_hint_text" : "Ingiza Jinsia",
   "DV_profession_label" : "Taaluma",
+  "DV_profession_error_text" : "Taaluma Batili",
+  "DV_profession_hint_text" : "Ingiza Taaluma",
   "DV_contact_no_label" : "Namba ya simu ya mkononi",
   "DV_email_label" : "Kitambulisho cha barua pepe",
+  "DV_email_error_text" : "Barua pepe Batili",
+  "DV_email_hint_text" : "Weka Barua Pepe",
   "DV_address_label" : "Anwani",
+  "DV_address_error_text" : "Anwani Batili",
+  "DV_address_hint_text" : "Weka Anwani",
   "DV_po_box_label" : "P.O. Sanduku",
+  "DV_poBox_error_text" : "P.O.Box batili",
+  "DV_poBox_hint_text" : "Ingiza P.O.Box",
   "DV_region_label" : "Mkoa",
+  "DV_region_error_text" : "Mkoa Batili",
+  "DV_region_hint_text" : "Ingiza Mkoa",
   "DV_district_label" : "Wilaya",
+  "DV_district_error_text" : "Wilaya Batili",
+  "DV_district_hint_text" : "Ingiza Wilaya",
+
 
 
   "HS_GoodMorning": "Habari za asubuhi",
@@ -94,11 +117,12 @@
 
 
   "VO_OtpVerification": "Uthibitishaji wa OTP",
+  "VO_otp_verification_description" : "OTP itatumwa kwa nambari yako ya simu (kumalizia na XXXXX)",
   "VO_DidNotGetCode": "Hukupata nambari ya kuthibitisha?",
   "VO_ResendNow":"Tuma Upya Sasa",
-  "VO_Incorrect_OTP":"Incorrect OTP. Please try again.",
-  "VO_Incorrect_OTP_Title":"Incorrect OTP",
-  "VO_Incorrect_OTP_Alert_Msg":"You have used all your attempts. Please sign up again.",
-  "VO_resend_otp" : "Resend in %s seconds."
+  "VO_Incorrect_OTP":"OTP si sahihi. Tafadhali jaribu tena.",
+  "VO_Incorrect_OTP_Title":"OTP si sahihi",
+  "VO_Incorrect_OTP_Alert_Msg":"Umetumia majaribio yako yote. Tafadhali jisajili tena.",
+  "VO_resend_otp" : "Tuma tena baada ya sekunde %s."
 
 }
