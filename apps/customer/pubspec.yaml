@@ -62,6 +62,9 @@ dependencies:
   verifyotp:
     path: ../../libs/features/verifyotp
 
+  splash:
+    path: ../../libs/features/splash
+
 
 
 dev_dependencies:
