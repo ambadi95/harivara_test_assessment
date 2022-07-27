@@ -1,5 +1,7 @@
 import 'package:core/navigation/navigation_manager.dart';
 import 'package:core/navigation/navigation_type.dart';
+import 'package:core/sheets/data_model/button_options.dart';
+import 'package:core/sheets/state/crayon_payment_bottom_sheet_state.dart';
 import 'package:passcode/sub_features/passcode/view/passcode.dart';
 import 'package:shared_data_models/otp/otp_screen_args.dart';
 import 'package:shared_data_models/otp/otp_verification_type.dart';
@@ -15,6 +17,7 @@ import 'package:welcome/sub_features/signup/view/signup.dart';
 import 'package:widget_library/helpers/error/helper/error_helper.dart';
 import 'package:device_option/view/device_option_screen.dart';
 import 'package:agent_nearby/view/agent_nearby_screen.dart';
+import 'package:widget_library/icons/crayon_payment_bottom_sheet_icon.dart';
 
 class WelcomeNavigationHandler with ErrorHandler {
   final NavigationManager _navigationManager;
@@ -105,6 +108,27 @@ class WelcomeNavigationHandler with ErrorHandler {
       const NavigationType.push(),
       preventDuplicates: false,
       arguments: arguments,
+    );
+  }
+
+  Future<void> navigateToAgentEnrollmentBottomSheet(String message,) async {
+    final CrayonPaymentBottomSheetIcon icon = CrayonPaymentBottomSheetSuccessIcon();
+    final CrayonPaymentBottomSheetState infoState = CrayonPaymentBottomSheetState.infoState(
+      buttonOptions: [
+        //ButtonOptions('Continue to the app', (){},false)
+      ],
+      bottomSheetIcon: icon,
+      title: 'Congratulations,\nAshish You have successfully Onboarded',
+      subtitle: "Your Y9 Agent ID",
+      additionalText: [
+        "Your Y9 Agent id has been sent successfully to your mobile number and Email ID"
+      ]
+    );
+
+    _navigationManager.navigateTo(
+      'bottomSheet/crayonPaymentBottomSheet',
+      const NavigationType.bottomSheet(),
+      arguments: infoState,
     );
   }
 

@@ -122,5 +122,10 @@
   "VO_Incorrect_OTP":"Incorrect OTP. Please try again.",
   "VO_Incorrect_OTP_Title":"Incorrect OTP",
   "VO_Incorrect_OTP_Alert_Msg":"You have used all your attempts. Please sign up again.",
-  "VO_resend_otp" : "Resend in %s seconds."
+  "VO_resend_otp" : "Resend in %s seconds.",
+
+  "AE_Message" : "Congratulations,\nAshish You have successfully Onboarded",
+  "AE_AgentId" : "Your Y9 Agent ID",
+  "AE_Description" : "Your Y9 Agent id has been sent successfully to your mobile number and Email ID",
+  "AE_Continue" : "Continue to the app"
 }

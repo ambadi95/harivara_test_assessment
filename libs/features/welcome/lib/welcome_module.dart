@@ -9,6 +9,7 @@ import 'package:task_manager/task_manager_impl.dart';
 import 'package:welcome/sub_features/agent_details/viewmodel/agent_details_coordinator.dart';
 import 'package:welcome/sub_features/agent_details/viewmodel/agent_details_usecase.dart';
 import 'package:welcome/sub_features/agent_details/viewmodel/agent_details_view_model.dart';
+import 'package:welcome/sub_features/agent_enrollment/viewmodel/agent_enrollment_coordinator.dart';
 import 'package:welcome/sub_features/details/viewmodel/details_usecase.dart';
 import 'package:welcome/sub_features/enrollment_success/viewmodel/enrollment_success_coordinator.dart';
 import 'package:welcome/sub_features/signup/viewmodel/signup_usecase.dart';
@@ -70,6 +71,12 @@ class WelcomeModule {
 
     DIContainer.container.registerFactory<EnrollmentSuccessCoordinator>(
           (container) => EnrollmentSuccessCoordinator(
+        WelcomeNavigationHandler(container.resolve<NavigationManager>()),
+      ),
+    );
+
+    DIContainer.container.registerFactory<AgentEnrollmentCoordinator>(
+          (container) => AgentEnrollmentCoordinator(
         WelcomeNavigationHandler(container.resolve<NavigationManager>()),
       ),
     );
