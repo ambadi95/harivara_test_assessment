@@ -28,7 +28,7 @@ dependencies:
 
 
   config:
-    path: ../customer/config
+    path: ../../config
 
   core:
     path: ../../libs/core/
