@@ -11,8 +11,7 @@ void main() async {
     [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown],
   );
   runApp(
-      Container()
-  );
+      Container(),);
 }
 
 

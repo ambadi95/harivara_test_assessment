@@ -10,8 +10,8 @@ void main() {
     testWidget = MaterialApp(
       home: Scaffold(
         body: ExpandDetailsInfoLine(
-          leftSide: 'leftSide',
-          rightSide: Text('rightSide'),
+          leftSideString: 'leftSide',
+          rightSideWidget: Text('rightSide'),
         ),
       ),
     );
@@ -19,10 +19,10 @@ void main() {
 
   testWidgets('should have all relevant widgets', (tester) async {
     // Arrange
-    final CrayonPaymentTextFinder = find.byType(CrayonPaymentText);
+    final crayonPaymentTextFinder = find.byType(CrayonPaymentText);
     // Act
     await tester.pumpWidget(testWidget);
     // Assert
-    expect(CrayonPaymentTextFinder, findsOneWidget);
+    expect(crayonPaymentTextFinder, findsOneWidget);
   });
 }
