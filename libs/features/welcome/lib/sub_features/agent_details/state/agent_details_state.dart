@@ -14,9 +14,9 @@ class AgentDetailsState with _$AgentDetailsState{
       String nameError
       ) = NameError;
 
-  const factory AgentDetailsState.getMobileNumber(
-      String mobileNumber
-      ) = GetMobileNumber;
+  const factory AgentDetailsState.mobileError(
+      String mobileError
+      ) = MobileError;
 
   const factory AgentDetailsState.emailError(
       String emailError

@@ -17,4 +17,8 @@ class SignUpState with _$SignUpState{
   const factory SignUpState.mobileNumberError(
       String nindaNumberError
       ) = MobileNumberError;
+
+  const factory SignUpState.agentIdError(
+      String agentIdError
+      ) = AgentIdError;
 }

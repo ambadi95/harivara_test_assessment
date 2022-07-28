@@ -1,37 +1,34 @@
 {
-
-
-
-
-  "OB_WelcomeTitle" : "Karibu na Y9",
+  "OB_WelcomeTitle" : "Karibu kwa Y9 Agent",
   "OB_WelcomeSubTitle" : "Ndoto yako ya benki ya kidijitali",
   "OB_WelcomeThirdTitle" : "y9bank.com",
   "OB_SignIn" : "Weka sahihi",
   "OB_SignUp" : "Jisajili",
   "OB_Lang" : "SW",
 
-
-  "DO_Title": "Chaguo za Kifaa",
-  "DO_Search": "Tafuta kwa Jina / Chapa / bei / hifadhi / nk.",
-
-  "LS_Login" : "Ingia kwa yako Y9 \nprogramu",
+  "LS_Login" : "Ingia kwa Y9 Yako \nWakala",
   "LS_Mobile" : "Namba ya simu ya mkononi",
+  "LS_mobile_error_text" : "Nambari ya Simu batili",
+  "LS_mobile_hint_text" : "Weka Nambari ya Simu",
+  "LS_agent_id" : "Kitambulisho cha wakala",
+  "LS_agent_id_error" : "Kitambulisho cha Wakala si Sahihi",
   "LS_Passcode" : "Nambari ya siri",
   "LS_SignIn" : "Weka sahihi",
 
 
-  "SU_title" : "Weka Nambari ya NIDA",
-  "SU_subtitle" : "Kwa kujisajili kwenye Y9 Pay, unakubali Sheria na Masharti.",
+  "SU_title" : "Weka Nambari yako ya NIDA & Kitambulisho cha Wakala",
+  "SU_subtitle" : "Kwa kujisajili kwenye Y9 Pay, unakubali \n%{Sheria na Masharti. | https://www.google.com}%.",
   "SU_ID_no_label" : "Namba ya NIDA",
   "SU_mobile_no_label" : "Namba ya simu ya mkononi",
   "SU_carrier_message" : "Huenda ukatozwa ada za mtoa huduma za SMS.",
   "SU_button_text" : "Endelea",
   "SU_title_hint" : "Weka Nambari ya NIDA",
-  "SU_subtitle_hint" : "Weka Nambari ya Simu\n",
+  "SU_subtitle_hint" : "Weka Kitambulisho cha Wakala wa Y9",
   "SU_title_error_text" : "Nambari ya NINDA si sahihi",
-  "SU_subtitle_error_text" : "Nambari ya Simu batili",
+  "SU_subtitle_error_text" : "Kitambulisho batili cha Wakala wa Y9",
 
   "DV_title" : "Ingiza Maelezo ya Kibinafsi",
+  "DV_subtitle" : "Thibitisha maelezo yako au usasishe ikiwa inahitajika",
   "DV_name_label" : "Jina",
   "DV_name_error_text" : "Jina Batili",
   "DV_name_hint_text" : "Ingiza Jina",
@@ -41,26 +38,11 @@
   "DV_gender_label" : "Jinsia",
   "DV_gender_error_text" : "Jinsia Batili",
   "DV_gender_hint_text" : "Ingiza Jinsia",
-  "DV_profession_label" : "Taaluma",
-  "DV_profession_error_text" : "Taaluma Batili",
-  "DV_profession_hint_text" : "Ingiza Taaluma",
   "DV_contact_no_label" : "Namba ya simu ya mkononi",
+  "DV_contact_no_error_text" : "Nambari ya Simu ya Mkononi si Sahihi",
   "DV_email_label" : "Kitambulisho cha barua pepe",
   "DV_email_error_text" : "Barua pepe Batili",
   "DV_email_hint_text" : "Weka Barua Pepe",
-  "DV_address_label" : "Anwani",
-  "DV_address_error_text" : "Anwani Batili",
-  "DV_address_hint_text" : "Weka Anwani",
-  "DV_po_box_label" : "P.O. Sanduku",
-  "DV_poBox_error_text" : "P.O.Box batili",
-  "DV_poBox_hint_text" : "Ingiza P.O.Box",
-  "DV_region_label" : "Mkoa",
-  "DV_region_error_text" : "Mkoa Batili",
-  "DV_region_hint_text" : "Ingiza Mkoa",
-  "DV_district_label" : "Wilaya",
-  "DV_district_error_text" : "Wilaya Batili",
-  "DV_district_hint_text" : "Ingiza Wilaya",
-
 
 
   "HS_GoodMorning": "Habari za asubuhi",
@@ -92,7 +74,7 @@
 
 
 
-  "WB_WelcomeBack": "Karibu tena Y9",
+  "WB_WelcomeBack": "Karibu tena kwa kuingia kwa Ajenti wa Y9",
   "WB_EnterPassCode": "Weka Nambari ya siri",
 
 
@@ -128,6 +110,9 @@
   "VO_Incorrect_OTP_Title":"OTP si sahihi",
   "VO_Incorrect_OTP_Alert_Msg":"Umetumia majaribio yako yote. Tafadhali jisajili tena.",
   "VO_resend_otp" : "Tuma tena baada ya sekunde %s.",
+
+  "SP_ni": "ni",
+  "SP_bora": " Bora",
 
   "HS_Agent_Id" : "Y9 Agent Id",
   "HS_TotalOnBoarderCustomers" : "Total Onboarded Customers",

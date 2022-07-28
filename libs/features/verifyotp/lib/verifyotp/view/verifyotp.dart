@@ -160,7 +160,7 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
       onTap: () {
         if (otpController.text.isNotEmpty && otpController.text.length == 6) {
           coordinator
-              .navigateToDestinationPath(widget.otpScreenArgs.destinationPath, widget.otpScreenArgs.userType);
+              .navigateToDestinationPath(widget.otpScreenArgs.destinationPath, widget.otpScreenArgs.userType,widget.otpScreenArgs);
         } else {
           _showAlertForOTPAttempts(coordinator);
         }

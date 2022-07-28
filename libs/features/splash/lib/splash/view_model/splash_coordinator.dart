@@ -3,6 +3,7 @@ import 'package:splash/navigation_handler/splash_navigation_handler.dart';
 import 'package:splash/splash/state/splash_state.dart';
 import 'package:splash/splash/view_model/splash_usecase.dart';
 import 'package:task_manager/base_classes/base_view_model.dart';
+import 'package:welcome/sub_features/welcome/data_model/welcome_model.dart';
 
 
 class SplashCoordinator extends BaseViewModel<SplashState> {
@@ -28,8 +29,8 @@ class SplashCoordinator extends BaseViewModel<SplashState> {
 
 
 
-  Future<void> navigateToDestinationPath(String destinationPath) async {
-    _navigationHandler.navigateToDestinationPath(destinationPath);
+  Future<void> navigateToDestinationPath(WelcomeScreenArgs welcomeScreenArgs) async {
+    _navigationHandler.navigateToDestinationPath(welcomeScreenArgs);
   }
 
 }

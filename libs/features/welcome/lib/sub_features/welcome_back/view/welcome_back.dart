@@ -1,12 +1,7 @@
 import 'package:config/Config.dart';
 import 'package:config/Styles.dart';
-import 'package:config/Colors.dart' as config_color;
-import 'package:core/validators/input_entry_validator/input_entry_validator.dart';
 import 'package:flutter/material.dart';
-import 'package:passcode/sub_features/passcode/view/passcode.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:shared_data_models/passcode/passcode_screen_args.dart';
-import 'package:welcome/sub_features/welcome/data_model/welcome_model.dart';
 import 'package:core/view/base_view.dart';
 import 'package:get/get.dart';
 import 'package:welcome/sub_features/welcome_back/constants/image_constant.dart';
@@ -14,14 +9,17 @@ import 'package:welcome/sub_features/welcome_back/constants/image_constant.dart'
 import '../../../welcome_module.dart';
 import '../../welcome/state/welcome_screen_state.dart';
 import '../../welcome/viewmodel/welcome_coordinatior.dart';
+import '../viewmodel/welcome_back_coordinatior.dart';
 
 class CrayonWelcomBackScreen extends StatefulWidget {
   static const viewPath = '${WelcomeModule.moduleIdentifier}/welcomeback';
+  final String userType;
 
   // final WelcomeScreenArgs welcomeScreenArgs;
 
   const CrayonWelcomBackScreen({
     Key? key,
+    required this.userType
     // required this.welcomeScreenArgs,
   }) : super(key: key);
 
@@ -42,14 +40,14 @@ class CrayonWelcomBackScreen extends StatefulWidget {
 class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
   @override
   Widget build(BuildContext context) =>
-      BaseView<WelcomeCoordinator, WelcomeScreenState>(
+      BaseView<WelcomeBackCoordinator, WelcomeScreenState>(
         setupViewModel: (coordinator) async {},
         builder: (context, state, welcomeCoordinator) => Scaffold(
           body: _buildMainUIWithLoading(context, welcomeCoordinator, state),
         ),
       );
 
-  Widget _buildMainUIWithLoading(context, WelcomeCoordinator welcomeCoordinator,
+  Widget _buildMainUIWithLoading(context, WelcomeBackCoordinator welcomeCoordinator,
       WelcomeScreenState state) {
     return Scaffold(
       body: SafeArea(
@@ -63,12 +61,12 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
   }
 
   Widget _buildMainUI(BuildContext context,
-      WelcomeCoordinator welcomeCoordinator, WelcomeScreenState state) {
+      WelcomeBackCoordinator welcomeCoordinator, WelcomeScreenState state) {
     return _buidlWelcomeBackUI(context, state, welcomeCoordinator);
   }
 
   Widget _buidlWelcomeBackUI(BuildContext context, WelcomeScreenState state,
-      WelcomeCoordinator welcomeCoordinator) {
+      WelcomeBackCoordinator welcomeCoordinator) {
     return Stack(
       children: [
         // _createBackgroundImage(),
@@ -94,15 +92,15 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
               const SizedBox(height: 48),
               _enterPassCodeTitle(context),
               _passcodeWidget(context, welcomeCoordinator),
-              const SizedBox(height: 57),
-              Image.asset(
-                WB_OrIcon,
-              ),
-              const SizedBox(height: 15),
-              Image.asset(
-                WB_touchIdIcon,
-                scale: 2.0,
-              ),
+              // const SizedBox(height: 57),
+              // Image.asset(
+              //   WB_OrIcon,
+              // ),
+              // const SizedBox(height: 15),
+              // Image.asset(
+              //   WB_touchIdIcon,
+              //   scale: 2.0,
+              // ),
               const Spacer(),
             ],
           ),
@@ -149,7 +147,7 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
     return Text('WB_EnterPassCode'.tr, style: WB_enter_passcode_title_style);
   }
 
-  Widget _passcodeWidget(BuildContext context, WelcomeCoordinator coordinator){
+  Widget _passcodeWidget(BuildContext context, WelcomeBackCoordinator coordinator){
     return Container(
       child: Padding(
           padding: const EdgeInsets.symmetric(
@@ -184,8 +182,8 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
             //errorAnimationController: errorController,
             controller: passcodeController,
             keyboardType: TextInputType.number,
-            onCompleted: (v) {
-              debugPrint("Completed");
+            onCompleted: (v) async {
+        await coordinator.navigationToDestination(widget.userType);
             }, onChanged: (String value) {  },
           )),
 

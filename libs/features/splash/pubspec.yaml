@@ -32,6 +32,9 @@ dependencies:
   shared_data_models:
     path: ../../shared-data-models/
 
+  welcome:
+    path: ../../features/welcome
+
 
 dev_dependencies:
   flutter_test:
