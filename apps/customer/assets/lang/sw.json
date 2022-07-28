@@ -115,6 +115,7 @@
   "DD_EMIMonth" : "EMI/ Mwezi",
   "DD_Interest" : "Hamu %",
   "DD_TotalAmountPaid" : "Jumla ya Kiasi cha Kulipwa",
+  "DD_SelectDevice" : "Select Device",
 
 
   "VO_OtpVerification": "Uthibitishaji wa OTP",

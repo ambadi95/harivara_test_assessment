@@ -115,6 +115,7 @@
   "DD_EMIMonth" : "EMI/ Month",
   "DD_Interest" : "Interest %",
   "DD_TotalAmountPaid" : "Total Amount to be Paid",
+  "DD_SelectDevice" : "Select Device",
 
 
   "VO_OtpVerification": "OTP Verification",
