@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:agent_nearby/view/agent_nearby_screen.dart';
+
 import 'package:core/app/crayon_payment_material_app.dart';
 import 'package:core/ioc/di_container.dart';
 import 'package:core/navigation/navigation_manager.dart';
@@ -7,23 +7,17 @@ import 'package:core/session_management/inactivity_service.dart';
 import 'package:core/session_management/inactivity_watcher.dart';
 import 'package:core/translation/crayon_payment_transaltions_loader.dart';
 import 'package:core/translation/crayon_payment_translations.dart';
-import 'package:device_option/sub_features/device_details/view/device_detail_screen.dart';
-import 'package:device_option/view/device_option_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/src/framework.dart';
 import 'package:get/get.dart';
 import 'package:home/home/home_screen_arguments.dart';
 import 'package:home/home/view/home_screen.dart';
-import 'package:login/view/login_screen.dart';
-import 'package:shared_data_models/otp/otp_screen_args.dart';
-import 'package:shared_data_models/otp/otp_verification_type.dart';
-import 'package:splash/splash/splash_screen_args.dart';
-import 'package:verifyotp/verifyotp/view/verifyotp.dart';
+import 'package:splash/splash/view/splash.dart';
 import 'package:welcome/sub_features/welcome/view/welcome_screen.dart';
 import 'package:widget_library/theme/crayon_payment_theme.dart';
+
 import 'app_module.dart';
-import 'package:splash/splash/view/splash.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -59,12 +53,10 @@ class HomeWidget extends StatelessWidget {
   final IInactivityService _inactivityService;
   final bool _status;
 
-  HomeWidget(
-      this._translations,
+  HomeWidget(this._translations,
       this._navigationManager,
       this._inactivityService,
-      this._status,
-      );
+      this._status,);
 
 
   @override
@@ -74,8 +66,10 @@ class HomeWidget extends StatelessWidget {
       child: CrayonPaymentMaterialApp(
         key: Key('AppMaterialApp'),
         home: !_status
-            ? DeviceDetailScreen.forCustomerApp()
-            :CrayonWelcomScreen.forCustomerApp(),
+
+            ? CrayonSplashScreen.forCustomerApp()
+            : CrayonSplashScreen.forCustomerApp(),
+
         theme: CrayonPaymentTheme().defaultTheme,
         onGenerateRoute: _navigationManager.getRoute,
         translations: _translations,
@@ -87,8 +81,6 @@ class HomeWidget extends StatelessWidget {
     );
   }
 }
-
-
 
 
 class MyHttpOverrides extends HttpOverrides {

@@ -27,6 +27,7 @@ class Login extends StatelessWidget {
 
   bool isBtnEnabled = false;
   String mobileNumberError = '';
+  String agentIdError = '';
   TextEditingController mobileNumber = TextEditingController();
   TextEditingController passcodeController = TextEditingController();
   TextEditingController agentIdController = TextEditingController();
@@ -59,7 +60,7 @@ class Login extends StatelessWidget {
             _buildLabelTextFieldMobNumber(context, 'LS_Mobile'.tr, coordinator),
             dynamicHSpacer(48),
            userType =='Customer'?  _passcodeWidget(context, coordinator) :
-           _buildLabelTextField('SU_mobile_no_label'.tr,agentIdController, TextInputType.text,coordinator,'', 'SU_subtitle_hint', true),
+           _buildLabelTextField('LS_agent_id'.tr,agentIdController, TextInputType.text,coordinator,agentIdError, 'SU_subtitle_hint', true),
             const Spacer(),
             actionButton(coordinator),
             dynamicHSpacer(20),
@@ -110,10 +111,10 @@ class Login extends StatelessWidget {
           key: const Key('detailsTextField'),
           keyboardType: textInputType,
           onChanged: (value) {
-          //  _validateForm(coordinator);
-            // if(errorText.isNotEmpty){
-            //
-            // }
+           _validateForm(coordinator);
+            if(errorText.isNotEmpty){
+              coordinator.isAgentIdValid(agentIdController.text);
+            }
           },
         ));
   }
@@ -129,8 +130,9 @@ class Login extends StatelessWidget {
       textStyleVariant: CrayonPaymentTextStyleVariant.headline5,
       onPressed: () {
         coordinator.isMobileNumberValid(mobileNumber.text);
+        coordinator.isAgentIdValid(agentIdController.text);
         if(isBtnEnabled){
-          coordinator.navigateToWelcomeBackScreen();
+          coordinator.navigateToWelcomeBackScreen(userType);
         }
 
       },
@@ -207,11 +209,14 @@ class Login extends StatelessWidget {
         loginFormState: (isValid){
         isBtnEnabled = isValid;
         },
+        agentIdError: (message){
+          agentIdError = message;
+        },
 
         orElse: () => null);
   }
 
   void _validateForm(LoginCoordinator coordinator) {
-    coordinator.validateForm(mobileNumber.text, passcodeController.text);
+    coordinator.validateForm(mobileNumber.text, passcodeController.text,agentIdController.text,userType);
   }
 }

@@ -2,6 +2,8 @@
 
 import 'package:core/navigation/navigation_manager.dart';
 import 'package:core/navigation/navigation_type.dart';
+import 'package:welcome/sub_features/welcome/data_model/welcome_model.dart';
+import 'package:welcome/sub_features/welcome/view/welcome_screen.dart';
 import 'package:widget_library/helpers/error/helper/error_helper.dart';
 
 class SplashNavigationHandler with ErrorHandler{
@@ -10,10 +12,12 @@ class SplashNavigationHandler with ErrorHandler{
   SplashNavigationHandler(this._navigationManager);
 
 
-  Future<void> navigateToDestinationPath(String destinationPath) async {
+  Future<void> navigateToDestinationPath(WelcomeScreenArgs welcomeScreenArgs) async {
+
     _navigationManager.navigateTo(
-      destinationPath,
+      CrayonWelcomScreen.viewPath,
       const NavigationType.replace(),
+      arguments: welcomeScreenArgs
     );
   }
 

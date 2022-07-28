@@ -28,7 +28,10 @@ class WelcomeRouteManager extends IRouteManager {
       case EnrollmentSuccessScreen.viewPath :
         return const EnrollmentSuccessScreen();
       case CrayonWelcomBackScreen.viewPath :
-        return const CrayonWelcomBackScreen();
+         String arguments = settings.arguments as String;
+        return CrayonWelcomBackScreen(
+          userType: arguments,
+        );
       case AgentDetailsScreen.viewPath :
         var arguments = settings.arguments as String;
         return AgentDetailsScreen(userType: arguments,);

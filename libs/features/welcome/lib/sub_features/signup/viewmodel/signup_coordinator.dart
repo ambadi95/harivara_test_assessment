@@ -23,15 +23,22 @@ class SignUpCoordinator extends BaseViewModel<SignUpState>{
     }
   }
 
-  bool _validateForm(String nidaNo, String mobNumber){
+  bool _validateForm(String nidaNo, String mobNumber, String agentId, String userType){
+    var agentID = agentId.isNotEmpty;
       var isnidaNumberValid = _signupUseCase.isValidNINDAnumber(nidaNo);
       var ismobileNoValid = _signupUseCase.isValidMobileNumber(mobNumber);
-      var _isValid = isnidaNumberValid && ismobileNoValid;
+    var _isValid;
+      if(userType == 'Customer'){
+         _isValid = isnidaNumberValid && ismobileNoValid;
+      }else{
+        _isValid = isnidaNumberValid && agentID;
+      }
+      print(_isValid);
       return _isValid;
   }
 
-  void validateForm(String nidaNo, String mobNumber){
-    state =SignUpState.SignUpFormState(_validateForm(nidaNo, mobNumber));
+  void validateForm(String nidaNo, String mobNumber, String agentId, String userType){
+    state =SignUpState.SignUpFormState(_validateForm(nidaNo, mobNumber,agentId,userType));
   }
 
   bool isValidNidaNumber(String nidaNumber){
@@ -50,6 +57,16 @@ class SignUpCoordinator extends BaseViewModel<SignUpState>{
       state = const SignUpState.mobileNumberError('SU_subtitle_error_text');
     }else{
       state = const SignUpState.mobileNumberError('');
+    }
+    return result;
+  }
+
+  bool isValidAgentId(String agentId){
+    bool result = _signupUseCase.isValidAgentId(agentId);
+    if(!result){
+      state = const SignUpState.agentIdError('SU_subtitle_error_text');
+    }else{
+      state = const SignUpState.agentIdError('');
     }
     return result;
   }

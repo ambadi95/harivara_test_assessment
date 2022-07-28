@@ -1,1 +1,1 @@
-enum OtpVerificationType { payment, mobile, id,retry, updateMobile, merchantSignIn }
+enum OtpVerificationType { payment, mobile, id,retry, updateMobile, agentSignIn }

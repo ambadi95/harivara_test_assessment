@@ -18,10 +18,13 @@ import 'package:core/utils/input_formatters/length_text_formatter.dart';
 import 'package:core/validators/input_entry_validator/input_entry_validator.dart';
 import 'package:device_option/device_option_module.dart';
 import 'package:device_option/navigation_handler/device_option_route_manager.dart';
+import 'package:home/home/home_module.dart';
+import 'package:home/home/navigation_handler/home_route_manager.dart';
 import 'package:login/login_module.dart';
 import 'package:login/navigation_handler/login_route_manager.dart';
 import 'package:passcode/navigation_handler/passcode_route_manager.dart';
 import 'package:passcode/passcode_module.dart';
+import 'package:splash/splash_module.dart';
 import 'package:task_manager/cache_manager/storage/file_storage/file_storage_service_impl.dart';
 import 'package:task_manager/cache_manager/storage/memory_storage/memory_storage_service_impl.dart';
 import 'package:task_manager/cache_manager/storage/crayon_payment_storage_service.dart';
@@ -81,6 +84,7 @@ class AppModule {
     _registerRouteManagers();
     _registerUtils();
 
+    SplashModule.registerDependencies();
     WelcomeModule.registerDependencies();
     PasscodeModule.registerDependencies();
     VerifyOtpModule.registerDependencies();
@@ -90,6 +94,8 @@ class AppModule {
     DeviceOptionModule.registerDependencies();
 
     LoginModule.registerDependencies();
+
+    HomeModule.registerDependencies();
 
 
 
@@ -163,6 +169,11 @@ void _registerRouteManagers() {
   navigationManagerContainer.registerRouteManager(
     LoginModule.moduleIdentifier,
     LoginRouteManager(),
+  );
+
+  navigationManagerContainer.registerRouteManager(
+    HomeModule.moduleIdentifier,
+    HomeRouteManager(),
   );
 
 

@@ -12,6 +12,8 @@
 
   "LS_Login" : "Ingia kwa yako Y9 \nprogramu",
   "LS_Mobile" : "Namba ya simu ya mkononi",
+  "LS_mobile_error_text" : "Nambari ya Simu batili",
+  "LS_mobile_hint_text" : "Weka Nambari ya Simu",
   "LS_Passcode" : "Nambari ya siri",
   "LS_SignIn" : "Weka sahihi",
 
@@ -140,7 +142,5 @@
   "HS_Customer_OnBoarding" : "Customer Onboarding",
   "HS_Customer_DeviceSwap" : "Device swap",
   "HS_Customer_AgentSupport" : "Agent Support"
-
-
 
 }

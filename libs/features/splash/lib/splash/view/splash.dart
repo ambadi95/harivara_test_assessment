@@ -7,16 +7,32 @@ import 'package:core/view/base_view.dart';
 import 'package:config/Config.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:get/get.dart';
+import 'package:welcome/sub_features/welcome/data_model/welcome_model.dart';
 
 class CrayonSplashScreen extends StatefulWidget {
   static const viewPath = '${SplashModule.moduleIdentifier}/splash';
-  final SplashScreenArgs splashScreenArgs;
+  final WelcomeScreenArgs welcomeScreenArgs;
 
-  const CrayonSplashScreen({Key? key, required this.splashScreenArgs})
+  const CrayonSplashScreen({Key? key, required this.welcomeScreenArgs})
       : super(key: key);
 
   @override
   State<CrayonSplashScreen> createState() => _CrayonSplashScreenState();
+  factory CrayonSplashScreen.forCustomerApp() => CrayonSplashScreen(
+    welcomeScreenArgs: WelcomeScreenArgs(
+      '',
+      '',
+      'Customer',
+    ),
+  );
+
+  factory CrayonSplashScreen.forMerchantApp() => CrayonSplashScreen(
+    welcomeScreenArgs: WelcomeScreenArgs(
+      '',
+      '',
+      'Agent',
+    ),
+  );
 }
 
 class _CrayonSplashScreenState extends State<CrayonSplashScreen>
@@ -73,8 +89,8 @@ class _CrayonSplashScreenState extends State<CrayonSplashScreen>
           _splashCoordinator=coordinator;
           coordinator.initialiseState(
             context,
-            widget.splashScreenArgs.title,
-            widget.splashScreenArgs.destinationPath,
+            'Title',
+            ''
           );
         },
         builder: (context, state, coordinator) => Scaffold(
@@ -202,7 +218,7 @@ class _CrayonSplashScreenState extends State<CrayonSplashScreen>
   void _moveToDestinationPath(){
     Future.delayed(const Duration(seconds: 4), ()
     {
-      _splashCoordinator!.navigateToDestinationPath("");
+      _splashCoordinator!.navigateToDestinationPath(widget.welcomeScreenArgs);
     });
   }
 

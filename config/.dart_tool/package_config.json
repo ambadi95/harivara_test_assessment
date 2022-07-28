@@ -3,205 +3,341 @@
   "packages": [
     {
       "name": "args",
+<<<<<<< HEAD
       "rootUri": "file:///Users/apple/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/args-2.3.1",
+=======
+      "rootUri": "file:///C:/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/args-2.3.1",
+>>>>>>> dev
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "characters",
+<<<<<<< HEAD
       "rootUri": "file:///Users/apple/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/characters-1.2.0",
+=======
+      "rootUri": "file:///C:/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/characters-1.2.0",
+>>>>>>> dev
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "clock",
+<<<<<<< HEAD
       "rootUri": "file:///Users/apple/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/clock-1.1.0",
+=======
+      "rootUri": "file:///C:/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/clock-1.1.0",
+>>>>>>> dev
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "collection",
+<<<<<<< HEAD
       "rootUri": "file:///Users/apple/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/collection-1.16.0",
+=======
+      "rootUri": "file:///C:/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/collection-1.16.0",
+>>>>>>> dev
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "easy_localization",
+<<<<<<< HEAD
       "rootUri": "file:///Users/apple/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/easy_localization-3.0.1",
+=======
+      "rootUri": "file:///C:/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/easy_localization-3.0.1",
+>>>>>>> dev
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "easy_logger",
+<<<<<<< HEAD
       "rootUri": "file:///Users/apple/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/easy_logger-0.0.2",
+=======
+      "rootUri": "file:///C:/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/easy_logger-0.0.2",
+>>>>>>> dev
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "ffi",
+<<<<<<< HEAD
       "rootUri": "file:///Users/apple/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/ffi-2.0.1",
+=======
+      "rootUri": "file:///C:/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/ffi-2.0.1",
+>>>>>>> dev
       "packageUri": "lib/",
       "languageVersion": "2.17"
     },
     {
       "name": "file",
+<<<<<<< HEAD
       "rootUri": "file:///Users/apple/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/file-6.1.2",
+=======
+      "rootUri": "file:///C:/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/file-6.1.2",
+>>>>>>> dev
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "flutter",
+<<<<<<< HEAD
       "rootUri": "file:///Users/apple/Downloads/flutter/packages/flutter",
+=======
+      "rootUri": "file:///C:/flutter/flutter/packages/flutter",
+>>>>>>> dev
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "flutter_localizations",
+<<<<<<< HEAD
       "rootUri": "file:///Users/apple/Downloads/flutter/packages/flutter_localizations",
+=======
+      "rootUri": "file:///C:/flutter/flutter/packages/flutter_localizations",
+>>>>>>> dev
       "packageUri": "lib/",
       "languageVersion": "2.17"
     },
     {
       "name": "flutter_web_plugins",
+<<<<<<< HEAD
       "rootUri": "file:///Users/apple/Downloads/flutter/packages/flutter_web_plugins",
+=======
+      "rootUri": "file:///C:/flutter/flutter/packages/flutter_web_plugins",
+>>>>>>> dev
       "packageUri": "lib/",
       "languageVersion": "2.17"
     },
     {
       "name": "intl",
+<<<<<<< HEAD
       "rootUri": "file:///Users/apple/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/intl-0.17.0",
+=======
+      "rootUri": "file:///C:/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/intl-0.17.0",
+>>>>>>> dev
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "js",
+<<<<<<< HEAD
       "rootUri": "file:///Users/apple/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/js-0.6.4",
+=======
+      "rootUri": "file:///C:/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/js-0.6.4",
+>>>>>>> dev
       "packageUri": "lib/",
       "languageVersion": "2.16"
     },
     {
       "name": "material_color_utilities",
+<<<<<<< HEAD
       "rootUri": "file:///Users/apple/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/material_color_utilities-0.1.4",
+=======
+      "rootUri": "file:///C:/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/material_color_utilities-0.1.4",
+>>>>>>> dev
       "packageUri": "lib/",
       "languageVersion": "2.13"
     },
     {
       "name": "meta",
+<<<<<<< HEAD
       "rootUri": "file:///Users/apple/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/meta-1.7.0",
+=======
+      "rootUri": "file:///C:/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/meta-1.7.0",
+>>>>>>> dev
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "path",
+<<<<<<< HEAD
       "rootUri": "file:///Users/apple/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/path-1.8.1",
+=======
+      "rootUri": "file:///C:/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/path-1.8.1",
+>>>>>>> dev
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "path_provider_linux",
+<<<<<<< HEAD
       "rootUri": "file:///Users/apple/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_linux-2.1.7",
+=======
+      "rootUri": "file:///C:/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_linux-2.1.7",
+>>>>>>> dev
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "path_provider_platform_interface",
+<<<<<<< HEAD
       "rootUri": "file:///Users/apple/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_platform_interface-2.0.4",
+=======
+      "rootUri": "file:///C:/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_platform_interface-2.0.4",
+>>>>>>> dev
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "path_provider_windows",
+<<<<<<< HEAD
       "rootUri": "file:///Users/apple/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_windows-2.1.0",
+=======
+      "rootUri": "file:///C:/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_windows-2.1.0",
+>>>>>>> dev
       "packageUri": "lib/",
       "languageVersion": "2.17"
     },
     {
       "name": "platform",
+<<<<<<< HEAD
       "rootUri": "file:///Users/apple/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/platform-3.1.0",
+=======
+      "rootUri": "file:///C:/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/platform-3.1.0",
+>>>>>>> dev
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "plugin_platform_interface",
+<<<<<<< HEAD
       "rootUri": "file:///Users/apple/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/plugin_platform_interface-2.1.2",
+=======
+      "rootUri": "file:///C:/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/plugin_platform_interface-2.1.2",
+>>>>>>> dev
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "process",
+<<<<<<< HEAD
       "rootUri": "file:///Users/apple/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/process-4.2.4",
+=======
+      "rootUri": "file:///C:/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/process-4.2.4",
+>>>>>>> dev
       "packageUri": "lib/",
       "languageVersion": "2.14"
     },
     {
       "name": "shared_preferences",
+<<<<<<< HEAD
       "rootUri": "file:///Users/apple/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences-2.0.15",
+=======
+      "rootUri": "file:///C:/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences-2.0.15",
+>>>>>>> dev
       "packageUri": "lib/",
       "languageVersion": "2.14"
     },
     {
       "name": "shared_preferences_android",
+<<<<<<< HEAD
       "rootUri": "file:///Users/apple/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_android-2.0.12",
+=======
+      "rootUri": "file:///C:/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_android-2.0.12",
+>>>>>>> dev
       "packageUri": "lib/",
       "languageVersion": "2.14"
     },
     {
       "name": "shared_preferences_ios",
+<<<<<<< HEAD
       "rootUri": "file:///Users/apple/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_ios-2.1.1",
+=======
+      "rootUri": "file:///C:/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_ios-2.1.1",
+>>>>>>> dev
       "packageUri": "lib/",
       "languageVersion": "2.14"
     },
     {
       "name": "shared_preferences_linux",
+<<<<<<< HEAD
       "rootUri": "file:///Users/apple/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_linux-2.1.1",
+=======
+      "rootUri": "file:///C:/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_linux-2.1.1",
+>>>>>>> dev
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "shared_preferences_macos",
+<<<<<<< HEAD
       "rootUri": "file:///Users/apple/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_macos-2.0.4",
+=======
+      "rootUri": "file:///C:/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_macos-2.0.4",
+>>>>>>> dev
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "shared_preferences_platform_interface",
+<<<<<<< HEAD
       "rootUri": "file:///Users/apple/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_platform_interface-2.0.0",
+=======
+      "rootUri": "file:///C:/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_platform_interface-2.0.0",
+>>>>>>> dev
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "shared_preferences_web",
+<<<<<<< HEAD
       "rootUri": "file:///Users/apple/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_web-2.0.4",
+=======
+      "rootUri": "file:///C:/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_web-2.0.4",
+>>>>>>> dev
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "shared_preferences_windows",
+<<<<<<< HEAD
       "rootUri": "file:///Users/apple/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_windows-2.1.1",
+=======
+      "rootUri": "file:///C:/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_windows-2.1.1",
+>>>>>>> dev
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "sky_engine",
+<<<<<<< HEAD
       "rootUri": "file:///Users/apple/Downloads/flutter/bin/cache/pkg/sky_engine",
+=======
+      "rootUri": "file:///C:/flutter/flutter/bin/cache/pkg/sky_engine",
+>>>>>>> dev
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "vector_math",
+<<<<<<< HEAD
       "rootUri": "file:///Users/apple/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/vector_math-2.1.2",
+=======
+      "rootUri": "file:///C:/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/vector_math-2.1.2",
+>>>>>>> dev
       "packageUri": "lib/",
       "languageVersion": "2.14"
     },
     {
       "name": "win32",
+<<<<<<< HEAD
       "rootUri": "file:///Users/apple/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/win32-2.7.0",
+=======
+      "rootUri": "file:///C:/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/win32-2.7.0",
+>>>>>>> dev
       "packageUri": "lib/",
       "languageVersion": "2.17"
     },
     {
       "name": "xdg_directories",
+<<<<<<< HEAD
       "rootUri": "file:///Users/apple/Downloads/flutter/.pub-cache/hosted/pub.dartlang.org/xdg_directories-0.2.0+1",
+=======
+      "rootUri": "file:///C:/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/xdg_directories-0.2.0+1",
+>>>>>>> dev
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -212,7 +348,11 @@
       "languageVersion": "2.16"
     }
   ],
+<<<<<<< HEAD
   "generated": "2022-07-28T10:04:04.621215Z",
+=======
+  "generated": "2022-07-27T13:48:57.637398Z",
+>>>>>>> dev
   "generator": "pub",
   "generatorVersion": "2.17.6"
 }

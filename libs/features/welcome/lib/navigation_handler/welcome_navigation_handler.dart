@@ -1,5 +1,7 @@
 import 'package:core/navigation/navigation_manager.dart';
 import 'package:core/navigation/navigation_type.dart';
+import 'package:home/home/home_screen_arguments.dart';
+import 'package:home/home/view/home_screen.dart';
 import 'package:passcode/sub_features/passcode/view/passcode.dart';
 import 'package:shared_data_models/otp/otp_screen_args.dart';
 import 'package:shared_data_models/otp/otp_verification_type.dart';
@@ -91,6 +93,28 @@ class WelcomeNavigationHandler with ErrorHandler {
     );
   }
 
+  Future<void> navigateToAgentHome() async {
+    var argument = HomeScreenArgs(
+        true
+    );
+    await _navigationManager.navigateTo(
+        CrayonHomeScreen.viewPath,
+        const NavigationType.push(),
+        arguments: argument
+    );
+  }
+
+  Future<void> navigateToCustomerHome() async {
+    var argument = HomeScreenArgs(
+      false
+    );
+    await _navigationManager.navigateTo(
+        CrayonHomeScreen.viewPath,
+        const NavigationType.push(),
+        arguments: argument
+    );
+  }
+
   Future<void> navigateToAgentDetailScreen(String userType) async {
     await _navigationManager.navigateTo(
       AgentDetailsScreen.viewPath,
@@ -105,7 +129,7 @@ class WelcomeNavigationHandler with ErrorHandler {
         'VO_otp_verification_description',
         userType == 'Customer' ? 'welcomeModule/details' : 'welcomeModule/agentDetails',
         true,
-        2,
+        3,
         OtpVerificationType.mobile,
         '',
         6,
