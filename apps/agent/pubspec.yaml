@@ -79,6 +79,7 @@ flutter:
     - assets/lang/
     - assets/styles/
     - assets/images/
+    - assets/home/
     - assets/configuration/network_config.json
     - assets/configuration/static_auth.json
 

@@ -1,4 +1,8 @@
 {
+
+
+
+
   "OB_WelcomeTitle" : "Karibu na Y9",
   "OB_WelcomeSubTitle" : "Ndoto yako ya benki ya kidijitali",
   "OB_WelcomeThirdTitle" : "y9bank.com",
@@ -123,6 +127,13 @@
   "VO_Incorrect_OTP":"OTP si sahihi. Tafadhali jaribu tena.",
   "VO_Incorrect_OTP_Title":"OTP si sahihi",
   "VO_Incorrect_OTP_Alert_Msg":"Umetumia majaribio yako yote. Tafadhali jisajili tena.",
-  "VO_resend_otp" : "Tuma tena baada ya sekunde %s."
+  "VO_resend_otp" : "Tuma tena baada ya sekunde %s.",
+
+  "HS_Agent_Id" : "Y9 Agent Id",
+  "HS_TotalOnBoarderCustomers" : "Total Onboarded Customers",
+  "HS_PendingCustomerRequests" : "Pending Customer Request",
+  "HS_Customer_OnBoarding" : "Customer Onboarding",
+  "HS_Customer_DeviceSwap" : "Device swap / repair",
+  "HS_Customer_AgentSupport" : "Agent Support"
 
 }

@@ -17,28 +17,28 @@ import 'package:core/translation/crayon_payment_transaltions_loader.dart';
 import 'package:core/utils/input_formatters/length_text_formatter.dart';
 import 'package:core/validators/input_entry_validator/input_entry_validator.dart';
 import 'package:device_option/device_option_module.dart';
-import 'package:device_option/navigation_handler/device_option_route_manager.dart';
-import 'package:login/login_module.dart';
-import 'package:login/navigation_handler/login_route_manager.dart';
 import 'package:device_option/device_option_module.dart';
 import 'package:device_option/navigation_handler/device_option_route_manager.dart';
+import 'package:device_option/navigation_handler/device_option_route_manager.dart';
+import 'package:login/login_module.dart';
 import 'package:login/login_module.dart';
 import 'package:login/navigation_handler/login_route_manager.dart';
-
+import 'package:login/navigation_handler/login_route_manager.dart';
 import 'package:network_manager/auth/auth_manager.dart';
 import 'package:network_manager/auth/user_manager.dart';
-
 import 'package:network_manager/utils/connectivity/i_connectivity.dart';
 import 'package:passcode/navigation_handler/passcode_route_manager.dart';
 import 'package:passcode/passcode_module.dart';
+import 'package:task_manager/cache_manager/storage/crayon_payment_storage_service.dart';
 import 'package:task_manager/cache_manager/storage/file_storage/file_storage_service_impl.dart';
 import 'package:task_manager/cache_manager/storage/memory_storage/memory_storage_service_impl.dart';
-import 'package:task_manager/cache_manager/storage/crayon_payment_storage_service.dart';
 import 'package:task_manager/cache_manager/storage/unsecure_storage/unsecure_storage_service_impl.dart';
 import 'package:task_manager/session_management/inactivity_service_impl.dart';
 import 'package:task_manager/task_manager.dart';
 import 'package:verifyotp/navigation_handler/verifyotp_route_manager.dart';
 import 'package:verifyotp/verifyotp_module.dart';
+import 'package:splash/splash_module.dart';
+import 'package:home/home/home_module.dart';
 import 'package:welcome/navigation_handler/welcome_route_manager.dart';
 import 'package:welcome/welcome_module.dart';
 import 'package:widget_library/app_mobile_widgets.dart';
@@ -92,8 +92,10 @@ class AppModule {
     _registerRouteManagers();
     _registerUtils();
 
+    SplashModule.registerDependencies();
     WelcomeModule.registerDependencies();
     PasscodeModule.registerDependencies();
+    HomeModule.registerDependencies();
     VerifyOtpModule.registerDependencies();
 
     AgentNearByModule.registerDependencies();
