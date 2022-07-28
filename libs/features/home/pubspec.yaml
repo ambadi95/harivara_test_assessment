@@ -30,7 +30,7 @@ dependencies:
     path: ../../task-manager/
 
   config:
-    path: ../../../apps/customer/config/
+    path: ../../../config/
 
   widget_library:
     path: ../../widgets/
