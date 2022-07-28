@@ -13,6 +13,7 @@ import 'package:widget_library/static_text/crayon_payment_text.dart';
 import '../../../device_option_module.dart';
 import '../state/device_detail_state.dart';
 import '../viewmodel/device_detail_coordinator.dart';
+import 'package:get/get.dart';
 
 class DeviceDetailScreen extends StatelessWidget {
   factory DeviceDetailScreen.forCustomerApp() => const DeviceDetailScreen();
@@ -44,7 +45,20 @@ class DeviceDetailScreen extends StatelessWidget {
         Image.asset('assets/mobile_1.png',width: 222,height: 300,package: 'shared_data_models',),
         actionButton(),
         dynamicHSpacer(22),
-        productDetail(context)
+        productDetail(context),
+        dynamicHSpacer(22),
+        _membershipBenefitTitle(context),
+        dynamicHSpacer(20),
+
+        _membershipList(context),
+        dynamicHSpacer(22),
+        _membershipTermsTitle(context),
+        dynamicHSpacer(15),
+        _membershipTermButton(context),
+        dynamicHSpacer(22),
+        selectButton(),
+        dynamicHSpacer(22),
+
       ],
       
     ),
@@ -67,7 +81,7 @@ class DeviceDetailScreen extends StatelessWidget {
   Widget actionButton() {
     return CrayonPaymentDockedButton(
       key: const Key('SignInButton'),
-      title: 'Select Device',
+      title: 'DD_SelectDevice'.tr,
       borderRadius: 8,
       height: CrayonPaymentDimensions.marginFortyEight,
       buttonColor: LS_ButtonColor,
@@ -160,4 +174,121 @@ class DeviceDetailScreen extends StatelessWidget {
       ],
     );
   }
+
+  _membershipBenefitTitle(context) {
+    return  CrayonPaymentText(
+      key: Key('Y9 Membership Benefits'),
+      text:  TextUIDataModel(
+          'DD_MembershipBenefits'.tr,
+          styleVariant: CrayonPaymentTextStyleVariant.headline6,
+          color: DD_TextValue,
+          fontWeight: FontWeight.w600
+      ),
+    );
+  }
+
+  _membershipTermsTitle(context) {
+    return  CrayonPaymentText(
+      key: Key('Membership Terms'),
+      text:  TextUIDataModel(
+          'DD_MembershipTerms'.tr,
+          styleVariant: CrayonPaymentTextStyleVariant.headline6,
+          color: DD_TextValue,
+          fontWeight: FontWeight.w600
+      ),
+    );
+  }
+
+  _membershipList(context) {
+      return ListView.separated(
+        separatorBuilder: (context, index) => SizedBox(),
+        shrinkWrap: true,
+        itemCount: 5,
+        itemBuilder: (context, index) =>
+            _buildDeviceCard(context, index, ),
+      );
+
+  }
+
+  _buildDeviceCard(BuildContext context, int index) {
+    return Padding(
+      padding: const EdgeInsets.only(top:5.0),
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 6,vertical: 10),
+        decoration: BoxDecoration(
+            color:  DD_BUTTON_COLOR,
+            borderRadius: BorderRadius.circular(2.0)
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Image.asset(
+              "assets/mobile_0.png",
+              width: 65,
+              height: 45,
+              scale: 8.0,
+              package: 'shared_data_models',
+            ),
+            SizedBox(
+              width: 5,
+            ),
+            CrayonPaymentText(
+              key: Key(''),
+              text: TextUIDataModel("Test",
+                  styleVariant:
+                  CrayonPaymentTextStyleVariant.overline1,
+                  color: AN_CardTitle,
+                  fontWeight: FontWeight.normal),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  _membershipTermButton(BuildContext context) {
+    return Row(children: [
+      Expanded(child: _buttonWidget(context, 'D0_JoiningFee'.tr, "60,000 TZSHS ")),
+       SizedBox(width: 20,),
+      Expanded(child: _buttonWidget(context, 'D0_DailyFee'.tr, "4,000 TZSHS ")),
+
+    ],);
+  }
+
+
+  Widget _buttonWidget(context,String price,String label){
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10  ,vertical: 10),
+      decoration: BoxDecoration(
+          color:  DD_BUTTON_COLOR,
+          borderRadius: BorderRadius.circular(2.0)
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            Text(price,style: const TextStyle(fontSize: 12,color: DD_TextValue,fontWeight: FontWeight.w500),),
+            dynamicHSpacer(4),
+            Text(label,style: const TextStyle(fontSize: 14,color: DD_TextValue,fontWeight: FontWeight.w600),),
+          ],
+        ),
+      ),
+    );
+  }
+
+
+  Widget selectButton() {
+    return CrayonPaymentDockedButton(
+      key: const Key('Select'),
+      title: 'Select Device',
+      borderRadius: 8,
+      height: CrayonPaymentDimensions.marginFortyEight,
+      buttonColor: LS_ButtonColor,
+      textColor: White,
+      textStyleVariant: CrayonPaymentTextStyleVariant.headline5,
+      onPressed: () {},
+    );
+  }
+
 }

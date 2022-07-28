@@ -100,7 +100,8 @@
   "AN_AgentName" : "Y9 Kitambulisho cha wakala:",
   "AN_Call" : "Wito",
 
-
+  "D0_JoiningFee": "Joining Fee (one off)",
+  "D0_DailyFee": "Daily Fee",
 
   "DD_product" : "Maelezo ya bidhaa",
   "DD_Brand" : "Chapa",
@@ -116,7 +117,9 @@
   "DD_EMIMonth" : "EMI/ Mwezi",
   "DD_Interest" : "Hamu %",
   "DD_TotalAmountPaid" : "Jumla ya Kiasi cha Kulipwa",
-
+  "DD_SelectDevice" : "Select Device",
+  "DD_MembershipTerms" : "Membership Terms",
+  "DD_MembershipBenefits" : "Y9 Membership Benefits",
 
   "VO_OtpVerification": "Uthibitishaji wa OTP",
   "VO_otp_verification_description" : "OTP itatumwa kwa nambari yako ya simu (kumalizia na XXXXX)",
@@ -139,4 +142,5 @@
   "HS_Customer_OnBoarding" : "Customer Onboarding",
   "HS_Customer_DeviceSwap" : "Device swap",
   "HS_Customer_AgentSupport" : "Agent Support"
+
 }
