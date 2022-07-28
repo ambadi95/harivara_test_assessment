@@ -116,6 +116,8 @@
   "DD_Interest" : "Interest %",
   "DD_TotalAmountPaid" : "Total Amount to be Paid",
   "DD_SelectDevice" : "Select Device",
+  "DD_MembershipTerms" : "Membership Terms",
+  "DD_MembershipBenefits" : "Y9 Membership Benefits",
 
 
   "VO_OtpVerification": "OTP Verification",

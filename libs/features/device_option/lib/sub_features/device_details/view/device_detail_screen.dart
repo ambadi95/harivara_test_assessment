@@ -178,8 +178,8 @@ class DeviceDetailScreen extends StatelessWidget {
   _membershipBenefitTitle(context) {
     return  CrayonPaymentText(
       key: Key('Y9 Membership Benefits'),
-      text: const TextUIDataModel(
-          'Y9 Membership Benefits',
+      text:  TextUIDataModel(
+          'DD_MembershipBenefits'.tr,
           styleVariant: CrayonPaymentTextStyleVariant.headline6,
           color: DD_TextValue,
           fontWeight: FontWeight.w600
@@ -190,8 +190,8 @@ class DeviceDetailScreen extends StatelessWidget {
   _membershipTermsTitle(context) {
     return  CrayonPaymentText(
       key: Key('Membership Terms'),
-      text: const TextUIDataModel(
-          'Membership Terms',
+      text:  TextUIDataModel(
+          'DD_MembershipTerms'.tr,
           styleVariant: CrayonPaymentTextStyleVariant.headline6,
           color: DD_TextValue,
           fontWeight: FontWeight.w600
@@ -249,9 +249,9 @@ class DeviceDetailScreen extends StatelessWidget {
 
   _membershipTermButton(BuildContext context) {
     return Row(children: [
-      Expanded(child: _buttonWidget(context, "Joining Fee (one off)", "60,000 TZSHS ")),
+      Expanded(child: _buttonWidget(context, 'D0_JoiningFee'.tr, "60,000 TZSHS ")),
        SizedBox(width: 20,),
-      Expanded(child: _buttonWidget(context, "Daily Fee", "4,000 TZSHS ")),
+      Expanded(child: _buttonWidget(context, 'D0_DailyFee'.tr, "4,000 TZSHS ")),
 
     ],);
   }

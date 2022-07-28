@@ -116,7 +116,8 @@
   "DD_Interest" : "Hamu %",
   "DD_TotalAmountPaid" : "Jumla ya Kiasi cha Kulipwa",
   "DD_SelectDevice" : "Select Device",
-
+  "DD_MembershipTerms" : "Membership Terms",
+  "DD_MembershipBenefits" : "Y9 Membership Benefits",
 
   "VO_OtpVerification": "Uthibitishaji wa OTP",
   "VO_otp_verification_description" : "OTP itatumwa kwa nambari yako ya simu (kumalizia na XXXXX)",
