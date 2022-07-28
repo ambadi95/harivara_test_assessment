@@ -138,8 +138,5 @@
   "HS_PendingCustomerRequests" : "Pending Customer\nRequest",
   "HS_Customer_OnBoarding" : "Customer Onboarding",
   "HS_Customer_DeviceSwap" : "Device swap",
-  "HS_Customer_AgentSupport" : "Agent Support",
-
-
-
+  "HS_Customer_AgentSupport" : "Agent Support"
 }
