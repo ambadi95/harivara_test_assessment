@@ -100,6 +100,9 @@
   "AN_Call" : "Call",
 
 
+  "D0_JoiningFee": "Joining Fee (one off)",
+  "D0_DailyFee": "Daily Fee",
+
   "DD_product" : "Product Details",
   "DD_Brand" : "Brand",
   "DD_ModelNumber" : "Model Number",
@@ -114,6 +117,9 @@
   "DD_EMIMonth" : "EMI/ Month",
   "DD_Interest" : "Interest %",
   "DD_TotalAmountPaid" : "Total Amount to be Paid",
+  "DD_SelectDevice" : "Select Device",
+  "DD_MembershipTerms" : "Membership Terms",
+  "DD_MembershipBenefits" : "Y9 Membership Benefits",
 
 
   "VO_OtpVerification": "OTP Verification",

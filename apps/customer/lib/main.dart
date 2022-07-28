@@ -13,6 +13,7 @@ import 'package:flutter_riverpod/src/framework.dart';
 import 'package:get/get.dart';
 import 'package:home/home/home_screen_arguments.dart';
 import 'package:home/home/view/home_screen.dart';
+import 'package:splash/splash/view/splash.dart';
 import 'package:welcome/sub_features/welcome/view/welcome_screen.dart';
 import 'package:widget_library/theme/crayon_payment_theme.dart';
 
@@ -52,12 +53,10 @@ class HomeWidget extends StatelessWidget {
   final IInactivityService _inactivityService;
   final bool _status;
 
-  HomeWidget(
-      this._translations,
+  HomeWidget(this._translations,
       this._navigationManager,
       this._inactivityService,
-      this._status,
-      );
+      this._status,);
 
 
   @override
@@ -67,8 +66,10 @@ class HomeWidget extends StatelessWidget {
       child: CrayonPaymentMaterialApp(
         key: Key('AppMaterialApp'),
         home: !_status
+
             ? CrayonSplashScreen.forCustomerApp()
             : CrayonSplashScreen.forCustomerApp(),
+
         theme: CrayonPaymentTheme().defaultTheme,
         onGenerateRoute: _navigationManager.getRoute,
         translations: _translations,
@@ -80,8 +81,6 @@ class HomeWidget extends StatelessWidget {
     );
   }
 }
-
-
 
 
 class MyHttpOverrides extends HttpOverrides {

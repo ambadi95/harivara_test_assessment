@@ -3,7 +3,7 @@ import 'device_option_model.dart';
 
 const List<DeviceOptionModel> deviceMockData = [
   DeviceOptionModel(
-    brand: 'Apple',
+    brand: 'Option A',
     chip: 'A15 Bionic chip',
     model: 'iPhone 13 Pro Max',
     monthlyPrice: 'TZS 94,666/mo.',
@@ -13,7 +13,7 @@ const List<DeviceOptionModel> deviceMockData = [
     imagePath: 'assets/mobile_0.png',
   ),
   DeviceOptionModel(
-    brand: 'Samsung',
+    brand: 'Option B',
     chip: 'Exynos 2100',
     model: 'Galaxy S21 FE 5G',
     monthlyPrice: 'TZS 65,833/mo.',
