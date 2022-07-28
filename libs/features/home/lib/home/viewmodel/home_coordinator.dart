@@ -24,6 +24,11 @@ class HomeCoordinator extends BaseViewModel<HomeScreenState>{
 
     );
   }
+
+  void navigateToCustomerRegister(){
+    _navigationHandler.navigateToSignUpScreen('Customer');
+  }
+
   void goBack() async {
     _navigationHandler.goBack();
   }

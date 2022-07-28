@@ -256,7 +256,7 @@ class _CrayonPasscodeScreenState extends State<CrayonPasscodeScreen> {
                 keyboardType: TextInputType.number,
                 onCompleted: (v) {
                   debugPrint("Completed");
-                  coordinator.onPasscodeCallback(passcodeController.text);
+                  coordinator.onPasscodeCallback(passcodeController.text,widget.passcodeScreenArgs.userType);
                   passcodeController.clear();
                 },
                 onChanged: (String value) {},
@@ -326,17 +326,17 @@ class _CrayonPasscodeScreenState extends State<CrayonPasscodeScreen> {
         : Colors.red;
   }
 
-  Widget _keyPad(BuildContext context, PasscodeCoordinator coordinator) {
-    return Directionality(
-      textDirection: TextDirection.ltr,
-      child: SizedBox(
-        height: 250,
-        child: CrayonPaymentKeyPad(
-          context,
-          coordinator.updatePasscodeInput,
-          hasActionButton: false,
-        ),
-      ),
-    );
-  }
+  // Widget _keyPad(BuildContext context, PasscodeCoordinator coordinator) {
+  //   return Directionality(
+  //     textDirection: TextDirection.ltr,
+  //     child: SizedBox(
+  //       height: 250,
+  //       child: CrayonPaymentKeyPad(
+  //         context,
+  //         coordinator.updatePasscodeInput,
+  //         hasActionButton: false,
+  //       ),
+  //     ),
+  //   );
+  // }
 }

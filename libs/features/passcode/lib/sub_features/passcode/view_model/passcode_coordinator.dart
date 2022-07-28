@@ -32,26 +32,26 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
     );
   }
 
-  Future<void> updatePasscodeInput(KeypadButtonType keypadButtonType,) async {
-    var currentState = state as CreatePasscodeReady;
-    var previousPasscode = currentState.currentPasscode;
-    var passcodeLength = currentState.passcodeLength;
+  // Future<void> updatePasscodeInput(KeypadButtonType keypadButtonType,) async {
+  //   var currentState = state as CreatePasscodeReady;
+  //   var previousPasscode = currentState.currentPasscode;
+  //   var passcodeLength = currentState.passcodeLength;
+  //
+  //   var updatedPasscode = _passcodeUseCase.updateCurrentPasscode(
+  //     keypadButtonType,
+  //     previousPasscode,
+  //     passcodeLength,
+  //   );
+  //
+  //   state = currentState.copyWith(
+  //     currentPasscode: updatedPasscode,
+  //   );
+  //   if (updatedPasscode.length == currentState.passcodeLength) {
+  //     await onPasscodeCallback(updatedPasscode);
+  //   }
+  // }
 
-    var updatedPasscode = _passcodeUseCase.updateCurrentPasscode(
-      keypadButtonType,
-      previousPasscode,
-      passcodeLength,
-    );
-
-    state = currentState.copyWith(
-      currentPasscode: updatedPasscode,
-    );
-    if (updatedPasscode.length == currentState.passcodeLength) {
-      await onPasscodeCallback(updatedPasscode);
-    }
-  }
-
-  Future<void> onPasscodeCallback(String passCode,) async {
+  Future<void> onPasscodeCallback(String passCode,String userType) async {
     var currentState = state as CreatePasscodeReady;
     switch (currentState.passCodeVerificationType) {
       case PassCodeVerificationType.create:
@@ -61,7 +61,7 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
         await verifyPasscode(
           currentState.initialPasscode,
           passCode,
-          currentState.destinationPath,
+          currentState.destinationPath, userType
         );
         break;
       case PassCodeVerificationType.verifyMerchantPasscode:
@@ -139,11 +139,17 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
       String oldPassCode,
       String newPasscode,
       String destinationPath,
+      String userType
       ) async {
     var currentState = state as CreatePasscodeReady;
     if (oldPassCode == newPasscode) {
       await _passcodeUseCase.savePassCode(newPasscode);
-      _navigateToDestinationPath(destinationPath);
+      if(userType == "Customer"){
+        _navigateToDestinationPath(destinationPath);
+      } else {
+        _navigationHandler.navigateToAgentEnrollmentBottomSheet("message");
+      }
+
     } else {
       state = currentState.copyWith(
         pageDescription: 'PC_passcode_does_not_match',

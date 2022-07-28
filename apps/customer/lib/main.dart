@@ -13,6 +13,7 @@ import 'package:flutter_riverpod/src/framework.dart';
 import 'package:get/get.dart';
 import 'package:home/home/home_screen_arguments.dart';
 import 'package:home/home/view/home_screen.dart';
+import 'package:splash/splash/view/splash.dart';
 import 'package:welcome/sub_features/welcome/view/welcome_screen.dart';
 import 'package:widget_library/theme/crayon_payment_theme.dart';
 
