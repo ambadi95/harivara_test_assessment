@@ -20,7 +20,7 @@
   "SU_title" : "Enter your NIDA Number & Agent ID",
   "SU_subtitle" : "By signing up to Y9, you agree to the \n%{Terms & Conditions|https://www.google.com}%.",
   "SU_ID_no_label" : "NIDA Number",
-  "SU_mobile_no_label" : "Kitambulisho cha wakala wa Y9",
+  "SU_mobile_no_label" : "Y9 Agent ID",
   "SU_carrier_message" : "Carrier SMS charges may apply.",
   "SU_button_text" : "Continue",
   "SU_title_hint" : "Enter NIDA Number",
@@ -84,6 +84,9 @@
   "VO_Incorrect_OTP_Title":"Incorrect OTP",
   "VO_Incorrect_OTP_Alert_Msg":"You have used all your attempts. Please sign up again.",
   "VO_resend_otp" : "Resend in %s seconds.",
+
+  "SP_ni": "ni",
+  "SP_bora": " Bora",
 
   "HS_Agent_Id" : "Y9 Agent Id",
   "HS_TotalOnBoarderCustomers" : "Total Onboarded Customers",

@@ -111,6 +111,9 @@
   "VO_Incorrect_OTP_Alert_Msg":"Umetumia majaribio yako yote. Tafadhali jisajili tena.",
   "VO_resend_otp" : "Tuma tena baada ya sekunde %s.",
 
+  "SP_ni": "ni",
+  "SP_bora": " Bora",
+
   "HS_Agent_Id" : "Y9 Agent Id",
   "HS_TotalOnBoarderCustomers" : "Total Onboarded Customers",
   "HS_PendingCustomerRequests" : "Pending Customer Request",

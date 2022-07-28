@@ -9,14 +9,17 @@ import 'package:welcome/sub_features/welcome_back/constants/image_constant.dart'
 import '../../../welcome_module.dart';
 import '../../welcome/state/welcome_screen_state.dart';
 import '../../welcome/viewmodel/welcome_coordinatior.dart';
+import '../viewmodel/welcome_back_coordinatior.dart';
 
 class CrayonWelcomBackScreen extends StatefulWidget {
   static const viewPath = '${WelcomeModule.moduleIdentifier}/welcomeback';
+  final String userType;
 
   // final WelcomeScreenArgs welcomeScreenArgs;
 
   const CrayonWelcomBackScreen({
     Key? key,
+    required this.userType
     // required this.welcomeScreenArgs,
   }) : super(key: key);
 
@@ -37,14 +40,14 @@ class CrayonWelcomBackScreen extends StatefulWidget {
 class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
   @override
   Widget build(BuildContext context) =>
-      BaseView<WelcomeCoordinator, WelcomeScreenState>(
+      BaseView<WelcomeBackCoordinator, WelcomeScreenState>(
         setupViewModel: (coordinator) async {},
         builder: (context, state, welcomeCoordinator) => Scaffold(
           body: _buildMainUIWithLoading(context, welcomeCoordinator, state),
         ),
       );
 
-  Widget _buildMainUIWithLoading(context, WelcomeCoordinator welcomeCoordinator,
+  Widget _buildMainUIWithLoading(context, WelcomeBackCoordinator welcomeCoordinator,
       WelcomeScreenState state) {
     return Scaffold(
       body: SafeArea(
@@ -58,12 +61,12 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
   }
 
   Widget _buildMainUI(BuildContext context,
-      WelcomeCoordinator welcomeCoordinator, WelcomeScreenState state) {
+      WelcomeBackCoordinator welcomeCoordinator, WelcomeScreenState state) {
     return _buidlWelcomeBackUI(context, state, welcomeCoordinator);
   }
 
   Widget _buidlWelcomeBackUI(BuildContext context, WelcomeScreenState state,
-      WelcomeCoordinator welcomeCoordinator) {
+      WelcomeBackCoordinator welcomeCoordinator) {
     return Stack(
       children: [
         // _createBackgroundImage(),
@@ -144,7 +147,7 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
     return Text('WB_EnterPassCode'.tr, style: WB_enter_passcode_title_style);
   }
 
-  Widget _passcodeWidget(BuildContext context, WelcomeCoordinator coordinator){
+  Widget _passcodeWidget(BuildContext context, WelcomeBackCoordinator coordinator){
     return Container(
       child: Padding(
           padding: const EdgeInsets.symmetric(
@@ -179,8 +182,8 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
             //errorAnimationController: errorController,
             controller: passcodeController,
             keyboardType: TextInputType.number,
-            onCompleted: (v) {
-              debugPrint("Completed");
+            onCompleted: (v) async {
+        await coordinator.navigationToDestination(widget.userType);
             }, onChanged: (String value) {  },
           )),
 

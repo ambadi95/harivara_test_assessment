@@ -110,7 +110,7 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
         // TODO: Handle this case.
         break;
       case PassCodeVerificationType.merchantSignIn:
-        // TODO: Handle this case.
+        _navigationHandler.navigateToAgentHomeScreen('homemodule/CrayonHomeScreen');
         break;
     }
   }
