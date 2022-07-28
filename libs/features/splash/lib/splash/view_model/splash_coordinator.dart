@@ -18,7 +18,6 @@ class SplashCoordinator extends BaseViewModel<SplashState> {
       ) async {
     state = SplashState.ready(
       context: context,
-     
       destinationPath: destinationPath,
       title: title,
      
@@ -29,7 +28,7 @@ class SplashCoordinator extends BaseViewModel<SplashState> {
 
 
 
-  Future<void> _navigateToDestinationPath(String destinationPath) async {
+  Future<void> navigateToDestinationPath(String destinationPath) async {
     _navigationHandler.navigateToDestinationPath(destinationPath);
   }
 

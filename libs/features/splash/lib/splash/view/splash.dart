@@ -25,7 +25,7 @@ class _CrayonSplashScreenState extends State<CrayonSplashScreen>
       _containerSizeAnimation,
       _containerColorAnimation,_logoAnimation;
   AnimationController? _containerAnimationController, _logoAnimationController;
-
+  SplashCoordinator? _splashCoordinator;
   bool? _isShow = false;
 
   @override
@@ -70,6 +70,7 @@ class _CrayonSplashScreenState extends State<CrayonSplashScreen>
   Widget build(BuildContext context) =>
       BaseView<SplashCoordinator, SplashState>(
         setupViewModel: (coordinator) {
+          _splashCoordinator=coordinator;
           coordinator.initialiseState(
             context,
             widget.splashScreenArgs.title,
@@ -191,7 +192,17 @@ class _CrayonSplashScreenState extends State<CrayonSplashScreen>
         setState(() {
           _isShow = true;
         });
+
+        _moveToDestinationPath();
+
       }
+    });
+  }
+
+  void _moveToDestinationPath(){
+    Future.delayed(const Duration(seconds: 4), ()
+    {
+      _splashCoordinator!.navigateToDestinationPath("");
     });
   }
 
