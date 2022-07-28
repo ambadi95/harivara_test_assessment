@@ -44,6 +44,8 @@ dependencies:
   task_manager:
     path: ../task-manager/
 
+  config:
+    path: ../../config
 
 dev_dependencies:
   flutter_test:

@@ -80,5 +80,15 @@ class CrayonPaymentBottomSheetState with _$CrayonPaymentBottomSheetState {
     Future<dynamic> Function()? callbackAfterClosingSheet,
   }) = CloseBottomSheet;
 
+  const factory CrayonPaymentBottomSheetState.agentEnrollment({
+    required CrayonPaymentBottomSheetIcon bottomSheetIcon,
+    String? title,
+    String? subtitle,
+    List<String>? additionalText,
+    List<ButtonOptions>? buttonOptions,
+    Duration? autoCloseAfter,
+    @Default(false) bool disableCloseButton,
+  }) = AgentEnrollmentSheet;
+
 
 }

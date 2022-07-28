@@ -1,3 +1,4 @@
+import 'package:config/Colors.dart';
 import 'package:core/navigation/navigation_manager.dart';
 import 'package:core/navigation/navigation_type.dart';
 import 'package:core/sheets/data_model/button_options.dart';
@@ -127,13 +128,14 @@ class WelcomeNavigationHandler with ErrorHandler {
 
   Future<void> navigateToAgentEnrollmentBottomSheet(String message,) async {
     final CrayonPaymentBottomSheetIcon icon = CrayonPaymentBottomSheetSuccessIcon();
-    final CrayonPaymentBottomSheetState infoState = CrayonPaymentBottomSheetState.infoState(
+    final CrayonPaymentBottomSheetState infoState = CrayonPaymentBottomSheetState.agentEnrollment(
       buttonOptions: [
-        //ButtonOptions('Continue to the app', (){},false)
+        ButtonOptions(Black,'Continue to the app', (){},false)
       ],
+      disableCloseButton: true,
       bottomSheetIcon: icon,
-      title: 'Congratulations,\nAshish You have successfully Onboarded',
-      subtitle: "Your Y9 Agent ID",
+      title: 'Congratulations,\n %{Ashish | click}%\n You have successfully Onboarded',
+      subtitle: "Your Y9 Agent ID\n %{XXXXX | click}% ",
       additionalText: [
         "Your Y9 Agent id has been sent successfully to your mobile number and Email ID"
       ]

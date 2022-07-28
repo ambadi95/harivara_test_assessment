@@ -1,3 +1,5 @@
+import 'package:config/Colors.dart';
+import 'package:config/Styles.dart';
 import 'package:core/sheets/coordinator/crayon_payment_bottom_sheet_coordinator.dart';
 import 'package:core/sheets/data_model/button_options.dart';
 import 'package:core/sheets/data_model/loading_bottom_sheet_options.dart';
@@ -8,13 +10,14 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:widget_library/buttons/docked_button.dart';
 import 'package:widget_library/buttons/text_button.dart';
 import 'package:widget_library/colors/crayon_payment_colors.dart';
+import 'package:widget_library/html/rich_text_description.dart';
 import 'package:widget_library/page_header/spannable_text_widget.dart';
 import 'package:widget_library/page_header/text_ui_data_model.dart';
 import 'package:widget_library/static_text/crayon_payment_text.dart';
 
 class BottomSheetAgentEnrollment extends StatelessWidget {
   static final String _identifier = 'BottomSheetAgentEnrollment';
-  final SheetInfo _sheetState;
+  final AgentEnrollmentSheet _sheetState;
   final CrayonPaymentBottomSheetCoordinator coordinator;
 
   const BottomSheetAgentEnrollment(
@@ -31,7 +34,7 @@ class BottomSheetAgentEnrollment extends StatelessWidget {
       children: [
         if (_sheetState.disableCloseButton)
           SizedBox(
-            height: 38,
+            height: 20,
           ),
         if (!_sheetState.disableCloseButton)
           CloseButtonTopRow(
@@ -39,17 +42,19 @@ class BottomSheetAgentEnrollment extends StatelessWidget {
           ),
         _buildImage,
         SizedBox(
-          height: 38,
+          height: 16,
         ),
         if (_sheetState.title != null) _buildTitle,
         SizedBox(
-          height: 18,
+          height: 28,
         ),
         if (_sheetState.subtitle != null) _buildSubtitle,
         if (_sheetState.additionalText != null) ...[
           SizedBox(
-            height: 41,
+            height: 20,
           ),
+        if (_sheetState.additionalText != null) ...[
+
           ..._sheetState.additionalText!
               .map(
                 (additionalText) => Padding(
@@ -59,9 +64,10 @@ class BottomSheetAgentEnrollment extends StatelessWidget {
           )
               .toList(),
         ],
+        ],
         if (_sheetState.buttonOptions != null) ...[
           SizedBox(
-            height: 41,
+            height: 22,
           ),
           ..._sheetState.buttonOptions!
               .map(
@@ -87,60 +93,40 @@ class BottomSheetAgentEnrollment extends StatelessWidget {
     );
   }
 
-  SpannedTextWidget get _buildTitle {
-    return SpannedTextWidget(
-      texts: [
-        TextUIDataModel(
-          _sheetState.title!,
-          textAlign: TextAlign.center,
-          styleVariant: CrayonPaymentTextStyleVariant.headline6,
-          color: CrayonPaymentColors.crayonPaymentBlack,
-        ),
-        TextUIDataModel(
-          _sheetState.title!,
-          textAlign: TextAlign.center,
-          styleVariant: CrayonPaymentTextStyleVariant.headline6,
-          color: CrayonPaymentColors.crayonPaymentBlack,
-        ),
-        TextUIDataModel(
-          _sheetState.title!,
-          textAlign: TextAlign.center,
-          styleVariant: CrayonPaymentTextStyleVariant.headline6,
-          color: CrayonPaymentColors.crayonPaymentBlack,
-        )
-      ],
-      key: const Key('title'),
-    );
-  }
-
-  SpannedTextWidget get _buildSubtitle {
-    return SpannedTextWidget(
-      key: const Key('subtitle'),
-      texts: [
-        TextUIDataModel(
-          _sheetState.subtitle!,
-          textAlign: TextAlign.center,
-          styleVariant: CrayonPaymentTextStyleVariant.headline5,
-          color: Colors.grey,
-        ),
-        TextUIDataModel(
-          _sheetState.subtitle!,
-          textAlign: TextAlign.center,
-          styleVariant: CrayonPaymentTextStyleVariant.headline5,
-          color: Colors.grey,
-        )
-      ],
-    );
-  }
-
-  CrayonPaymentText _buildAdditionalText(String? _additionalText) {
-    return CrayonPaymentText(
-      key: const Key('additionalText'),
-      text: TextUIDataModel(
-        _additionalText!,
+  Padding get _buildTitle {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      child: RichTextDescription(
         textAlign: TextAlign.center,
-        styleVariant: CrayonPaymentTextStyleVariant.headline5,
-        color: Colors.grey,
+        description: _sheetState.title!,
+        key: const Key('title'),
+          linkTextStyle: ES_bold_text,
+        descriptionTextStyle: ES_success_text,
+      ),
+    );
+  }
+
+  RichTextDescription get _buildSubtitle {
+    return RichTextDescription(
+      textAlign: TextAlign.center,
+      description: _sheetState.subtitle!,
+      key: const Key('subtitle'),
+      linkTextStyle: ES_bold_text,
+      descriptionTextStyle: ES_success_text,
+    );;
+  }
+
+  Padding _buildAdditionalText(String additionalText) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 58.0),
+      child: CrayonPaymentText(
+        key: const Key('additionalText'),
+        text: TextUIDataModel(
+          additionalText,
+          textAlign: TextAlign.center,
+          styleVariant: CrayonPaymentTextStyleVariant.headline5,
+          color: Color(0xFF676767),
+        ),
       ),
     );
   }
@@ -157,7 +143,10 @@ class BottomSheetAgentEnrollment extends StatelessWidget {
       return CrayonPaymentDockedButton(
         key: const Key('bottomButtonDocked'),
         title: buttonOptions.text,
+        borderRadius: 8,
         onPressed: callback,
+        buttonColor: PRIMARY_COLOR,
+        textStyleVariant: CrayonPaymentTextStyleVariant.headline4,
       );
     } else {
       return Container(

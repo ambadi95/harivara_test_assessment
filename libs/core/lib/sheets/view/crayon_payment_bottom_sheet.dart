@@ -11,6 +11,7 @@ import 'package:core/view/base_view.dart';
 import 'package:flutter/material.dart';
 
 import '../navigation/crayon_payment_bottom_sheet_route_manager.dart';
+import 'widgets/bottom_sheet_agent_enrollment_sucess.dart';
 import 'widgets/bottom_sheet_info_column.dart';
 import 'widgets/bottom_sheet_waiting_column.dart';
 
@@ -81,6 +82,11 @@ class CrayonPaymentBottomSheet extends StatelessWidget {
             title: title,
           );
         },
+        agentEnrollment: (_, __, ___, additionalText, ____, _____, ______) =>
+            BottomSheetAgentEnrollment(
+              coordinator,
+              state as AgentEnrollmentSheet,
+            ),
         orElse: () => const Center(
           key: Key('ErrorBottomSheet'),
           child: Text('Error'),
