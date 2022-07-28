@@ -105,7 +105,7 @@ class WelcomeNavigationHandler with ErrorHandler {
         'VO_otp_verification_description',
         userType == 'Customer' ? 'welcomeModule/details' : 'welcomeModule/agentDetails',
         true,
-        2,
+        3,
         OtpVerificationType.mobile,
         '',
         6,

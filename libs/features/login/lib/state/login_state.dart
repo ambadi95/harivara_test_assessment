@@ -14,6 +14,10 @@ class LoginState with _$LoginState {
       String mobileNumberError
       ) = MobileNumberError;
 
+ const factory LoginState.agentIdError(
+     String agentIdError
+     ) = AgentIdError;
+
  const factory LoginState.loginFormState(
      bool isValid
      ) = LoginFormState;

@@ -22,6 +22,7 @@ mixin _$SignUpState {
     required TResult Function(bool isValid) SignUpFormState,
     required TResult Function(String nindaNumberError) nindaNumberError,
     required TResult Function(String nindaNumberError) mobileNumberError,
+    required TResult Function(String agentIdError) agentIdError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +31,7 @@ mixin _$SignUpState {
     TResult Function(bool isValid)? SignUpFormState,
     TResult Function(String nindaNumberError)? nindaNumberError,
     TResult Function(String nindaNumberError)? mobileNumberError,
+    TResult Function(String agentIdError)? agentIdError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +40,7 @@ mixin _$SignUpState {
     TResult Function(bool isValid)? SignUpFormState,
     TResult Function(String nindaNumberError)? nindaNumberError,
     TResult Function(String nindaNumberError)? mobileNumberError,
+    TResult Function(String agentIdError)? agentIdError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +50,7 @@ mixin _$SignUpState {
     required TResult Function(SignUpFormState value) SignUpFormState,
     required TResult Function(NindaNumberError value) nindaNumberError,
     required TResult Function(MobileNumberError value) mobileNumberError,
+    required TResult Function(AgentIdError value) agentIdError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +59,7 @@ mixin _$SignUpState {
     TResult Function(SignUpFormState value)? SignUpFormState,
     TResult Function(NindaNumberError value)? nindaNumberError,
     TResult Function(MobileNumberError value)? mobileNumberError,
+    TResult Function(AgentIdError value)? agentIdError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +68,7 @@ mixin _$SignUpState {
     TResult Function(SignUpFormState value)? SignUpFormState,
     TResult Function(NindaNumberError value)? nindaNumberError,
     TResult Function(MobileNumberError value)? mobileNumberError,
+    TResult Function(AgentIdError value)? agentIdError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -128,6 +134,7 @@ class _$InitialState implements InitialState {
     required TResult Function(bool isValid) SignUpFormState,
     required TResult Function(String nindaNumberError) nindaNumberError,
     required TResult Function(String nindaNumberError) mobileNumberError,
+    required TResult Function(String agentIdError) agentIdError,
   }) {
     return initialState();
   }
@@ -139,6 +146,7 @@ class _$InitialState implements InitialState {
     TResult Function(bool isValid)? SignUpFormState,
     TResult Function(String nindaNumberError)? nindaNumberError,
     TResult Function(String nindaNumberError)? mobileNumberError,
+    TResult Function(String agentIdError)? agentIdError,
   }) {
     return initialState?.call();
   }
@@ -150,6 +158,7 @@ class _$InitialState implements InitialState {
     TResult Function(bool isValid)? SignUpFormState,
     TResult Function(String nindaNumberError)? nindaNumberError,
     TResult Function(String nindaNumberError)? mobileNumberError,
+    TResult Function(String agentIdError)? agentIdError,
     required TResult orElse(),
   }) {
     if (initialState != null) {
@@ -165,6 +174,7 @@ class _$InitialState implements InitialState {
     required TResult Function(SignUpFormState value) SignUpFormState,
     required TResult Function(NindaNumberError value) nindaNumberError,
     required TResult Function(MobileNumberError value) mobileNumberError,
+    required TResult Function(AgentIdError value) agentIdError,
   }) {
     return initialState(this);
   }
@@ -176,6 +186,7 @@ class _$InitialState implements InitialState {
     TResult Function(SignUpFormState value)? SignUpFormState,
     TResult Function(NindaNumberError value)? nindaNumberError,
     TResult Function(MobileNumberError value)? mobileNumberError,
+    TResult Function(AgentIdError value)? agentIdError,
   }) {
     return initialState?.call(this);
   }
@@ -187,6 +198,7 @@ class _$InitialState implements InitialState {
     TResult Function(SignUpFormState value)? SignUpFormState,
     TResult Function(NindaNumberError value)? nindaNumberError,
     TResult Function(MobileNumberError value)? mobileNumberError,
+    TResult Function(AgentIdError value)? agentIdError,
     required TResult orElse(),
   }) {
     if (initialState != null) {
@@ -269,6 +281,7 @@ class _$SignUpFormState implements SignUpFormState {
     required TResult Function(bool isValid) SignUpFormState,
     required TResult Function(String nindaNumberError) nindaNumberError,
     required TResult Function(String nindaNumberError) mobileNumberError,
+    required TResult Function(String agentIdError) agentIdError,
   }) {
     return SignUpFormState(isValid);
   }
@@ -280,6 +293,7 @@ class _$SignUpFormState implements SignUpFormState {
     TResult Function(bool isValid)? SignUpFormState,
     TResult Function(String nindaNumberError)? nindaNumberError,
     TResult Function(String nindaNumberError)? mobileNumberError,
+    TResult Function(String agentIdError)? agentIdError,
   }) {
     return SignUpFormState?.call(isValid);
   }
@@ -291,6 +305,7 @@ class _$SignUpFormState implements SignUpFormState {
     TResult Function(bool isValid)? SignUpFormState,
     TResult Function(String nindaNumberError)? nindaNumberError,
     TResult Function(String nindaNumberError)? mobileNumberError,
+    TResult Function(String agentIdError)? agentIdError,
     required TResult orElse(),
   }) {
     if (SignUpFormState != null) {
@@ -306,6 +321,7 @@ class _$SignUpFormState implements SignUpFormState {
     required TResult Function(SignUpFormState value) SignUpFormState,
     required TResult Function(NindaNumberError value) nindaNumberError,
     required TResult Function(MobileNumberError value) mobileNumberError,
+    required TResult Function(AgentIdError value) agentIdError,
   }) {
     return SignUpFormState(this);
   }
@@ -317,6 +333,7 @@ class _$SignUpFormState implements SignUpFormState {
     TResult Function(SignUpFormState value)? SignUpFormState,
     TResult Function(NindaNumberError value)? nindaNumberError,
     TResult Function(MobileNumberError value)? mobileNumberError,
+    TResult Function(AgentIdError value)? agentIdError,
   }) {
     return SignUpFormState?.call(this);
   }
@@ -328,6 +345,7 @@ class _$SignUpFormState implements SignUpFormState {
     TResult Function(SignUpFormState value)? SignUpFormState,
     TResult Function(NindaNumberError value)? nindaNumberError,
     TResult Function(MobileNumberError value)? mobileNumberError,
+    TResult Function(AgentIdError value)? agentIdError,
     required TResult orElse(),
   }) {
     if (SignUpFormState != null) {
@@ -416,6 +434,7 @@ class _$NindaNumberError implements NindaNumberError {
     required TResult Function(bool isValid) SignUpFormState,
     required TResult Function(String nindaNumberError) nindaNumberError,
     required TResult Function(String nindaNumberError) mobileNumberError,
+    required TResult Function(String agentIdError) agentIdError,
   }) {
     return nindaNumberError(this.nindaNumberError);
   }
@@ -427,6 +446,7 @@ class _$NindaNumberError implements NindaNumberError {
     TResult Function(bool isValid)? SignUpFormState,
     TResult Function(String nindaNumberError)? nindaNumberError,
     TResult Function(String nindaNumberError)? mobileNumberError,
+    TResult Function(String agentIdError)? agentIdError,
   }) {
     return nindaNumberError?.call(this.nindaNumberError);
   }
@@ -438,6 +458,7 @@ class _$NindaNumberError implements NindaNumberError {
     TResult Function(bool isValid)? SignUpFormState,
     TResult Function(String nindaNumberError)? nindaNumberError,
     TResult Function(String nindaNumberError)? mobileNumberError,
+    TResult Function(String agentIdError)? agentIdError,
     required TResult orElse(),
   }) {
     if (nindaNumberError != null) {
@@ -453,6 +474,7 @@ class _$NindaNumberError implements NindaNumberError {
     required TResult Function(SignUpFormState value) SignUpFormState,
     required TResult Function(NindaNumberError value) nindaNumberError,
     required TResult Function(MobileNumberError value) mobileNumberError,
+    required TResult Function(AgentIdError value) agentIdError,
   }) {
     return nindaNumberError(this);
   }
@@ -464,6 +486,7 @@ class _$NindaNumberError implements NindaNumberError {
     TResult Function(SignUpFormState value)? SignUpFormState,
     TResult Function(NindaNumberError value)? nindaNumberError,
     TResult Function(MobileNumberError value)? mobileNumberError,
+    TResult Function(AgentIdError value)? agentIdError,
   }) {
     return nindaNumberError?.call(this);
   }
@@ -475,6 +498,7 @@ class _$NindaNumberError implements NindaNumberError {
     TResult Function(SignUpFormState value)? SignUpFormState,
     TResult Function(NindaNumberError value)? nindaNumberError,
     TResult Function(MobileNumberError value)? mobileNumberError,
+    TResult Function(AgentIdError value)? agentIdError,
     required TResult orElse(),
   }) {
     if (nindaNumberError != null) {
@@ -564,6 +588,7 @@ class _$MobileNumberError implements MobileNumberError {
     required TResult Function(bool isValid) SignUpFormState,
     required TResult Function(String nindaNumberError) nindaNumberError,
     required TResult Function(String nindaNumberError) mobileNumberError,
+    required TResult Function(String agentIdError) agentIdError,
   }) {
     return mobileNumberError(this.nindaNumberError);
   }
@@ -575,6 +600,7 @@ class _$MobileNumberError implements MobileNumberError {
     TResult Function(bool isValid)? SignUpFormState,
     TResult Function(String nindaNumberError)? nindaNumberError,
     TResult Function(String nindaNumberError)? mobileNumberError,
+    TResult Function(String agentIdError)? agentIdError,
   }) {
     return mobileNumberError?.call(this.nindaNumberError);
   }
@@ -586,6 +612,7 @@ class _$MobileNumberError implements MobileNumberError {
     TResult Function(bool isValid)? SignUpFormState,
     TResult Function(String nindaNumberError)? nindaNumberError,
     TResult Function(String nindaNumberError)? mobileNumberError,
+    TResult Function(String agentIdError)? agentIdError,
     required TResult orElse(),
   }) {
     if (mobileNumberError != null) {
@@ -601,6 +628,7 @@ class _$MobileNumberError implements MobileNumberError {
     required TResult Function(SignUpFormState value) SignUpFormState,
     required TResult Function(NindaNumberError value) nindaNumberError,
     required TResult Function(MobileNumberError value) mobileNumberError,
+    required TResult Function(AgentIdError value) agentIdError,
   }) {
     return mobileNumberError(this);
   }
@@ -612,6 +640,7 @@ class _$MobileNumberError implements MobileNumberError {
     TResult Function(SignUpFormState value)? SignUpFormState,
     TResult Function(NindaNumberError value)? nindaNumberError,
     TResult Function(MobileNumberError value)? mobileNumberError,
+    TResult Function(AgentIdError value)? agentIdError,
   }) {
     return mobileNumberError?.call(this);
   }
@@ -623,6 +652,7 @@ class _$MobileNumberError implements MobileNumberError {
     TResult Function(SignUpFormState value)? SignUpFormState,
     TResult Function(NindaNumberError value)? nindaNumberError,
     TResult Function(MobileNumberError value)? mobileNumberError,
+    TResult Function(AgentIdError value)? agentIdError,
     required TResult orElse(),
   }) {
     if (mobileNumberError != null) {
@@ -639,5 +669,157 @@ abstract class MobileNumberError implements SignUpState {
   String get nindaNumberError;
   @JsonKey(ignore: true)
   _$$MobileNumberErrorCopyWith<_$MobileNumberError> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AgentIdErrorCopyWith<$Res> {
+  factory _$$AgentIdErrorCopyWith(
+          _$AgentIdError value, $Res Function(_$AgentIdError) then) =
+      __$$AgentIdErrorCopyWithImpl<$Res>;
+  $Res call({String agentIdError});
+}
+
+/// @nodoc
+class __$$AgentIdErrorCopyWithImpl<$Res> extends _$SignUpStateCopyWithImpl<$Res>
+    implements _$$AgentIdErrorCopyWith<$Res> {
+  __$$AgentIdErrorCopyWithImpl(
+      _$AgentIdError _value, $Res Function(_$AgentIdError) _then)
+      : super(_value, (v) => _then(v as _$AgentIdError));
+
+  @override
+  _$AgentIdError get _value => super._value as _$AgentIdError;
+
+  @override
+  $Res call({
+    Object? agentIdError = freezed,
+  }) {
+    return _then(_$AgentIdError(
+      agentIdError == freezed
+          ? _value.agentIdError
+          : agentIdError // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AgentIdError implements AgentIdError {
+  const _$AgentIdError(this.agentIdError);
+
+  @override
+  final String agentIdError;
+
+  @override
+  String toString() {
+    return 'SignUpState.agentIdError(agentIdError: $agentIdError)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AgentIdError &&
+            const DeepCollectionEquality()
+                .equals(other.agentIdError, agentIdError));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(agentIdError));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$AgentIdErrorCopyWith<_$AgentIdError> get copyWith =>
+      __$$AgentIdErrorCopyWithImpl<_$AgentIdError>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialState,
+    required TResult Function(bool isValid) SignUpFormState,
+    required TResult Function(String nindaNumberError) nindaNumberError,
+    required TResult Function(String nindaNumberError) mobileNumberError,
+    required TResult Function(String agentIdError) agentIdError,
+  }) {
+    return agentIdError(this.agentIdError);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initialState,
+    TResult Function(bool isValid)? SignUpFormState,
+    TResult Function(String nindaNumberError)? nindaNumberError,
+    TResult Function(String nindaNumberError)? mobileNumberError,
+    TResult Function(String agentIdError)? agentIdError,
+  }) {
+    return agentIdError?.call(this.agentIdError);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialState,
+    TResult Function(bool isValid)? SignUpFormState,
+    TResult Function(String nindaNumberError)? nindaNumberError,
+    TResult Function(String nindaNumberError)? mobileNumberError,
+    TResult Function(String agentIdError)? agentIdError,
+    required TResult orElse(),
+  }) {
+    if (agentIdError != null) {
+      return agentIdError(this.agentIdError);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialState value) initialState,
+    required TResult Function(SignUpFormState value) SignUpFormState,
+    required TResult Function(NindaNumberError value) nindaNumberError,
+    required TResult Function(MobileNumberError value) mobileNumberError,
+    required TResult Function(AgentIdError value) agentIdError,
+  }) {
+    return agentIdError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InitialState value)? initialState,
+    TResult Function(SignUpFormState value)? SignUpFormState,
+    TResult Function(NindaNumberError value)? nindaNumberError,
+    TResult Function(MobileNumberError value)? mobileNumberError,
+    TResult Function(AgentIdError value)? agentIdError,
+  }) {
+    return agentIdError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialState value)? initialState,
+    TResult Function(SignUpFormState value)? SignUpFormState,
+    TResult Function(NindaNumberError value)? nindaNumberError,
+    TResult Function(MobileNumberError value)? mobileNumberError,
+    TResult Function(AgentIdError value)? agentIdError,
+    required TResult orElse(),
+  }) {
+    if (agentIdError != null) {
+      return agentIdError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AgentIdError implements SignUpState {
+  const factory AgentIdError(final String agentIdError) = _$AgentIdError;
+
+  String get agentIdError;
+  @JsonKey(ignore: true)
+  _$$AgentIdErrorCopyWith<_$AgentIdError> get copyWith =>
       throw _privateConstructorUsedError;
 }

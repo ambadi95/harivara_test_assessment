@@ -1,12 +1,7 @@
 import 'package:config/Config.dart';
 import 'package:config/Styles.dart';
-import 'package:config/Colors.dart' as config_color;
-import 'package:core/validators/input_entry_validator/input_entry_validator.dart';
 import 'package:flutter/material.dart';
-import 'package:passcode/sub_features/passcode/view/passcode.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:shared_data_models/passcode/passcode_screen_args.dart';
-import 'package:welcome/sub_features/welcome/data_model/welcome_model.dart';
 import 'package:core/view/base_view.dart';
 import 'package:get/get.dart';
 import 'package:welcome/sub_features/welcome_back/constants/image_constant.dart';
@@ -94,15 +89,15 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
               const SizedBox(height: 48),
               _enterPassCodeTitle(context),
               _passcodeWidget(context, welcomeCoordinator),
-              const SizedBox(height: 57),
-              Image.asset(
-                WB_OrIcon,
-              ),
-              const SizedBox(height: 15),
-              Image.asset(
-                WB_touchIdIcon,
-                scale: 2.0,
-              ),
+              // const SizedBox(height: 57),
+              // Image.asset(
+              //   WB_OrIcon,
+              // ),
+              // const SizedBox(height: 15),
+              // Image.asset(
+              //   WB_touchIdIcon,
+              //   scale: 2.0,
+              // ),
               const Spacer(),
             ],
           ),

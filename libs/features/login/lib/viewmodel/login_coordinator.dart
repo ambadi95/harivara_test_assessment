@@ -1,4 +1,5 @@
 
+import 'package:core/mobile_core.dart';
 import 'package:core/view/analytics_state_notifier.dart';
 import '../navigation_handler/login_navigation_handler.dart';
 import '../state/login_state.dart';
@@ -12,10 +13,16 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState>{
   LoginCoordinator(this._navigationHandler,
       this._loginUseCase,) : super(const LoginState());
 
-  void validateForm(String mobNumber, String passcode){
+  void validateForm(String mobNumber, String passcode, String agentId, String userType){
+    var agentID = agentId.isNotEmptyOrNull;
     var mobileNo = _loginUseCase.isValidMobileNumber(mobNumber);
     var passCode = passcode.length == 6;
-    bool isValid = mobileNo && passCode;
+    bool isValid;
+    if(userType == 'Customer') {
+      isValid = mobileNo && passCode;
+    }else{
+      isValid = mobileNo && agentID;
+    }
     state =LoginState.loginFormState(isValid);
   }
 
@@ -29,8 +36,21 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState>{
     return result;
   }
 
-  Future navigateToWelcomeBackScreen() async {
-    _navigationHandler.navigateToOtpScreen();
+  bool isAgentIdValid(String agentId){
+    var result = _loginUseCase.isValidAgentId(agentId);
+    if(!result){
+      state = const LoginState.agentIdError('SU_subtitle_error_text');
+    }else {
+      state = const LoginState.agentIdError('');
+    }
+    return result;
+  }
 
+  Future navigateToWelcomeBackScreen(String userType) async {
+    if(userType == 'Customer'){
+      _navigationHandler.navigateToOtpScreen(userType);
+    }else{
+      _navigationHandler.navigateToOtpScreenForAgent(userType);
+    }
   }
 }

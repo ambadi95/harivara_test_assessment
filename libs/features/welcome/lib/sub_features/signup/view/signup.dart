@@ -1,4 +1,3 @@
-
 import 'package:config/Styles.dart';
 import 'package:core/view/base_view.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +17,7 @@ class SignUp extends StatefulWidget {
   final String userType;
   static const viewPath = '${WelcomeModule.moduleIdentifier}/signup';
 
-  const SignUp({required this.userType,Key? key}) : super(key: key);
+  const SignUp({required this.userType, Key? key}) : super(key: key);
 
   @override
   State<SignUp> createState() => _SignUpState();
@@ -28,8 +27,10 @@ class _SignUpState extends State<SignUp> {
   bool _isBtnEnabled = false;
   String nidaNumberError = '';
   String mobileNumberError = '';
+  String agentIdError = '';
   TextEditingController nidaNumber = TextEditingController();
   TextEditingController mobileNumber = TextEditingController();
+  TextEditingController agentId = TextEditingController();
 
   @override
   Widget build(BuildContext context) =>
@@ -50,13 +51,15 @@ class _SignUpState extends State<SignUp> {
               ],
             ),
           ),
-          body: SafeArea(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _buildTopContainer(context, coordinator),
-                _buildMainUI(coordinator),
-              ],
+          body: SingleChildScrollView(
+            child: SafeArea(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _buildTopContainer(context, coordinator),
+                  _buildMainUI(coordinator),
+                ],
+              ),
             ),
           ),
         ),
@@ -88,12 +91,16 @@ class _SignUpState extends State<SignUp> {
           const SizedBox(
             height: 69,
           ),
-          _buildLabelTextField('SU_ID_no_label'.tr, nidaNumber, coordinator),
+          _buildLabelTextField('SU_ID_no_label'.tr, nidaNumber, coordinator,
+              'SU_title_hint', nidaNumberError, TextInputType.number),
           const SizedBox(
             height: 48,
           ),
-          _buildLabelTextFieldMobNumber(
-              'SU_mobile_no_label'.tr, mobileNumber, coordinator),
+          widget.userType == 'Customer'
+              ? _buildLabelTextFieldMobNumber(
+                  'SU_mobile_no_label'.tr, mobileNumber, coordinator)
+              : _buildLabelTextField('SU_mobile_no_label'.tr, agentId,
+                  coordinator, 'SU_subtitle_hint', agentIdError, TextInputType.text),
         ],
       ),
     );
@@ -141,21 +148,20 @@ class _SignUpState extends State<SignUp> {
   }
 
   Widget _buildLabelTextField(String label, TextEditingController controller,
-      SignUpCoordinator coordinator) {
+      SignUpCoordinator coordinator, String hint, String errorText, TextInputType textInputType) {
     return InputFieldWithLabel(
       label: label,
-      hintText: 'SU_title_hint'.tr,
+      hintText: hint.tr,
       controller: controller,
-      errorText: nidaNumberError.tr,
-      key: const Key('idNumberTextField'),
-      inputFormatters: <TextInputFormatter>[
-        FilteringTextInputFormatter.digitsOnly
-      ],
-      keyboardType: TextInputType.number,
+      errorText: errorText.tr,
+      keyboardType: textInputType,
       onChanged: (value) {
         _validateForm(coordinator);
-        if(nidaNumberError.isNotEmpty || nidaNumber.text.length > 12){
+        if (nidaNumberError.isNotEmpty || nidaNumber.text.length > 12) {
           coordinator.isValidNidaNumber(nidaNumber.text);
+        }
+        if(agentIdError.isNotEmpty){
+          coordinator.isValidAgentId(agentId.text);
         }
       },
     );
@@ -163,8 +169,7 @@ class _SignUpState extends State<SignUp> {
 
   Widget _buildLabelTextFieldMobNumber(String label,
       TextEditingController controller, SignUpCoordinator coordinator) {
-    return
-      InputNumberFieldWithLabel(
+    return InputNumberFieldWithLabel(
       label: label,
       controller: controller,
       errorText: mobileNumberError.tr,
@@ -176,7 +181,7 @@ class _SignUpState extends State<SignUp> {
       keyboardType: TextInputType.number,
       onChanged: (value) {
         _validateForm(coordinator);
-        if(mobileNumberError.isNotEmpty || mobileNumber.text.length > 9){
+        if (mobileNumberError.isNotEmpty || mobileNumber.text.length > 9) {
           coordinator.isValidMobileNumber(mobileNumber.text);
         }
       },
@@ -241,9 +246,10 @@ class _SignUpState extends State<SignUp> {
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
-        onTap: () async{
-        coordinator.isValidNidaNumber(nidaNumber.text);
-        coordinator.isValidMobileNumber(mobileNumber.text);
+        onTap: () async {
+          coordinator.isValidNidaNumber(nidaNumber.text);
+          coordinator.isValidMobileNumber(mobileNumber.text);
+          coordinator.isValidAgentId(agentId.text);
           if (_isBtnEnabled && coordinator.isValidNidaNumber(nidaNumber.text)) {
             coordinator.navigateDestination(widget.userType);
             await coordinator.continueToOtp(nidaNumber.text, mobileNumber.text);
@@ -273,16 +279,20 @@ class _SignUpState extends State<SignUp> {
         SignUpFormState: (isValid) {
           _isBtnEnabled = isValid;
         },
-        nindaNumberError: (message){
+        nindaNumberError: (message) {
           nidaNumberError = message;
         },
-        mobileNumberError: (message){
+        mobileNumberError: (message) {
           mobileNumberError = message;
+        },
+        agentIdError: (message) {
+          agentIdError = message;
         },
         orElse: () => null);
   }
 
   void _validateForm(SignUpCoordinator coordinator) {
-    coordinator.validateForm(nidaNumber.text, mobileNumber.text);
+    coordinator.validateForm(
+        nidaNumber.text, mobileNumber.text, agentId.text, widget.userType);
   }
 }

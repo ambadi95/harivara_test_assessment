@@ -1,4 +1,5 @@
 
+import 'package:core/mobile_core.dart';
 import 'package:task_manager/base_classes/base_data_provider.dart';
 import 'package:task_manager/task_manager_impl.dart';
 import 'package:welcome/sub_features/signup/viewmodel/signup_viewmodel.dart';
@@ -12,6 +13,10 @@ class SignupUseCase extends BaseDataProvider{
   }
   bool isValidMobileNumber(String mobileNumber){
     return _signupViewModel.isValidMobileNumber(mobileNumber);
+  }
+
+  bool isValidAgentId(String agentId){
+    return agentId.isNotEmptyOrNull;
   }
 
   Future<void> saveDetails(String nidaNumber, String mobileNumber) async{

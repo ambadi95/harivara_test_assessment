@@ -16,16 +16,10 @@ class AgentDetailsCoordinator extends BaseViewModel<AgentDetailsState>{
   }
 
 
-
-  Future<void> getMobileNumber() async {
-     String getMobileNo = await _agentDetailsUseCase.getMobileNumber();
-      state = AgentDetailsState.getMobileNumber(getMobileNo);
-  }
-
   bool _validateForm(String name, String dob, String gender, String mobNumber,
       String emailId){
     var isnNameValid = _agentDetailsUseCase.isValidName(name);
-    var isMobileNoValid = mobNumber.isNotEmpty;
+    var isMobileNoValid = _agentDetailsUseCase.isValidMobile(mobNumber);
     var isDobValid = dob.isNotEmpty;
     var isGenderValid = gender.isNotEmpty;
     var isEmailIdValid = _agentDetailsUseCase.isValidEmail(emailId);
@@ -49,6 +43,16 @@ class AgentDetailsCoordinator extends BaseViewModel<AgentDetailsState>{
       state = const AgentDetailsState.nameError('DV_name_error_text');
     }else{
       state = const AgentDetailsState.nameError('');
+    }
+    return result;
+  }
+
+  bool isValidMobileNumber(String mobileNumber){
+    bool result = _agentDetailsUseCase.isValidMobile(mobileNumber);
+    if(!result){
+      state = const AgentDetailsState.mobileError('DV_contact_no_error_text');
+    }else{
+      state = const AgentDetailsState.mobileError('');
     }
     return result;
   }

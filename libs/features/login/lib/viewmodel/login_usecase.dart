@@ -11,4 +11,8 @@ class LoginUseCase extends BaseDataProvider {
   bool isValidMobileNumber(String mobileNumber){
     return _loginViewModel.isValidMobileNumber(mobileNumber);
   }
+
+  bool isValidAgentId(String agentId){
+    return _loginViewModel.isValidAgentId(agentId);
+  }
 }

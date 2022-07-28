@@ -21,7 +21,7 @@ mixin _$AgentDetailsState {
     required TResult Function() initialState,
     required TResult Function(bool isValid) DetailsFormState,
     required TResult Function(String nameError) nameError,
-    required TResult Function(String mobileNumber) getMobileNumber,
+    required TResult Function(String mobileError) mobileError,
     required TResult Function(String emailError) emailError,
     required TResult Function(String dobError) dobError,
     required TResult Function(String genderError) genderError,
@@ -32,7 +32,7 @@ mixin _$AgentDetailsState {
     TResult Function()? initialState,
     TResult Function(bool isValid)? DetailsFormState,
     TResult Function(String nameError)? nameError,
-    TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String mobileError)? mobileError,
     TResult Function(String emailError)? emailError,
     TResult Function(String dobError)? dobError,
     TResult Function(String genderError)? genderError,
@@ -43,7 +43,7 @@ mixin _$AgentDetailsState {
     TResult Function()? initialState,
     TResult Function(bool isValid)? DetailsFormState,
     TResult Function(String nameError)? nameError,
-    TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String mobileError)? mobileError,
     TResult Function(String emailError)? emailError,
     TResult Function(String dobError)? dobError,
     TResult Function(String genderError)? genderError,
@@ -55,7 +55,7 @@ mixin _$AgentDetailsState {
     required TResult Function(InitialState value) initialState,
     required TResult Function(DetailsFormState value) DetailsFormState,
     required TResult Function(NameError value) nameError,
-    required TResult Function(GetMobileNumber value) getMobileNumber,
+    required TResult Function(MobileError value) mobileError,
     required TResult Function(EmailError value) emailError,
     required TResult Function(DobError value) dobError,
     required TResult Function(GenderError value) genderError,
@@ -66,7 +66,7 @@ mixin _$AgentDetailsState {
     TResult Function(InitialState value)? initialState,
     TResult Function(DetailsFormState value)? DetailsFormState,
     TResult Function(NameError value)? nameError,
-    TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(MobileError value)? mobileError,
     TResult Function(EmailError value)? emailError,
     TResult Function(DobError value)? dobError,
     TResult Function(GenderError value)? genderError,
@@ -77,7 +77,7 @@ mixin _$AgentDetailsState {
     TResult Function(InitialState value)? initialState,
     TResult Function(DetailsFormState value)? DetailsFormState,
     TResult Function(NameError value)? nameError,
-    TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(MobileError value)? mobileError,
     TResult Function(EmailError value)? emailError,
     TResult Function(DobError value)? dobError,
     TResult Function(GenderError value)? genderError,
@@ -147,7 +147,7 @@ class _$InitialState implements InitialState {
     required TResult Function() initialState,
     required TResult Function(bool isValid) DetailsFormState,
     required TResult Function(String nameError) nameError,
-    required TResult Function(String mobileNumber) getMobileNumber,
+    required TResult Function(String mobileError) mobileError,
     required TResult Function(String emailError) emailError,
     required TResult Function(String dobError) dobError,
     required TResult Function(String genderError) genderError,
@@ -161,7 +161,7 @@ class _$InitialState implements InitialState {
     TResult Function()? initialState,
     TResult Function(bool isValid)? DetailsFormState,
     TResult Function(String nameError)? nameError,
-    TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String mobileError)? mobileError,
     TResult Function(String emailError)? emailError,
     TResult Function(String dobError)? dobError,
     TResult Function(String genderError)? genderError,
@@ -175,7 +175,7 @@ class _$InitialState implements InitialState {
     TResult Function()? initialState,
     TResult Function(bool isValid)? DetailsFormState,
     TResult Function(String nameError)? nameError,
-    TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String mobileError)? mobileError,
     TResult Function(String emailError)? emailError,
     TResult Function(String dobError)? dobError,
     TResult Function(String genderError)? genderError,
@@ -193,7 +193,7 @@ class _$InitialState implements InitialState {
     required TResult Function(InitialState value) initialState,
     required TResult Function(DetailsFormState value) DetailsFormState,
     required TResult Function(NameError value) nameError,
-    required TResult Function(GetMobileNumber value) getMobileNumber,
+    required TResult Function(MobileError value) mobileError,
     required TResult Function(EmailError value) emailError,
     required TResult Function(DobError value) dobError,
     required TResult Function(GenderError value) genderError,
@@ -207,7 +207,7 @@ class _$InitialState implements InitialState {
     TResult Function(InitialState value)? initialState,
     TResult Function(DetailsFormState value)? DetailsFormState,
     TResult Function(NameError value)? nameError,
-    TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(MobileError value)? mobileError,
     TResult Function(EmailError value)? emailError,
     TResult Function(DobError value)? dobError,
     TResult Function(GenderError value)? genderError,
@@ -221,7 +221,7 @@ class _$InitialState implements InitialState {
     TResult Function(InitialState value)? initialState,
     TResult Function(DetailsFormState value)? DetailsFormState,
     TResult Function(NameError value)? nameError,
-    TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(MobileError value)? mobileError,
     TResult Function(EmailError value)? emailError,
     TResult Function(DobError value)? dobError,
     TResult Function(GenderError value)? genderError,
@@ -306,7 +306,7 @@ class _$DetailsFormState implements DetailsFormState {
     required TResult Function() initialState,
     required TResult Function(bool isValid) DetailsFormState,
     required TResult Function(String nameError) nameError,
-    required TResult Function(String mobileNumber) getMobileNumber,
+    required TResult Function(String mobileError) mobileError,
     required TResult Function(String emailError) emailError,
     required TResult Function(String dobError) dobError,
     required TResult Function(String genderError) genderError,
@@ -320,7 +320,7 @@ class _$DetailsFormState implements DetailsFormState {
     TResult Function()? initialState,
     TResult Function(bool isValid)? DetailsFormState,
     TResult Function(String nameError)? nameError,
-    TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String mobileError)? mobileError,
     TResult Function(String emailError)? emailError,
     TResult Function(String dobError)? dobError,
     TResult Function(String genderError)? genderError,
@@ -334,7 +334,7 @@ class _$DetailsFormState implements DetailsFormState {
     TResult Function()? initialState,
     TResult Function(bool isValid)? DetailsFormState,
     TResult Function(String nameError)? nameError,
-    TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String mobileError)? mobileError,
     TResult Function(String emailError)? emailError,
     TResult Function(String dobError)? dobError,
     TResult Function(String genderError)? genderError,
@@ -352,7 +352,7 @@ class _$DetailsFormState implements DetailsFormState {
     required TResult Function(InitialState value) initialState,
     required TResult Function(DetailsFormState value) DetailsFormState,
     required TResult Function(NameError value) nameError,
-    required TResult Function(GetMobileNumber value) getMobileNumber,
+    required TResult Function(MobileError value) mobileError,
     required TResult Function(EmailError value) emailError,
     required TResult Function(DobError value) dobError,
     required TResult Function(GenderError value) genderError,
@@ -366,7 +366,7 @@ class _$DetailsFormState implements DetailsFormState {
     TResult Function(InitialState value)? initialState,
     TResult Function(DetailsFormState value)? DetailsFormState,
     TResult Function(NameError value)? nameError,
-    TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(MobileError value)? mobileError,
     TResult Function(EmailError value)? emailError,
     TResult Function(DobError value)? dobError,
     TResult Function(GenderError value)? genderError,
@@ -380,7 +380,7 @@ class _$DetailsFormState implements DetailsFormState {
     TResult Function(InitialState value)? initialState,
     TResult Function(DetailsFormState value)? DetailsFormState,
     TResult Function(NameError value)? nameError,
-    TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(MobileError value)? mobileError,
     TResult Function(EmailError value)? emailError,
     TResult Function(DobError value)? dobError,
     TResult Function(GenderError value)? genderError,
@@ -470,7 +470,7 @@ class _$NameError implements NameError {
     required TResult Function() initialState,
     required TResult Function(bool isValid) DetailsFormState,
     required TResult Function(String nameError) nameError,
-    required TResult Function(String mobileNumber) getMobileNumber,
+    required TResult Function(String mobileError) mobileError,
     required TResult Function(String emailError) emailError,
     required TResult Function(String dobError) dobError,
     required TResult Function(String genderError) genderError,
@@ -484,7 +484,7 @@ class _$NameError implements NameError {
     TResult Function()? initialState,
     TResult Function(bool isValid)? DetailsFormState,
     TResult Function(String nameError)? nameError,
-    TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String mobileError)? mobileError,
     TResult Function(String emailError)? emailError,
     TResult Function(String dobError)? dobError,
     TResult Function(String genderError)? genderError,
@@ -498,7 +498,7 @@ class _$NameError implements NameError {
     TResult Function()? initialState,
     TResult Function(bool isValid)? DetailsFormState,
     TResult Function(String nameError)? nameError,
-    TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String mobileError)? mobileError,
     TResult Function(String emailError)? emailError,
     TResult Function(String dobError)? dobError,
     TResult Function(String genderError)? genderError,
@@ -516,7 +516,7 @@ class _$NameError implements NameError {
     required TResult Function(InitialState value) initialState,
     required TResult Function(DetailsFormState value) DetailsFormState,
     required TResult Function(NameError value) nameError,
-    required TResult Function(GetMobileNumber value) getMobileNumber,
+    required TResult Function(MobileError value) mobileError,
     required TResult Function(EmailError value) emailError,
     required TResult Function(DobError value) dobError,
     required TResult Function(GenderError value) genderError,
@@ -530,7 +530,7 @@ class _$NameError implements NameError {
     TResult Function(InitialState value)? initialState,
     TResult Function(DetailsFormState value)? DetailsFormState,
     TResult Function(NameError value)? nameError,
-    TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(MobileError value)? mobileError,
     TResult Function(EmailError value)? emailError,
     TResult Function(DobError value)? dobError,
     TResult Function(GenderError value)? genderError,
@@ -544,7 +544,7 @@ class _$NameError implements NameError {
     TResult Function(InitialState value)? initialState,
     TResult Function(DetailsFormState value)? DetailsFormState,
     TResult Function(NameError value)? nameError,
-    TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(MobileError value)? mobileError,
     TResult Function(EmailError value)? emailError,
     TResult Function(DobError value)? dobError,
     TResult Function(GenderError value)? genderError,
@@ -567,32 +567,32 @@ abstract class NameError implements AgentDetailsState {
 }
 
 /// @nodoc
-abstract class _$$GetMobileNumberCopyWith<$Res> {
-  factory _$$GetMobileNumberCopyWith(
-          _$GetMobileNumber value, $Res Function(_$GetMobileNumber) then) =
-      __$$GetMobileNumberCopyWithImpl<$Res>;
-  $Res call({String mobileNumber});
+abstract class _$$MobileErrorCopyWith<$Res> {
+  factory _$$MobileErrorCopyWith(
+          _$MobileError value, $Res Function(_$MobileError) then) =
+      __$$MobileErrorCopyWithImpl<$Res>;
+  $Res call({String mobileError});
 }
 
 /// @nodoc
-class __$$GetMobileNumberCopyWithImpl<$Res>
+class __$$MobileErrorCopyWithImpl<$Res>
     extends _$AgentDetailsStateCopyWithImpl<$Res>
-    implements _$$GetMobileNumberCopyWith<$Res> {
-  __$$GetMobileNumberCopyWithImpl(
-      _$GetMobileNumber _value, $Res Function(_$GetMobileNumber) _then)
-      : super(_value, (v) => _then(v as _$GetMobileNumber));
+    implements _$$MobileErrorCopyWith<$Res> {
+  __$$MobileErrorCopyWithImpl(
+      _$MobileError _value, $Res Function(_$MobileError) _then)
+      : super(_value, (v) => _then(v as _$MobileError));
 
   @override
-  _$GetMobileNumber get _value => super._value as _$GetMobileNumber;
+  _$MobileError get _value => super._value as _$MobileError;
 
   @override
   $Res call({
-    Object? mobileNumber = freezed,
+    Object? mobileError = freezed,
   }) {
-    return _then(_$GetMobileNumber(
-      mobileNumber == freezed
-          ? _value.mobileNumber
-          : mobileNumber // ignore: cast_nullable_to_non_nullable
+    return _then(_$MobileError(
+      mobileError == freezed
+          ? _value.mobileError
+          : mobileError // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -600,34 +600,34 @@ class __$$GetMobileNumberCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$GetMobileNumber implements GetMobileNumber {
-  const _$GetMobileNumber(this.mobileNumber);
+class _$MobileError implements MobileError {
+  const _$MobileError(this.mobileError);
 
   @override
-  final String mobileNumber;
+  final String mobileError;
 
   @override
   String toString() {
-    return 'AgentDetailsState.getMobileNumber(mobileNumber: $mobileNumber)';
+    return 'AgentDetailsState.mobileError(mobileError: $mobileError)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GetMobileNumber &&
+            other is _$MobileError &&
             const DeepCollectionEquality()
-                .equals(other.mobileNumber, mobileNumber));
+                .equals(other.mobileError, mobileError));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(mobileNumber));
+      runtimeType, const DeepCollectionEquality().hash(mobileError));
 
   @JsonKey(ignore: true)
   @override
-  _$$GetMobileNumberCopyWith<_$GetMobileNumber> get copyWith =>
-      __$$GetMobileNumberCopyWithImpl<_$GetMobileNumber>(this, _$identity);
+  _$$MobileErrorCopyWith<_$MobileError> get copyWith =>
+      __$$MobileErrorCopyWithImpl<_$MobileError>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -635,12 +635,12 @@ class _$GetMobileNumber implements GetMobileNumber {
     required TResult Function() initialState,
     required TResult Function(bool isValid) DetailsFormState,
     required TResult Function(String nameError) nameError,
-    required TResult Function(String mobileNumber) getMobileNumber,
+    required TResult Function(String mobileError) mobileError,
     required TResult Function(String emailError) emailError,
     required TResult Function(String dobError) dobError,
     required TResult Function(String genderError) genderError,
   }) {
-    return getMobileNumber(mobileNumber);
+    return mobileError(this.mobileError);
   }
 
   @override
@@ -649,12 +649,12 @@ class _$GetMobileNumber implements GetMobileNumber {
     TResult Function()? initialState,
     TResult Function(bool isValid)? DetailsFormState,
     TResult Function(String nameError)? nameError,
-    TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String mobileError)? mobileError,
     TResult Function(String emailError)? emailError,
     TResult Function(String dobError)? dobError,
     TResult Function(String genderError)? genderError,
   }) {
-    return getMobileNumber?.call(mobileNumber);
+    return mobileError?.call(this.mobileError);
   }
 
   @override
@@ -663,14 +663,14 @@ class _$GetMobileNumber implements GetMobileNumber {
     TResult Function()? initialState,
     TResult Function(bool isValid)? DetailsFormState,
     TResult Function(String nameError)? nameError,
-    TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String mobileError)? mobileError,
     TResult Function(String emailError)? emailError,
     TResult Function(String dobError)? dobError,
     TResult Function(String genderError)? genderError,
     required TResult orElse(),
   }) {
-    if (getMobileNumber != null) {
-      return getMobileNumber(mobileNumber);
+    if (mobileError != null) {
+      return mobileError(this.mobileError);
     }
     return orElse();
   }
@@ -681,12 +681,12 @@ class _$GetMobileNumber implements GetMobileNumber {
     required TResult Function(InitialState value) initialState,
     required TResult Function(DetailsFormState value) DetailsFormState,
     required TResult Function(NameError value) nameError,
-    required TResult Function(GetMobileNumber value) getMobileNumber,
+    required TResult Function(MobileError value) mobileError,
     required TResult Function(EmailError value) emailError,
     required TResult Function(DobError value) dobError,
     required TResult Function(GenderError value) genderError,
   }) {
-    return getMobileNumber(this);
+    return mobileError(this);
   }
 
   @override
@@ -695,12 +695,12 @@ class _$GetMobileNumber implements GetMobileNumber {
     TResult Function(InitialState value)? initialState,
     TResult Function(DetailsFormState value)? DetailsFormState,
     TResult Function(NameError value)? nameError,
-    TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(MobileError value)? mobileError,
     TResult Function(EmailError value)? emailError,
     TResult Function(DobError value)? dobError,
     TResult Function(GenderError value)? genderError,
   }) {
-    return getMobileNumber?.call(this);
+    return mobileError?.call(this);
   }
 
   @override
@@ -709,25 +709,25 @@ class _$GetMobileNumber implements GetMobileNumber {
     TResult Function(InitialState value)? initialState,
     TResult Function(DetailsFormState value)? DetailsFormState,
     TResult Function(NameError value)? nameError,
-    TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(MobileError value)? mobileError,
     TResult Function(EmailError value)? emailError,
     TResult Function(DobError value)? dobError,
     TResult Function(GenderError value)? genderError,
     required TResult orElse(),
   }) {
-    if (getMobileNumber != null) {
-      return getMobileNumber(this);
+    if (mobileError != null) {
+      return mobileError(this);
     }
     return orElse();
   }
 }
 
-abstract class GetMobileNumber implements AgentDetailsState {
-  const factory GetMobileNumber(final String mobileNumber) = _$GetMobileNumber;
+abstract class MobileError implements AgentDetailsState {
+  const factory MobileError(final String mobileError) = _$MobileError;
 
-  String get mobileNumber;
+  String get mobileError;
   @JsonKey(ignore: true)
-  _$$GetMobileNumberCopyWith<_$GetMobileNumber> get copyWith =>
+  _$$MobileErrorCopyWith<_$MobileError> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -800,7 +800,7 @@ class _$EmailError implements EmailError {
     required TResult Function() initialState,
     required TResult Function(bool isValid) DetailsFormState,
     required TResult Function(String nameError) nameError,
-    required TResult Function(String mobileNumber) getMobileNumber,
+    required TResult Function(String mobileError) mobileError,
     required TResult Function(String emailError) emailError,
     required TResult Function(String dobError) dobError,
     required TResult Function(String genderError) genderError,
@@ -814,7 +814,7 @@ class _$EmailError implements EmailError {
     TResult Function()? initialState,
     TResult Function(bool isValid)? DetailsFormState,
     TResult Function(String nameError)? nameError,
-    TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String mobileError)? mobileError,
     TResult Function(String emailError)? emailError,
     TResult Function(String dobError)? dobError,
     TResult Function(String genderError)? genderError,
@@ -828,7 +828,7 @@ class _$EmailError implements EmailError {
     TResult Function()? initialState,
     TResult Function(bool isValid)? DetailsFormState,
     TResult Function(String nameError)? nameError,
-    TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String mobileError)? mobileError,
     TResult Function(String emailError)? emailError,
     TResult Function(String dobError)? dobError,
     TResult Function(String genderError)? genderError,
@@ -846,7 +846,7 @@ class _$EmailError implements EmailError {
     required TResult Function(InitialState value) initialState,
     required TResult Function(DetailsFormState value) DetailsFormState,
     required TResult Function(NameError value) nameError,
-    required TResult Function(GetMobileNumber value) getMobileNumber,
+    required TResult Function(MobileError value) mobileError,
     required TResult Function(EmailError value) emailError,
     required TResult Function(DobError value) dobError,
     required TResult Function(GenderError value) genderError,
@@ -860,7 +860,7 @@ class _$EmailError implements EmailError {
     TResult Function(InitialState value)? initialState,
     TResult Function(DetailsFormState value)? DetailsFormState,
     TResult Function(NameError value)? nameError,
-    TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(MobileError value)? mobileError,
     TResult Function(EmailError value)? emailError,
     TResult Function(DobError value)? dobError,
     TResult Function(GenderError value)? genderError,
@@ -874,7 +874,7 @@ class _$EmailError implements EmailError {
     TResult Function(InitialState value)? initialState,
     TResult Function(DetailsFormState value)? DetailsFormState,
     TResult Function(NameError value)? nameError,
-    TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(MobileError value)? mobileError,
     TResult Function(EmailError value)? emailError,
     TResult Function(DobError value)? dobError,
     TResult Function(GenderError value)? genderError,
@@ -963,7 +963,7 @@ class _$DobError implements DobError {
     required TResult Function() initialState,
     required TResult Function(bool isValid) DetailsFormState,
     required TResult Function(String nameError) nameError,
-    required TResult Function(String mobileNumber) getMobileNumber,
+    required TResult Function(String mobileError) mobileError,
     required TResult Function(String emailError) emailError,
     required TResult Function(String dobError) dobError,
     required TResult Function(String genderError) genderError,
@@ -977,7 +977,7 @@ class _$DobError implements DobError {
     TResult Function()? initialState,
     TResult Function(bool isValid)? DetailsFormState,
     TResult Function(String nameError)? nameError,
-    TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String mobileError)? mobileError,
     TResult Function(String emailError)? emailError,
     TResult Function(String dobError)? dobError,
     TResult Function(String genderError)? genderError,
@@ -991,7 +991,7 @@ class _$DobError implements DobError {
     TResult Function()? initialState,
     TResult Function(bool isValid)? DetailsFormState,
     TResult Function(String nameError)? nameError,
-    TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String mobileError)? mobileError,
     TResult Function(String emailError)? emailError,
     TResult Function(String dobError)? dobError,
     TResult Function(String genderError)? genderError,
@@ -1009,7 +1009,7 @@ class _$DobError implements DobError {
     required TResult Function(InitialState value) initialState,
     required TResult Function(DetailsFormState value) DetailsFormState,
     required TResult Function(NameError value) nameError,
-    required TResult Function(GetMobileNumber value) getMobileNumber,
+    required TResult Function(MobileError value) mobileError,
     required TResult Function(EmailError value) emailError,
     required TResult Function(DobError value) dobError,
     required TResult Function(GenderError value) genderError,
@@ -1023,7 +1023,7 @@ class _$DobError implements DobError {
     TResult Function(InitialState value)? initialState,
     TResult Function(DetailsFormState value)? DetailsFormState,
     TResult Function(NameError value)? nameError,
-    TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(MobileError value)? mobileError,
     TResult Function(EmailError value)? emailError,
     TResult Function(DobError value)? dobError,
     TResult Function(GenderError value)? genderError,
@@ -1037,7 +1037,7 @@ class _$DobError implements DobError {
     TResult Function(InitialState value)? initialState,
     TResult Function(DetailsFormState value)? DetailsFormState,
     TResult Function(NameError value)? nameError,
-    TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(MobileError value)? mobileError,
     TResult Function(EmailError value)? emailError,
     TResult Function(DobError value)? dobError,
     TResult Function(GenderError value)? genderError,
@@ -1128,7 +1128,7 @@ class _$GenderError implements GenderError {
     required TResult Function() initialState,
     required TResult Function(bool isValid) DetailsFormState,
     required TResult Function(String nameError) nameError,
-    required TResult Function(String mobileNumber) getMobileNumber,
+    required TResult Function(String mobileError) mobileError,
     required TResult Function(String emailError) emailError,
     required TResult Function(String dobError) dobError,
     required TResult Function(String genderError) genderError,
@@ -1142,7 +1142,7 @@ class _$GenderError implements GenderError {
     TResult Function()? initialState,
     TResult Function(bool isValid)? DetailsFormState,
     TResult Function(String nameError)? nameError,
-    TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String mobileError)? mobileError,
     TResult Function(String emailError)? emailError,
     TResult Function(String dobError)? dobError,
     TResult Function(String genderError)? genderError,
@@ -1156,7 +1156,7 @@ class _$GenderError implements GenderError {
     TResult Function()? initialState,
     TResult Function(bool isValid)? DetailsFormState,
     TResult Function(String nameError)? nameError,
-    TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String mobileError)? mobileError,
     TResult Function(String emailError)? emailError,
     TResult Function(String dobError)? dobError,
     TResult Function(String genderError)? genderError,
@@ -1174,7 +1174,7 @@ class _$GenderError implements GenderError {
     required TResult Function(InitialState value) initialState,
     required TResult Function(DetailsFormState value) DetailsFormState,
     required TResult Function(NameError value) nameError,
-    required TResult Function(GetMobileNumber value) getMobileNumber,
+    required TResult Function(MobileError value) mobileError,
     required TResult Function(EmailError value) emailError,
     required TResult Function(DobError value) dobError,
     required TResult Function(GenderError value) genderError,
@@ -1188,7 +1188,7 @@ class _$GenderError implements GenderError {
     TResult Function(InitialState value)? initialState,
     TResult Function(DetailsFormState value)? DetailsFormState,
     TResult Function(NameError value)? nameError,
-    TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(MobileError value)? mobileError,
     TResult Function(EmailError value)? emailError,
     TResult Function(DobError value)? dobError,
     TResult Function(GenderError value)? genderError,
@@ -1202,7 +1202,7 @@ class _$GenderError implements GenderError {
     TResult Function(InitialState value)? initialState,
     TResult Function(DetailsFormState value)? DetailsFormState,
     TResult Function(NameError value)? nameError,
-    TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(MobileError value)? mobileError,
     TResult Function(EmailError value)? emailError,
     TResult Function(DobError value)? dobError,
     TResult Function(GenderError value)? genderError,
