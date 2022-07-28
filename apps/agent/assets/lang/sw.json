@@ -19,13 +19,16 @@
   "SU_title" : "Weka Nambari yako ya NIDA & Kitambulisho cha Wakala",
   "SU_subtitle" : "Kwa kujisajili kwenye Y9 Pay, unakubali \n%{Sheria na Masharti. | https://www.google.com}%.",
   "SU_ID_no_label" : "Namba ya NIDA",
+  "SU_agent_id_label" : "\nKitambulisho cha wakala wa Y9",
   "SU_mobile_no_label" : "Namba ya simu ya mkononi",
+  "SU_agent_id_hint" : "Weka Kitambulisho cha Wakala wa Y9",
   "SU_carrier_message" : "Huenda ukatozwa ada za mtoa huduma za SMS.",
   "SU_button_text" : "Endelea",
   "SU_title_hint" : "Weka Nambari ya NIDA",
-  "SU_subtitle_hint" : "Weka Kitambulisho cha Wakala wa Y9",
+  "SU_subtitle_hint" : "Weka Nambari ya Simu",
   "SU_title_error_text" : "Nambari ya NINDA si sahihi",
-  "SU_subtitle_error_text" : "Kitambulisho batili cha Wakala wa Y9",
+  "SU_subtitle_error_text" : "Nambari ya Simu batili",
+  "SU_agent_id_error_text" : "Kitambulisho batili cha Wakala wa Y9",
 
   "DV_title" : "Ingiza Maelezo ya Kibinafsi",
   "DV_subtitle" : "Thibitisha maelezo yako au usasishe ikiwa inahitajika",
@@ -38,11 +41,26 @@
   "DV_gender_label" : "Jinsia",
   "DV_gender_error_text" : "Jinsia Batili",
   "DV_gender_hint_text" : "Ingiza Jinsia",
+  "DV_profession_label" : "Taaluma",
+  "DV_profession_error_text" : "Taaluma Batili",
+  "DV_profession_hint_text" : "Ingiza Taaluma",
   "DV_contact_no_label" : "Namba ya simu ya mkononi",
   "DV_contact_no_error_text" : "Nambari ya Simu ya Mkononi si Sahihi",
   "DV_email_label" : "Kitambulisho cha barua pepe",
   "DV_email_error_text" : "Barua pepe Batili",
   "DV_email_hint_text" : "Weka Barua Pepe",
+  "DV_address_label" : "Anwani",
+  "DV_address_error_text" : "Anwani Batili",
+  "DV_address_hint_text" : "Weka Anwani",
+  "DV_po_box_label" : "P.O. Sanduku",
+  "DV_poBox_error_text" : "P.O.Box batili",
+  "DV_poBox_hint_text" : "Ingiza P.O.Box",
+  "DV_region_label" : "Mkoa",
+  "DV_region_error_text" : "Mkoa Batili",
+  "DV_region_hint_text" : "Ingiza Mkoa",
+  "DV_district_label" : "Wilaya",
+  "DV_district_error_text" : "Wilaya Batili",
+  "DV_district_hint_text" : "Ingiza Wilaya",
 
 
   "HS_GoodMorning": "Habari za asubuhi",
@@ -69,8 +87,8 @@
 
   "ES_welcome_Text" : "HII %{Ennamual Jisula | click}% hongera kwa kujiandikisha kwa Y9",
   "ES_enroll_id" : "Kitambulisho chako cha Kujiandikisha %{“XXXXXX” | click}%",
-  "ES_near_agent_button" : "Tazama Karibu na Wakala",
-  "ES_device_option" : "Gundua Chaguo za Kifaa",
+  "ES_near_agent_button" : "Tazama karibu na Wakala (inakuja hivi karibuni)",
+  "ES_select_membership" : "Chagua Uanachama Wako",
 
 
 
@@ -83,23 +101,6 @@
   "AN_Search" : "Tafuta kwa Jina / Kitambulisho/ Mkoa / Wilaya/ Po#",
   "AN_AgentName" : "Y9 Kitambulisho cha wakala:",
   "AN_Call" : "Wito",
-
-
-
-  "DD_product" : "Maelezo ya bidhaa",
-  "DD_Brand" : "Chapa",
-  "DD_ModelNumber" : "Nambari ya Mfano",
-  "DD_HumanInterfaceInput" : "Ingizo la Kiolesura cha Binadamu",
-  "DD_WirelessCarrier" : "Mtoa huduma wa Wireless",
-  "DD_CellularTechnology" : "Teknolojia ya Simu",
-  "DD_OperatingSystem" : "Mfumo wa Uendeshaji",
-  "DD_MemoryStorage" : "Kumbukumbu / Hifadhi",
-  "DD_WaterResistanceLevel" : "Kiwango cha Upinzani wa Maji",
-  "DD_Color" : "Rangi",
-  "DD_Price" : "Bei",
-  "DD_EMIMonth" : "EMI/ Mwezi",
-  "DD_Interest" : "Hamu %",
-  "DD_TotalAmountPaid" : "Jumla ya Kiasi cha Kulipwa",
 
 
   "VO_OtpVerification": "Uthibitishaji wa OTP",
@@ -124,6 +125,27 @@
   "AE_Message" : "Congratulations,\nAshish You have successfully Onboarded",
   "AE_AgentId" : "Your Y9 Agent ID",
   "AE_Description" : "Your Y9 Agent id has been sent successfully to your mobile number and Email ID",
-  "AE_Continue" : "Continue to the app"
+  "AE_Continue" : "Continue to the app",
 
+  "DO_Title": "Chaguo za Kifaa",
+  "D0_JoiningFee": "Joining Fee (one off)",
+  "D0_DailyFee": "Daily Fee",
+
+  "DD_product" : "Maelezo ya bidhaa",
+  "DD_Brand" : "Chapa",
+  "DD_ModelNumber" : "Nambari ya Mfano",
+  "DD_HumanInterfaceInput" : "Ingizo la Kiolesura cha Binadamu",
+  "DD_WirelessCarrier" : "Mtoa huduma wa Wireless",
+  "DD_CellularTechnology" : "Teknolojia ya Simu",
+  "DD_OperatingSystem" : "Mfumo wa Uendeshaji",
+  "DD_MemoryStorage" : "Kumbukumbu / Hifadhi",
+  "DD_WaterResistanceLevel" : "Kiwango cha Upinzani wa Maji",
+  "DD_Color" : "Rangi",
+  "DD_Price" : "Bei",
+  "DD_EMIMonth" : "EMI/ Mwezi",
+  "DD_Interest" : "Hamu %",
+  "DD_TotalAmountPaid" : "Jumla ya Kiasi cha Kulipwa",
+  "DD_SelectDevice" : "Select Device",
+  "DD_MembershipTerms" : "Membership Terms",
+  "DD_MembershipBenefits" : "Y9 Membership Benefits"
 }

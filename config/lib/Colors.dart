@@ -62,6 +62,7 @@ const DD_BUTTON_COLOR = Color(0xFFF4EFEF);
 const VO_TitleColor= Color(0xFF040505);
 const VO_DescriptionColor= Color(0xFF160304);
 const VO_ResendTextColor= Color(0xFF676767);
+const ES_grey_button_color = Color(0xFF9CA3AF);
 
 
 

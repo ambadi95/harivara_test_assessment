@@ -84,8 +84,8 @@
 
   "ES_welcome_Text" : "Hi %{Ennamual Jisula | click}% congratulations you have successfully enrolled into Y9",
   "ES_enroll_id" : "Your Enrollment ID %{“XXXXXX” | click}%",
-  "ES_near_agent_button" : "View Near by Agent",
-  "ES_device_option" : "Explore Device Options",
+  "ES_near_agent_button" : "View near by Agent (coming soon)",
+  "ES_select_membership" : "Select Your Membership",
 
 
 

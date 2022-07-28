@@ -39,7 +39,7 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState>{
   bool isAgentIdValid(String agentId){
     var result = _loginUseCase.isValidAgentId(agentId);
     if(!result){
-      state = const LoginState.agentIdError('SU_subtitle_error_text');
+      state = const LoginState.agentIdError('SU_agent_id_error_text');
     }else {
       state = const LoginState.agentIdError('');
     }

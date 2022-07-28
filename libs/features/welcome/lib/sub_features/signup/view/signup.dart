@@ -99,8 +99,8 @@ class _SignUpState extends State<SignUp> {
           widget.userType == 'Customer'
               ? _buildLabelTextFieldMobNumber(
                   'SU_mobile_no_label'.tr, mobileNumber, coordinator)
-              : _buildLabelTextField('SU_mobile_no_label'.tr, agentId,
-                  coordinator, 'SU_subtitle_hint', agentIdError, TextInputType.text),
+              : _buildLabelTextField('SU_agent_id_hint'.tr, agentId,
+                  coordinator, 'SU_agent_id_hint', agentIdError, TextInputType.text),
         ],
       ),
     );

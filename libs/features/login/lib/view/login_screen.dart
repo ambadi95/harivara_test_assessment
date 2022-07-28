@@ -60,7 +60,7 @@ class Login extends StatelessWidget {
             _buildLabelTextFieldMobNumber(context, 'LS_Mobile'.tr, coordinator),
             dynamicHSpacer(48),
            userType =='Customer'?  _passcodeWidget(context, coordinator) :
-           _buildLabelTextField('LS_agent_id'.tr,agentIdController, TextInputType.text,coordinator,agentIdError, 'SU_subtitle_hint', true),
+           _buildLabelTextField('LS_agent_id'.tr,agentIdController, TextInputType.text,coordinator,agentIdError, 'SU_agent_id_hint', true),
             const Spacer(),
             actionButton(coordinator),
             dynamicHSpacer(20),
