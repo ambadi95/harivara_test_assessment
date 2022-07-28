@@ -93,5 +93,10 @@
   "HS_PendingCustomerRequests" : "Pending Customer Request",
   "HS_Customer_OnBoarding" : "Customer Onboarding",
   "HS_Customer_DeviceSwap" : "Device swap / repair",
-  "HS_Customer_AgentSupport" : "Agent Support"
+  "HS_Customer_AgentSupport" : "Agent Support",
+
+  "AE_Message" : "Congratulations,\nAshish You have successfully Onboarded",
+  "AE_AgentId" : "Your Y9 Agent ID",
+  "AE_Description" : "Your Y9 Agent id has been sent successfully to your mobile number and Email ID",
+  "AE_Continue" : "Continue to the app"
 }

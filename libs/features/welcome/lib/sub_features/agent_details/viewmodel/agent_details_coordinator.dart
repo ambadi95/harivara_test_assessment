@@ -37,6 +37,11 @@ class AgentDetailsCoordinator extends BaseViewModel<AgentDetailsState>{
     _navigationHandler.navigateToOtpScreen(userType);
   }
 
+  Future navigateToBottomSheet() async {
+    _navigationHandler.navigateToAgentEnrollmentBottomSheet('das');
+  }
+
+
   bool isValidName(String name){
     bool result = _agentDetailsUseCase.isValidName(name);
     if(!result){

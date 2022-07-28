@@ -1,5 +1,8 @@
+import 'package:config/Colors.dart';
 import 'package:core/navigation/navigation_manager.dart';
 import 'package:core/navigation/navigation_type.dart';
+import 'package:core/sheets/data_model/button_options.dart';
+import 'package:core/sheets/state/crayon_payment_bottom_sheet_state.dart';
 import 'package:home/home/home_screen_arguments.dart';
 import 'package:home/home/view/home_screen.dart';
 import 'package:passcode/sub_features/passcode/view/passcode.dart';
@@ -18,6 +21,7 @@ import 'package:welcome/sub_features/signup/view/signup.dart';
 import 'package:widget_library/helpers/error/helper/error_helper.dart';
 import 'package:device_option/view/device_option_screen.dart';
 import 'package:agent_nearby/view/agent_nearby_screen.dart';
+import 'package:widget_library/icons/crayon_payment_bottom_sheet_icon.dart';
 
 class WelcomeNavigationHandler with ErrorHandler {
   final NavigationManager _navigationManager;
@@ -143,6 +147,28 @@ class WelcomeNavigationHandler with ErrorHandler {
       const NavigationType.push(),
       preventDuplicates: false,
       arguments: arguments,
+    );
+  }
+
+  Future<void> navigateToAgentEnrollmentBottomSheet(String message,) async {
+    final CrayonPaymentBottomSheetIcon icon = CrayonPaymentBottomSheetSuccessIcon();
+    final CrayonPaymentBottomSheetState infoState = CrayonPaymentBottomSheetState.agentEnrollment(
+      buttonOptions: [
+        ButtonOptions(Black,'Continue to the app', (){},false)
+      ],
+      disableCloseButton: true,
+      bottomSheetIcon: icon,
+      title: 'Congratulations,\n %{Ashish | click}%\n You have successfully Onboarded',
+      subtitle: "Your Y9 Agent ID\n %{XXXXX | click}% ",
+      additionalText: [
+        "Your Y9 Agent id has been sent successfully to your mobile number and Email ID"
+      ]
+    );
+
+    _navigationManager.navigateTo(
+      'bottomSheet/crayonPaymentBottomSheet',
+      const NavigationType.bottomSheet(),
+      arguments: infoState,
     );
   }
 

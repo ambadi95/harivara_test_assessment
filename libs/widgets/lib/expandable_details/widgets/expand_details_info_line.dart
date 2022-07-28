@@ -5,14 +5,16 @@ import 'package:widget_library/page_header/text_ui_data_model.dart';
 import 'package:widget_library/static_text/crayon_payment_text.dart';
 
 class ExpandDetailsInfoLine extends ExpandableDetailsOptions {
-  final String leftSide;
-  final Widget rightSide;
+  final String leftSideString;
+  final Widget rightSideWidget;
   final Color? textColor;
+  final EdgeInsetsGeometry? padding;
   final CrayonPaymentTextStyleVariant? textStyleVariant;
 
   ExpandDetailsInfoLine({
-    required this.leftSide,
-    required this.rightSide,
+    required this.leftSideString,
+    required this.rightSideWidget,
+    this.padding,
     this.textColor,
     this.textStyleVariant,
     Key? key,
@@ -20,9 +22,15 @@ class ExpandDetailsInfoLine extends ExpandableDetailsOptions {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [Expanded(child: _buildText(leftSide)), rightSide],
+    return Padding(
+      padding: padding ?? EdgeInsets.all(0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Flexible(child: _buildText(leftSideString)),
+          Flexible(child: rightSideWidget),
+        ],
+      ),
     );
   }
 

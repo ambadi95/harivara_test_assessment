@@ -113,7 +113,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
     );
   }
 
-  Widget _redBoxView() {
+  Widget _redBoxView(HomeCoordinator coordinator) {
     return Container(
       margin: const EdgeInsets.all(10.0),
       padding: const EdgeInsets.all(20.0),
@@ -218,8 +218,13 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      _actionCommonView(
-                          'HS_Customer_OnBoarding'.tr, HS_CustomerMangIcon),
+                      InkWell(
+                        onTap:(){
+                          coordinator.navigateToCustomerRegister();
+                        },
+                        child: _actionCommonView(
+                            'HS_Customer_OnBoarding'.tr, HS_CustomerMangIcon),
+                      ),
                       _actionCommonView(
                           'HS_Customer_DeviceSwap'.tr, HS_DeviceSwapIcon),
                       _actionCommonView(
@@ -426,7 +431,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
         child: Column(
           children: [
             _userInfoView(),
-            _redBoxView(),
+            _redBoxView(coordinator),
             _inviteBoxView(),
           ],
         ),

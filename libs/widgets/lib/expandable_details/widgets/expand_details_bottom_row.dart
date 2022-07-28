@@ -6,11 +6,13 @@ class ExpandDetailsBottomRow extends ExpandDetailsInfoLine {
   ExpandDetailsBottomRow({
     required String leftSide,
     required Widget rightSide,
+    EdgeInsetsGeometry? padding,
     Color? textColor,
   }) : super(
-          leftSide: leftSide,
-          rightSide: rightSide,
+    leftSideString: leftSide,
+    rightSideWidget: rightSide,
           textColor: textColor ?? Colors.black,
+          padding: padding,
           textStyleVariant: CrayonPaymentTextStyleVariant.headline4,
         );
 }

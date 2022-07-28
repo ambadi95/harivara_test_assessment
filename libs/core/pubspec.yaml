@@ -32,6 +32,20 @@ dependencies:
   path_provider: ^2.0.9
   image_gallery_saver: '^1.7.1'
 
+  widget_library:
+    path: ../widgets/
+
+  shared_data_models:
+    path: ../shared-data-models/
+
+  network_manager:
+    path: ../network-manager/
+
+  task_manager:
+    path: ../task-manager/
+
+  config:
+    path: ../../config
 
 dev_dependencies:
   flutter_test:
