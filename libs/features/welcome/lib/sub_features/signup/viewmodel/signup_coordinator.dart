@@ -64,7 +64,7 @@ class SignUpCoordinator extends BaseViewModel<SignUpState>{
   bool isValidAgentId(String agentId){
     bool result = _signupUseCase.isValidAgentId(agentId);
     if(!result){
-      state = const SignUpState.agentIdError('SU_subtitle_error_text');
+      state = const SignUpState.agentIdError('SU_agent_id_error_text');
     }else{
       state = const SignUpState.agentIdError('');
     }

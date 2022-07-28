@@ -94,7 +94,8 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
       ) {
     return GestureDetector(
       onTap: (){
-        coordinator.navigateToAgentNearBy();
+        coordinator.navigateToDeviceOption();
+
       },
       child: Container(
         width: double.infinity,
@@ -104,7 +105,7 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
             borderRadius: BorderRadius.circular(8.0)
         ),
         child: Center(
-          child: Text('ES_near_agent_button'.tr, style: SU_button_text_style,),
+          child: Text('ES_select_membership'.tr, style: SU_button_text_style,),
         ),
       ),
     );
@@ -115,18 +116,18 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
       ) {
     return GestureDetector(
       onTap: (){
-        coordinator.navigateToDeviceOption();
+       // coordinator.navigateToAgentNearBy();
       },
       child: Container(
         width: double.infinity,
         height: 50,
         decoration: BoxDecoration(
-            color:  Colors.white,
+            color: config_color.ES_grey_button_color,
             borderRadius: BorderRadius.circular(8.0),
-            border: Border.all(width: 1)
+            border: Border.all(width: 1,color: config_color.ES_grey_button_color)
         ),
         child: Center(
-          child: Text('ES_device_option'.tr, style: const TextStyle(
+          child: Text('ES_near_agent_button'.tr, style: const TextStyle(
               color: config_color.SECONDARY_COLOR
           ),),
         ),

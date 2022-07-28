@@ -85,8 +85,8 @@
 
   "ES_welcome_Text" : "HII %{Ennamual Jisula | click}% hongera kwa kujiandikisha kwa Y9",
   "ES_enroll_id" : "Kitambulisho chako cha Kujiandikisha %{“XXXXXX” | click}%",
-  "ES_near_agent_button" : "Tazama Karibu na Wakala",
-  "ES_device_option" : "Gundua Chaguo za Kifaa",
+  "ES_near_agent_button" : "Tazama karibu na Wakala (inakuja hivi karibuni)",
+  "ES_select_membership" : "Chagua Uanachama Wako",
 
 
 
