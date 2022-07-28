@@ -25,21 +25,21 @@ class CrayonWelcomScreen extends StatefulWidget {
 
   @override
   State<CrayonWelcomScreen> createState() => _CrayonWelcomScreenState();
-  factory CrayonWelcomScreen.forCustomerApp() => CrayonWelcomScreen(
-    welcomeScreenArgs: WelcomeScreenArgs(
-      '',
-      '',
-      'Customer',
-    ),
-  );
+  // factory CrayonWelcomScreen.forCustomerApp() => CrayonWelcomScreen(
+  //   welcomeScreenArgs: WelcomeScreenArgs(
+  //     '',
+  //     '',
+  //     'Customer',
+  //   ),
+  // );
 
-  factory CrayonWelcomScreen.forMerchantApp() => CrayonWelcomScreen(
-    welcomeScreenArgs: WelcomeScreenArgs(
-      '',
-      '',
-      'Agent',
-    ),
-  );
+  // factory CrayonWelcomScreen.forMerchantApp() => CrayonWelcomScreen(
+  //   welcomeScreenArgs: WelcomeScreenArgs(
+  //     '',
+  //     '',
+  //     'Agent',
+  //   ),
+ // );
 }
 
 class _CrayonWelcomScreenState extends State<CrayonWelcomScreen> {
@@ -251,7 +251,7 @@ Widget _buildNonSignedInUI(
   }
 
   Widget _buildSignedUI(){
-      return const CrayonWelcomBackScreen();
+      return CrayonWelcomBackScreen(userType: widget.welcomeScreenArgs.userType,);
   }
 
 

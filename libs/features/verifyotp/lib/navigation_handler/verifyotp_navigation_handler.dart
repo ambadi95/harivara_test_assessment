@@ -5,6 +5,7 @@ import 'package:core/navigation/navigation_type.dart';
 import 'package:shared_data_models/passcode/passcode_screen_args.dart';
 import 'package:shared_data_models/passcode/passcode_verification_type.dart';
 import 'package:passcode/sub_features/passcode/view/passcode.dart';
+import 'package:welcome/sub_features/welcome_back/view/welcome_back.dart';
 import 'package:widget_library/helpers/error/helper/error_helper.dart';
 
 class VerifyOtpNavigationHandler with ErrorHandler{
@@ -41,6 +42,14 @@ class VerifyOtpNavigationHandler with ErrorHandler{
       arguments: arguments,
     );
   }
+  Future<void> navigateToAgentWelcomeBack(String userType) async {
+    _navigationManager.navigateTo(
+        CrayonWelcomBackScreen.viewPath,
+        const NavigationType.replace(),
+        arguments: userType
+    );
+  }
+
 
   Future<void> goBack() async {
     _navigationManager.goBack();

@@ -51,6 +51,9 @@ dependencies:
   verifyotp:
     path: ../../features/verifyotp
 
+  home:
+    path: ../home
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

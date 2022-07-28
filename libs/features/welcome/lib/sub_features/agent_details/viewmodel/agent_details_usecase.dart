@@ -16,9 +16,10 @@ class AgentDetailsUseCase extends BaseDataProvider{
     return agentDetailsViewModel.isValidEmailId(emailId);
   }
 
-  bool isValidPoBox(String poBox){
-    return agentDetailsViewModel.isValidPoBox(poBox);
+  bool isValidMobile(String mobileNo){
+    return agentDetailsViewModel.isValidMobileNumber(mobileNo);
   }
+
 
   Future<String> getMobileNumber() async {
     return await getValueFromStorage('mobileNumber', defaultValue: '');

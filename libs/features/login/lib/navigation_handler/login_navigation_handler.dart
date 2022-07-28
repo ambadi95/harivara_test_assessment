@@ -4,7 +4,6 @@ import 'package:crayon_payment_customer/home/view/home_screen.dart';
 import 'package:shared_data_models/otp/otp_screen_args.dart';
 import 'package:shared_data_models/otp/otp_verification_type.dart';
 import 'package:verifyotp/verifyotp/view/verifyotp.dart';
-import 'package:welcome/sub_features/welcome_back/view/welcome_back.dart';
 import 'package:widget_library/helpers/error/helper/error_helper.dart';
 
 class LoginNavigationHandler with ErrorHandler {
@@ -19,7 +18,7 @@ class LoginNavigationHandler with ErrorHandler {
     );
   }
 
-  Future<void> navigateToOtpScreen() async {
+  Future<void> navigateToOtpScreen(String userType) async {
     var arguments = OtpScreenArgs(
         'OTP Verification',
         'VO_otp_verification_description',
@@ -31,7 +30,30 @@ class LoginNavigationHandler with ErrorHandler {
         6,
         '1234567890',
         false,
-        'userType'
+        userType
+    );
+
+    _navigationManager.navigateTo(
+      CrayonVerifyOtpScreen.viewPath,
+      const NavigationType.push(),
+      preventDuplicates: false,
+      arguments: arguments,
+    );
+  }
+
+  Future<void> navigateToOtpScreenForAgent(String userType) async {
+    var arguments = OtpScreenArgs(
+        'OTP Verification',
+        'VO_otp_verification_description',
+        'welcomeModule/welcomeback',
+        false,
+        2,
+        OtpVerificationType.agentSignIn,
+        '',
+        6,
+        '1234567890',
+        false,
+        userType
     );
 
     _navigationManager.navigateTo(

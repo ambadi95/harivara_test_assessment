@@ -7,19 +7,17 @@
   "OB_Lang" : "EN",
 
 
-  "DO_Title": "Device Options",
-  "DO_Search": "Search by Name / Brand / price / storage / etc..",
-
-
-  "LS_Login" : "Login to your Y9 \napp",
+  "LS_Login" : "Login to Your Y9 \nAgent",
   "LS_Mobile" : "Mobile number",
   "LS_mobile_error_text" : "Invalid Mobile number",
   "LS_mobile_hint_text" : "Enter Mobile Number",
+  "LS_agent_id" : "Agent ID",
+  "LS_agent_id_error" : "Invalid Agent ID",
   "LS_Passcode" : "Passcode",
   "LS_SignIn" : "Sign in",
 
 
-  "SU_title" : "Enter NIDA Number",
+  "SU_title" : "Enter your NIDA Number & Agent ID",
   "SU_subtitle" : "By signing up to Y9, you agree to the \n%{Terms & Conditions|https://www.google.com}%.",
   "SU_ID_no_label" : "NIDA Number",
   "SU_mobile_no_label" : "Y9 Agent ID",
@@ -41,25 +39,11 @@
   "DV_gender_label" : "Gender",
   "DV_gender_error_text" : "Invalid Gender",
   "DV_gender_hint_text" : "Enter Gender",
-  "DV_profession_label" : "Profession",
-  "DV_profession_error_text" : "Invalid Profession",
-  "DV_profession_hint_text" : "Enter Profession",
   "DV_contact_no_label" : "Mobile Number",
+  "DV_contact_no_error_text" : "Invalid Mobile Number",
   "DV_email_label" : "Email Id",
   "DV_email_error_text" : "Invalid Email",
   "DV_email_hint_text" : "Enter Email",
-  "DV_address_label" : "Address",
-  "DV_address_error_text" : "Invalid Address",
-  "DV_address_hint_text" : "Enter Address",
-  "DV_po_box_label" : "P.O. Box",
-  "DV_poBox_error_text" : "Invalid P.O.Box",
-  "DV_poBox_hint_text" : "Enter P.O.Box",
-  "DV_region_label" : "Region",
-  "DV_region_error_text" : "Invalid Region",
-  "DV_region_hint_text" : "Enter Region",
-  "DV_district_label" : "District",
-  "DV_district_error_text" : "Invalid District",
-  "DV_district_hint_text" : "Enter District",
 
   "HS_GoodMorning": "Good Morning",
   "HS_YourBalance": "Your Balance",
@@ -85,36 +69,11 @@
 
   "ES_welcome_Text" : "Hi %{Ennamual Jisula | click}% congratulations you have successfully enrolled into Y9",
   "ES_enroll_id" : "Your Enrollment ID %{“XXXXXX” | click}%",
-  "ES_near_agent_button" : "View Near by Agent",
-  "ES_device_option" : "Explore Device Options",
 
 
 
-  "WB_WelcomeBack": "Welcome back to Y9",
+  "WB_WelcomeBack": "Welcome back to Y9 Agent login",
   "WB_EnterPassCode": "Enter Passcode",
-
-
-
-  "AN_Title" : "Agents Near by",
-  "AN_Search" : "Search by Name / Id/ Region / District/ Po#",
-  "AN_AgentName" : "Y9 Agent id:",
-  "AN_Call" : "Call",
-
-
-  "DD_product" : "Product Details",
-  "DD_Brand" : "Brand",
-  "DD_ModelNumber" : "Model Number",
-  "DD_HumanInterfaceInput" : "Human Interface Input",
-  "DD_WirelessCarrier" : "Wireless Carrier",
-  "DD_CellularTechnology" : "Cellular Technology",
-  "DD_OperatingSystem" : "Operating System",
-  "DD_MemoryStorage" : "Memory / Storage",
-  "DD_WaterResistanceLevel" : "Water Resistance Level",
-  "DD_Color" : "Colour",
-  "DD_Price" : "Price",
-  "DD_EMIMonth" : "EMI/ Month",
-  "DD_Interest" : "Interest %",
-  "DD_TotalAmountPaid" : "Total Amount to be Paid",
 
 
   "VO_OtpVerification": "OTP Verification",
@@ -125,6 +84,16 @@
   "VO_Incorrect_OTP_Title":"Incorrect OTP",
   "VO_Incorrect_OTP_Alert_Msg":"You have used all your attempts. Please sign up again.",
   "VO_resend_otp" : "Resend in %s seconds.",
+
+  "SP_ni": "ni",
+  "SP_bora": " Bora",
+
+  "HS_Agent_Id" : "Y9 Agent Id",
+  "HS_TotalOnBoarderCustomers" : "Total Onboarded Customers",
+  "HS_PendingCustomerRequests" : "Pending Customer Request",
+  "HS_Customer_OnBoarding" : "Customer Onboarding",
+  "HS_Customer_DeviceSwap" : "Device swap / repair",
+  "HS_Customer_AgentSupport" : "Agent Support",
 
   "AE_Message" : "Congratulations,\nAshish You have successfully Onboarded",
   "AE_AgentId" : "Your Y9 Agent ID",

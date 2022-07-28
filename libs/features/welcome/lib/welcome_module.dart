@@ -17,6 +17,9 @@ import 'package:welcome/sub_features/signup/viewmodel/signup_viewmodel.dart';
 import 'package:welcome/sub_features/welcome/viewmodel/welcome_usecase.dart';
 import 'package:welcome/sub_features/welcome/viewmodel/welcome_coordinatior.dart';
 import 'package:welcome/sub_features/welcome/viewmodel/welcome_view_model.dart';
+import 'package:welcome/sub_features/welcome_back/viewmodel/welcome_back_coordinatior.dart';
+import 'package:welcome/sub_features/welcome_back/viewmodel/welcome_back_usecase.dart';
+import 'package:welcome/sub_features/welcome_back/viewmodel/welcome_back_view_model.dart';
 
 import 'navigation_handler/welcome_navigation_handler.dart';
 import 'sub_features/details/viewmodel/details_coordinator.dart';
@@ -63,6 +66,16 @@ class WelcomeModule {
         WelcomeNavigationHandler(container.resolve<NavigationManager>()),
         AgentDetailsUseCase(
           AgentDetailsViewModel(),
+          container.resolve<TaskManager>(),
+        ),
+      ),
+    );
+
+    DIContainer.container.registerFactory<WelcomeBackCoordinator>(
+          (container) => WelcomeBackCoordinator(
+        WelcomeNavigationHandler(container.resolve<NavigationManager>()),
+        WelcomeBackUseCase(
+          WelcomeBackViewModel(),
           container.resolve<TaskManager>(),
         ),
       ),

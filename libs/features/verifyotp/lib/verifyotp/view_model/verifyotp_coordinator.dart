@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_data_models/otp/otp_screen_args.dart';
 import 'package:shared_data_models/otp/otp_verification_type.dart';
 import 'package:task_manager/base_classes/base_view_model.dart';
 import 'package:verifyotp/navigation_handler/verifyotp_navigation_handler.dart';
@@ -123,17 +124,22 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
     // var currentState = state as VerifyOtpStateReady;
     //
    // onVerifyPasscode(newPasscode);
-    navigateToDestinationPath(destinationPath, userType);
+    //navigateToDestinationPath(destinationPath, userType);
   }
 
-  Future<void> navigateToDestinationPath(String destinationPath, String userType) async {
-    if(userType == 'Customer'){
-      _navigationHandler.navigateToDestinationPath(destinationPath, userType);
-    }else{
-    _navigationHandler.openForNewPasscode(userType);
+  Future<void> navigateToDestinationPath(String destinationPath, String userType, OtpScreenArgs otpScreenArgs) async {
+    if(otpScreenArgs.otpVerificationType == OtpVerificationType.mobile){
+      if(userType == 'Customer') {
+        _navigationHandler.navigateToDestinationPath(destinationPath, userType);
+      }else{
+        _navigationHandler.openForNewPasscode(userType);
+      }
+    }else if(otpScreenArgs.otpVerificationType == OtpVerificationType.agentSignIn){
+    _navigationHandler.navigateToAgentWelcomeBack(userType);
     }
 
-  }
+    }
+
 
   Future<void> goBack() async {
     _navigationHandler.goBack();

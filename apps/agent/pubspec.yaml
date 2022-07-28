@@ -60,6 +60,12 @@ dependencies:
   verifyotp:
     path: ../../libs/features/verifyotp
 
+  splash:
+    path: ../../libs/features/splash
+
+  home:
+    path: ../../libs/features/home
+
 
 dev_dependencies:
   test: any
@@ -79,6 +85,7 @@ flutter:
     - assets/lang/
     - assets/styles/
     - assets/images/
+    - assets/home/
     - assets/configuration/network_config.json
     - assets/configuration/static_auth.json
 

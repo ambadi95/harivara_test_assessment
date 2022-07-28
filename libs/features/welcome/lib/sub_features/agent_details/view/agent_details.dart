@@ -31,6 +31,7 @@ class _AgentDetailsScreenState extends State<AgentDetailsScreen> {
   String emailError = '';
   String dobError ='';
   String genderError ='';
+  String mobileError = '';
 
   final FocusNode? focusNode = FocusNode();
   final TextEditingController name = TextEditingController();
@@ -66,7 +67,6 @@ class _AgentDetailsScreenState extends State<AgentDetailsScreen> {
         onStateListenCallback: (preState, newState) =>
             {_listenToStateChanges(context, newState)},
         setupViewModel: (coordinator) async {
-          coordinator.getMobileNumber();
         },
         builder: (context, state, coordinator) => SafeArea(
           child: Scaffold(
@@ -141,8 +141,8 @@ class _AgentDetailsScreenState extends State<AgentDetailsScreen> {
           ),
           _buildLabelTextField(
               'DV_name_label'.tr, name, TextInputType.text, coordinator,nameError,'DV_name_hint_text', true),
-          _buildLabelTextField('DV_contact_no_label'.tr, mobileNumber,
-              TextInputType.number, coordinator,'','Enter Your Mobile Number', true),
+          _buildLabelNumberTextField('DV_contact_no_label'.tr, mobileNumber,
+              TextInputType.number, coordinator,mobileError,'LS_mobile_hint_text', true),
           _buildLabelTextField('DV_email_label'.tr, emailId,
               TextInputType.emailAddress, coordinator,emailError,'DV_email_hint_text', true),
           _buildLabelTextField(
@@ -205,6 +205,29 @@ class _AgentDetailsScreenState extends State<AgentDetailsScreen> {
             if(errorText.isNotEmpty){
               coordinator.isValidName(name.text);
               coordinator.isValidEmail(emailId.text);
+              coordinator.isValidGender(gender.text);
+            }
+
+          },
+        ));
+  }
+
+  Widget _buildLabelNumberTextField(String label, TextEditingController controller,
+      TextInputType textInputType, AgentDetailsCoordinator coordinator, String errorText, String hint, bool enabled) {
+    return Padding(
+        padding: const EdgeInsets.only(bottom: 34),
+        child: InputFieldWithLabel(
+          label: label,
+          controller: controller,
+          errorText: errorText.tr,
+          enabled: enabled,
+          hintText: hint.tr,
+          key: const Key('detailsTextNumberField'),
+          keyboardType: textInputType,
+          onChanged: (value) {
+            _validateForm(coordinator);
+            if(mobileError.isNotEmpty || mobileNumber.text.length > 9 ) {
+              coordinator.isValidMobileNumber(mobileNumber.text);
             }
           },
         ));
@@ -248,7 +271,8 @@ class _AgentDetailsScreenState extends State<AgentDetailsScreen> {
         coordinator.isValidName(name.text);
         coordinator.isValidGender(gender.text);
         coordinator.isValidDob(dob.text);
-        if (_isBtnEnabled && coordinator.isValidEmail(emailId.text) &&coordinator.isValidName(name.text) ) {
+        coordinator.isValidMobileNumber(mobileNumber.text);
+        if (_isBtnEnabled && coordinator.isValidMobileNumber(mobileNumber.text)) {
           coordinator.navigateToOtpScreen(widget.userType);
         }
       },
@@ -288,8 +312,8 @@ class _AgentDetailsScreenState extends State<AgentDetailsScreen> {
         genderError: (message){
           genderError = message;
         },
-        getMobileNumber: (value){
-
+        mobileError: (message){
+          mobileError = message;
         },
         orElse: () => null);
   }
