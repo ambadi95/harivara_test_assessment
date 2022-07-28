@@ -98,6 +98,9 @@
   "AN_Call" : "Call",
 
 
+  "D0_JoiningFee": "Joining Fee (one off)",
+  "D0_DailyFee": "Daily Fee",
+
   "DD_product" : "Product Details",
   "DD_Brand" : "Brand",
   "DD_ModelNumber" : "Model Number",
