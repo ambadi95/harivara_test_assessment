@@ -123,5 +123,17 @@
   "VO_Incorrect_OTP":"Incorrect OTP. Please try again.",
   "VO_Incorrect_OTP_Title":"Incorrect OTP",
   "VO_Incorrect_OTP_Alert_Msg":"You have used all your attempts. Please sign up again.",
-  "VO_resend_otp" : "Resend in %s seconds."
+  "VO_resend_otp" : "Resend in %s seconds.",
+
+
+  "SP_ni": "ni",
+  "SP_bora": " Bora",
+
+
+  "HS_Agent_Id" : "Y9 Agent Id",
+  "HS_TotalOnBoarderCustomers" : "Total Onboarded\nCustomers",
+  "HS_PendingCustomerRequests" : "Pending Customer\nRequest",
+  "HS_Customer_OnBoarding" : "Customer Onboarding",
+  "HS_Customer_DeviceSwap" : "Device swap",
+  "HS_Customer_AgentSupport" : "Agent Support"
 }

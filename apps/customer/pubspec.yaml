@@ -29,6 +29,10 @@ dependencies:
   config:
     path: ../../config
 
+
+  crayon_payment_agent:
+    path: ../agent/
+
   core:
     path: ../../libs/core/
 
@@ -61,6 +65,12 @@ dependencies:
 
   verifyotp:
     path: ../../libs/features/verifyotp
+
+  splash:
+    path: ../../libs/features/splash
+
+  home:
+    path: ../../libs/features/home
 
 
 

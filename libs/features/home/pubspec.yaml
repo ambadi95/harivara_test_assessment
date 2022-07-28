@@ -1,0 +1,59 @@
+name: home
+description: home
+
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.17.6 <3.0.0"
+
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+
+  cupertino_icons: ^1.0.2
+
+  crayon_payment_agent:
+    path:  ../../../apps/agent/
+
+  core:
+    path: ../../core
+
+  network_manager:
+    path: ../../network-manager/
+
+  task_manager:
+    path: ../../task-manager/
+
+  config:
+    path: ../../../apps/customer/config/
+
+  widget_library:
+    path: ../../widgets/
+
+  shared_data_models:
+    path: ../../shared-data-models/
+
+
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+  mocktail: ^0.2.0
+  mockito:
+  freezed:
+  build_runner:
+  json_serializable:
+
+
+flutter:
+
+  uses-material-design: true
+
+

@@ -125,6 +125,21 @@
   "VO_Incorrect_OTP":"OTP si sahihi. Tafadhali jaribu tena.",
   "VO_Incorrect_OTP_Title":"OTP si sahihi",
   "VO_Incorrect_OTP_Alert_Msg":"Umetumia majaribio yako yote. Tafadhali jisajili tena.",
-  "VO_resend_otp" : "Tuma tena baada ya sekunde %s."
+  "VO_resend_otp" : "Tuma tena baada ya sekunde %s.",
+
+
+
+  "SP_ni": "ni",
+  "SP_bora": " Bora",
+
+
+  "HS_Agent_Id" : "Y9 Agent Id",
+  "HS_TotalOnBoarderCustomers" : "Total Onboarded\nCustomers",
+  "HS_PendingCustomerRequests" : "Pending Customer\nRequest",
+  "HS_Customer_OnBoarding" : "Customer Onboarding",
+  "HS_Customer_DeviceSwap" : "Device swap",
+  "HS_Customer_AgentSupport" : "Agent Support",
+
+
 
 }
