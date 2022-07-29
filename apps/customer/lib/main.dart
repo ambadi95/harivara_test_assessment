@@ -7,14 +7,16 @@ import 'package:core/session_management/inactivity_service.dart';
 import 'package:core/session_management/inactivity_watcher.dart';
 import 'package:core/translation/crayon_payment_transaltions_loader.dart';
 import 'package:core/translation/crayon_payment_translations.dart';
-import 'package:device_option/sub_features/device_details/view/device_detail_screen.dart';
+import 'package:device_option/view/device_option_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/src/framework.dart';
 import 'package:get/get.dart';
 import 'package:home/home/home_screen_arguments.dart';
 import 'package:home/home/view/home_screen.dart';
+import 'package:shared_data_models/device_option/device_option_args.dart';
 import 'package:splash/splash/view/splash.dart';
+import 'package:welcome/sub_features/enrollment_success/view/enrollment_success_screen.dart';
 import 'package:welcome/sub_features/welcome/view/welcome_screen.dart';
 import 'package:widget_library/theme/crayon_payment_theme.dart';
 
@@ -67,8 +69,7 @@ class HomeWidget extends StatelessWidget {
       child: CrayonPaymentMaterialApp(
         key: Key('AppMaterialApp'),
         home: !_status
-
-            ? DeviceDetailScreen.forCustomerApp()
+            ? EnrollmentSuccessScreen()
             : CrayonSplashScreen.forCustomerApp(),
 
         theme: CrayonPaymentTheme().defaultTheme,

@@ -21,6 +21,7 @@ const SU_button_text_color = Color(0xFFFFFFFF);
 
 const White = Color(0xFFFFFFFF);
 const Black = Color(0xFF000000);
+const Green = Color(0xFF22C55E);
 
 
 const AN_BackgroundColor = Color(0xFFFFFFFF);

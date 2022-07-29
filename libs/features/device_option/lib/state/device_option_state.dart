@@ -6,8 +6,12 @@ part 'device_option_state.freezed.dart';
 
 @freezed
 class DeviceOptionState with _$DeviceOptionState {
+  const factory DeviceOptionState.initialState() = InitialState;
 
- const factory DeviceOptionState({
-   @Default([]) List<DeviceOptionModel> DeviceOptionList,
-}) = _DeviceOptionState;
+  const factory DeviceOptionState.ready({
+    required bool isMember,
+    required String destination,
+    @Default([]) List<DeviceOptionModel> DeviceOptionList,
+  }) = DeviceOptionReady;
+
 }

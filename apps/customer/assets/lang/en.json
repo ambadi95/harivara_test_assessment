@@ -82,8 +82,9 @@
   "PC_passcode_repetitive_message" : "Passcode should not contain repetitive numbers, or common patterns like 123456.",
   "PC_passcode_tip" : "Tip: Avoid birthdays, and repetitive or consecutive numbers.",
 
-  "ES_welcome_Text" : "Hi %{Ennamual Jisula | click}% congratulations you have successfully enrolled into Y9",
-  "ES_enroll_id" : "Your Enrollment ID %{“XXXXXX” | click}%",
+  "ES_welcome_Text" : "Hi %{Ennamual Jisula | click}% ",
+  "ES_success_text" : "You have successfully\nregistered on Y9 and your\ninterest on Membership device\n",
+  "ES_enroll_id" : "Your Reference ID\n XXXXX",
   "ES_near_agent_button" : "View near by Agent (coming soon)",
   "ES_select_membership" : "Select Your Membership",
 
