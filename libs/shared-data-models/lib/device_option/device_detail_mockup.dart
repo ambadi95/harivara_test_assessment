@@ -17,3 +17,38 @@ DeviceDetailsModel getMockupData = DeviceDetailsModel(
   waterResistanceLevel: 'IP56',
   wirelessCarrier: 'Unlocked',
 );
+
+const List<DeviceDetailsModel> membershipBenefitsDataList = [
+  DeviceDetailsModel(
+    model: 'DD_MemberBenefit1',
+    imagePath: 'assets/mb1.png',
+  ),
+  DeviceDetailsModel(
+    model: 'DD_MemberBenefit2',
+    imagePath: 'assets/mb2.png',
+  ),
+  DeviceDetailsModel(
+    model: 'DD_MemberBenefit3',
+    imagePath: 'assets/mb3.png',
+  ),
+  DeviceDetailsModel(
+    model: 'DD_MemberBenefit4',
+    imagePath: 'assets/mb4.png',
+  ),
+  DeviceDetailsModel(
+    model: 'DD_MemberBenefit5',
+    imagePath: 'assets/mb5.png',
+  ),
+  DeviceDetailsModel(
+    model: 'DD_MemberBenefit6',
+    imagePath: 'assets/mb6.png',
+  ),
+  DeviceDetailsModel(
+    model: 'DD_MemberBenefit7',
+    imagePath: 'assets/mb7.png',
+  ),
+  DeviceDetailsModel(
+    model: 'DD_MemberBenefit8',
+    imagePath: 'assets/logo1.png',
+  ),
+];

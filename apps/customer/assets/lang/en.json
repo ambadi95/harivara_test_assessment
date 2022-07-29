@@ -121,6 +121,16 @@
   "DD_MembershipTerms" : "Membership Terms",
   "DD_MembershipBenefits" : "Y9 Membership Benefits",
 
+  "DD_MemberBenefit1": "Loan to Finance your Smartphone Device",
+  "DD_MemberBenefit2": "Customised Digital Platforms as per Customer needs",
+  "DD_MemberBenefit3": "Access to Financial Services",
+  "DD_MemberBenefit4": "Mobile and Digital Products with Service",
+  "DD_MemberBenefit5": "Free Educational Content and Books",
+  "DD_MemberBenefit6": "Membership and Loyalty Benefits",
+  "DD_MemberBenefit7": "Huge incentives for referrals of family and friends",
+  "DD_MemberBenefit8": "Access to your Y9 Account",
+
+
 
   "VO_OtpVerification": "OTP Verification",
   "VO_otp_verification_description" : "An OTP will be send to your mobile number (ending with XXXXX)",

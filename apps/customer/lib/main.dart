@@ -7,6 +7,7 @@ import 'package:core/session_management/inactivity_service.dart';
 import 'package:core/session_management/inactivity_watcher.dart';
 import 'package:core/translation/crayon_payment_transaltions_loader.dart';
 import 'package:core/translation/crayon_payment_translations.dart';
+import 'package:device_option/sub_features/device_details/view/device_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/src/framework.dart';
@@ -67,7 +68,7 @@ class HomeWidget extends StatelessWidget {
         key: Key('AppMaterialApp'),
         home: !_status
 
-            ? CrayonSplashScreen.forCustomerApp()
+            ? DeviceDetailScreen.forCustomerApp()
             : CrayonSplashScreen.forCustomerApp(),
 
         theme: CrayonPaymentTheme().defaultTheme,
