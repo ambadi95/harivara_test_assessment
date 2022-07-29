@@ -6,6 +6,7 @@ import 'package:core/sheets/state/crayon_payment_bottom_sheet_state.dart';
 import 'package:home/home/home_screen_arguments.dart';
 import 'package:home/home/view/home_screen.dart';
 import 'package:passcode/sub_features/passcode/view/passcode.dart';
+import 'package:shared_data_models/device_option/device_option_args.dart';
 import 'package:shared_data_models/otp/otp_screen_args.dart';
 import 'package:shared_data_models/otp/otp_verification_type.dart';
 import 'package:shared_data_models/passcode/passcode_screen_args.dart';
@@ -83,9 +84,14 @@ class WelcomeNavigationHandler with ErrorHandler {
   }
 
   Future<void> navigateToDeviceOption() async {
+    var argument = DeviceOptionArgs(
+      false,
+      ''
+    );
     await _navigationManager.navigateTo(
       DeviceOption.viewPath,
       const NavigationType.push(),
+      arguments: argument
     );
   }
 

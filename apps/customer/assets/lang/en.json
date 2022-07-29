@@ -2,25 +2,25 @@
   "OB_WelcomeTitle" : "Welcome to Y9",
   "OB_WelcomeSubTitle" : "Your Dream Digital Microfinance",
   "OB_WelcomeThirdTitle" : "y9bank.com",
-  "OB_SignIn" : "Sign In",
-  "OB_SignUp" : "Sign Up",
+  "OB_SignIn" : "Sign-In",
+  "OB_SignUp" : "Sign-Up",
   "OB_Lang" : "EN",
 
 
-  "DO_Title": "Device Options",
+  "DO_Title": "Membership Options",
   "DO_Search": "Search by Name / Brand / price / storage / etc..",
 
 
-  "LS_Login" : "Login to your Y9 \napp",
+  "LS_Login" : "Sign-in to Y9",
   "LS_Mobile" : "Mobile number",
   "LS_mobile_error_text" : "Invalid Mobile number",
   "LS_mobile_hint_text" : "Enter Mobile Number",
   "LS_Passcode" : "Passcode",
-  "LS_SignIn" : "Sign in",
+  "LS_SignIn" : "Sign-In",
 
 
   "SU_title" : "Enter NIDA Number",
-  "SU_subtitle" : "By signing up to Y9, you agree to the \n%{Terms & Conditions|https://www.google.com}%.",
+  "SU_subtitle" : "By signing up to Y9, you here by agree to the \n%{Terms & Conditions|https://www.google.com}%.",
   "SU_ID_no_label" : "NIDA Number",
   "SU_mobile_no_label" : "Mobile Number",
   "SU_carrier_message" : "Carrier SMS charges may apply.",
@@ -84,7 +84,7 @@
 
   "ES_welcome_Text" : "Hi %{Ennamual Jisula | click}% ",
   "ES_success_text" : "You have successfully\nregistered on Y9 and your\ninterest on Membership device\n",
-  "ES_enroll_id" : "Your Reference ID\n XXXXX",
+  "ES_enroll_id" : "Your Reference ID\n %{XXXXX | click}%",
   "ES_near_agent_button" : "View near by Agent (coming soon)",
   "ES_select_membership" : "Select Your Membership",
 
@@ -134,7 +134,7 @@
 
 
   "VO_OtpVerification": "OTP Verification",
-  "VO_otp_verification_description" : "An OTP will be send to your mobile number (ending with XXXXX)",
+  "VO_otp_verification_description" : "An OTP will be send to your Mobile Number (ending with XXXXX)",
   "VO_DidNotGetCode": "Didn't get a code?",
   "VO_ResendNow": "Resend Now",
   "VO_Incorrect_OTP":"Incorrect OTP. Please try again.",

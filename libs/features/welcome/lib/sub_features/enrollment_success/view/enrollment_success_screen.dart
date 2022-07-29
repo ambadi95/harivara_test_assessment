@@ -38,7 +38,9 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
       padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          const SizedBox(height: 200,),
           _buildSucessIcon(),
           const SizedBox(height: 20,),
           _buildEnrollmentText(),

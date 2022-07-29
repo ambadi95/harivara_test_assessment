@@ -56,7 +56,7 @@ class Login extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _buildTitle(context),
-            dynamicHSpacer(36),
+            dynamicHSpacer(66),
             _buildLabelTextFieldMobNumber(context, 'LS_Mobile'.tr, coordinator),
             dynamicHSpacer(48),
            userType =='Customer'?  _passcodeWidget(context, coordinator) :
