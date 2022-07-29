@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:welcome/sub_features/signup/state/signup_state.dart';
 import 'package:welcome/sub_features/signup/viewmodel/signup_coordinator.dart';
 import 'package:welcome/welcome_module.dart';
+import 'package:widget_library/formatter/nida_input_formatter.dart';
 import 'package:widget_library/html/rich_text_description.dart';
 import 'package:widget_library/progress_bar/onboarding_progress_bar.dart';
 import 'package:widget_library/input_fields/input_field_with_label.dart';
@@ -155,9 +156,12 @@ class _SignUpState extends State<SignUp> {
       controller: controller,
       errorText: errorText.tr,
       keyboardType: textInputType,
+      inputFormatters: textInputType == TextInputType.number ? [
+        NIDAInputFormatter(mask: 'xxxxxxxx-xxxxx-xxxxx-xx',separator: '-')
+      ] : [],
       onChanged: (value) {
         _validateForm(coordinator);
-        if (nidaNumberError.isNotEmpty || nidaNumber.text.length > 12) {
+        if (nidaNumberError.isNotEmpty || nidaNumber.text.length > 23) {
           coordinator.isValidNidaNumber(nidaNumber.text);
         }
         if(agentIdError.isNotEmpty){
@@ -176,12 +180,12 @@ class _SignUpState extends State<SignUp> {
       hintText: 'SU_subtitle_hint'.tr,
       key: const Key('mobileNumberTextField'),
       inputFormatters: <TextInputFormatter>[
-        FilteringTextInputFormatter.digitsOnly
+        NIDAInputFormatter(mask: 'xxx xxx xxx',separator: ' ')
       ],
       keyboardType: TextInputType.number,
       onChanged: (value) {
         _validateForm(coordinator);
-        if (mobileNumberError.isNotEmpty || mobileNumber.text.length > 9) {
+        if (mobileNumberError.isNotEmpty || mobileNumber.text.length > 11) {
           coordinator.isValidMobileNumber(mobileNumber.text);
         }
       },
