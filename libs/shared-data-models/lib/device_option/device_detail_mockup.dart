@@ -49,6 +49,6 @@ const List<DeviceDetailsModel> membershipBenefitsDataList = [
   ),
   DeviceDetailsModel(
     model: 'DD_MemberBenefit8',
-    imagePath: 'assets/logo.png',
+    imagePath: 'assets/logo1.png',
   ),
 ];
