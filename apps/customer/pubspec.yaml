@@ -95,6 +95,7 @@ flutter:
     - assets/configuration/network_config.json
     - assets/lang/
     - assets/images/
+    - assets/deviceoption/
     - assets/welcomeback/
     - assets/home/
     - assets/configuration/static_auth.json

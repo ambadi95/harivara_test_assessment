@@ -201,9 +201,10 @@ class DeviceDetailScreen extends StatelessWidget {
 
   _membershipList(context) {
       return ListView.separated(
+        physics: NeverScrollableScrollPhysics(),
         separatorBuilder: (context, index) => SizedBox(),
         shrinkWrap: true,
-        itemCount: 5,
+        itemCount: membershipBenefitsDataList.length,
         itemBuilder: (context, index) =>
             _buildDeviceCard(context, index, ),
       );
@@ -222,25 +223,26 @@ class DeviceDetailScreen extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              "assets/mobile_0.png",
-              width: 65,
-              height: 45,
-              scale: 8.0,
+              membershipBenefitsDataList[index].imagePath!,
+              width: 55,
+              height: 35,
               package: 'shared_data_models',
             ),
             SizedBox(
-              width: 5,
+              width: 3,
             ),
-            CrayonPaymentText(
+            Expanded(child: CrayonPaymentText(
               key: Key(''),
-              text: TextUIDataModel("Test",
+              text: TextUIDataModel(membershipBenefitsDataList[index].model!.tr,
                   styleVariant:
-                  CrayonPaymentTextStyleVariant.overline1,
+                  CrayonPaymentTextStyleVariant.bodyText2,
                   color: AN_CardTitle,
-                  fontWeight: FontWeight.normal),
-            ),
+                  fontWeight: FontWeight.w500),
+            ) ,)
+
           ],
         ),
       ),
