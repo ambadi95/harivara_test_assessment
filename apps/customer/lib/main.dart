@@ -68,8 +68,8 @@ class HomeWidget extends StatelessWidget {
       inactivityService: _inactivityService,
       child: CrayonPaymentMaterialApp(
         key: Key('AppMaterialApp'),
-        home: !_status
-            ? EnrollmentSuccessScreen()
+        home: !_status ?
+        CrayonSplashScreen.forCustomerApp()
             : CrayonSplashScreen.forCustomerApp(),
 
         theme: CrayonPaymentTheme().defaultTheme,

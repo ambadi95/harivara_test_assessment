@@ -1,9 +1,12 @@
 
 
 import 'package:task_manager/base_classes/base_view_model.dart';
+import 'package:welcome/data_model/district.dart';
+import 'package:welcome/data_model/gender_type.dart';
 import 'package:welcome/sub_features/details/state/details_state.dart';
 import 'package:welcome/sub_features/details/viewmodel/details_usecase.dart';
 
+import '../../../data_model/region.dart';
 import '../../../navigation_handler/welcome_navigation_handler.dart';
 
 class DetailsCoordinator extends BaseViewModel<DetailsState>{
@@ -16,7 +19,33 @@ class DetailsCoordinator extends BaseViewModel<DetailsState>{
     _navigationHandler.goBack();
   }
 
+  List<GenderType> get genderType => [
+    const GenderType(1, 'Male'),
+    const GenderType(2, 'Female'),
+    const GenderType(3, 'Prefer not to say'),
+  ];
 
+  List<Region> get region => [
+    const Region(1, 'Tanzania'),
+    const Region(2, 'Tanzania North'),
+    const Region(3, 'Tanzania South'),
+  ];
+
+  List<District> get district => [
+    const District(1, 'Tanzania'),
+  ];
+
+  void setGenderType(GenderType genderType){
+    state = DetailsState.onGenderTypeChoosen(genderType);
+  }
+
+  void setRegion(Region region){
+    state = DetailsState.onRegionChoosen(region);
+  }
+
+  void setDistrict(District district){
+    state = DetailsState.onDistrictChoosen(district);
+  }
 
   Future<void> getMobileNumber() async {
      String getMobileNo = await _detailsUseCase.getMobileNumber();

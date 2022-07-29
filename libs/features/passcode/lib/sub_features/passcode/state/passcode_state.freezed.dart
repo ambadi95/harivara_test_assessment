@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'passcode_state.dart';
@@ -11,44 +12,7 @@ part of 'passcode_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$CreatePasscodeStateTearOff {
-  const _$CreatePasscodeStateTearOff();
-
-  InitialState initialState() {
-    return const InitialState();
-  }
-
-  CreatePasscodeReady ready(
-      {required BuildContext context,
-      required PassCodeVerificationType passCodeVerificationType,
-      required String pageTitle,
-      required String pageDescription,
-      required String initialPasscode,
-      required String currentPasscode,
-      required int passcodeLength,
-      required String destinationPath,
-      String error = '',
-      bool isLoading = false}) {
-    return CreatePasscodeReady(
-      context: context,
-      passCodeVerificationType: passCodeVerificationType,
-      pageTitle: pageTitle,
-      pageDescription: pageDescription,
-      initialPasscode: initialPasscode,
-      currentPasscode: currentPasscode,
-      passcodeLength: passcodeLength,
-      destinationPath: destinationPath,
-      error: error,
-      isLoading: isLoading,
-    );
-  }
-}
-
-/// @nodoc
-const $CreatePasscodeState = _$CreatePasscodeStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$CreatePasscodeState {
@@ -63,6 +27,7 @@ mixin _$CreatePasscodeState {
             String initialPasscode,
             String currentPasscode,
             int passcodeLength,
+            int currentStep,
             String destinationPath,
             String error,
             bool isLoading)
@@ -80,6 +45,7 @@ mixin _$CreatePasscodeState {
             String initialPasscode,
             String currentPasscode,
             int passcodeLength,
+            int currentStep,
             String destinationPath,
             String error,
             bool isLoading)?
@@ -97,6 +63,7 @@ mixin _$CreatePasscodeState {
             String initialPasscode,
             String currentPasscode,
             int passcodeLength,
+            int currentStep,
             String destinationPath,
             String error,
             bool isLoading)?
@@ -143,22 +110,22 @@ class _$CreatePasscodeStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class $InitialStateCopyWith<$Res> {
-  factory $InitialStateCopyWith(
-          InitialState value, $Res Function(InitialState) then) =
-      _$InitialStateCopyWithImpl<$Res>;
+abstract class _$$InitialStateCopyWith<$Res> {
+  factory _$$InitialStateCopyWith(
+          _$InitialState value, $Res Function(_$InitialState) then) =
+      __$$InitialStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$InitialStateCopyWithImpl<$Res>
+class __$$InitialStateCopyWithImpl<$Res>
     extends _$CreatePasscodeStateCopyWithImpl<$Res>
-    implements $InitialStateCopyWith<$Res> {
-  _$InitialStateCopyWithImpl(
-      InitialState _value, $Res Function(InitialState) _then)
-      : super(_value, (v) => _then(v as InitialState));
+    implements _$$InitialStateCopyWith<$Res> {
+  __$$InitialStateCopyWithImpl(
+      _$InitialState _value, $Res Function(_$InitialState) _then)
+      : super(_value, (v) => _then(v as _$InitialState));
 
   @override
-  InitialState get _value => super._value as InitialState;
+  _$InitialState get _value => super._value as _$InitialState;
 }
 
 /// @nodoc
@@ -174,7 +141,7 @@ class _$InitialState implements InitialState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is InitialState);
+        (other.runtimeType == runtimeType && other is _$InitialState);
   }
 
   @override
@@ -192,6 +159,7 @@ class _$InitialState implements InitialState {
             String initialPasscode,
             String currentPasscode,
             int passcodeLength,
+            int currentStep,
             String destinationPath,
             String error,
             bool isLoading)
@@ -212,6 +180,7 @@ class _$InitialState implements InitialState {
             String initialPasscode,
             String currentPasscode,
             int passcodeLength,
+            int currentStep,
             String destinationPath,
             String error,
             bool isLoading)?
@@ -232,6 +201,7 @@ class _$InitialState implements InitialState {
             String initialPasscode,
             String currentPasscode,
             int passcodeLength,
+            int currentStep,
             String destinationPath,
             String error,
             bool isLoading)?
@@ -281,10 +251,10 @@ abstract class InitialState implements CreatePasscodeState {
 }
 
 /// @nodoc
-abstract class $CreatePasscodeReadyCopyWith<$Res> {
-  factory $CreatePasscodeReadyCopyWith(
-          CreatePasscodeReady value, $Res Function(CreatePasscodeReady) then) =
-      _$CreatePasscodeReadyCopyWithImpl<$Res>;
+abstract class _$$CreatePasscodeReadyCopyWith<$Res> {
+  factory _$$CreatePasscodeReadyCopyWith(_$CreatePasscodeReady value,
+          $Res Function(_$CreatePasscodeReady) then) =
+      __$$CreatePasscodeReadyCopyWithImpl<$Res>;
   $Res call(
       {BuildContext context,
       PassCodeVerificationType passCodeVerificationType,
@@ -293,21 +263,22 @@ abstract class $CreatePasscodeReadyCopyWith<$Res> {
       String initialPasscode,
       String currentPasscode,
       int passcodeLength,
+      int currentStep,
       String destinationPath,
       String error,
       bool isLoading});
 }
 
 /// @nodoc
-class _$CreatePasscodeReadyCopyWithImpl<$Res>
+class __$$CreatePasscodeReadyCopyWithImpl<$Res>
     extends _$CreatePasscodeStateCopyWithImpl<$Res>
-    implements $CreatePasscodeReadyCopyWith<$Res> {
-  _$CreatePasscodeReadyCopyWithImpl(
-      CreatePasscodeReady _value, $Res Function(CreatePasscodeReady) _then)
-      : super(_value, (v) => _then(v as CreatePasscodeReady));
+    implements _$$CreatePasscodeReadyCopyWith<$Res> {
+  __$$CreatePasscodeReadyCopyWithImpl(
+      _$CreatePasscodeReady _value, $Res Function(_$CreatePasscodeReady) _then)
+      : super(_value, (v) => _then(v as _$CreatePasscodeReady));
 
   @override
-  CreatePasscodeReady get _value => super._value as CreatePasscodeReady;
+  _$CreatePasscodeReady get _value => super._value as _$CreatePasscodeReady;
 
   @override
   $Res call({
@@ -318,11 +289,12 @@ class _$CreatePasscodeReadyCopyWithImpl<$Res>
     Object? initialPasscode = freezed,
     Object? currentPasscode = freezed,
     Object? passcodeLength = freezed,
+    Object? currentStep = freezed,
     Object? destinationPath = freezed,
     Object? error = freezed,
     Object? isLoading = freezed,
   }) {
-    return _then(CreatePasscodeReady(
+    return _then(_$CreatePasscodeReady(
       context: context == freezed
           ? _value.context
           : context // ignore: cast_nullable_to_non_nullable
@@ -351,6 +323,10 @@ class _$CreatePasscodeReadyCopyWithImpl<$Res>
           ? _value.passcodeLength
           : passcodeLength // ignore: cast_nullable_to_non_nullable
               as int,
+      currentStep: currentStep == freezed
+          ? _value.currentStep
+          : currentStep // ignore: cast_nullable_to_non_nullable
+              as int,
       destinationPath: destinationPath == freezed
           ? _value.destinationPath
           : destinationPath // ignore: cast_nullable_to_non_nullable
@@ -378,6 +354,7 @@ class _$CreatePasscodeReady implements CreatePasscodeReady {
       required this.initialPasscode,
       required this.currentPasscode,
       required this.passcodeLength,
+      required this.currentStep,
       required this.destinationPath,
       this.error = '',
       this.isLoading = false});
@@ -397,24 +374,26 @@ class _$CreatePasscodeReady implements CreatePasscodeReady {
   @override
   final int passcodeLength;
   @override
+  final int currentStep;
+  @override
   final String destinationPath;
-  @JsonKey()
   @override
+  @JsonKey()
   final String error;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isLoading;
 
   @override
   String toString() {
-    return 'CreatePasscodeState.ready(context: $context, passCodeVerificationType: $passCodeVerificationType, pageTitle: $pageTitle, pageDescription: $pageDescription, initialPasscode: $initialPasscode, currentPasscode: $currentPasscode, passcodeLength: $passcodeLength, destinationPath: $destinationPath, error: $error, isLoading: $isLoading)';
+    return 'CreatePasscodeState.ready(context: $context, passCodeVerificationType: $passCodeVerificationType, pageTitle: $pageTitle, pageDescription: $pageDescription, initialPasscode: $initialPasscode, currentPasscode: $currentPasscode, passcodeLength: $passcodeLength, currentStep: $currentStep, destinationPath: $destinationPath, error: $error, isLoading: $isLoading)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is CreatePasscodeReady &&
+            other is _$CreatePasscodeReady &&
             const DeepCollectionEquality().equals(other.context, context) &&
             const DeepCollectionEquality().equals(
                 other.passCodeVerificationType, passCodeVerificationType) &&
@@ -427,6 +406,8 @@ class _$CreatePasscodeReady implements CreatePasscodeReady {
                 .equals(other.currentPasscode, currentPasscode) &&
             const DeepCollectionEquality()
                 .equals(other.passcodeLength, passcodeLength) &&
+            const DeepCollectionEquality()
+                .equals(other.currentStep, currentStep) &&
             const DeepCollectionEquality()
                 .equals(other.destinationPath, destinationPath) &&
             const DeepCollectionEquality().equals(other.error, error) &&
@@ -443,14 +424,16 @@ class _$CreatePasscodeReady implements CreatePasscodeReady {
       const DeepCollectionEquality().hash(initialPasscode),
       const DeepCollectionEquality().hash(currentPasscode),
       const DeepCollectionEquality().hash(passcodeLength),
+      const DeepCollectionEquality().hash(currentStep),
       const DeepCollectionEquality().hash(destinationPath),
       const DeepCollectionEquality().hash(error),
       const DeepCollectionEquality().hash(isLoading));
 
   @JsonKey(ignore: true)
   @override
-  $CreatePasscodeReadyCopyWith<CreatePasscodeReady> get copyWith =>
-      _$CreatePasscodeReadyCopyWithImpl<CreatePasscodeReady>(this, _$identity);
+  _$$CreatePasscodeReadyCopyWith<_$CreatePasscodeReady> get copyWith =>
+      __$$CreatePasscodeReadyCopyWithImpl<_$CreatePasscodeReady>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -464,6 +447,7 @@ class _$CreatePasscodeReady implements CreatePasscodeReady {
             String initialPasscode,
             String currentPasscode,
             int passcodeLength,
+            int currentStep,
             String destinationPath,
             String error,
             bool isLoading)
@@ -477,6 +461,7 @@ class _$CreatePasscodeReady implements CreatePasscodeReady {
         initialPasscode,
         currentPasscode,
         passcodeLength,
+        currentStep,
         destinationPath,
         error,
         isLoading);
@@ -494,6 +479,7 @@ class _$CreatePasscodeReady implements CreatePasscodeReady {
             String initialPasscode,
             String currentPasscode,
             int passcodeLength,
+            int currentStep,
             String destinationPath,
             String error,
             bool isLoading)?
@@ -507,6 +493,7 @@ class _$CreatePasscodeReady implements CreatePasscodeReady {
         initialPasscode,
         currentPasscode,
         passcodeLength,
+        currentStep,
         destinationPath,
         error,
         isLoading);
@@ -524,6 +511,7 @@ class _$CreatePasscodeReady implements CreatePasscodeReady {
             String initialPasscode,
             String currentPasscode,
             int passcodeLength,
+            int currentStep,
             String destinationPath,
             String error,
             bool isLoading)?
@@ -539,6 +527,7 @@ class _$CreatePasscodeReady implements CreatePasscodeReady {
           initialPasscode,
           currentPasscode,
           passcodeLength,
+          currentStep,
           destinationPath,
           error,
           isLoading);
@@ -580,16 +569,17 @@ class _$CreatePasscodeReady implements CreatePasscodeReady {
 
 abstract class CreatePasscodeReady implements CreatePasscodeState {
   const factory CreatePasscodeReady(
-      {required BuildContext context,
-      required PassCodeVerificationType passCodeVerificationType,
-      required String pageTitle,
-      required String pageDescription,
-      required String initialPasscode,
-      required String currentPasscode,
-      required int passcodeLength,
-      required String destinationPath,
-      String error,
-      bool isLoading}) = _$CreatePasscodeReady;
+      {required final BuildContext context,
+      required final PassCodeVerificationType passCodeVerificationType,
+      required final String pageTitle,
+      required final String pageDescription,
+      required final String initialPasscode,
+      required final String currentPasscode,
+      required final int passcodeLength,
+      required final int currentStep,
+      required final String destinationPath,
+      final String error,
+      final bool isLoading}) = _$CreatePasscodeReady;
 
   BuildContext get context;
   PassCodeVerificationType get passCodeVerificationType;
@@ -598,10 +588,11 @@ abstract class CreatePasscodeReady implements CreatePasscodeState {
   String get initialPasscode;
   String get currentPasscode;
   int get passcodeLength;
+  int get currentStep;
   String get destinationPath;
   String get error;
   bool get isLoading;
   @JsonKey(ignore: true)
-  $CreatePasscodeReadyCopyWith<CreatePasscodeReady> get copyWith =>
+  _$$CreatePasscodeReadyCopyWith<_$CreatePasscodeReady> get copyWith =>
       throw _privateConstructorUsedError;
 }

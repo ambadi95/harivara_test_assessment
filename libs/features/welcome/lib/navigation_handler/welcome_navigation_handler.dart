@@ -127,6 +127,29 @@ class WelcomeNavigationHandler with ErrorHandler {
     );
   }
 
+  Future<void> navigateToOtpScreenCustomerSignUp(String userType) async {
+    var arguments = OtpScreenArgs(
+      'OTP Verification',
+      'VO_otp_verification_description',
+      userType == 'Customer' ? 'welcomeModule/details' : 'welcomeModule/agentDetails',
+      true,
+      2,
+      OtpVerificationType.mobile,
+      '',
+      6,
+      '1234567890',
+      false,
+      userType,
+    );
+
+    _navigationManager.navigateTo(
+      CrayonVerifyOtpScreen.viewPath,
+      const NavigationType.push(),
+      preventDuplicates: false,
+      arguments: arguments,
+    );
+  }
+
   Future<void> navigateToOtpScreen(String userType) async {
     var arguments = OtpScreenArgs(
         'OTP Verification',
