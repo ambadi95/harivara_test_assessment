@@ -6,8 +6,6 @@ import 'package:passcode/sub_features/passcode/state/passcode_state.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:shared_data_models/passcode/passcode_screen_args.dart';
 import 'package:shared_data_models/passcode/passcode_verification_type.dart';
-import 'package:widget_library/input_fields/obscured_digit_entry_input_field.dart';
-import 'package:widget_library/keypad/crayon_payment_keypad.dart';
 import 'package:widget_library/page_header/text_ui_data_model.dart';
 import 'package:widget_library/progress_bar/onboarding_progress_bar.dart';
 import 'package:widget_library/static_text/crayon_payment_text.dart';
@@ -42,11 +40,12 @@ class _CrayonPasscodeScreenState extends State<CrayonPasscodeScreen> {
             widget.passcodeScreenArgs.initialPasscode,
           );
         },
+
         builder: (context, state, coordinator) => Scaffold(
           body: SafeArea(
             bottom: false,
             child: state.when(
-              initialState: () => SizedBox(),
+              initialState: () => const SizedBox(),
               ready: (
                 _,
                 __,
@@ -58,6 +57,7 @@ class _CrayonPasscodeScreenState extends State<CrayonPasscodeScreen> {
                 ________,
                 _________,
                 __________,
+                ___________________,
               ) =>
                   _buildMainUIWithLoading(
                 context,
@@ -92,7 +92,7 @@ class _CrayonPasscodeScreenState extends State<CrayonPasscodeScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _onBoardingProgressBar(),
+            _onBoardingProgressBar(coordinator, state),
             Expanded(child: _enterOtpWidget(context, coordinator, state)),
             const SizedBox(
               height: 30,
@@ -104,19 +104,19 @@ class _CrayonPasscodeScreenState extends State<CrayonPasscodeScreen> {
     );
   }
 
-  Widget _onBoardingProgressBar() {
+  Widget _onBoardingProgressBar(PasscodeCoordinator coordinator, CreatePasscodeReady state) {
     if (!widget.passcodeScreenArgs.hasProgressBar) {
       return Container();
     }
-    return const Padding(
-      key: Key('passcodeProgress'),
-      padding: EdgeInsets.only(
+    return Padding(
+      key: const Key('passcodeProgress'),
+      padding: const EdgeInsets.only(
         left: 16,
         right: 16,
         top: 16,
       ),
       child: OnBoardingProgressBar(
-        currentStep: 4,
+        currentStep: state.currentStep,
         totalSteps: 4,
       ),
     );

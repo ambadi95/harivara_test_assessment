@@ -29,8 +29,10 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
       pageTitle: pageTitle,
       passcodeLength: 6,
       passCodeVerificationType: passCodeVerificationType,
+      currentStep: 4
     );
   }
+
 
   // Future<void> updatePasscodeInput(KeypadButtonType keypadButtonType,) async {
   //   var currentState = state as CreatePasscodeReady;
@@ -143,6 +145,9 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
       ) async {
     var currentState = state as CreatePasscodeReady;
     if (oldPassCode == newPasscode) {
+      state = currentState.copyWith(
+        currentStep: 5
+      );
       await _passcodeUseCase.savePassCode(newPasscode);
       if(userType == "Customer"){
         _navigateToDestinationPath(destinationPath);

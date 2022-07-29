@@ -68,7 +68,7 @@ class HomeWidget extends StatelessWidget {
         key: Key('AppMaterialApp'),
         home: !_status
 
-            ? DeviceDetailScreen.forCustomerApp()
+            ? CrayonSplashScreen.forCustomerApp()
             : CrayonSplashScreen.forCustomerApp(),
 
         theme: CrayonPaymentTheme().defaultTheme,

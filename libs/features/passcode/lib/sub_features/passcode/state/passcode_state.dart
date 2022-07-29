@@ -16,8 +16,10 @@ class CreatePasscodeState with _$CreatePasscodeState {
     required String initialPasscode,
     required String currentPasscode,
     required int passcodeLength,
+    required int currentStep,
     required String destinationPath,
     @Default('') String error,
     @Default(false) bool isLoading,
   }) = CreatePasscodeReady;
+
 }

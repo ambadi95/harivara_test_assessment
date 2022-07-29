@@ -1,3 +1,4 @@
+import 'package:config/Colors.dart';
 import 'package:config/Styles.dart';
 import 'package:core/view/base_view.dart';
 import 'package:flutter/material.dart';
@@ -6,11 +7,16 @@ import 'package:welcome/sub_features/details/state/details_state.dart';
 import 'package:welcome/sub_features/details/viewmodel/details_coordinator.dart';
 import 'package:welcome/welcome_module.dart';
 import 'package:widget_library/buttons/crayon_back_button.dart';
+import 'package:widget_library/dropdown/crayon_drop_down.dart';
 import 'package:widget_library/input_fields/input_field_with_label.dart';
 import 'package:widget_library/progress_bar/onboarding_progress_bar.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:config/Colors.dart' as config_color;
+
+import '../../../data_model/district.dart';
+import '../../../data_model/gender_type.dart';
+import '../../../data_model/region.dart';
 
 class DetailsScreen extends StatefulWidget {
   static const viewPath = '${WelcomeModule.moduleIdentifier}/details';
@@ -33,6 +39,14 @@ class _DetailsScreenState extends State<DetailsScreen> {
   String addressError = '';
   String regionError ='';
   String districtError ='';
+
+  List<DropdownMenuItem<GenderType>> genderTypeDropDown = [];
+  List<DropdownMenuItem<Region>> regionDropDown = [];
+  List<DropdownMenuItem<District>> districtDropDown = [];
+
+  GenderType? _genderType;
+  Region? _region;
+  District? _district;
 
   final FocusNode? focusNode = FocusNode();
   final TextEditingController name = TextEditingController();
@@ -73,6 +87,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
             {_listenToStateChanges(context, newState)},
         setupViewModel: (coordinator) async {
           coordinator.getMobileNumber();
+          genderTypeDropDown =getDropDownData(coordinator.genderType);
+          regionDropDown = getRegionDropDownData(coordinator.region);
+          districtDropDown = getDistrictDropDownData(coordinator.district);
         },
         builder: (context, state, coordinator) => SafeArea(
           child: Scaffold(
@@ -143,8 +160,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
           _buildLabelTextField(
               'DV_name_label'.tr, name, TextInputType.text, coordinator,nameError,'DV_name_hint_text', true),
           _buildLabelTextFieldDob('DV_dob_label'.tr, dob, coordinator),
-          _buildLabelTextField(
-              'DV_gender_label'.tr, gender, TextInputType.name, coordinator,genderError,'DV_gender_hint_text', true),
+          _buildGenderTypeDropdown(coordinator),
           _buildLabelTextField('DV_profession_label'.tr, profession,
               TextInputType.name, coordinator,professionError,'DV_profession_hint_text',true),
           _buildLabelTextField('DV_contact_no_label'.tr, mobileNumber,
@@ -155,10 +171,12 @@ class _DetailsScreenState extends State<DetailsScreen> {
               'DV_address_label'.tr, address, coordinator, 'DV_address_hint_text'),
           _buildLabelTextField(
               'DV_po_box_label'.tr, poBox, TextInputType.text,coordinator, poBoxError,'DV_poBox_hint_text', true),
-          _buildLabelTextField(
-              'DV_region_label'.tr, region, TextInputType.name, coordinator,regionError,'DV_region_hint_text', true),
-          _buildLabelTextField('DV_district_label'.tr, district,
-              TextInputType.name, coordinator,districtError,'DV_district_hint_text',true ),
+          // _buildLabelTextField(
+          //     'DV_region_label'.tr, region, TextInputType.name, coordinator,regionError,'DV_region_hint_text', true),
+          _buildRegionDropdown(coordinator),
+          _buildDistrictDropdown(coordinator),
+          // _buildLabelTextField('DV_district_label'.tr, district,
+          //     TextInputType.name, coordinator,districtError,'DV_district_hint_text',true ),
           _buildContinueButton(coordinator)
         ],
       ),
@@ -249,6 +267,120 @@ class _DetailsScreenState extends State<DetailsScreen> {
         ));
   }
 
+  Widget _buildGenderTypeDropdown(
+      DetailsCoordinator coordinator
+      ){
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        CrayonDropDown(
+          title: 'DV_gender_label'.tr,
+          key: const Key('genderTypeDropDown'),
+          icon: const Icon(
+            Icons.keyboard_arrow_down,
+            color: ES_grey_button_color,
+          ),
+          hint: Text(
+            'DV_gender_hint_text'.tr,
+          ),
+          boxHeight: 60,
+          error: genderError,
+          value: _genderType,
+          items: genderTypeDropDown,
+          onChanged: (value) {
+            onGenderTypeChosen(value as GenderType, coordinator);
+            gender.text = value.gender;
+            _validateForm(coordinator);
+              coordinator.isValidGender(value.gender);
+          },
+        ),
+        const SizedBox(
+          height: 6,
+        ),
+        Text(genderError.tr, style: label_input_error_style),
+        const SizedBox(
+          height: 10,
+        ),
+      ],
+    );
+  }
+
+  Widget _buildDistrictDropdown(
+      DetailsCoordinator coordinator
+      ){
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        CrayonDropDown(
+          title: 'DV_district_label'.tr,
+          key: const Key('districtDropDown'),
+          icon: const Icon(
+            Icons.keyboard_arrow_down,
+            color: ES_grey_button_color,
+          ),
+          hint: Text(
+            'DV_district_hint_text'.tr,
+          ),
+          boxHeight: 60,
+          error: districtError,
+          value: _district,
+          items: districtDropDown,
+          onChanged: (value) {
+            onDistrictChosen(value as District, coordinator);
+            district.text = value.district;
+            _validateForm(coordinator);
+            coordinator.isValidDistrict(value.district);
+          },
+        ),
+        const SizedBox(
+          height: 6,
+        ),
+        Text(districtError.tr, style: label_input_error_style),
+        const SizedBox(
+          height: 10,
+        ),
+      ],
+    );
+  }
+
+  Widget _buildRegionDropdown(
+      DetailsCoordinator coordinator
+      ){
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        CrayonDropDown(
+          title: 'DV_region_label'.tr,
+          key: const Key('regionDropDown'),
+          icon: const Icon(
+            Icons.keyboard_arrow_down,
+            color: ES_grey_button_color,
+          ),
+          hint: Text(
+            'DV_region_hint_text'.tr,
+          ),
+          boxHeight: 60,
+          error: regionError,
+          value: _region,
+          items: regionDropDown,
+          onChanged: (value) {
+            onRegionChosen(value as Region, coordinator);
+            region.text = value.region;
+            _validateForm(coordinator);
+            coordinator.isValidRegion(value.region);
+          },
+        ),
+        const SizedBox(
+          height: 6,
+        ),
+        Text(regionError.tr, style: label_input_error_style),
+        const SizedBox(
+          height: 10,
+        ),
+      ],
+    );
+  }
+
   Widget _buildContinueButton(DetailsCoordinator coordinator) {
     return GestureDetector(
       onTap: () {
@@ -281,6 +413,84 @@ class _DetailsScreenState extends State<DetailsScreen> {
         ),
       ),
     );
+  }
+
+  List<DropdownMenuItem<GenderType>> getDropDownData(
+      List<GenderType> genderType,) {
+    for (var item in genderType) {
+      genderTypeDropDown.add(
+        DropdownMenuItem(
+          value: item,
+          child: Text(
+            item.gender.toString(),
+            style: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
+              color: Colors.black,
+              fontFamily: 'brown',
+            ),
+          ),
+        ),
+      );
+    }
+    return genderTypeDropDown;
+  }
+
+  List<DropdownMenuItem<Region>> getRegionDropDownData(
+      List<Region> region,) {
+    for (var item in region) {
+      regionDropDown.add(
+        DropdownMenuItem(
+          value: item,
+          child: Text(
+            item.region.toString(),
+            style: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
+              color: Colors.black,
+              fontFamily: 'brown',
+            ),
+          ),
+        ),
+      );
+    }
+    return regionDropDown;
+  }
+
+  List<DropdownMenuItem<District>> getDistrictDropDownData(
+      List<District> district,) {
+    for (var item in district) {
+      districtDropDown.add(
+        DropdownMenuItem(
+          value: item,
+          child: Text(
+            item.district.toString(),
+            style: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
+              color: Colors.black,
+              fontFamily: 'brown',
+            ),
+          ),
+        ),
+      );
+    }
+    return districtDropDown;
+  }
+
+  void onGenderTypeChosen(GenderType value,
+      DetailsCoordinator coordinator,) {
+    coordinator.setGenderType(value);
+  }
+
+  void onRegionChosen(Region value,
+      DetailsCoordinator coordinator,) {
+    coordinator.setRegion(value);
+  }
+
+  void onDistrictChosen(District value,
+      DetailsCoordinator coordinator,) {
+   coordinator.setDistrict(value);
   }
 
   void _listenToStateChanges(BuildContext context, DetailsState state) {
@@ -318,6 +528,15 @@ class _DetailsScreenState extends State<DetailsScreen> {
         getMobileNumber: (value){
           mobileNumber.text = value;
         },
+        onGenderTypeChoosen: (value){
+          _genderType = value;
+        },
+        onRegionChoosen: (value){
+          _region = value;
+        },
+        onDistrictChoosen:(value){
+          _district = value;
+        } ,
         orElse: () => null);
   }
 
@@ -325,7 +544,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
     coordinator.validateForm(
         name.text,
         dob.text,
-        gender.text,
+        _genderType.toString(),
         profession.text,
         mobileNumber.text,
         emailId.text,
