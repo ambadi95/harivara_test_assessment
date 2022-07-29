@@ -11,9 +11,18 @@ class DeviceOptionCoordinator extends AnalyticsStateNotifier<DeviceOptionState>{
   final DeviceOptionUseCase _DeviceOptionUseCase;
 
   DeviceOptionCoordinator( this._navigationHandler,
-      this._DeviceOptionUseCase,) : super(const DeviceOptionState());
+      this._DeviceOptionUseCase,) : super( DeviceOptionState.initialState());
+
+  void initialiseState(bool isMember,String destinationPath) async {
+    state = DeviceOptionState.ready(
+     destination: destinationPath,
+      isMember: isMember
+    );
+  }
 
   Future navigateToDeviceDetailScreen() async {
     _navigationHandler.navigateToDeviceDetail();
   }
+
+
 }

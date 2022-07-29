@@ -4,6 +4,7 @@ import 'package:core/view/base_view.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_data_models/device_option/device_option_mockup.dart';
 import 'package:shared_data_models/device_option/device_option_model.dart';
+import 'package:shared_data_models/device_option/device_option_args.dart';
 import 'package:widget_library/app_bars/crayon_payment_app_bar_attributes.dart';
 import 'package:widget_library/app_bars/crayon_payment_app_bar_button_type.dart';
 import 'package:widget_library/buttons/docked_button.dart';
@@ -20,17 +21,25 @@ import '../viewmodel/device_option_coordinator.dart';
 import 'package:get/get.dart';
 
 class DeviceOption extends StatelessWidget {
-  factory DeviceOption.forCustomerApp() => const DeviceOption();
   final String _identifier = 'device-option-screen';
   static const String viewPath =
       '${DeviceOptionModule.moduleIdentifier}/device-option-screen';
 
-  const DeviceOption({Key? key}) : super(key: key);
+  final DeviceOptionArgs deviceOptionArgs;
+
+  const DeviceOption({Key? key, required this.deviceOptionArgs})
+      : super(key: key);
+
+  factory DeviceOption.forCustomerApp() =>
+      DeviceOption(deviceOptionArgs: DeviceOptionArgs(false, ''));
 
   @override
   Widget build(BuildContext context) {
     return BaseView<DeviceOptionCoordinator, DeviceOptionState>(
-      setupViewModel: (coordinator) {},
+      setupViewModel: (coordinator) {
+        coordinator.initialiseState(
+            deviceOptionArgs.isMember, deviceOptionArgs.destinationPath);
+      },
       builder: (context, state, coordinator) {
         return _buildMainUI(context, coordinator);
       },
@@ -225,7 +234,9 @@ class DeviceOption extends StatelessWidget {
                 ),
                 dynamicHSpacer(20),
 
-                selectButton()
+                deviceOptionArgs.isMember == true
+                    ? selectedButton()
+                    : selectButton()
               ],
             ),
           ),
@@ -263,6 +274,22 @@ class DeviceOption extends StatelessWidget {
       height: CrayonPaymentDimensions.marginFortyEight,
       buttonColor: LS_ButtonColor,
       textColor: White,
+      textStyleVariant: CrayonPaymentTextStyleVariant.headline5,
+      onPressed: () {},
+    );
+  }
+
+  Widget selectedButton() {
+    return CrayonPaymentDockedButton(
+      key: const Key('Selected'),
+      title: 'Selected',
+      borderRadius: 8,
+      height: CrayonPaymentDimensions.marginFortyEight,
+      buttonColor: Colors.white,
+      textColor: Green,
+      borderColor: Green,
+      icon: Icons.check_circle_outline,
+      iconColor: Green,
       textStyleVariant: CrayonPaymentTextStyleVariant.headline5,
       onPressed: () {},
     );

@@ -39,13 +39,14 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const SizedBox(height: 200,),
           _buildSucessIcon(),
-          const SizedBox(height: 24,),
+          const SizedBox(height: 20,),
           _buildEnrollmentText(),
-          const SizedBox(height: 24,),
+          const SizedBox(height: 4,),
+          _buildEnrollSuccessText(),
+          const SizedBox(height: 40,),
           _buildEnrollmentIDText(),
-          const Spacer(),
+             const Spacer(),
           _buildAgentNearByButton(coordinator),
           const SizedBox(height: 24,),
           _buildExploreDeviceButton(coordinator)
@@ -83,7 +84,22 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
             key: const Key('enID'),
             description: 'ES_enroll_id'.tr,
             linkTextStyle: ES_bold_text,
-            descriptionTextStyle: ES_success_text
+            descriptionTextStyle: ES_bold_text
+        )
+      ),
+    );
+  }
+
+  Widget _buildEnrollSuccessText(){
+    return Center(
+      child: SizedBox(
+        width: 280,
+        child: RichTextDescription(
+            textAlign: TextAlign.center,
+            key: const Key('ensuccess'),
+            description: 'ES_success_text'.tr,
+            linkTextStyle: ES_bold_text,
+            descriptionTextStyle: HS_name_text_style
         )
       ),
     );

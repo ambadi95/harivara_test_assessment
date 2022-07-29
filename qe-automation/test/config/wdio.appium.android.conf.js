@@ -1,5 +1,5 @@
 const {config} = require('./wdio.shared.conf');
-const appPackage = global.app === 'customer' ? 'com.CrayonPaymentpay.customer' : 'com.CrayonPaymentpay.merchant';
+const appPackage = global.app === 'customer' ? 'com.y9.customer' : 'com.CrayonPaymentpay.merchant';
 
 exports.config = {
     ...config,

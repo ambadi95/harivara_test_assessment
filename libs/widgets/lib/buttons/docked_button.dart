@@ -27,7 +27,7 @@ class CrayonPaymentDockedButton extends TrackableWidget {
   final double width;
   final double? hitAreaHeight;
   final CrayonPaymentPadding? padding;
-  final Either<IconData, String>? icon;
+  final IconData? icon;
   final double? iconSize;
   final Color? iconColor;
   final bool splash;
@@ -167,13 +167,14 @@ class CrayonPaymentDockedButton extends TrackableWidget {
           child: Container(
             width: iconSize,
             height: iconSize,
-            child: icon!.fold(
-              (icon) => Icon(
-                icon,
-                color: iconColor,
-              ),
-              (iconPath) => SvgPicture.asset(iconPath),
-            ),
+            child: Icon(icon!,color: iconColor,),
+            // child: icon!.fold(
+            //   (icon) => Icon(
+            //     icon,
+            //     color: iconColor,
+            //   ),
+            //   (iconPath) => SvgPicture.asset(iconPath),
+
           ),
         ),
         spaceW5(),
