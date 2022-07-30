@@ -50,7 +50,7 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState>{
     if(userType == 'Customer'){
       _navigationHandler.navigateToOtpScreen(userType, mobilNumber);
     }else{
-      _navigationHandler.navigateToOtpScreenForAgent(userType);
+      _navigationHandler.navigateToOtpScreenForAgent(userType,mobilNumber);
     }
   }
 }

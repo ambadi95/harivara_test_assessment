@@ -105,7 +105,7 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
         child: RichTextDescription(
             textAlign: TextAlign.center,
             key: const Key('en_success'),
-            description: 'ES_success_text'.tr,
+            description: widget.isEnrolled ? 'ES_enrolled_success_text' : 'ES_success_text'.tr,
             linkTextStyle: ES_bold_text,
             descriptionTextStyle: HS_name_text_style
         )

@@ -18,11 +18,11 @@ class AgentDetailsCoordinator extends BaseViewModel<AgentDetailsState>{
 
   bool _validateForm(String name, String dob, String gender, String mobNumber,
       String emailId){
-    var isnNameValid = _agentDetailsUseCase.isValidName(name);
-    var isMobileNoValid = _agentDetailsUseCase.isValidMobile(mobNumber);
+    var isnNameValid = name.isNotEmpty;
+    var isMobileNoValid = mobNumber.isNotEmpty;
     var isDobValid = dob.isNotEmpty;
     var isGenderValid = gender.isNotEmpty;
-    var isEmailIdValid = _agentDetailsUseCase.isValidEmail(emailId);
+    var isEmailIdValid = emailId.isNotEmpty;
     var _isValid = isnNameValid && isMobileNoValid && isDobValid && isGenderValid
         && isEmailIdValid;
     return _isValid;
@@ -33,8 +33,8 @@ class AgentDetailsCoordinator extends BaseViewModel<AgentDetailsState>{
     state =AgentDetailsState.DetailsFormState(_validateForm(name, dob,gender,mobNumber,emailId));
   }
 
-  Future navigateToOtpScreen(String userType) async {
-    _navigationHandler.navigateToOtpScreen(userType);
+  Future navigateToOtpScreen(String userType, String mobileNumber) async {
+    _navigationHandler.navigateToOtpScreen(userType, mobileNumber);
   }
 
   Future navigateToBottomSheet() async {

@@ -44,7 +44,9 @@ class _SignUpState extends State<SignUp> {
             height: 120,
             child: Column(
               children: [
-                _carrierText(),
+                widget.userType == 'Customer'?
+                _carrierText()
+                    : const SizedBox(height: 14,),
                 const SizedBox(
                   height: 23,
                 ),
@@ -92,14 +94,14 @@ class _SignUpState extends State<SignUp> {
           const SizedBox(
             height: 69,
           ),
-          _buildLabelTextField('SU_ID_no_label'.tr, nidaNumber, coordinator,
-              'SU_title_hint', nidaNumberError, TextInputType.number),
+          _buildLabelTextField( 'SU_ID_no_label'.tr, nidaNumber, coordinator,
+              widget.userType == 'Agent' ? 'SU_title_hint_agent'.tr :'SU_title_hint', nidaNumberError, TextInputType.number),
           const SizedBox(
             height: 48,
           ),
           widget.userType == 'Customer'
               ? _buildLabelTextFieldMobNumber(
-                  'SU_mobile_no_label'.tr, mobileNumber, coordinator)
+                   'SU_mobile_no_label'.tr, mobileNumber, coordinator, 'SU_subtitle_hint')
               : _buildLabelTextField('SU_agent_id_hint'.tr, agentId,
                   coordinator, 'SU_agent_id_hint', agentIdError, TextInputType.text),
         ],
@@ -135,7 +137,7 @@ class _SignUpState extends State<SignUp> {
 
   Widget _title() {
     return Text(
-      'SU_title'.tr,
+      widget.userType == 'Customer'? 'SU_title'.tr : 'SU_title_agent'.tr,
       style: SU_title_style,
     );
   }
@@ -172,12 +174,12 @@ class _SignUpState extends State<SignUp> {
   }
 
   Widget _buildLabelTextFieldMobNumber(String label,
-      TextEditingController controller, SignUpCoordinator coordinator) {
+      TextEditingController controller, SignUpCoordinator coordinator, String hint) {
     return InputNumberFieldWithLabel(
       label: label,
       controller: controller,
       errorText: mobileNumberError.tr,
-      hintText: 'SU_subtitle_hint'.tr,
+      hintText: hint.tr,
       key: const Key('mobileNumberTextField'),
       inputFormatters: <TextInputFormatter>[
         NIDAInputFormatter(mask: 'xxx xxx xxx',separator: ' ')
