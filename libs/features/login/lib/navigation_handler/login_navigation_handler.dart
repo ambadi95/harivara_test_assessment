@@ -18,17 +18,17 @@ class LoginNavigationHandler with ErrorHandler {
     );
   }
 
-  Future<void> navigateToOtpScreen(String userType) async {
+  Future<void> navigateToOtpScreen(String userType, String mobileNumber) async {
     var arguments = OtpScreenArgs(
         'OTP Verification',
         'VO_otp_verification_description',
         'welcomeModule/enrollmentSuccess',
         false,
         2,
-        OtpVerificationType.mobile,
+        OtpVerificationType.customerSign,
         '',
         6,
-        '1234567890',
+        mobileNumber,
         false,
         userType
     );
@@ -41,7 +41,7 @@ class LoginNavigationHandler with ErrorHandler {
     );
   }
 
-  Future<void> navigateToOtpScreenForAgent(String userType) async {
+  Future<void> navigateToOtpScreenForAgent(String userType, String mobileNumber) async {
     var arguments = OtpScreenArgs(
         'OTP Verification',
         'VO_otp_verification_description',
@@ -51,7 +51,7 @@ class LoginNavigationHandler with ErrorHandler {
         OtpVerificationType.agentSignIn,
         '',
         6,
-        '1234567890',
+        mobileNumber,
         false,
         userType
     );

@@ -68,7 +68,21 @@ const WELCOME_THIRDHEADING_STYLE = TextStyle(
   fontWeight: FontWeight.w500,
   fontFamily: 'Montserrat',
   color: OB_WelcomeThirdTtileColor,
+  decoration: TextDecoration.underline,
 );
+
+const WELCOME_NI_TEXT_STYLE = const TextStyle(
+    color: OB_WelcomeThirdTtileColor,
+    fontSize: 30,
+    fontWeight: FontWeight.bold,
+    fontFamily: 'Montserrat',
+    fontStyle: FontStyle.italic);
+
+const WELCOME_BORA_TEXT_STYLE = const TextStyle(
+    color: OB_WelcomeThirdTtileColor,
+    fontSize: 28,
+    fontFamily: 'Montserrat',
+    fontStyle: FontStyle.italic);
 
 const SU_title_style = TextStyle(
   fontSize: 32,
@@ -287,4 +301,9 @@ const WB_enter_passcode_title_style = TextStyle(
     fontStyle: FontStyle.normal,
     fontSize: 14);
 
-
+const ES_agent_contact_text_style = TextStyle(
+  fontSize: 14,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Montserrat',
+  color: WB_EnterPassCodeTitleColor,
+);

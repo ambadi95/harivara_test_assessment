@@ -15,9 +15,9 @@ class SignUpCoordinator extends BaseViewModel<SignUpState>{
     _navigationHandler.goBack();
   }
 
-  Future navigateDestination(String userType) async {
+  Future navigateDestination(String userType, String mobileNumber) async {
     if(userType == 'Customer') {
-      _navigationHandler.navigateToOtpScreenCustomerSignUp(userType);
+      _navigationHandler.navigateToOtpScreenCustomerSignUp(userType, mobileNumber);
     }else {
       _navigationHandler.navigateToAgentDetailScreen(userType);
     }

@@ -24,6 +24,8 @@ import 'package:device_option/view/device_option_screen.dart';
 import 'package:agent_nearby/view/agent_nearby_screen.dart';
 import 'package:widget_library/icons/crayon_payment_bottom_sheet_icon.dart';
 
+import '../sub_features/enrollment_success/view/enrollment_success_screen.dart';
+
 class WelcomeNavigationHandler with ErrorHandler {
   final NavigationManager _navigationManager;
 
@@ -83,9 +85,9 @@ class WelcomeNavigationHandler with ErrorHandler {
     );
   }
 
-  Future<void> navigateToDeviceOption() async {
+  Future<void> navigateToDeviceOption(bool isEnrolled) async {
     var argument = DeviceOptionArgs(
-      false,
+        isEnrolled,
       ''
     );
     await _navigationManager.navigateTo(
@@ -125,6 +127,15 @@ class WelcomeNavigationHandler with ErrorHandler {
     );
   }
 
+  Future<void> navigateToCustomerEnrollmentScreen() async {
+    var argument = true;
+    _navigationManager.navigateTo(
+        EnrollmentSuccessScreen.viewPath,
+        const NavigationType.replace(),
+        arguments: argument
+    );
+  }
+
   Future<void> navigateToAgentDetailScreen(String userType) async {
     await _navigationManager.navigateTo(
       AgentDetailsScreen.viewPath,
@@ -133,7 +144,7 @@ class WelcomeNavigationHandler with ErrorHandler {
     );
   }
 
-  Future<void> navigateToOtpScreenCustomerSignUp(String userType) async {
+  Future<void> navigateToOtpScreenCustomerSignUp(String userType, String mobileNumber) async {
     var arguments = OtpScreenArgs(
       'OTP Verification',
       'VO_otp_verification_description',
@@ -143,7 +154,7 @@ class WelcomeNavigationHandler with ErrorHandler {
       OtpVerificationType.mobile,
       '',
       6,
-      '1234567890',
+      mobileNumber,
       false,
       userType,
     );
@@ -156,7 +167,7 @@ class WelcomeNavigationHandler with ErrorHandler {
     );
   }
 
-  Future<void> navigateToOtpScreen(String userType) async {
+  Future<void> navigateToOtpScreen(String userType, String mobileNumber) async {
     var arguments = OtpScreenArgs(
         'OTP Verification',
         'VO_otp_verification_description',
@@ -166,7 +177,7 @@ class WelcomeNavigationHandler with ErrorHandler {
         OtpVerificationType.mobile,
         '',
         6,
-        '1234567890',
+        mobileNumber,
         false,
         userType,
     );

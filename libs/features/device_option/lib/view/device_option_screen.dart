@@ -235,8 +235,8 @@ class DeviceOption extends StatelessWidget {
                 dynamicHSpacer(20),
 
                 deviceOptionArgs.isMember == true
-                    ? selectedButton()
-                    : selectButton()
+                    ? selectedButton(coordinator)
+                    : selectButton(coordinator)
               ],
             ),
           ),
@@ -266,7 +266,7 @@ class DeviceOption extends StatelessWidget {
     );
   }
 
-  Widget selectButton() {
+  Widget selectButton(DeviceOptionCoordinator coordinator) {
     return CrayonPaymentDockedButton(
       key: const Key('Select'),
       title: 'Select',
@@ -274,12 +274,14 @@ class DeviceOption extends StatelessWidget {
       height: CrayonPaymentDimensions.marginFortyEight,
       buttonColor: LS_ButtonColor,
       textColor: White,
-      textStyleVariant: CrayonPaymentTextStyleVariant.headline5,
-      onPressed: () {},
+      textStyleVariant: CrayonPaymentTextStyleVariant.headline4,
+      onPressed: () {
+        coordinator.navigateToEnrolledScreen();
+      },
     );
   }
 
-  Widget selectedButton() {
+  Widget selectedButton(DeviceOptionCoordinator coordinator) {
     return CrayonPaymentDockedButton(
       key: const Key('Selected'),
       title: 'Selected',
@@ -290,8 +292,10 @@ class DeviceOption extends StatelessWidget {
       borderColor: Green,
       icon: Icons.check_circle_outline,
       iconColor: Green,
-      textStyleVariant: CrayonPaymentTextStyleVariant.headline5,
-      onPressed: () {},
+      textStyleVariant: CrayonPaymentTextStyleVariant.headline4,
+      onPressed: () {
+
+      },
     );
   }
 

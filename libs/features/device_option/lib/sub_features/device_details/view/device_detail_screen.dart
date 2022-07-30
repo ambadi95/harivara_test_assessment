@@ -41,22 +41,21 @@ class DeviceDetailScreen extends StatelessWidget {
         ],
       ), body: ListView(
       children: [
+        _buildOptionTitle(context),
         _buildTitle(context),
         Image.asset('assets/mobile_1.png',width: 222,height: 300,package: 'shared_data_models',),
-        actionButton(),
         dynamicHSpacer(22),
         productDetail(context),
         dynamicHSpacer(22),
         _membershipBenefitTitle(context),
         dynamicHSpacer(20),
-
         _membershipList(context),
         dynamicHSpacer(22),
-        _membershipTermsTitle(context),
-        dynamicHSpacer(15),
-        _membershipTermButton(context),
+        // _membershipTermsTitle(context),
+        // dynamicHSpacer(15),
+       // _membershipTermButton(context),
         dynamicHSpacer(22),
-        selectButton(),
+        selectButton(coordinator),
         dynamicHSpacer(22),
 
       ],
@@ -64,6 +63,18 @@ class DeviceDetailScreen extends StatelessWidget {
     ),
     );
     
+  }
+
+  Widget _buildOptionTitle(context) {
+    return CrayonPaymentText(
+      key: Key('${_identifier}_DD_option_Title'),
+      text: const TextUIDataModel(
+          'Option A',
+          styleVariant: CrayonPaymentTextStyleVariant.headline6,
+          color: AN_TitleColor,
+          fontWeight: FontWeight.w600
+      ),
+    );
   }
 
   Widget _buildTitle(context) {
@@ -280,7 +291,7 @@ class DeviceDetailScreen extends StatelessWidget {
   }
 
 
-  Widget selectButton() {
+  Widget selectButton(DeviceDetailCoordinator coordinator) {
     return CrayonPaymentDockedButton(
       key: const Key('Select'),
       title: 'Select Device',
@@ -288,8 +299,10 @@ class DeviceDetailScreen extends StatelessWidget {
       height: CrayonPaymentDimensions.marginFortyEight,
       buttonColor: LS_ButtonColor,
       textColor: White,
-      textStyleVariant: CrayonPaymentTextStyleVariant.headline5,
-      onPressed: () {},
+      textStyleVariant: CrayonPaymentTextStyleVariant.headline4,
+      onPressed: () {
+        coordinator.navigateToEnrolledScreen();
+      },
     );
   }
 
