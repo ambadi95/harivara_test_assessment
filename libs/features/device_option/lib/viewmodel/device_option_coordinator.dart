@@ -24,5 +24,8 @@ class DeviceOptionCoordinator extends AnalyticsStateNotifier<DeviceOptionState>{
     _navigationHandler.navigateToDeviceDetail();
   }
 
+  Future<void> navigateToEnrolledScreen() async {
+    await _navigationHandler.navigateToCustomerEnrollmentScreen('', true);
+  }
 
 }

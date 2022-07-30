@@ -46,9 +46,9 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState>{
     return result;
   }
 
-  Future navigateToWelcomeBackScreen(String userType) async {
+  Future navigateToWelcomeBackScreen(String userType ,String mobilNumber) async {
     if(userType == 'Customer'){
-      _navigationHandler.navigateToOtpScreen(userType);
+      _navigationHandler.navigateToOtpScreen(userType, mobilNumber);
     }else{
       _navigationHandler.navigateToOtpScreenForAgent(userType);
     }

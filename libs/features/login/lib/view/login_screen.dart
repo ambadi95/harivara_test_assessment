@@ -7,6 +7,7 @@ import 'package:widget_library/app_bars/crayon_payment_app_bar_attributes.dart';
 import 'package:widget_library/app_bars/crayon_payment_app_bar_button_type.dart';
 import 'package:widget_library/buttons/docked_button.dart';
 import 'package:widget_library/dimensions/crayon_payment_dimensions.dart';
+import 'package:widget_library/formatter/nida_input_formatter.dart';
 import 'package:widget_library/input_fields/input_field_with_label.dart';
 import 'package:widget_library/input_fields/input_number_field_with_label.dart';
 import 'package:widget_library/page_header/text_ui_data_model.dart';
@@ -87,11 +88,11 @@ class Login extends StatelessWidget {
       hintText: 'LS_mobile_hint_text'.tr,
       key: const Key('mobileNumberTextField'),
       inputFormatters: <TextInputFormatter>[
-        FilteringTextInputFormatter.digitsOnly
+        NIDAInputFormatter(mask: 'xxx xxx xxx',separator: ' ')
       ],
       keyboardType: TextInputType.number,
       onChanged: (value) {
-        if(mobileNumberError.isNotEmpty || mobileNumber.text.length > 9){
+        if(mobileNumberError.isNotEmpty || mobileNumber.text.length > 11){
           coordinator.isMobileNumberValid(mobileNumber.text);
         }
       },
@@ -132,7 +133,7 @@ class Login extends StatelessWidget {
         coordinator.isMobileNumberValid(mobileNumber.text);
         coordinator.isAgentIdValid(agentIdController.text);
         if(isBtnEnabled){
-          coordinator.navigateToWelcomeBackScreen(userType);
+          coordinator.navigateToWelcomeBackScreen(userType, mobileNumber.text);
         }
 
       },

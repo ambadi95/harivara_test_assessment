@@ -150,7 +150,7 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
       );
       await _passcodeUseCase.savePassCode(newPasscode);
       if(userType == "Customer"){
-        _navigateToDestinationPath(destinationPath);
+        _navigationHandler.navigateToCustomerEnrollmentScreen(destinationPath, false);
       } else {
         _navigationHandler.navigateToAgentEnrollmentBottomSheet("message");
       }

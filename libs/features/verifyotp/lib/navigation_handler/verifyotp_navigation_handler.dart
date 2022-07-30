@@ -5,6 +5,7 @@ import 'package:core/navigation/navigation_type.dart';
 import 'package:shared_data_models/passcode/passcode_screen_args.dart';
 import 'package:shared_data_models/passcode/passcode_verification_type.dart';
 import 'package:passcode/sub_features/passcode/view/passcode.dart';
+import 'package:welcome/sub_features/enrollment_success/view/enrollment_success_screen.dart';
 import 'package:welcome/sub_features/welcome_back/view/welcome_back.dart';
 import 'package:widget_library/helpers/error/helper/error_helper.dart';
 
@@ -19,6 +20,15 @@ class VerifyOtpNavigationHandler with ErrorHandler{
       destinationPath,
       const NavigationType.replace(),
       arguments: userType
+    );
+  }
+
+  Future<void> navigateToCustomerEnrollmentScreen() async {
+    var argument = true;
+    _navigationManager.navigateTo(
+        EnrollmentSuccessScreen.viewPath,
+        const NavigationType.replace(),
+        arguments: argument
     );
   }
 

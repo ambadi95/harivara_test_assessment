@@ -24,6 +24,15 @@ class PasscodeNavigationHandler with ErrorHandler{
     );
   }
 
+  Future<void> navigateToCustomerEnrollmentScreen(String destinationPath, bool isEnrolled) async {
+    var argument = isEnrolled;
+    _navigationManager.navigateTo(
+      destinationPath,
+      const NavigationType.replace(),
+      arguments: argument
+    );
+  }
+
 
   Future<void> navigateToAgentHomeScreen(String destinationPath) async {
     var arguments = HomeScreenArgs(
