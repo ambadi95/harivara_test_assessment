@@ -307,3 +307,18 @@ const ES_agent_contact_text_style = TextStyle(
   fontFamily: 'Montserrat',
   color: WB_EnterPassCodeTitleColor,
 );
+
+const WB_forget_passcode_text_style = TextStyle(
+  fontSize: 14,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Montserrat',
+  color: WB_EnterPassCodeTitleColor,
+);
+
+const WB_reset_passcode_text_style = TextStyle(
+  fontSize: 14,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Montserrat',
+  color: PRIMARY_COLOR,
+  decoration: TextDecoration.underline,
+);

@@ -52,6 +52,28 @@ class VerifyOtpNavigationHandler with ErrorHandler{
       arguments: arguments,
     );
   }
+
+  Future<void> openForUpdateNewPasscode(String userType) async {
+    var arguments = PasscodeScreenArgs(
+      'PC_create_passcode',
+      'PC_passcode_message',
+      'welcomeModule/enrollmentSuccess',
+      false,
+      3,
+      PassCodeVerificationType.changeNewPasscode,
+      false,
+      '',
+      userType,
+    );
+
+    _navigationManager.navigateTo(
+      CrayonPasscodeScreen.viewPath,
+      NavigationType.push(),
+      preventDuplicates: false,
+      arguments: arguments,
+    );
+  }
+
   Future<void> navigateToAgentWelcomeBack(String userType) async {
     _navigationManager.navigateTo(
         CrayonWelcomBackScreen.viewPath,

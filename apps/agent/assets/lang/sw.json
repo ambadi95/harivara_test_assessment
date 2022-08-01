@@ -31,6 +31,11 @@
   "SU_subtitle_error_text" : "Nambari ya Simu batili",
   "SU_agent_id_error_text" : "Kitambulisho batili cha Wakala wa Y9",
 
+  "SU_reset_passcode" : "Reset Passcode",
+  "SU_reset_subtitle" : "You can Reset the passcode here using OTP sent to your registered mobile number",
+  "SU_update_passcode" : "Update Passcode",
+  "SU_update_subtitle" : "You can Update the passcode here using OTP sent to your registered mobile number",
+
   "DV_title" : "Ingiza Maelezo ya Kibinafsi",
   "DV_subtitle" : "Thibitisha maelezo yako au usasishe ikiwa inahitajika",
   "DV_name_label" : "Jina",

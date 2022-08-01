@@ -14,11 +14,13 @@ import 'package:widget_library/buttons/crayon_back_button.dart';
 import 'package:config/Colors.dart' as config_color;
 import 'package:get/get.dart';
 
+import '../../../data_model/sign_up_arguments.dart';
+
 class SignUp extends StatefulWidget {
-  final String userType;
+  final SignUpArguments signUpArguments;
   static const viewPath = '${WelcomeModule.moduleIdentifier}/signup';
 
-  const SignUp({required this.userType, Key? key}) : super(key: key);
+  const SignUp({required this.signUpArguments, Key? key}) : super(key: key);
 
   @override
   State<SignUp> createState() => _SignUpState();
@@ -44,7 +46,7 @@ class _SignUpState extends State<SignUp> {
             height: 120,
             child: Column(
               children: [
-                widget.userType == 'Customer'?
+                widget.signUpArguments.userType == 'Customer'?
                 _carrierText()
                     : const SizedBox(height: 14,),
                 const SizedBox(
@@ -94,15 +96,15 @@ class _SignUpState extends State<SignUp> {
           const SizedBox(
             height: 69,
           ),
-          _buildLabelTextField( 'SU_ID_no_label'.tr, nidaNumber, coordinator,
-              widget.userType == 'Agent' ? 'SU_title_hint_agent'.tr :'SU_title_hint', nidaNumberError, TextInputType.number),
+          _buildLabelTextField( 'SU_ID_no_label', nidaNumber, coordinator,
+              widget.signUpArguments.userType == 'Agent' ? 'SU_title_hint_agent' :'SU_title_hint', nidaNumberError, TextInputType.number),
           const SizedBox(
             height: 48,
           ),
-          widget.userType == 'Customer'
+          widget.signUpArguments.userType == 'Customer'
               ? _buildLabelTextFieldMobNumber(
-                   'SU_mobile_no_label'.tr, mobileNumber, coordinator, 'SU_subtitle_hint')
-              : _buildLabelTextField('SU_agent_id_hint'.tr, agentId,
+              'SU_mobile_no_label', mobileNumber, coordinator, 'SU_subtitle_hint')
+              : _buildLabelTextField('SU_agent_id_hint', agentId,
                   coordinator, 'SU_agent_id_hint', agentIdError, TextInputType.text),
         ],
       ),
@@ -110,13 +112,13 @@ class _SignUpState extends State<SignUp> {
   }
 
   Widget _onBoardingProgressBar() {
-    return const Padding(
+    return widget.signUpArguments.isProgressBarVisible ? const Padding(
       padding: EdgeInsets.only(left: 20.0, right: 20.0, top: 20.0, bottom: 0),
       child: OnBoardingProgressBar(
         currentStep: 1,
         totalSteps: 4,
       ),
-    );
+    ): const SizedBox();
   }
 
   Widget _buildBackBtn(
@@ -137,7 +139,7 @@ class _SignUpState extends State<SignUp> {
 
   Widget _title() {
     return Text(
-      widget.userType == 'Customer'? 'SU_title'.tr : 'SU_title_agent'.tr,
+      widget.signUpArguments.title.tr,
       style: SU_title_style,
     );
   }
@@ -145,7 +147,7 @@ class _SignUpState extends State<SignUp> {
   Widget _sub_title() {
     return RichTextDescription(
         key: const Key('SU_SubTitle'),
-        description: 'SU_subtitle'.tr,
+        description: widget.signUpArguments.subTitle,
         linkTextStyle: SU_subtitle_terms_style,
         descriptionTextStyle: SU_subtitle_style);
   }
@@ -153,7 +155,7 @@ class _SignUpState extends State<SignUp> {
   Widget _buildLabelTextField(String label, TextEditingController controller,
       SignUpCoordinator coordinator, String hint, String errorText, TextInputType textInputType) {
     return InputFieldWithLabel(
-      label: label,
+      label: label.tr,
       hintText: hint.tr,
       controller: controller,
       errorText: errorText.tr,
@@ -176,7 +178,7 @@ class _SignUpState extends State<SignUp> {
   Widget _buildLabelTextFieldMobNumber(String label,
       TextEditingController controller, SignUpCoordinator coordinator, String hint) {
     return InputNumberFieldWithLabel(
-      label: label,
+      label: label.tr,
       controller: controller,
       errorText: mobileNumberError.tr,
       hintText: hint.tr,
@@ -257,8 +259,8 @@ class _SignUpState extends State<SignUp> {
           coordinator.isValidMobileNumber(mobileNumber.text);
           coordinator.isValidAgentId(agentId.text);
           if (_isBtnEnabled && coordinator.isValidNidaNumber(nidaNumber.text)) {
-            coordinator.navigateDestination(widget.userType, mobileNumber.text);
             await coordinator.continueToOtp(nidaNumber.text, mobileNumber.text);
+            coordinator.navigateDestination(widget.signUpArguments, mobileNumber.text);
           }
         },
         child: Container(
@@ -299,6 +301,6 @@ class _SignUpState extends State<SignUp> {
 
   void _validateForm(SignUpCoordinator coordinator) {
     coordinator.validateForm(
-        nidaNumber.text, mobileNumber.text, agentId.text, widget.userType);
+        nidaNumber.text, mobileNumber.text, agentId.text, widget.signUpArguments.userType);
   }
 }

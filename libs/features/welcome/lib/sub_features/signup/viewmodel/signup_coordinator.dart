@@ -1,9 +1,11 @@
 
 
+import 'package:shared_data_models/signup/sign_up_type.dart';
 import 'package:task_manager/base_classes/base_view_model.dart';
 import 'package:welcome/sub_features/signup/state/signup_state.dart';
 import 'package:welcome/sub_features/signup/viewmodel/signup_usecase.dart';
 
+import '../../../data_model/sign_up_arguments.dart';
 import '../../../navigation_handler/welcome_navigation_handler.dart';
 
 class SignUpCoordinator extends BaseViewModel<SignUpState>{
@@ -15,11 +17,15 @@ class SignUpCoordinator extends BaseViewModel<SignUpState>{
     _navigationHandler.goBack();
   }
 
-  Future navigateDestination(String userType, String mobileNumber) async {
-    if(userType == 'Customer') {
-      _navigationHandler.navigateToOtpScreenCustomerSignUp(userType, mobileNumber);
-    }else {
-      _navigationHandler.navigateToAgentDetailScreen(userType);
+  Future navigateDestination(SignUpArguments signUpArguments, String mobileNumber) async {
+    if(signUpArguments.userType == 'Customer') {
+      _navigationHandler.navigateToOtpScreenCustomerSignUp(signUpArguments.userType, mobileNumber);
+    } else if(signUpArguments.signupType == SignupType.resetPasscodeAgent){
+    _navigationHandler.navigateToOtpScreenAgentResetPasscode(signUpArguments.userType);
+    }
+
+    else {
+      _navigationHandler.navigateToAgentDetailScreen(signUpArguments.userType);
     }
   }
 

@@ -19,3 +19,8 @@ const LS_Flag = 'assets/images/flag.png';
 const agentMock = 'assets/images/agent_mock.png';
 const WB_or_icon = 'assets/images/orIcon.png';
 
+const ST_view_profile = 'assets/images/view_profile_icon.png';
+const ST_update_passcode = 'assets/images/update_passcode_icon.png';
+const ST_language = 'assets/images/language_icon.png';
+const ST_sign_out = 'assets/images/sign_out_icon.png';
+

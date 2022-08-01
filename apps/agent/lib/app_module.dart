@@ -27,6 +27,7 @@ import 'package:login/login_module.dart';
 import 'package:login/navigation_handler/login_route_manager.dart';
 import 'package:passcode/navigation_handler/passcode_route_manager.dart';
 import 'package:passcode/passcode_module.dart';
+import 'package:settings/navigation_handler/settings_route_manager.dart';
 import 'package:splash/splash_module.dart';
 import 'package:task_manager/cache_manager/storage/file_storage/file_storage_service_impl.dart';
 import 'package:task_manager/cache_manager/storage/memory_storage/memory_storage_service_impl.dart';
@@ -40,6 +41,7 @@ import 'package:welcome/navigation_handler/welcome_route_manager.dart';
 import 'package:welcome/welcome_module.dart';
 import 'package:widget_library/app_mobile_widgets.dart';
 import 'package:widget_library/keypad/utils/keypad_button_pressed_value_updater.dart';
+import 'package:settings/settings_model.dart';
 
 
 class AppModule {
@@ -99,6 +101,8 @@ class AppModule {
     LoginModule.registerDependencies();
 
     HomeModule.registerDependencies();
+
+    SettingsModule.registerDependencies();
 
 
 
@@ -190,6 +194,12 @@ void _registerRouteManagers() {
     VerifyOtpModule.moduleIdentifier,
     VerifyOtpRouteManager(),
   );
+
+  navigationManagerContainer.registerRouteManager(
+    SettingsModule.moduleIdentifier,
+    SettingsRouteManager(),
+  );
+
 
 
   DIContainer.container.registerSingleton<NativeDocumentDirectory>(

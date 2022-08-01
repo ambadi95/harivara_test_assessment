@@ -136,7 +136,7 @@ TextStyle buildTextStyle({
       return Theme.of(context).textTheme.bodyText2!.copyWith(
             height: lineHeight,
             fontFamily: _fontFamily(),
-            fontSize: _isArabic ? 16 : 14,
+            fontSize: _isArabic ? 16 : 16,
           );
 
     case CrayonPaymentTextStyleVariant.amount:
