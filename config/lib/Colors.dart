@@ -69,3 +69,4 @@ const ES_grey_button_color = Color(0xFF9CA3AF);
 
 
 
+const TC_DescriptionColor=Color(0xFF160304);

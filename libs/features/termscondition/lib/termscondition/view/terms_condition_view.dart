@@ -59,7 +59,7 @@ class _CrayonTermsConditionState extends State<CrayonTermsCondition> {
           key: Key('${widget._identifier}_TC_Title'),
           text: TextUIDataModel('TC_Title'.tr,
               styleVariant: CrayonPaymentTextStyleVariant.headlineThirtyTwo,
-              color: AN_TitleColor,
+              color: SU_title_color,
               fontWeight: FontWeight.bold,
               textAlign: TextAlign.left),
         ),
@@ -70,7 +70,7 @@ class _CrayonTermsConditionState extends State<CrayonTermsCondition> {
           key: Key('${widget._identifier}_TC_Last_Updated'),
           text: TextUIDataModel('TC_LastUpdated'.tr,
               styleVariant: CrayonPaymentTextStyleVariant.headline4,
-              color: AN_TitleColor,
+              color: SU_title_color,
               fontWeight: FontWeight.normal,
               textAlign: TextAlign.left),
         ),
@@ -83,7 +83,7 @@ class _CrayonTermsConditionState extends State<CrayonTermsCondition> {
       key: Key('${widget._identifier}_TC_Description'),
       text: TextUIDataModel('TC_Description'.tr,
           styleVariant: CrayonPaymentTextStyleVariant.headline4,
-          color: AN_TitleColor,
+          color: TC_DescriptionColor,
           fontWeight: FontWeight.w400),
     );
   }
@@ -99,7 +99,7 @@ class _CrayonTermsConditionState extends State<CrayonTermsCondition> {
             key: Key('${widget._identifier}_TC_Label'),
             text: TextUIDataModel(label.tr,
                 styleVariant: CrayonPaymentTextStyleVariant.headline4,
-                color: AN_TitleColor,
+                color: SU_title_color,
                 fontWeight: FontWeight.w600),
           ),
           const SizedBox(
@@ -109,7 +109,7 @@ class _CrayonTermsConditionState extends State<CrayonTermsCondition> {
             key: Key('${widget._identifier}_TC_Conditions'),
             text: TextUIDataModel(text.tr,
                 styleVariant: CrayonPaymentTextStyleVariant.headline4,
-                color: AN_TitleColor,
+                color: TC_DescriptionColor,
                 fontWeight: FontWeight.w400),
           ),
 
