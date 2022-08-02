@@ -1,4 +1,5 @@
 import 'package:config/Colors.dart';
+import 'package:config/Styles.dart';
 import 'package:core/view/base_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -62,6 +63,8 @@ class Login extends StatelessWidget {
             dynamicHSpacer(48),
            userType =='Customer'?  _passcodeWidget(context, coordinator) :
            _buildLabelTextField('LS_agent_id'.tr,agentIdController, TextInputType.text,coordinator,agentIdError, 'SU_agent_id_hint', true),
+            const SizedBox(height: 46,),
+            _buildResetPasscode(coordinator),
             const Spacer(),
             actionButton(coordinator),
             dynamicHSpacer(20),
@@ -196,6 +199,33 @@ class Login extends StatelessWidget {
               ),
             ],
           )),
+    );
+  }
+
+  Widget _buildResetPasscode(LoginCoordinator coordinator){
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 20),
+        child: InkWell(
+          onTap: (){
+            coordinator.navigateToResetNow(userType);
+          },
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: const [
+              Text('Forget Passcode?',
+                style: WB_forget_passcode_text_style,
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Text('Reset Now',
+                style: WB_reset_passcode_text_style,
+              )
+            ],
+          ),
+        ),
+      ),
     );
   }
 

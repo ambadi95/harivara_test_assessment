@@ -17,6 +17,7 @@ import 'package:shared_data_models/passcode/passcode_screen_args.dart';
 import 'package:shared_data_models/passcode/passcode_verification_type.dart';
 import 'package:shared_data_models/signup/sign_up_type.dart';
 import 'package:verifyotp/verifyotp/view/verifyotp.dart';
+import 'package:welcome/data_model/agent_detail_arguments.dart';
 import 'package:welcome/data_model/sign_up_arguments.dart';
 import 'package:welcome/sub_features/agent_details/view/agent_details.dart';
 import 'package:welcome/sub_features/details/view/details.dart';
@@ -25,7 +26,7 @@ import 'package:widget_library/helpers/error/helper/error_helper.dart';
 import 'package:device_option/view/device_option_screen.dart';
 import 'package:agent_nearby/view/agent_nearby_screen.dart';
 import 'package:widget_library/icons/crayon_payment_bottom_sheet_icon.dart';
-
+import 'package:shared_data_models/kyc/agent_detail_screen_type.dart';
 import '../sub_features/enrollment_success/view/enrollment_success_screen.dart';
 
 class WelcomeNavigationHandler with ErrorHandler {
@@ -140,9 +141,10 @@ class WelcomeNavigationHandler with ErrorHandler {
   }
 
   Future<void> navigateToAgentDetailScreen(String userType) async {
+    var arguments = AgentDetailScreenArguments('DV_title_agent','DV_subtitle',AgentDetailScreenType.Signup, userType,true);
     await _navigationManager.navigateTo(
         AgentDetailsScreen.viewPath, const NavigationType.push(),
-        arguments: userType);
+        arguments: arguments);
   }
 
   Future<void> navigateToOtpScreenCustomerSignUp(
@@ -250,7 +252,7 @@ class WelcomeNavigationHandler with ErrorHandler {
         'SU_reset_passcode',
         'SU_reset_subtitle',
         userType,
-        SignupType.resetPasscodeAgent,
+        userType == 'Agent' ? SignupType.resetPasscodeAgent : SignupType.resetPasscodeCustomer,
         false,
       );
       await _navigationManager.navigateTo(

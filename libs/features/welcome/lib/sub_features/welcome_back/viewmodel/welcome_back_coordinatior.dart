@@ -38,8 +38,8 @@ class WelcomeBackCoordinator extends BaseViewModel<WelcomeScreenState>{
     }
   }
 
-  Future<void> navigateToResetNow() async{
-    await _navigationHandler.navigateToResetPasscode('Agent');
+  Future<void> navigateToResetNow(String userType) async{
+    await _navigationHandler.navigateToResetPasscode(userType);
   }
 
 

@@ -41,6 +41,7 @@
   "SU_update_subtitle" : "You can Update the passcode here using OTP sent to your registered mobile number",
 
   "DV_title" : "Enter Personal Details",
+  "DV_profile" : "Profile",
   "DV_title_agent" : "Your Details",
   "DV_subtitle" : "Displaying your Personal details as per ERP",
   "DV_name_label" : "Name",
@@ -171,5 +172,5 @@
   "ST_update_passcode" : "Update Passcode",
   "ST_App_Language" : "App Language",
   "ST_sign_out" : "Sign Out",
-  "ST_contact_text" : "Need Help or If You Have Any Query \\n Contact Us at 1800-1800-1800"
+  "ST_contact_text" : "Need Help or If You Have Any Query \n Contact Us at 1800-1800-1800"
 }

@@ -3,6 +3,7 @@ import 'package:config/Styles.dart';
 import 'package:core/view/base_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:shared_data_models/kyc/agent_detail_screen_type.dart';
 import 'package:welcome/sub_features/agent_details/viewmodel/agent_details_coordinator.dart';
 import 'package:welcome/welcome_module.dart';
 import 'package:widget_library/buttons/crayon_back_button.dart';
@@ -13,13 +14,14 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:config/Colors.dart' as config_color;
 import 'package:widget_library/static_text/crayon_payment_text.dart';
+import '../../../data_model/agent_detail_arguments.dart';
 import '../state/agent_details_state.dart';
 
 class AgentDetailsScreen extends StatefulWidget {
+  AgentDetailScreenArguments agentDetailScreenArguments;
   static const viewPath = '${WelcomeModule.moduleIdentifier}/agentDetails';
-  final String userType;
 
-  const AgentDetailsScreen({Key? key, required this.userType})
+   AgentDetailsScreen({Key? key, required this.agentDetailScreenArguments})
       : super(key: key);
 
   @override
@@ -76,7 +78,7 @@ class _AgentDetailsScreenState extends State<AgentDetailsScreen> {
               child: _buildContinueButton(coordinator),
             ),
             appBar: PreferredSize(
-              preferredSize: const Size(double.infinity, 102),
+              preferredSize: Size(double.infinity,  widget.agentDetailScreenArguments.isProgressBarVisible ? 102 : 58),
               child: _buildTopContainer(context, coordinator),
             ),
             body: SingleChildScrollView(
@@ -97,7 +99,7 @@ class _AgentDetailsScreenState extends State<AgentDetailsScreen> {
   ) {
     return Column(
       children: [
-        _onBoardingProgressBar(),
+        widget.agentDetailScreenArguments.isProgressBarVisible ? _onBoardingProgressBar() : const SizedBox(),
         _buildBackBtn(context, coordinator),
       ],
     );
@@ -170,7 +172,7 @@ class _AgentDetailsScreenState extends State<AgentDetailsScreen> {
     return CrayonPaymentText(
       key: const Key('DV_title'),
       text: TextUIDataModel(
-        'DV_title_agent'.tr,
+        widget.agentDetailScreenArguments.title.tr,
         styleVariant: CrayonPaymentTextStyleVariant.headline2,
         color: VO_TitleColor,
         textAlign: TextAlign.left,
@@ -191,7 +193,7 @@ class _AgentDetailsScreenState extends State<AgentDetailsScreen> {
           CrayonPaymentText(
             key: const Key('DV_subTitle'),
             text: TextUIDataModel(
-              'DV_subtitle'.tr,
+              widget.agentDetailScreenArguments.subTitle.tr,
               styleVariant: CrayonPaymentTextStyleVariant.headline4,
               color: VO_DescriptionColor,
               textAlign: TextAlign.left,
@@ -278,9 +280,9 @@ class _AgentDetailsScreenState extends State<AgentDetailsScreen> {
   }
 
   Widget _buildContinueButton(AgentDetailsCoordinator coordinator) {
-    return GestureDetector(
+    return widget.agentDetailScreenArguments.agentDetailScreenType == AgentDetailScreenType.Signup ? GestureDetector(
       onTap: () {
-        coordinator.navigateToOtpScreen(widget.userType, mobileNumber.text);
+        coordinator.navigateToOtpScreen(widget.agentDetailScreenArguments.userType, mobileNumber.text);
       },
       child: Container(
         width: double.infinity,
@@ -295,7 +297,7 @@ class _AgentDetailsScreenState extends State<AgentDetailsScreen> {
           ),
         ),
       ),
-    );
+    ): const SizedBox();
   }
 
   void _listenToStateChanges(BuildContext context, AgentDetailsState state) {

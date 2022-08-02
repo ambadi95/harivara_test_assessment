@@ -57,7 +57,10 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
           const SizedBox(height: 21,),
           _buildAgentNearByButton(coordinator),
           const SizedBox(height: 24,),
-          _buildExploreDeviceButton(coordinator)
+          _buildExploreDeviceButton(coordinator),
+          const SizedBox(height: 12,),
+          _buildContactText(context),
+          const SizedBox(height: 25,),
         ],
       ),
     );
@@ -166,6 +169,20 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
               color: config_color.SECONDARY_COLOR
           ),),
         ),
+      ),
+    );
+  }
+
+  Widget _buildContactText(context) {
+    return Center(
+      child: CrayonPaymentText(
+        key: const Key('_ST_contact'),
+        text: TextUIDataModel(
+            'ES_need_help_contact'.tr,
+            styleVariant: CrayonPaymentTextStyleVariant.headline5,
+            color: VO_ResendTextColor,
+            fontWeight: FontWeight.w100,
+            textAlign: TextAlign.center),
       ),
     );
   }

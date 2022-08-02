@@ -90,7 +90,9 @@ class _SettingsState extends State<Settings> {
   Widget _buildOptionList(SettingsCoordinator coordinator) {
     return Column(
       children: [
-        _buildOptions(context, 'ST_view_profile', ST_view_profile, () {}),
+        _buildOptions(context, 'ST_view_profile', ST_view_profile, () async{
+         await coordinator.navigateToUpdateProfile();
+        }),
         _buildOptions(context, 'ST_update_passcode', ST_update_passcode, () async {
           await coordinator.resetPasscode();
         }),
@@ -100,7 +102,9 @@ class _SettingsState extends State<Settings> {
         const SizedBox(
           height: 30,
         ),
-        _buildOptions(context, 'ST_sign_out', ST_sign_out, () {}),
+        _buildOptions(context, 'ST_sign_out', ST_sign_out, () async{
+          await coordinator.signOut();
+        }),
       ],
     );
   }

@@ -18,13 +18,14 @@ class SignUpCoordinator extends BaseViewModel<SignUpState>{
   }
 
   Future navigateDestination(SignUpArguments signUpArguments, String mobileNumber) async {
-    if(signUpArguments.userType == 'Customer') {
+    if(signUpArguments.signupType == SignupType.customerSignUp) {
       _navigationHandler.navigateToOtpScreenCustomerSignUp(signUpArguments.userType, mobileNumber);
     } else if(signUpArguments.signupType == SignupType.resetPasscodeAgent){
     _navigationHandler.navigateToOtpScreenAgentResetPasscode(signUpArguments.userType);
+    }else if(signUpArguments.signupType == SignupType.resetPasscodeCustomer){
+      _navigationHandler.navigateToOtpScreenAgentResetPasscode(signUpArguments.userType);
     }
-
-    else {
+    else if(signUpArguments.signupType == SignupType.agentSignUp) {
       _navigationHandler.navigateToAgentDetailScreen(signUpArguments.userType);
     }
   }

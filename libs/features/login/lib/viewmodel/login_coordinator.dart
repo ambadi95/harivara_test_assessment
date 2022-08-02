@@ -53,4 +53,8 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState>{
       _navigationHandler.navigateToOtpScreenForAgent(userType,mobilNumber);
     }
   }
+
+  Future<void> navigateToResetNow(String userType) async{
+    await _navigationHandler.navigateToResetPasscode(userType);
+  }
 }

@@ -5,6 +5,7 @@
   "OB_SignIn" : "Weka sahihi",
   "OB_SignUp" : "Jisajili",
   "OB_Lang" : "SW",
+  "OB_ni_bora" : "ni %{Bora|click}%",
 
 
   "DO_Title": "Chaguo za Kifaa",
@@ -148,6 +149,11 @@
 
   "SP_ni": "ni",
   "SP_bora": " Bora",
+
+  "SU_reset_passcode" : "Reset Passcode",
+  "SU_reset_subtitle" : "You can Reset the passcode here using OTP sent to your registered mobile number",
+  "SU_update_passcode" : "Update Passcode",
+  "SU_update_subtitle" : "You can Update the passcode here using OTP sent to your registered mobile number",
 
 
   "HS_Agent_Id" : "Y9 Agent Id",

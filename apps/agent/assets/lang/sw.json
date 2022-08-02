@@ -37,6 +37,7 @@
   "SU_update_subtitle" : "You can Update the passcode here using OTP sent to your registered mobile number",
 
   "DV_title" : "Ingiza Maelezo ya Kibinafsi",
+  "DV_profile" : "Profile",
   "DV_subtitle" : "Thibitisha maelezo yako au usasishe ikiwa inahitajika",
   "DV_name_label" : "Jina",
   "DV_name_error_text" : "Jina Batili",
@@ -172,5 +173,5 @@
   "ST_update_passcode" : "Sasisha nambari ya siri",
   "ST_App_Language" : "Lugha ya Programu",
   "ST_sign_out" : "Toka",
-  "ST_contact_text" : "Unahitaji Usaidizi au Ikiwa Una Swali lolote \\n Wasiliana Nasi kwa 1800-1800-1800"
+  "ST_contact_text" : "Unahitaji Usaidizi au Ikiwa Una Swali lolote \n Wasiliana Nasi kwa 1800-1800-1800"
 }

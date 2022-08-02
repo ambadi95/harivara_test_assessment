@@ -2,9 +2,14 @@ import 'package:config/Colors.dart';
 import 'package:core/navigation/navigation_manager.dart';
 import 'package:core/navigation/navigation_type.dart';
 import 'package:core/sheets/data_model/button_options.dart';
+import 'package:shared_data_models/kyc/agent_detail_screen_type.dart';
 import 'package:shared_data_models/signup/sign_up_type.dart';
+import 'package:welcome/data_model/agent_detail_arguments.dart';
 import 'package:welcome/data_model/sign_up_arguments.dart';
+import 'package:welcome/sub_features/agent_details/view/agent_details.dart';
 import 'package:welcome/sub_features/signup/view/signup.dart';
+import 'package:welcome/sub_features/welcome/data_model/welcome_model.dart';
+import 'package:welcome/sub_features/welcome/view/welcome_screen.dart';
 import 'package:widget_library/helpers/error/helper/error_helper.dart';
 import 'package:widget_library/icons/crayon_payment_bottom_sheet_icon.dart';
 import 'package:core/sheets/state/crayon_payment_bottom_sheet_state.dart';
@@ -51,6 +56,22 @@ class SettingsNavigationHandler with ErrorHandler{
       'bottomSheet/crayonPaymentBottomSheet',
       const NavigationType.bottomSheet(),
       arguments: infoState,
+    );
+  }
+
+  Future<void> navigateToAgentDetailScreen() async {
+    var arguments = AgentDetailScreenArguments('DV_profile','DV_subtitle',AgentDetailScreenType.UpdateProfile, 'Agent',false);
+    await _navigationManager.navigateTo(
+        AgentDetailsScreen.viewPath, const NavigationType.push(),
+        arguments: arguments);
+  }
+
+  Future<void> signOut() async {
+      var arguments = WelcomeScreenArgs('', '', 'Agent');
+    _navigationManager.navigateTo(
+        CrayonWelcomScreen.viewPath,
+        const NavigationType.replace(),
+        arguments: arguments
     );
   }
 

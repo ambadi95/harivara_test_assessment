@@ -1,0 +1,4 @@
+enum AgentDetailScreenType {
+ Signup,
+ UpdateProfile
+}

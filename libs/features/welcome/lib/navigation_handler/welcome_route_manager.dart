@@ -1,5 +1,6 @@
 import 'package:core/navigation/i_route_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:welcome/data_model/agent_detail_arguments.dart';
 import 'package:welcome/data_model/sign_up_arguments.dart';
 import 'package:welcome/sub_features/details/view/details.dart';
 import 'package:welcome/sub_features/enrollment_success/view/enrollment_success_screen.dart';
@@ -37,8 +38,8 @@ class WelcomeRouteManager extends IRouteManager {
           userType: arguments,
         );
       case AgentDetailsScreen.viewPath :
-        var arguments = settings.arguments as String;
-        return AgentDetailsScreen(userType: arguments,);
+        var arguments = settings.arguments as AgentDetailScreenArguments;
+        return AgentDetailsScreen(agentDetailScreenArguments: arguments,);
       default:
         throw UnimplementedError();
     }

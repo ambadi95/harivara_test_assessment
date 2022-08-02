@@ -112,7 +112,7 @@ class DeviceOption extends StatelessWidget {
       DeviceOptionCoordinator coordinator) {
     return InkWell(
       onTap: () {
-        coordinator.navigateToDeviceDetailScreen();
+       // coordinator.navigateToDeviceDetailScreen();
       },
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -139,13 +139,43 @@ class DeviceOption extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        CrayonPaymentText(
-                          key: Key('${_identifier}_' + device.brand!),
-                          text: TextUIDataModel(device.brand!,
-                              styleVariant:
-                                  CrayonPaymentTextStyleVariant.overline1,
-                              color: AN_CardTitle,
-                              fontWeight: FontWeight.bold),
+                        Container(
+                          width : 290,
+                          child: Row(
+                            mainAxisAlignment : MainAxisAlignment.spaceAround,
+                            children: [
+                              Expanded(
+                                child: CrayonPaymentText(
+                                  key: Key('${_identifier}_' + device.brand!),
+                                  text: TextUIDataModel(device.brand!,
+                                      styleVariant:
+                                          CrayonPaymentTextStyleVariant.overline1,
+                                      color: AN_CardTitle,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                              deviceOptionArgs.isMember ?
+                              Row(
+                                children: [
+                                  Icon(Icons.check_circle_outline_outlined,
+                                    color: Green,
+                                    size: 14,
+                                  ),
+                                  SizedBox(width: 4,),
+                                  SizedBox(
+                                    child: CrayonPaymentText(
+                                      key: Key('${_identifier}_' + 'selected_device'),
+                                      text: TextUIDataModel('Selected',
+                                          styleVariant:
+                                          CrayonPaymentTextStyleVariant.overline1,
+                                          color: Green,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                ],
+                              ) : SizedBox(),
+                            ],
+                          ),
                         ),
                         dynamicHSpacer(4),
                         CrayonPaymentText(
@@ -233,10 +263,7 @@ class DeviceOption extends StatelessWidget {
                   ],
                 ),
                 dynamicHSpacer(20),
-
-                deviceOptionArgs.isMember == true
-                    ? selectedButton(coordinator)
-                    : selectButton(coordinator)
+                    selectButton(coordinator)
               ],
             ),
           ),
@@ -269,14 +296,14 @@ class DeviceOption extends StatelessWidget {
   Widget selectButton(DeviceOptionCoordinator coordinator) {
     return CrayonPaymentDockedButton(
       key: const Key('Select'),
-      title: 'Select',
+      title: 'View Detail',
       borderRadius: 8,
       height: CrayonPaymentDimensions.marginFortyEight,
       buttonColor: LS_ButtonColor,
       textColor: White,
       textStyleVariant: CrayonPaymentTextStyleVariant.headline4,
       onPressed: () {
-        coordinator.navigateToEnrolledScreen();
+        coordinator.navigateToDeviceDetailScreen();
       },
     );
   }

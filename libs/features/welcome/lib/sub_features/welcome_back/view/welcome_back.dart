@@ -197,7 +197,7 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
           padding: const EdgeInsets.only(bottom: 20),
           child: InkWell(
             onTap: (){
-          coordinator.navigateToResetNow();
+          coordinator.navigateToResetNow(widget.userType);
             },
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,

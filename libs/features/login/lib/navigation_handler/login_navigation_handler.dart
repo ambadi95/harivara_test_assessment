@@ -3,7 +3,10 @@ import 'package:core/navigation/navigation_type.dart';
 import 'package:crayon_payment_customer/home/view/home_screen.dart';
 import 'package:shared_data_models/otp/otp_screen_args.dart';
 import 'package:shared_data_models/otp/otp_verification_type.dart';
+import 'package:shared_data_models/signup/sign_up_type.dart';
 import 'package:verifyotp/verifyotp/view/verifyotp.dart';
+import 'package:welcome/data_model/sign_up_arguments.dart';
+import 'package:welcome/sub_features/signup/view/signup.dart';
 import 'package:widget_library/helpers/error/helper/error_helper.dart';
 
 class LoginNavigationHandler with ErrorHandler {
@@ -62,6 +65,19 @@ class LoginNavigationHandler with ErrorHandler {
       preventDuplicates: false,
       arguments: arguments,
     );
+  }
+
+  Future<void> navigateToResetPasscode(String userType) async {
+    var arguments = SignUpArguments(
+      'SU_reset_passcode',
+      'SU_reset_subtitle',
+      userType,
+      userType == 'Agent' ? SignupType.resetPasscodeAgent : SignupType.resetPasscodeCustomer,
+      false,
+    );
+    await _navigationManager.navigateTo(
+        SignUp.viewPath, const NavigationType.push(),
+        arguments: arguments);
   }
 
 }
