@@ -2,6 +2,7 @@ import 'package:core/sheets/data_model/button_options.dart';
 import 'package:core/sheets/data_model/filter_date_button_options.dart';
 import 'package:core/sheets/data_model/multi_selection_category.dart';
 import 'package:core/sheets/data_model/progress_indicator_options.dart';
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:widget_library/icons/crayon_payment_bottom_sheet_icon.dart';
 
@@ -90,5 +91,15 @@ class CrayonPaymentBottomSheetState with _$CrayonPaymentBottomSheetState {
     @Default(false) bool disableCloseButton,
   }) = AgentEnrollmentSheet;
 
+  const factory CrayonPaymentBottomSheetState.changeLanguage({
+    required CrayonPaymentBottomSheetIcon bottomSheetIcon,
+    String? title,
+    String? subtitle,
+    List<String>? additionalText,
+    List<Widget>? widgetOptions,
+    List<ButtonOptions>? buttonOptions,
+    Duration? autoCloseAfter,
+    @Default(false) bool disableCloseButton,
+  }) = ChangeLanguageBottomSheet;
 
 }

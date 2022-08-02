@@ -1,6 +1,7 @@
 import 'package:core/sheets/coordinator/crayon_payment_bottom_sheet_coordinator.dart';
 import 'package:core/sheets/navigation/crayon_payment_bottom_sheet_route_manager.dart';
 import 'package:core/sheets/state/crayon_payment_bottom_sheet_state.dart';
+import 'package:core/sheets/view/widgets/bottom_sheet_app_language.dart';
 import 'package:core/sheets/view/widgets/bottom_sheet_date_picker_column.dart';
 import 'package:core/sheets/view/widgets/bottom_sheet_info_column_wrapped.dart';
 import 'package:core/sheets/view/widgets/bottom_sheet_multi_filters.dart';
@@ -86,6 +87,11 @@ class CrayonPaymentBottomSheet extends StatelessWidget {
             BottomSheetAgentEnrollment(
               coordinator,
               state as AgentEnrollmentSheet,
+            ),
+        changeLanguage: (_, __, ___, additionalText, ____, _____, ______,________) =>
+            BottomSheetAppLanguage(
+              coordinator,
+              state as ChangeLanguageBottomSheet,
             ),
         orElse: () => const Center(
           key: Key('ErrorBottomSheet'),

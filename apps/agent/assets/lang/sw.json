@@ -31,6 +31,11 @@
   "SU_subtitle_error_text" : "Nambari ya Simu batili",
   "SU_agent_id_error_text" : "Kitambulisho batili cha Wakala wa Y9",
 
+  "SU_reset_passcode" : "Reset Passcode",
+  "SU_reset_subtitle" : "You can Reset the passcode here using OTP sent to your registered mobile number",
+  "SU_update_passcode" : "Update Passcode",
+  "SU_update_subtitle" : "You can Update the passcode here using OTP sent to your registered mobile number",
+
   "DV_title" : "Ingiza Maelezo ya Kibinafsi",
   "DV_subtitle" : "Thibitisha maelezo yako au usasishe ikiwa inahitajika",
   "DV_name_label" : "Jina",
@@ -159,5 +164,13 @@
   "DD_MemberBenefit5": "Free Educational Content and Books",
   "DD_MemberBenefit6": "Membership and Loyalty Benefits",
   "DD_MemberBenefit7": "Huge incentives for referrals of family and friends",
-  "DD_MemberBenefit8": "Access to your Y9 Account"
+  "DD_MemberBenefit8": "Access to your Y9 Account",
+
+  "ST_title" : "Mipangilio",
+  "ST_subTitle" : "Usimamizi wa Wasifu",
+  "ST_view_profile" : "Tazama Wasifu",
+  "ST_update_passcode" : "Sasisha nambari ya siri",
+  "ST_App_Language" : "Lugha ya Programu",
+  "ST_sign_out" : "Toka",
+  "ST_contact_text" : "Unahitaji Usaidizi au Ikiwa Una Swali lolote \\n Wasiliana Nasi kwa 1800-1800-1800"
 }

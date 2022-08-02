@@ -35,6 +35,11 @@
   "SU_subtitle_error_text" : "Invalid Mobile number",
   "SU_agent_id_error_text" : "Invalid Y9 Agent ID",
 
+  "SU_reset_passcode" : "Reset Passcode",
+  "SU_reset_subtitle" : "You can Reset the passcode here using OTP sent to your registered mobile number",
+  "SU_update_passcode" : "Update Passcode",
+  "SU_update_subtitle" : "You can Update the passcode here using OTP sent to your registered mobile number",
+
   "DV_title" : "Enter Personal Details",
   "DV_title_agent" : "Your Details",
   "DV_subtitle" : "Displaying your Personal details as per ERP",
@@ -158,5 +163,13 @@
   "DD_MemberBenefit5": "Free Educational Content and Books",
   "DD_MemberBenefit6": "Membership and Loyalty Benefits",
   "DD_MemberBenefit7": "Huge incentives for referrals of family and friends",
-  "DD_MemberBenefit8": "Access to your Y9 Account"
+  "DD_MemberBenefit8": "Access to your Y9 Account",
+
+  "ST_title" : "Settings",
+  "ST_subTitle" : "Profile Management",
+  "ST_view_profile" : "View Profile",
+  "ST_update_passcode" : "Update Passcode",
+  "ST_App_Language" : "App Language",
+  "ST_sign_out" : "Sign Out",
+  "ST_contact_text" : "Need Help or If You Have Any Query \\n Contact Us at 1800-1800-1800"
 }

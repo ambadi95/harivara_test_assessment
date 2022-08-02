@@ -102,6 +102,7 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
               //   scale: 2.0,
               // ),
               const Spacer(),
+              _buildResetPasscode(welcomeCoordinator)
             ],
           ),
         ),
@@ -135,7 +136,7 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
   }
 
   Widget _buildTitle(BuildContext context) {
-    return Text('WB_WelcomeBack'.tr, style: WB_title_style);
+    return Text('WB_WelcomeBack'.tr, style: WB_title_style,textAlign: TextAlign.center,);
   }
 
   Widget _userInfo(BuildContext context) {
@@ -187,6 +188,33 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
             }, onChanged: (String value) {  },
           )),
 
+    );
+  }
+
+  Widget _buildResetPasscode(WelcomeBackCoordinator coordinator){
+    return Center(
+        child: Padding(
+          padding: const EdgeInsets.only(bottom: 20),
+          child: InkWell(
+            onTap: (){
+          coordinator.navigateToResetNow();
+            },
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: const [
+                Text('Forget Passcode?',
+                  style: WB_forget_passcode_text_style,
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                Text('Reset Now',
+                  style: WB_reset_passcode_text_style,
+                )
+              ],
+            ),
+          ),
+        ),
     );
   }
 }

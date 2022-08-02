@@ -133,7 +133,7 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
               _buildHeader(context, coordinator, state),
               _enterOtpInstruction(context, coordinator, state),
               const SizedBox(
-                height: 60,
+                height: 200,
               ),
               _enterOtpWidget(context, coordinator, state),
               // const SizedBox(

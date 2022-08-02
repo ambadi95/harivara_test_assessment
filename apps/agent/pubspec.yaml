@@ -66,6 +66,9 @@ dependencies:
   home:
     path: ../../libs/features/home
 
+  settings:
+    path: ../../libs/features/settings
+
 
 dev_dependencies:
   test: any
