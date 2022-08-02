@@ -163,5 +163,13 @@
   "DD_MemberBenefit5": "Free Educational Content and Books",
   "DD_MemberBenefit6": "Membership and Loyalty Benefits",
   "DD_MemberBenefit7": "Huge incentives for referrals of family and friends",
-  "DD_MemberBenefit8": "Access to your Y9 Account"
+  "DD_MemberBenefit8": "Access to your Y9 Account",
+
+  "ST_title" : "Settings",
+  "ST_subTitle" : "Profile Management",
+  "ST_view_profile" : "View Profile",
+  "ST_update_passcode" : "Update Passcode",
+  "ST_App_Language" : "App Language",
+  "ST_sign_out" : "Sign Out",
+  "ST_contact_text" : "Need Help or If You Have Any Query \\n Contact Us at 1800-1800-1800"
 }

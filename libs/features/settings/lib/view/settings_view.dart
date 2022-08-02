@@ -55,7 +55,7 @@ class _SettingsState extends State<Settings> {
   Widget _buildTitle(context) {
     return CrayonPaymentText(
       key: Key('${widget._identifier}_ST_Title'),
-      text: const TextUIDataModel('Settings',
+      text: TextUIDataModel('ST_title'.tr,
           styleVariant: CrayonPaymentTextStyleVariant.headlineThirtyTwo,
           color: AN_TitleColor,
           fontWeight: FontWeight.bold,
@@ -66,7 +66,7 @@ class _SettingsState extends State<Settings> {
   Widget _buildDescription(context) {
     return CrayonPaymentText(
       key: Key('${widget._identifier}_ST_Description'),
-      text: const TextUIDataModel('Profile Management',
+      text: TextUIDataModel('ST_subTitle'.tr,
           styleVariant: CrayonPaymentTextStyleVariant.bodyText2,
           color: AN_TitleColor,
           fontWeight: FontWeight.w800),
@@ -77,8 +77,8 @@ class _SettingsState extends State<Settings> {
     return Center(
       child: CrayonPaymentText(
         key: Key('${widget._identifier}_ST_contact'),
-        text: const TextUIDataModel(
-            'Need Help or If You Have Any Query \n Contact Us at 1800-1800-1800',
+        text: TextUIDataModel(
+            'ST_contact_text'.tr,
             styleVariant: CrayonPaymentTextStyleVariant.headline5,
             color: VO_ResendTextColor,
             fontWeight: FontWeight.w100,
@@ -90,17 +90,17 @@ class _SettingsState extends State<Settings> {
   Widget _buildOptionList(SettingsCoordinator coordinator) {
     return Column(
       children: [
-        _buildOptions(context, 'View Profile', ST_view_profile, () {}),
-        _buildOptions(context, 'Update Passcode', ST_update_passcode, () async {
+        _buildOptions(context, 'ST_view_profile', ST_view_profile, () {}),
+        _buildOptions(context, 'ST_update_passcode', ST_update_passcode, () async {
           await coordinator.resetPasscode();
         }),
-        _buildOptions(context, 'App Language', ST_language, () async {
+        _buildOptions(context, 'ST_App_Language', ST_language, () async {
           await coordinator.changeLanguage();
         }),
         const SizedBox(
           height: 30,
         ),
-        _buildOptions(context, 'Sign Out', ST_sign_out, () {}),
+        _buildOptions(context, 'ST_sign_out', ST_sign_out, () {}),
       ],
     );
   }

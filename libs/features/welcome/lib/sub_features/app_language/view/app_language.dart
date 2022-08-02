@@ -2,7 +2,6 @@ import 'package:core/view/base_view.dart';
 import 'package:flutter/material.dart';
 import '../../welcome/state/welcome_screen_state.dart';
 import '../../welcome/viewmodel/welcome_coordinatior.dart';
-import 'package:get/get.dart';
 
 class AppLanguage extends StatefulWidget {
   const AppLanguage({Key? key}) : super(key: key);
@@ -12,54 +11,80 @@ class AppLanguage extends StatefulWidget {
 }
 
 class _AppLanguageState extends State<AppLanguage> {
-  bool selectedEng = true;
-  bool selectedSw = false;
-
-  String selectedLang = 'EN';
+  int selectedLanguage = 0;
+  var languageCode = '';
 
   @override
   Widget build(BuildContext context) =>
       BaseView<WelcomeCoordinator, WelcomeScreenState>(
-        setupViewModel: (coordinator) async {},
-        builder: (context, state, welcomeCoordinator) => _buildMainUi(),
+        setupViewModel: (coordinator) async {
+          await coordinator.getCurrentLocale();
+        },
+        onStateListenCallback: (preState, newState) {
+          languageCode = newState.currentLanguageCode;
+          if (languageCode == 'en') {
+            selectedLanguage = 0;
+          } else {
+            selectedLanguage = 1;
+          }
+        },
+        builder: (context, state, welcomeCoordinator) =>
+            _buildMainUi(state, welcomeCoordinator),
       );
 
-  Widget _buildMainUi() {
+  Widget _buildMainUi(
+      WelcomeScreenState state, WelcomeCoordinator coordinator) {
     return SizedBox(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _buildCheckedWidget('English', () => {}, selectedEng),
-          _buildCheckedWidget('Swahili', () => {}, selectedSw)
+          _buildCheckBoxWidget(['English', 'Swahili'], state, coordinator)
         ],
       ),
     );
   }
 
-  Widget _buildCheckedWidget(String label, Function() onTap, bool isSelected) {
-    return InkWell(
-      onTap: onTap,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Row(
-                children: [
-                  Expanded(child: Text(label)),
-                  isSelected
-                      ? const Icon(
-                          Icons.check_circle,
-                          color: Colors.red,
-                        )
-                      : const SizedBox()
-                ],
+  Widget _buildCheckBoxWidget(List<String> label, WelcomeScreenState state,
+      WelcomeCoordinator welcomeCoordinator) {
+    return ListView.builder(
+      itemCount: label.length,
+      shrinkWrap: true,
+      itemBuilder: (context, index) => InkWell(
+        onTap: () {
+          if (state.currentLanguageCode == 'en') {
+            selectedLanguage = 1;
+            languageCode = 'sw';
+          } else {
+            selectedLanguage = 0;
+            languageCode = 'en';
+          }
+          welcomeCoordinator.setCurrentLocale(languageCode);
+        },
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Row(
+                  children: [
+                    Expanded(child: Text(label[index])),
+                    index == selectedLanguage
+                        ? const Icon(
+                            Icons.check_circle,
+                            color: Colors.red,
+                            size: 25,
+                          )
+                        : const SizedBox(
+                            height: 25,
+                          )
+                  ],
+                ),
               ),
             ),
-          ),
-          const Divider()
-        ],
+            const Divider()
+          ],
+        ),
       ),
     );
   }

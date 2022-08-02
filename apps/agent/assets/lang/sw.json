@@ -164,5 +164,13 @@
   "DD_MemberBenefit5": "Free Educational Content and Books",
   "DD_MemberBenefit6": "Membership and Loyalty Benefits",
   "DD_MemberBenefit7": "Huge incentives for referrals of family and friends",
-  "DD_MemberBenefit8": "Access to your Y9 Account"
+  "DD_MemberBenefit8": "Access to your Y9 Account",
+
+  "ST_title" : "Mipangilio",
+  "ST_subTitle" : "Usimamizi wa Wasifu",
+  "ST_view_profile" : "Tazama Wasifu",
+  "ST_update_passcode" : "Sasisha nambari ya siri",
+  "ST_App_Language" : "Lugha ya Programu",
+  "ST_sign_out" : "Toka",
+  "ST_contact_text" : "Unahitaji Usaidizi au Ikiwa Una Swali lolote \\n Wasiliana Nasi kwa 1800-1800-1800"
 }
