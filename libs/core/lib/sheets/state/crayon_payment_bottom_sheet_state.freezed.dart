@@ -78,6 +78,16 @@ mixin _$CrayonPaymentBottomSheetState {
             Duration? autoCloseAfter,
             bool disableCloseButton)
         agentEnrollment,
+    required TResult Function(
+            CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            String? title,
+            String? subtitle,
+            List<String>? additionalText,
+            List<Widget>? widgetOptions,
+            List<ButtonOptions>? buttonOptions,
+            Duration? autoCloseAfter,
+            bool disableCloseButton)
+        changeLanguage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -141,6 +151,16 @@ mixin _$CrayonPaymentBottomSheetState {
             Duration? autoCloseAfter,
             bool disableCloseButton)?
         agentEnrollment,
+    TResult Function(
+            CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            String? title,
+            String? subtitle,
+            List<String>? additionalText,
+            List<Widget>? widgetOptions,
+            List<ButtonOptions>? buttonOptions,
+            Duration? autoCloseAfter,
+            bool disableCloseButton)?
+        changeLanguage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -204,6 +224,16 @@ mixin _$CrayonPaymentBottomSheetState {
             Duration? autoCloseAfter,
             bool disableCloseButton)?
         agentEnrollment,
+    TResult Function(
+            CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            String? title,
+            String? subtitle,
+            List<String>? additionalText,
+            List<Widget>? widgetOptions,
+            List<ButtonOptions>? buttonOptions,
+            Duration? autoCloseAfter,
+            bool disableCloseButton)?
+        changeLanguage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -219,6 +249,7 @@ mixin _$CrayonPaymentBottomSheetState {
     required TResult Function(SheetMultiFilters value) multiFilterState,
     required TResult Function(CloseBottomSheet value) closeSheet,
     required TResult Function(AgentEnrollmentSheet value) agentEnrollment,
+    required TResult Function(ChangeLanguageBottomSheet value) changeLanguage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -233,6 +264,7 @@ mixin _$CrayonPaymentBottomSheetState {
     TResult Function(SheetMultiFilters value)? multiFilterState,
     TResult Function(CloseBottomSheet value)? closeSheet,
     TResult Function(AgentEnrollmentSheet value)? agentEnrollment,
+    TResult Function(ChangeLanguageBottomSheet value)? changeLanguage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -247,6 +279,7 @@ mixin _$CrayonPaymentBottomSheetState {
     TResult Function(SheetMultiFilters value)? multiFilterState,
     TResult Function(CloseBottomSheet value)? closeSheet,
     TResult Function(AgentEnrollmentSheet value)? agentEnrollment,
+    TResult Function(ChangeLanguageBottomSheet value)? changeLanguage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -487,6 +520,16 @@ class _$SheetInfo extends SheetInfo {
             Duration? autoCloseAfter,
             bool disableCloseButton)
         agentEnrollment,
+    required TResult Function(
+            CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            String? title,
+            String? subtitle,
+            List<String>? additionalText,
+            List<Widget>? widgetOptions,
+            List<ButtonOptions>? buttonOptions,
+            Duration? autoCloseAfter,
+            bool disableCloseButton)
+        changeLanguage,
   }) {
     return infoState(bottomSheetIcon, title, subtitle, additionalText,
         buttonOptions, autoCloseAfter, disableCloseButton);
@@ -554,6 +597,16 @@ class _$SheetInfo extends SheetInfo {
             Duration? autoCloseAfter,
             bool disableCloseButton)?
         agentEnrollment,
+    TResult Function(
+            CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            String? title,
+            String? subtitle,
+            List<String>? additionalText,
+            List<Widget>? widgetOptions,
+            List<ButtonOptions>? buttonOptions,
+            Duration? autoCloseAfter,
+            bool disableCloseButton)?
+        changeLanguage,
   }) {
     return infoState?.call(bottomSheetIcon, title, subtitle, additionalText,
         buttonOptions, autoCloseAfter, disableCloseButton);
@@ -621,6 +674,16 @@ class _$SheetInfo extends SheetInfo {
             Duration? autoCloseAfter,
             bool disableCloseButton)?
         agentEnrollment,
+    TResult Function(
+            CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            String? title,
+            String? subtitle,
+            List<String>? additionalText,
+            List<Widget>? widgetOptions,
+            List<ButtonOptions>? buttonOptions,
+            Duration? autoCloseAfter,
+            bool disableCloseButton)?
+        changeLanguage,
     required TResult orElse(),
   }) {
     if (infoState != null) {
@@ -643,6 +706,7 @@ class _$SheetInfo extends SheetInfo {
     required TResult Function(SheetMultiFilters value) multiFilterState,
     required TResult Function(CloseBottomSheet value) closeSheet,
     required TResult Function(AgentEnrollmentSheet value) agentEnrollment,
+    required TResult Function(ChangeLanguageBottomSheet value) changeLanguage,
   }) {
     return infoState(this);
   }
@@ -660,6 +724,7 @@ class _$SheetInfo extends SheetInfo {
     TResult Function(SheetMultiFilters value)? multiFilterState,
     TResult Function(CloseBottomSheet value)? closeSheet,
     TResult Function(AgentEnrollmentSheet value)? agentEnrollment,
+    TResult Function(ChangeLanguageBottomSheet value)? changeLanguage,
   }) {
     return infoState?.call(this);
   }
@@ -677,6 +742,7 @@ class _$SheetInfo extends SheetInfo {
     TResult Function(SheetMultiFilters value)? multiFilterState,
     TResult Function(CloseBottomSheet value)? closeSheet,
     TResult Function(AgentEnrollmentSheet value)? agentEnrollment,
+    TResult Function(ChangeLanguageBottomSheet value)? changeLanguage,
     required TResult orElse(),
   }) {
     if (infoState != null) {
@@ -916,6 +982,16 @@ class _$SheetInfoWrap extends SheetInfoWrap {
             Duration? autoCloseAfter,
             bool disableCloseButton)
         agentEnrollment,
+    required TResult Function(
+            CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            String? title,
+            String? subtitle,
+            List<String>? additionalText,
+            List<Widget>? widgetOptions,
+            List<ButtonOptions>? buttonOptions,
+            Duration? autoCloseAfter,
+            bool disableCloseButton)
+        changeLanguage,
   }) {
     return infoStateWrap(bottomSheetIcon, title, subtitle, buttonOptions,
         autoCloseAfter, hasCloseButton, onClose);
@@ -983,6 +1059,16 @@ class _$SheetInfoWrap extends SheetInfoWrap {
             Duration? autoCloseAfter,
             bool disableCloseButton)?
         agentEnrollment,
+    TResult Function(
+            CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            String? title,
+            String? subtitle,
+            List<String>? additionalText,
+            List<Widget>? widgetOptions,
+            List<ButtonOptions>? buttonOptions,
+            Duration? autoCloseAfter,
+            bool disableCloseButton)?
+        changeLanguage,
   }) {
     return infoStateWrap?.call(bottomSheetIcon, title, subtitle, buttonOptions,
         autoCloseAfter, hasCloseButton, onClose);
@@ -1050,6 +1136,16 @@ class _$SheetInfoWrap extends SheetInfoWrap {
             Duration? autoCloseAfter,
             bool disableCloseButton)?
         agentEnrollment,
+    TResult Function(
+            CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            String? title,
+            String? subtitle,
+            List<String>? additionalText,
+            List<Widget>? widgetOptions,
+            List<ButtonOptions>? buttonOptions,
+            Duration? autoCloseAfter,
+            bool disableCloseButton)?
+        changeLanguage,
     required TResult orElse(),
   }) {
     if (infoStateWrap != null) {
@@ -1072,6 +1168,7 @@ class _$SheetInfoWrap extends SheetInfoWrap {
     required TResult Function(SheetMultiFilters value) multiFilterState,
     required TResult Function(CloseBottomSheet value) closeSheet,
     required TResult Function(AgentEnrollmentSheet value) agentEnrollment,
+    required TResult Function(ChangeLanguageBottomSheet value) changeLanguage,
   }) {
     return infoStateWrap(this);
   }
@@ -1089,6 +1186,7 @@ class _$SheetInfoWrap extends SheetInfoWrap {
     TResult Function(SheetMultiFilters value)? multiFilterState,
     TResult Function(CloseBottomSheet value)? closeSheet,
     TResult Function(AgentEnrollmentSheet value)? agentEnrollment,
+    TResult Function(ChangeLanguageBottomSheet value)? changeLanguage,
   }) {
     return infoStateWrap?.call(this);
   }
@@ -1106,6 +1204,7 @@ class _$SheetInfoWrap extends SheetInfoWrap {
     TResult Function(SheetMultiFilters value)? multiFilterState,
     TResult Function(CloseBottomSheet value)? closeSheet,
     TResult Function(AgentEnrollmentSheet value)? agentEnrollment,
+    TResult Function(ChangeLanguageBottomSheet value)? changeLanguage,
     required TResult orElse(),
   }) {
     if (infoStateWrap != null) {
@@ -1285,6 +1384,16 @@ class _$SheetSelection extends SheetSelection {
             Duration? autoCloseAfter,
             bool disableCloseButton)
         agentEnrollment,
+    required TResult Function(
+            CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            String? title,
+            String? subtitle,
+            List<String>? additionalText,
+            List<Widget>? widgetOptions,
+            List<ButtonOptions>? buttonOptions,
+            Duration? autoCloseAfter,
+            bool disableCloseButton)
+        changeLanguage,
   }) {
     return selectionState(buttonOptions, callback);
   }
@@ -1351,6 +1460,16 @@ class _$SheetSelection extends SheetSelection {
             Duration? autoCloseAfter,
             bool disableCloseButton)?
         agentEnrollment,
+    TResult Function(
+            CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            String? title,
+            String? subtitle,
+            List<String>? additionalText,
+            List<Widget>? widgetOptions,
+            List<ButtonOptions>? buttonOptions,
+            Duration? autoCloseAfter,
+            bool disableCloseButton)?
+        changeLanguage,
   }) {
     return selectionState?.call(buttonOptions, callback);
   }
@@ -1417,6 +1536,16 @@ class _$SheetSelection extends SheetSelection {
             Duration? autoCloseAfter,
             bool disableCloseButton)?
         agentEnrollment,
+    TResult Function(
+            CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            String? title,
+            String? subtitle,
+            List<String>? additionalText,
+            List<Widget>? widgetOptions,
+            List<ButtonOptions>? buttonOptions,
+            Duration? autoCloseAfter,
+            bool disableCloseButton)?
+        changeLanguage,
     required TResult orElse(),
   }) {
     if (selectionState != null) {
@@ -1438,6 +1567,7 @@ class _$SheetSelection extends SheetSelection {
     required TResult Function(SheetMultiFilters value) multiFilterState,
     required TResult Function(CloseBottomSheet value) closeSheet,
     required TResult Function(AgentEnrollmentSheet value) agentEnrollment,
+    required TResult Function(ChangeLanguageBottomSheet value) changeLanguage,
   }) {
     return selectionState(this);
   }
@@ -1455,6 +1585,7 @@ class _$SheetSelection extends SheetSelection {
     TResult Function(SheetMultiFilters value)? multiFilterState,
     TResult Function(CloseBottomSheet value)? closeSheet,
     TResult Function(AgentEnrollmentSheet value)? agentEnrollment,
+    TResult Function(ChangeLanguageBottomSheet value)? changeLanguage,
   }) {
     return selectionState?.call(this);
   }
@@ -1472,6 +1603,7 @@ class _$SheetSelection extends SheetSelection {
     TResult Function(SheetMultiFilters value)? multiFilterState,
     TResult Function(CloseBottomSheet value)? closeSheet,
     TResult Function(AgentEnrollmentSheet value)? agentEnrollment,
+    TResult Function(ChangeLanguageBottomSheet value)? changeLanguage,
     required TResult orElse(),
   }) {
     if (selectionState != null) {
@@ -1675,6 +1807,16 @@ class _$SheetWaiting extends SheetWaiting {
             Duration? autoCloseAfter,
             bool disableCloseButton)
         agentEnrollment,
+    required TResult Function(
+            CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            String? title,
+            String? subtitle,
+            List<String>? additionalText,
+            List<Widget>? widgetOptions,
+            List<ButtonOptions>? buttonOptions,
+            Duration? autoCloseAfter,
+            bool disableCloseButton)
+        changeLanguage,
   }) {
     return waitingState(immediateCallback, waitingText, disableIcon,
         disableCloseButton, progressIndicatorOptions);
@@ -1742,6 +1884,16 @@ class _$SheetWaiting extends SheetWaiting {
             Duration? autoCloseAfter,
             bool disableCloseButton)?
         agentEnrollment,
+    TResult Function(
+            CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            String? title,
+            String? subtitle,
+            List<String>? additionalText,
+            List<Widget>? widgetOptions,
+            List<ButtonOptions>? buttonOptions,
+            Duration? autoCloseAfter,
+            bool disableCloseButton)?
+        changeLanguage,
   }) {
     return waitingState?.call(immediateCallback, waitingText, disableIcon,
         disableCloseButton, progressIndicatorOptions);
@@ -1809,6 +1961,16 @@ class _$SheetWaiting extends SheetWaiting {
             Duration? autoCloseAfter,
             bool disableCloseButton)?
         agentEnrollment,
+    TResult Function(
+            CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            String? title,
+            String? subtitle,
+            List<String>? additionalText,
+            List<Widget>? widgetOptions,
+            List<ButtonOptions>? buttonOptions,
+            Duration? autoCloseAfter,
+            bool disableCloseButton)?
+        changeLanguage,
     required TResult orElse(),
   }) {
     if (waitingState != null) {
@@ -1831,6 +1993,7 @@ class _$SheetWaiting extends SheetWaiting {
     required TResult Function(SheetMultiFilters value) multiFilterState,
     required TResult Function(CloseBottomSheet value) closeSheet,
     required TResult Function(AgentEnrollmentSheet value) agentEnrollment,
+    required TResult Function(ChangeLanguageBottomSheet value) changeLanguage,
   }) {
     return waitingState(this);
   }
@@ -1848,6 +2011,7 @@ class _$SheetWaiting extends SheetWaiting {
     TResult Function(SheetMultiFilters value)? multiFilterState,
     TResult Function(CloseBottomSheet value)? closeSheet,
     TResult Function(AgentEnrollmentSheet value)? agentEnrollment,
+    TResult Function(ChangeLanguageBottomSheet value)? changeLanguage,
   }) {
     return waitingState?.call(this);
   }
@@ -1865,6 +2029,7 @@ class _$SheetWaiting extends SheetWaiting {
     TResult Function(SheetMultiFilters value)? multiFilterState,
     TResult Function(CloseBottomSheet value)? closeSheet,
     TResult Function(AgentEnrollmentSheet value)? agentEnrollment,
+    TResult Function(ChangeLanguageBottomSheet value)? changeLanguage,
     required TResult orElse(),
   }) {
     if (waitingState != null) {
@@ -2022,6 +2187,16 @@ class _$SheetSimpleWaiting extends SheetSimpleWaiting {
             Duration? autoCloseAfter,
             bool disableCloseButton)
         agentEnrollment,
+    required TResult Function(
+            CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            String? title,
+            String? subtitle,
+            List<String>? additionalText,
+            List<Widget>? widgetOptions,
+            List<ButtonOptions>? buttonOptions,
+            Duration? autoCloseAfter,
+            bool disableCloseButton)
+        changeLanguage,
   }) {
     return simpleWatingState(waitingText);
   }
@@ -2088,6 +2263,16 @@ class _$SheetSimpleWaiting extends SheetSimpleWaiting {
             Duration? autoCloseAfter,
             bool disableCloseButton)?
         agentEnrollment,
+    TResult Function(
+            CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            String? title,
+            String? subtitle,
+            List<String>? additionalText,
+            List<Widget>? widgetOptions,
+            List<ButtonOptions>? buttonOptions,
+            Duration? autoCloseAfter,
+            bool disableCloseButton)?
+        changeLanguage,
   }) {
     return simpleWatingState?.call(waitingText);
   }
@@ -2154,6 +2339,16 @@ class _$SheetSimpleWaiting extends SheetSimpleWaiting {
             Duration? autoCloseAfter,
             bool disableCloseButton)?
         agentEnrollment,
+    TResult Function(
+            CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            String? title,
+            String? subtitle,
+            List<String>? additionalText,
+            List<Widget>? widgetOptions,
+            List<ButtonOptions>? buttonOptions,
+            Duration? autoCloseAfter,
+            bool disableCloseButton)?
+        changeLanguage,
     required TResult orElse(),
   }) {
     if (simpleWatingState != null) {
@@ -2175,6 +2370,7 @@ class _$SheetSimpleWaiting extends SheetSimpleWaiting {
     required TResult Function(SheetMultiFilters value) multiFilterState,
     required TResult Function(CloseBottomSheet value) closeSheet,
     required TResult Function(AgentEnrollmentSheet value) agentEnrollment,
+    required TResult Function(ChangeLanguageBottomSheet value) changeLanguage,
   }) {
     return simpleWatingState(this);
   }
@@ -2192,6 +2388,7 @@ class _$SheetSimpleWaiting extends SheetSimpleWaiting {
     TResult Function(SheetMultiFilters value)? multiFilterState,
     TResult Function(CloseBottomSheet value)? closeSheet,
     TResult Function(AgentEnrollmentSheet value)? agentEnrollment,
+    TResult Function(ChangeLanguageBottomSheet value)? changeLanguage,
   }) {
     return simpleWatingState?.call(this);
   }
@@ -2209,6 +2406,7 @@ class _$SheetSimpleWaiting extends SheetSimpleWaiting {
     TResult Function(SheetMultiFilters value)? multiFilterState,
     TResult Function(CloseBottomSheet value)? closeSheet,
     TResult Function(AgentEnrollmentSheet value)? agentEnrollment,
+    TResult Function(ChangeLanguageBottomSheet value)? changeLanguage,
     required TResult orElse(),
   }) {
     if (simpleWatingState != null) {
@@ -2373,6 +2571,16 @@ class _$SheetMultipleSelection extends SheetMultipleSelection {
             Duration? autoCloseAfter,
             bool disableCloseButton)
         agentEnrollment,
+    required TResult Function(
+            CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            String? title,
+            String? subtitle,
+            List<String>? additionalText,
+            List<Widget>? widgetOptions,
+            List<ButtonOptions>? buttonOptions,
+            Duration? autoCloseAfter,
+            bool disableCloseButton)
+        changeLanguage,
   }) {
     return multipleSelection(title, options);
   }
@@ -2439,6 +2647,16 @@ class _$SheetMultipleSelection extends SheetMultipleSelection {
             Duration? autoCloseAfter,
             bool disableCloseButton)?
         agentEnrollment,
+    TResult Function(
+            CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            String? title,
+            String? subtitle,
+            List<String>? additionalText,
+            List<Widget>? widgetOptions,
+            List<ButtonOptions>? buttonOptions,
+            Duration? autoCloseAfter,
+            bool disableCloseButton)?
+        changeLanguage,
   }) {
     return multipleSelection?.call(title, options);
   }
@@ -2505,6 +2723,16 @@ class _$SheetMultipleSelection extends SheetMultipleSelection {
             Duration? autoCloseAfter,
             bool disableCloseButton)?
         agentEnrollment,
+    TResult Function(
+            CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            String? title,
+            String? subtitle,
+            List<String>? additionalText,
+            List<Widget>? widgetOptions,
+            List<ButtonOptions>? buttonOptions,
+            Duration? autoCloseAfter,
+            bool disableCloseButton)?
+        changeLanguage,
     required TResult orElse(),
   }) {
     if (multipleSelection != null) {
@@ -2526,6 +2754,7 @@ class _$SheetMultipleSelection extends SheetMultipleSelection {
     required TResult Function(SheetMultiFilters value) multiFilterState,
     required TResult Function(CloseBottomSheet value) closeSheet,
     required TResult Function(AgentEnrollmentSheet value) agentEnrollment,
+    required TResult Function(ChangeLanguageBottomSheet value) changeLanguage,
   }) {
     return multipleSelection(this);
   }
@@ -2543,6 +2772,7 @@ class _$SheetMultipleSelection extends SheetMultipleSelection {
     TResult Function(SheetMultiFilters value)? multiFilterState,
     TResult Function(CloseBottomSheet value)? closeSheet,
     TResult Function(AgentEnrollmentSheet value)? agentEnrollment,
+    TResult Function(ChangeLanguageBottomSheet value)? changeLanguage,
   }) {
     return multipleSelection?.call(this);
   }
@@ -2560,6 +2790,7 @@ class _$SheetMultipleSelection extends SheetMultipleSelection {
     TResult Function(SheetMultiFilters value)? multiFilterState,
     TResult Function(CloseBottomSheet value)? closeSheet,
     TResult Function(AgentEnrollmentSheet value)? agentEnrollment,
+    TResult Function(ChangeLanguageBottomSheet value)? changeLanguage,
     required TResult orElse(),
   }) {
     if (multipleSelection != null) {
@@ -2734,6 +2965,16 @@ class _$SheetDatePicker extends SheetDatePicker {
             Duration? autoCloseAfter,
             bool disableCloseButton)
         agentEnrollment,
+    required TResult Function(
+            CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            String? title,
+            String? subtitle,
+            List<String>? additionalText,
+            List<Widget>? widgetOptions,
+            List<ButtonOptions>? buttonOptions,
+            Duration? autoCloseAfter,
+            bool disableCloseButton)
+        changeLanguage,
   }) {
     return datePickerState(startDate, endDate, callbackAfterDateIsSelected);
   }
@@ -2800,6 +3041,16 @@ class _$SheetDatePicker extends SheetDatePicker {
             Duration? autoCloseAfter,
             bool disableCloseButton)?
         agentEnrollment,
+    TResult Function(
+            CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            String? title,
+            String? subtitle,
+            List<String>? additionalText,
+            List<Widget>? widgetOptions,
+            List<ButtonOptions>? buttonOptions,
+            Duration? autoCloseAfter,
+            bool disableCloseButton)?
+        changeLanguage,
   }) {
     return datePickerState?.call(
         startDate, endDate, callbackAfterDateIsSelected);
@@ -2867,6 +3118,16 @@ class _$SheetDatePicker extends SheetDatePicker {
             Duration? autoCloseAfter,
             bool disableCloseButton)?
         agentEnrollment,
+    TResult Function(
+            CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            String? title,
+            String? subtitle,
+            List<String>? additionalText,
+            List<Widget>? widgetOptions,
+            List<ButtonOptions>? buttonOptions,
+            Duration? autoCloseAfter,
+            bool disableCloseButton)?
+        changeLanguage,
     required TResult orElse(),
   }) {
     if (datePickerState != null) {
@@ -2888,6 +3149,7 @@ class _$SheetDatePicker extends SheetDatePicker {
     required TResult Function(SheetMultiFilters value) multiFilterState,
     required TResult Function(CloseBottomSheet value) closeSheet,
     required TResult Function(AgentEnrollmentSheet value) agentEnrollment,
+    required TResult Function(ChangeLanguageBottomSheet value) changeLanguage,
   }) {
     return datePickerState(this);
   }
@@ -2905,6 +3167,7 @@ class _$SheetDatePicker extends SheetDatePicker {
     TResult Function(SheetMultiFilters value)? multiFilterState,
     TResult Function(CloseBottomSheet value)? closeSheet,
     TResult Function(AgentEnrollmentSheet value)? agentEnrollment,
+    TResult Function(ChangeLanguageBottomSheet value)? changeLanguage,
   }) {
     return datePickerState?.call(this);
   }
@@ -2922,6 +3185,7 @@ class _$SheetDatePicker extends SheetDatePicker {
     TResult Function(SheetMultiFilters value)? multiFilterState,
     TResult Function(CloseBottomSheet value)? closeSheet,
     TResult Function(AgentEnrollmentSheet value)? agentEnrollment,
+    TResult Function(ChangeLanguageBottomSheet value)? changeLanguage,
     required TResult orElse(),
   }) {
     if (datePickerState != null) {
@@ -3160,6 +3424,16 @@ class _$SheetMultiFilters extends SheetMultiFilters {
             Duration? autoCloseAfter,
             bool disableCloseButton)
         agentEnrollment,
+    required TResult Function(
+            CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            String? title,
+            String? subtitle,
+            List<String>? additionalText,
+            List<Widget>? widgetOptions,
+            List<ButtonOptions>? buttonOptions,
+            Duration? autoCloseAfter,
+            bool disableCloseButton)
+        changeLanguage,
   }) {
     return multiFilterState(title, categories, leftActionButton,
         rightActionButton, displayDateFilter, startDate, endDate);
@@ -3227,6 +3501,16 @@ class _$SheetMultiFilters extends SheetMultiFilters {
             Duration? autoCloseAfter,
             bool disableCloseButton)?
         agentEnrollment,
+    TResult Function(
+            CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            String? title,
+            String? subtitle,
+            List<String>? additionalText,
+            List<Widget>? widgetOptions,
+            List<ButtonOptions>? buttonOptions,
+            Duration? autoCloseAfter,
+            bool disableCloseButton)?
+        changeLanguage,
   }) {
     return multiFilterState?.call(title, categories, leftActionButton,
         rightActionButton, displayDateFilter, startDate, endDate);
@@ -3294,6 +3578,16 @@ class _$SheetMultiFilters extends SheetMultiFilters {
             Duration? autoCloseAfter,
             bool disableCloseButton)?
         agentEnrollment,
+    TResult Function(
+            CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            String? title,
+            String? subtitle,
+            List<String>? additionalText,
+            List<Widget>? widgetOptions,
+            List<ButtonOptions>? buttonOptions,
+            Duration? autoCloseAfter,
+            bool disableCloseButton)?
+        changeLanguage,
     required TResult orElse(),
   }) {
     if (multiFilterState != null) {
@@ -3316,6 +3610,7 @@ class _$SheetMultiFilters extends SheetMultiFilters {
     required TResult Function(SheetMultiFilters value) multiFilterState,
     required TResult Function(CloseBottomSheet value) closeSheet,
     required TResult Function(AgentEnrollmentSheet value) agentEnrollment,
+    required TResult Function(ChangeLanguageBottomSheet value) changeLanguage,
   }) {
     return multiFilterState(this);
   }
@@ -3333,6 +3628,7 @@ class _$SheetMultiFilters extends SheetMultiFilters {
     TResult Function(SheetMultiFilters value)? multiFilterState,
     TResult Function(CloseBottomSheet value)? closeSheet,
     TResult Function(AgentEnrollmentSheet value)? agentEnrollment,
+    TResult Function(ChangeLanguageBottomSheet value)? changeLanguage,
   }) {
     return multiFilterState?.call(this);
   }
@@ -3350,6 +3646,7 @@ class _$SheetMultiFilters extends SheetMultiFilters {
     TResult Function(SheetMultiFilters value)? multiFilterState,
     TResult Function(CloseBottomSheet value)? closeSheet,
     TResult Function(AgentEnrollmentSheet value)? agentEnrollment,
+    TResult Function(ChangeLanguageBottomSheet value)? changeLanguage,
     required TResult orElse(),
   }) {
     if (multiFilterState != null) {
@@ -3529,6 +3826,16 @@ class _$CloseBottomSheet extends CloseBottomSheet {
             Duration? autoCloseAfter,
             bool disableCloseButton)
         agentEnrollment,
+    required TResult Function(
+            CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            String? title,
+            String? subtitle,
+            List<String>? additionalText,
+            List<Widget>? widgetOptions,
+            List<ButtonOptions>? buttonOptions,
+            Duration? autoCloseAfter,
+            bool disableCloseButton)
+        changeLanguage,
   }) {
     return closeSheet(callbackBeforeClosingSheet, callbackAfterClosingSheet);
   }
@@ -3595,6 +3902,16 @@ class _$CloseBottomSheet extends CloseBottomSheet {
             Duration? autoCloseAfter,
             bool disableCloseButton)?
         agentEnrollment,
+    TResult Function(
+            CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            String? title,
+            String? subtitle,
+            List<String>? additionalText,
+            List<Widget>? widgetOptions,
+            List<ButtonOptions>? buttonOptions,
+            Duration? autoCloseAfter,
+            bool disableCloseButton)?
+        changeLanguage,
   }) {
     return closeSheet?.call(
         callbackBeforeClosingSheet, callbackAfterClosingSheet);
@@ -3662,6 +3979,16 @@ class _$CloseBottomSheet extends CloseBottomSheet {
             Duration? autoCloseAfter,
             bool disableCloseButton)?
         agentEnrollment,
+    TResult Function(
+            CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            String? title,
+            String? subtitle,
+            List<String>? additionalText,
+            List<Widget>? widgetOptions,
+            List<ButtonOptions>? buttonOptions,
+            Duration? autoCloseAfter,
+            bool disableCloseButton)?
+        changeLanguage,
     required TResult orElse(),
   }) {
     if (closeSheet != null) {
@@ -3683,6 +4010,7 @@ class _$CloseBottomSheet extends CloseBottomSheet {
     required TResult Function(SheetMultiFilters value) multiFilterState,
     required TResult Function(CloseBottomSheet value) closeSheet,
     required TResult Function(AgentEnrollmentSheet value) agentEnrollment,
+    required TResult Function(ChangeLanguageBottomSheet value) changeLanguage,
   }) {
     return closeSheet(this);
   }
@@ -3700,6 +4028,7 @@ class _$CloseBottomSheet extends CloseBottomSheet {
     TResult Function(SheetMultiFilters value)? multiFilterState,
     TResult Function(CloseBottomSheet value)? closeSheet,
     TResult Function(AgentEnrollmentSheet value)? agentEnrollment,
+    TResult Function(ChangeLanguageBottomSheet value)? changeLanguage,
   }) {
     return closeSheet?.call(this);
   }
@@ -3717,6 +4046,7 @@ class _$CloseBottomSheet extends CloseBottomSheet {
     TResult Function(SheetMultiFilters value)? multiFilterState,
     TResult Function(CloseBottomSheet value)? closeSheet,
     TResult Function(AgentEnrollmentSheet value)? agentEnrollment,
+    TResult Function(ChangeLanguageBottomSheet value)? changeLanguage,
     required TResult orElse(),
   }) {
     if (closeSheet != null) {
@@ -3958,6 +4288,16 @@ class _$AgentEnrollmentSheet extends AgentEnrollmentSheet {
             Duration? autoCloseAfter,
             bool disableCloseButton)
         agentEnrollment,
+    required TResult Function(
+            CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            String? title,
+            String? subtitle,
+            List<String>? additionalText,
+            List<Widget>? widgetOptions,
+            List<ButtonOptions>? buttonOptions,
+            Duration? autoCloseAfter,
+            bool disableCloseButton)
+        changeLanguage,
   }) {
     return agentEnrollment(bottomSheetIcon, title, subtitle, additionalText,
         buttonOptions, autoCloseAfter, disableCloseButton);
@@ -4025,6 +4365,16 @@ class _$AgentEnrollmentSheet extends AgentEnrollmentSheet {
             Duration? autoCloseAfter,
             bool disableCloseButton)?
         agentEnrollment,
+    TResult Function(
+            CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            String? title,
+            String? subtitle,
+            List<String>? additionalText,
+            List<Widget>? widgetOptions,
+            List<ButtonOptions>? buttonOptions,
+            Duration? autoCloseAfter,
+            bool disableCloseButton)?
+        changeLanguage,
   }) {
     return agentEnrollment?.call(bottomSheetIcon, title, subtitle,
         additionalText, buttonOptions, autoCloseAfter, disableCloseButton);
@@ -4092,6 +4442,16 @@ class _$AgentEnrollmentSheet extends AgentEnrollmentSheet {
             Duration? autoCloseAfter,
             bool disableCloseButton)?
         agentEnrollment,
+    TResult Function(
+            CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            String? title,
+            String? subtitle,
+            List<String>? additionalText,
+            List<Widget>? widgetOptions,
+            List<ButtonOptions>? buttonOptions,
+            Duration? autoCloseAfter,
+            bool disableCloseButton)?
+        changeLanguage,
     required TResult orElse(),
   }) {
     if (agentEnrollment != null) {
@@ -4114,6 +4474,7 @@ class _$AgentEnrollmentSheet extends AgentEnrollmentSheet {
     required TResult Function(SheetMultiFilters value) multiFilterState,
     required TResult Function(CloseBottomSheet value) closeSheet,
     required TResult Function(AgentEnrollmentSheet value) agentEnrollment,
+    required TResult Function(ChangeLanguageBottomSheet value) changeLanguage,
   }) {
     return agentEnrollment(this);
   }
@@ -4131,6 +4492,7 @@ class _$AgentEnrollmentSheet extends AgentEnrollmentSheet {
     TResult Function(SheetMultiFilters value)? multiFilterState,
     TResult Function(CloseBottomSheet value)? closeSheet,
     TResult Function(AgentEnrollmentSheet value)? agentEnrollment,
+    TResult Function(ChangeLanguageBottomSheet value)? changeLanguage,
   }) {
     return agentEnrollment?.call(this);
   }
@@ -4148,6 +4510,7 @@ class _$AgentEnrollmentSheet extends AgentEnrollmentSheet {
     TResult Function(SheetMultiFilters value)? multiFilterState,
     TResult Function(CloseBottomSheet value)? closeSheet,
     TResult Function(AgentEnrollmentSheet value)? agentEnrollment,
+    TResult Function(ChangeLanguageBottomSheet value)? changeLanguage,
     required TResult orElse(),
   }) {
     if (agentEnrollment != null) {
@@ -4178,4 +4541,508 @@ abstract class AgentEnrollmentSheet extends CrayonPaymentBottomSheetState {
   @JsonKey(ignore: true)
   _$$AgentEnrollmentSheetCopyWith<_$AgentEnrollmentSheet> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChangeLanguageBottomSheetCopyWith<$Res> {
+  factory _$$ChangeLanguageBottomSheetCopyWith(
+          _$ChangeLanguageBottomSheet value,
+          $Res Function(_$ChangeLanguageBottomSheet) then) =
+      __$$ChangeLanguageBottomSheetCopyWithImpl<$Res>;
+  $Res call(
+      {CrayonPaymentBottomSheetIcon bottomSheetIcon,
+      String? title,
+      String? subtitle,
+      List<String>? additionalText,
+      List<Widget>? widgetOptions,
+      List<ButtonOptions>? buttonOptions,
+      Duration? autoCloseAfter,
+      bool disableCloseButton});
+}
+
+/// @nodoc
+class __$$ChangeLanguageBottomSheetCopyWithImpl<$Res>
+    extends _$CrayonPaymentBottomSheetStateCopyWithImpl<$Res>
+    implements _$$ChangeLanguageBottomSheetCopyWith<$Res> {
+  __$$ChangeLanguageBottomSheetCopyWithImpl(_$ChangeLanguageBottomSheet _value,
+      $Res Function(_$ChangeLanguageBottomSheet) _then)
+      : super(_value, (v) => _then(v as _$ChangeLanguageBottomSheet));
+
+  @override
+  _$ChangeLanguageBottomSheet get _value =>
+      super._value as _$ChangeLanguageBottomSheet;
+
+  @override
+  $Res call({
+    Object? bottomSheetIcon = freezed,
+    Object? title = freezed,
+    Object? subtitle = freezed,
+    Object? additionalText = freezed,
+    Object? widgetOptions = freezed,
+    Object? buttonOptions = freezed,
+    Object? autoCloseAfter = freezed,
+    Object? disableCloseButton = freezed,
+  }) {
+    return _then(_$ChangeLanguageBottomSheet(
+      bottomSheetIcon: bottomSheetIcon == freezed
+          ? _value.bottomSheetIcon
+          : bottomSheetIcon // ignore: cast_nullable_to_non_nullable
+              as CrayonPaymentBottomSheetIcon,
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+      subtitle: subtitle == freezed
+          ? _value.subtitle
+          : subtitle // ignore: cast_nullable_to_non_nullable
+              as String?,
+      additionalText: additionalText == freezed
+          ? _value._additionalText
+          : additionalText // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      widgetOptions: widgetOptions == freezed
+          ? _value._widgetOptions
+          : widgetOptions // ignore: cast_nullable_to_non_nullable
+              as List<Widget>?,
+      buttonOptions: buttonOptions == freezed
+          ? _value._buttonOptions
+          : buttonOptions // ignore: cast_nullable_to_non_nullable
+              as List<ButtonOptions>?,
+      autoCloseAfter: autoCloseAfter == freezed
+          ? _value.autoCloseAfter
+          : autoCloseAfter // ignore: cast_nullable_to_non_nullable
+              as Duration?,
+      disableCloseButton: disableCloseButton == freezed
+          ? _value.disableCloseButton
+          : disableCloseButton // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeLanguageBottomSheet extends ChangeLanguageBottomSheet {
+  const _$ChangeLanguageBottomSheet(
+      {required this.bottomSheetIcon,
+      this.title,
+      this.subtitle,
+      final List<String>? additionalText,
+      final List<Widget>? widgetOptions,
+      final List<ButtonOptions>? buttonOptions,
+      this.autoCloseAfter,
+      this.disableCloseButton = false})
+      : _additionalText = additionalText,
+        _widgetOptions = widgetOptions,
+        _buttonOptions = buttonOptions,
+        super._();
+
+  @override
+  final CrayonPaymentBottomSheetIcon bottomSheetIcon;
+  @override
+  final String? title;
+  @override
+  final String? subtitle;
+  final List<String>? _additionalText;
+  @override
+  List<String>? get additionalText {
+    final value = _additionalText;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<Widget>? _widgetOptions;
+  @override
+  List<Widget>? get widgetOptions {
+    final value = _widgetOptions;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<ButtonOptions>? _buttonOptions;
+  @override
+  List<ButtonOptions>? get buttonOptions {
+    final value = _buttonOptions;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  final Duration? autoCloseAfter;
+  @override
+  @JsonKey()
+  final bool disableCloseButton;
+
+  @override
+  String toString() {
+    return 'CrayonPaymentBottomSheetState.changeLanguage(bottomSheetIcon: $bottomSheetIcon, title: $title, subtitle: $subtitle, additionalText: $additionalText, widgetOptions: $widgetOptions, buttonOptions: $buttonOptions, autoCloseAfter: $autoCloseAfter, disableCloseButton: $disableCloseButton)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeLanguageBottomSheet &&
+            const DeepCollectionEquality()
+                .equals(other.bottomSheetIcon, bottomSheetIcon) &&
+            const DeepCollectionEquality().equals(other.title, title) &&
+            const DeepCollectionEquality().equals(other.subtitle, subtitle) &&
+            const DeepCollectionEquality()
+                .equals(other._additionalText, _additionalText) &&
+            const DeepCollectionEquality()
+                .equals(other._widgetOptions, _widgetOptions) &&
+            const DeepCollectionEquality()
+                .equals(other._buttonOptions, _buttonOptions) &&
+            const DeepCollectionEquality()
+                .equals(other.autoCloseAfter, autoCloseAfter) &&
+            const DeepCollectionEquality()
+                .equals(other.disableCloseButton, disableCloseButton));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(bottomSheetIcon),
+      const DeepCollectionEquality().hash(title),
+      const DeepCollectionEquality().hash(subtitle),
+      const DeepCollectionEquality().hash(_additionalText),
+      const DeepCollectionEquality().hash(_widgetOptions),
+      const DeepCollectionEquality().hash(_buttonOptions),
+      const DeepCollectionEquality().hash(autoCloseAfter),
+      const DeepCollectionEquality().hash(disableCloseButton));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$ChangeLanguageBottomSheetCopyWith<_$ChangeLanguageBottomSheet>
+      get copyWith => __$$ChangeLanguageBottomSheetCopyWithImpl<
+          _$ChangeLanguageBottomSheet>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            String? title,
+            String? subtitle,
+            List<String>? additionalText,
+            List<ButtonOptions>? buttonOptions,
+            Duration? autoCloseAfter,
+            bool disableCloseButton)
+        infoState,
+    required TResult Function(
+            CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            String? title,
+            String? subtitle,
+            List<ButtonOptions>? buttonOptions,
+            Duration? autoCloseAfter,
+            bool? hasCloseButton,
+            Function? onClose)
+        infoStateWrap,
+    required TResult Function(List<FilterDateButtonOptions>? buttonOptions,
+            Future<dynamic> Function()? callback)
+        selectionState,
+    required TResult Function(
+            Future<CrayonPaymentBottomSheetState?> Function()?
+                immediateCallback,
+            String? waitingText,
+            bool disableIcon,
+            bool disableCloseButton,
+            ProgressIndicatorOptions progressIndicatorOptions)
+        waitingState,
+    required TResult Function(String? waitingText) simpleWatingState,
+    required TResult Function(String title, List<ButtonOptions> options)
+        multipleSelection,
+    required TResult Function(
+            DateTime? startDate,
+            DateTime? endDate,
+            Future<dynamic> Function(dynamic, dynamic)?
+                callbackAfterDateIsSelected)
+        datePickerState,
+    required TResult Function(
+            String? title,
+            List<MultiSelectionCategory>? categories,
+            MultiSelectionButton? leftActionButton,
+            MultiSelectionButton? rightActionButton,
+            bool displayDateFilter,
+            String? startDate,
+            String? endDate)
+        multiFilterState,
+    required TResult Function(
+            Future<dynamic> Function()? callbackBeforeClosingSheet,
+            Future<dynamic> Function()? callbackAfterClosingSheet)
+        closeSheet,
+    required TResult Function(
+            CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            String? title,
+            String? subtitle,
+            List<String>? additionalText,
+            List<ButtonOptions>? buttonOptions,
+            Duration? autoCloseAfter,
+            bool disableCloseButton)
+        agentEnrollment,
+    required TResult Function(
+            CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            String? title,
+            String? subtitle,
+            List<String>? additionalText,
+            List<Widget>? widgetOptions,
+            List<ButtonOptions>? buttonOptions,
+            Duration? autoCloseAfter,
+            bool disableCloseButton)
+        changeLanguage,
+  }) {
+    return changeLanguage(bottomSheetIcon, title, subtitle, additionalText,
+        widgetOptions, buttonOptions, autoCloseAfter, disableCloseButton);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(
+            CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            String? title,
+            String? subtitle,
+            List<String>? additionalText,
+            List<ButtonOptions>? buttonOptions,
+            Duration? autoCloseAfter,
+            bool disableCloseButton)?
+        infoState,
+    TResult Function(
+            CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            String? title,
+            String? subtitle,
+            List<ButtonOptions>? buttonOptions,
+            Duration? autoCloseAfter,
+            bool? hasCloseButton,
+            Function? onClose)?
+        infoStateWrap,
+    TResult Function(List<FilterDateButtonOptions>? buttonOptions,
+            Future<dynamic> Function()? callback)?
+        selectionState,
+    TResult Function(
+            Future<CrayonPaymentBottomSheetState?> Function()?
+                immediateCallback,
+            String? waitingText,
+            bool disableIcon,
+            bool disableCloseButton,
+            ProgressIndicatorOptions progressIndicatorOptions)?
+        waitingState,
+    TResult Function(String? waitingText)? simpleWatingState,
+    TResult Function(String title, List<ButtonOptions> options)?
+        multipleSelection,
+    TResult Function(
+            DateTime? startDate,
+            DateTime? endDate,
+            Future<dynamic> Function(dynamic, dynamic)?
+                callbackAfterDateIsSelected)?
+        datePickerState,
+    TResult Function(
+            String? title,
+            List<MultiSelectionCategory>? categories,
+            MultiSelectionButton? leftActionButton,
+            MultiSelectionButton? rightActionButton,
+            bool displayDateFilter,
+            String? startDate,
+            String? endDate)?
+        multiFilterState,
+    TResult Function(Future<dynamic> Function()? callbackBeforeClosingSheet,
+            Future<dynamic> Function()? callbackAfterClosingSheet)?
+        closeSheet,
+    TResult Function(
+            CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            String? title,
+            String? subtitle,
+            List<String>? additionalText,
+            List<ButtonOptions>? buttonOptions,
+            Duration? autoCloseAfter,
+            bool disableCloseButton)?
+        agentEnrollment,
+    TResult Function(
+            CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            String? title,
+            String? subtitle,
+            List<String>? additionalText,
+            List<Widget>? widgetOptions,
+            List<ButtonOptions>? buttonOptions,
+            Duration? autoCloseAfter,
+            bool disableCloseButton)?
+        changeLanguage,
+  }) {
+    return changeLanguage?.call(
+        bottomSheetIcon,
+        title,
+        subtitle,
+        additionalText,
+        widgetOptions,
+        buttonOptions,
+        autoCloseAfter,
+        disableCloseButton);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            String? title,
+            String? subtitle,
+            List<String>? additionalText,
+            List<ButtonOptions>? buttonOptions,
+            Duration? autoCloseAfter,
+            bool disableCloseButton)?
+        infoState,
+    TResult Function(
+            CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            String? title,
+            String? subtitle,
+            List<ButtonOptions>? buttonOptions,
+            Duration? autoCloseAfter,
+            bool? hasCloseButton,
+            Function? onClose)?
+        infoStateWrap,
+    TResult Function(List<FilterDateButtonOptions>? buttonOptions,
+            Future<dynamic> Function()? callback)?
+        selectionState,
+    TResult Function(
+            Future<CrayonPaymentBottomSheetState?> Function()?
+                immediateCallback,
+            String? waitingText,
+            bool disableIcon,
+            bool disableCloseButton,
+            ProgressIndicatorOptions progressIndicatorOptions)?
+        waitingState,
+    TResult Function(String? waitingText)? simpleWatingState,
+    TResult Function(String title, List<ButtonOptions> options)?
+        multipleSelection,
+    TResult Function(
+            DateTime? startDate,
+            DateTime? endDate,
+            Future<dynamic> Function(dynamic, dynamic)?
+                callbackAfterDateIsSelected)?
+        datePickerState,
+    TResult Function(
+            String? title,
+            List<MultiSelectionCategory>? categories,
+            MultiSelectionButton? leftActionButton,
+            MultiSelectionButton? rightActionButton,
+            bool displayDateFilter,
+            String? startDate,
+            String? endDate)?
+        multiFilterState,
+    TResult Function(Future<dynamic> Function()? callbackBeforeClosingSheet,
+            Future<dynamic> Function()? callbackAfterClosingSheet)?
+        closeSheet,
+    TResult Function(
+            CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            String? title,
+            String? subtitle,
+            List<String>? additionalText,
+            List<ButtonOptions>? buttonOptions,
+            Duration? autoCloseAfter,
+            bool disableCloseButton)?
+        agentEnrollment,
+    TResult Function(
+            CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            String? title,
+            String? subtitle,
+            List<String>? additionalText,
+            List<Widget>? widgetOptions,
+            List<ButtonOptions>? buttonOptions,
+            Duration? autoCloseAfter,
+            bool disableCloseButton)?
+        changeLanguage,
+    required TResult orElse(),
+  }) {
+    if (changeLanguage != null) {
+      return changeLanguage(bottomSheetIcon, title, subtitle, additionalText,
+          widgetOptions, buttonOptions, autoCloseAfter, disableCloseButton);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(SheetInfo value) infoState,
+    required TResult Function(SheetInfoWrap value) infoStateWrap,
+    required TResult Function(SheetSelection value) selectionState,
+    required TResult Function(SheetWaiting value) waitingState,
+    required TResult Function(SheetSimpleWaiting value) simpleWatingState,
+    required TResult Function(SheetMultipleSelection value) multipleSelection,
+    required TResult Function(SheetDatePicker value) datePickerState,
+    required TResult Function(SheetMultiFilters value) multiFilterState,
+    required TResult Function(CloseBottomSheet value) closeSheet,
+    required TResult Function(AgentEnrollmentSheet value) agentEnrollment,
+    required TResult Function(ChangeLanguageBottomSheet value) changeLanguage,
+  }) {
+    return changeLanguage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(SheetInfo value)? infoState,
+    TResult Function(SheetInfoWrap value)? infoStateWrap,
+    TResult Function(SheetSelection value)? selectionState,
+    TResult Function(SheetWaiting value)? waitingState,
+    TResult Function(SheetSimpleWaiting value)? simpleWatingState,
+    TResult Function(SheetMultipleSelection value)? multipleSelection,
+    TResult Function(SheetDatePicker value)? datePickerState,
+    TResult Function(SheetMultiFilters value)? multiFilterState,
+    TResult Function(CloseBottomSheet value)? closeSheet,
+    TResult Function(AgentEnrollmentSheet value)? agentEnrollment,
+    TResult Function(ChangeLanguageBottomSheet value)? changeLanguage,
+  }) {
+    return changeLanguage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SheetInfo value)? infoState,
+    TResult Function(SheetInfoWrap value)? infoStateWrap,
+    TResult Function(SheetSelection value)? selectionState,
+    TResult Function(SheetWaiting value)? waitingState,
+    TResult Function(SheetSimpleWaiting value)? simpleWatingState,
+    TResult Function(SheetMultipleSelection value)? multipleSelection,
+    TResult Function(SheetDatePicker value)? datePickerState,
+    TResult Function(SheetMultiFilters value)? multiFilterState,
+    TResult Function(CloseBottomSheet value)? closeSheet,
+    TResult Function(AgentEnrollmentSheet value)? agentEnrollment,
+    TResult Function(ChangeLanguageBottomSheet value)? changeLanguage,
+    required TResult orElse(),
+  }) {
+    if (changeLanguage != null) {
+      return changeLanguage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangeLanguageBottomSheet extends CrayonPaymentBottomSheetState {
+  const factory ChangeLanguageBottomSheet(
+      {required final CrayonPaymentBottomSheetIcon bottomSheetIcon,
+      final String? title,
+      final String? subtitle,
+      final List<String>? additionalText,
+      final List<Widget>? widgetOptions,
+      final List<ButtonOptions>? buttonOptions,
+      final Duration? autoCloseAfter,
+      final bool disableCloseButton}) = _$ChangeLanguageBottomSheet;
+  const ChangeLanguageBottomSheet._() : super._();
+
+  CrayonPaymentBottomSheetIcon get bottomSheetIcon;
+  String? get title;
+  String? get subtitle;
+  List<String>? get additionalText;
+  List<Widget>? get widgetOptions;
+  List<ButtonOptions>? get buttonOptions;
+  Duration? get autoCloseAfter;
+  bool get disableCloseButton;
+  @JsonKey(ignore: true)
+  _$$ChangeLanguageBottomSheetCopyWith<_$ChangeLanguageBottomSheet>
+      get copyWith => throw _privateConstructorUsedError;
 }

@@ -17,4 +17,8 @@ class SettingsCoordinator extends BaseViewModel<SettingsState>{
     await _navigationHandler.navigateToSignUpScreen();
   }
 
+  Future<void> changeLanguage()async{
+    await _navigationHandler.navigateToAgentChangeLanguageBottomSheet();
+  }
+
 }

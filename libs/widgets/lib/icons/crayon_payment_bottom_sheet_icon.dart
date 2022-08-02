@@ -12,6 +12,13 @@ class CrayonPaymentBottomSheetSuccessIcon extends CrayonPaymentBottomSheetIcon {
         );
 }
 
+class CrayonPaymentBottomSheetAppLanguageIconIcon extends CrayonPaymentBottomSheetIcon {
+  CrayonPaymentBottomSheetAppLanguageIconIcon()
+      : super(
+    'packages/widget_library/assets/images/language_icon.svg',
+  );
+}
+
 class CrayonPaymentBottomSheetErrorIcon extends CrayonPaymentBottomSheetIcon {
   CrayonPaymentBottomSheetErrorIcon()
       : super(

@@ -12,6 +12,7 @@ import '../state/settings_state.dart';
 class Settings extends StatefulWidget {
   final String _identifier = 'settings';
   static const String viewPath = '${SettingsModule.moduleIdentifier}/settings';
+
   const Settings({Key? key}) : super(key: key);
 
   @override
@@ -22,16 +23,16 @@ class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) =>
       BaseView<SettingsCoordinator, SettingsState>(
-        setupViewModel: (coordinator) async {
-        },
+        setupViewModel: (coordinator) async {},
         builder: (context, state, coordinator) => Scaffold(
-          body: SafeArea(child: _buildMainUI(context,coordinator, state)),
+          body: SafeArea(child: _buildMainUI(context, coordinator, state)),
         ),
       );
 
-  Widget _buildMainUI(BuildContext context, SettingsCoordinator coordinator, SettingsState state){
+  Widget _buildMainUI(BuildContext context, SettingsCoordinator coordinator,
+      SettingsState state) {
     return Padding(
-      padding: const EdgeInsets.only(top: 23,left: 17, right: 17,bottom: 25),
+      padding: const EdgeInsets.only(top: 23, left: 17, right: 17, bottom: 25),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -58,8 +59,7 @@ class _SettingsState extends State<Settings> {
           styleVariant: CrayonPaymentTextStyleVariant.headlineThirtyTwo,
           color: AN_TitleColor,
           fontWeight: FontWeight.bold,
-        textAlign: TextAlign.center
-      ),
+          textAlign: TextAlign.center),
     );
   }
 
@@ -77,28 +77,30 @@ class _SettingsState extends State<Settings> {
     return Center(
       child: CrayonPaymentText(
         key: Key('${widget._identifier}_ST_contact'),
-        text: const TextUIDataModel('Need Help or If You Have Any Query \n Contact Us at 1800-1800-1800',
+        text: const TextUIDataModel(
+            'Need Help or If You Have Any Query \n Contact Us at 1800-1800-1800',
             styleVariant: CrayonPaymentTextStyleVariant.headline5,
             color: VO_ResendTextColor,
             fontWeight: FontWeight.w100,
-          textAlign: TextAlign.center
-        ),
+            textAlign: TextAlign.center),
       ),
     );
   }
 
-  Widget _buildOptionList(SettingsCoordinator coordinator){
+  Widget _buildOptionList(SettingsCoordinator coordinator) {
     return Column(
       children: [
-        _buildOptions(context,'View Profile',ST_view_profile,() {}),
-        _buildOptions(context,'Update Passcode',ST_update_passcode,()async{
-         await coordinator.resetPasscode();
+        _buildOptions(context, 'View Profile', ST_view_profile, () {}),
+        _buildOptions(context, 'Update Passcode', ST_update_passcode, () async {
+          await coordinator.resetPasscode();
         }),
-        _buildOptions(context,'App Language',ST_language,(){}),
+        _buildOptions(context, 'App Language', ST_language, () async {
+          await coordinator.changeLanguage();
+        }),
         const SizedBox(
           height: 30,
         ),
-        _buildOptions(context,'Sign Out',ST_sign_out,(){}),
+        _buildOptions(context, 'Sign Out', ST_sign_out, () {}),
       ],
     );
   }
@@ -110,23 +112,25 @@ class _SettingsState extends State<Settings> {
         padding: const EdgeInsets.only(bottom: 20, top: 20),
         child: Row(
           children: [
-           Image.asset(image,
-           width: 28,
-           height: 28,),
+            Image.asset(
+              image,
+              width: 28,
+              height: 28,
+            ),
             const SizedBox(
               width: 30,
             ),
             Expanded(
               child: CrayonPaymentText(
                 key: Key('${widget._identifier}_ST_Description'),
-                text:  TextUIDataModel(label.tr,
+                text: TextUIDataModel(label.tr,
                     styleVariant: CrayonPaymentTextStyleVariant.bodyText2,
                     color: AN_TitleColor,
                     fontWeight: FontWeight.w800),
               ),
             ),
             const Icon(
-                Icons.arrow_forward_ios_sharp,
+              Icons.arrow_forward_ios_sharp,
               size: 16,
             ),
           ],
@@ -135,5 +139,3 @@ class _SettingsState extends State<Settings> {
     );
   }
 }
-
-
