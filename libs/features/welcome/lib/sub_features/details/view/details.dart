@@ -65,9 +65,27 @@ class _DetailsScreenState extends State<DetailsScreen> {
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
         context: context,
+        helpText: 'Select Date of Birth',
         initialDate: selectedDate,
         firstDate: DateTime(1900, 1),
-        lastDate: DateTime(2101));
+        lastDate: DateTime(2101),
+      builder: (context, child){
+          return Theme(data: Theme.of(context).copyWith(
+            colorScheme: const ColorScheme.light(
+              primary: PRIMARY_COLOR, // header background color
+              onPrimary: SU_button_text_color, // header text color
+              onSurface: SECONDARY_COLOR, // body text color
+            ),
+            textButtonTheme: TextButtonThemeData(
+              style: TextButton.styleFrom(
+                primary: SECONDARY_COLOR, // button text color
+              ),
+            ),
+          ),
+            child: child!,
+          );
+      }
+    );
     if (picked != null && picked != selectedDate) {
       final DateFormat inputFormat = DateFormat('yyyy-MM-dd');
       setState(() {

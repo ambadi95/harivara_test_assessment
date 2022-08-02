@@ -12,4 +12,8 @@ class DeviceDetailCoordinator extends AnalyticsStateNotifier<DeviceDetailState>{
 
   DeviceDetailCoordinator( this._navigationHandler,
       this._DeviceOptionUseCase,) : super(const DeviceDetailState());
+
+  Future<void> navigateToEnrolledScreen()async{
+    await _navigationHandler.navigateToCustomerEnrollmentScreen('', true);
+  }
 }

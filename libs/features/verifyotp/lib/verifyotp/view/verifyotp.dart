@@ -133,7 +133,7 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
               _buildHeader(context, coordinator, state),
               _enterOtpInstruction(context, coordinator, state),
               const SizedBox(
-                height: 60,
+                height: 200,
               ),
               _enterOtpWidget(context, coordinator, state),
               // const SizedBox(
@@ -156,26 +156,29 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
   }
 
   Widget _buildContinueButton(VerifyOtpCoordinator coordinator) {
-    return InkWell(
-      onTap: () {
-        if (otpController.text.isNotEmpty && otpController.text.length == 6) {
-          coordinator
-              .navigateToDestinationPath(widget.otpScreenArgs.destinationPath, widget.otpScreenArgs.userType,widget.otpScreenArgs);
-        } else {
-          _showAlertForOTPAttempts(coordinator);
-        }
-      },
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Container(
-          width: double.infinity,
-          height: 50,
-          decoration: BoxDecoration(
-              color: SU_button_color, borderRadius: BorderRadius.circular(8.0)),
-          child: Center(
-            child: Text(
-              'SU_button_text'.tr,
-              style: SU_button_text_style,
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 19),
+      child: InkWell(
+        onTap: () {
+          if (otpController.text.isNotEmpty && otpController.text.length == 6) {
+            coordinator
+                .navigateToDestinationPath(widget.otpScreenArgs.destinationPath, widget.otpScreenArgs.userType,widget.otpScreenArgs);
+          } else {
+            _showAlertForOTPAttempts(coordinator);
+          }
+        },
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            width: double.infinity,
+            height: 50,
+            decoration: BoxDecoration(
+                color: SU_button_color, borderRadius: BorderRadius.circular(8.0)),
+            child: Center(
+              child: Text(
+                'VO_verify_button'.tr,
+                style: SU_button_text_style,
+              ),
             ),
           ),
         ),
@@ -237,6 +240,14 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
     VerifyOtpCoordinator coordinator,
     VerifyOtpStateReady state,
   ) {
+    var descriptionMessage = widget.otpScreenArgs.description.tr;
+    if (widget.otpScreenArgs.phoneNumber.isNotEmpty) {
+      descriptionMessage = descriptionMessage.replaceAll(
+        '{}',
+        widget.otpScreenArgs.phoneNumber
+            .substring(widget.otpScreenArgs.phoneNumber.length - 3),
+      );
+    }
     return Container(
       padding: const EdgeInsets.only(
         left: 16,
@@ -249,7 +260,7 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
           CrayonPaymentText(
             key: const Key('otp verification description'),
             text: TextUIDataModel(
-              state.pageDescription.tr,
+              descriptionMessage.tr,
               styleVariant: CrayonPaymentTextStyleVariant.headline4,
               color: VO_DescriptionColor,
               textAlign: TextAlign.left,

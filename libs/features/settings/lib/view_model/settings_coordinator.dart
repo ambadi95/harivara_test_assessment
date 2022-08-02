@@ -13,4 +13,12 @@ class SettingsCoordinator extends BaseViewModel<SettingsState>{
     _navigationHandler.goBack();
   }
 
+  Future<void> resetPasscode()async{
+    await _navigationHandler.navigateToSignUpScreen();
+  }
+
+  Future<void> changeLanguage()async{
+    await _navigationHandler.navigateToAgentChangeLanguageBottomSheet();
+  }
+
 }

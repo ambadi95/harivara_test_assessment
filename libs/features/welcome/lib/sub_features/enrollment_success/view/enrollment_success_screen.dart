@@ -1,10 +1,13 @@
 
 
+import 'package:config/Colors.dart';
 import 'package:config/Config.dart';
 import 'package:config/Styles.dart';
 import 'package:core/view/base_view.dart';
 import 'package:flutter/material.dart';
 import 'package:widget_library/html/rich_text_description.dart';
+import 'package:widget_library/page_header/text_ui_data_model.dart';
+import 'package:widget_library/static_text/crayon_payment_text.dart';
 import '../../../welcome_module.dart';
 import '../state/enrollment_success_state.dart';
 import '../viewmodel/enrollment_success_coordinator.dart';
@@ -13,7 +16,8 @@ import 'package:config/Colors.dart' as config_color;
 
 class EnrollmentSuccessScreen extends StatefulWidget {
   static const viewPath = '${WelcomeModule.moduleIdentifier}/enrollmentSuccess';
-  const EnrollmentSuccessScreen({Key? key}) : super(key: key);
+  final bool isEnrolled;
+  const EnrollmentSuccessScreen({Key? key,required this.isEnrolled}) : super(key: key);
 
   @override
   State<EnrollmentSuccessScreen> createState() => _EnrollmentSuccessScreenState();
@@ -49,6 +53,8 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
           const SizedBox(height: 40,),
           _buildEnrollmentIDText(),
              const Spacer(),
+          _buildAgentContactText() ,
+          const SizedBox(height: 21,),
           _buildAgentNearByButton(coordinator),
           const SizedBox(height: 24,),
           _buildExploreDeviceButton(coordinator)
@@ -98,8 +104,8 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
         width: 280,
         child: RichTextDescription(
             textAlign: TextAlign.center,
-            key: const Key('ensuccess'),
-            description: 'ES_success_text'.tr,
+            key: const Key('en_success'),
+            description: widget.isEnrolled ? 'ES_enrolled_success_text' : 'ES_success_text'.tr,
             linkTextStyle: ES_bold_text,
             descriptionTextStyle: HS_name_text_style
         )
@@ -107,12 +113,23 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
     );
   }
 
+  Widget _buildAgentContactText(){
+    return widget.isEnrolled ? SizedBox(
+      width: 250,
+      child: Text('ES_agent_contact_text'.tr,
+        key: const Key('ES_agent_text'),
+        style: ES_agent_contact_text_style,
+        textAlign: TextAlign.center,
+      ),
+    ) : const SizedBox();
+  }
+
   Widget _buildAgentNearByButton(
       EnrollmentSuccessCoordinator coordinator
       ) {
     return GestureDetector(
       onTap: (){
-        coordinator.navigateToDeviceOption();
+        coordinator.navigateToDeviceOption(widget.isEnrolled);
 
       },
       child: Container(
@@ -123,7 +140,7 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
             borderRadius: BorderRadius.circular(8.0)
         ),
         child: Center(
-          child: Text('ES_select_membership'.tr, style: SU_button_text_style,),
+          child: Text( widget.isEnrolled ? 'ES_view_membership'.tr : 'ES_select_membership'.tr, style: SU_button_text_style,),
         ),
       ),
     );

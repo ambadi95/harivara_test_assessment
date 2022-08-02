@@ -72,6 +72,8 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         //     'Something went wrong',
         //   );
         // }
+      }else if(otpVerificationType == OtpVerificationType.customerSign){
+        _navigationHandler.navigateToCustomerEnrollmentScreen();
       }
 
 
@@ -136,6 +138,10 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
       }
     }else if(otpScreenArgs.otpVerificationType == OtpVerificationType.agentSignIn){
     _navigationHandler.navigateToAgentWelcomeBack(userType);
+    }else if(otpScreenArgs.otpVerificationType == OtpVerificationType.customerSign){
+      _navigationHandler.navigateToCustomerEnrollmentScreen();
+    }else if(otpScreenArgs.otpVerificationType == OtpVerificationType.updatePasscodeAgent){
+      _navigationHandler.openForUpdateNewPasscode(userType);
     }
 
     }

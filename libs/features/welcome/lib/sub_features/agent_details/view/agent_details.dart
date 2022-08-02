@@ -19,7 +19,8 @@ class AgentDetailsScreen extends StatefulWidget {
   static const viewPath = '${WelcomeModule.moduleIdentifier}/agentDetails';
   final String userType;
 
-  const AgentDetailsScreen({Key? key, required this.userType}) : super(key: key);
+  const AgentDetailsScreen({Key? key, required this.userType})
+      : super(key: key);
 
   @override
   State<AgentDetailsScreen> createState() => _AgentDetailsScreenState();
@@ -29,17 +30,19 @@ class _AgentDetailsScreenState extends State<AgentDetailsScreen> {
   bool _isBtnEnabled = false;
   String nameError = '';
   String emailError = '';
-  String dobError ='';
-  String genderError ='';
+  String dobError = '';
+  String genderError = '';
   String mobileError = '';
 
   final FocusNode? focusNode = FocusNode();
-  final TextEditingController name = TextEditingController();
-  final TextEditingController dob = TextEditingController();
-  final TextEditingController gender = TextEditingController();
-  final TextEditingController mobileNumber = TextEditingController();
-  final TextEditingController emailId = TextEditingController();
-
+  final TextEditingController name =
+      TextEditingController(text: 'Kaya Mrisho Kikwete');
+  final TextEditingController dob = TextEditingController(text: '22/6/2000');
+  final TextEditingController gender = TextEditingController(text: 'Male');
+  final TextEditingController mobileNumber =
+      TextEditingController(text: ' +255 621 067 201');
+  final TextEditingController emailId =
+      TextEditingController(text: 'kayamrisho@gmail.com');
 
   DateTime selectedDate = DateTime.now();
 
@@ -60,18 +63,16 @@ class _AgentDetailsScreenState extends State<AgentDetailsScreen> {
     }
   }
 
-
   @override
   Widget build(BuildContext context) =>
       BaseView<AgentDetailsCoordinator, AgentDetailsState>(
         onStateListenCallback: (preState, newState) =>
             {_listenToStateChanges(context, newState)},
-        setupViewModel: (coordinator) async {
-        },
+        setupViewModel: (coordinator) async {},
         builder: (context, state, coordinator) => SafeArea(
           child: Scaffold(
             bottomNavigationBar: Padding(
-              padding: const EdgeInsets.only(left: 16,right: 16,bottom: 18),
+              padding: const EdgeInsets.only(left: 16, right: 16, bottom: 18),
               child: _buildContinueButton(coordinator),
             ),
             appBar: PreferredSize(
@@ -139,14 +140,26 @@ class _AgentDetailsScreenState extends State<AgentDetailsScreen> {
           const SizedBox(
             height: 30,
           ),
+          _buildLabelTextField('DV_name_label'.tr, name, TextInputType.text,
+              coordinator, nameError, 'DV_name_hint_text', false),
+          _buildLabelNumberTextField(
+              'DV_contact_no_label'.tr,
+              mobileNumber,
+              TextInputType.number,
+              coordinator,
+              mobileError,
+              'LS_mobile_hint_text',
+              false),
           _buildLabelTextField(
-              'DV_name_label'.tr, name, TextInputType.text, coordinator,nameError,'DV_name_hint_text', true),
-          _buildLabelNumberTextField('DV_contact_no_label'.tr, mobileNumber,
-              TextInputType.number, coordinator,mobileError,'LS_mobile_hint_text', true),
-          _buildLabelTextField('DV_email_label'.tr, emailId,
-              TextInputType.emailAddress, coordinator,emailError,'DV_email_hint_text', true),
-          _buildLabelTextField(
-              'DV_gender_label'.tr, gender, TextInputType.name, coordinator,genderError,'DV_gender_hint_text', true),
+              'DV_email_label'.tr,
+              emailId,
+              TextInputType.emailAddress,
+              coordinator,
+              emailError,
+              'DV_email_hint_text',
+              false),
+          _buildLabelTextField('DV_gender_label'.tr, gender, TextInputType.name,
+              coordinator, genderError, 'DV_gender_hint_text', false),
           _buildLabelTextFieldDob('DV_dob_label'.tr, dob, coordinator),
         ],
       ),
@@ -157,10 +170,11 @@ class _AgentDetailsScreenState extends State<AgentDetailsScreen> {
     return CrayonPaymentText(
       key: const Key('DV_title'),
       text: TextUIDataModel(
-        'DV_title'.tr,
+        'DV_title_agent'.tr,
         styleVariant: CrayonPaymentTextStyleVariant.headline2,
         color: VO_TitleColor,
         textAlign: TextAlign.left,
+        fontWeight: FontWeight.bold
       ),
     );
   }
@@ -188,8 +202,14 @@ class _AgentDetailsScreenState extends State<AgentDetailsScreen> {
     );
   }
 
-  Widget _buildLabelTextField(String label, TextEditingController controller,
-      TextInputType textInputType, AgentDetailsCoordinator coordinator, String errorText, String hint, bool enabled) {
+  Widget _buildLabelTextField(
+      String label,
+      TextEditingController controller,
+      TextInputType textInputType,
+      AgentDetailsCoordinator coordinator,
+      String errorText,
+      String hint,
+      bool enabled) {
     return Padding(
         padding: const EdgeInsets.only(bottom: 34),
         child: InputFieldWithLabel(
@@ -202,18 +222,18 @@ class _AgentDetailsScreenState extends State<AgentDetailsScreen> {
           keyboardType: textInputType,
           onChanged: (value) {
             _validateForm(coordinator);
-            if(errorText.isNotEmpty){
-              coordinator.isValidName(name.text);
-              coordinator.isValidEmail(emailId.text);
-              coordinator.isValidGender(gender.text);
-            }
-
           },
         ));
   }
 
-  Widget _buildLabelNumberTextField(String label, TextEditingController controller,
-      TextInputType textInputType, AgentDetailsCoordinator coordinator, String errorText, String hint, bool enabled) {
+  Widget _buildLabelNumberTextField(
+      String label,
+      TextEditingController controller,
+      TextInputType textInputType,
+      AgentDetailsCoordinator coordinator,
+      String errorText,
+      String hint,
+      bool enabled) {
     return Padding(
         padding: const EdgeInsets.only(bottom: 34),
         child: InputFieldWithLabel(
@@ -226,9 +246,6 @@ class _AgentDetailsScreenState extends State<AgentDetailsScreen> {
           keyboardType: textInputType,
           onChanged: (value) {
             _validateForm(coordinator);
-            if(mobileError.isNotEmpty || mobileNumber.text.length > 9 ) {
-              coordinator.isValidMobileNumber(mobileNumber.text);
-            }
           },
         ));
   }
@@ -244,6 +261,7 @@ class _AgentDetailsScreenState extends State<AgentDetailsScreen> {
           hintText: 'DV_dob_hint_text'.tr,
           key: const Key('detailsTextFieldDob'),
           keyboardType: TextInputType.none,
+          enabled: false,
           onChanged: (value) {
             _validateForm(coordinator);
           },
@@ -254,35 +272,21 @@ class _AgentDetailsScreenState extends State<AgentDetailsScreen> {
                 borderSide: BorderSide(color: config_color.SU_border_color)),
           ),
           onTap: () async {
-           await _selectDate(context);
-            if(dobError.isNotEmpty){
-              coordinator.isValidDob(dob.text);
-            }
+            await _selectDate(context);
           },
         ));
   }
 
-
-
   Widget _buildContinueButton(AgentDetailsCoordinator coordinator) {
     return GestureDetector(
       onTap: () {
-        coordinator.isValidEmail(emailId.text);
-        coordinator.isValidName(name.text);
-        coordinator.isValidGender(gender.text);
-        coordinator.isValidDob(dob.text);
-        coordinator.isValidMobileNumber(mobileNumber.text);
-        if (_isBtnEnabled && coordinator.isValidMobileNumber(mobileNumber.text)) {
-          coordinator.navigateToOtpScreen(widget.userType);
-        }
+        coordinator.navigateToOtpScreen(widget.userType, mobileNumber.text);
       },
       child: Container(
         width: double.infinity,
         height: 50,
         decoration: BoxDecoration(
-            color: _isBtnEnabled
-                ? config_color.SU_button_color
-                : config_color.SU_grey_color,
+            color: config_color.SU_button_color,
             borderRadius: BorderRadius.circular(8.0)),
         child: Center(
           child: Text(
@@ -299,20 +303,19 @@ class _AgentDetailsScreenState extends State<AgentDetailsScreen> {
         DetailsFormState: (isValid) {
           _isBtnEnabled = isValid;
         },
-        emailError: (message){
+        emailError: (message) {
           emailError = message;
         },
-        nameError: (message){
+        nameError: (message) {
           nameError = message;
         },
-
-        dobError: (message){
+        dobError: (message) {
           dobError = message;
         },
-        genderError: (message){
+        genderError: (message) {
           genderError = message;
         },
-        mobileError: (message){
+        mobileError: (message) {
           mobileError = message;
         },
         orElse: () => null);
@@ -320,10 +323,11 @@ class _AgentDetailsScreenState extends State<AgentDetailsScreen> {
 
   void _validateForm(AgentDetailsCoordinator coordinator) {
     coordinator.validateForm(
-        name.text,
-        dob.text,
-        gender.text,
-        mobileNumber.text,
-        emailId.text,);
+      name.text,
+      dob.text,
+      gender.text,
+      mobileNumber.text,
+      emailId.text,
+    );
   }
 }

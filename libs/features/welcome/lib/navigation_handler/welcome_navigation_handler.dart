@@ -15,7 +15,9 @@ import 'package:login/view/login_screen.dart';
 import 'package:passcode/sub_features/passcode/view/passcode.dart';
 import 'package:shared_data_models/passcode/passcode_screen_args.dart';
 import 'package:shared_data_models/passcode/passcode_verification_type.dart';
+import 'package:shared_data_models/signup/sign_up_type.dart';
 import 'package:verifyotp/verifyotp/view/verifyotp.dart';
+import 'package:welcome/data_model/sign_up_arguments.dart';
 import 'package:welcome/sub_features/agent_details/view/agent_details.dart';
 import 'package:welcome/sub_features/details/view/details.dart';
 import 'package:welcome/sub_features/signup/view/signup.dart';
@@ -23,6 +25,8 @@ import 'package:widget_library/helpers/error/helper/error_helper.dart';
 import 'package:device_option/view/device_option_screen.dart';
 import 'package:agent_nearby/view/agent_nearby_screen.dart';
 import 'package:widget_library/icons/crayon_payment_bottom_sheet_icon.dart';
+
+import '../sub_features/enrollment_success/view/enrollment_success_screen.dart';
 
 class WelcomeNavigationHandler with ErrorHandler {
   final NavigationManager _navigationManager;
@@ -34,11 +38,30 @@ class WelcomeNavigationHandler with ErrorHandler {
   }
 
   Future<void> navigateToSignUpScreen(String userType) async {
-    await _navigationManager.navigateTo(
-      SignUp.viewPath,
-      const NavigationType.push(),
-      arguments: userType
-    );
+    if(userType == 'Customer'){
+      var arguments = SignUpArguments(
+          'SU_title',
+          'SU_subtitle',
+          userType,
+          SignupType.customerSignUp,
+        true,
+              );
+      await _navigationManager.navigateTo(
+          SignUp.viewPath, const NavigationType.push(),
+          arguments: arguments);
+    }else{
+      var arguments = SignUpArguments(
+          'SU_title_agent',
+          'SU_subtitle',
+          userType,
+          SignupType.agentSignUp,
+          true,
+      );
+      await _navigationManager.navigateTo(
+          SignUp.viewPath, const NavigationType.push(),
+          arguments: arguments);
+    }
+
   }
 
   Future<void> navigateToCreatePasscodeScreen() async {
@@ -50,16 +73,15 @@ class WelcomeNavigationHandler with ErrorHandler {
 
   Future<void> openForNewPasscode(String userType) async {
     var arguments = PasscodeScreenArgs(
-      'PC_create_passcode',
-      'PC_passcode_message',
-      'welcomeModule/enrollmentSuccess',
-      true,
-      3,
-      PassCodeVerificationType.create,
-      false,
-      '',
-      userType
-    );
+        'PC_create_passcode',
+        'PC_passcode_message',
+        'welcomeModule/enrollmentSuccess',
+        true,
+        3,
+        PassCodeVerificationType.create,
+        false,
+        '',
+        userType);
 
     _navigationManager.navigateTo(
       CrayonPasscodeScreen.viewPath,
@@ -83,67 +105,108 @@ class WelcomeNavigationHandler with ErrorHandler {
     );
   }
 
-  Future<void> navigateToDeviceOption() async {
-    var argument = DeviceOptionArgs(
-      false,
-      ''
-    );
+  Future<void> navigateToDeviceOption(bool isEnrolled) async {
+    var argument = DeviceOptionArgs(isEnrolled, '');
     await _navigationManager.navigateTo(
-      DeviceOption.viewPath,
-      const NavigationType.push(),
-      arguments: argument
-    );
+        DeviceOption.viewPath, const NavigationType.push(),
+        arguments: argument);
   }
 
   Future<void> navigateToLogin(String userType) async {
     await _navigationManager.navigateTo(
-      Login.viewPath,
-      const NavigationType.push(),
-      arguments: userType
-    );
+        Login.viewPath, const NavigationType.push(),
+        arguments: userType);
   }
 
   Future<void> navigateToAgentHome() async {
-    var argument = HomeScreenArgs(
-        true
-    );
+    var argument = HomeScreenArgs(true);
     await _navigationManager.navigateTo(
-        CrayonHomeScreen.viewPath,
-        const NavigationType.push(),
-        arguments: argument
-    );
+        CrayonHomeScreen.viewPath, const NavigationType.push(),
+        arguments: argument);
   }
 
   Future<void> navigateToCustomerHome() async {
-    var argument = HomeScreenArgs(
-      false
-    );
+    var argument = HomeScreenArgs(false);
     await _navigationManager.navigateTo(
-        CrayonHomeScreen.viewPath,
-        const NavigationType.push(),
-        arguments: argument
-    );
+        CrayonHomeScreen.viewPath, const NavigationType.push(),
+        arguments: argument);
+  }
+
+  Future<void> navigateToCustomerEnrollmentScreen() async {
+    var argument = true;
+    _navigationManager.navigateTo(
+        EnrollmentSuccessScreen.viewPath, const NavigationType.replace(),
+        arguments: argument);
   }
 
   Future<void> navigateToAgentDetailScreen(String userType) async {
     await _navigationManager.navigateTo(
-      AgentDetailsScreen.viewPath,
-      const NavigationType.push(),
-      arguments: userType
-    );
+        AgentDetailsScreen.viewPath, const NavigationType.push(),
+        arguments: userType);
   }
 
-  Future<void> navigateToOtpScreenCustomerSignUp(String userType) async {
+  Future<void> navigateToOtpScreenCustomerSignUp(
+      String userType, String mobileNumber) async {
     var arguments = OtpScreenArgs(
       'OTP Verification',
       'VO_otp_verification_description',
-      userType == 'Customer' ? 'welcomeModule/details' : 'welcomeModule/agentDetails',
+      userType == 'Customer'
+          ? 'welcomeModule/details'
+          : 'welcomeModule/agentDetails',
       true,
       2,
       OtpVerificationType.mobile,
       '',
       6,
-      '1234567890',
+      mobileNumber,
+      false,
+      userType,
+    );
+    _navigationManager.navigateTo(
+      CrayonVerifyOtpScreen.viewPath,
+      const NavigationType.push(),
+      preventDuplicates: false,
+      arguments: arguments,
+    );
+  }
+
+    Future<void> navigateToOtpScreenAgentResetPasscode(
+        String userType) async {
+      var arguments = OtpScreenArgs(
+        'OTP Verification',
+        'VO_otp_verification_description',
+        'passcodeModule/passcode',
+        false,
+        2,
+        OtpVerificationType.updatePasscodeAgent,
+        '',
+        6,
+        '1003232',
+        false,
+        userType,
+      );
+
+    _navigationManager.navigateTo(
+      CrayonVerifyOtpScreen.viewPath,
+      const NavigationType.push(),
+      preventDuplicates: false,
+      arguments: arguments,
+    );
+  }
+
+  Future<void> navigateToOtpScreen(String userType, String mobileNumber) async {
+    var arguments = OtpScreenArgs(
+      'OTP Verification',
+      'VO_otp_verification_description',
+      userType == 'Customer'
+          ? 'welcomeModule/details'
+          : 'welcomeModule/agentDetails',
+      true,
+      3,
+      OtpVerificationType.mobile,
+      '',
+      6,
+      mobileNumber,
       false,
       userType,
     );
@@ -156,43 +219,24 @@ class WelcomeNavigationHandler with ErrorHandler {
     );
   }
 
-  Future<void> navigateToOtpScreen(String userType) async {
-    var arguments = OtpScreenArgs(
-        'OTP Verification',
-        'VO_otp_verification_description',
-        userType == 'Customer' ? 'welcomeModule/details' : 'welcomeModule/agentDetails',
-        true,
-        3,
-        OtpVerificationType.mobile,
-        '',
-        6,
-        '1234567890',
-        false,
-        userType,
-    );
-
-    _navigationManager.navigateTo(
-      CrayonVerifyOtpScreen.viewPath,
-      const NavigationType.push(),
-      preventDuplicates: false,
-      arguments: arguments,
-    );
-  }
-
-  Future<void> navigateToAgentEnrollmentBottomSheet(String message,) async {
-    final CrayonPaymentBottomSheetIcon icon = CrayonPaymentBottomSheetSuccessIcon();
-    final CrayonPaymentBottomSheetState infoState = CrayonPaymentBottomSheetState.agentEnrollment(
-      buttonOptions: [
-        ButtonOptions(Black,'Continue to the app', (){},false)
-      ],
-      disableCloseButton: true,
-      bottomSheetIcon: icon,
-      title: 'Congratulations,\n %{Ashish | click}%\n You have successfully Onboarded',
-      subtitle: "Your Y9 Agent ID\n %{XXXXX | click}% ",
-      additionalText: [
-        "Your Y9 Agent id has been sent successfully to your mobile number and Email ID"
-      ]
-    );
+  Future<void> navigateToAgentEnrollmentBottomSheet(
+    String message,
+  ) async {
+    final CrayonPaymentBottomSheetIcon icon =
+        CrayonPaymentBottomSheetSuccessIcon();
+    final CrayonPaymentBottomSheetState infoState =
+        CrayonPaymentBottomSheetState.agentEnrollment(
+            buttonOptions: [
+              ButtonOptions(Black, 'Continue to the app', () {}, false)
+            ],
+            disableCloseButton: true,
+            bottomSheetIcon: icon,
+            title:
+                'Congratulations,\n %{Ashish | click}%\n You have successfully Onboarded',
+            subtitle: "Your Y9 Agent ID\n %{XXXXX | click}% ",
+            additionalText: [
+              "Your Y9 Agent id has been sent successfully to your mobile number and Email ID"
+            ]);
 
     _navigationManager.navigateTo(
       'bottomSheet/crayonPaymentBottomSheet',
@@ -200,6 +244,19 @@ class WelcomeNavigationHandler with ErrorHandler {
       arguments: infoState,
     );
   }
+
+  Future<void> navigateToResetPasscode(String userType) async {
+      var arguments = SignUpArguments(
+        'SU_reset_passcode',
+        'SU_reset_subtitle',
+        userType,
+        SignupType.resetPasscodeAgent,
+        false,
+      );
+      await _navigationManager.navigateTo(
+          SignUp.viewPath, const NavigationType.push(),
+          arguments: arguments);
+    }
 
 // Future<void> navigateToDestination(
 //     String? destination,

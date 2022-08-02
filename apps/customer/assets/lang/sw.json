@@ -88,6 +88,8 @@
   "ES_enroll_id" : "Your Reference ID\n XXXXX",
   "ES_near_agent_button" : "Tazama karibu na Wakala (inakuja hivi karibuni)",
   "ES_select_membership" : "Chagua Uanachama Wako",
+  "ES_view_membership" : "View Your Membership",
+  "ES_agent_contact_text" : "Y9 agent will contact you shortly on your Membership",
 
 
 
@@ -140,6 +142,7 @@
   "VO_Incorrect_OTP_Title":"OTP si sahihi",
   "VO_Incorrect_OTP_Alert_Msg":"Umetumia majaribio yako yote. Tafadhali jisajili tena.",
   "VO_resend_otp" : "Tuma tena baada ya sekunde %s.",
+  "VO_verify_button" : "Verify",
 
 
 

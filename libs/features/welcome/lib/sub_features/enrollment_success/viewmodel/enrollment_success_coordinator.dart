@@ -13,8 +13,8 @@ class EnrollmentSuccessCoordinator extends BaseViewModel<EnrollmentSuccessState>
     _navigationHandler.navigateToNearByAgent();
   }
 
-  Future navigateToDeviceOption() async {
-    _navigationHandler.navigateToDeviceOption();
+  Future navigateToDeviceOption(bool isEnrolled) async {
+    _navigationHandler.navigateToDeviceOption(isEnrolled);
   }
 
 }

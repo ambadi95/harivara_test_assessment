@@ -5,6 +5,7 @@
   "OB_SignIn" : "Weka sahihi",
   "OB_SignUp" : "Jisajili",
   "OB_Lang" : "SW",
+  "OB_ni_bora" : "ni %{Bora|click}%",
 
   "LS_Login" : "Ingia kwa Y9 Yako \nWakala",
   "LS_Mobile" : "Namba ya simu ya mkononi",
@@ -29,6 +30,11 @@
   "SU_title_error_text" : "Nambari ya NINDA si sahihi",
   "SU_subtitle_error_text" : "Nambari ya Simu batili",
   "SU_agent_id_error_text" : "Kitambulisho batili cha Wakala wa Y9",
+
+  "SU_reset_passcode" : "Reset Passcode",
+  "SU_reset_subtitle" : "You can Reset the passcode here using OTP sent to your registered mobile number",
+  "SU_update_passcode" : "Update Passcode",
+  "SU_update_subtitle" : "You can Update the passcode here using OTP sent to your registered mobile number",
 
   "DV_title" : "Ingiza Maelezo ya Kibinafsi",
   "DV_subtitle" : "Thibitisha maelezo yako au usasishe ikiwa inahitajika",
@@ -89,6 +95,8 @@
   "ES_enroll_id" : "Kitambulisho chako cha Kujiandikisha %{“XXXXXX” | click}%",
   "ES_near_agent_button" : "Tazama karibu na Wakala (inakuja hivi karibuni)",
   "ES_select_membership" : "Chagua Uanachama Wako",
+  "ES_view_membership" : "View Your Membership",
+  "ES_agent_contact_text" : "Y9 agent will contact you shortly on your Membership",
 
 
 
@@ -147,5 +155,22 @@
   "DD_TotalAmountPaid" : "Jumla ya Kiasi cha Kulipwa",
   "DD_SelectDevice" : "Select Device",
   "DD_MembershipTerms" : "Membership Terms",
-  "DD_MembershipBenefits" : "Y9 Membership Benefits"
+  "DD_MembershipBenefits" : "Y9 Membership Benefits",
+
+  "DD_MemberBenefit1": "Loan to Finance your Smartphone Device",
+  "DD_MemberBenefit2": "Customised Digital Platforms as per Customer needs",
+  "DD_MemberBenefit3": "Access to Financial Services",
+  "DD_MemberBenefit4": "Mobile and Digital Products with Service",
+  "DD_MemberBenefit5": "Free Educational Content and Books",
+  "DD_MemberBenefit6": "Membership and Loyalty Benefits",
+  "DD_MemberBenefit7": "Huge incentives for referrals of family and friends",
+  "DD_MemberBenefit8": "Access to your Y9 Account",
+
+  "ST_title" : "Mipangilio",
+  "ST_subTitle" : "Usimamizi wa Wasifu",
+  "ST_view_profile" : "Tazama Wasifu",
+  "ST_update_passcode" : "Sasisha nambari ya siri",
+  "ST_App_Language" : "Lugha ya Programu",
+  "ST_sign_out" : "Toka",
+  "ST_contact_text" : "Unahitaji Usaidizi au Ikiwa Una Swali lolote \\n Wasiliana Nasi kwa 1800-1800-1800"
 }

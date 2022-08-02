@@ -1,5 +1,6 @@
 import 'package:core/navigation/i_route_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:welcome/data_model/sign_up_arguments.dart';
 import 'package:welcome/sub_features/details/view/details.dart';
 import 'package:welcome/sub_features/enrollment_success/view/enrollment_success_screen.dart';
 import 'package:welcome/sub_features/signup/view/signup.dart';
@@ -20,13 +21,16 @@ class WelcomeRouteManager extends IRouteManager {
           welcomeScreenArgs: arguments,
         );
       case SignUp.viewPath :
-        var arguments = settings.arguments as String;
-          return SignUp(userType: arguments,);
+        var arguments = settings.arguments as SignUpArguments;
+          return SignUp(signUpArguments: arguments,);
       case DetailsScreen.viewPath :
         var arguments = settings.arguments as String;
         return DetailsScreen(userType: arguments,);
       case EnrollmentSuccessScreen.viewPath :
-        return const EnrollmentSuccessScreen();
+        var argument = settings.arguments as bool;
+        return EnrollmentSuccessScreen(
+          isEnrolled: argument,
+        );
       case CrayonWelcomBackScreen.viewPath :
          String arguments = settings.arguments as String;
         return CrayonWelcomBackScreen(

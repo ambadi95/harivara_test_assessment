@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:welcome/sub_features/welcome/data_model/welcome_model.dart';
 import 'package:core/view/base_view.dart';
 import 'package:get/get.dart';
+import 'package:widget_library/html/rich_text_description.dart';
 import 'package:widget_library/spacers/crayon_payment_spacers.dart';
 
 import '../../../welcome_module.dart';
@@ -25,21 +26,6 @@ class CrayonWelcomScreen extends StatefulWidget {
 
   @override
   State<CrayonWelcomScreen> createState() => _CrayonWelcomScreenState();
-  // factory CrayonWelcomScreen.forCustomerApp() => CrayonWelcomScreen(
-  //   welcomeScreenArgs: WelcomeScreenArgs(
-  //     '',
-  //     '',
-  //     'Customer',
-  //   ),
-  // );
-
-  // factory CrayonWelcomScreen.forMerchantApp() => CrayonWelcomScreen(
-  //   welcomeScreenArgs: WelcomeScreenArgs(
-  //     '',
-  //     '',
-  //     'Agent',
-  //   ),
- // );
 }
 
 class _CrayonWelcomScreenState extends State<CrayonWelcomScreen> {
@@ -48,6 +34,7 @@ class _CrayonWelcomScreenState extends State<CrayonWelcomScreen> {
   Widget build(BuildContext context) =>
       BaseView<WelcomeCoordinator, WelcomeScreenState>(
     setupViewModel: (coordinator) async {
+      await coordinator.getCurrentLocale();
     },
     builder: (context, state, welcomeCoordinator) => Scaffold(
       body: _buildMainUIWithLoading(context,welcomeCoordinator, state),
@@ -98,13 +85,14 @@ Widget _buildNonSignedInUI(
       Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const SizedBox(height: 40),
+          const SizedBox(height: 100),
           _buildLogo(context),
+          _niBoraText(),
           _buildSizedBox(),
           _buildTitle(context),
           _buildSizedBox(),
            _buildSubTitle(context),
-          const SizedBox(height: 10),
+          const SizedBox(height: 5),
           _buildThirdTitle(context),
             const Spacer(),
           _buildButtons(context, welcomeCoordinator, state),
@@ -153,6 +141,14 @@ Widget _buildNonSignedInUI(
       width: 150,
       fit: BoxFit.fill,
     );
+  }
+
+  Widget _niBoraText(){
+      return RichTextDescription(
+          key: const Key('OB_ni_bora'),
+          description: 'OB_ni_bora'.tr,
+          linkTextStyle: WELCOME_NI_TEXT_STYLE,
+          descriptionTextStyle: WELCOME_BORA_TEXT_STYLE);
   }
 
   Widget _buildTitle(BuildContext context) {
