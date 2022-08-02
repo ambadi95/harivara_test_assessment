@@ -43,6 +43,8 @@ import 'package:welcome/navigation_handler/welcome_route_manager.dart';
 import 'package:welcome/welcome_module.dart';
 import 'package:widget_library/app_mobile_widgets.dart';
 import 'package:widget_library/keypad/utils/keypad_button_pressed_value_updater.dart';
+import 'package:termscondition/termscondition/termscondition_module.dart';
+import 'package:termscondition/termscondition/navigation_handler/termscond_route_manager.dart';
 
 import 'home/home_module.dart';
 import 'home/navigation_handler/home_route_manager.dart';
@@ -105,6 +107,7 @@ class AppModule {
     LoginModule.registerDependencies();
 
     CustomerHomeModule.registerDependencies();
+    TermsConditionModule.registerDependencies();
 
 
 
@@ -193,6 +196,10 @@ void _registerRouteManagers() {
   navigationManagerContainer.registerRouteManager(
     VerifyOtpModule.moduleIdentifier,
     VerifyOtpRouteManager(),
+  );
+  navigationManagerContainer.registerRouteManager(
+    TermsConditionModule.moduleIdentifier,
+    TermsConditionRouteManager(),
   );
 
 

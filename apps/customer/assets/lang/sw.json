@@ -155,6 +155,17 @@
   "HS_PendingCustomerRequests" : "Pending Customer\nRequest",
   "HS_Customer_OnBoarding" : "Customer Onboarding",
   "HS_Customer_DeviceSwap" : "Device swap",
-  "HS_Customer_AgentSupport" : "Agent Support"
+  "HS_Customer_AgentSupport" : "Agent Support",
+
+
+
+  "TC_Title": "Y9’s Mobile App Terms of Use",
+  "TC_LastUpdated": "Last updated : 2 Aug, 2022",
+  "TC_Description": "The www.y9bank.com website and Y9 Customer App mobile application (“App”) are owned and operated by Y9 Microfinance Tanzania Limited (“Y9”) a company duly incorporated under the provisions of the Companies Act, 2002 and The Banking and Financial Institutions Act 2006, and having its registered offices at P.O. BOX 20787 Dar es Salaam located at 180 Msasani Bay, Kinondoni Dar es Salaam. To access or use the App on any compatible device and avail Services you are required to accept these Terms and Conditions (“T&Cs”). By accepting these T&Cs, you signify that you have read, understood, and agree to be bound by these T&Cs and any other applicable law, whether or not you are a registered member of the App. As used herein, “User” shall mean anyone who uses or accesses the App on any computer, mobile phone, tablet, console, or other device (collectively, “Device”) and/or avails the Services. Your continued use of the App and/or availing of the Services shall be constituted as your acceptance to the T&Cs. If you do not agree with these T&Cs, please do not access and use the App or avail such Services. For the purposes of these T&Cs, “Y9” shall mean Y9, and/or third-party service providers engaged by Y9 to render certain Services on the App and ‘you’ and ‘your’ shall mean a User who meets the eligibility criteria set out below.",
+  "TC_TermsCondition_Subtitle":"1. TERMS AND CONDITIONS ",
+  "TC_Terms_Conditons_Desc": "1.1. These T&Cs replace all earlier terms and conditions (if any) except where we advise you otherwise. Your access and use of the App following any such change constitutes your agreement to follow and be bound by these T&Cs. For this reason, Y9 encourage you to review these T&Cs each time you access and use the App and/or avail Y9 Services.",
+  "TC_Purpose_title":"2. PURPOSE",
+  "TC_Purpose_Desc": "2.1. Y9 is a digital Microfinance provider aiming to help develop the lifestyle of the people of Tanzania and the African continent as a whole by providing financial services to the unbanked and under banked by creating access to digital education, digital healthcare, etc. by offering 4G smartphones on very fair terms to make it accessible to all citizens by enabling meaningful financial and digital inclusion."
+
 
 }
