@@ -1,7 +1,7 @@
 name: crayon_payment_customer
 description: CrayonPayment Customer Base App
 publish_to: 'none'
-version: 1.0.0+1
+version: 0.0.1+2
 
 environment:
   sdk: ">=2.16.1 <3.0.0"
@@ -9,21 +9,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  firebase_core: ^1.12.0
   json_serializable: ^6.1.4
   flutter_riverpod: ^1.0.3
   carousel_slider: ^4.0.0
-  syncfusion_flutter_datepicker: ^19.4.53
   get: ^4.6.1
-  image_cropper: ^1.5.0
-  screenshot: ^1.2.3
-  share: ^2.0.4
-  path_provider: ^2.0.9
-  image_gallery_saver: '^1.7.1'
-  contacts_service: ^0.6.3
-  permission_handler: ^9.1.0
-  connectivity_for_web: 0.4.0+1
-  scan: ^1.6.0
   sqflite:
 
   config:
@@ -111,18 +100,6 @@ flutter:
 
 
   fonts:
-    - family: Brown
-      fonts:
-        - asset: assets/fonts/Brown-Regular.ttf
-    - family: Brown-Light
-      fonts:
-        - asset: assets/fonts/Brown-Light.ttf
-    - family: Zarid-Medium
-      fonts:
-        - asset: assets/fonts/Zarid-Medium.otf
-    - family: OCR-A
-      fonts:
-        - asset: assets/fonts/OCR-A-Regular.ttf
     - family : Montserrat
       fonts:
         - asset: assets/fonts/Montserrat-Regular.ttf
