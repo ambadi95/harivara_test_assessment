@@ -72,6 +72,9 @@ dependencies:
   home:
     path: ../../libs/features/home
 
+  termscondition:
+    path: ../../libs/features/termscondition
+
 
 
 dev_dependencies:
