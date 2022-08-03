@@ -4,7 +4,7 @@ import 'package:passcode/sub_features/passcode/view_model/passcode_usecase.dart'
 import 'package:task_manager/base_classes/base_view_model.dart';
 import 'package:shared_data_models/passcode/passcode_verification_type.dart';
 import 'package:widget_library/keypad/keypad_button_type.dart';
-
+import 'package:get/get.dart';
 import '../state/passcode_state.dart';
 
 class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
@@ -152,9 +152,10 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
       if(userType == "Customer"){
         _navigationHandler.navigateToCustomerEnrollmentScreen(destinationPath, false);
       } else {
-        _navigationHandler.navigateToAgentEnrollmentBottomSheet("message");
-      }
+        _navigationHandler.navigateToAgentEnrollmentBottomSheet('AE_Message'.tr,'AE_Continue'.tr);
+        _navigationHandler.navigateToResetPasscodeBottomSheet('RP_Passcode_Reset'.tr,'RP_Continue'.tr,'RP_Passcode_Desc'.tr);
 
+      }
     } else {
       state = currentState.copyWith(
         pageDescription: 'PC_passcode_does_not_match',

@@ -10,7 +10,7 @@ import 'package:home/home/view/home_screen.dart';
 import 'package:welcome/sub_features/enrollment_success/view/enrollment_success_screen.dart';
 import 'package:widget_library/helpers/error/helper/error_helper.dart';
 import 'package:widget_library/icons/crayon_payment_bottom_sheet_icon.dart';
-
+import 'package:get/get.dart';
 class PasscodeNavigationHandler with ErrorHandler{
   final NavigationManager _navigationManager;
 
@@ -45,19 +45,34 @@ class PasscodeNavigationHandler with ErrorHandler{
     );
   }
 
-  Future<void> navigateToAgentEnrollmentBottomSheet(String message,) async {
+  Future<void> navigateToAgentEnrollmentBottomSheet(String message,String buttonLabel) async {
     final CrayonPaymentBottomSheetIcon icon = CrayonPaymentBottomSheetSuccessIcon();
     final CrayonPaymentBottomSheetState infoState = CrayonPaymentBottomSheetState.agentEnrollment(
         buttonOptions: [
-          ButtonOptions(Black,'Continue to the app', ()=>navigateToAgentHome(),false)
+          ButtonOptions(Black,buttonLabel, ()=>navigateToAgentHome(),false)
         ],
         disableCloseButton: true,
         bottomSheetIcon: icon,
-        title: 'Congratulations,\n %{Ashish | click}%\n You have successfully Onboarded',
-        subtitle: "Your Y9 Agent ID\n %{XXXXX | click}% ",
-        additionalText: [
-          "Your Y9 Agent id has been sent successfully to your mobile number and Email ID"
-        ]
+        title: message,
+    );
+
+    _navigationManager.navigateTo(
+      'bottomSheet/crayonPaymentBottomSheet',
+      const NavigationType.bottomSheet(),
+      arguments: infoState,
+    );
+  }
+
+  Future<void> navigateToResetPasscodeBottomSheet(String message,String buttonLabel,String description) async {
+    final CrayonPaymentBottomSheetIcon icon = CrayonPaymentBottomSheetSuccessIcon();
+    final CrayonPaymentBottomSheetState infoState = CrayonPaymentBottomSheetState.agentEnrollment(
+      buttonOptions: [
+        ButtonOptions(Black,buttonLabel, ()=>navigateToAgentHome(),false)
+      ],
+      disableCloseButton: true,
+      bottomSheetIcon: icon,
+      title: message,
+      additionalText: [description]
     );
 
     _navigationManager.navigateTo(

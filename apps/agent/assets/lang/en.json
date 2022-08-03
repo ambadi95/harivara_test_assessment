@@ -124,16 +124,16 @@
   "SP_bora": " Bora",
 
   "HS_Agent_Id" : "Y9 Agent Id",
-  "HS_TotalOnBoarderCustomers" : "Total Onboarded Customers",
-  "HS_PendingCustomerRequests" : "Pending Customer Request",
-  "HS_Customer_OnBoarding" : "Customer Onboarding",
-  "HS_Customer_DeviceSwap" : "Device swap / repair",
-  "HS_Customer_AgentSupport" : "Agent Support",
+  "HS_TotalOnBoarderCustomers" : "Total Customer \nRegistered ",
+  "HS_PendingCustomerRequests" : "Pending Customer \nRequest",
+  "HS_Customer_OnBoarding" : "Customer \nOnboarding",
+  "HS_Customer_DeviceSwap" : "Device swap \n/ repair",
+  "HS_Customer_AgentSupport" : "Agent \nSupport",
 
-  "AE_Message" : "Congratulations,\nAshish You have successfully Onboarded",
+  "AE_Message" : "Congratulations,\n%{Jakaya Mrisho Kikwete | click}% You \nhave successfully Onboarded into Y9 Agent App",
   "AE_AgentId" : "Your Y9 Agent ID",
   "AE_Description" : "Your Y9 Agent id has been sent successfully to your mobile number and Email ID",
-  "AE_Continue" : "Continue to the app",
+  "AE_Continue" : "Continue to your Y9 Agent App",
 
   "DO_Title": "Device Options",
   "D0_JoiningFee": "Joining Fee (one off)",
@@ -165,6 +165,10 @@
   "DD_MemberBenefit6": "Membership and Loyalty Benefits",
   "DD_MemberBenefit7": "Huge incentives for referrals of family and friends",
   "DD_MemberBenefit8": "Access to your Y9 Account",
+
+  "RP_Passcode_Reset" : "Passcode has been Reset successfully",
+  "RP_Passcode_Desc" : "Please use the new passcode to Sign-in and proceed further",
+  "RP_Continue" : "Continue",
 
   "ST_title" : "Settings",
   "ST_subTitle" : "Profile Management",
