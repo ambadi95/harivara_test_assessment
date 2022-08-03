@@ -12,9 +12,6 @@ import 'package:shared_data_models/otp/otp_verification_type.dart';
 import 'package:shared_data_models/passcode/passcode_screen_args.dart';
 import 'package:shared_data_models/passcode/passcode_verification_type.dart';
 import 'package:login/view/login_screen.dart';
-import 'package:passcode/sub_features/passcode/view/passcode.dart';
-import 'package:shared_data_models/passcode/passcode_screen_args.dart';
-import 'package:shared_data_models/passcode/passcode_verification_type.dart';
 import 'package:shared_data_models/signup/sign_up_type.dart';
 import 'package:verifyotp/verifyotp/view/verifyotp.dart';
 import 'package:welcome/data_model/agent_detail_arguments.dart';
@@ -28,6 +25,7 @@ import 'package:agent_nearby/view/agent_nearby_screen.dart';
 import 'package:widget_library/icons/crayon_payment_bottom_sheet_icon.dart';
 import 'package:shared_data_models/kyc/agent_detail_screen_type.dart';
 import '../sub_features/enrollment_success/view/enrollment_success_screen.dart';
+import 'package:termscondition/termscondition/view/terms_condition_view.dart';
 
 class WelcomeNavigationHandler with ErrorHandler {
   final NavigationManager _navigationManager;
@@ -138,6 +136,12 @@ class WelcomeNavigationHandler with ErrorHandler {
     _navigationManager.navigateTo(
         EnrollmentSuccessScreen.viewPath, const NavigationType.replace(),
         arguments: argument);
+  }
+
+  Future<void> navigateToTermsCondtionsScreen() async {
+    _navigationManager.navigateTo(
+      CrayonTermsCondition.viewPath, const NavigationType.push(),
+       );
   }
 
   Future<void> navigateToAgentDetailScreen(String userType) async {

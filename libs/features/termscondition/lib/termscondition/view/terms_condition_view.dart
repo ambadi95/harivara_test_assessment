@@ -2,17 +2,17 @@ import 'package:config/Colors.dart';
 import 'package:core/view/base_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:settings/settings_model.dart';
 import 'package:widget_library/page_header/text_ui_data_model.dart';
 import 'package:widget_library/static_text/crayon_payment_text.dart';
 
 import '../state/termscondition_state.dart';
+import '../termscondition_module.dart';
 import '../view_model/termscondition_coordinator.dart';
 
 class CrayonTermsCondition extends StatefulWidget {
   final String _identifier = 'termscondition';
   static const String viewPath =
-      '${SettingsModule.moduleIdentifier}/termscondition';
+      '${TermsConditionModule.moduleIdentifier}/termscondition';
 
   const CrayonTermsCondition({Key? key}) : super(key: key);
 
@@ -38,8 +38,8 @@ class _CrayonTermsConditionState extends State<CrayonTermsCondition> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
-              flex: 3,
-              child: _buildTitle(context)),
+              flex: 2,
+              child: _buildTitle(context, coordinator)),
           Expanded(
               flex:7,child: _belowView(context)),
         ],
@@ -47,12 +47,14 @@ class _CrayonTermsConditionState extends State<CrayonTermsCondition> {
     );
   }
 
-  Widget _buildTitle(context) {
+  Widget _buildTitle(context, TermsConditionCoordinator coordinator) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Icon(Icons.arrow_back),
-        SizedBox(
+        InkWell(
+          onTap:()=> coordinator.goBack(),
+            child: const Icon(Icons.arrow_back)),
+        const SizedBox(
           height: 10,
         ),
         CrayonPaymentText(
@@ -63,7 +65,7 @@ class _CrayonTermsConditionState extends State<CrayonTermsCondition> {
               fontWeight: FontWeight.bold,
               textAlign: TextAlign.left),
         ),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         CrayonPaymentText(

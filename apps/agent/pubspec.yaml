@@ -69,6 +69,10 @@ dependencies:
   settings:
     path: ../../libs/features/settings
 
+  termscondition:
+    path: ../../libs/features/termscondition
+
+
 
 dev_dependencies:
   test: any

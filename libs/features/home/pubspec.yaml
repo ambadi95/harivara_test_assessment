@@ -41,6 +41,9 @@ dependencies:
   welcome:
     path: ../../features/welcome
 
+  settings:
+    path: ../../features/settings
+
 
 
 

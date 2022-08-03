@@ -88,7 +88,7 @@ class PasscodeNavigationHandler with ErrorHandler{
     );
     await _navigationManager.navigateTo(
         CrayonHomeScreen.viewPath,
-        const NavigationType.push(),
+        const NavigationType.replace(),
         arguments: argument
     );
   }

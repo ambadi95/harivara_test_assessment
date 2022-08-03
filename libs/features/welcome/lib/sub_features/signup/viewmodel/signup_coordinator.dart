@@ -27,6 +27,8 @@ class SignUpCoordinator extends BaseViewModel<SignUpState>{
     }
     else if(signUpArguments.signupType == SignupType.agentSignUp) {
       _navigationHandler.navigateToAgentDetailScreen(signUpArguments.userType);
+    }else if(signUpArguments.signupType == SignupType.agentAidedCustomerOnBoarding){
+      _navigationHandler.navigateToOtpScreenCustomerSignUp(signUpArguments.userType, mobileNumber);
     }
   }
 
@@ -80,6 +82,10 @@ class SignUpCoordinator extends BaseViewModel<SignUpState>{
 
   Future<void> continueToOtp(String nidaNumber, String mobileNumber) async{
      await _signupUseCase.saveDetails(nidaNumber,'+255 ' + mobileNumber);
+  }
+
+  void navigateToTermsCondition(){
+    _navigationHandler.navigateToTermsCondtionsScreen();
   }
 
 }

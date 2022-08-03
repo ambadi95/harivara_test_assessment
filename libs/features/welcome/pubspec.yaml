@@ -54,6 +54,9 @@ dependencies:
   home:
     path: ../home
 
+  termscondition:
+    path: ../../features/termscondition
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

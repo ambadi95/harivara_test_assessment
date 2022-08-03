@@ -5,6 +5,7 @@ import 'package:core/view/base_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:home/home/home_screen_arguments.dart';
+import 'package:settings/view/settings_view.dart';
 import '../constants/image_constant.dart';
 import '../home_module.dart';
 import '../state/home_screen_state.dart';
@@ -23,6 +24,7 @@ class CrayonHomeScreen extends StatefulWidget {
 
 class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
   late BuildContext context;
+  int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) =>
@@ -404,8 +406,9 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
       bottomNavigationBar: SizedBox(
         height: 55,
         child: BottomNavigationBar(
-          currentIndex: 0,
+          currentIndex: selectedIndex,
           type: BottomNavigationBarType.fixed,
+
           items: [
             BottomNavigationBarItem(
                 icon: Image.asset(
@@ -420,18 +423,30 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                 ),
                 label: '')
           ],
-          onTap: (index) {},
+          onTap: (index) {
+            setState(() {
+              selectedIndex = index;
+            });
+            // if(index == 1){
+            // coordinator.navigateToSettingsScreen();
+            // }
+          },
         ),
       ),
-      body: SingleChildScrollView(
+      body:   selectedIndex == 0 ? SingleChildScrollView(
         child: Column(
           children: [
-            _userInfoView(),
-            _redBoxView(coordinator),
-            _inviteBoxView(),
+
+            Column(
+              children: [
+                _userInfoView(),
+                _redBoxView(coordinator),
+                _inviteBoxView(),
+              ],
+            )
           ],
         ),
-      ),
+      ) : const Settings()
     );
   }
 }

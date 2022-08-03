@@ -35,6 +35,8 @@ import 'package:task_manager/cache_manager/storage/crayon_payment_storage_servic
 import 'package:task_manager/cache_manager/storage/unsecure_storage/unsecure_storage_service_impl.dart';
 import 'package:task_manager/session_management/inactivity_service_impl.dart';
 import 'package:task_manager/task_manager.dart';
+import 'package:termscondition/termscondition/navigation_handler/termscond_route_manager.dart';
+import 'package:termscondition/termscondition/termscondition_module.dart';
 import 'package:verifyotp/navigation_handler/verifyotp_route_manager.dart';
 import 'package:verifyotp/verifyotp_module.dart';
 import 'package:welcome/navigation_handler/welcome_route_manager.dart';
@@ -103,6 +105,8 @@ class AppModule {
     HomeModule.registerDependencies();
 
     SettingsModule.registerDependencies();
+
+    TermsConditionModule.registerDependencies();
 
 
 
@@ -198,6 +202,11 @@ void _registerRouteManagers() {
   navigationManagerContainer.registerRouteManager(
     SettingsModule.moduleIdentifier,
     SettingsRouteManager(),
+  );
+
+  navigationManagerContainer.registerRouteManager(
+    TermsConditionModule.moduleIdentifier,
+    TermsConditionRouteManager(),
   );
 
 

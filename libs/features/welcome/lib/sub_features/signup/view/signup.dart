@@ -92,7 +92,7 @@ class _SignUpState extends State<SignUp> {
           const SizedBox(
             height: 16,
           ),
-          _sub_title(),
+          _sub_title(coordinator),
           const SizedBox(
             height: 69,
           ),
@@ -144,12 +144,16 @@ class _SignUpState extends State<SignUp> {
     );
   }
 
-  Widget _sub_title() {
+  Widget _sub_title(SignUpCoordinator coordinator) {
     return RichTextDescription(
         key: const Key('SU_SubTitle'),
         description: widget.signUpArguments.subTitle,
         linkTextStyle: SU_subtitle_terms_style,
-        descriptionTextStyle: SU_subtitle_style);
+        descriptionTextStyle: SU_subtitle_style,
+      onLinkClicked: (text,link){
+      coordinator.navigateToTermsCondition();
+      },
+    );
   }
 
   Widget _buildLabelTextField(String label, TextEditingController controller,

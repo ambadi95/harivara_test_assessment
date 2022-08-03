@@ -63,7 +63,8 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
         await verifyPasscode(
           currentState.initialPasscode,
           passCode,
-          currentState.destinationPath, userType
+          currentState.destinationPath,
+          userType,
         );
         break;
       case PassCodeVerificationType.verifyMerchantPasscode:
@@ -76,6 +77,7 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
         // TODO: Handle this case.
         break;
       case PassCodeVerificationType.reset:
+        await createPassCode(passCode);
         // TODO: Handle this case.
         break;
       case PassCodeVerificationType.newPasscode:
@@ -85,6 +87,7 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
         // TODO: Handle this case.
         break;
       case PassCodeVerificationType.changePasscodeMerchant:
+        await createPassCode(passCode);
         // TODO: Handle this case.
         break;
       case PassCodeVerificationType.changeNewPasscode:
@@ -108,10 +111,18 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
       case PassCodeVerificationType.resetReEnterPasscode:
         // TODO: Handle this case.
         break;
-      case PassCodeVerificationType.merchantOneTimePasscode:
+      case PassCodeVerificationType.agentResetPasscode:
         // TODO: Handle this case.
+        createResetPassCode(passCode);
         break;
-      case PassCodeVerificationType.merchantSignIn:
+      case PassCodeVerificationType.agentVerifyResetPasscode:
+      // TODO: Handle this case.
+      await verifyPasscodeReset( currentState.initialPasscode,
+          passCode,
+          currentState.destinationPath,
+          userType);
+        break;
+      case PassCodeVerificationType.agentSignIn:
         _navigationHandler.navigateToAgentHomeScreen('homemodule/CrayonHomeScreen');
         break;
     }
@@ -137,11 +148,30 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
     }
   }
 
+  Future<void> createResetPassCode(String passcode) async {
+    var currentState = state as CreatePasscodeReady;
+    var error = await _passcodeUseCase.validateCustomerPasscode(passcode);
+    if (error.isEmpty) {
+      state = currentState.copyWith(
+        passCodeVerificationType: PassCodeVerificationType.agentVerifyResetPasscode,
+        pageTitle: 'PC_confirm_passcode',
+        pageDescription: 'PC_re_enter_passcode',
+        currentPasscode: '',
+        initialPasscode: passcode,
+      );
+    } else {
+      state = currentState.copyWith(
+        pageDescription: 'PC_passcode_repetitive_message',
+        currentPasscode: '',
+      );
+    }
+  }
+
   Future<void> verifyPasscode(
       String oldPassCode,
       String newPasscode,
       String destinationPath,
-      String userType
+      String userType,
       ) async {
     var currentState = state as CreatePasscodeReady;
     if (oldPassCode == newPasscode) {
@@ -153,13 +183,41 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
         _navigationHandler.navigateToCustomerEnrollmentScreen(destinationPath, false);
       } else {
         _navigationHandler.navigateToAgentEnrollmentBottomSheet('AE_Message'.tr,'AE_Continue'.tr);
-        _navigationHandler.navigateToResetPasscodeBottomSheet('RP_Passcode_Reset'.tr,'RP_Continue'.tr,'RP_Passcode_Desc'.tr);
 
       }
     } else {
       state = currentState.copyWith(
         pageDescription: 'PC_passcode_does_not_match',
         passCodeVerificationType: PassCodeVerificationType.create,
+        pageTitle: 'PC_create_passcode',
+        initialPasscode: '',
+        currentPasscode: '',
+      );
+    }
+  }
+
+  Future<void> verifyPasscodeReset(
+      String oldPassCode,
+      String newPasscode,
+      String destinationPath,
+      String userType,
+      ) async {
+    var currentState = state as CreatePasscodeReady;
+    if (oldPassCode == newPasscode) {
+      state = currentState.copyWith(
+          currentStep: 5
+      );
+      await _passcodeUseCase.savePassCode(newPasscode);
+      if(userType == "Customer"){
+        _navigationHandler.navigateToCustomerEnrollmentScreen(destinationPath, true);
+      } else {
+        _navigationHandler.navigateToResetPasscodeBottomSheet(
+            'RP_Passcode_Reset'.tr, 'RP_Continue'.tr, 'RP_Passcode_Desc'.tr);
+      }
+    } else {
+      state = currentState.copyWith(
+        pageDescription: 'PC_passcode_does_not_match',
+        passCodeVerificationType: PassCodeVerificationType.agentResetPasscode,
         pageTitle: 'PC_create_passcode',
         initialPasscode: '',
         currentPasscode: '',

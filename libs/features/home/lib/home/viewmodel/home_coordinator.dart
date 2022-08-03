@@ -33,6 +33,9 @@ class HomeCoordinator extends BaseViewModel<HomeScreenState>{
     _navigationHandler.goBack();
   }
 
+  void navigateToSettingsScreen(){
+    _navigationHandler.navigateToSettingsScreen();
+  }
 
 
 

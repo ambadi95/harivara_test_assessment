@@ -4,6 +4,7 @@ import 'package:shared_data_models/signup/sign_up_type.dart';
 import 'package:welcome/data_model/sign_up_arguments.dart';
 import 'package:welcome/sub_features/signup/view/signup.dart';
 import 'package:widget_library/helpers/error/helper/error_helper.dart';
+import 'package:settings/view/settings_view.dart';
 
 class HomeNavigationHandler with ErrorHandler{
   final NavigationManager _navigationManager;
@@ -21,6 +22,14 @@ class HomeNavigationHandler with ErrorHandler{
         SignUp.viewPath,
         const NavigationType.push(),
         arguments: arguments
+    );
+  }
+
+  Future<void> navigateToSettingsScreen() async {
+    await _navigationManager.navigateTo(
+      Settings.viewPath,
+        const NavigationType.push(),
+
     );
   }
 
