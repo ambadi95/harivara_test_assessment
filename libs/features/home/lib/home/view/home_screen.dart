@@ -50,6 +50,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
               ),
             ),
           ),
+
         ),
       );
 
@@ -156,6 +157,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
           ),
           (isAgent() == true)
               ? Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -281,7 +283,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
           height: 10,
         ),
         Text(
-          title.replaceAll(" ", "\n"),
+          title,
           textAlign: TextAlign.center,
           style: HS_card_items_style,
         ),
@@ -397,12 +399,6 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
       HomeScreenReady state) {
     return Scaffold(
       backgroundColor: Colors.white,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: Image.asset(
-          HS_ScanIcon,
-        ),
-      ),
       floatingActionButtonLocation:
           FloatingActionButtonLocation.miniCenterDocked,
       bottomNavigationBar: SizedBox(
