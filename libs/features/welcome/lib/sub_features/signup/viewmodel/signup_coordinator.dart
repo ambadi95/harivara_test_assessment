@@ -24,6 +24,7 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
       var response = await _signupUseCase.signUp(
           nindaNumber.replaceAll("-", ""), mobileNumber.trim(), (p0) => null);
       if (response!.status == true) {
+          await _signupUseCase.saveCustomerId(response.data?.customerId.toString());
         _navigationHandler.navigateToOtpScreenCustomerSignUp(
             signUpArguments.userType, mobileNumber,userId : response.data?.customerId.toString());
       } else {
@@ -116,7 +117,7 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
   }
 
   Future<void> continueToOtp(String nidaNumber, String mobileNumber) async {
-    await _signupUseCase.saveDetails(nidaNumber, '+255 ' + mobileNumber);
+    await _signupUseCase.saveDetails(nidaNumber, '+255' + mobileNumber);
   }
 
   void navigateToTermsCondition() {

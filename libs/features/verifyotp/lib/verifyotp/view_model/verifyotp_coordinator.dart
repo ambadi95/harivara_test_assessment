@@ -41,6 +41,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
    var response =  await _verifyOtpUseCase.otpGen(id, (p0) => null);
    int otp1 = response?.data?.token as int;
    otp = otp1.toString();
+   print(otp);
   }
 
   Future<void> verifyOTP(

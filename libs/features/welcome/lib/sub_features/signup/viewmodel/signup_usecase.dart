@@ -33,6 +33,10 @@ class SignupUseCase extends BaseDataProvider{
     return await setValueToStorage({'nidaNumber': nidaNumber});
   }
 
+  Future<void> saveCustomerId(String? customerId ) async {
+    return await setValueToStorage({'customerId': customerId});
+  }
+
   Future<void> _saveMobileNumber(String mobileNumber) async {
     return await setValueToStorage({'mobileNumber': mobileNumber});
   }
