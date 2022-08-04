@@ -35,6 +35,14 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
     );
   }
 
+  String otp = '';
+
+  Future<void> generateOtp(String id)async{
+   var response =  await _verifyOtpUseCase.otpGen(id, (p0) => null);
+   int otp1 = response?.data?.token as int;
+   otp = otp1.toString();
+  }
+
   Future<void> verifyOTP(
     BuildContext context,
     OtpVerificationType otpVerificationType,
@@ -123,12 +131,12 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
       String destinationPath, String userType, OtpScreenArgs otpScreenArgs,) async {
     if (otpScreenArgs.otpVerificationType == OtpVerificationType.mobile) {
       if (userType == 'Customer') {
-        var response = await _verifyOtpUseCase.otpGen(
-            otpScreenArgs.refId, UserType.Customer, (p0) => null);
+        var response = await _verifyOtpUseCase.otpVerify(
+            otpScreenArgs.refId,otp, (p0) => null);
         if (response!.status == true) {
           _navigationHandler.navigateToDestinationPath(
               destinationPath, userType);
-        }
+      }
       } else {
         _navigationHandler.openForNewPasscode(userType);
       }

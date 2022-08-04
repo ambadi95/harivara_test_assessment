@@ -19,6 +19,7 @@ import 'package:widget_library/static_text/crayon_payment_text.dart';
 
 import '../state/verify_otp_state.dart';
 import '../view_model/verifyotp_coordinator.dart';
+import 'package:config/config.dart';
 
 class CrayonVerifyOtpScreen extends StatefulWidget {
   static const viewPath = '${VerifyOtpModule.moduleIdentifier}/verifyotp';
@@ -69,6 +70,7 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
   Widget build(BuildContext context) =>
       BaseView<VerifyOtpCoordinator, VerifyOtpState>(
         setupViewModel: (coordinator) {
+          coordinator.generateOtp(widget.otpScreenArgs.refId);
           coordinator.initialiseState(
             context,
             widget.otpScreenArgs.title,

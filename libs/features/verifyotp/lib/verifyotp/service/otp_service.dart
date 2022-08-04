@@ -9,8 +9,13 @@ import 'package:shared_data_models/welcome/otp/request/otp_request.dart';
 
 abstract class IOtpService{
   static const otpIdentifier = 'otp';
+  static const otpVerifyIdentifier = 'otpVerify';
 
   Future<StandardRequest> otpGen(
+      Map<String, dynamic> requestData,
+      );
+
+  Future<StandardRequest> otpVerify(
       Map<String, dynamic> requestData,
       );
 }
@@ -27,7 +32,20 @@ class OtpService implements IOtpService {
     request.customHeaders = {
       'Content-Type': 'application/json',
     };
-    request.jsonBody = requestData as String?;
+    request.jsonBody = json.encode(requestData);
+    return request;
+  }
+
+  Future<StandardRequest> otpVerify(
+      Map<String, dynamic> requestData,
+      ) async {
+    var request = StandardRequest();
+    request.requestType = RequestType.POST;
+    request.endpoint = 'otp-validate';
+    request.customHeaders = {
+      'Content-Type': 'application/json',
+    };
+    request.jsonBody = json.encode(requestData);
     return request;
   }
 }

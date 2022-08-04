@@ -2,6 +2,8 @@
 import 'package:config/Config.dart';
 import 'package:shared_data_models/welcome/otp/request/otp_request.dart';
 import 'package:shared_data_models/welcome/otp/response/otp_response.dart';
+import 'package:shared_data_models/welcome/otp_verification/request/otp_verification_request.dart';
+import 'package:shared_data_models/welcome/otp_verification/response/otp_verification_response.dart';
 import 'package:task_manager/base_classes/base_data_provider.dart';
 import 'package:task_manager/task_manager.dart';
 import 'package:task_manager/task_manager_impl.dart';
@@ -36,12 +38,12 @@ class VerifyOtpUseCase extends BaseDataProvider{
     return '';
   }
 
-  Future<OtpResponse?> otpGen(String id, UserType userType,
+  Future<OtpResponse?> otpGen(String id,
       Function(String) onErrorCallback) async {
 
     OtpRequest otpRequest =   OtpRequest(
       id: id,
-      type: userType.name
+      type: 'Customer'
     );
 
     return await executeApiRequest<OtpResponse?>(
@@ -54,6 +56,28 @@ class VerifyOtpUseCase extends BaseDataProvider{
         modelBuilderCallback: (responseData) {
           final data = responseData;
           return OtpResponse.fromJson(data);
+        });
+  }
+
+  Future<OtpVerificationResponse?> otpVerify(String id, String otp,
+      Function(String) onErrorCallback) async {
+
+    OtpVerificationRequest otpRequest =   OtpVerificationRequest(
+        id: id,
+        type: 'Customer',
+        otp : otp
+    );
+
+    return await executeApiRequest<OtpVerificationResponse?>(
+        taskType: TaskType.DATA_OPERATION,
+        taskSubType: TaskSubType.REST,
+        moduleIdentifier: VerifyOtpModule.moduleIdentifier,
+        requestData: otpRequest.toJson(),
+        serviceIdentifier: IOtpService.otpVerifyIdentifier,
+        onError: onErrorCallback,
+        modelBuilderCallback: (responseData) {
+          final data = responseData;
+          return OtpVerificationResponse.fromJson(data);
         });
   }
 
