@@ -2,17 +2,17 @@
   "environments": [
     {
       "name": "test",
-      "host": "https://api.CrayonPaymentpay-sbx-fss.CrayonPaymentos.online/"
+      "host": "https://localhost:9191/"
     },
     {
       "name": "Local",
-      "host": "localhost:8080"
+      "host": "https://localhost:9191/"
     }
   ],
   "gqlEnvironments": [
     {
       "name": "default",
-      "host": "https://api.CrayonPaymentpay-sbx-fss.CrayonPaymentos.online/federation/graphql"
+      "host": "https://localhost:9191/"
     },
     {
       "name": "mock",

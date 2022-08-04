@@ -17,6 +17,28 @@ class SignUpCoordinator extends BaseViewModel<SignUpState>{
     _navigationHandler.goBack();
   }
 
+  Future<void> signup(SignUpArguments signUpArguments, String mobileNumber, String nindaNumber)async{
+   await continueToOtp(nindaNumber, mobileNumber);
+    if(signUpArguments.signupType == SignupType.customerSignUp) {
+     var response = await _signupUseCase.signUp(nindaNumber, mobileNumber, (p0) => null);
+     if(response!.status == true){
+       _navigationHandler.navigateToOtpScreenCustomerSignUp(signUpArguments.userType, mobileNumber);
+     }else{
+       print(response.message);
+     }
+
+    } else if(signUpArguments.signupType == SignupType.resetPasscodeAgent){
+      _navigationHandler.navigateToOtpScreenAgentResetPasscode(signUpArguments.userType);
+    }else if(signUpArguments.signupType == SignupType.resetPasscodeCustomer){
+      _navigationHandler.navigateToOtpScreenAgentResetPasscode(signUpArguments.userType);
+    }
+    else if(signUpArguments.signupType == SignupType.agentSignUp) {
+      _navigationHandler.navigateToAgentDetailScreen(signUpArguments.userType);
+    }else if(signUpArguments.signupType == SignupType.agentAidedCustomerOnBoarding){
+      _navigationHandler.navigateToOtpScreenCustomerSignUp(signUpArguments.userType, mobileNumber);
+    }
+  }
+
   Future navigateDestination(SignUpArguments signUpArguments, String mobileNumber) async {
     if(signUpArguments.signupType == SignupType.customerSignUp) {
       _navigationHandler.navigateToOtpScreenCustomerSignUp(signUpArguments.userType, mobileNumber);

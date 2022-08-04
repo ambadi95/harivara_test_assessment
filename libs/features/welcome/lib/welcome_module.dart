@@ -5,6 +5,7 @@ import 'package:network_manager/auth/auth_manager.dart';
 import 'package:network_manager/auth/authorization_client.dart';
 import 'package:network_manager/auth/user_client.dart';
 import 'package:network_manager/auth/user_manager.dart';
+import 'package:task_manager/module_resolver.dart';
 import 'package:task_manager/task_manager_impl.dart';
 import 'package:welcome/sub_features/agent_details/viewmodel/agent_details_coordinator.dart';
 import 'package:welcome/sub_features/agent_details/viewmodel/agent_details_usecase.dart';
@@ -12,6 +13,9 @@ import 'package:welcome/sub_features/agent_details/viewmodel/agent_details_view_
 import 'package:welcome/sub_features/agent_enrollment/viewmodel/agent_enrollment_coordinator.dart';
 import 'package:welcome/sub_features/details/viewmodel/details_usecase.dart';
 import 'package:welcome/sub_features/enrollment_success/viewmodel/enrollment_success_coordinator.dart';
+import 'package:welcome/sub_features/signup/service/signup_service.dart';
+import 'package:welcome/sub_features/signup/task_manager/signup_api_resolver.dart';
+import 'package:welcome/sub_features/signup/task_manager/signup_module_resolver.dart';
 import 'package:welcome/sub_features/signup/viewmodel/signup_usecase.dart';
 import 'package:welcome/sub_features/signup/viewmodel/signup_viewmodel.dart';
 import 'package:welcome/sub_features/welcome/viewmodel/welcome_usecase.dart';
@@ -31,6 +35,16 @@ class WelcomeModule {
   static const moduleIdentifier = 'welcomeModule';
 
   static void registerDependencies() {
+
+    ModuleResolver.registerResolver(
+      moduleIdentifier,
+      SignupModuleResolver(
+        SignupApiResolver(
+          SignupService(),
+        ),
+      ),
+    );
+
     DIContainer.container.registerFactory<WelcomeCoordinator>(
           (container) => WelcomeCoordinator(
         WelcomeNavigationHandler(container.resolve<NavigationManager>()),
