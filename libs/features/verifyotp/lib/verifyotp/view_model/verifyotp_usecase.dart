@@ -1,10 +1,14 @@
 
-import 'package:passcode/sub_features/passcode/view_model/passcode_viewmodel.dart';
-
+import 'package:config/Config.dart';
+import 'package:shared_data_models/welcome/otp/request/otp_request.dart';
+import 'package:shared_data_models/welcome/otp/response/otp_response.dart';
 import 'package:task_manager/base_classes/base_data_provider.dart';
+import 'package:task_manager/task_manager.dart';
 import 'package:task_manager/task_manager_impl.dart';
 import 'package:verifyotp/verifyotp/view_model/verifyotp_viewmodel.dart';
 import 'package:widget_library/keypad/keypad_button_type.dart';
+import '../../verifyotp_module.dart';
+import '../service/otp_service.dart';
 
 class VerifyOtpUseCase extends BaseDataProvider{
   final VerifyOtpViewModel _verifyOtpViewModel;
@@ -32,7 +36,26 @@ class VerifyOtpUseCase extends BaseDataProvider{
     return '';
   }
 
+  Future<OtpResponse?> otpGen(String id, UserType userType,
+      Function(String) onErrorCallback) async {
 
+    OtpRequest otpRequest =   OtpRequest(
+      id: id,
+      type: userType.name
+    );
+
+    return await executeApiRequest<OtpResponse?>(
+        taskType: TaskType.DATA_OPERATION,
+        taskSubType: TaskSubType.REST,
+        moduleIdentifier: VerifyOtpModule.moduleIdentifier,
+        requestData: otpRequest.toJson(),
+        serviceIdentifier: IOtpService.otpIdentifier,
+        onError: onErrorCallback,
+        modelBuilderCallback: (responseData) {
+          final data = responseData;
+          return OtpResponse.fromJson(data);
+        });
+  }
 
 
 }

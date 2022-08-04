@@ -2,17 +2,17 @@
   "environments": [
     {
       "name": "test",
-      "host": "https://localhost:9191/"
+      "host": "http://192.168.31.44:9191/customers/v1/"
     },
     {
       "name": "Local",
-      "host": "https://localhost:9191/"
+      "host": "http://192.168.31.44:9191/customers/v1/"
     }
   ],
   "gqlEnvironments": [
     {
       "name": "default",
-      "host": "https://localhost:9191/"
+      "host": "http://192.168.31.44:9191/customers/v1/"
     },
     {
       "name": "mock",

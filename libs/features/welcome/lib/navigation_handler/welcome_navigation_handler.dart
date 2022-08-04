@@ -152,7 +152,7 @@ class WelcomeNavigationHandler with ErrorHandler {
   }
 
   Future<void> navigateToOtpScreenCustomerSignUp(
-      String userType, String mobileNumber) async {
+      String userType, String mobileNumber, {String? userId}) async {
     var arguments = OtpScreenArgs(
       'OTP Verification',
       'VO_otp_verification_description',
@@ -162,7 +162,7 @@ class WelcomeNavigationHandler with ErrorHandler {
       true,
       2,
       OtpVerificationType.mobile,
-      '',
+      userId!,
       6,
       mobileNumber,
       false,

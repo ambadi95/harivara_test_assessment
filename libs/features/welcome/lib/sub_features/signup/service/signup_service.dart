@@ -22,7 +22,7 @@ class SignupService implements ISignupService {
       ) async {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
-    request.endpoint = 'customers/v1/register-customer';
+    request.endpoint = 'register-customer';
     request.customHeaders = {
       'Content-Type': 'application/json',
     };
