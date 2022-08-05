@@ -1,4 +1,5 @@
 import 'package:config/Config.dart';
+import 'package:core/logging/logger.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_data_models/otp/otp_screen_args.dart';
 import 'package:shared_data_models/otp/otp_verification_type.dart';
@@ -41,7 +42,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
    var response =  await _verifyOtpUseCase.otpGen(id, (p0) => null);
    int otp1 = response?.data?.token as int;
    otp = otp1.toString();
-   print(otp);
+   CrayonPaymentLogger.logInfo(otp);
   }
 
   Future<void> verifyOTP(
