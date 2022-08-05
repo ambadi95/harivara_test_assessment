@@ -10,10 +10,12 @@ Data _$DataFromJson(Map<String, dynamic> json) => Data(
       token: json['token'] as String?,
       username: json['username'] as String?,
       lastLoginTime: json['lastLoginTime'] as String?,
+      id: json['id'] as String?,
     );
 
 Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{
       'token': instance.token,
       'username': instance.username,
       'lastLoginTime': instance.lastLoginTime,
+      'id': instance.id,
     };

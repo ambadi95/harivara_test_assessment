@@ -27,7 +27,7 @@ class SignupService implements ISignupService {
       'Content-Type': 'application/json',
     };
     request.jsonBody =
-        json.encode({'nidaNo': nindaNumber, 'mobileNo': phoneNo,});
+        json.encode({'nidaNo': nindaNumber, 'mobileNo': '+255' + phoneNo,});
     return request;
   }
 }

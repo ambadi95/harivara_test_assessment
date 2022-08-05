@@ -147,6 +147,11 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
       _navigationHandler.navigateToAgentWelcomeBack(userType);
     } else if (otpScreenArgs.otpVerificationType ==
         OtpVerificationType.customerSign) {
+      var response = await _verifyOtpUseCase.otpVerify(
+          otpScreenArgs.refId,otp, (p0) => null);
+      if (response!.status == true) {
+        _navigationHandler.navigateToCustomerEnrollmentScreen();
+      }
       _navigationHandler.navigateToCustomerEnrollmentScreen();
     } else if (otpScreenArgs.otpVerificationType ==
         OtpVerificationType.updatePasscodeAgent) {

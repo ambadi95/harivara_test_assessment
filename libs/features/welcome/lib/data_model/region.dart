@@ -1,12 +1,12 @@
 class Region {
   final int id;
-  final String region;
+  final String name;
 
-  const Region(this.id, this.region);
+  const Region(this.id, this.name);
 
   factory Region.fromJson(Map<String, dynamic> json) =>
       Region(
         json['id'],
-        json['region'],
+        json['name'],
       );
 }
