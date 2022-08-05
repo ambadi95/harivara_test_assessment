@@ -1,4 +1,3 @@
-
 import 'dart:convert';
 
 import 'package:agent_nearby/agent_nearby_module.dart';
@@ -25,6 +24,7 @@ import 'package:device_option/navigation_handler/device_option_route_manager.dar
 import 'package:flutter/services.dart';
 import 'package:login/login_module.dart';
 import 'package:login/navigation_handler/login_route_manager.dart';
+import 'package:network_manager/auth/auth_manager.dart';
 import 'package:network_manager/client/i_network_client.dart';
 import 'package:network_manager/global_control/global_control_notifier.dart';
 import 'package:network_manager/global_control/model/configuration/config.dart';
@@ -52,8 +52,6 @@ import 'package:termscondition/termscondition/navigation_handler/termscond_route
 import 'package:termscondition/termscondition/termscondition_module.dart';
 
 class AppModule {
-
-
   // ignore: long-method
   static Future<void> registerDependencies() async {
     DefaultTrackerCollection collection = DefaultTrackerCollection();
@@ -76,8 +74,6 @@ class AppModule {
         container.resolve<TaskManager>(),
       ),
     );
-
-
 
     DIContainer.container.registerSingleton(
       (container) => CacheTaskResolver(
@@ -112,10 +108,7 @@ class AppModule {
     CustomerHomeModule.registerDependencies();
     TermsConditionModule.registerDependencies();
 
-
-
     DIContainer.container.resolve<WidgetsModule>().registerDependencies();
-
 
     // DIContainer.container.registerSingleton<IInactivityService>(
     //       (container) => InactivityService(
@@ -123,10 +116,6 @@ class AppModule {
     //     navigationManager: container.resolve<NavigationManager>(),
     //   ),
     // );
-
-
-
-
   }
 }
 
@@ -137,7 +126,7 @@ void _registerUtils() {
   );
 
   DIContainer.container.registerSingleton<CrayonPaymentTranslationsLoader>(
-        (container) => CrayonPaymentTranslationsLoaderImpl(),
+    (container) => CrayonPaymentTranslationsLoaderImpl(),
   );
 
   DIContainer.container.registerSingleton<GetContacts>(
@@ -148,8 +137,6 @@ void _registerUtils() {
     (container) => InputEntryValidatorImpl.forCustomerApp(),
   );
 
-
-
   DIContainer.container.registerSingleton<LengthTextFormatter>(
     (container) => LengthTextFormatterImpl.forCustomerApp(),
   );
@@ -157,7 +144,6 @@ void _registerUtils() {
   DIContainer.container.registerSingleton<KeyPadButtonPressedValueUpdater>(
     (container) => KeyPadButtonPressedValueUpdaterImpl(),
   );
-
 }
 
 // ignore: long-method
@@ -179,12 +165,10 @@ void _registerRouteManagers() {
     DeviceOptionRouteManager(),
   );
 
-
   navigationManagerContainer.registerRouteManager(
     LoginModule.moduleIdentifier,
     LoginRouteManager(),
   );
-
 
   navigationManagerContainer.registerRouteManager(
     PasscodeModule.moduleIdentifier,
@@ -205,7 +189,6 @@ void _registerRouteManagers() {
     TermsConditionRouteManager(),
   );
 
-
   DIContainer.container.registerSingleton<NativeDocumentDirectory>(
     (container) => NativeDocumentDirectoryImpl(),
   );
@@ -217,40 +200,38 @@ void _registerRouteManagers() {
     ),
   );
 
-
   _registerBottomSheetFeature();
   _registerToolTipFeature();
 }
 
 void _registerBottomSheetFeature() {
   final navigationManagerContainer = DIContainer.container<NavigationManager>();
-
-
-
 }
 
 void _registerToolTipFeature() {
   final navigationManagerContainer = DIContainer.container<NavigationManager>();
-
 }
 
 Future registerNetworkModule({
-String? environment,
-})async{
+  String? environment,
+}) async {
   WidgetsModule;
-  final networkConfigJson = await rootBundle.loadString('assets/configuration/network_configuration_dev.json');
+  final networkConfigJson = await rootBundle
+      .loadString('assets/configuration/network_configuration_dev.json');
   final networkConfig =
-  Config.fromJson(jsonDecode(networkConfigJson) as Map<String, dynamic>);
+      Config.fromJson(jsonDecode(networkConfigJson) as Map<String, dynamic>);
   final mockNetworkClient = networkConfig.useMockNetworkClient ?? false;
   NetworkManager.registerDependencies(useMockNetworkClient: mockNetworkClient);
 
   await DIContainer.container.resolve<IConnectivity>().initialize();
   DIContainer.container.registerSingleton<IInactivityService>(
-        (container) =>
-        InactivityService(taskManager: DIContainer.container.resolve(), navigationManager: container.resolve<NavigationManager>()),
+    (container) => InactivityService(
+        taskManager: container.resolve(),
+        authManager: container.resolve<IAuthManager>(),
+        navigationManager: container.resolve<NavigationManager>(),),
   );
   DIContainer.container.registerSingleton<IAppLocalizationService>(
-        (container) => AppLocalizationService(),
+    (container) => AppLocalizationService(),
   );
 // initialise dependencies
   DIContainer.container

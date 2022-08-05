@@ -4,11 +4,12 @@ import 'package:core/logging/logger.dart';
 import 'package:core/navigation/navigation_manager.dart';
 import 'package:core/navigation/navigation_type.dart';
 import 'package:core/session_management/inactivity_service.dart';
+import 'package:network_manager/auth/auth_manager.dart';
 import 'package:stream_transform/stream_transform.dart';
 import 'package:task_manager/task_manager.dart';
 
 class _Constants {
-  static const inactivityTimeout = 10 * 60 * 1000; // 10 minutes in milliseconds
+  static const inactivityTimeout = 100 * 60 * 1000; // 10 minutes in milliseconds
   static const storageKey = 'app-inactive-since';
   static const throttleTime = Duration(milliseconds: 1000);
 }
@@ -17,11 +18,13 @@ class _Constants {
 class InactivityService extends IInactivityService {
   final int inactivityTimeout;
   final TaskManager taskManager;
+  final IAuthManager authManager;
 
   final NavigationManager navigationManager;
 
   InactivityService({
     required this.taskManager,
+    required this.authManager,
     required this.navigationManager,
     this.inactivityTimeout = _Constants.inactivityTimeout,
   }) {
@@ -126,6 +129,8 @@ class InactivityService extends IInactivityService {
       NavigationType.replaceCurrent(),
     );
 
+    await _logOutUser();
+
     CrayonPaymentLogger.logInfo(
       'Logging user out as they have not interacted with the screen for ${_Constants.inactivityTimeout} milliseconds',
     );
@@ -145,4 +150,11 @@ class InactivityService extends IInactivityService {
 
   @override
   void registerInteraction(dynamic event) => _controller.sink.add(event);
+
+  Future<void> _logOutUser() async {
+    final isAuthenticatedUser = await authManager.isUserAuthenticated;
+    if (isAuthenticatedUser) {
+      //TODO Implement Logout
+    }
+  }
 }

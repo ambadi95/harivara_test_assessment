@@ -25,6 +25,7 @@ import 'package:home/home/home_module.dart';
 import 'package:home/home/navigation_handler/home_route_manager.dart';
 import 'package:login/login_module.dart';
 import 'package:login/navigation_handler/login_route_manager.dart';
+import 'package:network_manager/auth/auth_manager.dart';
 import 'package:passcode/navigation_handler/passcode_route_manager.dart';
 import 'package:passcode/passcode_module.dart';
 import 'package:settings/navigation_handler/settings_route_manager.dart';
@@ -117,6 +118,7 @@ class AppModule {
     DIContainer.container.registerSingleton<IInactivityService>(
           (container) => InactivityService(
         taskManager: container.resolve<TaskManager>(),
+        authManager: container.resolve<IAuthManager>(),
         navigationManager: container.resolve<NavigationManager>(),
       ),
     );
