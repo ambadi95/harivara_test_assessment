@@ -41,10 +41,15 @@ class PasscodeUseCase extends BaseDataProvider {
     return await setValueToSecureStorage({"PASSCODE": passCode});
   }
 
-  Future<PasscodeResponse?> savePasscode(
-      int id, String passcode, Function(String) onErrorCallback) async {
+  Future<String> getCustomerId() async {
+    return await getValueFromStorage('customerId', defaultValue: '');
+  }
+
+
+  Future<PasscodeResponse?> savePasscode(String passcode, Function(String) onErrorCallback) async {
+    String custmerId = await getCustomerId();
     PasscodeRequest passcodeRequest =
-        PasscodeRequest(id: id, type: 'Customer', passcode: passcode);
+        PasscodeRequest(id: int.parse(custmerId), type: 'Customer', passcode: passcode);
 
     return await executeApiRequest<PasscodeResponse?>(
         taskType: TaskType.DATA_OPERATION,

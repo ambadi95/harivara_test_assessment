@@ -27,6 +27,7 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
   @override
   Widget build(BuildContext context) => BaseView<EnrollmentSuccessCoordinator, EnrollmentSuccessState>(
     setupViewModel: (coordinator) async {
+     await coordinator.getCustomerDetails();
     },
     builder: (context, state, coordinator) => SafeArea(
       child: Scaffold(

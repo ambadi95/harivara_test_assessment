@@ -12,7 +12,9 @@ import 'package:welcome/sub_features/agent_details/viewmodel/agent_details_useca
 import 'package:welcome/sub_features/agent_details/viewmodel/agent_details_view_model.dart';
 import 'package:welcome/sub_features/agent_enrollment/viewmodel/agent_enrollment_coordinator.dart';
 import 'package:welcome/sub_features/details/viewmodel/details_usecase.dart';
+import 'package:welcome/sub_features/enrollment_success/service/enrollment_service.dart';
 import 'package:welcome/sub_features/enrollment_success/viewmodel/enrollment_success_coordinator.dart';
+import 'package:welcome/sub_features/enrollment_success/viewmodel/enrollment_success_usecase.dart';
 import 'package:welcome/sub_features/signup/service/signup_service.dart';
 import 'package:welcome/sub_features/signup/viewmodel/signup_usecase.dart';
 import 'package:welcome/sub_features/signup/viewmodel/signup_viewmodel.dart';
@@ -42,6 +44,7 @@ class WelcomeModule {
         SignupApiResolver(
           SignupService(),
           DetailsService(),
+          EnrollmentService(),
         ),
       ),
     );
@@ -99,7 +102,11 @@ class WelcomeModule {
 
     DIContainer.container.registerFactory<EnrollmentSuccessCoordinator>(
           (container) => EnrollmentSuccessCoordinator(
-        WelcomeNavigationHandler(container.resolve<NavigationManager>()),
+        WelcomeNavigationHandler(container.resolve<NavigationManager>()
+        ),
+            EnrollmentSuccessUseCase(
+              container.resolve<TaskManager>(),
+            ),
       ),
     );
 

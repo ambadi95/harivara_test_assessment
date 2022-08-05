@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
-
+import '../response/data.dart';
 part 'passcode_response.g.dart';
 
 @JsonSerializable()
@@ -8,7 +8,7 @@ class PasscodeResponse extends Equatable {
 	final bool? status;
 	final String? code;
 	final String? message;
-	final int? data;
+	final Data? data;
 
 	const PasscodeResponse({this.status, this.code, this.message, this.data});
 
@@ -22,7 +22,7 @@ class PasscodeResponse extends Equatable {
 		bool? status,
 		String? code,
 		String? message,
-		int? data,
+			Data? data,
 	}) {
 		return PasscodeResponse(
 			status: status ?? this.status,

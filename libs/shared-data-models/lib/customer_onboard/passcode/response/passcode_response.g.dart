@@ -11,7 +11,9 @@ PasscodeResponse _$PasscodeResponseFromJson(Map<String, dynamic> json) =>
       status: json['status'] as bool?,
       code: json['code'] as String?,
       message: json['message'] as String?,
-      data: json['data'] as int?,
+      data: json['data'] == null
+          ? null
+          : Data.fromJson(json['data'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$PasscodeResponseToJson(PasscodeResponse instance) =>
