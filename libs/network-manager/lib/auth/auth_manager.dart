@@ -31,6 +31,7 @@ class AuthManager implements IAuthManager {
   static const _expiryDateKey = 'expiry_date';
   static const _individualIdKey = 'individual_id';
 
+
   // the expiry buffer is to mitigate latency from the connection between client and server.
   // when a token is generated so is its expiry time in seconds.
   static const _expiryBuffer = 30;
