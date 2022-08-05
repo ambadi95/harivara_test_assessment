@@ -15,7 +15,6 @@ void main() {
       final result = AuthDetail.fromJson(json);
       // Assert
       expect(result, isA<AuthDetail>());
-
     });
   });
 

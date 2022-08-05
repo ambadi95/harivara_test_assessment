@@ -52,7 +52,8 @@ class _CharacterLimitedTextInputFieldState
         border: _buildBorder,
         focusedBorder: _buildBorder,
         hintText: 'enter-text'.tr,
-        hintStyle: _textStyle!.copyWith(color: CrayonPaymentColors.crayonPaymentGray),
+        hintStyle:
+            _textStyle!.copyWith(color: CrayonPaymentColors.crayonPaymentGray),
       ),
       style: _textStyle,
     );
@@ -66,7 +67,8 @@ class _CharacterLimitedTextInputFieldState
   OutlineInputBorder get _buildBorder {
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(10),
-      borderSide: BorderSide(color: CrayonPaymentColors.crayonPaymentGray, width: 1.0),
+      borderSide:
+          BorderSide(color: CrayonPaymentColors.crayonPaymentGray, width: 1.0),
     );
   }
 

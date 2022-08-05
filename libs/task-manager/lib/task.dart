@@ -15,6 +15,7 @@ enum TaskSubType { REST, GRAPHQL }
 
 /// use this key to set the cache type in the request data
 const CACHE_TYPE = 'CACHE_TYPE';
+
 enum TaskManagerCacheType {
   SET,
   GET,
@@ -41,6 +42,7 @@ const DATA_NOTIFIER_PARAM_KEY = 'dataNotifierParamKey';
 const DATA_NOTIFIER_STREAM_CONTROLLER_KEY = 'streamController';
 
 enum DataNotifierTaskType { SET, ADD, DELETE, DELETE_ALL }
+
 enum DataNotifierStatus { REFRESH }
 
 class Task {

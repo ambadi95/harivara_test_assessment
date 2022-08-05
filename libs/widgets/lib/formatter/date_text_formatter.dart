@@ -6,7 +6,8 @@ class DateTextFormatter extends TextInputFormatter {
   static const _maxChars = 8;
 
   @override
-  TextEditingValue formatEditUpdate(TextEditingValue oldValue, TextEditingValue newValue) {
+  TextEditingValue formatEditUpdate(
+      TextEditingValue oldValue, TextEditingValue newValue) {
     var text = _format(newValue.text, '-');
     return newValue.copyWith(text: text, selection: updateCursorPosition(text));
   }

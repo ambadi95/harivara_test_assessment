@@ -17,11 +17,12 @@ class LoginNavigationHandler with ErrorHandler {
   Future<void> navigateToWelcomeBack() async {
     await _navigationManager.navigateTo(
       CrayonCustomerHomeScreen.viewPath,
-       NavigationType.push(),
+      NavigationType.push(),
     );
   }
 
-  Future<void> navigateToOtpScreen(String userType, String mobileNumber, String id) async {
+  Future<void> navigateToOtpScreen(
+      String userType, String mobileNumber, String id) async {
     var arguments = OtpScreenArgs(
         'OTP Verification',
         'VO_otp_verification_description',
@@ -33,8 +34,7 @@ class LoginNavigationHandler with ErrorHandler {
         6,
         mobileNumber,
         false,
-        userType
-    );
+        userType);
 
     _navigationManager.navigateTo(
       CrayonVerifyOtpScreen.viewPath,
@@ -44,7 +44,8 @@ class LoginNavigationHandler with ErrorHandler {
     );
   }
 
-  Future<void> navigateToOtpScreenForAgent(String userType, String mobileNumber) async {
+  Future<void> navigateToOtpScreenForAgent(
+      String userType, String mobileNumber) async {
     var arguments = OtpScreenArgs(
         'OTP Verification',
         'VO_otp_verification_description',
@@ -56,8 +57,7 @@ class LoginNavigationHandler with ErrorHandler {
         6,
         mobileNumber,
         false,
-        userType
-    );
+        userType);
 
     _navigationManager.navigateTo(
       CrayonVerifyOtpScreen.viewPath,
@@ -72,12 +72,13 @@ class LoginNavigationHandler with ErrorHandler {
       'SU_reset_passcode',
       'SU_reset_subtitle',
       userType,
-      userType == 'Agent' ? SignupType.resetPasscodeAgent : SignupType.resetPasscodeCustomer,
+      userType == 'Agent'
+          ? SignupType.resetPasscodeAgent
+          : SignupType.resetPasscodeCustomer,
       false,
     );
     await _navigationManager.navigateTo(
         SignUp.viewPath, const NavigationType.push(),
         arguments: arguments);
   }
-
 }

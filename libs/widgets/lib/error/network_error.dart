@@ -45,7 +45,8 @@ class NetworkErrorScreen extends StatelessWidget {
     );
   }
 
-  CrayonPaymentDockedButton _buildCrayonPaymentDockedButton(BuildContext context) {
+  CrayonPaymentDockedButton _buildCrayonPaymentDockedButton(
+      BuildContext context) {
     return CrayonPaymentDockedButton(
       key: const Key('NetworkErrorScreen_Refreshbutton'),
       title: 'refresh-button'.tr,
@@ -58,9 +59,7 @@ class NetworkErrorScreen extends StatelessWidget {
   Center _buildTextButton() {
     return Center(
       child: CrayonPaymentTextButton(
-        onPressed: () {
-
-        },
+        onPressed: () {},
         text: 'back-to-home-text'.tr,
       ),
     );

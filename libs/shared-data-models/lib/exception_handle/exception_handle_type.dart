@@ -1,5 +1,1 @@
-enum ExceptionType{
-  wentWrong,
-  unavailable,
-  noConnection
-}
+enum ExceptionType { wentWrong, unavailable, noConnection }

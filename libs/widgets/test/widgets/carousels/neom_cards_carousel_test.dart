@@ -32,12 +32,14 @@ void main() {
     ];
   }
 
-  testWidgets('[CrayonPaymentCardsCarousel] - check that list of cards has two widgets',
+  testWidgets(
+      '[CrayonPaymentCardsCarousel] - check that list of cards has two widgets',
       (WidgetTester tester) async {
     expect(listOfCardWidgets.length, 2);
   });
 
-  testWidgets('[CrayonPaymentCardsCarousel] - check existence of all components',
+  testWidgets(
+      '[CrayonPaymentCardsCarousel] - check existence of all components',
       (WidgetTester tester) async {
     final String _identifier = 'CrayonPaymentCardsCarousel';
 

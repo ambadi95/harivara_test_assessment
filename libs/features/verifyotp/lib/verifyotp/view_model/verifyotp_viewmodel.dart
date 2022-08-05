@@ -1,7 +1,6 @@
 import 'package:widget_library/keypad/keypad_button_type.dart';
 
-class VerifyOtpViewModel{
-
+class VerifyOtpViewModel {
   int get _validPasscodeLength => 6;
 
   bool validCustomerOtp(String passcode) {
@@ -16,13 +15,14 @@ class VerifyOtpViewModel{
   }
 
   String updateCurrentOTP(
-      KeypadButtonType keypadButtonType,
-      String previousCustomerOtp,
-      int passcodeLength,
-      ) {
+    KeypadButtonType keypadButtonType,
+    String previousCustomerOtp,
+    int passcodeLength,
+  ) {
     return keypadButtonType.when(
       digit: (number) {
-        var isIncomplete = _validatePasscode(previousCustomerOtp, passcodeLength);
+        var isIncomplete =
+            _validatePasscode(previousCustomerOtp, passcodeLength);
         var currentPasscode = previousCustomerOtp;
         if (isIncomplete) {
           currentPasscode += number.toString();
@@ -108,5 +108,4 @@ class VerifyOtpViewModel{
       return false;
     }
   }
-
 }

@@ -68,7 +68,7 @@ class RichTextDescription extends StatelessWidget {
     }
 
     return RichText(
-        textAlign: textAlign,
+      textAlign: textAlign,
       text: TextSpan(children: textSpans),
     );
   }

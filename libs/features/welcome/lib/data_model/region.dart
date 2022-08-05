@@ -4,8 +4,7 @@ class Region {
 
   const Region(this.id, this.name);
 
-  factory Region.fromJson(Map<String, dynamic> json) =>
-      Region(
+  factory Region.fromJson(Map<String, dynamic> json) => Region(
         json['id'],
         json['name'],
       );

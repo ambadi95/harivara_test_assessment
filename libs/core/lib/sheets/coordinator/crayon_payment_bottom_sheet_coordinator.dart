@@ -9,11 +9,13 @@ import 'package:shared_data_models/date_filter/date_filter_type.dart';
 import 'package:task_manager/base_classes/base_view_model.dart';
 import 'package:widget_library/icons/crayon_payment_bottom_sheet_icon.dart';
 
-class CrayonPaymentBottomSheetCoordinator extends BaseViewModel<CrayonPaymentBottomSheetState> {
+class CrayonPaymentBottomSheetCoordinator
+    extends BaseViewModel<CrayonPaymentBottomSheetState> {
   final CrayonPaymentBottomSheetNavigationHandler _navigationHandler;
 
   CrayonPaymentBottomSheetCoordinator(this._navigationHandler)
-      : super(const CrayonPaymentBottomSheetState.waitingState(immediateCallback: null));
+      : super(const CrayonPaymentBottomSheetState.waitingState(
+            immediateCallback: null));
 
   Future<void> setUpState(CrayonPaymentBottomSheetState sheetState) async {
     await sheetState.maybeWhen(
@@ -45,7 +47,6 @@ class CrayonPaymentBottomSheetCoordinator extends BaseViewModel<CrayonPaymentBot
     state = CrayonPaymentBottomSheetState.simpleWatingState(waitingText: text);
   }
 
-
   Future<void> _executeCallback(
     Future<CrayonPaymentBottomSheetState?>? Function() immediateCallback,
   ) async {
@@ -70,7 +71,8 @@ class CrayonPaymentBottomSheetCoordinator extends BaseViewModel<CrayonPaymentBot
   }
 
   void _startTimerToClose(Duration timeToClose) {
-    const closeState = CrayonPaymentBottomSheetState.closeSheet() as CloseBottomSheet;
+    const closeState =
+        CrayonPaymentBottomSheetState.closeSheet() as CloseBottomSheet;
     Timer(timeToClose, () => _handleCloseBottomSheet(closeState));
   }
 

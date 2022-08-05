@@ -24,9 +24,11 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
       var response = await _signupUseCase.signUp(
           nindaNumber.replaceAll("-", ""), mobileNumber.trim(), (p0) => null);
       if (response!.status == true) {
-          await _signupUseCase.saveCustomerId(response.data?.customerId.toString());
+        await _signupUseCase
+            .saveCustomerId(response.data?.customerId.toString());
         _navigationHandler.navigateToOtpScreenCustomerSignUp(
-            signUpArguments.userType, mobileNumber,userId : response.data?.customerId.toString());
+            signUpArguments.userType, mobileNumber,
+            userId: response.data?.customerId.toString());
       } else {
         print(response.message);
       }
@@ -41,7 +43,9 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
     } else if (signUpArguments.signupType ==
         SignupType.agentAidedCustomerOnBoarding) {
       _navigationHandler.navigateToOtpScreenCustomerSignUp(
-          signUpArguments.userType, mobileNumber,);
+        signUpArguments.userType,
+        mobileNumber,
+      );
     }
   }
 

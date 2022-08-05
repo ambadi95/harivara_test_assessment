@@ -13,6 +13,7 @@ enum CrayonPaymentPageHeaderTextUnderIconPosition {
   left,
   right,
 }
+
 enum CrayonPaymentPageHeaderTextUnderIconWidgetElementFormat {
   vertical,
   horizontal,
@@ -45,8 +46,10 @@ class CrayonPaymentPageHeaderTextUnderIconWidgetElementAttributes {
     this.padding,
     this.onPressed,
     this.position = CrayonPaymentPageHeaderTextUnderIconPosition.top,
-    this.type = CrayonPaymentPageHeaderTextUnderIconWidgetTextElementType.header,
-    this.format = CrayonPaymentPageHeaderTextUnderIconWidgetElementFormat.vertical,
+    this.type =
+        CrayonPaymentPageHeaderTextUnderIconWidgetTextElementType.header,
+    this.format =
+        CrayonPaymentPageHeaderTextUnderIconWidgetElementFormat.vertical,
   });
 
   CrayonPaymentPageHeaderTextUnderIconWidgetElementAttributes copyWith({
@@ -76,7 +79,8 @@ class CrayonPaymentPageHeaderTextUnderIconWidgetElementAttributes {
 }
 
 class CrayonPaymentPageHeaderTextUnderIconWidgetAttributes {
-  final List<CrayonPaymentPageHeaderTextUnderIconWidgetElementAttributes> attributesList;
+  final List<CrayonPaymentPageHeaderTextUnderIconWidgetElementAttributes>
+      attributesList;
   final double headerTopPadding;
   final double leftMargin;
   final double rightMargin;

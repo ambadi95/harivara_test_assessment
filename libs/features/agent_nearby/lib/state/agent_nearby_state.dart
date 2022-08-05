@@ -5,8 +5,7 @@ part 'agent_nearby_state.freezed.dart';
 
 @freezed
 class AgentNearByState with _$AgentNearByState {
-
- const factory AgentNearByState({
-   @Default([]) List<AgentNearbyModel> agentNearbyList,
-}) = _AgentNearByState;
+  const factory AgentNearByState({
+    @Default([]) List<AgentNearbyModel> agentNearbyList,
+  }) = _AgentNearByState;
 }

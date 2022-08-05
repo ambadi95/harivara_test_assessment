@@ -41,22 +41,26 @@ class CrayonPaymentSwipeableBottomBar extends StatelessWidget {
               key: Key('CrayonPaymentSwipeableBottomBar_Container'),
               color: Colors.transparent,
               child: SingleChildScrollView(
-                key: Key('CrayonPaymentSwipeableBottomBar_SingleChildScrollView'),
+                key: Key(
+                    'CrayonPaymentSwipeableBottomBar_SingleChildScrollView'),
                 controller: scrollController,
                 child: Stack(
                   children: [
-                    if (background != null) SizedBox(
-                      height: MediaQuery.of(context).size.height,
-                      child: background,
-                    ),
+                    if (background != null)
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height,
+                        child: background,
+                      ),
                     Container(
-                      key: Key('CrayonPaymentSwipeableBottomBar_ChildContainer'),
+                      key:
+                          Key('CrayonPaymentSwipeableBottomBar_ChildContainer'),
                       height: MediaQuery.of(context).size.height,
                       child: Column(
                         key: Key('CrayonPaymentSwipeableBottomBar_ChildColumn'),
                         children: [
                           Container(
-                            key: Key('CrayonPaymentSwipeableBottomBar_ChildrenContainer'),
+                            key: Key(
+                                'CrayonPaymentSwipeableBottomBar_ChildrenContainer'),
                             alignment: Alignment.center,
                             height: 100,
                             child: CrayonPaymentText(

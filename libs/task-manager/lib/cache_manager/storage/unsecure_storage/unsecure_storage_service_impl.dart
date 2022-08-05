@@ -34,7 +34,8 @@ class UnsecureStorageServiceImpl extends StorageService {
   ) async {
     if (value is String?) {
       if (value == null) {
-        CrayonPaymentLogger.logInfo('$key not saved to storage, value was null.');
+        CrayonPaymentLogger.logInfo(
+            '$key not saved to storage, value was null.');
         return;
       }
       final prefs = await SharedPreferences.getInstance();

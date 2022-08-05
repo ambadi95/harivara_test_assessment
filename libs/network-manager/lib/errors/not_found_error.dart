@@ -1,5 +1,3 @@
 import 'dart:core';
 
-class NotFoundError extends Error {
-
-}
+class NotFoundError extends Error {}

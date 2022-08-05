@@ -73,7 +73,8 @@ class BottomSheetKyc extends StatelessWidget {
                             key: const Key('BottomSheetKycTitle'),
                             text: TextUIDataModel(
                               listItemsToShow[index],
-                              styleVariant: CrayonPaymentTextStyleVariant.bodyText2,
+                              styleVariant:
+                                  CrayonPaymentTextStyleVariant.bodyText2,
                               color: CrayonPaymentColors.homeTitleColor,
                             ),
                           ),

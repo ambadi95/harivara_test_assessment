@@ -8,7 +8,8 @@ class CrayonPaymentStorageService implements IStorageService {
   );
 
   @override
-  Future<String> getValueFromSecureStorage(String key, {String defaultValue = ''}) async {
+  Future<String> getValueFromSecureStorage(String key,
+      {String defaultValue = ''}) async {
     final mapData = await _taskManager.execute(
       Task(
         requestData: {
@@ -36,7 +37,8 @@ class CrayonPaymentStorageService implements IStorageService {
   }
 
   @override
-  Future<String> getValueFromMemory(String key, {String defaultValue = ''}) async {
+  Future<String> getValueFromMemory(String key,
+      {String defaultValue = ''}) async {
     final mapData = await _taskManager.execute(
       Task(
         requestData: {

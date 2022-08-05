@@ -41,10 +41,12 @@ class CrayonPaymentSnackbarWidget extends StatefulWidget {
   }
 
   @override
-  _CrayonPaymentSnackbarWidgetState createState() => _CrayonPaymentSnackbarWidgetState();
+  _CrayonPaymentSnackbarWidgetState createState() =>
+      _CrayonPaymentSnackbarWidgetState();
 }
 
-class _CrayonPaymentSnackbarWidgetState extends State<CrayonPaymentSnackbarWidget>
+class _CrayonPaymentSnackbarWidgetState
+    extends State<CrayonPaymentSnackbarWidget>
     with SingleTickerProviderStateMixin {
   bool _dismissing = false;
   final int _enterAnimationDuration = 250;
@@ -159,7 +161,8 @@ class _CrayonPaymentSnackbarWidgetState extends State<CrayonPaymentSnackbarWidge
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               SizedBox(
-                                width: 30 + CrayonPaymentDimensions.inlineFieldsMargin,
+                                width: 30 +
+                                    CrayonPaymentDimensions.inlineFieldsMargin,
                               ),
                               Expanded(
                                 child: Text(
@@ -266,9 +269,11 @@ class CrayonPaymentSnackbarBuilder {
         barrierDismissable ?? false,
         autoDismissDuration,
         margins ?? EdgeInsets.all(24),
-        backgroundColor ?? CrayonPaymentColors.crayonPaymentSnackbarBackgroundColor,
+        backgroundColor ??
+            CrayonPaymentColors.crayonPaymentSnackbarBackgroundColor,
         titleColor ?? Colors.white,
-        subtitleColor ?? CrayonPaymentColors.crayonPaymentSnackbarSubtitleColor, () {
+        subtitleColor ?? CrayonPaymentColors.crayonPaymentSnackbarSubtitleColor,
+        () {
       _entry.remove();
       if (onDismiss != null) {
         onDismiss();

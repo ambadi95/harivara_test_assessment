@@ -131,11 +131,13 @@ class CrayonPaymentRowCard extends StatelessWidget {
                     // TODO: we need to implement a function that formats the cardNumber
                     // dependent of the card type (e.g. American express or visa/mastercard).
                     CrayonPaymentRowCardSubtitle(
-                      key: const Key('CrayonPaymentRowCardNumber_RowCardNumber'),
+                      key:
+                          const Key('CrayonPaymentRowCardNumber_RowCardNumber'),
                       text: '**** **** **** ' + cardDetails.last4Digits,
                     ),
                     CrayonPaymentRowCardSubtitle(
-                      key: const Key('CrayonPaymentRowCardExpiryDate_RowCardExpiryDate'),
+                      key: const Key(
+                          'CrayonPaymentRowCardExpiryDate_RowCardExpiryDate'),
                       text: 'Expiry ' +
                           cardDetails.expiryMonth.toString() +
                           '/' +

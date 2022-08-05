@@ -12,7 +12,8 @@ class RequiredHeaders {
 
   static final String HEADER_CONTENT_TYPE = 'Content-Type';
 
-  static final String HEADER_X_CrayonPayment_CHANNEL = 'x-CrayonPayment-channel';
+  static final String HEADER_X_CrayonPayment_CHANNEL =
+      'x-CrayonPayment-channel';
 
   final String deviceAlias;
   final String appName;

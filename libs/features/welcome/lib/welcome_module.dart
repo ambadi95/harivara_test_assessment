@@ -12,7 +12,9 @@ import 'package:welcome/sub_features/agent_details/viewmodel/agent_details_useca
 import 'package:welcome/sub_features/agent_details/viewmodel/agent_details_view_model.dart';
 import 'package:welcome/sub_features/agent_enrollment/viewmodel/agent_enrollment_coordinator.dart';
 import 'package:welcome/sub_features/details/viewmodel/details_usecase.dart';
+import 'package:welcome/sub_features/enrollment_success/service/enrollment_service.dart';
 import 'package:welcome/sub_features/enrollment_success/viewmodel/enrollment_success_coordinator.dart';
+import 'package:welcome/sub_features/enrollment_success/viewmodel/enrollment_success_usecase.dart';
 import 'package:welcome/sub_features/signup/service/signup_service.dart';
 import 'package:welcome/sub_features/signup/viewmodel/signup_usecase.dart';
 import 'package:welcome/sub_features/signup/viewmodel/signup_viewmodel.dart';
@@ -30,34 +32,33 @@ import 'sub_features/details/viewmodel/details_coordinator.dart';
 import 'sub_features/details/viewmodel/details_view_model.dart';
 import 'sub_features/signup/viewmodel/signup_coordinator.dart';
 
-
 class WelcomeModule {
   static const moduleIdentifier = 'welcomeModule';
 
   static void registerDependencies() {
-
     ModuleResolver.registerResolver(
       moduleIdentifier,
       SignupModuleResolver(
         SignupApiResolver(
           SignupService(),
           DetailsService(),
+          EnrollmentService(),
         ),
       ),
     );
 
     DIContainer.container.registerFactory<WelcomeCoordinator>(
-          (container) => WelcomeCoordinator(
+      (container) => WelcomeCoordinator(
         WelcomeNavigationHandler(container.resolve<NavigationManager>()),
         WelcomeUseCase(
-           WelcomeViewModel(),
+          WelcomeViewModel(),
           container.resolve<TaskManager>(),
-       ),
-     ),
-   );
+        ),
+      ),
+    );
 
     DIContainer.container.registerFactory<SignUpCoordinator>(
-          (container) => SignUpCoordinator(
+      (container) => SignUpCoordinator(
         WelcomeNavigationHandler(container.resolve<NavigationManager>()),
         SignupUseCase(
           SignupViewModel(),
@@ -68,7 +69,7 @@ class WelcomeModule {
     );
 
     DIContainer.container.registerFactory<DetailsCoordinator>(
-          (container) => DetailsCoordinator(
+      (container) => DetailsCoordinator(
         WelcomeNavigationHandler(container.resolve<NavigationManager>()),
         DetailsUseCase(
           DetailsViewModel(),
@@ -78,7 +79,7 @@ class WelcomeModule {
     );
 
     DIContainer.container.registerFactory<AgentDetailsCoordinator>(
-          (container) => AgentDetailsCoordinator(
+      (container) => AgentDetailsCoordinator(
         WelcomeNavigationHandler(container.resolve<NavigationManager>()),
         AgentDetailsUseCase(
           AgentDetailsViewModel(),
@@ -88,7 +89,7 @@ class WelcomeModule {
     );
 
     DIContainer.container.registerFactory<WelcomeBackCoordinator>(
-          (container) => WelcomeBackCoordinator(
+      (container) => WelcomeBackCoordinator(
         WelcomeNavigationHandler(container.resolve<NavigationManager>()),
         WelcomeBackUseCase(
           WelcomeBackViewModel(),
@@ -96,19 +97,21 @@ class WelcomeModule {
         ),
       ),
     );
-    
 
     DIContainer.container.registerFactory<EnrollmentSuccessCoordinator>(
-          (container) => EnrollmentSuccessCoordinator(
+      (container) => EnrollmentSuccessCoordinator(
         WelcomeNavigationHandler(container.resolve<NavigationManager>()),
+        EnrollmentSuccessUseCase(
+          container.resolve<IAuthManager>(),
+          container.resolve<TaskManager>(),
+        ),
       ),
     );
 
     DIContainer.container.registerFactory<AgentEnrollmentCoordinator>(
-          (container) => AgentEnrollmentCoordinator(
+      (container) => AgentEnrollmentCoordinator(
         WelcomeNavigationHandler(container.resolve<NavigationManager>()),
       ),
     );
-
   }
 }

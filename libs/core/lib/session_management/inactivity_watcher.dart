@@ -14,7 +14,8 @@ class InactivityWatcher extends StatefulWidget {
   State<StatefulWidget> createState() => _InactivityWatcherState();
 }
 
-class _InactivityWatcherState extends State<InactivityWatcher> with WidgetsBindingObserver {
+class _InactivityWatcherState extends State<InactivityWatcher>
+    with WidgetsBindingObserver {
   @override
   void initState() {
     super.initState();

@@ -9,7 +9,8 @@ import 'package:stream_transform/stream_transform.dart';
 import 'package:task_manager/task_manager.dart';
 
 class _Constants {
-  static const inactivityTimeout = 100 * 60 * 1000; // 10 minutes in milliseconds
+  static const inactivityTimeout =
+      100 * 60 * 1000; // 10 minutes in milliseconds
   static const storageKey = 'app-inactive-since';
   static const throttleTime = Duration(milliseconds: 1000);
 }

@@ -59,23 +59,23 @@ class BusinessProfile extends Equatable {
 
   @override
   List<Object?> get props => [
-    merchantId,
-    mobileNo,
-    email,
-    companyName,
-    registrationNo,
-    companyType,
-    management,
-    registrationExpiry,
-    trValue,
-    trVolume,
-    applicationId,
-    address,
-    management,
-    emailVerified,
-    status,
-    picByte,
-    businessCategory,
-    applicationId
-  ];
+        merchantId,
+        mobileNo,
+        email,
+        companyName,
+        registrationNo,
+        companyType,
+        management,
+        registrationExpiry,
+        trValue,
+        trVolume,
+        applicationId,
+        address,
+        management,
+        emailVerified,
+        status,
+        picByte,
+        businessCategory,
+        applicationId
+      ];
 }

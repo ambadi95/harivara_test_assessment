@@ -1,5 +1,4 @@
-class AgentDetailsViewModel{
-
+class AgentDetailsViewModel {
   bool isValidName(String name) {
     var reg = RegExp(r"^\s*([A-Za-z]{1,}([\.,] |[-']| ))+[A-Za-z]+\.?\s*$");
     var isValid = reg.hasMatch(name);
@@ -7,7 +6,8 @@ class AgentDetailsViewModel{
   }
 
   bool isValidEmailId(String emailId) {
-    var reg = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
+    var reg = RegExp(
+        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
     var isValid = reg.hasMatch(emailId);
     return isValid;
   }
@@ -21,5 +21,4 @@ class AgentDetailsViewModel{
     var isValid = reg.hasMatch(mobileNumber);
     return isValid;
   }
-  
 }

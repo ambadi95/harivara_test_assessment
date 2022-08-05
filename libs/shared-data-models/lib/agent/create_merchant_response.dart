@@ -34,6 +34,6 @@ class CreateMerchantResponse extends CreateResponse {
         serviceRequestId,
         status,
         userId,
-    errors,
+        errors,
       ];
 }

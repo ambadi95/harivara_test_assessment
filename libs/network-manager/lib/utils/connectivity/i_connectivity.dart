@@ -15,7 +15,7 @@ abstract class IConnectivity {
   Future initialize();
 
   /// Checks the applications connection to the internet and returns a boolean
-  /// value that indicates whether the application has connection to the 
+  /// value that indicates whether the application has connection to the
   /// internet.
   Future<bool> checkConnection();
 }

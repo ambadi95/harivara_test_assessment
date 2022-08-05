@@ -17,11 +17,10 @@ class CrayonWelcomBackScreen extends StatefulWidget {
 
   // final WelcomeScreenArgs welcomeScreenArgs;
 
-  const CrayonWelcomBackScreen({
-    Key? key,
-    required this.userType
-    // required this.welcomeScreenArgs,
-  }) : super(key: key);
+  const CrayonWelcomBackScreen({Key? key, required this.userType
+      // required this.welcomeScreenArgs,
+      })
+      : super(key: key);
 
   @override
   State<CrayonWelcomBackScreen> createState() => _CrayonWelcomBackScreenState();
@@ -35,7 +34,7 @@ class CrayonWelcomBackScreen extends StatefulWidget {
 //     );
 }
 
- TextEditingController passcodeController = TextEditingController();
+TextEditingController passcodeController = TextEditingController();
 
 class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
   @override
@@ -47,8 +46,8 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
         ),
       );
 
-  Widget _buildMainUIWithLoading(context, WelcomeBackCoordinator welcomeCoordinator,
-      WelcomeScreenState state) {
+  Widget _buildMainUIWithLoading(context,
+      WelcomeBackCoordinator welcomeCoordinator, WelcomeScreenState state) {
     return Scaffold(
       body: SafeArea(
         child: Stack(
@@ -136,7 +135,11 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
   }
 
   Widget _buildTitle(BuildContext context) {
-    return Text('WB_WelcomeBack'.tr, style: WB_title_style,textAlign: TextAlign.center,);
+    return Text(
+      'WB_WelcomeBack'.tr,
+      style: WB_title_style,
+      textAlign: TextAlign.center,
+    );
   }
 
   Widget _userInfo(BuildContext context) {
@@ -148,11 +151,11 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
     return Text('WB_EnterPassCode'.tr, style: WB_enter_passcode_title_style);
   }
 
-  Widget _passcodeWidget(BuildContext context, WelcomeBackCoordinator coordinator){
+  Widget _passcodeWidget(
+      BuildContext context, WelcomeBackCoordinator coordinator) {
     return Container(
       child: Padding(
-          padding: const EdgeInsets.symmetric(
-              vertical: 8.0, horizontal: 8),
+          padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8),
           child: PinCodeTextField(
             appContext: context,
             pastedTextStyle: const TextStyle(
@@ -174,47 +177,48 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
                 disabledColor: Colors.white,
                 selectedColor: Colors.black,
                 activeColor: Colors.black,
-                inactiveColor: Colors.grey
-            ),
+                inactiveColor: Colors.grey),
             cursorColor: Colors.black,
             enableActiveFill: false,
             autoFocus: false,
-            autoDismissKeyboard : true,
+            autoDismissKeyboard: true,
             //errorAnimationController: errorController,
             controller: passcodeController,
             keyboardType: TextInputType.number,
             onCompleted: (v) async {
-        await coordinator.navigationToDestination(widget.userType);
-            }, onChanged: (String value) {  },
+              await coordinator.navigationToDestination(widget.userType);
+            },
+            onChanged: (String value) {},
           )),
-
     );
   }
 
-  Widget _buildResetPasscode(WelcomeBackCoordinator coordinator){
+  Widget _buildResetPasscode(WelcomeBackCoordinator coordinator) {
     return Center(
-        child: Padding(
-          padding: const EdgeInsets.only(bottom: 20),
-          child: InkWell(
-            onTap: (){
-          coordinator.navigateToResetNow(widget.userType);
-            },
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: const [
-                Text('Forget Passcode?',
-                  style: WB_forget_passcode_text_style,
-                ),
-                SizedBox(
-                  height: 5,
-                ),
-                Text('Reset Now',
-                  style: WB_reset_passcode_text_style,
-                )
-              ],
-            ),
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 20),
+        child: InkWell(
+          onTap: () {
+            coordinator.navigateToResetNow(widget.userType);
+          },
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: const [
+              Text(
+                'Forget Passcode?',
+                style: WB_forget_passcode_text_style,
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Text(
+                'Reset Now',
+                style: WB_reset_passcode_text_style,
+              )
+            ],
           ),
         ),
+      ),
     );
   }
 }

@@ -1,5 +1,3 @@
 import 'dart:core';
 
-class NoInternetError extends Error {
-
-}
+class NoInternetError extends Error {}

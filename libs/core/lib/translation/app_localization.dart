@@ -16,7 +16,8 @@ class AppLocalizations {
   // Helper method to keep the code in the src concise
   // Localizations are accessed using an InheritedWidget "of" syntax
 
-  static LocalizationsDelegate<AppLocalizations> delegate = _AppLocalizationsDelegate(localeList);
+  static LocalizationsDelegate<AppLocalizations> delegate =
+      _AppLocalizationsDelegate(localeList);
 
   static AppLocalizations? of(BuildContext context) {
     return Localizations.of<AppLocalizations>(context, AppLocalizations);
@@ -24,8 +25,9 @@ class AppLocalizations {
 
   final _localizedStrings = <String, Map<String, String>>{};
 
-  Future parsePackage({required String shortName, required String packageName}) async {
-     final path = 'assets/lang/${locale.languageCode}.json';
+  Future parsePackage(
+      {required String shortName, required String packageName}) async {
+    final path = 'assets/lang/${locale.languageCode}.json';
     final jsonString = await rootBundle.loadString(path);
     final jsonMap = json.decode(jsonString) as Map<String, dynamic>;
     final stringValues = jsonMap.map((key, value) {
@@ -60,7 +62,8 @@ class AppLocalizations {
   }
 }
 
-class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
+class _AppLocalizationsDelegate
+    extends LocalizationsDelegate<AppLocalizations> {
   List<String> localeList;
   _AppLocalizationsDelegate(this.localeList);
 

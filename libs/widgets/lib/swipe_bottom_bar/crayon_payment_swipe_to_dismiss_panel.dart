@@ -8,10 +8,12 @@ import 'package:widget_library/static_text/crayon_payment_text.dart';
 
 class _Constants {
   static const defaultSwipeIconUri = 'widget_library:assets/images/ic_send.svg';
-  static const defaultSwipeBackgroundIconUri = 'widget_library:assets/images/ic_chevron_horizontal.svg';
+  static const defaultSwipeBackgroundIconUri =
+      'widget_library:assets/images/ic_chevron_horizontal.svg';
   static const defaultSwipeBackgroundOpacity = 0.2;
   static const defaultBorderRadius = 12.0;
-  static const swipePanelCrayonPaymentPadding = CrayonPaymentPadding(height: 56);
+  static const swipePanelCrayonPaymentPadding =
+      CrayonPaymentPadding(height: 56);
 }
 
 /// Swipe to dismiss panel
@@ -74,7 +76,8 @@ class CrayonPaymentSwipeToDismissPanel extends StatelessWidget {
                 ),
               ),
               CrayonPaymentCorneredIconButton(
-                key: Key('CrayonPaymentSwipeToDismissPanel_submit_button_CrayonPaymentCorneredIconButton'),
+                key: Key(
+                    'CrayonPaymentSwipeToDismissPanel_submit_button_CrayonPaymentCorneredIconButton'),
                 isBorderEnabled: false,
                 onPressed: () {},
                 svgSource: _Constants.defaultSwipeIconUri,
@@ -82,7 +85,8 @@ class CrayonPaymentSwipeToDismissPanel extends StatelessWidget {
               ),
               Center(
                 child: CrayonPaymentText(
-                  key: Key('CrayonPaymentSwipeToDismissPanel_title_CrayonPaymentText'),
+                  key: Key(
+                      'CrayonPaymentSwipeToDismissPanel_title_CrayonPaymentText'),
                   text: TextUIDataModel(title),
                 ),
               ),

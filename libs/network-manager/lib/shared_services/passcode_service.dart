@@ -188,7 +188,6 @@ class PasscodeService extends IPasscodeService {
     String passcode,
     String language,
   ) async {
-
     var request = StandardRequest();
     request.requestType = RequestType.POST;
     request.endpoint = 'agent/merchants/v2.0/identity';

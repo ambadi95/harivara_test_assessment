@@ -24,7 +24,8 @@ class CommonPurchaseTransactionFieldsParser
       ? List<String>.from(jsonMap['refundId'])
       : null;
 
-  double get processingFee => double.parse((jsonMap['processingFee'] ?? 0.0).toString());
+  double get processingFee =>
+      double.parse((jsonMap['processingFee'] ?? 0.0).toString());
 
   double? get discount => jsonMap['discount'] != null
       ? double.parse(jsonMap['discount'].toString())

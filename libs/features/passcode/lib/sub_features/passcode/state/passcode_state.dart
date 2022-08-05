@@ -21,5 +21,4 @@ class CreatePasscodeState with _$CreatePasscodeState {
     @Default('') String error,
     @Default(false) bool isLoading,
   }) = CreatePasscodeReady;
-
 }

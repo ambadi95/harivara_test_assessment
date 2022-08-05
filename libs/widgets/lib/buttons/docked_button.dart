@@ -64,8 +64,8 @@ class CrayonPaymentDockedButton extends TrackableWidget {
         buttonColor = _buildMaterialColor(buttonColor) ??
             _CrayonPaymentDockedButtonBackgroundColor.defaultColor,
         borderColor = borderColor ?? _borderColor,
-        borderRadius =
-            borderRadius ?? _CrayonPaymentDockedButtonBorderRadius.defaultRadius,
+        borderRadius = borderRadius ??
+            _CrayonPaymentDockedButtonBorderRadius.defaultRadius,
         height = height ?? _CrayonPaymentDockedButtonHeight.defaultHeight,
         width = width ?? _width,
         hitAreaHeight = hitAreaHeight,
@@ -167,14 +167,16 @@ class CrayonPaymentDockedButton extends TrackableWidget {
           child: Container(
             width: iconSize,
             height: iconSize,
-            child: Icon(icon!,color: iconColor,),
+            child: Icon(
+              icon!,
+              color: iconColor,
+            ),
             // child: icon!.fold(
             //   (icon) => Icon(
             //     icon,
             //     color: iconColor,
             //   ),
             //   (iconPath) => SvgPicture.asset(iconPath),
-
           ),
         ),
         spaceW5(),
@@ -202,8 +204,8 @@ class CrayonPaymentDockedButton extends TrackableWidget {
 }
 
 @immutable
-class _CrayonPaymentDockedButtonDefaultElevation extends MaterialStateProperty<double>
-    with Diagnosticable {
+class _CrayonPaymentDockedButtonDefaultElevation
+    extends MaterialStateProperty<double> with Diagnosticable {
   _CrayonPaymentDockedButtonDefaultElevation(this.elevation);
 
   final double elevation;
@@ -229,7 +231,8 @@ class _CrayonPaymentDockedButtonOutlineGold extends CrayonPaymentDockedButton {
           onPressed: onPressed,
           buttonColor: Colors.transparent,
           borderColor: CrayonPaymentColors.crayonPaymentGold,
-          borderRadius: _CrayonPaymentDockedButtonBorderRadius.smallButtonRadius,
+          borderRadius:
+              _CrayonPaymentDockedButtonBorderRadius.smallButtonRadius,
         );
 }
 
@@ -248,7 +251,8 @@ class _CrayonPaymentDockedButtonOutlineBlack extends CrayonPaymentDockedButton {
           onPressed: onPressed,
           buttonColor: Colors.transparent,
           borderColor: CrayonPaymentColors.crayonPaymentBlack,
-          borderRadius: _CrayonPaymentDockedButtonBorderRadius.smallButtonRadius,
+          borderRadius:
+              _CrayonPaymentDockedButtonBorderRadius.smallButtonRadius,
         );
 }
 
@@ -264,7 +268,8 @@ class _CrayonPaymentDockedButtonSmallBlack extends CrayonPaymentDockedButton {
           hitAreaHeight: _CrayonPaymentDockedButtonHeight.defaultHeight,
           textColor: Colors.white,
           onPressed: onPressed,
-          borderRadius: _CrayonPaymentDockedButtonBorderRadius.smallButtonRadius,
+          borderRadius:
+              _CrayonPaymentDockedButtonBorderRadius.smallButtonRadius,
         );
 }
 
@@ -302,7 +307,8 @@ class _CrayonPaymentDockedButtonWhite extends CrayonPaymentDockedButton {
 
 class _CrayonPaymentDockedButtonBackgroundColor {
   static final MaterialStateProperty<Color> disabledColor =
-      MaterialStateProperty.all<Color>(CrayonPaymentColors.crayonPaymentLightGray);
+      MaterialStateProperty.all<Color>(
+          CrayonPaymentColors.crayonPaymentLightGray);
 
   static final MaterialStateProperty<Color> defaultColor =
       MaterialStateProperty.all<Color>(CrayonPaymentColors.crayonPaymentBlack);

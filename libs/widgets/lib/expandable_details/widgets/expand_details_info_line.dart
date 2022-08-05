@@ -39,7 +39,8 @@ class ExpandDetailsInfoLine extends ExpandableDetailsOptions {
       text: TextUIDataModel(
         text.tr,
         color: textColor ?? Colors.black54,
-        styleVariant: textStyleVariant ?? CrayonPaymentTextStyleVariant.bodyText2,
+        styleVariant:
+            textStyleVariant ?? CrayonPaymentTextStyleVariant.bodyText2,
       ),
     );
   }

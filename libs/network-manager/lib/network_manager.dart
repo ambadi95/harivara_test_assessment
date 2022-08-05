@@ -67,7 +67,8 @@ class NetworkManager {
     final secureStorage = DIContainer.container<StorageService>();
     secureStorage.delete('refresh_token');
     DIContainer.container.registerSingleton<IAuthManager>(
-      (container) => CrayonPaymentAuthManager(secureStorage as SecureStorageService),
+      (container) =>
+          CrayonPaymentAuthManager(secureStorage as SecureStorageService),
     );
 
     // register user manager

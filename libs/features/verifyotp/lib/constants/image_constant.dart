@@ -1,1 +1,1 @@
-const backArrow="assets/images/back_arrow.png";
+const backArrow = "assets/images/back_arrow.png";

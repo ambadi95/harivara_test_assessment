@@ -52,7 +52,6 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
               ),
             ),
           ),
-
         ),
       );
 
@@ -143,7 +142,8 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                   const SizedBox(
                     height: 5,
                   ),
-                   Text((isAgent()==true) ? "356HYT6584" : "648960359535569", style: HS_account_id_style),
+                  Text((isAgent() == true) ? "356HYT6584" : "648960359535569",
+                      style: HS_account_id_style),
                 ],
               ),
               const Spacer(),
@@ -159,7 +159,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
           ),
           (isAgent() == true)
               ? Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -174,8 +174,10 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                         const Text("200", style: HS_account_id_style),
                       ],
                     ),
-                   const SizedBox(width: 20,)
-                    ,Column(
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
@@ -223,7 +225,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       InkWell(
-                        onTap:(){
+                        onTap: () {
                           coordinator.navigateToCustomerRegister();
                         },
                         child: _actionCommonView(
@@ -263,7 +265,6 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
 
   Widget _actionCommonView(String title, String imagePath) {
     return Column(
-
       children: [
         const SizedBox(
           height: 10,
@@ -400,53 +401,52 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
   _buildMainUI(BuildContext context, HomeCoordinator coordinator,
       HomeScreenReady state) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      floatingActionButtonLocation:
-          FloatingActionButtonLocation.miniCenterDocked,
-      bottomNavigationBar: SizedBox(
-        height: 55,
-        child: BottomNavigationBar(
-          currentIndex: selectedIndex,
-          type: BottomNavigationBarType.fixed,
-
-          items: [
-            BottomNavigationBarItem(
-                icon: Image.asset(
-                  HS_HomeIcon,
-                  scale: 2.0,
-                ),
-                label: ''),
-            BottomNavigationBarItem(
-                icon: Image.asset(
-                  HS_SettingIcon,
-                  scale: 2.0,
-                ),
-                label: '')
-          ],
-          onTap: (index) {
-            setState(() {
-              selectedIndex = index;
-            });
-            // if(index == 1){
-            // coordinator.navigateToSettingsScreen();
-            // }
-          },
+        backgroundColor: Colors.white,
+        floatingActionButtonLocation:
+            FloatingActionButtonLocation.miniCenterDocked,
+        bottomNavigationBar: SizedBox(
+          height: 55,
+          child: BottomNavigationBar(
+            currentIndex: selectedIndex,
+            type: BottomNavigationBarType.fixed,
+            items: [
+              BottomNavigationBarItem(
+                  icon: Image.asset(
+                    HS_HomeIcon,
+                    scale: 2.0,
+                  ),
+                  label: ''),
+              BottomNavigationBarItem(
+                  icon: Image.asset(
+                    HS_SettingIcon,
+                    scale: 2.0,
+                  ),
+                  label: '')
+            ],
+            onTap: (index) {
+              setState(() {
+                selectedIndex = index;
+              });
+              // if(index == 1){
+              // coordinator.navigateToSettingsScreen();
+              // }
+            },
+          ),
         ),
-      ),
-      body:   selectedIndex == 0 ? SingleChildScrollView(
-        child: Column(
-          children: [
-
-            Column(
-              children: [
-                _userInfoView(),
-                _redBoxView(coordinator),
-                _inviteBoxView(),
-              ],
-            )
-          ],
-        ),
-      ) : const Settings()
-    );
+        body: selectedIndex == 0
+            ? SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Column(
+                      children: [
+                        _userInfoView(),
+                        _redBoxView(coordinator),
+                        _inviteBoxView(),
+                      ],
+                    )
+                  ],
+                ),
+              )
+            : const Settings());
   }
 }

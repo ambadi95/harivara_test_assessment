@@ -68,13 +68,13 @@ void main() {
   });
 
   testWidgets('should not show expanded widgets without tapping',
-          (tester) async {
-        // Act
-        await tester.pumpWidget(testWidget);
-        // Assert
-        expect(expandedInfoFinder, findsNothing);
-        expect(expandedDividerFinder, findsNothing);
-      });
+      (tester) async {
+    // Act
+    await tester.pumpWidget(testWidget);
+    // Assert
+    expect(expandedInfoFinder, findsNothing);
+    expect(expandedDividerFinder, findsNothing);
+  });
 
   testWidgets('should show expanded widgets when tapped', (tester) async {
     // Act

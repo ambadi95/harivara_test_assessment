@@ -29,6 +29,9 @@ extension StringExtentions on String {
         height: size?.height,
       );
     }
-    return SvgPicture.asset(list.first, key: Key('getSvgFirstSvgPicture'),);
+    return SvgPicture.asset(
+      list.first,
+      key: Key('getSvgFirstSvgPicture'),
+    );
   }
 }

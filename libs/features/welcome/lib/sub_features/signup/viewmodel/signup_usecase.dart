@@ -14,8 +14,9 @@ class SignupUseCase extends BaseDataProvider {
   final SignupViewModel _signupViewModel;
   final IAuthManager _authManager;
 
-  SignupUseCase(this._signupViewModel, this._authManager,
-      TaskManager taskManager) : super(taskManager);
+  SignupUseCase(
+      this._signupViewModel, this._authManager, TaskManager taskManager)
+      : super(taskManager);
 
   bool isValidNINDAnumber(String nidaNumber) {
     return _signupViewModel.isValidNidaNumber(nidaNumber);
@@ -57,13 +58,12 @@ class SignupUseCase extends BaseDataProvider {
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {
           final data = responseData;
-          CustomerDetailResponse detailResponse = CustomerDetailResponse
-              .fromJson(data);
+          CustomerDetailResponse detailResponse =
+              CustomerDetailResponse.fromJson(data);
           _authManager.setUserDetail(
-              authInfo: detailResponse.data?.customerId.toString() ,key: UserDetailsLabel.id);
-          _authManager.storeTokenInformation("CrayonTokenCheck", "refreshToken", "expiresIn", "individualId");
+              authInfo: detailResponse.data?.customerId.toString(),
+              key: UserDetailsLabel.id);
           return detailResponse;
         });
   }
-
 }

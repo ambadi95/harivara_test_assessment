@@ -18,9 +18,10 @@ PreferredSizeWidget CrayonPaymentDefaultAppBar(
 ) {
   final leadingWidth =
       screenPadding.left + (_buttonSize * (attributes.left?.length ?? 0.0));
-  Brightness crayonPaymentBrightness = (attributes.brightness == CrayonPaymentBrightness.dark)
-      ? Brightness.dark
-      : Brightness.light;
+  Brightness crayonPaymentBrightness =
+      (attributes.brightness == CrayonPaymentBrightness.dark)
+          ? Brightness.dark
+          : Brightness.light;
   return AppBar(
     key: attributes.key ?? const Key('${_identifier}'),
     centerTitle: true,

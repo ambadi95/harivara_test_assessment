@@ -14,25 +14,25 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
   PasscodeCoordinator(this._navigationHandler, this._passcodeUseCase)
       : super(const CreatePasscodeState.initialState());
 
-  void initialiseState(BuildContext context,
-      String pageTitle,
-      String pageDescription,
-      String destinationPath,
-      PassCodeVerificationType passCodeVerificationType,
-      String initialPasscode,) async {
+  void initialiseState(
+    BuildContext context,
+    String pageTitle,
+    String pageDescription,
+    String destinationPath,
+    PassCodeVerificationType passCodeVerificationType,
+    String initialPasscode,
+  ) async {
     state = CreatePasscodeState.ready(
-      context: context,
-      initialPasscode: initialPasscode,
-      currentPasscode: '',
-      pageDescription: pageDescription,
-      destinationPath: destinationPath,
-      pageTitle: pageTitle,
-      passcodeLength: 6,
-      passCodeVerificationType: passCodeVerificationType,
-      currentStep: 4
-    );
+        context: context,
+        initialPasscode: initialPasscode,
+        currentPasscode: '',
+        pageDescription: pageDescription,
+        destinationPath: destinationPath,
+        pageTitle: pageTitle,
+        passcodeLength: 6,
+        passCodeVerificationType: passCodeVerificationType,
+        currentStep: 4);
   }
-
 
   // Future<void> updatePasscodeInput(KeypadButtonType keypadButtonType,) async {
   //   var currentState = state as CreatePasscodeReady;
@@ -53,7 +53,7 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
   //   }
   // }
 
-  Future<void> onPasscodeCallback(String passCode,String userType) async {
+  Future<void> onPasscodeCallback(String passCode, String userType) async {
     var currentState = state as CreatePasscodeReady;
     switch (currentState.passCodeVerificationType) {
       case PassCodeVerificationType.create:
@@ -116,18 +116,16 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
         createResetPassCode(passCode);
         break;
       case PassCodeVerificationType.agentVerifyResetPasscode:
-      // TODO: Handle this case.
-      await verifyPasscodeReset( currentState.initialPasscode,
-          passCode,
-          currentState.destinationPath,
-          userType);
+        // TODO: Handle this case.
+        await verifyPasscodeReset(currentState.initialPasscode, passCode,
+            currentState.destinationPath, userType);
         break;
       case PassCodeVerificationType.agentSignIn:
-        _navigationHandler.navigateToAgentHomeScreen('homemodule/CrayonHomeScreen');
+        _navigationHandler
+            .navigateToAgentHomeScreen('homemodule/CrayonHomeScreen');
         break;
     }
   }
-
 
   Future<void> createPassCode(String passcode) async {
     var currentState = state as CreatePasscodeReady;
@@ -153,7 +151,8 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
     var error = await _passcodeUseCase.validateCustomerPasscode(passcode);
     if (error.isEmpty) {
       state = currentState.copyWith(
-        passCodeVerificationType: PassCodeVerificationType.agentVerifyResetPasscode,
+        passCodeVerificationType:
+            PassCodeVerificationType.agentVerifyResetPasscode,
         pageTitle: 'PC_confirm_passcode',
         pageDescription: 'PC_re_enter_passcode',
         currentPasscode: '',
@@ -168,26 +167,29 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
   }
 
   Future<void> verifyPasscode(
-      String oldPassCode,
-      String newPasscode,
-      String destinationPath,
-      String userType,
-      ) async {
+    String oldPassCode,
+    String newPasscode,
+    String destinationPath,
+    String userType,
+  ) async {
     var currentState = state as CreatePasscodeReady;
     if (oldPassCode == newPasscode) {
-      state = currentState.copyWith(
-        currentStep: 5
-      );
+      state = currentState.copyWith(currentStep: 5);
       await _passcodeUseCase.savePassCodeLocal(newPasscode);
-      if(userType == "Customer"){
-        var response = await _passcodeUseCase.savePasscode(
-            1,newPasscode, (p0) => null);
+      if (userType == "Customer") {
+        var response =
+            await _passcodeUseCase.savePasscode(newPasscode, (p0) => null);
         if (response!.status == true) {
-          _navigationHandler.navigateToCustomerEnrollmentScreen(destinationPath, false);
+          var loginResponse =  await _passcodeUseCase.login( newPasscode, (p0) => null);
+          if(loginResponse?.status == true){
+            _navigationHandler.navigateToCustomerEnrollmentScreen(
+                destinationPath, false);
+          }
+
         }
       } else {
-        _navigationHandler.navigateToAgentEnrollmentBottomSheet('AE_Message'.tr,'AE_Continue'.tr);
-
+        _navigationHandler.navigateToAgentEnrollmentBottomSheet(
+            'AE_Message'.tr, 'AE_Continue'.tr);
       }
     } else {
       state = currentState.copyWith(
@@ -201,19 +203,18 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
   }
 
   Future<void> verifyPasscodeReset(
-      String oldPassCode,
-      String newPasscode,
-      String destinationPath,
-      String userType,
-      ) async {
+    String oldPassCode,
+    String newPasscode,
+    String destinationPath,
+    String userType,
+  ) async {
     var currentState = state as CreatePasscodeReady;
     if (oldPassCode == newPasscode) {
-      state = currentState.copyWith(
-          currentStep: 5
-      );
+      state = currentState.copyWith(currentStep: 5);
       await _passcodeUseCase.savePassCodeLocal(newPasscode);
-      if(userType == "Customer"){
-        _navigationHandler.navigateToCustomerEnrollmentScreen(destinationPath, true);
+      if (userType == "Customer") {
+        _navigationHandler.navigateToCustomerEnrollmentScreen(
+            destinationPath, true);
       } else {
         _navigationHandler.navigateToResetPasscodeBottomSheet(
             'RP_Passcode_Reset'.tr, 'RP_Continue'.tr, 'RP_Passcode_Desc'.tr);
@@ -232,5 +233,4 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
   Future<void> _navigateToDestinationPath(String destinationPath) async {
     _navigationHandler.navigateToDestinationPath(destinationPath);
   }
-
 }

@@ -10,7 +10,8 @@ class SessionTimeoutManager {
   final IAppLocalizationService localization;
   static Timer? _timer;
 
-  SessionTimeoutManager({required this.taskManager, required this.localization});
+  SessionTimeoutManager(
+      {required this.taskManager, required this.localization});
 
   Future<void> initNewSession(int sessionDuration) async {
     if (_timer != null && _timer!.isActive) {

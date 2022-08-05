@@ -99,13 +99,18 @@ class CrayonPaymentCorneredIconButton extends StatelessWidget {
   Widget getButtonContent(BuildContext context) =>
       (buttonType == ButtonType.icon) ? _getIcon(context) : _getButtonText();
 
-  Widget _getButtonText() => (buttonText != null) ? CrayonPaymentText(text: buttonText!) : SizedBox.shrink();
+  Widget _getButtonText() => (buttonText != null)
+      ? CrayonPaymentText(text: buttonText!)
+      : SizedBox.shrink();
 
   Container _getIcon(BuildContext context) {
     if (svgSource != null) {
-      var iconColor = CrayonPaymentTheme().defaultThemeData.actionButtonIconColor.toColor();
+      var iconColor =
+          CrayonPaymentTheme().defaultThemeData.actionButtonIconColor.toColor();
       if (buttonStyle != null && buttonStyle!.foregroundColor != null) {
-        iconColor = buttonStyle!.foregroundColor!.resolve({MaterialState.selected}) ?? iconColor;
+        iconColor =
+            buttonStyle!.foregroundColor!.resolve({MaterialState.selected}) ??
+                iconColor;
       }
       return Container(
         key: Key('getIcon_Container'),
@@ -146,7 +151,8 @@ class CrayonPaymentCorneredIconButton extends StatelessWidget {
     // Default the button sizes
     var height = minimumSize?.height ?? _CrayonPaymentcorneredIconButtonHeight;
     final width = minimumSize?.width ?? _CrayonPaymentcorneredIconButtonWidth;
-    if (height == _CrayonPaymentcorneredIconButtonHeight && visualDensity == VisualDensity.compact) {
+    if (height == _CrayonPaymentcorneredIconButtonHeight &&
+        visualDensity == VisualDensity.compact) {
       // Adjust the height for the visual density unless it has been
       // overriden by a specific height
       height = _CrayonPaymentcorneredIconButtonCompactHeight;
@@ -180,10 +186,9 @@ class CrayonPaymentCorneredIconButton extends StatelessWidget {
 //   }
 // }
 
-
-
 @immutable
-class _CrayonPaymentRoundedButtonDefaultElevation extends MaterialStateProperty<double> with Diagnosticable {
+class _CrayonPaymentRoundedButtonDefaultElevation
+    extends MaterialStateProperty<double> with Diagnosticable {
   _CrayonPaymentRoundedButtonDefaultElevation(this.elevation);
 
   final double elevation;
@@ -193,5 +198,3 @@ class _CrayonPaymentRoundedButtonDefaultElevation extends MaterialStateProperty<
     return elevation;
   }
 }
-
-

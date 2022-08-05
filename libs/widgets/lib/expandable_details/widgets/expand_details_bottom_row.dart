@@ -9,8 +9,8 @@ class ExpandDetailsBottomRow extends ExpandDetailsInfoLine {
     EdgeInsetsGeometry? padding,
     Color? textColor,
   }) : super(
-    leftSideString: leftSide,
-    rightSideWidget: rightSide,
+          leftSideString: leftSide,
+          rightSideWidget: rightSide,
           textColor: textColor ?? Colors.black,
           padding: padding,
           textStyleVariant: CrayonPaymentTextStyleVariant.headline4,

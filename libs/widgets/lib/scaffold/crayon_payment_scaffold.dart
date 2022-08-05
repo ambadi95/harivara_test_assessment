@@ -49,9 +49,10 @@ class CrayonPaymentScaffold extends StatelessWidget {
         value: SystemUiOverlayStyle(
           // For Android.
           // Use [light] for white status bar and [dark] for black status bar.
-          statusBarIconBrightness: themeBrightness == CrayonPaymentBrightness.dark
-              ? Brightness.dark
-              : Brightness.light,
+          statusBarIconBrightness:
+              themeBrightness == CrayonPaymentBrightness.dark
+                  ? Brightness.dark
+                  : Brightness.light,
           // For iOS.
           // Use [dark] for white status bar and [light] for black status bar.
           statusBarBrightness: themeBrightness == CrayonPaymentBrightness.dark

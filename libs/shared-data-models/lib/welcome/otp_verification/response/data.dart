@@ -5,25 +5,25 @@ part 'data.g.dart';
 
 @JsonSerializable()
 class Data extends Equatable {
-	final String? status;
+  final String? status;
 
-	const Data({this.status});
+  const Data({this.status});
 
-	factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
+  factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
 
-	Map<String, dynamic> toJson() => _$DataToJson(this);
+  Map<String, dynamic> toJson() => _$DataToJson(this);
 
-		Data copyWith({
-		String? status,
-	}) {
-		return Data(
-			status: status ?? this.status,
-		);
-	}
+  Data copyWith({
+    String? status,
+  }) {
+    return Data(
+      status: status ?? this.status,
+    );
+  }
 
-	@override
-	bool get stringify => true;
+  @override
+  bool get stringify => true;
 
-	@override
-	List<Object?> get props => [status];
+  @override
+  List<Object?> get props => [status];
 }

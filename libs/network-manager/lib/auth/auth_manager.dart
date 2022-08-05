@@ -38,7 +38,6 @@ class AuthManager implements IAuthManager {
   static const _individualIdKey = 'individual_id';
   static const AuthDetail authInfo = AuthDetail();
 
-
   // the expiry buffer is to mitigate latency from the connection between client and server.
   // when a token is generated so is its expiry time in seconds.
   static const _expiryBuffer = 30;
@@ -64,7 +63,8 @@ class AuthManager implements IAuthManager {
       CrayonPaymentLogger.logInfo('Attempting to retrieve access token');
       // check the user is authenticated
       if (!await isUserAuthenticated) {
-        CrayonPaymentLogger.logInfo('User has not yet authenticated, please src.');
+        CrayonPaymentLogger.logInfo(
+            'User has not yet authenticated, please src.');
         return null;
       }
       // check access token has not expired
@@ -153,7 +153,6 @@ class AuthManager implements IAuthManager {
     await _setExpireTime(expiresIn);
     await _setIndividualId(individualId);
   }
-
 
   Future<String> _getTemporaryToken() async {
     late Map<String, String> staticAuthMap;

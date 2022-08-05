@@ -5,5 +5,4 @@ class AgentNearbyNavigationHandler with ErrorHandler {
   final NavigationManager _navigationManager;
 
   AgentNearbyNavigationHandler(this._navigationManager);
-
 }

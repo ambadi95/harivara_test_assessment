@@ -31,7 +31,8 @@ class DefaultTrackerCollection implements TrackerCollection {
 
   @override
   void trackEvent(String eventName, {Map<String, dynamic>? params}) {
-    CrayonPaymentLogger.logDebug('Track event: $eventName. Params: ${params ?? {}}');
+    CrayonPaymentLogger.logDebug(
+        'Track event: $eventName. Params: ${params ?? {}}');
     _criticalTrackers.forEach((tracker) {
       tracker.trackEvent(eventName, params: params);
     });

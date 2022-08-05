@@ -1,4 +1,3 @@
-
 void main() {
- // notifier tests
+  // notifier tests
 }

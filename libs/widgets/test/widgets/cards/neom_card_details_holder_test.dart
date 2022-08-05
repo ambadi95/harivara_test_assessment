@@ -11,7 +11,8 @@ void main() {
   final dataAsString = file.readAsStringSync();
   final dataAsJson = json.decode(dataAsString);
   final cardDetails = CardWallet.fromJson(dataAsJson as Map<String, dynamic>);
-  testWidgets('[CrayonPaymentCardDetailsHolder] - check existence of all components',
+  testWidgets(
+      '[CrayonPaymentCardDetailsHolder] - check existence of all components',
       (WidgetTester tester) async {
     final String _identifier = 'CrayonPaymentCardDetailsHolder';
 

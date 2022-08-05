@@ -6,7 +6,7 @@ import 'package:welcome/sub_features/signup/view/signup.dart';
 import 'package:widget_library/helpers/error/helper/error_helper.dart';
 import 'package:settings/view/settings_view.dart';
 
-class HomeNavigationHandler with ErrorHandler{
+class HomeNavigationHandler with ErrorHandler {
   final NavigationManager _navigationManager;
 
   HomeNavigationHandler(this._navigationManager);
@@ -16,22 +16,17 @@ class HomeNavigationHandler with ErrorHandler{
   }
 
   Future<void> navigateToSignUpScreen(String userType) async {
-    var arguments = SignUpArguments(
-        'SU_title', 'SU_subtitle', 'Customer', SignupType.agentAidedCustomerOnBoarding, true);
+    var arguments = SignUpArguments('SU_title', 'SU_subtitle', 'Customer',
+        SignupType.agentAidedCustomerOnBoarding, true);
     await _navigationManager.navigateTo(
-        SignUp.viewPath,
-        const NavigationType.push(),
-        arguments: arguments
-    );
+        SignUp.viewPath, const NavigationType.push(),
+        arguments: arguments);
   }
 
   Future<void> navigateToSettingsScreen() async {
     await _navigationManager.navigateTo(
       Settings.viewPath,
-        const NavigationType.push(),
-
+      const NavigationType.push(),
     );
   }
-
-
 }

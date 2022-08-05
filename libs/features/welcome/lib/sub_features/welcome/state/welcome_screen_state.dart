@@ -6,6 +6,5 @@ part 'welcome_screen_state.freezed.dart';
 class WelcomeScreenState with _$WelcomeScreenState {
   const factory WelcomeScreenState({
     @Default('en') String currentLanguageCode,
-
   }) = _WelcomeScreenState;
 }

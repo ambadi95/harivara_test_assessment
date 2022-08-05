@@ -4,14 +4,13 @@ import 'package:flutter/src/widgets/navigator.dart';
 
 import '../view/terms_condition_view.dart';
 
-class TermsConditionRouteManager extends IRouteManager{
+class TermsConditionRouteManager extends IRouteManager {
   @override
   Widget getView(RouteSettings settings) {
-    switch(settings.name){
-      case CrayonTermsCondition.viewPath :
+    switch (settings.name) {
+      case CrayonTermsCondition.viewPath:
         return const CrayonTermsCondition();
     }
     throw UnimplementedError();
   }
-
 }

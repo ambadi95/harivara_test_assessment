@@ -180,10 +180,12 @@ class CrayonPaymentInputDecorationThemeData {
     this.labelStyle,
   });
 
-  factory CrayonPaymentInputDecorationThemeData.fromJson(Map<String, dynamic> json) =>
+  factory CrayonPaymentInputDecorationThemeData.fromJson(
+          Map<String, dynamic> json) =>
       _$CrayonPaymentInputDecorationThemeDataFromJson(json);
 
-  Map<String, dynamic> toJson() => _$CrayonPaymentInputDecorationThemeDataToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$CrayonPaymentInputDecorationThemeDataToJson(this);
 }
 
 @JsonSerializable()

@@ -1,5 +1,3 @@
 import 'dart:core';
 
-class InternalServerError extends Error {
-
-}
+class InternalServerError extends Error {}

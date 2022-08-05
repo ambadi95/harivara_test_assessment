@@ -1,8 +1,6 @@
-
 import 'package:task_manager/task_manager.dart';
 
 import '../service/passcode_service.dart';
-
 
 class PasscodeApiResolver extends TaskResolver {
   final IPasscodeService _passcodeService;
@@ -20,6 +18,8 @@ class PasscodeApiResolver extends TaskResolver {
         return _passcodeService.resetPasscode(
           requestData,
         );
+      case IPasscodeService.loginIdentifier:
+        return _passcodeService.login(requestData);
       default:
         throw UnimplementedError();
     }
