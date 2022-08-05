@@ -157,6 +157,18 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
         '${currentEnvironment.host}${request.endpoint}',
       );
     }
+
+    if(_getStaticAuth != 'error'){
+      _getStaticAuth.then((value) {
+
+        request.customHeaders = {
+          'Authorization' : value,
+          'Content-Type': 'application/json',
+        };
+        CrayonPaymentLogger.logInfo(value);
+      });
+    }
+
     final headers = buildHeaders(request.customHeaders);
     CrayonPaymentLogger.logDebug<NetworkClient>(
       'Sending GET request to the server for url: ${uri.toString()}',
@@ -190,6 +202,16 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
     } else {
       uri = Uri.parse(currentEnvironment.host + request.endpoint);
     }
+
+    if(_getStaticAuth != 'error'){
+      _getStaticAuth.then((value) {
+        request.customHeaders = {
+          'Authorization' : value,
+          'Content-Type': 'application/json',
+        };
+      });
+    }
+
     final headers = buildHeaders(request.customHeaders);
     CrayonPaymentLogger.logDebug<NetworkClient>(
       'Sending POST request to the server for url: ${uri.toString()}',
@@ -216,6 +238,14 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
       uri = Uri.parse('http://' + currentEnvironment.host + request.endpoint);
     } else {
       uri = Uri.parse(currentEnvironment.host + request.endpoint);
+    }
+    if(_getStaticAuth != 'error'){
+      _getStaticAuth.then((value) {
+        request.customHeaders = {
+          'Authorization' : value,
+          'Content-Type': 'application/json',
+        };
+      });
     }
     final headers = buildHeaders(request.customHeaders);
     CrayonPaymentLogger.logDebug<NetworkClient>(

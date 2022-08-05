@@ -143,4 +143,11 @@ class CrayonPaymentAuthManager extends IAuthManager {
       authInfo,
     );
   }
+
+  @override
+  Future<String?> getUserInfo(String? key) {
+    // TODO: implement getUserInfo
+    throw UnimplementedError();
+  }
+
 }

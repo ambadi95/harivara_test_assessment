@@ -61,6 +61,7 @@ class SignupUseCase extends BaseDataProvider {
               .fromJson(data);
           _authManager.setUserDetail(
               authInfo: detailResponse.data?.customerId.toString() ,key: UserDetailsLabel.id);
+          _authManager.storeTokenInformation("CrayonTokenCheck", "refreshToken", "expiresIn", "individualId");
           return detailResponse;
         });
   }
