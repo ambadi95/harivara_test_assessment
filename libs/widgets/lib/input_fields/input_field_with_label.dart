@@ -67,7 +67,9 @@ class InputFieldWithLabel extends StatelessWidget {
           style: textInputStyle,
           decoration: InputDecoration(
             filled: true,
-            fillColor: enabled == true ? SU_button_text_color : SU_border_color.withOpacity(0.3),
+            fillColor: enabled == true
+                ? SU_button_text_color
+                : SU_border_color.withOpacity(0.3),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(8.0)),
               borderSide: BorderSide(

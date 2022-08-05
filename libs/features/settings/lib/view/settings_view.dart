@@ -77,8 +77,7 @@ class _SettingsState extends State<Settings> {
     return Center(
       child: CrayonPaymentText(
         key: Key('${widget._identifier}_ST_contact'),
-        text: TextUIDataModel(
-            'ST_contact_text'.tr,
+        text: TextUIDataModel('ST_contact_text'.tr,
             styleVariant: CrayonPaymentTextStyleVariant.headline5,
             color: VO_ResendTextColor,
             fontWeight: FontWeight.w100,
@@ -90,10 +89,11 @@ class _SettingsState extends State<Settings> {
   Widget _buildOptionList(SettingsCoordinator coordinator) {
     return Column(
       children: [
-        _buildOptions(context, 'ST_view_profile', ST_view_profile, () async{
-         await coordinator.navigateToUpdateProfile();
+        _buildOptions(context, 'ST_view_profile', ST_view_profile, () async {
+          await coordinator.navigateToUpdateProfile();
         }),
-        _buildOptions(context, 'ST_update_passcode', ST_update_passcode, () async {
+        _buildOptions(context, 'ST_update_passcode', ST_update_passcode,
+            () async {
           await coordinator.resetPasscode();
         }),
         _buildOptions(context, 'ST_App_Language', ST_language, () async {
@@ -102,7 +102,7 @@ class _SettingsState extends State<Settings> {
         const SizedBox(
           height: 30,
         ),
-        _buildOptions(context, 'ST_sign_out', ST_sign_out, () async{
+        _buildOptions(context, 'ST_sign_out', ST_sign_out, () async {
           await coordinator.signOut();
         }),
       ],

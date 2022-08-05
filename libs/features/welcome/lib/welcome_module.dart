@@ -32,12 +32,10 @@ import 'sub_features/details/viewmodel/details_coordinator.dart';
 import 'sub_features/details/viewmodel/details_view_model.dart';
 import 'sub_features/signup/viewmodel/signup_coordinator.dart';
 
-
 class WelcomeModule {
   static const moduleIdentifier = 'welcomeModule';
 
   static void registerDependencies() {
-
     ModuleResolver.registerResolver(
       moduleIdentifier,
       SignupModuleResolver(
@@ -50,17 +48,17 @@ class WelcomeModule {
     );
 
     DIContainer.container.registerFactory<WelcomeCoordinator>(
-          (container) => WelcomeCoordinator(
+      (container) => WelcomeCoordinator(
         WelcomeNavigationHandler(container.resolve<NavigationManager>()),
         WelcomeUseCase(
-           WelcomeViewModel(),
+          WelcomeViewModel(),
           container.resolve<TaskManager>(),
-       ),
-     ),
-   );
+        ),
+      ),
+    );
 
     DIContainer.container.registerFactory<SignUpCoordinator>(
-          (container) => SignUpCoordinator(
+      (container) => SignUpCoordinator(
         WelcomeNavigationHandler(container.resolve<NavigationManager>()),
         SignupUseCase(
           SignupViewModel(),
@@ -71,7 +69,7 @@ class WelcomeModule {
     );
 
     DIContainer.container.registerFactory<DetailsCoordinator>(
-          (container) => DetailsCoordinator(
+      (container) => DetailsCoordinator(
         WelcomeNavigationHandler(container.resolve<NavigationManager>()),
         DetailsUseCase(
           DetailsViewModel(),
@@ -81,7 +79,7 @@ class WelcomeModule {
     );
 
     DIContainer.container.registerFactory<AgentDetailsCoordinator>(
-          (container) => AgentDetailsCoordinator(
+      (container) => AgentDetailsCoordinator(
         WelcomeNavigationHandler(container.resolve<NavigationManager>()),
         AgentDetailsUseCase(
           AgentDetailsViewModel(),
@@ -91,7 +89,7 @@ class WelcomeModule {
     );
 
     DIContainer.container.registerFactory<WelcomeBackCoordinator>(
-          (container) => WelcomeBackCoordinator(
+      (container) => WelcomeBackCoordinator(
         WelcomeNavigationHandler(container.resolve<NavigationManager>()),
         WelcomeBackUseCase(
           WelcomeBackViewModel(),
@@ -99,23 +97,20 @@ class WelcomeModule {
         ),
       ),
     );
-    
 
     DIContainer.container.registerFactory<EnrollmentSuccessCoordinator>(
-          (container) => EnrollmentSuccessCoordinator(
-        WelcomeNavigationHandler(container.resolve<NavigationManager>()
+      (container) => EnrollmentSuccessCoordinator(
+        WelcomeNavigationHandler(container.resolve<NavigationManager>()),
+        EnrollmentSuccessUseCase(
+          container.resolve<TaskManager>(),
         ),
-            EnrollmentSuccessUseCase(
-              container.resolve<TaskManager>(),
-            ),
       ),
     );
 
     DIContainer.container.registerFactory<AgentEnrollmentCoordinator>(
-          (container) => AgentEnrollmentCoordinator(
+      (container) => AgentEnrollmentCoordinator(
         WelcomeNavigationHandler(container.resolve<NavigationManager>()),
       ),
     );
-
   }
 }

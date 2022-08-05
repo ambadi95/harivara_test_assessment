@@ -36,7 +36,8 @@ abstract class NetworkClientBase {
   /// Combines the standard global headers for the API with any [customHeaders]
   /// based headers.
   Map<String, String>? buildHeaders(Map<String, String>? customHeaders) {
-    CrayonPaymentLogger.logDebug<NetworkClientBase>('Building headers for request');
+    CrayonPaymentLogger.logDebug<NetworkClientBase>(
+        'Building headers for request');
     final headers = _standardHeaders;
     if (!customHeaders.isNullOrEmpty()) {
       headers!.addAll(customHeaders!);

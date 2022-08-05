@@ -64,7 +64,8 @@ class AuthorizationClient {
         );
         return tokenResponse;
       } else {
-        CrayonPaymentLogger.logDebug('Error = ${response.statusCode.toString()}');
+        CrayonPaymentLogger.logDebug(
+            'Error = ${response.statusCode.toString()}');
         onErrorCallback(response.statusCode.toString());
         return null;
       }
@@ -108,7 +109,8 @@ class CrayonPaymentAuthManager extends IAuthManager {
   }
 
   @override
-  Future<bool> get isUserAuthenticated async => (await _getAccessToken()) != null;
+  Future<bool> get isUserAuthenticated async =>
+      (await _getAccessToken()) != null;
 
   Future<String?> _getAccessToken() async =>
       await _secureStorageService.get(_accessTokenKey);

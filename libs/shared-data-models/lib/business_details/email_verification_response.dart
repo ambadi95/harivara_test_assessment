@@ -7,12 +7,12 @@ class EmailVerificationResponse {
   final String? verifyLink;
 
   const EmailVerificationResponse(
-      this.merchantApplicationId,
-      this.message,
-      this.status,
-      this.statusCode,
-      this.verifyLink,
-      );
+    this.merchantApplicationId,
+    this.message,
+    this.status,
+    this.statusCode,
+    this.verifyLink,
+  );
 
   factory EmailVerificationResponse.fromJson(Map<String, dynamic> json) =>
       EmailVerificationResponse(

@@ -11,7 +11,8 @@ class CrayonPaymentBottomSheetRouteManager extends IRouteManager {
   Widget getBottomSheet(String bottomSheetName, arguments) {
     switch (bottomSheetName) {
       case CrayonPaymentBottomSheet.viewPath:
-        return CrayonPaymentBottomSheet(arguments as CrayonPaymentBottomSheetState);
+        return CrayonPaymentBottomSheet(
+            arguments as CrayonPaymentBottomSheetState);
       default:
         throw Exception('Not implemented');
     }

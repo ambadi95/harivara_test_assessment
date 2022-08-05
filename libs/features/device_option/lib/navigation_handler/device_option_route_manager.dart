@@ -5,7 +5,6 @@ import 'package:shared_data_models/device_option/device_option_args.dart';
 
 import '../view/device_option_screen.dart';
 
-
 class DeviceOptionRouteManager extends IRouteManager {
   @override
   Widget getView(RouteSettings settings) {
@@ -19,7 +18,7 @@ class DeviceOptionRouteManager extends IRouteManager {
       case DeviceDetailScreen.viewPath:
         return const DeviceDetailScreen();
       default:
-      // TODO: implement getView
+        // TODO: implement getView
         throw UnimplementedError();
     }
     throw Exception('Route ${settings.name} not found');

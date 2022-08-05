@@ -1,4 +1,1 @@
-enum AgentDetailScreenType {
- Signup,
- UpdateProfile
-}
+enum AgentDetailScreenType { Signup, UpdateProfile }

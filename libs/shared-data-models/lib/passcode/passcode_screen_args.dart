@@ -20,6 +20,6 @@ class PasscodeScreenArgs {
     this.passCodeVerificationType,
     this.isForgotPassword,
     this.initialPasscode,
-      this.userType,
+    this.userType,
   );
 }

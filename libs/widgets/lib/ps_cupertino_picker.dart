@@ -45,8 +45,10 @@ class CrayonPaymentCupertinoPicker extends StatelessWidget {
             bottomLeft: const Radius.circular(4.0),
             bottomRight: const Radius.circular(4.0),
           ),
-          color:
-              CrayonPaymentTheme().defaultThemeData.textFieldBackgroundColor?.toColor(),
+          color: CrayonPaymentTheme()
+              .defaultThemeData
+              .textFieldBackgroundColor
+              ?.toColor(),
         ),
         child: Center(
           key: Key('CrayonPaymentCupertinoPicker_Center'),
@@ -86,7 +88,8 @@ class CrayonPaymentCupertinoPicker extends StatelessWidget {
                           labelStyle ?? Theme.of(context).textTheme.headline5,
                     ),
                     SizedBox(
-                      key: Key('CrayonPaymentCupertinoPicker_AfterTextSizedBox'),
+                      key:
+                          Key('CrayonPaymentCupertinoPicker_AfterTextSizedBox'),
                       width: 10,
                     ),
                     getSvg('widget_library:assets/images/ic_chevron.svg')

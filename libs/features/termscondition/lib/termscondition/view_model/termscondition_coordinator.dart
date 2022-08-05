@@ -9,7 +9,8 @@ class TermsConditionCoordinator extends BaseViewModel<TermsConditionState> {
   final TermsConditionUseCase _termsconditionUseCase;
   final TermsConditionNavigationHandler _navigationHandler;
 
-  TermsConditionCoordinator(this._navigationHandler, this._termsconditionUseCase)
+  TermsConditionCoordinator(
+      this._navigationHandler, this._termsconditionUseCase)
       : super(const TermsConditionState.initialState());
 
   void goBack() async {

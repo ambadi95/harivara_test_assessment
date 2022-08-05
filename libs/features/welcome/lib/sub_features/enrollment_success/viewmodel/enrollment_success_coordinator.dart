@@ -4,13 +4,14 @@ import '../../../navigation_handler/welcome_navigation_handler.dart';
 import '../state/enrollment_success_state.dart';
 import 'enrollment_success_usecase.dart';
 
-class EnrollmentSuccessCoordinator extends BaseViewModel<EnrollmentSuccessState>{
+class EnrollmentSuccessCoordinator
+    extends BaseViewModel<EnrollmentSuccessState> {
   final WelcomeNavigationHandler _navigationHandler;
   final EnrollmentSuccessUseCase _enrollmentSuccessUseCase;
 
-  EnrollmentSuccessCoordinator( this._navigationHandler, this._enrollmentSuccessUseCase) : super(const EnrollmentSuccessState.initialState()) ;
-
-
+  EnrollmentSuccessCoordinator(
+      this._navigationHandler, this._enrollmentSuccessUseCase)
+      : super(const EnrollmentSuccessState.initialState());
 
   Future navigateToAgentNearBy() async {
     _navigationHandler.navigateToNearByAgent();
@@ -20,13 +21,13 @@ class EnrollmentSuccessCoordinator extends BaseViewModel<EnrollmentSuccessState>
     _navigationHandler.navigateToDeviceOption(isEnrolled);
   }
 
-  Future getCustomerDetails() async{
-    var response = await _enrollmentSuccessUseCase.getCustomerDetails((p0) => null);
-    if(response?.status == true){
+  Future getCustomerDetails() async {
+    var response =
+        await _enrollmentSuccessUseCase.getCustomerDetails((p0) => null);
+    if (response?.status == true) {
       CrayonPaymentLogger.logInfo(response!.message!);
-    }else {
+    } else {
       CrayonPaymentLogger.logInfo(response!.message!);
     }
-    }
-
+  }
 }

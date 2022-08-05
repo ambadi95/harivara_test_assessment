@@ -16,7 +16,8 @@ class TextUIDataModel {
     this.styleVariant,
     this.overflow = TextOverflow.clip,
     this.textAlign = TextAlign.start,
-    this.maxLines, this.fontWeight,
+    this.maxLines,
+    this.fontWeight,
   });
 
   TextUIDataModel copyWith({

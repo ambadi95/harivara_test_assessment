@@ -17,5 +17,4 @@ void main() {
     // Assert
     expect(model.dataModel, isA<SearchBarDataModel>());
   });
-
 }

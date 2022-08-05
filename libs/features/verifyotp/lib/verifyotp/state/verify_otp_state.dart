@@ -21,5 +21,4 @@ class VerifyOtpState with _$VerifyOtpState {
     @Default('') String error,
     @Default(false) bool isLoading,
   }) = VerifyOtpStateReady;
-
 }

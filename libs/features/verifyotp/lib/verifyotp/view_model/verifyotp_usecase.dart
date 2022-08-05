@@ -1,4 +1,3 @@
-
 import 'package:config/Config.dart';
 import 'package:shared_data_models/welcome/otp/request/otp_request.dart';
 import 'package:shared_data_models/welcome/otp/response/otp_response.dart';
@@ -12,16 +11,17 @@ import 'package:widget_library/keypad/keypad_button_type.dart';
 import '../../verifyotp_module.dart';
 import '../service/otp_service.dart';
 
-class VerifyOtpUseCase extends BaseDataProvider{
+class VerifyOtpUseCase extends BaseDataProvider {
   final VerifyOtpViewModel _verifyOtpViewModel;
 
-  VerifyOtpUseCase(this._verifyOtpViewModel, TaskManager taskManager) : super(taskManager);
+  VerifyOtpUseCase(this._verifyOtpViewModel, TaskManager taskManager)
+      : super(taskManager);
 
   String updateCurrentOTP(
-      KeypadButtonType keypadButtonType,
-      String previousOtp,
-      int otpLength,
-      ) {
+    KeypadButtonType keypadButtonType,
+    String previousOtp,
+    int otpLength,
+  ) {
     return _verifyOtpViewModel.updateCurrentOTP(
       keypadButtonType,
       previousOtp,
@@ -30,21 +30,17 @@ class VerifyOtpUseCase extends BaseDataProvider{
   }
 
   Future<String> validateCustomerOTP(
-      String customerOtp,
-      ) async {
+    String customerOtp,
+  ) async {
     if (!_verifyOtpViewModel.validCustomerOtp(customerOtp)) {
       return 'customerOtp-invalid-error';
     }
     return '';
   }
 
-  Future<OtpResponse?> otpGen(String id,
-      Function(String) onErrorCallback) async {
-
-    OtpRequest otpRequest =   OtpRequest(
-      id: id,
-      type: 'Customer'
-    );
+  Future<OtpResponse?> otpGen(
+      String id, Function(String) onErrorCallback) async {
+    OtpRequest otpRequest = OtpRequest(id: id, type: 'Customer');
 
     return await executeApiRequest<OtpResponse?>(
         taskType: TaskType.DATA_OPERATION,
@@ -59,14 +55,10 @@ class VerifyOtpUseCase extends BaseDataProvider{
         });
   }
 
-  Future<OtpVerificationResponse?> otpVerify(String id, String otp,
-      Function(String) onErrorCallback) async {
-
-    OtpVerificationRequest otpRequest =   OtpVerificationRequest(
-        id: id,
-        type: 'Customer',
-        otp : otp
-    );
+  Future<OtpVerificationResponse?> otpVerify(
+      String id, String otp, Function(String) onErrorCallback) async {
+    OtpVerificationRequest otpRequest =
+        OtpVerificationRequest(id: id, type: 'Customer', otp: otp);
 
     return await executeApiRequest<OtpVerificationResponse?>(
         taskType: TaskType.DATA_OPERATION,
@@ -80,6 +72,4 @@ class VerifyOtpUseCase extends BaseDataProvider{
           return OtpVerificationResponse.fromJson(data);
         });
   }
-
-
 }

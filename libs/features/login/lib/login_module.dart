@@ -11,12 +11,10 @@ import 'package:task_manager/task_manager_impl.dart';
 
 import 'navigation_handler/login_navigation_handler.dart';
 
-
 class LoginModule {
   static const moduleIdentifier = 'loginModule';
 
   static void registerDependencies() {
-
     ModuleResolver.registerResolver(
       moduleIdentifier,
       LoginModuleResolver(
@@ -27,14 +25,13 @@ class LoginModule {
     );
 
     DIContainer.container.registerFactory<LoginCoordinator>(
-          (container) => LoginCoordinator(
-            LoginNavigationHandler(container.resolve<NavigationManager>()),
-            LoginUseCase(
-              LoginViewModel(),
+      (container) => LoginCoordinator(
+        LoginNavigationHandler(container.resolve<NavigationManager>()),
+        LoginUseCase(
+          LoginViewModel(),
           container.resolve<TaskManager>(),
         ),
       ),
     );
-
   }
 }

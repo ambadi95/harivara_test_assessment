@@ -4,9 +4,9 @@ abstract class StorageService {
 
   /// Sets the [value] of a [key] in a storage medium.
   dynamic set(
-      String key,
-      dynamic value,
-      );
+    String key,
+    dynamic value,
+  );
 
   /// Deletes the content of a [key] in a storage medium.
   dynamic delete(String key);

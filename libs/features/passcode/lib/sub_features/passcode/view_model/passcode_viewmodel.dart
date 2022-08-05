@@ -1,7 +1,6 @@
 import 'package:widget_library/keypad/keypad_button_type.dart';
 
-class PassCodeViewModel{
-
+class PassCodeViewModel {
   int get _validPasscodeLength => 6;
 
   bool validPasscode(String passcode) {
@@ -16,10 +15,10 @@ class PassCodeViewModel{
   }
 
   String updateCurrentPasscode(
-      KeypadButtonType keypadButtonType,
-      String previousPasscode,
-      int passcodeLength,
-      ) {
+    KeypadButtonType keypadButtonType,
+    String previousPasscode,
+    int passcodeLength,
+  ) {
     return keypadButtonType.when(
       digit: (number) {
         var isIncomplete = _validatePasscode(previousPasscode, passcodeLength);
@@ -108,5 +107,4 @@ class PassCodeViewModel{
       return false;
     }
   }
-
 }

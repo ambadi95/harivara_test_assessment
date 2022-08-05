@@ -35,7 +35,8 @@ class CrayonPaymentTextSpanDataModel {
   /// The color used for links, defaults to the theme's color for button links.
   Color? linkColor;
 
-  CrayonPaymentTextSpanDataModel(this.crayonPaymentTextDataModel, {this.onPressed, this.linkColor});
+  CrayonPaymentTextSpanDataModel(this.crayonPaymentTextDataModel,
+      {this.onPressed, this.linkColor});
 }
 
 /// The data model to support [CrayonPaymentTextRich]
@@ -46,7 +47,8 @@ class CrayonPaymentTextRichDataModel {
   /// Any padding the src requires.
   EdgeInsets? padding;
 
-  CrayonPaymentTextRichDataModel({required this.textSpanDataModels, this.padding});
+  CrayonPaymentTextRichDataModel(
+      {required this.textSpanDataModels, this.padding});
 }
 
 /// A wrapper around [Text.rich] that can be configured via
@@ -66,15 +68,19 @@ class CrayonPaymentTextRich extends StatelessWidget {
             (textSpanDataModel) {
               GestureRecognizer? recognizer;
               if (textSpanDataModel.onPressed != null) {
-                recognizer = TapGestureRecognizer()..onTap = () => textSpanDataModel.onPressed?.call();
+                recognizer = TapGestureRecognizer()
+                  ..onTap = () => textSpanDataModel.onPressed?.call();
                 // Links want to be same as button links, so override the color
               }
               if (textSpanDataModel.crayonPaymentTextDataModel.text != null) {
                 return TextSpan(
-                  text: textSpanDataModel.crayonPaymentTextDataModel.text!.text.tr,
+                  text: textSpanDataModel
+                      .crayonPaymentTextDataModel.text!.text.tr,
                   style: buildTextStyle(
                     context: context,
-                    variant: textSpanDataModel.crayonPaymentTextDataModel.text!.styleVariant ?? CrayonPaymentTextStyleVariant.normal,
+                    variant: textSpanDataModel
+                            .crayonPaymentTextDataModel.text!.styleVariant ??
+                        CrayonPaymentTextStyleVariant.normal,
                   ),
                   recognizer: recognizer,
                 );

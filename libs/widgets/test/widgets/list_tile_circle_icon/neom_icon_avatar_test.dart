@@ -5,8 +5,6 @@ import 'package:shared_data_models/transaction/transaction_models/added_funds.da
 import 'package:shared_data_models/transaction/transaction_category.dart';
 import 'package:widget_library/list_tile_circle_icon/crayon_payment_icon_avatar.dart';
 
-
-
 class MockAddedFunds extends Mock implements AddedFunds {}
 
 void main() {

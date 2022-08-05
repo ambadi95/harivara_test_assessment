@@ -1,4 +1,4 @@
-enum SignupType{
+enum SignupType {
   customerSignUp,
   agentSignUp,
   resetPasscodeAgent,

@@ -15,7 +15,7 @@ class VerifyOtpRouteManager extends IRouteManager {
           otpScreenArgs: arguments,
         );
       default:
-      // TODO: implement getView
+        // TODO: implement getView
         throw UnimplementedError();
     }
   }

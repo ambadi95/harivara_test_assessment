@@ -1,8 +1,6 @@
-
 import 'device_information.dart';
 
 class DeviceInfoIos extends DeviceInformation {
-
   @override
   double getFontSize(double systemFontScale, double fontSize) {
     if (systemFontScale > 3) {

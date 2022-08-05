@@ -55,8 +55,8 @@ void main() {
       newLoginJourney = false;
       when(() => authManager.getAccessToken())
           .thenAnswer((invocation) async => 't8k');
-      when(() => appInfoRetriever.getAppInfo)
-          .thenAnswer((invocation) async => AppInfo(appType:AppType.merchant(), appVersion: '1'));
+      when(() => appInfoRetriever.getAppInfo).thenAnswer((invocation) async =>
+          AppInfo(appType: AppType.merchant(), appVersion: '1'));
       //Act
       final result = await getWalletService.getUsersWalletRequest;
       // Assert

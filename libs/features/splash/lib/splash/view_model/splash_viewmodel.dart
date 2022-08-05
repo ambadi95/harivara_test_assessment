@@ -1,6 +1,1 @@
-
-
-class SplashViewModel{
-
-
-}
+class SplashViewModel {}

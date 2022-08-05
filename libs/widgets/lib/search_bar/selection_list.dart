@@ -7,12 +7,12 @@ import 'package:widget_library/dimensions/crayon_payment_dimensions.dart';
 
 class SelectionList extends StatefulWidget {
   const SelectionList(
-      this.elements,
-      this.initialSelection, {
-        Key? key,
-        this.theme,
-        this.countryBuilder,
-      }) : super(key: key);
+    this.elements,
+    this.initialSelection, {
+    Key? key,
+    this.theme,
+    this.countryBuilder,
+  }) : super(key: key);
 
   final List elements;
   final CountryCode? initialSelection;
@@ -136,15 +136,15 @@ class _SelectionListState extends State<SelectionList> {
                         slivers: [
                           SliverList(
                             delegate: SliverChildBuilderDelegate(
-                                  (context, index) {
+                              (context, index) {
                                 return widget.countryBuilder != null
                                     ? widget.countryBuilder!(
-                                  context,
-                                  countries.elementAt(index),
-                                )
+                                        context,
+                                        countries.elementAt(index),
+                                      )
                                     : getListCountry(
-                                  countries.elementAt(index),
-                                );
+                                        countries.elementAt(index),
+                                      );
                               },
                               childCount: countries.length,
                             ),
@@ -219,10 +219,10 @@ class _SelectionListState extends State<SelectionList> {
       countries = widget.elements
           .where(
             (e) =>
-        e.code.contains(s) ||
-            e.dialCode.contains(s) ||
-            e.name.toUpperCase().contains(s),
-      )
+                e.code.contains(s) ||
+                e.dialCode.contains(s) ||
+                e.name.toUpperCase().contains(s),
+          )
           .toList();
     });
   }

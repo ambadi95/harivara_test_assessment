@@ -20,10 +20,12 @@ class CrayonPaymentBottomNavigationBarContanerWidget extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _CrayonPaymentBottomNavigationBarContanerWidgetState createState() => _CrayonPaymentBottomNavigationBarContanerWidgetState();
+  _CrayonPaymentBottomNavigationBarContanerWidgetState createState() =>
+      _CrayonPaymentBottomNavigationBarContanerWidgetState();
 }
 
-class _CrayonPaymentBottomNavigationBarContanerWidgetState extends State<CrayonPaymentBottomNavigationBarContanerWidget> {
+class _CrayonPaymentBottomNavigationBarContanerWidgetState
+    extends State<CrayonPaymentBottomNavigationBarContanerWidget> {
   late int _selectedTabIndex;
 
   @override
@@ -63,7 +65,8 @@ class _CrayonPaymentBottomNavigationBarContanerWidgetState extends State<CrayonP
           key: Key('CrayonPaymentBottomNavigationBarContanerWidget_SizedBox'),
           height: _Constants.bottomTabHeight,
           child: BottomNavigationBar(
-            key: Key('CrayonPaymentBottomNavigationBarContanerWidget_BottomNavigationBar'),
+            key: Key(
+                'CrayonPaymentBottomNavigationBarContanerWidget_BottomNavigationBar'),
             showSelectedLabels: false,
             showUnselectedLabels: false,
             backgroundColor: widget.attributes.tabBackgroundColor,

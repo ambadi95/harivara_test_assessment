@@ -9,7 +9,7 @@ class PasscodeRequest {
   PasscodeRequest({
     required this.mobileNo,
     required this.password,
-     this.language = 'en',
+    this.language = 'en',
   });
 
   factory PasscodeRequest.fromJson(Map<String, dynamic> json) =>
@@ -21,7 +21,7 @@ class PasscodeRequest {
 
   Map<String, dynamic> toJson() {
     return {
-      'mobileNo' : mobileNo,
+      'mobileNo': mobileNo,
       'password': password,
       'language': language,
     };

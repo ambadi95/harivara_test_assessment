@@ -8,7 +8,6 @@ const String HS_HomeIcon = 'assets/home/home_icon.png';
 const String HS_SettingIcon = 'assets/home/setting_icon.png';
 const String HS_ScanIcon = 'assets/home/scan_icon.png';
 
-
 const String HS_CustomerMangIcon = 'assets/home/customer_mang.png';
 const String HS_DeviceSwapIcon = 'assets/home/device_swap.png';
 const String HS_AgentSupportIcon = 'assets/home/agent_support.png';

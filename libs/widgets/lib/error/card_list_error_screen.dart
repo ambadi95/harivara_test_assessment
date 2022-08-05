@@ -85,13 +85,13 @@ class CardListErrorScreen extends StatelessWidget {
     );
   }
 
-  CrayonPaymentDockedButton _buildtextButton(BuildContext context) => CrayonPaymentDockedButton(
+  CrayonPaymentDockedButton _buildtextButton(BuildContext context) =>
+      CrayonPaymentDockedButton(
         key: const Key('CardListErrorScreen_OKButton'),
         title: 'card-list-error-ok-button'.tr,
         padding: _buttonPadding,
         onPressed: () {
           // TODO: refactor below
-
         },
       );
 }

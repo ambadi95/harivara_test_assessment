@@ -66,14 +66,14 @@ void main() {
 
   test(
     'when we call get wallet id'
-        'it should return wallet id',
-        () async {
+    'it should return wallet id',
+    () async {
       final walletId = '12';
       final userManager = UserManager(
         storageService,
       );
       when(
-            () => storageService.get(
+        () => storageService.get(
           any(),
         ),
       ).thenAnswer((_) async {

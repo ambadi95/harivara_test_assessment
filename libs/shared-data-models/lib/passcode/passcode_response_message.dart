@@ -17,7 +17,7 @@ class PasscodeResponseMessage with _$PasscodeResponseMessage {
 
   const factory PasscodeResponseMessage.loginSuccess() =
       PasscodeMessageLoginSuccess;
-    
+
   const factory PasscodeResponseMessage.loginFailed() =
       PasscodeMessageLoginFailed;
 

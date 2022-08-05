@@ -19,27 +19,28 @@ class CrayonSplashScreen extends StatefulWidget {
   @override
   State<CrayonSplashScreen> createState() => _CrayonSplashScreenState();
   factory CrayonSplashScreen.forCustomerApp() => CrayonSplashScreen(
-    welcomeScreenArgs: WelcomeScreenArgs(
-      '',
-      '',
-      'Customer',
-    ),
-  );
+        welcomeScreenArgs: WelcomeScreenArgs(
+          '',
+          '',
+          'Customer',
+        ),
+      );
 
   factory CrayonSplashScreen.forMerchantApp() => CrayonSplashScreen(
-    welcomeScreenArgs: WelcomeScreenArgs(
-      '',
-      '',
-      'Agent',
-    ),
-  );
+        welcomeScreenArgs: WelcomeScreenArgs(
+          '',
+          '',
+          'Agent',
+        ),
+      );
 }
 
 class _CrayonSplashScreenState extends State<CrayonSplashScreen>
     with TickerProviderStateMixin {
   Animation? _containerRadiusAnimation,
       _containerSizeAnimation,
-      _containerColorAnimation,_logoAnimation;
+      _containerColorAnimation,
+      _logoAnimation;
   AnimationController? _containerAnimationController, _logoAnimationController;
   SplashCoordinator? _splashCoordinator;
   bool? _isShow = false;
@@ -66,8 +67,8 @@ class _CrayonSplashScreenState extends State<CrayonSplashScreen>
                 curve: Curves.ease, parent: _containerAnimationController!));
 
     _containerAnimationController!.forward();
-    _logoAnimationController = AnimationController(
-        vsync: this, duration: Duration(seconds: 3));
+    _logoAnimationController =
+        AnimationController(vsync: this, duration: Duration(seconds: 3));
 
     //Implement animation here
     _logoAnimation = Tween(
@@ -86,12 +87,8 @@ class _CrayonSplashScreenState extends State<CrayonSplashScreen>
   Widget build(BuildContext context) =>
       BaseView<SplashCoordinator, SplashState>(
         setupViewModel: (coordinator) {
-          _splashCoordinator=coordinator;
-          coordinator.initialiseState(
-            context,
-            'Title',
-            ''
-          );
+          _splashCoordinator = coordinator;
+          coordinator.initialiseState(context, 'Title', '');
         },
         builder: (context, state, coordinator) => Scaffold(
           body: SafeArea(
@@ -156,14 +153,14 @@ class _CrayonSplashScreenState extends State<CrayonSplashScreen>
                           return Center(child: _buildLogo(context));
                         },
                       ),
-
                       _isShow == false
                           ? SizedBox()
                           : Column(
-                            children: [
-
-                              SizedBox(height: 2,),
-                              SizedBox(
+                              children: [
+                                SizedBox(
+                                  height: 2,
+                                ),
+                                SizedBox(
                                   width: 100.0,
                                   child: AnimatedTextKit(
                                     totalRepeatCount: 3,
@@ -174,23 +171,23 @@ class _CrayonSplashScreenState extends State<CrayonSplashScreen>
                                               fontSize: 28,
                                               fontFamily: 'Montserrat',
                                               fontStyle: FontStyle.italic),
-                                          speed: const Duration(milliseconds: 400)),
+                                          speed: const Duration(
+                                              milliseconds: 400)),
                                       TyperAnimatedText('SP_bora'.tr,
                                           textStyle: const TextStyle(
                                               color: Colors.white,
                                               fontSize: 30,
                                               fontWeight: FontWeight.bold,
-
                                               fontFamily: 'Montserrat',
                                               fontStyle: FontStyle.italic),
-                                          speed: const Duration(milliseconds: 400)),
+                                          speed: const Duration(
+                                              milliseconds: 400)),
                                     ],
-                                    onTap: () {
-                                    },
+                                    onTap: () {},
                                   ),
                                 ),
-                            ],
-                          )
+                              ],
+                            )
                     ],
                   ),
                 ),
@@ -210,23 +207,19 @@ class _CrayonSplashScreenState extends State<CrayonSplashScreen>
         });
 
         _moveToDestinationPath();
-
       }
     });
   }
 
-  void _moveToDestinationPath(){
-    Future.delayed(const Duration(seconds: 4), ()
-    {
+  void _moveToDestinationPath() {
+    Future.delayed(const Duration(seconds: 4), () {
       _splashCoordinator!.navigateToDestinationPath(widget.welcomeScreenArgs);
     });
   }
 
   Widget _buildLogo(BuildContext context) {
     return Hero(
-
       tag: 'splashLogo',
-      
       child: FadeTransition(
         opacity: AlwaysStoppedAnimation<double>(2),
         child: Image.asset(

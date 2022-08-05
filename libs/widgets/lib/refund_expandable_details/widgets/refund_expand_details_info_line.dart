@@ -50,7 +50,8 @@ class RefundExpandDetailsInfoLine extends RefundExpandableDetailsOptions {
                   ? Colors.black
                   : Colors.black54
               : Colors.black,
-          styleVariant: textStyleVariant ?? CrayonPaymentTextStyleVariant.bodyText2,
+          styleVariant:
+              textStyleVariant ?? CrayonPaymentTextStyleVariant.bodyText2,
         ),
       ),
     );

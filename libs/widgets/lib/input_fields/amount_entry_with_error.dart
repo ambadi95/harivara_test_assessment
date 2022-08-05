@@ -50,7 +50,9 @@ class AmountEntryWithError extends StatelessWidget {
           decoration: const InputDecoration(border: InputBorder.none),
           style: Theme.of(context).textTheme.headline1!.copyWith(
                 fontSize: 50,
-                color: errorMessage != null ? Colors.red : CrayonPaymentColors.crayonPaymentBlack,
+                color: errorMessage != null
+                    ? Colors.red
+                    : CrayonPaymentColors.crayonPaymentBlack,
               ),
         ),
         if (errorMessage != null) _buildErrorMessage,

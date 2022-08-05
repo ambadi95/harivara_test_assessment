@@ -6,12 +6,12 @@ class EmailRegistrationResponse {
   final String? merchantApplicationId;
 
   const EmailRegistrationResponse(
-      this.statusCode,
-      this.status,
-      this.message,
-      this.verifyLink,
-      this.merchantApplicationId,
-      );
+    this.statusCode,
+    this.status,
+    this.message,
+    this.verifyLink,
+    this.merchantApplicationId,
+  );
 
   factory EmailRegistrationResponse.fromJson(Map<String, dynamic> json) =>
       EmailRegistrationResponse(

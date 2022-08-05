@@ -12,11 +12,12 @@ class CrayonPaymentBottomSheetSuccessIcon extends CrayonPaymentBottomSheetIcon {
         );
 }
 
-class CrayonPaymentBottomSheetAppLanguageIconIcon extends CrayonPaymentBottomSheetIcon {
+class CrayonPaymentBottomSheetAppLanguageIconIcon
+    extends CrayonPaymentBottomSheetIcon {
   CrayonPaymentBottomSheetAppLanguageIconIcon()
       : super(
-    'packages/widget_library/assets/images/language_icon.svg',
-  );
+          'packages/widget_library/assets/images/language_icon.svg',
+        );
 }
 
 class CrayonPaymentBottomSheetErrorIcon extends CrayonPaymentBottomSheetIcon {
@@ -36,11 +37,12 @@ class CrayonPaymentBottomSheetInfoIcon extends CrayonPaymentBottomSheetIcon {
 class CrayonPaymentBottomSheetInvalidIcon extends CrayonPaymentBottomSheetIcon {
   CrayonPaymentBottomSheetInvalidIcon()
       : super(
-    'packages/widget_library/assets/images/ic_invalid.svg',
-  );
+          'packages/widget_library/assets/images/ic_invalid.svg',
+        );
 }
 
-class CrayonPaymentBottomSheetExclamatoryIcon extends CrayonPaymentBottomSheetIcon {
+class CrayonPaymentBottomSheetExclamatoryIcon
+    extends CrayonPaymentBottomSheetIcon {
   CrayonPaymentBottomSheetExclamatoryIcon()
       : super(
           'packages/widget_library/assets/images/exclamatory.svg',

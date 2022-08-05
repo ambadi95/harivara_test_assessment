@@ -117,7 +117,8 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
     StandardRequest request,
   ) async {
     if (!hasInternet) {
-      CrayonPaymentLogger.logInfo<NetworkClient>('No active internet connection.');
+      CrayonPaymentLogger.logInfo<NetworkClient>(
+          'No active internet connection.');
       return NetworkStandardResponse(
         '',
         HttpStatus.noConnectionToInternet,

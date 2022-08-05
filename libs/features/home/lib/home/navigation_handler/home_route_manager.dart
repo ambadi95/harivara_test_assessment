@@ -8,7 +8,7 @@ class HomeRouteManager extends IRouteManager {
   @override
   Widget getView(RouteSettings settings) {
     switch (settings.name) {
-      case CrayonHomeScreen.viewPath :
+      case CrayonHomeScreen.viewPath:
         var arguments = settings.arguments as HomeScreenArgs;
 
         return CrayonHomeScreen(

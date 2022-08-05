@@ -15,7 +15,7 @@ class SplashRouteManager extends IRouteManager {
           welcomeScreenArgs: arguments,
         );
       default:
-      // TODO: implement getView
+        // TODO: implement getView
         throw UnimplementedError();
     }
   }

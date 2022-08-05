@@ -1,6 +1,1 @@
-
-
-class WelcomeBackViewModel {
-
-
-}
+class WelcomeBackViewModel {}

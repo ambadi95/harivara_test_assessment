@@ -38,7 +38,8 @@ class CrayonPaymentBottomSheetState with _$CrayonPaymentBottomSheetState {
   }) = SheetSelection;
 
   const factory CrayonPaymentBottomSheetState.waitingState({
-    required Future<CrayonPaymentBottomSheetState?> Function()? immediateCallback,
+    required Future<CrayonPaymentBottomSheetState?> Function()?
+        immediateCallback,
     String? waitingText,
     @Default(false) bool disableIcon,
     @Default(false) bool disableCloseButton,
@@ -101,5 +102,4 @@ class CrayonPaymentBottomSheetState with _$CrayonPaymentBottomSheetState {
     Duration? autoCloseAfter,
     @Default(false) bool disableCloseButton,
   }) = ChangeLanguageBottomSheet;
-
 }

@@ -1,8 +1,6 @@
-
 import 'package:task_manager/task_manager.dart';
 
 import '../service/passcode_service.dart';
-
 
 class PasscodeApiResolver extends TaskResolver {
   final IPasscodeService _passcodeService;

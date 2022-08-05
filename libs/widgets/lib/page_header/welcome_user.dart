@@ -40,7 +40,9 @@ class WelcomeUser extends StatelessWidget {
         ),
         _WelcomeTitle(welcomeTitle),
         _WelcomeSubtitle(welcomeSubtitle),
-        SizedBox(key: Key('WelcomeUser_AfterSubtitleSizedBox'), height: _Sizes.spacerHeight),
+        SizedBox(
+            key: Key('WelcomeUser_AfterSubtitleSizedBox'),
+            height: _Sizes.spacerHeight),
       ],
     );
   }

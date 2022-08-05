@@ -112,7 +112,7 @@ class DeviceOption extends StatelessWidget {
       DeviceOptionCoordinator coordinator) {
     return InkWell(
       onTap: () {
-       // coordinator.navigateToDeviceDetailScreen();
+        // coordinator.navigateToDeviceDetailScreen();
       },
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -140,40 +140,47 @@ class DeviceOption extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
-                          width : 290,
+                          width: 290,
                           child: Row(
-                            mainAxisAlignment : MainAxisAlignment.spaceAround,
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
                               Expanded(
                                 child: CrayonPaymentText(
                                   key: Key('${_identifier}_' + device.brand!),
                                   text: TextUIDataModel(device.brand!,
                                       styleVariant:
-                                          CrayonPaymentTextStyleVariant.overline1,
+                                          CrayonPaymentTextStyleVariant
+                                              .overline1,
                                       color: AN_CardTitle,
                                       fontWeight: FontWeight.bold),
                                 ),
                               ),
-                              deviceOptionArgs.isMember ?
-                              Row(
-                                children: [
-                                  Icon(Icons.check_circle_outline_outlined,
-                                    color: Green,
-                                    size: 14,
-                                  ),
-                                  SizedBox(width: 4,),
-                                  SizedBox(
-                                    child: CrayonPaymentText(
-                                      key: Key('${_identifier}_' + 'selected_device'),
-                                      text: TextUIDataModel('Selected',
-                                          styleVariant:
-                                          CrayonPaymentTextStyleVariant.overline1,
+                              deviceOptionArgs.isMember
+                                  ? Row(
+                                      children: [
+                                        Icon(
+                                          Icons.check_circle_outline_outlined,
                                           color: Green,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ),
-                                ],
-                              ) : SizedBox(),
+                                          size: 14,
+                                        ),
+                                        SizedBox(
+                                          width: 4,
+                                        ),
+                                        SizedBox(
+                                          child: CrayonPaymentText(
+                                            key: Key('${_identifier}_' +
+                                                'selected_device'),
+                                            text: TextUIDataModel('Selected',
+                                                styleVariant:
+                                                    CrayonPaymentTextStyleVariant
+                                                        .overline1,
+                                                color: Green,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ),
+                                      ],
+                                    )
+                                  : SizedBox(),
                             ],
                           ),
                         ),
@@ -263,7 +270,7 @@ class DeviceOption extends StatelessWidget {
                   ],
                 ),
                 dynamicHSpacer(20),
-                    selectButton(coordinator)
+                selectButton(coordinator)
               ],
             ),
           ),
@@ -320,9 +327,7 @@ class DeviceOption extends StatelessWidget {
       icon: Icons.check_circle_outline,
       iconColor: Green,
       textStyleVariant: CrayonPaymentTextStyleVariant.headline4,
-      onPressed: () {
-
-      },
+      onPressed: () {},
     );
   }
 

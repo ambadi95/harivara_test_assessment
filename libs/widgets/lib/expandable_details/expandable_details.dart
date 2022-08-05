@@ -50,12 +50,13 @@ class ExpandableDetails extends StatefulWidget {
     bool? gestureDetectorOnWholeContainer,
     Key? key,
   })  : _boxColor = boxColor ?? CrayonPaymentColors.floralWhite,
-        _boxPadding =
-            boxPadding ?? EdgeInsets.all(CrayonPaymentDimensions.inlineFieldsMargin),
+        _boxPadding = boxPadding ??
+            EdgeInsets.all(CrayonPaymentDimensions.inlineFieldsMargin),
         _topTitleColor = topTitleColor ?? CrayonPaymentColors.crayonPaymentGold,
         _topTitleStyleVariant =
             topTitleStyleVariant ?? CrayonPaymentTextStyleVariant.headline5,
-        _expansaionArrowColor = expansionArrowColor ?? CrayonPaymentColors.crayonPaymentGold,
+        _expansaionArrowColor =
+            expansionArrowColor ?? CrayonPaymentColors.crayonPaymentGold,
         _displayDividerBeforeItems = displayDividerBeforeItems ?? false,
         _gestureDetectorOnWholeContainer =
             gestureDetectorOnWholeContainer ?? true,
@@ -81,10 +82,10 @@ class _ExpandableDetailsState extends State<ExpandableDetails> {
   Widget build(BuildContext context) {
     return widget._gestureDetectorOnWholeContainer!
         ? GestureDetector(
-      key: const Key('gesture_detector'),
-      onTap: _expandWidget,
-      child: _buildMainUi,
-    )
+            key: const Key('gesture_detector'),
+            onTap: _expandWidget,
+            child: _buildMainUi,
+          )
         : _buildMainUi;
   }
 
@@ -102,43 +103,43 @@ class _ExpandableDetailsState extends State<ExpandableDetails> {
   }
 
   Widget get _buildMainUi => Container(
-    padding: widget._boxPadding,
-    decoration: _buildBoxDecoration,
-    child: Column(
-      children: [
-        if (widget.shouldShowOpenDetails)
-          widget._gestureDetectorOnWholeContainer!
-              ? _buildTopRow
-              : _buildTopRowWithGestureDetector,
-        if (widget._displayDividerBeforeItems! && _isExpanded)
-          displayDivider,
-        if (_isExpanded) ...[
-          if (!widget._displayDividerBeforeItems!) spaceH10(),
-          ...widget.itemsWhenExpanded
-              .map(
-                (e) => Column(
-              /// Avoid use of Padding to get OverflowBox to work
-              children: [
-                dynamicHSpacer(1),
-                e,
-                dynamicHSpacer(1),
-              ],
-            ),
-          )
-              .toList()
-        ],
-        if (widget.appInfoRetriever?.appType is CustomerApp) displayDivider,
-        if (widget.expandDetailsBottomRow != null)
-          ...widget.expandDetailsBottomRow!
-      ],
-    ),
-  );
+        padding: widget._boxPadding,
+        decoration: _buildBoxDecoration,
+        child: Column(
+          children: [
+            if (widget.shouldShowOpenDetails)
+              widget._gestureDetectorOnWholeContainer!
+                  ? _buildTopRow
+                  : _buildTopRowWithGestureDetector,
+            if (widget._displayDividerBeforeItems! && _isExpanded)
+              displayDivider,
+            if (_isExpanded) ...[
+              if (!widget._displayDividerBeforeItems!) spaceH10(),
+              ...widget.itemsWhenExpanded
+                  .map(
+                    (e) => Column(
+                      /// Avoid use of Padding to get OverflowBox to work
+                      children: [
+                        dynamicHSpacer(1),
+                        e,
+                        dynamicHSpacer(1),
+                      ],
+                    ),
+                  )
+                  .toList()
+            ],
+            if (widget.appInfoRetriever?.appType is CustomerApp) displayDivider,
+            if (widget.expandDetailsBottomRow != null)
+              ...widget.expandDetailsBottomRow!
+          ],
+        ),
+      );
 
   Widget get _buildTopRowWithGestureDetector => GestureDetector(
-    key: const Key('gesture_detector'),
-    onTap: _expandWidget,
-    child: _buildTopRow,
-  );
+        key: const Key('gesture_detector'),
+        onTap: _expandWidget,
+        child: _buildTopRow,
+      );
 
   Widget get _buildTopRow {
     return Row(
@@ -148,8 +149,8 @@ class _ExpandableDetailsState extends State<ExpandableDetails> {
           text: TextUIDataModel(
             widget.appInfoRetriever?.appType is CustomerApp
                 ? _isExpanded
-                ? 'expandable-details-widget-less'.tr
-                : 'expandable-details-widget-open'.tr
+                    ? 'expandable-details-widget-less'.tr
+                    : 'expandable-details-widget-open'.tr
                 : widget.topTitleText!,
             color: widget._topTitleColor,
             styleVariant: widget._topTitleStyleVariant,
@@ -171,7 +172,7 @@ class _ExpandableDetailsState extends State<ExpandableDetails> {
   }
 
   Widget get displayDivider => ExpandDetailsDivider(
-    dividerColor: widget.dividerColor,
-    dividerPadding: widget.dividerPadding,
-  );
+        dividerColor: widget.dividerColor,
+        dividerPadding: widget.dividerPadding,
+      );
 }

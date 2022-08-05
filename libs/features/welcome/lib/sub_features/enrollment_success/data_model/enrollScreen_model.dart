@@ -3,7 +3,7 @@ class EnrollScreenArgs {
   final bool isEnrolled;
 
   EnrollScreenArgs(
-      this.userType,
-      this.isEnrolled,
-      );
+    this.userType,
+    this.isEnrolled,
+  );
 }

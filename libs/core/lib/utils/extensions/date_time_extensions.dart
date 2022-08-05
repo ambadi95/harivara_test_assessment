@@ -1,7 +1,6 @@
 import 'package:intl/intl.dart';
 
 extension DateTimeFormateUtil on DateTime {
-
   /// Returns string like: `Sept 26, 2021`
   String toFullMonthTime() {
     return DateFormat('MMMM dd, yyyy').format(this);

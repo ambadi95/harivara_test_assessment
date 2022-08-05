@@ -15,7 +15,6 @@ class CreateCustomerResponse extends CreateResponse {
           userId: userId,
         );
 
-
   factory CreateCustomerResponse.fromJson(Map<String, dynamic> json) =>
       CreateCustomerResponse(
         serviceRequestId: json['serviceRequestId'],

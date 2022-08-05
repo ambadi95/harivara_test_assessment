@@ -92,7 +92,8 @@ class ReusableInfoRow extends StatelessWidget {
                         textAlign: TextAlign.start,
                         color: subtitleColor,
                       ),
-                      lineVerticalSpacing: CrayonPaymentTextVerticalSpacing.medium,
+                      lineVerticalSpacing:
+                          CrayonPaymentTextVerticalSpacing.medium,
                     ),
                   ),
                 ],

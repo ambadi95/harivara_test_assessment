@@ -113,7 +113,8 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
           _appearance.cornerRadius,
         ),
       ),
-      borderSide: BorderSide(color: CrayonPaymentColors.crayonPaymentGray, width: 1.0),
+      borderSide:
+          BorderSide(color: CrayonPaymentColors.crayonPaymentGray, width: 1.0),
     );
   }
 }

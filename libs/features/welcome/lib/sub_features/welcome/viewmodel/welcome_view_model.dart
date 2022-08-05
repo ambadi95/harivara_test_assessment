@@ -1,5 +1,3 @@
-
-
 class WelcomeViewModel {
   final List<String> _allowedCountries = [
     'US',
@@ -10,5 +8,4 @@ class WelcomeViewModel {
     'UK',
     'RO',
   ];
-
 }

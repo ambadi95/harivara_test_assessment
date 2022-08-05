@@ -21,11 +21,12 @@ class CrayonPaymentBottomSheet extends StatelessWidget {
       '${CrayonPaymentBottomSheetRouteManager.moduleIdentifier}/crayonPaymentBottomSheet';
   final CrayonPaymentBottomSheetState _bottomSheetState;
 
-  const CrayonPaymentBottomSheet(this._bottomSheetState, {Key? key}) : super(key: key);
+  const CrayonPaymentBottomSheet(this._bottomSheetState, {Key? key})
+      : super(key: key);
 
   @override
-  Widget build(BuildContext context) =>
-      BaseView<CrayonPaymentBottomSheetCoordinator, CrayonPaymentBottomSheetState>(
+  Widget build(BuildContext context) => BaseView<
+          CrayonPaymentBottomSheetCoordinator, CrayonPaymentBottomSheetState>(
         setupViewModel: (coordinator) =>
             coordinator.setUpState(_bottomSheetState),
         builder: (context, state, coordinator) =>
@@ -85,14 +86,15 @@ class CrayonPaymentBottomSheet extends StatelessWidget {
         },
         agentEnrollment: (_, __, ___, additionalText, ____, _____, ______) =>
             BottomSheetAgentEnrollment(
-              coordinator,
-              state as AgentEnrollmentSheet,
-            ),
-        changeLanguage: (_, __, ___, additionalText, ____, _____, ______,________) =>
-            BottomSheetAppLanguage(
-              coordinator,
-              state as ChangeLanguageBottomSheet,
-            ),
+          coordinator,
+          state as AgentEnrollmentSheet,
+        ),
+        changeLanguage:
+            (_, __, ___, additionalText, ____, _____, ______, ________) =>
+                BottomSheetAppLanguage(
+          coordinator,
+          state as ChangeLanguageBottomSheet,
+        ),
         orElse: () => const Center(
           key: Key('ErrorBottomSheet'),
           child: Text('Error'),

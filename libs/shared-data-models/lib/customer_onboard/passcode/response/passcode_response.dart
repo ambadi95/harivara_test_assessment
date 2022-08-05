@@ -5,36 +5,36 @@ part 'passcode_response.g.dart';
 
 @JsonSerializable()
 class PasscodeResponse extends Equatable {
-	final bool? status;
-	final String? code;
-	final String? message;
-	final Data? data;
+  final bool? status;
+  final String? code;
+  final String? message;
+  final Data? data;
 
-	const PasscodeResponse({this.status, this.code, this.message, this.data});
+  const PasscodeResponse({this.status, this.code, this.message, this.data});
 
-	factory PasscodeResponse.fromJson(Map<String, dynamic> json) {
-		return _$PasscodeResponseFromJson(json);
-	}
+  factory PasscodeResponse.fromJson(Map<String, dynamic> json) {
+    return _$PasscodeResponseFromJson(json);
+  }
 
-	Map<String, dynamic> toJson() => _$PasscodeResponseToJson(this);
+  Map<String, dynamic> toJson() => _$PasscodeResponseToJson(this);
 
-		PasscodeResponse copyWith({
-		bool? status,
-		String? code,
-		String? message,
-			Data? data,
-	}) {
-		return PasscodeResponse(
-			status: status ?? this.status,
-			code: code ?? this.code,
-			message: message ?? this.message,
-			data: data ?? this.data,
-		);
-	}
+  PasscodeResponse copyWith({
+    bool? status,
+    String? code,
+    String? message,
+    Data? data,
+  }) {
+    return PasscodeResponse(
+      status: status ?? this.status,
+      code: code ?? this.code,
+      message: message ?? this.message,
+      data: data ?? this.data,
+    );
+  }
 
-	@override
-	bool get stringify => true;
+  @override
+  bool get stringify => true;
 
-	@override
-	List<Object?> get props => [status, code, message, data];
+  @override
+  List<Object?> get props => [status, code, message, data];
 }

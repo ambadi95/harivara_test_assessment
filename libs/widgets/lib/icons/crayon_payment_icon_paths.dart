@@ -89,7 +89,7 @@ class CrayonPaymentIconPath {
 
   static const String iconCloseGrey =
       'packages/widget_library/assets/icons/icon_close_grey.svg';
-  
+
   static const String iconCloseDarkGrey =
       'packages/widget_library/assets/icons/icon_close_dark_grey.svg';
 

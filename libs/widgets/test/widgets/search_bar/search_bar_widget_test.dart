@@ -3,7 +3,6 @@ import 'package:widget_library/search_bar/search_bar_widget.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:widget_library/search_bar/search_bar_widget_model.dart';
 
-
 void main() {
   late Widget testWidget;
   final iconText = 'Icon-Widget';

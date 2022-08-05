@@ -4,8 +4,7 @@ class GenderType {
 
   const GenderType(this.id, this.gender);
 
-  factory GenderType.fromJson(Map<String, dynamic> json) =>
-      GenderType(
+  factory GenderType.fromJson(Map<String, dynamic> json) => GenderType(
         json['id'],
         json['gender'],
       );

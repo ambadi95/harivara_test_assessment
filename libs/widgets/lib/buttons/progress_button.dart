@@ -45,7 +45,8 @@ class ProgressButtonWidget extends StatelessWidget {
               ),
               child: Padding(
                 key: Key('ProgressButtonWidget_SymmetricPadding'),
-                padding: const EdgeInsets.symmetric(vertical: 18.0, horizontal: 8.0),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 18.0, horizontal: 8.0),
                 child: Text(
                   text ?? _Constants.emptyText,
                   key: Key('ProgressButtonWidget_EmptyTextText'),

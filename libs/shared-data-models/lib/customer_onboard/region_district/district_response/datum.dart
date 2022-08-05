@@ -5,28 +5,28 @@ part 'datum.g.dart';
 
 @JsonSerializable()
 class Datum extends Equatable {
-	final int? id;
-	final String? name;
+  final int? id;
+  final String? name;
 
-	const Datum({this.id, this.name});
+  const Datum({this.id, this.name});
 
-	factory Datum.fromJson(Map<String, dynamic> json) => _$DatumFromJson(json);
+  factory Datum.fromJson(Map<String, dynamic> json) => _$DatumFromJson(json);
 
-	Map<String, dynamic> toJson() => _$DatumToJson(this);
+  Map<String, dynamic> toJson() => _$DatumToJson(this);
 
-		Datum copyWith({
-		int? id,
-		String? name,
-	}) {
-		return Datum(
-			id: id ?? this.id,
-			name: name ?? this.name,
-		);
-	}
+  Datum copyWith({
+    int? id,
+    String? name,
+  }) {
+    return Datum(
+      id: id ?? this.id,
+      name: name ?? this.name,
+    );
+  }
 
-	@override
-	bool get stringify => true;
+  @override
+  bool get stringify => true;
 
-	@override
-	List<Object?> get props => [id, name];
+  @override
+  List<Object?> get props => [id, name];
 }

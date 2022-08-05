@@ -45,7 +45,8 @@ class CrayonPaymentPageHeaderTextUnderIconWidget extends StatelessWidget {
 
     widgetsList.add(
       SizedBox(
-        key: Key('CrayonPaymentPageHeaderTextUnderIconWidget_bodyWidgetsList_SizedBox'),
+        key: Key(
+            'CrayonPaymentPageHeaderTextUnderIconWidget_bodyWidgetsList_SizedBox'),
         height: attributes.headerTopPadding,
       ),
     );
@@ -55,7 +56,8 @@ class CrayonPaymentPageHeaderTextUnderIconWidget extends StatelessWidget {
       if (attr.title != null) {
         textStyle = buildTextStyle(
           context: context,
-          variant: attr.title?.styleVariant ?? CrayonPaymentTextStyleVariant.headline2,
+          variant: attr.title?.styleVariant ??
+              CrayonPaymentTextStyleVariant.headline2,
         );
       }
 
@@ -120,8 +122,8 @@ class CrayonPaymentPageHeaderTextUnderIconWidget extends StatelessWidget {
           );
           widgetsList.add(
             SizedBox(
-              key:
-                  Key('CrayonPaymentPageHeaderTextUnderIconWidget_AfterPaddingSizedBox'),
+              key: Key(
+                  'CrayonPaymentPageHeaderTextUnderIconWidget_AfterPaddingSizedBox'),
               height: (attr.padding != null) ? attr.padding!.bottom : 31,
             ),
           );
