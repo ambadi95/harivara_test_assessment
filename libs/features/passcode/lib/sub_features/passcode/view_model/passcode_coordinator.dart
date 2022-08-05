@@ -180,8 +180,12 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
         var response =
             await _passcodeUseCase.savePasscode(newPasscode, (p0) => null);
         if (response!.status == true) {
-          _navigationHandler.navigateToCustomerEnrollmentScreen(
-              destinationPath, false);
+          var loginResponse =  await _passcodeUseCase.login( newPasscode, (p0) => null);
+          if(loginResponse?.status == true){
+            _navigationHandler.navigateToCustomerEnrollmentScreen(
+                destinationPath, false);
+          }
+
         }
       } else {
         _navigationHandler.navigateToAgentEnrollmentBottomSheet(

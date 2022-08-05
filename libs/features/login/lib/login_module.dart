@@ -6,6 +6,7 @@ import 'package:login/task_manager/login_module_resolver.dart';
 import 'package:login/viewmodel/login_coordinator.dart';
 import 'package:login/viewmodel/login_usecase.dart';
 import 'package:login/viewmodel/login_viewmodel.dart';
+import 'package:network_manager/auth/auth_manager.dart';
 import 'package:task_manager/module_resolver.dart';
 import 'package:task_manager/task_manager_impl.dart';
 
@@ -29,6 +30,7 @@ class LoginModule {
         LoginNavigationHandler(container.resolve<NavigationManager>()),
         LoginUseCase(
           LoginViewModel(),
+          container.resolve<IAuthManager>(),
           container.resolve<TaskManager>(),
         ),
       ),

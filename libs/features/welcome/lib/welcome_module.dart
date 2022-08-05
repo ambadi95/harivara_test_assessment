@@ -102,6 +102,7 @@ class WelcomeModule {
       (container) => EnrollmentSuccessCoordinator(
         WelcomeNavigationHandler(container.resolve<NavigationManager>()),
         EnrollmentSuccessUseCase(
+          container.resolve<IAuthManager>(),
           container.resolve<TaskManager>(),
         ),
       ),

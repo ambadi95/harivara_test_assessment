@@ -27,7 +27,8 @@ class SignupApiResolver extends TaskResolver {
       case IDetailsService.submitCustomerDetailIdentifier:
         return _detailsService.submitCustomerDetails(requestData);
       case IEnrollmentService.enrollmentIdentifier:
-        return _enrollmentService.getCustomerDetails(requestData['customerId']);
+        return _enrollmentService.getCustomerDetails(
+            requestData['customerId'], requestData['token']);
       default:
         throw UnimplementedError();
     }
