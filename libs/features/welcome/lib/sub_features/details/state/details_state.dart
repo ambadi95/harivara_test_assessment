@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:shared_data_models/customer_onboard/region_district/region_response/datum.dart';
+import 'package:shared_data_models/customer_onboard/region_district/district_response/datum.dart' as b;
 import 'package:welcome/data_model/district.dart';
-import 'package:welcome/data_model/region.dart';
 
 import '../../../data_model/gender_type.dart';
 
@@ -59,10 +60,10 @@ class DetailsState with _$DetailsState{
       ) = GenderTypeChoosen;
 
   const factory DetailsState.onRegionChoosen(
-      Region region
+      Datum region
       ) = RegionChoosen;
 
   const factory DetailsState.onDistrictChoosen(
-      District district
+      b.Datum district
       ) = DistrictChoosen;
 }

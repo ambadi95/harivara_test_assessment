@@ -19,6 +19,7 @@ import 'package:widget_library/static_text/crayon_payment_text.dart';
 
 import '../state/verify_otp_state.dart';
 import '../view_model/verifyotp_coordinator.dart';
+import 'package:config/config.dart';
 
 class CrayonVerifyOtpScreen extends StatefulWidget {
   static const viewPath = '${VerifyOtpModule.moduleIdentifier}/verifyotp';
@@ -69,6 +70,7 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
   Widget build(BuildContext context) =>
       BaseView<VerifyOtpCoordinator, VerifyOtpState>(
         setupViewModel: (coordinator) {
+          coordinator.generateOtp(widget.otpScreenArgs.refId);
           coordinator.initialiseState(
             context,
             widget.otpScreenArgs.title,
@@ -161,8 +163,10 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
       child: InkWell(
         onTap: () {
           if (otpController.text.isNotEmpty && otpController.text.length == 6) {
-            coordinator
-                .navigateToDestinationPath(widget.otpScreenArgs.destinationPath, widget.otpScreenArgs.userType,widget.otpScreenArgs);
+            coordinator.navigateToDestinationPath(
+                widget.otpScreenArgs.destinationPath,
+                widget.otpScreenArgs.userType,
+                widget.otpScreenArgs,);
           } else {
             _showAlertForOTPAttempts(coordinator);
           }
@@ -173,7 +177,8 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
             width: double.infinity,
             height: 50,
             decoration: BoxDecoration(
-                color: SU_button_color, borderRadius: BorderRadius.circular(8.0)),
+                color: SU_button_color,
+                borderRadius: BorderRadius.circular(8.0)),
             child: Center(
               child: Text(
                 'VO_verify_button'.tr,
@@ -189,8 +194,7 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
   _showAlertForOTPAttempts(VerifyOtpCoordinator coordinator) {
     Get.bottomSheet(
       AlertBottomSheet(
-          alertMessage:
-              'VO_Incorrect_OTP_Alert_Msg'.tr,
+          alertMessage: 'VO_Incorrect_OTP_Alert_Msg'.tr,
           alertTitle: 'VO_Incorrect_OTP_Title'.tr,
           alertIcon: "assets/images/incorrect_otp.png",
           onClose: () {
@@ -325,8 +329,7 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
             //errorAnimationController: errorController,
             controller: otpController,
             keyboardType: TextInputType.number,
-            onCompleted: (v) {
-            },
+            onCompleted: (v) {},
             onChanged: (String value) {},
           ),
         ),

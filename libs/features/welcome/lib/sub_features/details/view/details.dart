@@ -3,6 +3,9 @@ import 'package:config/Styles.dart';
 import 'package:core/view/base_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:shared_data_models/customer_onboard/region_district/region_response/datum.dart';
+import 'package:shared_data_models/customer_onboard/region_district/district_response/datum.dart'
+    as b;
 import 'package:welcome/sub_features/details/state/details_state.dart';
 import 'package:welcome/sub_features/details/viewmodel/details_coordinator.dart';
 import 'package:welcome/welcome_module.dart';
@@ -16,7 +19,6 @@ import 'package:config/Colors.dart' as config_color;
 
 import '../../../data_model/district.dart';
 import '../../../data_model/gender_type.dart';
-import '../../../data_model/region.dart';
 
 class DetailsScreen extends StatefulWidget {
   static const viewPath = '${WelcomeModule.moduleIdentifier}/details';
@@ -33,20 +35,21 @@ class _DetailsScreenState extends State<DetailsScreen> {
   String nameError = '';
   String emailError = '';
   String poBoxError = '';
-  String dobError ='';
-  String genderError ='';
+  String dobError = '';
+  String genderError = '';
   String professionError = '';
   String addressError = '';
-  String regionError ='';
-  String districtError ='';
+  String regionError = '';
+  String districtError = '';
 
   List<DropdownMenuItem<GenderType>> genderTypeDropDown = [];
-  List<DropdownMenuItem<Region>> regionDropDown = [];
-  List<DropdownMenuItem<District>> districtDropDown = [];
+  List<DropdownMenuItem<Datum>> regionDropDown = [];
+  List<DropdownMenuItem<b.Datum>> districtDropDown = [];
 
   GenderType? _genderType;
-  Region? _region;
-  District? _district;
+  Datum? _region;
+  b.Datum? _district;
+  List<b.Datum> dis = [];
 
   final FocusNode? focusNode = FocusNode();
   final TextEditingController name = TextEditingController();
@@ -69,23 +72,23 @@ class _DetailsScreenState extends State<DetailsScreen> {
         initialDate: selectedDate,
         firstDate: DateTime(1900, 1),
         lastDate: DateTime(2101),
-      builder: (context, child){
-          return Theme(data: Theme.of(context).copyWith(
-            colorScheme: const ColorScheme.light(
-              primary: PRIMARY_COLOR, // header background color
-              onPrimary: SU_button_text_color, // header text color
-              onSurface: SECONDARY_COLOR, // body text color
-            ),
-            textButtonTheme: TextButtonThemeData(
-              style: TextButton.styleFrom(
-                primary: SECONDARY_COLOR, // button text color
+        builder: (context, child) {
+          return Theme(
+            data: Theme.of(context).copyWith(
+              colorScheme: const ColorScheme.light(
+                primary: PRIMARY_COLOR, // header background color
+                onPrimary: SU_button_text_color, // header text color
+                onSurface: SECONDARY_COLOR, // body text color
+              ),
+              textButtonTheme: TextButtonThemeData(
+                style: TextButton.styleFrom(
+                  primary: SECONDARY_COLOR, // button text color
+                ),
               ),
             ),
-          ),
             child: child!,
           );
-      }
-    );
+        });
     if (picked != null && picked != selectedDate) {
       final DateFormat inputFormat = DateFormat('yyyy-MM-dd');
       setState(() {
@@ -97,7 +100,6 @@ class _DetailsScreenState extends State<DetailsScreen> {
     }
   }
 
-
   @override
   Widget build(BuildContext context) =>
       BaseView<DetailsCoordinator, DetailsState>(
@@ -105,9 +107,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
             {_listenToStateChanges(context, newState)},
         setupViewModel: (coordinator) async {
           coordinator.getMobileNumber();
-          genderTypeDropDown =getDropDownData(coordinator.genderType);
-          regionDropDown = getRegionDropDownData(coordinator.region);
-          districtDropDown = getDistrictDropDownData(coordinator.district);
+          List<Datum> regions = await coordinator.getRegion();
+          genderTypeDropDown = getDropDownData(coordinator.genderType);
+          regionDropDown = getRegionDropDownData(regions);
         },
         builder: (context, state, coordinator) => SafeArea(
           child: Scaffold(
@@ -175,20 +177,38 @@ class _DetailsScreenState extends State<DetailsScreen> {
           const SizedBox(
             height: 30,
           ),
-          _buildLabelTextField(
-              'DV_name_label'.tr, name, TextInputType.text, coordinator,nameError,'DV_name_hint_text', true),
+          _buildLabelTextField('DV_name_label'.tr, name, TextInputType.text,
+              coordinator, nameError, 'DV_name_hint_text', true),
           _buildLabelTextFieldDob('DV_dob_label'.tr, dob, coordinator),
           _buildGenderTypeDropdown(coordinator),
-          _buildLabelTextField('DV_profession_label'.tr, profession,
-              TextInputType.name, coordinator,professionError,'DV_profession_hint_text',true),
-          _buildLabelTextField('DV_contact_no_label'.tr, mobileNumber,
-              TextInputType.number, coordinator,'','Enter Your Mobile Number', false),
-          _buildLabelTextField('DV_email_label'.tr, emailId,
-              TextInputType.emailAddress, coordinator,emailError,'DV_email_hint_text', true),
-          _buildLabelTextFieldAddress(
-              'DV_address_label'.tr, address, coordinator, 'DV_address_hint_text'),
           _buildLabelTextField(
-              'DV_po_box_label'.tr, poBox, TextInputType.text,coordinator, poBoxError,'DV_poBox_hint_text', true),
+              'DV_profession_label'.tr,
+              profession,
+              TextInputType.name,
+              coordinator,
+              professionError,
+              'DV_profession_hint_text',
+              true),
+          _buildLabelTextField(
+              'DV_contact_no_label'.tr,
+              mobileNumber,
+              TextInputType.number,
+              coordinator,
+              '',
+              'Enter Your Mobile Number',
+              false),
+          _buildLabelTextField(
+              'DV_email_label'.tr,
+              emailId,
+              TextInputType.emailAddress,
+              coordinator,
+              emailError,
+              'DV_email_hint_text',
+              true),
+          _buildLabelTextFieldAddress('DV_address_label'.tr, address,
+              coordinator, 'DV_address_hint_text'),
+          _buildLabelTextField('DV_po_box_label'.tr, poBox, TextInputType.text,
+              coordinator, poBoxError, 'DV_poBox_hint_text', true),
           // _buildLabelTextField(
           //     'DV_region_label'.tr, region, TextInputType.name, coordinator,regionError,'DV_region_hint_text', true),
           _buildRegionDropdown(coordinator),
@@ -208,8 +228,14 @@ class _DetailsScreenState extends State<DetailsScreen> {
     );
   }
 
-  Widget _buildLabelTextField(String label, TextEditingController controller,
-      TextInputType textInputType, DetailsCoordinator coordinator, String errorText, String hint, bool enabled) {
+  Widget _buildLabelTextField(
+      String label,
+      TextEditingController controller,
+      TextInputType textInputType,
+      DetailsCoordinator coordinator,
+      String errorText,
+      String hint,
+      bool enabled) {
     return Padding(
         padding: const EdgeInsets.only(bottom: 34),
         child: InputFieldWithLabel(
@@ -222,7 +248,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
           keyboardType: textInputType,
           onChanged: (value) {
             _validateForm(coordinator);
-            if(errorText.isNotEmpty){
+            if (errorText.isNotEmpty) {
               coordinator.isValidName(name.text);
               coordinator.isValidEmail(emailId.text);
               coordinator.isValidPoBox(poBox.text);
@@ -256,16 +282,19 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 borderSide: BorderSide(color: config_color.SU_border_color)),
           ),
           onTap: () async {
-           await _selectDate(context);
-            if(dobError.isNotEmpty){
+            await _selectDate(context);
+            if (dobError.isNotEmpty) {
               coordinator.isValidDob(dob.text);
             }
           },
         ));
   }
 
-  Widget _buildLabelTextFieldAddress(String label,
-      TextEditingController controller, DetailsCoordinator coordinator,String hint) {
+  Widget _buildLabelTextFieldAddress(
+      String label,
+      TextEditingController controller,
+      DetailsCoordinator coordinator,
+      String hint) {
     return Padding(
         padding: const EdgeInsets.only(bottom: 34),
         child: InputFieldWithLabel(
@@ -278,16 +307,14 @@ class _DetailsScreenState extends State<DetailsScreen> {
           keyboardType: TextInputType.streetAddress,
           onChanged: (value) {
             _validateForm(coordinator);
-            if(addressError.isNotEmpty){
+            if (addressError.isNotEmpty) {
               coordinator.isValidAddress(value);
             }
           },
         ));
   }
 
-  Widget _buildGenderTypeDropdown(
-      DetailsCoordinator coordinator
-      ){
+  Widget _buildGenderTypeDropdown(DetailsCoordinator coordinator) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -309,7 +336,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
             onGenderTypeChosen(value as GenderType, coordinator);
             gender.text = value.gender;
             _validateForm(coordinator);
-              coordinator.isValidGender(value.gender);
+            coordinator.isValidGender(value.gender);
           },
         ),
         const SizedBox(
@@ -323,9 +350,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
     );
   }
 
-  Widget _buildDistrictDropdown(
-      DetailsCoordinator coordinator
-      ){
+  Widget _buildDistrictDropdown(DetailsCoordinator coordinator) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -344,10 +369,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
           value: _district,
           items: districtDropDown,
           onChanged: (value) {
-            onDistrictChosen(value as District, coordinator);
-            district.text = value.district;
+            onDistrictChosen(value as b.Datum, coordinator);
+            district.text = value.name!;
             _validateForm(coordinator);
-            coordinator.isValidDistrict(value.district);
+            coordinator.isValidDistrict(value.name!);
           },
         ),
         const SizedBox(
@@ -361,9 +386,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
     );
   }
 
-  Widget _buildRegionDropdown(
-      DetailsCoordinator coordinator
-      ){
+  Widget _buildRegionDropdown(DetailsCoordinator coordinator) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -381,11 +404,13 @@ class _DetailsScreenState extends State<DetailsScreen> {
           error: regionError,
           value: _region,
           items: regionDropDown,
-          onChanged: (value) {
-            onRegionChosen(value as Region, coordinator);
-            region.text = value.region;
+          onChanged: (value) async {
+            onRegionChosen(value as Datum, coordinator);
+            region.text = value.name!;
+            dis = await coordinator.getDistrict(value.id!);
+            districtDropDown = getDistrictDropDownData(dis);
             _validateForm(coordinator);
-            coordinator.isValidRegion(value.region);
+            coordinator.isValidRegion(value.name!);
           },
         ),
         const SizedBox(
@@ -401,7 +426,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
 
   Widget _buildContinueButton(DetailsCoordinator coordinator) {
     return GestureDetector(
-      onTap: () {
+      onTap: () async {
         coordinator.isValidPoBox(poBox.text);
         coordinator.isValidEmail(emailId.text);
         coordinator.isValidName(name.text);
@@ -411,8 +436,21 @@ class _DetailsScreenState extends State<DetailsScreen> {
         coordinator.isValidProfession(profession.text);
         coordinator.isValidAddress(address.text);
         coordinator.isValidDob(dob.text);
-        if (_isBtnEnabled &&   coordinator.isValidPoBox(poBox.text) && coordinator.isValidEmail(emailId.text) &&coordinator.isValidName(name.text) ) {
-          coordinator.navigateToCreatePasscodeScreen(widget.userType);
+        if (_isBtnEnabled &&
+            coordinator.isValidPoBox(poBox.text) &&
+            coordinator.isValidEmail(emailId.text) &&
+            coordinator.isValidName(name.text)) {
+          await coordinator.submitDetails(
+              name.text,
+              dob.text,
+              gender.text,
+              address.text,
+              profession.text,
+              emailId.text,
+              poBox.text,
+              region.text,
+              district.text,
+              widget.userType);
         }
       },
       child: Container(
@@ -434,7 +472,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
   }
 
   List<DropdownMenuItem<GenderType>> getDropDownData(
-      List<GenderType> genderType,) {
+    List<GenderType> genderType,
+  ) {
     for (var item in genderType) {
       genderTypeDropDown.add(
         DropdownMenuItem(
@@ -454,14 +493,15 @@ class _DetailsScreenState extends State<DetailsScreen> {
     return genderTypeDropDown;
   }
 
-  List<DropdownMenuItem<Region>> getRegionDropDownData(
-      List<Region> region,) {
+  List<DropdownMenuItem<Datum>> getRegionDropDownData(
+    List<Datum> region,
+  ) {
     for (var item in region) {
       regionDropDown.add(
         DropdownMenuItem(
           value: item,
           child: Text(
-            item.region.toString(),
+            item.name.toString(),
             style: const TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w500,
@@ -475,14 +515,15 @@ class _DetailsScreenState extends State<DetailsScreen> {
     return regionDropDown;
   }
 
-  List<DropdownMenuItem<District>> getDistrictDropDownData(
-      List<District> district,) {
+  List<DropdownMenuItem<b.Datum>> getDistrictDropDownData(
+    List<b.Datum> district,
+  ) {
     for (var item in district) {
       districtDropDown.add(
         DropdownMenuItem(
           value: item,
           child: Text(
-            item.district.toString(),
+            item.name.toString(),
             style: const TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w500,
@@ -496,19 +537,25 @@ class _DetailsScreenState extends State<DetailsScreen> {
     return districtDropDown;
   }
 
-  void onGenderTypeChosen(GenderType value,
-      DetailsCoordinator coordinator,) {
+  void onGenderTypeChosen(
+    GenderType value,
+    DetailsCoordinator coordinator,
+  ) {
     coordinator.setGenderType(value);
   }
 
-  void onRegionChosen(Region value,
-      DetailsCoordinator coordinator,) {
+  void onRegionChosen(
+    Datum value,
+    DetailsCoordinator coordinator,
+  ) {
     coordinator.setRegion(value);
   }
 
-  void onDistrictChosen(District value,
-      DetailsCoordinator coordinator,) {
-   coordinator.setDistrict(value);
+  void onDistrictChosen(
+    b.Datum value,
+    DetailsCoordinator coordinator,
+  ) {
+    coordinator.setDistrict(value);
   }
 
   void _listenToStateChanges(BuildContext context, DetailsState state) {
@@ -516,45 +563,45 @@ class _DetailsScreenState extends State<DetailsScreen> {
         DetailsFormState: (isValid) {
           _isBtnEnabled = isValid;
         },
-        emailError: (message){
+        emailError: (message) {
           emailError = message;
         },
-        nameError: (message){
+        nameError: (message) {
           nameError = message;
         },
-        poBoxError: (message){
+        poBoxError: (message) {
           poBoxError = message;
         },
-        dobError: (message){
+        dobError: (message) {
           dobError = message;
         },
-        addressError: (message){
+        addressError: (message) {
           addressError = message;
         },
-        districtError: (message){
+        districtError: (message) {
           districtError = message;
         },
-        genderError: (message){
+        genderError: (message) {
           genderError = message;
         },
-        professionError: (message){
+        professionError: (message) {
           professionError = message;
         },
-        regionError: (message){
+        regionError: (message) {
           regionError = message;
         },
-        getMobileNumber: (value){
+        getMobileNumber: (value) {
           mobileNumber.text = value;
         },
-        onGenderTypeChoosen: (value){
+        onGenderTypeChoosen: (value) {
           _genderType = value;
         },
-        onRegionChoosen: (value){
+        onRegionChoosen: (value) {
           _region = value;
         },
-        onDistrictChoosen:(value){
+        onDistrictChoosen: (value) {
           _district = value;
-        } ,
+        },
         orElse: () => null);
   }
 

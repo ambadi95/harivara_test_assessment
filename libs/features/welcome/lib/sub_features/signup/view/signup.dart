@@ -263,8 +263,7 @@ class _SignUpState extends State<SignUp> {
           coordinator.isValidMobileNumber(mobileNumber.text);
           coordinator.isValidAgentId(agentId.text);
           if (_isBtnEnabled && coordinator.isValidNidaNumber(nidaNumber.text)) {
-            await coordinator.continueToOtp(nidaNumber.text, mobileNumber.text);
-            coordinator.navigateDestination(widget.signUpArguments, mobileNumber.text);
+            coordinator.signup(widget.signUpArguments, mobileNumber.text, nidaNumber.text);
           }
         },
         child: Container(

@@ -48,7 +48,7 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState>{
 
   Future navigateToWelcomeBackScreen(String userType ,String mobilNumber) async {
     if(userType == 'Customer'){
-      _navigationHandler.navigateToOtpScreen(userType, mobilNumber);
+      // _navigationHandler.navigateToOtpScreen(userType, mobilNumber);
     }else{
       _navigationHandler.navigateToOtpScreenForAgent(userType,mobilNumber);
     }
@@ -56,5 +56,14 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState>{
 
   Future<void> navigateToResetNow(String userType) async{
     await _navigationHandler.navigateToResetPasscode(userType);
+  }
+
+  Future customerLogin(String mobileNumber,String passcode, String userType)async{
+   var response = await _loginUseCase.login('+255'+mobileNumber, passcode, (p0) => null);
+   if(response?.status == true){
+     _navigationHandler.navigateToOtpScreen(userType, mobileNumber, response!.data!.id!);
+   }else{
+     print(response?.message);
+   }
   }
 }

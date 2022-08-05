@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'date_filter_type.dart';
@@ -11,59 +12,11 @@ part of 'date_filter_type.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$DateFilterTypeTearOff {
-  const _$DateFilterTypeTearOff();
-
-  CurrentMonth currentMonth({bool selectionState = true}) {
-    return CurrentMonth(
-      selectionState: selectionState,
-    );
-  }
-
-  PreviousMonth previousMonth({bool selectionState = false}) {
-    return PreviousMonth(
-      selectionState: selectionState,
-    );
-  }
-
-  LastThreeMotnhs lastThreeMonths({bool selectionState = false}) {
-    return LastThreeMotnhs(
-      selectionState: selectionState,
-    );
-  }
-
-  LastYear lastYear({bool selectionState = false}) {
-    return LastYear(
-      selectionState: selectionState,
-    );
-  }
-
-  AllTransactions allTransactions({bool selectionState = false}) {
-    return AllTransactions(
-      selectionState: selectionState,
-    );
-  }
-
-  SelectDates selectDates(
-      {bool selectionState = false, DateTime? endDate, DateTime? startDate}) {
-    return SelectDates(
-      selectionState: selectionState,
-      endDate: endDate,
-      startDate: startDate,
-    );
-  }
-}
-
-/// @nodoc
-const $DateFilterType = _$DateFilterTypeTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$DateFilterType {
   bool get selectionState => throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(bool selectionState) currentMonth,
@@ -169,31 +122,31 @@ class _$DateFilterTypeCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class $CurrentMonthCopyWith<$Res>
+abstract class _$$CurrentMonthCopyWith<$Res>
     implements $DateFilterTypeCopyWith<$Res> {
-  factory $CurrentMonthCopyWith(
-          CurrentMonth value, $Res Function(CurrentMonth) then) =
-      _$CurrentMonthCopyWithImpl<$Res>;
+  factory _$$CurrentMonthCopyWith(
+          _$CurrentMonth value, $Res Function(_$CurrentMonth) then) =
+      __$$CurrentMonthCopyWithImpl<$Res>;
   @override
   $Res call({bool selectionState});
 }
 
 /// @nodoc
-class _$CurrentMonthCopyWithImpl<$Res>
+class __$$CurrentMonthCopyWithImpl<$Res>
     extends _$DateFilterTypeCopyWithImpl<$Res>
-    implements $CurrentMonthCopyWith<$Res> {
-  _$CurrentMonthCopyWithImpl(
-      CurrentMonth _value, $Res Function(CurrentMonth) _then)
-      : super(_value, (v) => _then(v as CurrentMonth));
+    implements _$$CurrentMonthCopyWith<$Res> {
+  __$$CurrentMonthCopyWithImpl(
+      _$CurrentMonth _value, $Res Function(_$CurrentMonth) _then)
+      : super(_value, (v) => _then(v as _$CurrentMonth));
 
   @override
-  CurrentMonth get _value => super._value as CurrentMonth;
+  _$CurrentMonth get _value => super._value as _$CurrentMonth;
 
   @override
   $Res call({
     Object? selectionState = freezed,
   }) {
-    return _then(CurrentMonth(
+    return _then(_$CurrentMonth(
       selectionState: selectionState == freezed
           ? _value.selectionState
           : selectionState // ignore: cast_nullable_to_non_nullable
@@ -207,28 +160,27 @@ class _$CurrentMonthCopyWithImpl<$Res>
 class _$CurrentMonth extends CurrentMonth {
   const _$CurrentMonth({this.selectionState = true}) : super._();
 
-  @JsonKey(defaultValue: true)
   @override
+  @JsonKey()
   final bool selectionState;
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is CurrentMonth &&
-            (identical(other.selectionState, selectionState) ||
-                const DeepCollectionEquality()
-                    .equals(other.selectionState, selectionState)));
+        (other.runtimeType == runtimeType &&
+            other is _$CurrentMonth &&
+            const DeepCollectionEquality()
+                .equals(other.selectionState, selectionState));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(selectionState);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(selectionState));
 
   @JsonKey(ignore: true)
   @override
-  $CurrentMonthCopyWith<CurrentMonth> get copyWith =>
-      _$CurrentMonthCopyWithImpl<CurrentMonth>(this, _$identity);
+  _$$CurrentMonthCopyWith<_$CurrentMonth> get copyWith =>
+      __$$CurrentMonthCopyWithImpl<_$CurrentMonth>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -324,43 +276,43 @@ class _$CurrentMonth extends CurrentMonth {
 }
 
 abstract class CurrentMonth extends DateFilterType {
-  const factory CurrentMonth({bool selectionState}) = _$CurrentMonth;
+  const factory CurrentMonth({final bool selectionState}) = _$CurrentMonth;
   const CurrentMonth._() : super._();
 
   @override
-  bool get selectionState => throw _privateConstructorUsedError;
+  bool get selectionState;
   @override
   @JsonKey(ignore: true)
-  $CurrentMonthCopyWith<CurrentMonth> get copyWith =>
+  _$$CurrentMonthCopyWith<_$CurrentMonth> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PreviousMonthCopyWith<$Res>
+abstract class _$$PreviousMonthCopyWith<$Res>
     implements $DateFilterTypeCopyWith<$Res> {
-  factory $PreviousMonthCopyWith(
-          PreviousMonth value, $Res Function(PreviousMonth) then) =
-      _$PreviousMonthCopyWithImpl<$Res>;
+  factory _$$PreviousMonthCopyWith(
+          _$PreviousMonth value, $Res Function(_$PreviousMonth) then) =
+      __$$PreviousMonthCopyWithImpl<$Res>;
   @override
   $Res call({bool selectionState});
 }
 
 /// @nodoc
-class _$PreviousMonthCopyWithImpl<$Res>
+class __$$PreviousMonthCopyWithImpl<$Res>
     extends _$DateFilterTypeCopyWithImpl<$Res>
-    implements $PreviousMonthCopyWith<$Res> {
-  _$PreviousMonthCopyWithImpl(
-      PreviousMonth _value, $Res Function(PreviousMonth) _then)
-      : super(_value, (v) => _then(v as PreviousMonth));
+    implements _$$PreviousMonthCopyWith<$Res> {
+  __$$PreviousMonthCopyWithImpl(
+      _$PreviousMonth _value, $Res Function(_$PreviousMonth) _then)
+      : super(_value, (v) => _then(v as _$PreviousMonth));
 
   @override
-  PreviousMonth get _value => super._value as PreviousMonth;
+  _$PreviousMonth get _value => super._value as _$PreviousMonth;
 
   @override
   $Res call({
     Object? selectionState = freezed,
   }) {
-    return _then(PreviousMonth(
+    return _then(_$PreviousMonth(
       selectionState: selectionState == freezed
           ? _value.selectionState
           : selectionState // ignore: cast_nullable_to_non_nullable
@@ -374,28 +326,27 @@ class _$PreviousMonthCopyWithImpl<$Res>
 class _$PreviousMonth extends PreviousMonth {
   const _$PreviousMonth({this.selectionState = false}) : super._();
 
-  @JsonKey(defaultValue: false)
   @override
+  @JsonKey()
   final bool selectionState;
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is PreviousMonth &&
-            (identical(other.selectionState, selectionState) ||
-                const DeepCollectionEquality()
-                    .equals(other.selectionState, selectionState)));
+        (other.runtimeType == runtimeType &&
+            other is _$PreviousMonth &&
+            const DeepCollectionEquality()
+                .equals(other.selectionState, selectionState));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(selectionState);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(selectionState));
 
   @JsonKey(ignore: true)
   @override
-  $PreviousMonthCopyWith<PreviousMonth> get copyWith =>
-      _$PreviousMonthCopyWithImpl<PreviousMonth>(this, _$identity);
+  _$$PreviousMonthCopyWith<_$PreviousMonth> get copyWith =>
+      __$$PreviousMonthCopyWithImpl<_$PreviousMonth>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -491,43 +442,43 @@ class _$PreviousMonth extends PreviousMonth {
 }
 
 abstract class PreviousMonth extends DateFilterType {
-  const factory PreviousMonth({bool selectionState}) = _$PreviousMonth;
+  const factory PreviousMonth({final bool selectionState}) = _$PreviousMonth;
   const PreviousMonth._() : super._();
 
   @override
-  bool get selectionState => throw _privateConstructorUsedError;
+  bool get selectionState;
   @override
   @JsonKey(ignore: true)
-  $PreviousMonthCopyWith<PreviousMonth> get copyWith =>
+  _$$PreviousMonthCopyWith<_$PreviousMonth> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $LastThreeMotnhsCopyWith<$Res>
+abstract class _$$LastThreeMotnhsCopyWith<$Res>
     implements $DateFilterTypeCopyWith<$Res> {
-  factory $LastThreeMotnhsCopyWith(
-          LastThreeMotnhs value, $Res Function(LastThreeMotnhs) then) =
-      _$LastThreeMotnhsCopyWithImpl<$Res>;
+  factory _$$LastThreeMotnhsCopyWith(
+          _$LastThreeMotnhs value, $Res Function(_$LastThreeMotnhs) then) =
+      __$$LastThreeMotnhsCopyWithImpl<$Res>;
   @override
   $Res call({bool selectionState});
 }
 
 /// @nodoc
-class _$LastThreeMotnhsCopyWithImpl<$Res>
+class __$$LastThreeMotnhsCopyWithImpl<$Res>
     extends _$DateFilterTypeCopyWithImpl<$Res>
-    implements $LastThreeMotnhsCopyWith<$Res> {
-  _$LastThreeMotnhsCopyWithImpl(
-      LastThreeMotnhs _value, $Res Function(LastThreeMotnhs) _then)
-      : super(_value, (v) => _then(v as LastThreeMotnhs));
+    implements _$$LastThreeMotnhsCopyWith<$Res> {
+  __$$LastThreeMotnhsCopyWithImpl(
+      _$LastThreeMotnhs _value, $Res Function(_$LastThreeMotnhs) _then)
+      : super(_value, (v) => _then(v as _$LastThreeMotnhs));
 
   @override
-  LastThreeMotnhs get _value => super._value as LastThreeMotnhs;
+  _$LastThreeMotnhs get _value => super._value as _$LastThreeMotnhs;
 
   @override
   $Res call({
     Object? selectionState = freezed,
   }) {
-    return _then(LastThreeMotnhs(
+    return _then(_$LastThreeMotnhs(
       selectionState: selectionState == freezed
           ? _value.selectionState
           : selectionState // ignore: cast_nullable_to_non_nullable
@@ -541,28 +492,27 @@ class _$LastThreeMotnhsCopyWithImpl<$Res>
 class _$LastThreeMotnhs extends LastThreeMotnhs {
   const _$LastThreeMotnhs({this.selectionState = false}) : super._();
 
-  @JsonKey(defaultValue: false)
   @override
+  @JsonKey()
   final bool selectionState;
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is LastThreeMotnhs &&
-            (identical(other.selectionState, selectionState) ||
-                const DeepCollectionEquality()
-                    .equals(other.selectionState, selectionState)));
+        (other.runtimeType == runtimeType &&
+            other is _$LastThreeMotnhs &&
+            const DeepCollectionEquality()
+                .equals(other.selectionState, selectionState));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(selectionState);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(selectionState));
 
   @JsonKey(ignore: true)
   @override
-  $LastThreeMotnhsCopyWith<LastThreeMotnhs> get copyWith =>
-      _$LastThreeMotnhsCopyWithImpl<LastThreeMotnhs>(this, _$identity);
+  _$$LastThreeMotnhsCopyWith<_$LastThreeMotnhs> get copyWith =>
+      __$$LastThreeMotnhsCopyWithImpl<_$LastThreeMotnhs>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -658,40 +608,42 @@ class _$LastThreeMotnhs extends LastThreeMotnhs {
 }
 
 abstract class LastThreeMotnhs extends DateFilterType {
-  const factory LastThreeMotnhs({bool selectionState}) = _$LastThreeMotnhs;
+  const factory LastThreeMotnhs({final bool selectionState}) =
+      _$LastThreeMotnhs;
   const LastThreeMotnhs._() : super._();
 
   @override
-  bool get selectionState => throw _privateConstructorUsedError;
+  bool get selectionState;
   @override
   @JsonKey(ignore: true)
-  $LastThreeMotnhsCopyWith<LastThreeMotnhs> get copyWith =>
+  _$$LastThreeMotnhsCopyWith<_$LastThreeMotnhs> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $LastYearCopyWith<$Res>
+abstract class _$$LastYearCopyWith<$Res>
     implements $DateFilterTypeCopyWith<$Res> {
-  factory $LastYearCopyWith(LastYear value, $Res Function(LastYear) then) =
-      _$LastYearCopyWithImpl<$Res>;
+  factory _$$LastYearCopyWith(
+          _$LastYear value, $Res Function(_$LastYear) then) =
+      __$$LastYearCopyWithImpl<$Res>;
   @override
   $Res call({bool selectionState});
 }
 
 /// @nodoc
-class _$LastYearCopyWithImpl<$Res> extends _$DateFilterTypeCopyWithImpl<$Res>
-    implements $LastYearCopyWith<$Res> {
-  _$LastYearCopyWithImpl(LastYear _value, $Res Function(LastYear) _then)
-      : super(_value, (v) => _then(v as LastYear));
+class __$$LastYearCopyWithImpl<$Res> extends _$DateFilterTypeCopyWithImpl<$Res>
+    implements _$$LastYearCopyWith<$Res> {
+  __$$LastYearCopyWithImpl(_$LastYear _value, $Res Function(_$LastYear) _then)
+      : super(_value, (v) => _then(v as _$LastYear));
 
   @override
-  LastYear get _value => super._value as LastYear;
+  _$LastYear get _value => super._value as _$LastYear;
 
   @override
   $Res call({
     Object? selectionState = freezed,
   }) {
-    return _then(LastYear(
+    return _then(_$LastYear(
       selectionState: selectionState == freezed
           ? _value.selectionState
           : selectionState // ignore: cast_nullable_to_non_nullable
@@ -705,28 +657,27 @@ class _$LastYearCopyWithImpl<$Res> extends _$DateFilterTypeCopyWithImpl<$Res>
 class _$LastYear extends LastYear {
   const _$LastYear({this.selectionState = false}) : super._();
 
-  @JsonKey(defaultValue: false)
   @override
+  @JsonKey()
   final bool selectionState;
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is LastYear &&
-            (identical(other.selectionState, selectionState) ||
-                const DeepCollectionEquality()
-                    .equals(other.selectionState, selectionState)));
+        (other.runtimeType == runtimeType &&
+            other is _$LastYear &&
+            const DeepCollectionEquality()
+                .equals(other.selectionState, selectionState));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(selectionState);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(selectionState));
 
   @JsonKey(ignore: true)
   @override
-  $LastYearCopyWith<LastYear> get copyWith =>
-      _$LastYearCopyWithImpl<LastYear>(this, _$identity);
+  _$$LastYearCopyWith<_$LastYear> get copyWith =>
+      __$$LastYearCopyWithImpl<_$LastYear>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -822,43 +773,43 @@ class _$LastYear extends LastYear {
 }
 
 abstract class LastYear extends DateFilterType {
-  const factory LastYear({bool selectionState}) = _$LastYear;
+  const factory LastYear({final bool selectionState}) = _$LastYear;
   const LastYear._() : super._();
 
   @override
-  bool get selectionState => throw _privateConstructorUsedError;
+  bool get selectionState;
   @override
   @JsonKey(ignore: true)
-  $LastYearCopyWith<LastYear> get copyWith =>
+  _$$LastYearCopyWith<_$LastYear> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $AllTransactionsCopyWith<$Res>
+abstract class _$$AllTransactionsCopyWith<$Res>
     implements $DateFilterTypeCopyWith<$Res> {
-  factory $AllTransactionsCopyWith(
-          AllTransactions value, $Res Function(AllTransactions) then) =
-      _$AllTransactionsCopyWithImpl<$Res>;
+  factory _$$AllTransactionsCopyWith(
+          _$AllTransactions value, $Res Function(_$AllTransactions) then) =
+      __$$AllTransactionsCopyWithImpl<$Res>;
   @override
   $Res call({bool selectionState});
 }
 
 /// @nodoc
-class _$AllTransactionsCopyWithImpl<$Res>
+class __$$AllTransactionsCopyWithImpl<$Res>
     extends _$DateFilterTypeCopyWithImpl<$Res>
-    implements $AllTransactionsCopyWith<$Res> {
-  _$AllTransactionsCopyWithImpl(
-      AllTransactions _value, $Res Function(AllTransactions) _then)
-      : super(_value, (v) => _then(v as AllTransactions));
+    implements _$$AllTransactionsCopyWith<$Res> {
+  __$$AllTransactionsCopyWithImpl(
+      _$AllTransactions _value, $Res Function(_$AllTransactions) _then)
+      : super(_value, (v) => _then(v as _$AllTransactions));
 
   @override
-  AllTransactions get _value => super._value as AllTransactions;
+  _$AllTransactions get _value => super._value as _$AllTransactions;
 
   @override
   $Res call({
     Object? selectionState = freezed,
   }) {
-    return _then(AllTransactions(
+    return _then(_$AllTransactions(
       selectionState: selectionState == freezed
           ? _value.selectionState
           : selectionState // ignore: cast_nullable_to_non_nullable
@@ -872,28 +823,27 @@ class _$AllTransactionsCopyWithImpl<$Res>
 class _$AllTransactions extends AllTransactions {
   const _$AllTransactions({this.selectionState = false}) : super._();
 
-  @JsonKey(defaultValue: false)
   @override
+  @JsonKey()
   final bool selectionState;
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is AllTransactions &&
-            (identical(other.selectionState, selectionState) ||
-                const DeepCollectionEquality()
-                    .equals(other.selectionState, selectionState)));
+        (other.runtimeType == runtimeType &&
+            other is _$AllTransactions &&
+            const DeepCollectionEquality()
+                .equals(other.selectionState, selectionState));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(selectionState);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(selectionState));
 
   @JsonKey(ignore: true)
   @override
-  $AllTransactionsCopyWith<AllTransactions> get copyWith =>
-      _$AllTransactionsCopyWithImpl<AllTransactions>(this, _$identity);
+  _$$AllTransactionsCopyWith<_$AllTransactions> get copyWith =>
+      __$$AllTransactionsCopyWithImpl<_$AllTransactions>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -989,36 +939,38 @@ class _$AllTransactions extends AllTransactions {
 }
 
 abstract class AllTransactions extends DateFilterType {
-  const factory AllTransactions({bool selectionState}) = _$AllTransactions;
+  const factory AllTransactions({final bool selectionState}) =
+      _$AllTransactions;
   const AllTransactions._() : super._();
 
   @override
-  bool get selectionState => throw _privateConstructorUsedError;
+  bool get selectionState;
   @override
   @JsonKey(ignore: true)
-  $AllTransactionsCopyWith<AllTransactions> get copyWith =>
+  _$$AllTransactionsCopyWith<_$AllTransactions> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SelectDatesCopyWith<$Res>
+abstract class _$$SelectDatesCopyWith<$Res>
     implements $DateFilterTypeCopyWith<$Res> {
-  factory $SelectDatesCopyWith(
-          SelectDates value, $Res Function(SelectDates) then) =
-      _$SelectDatesCopyWithImpl<$Res>;
+  factory _$$SelectDatesCopyWith(
+          _$SelectDates value, $Res Function(_$SelectDates) then) =
+      __$$SelectDatesCopyWithImpl<$Res>;
   @override
   $Res call({bool selectionState, DateTime? endDate, DateTime? startDate});
 }
 
 /// @nodoc
-class _$SelectDatesCopyWithImpl<$Res> extends _$DateFilterTypeCopyWithImpl<$Res>
-    implements $SelectDatesCopyWith<$Res> {
-  _$SelectDatesCopyWithImpl(
-      SelectDates _value, $Res Function(SelectDates) _then)
-      : super(_value, (v) => _then(v as SelectDates));
+class __$$SelectDatesCopyWithImpl<$Res>
+    extends _$DateFilterTypeCopyWithImpl<$Res>
+    implements _$$SelectDatesCopyWith<$Res> {
+  __$$SelectDatesCopyWithImpl(
+      _$SelectDates _value, $Res Function(_$SelectDates) _then)
+      : super(_value, (v) => _then(v as _$SelectDates));
 
   @override
-  SelectDates get _value => super._value as SelectDates;
+  _$SelectDates get _value => super._value as _$SelectDates;
 
   @override
   $Res call({
@@ -1026,7 +978,7 @@ class _$SelectDatesCopyWithImpl<$Res> extends _$DateFilterTypeCopyWithImpl<$Res>
     Object? endDate = freezed,
     Object? startDate = freezed,
   }) {
-    return _then(SelectDates(
+    return _then(_$SelectDates(
       selectionState: selectionState == freezed
           ? _value.selectionState
           : selectionState // ignore: cast_nullable_to_non_nullable
@@ -1050,8 +1002,8 @@ class _$SelectDates extends SelectDates {
       {this.selectionState = false, this.endDate, this.startDate})
       : super._();
 
-  @JsonKey(defaultValue: false)
   @override
+  @JsonKey()
   final bool selectionState;
   @override
   final DateTime? endDate;
@@ -1061,29 +1013,25 @@ class _$SelectDates extends SelectDates {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is SelectDates &&
-            (identical(other.selectionState, selectionState) ||
-                const DeepCollectionEquality()
-                    .equals(other.selectionState, selectionState)) &&
-            (identical(other.endDate, endDate) ||
-                const DeepCollectionEquality()
-                    .equals(other.endDate, endDate)) &&
-            (identical(other.startDate, startDate) ||
-                const DeepCollectionEquality()
-                    .equals(other.startDate, startDate)));
+        (other.runtimeType == runtimeType &&
+            other is _$SelectDates &&
+            const DeepCollectionEquality()
+                .equals(other.selectionState, selectionState) &&
+            const DeepCollectionEquality().equals(other.endDate, endDate) &&
+            const DeepCollectionEquality().equals(other.startDate, startDate));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(selectionState) ^
-      const DeepCollectionEquality().hash(endDate) ^
-      const DeepCollectionEquality().hash(startDate);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(selectionState),
+      const DeepCollectionEquality().hash(endDate),
+      const DeepCollectionEquality().hash(startDate));
 
   @JsonKey(ignore: true)
   @override
-  $SelectDatesCopyWith<SelectDates> get copyWith =>
-      _$SelectDatesCopyWithImpl<SelectDates>(this, _$identity);
+  _$$SelectDatesCopyWith<_$SelectDates> get copyWith =>
+      __$$SelectDatesCopyWithImpl<_$SelectDates>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1180,17 +1128,17 @@ class _$SelectDates extends SelectDates {
 
 abstract class SelectDates extends DateFilterType {
   const factory SelectDates(
-      {bool selectionState,
-      DateTime? endDate,
-      DateTime? startDate}) = _$SelectDates;
+      {final bool selectionState,
+      final DateTime? endDate,
+      final DateTime? startDate}) = _$SelectDates;
   const SelectDates._() : super._();
 
   @override
-  bool get selectionState => throw _privateConstructorUsedError;
-  DateTime? get endDate => throw _privateConstructorUsedError;
-  DateTime? get startDate => throw _privateConstructorUsedError;
+  bool get selectionState;
+  DateTime? get endDate;
+  DateTime? get startDate;
   @override
   @JsonKey(ignore: true)
-  $SelectDatesCopyWith<SelectDates> get copyWith =>
+  _$$SelectDatesCopyWith<_$SelectDates> get copyWith =>
       throw _privateConstructorUsedError;
 }
