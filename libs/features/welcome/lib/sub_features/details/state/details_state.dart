@@ -14,6 +14,8 @@ class DetailsState with _$DetailsState {
 
   const factory DetailsState.DetailsFormState(bool isValid) = DetailsFormState;
 
+  const factory DetailsState.LoadingState() = LoadingState;
+
   const factory DetailsState.nameError(String nameError) = NameError;
 
   const factory DetailsState.getMobileNumber(String mobileNumber) =

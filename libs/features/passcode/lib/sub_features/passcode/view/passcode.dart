@@ -7,6 +7,7 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:shared_data_models/passcode/passcode_screen_args.dart';
 import 'package:shared_data_models/passcode/passcode_verification_type.dart';
 import 'package:widget_library/page_header/text_ui_data_model.dart';
+import 'package:widget_library/progress_bar/centered_circular_progress_bar.dart';
 import 'package:widget_library/progress_bar/onboarding_progress_bar.dart';
 import 'package:widget_library/static_text/crayon_payment_text.dart';
 import '../view_model/passcode_coordinator.dart';
@@ -76,9 +77,20 @@ class _CrayonPasscodeScreenState extends State<CrayonPasscodeScreen> {
     return Stack(
       children: [
         _buildMainUI(context, coordinator, state),
-        // if (state.isLoading) _createLoading(state),
+         if (state.isLoading) _createLoading(state),
       ],
     );
+  }
+
+  Widget _createLoading(CreatePasscodeReady state) {
+    if (state.isLoading) {
+      return Container(
+        color: Colors.black.withOpacity(0.4),
+        child: const CenteredCircularProgressBar(color: config_colors.PRIMARY_COLOR),
+      );
+    } else {
+      return Container();
+    }
   }
 
   Widget _buildMainUI(

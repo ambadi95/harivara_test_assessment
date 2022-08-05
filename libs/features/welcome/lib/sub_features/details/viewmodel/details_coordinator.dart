@@ -208,6 +208,7 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
       String region,
       String district,
       String userType) async {
+    state = const DetailsState.LoadingState();
     var response = await _detailsUseCase.submitCustomerDetails(
         name,
         dob,

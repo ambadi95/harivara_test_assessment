@@ -2,24 +2,22 @@ import 'dart:async';
 
 import 'package:config/Colors.dart';
 import 'package:config/Styles.dart';
-import 'package:core/mobile_core.dart';
 import 'package:core/view/base_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:shared_data_models/otp/otp_screen_args.dart';
 import 'package:sprintf/sprintf.dart';
-import 'package:verifyotp/constants/image_constant.dart';
 import 'package:verifyotp/verifyotp_module.dart';
 import 'package:widget_library/bottom_sheet/alert_bottom_sheet.dart';
 import 'package:widget_library/buttons/crayon_back_button.dart';
 import 'package:widget_library/page_header/text_ui_data_model.dart';
+import 'package:widget_library/progress_bar/centered_circular_progress_bar.dart';
 import 'package:widget_library/progress_bar/onboarding_progress_bar.dart';
 import 'package:widget_library/static_text/crayon_payment_text.dart';
 
 import '../state/verify_otp_state.dart';
 import '../view_model/verifyotp_coordinator.dart';
-import 'package:config/config.dart';
 
 class CrayonVerifyOtpScreen extends StatefulWidget {
   static const viewPath = '${VerifyOtpModule.moduleIdentifier}/verifyotp';
@@ -33,7 +31,7 @@ class CrayonVerifyOtpScreen extends StatefulWidget {
 }
 
 class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
-  String errorMessage = '';
+
   late Timer _timer;
   final ValueNotifier<int> _startValue = ValueNotifier<int>(60);
 
@@ -96,6 +94,8 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
                   ________,
                   _________,
                   __________,
+                    _____________,
+                    ____________,
                 ) =>
                     _buildMainUIWithLoading(
                       context,
@@ -114,9 +114,20 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
     return Stack(
       children: [
         _buildMainUI(context, coordinator, state),
-        // if (state.isLoading) _createLoading(state),
+         if (state.isLoading) _createLoading(state),
       ],
     );
+  }
+
+  Widget _createLoading(VerifyOtpStateReady state) {
+    if (state.isLoading) {
+      return Container(
+        color: Colors.black.withOpacity(0.4),
+        child: const CenteredCircularProgressBar(color: PRIMARY_COLOR),
+      );
+    } else {
+      return Container();
+    }
   }
 
   Widget _buildMainUI(
@@ -138,10 +149,10 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
                 height: 200,
               ),
               _enterOtpWidget(context, coordinator, state),
-              // const SizedBox(
-              //   height: 5,
-              // ),
-              // _errorAndAttemptLeft(context, coordinator),
+              const SizedBox(
+                height: 5,
+              ),
+             state.attemptsRemain != 3 ? _errorAndAttemptLeft(context, coordinator, state) : const SizedBox(),
               const SizedBox(
                 height: 60,
               ),
@@ -167,6 +178,7 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
               widget.otpScreenArgs.destinationPath,
               widget.otpScreenArgs.userType,
               widget.otpScreenArgs,
+                otpController.text
             );
           } else {
             _showAlertForOTPAttempts(coordinator);
@@ -386,7 +398,7 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
     );
   }
 
-  _errorAndAttemptLeft(BuildContext context, VerifyOtpCoordinator coordinator) {
+  _errorAndAttemptLeft(BuildContext context, VerifyOtpCoordinator coordinator,  VerifyOtpStateReady state,) {
     return Align(
       alignment: Alignment.center,
       child: Column(
@@ -394,7 +406,7 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
           CrayonPaymentText(
             key: const Key('verifyOtp incorrect otp'),
             text: TextUIDataModel(
-              'Incorrect OTP. Please try again.'.tr,
+            state.attemptsRemain == 3 ? 'VO_Incorrect_OTP'.tr :  '${state.attemptsRemain} attempts remaining',
               styleVariant: CrayonPaymentTextStyleVariant.headline5,
               color: HS_NotificationCountColor,
               textAlign: TextAlign.center,
@@ -425,8 +437,10 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
                     ),
                   )
                 : InkWell(
-                    onTap: () {
+                    onTap: () async{
                       startTimer();
+                      otpController.clear();
+                     await coordinator.generateOtp(widget.otpScreenArgs.refId);
                     },
                     child: CrayonPaymentText(
                       key: const Key('verifyOtp Resend Now'),

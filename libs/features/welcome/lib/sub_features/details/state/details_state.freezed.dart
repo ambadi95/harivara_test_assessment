@@ -20,6 +20,7 @@ mixin _$DetailsState {
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
     required TResult Function(bool isValid) DetailsFormState,
+    required TResult Function() LoadingState,
     required TResult Function(String nameError) nameError,
     required TResult Function(String mobileNumber) getMobileNumber,
     required TResult Function(String emailError) emailError,
@@ -39,6 +40,7 @@ mixin _$DetailsState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(bool isValid)? DetailsFormState,
+    TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
     TResult Function(String emailError)? emailError,
@@ -58,6 +60,7 @@ mixin _$DetailsState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(bool isValid)? DetailsFormState,
+    TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
     TResult Function(String emailError)? emailError,
@@ -78,6 +81,7 @@ mixin _$DetailsState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitialState value) initialState,
     required TResult Function(DetailsFormState value) DetailsFormState,
+    required TResult Function(LoadingState value) LoadingState,
     required TResult Function(NameError value) nameError,
     required TResult Function(GetMobileNumber value) getMobileNumber,
     required TResult Function(EmailError value) emailError,
@@ -97,6 +101,7 @@ mixin _$DetailsState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
     TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
     TResult Function(EmailError value)? emailError,
@@ -116,6 +121,7 @@ mixin _$DetailsState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
     TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
     TResult Function(EmailError value)? emailError,
@@ -193,6 +199,7 @@ class _$InitialState implements InitialState {
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
     required TResult Function(bool isValid) DetailsFormState,
+    required TResult Function() LoadingState,
     required TResult Function(String nameError) nameError,
     required TResult Function(String mobileNumber) getMobileNumber,
     required TResult Function(String emailError) emailError,
@@ -215,6 +222,7 @@ class _$InitialState implements InitialState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(bool isValid)? DetailsFormState,
+    TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
     TResult Function(String emailError)? emailError,
@@ -237,6 +245,7 @@ class _$InitialState implements InitialState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(bool isValid)? DetailsFormState,
+    TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
     TResult Function(String emailError)? emailError,
@@ -263,6 +272,7 @@ class _$InitialState implements InitialState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitialState value) initialState,
     required TResult Function(DetailsFormState value) DetailsFormState,
+    required TResult Function(LoadingState value) LoadingState,
     required TResult Function(NameError value) nameError,
     required TResult Function(GetMobileNumber value) getMobileNumber,
     required TResult Function(EmailError value) emailError,
@@ -285,6 +295,7 @@ class _$InitialState implements InitialState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
     TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
     TResult Function(EmailError value)? emailError,
@@ -307,6 +318,7 @@ class _$InitialState implements InitialState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
     TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
     TResult Function(EmailError value)? emailError,
@@ -400,6 +412,7 @@ class _$DetailsFormState implements DetailsFormState {
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
     required TResult Function(bool isValid) DetailsFormState,
+    required TResult Function() LoadingState,
     required TResult Function(String nameError) nameError,
     required TResult Function(String mobileNumber) getMobileNumber,
     required TResult Function(String emailError) emailError,
@@ -422,6 +435,7 @@ class _$DetailsFormState implements DetailsFormState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(bool isValid)? DetailsFormState,
+    TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
     TResult Function(String emailError)? emailError,
@@ -444,6 +458,7 @@ class _$DetailsFormState implements DetailsFormState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(bool isValid)? DetailsFormState,
+    TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
     TResult Function(String emailError)? emailError,
@@ -470,6 +485,7 @@ class _$DetailsFormState implements DetailsFormState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitialState value) initialState,
     required TResult Function(DetailsFormState value) DetailsFormState,
+    required TResult Function(LoadingState value) LoadingState,
     required TResult Function(NameError value) nameError,
     required TResult Function(GetMobileNumber value) getMobileNumber,
     required TResult Function(EmailError value) emailError,
@@ -492,6 +508,7 @@ class _$DetailsFormState implements DetailsFormState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
     TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
     TResult Function(EmailError value)? emailError,
@@ -514,6 +531,7 @@ class _$DetailsFormState implements DetailsFormState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
     TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
     TResult Function(EmailError value)? emailError,
@@ -543,6 +561,195 @@ abstract class DetailsFormState implements DetailsState {
   @JsonKey(ignore: true)
   _$$DetailsFormStateCopyWith<_$DetailsFormState> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LoadingStateCopyWith<$Res> {
+  factory _$$LoadingStateCopyWith(
+          _$LoadingState value, $Res Function(_$LoadingState) then) =
+      __$$LoadingStateCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadingStateCopyWithImpl<$Res>
+    extends _$DetailsStateCopyWithImpl<$Res>
+    implements _$$LoadingStateCopyWith<$Res> {
+  __$$LoadingStateCopyWithImpl(
+      _$LoadingState _value, $Res Function(_$LoadingState) _then)
+      : super(_value, (v) => _then(v as _$LoadingState));
+
+  @override
+  _$LoadingState get _value => super._value as _$LoadingState;
+}
+
+/// @nodoc
+
+class _$LoadingState implements LoadingState {
+  const _$LoadingState();
+
+  @override
+  String toString() {
+    return 'DetailsState.LoadingState()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoadingState);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialState,
+    required TResult Function(bool isValid) DetailsFormState,
+    required TResult Function() LoadingState,
+    required TResult Function(String nameError) nameError,
+    required TResult Function(String mobileNumber) getMobileNumber,
+    required TResult Function(String emailError) emailError,
+    required TResult Function(String poBoxError) poBoxError,
+    required TResult Function(String dobError) dobError,
+    required TResult Function(String genderError) genderError,
+    required TResult Function(String professionError) professionError,
+    required TResult Function(String addressError) addressError,
+    required TResult Function(String addressError) regionError,
+    required TResult Function(String districtError) districtError,
+    required TResult Function(GenderType genderType) onGenderTypeChoosen,
+    required TResult Function(Datum region) onRegionChoosen,
+    required TResult Function(b.Datum district) onDistrictChoosen,
+  }) {
+    return LoadingState();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initialState,
+    TResult Function(bool isValid)? DetailsFormState,
+    TResult Function()? LoadingState,
+    TResult Function(String nameError)? nameError,
+    TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String emailError)? emailError,
+    TResult Function(String poBoxError)? poBoxError,
+    TResult Function(String dobError)? dobError,
+    TResult Function(String genderError)? genderError,
+    TResult Function(String professionError)? professionError,
+    TResult Function(String addressError)? addressError,
+    TResult Function(String addressError)? regionError,
+    TResult Function(String districtError)? districtError,
+    TResult Function(GenderType genderType)? onGenderTypeChoosen,
+    TResult Function(Datum region)? onRegionChoosen,
+    TResult Function(b.Datum district)? onDistrictChoosen,
+  }) {
+    return LoadingState?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialState,
+    TResult Function(bool isValid)? DetailsFormState,
+    TResult Function()? LoadingState,
+    TResult Function(String nameError)? nameError,
+    TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String emailError)? emailError,
+    TResult Function(String poBoxError)? poBoxError,
+    TResult Function(String dobError)? dobError,
+    TResult Function(String genderError)? genderError,
+    TResult Function(String professionError)? professionError,
+    TResult Function(String addressError)? addressError,
+    TResult Function(String addressError)? regionError,
+    TResult Function(String districtError)? districtError,
+    TResult Function(GenderType genderType)? onGenderTypeChoosen,
+    TResult Function(Datum region)? onRegionChoosen,
+    TResult Function(b.Datum district)? onDistrictChoosen,
+    required TResult orElse(),
+  }) {
+    if (LoadingState != null) {
+      return LoadingState();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialState value) initialState,
+    required TResult Function(DetailsFormState value) DetailsFormState,
+    required TResult Function(LoadingState value) LoadingState,
+    required TResult Function(NameError value) nameError,
+    required TResult Function(GetMobileNumber value) getMobileNumber,
+    required TResult Function(EmailError value) emailError,
+    required TResult Function(PoBoxError value) poBoxError,
+    required TResult Function(DobError value) dobError,
+    required TResult Function(GenderError value) genderError,
+    required TResult Function(ProfessionError value) professionError,
+    required TResult Function(AddressError value) addressError,
+    required TResult Function(RegionError value) regionError,
+    required TResult Function(DistrictError value) districtError,
+    required TResult Function(GenderTypeChoosen value) onGenderTypeChoosen,
+    required TResult Function(RegionChoosen value) onRegionChoosen,
+    required TResult Function(DistrictChoosen value) onDistrictChoosen,
+  }) {
+    return LoadingState(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InitialState value)? initialState,
+    TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(LoadingState value)? LoadingState,
+    TResult Function(NameError value)? nameError,
+    TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(EmailError value)? emailError,
+    TResult Function(PoBoxError value)? poBoxError,
+    TResult Function(DobError value)? dobError,
+    TResult Function(GenderError value)? genderError,
+    TResult Function(ProfessionError value)? professionError,
+    TResult Function(AddressError value)? addressError,
+    TResult Function(RegionError value)? regionError,
+    TResult Function(DistrictError value)? districtError,
+    TResult Function(GenderTypeChoosen value)? onGenderTypeChoosen,
+    TResult Function(RegionChoosen value)? onRegionChoosen,
+    TResult Function(DistrictChoosen value)? onDistrictChoosen,
+  }) {
+    return LoadingState?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialState value)? initialState,
+    TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(LoadingState value)? LoadingState,
+    TResult Function(NameError value)? nameError,
+    TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(EmailError value)? emailError,
+    TResult Function(PoBoxError value)? poBoxError,
+    TResult Function(DobError value)? dobError,
+    TResult Function(GenderError value)? genderError,
+    TResult Function(ProfessionError value)? professionError,
+    TResult Function(AddressError value)? addressError,
+    TResult Function(RegionError value)? regionError,
+    TResult Function(DistrictError value)? districtError,
+    TResult Function(GenderTypeChoosen value)? onGenderTypeChoosen,
+    TResult Function(RegionChoosen value)? onRegionChoosen,
+    TResult Function(DistrictChoosen value)? onDistrictChoosen,
+    required TResult orElse(),
+  }) {
+    if (LoadingState != null) {
+      return LoadingState(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LoadingState implements DetailsState {
+  const factory LoadingState() = _$LoadingState;
 }
 
 /// @nodoc
@@ -611,6 +818,7 @@ class _$NameError implements NameError {
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
     required TResult Function(bool isValid) DetailsFormState,
+    required TResult Function() LoadingState,
     required TResult Function(String nameError) nameError,
     required TResult Function(String mobileNumber) getMobileNumber,
     required TResult Function(String emailError) emailError,
@@ -633,6 +841,7 @@ class _$NameError implements NameError {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(bool isValid)? DetailsFormState,
+    TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
     TResult Function(String emailError)? emailError,
@@ -655,6 +864,7 @@ class _$NameError implements NameError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(bool isValid)? DetailsFormState,
+    TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
     TResult Function(String emailError)? emailError,
@@ -681,6 +891,7 @@ class _$NameError implements NameError {
   TResult map<TResult extends Object?>({
     required TResult Function(InitialState value) initialState,
     required TResult Function(DetailsFormState value) DetailsFormState,
+    required TResult Function(LoadingState value) LoadingState,
     required TResult Function(NameError value) nameError,
     required TResult Function(GetMobileNumber value) getMobileNumber,
     required TResult Function(EmailError value) emailError,
@@ -703,6 +914,7 @@ class _$NameError implements NameError {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
     TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
     TResult Function(EmailError value)? emailError,
@@ -725,6 +937,7 @@ class _$NameError implements NameError {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
     TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
     TResult Function(EmailError value)? emailError,
@@ -824,6 +1037,7 @@ class _$GetMobileNumber implements GetMobileNumber {
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
     required TResult Function(bool isValid) DetailsFormState,
+    required TResult Function() LoadingState,
     required TResult Function(String nameError) nameError,
     required TResult Function(String mobileNumber) getMobileNumber,
     required TResult Function(String emailError) emailError,
@@ -846,6 +1060,7 @@ class _$GetMobileNumber implements GetMobileNumber {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(bool isValid)? DetailsFormState,
+    TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
     TResult Function(String emailError)? emailError,
@@ -868,6 +1083,7 @@ class _$GetMobileNumber implements GetMobileNumber {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(bool isValid)? DetailsFormState,
+    TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
     TResult Function(String emailError)? emailError,
@@ -894,6 +1110,7 @@ class _$GetMobileNumber implements GetMobileNumber {
   TResult map<TResult extends Object?>({
     required TResult Function(InitialState value) initialState,
     required TResult Function(DetailsFormState value) DetailsFormState,
+    required TResult Function(LoadingState value) LoadingState,
     required TResult Function(NameError value) nameError,
     required TResult Function(GetMobileNumber value) getMobileNumber,
     required TResult Function(EmailError value) emailError,
@@ -916,6 +1133,7 @@ class _$GetMobileNumber implements GetMobileNumber {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
     TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
     TResult Function(EmailError value)? emailError,
@@ -938,6 +1156,7 @@ class _$GetMobileNumber implements GetMobileNumber {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
     TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
     TResult Function(EmailError value)? emailError,
@@ -1036,6 +1255,7 @@ class _$EmailError implements EmailError {
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
     required TResult Function(bool isValid) DetailsFormState,
+    required TResult Function() LoadingState,
     required TResult Function(String nameError) nameError,
     required TResult Function(String mobileNumber) getMobileNumber,
     required TResult Function(String emailError) emailError,
@@ -1058,6 +1278,7 @@ class _$EmailError implements EmailError {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(bool isValid)? DetailsFormState,
+    TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
     TResult Function(String emailError)? emailError,
@@ -1080,6 +1301,7 @@ class _$EmailError implements EmailError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(bool isValid)? DetailsFormState,
+    TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
     TResult Function(String emailError)? emailError,
@@ -1106,6 +1328,7 @@ class _$EmailError implements EmailError {
   TResult map<TResult extends Object?>({
     required TResult Function(InitialState value) initialState,
     required TResult Function(DetailsFormState value) DetailsFormState,
+    required TResult Function(LoadingState value) LoadingState,
     required TResult Function(NameError value) nameError,
     required TResult Function(GetMobileNumber value) getMobileNumber,
     required TResult Function(EmailError value) emailError,
@@ -1128,6 +1351,7 @@ class _$EmailError implements EmailError {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
     TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
     TResult Function(EmailError value)? emailError,
@@ -1150,6 +1374,7 @@ class _$EmailError implements EmailError {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
     TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
     TResult Function(EmailError value)? emailError,
@@ -1248,6 +1473,7 @@ class _$PoBoxError implements PoBoxError {
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
     required TResult Function(bool isValid) DetailsFormState,
+    required TResult Function() LoadingState,
     required TResult Function(String nameError) nameError,
     required TResult Function(String mobileNumber) getMobileNumber,
     required TResult Function(String emailError) emailError,
@@ -1270,6 +1496,7 @@ class _$PoBoxError implements PoBoxError {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(bool isValid)? DetailsFormState,
+    TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
     TResult Function(String emailError)? emailError,
@@ -1292,6 +1519,7 @@ class _$PoBoxError implements PoBoxError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(bool isValid)? DetailsFormState,
+    TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
     TResult Function(String emailError)? emailError,
@@ -1318,6 +1546,7 @@ class _$PoBoxError implements PoBoxError {
   TResult map<TResult extends Object?>({
     required TResult Function(InitialState value) initialState,
     required TResult Function(DetailsFormState value) DetailsFormState,
+    required TResult Function(LoadingState value) LoadingState,
     required TResult Function(NameError value) nameError,
     required TResult Function(GetMobileNumber value) getMobileNumber,
     required TResult Function(EmailError value) emailError,
@@ -1340,6 +1569,7 @@ class _$PoBoxError implements PoBoxError {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
     TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
     TResult Function(EmailError value)? emailError,
@@ -1362,6 +1592,7 @@ class _$PoBoxError implements PoBoxError {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
     TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
     TResult Function(EmailError value)? emailError,
@@ -1458,6 +1689,7 @@ class _$DobError implements DobError {
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
     required TResult Function(bool isValid) DetailsFormState,
+    required TResult Function() LoadingState,
     required TResult Function(String nameError) nameError,
     required TResult Function(String mobileNumber) getMobileNumber,
     required TResult Function(String emailError) emailError,
@@ -1480,6 +1712,7 @@ class _$DobError implements DobError {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(bool isValid)? DetailsFormState,
+    TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
     TResult Function(String emailError)? emailError,
@@ -1502,6 +1735,7 @@ class _$DobError implements DobError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(bool isValid)? DetailsFormState,
+    TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
     TResult Function(String emailError)? emailError,
@@ -1528,6 +1762,7 @@ class _$DobError implements DobError {
   TResult map<TResult extends Object?>({
     required TResult Function(InitialState value) initialState,
     required TResult Function(DetailsFormState value) DetailsFormState,
+    required TResult Function(LoadingState value) LoadingState,
     required TResult Function(NameError value) nameError,
     required TResult Function(GetMobileNumber value) getMobileNumber,
     required TResult Function(EmailError value) emailError,
@@ -1550,6 +1785,7 @@ class _$DobError implements DobError {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
     TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
     TResult Function(EmailError value)? emailError,
@@ -1572,6 +1808,7 @@ class _$DobError implements DobError {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
     TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
     TResult Function(EmailError value)? emailError,
@@ -1670,6 +1907,7 @@ class _$GenderError implements GenderError {
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
     required TResult Function(bool isValid) DetailsFormState,
+    required TResult Function() LoadingState,
     required TResult Function(String nameError) nameError,
     required TResult Function(String mobileNumber) getMobileNumber,
     required TResult Function(String emailError) emailError,
@@ -1692,6 +1930,7 @@ class _$GenderError implements GenderError {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(bool isValid)? DetailsFormState,
+    TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
     TResult Function(String emailError)? emailError,
@@ -1714,6 +1953,7 @@ class _$GenderError implements GenderError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(bool isValid)? DetailsFormState,
+    TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
     TResult Function(String emailError)? emailError,
@@ -1740,6 +1980,7 @@ class _$GenderError implements GenderError {
   TResult map<TResult extends Object?>({
     required TResult Function(InitialState value) initialState,
     required TResult Function(DetailsFormState value) DetailsFormState,
+    required TResult Function(LoadingState value) LoadingState,
     required TResult Function(NameError value) nameError,
     required TResult Function(GetMobileNumber value) getMobileNumber,
     required TResult Function(EmailError value) emailError,
@@ -1762,6 +2003,7 @@ class _$GenderError implements GenderError {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
     TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
     TResult Function(EmailError value)? emailError,
@@ -1784,6 +2026,7 @@ class _$GenderError implements GenderError {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
     TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
     TResult Function(EmailError value)? emailError,
@@ -1883,6 +2126,7 @@ class _$ProfessionError implements ProfessionError {
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
     required TResult Function(bool isValid) DetailsFormState,
+    required TResult Function() LoadingState,
     required TResult Function(String nameError) nameError,
     required TResult Function(String mobileNumber) getMobileNumber,
     required TResult Function(String emailError) emailError,
@@ -1905,6 +2149,7 @@ class _$ProfessionError implements ProfessionError {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(bool isValid)? DetailsFormState,
+    TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
     TResult Function(String emailError)? emailError,
@@ -1927,6 +2172,7 @@ class _$ProfessionError implements ProfessionError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(bool isValid)? DetailsFormState,
+    TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
     TResult Function(String emailError)? emailError,
@@ -1953,6 +2199,7 @@ class _$ProfessionError implements ProfessionError {
   TResult map<TResult extends Object?>({
     required TResult Function(InitialState value) initialState,
     required TResult Function(DetailsFormState value) DetailsFormState,
+    required TResult Function(LoadingState value) LoadingState,
     required TResult Function(NameError value) nameError,
     required TResult Function(GetMobileNumber value) getMobileNumber,
     required TResult Function(EmailError value) emailError,
@@ -1975,6 +2222,7 @@ class _$ProfessionError implements ProfessionError {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
     TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
     TResult Function(EmailError value)? emailError,
@@ -1997,6 +2245,7 @@ class _$ProfessionError implements ProfessionError {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
     TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
     TResult Function(EmailError value)? emailError,
@@ -2097,6 +2346,7 @@ class _$AddressError implements AddressError {
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
     required TResult Function(bool isValid) DetailsFormState,
+    required TResult Function() LoadingState,
     required TResult Function(String nameError) nameError,
     required TResult Function(String mobileNumber) getMobileNumber,
     required TResult Function(String emailError) emailError,
@@ -2119,6 +2369,7 @@ class _$AddressError implements AddressError {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(bool isValid)? DetailsFormState,
+    TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
     TResult Function(String emailError)? emailError,
@@ -2141,6 +2392,7 @@ class _$AddressError implements AddressError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(bool isValid)? DetailsFormState,
+    TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
     TResult Function(String emailError)? emailError,
@@ -2167,6 +2419,7 @@ class _$AddressError implements AddressError {
   TResult map<TResult extends Object?>({
     required TResult Function(InitialState value) initialState,
     required TResult Function(DetailsFormState value) DetailsFormState,
+    required TResult Function(LoadingState value) LoadingState,
     required TResult Function(NameError value) nameError,
     required TResult Function(GetMobileNumber value) getMobileNumber,
     required TResult Function(EmailError value) emailError,
@@ -2189,6 +2442,7 @@ class _$AddressError implements AddressError {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
     TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
     TResult Function(EmailError value)? emailError,
@@ -2211,6 +2465,7 @@ class _$AddressError implements AddressError {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
     TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
     TResult Function(EmailError value)? emailError,
@@ -2309,6 +2564,7 @@ class _$RegionError implements RegionError {
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
     required TResult Function(bool isValid) DetailsFormState,
+    required TResult Function() LoadingState,
     required TResult Function(String nameError) nameError,
     required TResult Function(String mobileNumber) getMobileNumber,
     required TResult Function(String emailError) emailError,
@@ -2331,6 +2587,7 @@ class _$RegionError implements RegionError {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(bool isValid)? DetailsFormState,
+    TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
     TResult Function(String emailError)? emailError,
@@ -2353,6 +2610,7 @@ class _$RegionError implements RegionError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(bool isValid)? DetailsFormState,
+    TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
     TResult Function(String emailError)? emailError,
@@ -2379,6 +2637,7 @@ class _$RegionError implements RegionError {
   TResult map<TResult extends Object?>({
     required TResult Function(InitialState value) initialState,
     required TResult Function(DetailsFormState value) DetailsFormState,
+    required TResult Function(LoadingState value) LoadingState,
     required TResult Function(NameError value) nameError,
     required TResult Function(GetMobileNumber value) getMobileNumber,
     required TResult Function(EmailError value) emailError,
@@ -2401,6 +2660,7 @@ class _$RegionError implements RegionError {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
     TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
     TResult Function(EmailError value)? emailError,
@@ -2423,6 +2683,7 @@ class _$RegionError implements RegionError {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
     TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
     TResult Function(EmailError value)? emailError,
@@ -2522,6 +2783,7 @@ class _$DistrictError implements DistrictError {
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
     required TResult Function(bool isValid) DetailsFormState,
+    required TResult Function() LoadingState,
     required TResult Function(String nameError) nameError,
     required TResult Function(String mobileNumber) getMobileNumber,
     required TResult Function(String emailError) emailError,
@@ -2544,6 +2806,7 @@ class _$DistrictError implements DistrictError {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(bool isValid)? DetailsFormState,
+    TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
     TResult Function(String emailError)? emailError,
@@ -2566,6 +2829,7 @@ class _$DistrictError implements DistrictError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(bool isValid)? DetailsFormState,
+    TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
     TResult Function(String emailError)? emailError,
@@ -2592,6 +2856,7 @@ class _$DistrictError implements DistrictError {
   TResult map<TResult extends Object?>({
     required TResult Function(InitialState value) initialState,
     required TResult Function(DetailsFormState value) DetailsFormState,
+    required TResult Function(LoadingState value) LoadingState,
     required TResult Function(NameError value) nameError,
     required TResult Function(GetMobileNumber value) getMobileNumber,
     required TResult Function(EmailError value) emailError,
@@ -2614,6 +2879,7 @@ class _$DistrictError implements DistrictError {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
     TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
     TResult Function(EmailError value)? emailError,
@@ -2636,6 +2902,7 @@ class _$DistrictError implements DistrictError {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
     TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
     TResult Function(EmailError value)? emailError,
@@ -2735,6 +3002,7 @@ class _$GenderTypeChoosen implements GenderTypeChoosen {
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
     required TResult Function(bool isValid) DetailsFormState,
+    required TResult Function() LoadingState,
     required TResult Function(String nameError) nameError,
     required TResult Function(String mobileNumber) getMobileNumber,
     required TResult Function(String emailError) emailError,
@@ -2757,6 +3025,7 @@ class _$GenderTypeChoosen implements GenderTypeChoosen {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(bool isValid)? DetailsFormState,
+    TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
     TResult Function(String emailError)? emailError,
@@ -2779,6 +3048,7 @@ class _$GenderTypeChoosen implements GenderTypeChoosen {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(bool isValid)? DetailsFormState,
+    TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
     TResult Function(String emailError)? emailError,
@@ -2805,6 +3075,7 @@ class _$GenderTypeChoosen implements GenderTypeChoosen {
   TResult map<TResult extends Object?>({
     required TResult Function(InitialState value) initialState,
     required TResult Function(DetailsFormState value) DetailsFormState,
+    required TResult Function(LoadingState value) LoadingState,
     required TResult Function(NameError value) nameError,
     required TResult Function(GetMobileNumber value) getMobileNumber,
     required TResult Function(EmailError value) emailError,
@@ -2827,6 +3098,7 @@ class _$GenderTypeChoosen implements GenderTypeChoosen {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
     TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
     TResult Function(EmailError value)? emailError,
@@ -2849,6 +3121,7 @@ class _$GenderTypeChoosen implements GenderTypeChoosen {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
     TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
     TResult Function(EmailError value)? emailError,
@@ -2948,6 +3221,7 @@ class _$RegionChoosen implements RegionChoosen {
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
     required TResult Function(bool isValid) DetailsFormState,
+    required TResult Function() LoadingState,
     required TResult Function(String nameError) nameError,
     required TResult Function(String mobileNumber) getMobileNumber,
     required TResult Function(String emailError) emailError,
@@ -2970,6 +3244,7 @@ class _$RegionChoosen implements RegionChoosen {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(bool isValid)? DetailsFormState,
+    TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
     TResult Function(String emailError)? emailError,
@@ -2992,6 +3267,7 @@ class _$RegionChoosen implements RegionChoosen {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(bool isValid)? DetailsFormState,
+    TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
     TResult Function(String emailError)? emailError,
@@ -3018,6 +3294,7 @@ class _$RegionChoosen implements RegionChoosen {
   TResult map<TResult extends Object?>({
     required TResult Function(InitialState value) initialState,
     required TResult Function(DetailsFormState value) DetailsFormState,
+    required TResult Function(LoadingState value) LoadingState,
     required TResult Function(NameError value) nameError,
     required TResult Function(GetMobileNumber value) getMobileNumber,
     required TResult Function(EmailError value) emailError,
@@ -3040,6 +3317,7 @@ class _$RegionChoosen implements RegionChoosen {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
     TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
     TResult Function(EmailError value)? emailError,
@@ -3062,6 +3340,7 @@ class _$RegionChoosen implements RegionChoosen {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
     TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
     TResult Function(EmailError value)? emailError,
@@ -3160,6 +3439,7 @@ class _$DistrictChoosen implements DistrictChoosen {
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
     required TResult Function(bool isValid) DetailsFormState,
+    required TResult Function() LoadingState,
     required TResult Function(String nameError) nameError,
     required TResult Function(String mobileNumber) getMobileNumber,
     required TResult Function(String emailError) emailError,
@@ -3182,6 +3462,7 @@ class _$DistrictChoosen implements DistrictChoosen {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(bool isValid)? DetailsFormState,
+    TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
     TResult Function(String emailError)? emailError,
@@ -3204,6 +3485,7 @@ class _$DistrictChoosen implements DistrictChoosen {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(bool isValid)? DetailsFormState,
+    TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
     TResult Function(String emailError)? emailError,
@@ -3230,6 +3512,7 @@ class _$DistrictChoosen implements DistrictChoosen {
   TResult map<TResult extends Object?>({
     required TResult Function(InitialState value) initialState,
     required TResult Function(DetailsFormState value) DetailsFormState,
+    required TResult Function(LoadingState value) LoadingState,
     required TResult Function(NameError value) nameError,
     required TResult Function(GetMobileNumber value) getMobileNumber,
     required TResult Function(EmailError value) emailError,
@@ -3252,6 +3535,7 @@ class _$DistrictChoosen implements DistrictChoosen {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
     TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
     TResult Function(EmailError value)? emailError,
@@ -3274,6 +3558,7 @@ class _$DistrictChoosen implements DistrictChoosen {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
     TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
     TResult Function(EmailError value)? emailError,

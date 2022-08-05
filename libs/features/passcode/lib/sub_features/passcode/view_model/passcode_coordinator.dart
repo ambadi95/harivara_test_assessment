@@ -177,17 +177,20 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
       state = currentState.copyWith(currentStep: 5);
       await _passcodeUseCase.savePassCodeLocal(newPasscode);
       if (userType == "Customer") {
+        state = currentState.copyWith(isLoading: true);
         var response =
             await _passcodeUseCase.savePasscode(newPasscode, (p0) => null);
         if (response!.status == true) {
           var loginResponse =  await _passcodeUseCase.login( newPasscode, (p0) => null);
           if(loginResponse?.status == true){
+            state = currentState.copyWith(isLoading: false);
             _navigationHandler.navigateToCustomerEnrollmentScreen(
                 destinationPath, false);
           }
 
         }
       } else {
+        state = currentState.copyWith(isLoading: false);
         _navigationHandler.navigateToAgentEnrollmentBottomSheet(
             'AE_Message'.tr, 'AE_Continue'.tr);
       }
