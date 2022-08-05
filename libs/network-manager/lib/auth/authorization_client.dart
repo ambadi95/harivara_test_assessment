@@ -10,6 +10,7 @@ import 'package:network_manager/client/i_network_client.dart';
 import 'package:network_manager/model/requests/request.dart';
 import 'package:network_manager/model/requests/standard/standard_request.dart';
 import 'package:network_manager/model/response/token/token_response.dart';
+import 'package:shared_data_models/auth/auth_detail.dart';
 
 class AuthorizationClient {
   final String _userType;
@@ -107,7 +108,7 @@ class CrayonPaymentAuthManager extends IAuthManager {
   }
 
   @override
-  Future<bool> isUserAuthenticated() async => (await _getAccessToken()) != null;
+  Future<bool> get isUserAuthenticated async => (await _getAccessToken()) != null;
 
   Future<String?> _getAccessToken() async =>
       await _secureStorageService.get(_accessTokenKey);
@@ -132,6 +133,14 @@ class CrayonPaymentAuthManager extends IAuthManager {
   Future clearAuthentication() async {
     await _secureStorageService.delete(
       _accessTokenKey,
+    );
+  }
+
+  @override
+  Future setUserDetail({String? authInfo, UserDetailsLabel? key}) async {
+    await _secureStorageService.set(
+      key!.name,
+      authInfo,
     );
   }
 }

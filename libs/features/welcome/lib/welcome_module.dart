@@ -61,6 +61,7 @@ class WelcomeModule {
         WelcomeNavigationHandler(container.resolve<NavigationManager>()),
         SignupUseCase(
           SignupViewModel(),
+          container.resolve<IAuthManager>(),
           container.resolve<TaskManager>(),
         ),
       ),
