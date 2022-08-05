@@ -8,8 +8,9 @@ class Data extends Equatable {
 	final String? token;
 	final String? username;
 	final String? lastLoginTime;
+	final String? id;
 
-	const Data({this.token, this.username, this.lastLoginTime});
+	const Data({this.token, this.username, this.lastLoginTime, this.id});
 
 	factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
 
@@ -19,11 +20,13 @@ class Data extends Equatable {
 		String? token,
 		String? username,
 		String? lastLoginTime,
+			String? id,
 	}) {
 		return Data(
 			token: token ?? this.token,
 			username: username ?? this.username,
 			lastLoginTime: lastLoginTime ?? this.lastLoginTime,
+			id: id ?? this.id,
 		);
 	}
 
@@ -31,5 +34,5 @@ class Data extends Equatable {
 	bool get stringify => true;
 
 	@override
-	List<Object?> get props => [token, username, lastLoginTime];
+	List<Object?> get props => [token, username, lastLoginTime, id];
 }
