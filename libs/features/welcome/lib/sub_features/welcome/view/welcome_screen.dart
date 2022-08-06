@@ -7,6 +7,7 @@ import 'package:core/view/base_view.dart';
 import 'package:get/get.dart';
 import 'package:widget_library/html/rich_text_description.dart';
 import 'package:widget_library/spacers/crayon_payment_spacers.dart';
+import 'package:widget_library/utils/launcher_utils.dart';
 
 import '../../../welcome_module.dart';
 import '../../welcome_back/view/welcome_back.dart';
@@ -27,7 +28,7 @@ class CrayonWelcomScreen extends StatefulWidget {
 }
 
 class _CrayonWelcomScreenState extends State<CrayonWelcomScreen> {
-  final bool _isSigned = true;
+  final bool _isSigned = false;
   @override
   Widget build(BuildContext context) =>
       BaseView<WelcomeCoordinator, WelcomeScreenState>(
@@ -157,7 +158,11 @@ class _CrayonWelcomScreenState extends State<CrayonWelcomScreen> {
   }
 
   Widget _buildThirdTitle(BuildContext context) {
-    return Text('OB_WelcomeThirdTitle'.tr, style: WELCOME_THIRDHEADING_STYLE);
+    return InkWell(
+        onTap: (){
+          LauncherUtils.launcherUtilsInstance.launchInBrowser(url:"https://flutter.dev");
+        },
+        child: Text('OB_WelcomeThirdTitle'.tr, style: WELCOME_THIRDHEADING_STYLE));
   }
 
   Widget _buildButtons(

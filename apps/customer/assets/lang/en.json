@@ -91,7 +91,7 @@
   "ES_select_membership" : "Select Your Membership",
   "ES_view_membership" : "View Your Membership",
   "ES_agent_contact_text" : "Y9 agent will contact you shortly on your Membership",
-  "ES_need_help_contact" : "Need Help Contact Us at 1800-1800-1800",
+  "ES_need_help_contact" : "Need Help Contact Us at +255 677-039-999",
 
 
   "WB_WelcomeBack": "Welcome back to Y9",
@@ -148,8 +148,9 @@
   "VO_verify_button" : "Verify",
 
 
-  "SP_ni": "ni Bora",
-  "SP_bora": "/ is Better",
+  "SP_ni": "ni",
+  "SP_bora": " Bora",
+  "SP_isBetter": "/ is Better",
 
   "SU_reset_passcode" : "Reset Passcode",
   "SU_reset_subtitle" : "You can Reset the passcode here using OTP sent to your registered mobile number",

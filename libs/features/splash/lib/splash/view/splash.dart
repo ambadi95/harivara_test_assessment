@@ -160,9 +160,7 @@ class _CrayonSplashScreenState extends State<CrayonSplashScreen>
                           ? SizedBox()
                           : Column(
                               children: [
-                                SizedBox(
-                                  height: 2,
-                                ),
+
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
 
@@ -172,6 +170,12 @@ class _CrayonSplashScreenState extends State<CrayonSplashScreen>
                                     Text('SP_ni'.tr,style: const TextStyle(
                                         color: Colors.white,
                                         fontSize: 30,
+                                        fontWeight: FontWeight.normal,
+                                        fontFamily: 'Montserrat', fontStyle: FontStyle.italic) ,)
+                                    ,
+                                    Text('SP_bora'.tr,style: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 32,
                                         fontWeight: FontWeight.bold,
                                         fontFamily: 'Montserrat',
                                         fontStyle: FontStyle.italic) ,)
@@ -199,10 +203,10 @@ class _CrayonSplashScreenState extends State<CrayonSplashScreen>
                                         totalRepeatCount: 3,
                                         animatedTexts: [
                                           RotateAnimatedText(
-                                            'SP_bora'.tr,
+                                            'SP_isBetter'.tr,
                                             textStyle: const TextStyle(
                                                 color: Colors.white,
-                                                fontSize: 28,
+                                                fontSize: 30,
                                                 fontWeight: FontWeight.bold,
                                                 fontFamily: 'Montserrat',
                                                 fontStyle: FontStyle.italic),
@@ -254,8 +258,8 @@ class _CrayonSplashScreenState extends State<CrayonSplashScreen>
         child: Image.asset(
           OB_AppLogo,
           key: const Key('splashLogo'),
-          height: 120,
-          width: 120,
+          height: 150,
+          width: 150,
           fit: BoxFit.cover,
         ),
       ),
