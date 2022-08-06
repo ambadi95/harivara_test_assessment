@@ -346,7 +346,6 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
             controller: coordinator.otpController,
             keyboardType: TextInputType.number,
             onCompleted: (v) {
-
               setState(() {
                 isBtnEnabled=true;
               });
@@ -476,6 +475,13 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
                   ),
           );
         });
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    // otpController.dispose();
+    _timer.cancel();
   }
 
   Widget _didGetCode(BuildContext context) {

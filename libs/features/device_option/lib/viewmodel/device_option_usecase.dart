@@ -16,21 +16,22 @@ class DeviceOptionUseCase extends BaseDataProvider {
   DeviceOptionUseCase(this._authManager, TaskManager taskManager)
       : super(taskManager);
 
+  Future<String> getCustomerId() async {
+    return await getValueFromSecureStorage('customerId', defaultValue: '');
+  }
+
   Future<DeviceListResponse?> getDeviceList(
       Function(String) onErrorCallback) async {
-    String? id;
+    String id = await getCustomerId();
 
-    final customerId = await _authManager
-        .getUserInfo('Customer_ID')
-        .then((value) => id = value);
-
-    MembershipRequest membershipRequest = MembershipRequest(customerId: 36);
+    MembershipRequest membershipRequest = MembershipRequest(customerId: int.parse(id));
     String? token = await _authManager.getAccessToken();
+
     return await executeApiRequest<DeviceListResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
         moduleIdentifier: DeviceOptionModule.moduleIdentifier,
-        requestData: {'customerId': 36, 'token': token},
+        requestData: {'customerId': id, 'token': token},
         serviceIdentifier: IDeviceOptionService.deviceOptionIdentifier,
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {

@@ -40,11 +40,11 @@ class SignupUseCase extends BaseDataProvider {
   }
 
   Future<void> saveCustomerId(String? customerId) async {
-    return await setValueToStorage({'customerId': customerId});
+    return await setValueToSecureStorage({'customerId': customerId});
   }
 
   Future<void> _saveMobileNumber(String mobileNumber) async {
-    return await setValueToStorage({'mobileNumber': mobileNumber});
+    return await setValueToSecureStorage({'mobileNumber': mobileNumber});
   }
 
   Future<CustomerDetailResponse?> signUp(String nindaNumber, String phoneNo,
