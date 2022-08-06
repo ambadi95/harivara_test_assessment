@@ -7,4 +7,7 @@ class DeviceDetailState with _$DeviceDetailState {
   const factory DeviceDetailState({
     @Default('') String deviceId,
   }) = _DeviceDetailState;
+
+  const factory DeviceDetailState.selectedMobile(String mobileId) =
+      SelectedMobile;
 }

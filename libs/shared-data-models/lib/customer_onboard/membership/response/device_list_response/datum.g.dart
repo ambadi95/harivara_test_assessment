@@ -21,7 +21,12 @@ Datum _$DatumFromJson(Map<String, dynamic> json) => Datum(
       emi: json['emi'],
       rateOfInterest: json['rateOfInterest'],
       amountToPay: json['amountToPay'],
+      processor: json['processor'] as String?,
+      osVersion: json['osVersion'] as String?,
+      joiningFees: json['joiningFees'] as int?,
+      dailyFees: json['dailyFees'] as int?,
       isSelected: json['isSelected'] as bool?,
+      imageUrl: json['imageUrl'],
     );
 
 Map<String, dynamic> _$DatumToJson(Datum instance) => <String, dynamic>{
@@ -39,5 +44,10 @@ Map<String, dynamic> _$DatumToJson(Datum instance) => <String, dynamic>{
       'emi': instance.emi,
       'rateOfInterest': instance.rateOfInterest,
       'amountToPay': instance.amountToPay,
+      'processor': instance.processor,
+      'osVersion': instance.osVersion,
+      'joiningFees': instance.joiningFees,
+      'dailyFees': instance.dailyFees,
       'isSelected': instance.isSelected,
+      'imageUrl': instance.imageUrl,
     };

@@ -19,7 +19,12 @@ class Datum extends Equatable {
   final dynamic emi;
   final dynamic rateOfInterest;
   final dynamic amountToPay;
+  final String? processor;
+  final String? osVersion;
+  final int? joiningFees;
+  final int? dailyFees;
   final bool? isSelected;
+  final dynamic imageUrl;
 
   const Datum({
     this.deviceId,
@@ -36,7 +41,12 @@ class Datum extends Equatable {
     this.emi,
     this.rateOfInterest,
     this.amountToPay,
+    this.processor,
+    this.osVersion,
+    this.joiningFees,
+    this.dailyFees,
     this.isSelected,
+    this.imageUrl,
   });
 
   factory Datum.fromJson(Map<String, dynamic> json) => _$DatumFromJson(json);
@@ -58,7 +68,12 @@ class Datum extends Equatable {
     dynamic emi,
     dynamic rateOfInterest,
     dynamic amountToPay,
+    String? processor,
+    String? osVersion,
+    int? joiningFees,
+    int? dailyFees,
     bool? isSelected,
+    dynamic imageUrl,
   }) {
     return Datum(
       deviceId: deviceId ?? this.deviceId,
@@ -75,7 +90,12 @@ class Datum extends Equatable {
       emi: emi ?? this.emi,
       rateOfInterest: rateOfInterest ?? this.rateOfInterest,
       amountToPay: amountToPay ?? this.amountToPay,
+      processor: processor ?? this.processor,
+      osVersion: osVersion ?? this.osVersion,
+      joiningFees: joiningFees ?? this.joiningFees,
+      dailyFees: dailyFees ?? this.dailyFees,
       isSelected: isSelected ?? this.isSelected,
+      imageUrl: imageUrl ?? this.imageUrl,
     );
   }
 
@@ -99,7 +119,12 @@ class Datum extends Equatable {
       emi,
       rateOfInterest,
       amountToPay,
+      processor,
+      osVersion,
+      joiningFees,
+      dailyFees,
       isSelected,
+      imageUrl,
     ];
   }
 }

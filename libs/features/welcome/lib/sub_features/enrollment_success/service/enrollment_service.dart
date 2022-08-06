@@ -6,19 +6,14 @@ import 'package:network_manager/model/requests/standard/standard_request.dart';
 abstract class IEnrollmentService {
   static const enrollmentIdentifier = 'enrollment';
 
-
-  Future<StandardRequest> getCustomerDetails(
-    String customerId,
-      String token
-  );
+  Future<StandardRequest> getCustomerDetails(String customerId, String token);
 }
 
 class EnrollmentService implements IEnrollmentService {
-
   @override
   Future<StandardRequest> getCustomerDetails(
     String customerId,
-      String token,
+    String token,
   ) async {
     var request = StandardRequest();
     request.requestType = RequestType.GET;
