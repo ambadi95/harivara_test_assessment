@@ -276,7 +276,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
             if (errorText.isNotEmpty) {
               coordinator.isValidName(name.text);
               coordinator.isValidEmail(emailId.text);
-              coordinator.isValidPoBox(poBox.text);
+              // coordinator.isValidPoBox(poBox.text);
               coordinator.isValidGender(gender.text);
               coordinator.isValidDistrict(district.text);
               coordinator.isValidRegion(region.text);
@@ -452,7 +452,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
   Widget _buildContinueButton(DetailsCoordinator coordinator) {
     return GestureDetector(
       onTap: () async {
-        coordinator.isValidPoBox(poBox.text);
+        // coordinator.isValidPoBox(poBox.text);
         coordinator.isValidEmail(emailId.text);
         coordinator.isValidName(name.text);
         coordinator.isValidGender(gender.text);
@@ -462,7 +462,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
         coordinator.isValidAddress(address.text);
         coordinator.isValidDob(dob.text);
         if (_isBtnEnabled &&
-            coordinator.isValidPoBox(poBox.text) &&
+            /*coordinator.isValidPoBox(poBox.text) &&*/
             coordinator.isValidEmail(emailId.text) &&
             coordinator.isValidName(name.text)) {
           await coordinator.submitDetails(

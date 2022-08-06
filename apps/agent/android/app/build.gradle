@@ -70,6 +70,8 @@ android {
     }
     buildTypes {
         release {
+            minifyEnabled true // added previously
+            shrinkResources true
             signingConfig signingConfigs.release
         }
         debug{

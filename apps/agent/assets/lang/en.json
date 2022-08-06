@@ -31,7 +31,7 @@
   "SU_subtitle_hint" : "Enter Mobile Number of Customer",
   "SU_title_hint_customer" : "Enter NIDA Number of Customer",
   "SU_agent_id_hint" : "Enter Y9 Agent ID",
-  "SU_title_error_text" : "Invalid NINDA number",
+  "SU_title_error_text" : "Invalid NIDA number",
   "SU_subtitle_error_text" : "Invalid Mobile number",
   "SU_agent_id_error_text" : "Invalid Y9 Agent ID",
 
@@ -112,7 +112,7 @@
 
 
   "VO_OtpVerification": "OTP Verification",
-  "VO_otp_verification_description" : "An OTP will be send to your Mobile Number (ending with xxx{})",
+  "VO_otp_verification_description" : "An OTP will be sent to your Mobile Number (ending with xxx{})",
   "VO_DidNotGetCode": "Didn't get a code?",
   "VO_ResendNow": "Resend Now",
   "VO_Incorrect_OTP":"Incorrect OTP. Please try again.",
@@ -122,18 +122,23 @@
   "VO_verify_button" : "Verify",
 
   "SP_ni": "ni",
-  "SP_bora": " Bora",
+  "SP_bora": "ni Bora",
+  "SP_isBetter": "is Better",
 
-  "HS_Agent_Id" : "Y9 Agent Id",
-  "HS_TotalOnBoarderCustomers" : "Total Customer \nRegistered ",
+  "HS_Agent_Id" : "Y9 Agent ID",
+  "HS_TotalOnBoarderCustomers" : "Total Customers \nRegistered ",
   "HS_PendingCustomerRequests" : "Pending Customer \nRequest",
   "HS_Customer_OnBoarding" : "Customer \nOnboarding",
   "HS_Customer_DeviceSwap" : "Device swap \n/ repair",
   "HS_Customer_AgentSupport" : "Agent \nSupport",
+  "HS_Agent_Refer_Text": "Refer your Friends to register for Y9 Membership and you win Referral Bonus",
+  "HS_Agent_Refer_Program": "Referral Program -",
+  "HS_Agent_Stay_Tunned": " Stay tuned !",
+
 
   "AE_Message" : "Congratulations,\n%{Jakaya Mrisho Kikwete | click}% You \nhave successfully Onboarded into Y9 Agent App",
   "AE_AgentId" : "Your Y9 Agent ID",
-  "AE_Description" : "Your Y9 Agent id has been sent successfully to your mobile number and Email ID",
+  "AE_Description" : "Your Y9 Agent ID has been sent successfully to your mobile number and Email ID",
   "AE_Continue" : "Continue to your Y9 Agent App",
 
   "DO_Title": "Device Options",

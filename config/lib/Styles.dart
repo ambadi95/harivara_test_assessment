@@ -258,6 +258,14 @@ const HS_invite_your_friends_style = TextStyle(
     color: Colors.black,
     letterSpacing: -0.02
 );
+const HS_stay_tunned_style = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.w600,
+    fontFamily: 'Montserrat',
+    fontStyle: FontStyle.normal,
+    color: Color(0xFFC83732),
+    letterSpacing: -0.02
+);
 const HS_invite_friends_y9_style = TextStyle(
     fontFamily: 'Montserrat',
     fontStyle: FontStyle.normal,
