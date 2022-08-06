@@ -77,7 +77,7 @@ class _CrayonPasscodeScreenState extends State<CrayonPasscodeScreen> {
     return Stack(
       children: [
         _buildMainUI(context, coordinator, state),
-         if (state.isLoading) _createLoading(state),
+        if (state.isLoading) _createLoading(state),
       ],
     );
   }
@@ -86,7 +86,8 @@ class _CrayonPasscodeScreenState extends State<CrayonPasscodeScreen> {
     if (state.isLoading) {
       return Container(
         color: Colors.black.withOpacity(0.4),
-        child: const CenteredCircularProgressBar(color: config_colors.PRIMARY_COLOR),
+        child: const CenteredCircularProgressBar(
+            color: config_colors.PRIMARY_COLOR),
       );
     } else {
       return Container();

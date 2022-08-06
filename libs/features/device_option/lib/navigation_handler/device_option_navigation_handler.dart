@@ -10,11 +10,10 @@ class DeviceOptionNavigationHandler with ErrorHandler {
 
   DeviceOptionNavigationHandler(this._navigationManager);
 
-  Future<void> navigateToDeviceDetail() async {
+  Future<void> navigateToDeviceDetail(int id) async {
     await _navigationManager.navigateTo(
-      DeviceDetailScreen.viewPath,
-      const NavigationType.push(),
-    );
+        DeviceDetailScreen.viewPath, const NavigationType.push(),
+        arguments: id);
   }
 
   Future<void> navigateToCustomerEnrollmentScreen(

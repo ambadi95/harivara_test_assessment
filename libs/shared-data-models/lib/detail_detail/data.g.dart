@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'datum.dart';
+part of 'data.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-Datum _$DatumFromJson(Map<String, dynamic> json) => Datum(
+Data _$DataFromJson(Map<String, dynamic> json) => Data(
       deviceId: json['deviceId'] as int?,
       brand: json['brand'] as String?,
       modelNumber: json['modelNumber'] as String?,
@@ -25,11 +25,11 @@ Datum _$DatumFromJson(Map<String, dynamic> json) => Datum(
       osVersion: json['osVersion'] as String?,
       joiningFees: (json['joiningFees'] as num?)?.toDouble(),
       dailyFees: (json['dailyFees'] as num?)?.toDouble(),
-      isSelected: json['isSelected'] as bool?,
+      isSelected: json['isSelected'],
       imageUrl: json['imageUrl'],
     );
 
-Map<String, dynamic> _$DatumToJson(Datum instance) => <String, dynamic>{
+Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{
       'deviceId': instance.deviceId,
       'brand': instance.brand,
       'modelNumber': instance.modelNumber,

@@ -1,10 +1,10 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'datum.g.dart';
+part 'data.g.dart';
 
 @JsonSerializable()
-class Datum extends Equatable {
+class Data extends Equatable {
   final int? deviceId;
   final String? brand;
   final String? modelNumber;
@@ -23,10 +23,10 @@ class Datum extends Equatable {
   final String? osVersion;
   final double? joiningFees;
   final double? dailyFees;
-  final bool? isSelected;
+  final dynamic isSelected;
   final dynamic imageUrl;
 
-  const Datum({
+  const Data({
     this.deviceId,
     this.brand,
     this.modelNumber,
@@ -49,11 +49,11 @@ class Datum extends Equatable {
     this.imageUrl,
   });
 
-  factory Datum.fromJson(Map<String, dynamic> json) => _$DatumFromJson(json);
+  factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
 
-  Map<String, dynamic> toJson() => _$DatumToJson(this);
+  Map<String, dynamic> toJson() => _$DataToJson(this);
 
-  Datum copyWith({
+  Data copyWith({
     int? deviceId,
     String? brand,
     String? modelNumber,
@@ -72,10 +72,10 @@ class Datum extends Equatable {
     String? osVersion,
     double? joiningFees,
     double? dailyFees,
-    bool? isSelected,
+    dynamic isSelected,
     dynamic imageUrl,
   }) {
-    return Datum(
+    return Data(
       deviceId: deviceId ?? this.deviceId,
       brand: brand ?? this.brand,
       modelNumber: modelNumber ?? this.modelNumber,

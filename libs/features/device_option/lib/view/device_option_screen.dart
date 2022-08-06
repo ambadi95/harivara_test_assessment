@@ -2,6 +2,7 @@ import 'package:config/Colors.dart';
 import 'package:config/Config.dart';
 import 'package:core/view/base_view.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_data_models/customer_onboard/membership/response/device_list_response/datum.dart';
 import 'package:shared_data_models/device_option/device_option_mockup.dart';
 import 'package:shared_data_models/device_option/device_option_model.dart';
 import 'package:shared_data_models/device_option/device_option_args.dart';
@@ -10,6 +11,7 @@ import 'package:widget_library/app_bars/crayon_payment_app_bar_button_type.dart'
 import 'package:widget_library/buttons/docked_button.dart';
 import 'package:widget_library/dimensions/crayon_payment_dimensions.dart';
 import 'package:widget_library/page_header/text_ui_data_model.dart';
+import 'package:widget_library/progress_bar/centered_circular_progress_bar.dart';
 import 'package:widget_library/scaffold/crayon_payment_scaffold.dart';
 import 'package:widget_library/search_bar/search_bar_widget_model.dart';
 import 'package:widget_library/spacers/crayon_payment_spacers.dart';
@@ -20,44 +22,71 @@ import '../state/device_option_state.dart';
 import '../viewmodel/device_option_coordinator.dart';
 import 'package:get/get.dart';
 
-class DeviceOption extends StatelessWidget {
-  final String _identifier = 'device-option-screen';
+class DeviceOption extends StatefulWidget {
   static const String viewPath =
       '${DeviceOptionModule.moduleIdentifier}/device-option-screen';
 
   final DeviceOptionArgs deviceOptionArgs;
 
-  const DeviceOption({Key? key, required this.deviceOptionArgs})
-      : super(key: key);
+  DeviceOption({Key? key, required this.deviceOptionArgs}) : super(key: key);
 
   factory DeviceOption.forCustomerApp() =>
       DeviceOption(deviceOptionArgs: DeviceOptionArgs(false, ''));
 
   @override
+  State<DeviceOption> createState() => _DeviceOptionState();
+}
+
+class _DeviceOptionState extends State<DeviceOption> {
+  final String _identifier = 'device-option-screen';
+
+  List<Datum> deviceList = [];
+
+  @override
   Widget build(BuildContext context) {
     return BaseView<DeviceOptionCoordinator, DeviceOptionState>(
-      setupViewModel: (coordinator) {
-        coordinator.fetchDeviceList(
-            deviceOptionArgs.isMember, deviceOptionArgs.destinationPath);
-        coordinator.initialiseState(
-            deviceOptionArgs.isMember, deviceOptionArgs.destinationPath);
+      setupViewModel: (coordinator) async {
+        deviceList = await coordinator.fetchDeviceList(
+            widget.deviceOptionArgs.isMember,
+            widget.deviceOptionArgs.destinationPath);
+        setState(() {});
+        coordinator.initialiseState(widget.deviceOptionArgs.isMember,
+            widget.deviceOptionArgs.destinationPath);
       },
       // onStateListenCallback: (preState, newState) =>
       // {_listenToStateChanges(context, newState)},
       builder: (context, state, coordinator) {
-        return _buildMainUI(context, coordinator);
+        return deviceList.isNotEmpty
+            ? _buildMainUI(context, coordinator)
+            : _buildMainUIWithLoading(context, coordinator);
       },
     );
   }
 
-  // void _listenToStateChanges(BuildContext context, DeviceOptionState state) {
-  //   state.maybeWhen(() {},
-  //      ready: (selectedDevice) {
-  //        isDeviceSelected = selectedDevice;
-  //      },,
-  //       orElse: () => null);
-  // }
+  Widget _buildMainUIWithLoading(
+    BuildContext context,
+    DeviceOptionCoordinator coordinator,
+  ) {
+    return Scaffold(
+      body: Stack(
+        children: [
+          _buildMainUI(context, coordinator),
+          _createLoading(),
+        ],
+      ),
+    );
+  }
 
+  Widget _createLoading() {
+    return Center(
+      child: Container(
+        color: Colors.black.withOpacity(0.4),
+        child: const CenteredCircularProgressBar(color: PRIMARY_COLOR),
+      ),
+    );
+  }
+
+  // void _listenToStateChanges(BuildContext context, DeviceOptionState state) {
   Widget _buildMainUI(context, DeviceOptionCoordinator coordinator) {
     return CrayonPaymentScaffold(
         appBarAttributes: CrayonPaymentAppBarAttributes(
@@ -114,14 +143,14 @@ class DeviceOption extends StatelessWidget {
     return ListView.separated(
       separatorBuilder: (context, index) => divider(),
       shrinkWrap: true,
-      itemCount: deviceMockData.length,
+      itemCount: deviceList.length,
       itemBuilder: (context, index) =>
-          _buildDeviceCard(context, deviceMockData[index], index, coordinator),
+          _buildDeviceCard(context, deviceList[index], index, coordinator),
     );
   }
 
-  Widget _buildDeviceCard(context, DeviceOptionModel device, int index,
-      DeviceOptionCoordinator coordinator) {
+  Widget _buildDeviceCard(
+      context, Datum device, int index, DeviceOptionCoordinator coordinator) {
     return InkWell(
       onTap: () {
         // coordinator.navigateToDeviceDetailScreen();
@@ -131,7 +160,7 @@ class DeviceOption extends StatelessWidget {
         mainAxisSize: MainAxisSize.max,
         children: [
           Image.asset(
-            device.imagePath!,
+            'assets/mobile_0.png',
             width: 65,
             package: 'shared_data_models',
           ),
@@ -159,7 +188,8 @@ class DeviceOption extends StatelessWidget {
                               Expanded(
                                 child: CrayonPaymentText(
                                   key: Key('${_identifier}_' + device.brand!),
-                                  text: TextUIDataModel(device.brand!,
+                                  text: TextUIDataModel(
+                                      'Option ' + (index + 1).toString(),
                                       styleVariant:
                                           CrayonPaymentTextStyleVariant
                                               .overline1,
@@ -167,7 +197,7 @@ class DeviceOption extends StatelessWidget {
                                       fontWeight: FontWeight.bold),
                                 ),
                               ),
-                              deviceOptionArgs.isMember
+                              deviceList[index].isSelected!
                                   ? Row(
                                       children: [
                                         Icon(
@@ -198,8 +228,9 @@ class DeviceOption extends StatelessWidget {
                         ),
                         dynamicHSpacer(4),
                         CrayonPaymentText(
-                          key: Key('${_identifier}_' + device.model!),
-                          text: TextUIDataModel(device.model!,
+                          key: Key('${_identifier}_' + device.brand!),
+                          text: TextUIDataModel(
+                              device.brand! + ' ' + device.modelNumber!,
                               styleVariant:
                                   CrayonPaymentTextStyleVariant.headline4,
                               color: AN_CardTitle,
@@ -213,9 +244,13 @@ class DeviceOption extends StatelessWidget {
                 SizedBox(
                   width: MediaQuery.of(context).size.width * .6,
                   child: CrayonPaymentText(
-                    key: Key('${_identifier}_' + device.storage!),
+                    key: Key('${_identifier}_' + device.memory!),
                     text: TextUIDataModel(
-                      device.storage! + "|" + device.chip! + "|" + device.os!,
+                      device.memory! +
+                          "|" +
+                          device.processor! +
+                          "|" +
+                          device.operatingSystem!,
                       styleVariant: CrayonPaymentTextStyleVariant.overline1,
                       color: SU_carrier_message_color,
                     ),
@@ -276,13 +311,15 @@ class DeviceOption extends StatelessWidget {
                 dynamicHSpacer(10),
                 Row(
                   children: [
-                    priceButton(context, 'D0_JoiningFee'.tr, '4,000 TZSHS  '),
+                    priceButton(context, 'D0_JoiningFee'.tr,
+                        deviceList[index].joiningFees.toString() + ' TZSHS  '),
                     dynamicWSpacer(18),
-                    priceButton(context, 'D0_DailyFee'.tr, '2,000 TZSHS '),
+                    priceButton(context, 'D0_DailyFee'.tr,
+                        deviceList[index].dailyFees.toString() + ' TZSHS '),
                   ],
                 ),
                 dynamicHSpacer(20),
-                selectButton(coordinator)
+                selectButton(coordinator, deviceList[index].deviceId!)
               ],
             ),
           ),
@@ -312,7 +349,7 @@ class DeviceOption extends StatelessWidget {
     );
   }
 
-  Widget selectButton(DeviceOptionCoordinator coordinator) {
+  Widget selectButton(DeviceOptionCoordinator coordinator, int id) {
     return CrayonPaymentDockedButton(
       key: const Key('Select'),
       title: 'View Detail',
@@ -322,7 +359,7 @@ class DeviceOption extends StatelessWidget {
       textColor: White,
       textStyleVariant: CrayonPaymentTextStyleVariant.headline4,
       onPressed: () {
-        coordinator.navigateToDeviceDetailScreen(1.toString());
+        coordinator.navigateToDeviceDetailScreen(id);
       },
     );
   }

@@ -43,33 +43,31 @@ class Login extends StatelessWidget {
       setupViewModel: (coordinator) {},
       builder: (context, state, coordinator) {
         return state.maybeWhen(
-          loading: ()=> _buildMainUIWithLoading(context, coordinator),
-            orElse:() => _buildMainUI(context, coordinator));
+            loading: () => _buildMainUIWithLoading(context, coordinator),
+            orElse: () => _buildMainUI(context, coordinator));
       },
     );
   }
 
-
   Widget _buildMainUIWithLoading(
-      BuildContext context,
-      LoginCoordinator coordinator,
-      ) {
+    BuildContext context,
+    LoginCoordinator coordinator,
+  ) {
     return Scaffold(
       body: Stack(
         children: [
-          _buildMainUI(context,coordinator),
+          _buildMainUI(context, coordinator),
           _createLoading(),
         ],
       ),
     );
   }
 
-
   Widget _createLoading() {
-    return  Center(
-        child: Container(
-          color: Colors.black.withOpacity(0.4),
-          child: const CenteredCircularProgressBar(color: PRIMARY_COLOR),
+    return Center(
+      child: Container(
+        color: Colors.black.withOpacity(0.4),
+        child: const CenteredCircularProgressBar(color: PRIMARY_COLOR),
       ),
     );
   }

@@ -10,9 +10,14 @@ class DeviceDetailApiResolver extends TaskResolver {
   Future execute(String identifier, Map<String, dynamic> requestData) {
     switch (identifier) {
       case IDeviceOptionService.deviceOptionIdentifier:
-        return _deviceDetailService.deviceList(requestData);
+        return _deviceDetailService.deviceList(
+            requestData['customerId'], requestData['token']);
       case IDeviceOptionService.deviceDetailIdentifier:
-        return _deviceDetailService.deviceDetail(requestData['customerId']);
+        return _deviceDetailService.deviceDetail(
+            requestData['deviceId'], requestData['token']);
+      case IDeviceOptionService.selectDeviceIdentifier:
+        return _deviceDetailService.selectDevice(requestData['customerId'],
+            requestData['deviceId'], requestData['token']);
       default:
         throw UnimplementedError();
     }
