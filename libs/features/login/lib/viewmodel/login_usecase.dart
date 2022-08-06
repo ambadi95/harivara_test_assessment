@@ -1,7 +1,5 @@
 import 'package:core/logging/logger.dart';
 import 'package:network_manager/auth/auth_manager.dart';
-import 'package:shared_data_models/auth/auth_detail.dart';
-import 'package:shared_data_models/welcome/signin/response/data.dart';
 import 'package:task_manager/base_classes/base_data_provider.dart';
 import 'package:task_manager/task.dart';
 import 'package:task_manager/task_manager_impl.dart';
@@ -25,6 +23,10 @@ class LoginUseCase extends BaseDataProvider {
     return _loginViewModel.isValidAgentId(agentId);
   }
 
+  Future<void> saveCustomerId(String? customerId) async {
+    return await setValueToSecureStorage({'customerId': customerId});
+  }
+
   Future<CustomerSignInResponse?> login(String mobileNumber, String passcode,
       Function(String) onErrorCallback) async {
     CrayonPaymentLogger.logInfo(
@@ -45,6 +47,7 @@ class LoginUseCase extends BaseDataProvider {
           print(customerSignInResponse);
           if(customerSignInResponse.data != null){
             _authManager.storeTokenInformation(customerSignInResponse.data!.token!, '', '', '');
+            saveCustomerId(customerSignInResponse.data!.id);
           }
           return CustomerSignInResponse.fromJson(data);
         });

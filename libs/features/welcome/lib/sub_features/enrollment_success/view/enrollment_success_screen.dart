@@ -25,6 +25,13 @@ class EnrollmentSuccessScreen extends StatefulWidget {
 }
 
 class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) =>
       BaseView<EnrollmentSuccessCoordinator, EnrollmentSuccessState>(

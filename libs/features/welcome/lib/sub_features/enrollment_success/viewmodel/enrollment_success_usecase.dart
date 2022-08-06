@@ -12,7 +12,7 @@ class EnrollmentSuccessUseCase extends BaseDataProvider {
       : super(taskManager);
 
   Future<String> getCustomerId() async {
-    return await getValueFromStorage('customerId', defaultValue: '');
+    return await getValueFromSecureStorage('customerId', defaultValue: '');
   }
 
   Future<GetCustomerDetailsResponse?> getCustomerDetails(
