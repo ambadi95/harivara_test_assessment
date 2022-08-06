@@ -297,6 +297,56 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
     );
   }
 
+  Widget _inviteAgentBoxView() {
+    return Container(
+      margin: const EdgeInsets.all(10.0),
+      padding: const EdgeInsets.all(20.0),
+      width: double.maxFinite,
+      clipBehavior: Clip.antiAliasWithSaveLayer,
+      decoration: const BoxDecoration(
+        color: HS_InviteBoxBackColor,
+        borderRadius: BorderRadius.all(
+          Radius.circular(16),
+        ),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const SizedBox(
+            height: 10,
+          ),
+          RichText(
+              text: new TextSpan(
+            text: ' ',
+            children: <TextSpan>[
+              new TextSpan(text: 'HS_Agent_Refer_Program'.tr, style: HS_invite_your_friends_style),
+              new TextSpan(text: 'HS_Agent_Stay_Tunned'.tr, style: HS_stay_tunned_style),
+            ],
+          )),
+          const SizedBox(
+            height: 10,
+          ),
+          Text(
+            'HS_Agent_Refer_Text'.tr,
+            style: HS_invite_friends_y9_style,
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Align(
+            alignment: Alignment.centerRight,
+            child: Image.asset(
+              HS_InviteIcon,
+              width: 180,
+              height: 110,
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
   Widget _inviteBoxView() {
     return Container(
       margin: const EdgeInsets.all(10.0),
@@ -441,7 +491,10 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                       children: [
                         _userInfoView(),
                         _redBoxView(coordinator),
-                        _inviteBoxView(),
+                        widget.homeScreenArgs.isAgent == true
+                            ? _inviteAgentBoxView()
+                            : _inviteBoxView(),
+
                       ],
                     )
                   ],

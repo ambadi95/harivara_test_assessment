@@ -9,6 +9,7 @@ import 'package:widget_library/html/rich_text_description.dart';
 import 'package:widget_library/page_header/text_ui_data_model.dart';
 import 'package:widget_library/progress_bar/centered_circular_progress_bar.dart';
 import 'package:widget_library/static_text/crayon_payment_text.dart';
+import 'package:widget_library/utils/launcher_utils.dart';
 import '../../../welcome_module.dart';
 import '../state/enrollment_success_state.dart';
 import '../viewmodel/enrollment_success_coordinator.dart';
@@ -220,14 +221,20 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
   }
 
   Widget _buildContactText(context) {
-    return Center(
-      child: CrayonPaymentText(
-        key: const Key('_ST_contact'),
-        text: TextUIDataModel('ES_need_help_contact'.tr,
-            styleVariant: CrayonPaymentTextStyleVariant.headline5,
-            color: VO_ResendTextColor,
-            fontWeight: FontWeight.w100,
-            textAlign: TextAlign.center),
+    return InkWell(
+      onTap: (){
+        LauncherUtils.launcherUtilsInstance.makePhoneCall(phoneNumber:LauncherUtils.CONTACT_NUMBER);
+
+      },
+      child: Center(
+        child: CrayonPaymentText(
+          key: const Key('_ST_contact'),
+          text: TextUIDataModel('ES_need_help_contact'.tr,
+              styleVariant: CrayonPaymentTextStyleVariant.headline5,
+              color: VO_ResendTextColor,
+              fontWeight: FontWeight.w100,
+              textAlign: TextAlign.center),
+        ),
       ),
     );
   }

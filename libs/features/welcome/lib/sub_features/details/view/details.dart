@@ -461,7 +461,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
         coordinator.isValidAddress(address.text);
         coordinator.isValidDob(dob.text);
         if (_isBtnEnabled &&
-            coordinator.isValidPoBox(poBox.text) &&
+           coordinator.isValidPoBox(poBox.text) &&
             coordinator.isValidEmail(emailId.text) &&
             coordinator.isValidName(name.text)) {
           await coordinator.submitDetails(

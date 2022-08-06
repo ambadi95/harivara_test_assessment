@@ -7,6 +7,7 @@ import 'package:settings/view_model/settings_coordinator.dart';
 import 'package:widget_library/page_header/text_ui_data_model.dart';
 import 'package:widget_library/static_text/crayon_payment_text.dart';
 import 'package:get/get.dart';
+import 'package:widget_library/utils/launcher_utils.dart';
 import '../state/settings_state.dart';
 
 class Settings extends StatefulWidget {
@@ -74,14 +75,20 @@ class _SettingsState extends State<Settings> {
   }
 
   Widget _buildContactText(context) {
-    return Center(
-      child: CrayonPaymentText(
-        key: Key('${widget._identifier}_ST_contact'),
-        text: TextUIDataModel('ST_contact_text'.tr,
-            styleVariant: CrayonPaymentTextStyleVariant.headline5,
-            color: VO_ResendTextColor,
-            fontWeight: FontWeight.w100,
-            textAlign: TextAlign.center),
+    return InkWell(
+      onTap: (){
+        LauncherUtils.launcherUtilsInstance.makePhoneCall(phoneNumber:LauncherUtils.CONTACT_NUMBER);
+
+      },
+      child: Center(
+        child: CrayonPaymentText(
+          key: Key('${widget._identifier}_ST_contact'),
+          text: TextUIDataModel('ST_contact_text'.tr,
+              styleVariant: CrayonPaymentTextStyleVariant.headline5,
+              color: VO_ResendTextColor,
+              fontWeight: FontWeight.w100,
+              textAlign: TextAlign.center),
+        ),
       ),
     );
   }

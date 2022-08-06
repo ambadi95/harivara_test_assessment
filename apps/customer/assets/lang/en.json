@@ -28,7 +28,7 @@
   "SU_button_text" : "Continue",
   "SU_title_hint" : "Enter NIDA Number",
   "SU_subtitle_hint" : "Enter Mobile Number",
-  "SU_title_error_text" : "Invalid NINDA number",
+  "SU_title_error_text" : "Invalid NIDA number",
   "SU_subtitle_error_text" : "Invalid Mobile number",
 
   "DV_title" : "Enter Personal Details",
@@ -91,7 +91,7 @@
   "ES_select_membership" : "Select Your Membership",
   "ES_view_membership" : "View Your Membership",
   "ES_agent_contact_text" : "Y9 agent will contact you shortly on your Membership",
-  "ES_need_help_contact" : "Need Help Contact Us at 1800-1800-1800",
+  "ES_need_help_contact" : "Need Help Contact Us at +255 677-039-999",
 
 
   "WB_WelcomeBack": "Welcome back to Y9",
@@ -101,7 +101,7 @@
 
   "AN_Title" : "Agents Near by",
   "AN_Search" : "Search by Name / Id/ Region / District/ Po#",
-  "AN_AgentName" : "Y9 Agent id:",
+  "AN_AgentName" : "Y9 Agent ID:",
   "AN_Call" : "Call",
 
 
@@ -138,7 +138,7 @@
 
 
   "VO_OtpVerification": "OTP Verification",
-  "VO_otp_verification_description" : "An OTP will be send to your Mobile Number (ending with xxx{})",
+  "VO_otp_verification_description" : "An OTP will be sent to your Mobile Number (ending with xxx{})",
   "VO_DidNotGetCode": "Didn't get a code?",
   "VO_ResendNow": "Resend Now",
   "VO_Incorrect_OTP":"Incorrect OTP. Please try again.",
@@ -149,7 +149,8 @@
 
 
   "SP_ni": "ni",
-  "SP_bora": " Bora",
+  "SP_bora": "ni Bora",
+  "SP_isBetter": "is Better",
 
   "SU_reset_passcode" : "Reset Passcode",
   "SU_reset_subtitle" : "You can Reset the passcode here using OTP sent to your registered mobile number",
@@ -157,13 +158,12 @@
   "SU_update_subtitle" : "You can Update the passcode here using OTP sent to your registered mobile number",
 
 
-  "HS_Agent_Id" : "Y9 Agent Id",
+  "HS_Agent_Id" : "Y9 Agent ID",
   "HS_TotalOnBoarderCustomers" : "Total Onboarded\nCustomers",
   "HS_PendingCustomerRequests" : "Pending Customer\nRequest",
   "HS_Customer_OnBoarding" : "Customer Onboarding",
   "HS_Customer_DeviceSwap" : "Device swap",
   "HS_Customer_AgentSupport" : "Agent Support",
-
 
 
   "TC_Title": "Y9’s Mobile App Terms of Use",

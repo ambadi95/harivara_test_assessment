@@ -15,6 +15,7 @@ import 'package:get/get_utils/src/extensions/internacionalization.dart';
 class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
   final VerifyOtpNavigationHandler _navigationHandler;
   final VerifyOtpUseCase _verifyOtpUseCase;
+  TextEditingController otpController = TextEditingController();
 
   VerifyOtpCoordinator(this._navigationHandler, this._verifyOtpUseCase)
       : super(const VerifyOtpState.initialState());
@@ -51,6 +52,8 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
     if (response?.status == true) {
       int otp1 = response?.data?.token as int;
       otp = otp1.toString();
+
+      otpController.text = otp;
       CrayonPaymentLogger.logInfo(otp);
     }
   }
@@ -155,10 +158,11 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         var response = await _verifyOtpUseCase.otpVerify(
             otpScreenArgs.refId, enterOtp, (p0) => null);
         if (response!.data!.status == "success") {
-          print('sjkdha');
           state = currentState.copyWith(isLoading: false);
           _navigationHandler.navigateToDestinationPath(
               destinationPath, userType);
+        } else {
+          otpController.text="";
         } else {
           state = currentState.copyWith(isLoading: false);
           // state =  currentState.copyWith(attemptsRemainFlag: true);
@@ -186,6 +190,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
   Future<void> goBack() async {
     _navigationHandler.goBack();
   }
+
 //
 // Future<void> _handleOtpError(
 //     BuildContext context,

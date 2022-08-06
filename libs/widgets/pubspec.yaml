@@ -33,6 +33,7 @@ dependencies:
   hijri_picker: ^3.0.0
   hijri: ^3.0.0
   syncfusion_flutter_datepicker: ^19.4.53
+  url_launcher:
 
   core:
     path: ../core/

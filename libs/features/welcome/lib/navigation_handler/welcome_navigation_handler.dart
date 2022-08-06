@@ -242,7 +242,7 @@ class WelcomeNavigationHandler with ErrorHandler {
                 'Congratulations,\n %{Ashish | click}%\n You have successfully Onboarded',
             subtitle: "Your Y9 Agent ID\n %{XXXXX | click}% ",
             additionalText: [
-              "Your Y9 Agent id has been sent successfully to your mobile number and Email ID"
+              "Your Y9 Agent ID has been sent successfully to your mobile number and Email ID"
             ]);
 
     _navigationManager.navigateTo(
