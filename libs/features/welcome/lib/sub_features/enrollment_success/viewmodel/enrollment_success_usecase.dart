@@ -11,19 +11,20 @@ class EnrollmentSuccessUseCase extends BaseDataProvider {
   EnrollmentSuccessUseCase(this._authManager, TaskManager taskManager)
       : super(taskManager);
 
-  Future<String> getCustomerId() async {
-    return await getValueFromStorage('customerId', defaultValue: '');
-  }
+  // Future<String> getCustomerId() async {
+  //   return await getValueFromStorage('customerId', defaultValue: '');
+  // }
 
   Future<GetCustomerDetailsResponse?> getCustomerDetails(
       Function(String) onErrorCallback) async {
-    String id = await getCustomerId();
+    //String id = await getCustomerId();
     String? token = await _authManager.getAccessToken();
+    print(token);
     return await executeApiRequest<GetCustomerDetailsResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
         moduleIdentifier: WelcomeModule.moduleIdentifier,
-        requestData: {"customerId": id, "token": token},
+        requestData: {"customerId": '36', "token": token},
         serviceIdentifier: IEnrollmentService.enrollmentIdentifier,
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {

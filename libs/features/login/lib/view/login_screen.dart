@@ -47,6 +47,13 @@ class Login extends StatelessWidget {
             orElse: () => _buildMainUI(context, coordinator));
       },
     );
+
+  }
+
+  @override
+  void dispose() {
+    passcodeController.dispose();
+    agentIdController.dispose();
   }
 
   Widget _buildMainUIWithLoading(
