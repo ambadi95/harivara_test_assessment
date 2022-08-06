@@ -51,7 +51,7 @@ class PasscodeUseCase extends BaseDataProvider {
   }
 
   Future<String> getNumber() async {
-    return await getValueFromStorage('mobileNumber', defaultValue: '');
+    return await getValueFromSecureStorage('mobileNumber', defaultValue: '');
   }
 
   Future<PasscodeResponse?> savePasscode(
