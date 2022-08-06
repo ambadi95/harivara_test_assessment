@@ -17,7 +17,8 @@ class PasscodeUseCase extends BaseDataProvider {
   final PassCodeViewModel _passCodeViewModel;
   final IAuthManager _authManager;
 
-  PasscodeUseCase(this._passCodeViewModel, this._authManager, TaskManager taskManager)
+  PasscodeUseCase(
+      this._passCodeViewModel, this._authManager, TaskManager taskManager)
       : super(taskManager);
 
   String updateCurrentPasscode(
@@ -72,11 +73,11 @@ class PasscodeUseCase extends BaseDataProvider {
         });
   }
 
-  Future<CustomerSignInResponse?> login( String passcode,
-      Function(String) onErrorCallback) async {
+  Future<CustomerSignInResponse?> login(
+      String passcode, Function(String) onErrorCallback) async {
     String mobileNumber = await getNumber();
     SignInRequest signInRequest =
-    SignInRequest(mobileNumber: mobileNumber, passcode: passcode);
+        SignInRequest(mobileNumber: mobileNumber, passcode: passcode);
     return await executeApiRequest<CustomerSignInResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
@@ -86,8 +87,10 @@ class PasscodeUseCase extends BaseDataProvider {
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {
           final data = responseData;
-          CustomerSignInResponse customerSignInResponse = CustomerSignInResponse.fromJson(data);
-          _authManager.storeTokenInformation(customerSignInResponse.data!.token!, '', '', '');
+          CustomerSignInResponse customerSignInResponse =
+              CustomerSignInResponse.fromJson(data);
+          _authManager.storeTokenInformation(
+              customerSignInResponse.data!.token!, '', '', '');
           return CustomerSignInResponse.fromJson(data);
         });
   }

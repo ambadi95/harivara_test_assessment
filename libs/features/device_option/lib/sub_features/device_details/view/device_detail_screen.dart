@@ -16,20 +16,31 @@ import '../viewmodel/device_detail_coordinator.dart';
 import 'package:get/get.dart';
 
 class DeviceDetailScreen extends StatelessWidget {
-  factory DeviceDetailScreen.forCustomerApp() => const DeviceDetailScreen();
   final String _identifier = 'device-detail-screen';
   static const String viewPath =
       '${DeviceOptionModule.moduleIdentifier}/device-detail-screen';
-  const DeviceDetailScreen({Key? key}) : super(key: key);
+  DeviceDetailScreen({Key? key}) : super(key: key);
+
+  String isDeviceSelected = "";
 
   @override
   Widget build(BuildContext context) {
     return BaseView<DeviceDetailCoordinator, DeviceDetailState>(
       setupViewModel: (coordinator) {},
+      onStateListenCallback: (preState, newState) =>
+          {_listenToStateChanges(context, newState)},
       builder: (context, state, coordinator) {
         return _buildMainUI(context, coordinator);
       },
     );
+  }
+
+  void _listenToStateChanges(BuildContext context, DeviceDetailState state) {
+    state.maybeWhen((loginList) {},
+        selectedMobile: (selectedDevice) {
+          isDeviceSelected = selectedDevice;
+        },
+        orElse: () => null);
   }
 
   Widget _buildMainUI(context, DeviceDetailCoordinator coordinator) {

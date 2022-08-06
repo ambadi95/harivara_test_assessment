@@ -147,9 +147,7 @@ class CrayonPaymentAuthManager extends IAuthManager {
   }
 
   @override
-  Future<String?> getUserInfo(String? key) {
-    // TODO: implement getUserInfo
-    throw UnimplementedError();
+  Future<String?> getUserInfo(String? key) async{
+    await _secureStorageService.get(key!);
   }
-
 }

@@ -18,9 +18,20 @@ class DeviceOptionCoordinator
     state = DeviceOptionState.ready(
         destination: destinationPath, isMember: isMember);
   }
+  
+  Future fetchDeviceList(bool isMember, String destinationPath) async{
+    
+    var response = await _DeviceOptionUseCase.getDeviceList( (p0) => null);
+    if (response!.status == true) {
+     state = DeviceOptionState.ready(isMember: isMember, destination: destinationPath);
+    }
+  }
 
-  Future navigateToDeviceDetailScreen() async {
-    _navigationHandler.navigateToDeviceDetail();
+  Future navigateToDeviceDetailScreen(String deviceId) async {
+    var response = await _DeviceOptionUseCase.getDeviceDetail(deviceId, (p0) => null);
+    if (response!.status == true) {
+      _navigationHandler.navigateToDeviceDetail();
+    }
   }
 
   Future<void> navigateToEnrolledScreen() async {

@@ -4,6 +4,7 @@ import 'package:device_option/sub_features/device_details/viewmodel/device_detai
 import 'package:device_option/sub_features/device_details/viewmodel/device_detail_usecase.dart';
 import 'package:device_option/viewmodel/device_option_coordinator.dart';
 import 'package:device_option/viewmodel/device_option_usecase.dart';
+import 'package:network_manager/auth/auth_manager.dart';
 import 'package:task_manager/task_manager_impl.dart';
 
 import 'navigation_handler/device_option_navigation_handler.dart';
@@ -16,6 +17,7 @@ class DeviceOptionModule {
       (container) => DeviceOptionCoordinator(
         DeviceOptionNavigationHandler(container.resolve<NavigationManager>()),
         DeviceOptionUseCase(
+          container.resolve<IAuthManager>(),
           container.resolve<TaskManager>(),
         ),
       ),

@@ -159,11 +159,10 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
       );
     }
 
-    if(_getStaticAuth != 'error'){
+    if (_getStaticAuth != 'error') {
       _getStaticAuth.then((value) {
-
         request.customHeaders = {
-          'Authorization' : value,
+          'Authorization': value,
           'Content-Type': 'application/json',
         };
         CrayonPaymentLogger.logInfo(value);
@@ -204,10 +203,10 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
       uri = Uri.parse(currentEnvironment.host + request.endpoint);
     }
 
-    if(_getStaticAuth != 'error'){
+    if (_getStaticAuth != 'error') {
       _getStaticAuth.then((value) {
         request.customHeaders = {
-          'Authorization' : value,
+          'Authorization': value,
           'Content-Type': 'application/json',
         };
       });
@@ -240,10 +239,10 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
     } else {
       uri = Uri.parse(currentEnvironment.host + request.endpoint);
     }
-    if(_getStaticAuth != 'error'){
+    if (_getStaticAuth != 'error') {
       _getStaticAuth.then((value) {
         request.customHeaders = {
-          'Authorization' : value,
+          'Authorization': value,
           'Content-Type': 'application/json',
         };
       });

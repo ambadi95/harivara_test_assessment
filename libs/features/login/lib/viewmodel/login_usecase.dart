@@ -1,4 +1,7 @@
+import 'package:core/logging/logger.dart';
 import 'package:network_manager/auth/auth_manager.dart';
+import 'package:shared_data_models/auth/auth_detail.dart';
+import 'package:shared_data_models/welcome/signin/response/data.dart';
 import 'package:task_manager/base_classes/base_data_provider.dart';
 import 'package:task_manager/task.dart';
 import 'package:task_manager/task_manager_impl.dart';
@@ -24,8 +27,9 @@ class LoginUseCase extends BaseDataProvider {
 
   Future<CustomerSignInResponse?> login(String mobileNumber, String passcode,
       Function(String) onErrorCallback) async {
+    CrayonPaymentLogger.logInfo(mobileNumber.replaceAll("+255", "").replaceAll(" ", ""));
     SignInRequest signInRequest =
-        SignInRequest(mobileNumber: mobileNumber, passcode: passcode);
+        SignInRequest(mobileNumber: mobileNumber.replaceAll("+255", "").replaceAll(" ", ""), passcode: passcode);
     return await executeApiRequest<CustomerSignInResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
@@ -35,8 +39,13 @@ class LoginUseCase extends BaseDataProvider {
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {
           final data = responseData;
-          CustomerSignInResponse customerSignInResponse = CustomerSignInResponse.fromJson(data);
-          _authManager.storeTokenInformation(customerSignInResponse.data!.token!, '', '', '');
+          CustomerSignInResponse customerSignInResponse =
+              CustomerSignInResponse.fromJson(data);
+          Data? customerData = Data();
+          customerData =customerSignInResponse.data;
+          _authManager.storeTokenInformation(
+              customerData!.token!, '', '', '');
+          _authManager.setUserDetail(key: UserDetailsLabel.id,authInfo: customerSignInResponse.data?.id);
           return CustomerSignInResponse.fromJson(data);
         });
   }

@@ -17,4 +17,6 @@ class DeviceDetailCoordinator
   Future<void> navigateToEnrolledScreen() async {
     await _navigationHandler.navigateToCustomerEnrollmentScreen('', true);
   }
+
+
 }

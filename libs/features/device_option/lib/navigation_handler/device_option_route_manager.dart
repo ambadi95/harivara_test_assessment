@@ -16,7 +16,7 @@ class DeviceOptionRouteManager extends IRouteManager {
           deviceOptionArgs: arguments,
         );
       case DeviceDetailScreen.viewPath:
-        return const DeviceDetailScreen();
+        return DeviceDetailScreen();
       default:
         // TODO: implement getView
         throw UnimplementedError();

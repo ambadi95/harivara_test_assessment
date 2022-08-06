@@ -28,7 +28,6 @@ abstract class IAuthManager {
   Future setUserDetail({String? authInfo, UserDetailsLabel? key});
 
   Future<String?> getUserInfo(String? key);
-
 }
 
 class AuthManager implements IAuthManager {
@@ -58,7 +57,6 @@ class AuthManager implements IAuthManager {
 
   @override
   Future<String?> getAccessToken() async {
-
     if (newLoginJourney) {
       CrayonPaymentLogger.logInfo('Attempting to retrieve access token');
       // check the user is authenticated
@@ -71,7 +69,9 @@ class AuthManager implements IAuthManager {
       final expiryDateTime = await _getExpireTime();
       if (DateTime.now().toUtc().isAfter(expiryDateTime!)) {
         // access token has expired, need to refresh
-        CrayonPaymentLogger.logDebug('Access token has expired, refreshing using refresh token.',);
+        CrayonPaymentLogger.logDebug(
+          'Access token has expired, refreshing using refresh token.',
+        );
         await _refreshAccessToken();
       }
       CrayonPaymentLogger.logDebug('Access token is valid.');
