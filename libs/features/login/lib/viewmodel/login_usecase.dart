@@ -53,7 +53,7 @@ class LoginUseCase extends BaseDataProvider {
           if(customerSignInResponse.data != null){
             _authManager.storeTokenInformation(customerSignInResponse.data!.token!, '', '', '');
             saveCustomerId(customerSignInResponse.data!.id);
-            saveMobileNumber(mobileNumber.replaceAll("+255", "").replaceAll(" ", ""));
+            saveMobileNumber(mobileNumber.replaceAll(" ", ""));
           }
           return CustomerSignInResponse.fromJson(data);
         });

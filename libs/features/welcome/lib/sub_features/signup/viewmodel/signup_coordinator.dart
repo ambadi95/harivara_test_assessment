@@ -123,7 +123,10 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
   }
 
   Future<void> continueToOtp(String nidaNumber, String mobileNumber) async {
-    await _signupUseCase.saveDetails(nidaNumber, '+255' + mobileNumber);
+    await _signupUseCase.saveDetails(nidaNumber, '+255' + mobileNumber.replaceAll(" ", "")
+
+    );
+
   }
 
   void navigateToTermsCondition() {
