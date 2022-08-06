@@ -12,6 +12,8 @@ class AppUtils {
 
   static AppUtils get appUtilsInstance => _appUtils;
 
+
+
   // hide keyboard
   hideKeyboard() {
     SystemChannels.textInput.invokeMethod('TextInput.hide');

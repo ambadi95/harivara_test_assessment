@@ -255,7 +255,7 @@ class _CrayonSplashScreenState extends State<CrayonSplashScreen>
 
   void _moveToDestinationPath() {
     Future.delayed(const Duration(seconds: 4), () {
-      // _splashCoordinator!.navigateToDestinationPath(widget.welcomeScreenArgs);
+      _splashCoordinator!.navigateToDestinationPath(widget.welcomeScreenArgs);
     });
   }
 
