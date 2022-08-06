@@ -37,10 +37,10 @@ class DeviceOption extends StatelessWidget {
   Widget build(BuildContext context) {
     return BaseView<DeviceOptionCoordinator, DeviceOptionState>(
       setupViewModel: (coordinator) {
-        coordinator.fetchDeviceList(deviceOptionArgs.isMember, deviceOptionArgs.destinationPath);
+        coordinator.fetchDeviceList(
+            deviceOptionArgs.isMember, deviceOptionArgs.destinationPath);
         coordinator.initialiseState(
             deviceOptionArgs.isMember, deviceOptionArgs.destinationPath);
-
       },
       // onStateListenCallback: (preState, newState) =>
       // {_listenToStateChanges(context, newState)},

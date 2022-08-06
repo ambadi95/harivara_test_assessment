@@ -8,21 +8,14 @@ abstract class IDeviceOptionService {
   static const deviceDetailIdentifier = 'deviceDetail';
   static const selectDeviceIdentifier = 'selectDevice';
 
+  Future<StandardRequest> deviceList(Map<String, dynamic> requestData);
 
-  Future<StandardRequest> deviceList(
-      Map<String, dynamic> requestData
-  );
-
-  Future<StandardRequest> deviceDetail(
-      String deviceId
-      );
+  Future<StandardRequest> deviceDetail(String deviceId);
 }
 
 class DeviceOptionService implements IDeviceOptionService {
   @override
-  Future<StandardRequest> deviceList(
-      Map<String, dynamic> requestData
-  ) async {
+  Future<StandardRequest> deviceList(Map<String, dynamic> requestData) async {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
     request.endpoint = 'device-list';
@@ -31,12 +24,10 @@ class DeviceOptionService implements IDeviceOptionService {
   }
 
   @override
-  Future<StandardRequest> deviceDetail(
-      String deviceId
-      ) async {
+  Future<StandardRequest> deviceDetail(String deviceId) async {
     var request = StandardRequest();
     request.requestType = RequestType.GET;
-    request.endpoint = 'device-details/'+deviceId;
+    request.endpoint = 'device-details/' + deviceId;
     return request;
   }
 }

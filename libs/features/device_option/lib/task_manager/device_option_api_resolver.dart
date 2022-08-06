@@ -1,4 +1,3 @@
-
 import 'package:task_manager/task_manager.dart';
 import '../sub_features/device_details/service/device_option_service.dart';
 

@@ -27,9 +27,10 @@ class LoginUseCase extends BaseDataProvider {
 
   Future<CustomerSignInResponse?> login(String mobileNumber, String passcode,
       Function(String) onErrorCallback) async {
-    CrayonPaymentLogger.logInfo(mobileNumber.replaceAll("+255", "").replaceAll(" ", ""));
-    SignInRequest signInRequest =
-        SignInRequest(mobileNumber: mobileNumber.replaceAll("+255", "").replaceAll(" ", ""), passcode: passcode);
+    CrayonPaymentLogger.logInfo(
+        mobileNumber.replaceAll("+255", "").replaceAll(" ", ""));
+    SignInRequest signInRequest = SignInRequest(
+        mobileNumber: mobileNumber.replaceAll(" ", ""), passcode: passcode);
     return await executeApiRequest<CustomerSignInResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
@@ -41,11 +42,16 @@ class LoginUseCase extends BaseDataProvider {
           final data = responseData;
           CustomerSignInResponse customerSignInResponse =
               CustomerSignInResponse.fromJson(data);
+
+          CrayonPaymentLogger.logInfo(customerSignInResponse.toString());
           Data? customerData = Data();
-          customerData =customerSignInResponse.data;
-          _authManager.storeTokenInformation(
-              customerData!.token!, '', '', '');
-          _authManager.setUserDetail(key: UserDetailsLabel.id,authInfo: customerSignInResponse.data?.id);
+          customerData = customerSignInResponse.data;
+          if (customerSignInResponse.status!) {
+            _authManager.storeTokenInformation(
+                customerData!.token!, '', '', '');
+            _authManager.setUserDetail(
+                key: 'Customer_ID', authInfo: customerSignInResponse.data?.id);
+          }
           return CustomerSignInResponse.fromJson(data);
         });
   }

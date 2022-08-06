@@ -24,8 +24,8 @@ class EnrollmentSuccessCoordinator
   Future getCustomerDetails() async {
     var response =
         await _enrollmentSuccessUseCase.getCustomerDetails((p0) => null);
-    if (response?.status == true) {
-      CrayonPaymentLogger.logInfo(response!.data!.referenceId);
+    if (response?.status == true && response!.data!.referenceId != null) {
+      CrayonPaymentLogger.logInfo(response.data!.referenceId);
     } else {
       CrayonPaymentLogger.logInfo(response!.message!);
     }

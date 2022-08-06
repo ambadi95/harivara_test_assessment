@@ -76,8 +76,8 @@ class PasscodeUseCase extends BaseDataProvider {
   Future<CustomerSignInResponse?> login(
       String passcode, Function(String) onErrorCallback) async {
     String mobileNumber = await getNumber();
-    SignInRequest signInRequest =
-        SignInRequest(mobileNumber: mobileNumber, passcode: passcode);
+    SignInRequest signInRequest = SignInRequest(
+        mobileNumber: mobileNumber.replaceAll(" ", ''), passcode: passcode);
     return await executeApiRequest<CustomerSignInResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,

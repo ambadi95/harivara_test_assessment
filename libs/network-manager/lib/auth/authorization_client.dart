@@ -139,15 +139,19 @@ class CrayonPaymentAuthManager extends IAuthManager {
   }
 
   @override
-  Future setUserDetail({String? authInfo, UserDetailsLabel? key}) async {
+  Future setUserDetail({String? authInfo, required String key}) async {
+    CrayonPaymentLogger.logInfo(
+      "TestSecureStorageDataClient  " + key + "   " + authInfo.toString(),
+    );
+
     await _secureStorageService.set(
-      key!.name,
+      key,
       authInfo,
     );
   }
 
   @override
-  Future<String?> getUserInfo(String? key) async{
-    await _secureStorageService.get(key!);
+  Future<String?> getUserInfo(String key) async {
+    await _secureStorageService.get(key);
   }
 }
