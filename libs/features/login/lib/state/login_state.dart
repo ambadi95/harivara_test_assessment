@@ -5,12 +5,15 @@ part 'login_state.freezed.dart';
 
 @freezed
 class LoginState with _$LoginState {
-  const factory LoginState({
-    @Default([]) List<LoginModel> loginList,
-  }) = _LoginState;
 
   const factory LoginState.mobileNumberError(String mobileNumberError) =
       MobileNumberError;
+
+  const factory LoginState.loading() = LoadingState;
+
+  const factory LoginState.initialState() = InitialState;
+
+  const factory LoginState.successState() = SuccessState;
 
   const factory LoginState.agentIdError(String agentIdError) = AgentIdError;
 

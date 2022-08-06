@@ -3,35 +3,35 @@ import 'package:json_annotation/json_annotation.dart';
 
 import 'datum.dart';
 
-part 'membership_response.g.dart';
+part 'device_list_response.g.dart';
 
 @JsonSerializable()
-class MembershipResponse extends Equatable {
+class DeviceListResponse extends Equatable {
   final bool? status;
   final String? code;
   final String? message;
   final List<Datum>? data;
 
-  const MembershipResponse({
+  const DeviceListResponse({
     this.status,
     this.code,
     this.message,
     this.data,
   });
 
-  factory MembershipResponse.fromJson(Map<String, dynamic> json) {
-    return _$MembershipResponseFromJson(json);
+  factory DeviceListResponse.fromJson(Map<String, dynamic> json) {
+    return _$DeviceListResponseFromJson(json);
   }
 
-  Map<String, dynamic> toJson() => _$MembershipResponseToJson(this);
+  Map<String, dynamic> toJson() => _$DeviceListResponseToJson(this);
 
-  MembershipResponse copyWith({
+  DeviceListResponse copyWith({
     bool? status,
     String? code,
     String? message,
     List<Datum>? data,
   }) {
-    return MembershipResponse(
+    return DeviceListResponse(
       status: status ?? this.status,
       code: code ?? this.code,
       message: message ?? this.message,

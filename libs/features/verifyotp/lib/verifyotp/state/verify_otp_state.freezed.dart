@@ -28,6 +28,8 @@ mixin _$VerifyOtpState {
             String currentPasscode,
             int passcodeLength,
             String destinationPath,
+            int attemptsRemain,
+            bool attemptsRemainFlag,
             String error,
             bool isLoading)
         ready,
@@ -45,6 +47,8 @@ mixin _$VerifyOtpState {
             String currentPasscode,
             int passcodeLength,
             String destinationPath,
+            int attemptsRemain,
+            bool attemptsRemainFlag,
             String error,
             bool isLoading)?
         ready,
@@ -62,6 +66,8 @@ mixin _$VerifyOtpState {
             String currentPasscode,
             int passcodeLength,
             String destinationPath,
+            int attemptsRemain,
+            bool attemptsRemainFlag,
             String error,
             bool isLoading)?
         ready,
@@ -157,6 +163,8 @@ class _$InitialState implements InitialState {
             String currentPasscode,
             int passcodeLength,
             String destinationPath,
+            int attemptsRemain,
+            bool attemptsRemainFlag,
             String error,
             bool isLoading)
         ready,
@@ -177,6 +185,8 @@ class _$InitialState implements InitialState {
             String currentPasscode,
             int passcodeLength,
             String destinationPath,
+            int attemptsRemain,
+            bool attemptsRemainFlag,
             String error,
             bool isLoading)?
         ready,
@@ -197,6 +207,8 @@ class _$InitialState implements InitialState {
             String currentPasscode,
             int passcodeLength,
             String destinationPath,
+            int attemptsRemain,
+            bool attemptsRemainFlag,
             String error,
             bool isLoading)?
         ready,
@@ -258,6 +270,8 @@ abstract class _$$VerifyOtpStateReadyCopyWith<$Res> {
       String currentPasscode,
       int passcodeLength,
       String destinationPath,
+      int attemptsRemain,
+      bool attemptsRemainFlag,
       String error,
       bool isLoading});
 }
@@ -283,6 +297,8 @@ class __$$VerifyOtpStateReadyCopyWithImpl<$Res>
     Object? currentPasscode = freezed,
     Object? passcodeLength = freezed,
     Object? destinationPath = freezed,
+    Object? attemptsRemain = freezed,
+    Object? attemptsRemainFlag = freezed,
     Object? error = freezed,
     Object? isLoading = freezed,
   }) {
@@ -319,6 +335,14 @@ class __$$VerifyOtpStateReadyCopyWithImpl<$Res>
           ? _value.destinationPath
           : destinationPath // ignore: cast_nullable_to_non_nullable
               as String,
+      attemptsRemain: attemptsRemain == freezed
+          ? _value.attemptsRemain
+          : attemptsRemain // ignore: cast_nullable_to_non_nullable
+              as int,
+      attemptsRemainFlag: attemptsRemainFlag == freezed
+          ? _value.attemptsRemainFlag
+          : attemptsRemainFlag // ignore: cast_nullable_to_non_nullable
+              as bool,
       error: error == freezed
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -343,6 +367,8 @@ class _$VerifyOtpStateReady implements VerifyOtpStateReady {
       required this.currentPasscode,
       required this.passcodeLength,
       required this.destinationPath,
+      required this.attemptsRemain,
+      required this.attemptsRemainFlag,
       this.error = '',
       this.isLoading = false});
 
@@ -363,6 +389,10 @@ class _$VerifyOtpStateReady implements VerifyOtpStateReady {
   @override
   final String destinationPath;
   @override
+  final int attemptsRemain;
+  @override
+  final bool attemptsRemainFlag;
+  @override
   @JsonKey()
   final String error;
   @override
@@ -371,7 +401,7 @@ class _$VerifyOtpStateReady implements VerifyOtpStateReady {
 
   @override
   String toString() {
-    return 'VerifyOtpState.ready(context: $context, otpVerificationType: $otpVerificationType, pageTitle: $pageTitle, pageDescription: $pageDescription, initialPasscode: $initialPasscode, currentPasscode: $currentPasscode, passcodeLength: $passcodeLength, destinationPath: $destinationPath, error: $error, isLoading: $isLoading)';
+    return 'VerifyOtpState.ready(context: $context, otpVerificationType: $otpVerificationType, pageTitle: $pageTitle, pageDescription: $pageDescription, initialPasscode: $initialPasscode, currentPasscode: $currentPasscode, passcodeLength: $passcodeLength, destinationPath: $destinationPath, attemptsRemain: $attemptsRemain, attemptsRemainFlag: $attemptsRemainFlag, error: $error, isLoading: $isLoading)';
   }
 
   @override
@@ -393,6 +423,10 @@ class _$VerifyOtpStateReady implements VerifyOtpStateReady {
                 .equals(other.passcodeLength, passcodeLength) &&
             const DeepCollectionEquality()
                 .equals(other.destinationPath, destinationPath) &&
+            const DeepCollectionEquality()
+                .equals(other.attemptsRemain, attemptsRemain) &&
+            const DeepCollectionEquality()
+                .equals(other.attemptsRemainFlag, attemptsRemainFlag) &&
             const DeepCollectionEquality().equals(other.error, error) &&
             const DeepCollectionEquality().equals(other.isLoading, isLoading));
   }
@@ -408,6 +442,8 @@ class _$VerifyOtpStateReady implements VerifyOtpStateReady {
       const DeepCollectionEquality().hash(currentPasscode),
       const DeepCollectionEquality().hash(passcodeLength),
       const DeepCollectionEquality().hash(destinationPath),
+      const DeepCollectionEquality().hash(attemptsRemain),
+      const DeepCollectionEquality().hash(attemptsRemainFlag),
       const DeepCollectionEquality().hash(error),
       const DeepCollectionEquality().hash(isLoading));
 
@@ -430,6 +466,8 @@ class _$VerifyOtpStateReady implements VerifyOtpStateReady {
             String currentPasscode,
             int passcodeLength,
             String destinationPath,
+            int attemptsRemain,
+            bool attemptsRemainFlag,
             String error,
             bool isLoading)
         ready,
@@ -443,6 +481,8 @@ class _$VerifyOtpStateReady implements VerifyOtpStateReady {
         currentPasscode,
         passcodeLength,
         destinationPath,
+        attemptsRemain,
+        attemptsRemainFlag,
         error,
         isLoading);
   }
@@ -460,6 +500,8 @@ class _$VerifyOtpStateReady implements VerifyOtpStateReady {
             String currentPasscode,
             int passcodeLength,
             String destinationPath,
+            int attemptsRemain,
+            bool attemptsRemainFlag,
             String error,
             bool isLoading)?
         ready,
@@ -473,6 +515,8 @@ class _$VerifyOtpStateReady implements VerifyOtpStateReady {
         currentPasscode,
         passcodeLength,
         destinationPath,
+        attemptsRemain,
+        attemptsRemainFlag,
         error,
         isLoading);
   }
@@ -490,6 +534,8 @@ class _$VerifyOtpStateReady implements VerifyOtpStateReady {
             String currentPasscode,
             int passcodeLength,
             String destinationPath,
+            int attemptsRemain,
+            bool attemptsRemainFlag,
             String error,
             bool isLoading)?
         ready,
@@ -505,6 +551,8 @@ class _$VerifyOtpStateReady implements VerifyOtpStateReady {
           currentPasscode,
           passcodeLength,
           destinationPath,
+          attemptsRemain,
+          attemptsRemainFlag,
           error,
           isLoading);
     }
@@ -553,6 +601,8 @@ abstract class VerifyOtpStateReady implements VerifyOtpState {
       required final String currentPasscode,
       required final int passcodeLength,
       required final String destinationPath,
+      required final int attemptsRemain,
+      required final bool attemptsRemainFlag,
       final String error,
       final bool isLoading}) = _$VerifyOtpStateReady;
 
@@ -564,6 +614,8 @@ abstract class VerifyOtpStateReady implements VerifyOtpState {
   String get currentPasscode;
   int get passcodeLength;
   String get destinationPath;
+  int get attemptsRemain;
+  bool get attemptsRemainFlag;
   String get error;
   bool get isLoading;
   @JsonKey(ignore: true)

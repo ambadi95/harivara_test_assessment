@@ -103,6 +103,7 @@ class AppModule {
 
     DeviceOptionModule.registerDependencies();
 
+
     LoginModule.registerDependencies();
 
     CustomerHomeModule.registerDependencies();

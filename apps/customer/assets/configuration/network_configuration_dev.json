@@ -2,7 +2,7 @@
   "environments": [
     {
       "name": "test",
-      "host": "http://192.168.1.48:9191/customers/v1/"
+      "host": "https://y9-dev-capi.testmaya.com/customers/v1/"
     },
     {
       "name": "Local",
@@ -12,7 +12,7 @@
   "gqlEnvironments": [
     {
       "name": "default",
-      "host": "http://192.168.31.44:9191/customers/v1/"
+      "host": "https://y9-dev-capi.testmaya.com/customers/v1/"
     },
     {
       "name": "mock",

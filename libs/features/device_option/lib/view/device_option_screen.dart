@@ -37,14 +37,26 @@ class DeviceOption extends StatelessWidget {
   Widget build(BuildContext context) {
     return BaseView<DeviceOptionCoordinator, DeviceOptionState>(
       setupViewModel: (coordinator) {
+        coordinator.fetchDeviceList(
+            deviceOptionArgs.isMember, deviceOptionArgs.destinationPath);
         coordinator.initialiseState(
             deviceOptionArgs.isMember, deviceOptionArgs.destinationPath);
       },
+      // onStateListenCallback: (preState, newState) =>
+      // {_listenToStateChanges(context, newState)},
       builder: (context, state, coordinator) {
         return _buildMainUI(context, coordinator);
       },
     );
   }
+
+  // void _listenToStateChanges(BuildContext context, DeviceOptionState state) {
+  //   state.maybeWhen(() {},
+  //      ready: (selectedDevice) {
+  //        isDeviceSelected = selectedDevice;
+  //      },,
+  //       orElse: () => null);
+  // }
 
   Widget _buildMainUI(context, DeviceOptionCoordinator coordinator) {
     return CrayonPaymentScaffold(
@@ -310,7 +322,7 @@ class DeviceOption extends StatelessWidget {
       textColor: White,
       textStyleVariant: CrayonPaymentTextStyleVariant.headline4,
       onPressed: () {
-        coordinator.navigateToDeviceDetailScreen();
+        coordinator.navigateToDeviceDetailScreen(1.toString());
       },
     );
   }

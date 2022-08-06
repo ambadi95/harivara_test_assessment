@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'membership_response.dart';
+part of 'device_list_response.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-MembershipResponse _$MembershipResponseFromJson(Map<String, dynamic> json) =>
-    MembershipResponse(
+DeviceListResponse _$DeviceListResponseFromJson(Map<String, dynamic> json) =>
+    DeviceListResponse(
       status: json['status'] as bool?,
       code: json['code'] as String?,
       message: json['message'] as String?,
@@ -16,7 +16,7 @@ MembershipResponse _$MembershipResponseFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$MembershipResponseToJson(MembershipResponse instance) =>
+Map<String, dynamic> _$DeviceListResponseToJson(DeviceListResponse instance) =>
     <String, dynamic>{
       'status': instance.status,
       'code': instance.code,

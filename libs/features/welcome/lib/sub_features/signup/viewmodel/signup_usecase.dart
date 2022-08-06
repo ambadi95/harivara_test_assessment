@@ -53,7 +53,10 @@ class SignupUseCase extends BaseDataProvider {
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
         moduleIdentifier: WelcomeModule.moduleIdentifier,
-        requestData: {"nindaNumber": nindaNumber, "phoneNo": phoneNo},
+        requestData: {
+          "nindaNumber": nindaNumber,
+          "phoneNo": phoneNo.replaceAll(" ", "")
+        },
         serviceIdentifier: ISignupService.signupIdentifier,
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {
@@ -62,7 +65,7 @@ class SignupUseCase extends BaseDataProvider {
               CustomerDetailResponse.fromJson(data);
           _authManager.setUserDetail(
               authInfo: detailResponse.data?.customerId.toString(),
-              key: UserDetailsLabel.id);
+              key: 'Customer_ID');
           return detailResponse;
         });
   }

@@ -8,7 +8,8 @@ import '../../../welcome_module.dart';
 
 class EnrollmentSuccessUseCase extends BaseDataProvider {
   final IAuthManager _authManager;
-  EnrollmentSuccessUseCase(this._authManager,TaskManager taskManager) : super(taskManager);
+  EnrollmentSuccessUseCase(this._authManager, TaskManager taskManager)
+      : super(taskManager);
 
   Future<String> getCustomerId() async {
     return await getValueFromStorage('customerId', defaultValue: '');
@@ -22,7 +23,7 @@ class EnrollmentSuccessUseCase extends BaseDataProvider {
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
         moduleIdentifier: WelcomeModule.moduleIdentifier,
-        requestData: {"customerId": id, "token" : token},
+        requestData: {"customerId": id, "token": token},
         serviceIdentifier: IEnrollmentService.enrollmentIdentifier,
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {

@@ -21,16 +21,19 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
       String nindaNumber) async {
     await continueToOtp(nindaNumber, mobileNumber);
     if (signUpArguments.signupType == SignupType.customerSignUp) {
+      state = const SignUpState.loadingState();
       var response = await _signupUseCase.signUp(
           nindaNumber.replaceAll("-", ""), mobileNumber.trim(), (p0) => null);
       if (response!.status == true) {
+        state = const SignUpState.initialState();
         await _signupUseCase
             .saveCustomerId(response.data?.customerId.toString());
         _navigationHandler.navigateToOtpScreenCustomerSignUp(
             signUpArguments.userType, mobileNumber,
             userId: response.data?.customerId.toString());
       } else {
-        print(response.message);
+        state = const SignUpState.initialState();
+        state = SignUpState.mobileNumberError(response.message!);
       }
     } else if (signUpArguments.signupType == SignupType.resetPasscodeAgent) {
       _navigationHandler
@@ -80,7 +83,6 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
     } else {
       _isValid = isnidaNumberValid && agentID;
     }
-    print(_isValid);
     return _isValid;
   }
 

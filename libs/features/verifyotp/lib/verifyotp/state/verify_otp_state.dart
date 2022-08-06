@@ -18,6 +18,8 @@ class VerifyOtpState with _$VerifyOtpState {
     required String currentPasscode,
     required int passcodeLength,
     required String destinationPath,
+    required int attemptsRemain,
+    required bool attemptsRemainFlag,
     @Default('') String error,
     @Default(false) bool isLoading,
   }) = VerifyOtpStateReady;

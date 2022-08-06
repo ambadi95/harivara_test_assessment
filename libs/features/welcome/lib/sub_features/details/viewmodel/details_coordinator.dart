@@ -208,6 +208,7 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
       String region,
       String district,
       String userType) async {
+    state = const DetailsState.LoadingState();
     var response = await _detailsUseCase.submitCustomerDetails(
         name,
         dob,
@@ -220,8 +221,10 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
         district,
         (p0) => null);
     if (response?.status == true) {
+      state = const DetailsState.initialState();
       navigateToCreatePasscodeScreen(userType);
     } else {
+      state = const DetailsState.initialState();
       print(response?.message);
     }
   }

@@ -17,50 +17,62 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$LoginState {
   @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(List<LoginModel> loginList) $default, {
+  TResult when<TResult extends Object?>({
     required TResult Function(String mobileNumberError) mobileNumberError,
+    required TResult Function() loading,
+    required TResult Function() initialState,
+    required TResult Function() successState,
     required TResult Function(String agentIdError) agentIdError,
     required TResult Function(bool isValid) loginFormState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult Function(List<LoginModel> loginList)? $default, {
+  TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String mobileNumberError)? mobileNumberError,
+    TResult Function()? loading,
+    TResult Function()? initialState,
+    TResult Function()? successState,
     TResult Function(String agentIdError)? agentIdError,
     TResult Function(bool isValid)? loginFormState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(List<LoginModel> loginList)? $default, {
+  TResult maybeWhen<TResult extends Object?>({
     TResult Function(String mobileNumberError)? mobileNumberError,
+    TResult Function()? loading,
+    TResult Function()? initialState,
+    TResult Function()? successState,
     TResult Function(String agentIdError)? agentIdError,
     TResult Function(bool isValid)? loginFormState,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_LoginState value) $default, {
+  TResult map<TResult extends Object?>({
     required TResult Function(MobileNumberError value) mobileNumberError,
+    required TResult Function(LoadingState value) loading,
+    required TResult Function(InitialState value) initialState,
+    required TResult Function(SuccessState value) successState,
     required TResult Function(AgentIdError value) agentIdError,
     required TResult Function(LoginFormState value) loginFormState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult Function(_LoginState value)? $default, {
+  TResult? mapOrNull<TResult extends Object?>({
     TResult Function(MobileNumberError value)? mobileNumberError,
+    TResult Function(LoadingState value)? loading,
+    TResult Function(InitialState value)? initialState,
+    TResult Function(SuccessState value)? successState,
     TResult Function(AgentIdError value)? agentIdError,
     TResult Function(LoginFormState value)? loginFormState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_LoginState value)? $default, {
+  TResult maybeMap<TResult extends Object?>({
     TResult Function(MobileNumberError value)? mobileNumberError,
+    TResult Function(LoadingState value)? loading,
+    TResult Function(InitialState value)? initialState,
+    TResult Function(SuccessState value)? successState,
     TResult Function(AgentIdError value)? agentIdError,
     TResult Function(LoginFormState value)? loginFormState,
     required TResult orElse(),
@@ -82,158 +94,6 @@ class _$LoginStateCopyWithImpl<$Res> implements $LoginStateCopyWith<$Res> {
   final LoginState _value;
   // ignore: unused_field
   final $Res Function(LoginState) _then;
-}
-
-/// @nodoc
-abstract class _$$_LoginStateCopyWith<$Res> {
-  factory _$$_LoginStateCopyWith(
-          _$_LoginState value, $Res Function(_$_LoginState) then) =
-      __$$_LoginStateCopyWithImpl<$Res>;
-  $Res call({List<LoginModel> loginList});
-}
-
-/// @nodoc
-class __$$_LoginStateCopyWithImpl<$Res> extends _$LoginStateCopyWithImpl<$Res>
-    implements _$$_LoginStateCopyWith<$Res> {
-  __$$_LoginStateCopyWithImpl(
-      _$_LoginState _value, $Res Function(_$_LoginState) _then)
-      : super(_value, (v) => _then(v as _$_LoginState));
-
-  @override
-  _$_LoginState get _value => super._value as _$_LoginState;
-
-  @override
-  $Res call({
-    Object? loginList = freezed,
-  }) {
-    return _then(_$_LoginState(
-      loginList: loginList == freezed
-          ? _value._loginList
-          : loginList // ignore: cast_nullable_to_non_nullable
-              as List<LoginModel>,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_LoginState implements _LoginState {
-  const _$_LoginState({final List<LoginModel> loginList = const []})
-      : _loginList = loginList;
-
-  final List<LoginModel> _loginList;
-  @override
-  @JsonKey()
-  List<LoginModel> get loginList {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_loginList);
-  }
-
-  @override
-  String toString() {
-    return 'LoginState(loginList: $loginList)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_LoginState &&
-            const DeepCollectionEquality()
-                .equals(other._loginList, _loginList));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_loginList));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$_LoginStateCopyWith<_$_LoginState> get copyWith =>
-      __$$_LoginStateCopyWithImpl<_$_LoginState>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(List<LoginModel> loginList) $default, {
-    required TResult Function(String mobileNumberError) mobileNumberError,
-    required TResult Function(String agentIdError) agentIdError,
-    required TResult Function(bool isValid) loginFormState,
-  }) {
-    return $default(loginList);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult Function(List<LoginModel> loginList)? $default, {
-    TResult Function(String mobileNumberError)? mobileNumberError,
-    TResult Function(String agentIdError)? agentIdError,
-    TResult Function(bool isValid)? loginFormState,
-  }) {
-    return $default?.call(loginList);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(List<LoginModel> loginList)? $default, {
-    TResult Function(String mobileNumberError)? mobileNumberError,
-    TResult Function(String agentIdError)? agentIdError,
-    TResult Function(bool isValid)? loginFormState,
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(loginList);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_LoginState value) $default, {
-    required TResult Function(MobileNumberError value) mobileNumberError,
-    required TResult Function(AgentIdError value) agentIdError,
-    required TResult Function(LoginFormState value) loginFormState,
-  }) {
-    return $default(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult Function(_LoginState value)? $default, {
-    TResult Function(MobileNumberError value)? mobileNumberError,
-    TResult Function(AgentIdError value)? agentIdError,
-    TResult Function(LoginFormState value)? loginFormState,
-  }) {
-    return $default?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_LoginState value)? $default, {
-    TResult Function(MobileNumberError value)? mobileNumberError,
-    TResult Function(AgentIdError value)? agentIdError,
-    TResult Function(LoginFormState value)? loginFormState,
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _LoginState implements LoginState {
-  const factory _LoginState({final List<LoginModel> loginList}) = _$_LoginState;
-
-  List<LoginModel> get loginList;
-  @JsonKey(ignore: true)
-  _$$_LoginStateCopyWith<_$_LoginState> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -301,9 +161,11 @@ class _$MobileNumberError implements MobileNumberError {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(List<LoginModel> loginList) $default, {
+  TResult when<TResult extends Object?>({
     required TResult Function(String mobileNumberError) mobileNumberError,
+    required TResult Function() loading,
+    required TResult Function() initialState,
+    required TResult Function() successState,
     required TResult Function(String agentIdError) agentIdError,
     required TResult Function(bool isValid) loginFormState,
   }) {
@@ -312,9 +174,11 @@ class _$MobileNumberError implements MobileNumberError {
 
   @override
   @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult Function(List<LoginModel> loginList)? $default, {
+  TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String mobileNumberError)? mobileNumberError,
+    TResult Function()? loading,
+    TResult Function()? initialState,
+    TResult Function()? successState,
     TResult Function(String agentIdError)? agentIdError,
     TResult Function(bool isValid)? loginFormState,
   }) {
@@ -323,9 +187,11 @@ class _$MobileNumberError implements MobileNumberError {
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(List<LoginModel> loginList)? $default, {
+  TResult maybeWhen<TResult extends Object?>({
     TResult Function(String mobileNumberError)? mobileNumberError,
+    TResult Function()? loading,
+    TResult Function()? initialState,
+    TResult Function()? successState,
     TResult Function(String agentIdError)? agentIdError,
     TResult Function(bool isValid)? loginFormState,
     required TResult orElse(),
@@ -338,9 +204,11 @@ class _$MobileNumberError implements MobileNumberError {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_LoginState value) $default, {
+  TResult map<TResult extends Object?>({
     required TResult Function(MobileNumberError value) mobileNumberError,
+    required TResult Function(LoadingState value) loading,
+    required TResult Function(InitialState value) initialState,
+    required TResult Function(SuccessState value) successState,
     required TResult Function(AgentIdError value) agentIdError,
     required TResult Function(LoginFormState value) loginFormState,
   }) {
@@ -349,9 +217,11 @@ class _$MobileNumberError implements MobileNumberError {
 
   @override
   @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult Function(_LoginState value)? $default, {
+  TResult? mapOrNull<TResult extends Object?>({
     TResult Function(MobileNumberError value)? mobileNumberError,
+    TResult Function(LoadingState value)? loading,
+    TResult Function(InitialState value)? initialState,
+    TResult Function(SuccessState value)? successState,
     TResult Function(AgentIdError value)? agentIdError,
     TResult Function(LoginFormState value)? loginFormState,
   }) {
@@ -360,9 +230,11 @@ class _$MobileNumberError implements MobileNumberError {
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_LoginState value)? $default, {
+  TResult maybeMap<TResult extends Object?>({
     TResult Function(MobileNumberError value)? mobileNumberError,
+    TResult Function(LoadingState value)? loading,
+    TResult Function(InitialState value)? initialState,
+    TResult Function(SuccessState value)? successState,
     TResult Function(AgentIdError value)? agentIdError,
     TResult Function(LoginFormState value)? loginFormState,
     required TResult orElse(),
@@ -382,6 +254,390 @@ abstract class MobileNumberError implements LoginState {
   @JsonKey(ignore: true)
   _$$MobileNumberErrorCopyWith<_$MobileNumberError> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LoadingStateCopyWith<$Res> {
+  factory _$$LoadingStateCopyWith(
+          _$LoadingState value, $Res Function(_$LoadingState) then) =
+      __$$LoadingStateCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadingStateCopyWithImpl<$Res> extends _$LoginStateCopyWithImpl<$Res>
+    implements _$$LoadingStateCopyWith<$Res> {
+  __$$LoadingStateCopyWithImpl(
+      _$LoadingState _value, $Res Function(_$LoadingState) _then)
+      : super(_value, (v) => _then(v as _$LoadingState));
+
+  @override
+  _$LoadingState get _value => super._value as _$LoadingState;
+}
+
+/// @nodoc
+
+class _$LoadingState implements LoadingState {
+  const _$LoadingState();
+
+  @override
+  String toString() {
+    return 'LoginState.loading()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoadingState);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String mobileNumberError) mobileNumberError,
+    required TResult Function() loading,
+    required TResult Function() initialState,
+    required TResult Function() successState,
+    required TResult Function(String agentIdError) agentIdError,
+    required TResult Function(bool isValid) loginFormState,
+  }) {
+    return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String mobileNumberError)? mobileNumberError,
+    TResult Function()? loading,
+    TResult Function()? initialState,
+    TResult Function()? successState,
+    TResult Function(String agentIdError)? agentIdError,
+    TResult Function(bool isValid)? loginFormState,
+  }) {
+    return loading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String mobileNumberError)? mobileNumberError,
+    TResult Function()? loading,
+    TResult Function()? initialState,
+    TResult Function()? successState,
+    TResult Function(String agentIdError)? agentIdError,
+    TResult Function(bool isValid)? loginFormState,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(MobileNumberError value) mobileNumberError,
+    required TResult Function(LoadingState value) loading,
+    required TResult Function(InitialState value) initialState,
+    required TResult Function(SuccessState value) successState,
+    required TResult Function(AgentIdError value) agentIdError,
+    required TResult Function(LoginFormState value) loginFormState,
+  }) {
+    return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(MobileNumberError value)? mobileNumberError,
+    TResult Function(LoadingState value)? loading,
+    TResult Function(InitialState value)? initialState,
+    TResult Function(SuccessState value)? successState,
+    TResult Function(AgentIdError value)? agentIdError,
+    TResult Function(LoginFormState value)? loginFormState,
+  }) {
+    return loading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(MobileNumberError value)? mobileNumberError,
+    TResult Function(LoadingState value)? loading,
+    TResult Function(InitialState value)? initialState,
+    TResult Function(SuccessState value)? successState,
+    TResult Function(AgentIdError value)? agentIdError,
+    TResult Function(LoginFormState value)? loginFormState,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LoadingState implements LoginState {
+  const factory LoadingState() = _$LoadingState;
+}
+
+/// @nodoc
+abstract class _$$InitialStateCopyWith<$Res> {
+  factory _$$InitialStateCopyWith(
+          _$InitialState value, $Res Function(_$InitialState) then) =
+      __$$InitialStateCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$InitialStateCopyWithImpl<$Res> extends _$LoginStateCopyWithImpl<$Res>
+    implements _$$InitialStateCopyWith<$Res> {
+  __$$InitialStateCopyWithImpl(
+      _$InitialState _value, $Res Function(_$InitialState) _then)
+      : super(_value, (v) => _then(v as _$InitialState));
+
+  @override
+  _$InitialState get _value => super._value as _$InitialState;
+}
+
+/// @nodoc
+
+class _$InitialState implements InitialState {
+  const _$InitialState();
+
+  @override
+  String toString() {
+    return 'LoginState.initialState()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$InitialState);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String mobileNumberError) mobileNumberError,
+    required TResult Function() loading,
+    required TResult Function() initialState,
+    required TResult Function() successState,
+    required TResult Function(String agentIdError) agentIdError,
+    required TResult Function(bool isValid) loginFormState,
+  }) {
+    return initialState();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String mobileNumberError)? mobileNumberError,
+    TResult Function()? loading,
+    TResult Function()? initialState,
+    TResult Function()? successState,
+    TResult Function(String agentIdError)? agentIdError,
+    TResult Function(bool isValid)? loginFormState,
+  }) {
+    return initialState?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String mobileNumberError)? mobileNumberError,
+    TResult Function()? loading,
+    TResult Function()? initialState,
+    TResult Function()? successState,
+    TResult Function(String agentIdError)? agentIdError,
+    TResult Function(bool isValid)? loginFormState,
+    required TResult orElse(),
+  }) {
+    if (initialState != null) {
+      return initialState();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(MobileNumberError value) mobileNumberError,
+    required TResult Function(LoadingState value) loading,
+    required TResult Function(InitialState value) initialState,
+    required TResult Function(SuccessState value) successState,
+    required TResult Function(AgentIdError value) agentIdError,
+    required TResult Function(LoginFormState value) loginFormState,
+  }) {
+    return initialState(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(MobileNumberError value)? mobileNumberError,
+    TResult Function(LoadingState value)? loading,
+    TResult Function(InitialState value)? initialState,
+    TResult Function(SuccessState value)? successState,
+    TResult Function(AgentIdError value)? agentIdError,
+    TResult Function(LoginFormState value)? loginFormState,
+  }) {
+    return initialState?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(MobileNumberError value)? mobileNumberError,
+    TResult Function(LoadingState value)? loading,
+    TResult Function(InitialState value)? initialState,
+    TResult Function(SuccessState value)? successState,
+    TResult Function(AgentIdError value)? agentIdError,
+    TResult Function(LoginFormState value)? loginFormState,
+    required TResult orElse(),
+  }) {
+    if (initialState != null) {
+      return initialState(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class InitialState implements LoginState {
+  const factory InitialState() = _$InitialState;
+}
+
+/// @nodoc
+abstract class _$$SuccessStateCopyWith<$Res> {
+  factory _$$SuccessStateCopyWith(
+          _$SuccessState value, $Res Function(_$SuccessState) then) =
+      __$$SuccessStateCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$SuccessStateCopyWithImpl<$Res> extends _$LoginStateCopyWithImpl<$Res>
+    implements _$$SuccessStateCopyWith<$Res> {
+  __$$SuccessStateCopyWithImpl(
+      _$SuccessState _value, $Res Function(_$SuccessState) _then)
+      : super(_value, (v) => _then(v as _$SuccessState));
+
+  @override
+  _$SuccessState get _value => super._value as _$SuccessState;
+}
+
+/// @nodoc
+
+class _$SuccessState implements SuccessState {
+  const _$SuccessState();
+
+  @override
+  String toString() {
+    return 'LoginState.successState()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$SuccessState);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String mobileNumberError) mobileNumberError,
+    required TResult Function() loading,
+    required TResult Function() initialState,
+    required TResult Function() successState,
+    required TResult Function(String agentIdError) agentIdError,
+    required TResult Function(bool isValid) loginFormState,
+  }) {
+    return successState();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String mobileNumberError)? mobileNumberError,
+    TResult Function()? loading,
+    TResult Function()? initialState,
+    TResult Function()? successState,
+    TResult Function(String agentIdError)? agentIdError,
+    TResult Function(bool isValid)? loginFormState,
+  }) {
+    return successState?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String mobileNumberError)? mobileNumberError,
+    TResult Function()? loading,
+    TResult Function()? initialState,
+    TResult Function()? successState,
+    TResult Function(String agentIdError)? agentIdError,
+    TResult Function(bool isValid)? loginFormState,
+    required TResult orElse(),
+  }) {
+    if (successState != null) {
+      return successState();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(MobileNumberError value) mobileNumberError,
+    required TResult Function(LoadingState value) loading,
+    required TResult Function(InitialState value) initialState,
+    required TResult Function(SuccessState value) successState,
+    required TResult Function(AgentIdError value) agentIdError,
+    required TResult Function(LoginFormState value) loginFormState,
+  }) {
+    return successState(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(MobileNumberError value)? mobileNumberError,
+    TResult Function(LoadingState value)? loading,
+    TResult Function(InitialState value)? initialState,
+    TResult Function(SuccessState value)? successState,
+    TResult Function(AgentIdError value)? agentIdError,
+    TResult Function(LoginFormState value)? loginFormState,
+  }) {
+    return successState?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(MobileNumberError value)? mobileNumberError,
+    TResult Function(LoadingState value)? loading,
+    TResult Function(InitialState value)? initialState,
+    TResult Function(SuccessState value)? successState,
+    TResult Function(AgentIdError value)? agentIdError,
+    TResult Function(LoginFormState value)? loginFormState,
+    required TResult orElse(),
+  }) {
+    if (successState != null) {
+      return successState(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SuccessState implements LoginState {
+  const factory SuccessState() = _$SuccessState;
 }
 
 /// @nodoc
@@ -448,9 +704,11 @@ class _$AgentIdError implements AgentIdError {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(List<LoginModel> loginList) $default, {
+  TResult when<TResult extends Object?>({
     required TResult Function(String mobileNumberError) mobileNumberError,
+    required TResult Function() loading,
+    required TResult Function() initialState,
+    required TResult Function() successState,
     required TResult Function(String agentIdError) agentIdError,
     required TResult Function(bool isValid) loginFormState,
   }) {
@@ -459,9 +717,11 @@ class _$AgentIdError implements AgentIdError {
 
   @override
   @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult Function(List<LoginModel> loginList)? $default, {
+  TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String mobileNumberError)? mobileNumberError,
+    TResult Function()? loading,
+    TResult Function()? initialState,
+    TResult Function()? successState,
     TResult Function(String agentIdError)? agentIdError,
     TResult Function(bool isValid)? loginFormState,
   }) {
@@ -470,9 +730,11 @@ class _$AgentIdError implements AgentIdError {
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(List<LoginModel> loginList)? $default, {
+  TResult maybeWhen<TResult extends Object?>({
     TResult Function(String mobileNumberError)? mobileNumberError,
+    TResult Function()? loading,
+    TResult Function()? initialState,
+    TResult Function()? successState,
     TResult Function(String agentIdError)? agentIdError,
     TResult Function(bool isValid)? loginFormState,
     required TResult orElse(),
@@ -485,9 +747,11 @@ class _$AgentIdError implements AgentIdError {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_LoginState value) $default, {
+  TResult map<TResult extends Object?>({
     required TResult Function(MobileNumberError value) mobileNumberError,
+    required TResult Function(LoadingState value) loading,
+    required TResult Function(InitialState value) initialState,
+    required TResult Function(SuccessState value) successState,
     required TResult Function(AgentIdError value) agentIdError,
     required TResult Function(LoginFormState value) loginFormState,
   }) {
@@ -496,9 +760,11 @@ class _$AgentIdError implements AgentIdError {
 
   @override
   @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult Function(_LoginState value)? $default, {
+  TResult? mapOrNull<TResult extends Object?>({
     TResult Function(MobileNumberError value)? mobileNumberError,
+    TResult Function(LoadingState value)? loading,
+    TResult Function(InitialState value)? initialState,
+    TResult Function(SuccessState value)? successState,
     TResult Function(AgentIdError value)? agentIdError,
     TResult Function(LoginFormState value)? loginFormState,
   }) {
@@ -507,9 +773,11 @@ class _$AgentIdError implements AgentIdError {
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_LoginState value)? $default, {
+  TResult maybeMap<TResult extends Object?>({
     TResult Function(MobileNumberError value)? mobileNumberError,
+    TResult Function(LoadingState value)? loading,
+    TResult Function(InitialState value)? initialState,
+    TResult Function(SuccessState value)? successState,
     TResult Function(AgentIdError value)? agentIdError,
     TResult Function(LoginFormState value)? loginFormState,
     required TResult orElse(),
@@ -594,9 +862,11 @@ class _$LoginFormState implements LoginFormState {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(List<LoginModel> loginList) $default, {
+  TResult when<TResult extends Object?>({
     required TResult Function(String mobileNumberError) mobileNumberError,
+    required TResult Function() loading,
+    required TResult Function() initialState,
+    required TResult Function() successState,
     required TResult Function(String agentIdError) agentIdError,
     required TResult Function(bool isValid) loginFormState,
   }) {
@@ -605,9 +875,11 @@ class _$LoginFormState implements LoginFormState {
 
   @override
   @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult Function(List<LoginModel> loginList)? $default, {
+  TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String mobileNumberError)? mobileNumberError,
+    TResult Function()? loading,
+    TResult Function()? initialState,
+    TResult Function()? successState,
     TResult Function(String agentIdError)? agentIdError,
     TResult Function(bool isValid)? loginFormState,
   }) {
@@ -616,9 +888,11 @@ class _$LoginFormState implements LoginFormState {
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(List<LoginModel> loginList)? $default, {
+  TResult maybeWhen<TResult extends Object?>({
     TResult Function(String mobileNumberError)? mobileNumberError,
+    TResult Function()? loading,
+    TResult Function()? initialState,
+    TResult Function()? successState,
     TResult Function(String agentIdError)? agentIdError,
     TResult Function(bool isValid)? loginFormState,
     required TResult orElse(),
@@ -631,9 +905,11 @@ class _$LoginFormState implements LoginFormState {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_LoginState value) $default, {
+  TResult map<TResult extends Object?>({
     required TResult Function(MobileNumberError value) mobileNumberError,
+    required TResult Function(LoadingState value) loading,
+    required TResult Function(InitialState value) initialState,
+    required TResult Function(SuccessState value) successState,
     required TResult Function(AgentIdError value) agentIdError,
     required TResult Function(LoginFormState value) loginFormState,
   }) {
@@ -642,9 +918,11 @@ class _$LoginFormState implements LoginFormState {
 
   @override
   @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult Function(_LoginState value)? $default, {
+  TResult? mapOrNull<TResult extends Object?>({
     TResult Function(MobileNumberError value)? mobileNumberError,
+    TResult Function(LoadingState value)? loading,
+    TResult Function(InitialState value)? initialState,
+    TResult Function(SuccessState value)? successState,
     TResult Function(AgentIdError value)? agentIdError,
     TResult Function(LoginFormState value)? loginFormState,
   }) {
@@ -653,9 +931,11 @@ class _$LoginFormState implements LoginFormState {
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_LoginState value)? $default, {
+  TResult maybeMap<TResult extends Object?>({
     TResult Function(MobileNumberError value)? mobileNumberError,
+    TResult Function(LoadingState value)? loading,
+    TResult Function(InitialState value)? initialState,
+    TResult Function(SuccessState value)? successState,
     TResult Function(AgentIdError value)? agentIdError,
     TResult Function(LoginFormState value)? loginFormState,
     required TResult orElse(),
