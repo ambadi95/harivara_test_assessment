@@ -41,6 +41,8 @@ class DeviceOptionModule {
         DeviceOptionNavigationHandler(container.resolve<NavigationManager>()),
         DeviceDetailUseCase(
           container.resolve<TaskManager>(),
+          container.resolve<IAuthManager>(),
+
         ),
       ),
     );

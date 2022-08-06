@@ -26,7 +26,9 @@ class DeviceDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseView<DeviceDetailCoordinator, DeviceDetailState>(
-      setupViewModel: (coordinator) {},
+      setupViewModel: (coordinator) {
+
+      },
       onStateListenCallback: (preState, newState) =>
           {_listenToStateChanges(context, newState)},
       builder: (context, state, coordinator) {
