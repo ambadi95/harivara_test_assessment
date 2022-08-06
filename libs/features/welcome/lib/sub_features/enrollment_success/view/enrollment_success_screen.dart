@@ -19,7 +19,7 @@ import 'package:config/Colors.dart' as config_color;
 class EnrollmentSuccessScreen extends StatefulWidget {
   static const viewPath = '${WelcomeModule.moduleIdentifier}/enrollmentSuccess';
   final bool isEnrolled;
-  const EnrollmentSuccessScreen({Key? key,  this.isEnrolled = true})
+  const EnrollmentSuccessScreen({Key? key,  required this.isEnrolled})
       : super(key: key);
 
   @override
@@ -126,7 +126,7 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
           child: RichTextDescription(
               textAlign: TextAlign.center,
               key: const Key('welcome'),
-              description: 'ES_welcome_Text'.tr.replaceAll('_name_', customerDetail!.data!.firstName! +' '+customerDetail!.data!.firstName!),
+              description: 'ES_welcome_Text'.tr.replaceAll('_name_', customerDetail!.data!.firstName! +' '+customerDetail!.data!.lastName!),
               linkTextStyle: ES_bold_text,
               descriptionTextStyle: ES_success_text)),
     );

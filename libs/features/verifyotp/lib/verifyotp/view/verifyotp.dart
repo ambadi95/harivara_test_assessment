@@ -179,11 +179,7 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
                 widget.otpScreenArgs.destinationPath,
                 widget.otpScreenArgs.userType,
                 widget.otpScreenArgs,
-                otpController.text);
-              widget.otpScreenArgs.destinationPath,
-              widget.otpScreenArgs.userType,
-              widget.otpScreenArgs,
-                coordinator.otpController.text
+                coordinator.otpController.text.toString(),
             );
           } else {
 

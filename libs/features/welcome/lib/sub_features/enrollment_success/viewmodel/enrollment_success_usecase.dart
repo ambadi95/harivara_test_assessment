@@ -19,12 +19,11 @@ class EnrollmentSuccessUseCase extends BaseDataProvider {
       Function(String) onErrorCallback) async {
     //String id = await getCustomerId();
     String? token = await _authManager.getAccessToken();
-    print(token);
     return await executeApiRequest<GetCustomerDetailsResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
         moduleIdentifier: WelcomeModule.moduleIdentifier,
-        requestData: {"customerId": '36', "token": token},
+        requestData: {"customerId": '40', "token": token},
         serviceIdentifier: IEnrollmentService.enrollmentIdentifier,
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {

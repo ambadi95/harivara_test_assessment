@@ -68,7 +68,7 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
     var isnNameValid = _detailsUseCase.isValidName(name);
     var isMobileNoValid = mobNumber.isNotEmpty;
     var isDobValid = dob.isNotEmpty;
-    var isGenderValid = gender.isNotEmpty;
+    var isGenderValid = (gender== 'null') ? false: gender.isNotEmpty;
     var isProfessionValid = profession.isNotEmpty;
     var isEmailIdValid = _detailsUseCase.isValidEmail(emailId);
     var isAddressValid = address.isNotEmpty;

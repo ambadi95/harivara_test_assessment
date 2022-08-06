@@ -163,7 +163,6 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
               destinationPath, userType);
         } else {
           otpController.text="";
-        } else {
           state = currentState.copyWith(isLoading: false);
           // state =  currentState.copyWith(attemptsRemainFlag: true);
           if (attempts > 1) {
