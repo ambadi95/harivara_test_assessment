@@ -5,7 +5,6 @@ part 'login_state.freezed.dart';
 
 @freezed
 class LoginState with _$LoginState {
-
   const factory LoginState.mobileNumberError(String mobileNumberError) =
       MobileNumberError;
 

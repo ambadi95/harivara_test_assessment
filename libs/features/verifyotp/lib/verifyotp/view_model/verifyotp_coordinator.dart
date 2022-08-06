@@ -97,8 +97,6 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
       //     'Something went wrong',
       //   );
       // }
-    } else if (otpVerificationType == OtpVerificationType.customerSign) {
-      _navigationHandler.navigateToCustomerEnrollmentScreen();
     }
 
     // on ErrorResponse catch (errorResponse) {
@@ -146,7 +144,15 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
       String userType, OtpScreenArgs otpScreenArgs, String enterOtp) async {
     var currentState = state as VerifyOtpStateReady;
     int attempts = currentState.attemptsRemain;
-    if (otpScreenArgs.otpVerificationType == OtpVerificationType.mobile) {
+     if (otpScreenArgs.otpVerificationType == OtpVerificationType.customerSign) {
+      var responseSignin = await _verifyOtpUseCase.otpVerify(otpScreenArgs.refId, enterOtp, (p0) => null);
+      if (responseSignin!.data!.status == "success") {
+        _navigationHandler.navigateToCustomerEnrollmentScreen();
+      }else{
+        print('error');
+      }
+    }
+    else if (otpScreenArgs.otpVerificationType == OtpVerificationType.mobile) {
       if (userType == 'Customer') {
         state = currentState.copyWith(isLoading: true);
         var response = await _verifyOtpUseCase.otpVerify(
@@ -172,15 +178,9 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
     } else if (otpScreenArgs.otpVerificationType ==
         OtpVerificationType.agentSignIn) {
       _navigationHandler.navigateToAgentWelcomeBack(userType);
-    } else if (otpScreenArgs.otpVerificationType ==
-        OtpVerificationType.customerSign) {
-      var response = await _verifyOtpUseCase.otpVerify(
-          otpScreenArgs.refId, otp, (p0) => null);
-      if (response!.status == true) {
-        _navigationHandler.navigateToCustomerEnrollmentScreen();
-      }
-      _navigationHandler.navigateToCustomerEnrollmentScreen();
-    } else if (otpScreenArgs.otpVerificationType ==
+    }
+
+    else if (otpScreenArgs.otpVerificationType ==
         OtpVerificationType.updatePasscodeAgent) {
       _navigationHandler.openForUpdateNewPasscode(userType);
     }

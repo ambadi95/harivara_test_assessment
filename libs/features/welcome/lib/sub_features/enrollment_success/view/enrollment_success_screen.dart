@@ -1,10 +1,13 @@
 import 'package:config/Colors.dart';
 import 'package:config/Config.dart';
 import 'package:config/Styles.dart';
+import 'package:core/mobile_core.dart';
 import 'package:core/view/base_view.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_data_models/customer_details/response/get_customer_details_response/get_customer_details_response.dart';
 import 'package:widget_library/html/rich_text_description.dart';
 import 'package:widget_library/page_header/text_ui_data_model.dart';
+import 'package:widget_library/progress_bar/centered_circular_progress_bar.dart';
 import 'package:widget_library/static_text/crayon_payment_text.dart';
 import 'package:widget_library/utils/launcher_utils.dart';
 import '../../../welcome_module.dart';
@@ -16,27 +19,56 @@ import 'package:config/Colors.dart' as config_color;
 class EnrollmentSuccessScreen extends StatefulWidget {
   static const viewPath = '${WelcomeModule.moduleIdentifier}/enrollmentSuccess';
   final bool isEnrolled;
-  const EnrollmentSuccessScreen({Key? key, required this.isEnrolled})
+  const EnrollmentSuccessScreen({Key? key,  required this.isEnrolled})
       : super(key: key);
 
   @override
   State<EnrollmentSuccessScreen> createState() =>
       _EnrollmentSuccessScreenState();
 }
+GetCustomerDetailsResponse? customerDetail;
+GlobalKey<FormState> _abcKey = GlobalKey<FormState>();
 
 class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
   @override
   Widget build(BuildContext context) =>
       BaseView<EnrollmentSuccessCoordinator, EnrollmentSuccessState>(
         setupViewModel: (coordinator) async {
-          await coordinator.getCustomerDetails();
+         customerDetail = await coordinator.getCustomerDetails();
+         setState(() {
+         });
         },
+
         builder: (context, state, coordinator) => SafeArea(
           child: Scaffold(
-            body: _buildMainUI(coordinator),
+            key: _abcKey,
+            body: customerDetail.isNotEmptyOrNull ? _buildMainUI(coordinator) : _buildMainUIWithLoading(context,coordinator),
           ),
         ),
       );
+
+  Widget _buildMainUIWithLoading(
+      BuildContext context,
+      EnrollmentSuccessCoordinator coordinator,
+      ) {
+    return Scaffold(
+      body: Stack(
+        children: [
+          _createLoading(),
+        ],
+      ),
+    );
+  }
+
+  Widget _createLoading() {
+    return Center(
+      child: Container(
+        color: Colors.white,
+        child: const CenteredCircularProgressBar(color: PRIMARY_COLOR),
+      ),
+    );
+  }
+
 
   Widget _buildMainUI(EnrollmentSuccessCoordinator coordinator) {
     return Padding(
@@ -94,7 +126,7 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
           child: RichTextDescription(
               textAlign: TextAlign.center,
               key: const Key('welcome'),
-              description: 'ES_welcome_Text'.tr,
+              description: 'ES_welcome_Text'.tr.replaceAll('_name_', customerDetail!.data!.firstName! +' '+customerDetail!.data!.lastName!),
               linkTextStyle: ES_bold_text,
               descriptionTextStyle: ES_success_text)),
     );

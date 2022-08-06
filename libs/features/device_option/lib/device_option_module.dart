@@ -42,7 +42,6 @@ class DeviceOptionModule {
         DeviceDetailUseCase(
           container.resolve<TaskManager>(),
           container.resolve<IAuthManager>(),
-
         ),
       ),
     );

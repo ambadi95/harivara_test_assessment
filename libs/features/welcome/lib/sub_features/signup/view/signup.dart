@@ -39,43 +39,41 @@ class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) =>
       BaseView<SignUpCoordinator, SignUpState>(
-        onStateListenCallback: (preState, newState) =>
-            {_listenToStateChanges(context, newState)},
-        setupViewModel: (coordinator) async {},
-        builder: (context, state, coordinator) => SafeArea(
-          child: Scaffold(
-            bottomNavigationBar: state.maybeWhen(
-              loadingState: ()=> _buildMainUIWithLoading(context, coordinator),
-              orElse: ()=> SizedBox(
-              height: 120,
-              child: Column(
-                children: [
-                  widget.signUpArguments.userType == 'Customer'
-                      ? _carrierText()
-                      : const SizedBox(
-                          height: 14,
-                        ),
-                  const SizedBox(
-                    height: 23,
+          onStateListenCallback: (preState, newState) =>
+              {_listenToStateChanges(context, newState)},
+          setupViewModel: (coordinator) async {},
+          builder: (context, state, coordinator) => SafeArea(
+                child: Scaffold(
+                  bottomNavigationBar: state.maybeWhen(
+                    loadingState: () =>
+                        _buildMainUIWithLoading(context, coordinator),
+                    orElse: () => SizedBox(
+                      height: 120,
+                      child: Column(
+                        children: [
+                          widget.signUpArguments.userType == 'Customer'
+                              ? _carrierText()
+                              : const SizedBox(
+                                  height: 14,
+                                ),
+                          const SizedBox(
+                            height: 23,
+                          ),
+                          _buildContinueButton(context, coordinator, state)
+                        ],
+                      ),
+                    ),
                   ),
-                  _buildContinueButton(context, coordinator, state)
-                ],
-              ),
-            ),
-            ),
-            body: state.maybeWhen(
-              orElse:() =>
-            SingleChildScrollView(
-              child: SafeArea(
-                child:  _UI(coordinator),
-              )
-            ),
-          ),
-      ),
-        )
-      );
+                  body: state.maybeWhen(
+                    orElse: () => SingleChildScrollView(
+                        child: SafeArea(
+                      child: _UI(coordinator),
+                    )),
+                  ),
+                ),
+              ));
 
-  Widget _UI(SignUpCoordinator coordinator){
+  Widget _UI(SignUpCoordinator coordinator) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -86,9 +84,9 @@ class _SignUpState extends State<SignUp> {
   }
 
   Widget _buildMainUIWithLoading(
-      BuildContext context,
-      SignUpCoordinator coordinator,
-      ) {
+    BuildContext context,
+    SignUpCoordinator coordinator,
+  ) {
     return Stack(
       children: [
         _UI(coordinator),
@@ -109,12 +107,12 @@ class _SignUpState extends State<SignUp> {
     );
   }
 
-
   Widget _createLoading() {
     return Center(
       child: Container(
         color: Colors.black.withOpacity(0.4),
-        child: const CenteredCircularProgressBar(color: config_color.PRIMARY_COLOR),
+        child: const CenteredCircularProgressBar(
+            color: config_color.PRIMARY_COLOR),
       ),
     );
   }

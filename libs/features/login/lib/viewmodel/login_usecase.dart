@@ -41,10 +41,12 @@ class LoginUseCase extends BaseDataProvider {
         modelBuilderCallback: (responseData) {
           final data = responseData;
           print(data);
-          CustomerSignInResponse customerSignInResponse = CustomerSignInResponse.fromJson(data);
+          CustomerSignInResponse customerSignInResponse =
+              CustomerSignInResponse.fromJson(data);
           print(customerSignInResponse);
-          if(customerSignInResponse.data != null){
-            _authManager.storeTokenInformation(customerSignInResponse.data!.token!, '', '', '');
+          if (customerSignInResponse.data != null) {
+            _authManager.storeTokenInformation(
+                customerSignInResponse.data!.token!, '', '', '');
           }
           return CustomerSignInResponse.fromJson(data);
         });

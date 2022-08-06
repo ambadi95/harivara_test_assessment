@@ -25,35 +25,35 @@ class DeviceOptionUseCase extends BaseDataProvider {
         .then((value) => id = value);
 
     MembershipRequest membershipRequest = MembershipRequest(customerId: 36);
-
+    String? token = await _authManager.getAccessToken();
     return await executeApiRequest<DeviceListResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
         moduleIdentifier: DeviceOptionModule.moduleIdentifier,
-        requestData: membershipRequest.toJson(),
+        requestData: {'customerId': 36, 'token': token},
         serviceIdentifier: IDeviceOptionService.deviceOptionIdentifier,
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {
           final data = responseData;
           DeviceListResponse deviceListResponse =
-          DeviceListResponse.fromJson(data);
+              DeviceListResponse.fromJson(data);
           return DeviceListResponse.fromJson(data);
         });
   }
 
-  Future<DeviceListResponse?> getDeviceDetail(
-      String deviceId, Function(String) onErrorCallback) async {
-    return await executeApiRequest<DeviceListResponse?>(
-        taskType: TaskType.DATA_OPERATION,
-        taskSubType: TaskSubType.REST,
-        moduleIdentifier: DeviceOptionModule.moduleIdentifier,
-        serviceIdentifier: IDeviceOptionService.deviceDetailIdentifier,
-        onError: onErrorCallback,
-        modelBuilderCallback: (responseData) {
-          final data = responseData;
-          DeviceListResponse deviceListResponse =
-          DeviceListResponse.fromJson(data);
-          return DeviceListResponse.fromJson(data);
-        });
-  }
+  // Future<DeviceListResponse?> getDeviceDetail(
+  //     String deviceId, Function(String) onErrorCallback) async {
+  //   return await executeApiRequest<DeviceListResponse?>(
+  //       taskType: TaskType.DATA_OPERATION,
+  //       taskSubType: TaskSubType.REST,
+  //       moduleIdentifier: DeviceOptionModule.moduleIdentifier,
+  //       serviceIdentifier: IDeviceOptionService.deviceDetailIdentifier,
+  //       onError: onErrorCallback,
+  //       modelBuilderCallback: (responseData) {
+  //         final data = responseData;
+  //         DeviceListResponse deviceListResponse =
+  //         DeviceListResponse.fromJson(data);
+  //         return DeviceListResponse.fromJson(data);
+  //       });
+  // }
 }
