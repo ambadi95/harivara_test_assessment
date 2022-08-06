@@ -15,6 +15,7 @@ import 'package:get/get_utils/src/extensions/internacionalization.dart';
 class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
   final VerifyOtpNavigationHandler _navigationHandler;
   final VerifyOtpUseCase _verifyOtpUseCase;
+  TextEditingController otpController = TextEditingController();
 
   VerifyOtpCoordinator(this._navigationHandler, this._verifyOtpUseCase)
       : super(const VerifyOtpState.initialState());
@@ -44,14 +45,17 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
 
   String otp = '';
 
-  Future<void> generateOtp(String id,) async {
+  Future<void> generateOtp(
+    String id,
+  ) async {
     var response = await _verifyOtpUseCase.otpGen(id, (p0) => null);
-    if(response?.status == true){
+    if (response?.status == true) {
       int otp1 = response?.data?.token as int;
       otp = otp1.toString();
+
+      otpController.text = otp;
       CrayonPaymentLogger.logInfo(otp);
     }
-
   }
 
   Future<void> verifyOTP(
@@ -138,12 +142,8 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
     //navigateToDestinationPath(destinationPath, userType);
   }
 
-  Future<void> navigateToDestinationPath(
-    String destinationPath,
-    String userType,
-    OtpScreenArgs otpScreenArgs,
-      String enterOtp
-  ) async {
+  Future<void> navigateToDestinationPath(String destinationPath,
+      String userType, OtpScreenArgs otpScreenArgs, String enterOtp) async {
     var currentState = state as VerifyOtpStateReady;
     int attempts = currentState.attemptsRemain;
     if (otpScreenArgs.otpVerificationType == OtpVerificationType.mobile) {
@@ -155,15 +155,15 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
           state = currentState.copyWith(isLoading: false);
           _navigationHandler.navigateToDestinationPath(
               destinationPath, userType);
-        }else{
+        } else {
           state = currentState.copyWith(isLoading: false);
-         // state =  currentState.copyWith(attemptsRemainFlag: true);
-         if(attempts > 1) {
-           state = currentState.copyWith(attemptsRemain: attempts - 1);
-         }else{
-           state = currentState.copyWith(attemptsRemain: 3);
-           _showAlertForOTPAttempts();
-         }
+          // state =  currentState.copyWith(attemptsRemainFlag: true);
+          if (attempts > 1) {
+            state = currentState.copyWith(attemptsRemain: attempts - 1);
+          } else {
+            state = currentState.copyWith(attemptsRemain: 3);
+            _showAlertForOTPAttempts();
+          }
         }
       } else {
         _navigationHandler.openForNewPasscode(userType);
@@ -188,6 +188,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
   Future<void> goBack() async {
     _navigationHandler.goBack();
   }
+
 //
 // Future<void> _handleOtpError(
 //     BuildContext context,
@@ -238,5 +239,4 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
       isDismissible: true,
     );
   }
-
 }

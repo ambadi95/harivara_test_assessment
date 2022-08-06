@@ -35,7 +35,6 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
   late Timer _timer;
   final ValueNotifier<int> _startValue = ValueNotifier<int>(60);
 
-  TextEditingController otpController = TextEditingController();
   bool isBtnEnabled = false;
 
   void startTimer() {
@@ -174,12 +173,12 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
       padding: const EdgeInsets.only(bottom: 19),
       child: InkWell(
         onTap: () {
-          if (otpController.text.isNotEmpty && otpController.text.length == 6) {
+          if (coordinator.otpController.text.isNotEmpty && coordinator.otpController.text.length == 6) {
             coordinator.navigateToDestinationPath(
               widget.otpScreenArgs.destinationPath,
               widget.otpScreenArgs.userType,
               widget.otpScreenArgs,
-                otpController.text
+                coordinator.otpController.text
             );
           } else {
             _showAlertForOTPAttempts(coordinator);
@@ -342,7 +341,7 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
             autoFocus: true,
             autoDismissKeyboard: true,
             //errorAnimationController: errorController,
-            controller: otpController,
+            controller: coordinator.otpController,
             keyboardType: TextInputType.number,
             onCompleted: (v) {
 
@@ -351,7 +350,9 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
               });
 
             },
+
             onChanged: (String value) {
+
               setState(() {
                 isBtnEnabled=false;
               });
@@ -452,7 +453,7 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
                 : InkWell(
                     onTap: () async{
                       startTimer();
-                      otpController.clear();
+                      coordinator.otpController.clear();
                      await coordinator.generateOtp(widget.otpScreenArgs.refId);
                     },
                     child: CrayonPaymentText(
