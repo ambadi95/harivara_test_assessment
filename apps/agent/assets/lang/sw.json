@@ -27,7 +27,7 @@
   "SU_button_text" : "Endelea",
   "SU_title_hint" : "Weka Nambari ya NIDA",
   "SU_subtitle_hint" : "Weka Nambari ya Simu",
-  "SU_title_error_text" : "Nambari ya NINDA si sahihi",
+  "SU_title_error_text" : "Nambari ya NIDA si sahihi",
   "SU_subtitle_error_text" : "Nambari ya Simu batili",
   "SU_agent_id_error_text" : "Kitambulisho batili cha Wakala wa Y9",
 
@@ -125,16 +125,20 @@
   "SP_ni": "ni",
   "SP_bora": " Bora",
 
-  "HS_Agent_Id" : "Y9 Agent Id",
-  "HS_TotalOnBoarderCustomers" : "Total Onboarded Customers",
-  "HS_PendingCustomerRequests" : "Pending Customer Request",
-  "HS_Customer_OnBoarding" : "Customer Onboarding",
-  "HS_Customer_DeviceSwap" : "Device swap / repair",
-  "HS_Customer_AgentSupport" : "Agent Support",
+  "HS_Agent_Id" : "Y9 Agent ID",
+  "HS_TotalOnBoarderCustomers" : "Total Customers \nRegistered ",
+  "HS_PendingCustomerRequests" : "Pending Customer \nRequest",
+  "HS_Customer_OnBoarding" : "Customer \nOnboarding",
+  "HS_Customer_DeviceSwap" : "Device swap \n/ repair",
+  "HS_Customer_AgentSupport" : "Agent \nSupport",
+  "HS_Agent_Refer_Text": "Refer your Friends to register for Y9 Membership and you win Referral Bonus",
+  "HS_Agent_Refer_Program": "Referral Program -",
+  "HS_Agent_Stay_Tunned": " Stay tuned !",
+
 
   "AE_Message" : "Congratulations,\nAshish You have successfully Onboarded",
   "AE_AgentId" : "Your Y9 Agent ID",
-  "AE_Description" : "Your Y9 Agent id has been sent successfully to your mobile number and Email ID",
+  "AE_Description" : "Your Y9 Agent ID has been sent successfully to your mobile number and Email ID",
   "AE_Continue" : "Continue to the app",
 
   "DO_Title": "Chaguo za Kifaa",

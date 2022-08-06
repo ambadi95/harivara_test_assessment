@@ -27,7 +27,7 @@
   "SU_button_text" : "Endelea",
   "SU_title_hint" : "Weka Nambari ya NIDA",
   "SU_subtitle_hint" : "Weka Nambari ya Simu\n",
-  "SU_title_error_text" : "Nambari ya NINDA si sahihi",
+  "SU_title_error_text" : "Nambari ya NIDA si sahihi",
   "SU_subtitle_error_text" : "Nambari ya Simu batili",
 
   "DV_title" : "Ingiza Maelezo ya Kibinafsi",
@@ -147,8 +147,9 @@
 
 
 
-  "SP_ni": "ni",
-  "SP_bora": " Bora",
+
+  "SP_ni": "ni Bora",
+  "SP_bora": " / is Better",
 
   "SU_reset_passcode" : "Reset Passcode",
   "SU_reset_subtitle" : "You can Reset the passcode here using OTP sent to your registered mobile number",
@@ -156,7 +157,7 @@
   "SU_update_subtitle" : "You can Update the passcode here using OTP sent to your registered mobile number",
 
 
-  "HS_Agent_Id" : "Y9 Agent Id",
+  "HS_Agent_Id" : "Y9 Agent ID",
   "HS_TotalOnBoarderCustomers" : "Total Onboarded\nCustomers",
   "HS_PendingCustomerRequests" : "Pending Customer\nRequest",
   "HS_Customer_OnBoarding" : "Customer Onboarding",

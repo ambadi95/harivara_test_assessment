@@ -10,6 +10,7 @@ import '../../../welcome_module.dart';
 import '../../welcome/state/welcome_screen_state.dart';
 import '../../welcome/viewmodel/welcome_coordinatior.dart';
 import '../viewmodel/welcome_back_coordinatior.dart';
+import 'package:crayon_payment_customer/util/app_utils.dart';
 
 class CrayonWelcomBackScreen extends StatefulWidget {
   static const viewPath = '${WelcomeModule.moduleIdentifier}/welcomeback';
@@ -81,15 +82,17 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const SizedBox(height: 40),
+              SizedBox(height: AppUtils.appUtilsInstance.getPercentageSize(ofWidth: false,percentage: 4)),
+
               _buildLogo(context),
-              _buildSizedBox(),
+              SizedBox(height: AppUtils.appUtilsInstance.getPercentageSize(ofWidth: false,percentage: 4)),
+
               _buildTitle(context),
-              const SizedBox(height: 46),
+              SizedBox(height: AppUtils.appUtilsInstance.getPercentageSize(ofWidth: false,percentage: 7)),
               _userImage(),
-              const SizedBox(height: 10),
+              SizedBox(height: AppUtils.appUtilsInstance.getPercentageSize(ofWidth: false,percentage: 2)),
               _userInfo(context),
-              const SizedBox(height: 48),
+              SizedBox(height: AppUtils.appUtilsInstance.getPercentageSize(ofWidth: false,percentage: 7)),
               _enterPassCodeTitle(context),
               _passcodeWidget(context, welcomeCoordinator),
               // const SizedBox(height: 57),
@@ -149,52 +152,51 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
   }
 
   Widget _passcodeWidget(BuildContext context, WelcomeBackCoordinator coordinator){
-    return Container(
-      child: Padding(
-          padding: const EdgeInsets.symmetric(
-              vertical: 8.0, horizontal: 8),
-          child: PinCodeTextField(
-            appContext: context,
-            pastedTextStyle: const TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-            ),
-            length: 6,
-            obscureText: true,
-            obscuringCharacter: '*',
-            blinkWhenObscuring: true,
-            animationType: AnimationType.none,
-            enabled: true,
-            pinTheme: PinTheme(
-                shape: PinCodeFieldShape.underline,
-                fieldHeight: 50,
-                fieldWidth: 50,
-                borderWidth: 3,
-                activeFillColor: Colors.white,
-                disabledColor: Colors.white,
-                selectedColor: Colors.black,
-                activeColor: Colors.black,
-                inactiveColor: Colors.grey
-            ),
-            cursorColor: Colors.black,
-            enableActiveFill: false,
-            autoFocus: false,
-            autoDismissKeyboard : true,
-            //errorAnimationController: errorController,
-            controller: passcodeController,
-            keyboardType: TextInputType.number,
-            onCompleted: (v) async {
-        await coordinator.navigationToDestination(widget.userType);
-            }, onChanged: (String value) {  },
-          )),
+    return PinCodeTextField(
+      appContext: context,
+      pastedTextStyle: const TextStyle(
+        color: Colors.black,
+        fontWeight: FontWeight.bold,
+      ),
+      length: 6,
+      obscureText: true,
+      obscuringCharacter: '*',
+      blinkWhenObscuring: true,
+      animationType: AnimationType.none,
+      enabled: true,
+      pinTheme: PinTheme(
+          shape: PinCodeFieldShape.underline,
+          fieldHeight: 50,
+          fieldWidth: 50,
+          borderWidth: 3,
+          activeFillColor: Colors.white,
+          disabledColor: Colors.white,
+          selectedColor: Colors.black,
+          activeColor: Colors.black,
+          inactiveColor: Colors.grey
+      ),
+      cursorColor: Colors.black,
+      enableActiveFill: false,
+      autoFocus: false,
+      autoDismissKeyboard : true,
+      //errorAnimationController: errorController,
+      controller: passcodeController,
+      keyboardType: TextInputType.number,
+      onCompleted: (v) async {
+        coordinator.onPasscodeCallback(passcodeController.text,widget.userType);
+        passcodeController.clear();
+        // await coordinator.navigationToDestination(widget.userType);
+      }, onChanged: (String value) {
 
+
+    },
     );
   }
 
   Widget _buildResetPasscode(WelcomeBackCoordinator coordinator){
     return Center(
         child: Padding(
-          padding: const EdgeInsets.only(bottom: 20),
+          padding: const EdgeInsets.only(bottom: 5),
           child: InkWell(
             onTap: (){
           coordinator.navigateToResetNow(widget.userType);

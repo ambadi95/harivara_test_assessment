@@ -65,7 +65,6 @@ dependencies:
     path: ../../libs/features/termscondition
 
 
-
 dev_dependencies:
   flutter_test:
     sdk: flutter

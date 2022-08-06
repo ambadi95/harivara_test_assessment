@@ -29,7 +29,7 @@ class CrayonWelcomScreen extends StatefulWidget {
 }
 
 class _CrayonWelcomScreenState extends State<CrayonWelcomScreen> {
-  final bool _isSigned = false;
+  final bool _isSigned = true;
   @override
   Widget build(BuildContext context) =>
       BaseView<WelcomeCoordinator, WelcomeScreenState>(
