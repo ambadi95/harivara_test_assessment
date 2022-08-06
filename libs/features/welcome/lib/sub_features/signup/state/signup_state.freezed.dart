@@ -19,6 +19,7 @@ mixin _$SignUpState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
+    required TResult Function() loadingState,
     required TResult Function(bool isValid) SignUpFormState,
     required TResult Function(String nindaNumberError) nindaNumberError,
     required TResult Function(String nindaNumberError) mobileNumberError,
@@ -28,6 +29,7 @@ mixin _$SignUpState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialState,
+    TResult Function()? loadingState,
     TResult Function(bool isValid)? SignUpFormState,
     TResult Function(String nindaNumberError)? nindaNumberError,
     TResult Function(String nindaNumberError)? mobileNumberError,
@@ -37,6 +39,7 @@ mixin _$SignUpState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
+    TResult Function()? loadingState,
     TResult Function(bool isValid)? SignUpFormState,
     TResult Function(String nindaNumberError)? nindaNumberError,
     TResult Function(String nindaNumberError)? mobileNumberError,
@@ -47,6 +50,7 @@ mixin _$SignUpState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(InitialState value) initialState,
+    required TResult Function(LoadingState value) loadingState,
     required TResult Function(SignUpFormState value) SignUpFormState,
     required TResult Function(NindaNumberError value) nindaNumberError,
     required TResult Function(MobileNumberError value) mobileNumberError,
@@ -56,6 +60,7 @@ mixin _$SignUpState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
+    TResult Function(LoadingState value)? loadingState,
     TResult Function(SignUpFormState value)? SignUpFormState,
     TResult Function(NindaNumberError value)? nindaNumberError,
     TResult Function(MobileNumberError value)? mobileNumberError,
@@ -65,6 +70,7 @@ mixin _$SignUpState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
+    TResult Function(LoadingState value)? loadingState,
     TResult Function(SignUpFormState value)? SignUpFormState,
     TResult Function(NindaNumberError value)? nindaNumberError,
     TResult Function(MobileNumberError value)? mobileNumberError,
@@ -131,6 +137,7 @@ class _$InitialState implements InitialState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
+    required TResult Function() loadingState,
     required TResult Function(bool isValid) SignUpFormState,
     required TResult Function(String nindaNumberError) nindaNumberError,
     required TResult Function(String nindaNumberError) mobileNumberError,
@@ -143,6 +150,7 @@ class _$InitialState implements InitialState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialState,
+    TResult Function()? loadingState,
     TResult Function(bool isValid)? SignUpFormState,
     TResult Function(String nindaNumberError)? nindaNumberError,
     TResult Function(String nindaNumberError)? mobileNumberError,
@@ -155,6 +163,7 @@ class _$InitialState implements InitialState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
+    TResult Function()? loadingState,
     TResult Function(bool isValid)? SignUpFormState,
     TResult Function(String nindaNumberError)? nindaNumberError,
     TResult Function(String nindaNumberError)? mobileNumberError,
@@ -171,6 +180,7 @@ class _$InitialState implements InitialState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(InitialState value) initialState,
+    required TResult Function(LoadingState value) loadingState,
     required TResult Function(SignUpFormState value) SignUpFormState,
     required TResult Function(NindaNumberError value) nindaNumberError,
     required TResult Function(MobileNumberError value) mobileNumberError,
@@ -183,6 +193,7 @@ class _$InitialState implements InitialState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
+    TResult Function(LoadingState value)? loadingState,
     TResult Function(SignUpFormState value)? SignUpFormState,
     TResult Function(NindaNumberError value)? nindaNumberError,
     TResult Function(MobileNumberError value)? mobileNumberError,
@@ -195,6 +206,7 @@ class _$InitialState implements InitialState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
+    TResult Function(LoadingState value)? loadingState,
     TResult Function(SignUpFormState value)? SignUpFormState,
     TResult Function(NindaNumberError value)? nindaNumberError,
     TResult Function(MobileNumberError value)? mobileNumberError,
@@ -210,6 +222,134 @@ class _$InitialState implements InitialState {
 
 abstract class InitialState implements SignUpState {
   const factory InitialState() = _$InitialState;
+}
+
+/// @nodoc
+abstract class _$$LoadingStateCopyWith<$Res> {
+  factory _$$LoadingStateCopyWith(
+          _$LoadingState value, $Res Function(_$LoadingState) then) =
+      __$$LoadingStateCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadingStateCopyWithImpl<$Res> extends _$SignUpStateCopyWithImpl<$Res>
+    implements _$$LoadingStateCopyWith<$Res> {
+  __$$LoadingStateCopyWithImpl(
+      _$LoadingState _value, $Res Function(_$LoadingState) _then)
+      : super(_value, (v) => _then(v as _$LoadingState));
+
+  @override
+  _$LoadingState get _value => super._value as _$LoadingState;
+}
+
+/// @nodoc
+
+class _$LoadingState implements LoadingState {
+  const _$LoadingState();
+
+  @override
+  String toString() {
+    return 'SignUpState.loadingState()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoadingState);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialState,
+    required TResult Function() loadingState,
+    required TResult Function(bool isValid) SignUpFormState,
+    required TResult Function(String nindaNumberError) nindaNumberError,
+    required TResult Function(String nindaNumberError) mobileNumberError,
+    required TResult Function(String agentIdError) agentIdError,
+  }) {
+    return loadingState();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initialState,
+    TResult Function()? loadingState,
+    TResult Function(bool isValid)? SignUpFormState,
+    TResult Function(String nindaNumberError)? nindaNumberError,
+    TResult Function(String nindaNumberError)? mobileNumberError,
+    TResult Function(String agentIdError)? agentIdError,
+  }) {
+    return loadingState?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialState,
+    TResult Function()? loadingState,
+    TResult Function(bool isValid)? SignUpFormState,
+    TResult Function(String nindaNumberError)? nindaNumberError,
+    TResult Function(String nindaNumberError)? mobileNumberError,
+    TResult Function(String agentIdError)? agentIdError,
+    required TResult orElse(),
+  }) {
+    if (loadingState != null) {
+      return loadingState();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialState value) initialState,
+    required TResult Function(LoadingState value) loadingState,
+    required TResult Function(SignUpFormState value) SignUpFormState,
+    required TResult Function(NindaNumberError value) nindaNumberError,
+    required TResult Function(MobileNumberError value) mobileNumberError,
+    required TResult Function(AgentIdError value) agentIdError,
+  }) {
+    return loadingState(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InitialState value)? initialState,
+    TResult Function(LoadingState value)? loadingState,
+    TResult Function(SignUpFormState value)? SignUpFormState,
+    TResult Function(NindaNumberError value)? nindaNumberError,
+    TResult Function(MobileNumberError value)? mobileNumberError,
+    TResult Function(AgentIdError value)? agentIdError,
+  }) {
+    return loadingState?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialState value)? initialState,
+    TResult Function(LoadingState value)? loadingState,
+    TResult Function(SignUpFormState value)? SignUpFormState,
+    TResult Function(NindaNumberError value)? nindaNumberError,
+    TResult Function(MobileNumberError value)? mobileNumberError,
+    TResult Function(AgentIdError value)? agentIdError,
+    required TResult orElse(),
+  }) {
+    if (loadingState != null) {
+      return loadingState(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LoadingState implements SignUpState {
+  const factory LoadingState() = _$LoadingState;
 }
 
 /// @nodoc
@@ -278,6 +418,7 @@ class _$SignUpFormState implements SignUpFormState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
+    required TResult Function() loadingState,
     required TResult Function(bool isValid) SignUpFormState,
     required TResult Function(String nindaNumberError) nindaNumberError,
     required TResult Function(String nindaNumberError) mobileNumberError,
@@ -290,6 +431,7 @@ class _$SignUpFormState implements SignUpFormState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialState,
+    TResult Function()? loadingState,
     TResult Function(bool isValid)? SignUpFormState,
     TResult Function(String nindaNumberError)? nindaNumberError,
     TResult Function(String nindaNumberError)? mobileNumberError,
@@ -302,6 +444,7 @@ class _$SignUpFormState implements SignUpFormState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
+    TResult Function()? loadingState,
     TResult Function(bool isValid)? SignUpFormState,
     TResult Function(String nindaNumberError)? nindaNumberError,
     TResult Function(String nindaNumberError)? mobileNumberError,
@@ -318,6 +461,7 @@ class _$SignUpFormState implements SignUpFormState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(InitialState value) initialState,
+    required TResult Function(LoadingState value) loadingState,
     required TResult Function(SignUpFormState value) SignUpFormState,
     required TResult Function(NindaNumberError value) nindaNumberError,
     required TResult Function(MobileNumberError value) mobileNumberError,
@@ -330,6 +474,7 @@ class _$SignUpFormState implements SignUpFormState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
+    TResult Function(LoadingState value)? loadingState,
     TResult Function(SignUpFormState value)? SignUpFormState,
     TResult Function(NindaNumberError value)? nindaNumberError,
     TResult Function(MobileNumberError value)? mobileNumberError,
@@ -342,6 +487,7 @@ class _$SignUpFormState implements SignUpFormState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
+    TResult Function(LoadingState value)? loadingState,
     TResult Function(SignUpFormState value)? SignUpFormState,
     TResult Function(NindaNumberError value)? nindaNumberError,
     TResult Function(MobileNumberError value)? mobileNumberError,
@@ -431,6 +577,7 @@ class _$NindaNumberError implements NindaNumberError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
+    required TResult Function() loadingState,
     required TResult Function(bool isValid) SignUpFormState,
     required TResult Function(String nindaNumberError) nindaNumberError,
     required TResult Function(String nindaNumberError) mobileNumberError,
@@ -443,6 +590,7 @@ class _$NindaNumberError implements NindaNumberError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialState,
+    TResult Function()? loadingState,
     TResult Function(bool isValid)? SignUpFormState,
     TResult Function(String nindaNumberError)? nindaNumberError,
     TResult Function(String nindaNumberError)? mobileNumberError,
@@ -455,6 +603,7 @@ class _$NindaNumberError implements NindaNumberError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
+    TResult Function()? loadingState,
     TResult Function(bool isValid)? SignUpFormState,
     TResult Function(String nindaNumberError)? nindaNumberError,
     TResult Function(String nindaNumberError)? mobileNumberError,
@@ -471,6 +620,7 @@ class _$NindaNumberError implements NindaNumberError {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(InitialState value) initialState,
+    required TResult Function(LoadingState value) loadingState,
     required TResult Function(SignUpFormState value) SignUpFormState,
     required TResult Function(NindaNumberError value) nindaNumberError,
     required TResult Function(MobileNumberError value) mobileNumberError,
@@ -483,6 +633,7 @@ class _$NindaNumberError implements NindaNumberError {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
+    TResult Function(LoadingState value)? loadingState,
     TResult Function(SignUpFormState value)? SignUpFormState,
     TResult Function(NindaNumberError value)? nindaNumberError,
     TResult Function(MobileNumberError value)? mobileNumberError,
@@ -495,6 +646,7 @@ class _$NindaNumberError implements NindaNumberError {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
+    TResult Function(LoadingState value)? loadingState,
     TResult Function(SignUpFormState value)? SignUpFormState,
     TResult Function(NindaNumberError value)? nindaNumberError,
     TResult Function(MobileNumberError value)? mobileNumberError,
@@ -585,6 +737,7 @@ class _$MobileNumberError implements MobileNumberError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
+    required TResult Function() loadingState,
     required TResult Function(bool isValid) SignUpFormState,
     required TResult Function(String nindaNumberError) nindaNumberError,
     required TResult Function(String nindaNumberError) mobileNumberError,
@@ -597,6 +750,7 @@ class _$MobileNumberError implements MobileNumberError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialState,
+    TResult Function()? loadingState,
     TResult Function(bool isValid)? SignUpFormState,
     TResult Function(String nindaNumberError)? nindaNumberError,
     TResult Function(String nindaNumberError)? mobileNumberError,
@@ -609,6 +763,7 @@ class _$MobileNumberError implements MobileNumberError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
+    TResult Function()? loadingState,
     TResult Function(bool isValid)? SignUpFormState,
     TResult Function(String nindaNumberError)? nindaNumberError,
     TResult Function(String nindaNumberError)? mobileNumberError,
@@ -625,6 +780,7 @@ class _$MobileNumberError implements MobileNumberError {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(InitialState value) initialState,
+    required TResult Function(LoadingState value) loadingState,
     required TResult Function(SignUpFormState value) SignUpFormState,
     required TResult Function(NindaNumberError value) nindaNumberError,
     required TResult Function(MobileNumberError value) mobileNumberError,
@@ -637,6 +793,7 @@ class _$MobileNumberError implements MobileNumberError {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
+    TResult Function(LoadingState value)? loadingState,
     TResult Function(SignUpFormState value)? SignUpFormState,
     TResult Function(NindaNumberError value)? nindaNumberError,
     TResult Function(MobileNumberError value)? mobileNumberError,
@@ -649,6 +806,7 @@ class _$MobileNumberError implements MobileNumberError {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
+    TResult Function(LoadingState value)? loadingState,
     TResult Function(SignUpFormState value)? SignUpFormState,
     TResult Function(NindaNumberError value)? nindaNumberError,
     TResult Function(MobileNumberError value)? mobileNumberError,
@@ -738,6 +896,7 @@ class _$AgentIdError implements AgentIdError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
+    required TResult Function() loadingState,
     required TResult Function(bool isValid) SignUpFormState,
     required TResult Function(String nindaNumberError) nindaNumberError,
     required TResult Function(String nindaNumberError) mobileNumberError,
@@ -750,6 +909,7 @@ class _$AgentIdError implements AgentIdError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialState,
+    TResult Function()? loadingState,
     TResult Function(bool isValid)? SignUpFormState,
     TResult Function(String nindaNumberError)? nindaNumberError,
     TResult Function(String nindaNumberError)? mobileNumberError,
@@ -762,6 +922,7 @@ class _$AgentIdError implements AgentIdError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
+    TResult Function()? loadingState,
     TResult Function(bool isValid)? SignUpFormState,
     TResult Function(String nindaNumberError)? nindaNumberError,
     TResult Function(String nindaNumberError)? mobileNumberError,
@@ -778,6 +939,7 @@ class _$AgentIdError implements AgentIdError {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(InitialState value) initialState,
+    required TResult Function(LoadingState value) loadingState,
     required TResult Function(SignUpFormState value) SignUpFormState,
     required TResult Function(NindaNumberError value) nindaNumberError,
     required TResult Function(MobileNumberError value) mobileNumberError,
@@ -790,6 +952,7 @@ class _$AgentIdError implements AgentIdError {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
+    TResult Function(LoadingState value)? loadingState,
     TResult Function(SignUpFormState value)? SignUpFormState,
     TResult Function(NindaNumberError value)? nindaNumberError,
     TResult Function(MobileNumberError value)? mobileNumberError,
@@ -802,6 +965,7 @@ class _$AgentIdError implements AgentIdError {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
+    TResult Function(LoadingState value)? loadingState,
     TResult Function(SignUpFormState value)? SignUpFormState,
     TResult Function(NindaNumberError value)? nindaNumberError,
     TResult Function(MobileNumberError value)? mobileNumberError,

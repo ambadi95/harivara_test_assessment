@@ -12,6 +12,7 @@ import 'package:widget_library/formatter/nida_input_formatter.dart';
 import 'package:widget_library/input_fields/input_field_with_label.dart';
 import 'package:widget_library/input_fields/input_number_field_with_label.dart';
 import 'package:widget_library/page_header/text_ui_data_model.dart';
+import 'package:widget_library/progress_bar/centered_circular_progress_bar.dart';
 import 'package:widget_library/scaffold/crayon_payment_scaffold.dart';
 import 'package:widget_library/spacers/crayon_payment_spacers.dart';
 import 'package:widget_library/static_text/crayon_payment_text.dart';
@@ -41,8 +42,35 @@ class Login extends StatelessWidget {
           {_listenToStateChanges(context, newState)},
       setupViewModel: (coordinator) {},
       builder: (context, state, coordinator) {
-        return _buildMainUI(context, coordinator);
+        return state.maybeWhen(
+          loading: ()=> _buildMainUIWithLoading(context, coordinator),
+            orElse:() => _buildMainUI(context, coordinator));
       },
+    );
+  }
+
+
+  Widget _buildMainUIWithLoading(
+      BuildContext context,
+      LoginCoordinator coordinator,
+      ) {
+    return Scaffold(
+      body: Stack(
+        children: [
+          _buildMainUI(context,coordinator),
+          _createLoading(),
+        ],
+      ),
+    );
+  }
+
+
+  Widget _createLoading() {
+    return  Center(
+        child: Container(
+          color: Colors.black.withOpacity(0.4),
+          child: const CenteredCircularProgressBar(color: PRIMARY_COLOR),
+      ),
     );
   }
 
@@ -249,7 +277,7 @@ class Login extends StatelessWidget {
   }
 
   void _listenToStateChanges(BuildContext context, LoginState state) {
-    state.maybeWhen((loginList) {},
+    state.maybeWhen(
         mobileNumberError: (message) {
           mobileNumberError = message;
         },

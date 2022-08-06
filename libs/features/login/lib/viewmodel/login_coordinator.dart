@@ -11,7 +11,7 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
   LoginCoordinator(
     this._navigationHandler,
     this._loginUseCase,
-  ) : super(const LoginState());
+  ) : super(const LoginState.initialState());
 
   void validateForm(
       String mobNumber, String passcode, String agentId, String userType) {
@@ -62,12 +62,18 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
 
   Future customerLogin(
       String mobileNumber, String passcode, String userType) async {
+    state = LoginState.loading();
+    print(mobileNumber);
+    print(passcode);
     var response = await _loginUseCase.login(
         '+255' + mobileNumber, passcode, (p0) => null);
-    if (response?.status == true) {
+    print(response);
+    if (response?.data != null) {
+      state = LoginState.successState();
       _navigationHandler.navigateToOtpScreen(
           userType, mobileNumber, response!.data!.id!);
     } else {
+      state = LoginState.successState();
       print(response?.message);
     }
   }

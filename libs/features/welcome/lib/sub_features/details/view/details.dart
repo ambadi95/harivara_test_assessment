@@ -4,14 +4,14 @@ import 'package:core/view/base_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_data_models/customer_onboard/region_district/region_response/datum.dart';
-import 'package:shared_data_models/customer_onboard/region_district/district_response/datum.dart'
-    as b;
+import 'package:shared_data_models/customer_onboard/region_district/district_response/datum.dart' as b;
 import 'package:welcome/sub_features/details/state/details_state.dart';
 import 'package:welcome/sub_features/details/viewmodel/details_coordinator.dart';
 import 'package:welcome/welcome_module.dart';
 import 'package:widget_library/buttons/crayon_back_button.dart';
 import 'package:widget_library/dropdown/crayon_drop_down.dart';
 import 'package:widget_library/input_fields/input_field_with_label.dart';
+import 'package:widget_library/progress_bar/centered_circular_progress_bar.dart';
 import 'package:widget_library/progress_bar/onboarding_progress_bar.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -112,7 +112,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
           regionDropDown = getRegionDropDownData(regions);
         },
         builder: (context, state, coordinator) => SafeArea(
-          child: Scaffold(
+          child: state.maybeWhen(
+            LoadingState: ()=> _buildMainUIWithLoading(context, coordinator),
+            orElse: ()=>
+          Scaffold(
             appBar: PreferredSize(
               preferredSize: const Size(double.infinity, 102),
               child: _buildTopContainer(context, coordinator),
@@ -127,6 +130,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
             ),
           ),
         ),
+        )
       );
 
   Widget _buildTopContainer(
@@ -138,6 +142,31 @@ class _DetailsScreenState extends State<DetailsScreen> {
         _onBoardingProgressBar(),
         _buildBackBtn(context, coordinator),
       ],
+    );
+  }
+
+
+
+  Widget _buildMainUIWithLoading(
+      BuildContext context,
+      DetailsCoordinator coordinator,
+      ) {
+    return Scaffold(
+      body: Stack(
+        children: [
+          SingleChildScrollView(child: _buildMainUI(coordinator)),
+          _createLoading(),
+        ],
+      ),
+    );
+  }
+
+  Widget _createLoading() {
+    return Center(
+      child: Container(
+        color: Colors.black.withOpacity(0.4),
+        child: const CenteredCircularProgressBar(color: config_color.PRIMARY_COLOR),
+      ),
     );
   }
 
@@ -209,12 +238,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
               coordinator, 'DV_address_hint_text'),
           _buildLabelTextField('DV_po_box_label'.tr, poBox, TextInputType.text,
               coordinator, poBoxError, 'DV_poBox_hint_text', true),
-          // _buildLabelTextField(
-          //     'DV_region_label'.tr, region, TextInputType.name, coordinator,regionError,'DV_region_hint_text', true),
           _buildRegionDropdown(coordinator),
           _buildDistrictDropdown(coordinator),
-          // _buildLabelTextField('DV_district_label'.tr, district,
-          //     TextInputType.name, coordinator,districtError,'DV_district_hint_text',true ),
           _buildContinueButton(coordinator)
         ],
       ),
@@ -407,10 +432,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
           onChanged: (value) async {
             onRegionChosen(value as Datum, coordinator);
             region.text = value.name!;
-            dis = await coordinator.getDistrict(value.id!);
-            districtDropDown = getDistrictDropDownData(dis);
             _validateForm(coordinator);
             coordinator.isValidRegion(value.name!);
+            dis = await coordinator.getDistrict(value.id!);
+            districtDropDown = getDistrictDropDownData(dis);
           },
         ),
         const SizedBox(

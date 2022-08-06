@@ -40,17 +40,11 @@ class LoginUseCase extends BaseDataProvider {
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {
           final data = responseData;
-          CustomerSignInResponse customerSignInResponse =
-              CustomerSignInResponse.fromJson(data);
-
-          CrayonPaymentLogger.logInfo(customerSignInResponse.toString());
-          Data? customerData = Data();
-          customerData = customerSignInResponse.data;
-          if (customerSignInResponse.status!) {
-            _authManager.storeTokenInformation(
-                customerData!.token!, '', '', '');
-            _authManager.setUserDetail(
-                key: 'Customer_ID', authInfo: customerSignInResponse.data?.id);
+          print(data);
+          CustomerSignInResponse customerSignInResponse = CustomerSignInResponse.fromJson(data);
+          print(customerSignInResponse);
+          if(customerSignInResponse.data != null){
+            _authManager.storeTokenInformation(customerSignInResponse.data!.token!, '', '', '');
           }
           return CustomerSignInResponse.fromJson(data);
         });

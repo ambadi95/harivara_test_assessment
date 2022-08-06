@@ -6,6 +6,8 @@ part 'signup_state.freezed.dart';
 class SignUpState with _$SignUpState {
   const factory SignUpState.initialState() = InitialState;
 
+  const factory SignUpState.loadingState() = LoadingState;
+
   const factory SignUpState.SignUpFormState(
     bool isValid,
   ) = SignUpFormState;

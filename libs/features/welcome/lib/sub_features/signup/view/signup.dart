@@ -7,6 +7,7 @@ import 'package:welcome/sub_features/signup/viewmodel/signup_coordinator.dart';
 import 'package:welcome/welcome_module.dart';
 import 'package:widget_library/formatter/nida_input_formatter.dart';
 import 'package:widget_library/html/rich_text_description.dart';
+import 'package:widget_library/progress_bar/centered_circular_progress_bar.dart';
 import 'package:widget_library/progress_bar/onboarding_progress_bar.dart';
 import 'package:widget_library/input_fields/input_field_with_label.dart';
 import 'package:widget_library/input_fields/input_number_field_with_label.dart';
@@ -41,36 +42,60 @@ class _SignUpState extends State<SignUp> {
         onStateListenCallback: (preState, newState) =>
             {_listenToStateChanges(context, newState)},
         setupViewModel: (coordinator) async {},
-        builder: (context, state, coordinator) => Scaffold(
-          bottomNavigationBar: SizedBox(
-            height: 120,
-            child: Column(
-              children: [
-                widget.signUpArguments.userType == 'Customer'
-                    ? _carrierText()
-                    : const SizedBox(
-                        height: 14,
-                      ),
-                const SizedBox(
-                  height: 23,
-                ),
-                _buildContinueButton(context, coordinator, state)
-              ],
-            ),
-          ),
-          body: SingleChildScrollView(
-            child: SafeArea(
+        builder: (context, state, coordinator) => SafeArea(
+          child: Scaffold(
+            bottomNavigationBar: state.maybeWhen(
+              loadingState: ()=> _buildMainUIWithLoading(context, coordinator),
+              orElse: ()=> SizedBox(
+              height: 120,
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _buildTopContainer(context, coordinator),
-                  _buildMainUI(coordinator),
+                  widget.signUpArguments.userType == 'Customer'
+                      ? _carrierText()
+                      : const SizedBox(
+                          height: 14,
+                        ),
+                  const SizedBox(
+                    height: 23,
+                  ),
+                  _buildContinueButton(context, coordinator, state)
                 ],
               ),
             ),
+            ),
+            body: state.maybeWhen(
+              orElse:() =>
+            SingleChildScrollView(
+              child: SafeArea(
+                child:  _UI(coordinator),
+              )
+            ),
           ),
-        ),
+      ),
+        )
       );
+
+  Widget _UI(SignUpCoordinator coordinator){
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        _buildTopContainer(context, coordinator),
+        _buildMainUI(coordinator),
+      ],
+    );
+  }
+
+  Widget _buildMainUIWithLoading(
+      BuildContext context,
+      SignUpCoordinator coordinator,
+      ) {
+    return Stack(
+      children: [
+        _UI(coordinator),
+        _createLoading(),
+      ],
+    );
+  }
 
   Widget _buildTopContainer(
     BuildContext context,
@@ -81,6 +106,16 @@ class _SignUpState extends State<SignUp> {
         _onBoardingProgressBar(),
         _buildBackBtn(context, coordinator),
       ],
+    );
+  }
+
+
+  Widget _createLoading() {
+    return Center(
+      child: Container(
+        color: Colors.black.withOpacity(0.4),
+        child: const CenteredCircularProgressBar(color: config_color.PRIMARY_COLOR),
+      ),
     );
   }
 
