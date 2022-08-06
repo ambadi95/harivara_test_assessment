@@ -180,7 +180,6 @@ class Login extends StatelessWidget {
         coordinator.isMobileNumberValid(mobileNumber.text);
         coordinator.isAgentIdValid(agentIdController.text);
         if (isBtnEnabled) {
-          passcodeController.clear();
           // coordinator.navigateToWelcomeBackScreen(userType, mobileNumber.text);
           coordinator.customerLogin(
               mobileNumber.text, passcodeController.text, userType);

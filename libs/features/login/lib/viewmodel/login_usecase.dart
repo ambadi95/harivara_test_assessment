@@ -35,6 +35,7 @@ class LoginUseCase extends BaseDataProvider {
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {
           final data = responseData;
+          print(data);
           CustomerSignInResponse customerSignInResponse = CustomerSignInResponse.fromJson(data);
           print(customerSignInResponse);
           if(customerSignInResponse.data != null){

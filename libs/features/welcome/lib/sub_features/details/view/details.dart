@@ -154,7 +154,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
     return Scaffold(
       body: Stack(
         children: [
-          _buildMainUI(coordinator),
+          SingleChildScrollView(child: _buildMainUI(coordinator)),
           _createLoading(),
         ],
       ),
@@ -238,12 +238,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
               coordinator, 'DV_address_hint_text'),
           _buildLabelTextField('DV_po_box_label'.tr, poBox, TextInputType.text,
               coordinator, poBoxError, 'DV_poBox_hint_text', true),
-          // _buildLabelTextField(
-          //     'DV_region_label'.tr, region, TextInputType.name, coordinator,regionError,'DV_region_hint_text', true),
           _buildRegionDropdown(coordinator),
           _buildDistrictDropdown(coordinator),
-          // _buildLabelTextField('DV_district_label'.tr, district,
-          //     TextInputType.name, coordinator,districtError,'DV_district_hint_text',true ),
           _buildContinueButton(coordinator)
         ],
       ),
@@ -436,10 +432,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
           onChanged: (value) async {
             onRegionChosen(value as Datum, coordinator);
             region.text = value.name!;
-            dis = await coordinator.getDistrict(value.id!);
-            districtDropDown = getDistrictDropDownData(dis);
             _validateForm(coordinator);
             coordinator.isValidRegion(value.name!);
+            dis = await coordinator.getDistrict(value.id!);
+            districtDropDown = getDistrictDropDownData(dis);
           },
         ),
         const SizedBox(

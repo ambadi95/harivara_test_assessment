@@ -12,6 +12,8 @@ part 'details_state.freezed.dart';
 class DetailsState with _$DetailsState {
   const factory DetailsState.initialState() = InitialState;
 
+  const factory DetailsState.successState() = SuccessState;
+
   const factory DetailsState.DetailsFormState(bool isValid) = DetailsFormState;
 
   const factory DetailsState.LoadingState() = LoadingState;

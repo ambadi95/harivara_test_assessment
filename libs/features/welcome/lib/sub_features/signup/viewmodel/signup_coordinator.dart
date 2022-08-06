@@ -25,12 +25,14 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
       var response = await _signupUseCase.signUp(
           nindaNumber.replaceAll("-", ""), mobileNumber.trim(), (p0) => null);
       if (response!.status == true) {
+        state = const SignUpState.initialState();
         await _signupUseCase
             .saveCustomerId(response.data?.customerId.toString());
         _navigationHandler.navigateToOtpScreenCustomerSignUp(
             signUpArguments.userType, mobileNumber,
             userId: response.data?.customerId.toString());
       } else {
+        state = const SignUpState.initialState();
         state = SignUpState.mobileNumberError(response.message!);
       }
     } else if (signUpArguments.signupType == SignupType.resetPasscodeAgent) {

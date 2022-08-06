@@ -63,6 +63,8 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
   Future customerLogin(
       String mobileNumber, String passcode, String userType) async {
     state = LoginState.loading();
+    print(mobileNumber);
+    print(passcode);
     var response = await _loginUseCase.login(
         '+255' + mobileNumber, passcode, (p0) => null);
     print(response);
