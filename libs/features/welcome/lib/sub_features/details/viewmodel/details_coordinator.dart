@@ -72,7 +72,7 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
     var isProfessionValid = profession.isNotEmpty;
     var isEmailIdValid = _detailsUseCase.isValidEmail(emailId);
     var isAddressValid = address.isNotEmpty;
-    var isPoBoxValid = _detailsUseCase.isValidPoBox(poBox);
+    var isPoBoxValid = /*_detailsUseCase.isValidPoBox(poBox)*/ true;
     var isRegionValid = region.isNotEmpty;
     var isDistrictValid = district.isNotEmpty;
     var _isValid = isnNameValid &&
@@ -128,13 +128,14 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
   }
 
   bool isValidPoBox(String poBox) {
-    bool result = _detailsUseCase.isValidPoBox(poBox);
-    if (!result) {
-      state = const DetailsState.poBoxError('DV_poBox_error_text');
-    } else {
-      state = const DetailsState.poBoxError('');
-    }
-    return result;
+    // bool result = _detailsUseCase.isValidPoBox(poBox);
+    // if (!result) {
+    //   state = const DetailsState.poBoxError('DV_poBox_error_text');
+    // } else {
+    //   state = const DetailsState.poBoxError('');
+    // }
+    // return result;
+    return true;
   }
 
   bool isValidDob(String dob) {

@@ -36,6 +36,7 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
   final ValueNotifier<int> _startValue = ValueNotifier<int>(60);
 
   TextEditingController otpController = TextEditingController();
+  bool isBtnEnabled = false;
 
   void startTimer() {
     const oneSec = Duration(seconds: 1);
@@ -190,7 +191,8 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
             width: double.infinity,
             height: 50,
             decoration: BoxDecoration(
-                color: SU_button_color,
+                color: isBtnEnabled ? LS_ButtonColor : SU_grey_color,
+
                 borderRadius: BorderRadius.circular(8.0)),
             child: Center(
               child: Text(
@@ -342,8 +344,19 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
             //errorAnimationController: errorController,
             controller: otpController,
             keyboardType: TextInputType.number,
-            onCompleted: (v) {},
-            onChanged: (String value) {},
+            onCompleted: (v) {
+
+              setState(() {
+                isBtnEnabled=true;
+              });
+
+            },
+            onChanged: (String value) {
+              setState(() {
+                isBtnEnabled=false;
+              });
+
+            },
           ),
         ),
         if (state.error.isNotEmpty) const SizedBox(height: 8),
