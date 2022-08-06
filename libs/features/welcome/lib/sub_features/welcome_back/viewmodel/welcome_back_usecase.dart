@@ -1,3 +1,4 @@
+import 'package:login/login_module.dart';
 import 'package:login/service/login_service.dart';
 import 'package:shared_data_models/welcome/signin/request/sign_in_request.dart';
 import 'package:shared_data_models/welcome/signin/response/customer_sign_in_response.dart';
@@ -27,9 +28,12 @@ class WelcomeBackUseCase extends BaseDataProvider {
     return savedLocale;
   }
 
+  Future<String> getMobileNumber() async {
+    return await getValueFromSecureStorage('mobileNumber', defaultValue: '');
+  }
+
   Future<CustomerSignInResponse?> login(String mobileNumber, String passcode,
       Function(String) onErrorCallback) async {
-    print(mobileNumber);
     SignInRequest signInRequest = SignInRequest(
         mobileNumber: mobileNumber,
         passcode: passcode
@@ -37,7 +41,7 @@ class WelcomeBackUseCase extends BaseDataProvider {
     return await executeApiRequest<CustomerSignInResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
-        moduleIdentifier: WelcomeModule.moduleIdentifier,
+        moduleIdentifier: LoginModule.moduleIdentifier,
         requestData: signInRequest.toJson(),
         serviceIdentifier: ILoginService.loginIdentifier,
         onError: onErrorCallback,

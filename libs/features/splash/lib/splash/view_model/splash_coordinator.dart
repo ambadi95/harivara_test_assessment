@@ -24,8 +24,17 @@ class SplashCoordinator extends BaseViewModel<SplashState> {
     );
   }
 
-  Future<void> navigateToDestinationPath(
-      WelcomeScreenArgs welcomeScreenArgs) async {
-    _navigationHandler.navigateToDestinationPath(welcomeScreenArgs);
+  Future<bool> isSignedin()async{
+    String number = await _splashUseCase.getMobileNumber();
+    if(number.isNotEmpty){
+      return true;
+    }else{
+      return false;
+    }
+
+  }
+
+  Future<void> navigateToDestinationPath(String userType, bool isSignedin) async {
+    _navigationHandler.navigateToDestinationPath(WelcomeScreenArgs('', '', userType, isSignedin));
   }
 }

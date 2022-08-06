@@ -28,7 +28,7 @@ class CrayonWelcomScreen extends StatefulWidget {
 }
 
 class _CrayonWelcomScreenState extends State<CrayonWelcomScreen> {
-  final bool _isSigned = false;
+
   @override
   Widget build(BuildContext context) =>
       BaseView<WelcomeCoordinator, WelcomeScreenState>(
@@ -65,7 +65,7 @@ class _CrayonWelcomScreenState extends State<CrayonWelcomScreen> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           _buildLanguageChangeButton(context, state, welcomeCoordinator),
-          _isSigned
+          widget.welcomeScreenArgs.isSigned
               ? Expanded(child: _buildSignedUI())
               : Expanded(
                   child:

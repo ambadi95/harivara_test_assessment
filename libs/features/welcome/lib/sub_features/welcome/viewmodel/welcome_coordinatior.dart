@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:core/mobile_core.dart';
 import 'package:welcome/sub_features/welcome/state/welcome_screen_state.dart';
 import 'package:task_manager/base_classes/base_view_model.dart';
 import 'package:get/get.dart';
@@ -28,6 +29,7 @@ class WelcomeCoordinator extends BaseViewModel<WelcomeScreenState> {
       currentLanguageCode: currentLanguageCode,
     );
   }
+
 
   void setCurrentLocale(String currentLanguageCode) {
     var currentLocale = Locale(currentLanguageCode);

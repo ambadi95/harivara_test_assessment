@@ -133,7 +133,7 @@ class WelcomeNavigationHandler with ErrorHandler {
   Future<void> navigateToCustomerEnrollmentScreen() async {
     var argument = true;
     _navigationManager.navigateTo(
-        EnrollmentSuccessScreen.viewPath, const NavigationType.replace(),
+        EnrollmentSuccessScreen.viewPath, const NavigationType.replaceCurrent(),
         arguments: argument);
   }
 

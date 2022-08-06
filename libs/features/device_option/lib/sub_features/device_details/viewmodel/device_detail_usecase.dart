@@ -12,6 +12,10 @@ class DeviceDetailUseCase extends BaseDataProvider {
       : super(taskManager);
   final IAuthManager _authManager;
 
+  Future<String> getCustomerId() async {
+    return await getValueFromSecureStorage('customerId', defaultValue: '');
+  }
+
   Future<DeviceDetails?> getDeviceDetail(
       int deviceId, Function(String) onErrorCallback) async {
     String? token = await _authManager.getAccessToken();
@@ -32,11 +36,12 @@ class DeviceDetailUseCase extends BaseDataProvider {
   Future<CustomerSelectDeviceResponse?> selectDevice(
       int deviceId, Function(String) onErrorCallback) async {
     String? token = await _authManager.getAccessToken();
+    String customerId = await getCustomerId();
     return await executeApiRequest<CustomerSelectDeviceResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
         moduleIdentifier: DeviceOptionModule.moduleIdentifier,
-        requestData: {'deviceId': deviceId, 'token': token, 'customerId': 36},
+        requestData: {'deviceId': deviceId, 'token': token, 'customerId': int.parse(customerId)},
         serviceIdentifier: IDeviceOptionService.selectDeviceIdentifier,
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {

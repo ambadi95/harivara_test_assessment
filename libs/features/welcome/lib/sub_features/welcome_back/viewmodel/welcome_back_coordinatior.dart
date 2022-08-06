@@ -43,13 +43,13 @@ class WelcomeBackCoordinator extends BaseViewModel<WelcomeScreenState> {
   }
 
   void onPasscodeCallback(String passCode, String userType) {
-    customerLogin("", passCode, userType);
+    customerLogin(passCode, userType);
   }
 
-  Future customerLogin(
-      String mobileNumber, String passcode, String userType) async {
+  Future customerLogin(String passcode, String userType) async {
+    String mobileNumber = await _welcomeUseCase.getMobileNumber();
     var response = await _welcomeUseCase.login(
-        '+255' + mobileNumber, passcode, (p0) => null);
+         '+255'+mobileNumber, passcode, (p0) => null);
     if (response?.status == true) {
       _navigationHandler.navigateToCustomerEnrollmentScreen();
     } else {

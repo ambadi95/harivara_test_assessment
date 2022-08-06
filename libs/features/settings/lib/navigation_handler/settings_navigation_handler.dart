@@ -68,7 +68,7 @@ class SettingsNavigationHandler with ErrorHandler {
   }
 
   Future<void> signOut() async {
-    var arguments = WelcomeScreenArgs('', '', 'Agent');
+    var arguments = WelcomeScreenArgs('', '', 'Agent',false);
     _navigationManager.navigateTo(
         CrayonWelcomScreen.viewPath, const NavigationType.replace(),
         arguments: arguments);

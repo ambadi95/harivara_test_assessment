@@ -7,4 +7,8 @@ class SplashUseCase extends BaseDataProvider {
 
   SplashUseCase(this._splashViewModel, TaskManager taskManager)
       : super(taskManager);
+
+  Future<String> getMobileNumber() async {
+    return await getValueFromSecureStorage('mobileNumber', defaultValue: '');
+  }
 }

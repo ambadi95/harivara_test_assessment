@@ -12,6 +12,8 @@ class WelcomeUseCase extends BaseDataProvider {
     await setValueToStorage({'current_locale': currentLocale});
   }
 
+
+
   Future<String> getLocale() async {
     String defaultLocale = 'en';
     String savedLocale =

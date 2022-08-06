@@ -26,6 +26,7 @@ class CrayonSplashScreen extends StatefulWidget {
           '',
           '',
           'Customer',
+          false,
         ),
       );
 
@@ -34,6 +35,7 @@ class CrayonSplashScreen extends StatefulWidget {
           '',
           '',
           'Agent',
+          false
         ),
       );
 }
@@ -47,6 +49,7 @@ class _CrayonSplashScreenState extends State<CrayonSplashScreen>
   AnimationController? _containerAnimationController, _logoAnimationController;
   SplashCoordinator? _splashCoordinator;
   bool? _isShow = false;
+  bool isSigned = false;
 
   @override
   void initState() {
@@ -89,8 +92,9 @@ class _CrayonSplashScreenState extends State<CrayonSplashScreen>
   @override
   Widget build(BuildContext context) =>
       BaseView<SplashCoordinator, SplashState>(
-        setupViewModel: (coordinator) {
+        setupViewModel: (coordinator) async{
           _splashCoordinator = coordinator;
+          isSigned = await coordinator.isSignedin();
           coordinator.initialiseState(context, 'Title', '');
         },
         builder: (context, state, coordinator) => Scaffold(
@@ -255,7 +259,7 @@ class _CrayonSplashScreenState extends State<CrayonSplashScreen>
 
   void _moveToDestinationPath() {
     Future.delayed(const Duration(seconds: 4), () {
-      _splashCoordinator!.navigateToDestinationPath(widget.welcomeScreenArgs);
+      _splashCoordinator!.navigateToDestinationPath(widget.welcomeScreenArgs.userType,isSigned);
     });
   }
 
