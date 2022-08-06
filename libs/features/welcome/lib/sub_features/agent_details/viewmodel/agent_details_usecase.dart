@@ -21,6 +21,6 @@ class AgentDetailsUseCase extends BaseDataProvider {
   }
 
   Future<String> getMobileNumber() async {
-    return await getValueFromStorage('mobileNumber', defaultValue: '');
+    return await getValueFromSecureStorage('mobileNumber', defaultValue: '');
   }
 }
