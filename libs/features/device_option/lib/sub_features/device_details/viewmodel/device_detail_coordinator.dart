@@ -14,15 +14,20 @@ class DeviceDetailCoordinator
     this._DeviceOptionUseCase,
   ) : super(const DeviceDetailState());
 
-  Future fetchDeviceList(bool isMember, String destinationPath) async {
-    var response = await _DeviceOptionUseCase.getDeviceList((p0) => null);
+  Future getDeviceDetail(int deviceId) async {
+    var response =
+        await _DeviceOptionUseCase.getDeviceDetail(deviceId, (p0) => null);
+    print(response);
     if (response!.status == true) {
-      // state = DeviceDetailState.ready(
-      //     isMember: isMember, destination: destinationPath);
+      return response.data;
     }
   }
 
-  Future<void> navigateToEnrolledScreen() async {
-    await _navigationHandler.navigateToCustomerEnrollmentScreen('', true);
+  Future<void> navigateToEnrolledScreen(int deviceId) async {
+        var response =  await _DeviceOptionUseCase.selectDevice(deviceId, (p0) => null);
+        if(response?.status == true){
+          await _navigationHandler.navigateToCustomerEnrollmentScreen('', true);
+        }
+
   }
 }

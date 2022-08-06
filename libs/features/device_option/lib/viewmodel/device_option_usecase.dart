@@ -25,35 +25,36 @@ class DeviceOptionUseCase extends BaseDataProvider {
     String id = await getCustomerId();
 
     MembershipRequest membershipRequest = MembershipRequest(customerId: int.parse(id));
+    String? token = await _authManager.getAccessToken();
 
     return await executeApiRequest<DeviceListResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
         moduleIdentifier: DeviceOptionModule.moduleIdentifier,
-        requestData: membershipRequest.toJson(),
+        requestData: {'customerId': id, 'token': token},
         serviceIdentifier: IDeviceOptionService.deviceOptionIdentifier,
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {
           final data = responseData;
           DeviceListResponse deviceListResponse =
-          DeviceListResponse.fromJson(data);
+              DeviceListResponse.fromJson(data);
           return DeviceListResponse.fromJson(data);
         });
   }
 
-  Future<DeviceListResponse?> getDeviceDetail(
-      String deviceId, Function(String) onErrorCallback) async {
-    return await executeApiRequest<DeviceListResponse?>(
-        taskType: TaskType.DATA_OPERATION,
-        taskSubType: TaskSubType.REST,
-        moduleIdentifier: DeviceOptionModule.moduleIdentifier,
-        serviceIdentifier: IDeviceOptionService.deviceDetailIdentifier,
-        onError: onErrorCallback,
-        modelBuilderCallback: (responseData) {
-          final data = responseData;
-          DeviceListResponse deviceListResponse =
-          DeviceListResponse.fromJson(data);
-          return DeviceListResponse.fromJson(data);
-        });
-  }
+  // Future<DeviceListResponse?> getDeviceDetail(
+  //     String deviceId, Function(String) onErrorCallback) async {
+  //   return await executeApiRequest<DeviceListResponse?>(
+  //       taskType: TaskType.DATA_OPERATION,
+  //       taskSubType: TaskSubType.REST,
+  //       moduleIdentifier: DeviceOptionModule.moduleIdentifier,
+  //       serviceIdentifier: IDeviceOptionService.deviceDetailIdentifier,
+  //       onError: onErrorCallback,
+  //       modelBuilderCallback: (responseData) {
+  //         final data = responseData;
+  //         DeviceListResponse deviceListResponse =
+  //         DeviceListResponse.fromJson(data);
+  //         return DeviceListResponse.fromJson(data);
+  //       });
+  // }
 }

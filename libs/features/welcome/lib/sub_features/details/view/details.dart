@@ -4,7 +4,8 @@ import 'package:core/view/base_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_data_models/customer_onboard/region_district/region_response/datum.dart';
-import 'package:shared_data_models/customer_onboard/region_district/district_response/datum.dart' as b;
+import 'package:shared_data_models/customer_onboard/region_district/district_response/datum.dart'
+    as b;
 import 'package:welcome/sub_features/details/state/details_state.dart';
 import 'package:welcome/sub_features/details/viewmodel/details_coordinator.dart';
 import 'package:welcome/welcome_module.dart';
@@ -103,35 +104,34 @@ class _DetailsScreenState extends State<DetailsScreen> {
   @override
   Widget build(BuildContext context) =>
       BaseView<DetailsCoordinator, DetailsState>(
-        onStateListenCallback: (preState, newState) =>
-            {_listenToStateChanges(context, newState)},
-        setupViewModel: (coordinator) async {
-          coordinator.getMobileNumber();
-          List<Datum> regions = await coordinator.getRegion();
-          genderTypeDropDown = getDropDownData(coordinator.genderType);
-          regionDropDown = getRegionDropDownData(regions);
-        },
-        builder: (context, state, coordinator) => SafeArea(
-          child: state.maybeWhen(
-            LoadingState: ()=> _buildMainUIWithLoading(context, coordinator),
-            orElse: ()=>
-          Scaffold(
-            appBar: PreferredSize(
-              preferredSize: const Size(double.infinity, 102),
-              child: _buildTopContainer(context, coordinator),
-            ),
-            body: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _buildMainUI(coordinator),
-                ],
-              ),
-            ),
-          ),
-        ),
-        )
-      );
+          onStateListenCallback: (preState, newState) =>
+              {_listenToStateChanges(context, newState)},
+          setupViewModel: (coordinator) async {
+            coordinator.getMobileNumber();
+            List<Datum> regions = await coordinator.getRegion();
+            genderTypeDropDown = getDropDownData(coordinator.genderType);
+            regionDropDown = getRegionDropDownData(regions);
+          },
+          builder: (context, state, coordinator) => SafeArea(
+                child: state.maybeWhen(
+                  LoadingState: () =>
+                      _buildMainUIWithLoading(context, coordinator),
+                  orElse: () => Scaffold(
+                    appBar: PreferredSize(
+                      preferredSize: const Size(double.infinity, 102),
+                      child: _buildTopContainer(context, coordinator),
+                    ),
+                    body: SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          _buildMainUI(coordinator),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ));
 
   Widget _buildTopContainer(
     BuildContext context,
@@ -145,12 +145,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
     );
   }
 
-
-
   Widget _buildMainUIWithLoading(
-      BuildContext context,
-      DetailsCoordinator coordinator,
-      ) {
+    BuildContext context,
+    DetailsCoordinator coordinator,
+  ) {
     return Scaffold(
       body: Stack(
         children: [
@@ -165,7 +163,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
     return Center(
       child: Container(
         color: Colors.black.withOpacity(0.4),
-        child: const CenteredCircularProgressBar(color: config_color.PRIMARY_COLOR),
+        child: const CenteredCircularProgressBar(
+            color: config_color.PRIMARY_COLOR),
       ),
     );
   }

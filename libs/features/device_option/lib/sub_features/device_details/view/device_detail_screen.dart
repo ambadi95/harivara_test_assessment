@@ -1,12 +1,15 @@
 import 'package:config/Colors.dart';
+import 'package:core/mobile_core.dart';
 import 'package:core/view/base_view.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_data_models/device_option/device_detail_mockup.dart';
+import 'package:welcome/sub_features/details/viewmodel/details_coordinator.dart';
 import 'package:widget_library/app_bars/crayon_payment_app_bar_attributes.dart';
 import 'package:widget_library/app_bars/crayon_payment_app_bar_button_type.dart';
 import 'package:widget_library/buttons/docked_button.dart';
 import 'package:widget_library/dimensions/crayon_payment_dimensions.dart';
 import 'package:widget_library/page_header/text_ui_data_model.dart';
+import 'package:widget_library/progress_bar/centered_circular_progress_bar.dart';
 import 'package:widget_library/scaffold/crayon_payment_scaffold.dart';
 import 'package:widget_library/spacers/crayon_payment_spacers.dart';
 import 'package:widget_library/static_text/crayon_payment_text.dart';
@@ -14,26 +17,63 @@ import '../../../device_option_module.dart';
 import '../state/device_detail_state.dart';
 import '../viewmodel/device_detail_coordinator.dart';
 import 'package:get/get.dart';
+import 'package:shared_data_models/detail_detail/data.dart';
 
-class DeviceDetailScreen extends StatelessWidget {
-  final String _identifier = 'device-detail-screen';
+class DeviceDetailScreen extends StatefulWidget {
+  final int deviceId;
   static const String viewPath =
       '${DeviceOptionModule.moduleIdentifier}/device-detail-screen';
-  DeviceDetailScreen({Key? key}) : super(key: key);
+
+  DeviceDetailScreen({Key? key, required this.deviceId}) : super(key: key);
+
+  @override
+  State<DeviceDetailScreen> createState() => _DeviceDetailScreenState();
+}
+
+class _DeviceDetailScreenState extends State<DeviceDetailScreen> {
+  final String _identifier = 'device-detail-screen';
 
   String isDeviceSelected = "";
+
+  Data? detailDetail;
 
   @override
   Widget build(BuildContext context) {
     return BaseView<DeviceDetailCoordinator, DeviceDetailState>(
-      setupViewModel: (coordinator) {
-
+      setupViewModel: (coordinator) async {
+        detailDetail = await coordinator.getDeviceDetail(widget.deviceId);
+        setState(() {});
       },
       onStateListenCallback: (preState, newState) =>
           {_listenToStateChanges(context, newState)},
       builder: (context, state, coordinator) {
-        return _buildMainUI(context, coordinator);
+        return detailDetail.isNotEmptyOrNull
+            ? _buildMainUI(context, coordinator)
+            : _createLoading();
       },
+    );
+  }
+
+  Widget _buildMainUIWithLoading(
+    BuildContext context,
+    DeviceDetailCoordinator coordinator,
+  ) {
+    return Scaffold(
+      body: Stack(
+        children: [
+          _buildMainUI(context, coordinator),
+          _createLoading(),
+        ],
+      ),
+    );
+  }
+
+  Widget _createLoading() {
+    return Center(
+      child: Container(
+        color: Colors.white,
+        child: const CenteredCircularProgressBar(color: PRIMARY_COLOR),
+      ),
     );
   }
 
@@ -84,7 +124,7 @@ class DeviceDetailScreen extends StatelessWidget {
   Widget _buildOptionTitle(context) {
     return CrayonPaymentText(
       key: Key('${_identifier}_DD_option_Title'),
-      text: const TextUIDataModel('Option A',
+      text: TextUIDataModel('Option ' + widget.deviceId.toString(),
           styleVariant: CrayonPaymentTextStyleVariant.headline6,
           color: AN_TitleColor,
           fontWeight: FontWeight.w600),
@@ -94,7 +134,8 @@ class DeviceDetailScreen extends StatelessWidget {
   Widget _buildTitle(context) {
     return CrayonPaymentText(
       key: Key('${_identifier}_DD_Title'),
-      text: const TextUIDataModel('SamsungGalaxy S21 FE 5G',
+      text: TextUIDataModel(
+          detailDetail!.brand! + ' ' + detailDetail!.modelNumber!,
           styleVariant: CrayonPaymentTextStyleVariant.headlineThirtyTwo,
           color: AN_TitleColor,
           fontWeight: FontWeight.w800),
@@ -127,41 +168,41 @@ class DeviceDetailScreen extends StatelessWidget {
         ),
         dynamicHSpacer(8),
         dynamicHSpacer(8),
-        productSpecLabel(label: 'DD_Brand', value: getMockupData.brand!),
+        productSpecLabel(label: 'DD_Brand', value: detailDetail!.brand!),
         divider(),
-        productSpecLabel(label: 'DD_ModelNumber', value: getMockupData.model!),
+        productSpecLabel(
+            label: 'DD_ModelNumber', value: detailDetail!.modelNumber!),
         divider(),
         productSpecLabel(
             label: 'DD_HumanInterfaceInput',
-            value: getMockupData.humanInterfaceInput!),
+            value: detailDetail!.humanInterfaceInput!),
         divider(),
         productSpecLabel(
-            label: 'DD_WirelessCarrier', value: getMockupData.wirelessCarrier!),
+            label: 'DD_WirelessCarrier', value: detailDetail!.wirelessCareer!),
         divider(),
         productSpecLabel(
             label: 'DD_CellularTechnology',
-            value: getMockupData.cellularTechnology!),
-        divider(),
-        productSpecLabel(label: 'DD_OperatingSystem', value: getMockupData.os!),
+            value: detailDetail!.cellularTechnology!),
         divider(),
         productSpecLabel(
-            label: 'DD_MemoryStorage', value: getMockupData.storage!),
+            label: 'DD_OperatingSystem', value: detailDetail!.operatingSystem!),
+        divider(),
+        productSpecLabel(
+            label: 'DD_MemoryStorage', value: detailDetail!.modelNumber!),
         divider(),
         productSpecLabel(
             label: 'DD_WaterResistanceLevel',
-            value: getMockupData.waterResistanceLevel!),
+            value: detailDetail!.waterResistanceLevel!),
         divider(),
-        productSpecLabel(label: 'DD_Color', value: getMockupData.colour!),
+        productSpecLabel(label: 'DD_Color', value: detailDetail!.color!),
         divider(),
-        productSpecLabel(label: 'DD_Price', value: getMockupData.price!),
+        productSpecLabel(label: 'DD_Price', value: ''),
         divider(),
-        productSpecLabel(
-            label: 'DD_EMIMonth', value: getMockupData.monthlyPrice!),
+        productSpecLabel(label: 'DD_EMIMonth', value: ''),
         divider(),
-        productSpecLabel(label: 'DD_Interest', value: getMockupData.interest!),
+        productSpecLabel(label: 'DD_Interest', value: ''),
         divider(),
-        productSpecLabel(
-            label: 'DD_TotalAmountPaid', value: getMockupData.amountToPaid!),
+        productSpecLabel(label: 'DD_TotalAmountPaid', value: ''),
         dynamicHSpacer(8),
       ],
     );
@@ -325,7 +366,7 @@ class DeviceDetailScreen extends StatelessWidget {
       textColor: White,
       textStyleVariant: CrayonPaymentTextStyleVariant.headline4,
       onPressed: () {
-        coordinator.navigateToEnrolledScreen();
+        coordinator.navigateToEnrolledScreen(widget.deviceId);
       },
     );
   }

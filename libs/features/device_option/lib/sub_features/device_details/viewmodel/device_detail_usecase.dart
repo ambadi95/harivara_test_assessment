@@ -1,39 +1,47 @@
 import 'package:network_manager/auth/auth_manager.dart';
-import 'package:shared_data_models/customer_onboard/membership/request/membership_request.dart';
-import 'package:shared_data_models/customer_onboard/membership/response/device_list_response/device_list_response.dart';
 import 'package:task_manager/base_classes/base_data_provider.dart';
 import 'package:task_manager/task.dart';
 import 'package:task_manager/task_manager_impl.dart';
-
+import 'package:shared_data_models/detail_detail/device_details.dart';
 import '../../../device_option_module.dart';
 import '../service/device_option_service.dart';
+import 'package:shared_data_models/customer_select_device/customer_select_device_response/customer_select_device_response.dart';
 
 class DeviceDetailUseCase extends BaseDataProvider {
-  DeviceDetailUseCase(TaskManager taskManager,this._authManager) : super(taskManager);
+  DeviceDetailUseCase(TaskManager taskManager, this._authManager)
+      : super(taskManager);
   final IAuthManager _authManager;
 
-  Future<DeviceListResponse?> getDeviceList(
-      Function(String) onErrorCallback) async {
-    String? id;
-
-    final customerId = await _authManager
-        .getUserInfo('Customer_ID')
-        .then((value) => id = value);
-
-    MembershipRequest membershipRequest = MembershipRequest(customerId: 36);
-
-    return await executeApiRequest<DeviceListResponse?>(
+  Future<DeviceDetails?> getDeviceDetail(
+      int deviceId, Function(String) onErrorCallback) async {
+    String? token = await _authManager.getAccessToken();
+    return await executeApiRequest<DeviceDetails?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
         moduleIdentifier: DeviceOptionModule.moduleIdentifier,
-        requestData: membershipRequest.toJson(),
-        serviceIdentifier: IDeviceOptionService.deviceOptionIdentifier,
+        requestData: {'deviceId': deviceId, 'token': token},
+        serviceIdentifier: IDeviceOptionService.deviceDetailIdentifier,
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {
           final data = responseData;
-          DeviceListResponse deviceListResponse =
-          DeviceListResponse.fromJson(data);
-          return DeviceListResponse.fromJson(data);
+          DeviceDetails deviceListResponse = DeviceDetails.fromJson(data);
+          return DeviceDetails.fromJson(data);
+        });
+  }
+
+  Future<CustomerSelectDeviceResponse?> selectDevice(
+      int deviceId, Function(String) onErrorCallback) async {
+    String? token = await _authManager.getAccessToken();
+    return await executeApiRequest<CustomerSelectDeviceResponse?>(
+        taskType: TaskType.DATA_OPERATION,
+        taskSubType: TaskSubType.REST,
+        moduleIdentifier: DeviceOptionModule.moduleIdentifier,
+        requestData: {'deviceId': deviceId, 'token': token, 'customerId': 36},
+        serviceIdentifier: IDeviceOptionService.selectDeviceIdentifier,
+        onError: onErrorCallback,
+        modelBuilderCallback: (responseData) {
+          final data = responseData;
+          return CustomerSelectDeviceResponse.fromMap(data);
         });
   }
 }

@@ -1,3 +1,4 @@
+import 'package:core/mobile_core.dart';
 import 'package:shared_data_models/customer_onboard/region_district/region_response/datum.dart';
 import 'package:shared_data_models/customer_onboard/region_district/district_response/datum.dart'
     as b;
@@ -65,16 +66,19 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
       String poBox,
       String region,
       String district) {
+    print("dfgfg${gender}");
     var isnNameValid = _detailsUseCase.isValidName(name);
     var isMobileNoValid = mobNumber.isNotEmpty;
     var isDobValid = dob.isNotEmpty;
-    var isGenderValid = gender.isNotEmpty;
+    var isGenderValid = (gender== 'null') ? false: gender.isNotEmpty;
     var isProfessionValid = profession.isNotEmpty;
     var isEmailIdValid = _detailsUseCase.isValidEmail(emailId);
     var isAddressValid = address.isNotEmpty;
     var isPoBoxValid = /*_detailsUseCase.isValidPoBox(poBox)*/ true;
     var isRegionValid = region.isNotEmpty;
     var isDistrictValid = district.isNotEmpty;
+
+
     var _isValid = isnNameValid &&
         isMobileNoValid &&
         isDobValid &&
@@ -85,6 +89,8 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
         isPoBoxValid &&
         isRegionValid &&
         isDistrictValid;
+
+
     return _isValid;
   }
 
@@ -99,6 +105,7 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
       String poBox,
       String region,
       String district) {
+    print(gender);
     state = DetailsState.DetailsFormState(_validateForm(name, dob, gender,
         profession, mobNumber, emailId, address, poBox, region, district));
   }
