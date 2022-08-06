@@ -76,7 +76,8 @@ extension CrayonPaymentColors on Color {
   static Color get crayonPaymentSnackbarBackgroundColor =>
       const Color(0xFF000000).withOpacity(0.8);
 
-  static Color get crayonPaymentSnackbarSubtitleColor => const Color(0xFFF1EFEB);
+  static Color get crayonPaymentSnackbarSubtitleColor =>
+      const Color(0xFFF1EFEB);
 
   static Color get crayonPaymentDividerColor => const Color(0xffF6F5F2);
 
@@ -106,5 +107,6 @@ extension CrayonPaymentColors on Color {
 
   static Color get crayonPaymentSubtitle => const Color(0xffAAAAAA);
 
-  static Color get crayonPaymentProfilePlaceHolderColor => const Color(0xffF4E6B3);
+  static Color get crayonPaymentProfilePlaceHolderColor =>
+      const Color(0xffF4E6B3);
 }

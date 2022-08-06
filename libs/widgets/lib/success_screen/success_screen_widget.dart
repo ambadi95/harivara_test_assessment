@@ -108,7 +108,8 @@ class SuccessScreenWidget extends StatelessWidget {
                           .firstWhere(
                             (element) =>
                                 element.type ==
-                                CrayonPaymentDockedButtonBarElementType.swipeButton,
+                                CrayonPaymentDockedButtonBarElementType
+                                    .swipeButton,
                           )
                           .onPressed
                           ?.call(),

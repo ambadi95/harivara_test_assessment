@@ -6,7 +6,7 @@ exports.config = {
     ...{
         services: [['appium', {
             args: {
-                host: '127.0.0.1',
+                host: '192.168.31.44',
                 port: 4723,
                 'base-path': '/',
                 'relaxed-security': true,

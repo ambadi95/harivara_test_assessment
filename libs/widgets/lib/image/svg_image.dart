@@ -24,7 +24,7 @@ class CrayonPaymentSvgImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Padding(
-    key: Key('CrayonPaymentSvgImage_Padding'),
+        key: Key('CrayonPaymentSvgImage_Padding'),
         padding: crayonPaymentSvgImageModelSvgImageModel.padding,
         child: getSvg(
           crayonPaymentSvgImageModelSvgImageModel.iconPath,

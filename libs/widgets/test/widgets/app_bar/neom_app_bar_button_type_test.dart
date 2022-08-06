@@ -35,7 +35,8 @@ void main() {
         ),
       );
     });
-    testWidgets('[CrayonPaymentAppBarButtonType] - check existence of all components',
+    testWidgets(
+        '[CrayonPaymentAppBarButtonType] - check existence of all components',
         (WidgetTester tester) async {
       await tester.pumpWidget(testWidget);
 
@@ -71,7 +72,8 @@ void main() {
       );
     });
 
-    testWidgets('[CrayonPaymentAppBarButtonType] - check existence of all components',
+    testWidgets(
+        '[CrayonPaymentAppBarButtonType] - check existence of all components',
         (WidgetTester tester) async {
       await tester.pumpWidget(testWidget);
 
@@ -107,7 +109,8 @@ void main() {
       );
     });
 
-    testWidgets('[CrayonPaymentAppBarButtonType] - check existence of all components',
+    testWidgets(
+        '[CrayonPaymentAppBarButtonType] - check existence of all components',
         (WidgetTester tester) async {
       await tester.pumpWidget(testWidget);
 
@@ -143,7 +146,8 @@ void main() {
       );
     });
 
-    testWidgets('[CrayonPaymentAppBarButtonType] - check existence of all components',
+    testWidgets(
+        '[CrayonPaymentAppBarButtonType] - check existence of all components',
         (WidgetTester tester) async {
       await tester.pumpWidget(testWidget);
 
@@ -179,7 +183,8 @@ void main() {
       );
     });
 
-    testWidgets('[CrayonPaymentAppBarButtonType] - check existence of all components',
+    testWidgets(
+        '[CrayonPaymentAppBarButtonType] - check existence of all components',
         (WidgetTester tester) async {
       await tester.pumpWidget(testWidget);
 
@@ -215,7 +220,8 @@ void main() {
       );
     });
 
-    testWidgets('[CrayonPaymentAppBarButtonType] - check existence of all components',
+    testWidgets(
+        '[CrayonPaymentAppBarButtonType] - check existence of all components',
         (WidgetTester tester) async {
       await tester.pumpWidget(testWidget);
 
@@ -251,7 +257,8 @@ void main() {
       );
     });
 
-    testWidgets('[CrayonPaymentAppBarButtonType] - check existence of all components',
+    testWidgets(
+        '[CrayonPaymentAppBarButtonType] - check existence of all components',
         (WidgetTester tester) async {
       await tester.pumpWidget(testWidget);
 
@@ -285,7 +292,8 @@ void main() {
       );
     });
 
-    testWidgets('[CrayonPaymentAppBarButtonType] - check existence of all components',
+    testWidgets(
+        '[CrayonPaymentAppBarButtonType] - check existence of all components',
         (WidgetTester tester) async {
       await tester.pumpWidget(testWidget);
 
@@ -319,7 +327,8 @@ void main() {
       );
     });
 
-    testWidgets('[CrayonPaymentAppBarButtonType] - check existence of all components',
+    testWidgets(
+        '[CrayonPaymentAppBarButtonType] - check existence of all components',
         (WidgetTester tester) async {
       await tester.pumpWidget(testWidget);
 

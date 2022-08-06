@@ -17,13 +17,11 @@ class DeviceOptionNavigationHandler with ErrorHandler {
     );
   }
 
-  Future<void> navigateToCustomerEnrollmentScreen(String destinationPath, bool isEnrolled) async {
+  Future<void> navigateToCustomerEnrollmentScreen(
+      String destinationPath, bool isEnrolled) async {
     var argument = isEnrolled;
     _navigationManager.navigateTo(
-        EnrollmentSuccessScreen.viewPath,
-        const NavigationType.replace(),
-        arguments: argument
-    );
+        EnrollmentSuccessScreen.viewPath, const NavigationType.replace(),
+        arguments: argument);
   }
-
 }

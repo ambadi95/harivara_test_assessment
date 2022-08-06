@@ -1,5 +1,3 @@
-
-
 import 'package:config/Colors.dart';
 import 'package:core/navigation/navigation_manager.dart';
 import 'package:core/navigation/navigation_type.dart';
@@ -11,11 +9,11 @@ import 'package:welcome/sub_features/enrollment_success/view/enrollment_success_
 import 'package:widget_library/helpers/error/helper/error_helper.dart';
 import 'package:widget_library/icons/crayon_payment_bottom_sheet_icon.dart';
 import 'package:get/get.dart';
-class PasscodeNavigationHandler with ErrorHandler{
+
+class PasscodeNavigationHandler with ErrorHandler {
   final NavigationManager _navigationManager;
 
   PasscodeNavigationHandler(this._navigationManager);
-
 
   Future<void> navigateToDestinationPath(String destinationPath) async {
     _navigationManager.navigateTo(
@@ -24,36 +22,33 @@ class PasscodeNavigationHandler with ErrorHandler{
     );
   }
 
-  Future<void> navigateToCustomerEnrollmentScreen(String destinationPath, bool isEnrolled) async {
+  Future<void> navigateToCustomerEnrollmentScreen(
+      String destinationPath, bool isEnrolled) async {
     var argument = isEnrolled;
     _navigationManager.navigateTo(
-      destinationPath,
-      const NavigationType.replace(),
-      arguments: argument
-    );
+        destinationPath, const NavigationType.replace(),
+        arguments: argument);
   }
-
 
   Future<void> navigateToAgentHomeScreen(String destinationPath) async {
-    var arguments = HomeScreenArgs(
-    true
-    );
+    var arguments = HomeScreenArgs(true);
     _navigationManager.navigateTo(
-      destinationPath,
-      const NavigationType.replace(),
-      arguments: arguments
-    );
+        destinationPath, const NavigationType.replace(),
+        arguments: arguments);
   }
 
-  Future<void> navigateToAgentEnrollmentBottomSheet(String message,String buttonLabel) async {
-    final CrayonPaymentBottomSheetIcon icon = CrayonPaymentBottomSheetSuccessIcon();
-    final CrayonPaymentBottomSheetState infoState = CrayonPaymentBottomSheetState.agentEnrollment(
-        buttonOptions: [
-          ButtonOptions(Black,buttonLabel, ()=>navigateToAgentHome(),false)
-        ],
-        disableCloseButton: true,
-        bottomSheetIcon: icon,
-        title: message,
+  Future<void> navigateToAgentEnrollmentBottomSheet(
+      String message, String buttonLabel) async {
+    final CrayonPaymentBottomSheetIcon icon =
+        CrayonPaymentBottomSheetSuccessIcon();
+    final CrayonPaymentBottomSheetState infoState =
+        CrayonPaymentBottomSheetState.agentEnrollment(
+      buttonOptions: [
+        ButtonOptions(Black, buttonLabel, () => navigateToAgentHome(), false)
+      ],
+      disableCloseButton: true,
+      bottomSheetIcon: icon,
+      title: message,
     );
 
     _navigationManager.navigateTo(
@@ -63,17 +58,20 @@ class PasscodeNavigationHandler with ErrorHandler{
     );
   }
 
-  Future<void> navigateToResetPasscodeBottomSheet(String message,String buttonLabel,String description) async {
-    final CrayonPaymentBottomSheetIcon icon = CrayonPaymentBottomSheetSuccessIcon();
-    final CrayonPaymentBottomSheetState infoState = CrayonPaymentBottomSheetState.agentEnrollment(
-      buttonOptions: [
-        ButtonOptions(Black,buttonLabel, ()=>navigateToAgentHome(),false)
-      ],
-      disableCloseButton: true,
-      bottomSheetIcon: icon,
-      title: message,
-      additionalText: [description]
-    );
+  Future<void> navigateToResetPasscodeBottomSheet(
+      String message, String buttonLabel, String description) async {
+    final CrayonPaymentBottomSheetIcon icon =
+        CrayonPaymentBottomSheetSuccessIcon();
+    final CrayonPaymentBottomSheetState infoState =
+        CrayonPaymentBottomSheetState.agentEnrollment(
+            buttonOptions: [
+              ButtonOptions(
+                  Black, buttonLabel, () => navigateToAgentHome(), false)
+            ],
+            disableCloseButton: true,
+            bottomSheetIcon: icon,
+            title: message,
+            additionalText: [description]);
 
     _navigationManager.navigateTo(
       'bottomSheet/crayonPaymentBottomSheet',
@@ -83,14 +81,9 @@ class PasscodeNavigationHandler with ErrorHandler{
   }
 
   Future<void> navigateToAgentHome() async {
-    var argument = HomeScreenArgs(
-        true
-    );
+    var argument = HomeScreenArgs(true);
     await _navigationManager.navigateTo(
-        CrayonHomeScreen.viewPath,
-        const NavigationType.replace(),
-        arguments: argument
-    );
+        CrayonHomeScreen.viewPath, const NavigationType.replace(),
+        arguments: argument);
   }
-
 }

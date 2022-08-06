@@ -38,7 +38,7 @@ class Login extends StatelessWidget {
   Widget build(BuildContext context) {
     return BaseView<LoginCoordinator, LoginState>(
       onStateListenCallback: (preState, newState) =>
-      {_listenToStateChanges(context, newState)},
+          {_listenToStateChanges(context, newState)},
       setupViewModel: (coordinator) {},
       builder: (context, state, coordinator) {
         return _buildMainUI(context, coordinator);
@@ -61,9 +61,19 @@ class Login extends StatelessWidget {
             dynamicHSpacer(66),
             _buildLabelTextFieldMobNumber(context, 'LS_Mobile'.tr, coordinator),
             dynamicHSpacer(48),
-           userType =='Customer'?  _passcodeWidget(context, coordinator) :
-           _buildLabelTextField('LS_agent_id'.tr,agentIdController, TextInputType.text,coordinator,agentIdError, 'SU_agent_id_hint', true),
-            const SizedBox(height: 46,),
+            userType == 'Customer'
+                ? _passcodeWidget(context, coordinator)
+                : _buildLabelTextField(
+                    'LS_agent_id'.tr,
+                    agentIdController,
+                    TextInputType.text,
+                    coordinator,
+                    agentIdError,
+                    'SU_agent_id_hint',
+                    true),
+            const SizedBox(
+              height: 46,
+            ),
             _buildResetPasscode(coordinator),
             const Spacer(),
             actionButton(coordinator),
@@ -82,28 +92,34 @@ class Login extends StatelessWidget {
     );
   }
 
-
-  Widget _buildLabelTextFieldMobNumber(BuildContext context, String label, LoginCoordinator coordinator) {
-    return  InputNumberFieldWithLabel(
+  Widget _buildLabelTextFieldMobNumber(
+      BuildContext context, String label, LoginCoordinator coordinator) {
+    return InputNumberFieldWithLabel(
       label: label,
       controller: mobileNumber,
       errorText: mobileNumberError.tr,
       hintText: 'LS_mobile_hint_text'.tr,
       key: const Key('mobileNumberTextField'),
       inputFormatters: <TextInputFormatter>[
-        NIDAInputFormatter(mask: 'xxx xxx xxx',separator: ' ')
+        NIDAInputFormatter(mask: 'xxx xxx xxx', separator: ' ')
       ],
       keyboardType: TextInputType.number,
       onChanged: (value) {
-        if(mobileNumberError.isNotEmpty || mobileNumber.text.length > 11){
+        if (mobileNumberError.isNotEmpty || mobileNumber.text.length > 11) {
           coordinator.isMobileNumberValid(mobileNumber.text);
         }
       },
     );
   }
 
-  Widget _buildLabelTextField(String label, TextEditingController controller,
-      TextInputType textInputType, LoginCoordinator coordinator, String errorText, String hint, bool enabled) {
+  Widget _buildLabelTextField(
+      String label,
+      TextEditingController controller,
+      TextInputType textInputType,
+      LoginCoordinator coordinator,
+      String errorText,
+      String hint,
+      bool enabled) {
     return Padding(
         padding: const EdgeInsets.only(bottom: 34),
         child: InputFieldWithLabel(
@@ -115,8 +131,8 @@ class Login extends StatelessWidget {
           key: const Key('detailsTextField'),
           keyboardType: textInputType,
           onChanged: (value) {
-           _validateForm(coordinator);
-            if(errorText.isNotEmpty){
+            _validateForm(coordinator);
+            if (errorText.isNotEmpty) {
               coordinator.isAgentIdValid(agentIdController.text);
             }
           },
@@ -129,17 +145,17 @@ class Login extends StatelessWidget {
       title: 'LS_SignIn'.tr,
       borderRadius: 8,
       height: CrayonPaymentDimensions.marginFortyEight,
-      buttonColor: isBtnEnabled ?  LS_ButtonColor : SU_grey_color,
+      buttonColor: isBtnEnabled ? LS_ButtonColor : SU_grey_color,
       textColor: White,
       textStyleVariant: CrayonPaymentTextStyleVariant.headline5,
       onPressed: () {
         coordinator.isMobileNumberValid(mobileNumber.text);
         coordinator.isAgentIdValid(agentIdController.text);
-        if(isBtnEnabled){
-         // coordinator.navigateToWelcomeBackScreen(userType, mobileNumber.text);
-          coordinator.customerLogin(mobileNumber.text, passcodeController.text, userType);
+        if (isBtnEnabled) {
+          // coordinator.navigateToWelcomeBackScreen(userType, mobileNumber.text);
+          coordinator.customerLogin(
+              mobileNumber.text, passcodeController.text, userType);
         }
-
       },
     );
   }
@@ -203,24 +219,26 @@ class Login extends StatelessWidget {
     );
   }
 
-  Widget _buildResetPasscode(LoginCoordinator coordinator){
+  Widget _buildResetPasscode(LoginCoordinator coordinator) {
     return Center(
       child: Padding(
         padding: const EdgeInsets.only(bottom: 20),
         child: InkWell(
-          onTap: (){
+          onTap: () {
             coordinator.navigateToResetNow(userType);
           },
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: const [
-              Text('Forget Passcode?',
+              Text(
+                'Forget Passcode?',
                 style: WB_forget_passcode_text_style,
               ),
               SizedBox(
                 height: 5,
               ),
-              Text('Reset Now',
+              Text(
+                'Reset Now',
                 style: WB_reset_passcode_text_style,
               )
             ],
@@ -231,24 +249,21 @@ class Login extends StatelessWidget {
   }
 
   void _listenToStateChanges(BuildContext context, LoginState state) {
-    state.maybeWhen(
-      (loginList) {
-
-      },
-        mobileNumberError: (message){
+    state.maybeWhen((loginList) {},
+        mobileNumberError: (message) {
           mobileNumberError = message;
         },
-        loginFormState: (isValid){
-        isBtnEnabled = isValid;
+        loginFormState: (isValid) {
+          isBtnEnabled = isValid;
         },
-        agentIdError: (message){
+        agentIdError: (message) {
           agentIdError = message;
         },
-
         orElse: () => null);
   }
 
   void _validateForm(LoginCoordinator coordinator) {
-    coordinator.validateForm(mobileNumber.text, passcodeController.text,agentIdController.text,userType);
+    coordinator.validateForm(mobileNumber.text, passcodeController.text,
+        agentIdController.text, userType);
   }
 }

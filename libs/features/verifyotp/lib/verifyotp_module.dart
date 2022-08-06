@@ -1,5 +1,3 @@
-
-
 import 'package:core/ioc/di_container.dart';
 import 'package:core/navigation/navigation_manager.dart';
 import 'package:task_manager/task_manager.dart';
@@ -11,11 +9,10 @@ import 'package:verifyotp/verifyotp/view_model/verifyotp_coordinator.dart';
 import 'package:verifyotp/verifyotp/view_model/verifyotp_usecase.dart';
 import 'package:verifyotp/verifyotp/view_model/verifyotp_viewmodel.dart';
 
-class VerifyOtpModule{
+class VerifyOtpModule {
   static const moduleIdentifier = 'VerifyOtpModule';
 
   static void registerDependencies() {
-
     ModuleResolver.registerResolver(
       moduleIdentifier,
       OtpModuleResolver(
@@ -26,14 +23,13 @@ class VerifyOtpModule{
     );
 
     DIContainer.container.registerFactory<VerifyOtpCoordinator>(
-          (container) => VerifyOtpCoordinator(
+      (container) => VerifyOtpCoordinator(
         VerifyOtpNavigationHandler(container.resolve<NavigationManager>()),
-            VerifyOtpUseCase(
+        VerifyOtpUseCase(
           VerifyOtpViewModel(),
           container.resolve<TaskManager>(),
         ),
       ),
     );
   }
-
 }

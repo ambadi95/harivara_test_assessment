@@ -4,7 +4,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:widget_library/cards/add_card_holder.dart';
 
 void main() {
-  testWidgets('CrayonPaymentAddCardHolder WidgetTest', (WidgetTester tester) async {
+  testWidgets('CrayonPaymentAddCardHolder WidgetTest',
+      (WidgetTester tester) async {
     final addCardHolderFinder =
         find.byKey(const Key('CrayonPaymentAddCardHolder_AddCardHolder'));
     final addCardHolderRowFinder =

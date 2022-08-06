@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:widget_library/utils/icon_utils.dart';
 
 /// Default decoration image uri for the background
-const String _CrayonPaymentDecoratedBackgroundChevronIconUri = 'widget_library:assets/images/bg_chevron.svg';
+const String _CrayonPaymentDecoratedBackgroundChevronIconUri =
+    'widget_library:assets/images/bg_chevron.svg';
 
 /// Container which facilitates decorating background of a screen
 /// with any image and gradient
@@ -52,7 +53,7 @@ class CrayonPaymentDecoratedBackground extends StatelessWidget {
             key: Key('CrayonPaymentDecoratedBackground_GradientedContainer'),
             backgroundGradientTopColor: backgroundGradientTopColor,
             backgroundGradientBottomColor: backgroundGradientBottomColor,
-              gradientColors: gradientColors,
+            gradientColors: gradientColors,
           ),
         ],
       ),
@@ -89,22 +90,28 @@ class _GradientedContainer extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return (backgroundGradientTopColor != null && backgroundGradientBottomColor != null) || gradientColors != null
+    return (backgroundGradientTopColor != null &&
+                backgroundGradientBottomColor != null) ||
+            gradientColors != null
         ? Container(
-            key: Key('CrayonPaymentDecoratedBackground_GradientedContainer_Container'),
+            key: Key(
+                'CrayonPaymentDecoratedBackground_GradientedContainer_Container'),
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
-                colors: gradientColors == null ? [
-                  backgroundGradientTopColor!,
-                  backgroundGradientBottomColor!,
-                ] : gradientColors!,
+                colors: gradientColors == null
+                    ? [
+                        backgroundGradientTopColor!,
+                        backgroundGradientBottomColor!,
+                      ]
+                    : gradientColors!,
               ),
             ),
           )
         : Container(
-            key: Key('CrayonPaymentDecoratedBackground_GradientedContainer_NullContainer'),
+            key: Key(
+                'CrayonPaymentDecoratedBackground_GradientedContainer_NullContainer'),
           );
   }
 }

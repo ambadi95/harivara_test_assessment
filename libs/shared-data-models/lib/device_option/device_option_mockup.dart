@@ -1,4 +1,3 @@
-
 import 'device_option_model.dart';
 
 const List<DeviceOptionModel> deviceMockData = [

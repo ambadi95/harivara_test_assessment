@@ -219,9 +219,9 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
         region,
         district,
         (p0) => null);
-    if(response?.status == true){
+    if (response?.status == true) {
       navigateToCreatePasscodeScreen(userType);
-    }else{
+    } else {
       print(response?.message);
     }
   }

@@ -99,7 +99,7 @@ class CacheTaskResolver implements TaskResolver {
         return dataMap;
       case TaskManagerCacheType.GET_FILE:
         final files =
-        await _batchGetFiles(requestData[DATA_KEY] as Map<String, String?>);
+            await _batchGetFiles(requestData[DATA_KEY] as Map<String, String?>);
         return files;
       case TaskManagerCacheType.DELETE_FILE:
         await _batchDeleteFiles(requestData[DATA_KEY] as Map<String, String?>);
@@ -138,8 +138,8 @@ class CacheTaskResolver implements TaskResolver {
   }
 
   Future<Map<String, String?>> _getFromStorage(
-      Map<String, String?> dataMap,
-      ) async {
+    Map<String, String?> dataMap,
+  ) async {
     final keys = dataMap.keys.toList();
     final newMap = <String, String?>{};
     await Future.forEach(keys, (String key) async {
@@ -168,8 +168,8 @@ class CacheTaskResolver implements TaskResolver {
   }
 
   Future<Map<String, String?>> _getFromSecureStorageWithKeys(
-      List<String> keys,
-      ) async {
+    List<String> keys,
+  ) async {
     final newMap = <String, String?>{};
     await Future.forEach(keys, (String key) async {
       final result = await secureStorageService.get(key);
@@ -179,8 +179,8 @@ class CacheTaskResolver implements TaskResolver {
   }
 
   Future<Map<String, String?>> _getFromSecureStorageWithKeyMap(
-      Map<String, dynamic> keys,
-      ) async {
+    Map<String, dynamic> keys,
+  ) async {
     final newMap = <String, String?>{};
     await Future.forEach(keys.entries, (MapEntry<String, dynamic> entry) async {
       final result = await secureStorageService.get(entry.value as String);
@@ -198,8 +198,8 @@ class CacheTaskResolver implements TaskResolver {
 
   // Memory Storage
   void _setToMemoryStorage(
-      Map<String, dynamic> dataMap,
-      ) {
+    Map<String, dynamic> dataMap,
+  ) {
     dataMap.keys.forEach((key) {
       final value = dataMap[key];
       if (value != null) {
@@ -228,7 +228,7 @@ class CacheTaskResolver implements TaskResolver {
     var files = <File>[];
     await Future.forEach(
       dataMap.keys,
-          (String key) async => files.add(await fileStorageService.getFile(key)),
+      (String key) async => files.add(await fileStorageService.getFile(key)),
     );
     return files;
   }
@@ -236,7 +236,7 @@ class CacheTaskResolver implements TaskResolver {
   Future _batchAppendToFiles(Map<String, String?> dataMap) async {
     await Future.forEach(
       dataMap.keys,
-          (String key) async => await fileStorageService.createFile(
+      (String key) async => await fileStorageService.createFile(
         key,
         content: dataMap[key] as String,
       ),
@@ -246,7 +246,7 @@ class CacheTaskResolver implements TaskResolver {
   Future _batchCreateFiles(Map<String, String?> dataMap) async {
     await Future.forEach(
       dataMap.keys,
-          (String key) async => await fileStorageService.createFile(
+      (String key) async => await fileStorageService.createFile(
         key,
         content: dataMap[key] as String,
       ),

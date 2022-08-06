@@ -21,9 +21,9 @@ class CommonTransactionFieldsParser {
     final formatter = DateTime.now();
 
     if (jsonMap['transactionDate'] != null) {
-     // return formatter.parseGraphQlDateTime(jsonMap['transactionDate']);
+      // return formatter.parseGraphQlDateTime(jsonMap['transactionDate']);
     } else if (jsonMap['refundTransactionDate'] != null) {
-     // return formatter.parseGraphQlDateTime(jsonMap['refundTransactionDate']);
+      // return formatter.parseGraphQlDateTime(jsonMap['refundTransactionDate']);
     }
     throw UnimplementedError('No date found');
   }

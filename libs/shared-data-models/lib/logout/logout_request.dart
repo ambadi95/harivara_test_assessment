@@ -1,4 +1,4 @@
-class LogoutRequest{
+class LogoutRequest {
   String? bearerCode;
   String? language;
   String? mobileNo;

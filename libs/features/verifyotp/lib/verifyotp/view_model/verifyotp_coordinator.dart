@@ -1,4 +1,5 @@
 import 'package:config/Config.dart';
+import 'package:core/logging/logger.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_data_models/otp/otp_screen_args.dart';
 import 'package:shared_data_models/otp/otp_verification_type.dart';
@@ -37,11 +38,11 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
 
   String otp = '';
 
-  Future<void> generateOtp(String id)async{
-   var response =  await _verifyOtpUseCase.otpGen(id, (p0) => null);
-   int otp1 = response?.data?.token as int;
-   otp = otp1.toString();
-   print(otp);
+  Future<void> generateOtp(String id) async {
+    var response = await _verifyOtpUseCase.otpGen(id, (p0) => null);
+    int otp1 = response?.data?.token as int;
+    otp = otp1.toString();
+    CrayonPaymentLogger.logInfo(otp);
   }
 
   Future<void> verifyOTP(
@@ -129,15 +130,18 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
   }
 
   Future<void> navigateToDestinationPath(
-      String destinationPath, String userType, OtpScreenArgs otpScreenArgs,) async {
+    String destinationPath,
+    String userType,
+    OtpScreenArgs otpScreenArgs,
+  ) async {
     if (otpScreenArgs.otpVerificationType == OtpVerificationType.mobile) {
       if (userType == 'Customer') {
         var response = await _verifyOtpUseCase.otpVerify(
-            otpScreenArgs.refId,otp, (p0) => null);
+            otpScreenArgs.refId, otp, (p0) => null);
         if (response!.status == true) {
           _navigationHandler.navigateToDestinationPath(
               destinationPath, userType);
-      }
+        }
       } else {
         _navigationHandler.openForNewPasscode(userType);
       }
@@ -147,7 +151,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
     } else if (otpScreenArgs.otpVerificationType ==
         OtpVerificationType.customerSign) {
       var response = await _verifyOtpUseCase.otpVerify(
-          otpScreenArgs.refId,otp, (p0) => null);
+          otpScreenArgs.refId, otp, (p0) => null);
       if (response!.status == true) {
         _navigationHandler.navigateToCustomerEnrollmentScreen();
       }

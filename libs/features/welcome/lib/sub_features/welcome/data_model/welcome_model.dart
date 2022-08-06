@@ -6,8 +6,8 @@ class WelcomeScreenArgs {
   final String userType;
 
   WelcomeScreenArgs(
-      this.signUpDestination,
-      this.signInDestination,
-      this.userType,
-      );
+    this.signUpDestination,
+    this.signInDestination,
+    this.userType,
+  );
 }

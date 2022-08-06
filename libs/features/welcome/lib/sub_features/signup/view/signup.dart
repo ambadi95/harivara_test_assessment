@@ -46,9 +46,11 @@ class _SignUpState extends State<SignUp> {
             height: 120,
             child: Column(
               children: [
-                widget.signUpArguments.userType == 'Customer'?
-                _carrierText()
-                    : const SizedBox(height: 14,),
+                widget.signUpArguments.userType == 'Customer'
+                    ? _carrierText()
+                    : const SizedBox(
+                        height: 14,
+                      ),
                 const SizedBox(
                   height: 23,
                 ),
@@ -96,29 +98,39 @@ class _SignUpState extends State<SignUp> {
           const SizedBox(
             height: 69,
           ),
-          _buildLabelTextField( 'SU_ID_no_label', nidaNumber, coordinator,
-              widget.signUpArguments.userType == 'Agent' ? 'SU_title_hint_agent' :'SU_title_hint', nidaNumberError, TextInputType.number),
+          _buildLabelTextField(
+              'SU_ID_no_label',
+              nidaNumber,
+              coordinator,
+              widget.signUpArguments.userType == 'Agent'
+                  ? 'SU_title_hint_agent'
+                  : 'SU_title_hint',
+              nidaNumberError,
+              TextInputType.number),
           const SizedBox(
             height: 48,
           ),
           widget.signUpArguments.userType == 'Customer'
-              ? _buildLabelTextFieldMobNumber(
-              'SU_mobile_no_label', mobileNumber, coordinator, 'SU_subtitle_hint')
-              : _buildLabelTextField('SU_agent_id_hint', agentId,
-                  coordinator, 'SU_agent_id_hint', agentIdError, TextInputType.text),
+              ? _buildLabelTextFieldMobNumber('SU_mobile_no_label',
+                  mobileNumber, coordinator, 'SU_subtitle_hint')
+              : _buildLabelTextField('SU_agent_id_hint', agentId, coordinator,
+                  'SU_agent_id_hint', agentIdError, TextInputType.text),
         ],
       ),
     );
   }
 
   Widget _onBoardingProgressBar() {
-    return widget.signUpArguments.isProgressBarVisible ? const Padding(
-      padding: EdgeInsets.only(left: 20.0, right: 20.0, top: 20.0, bottom: 0),
-      child: OnBoardingProgressBar(
-        currentStep: 1,
-        totalSteps: 4,
-      ),
-    ): const SizedBox();
+    return widget.signUpArguments.isProgressBarVisible
+        ? const Padding(
+            padding:
+                EdgeInsets.only(left: 20.0, right: 20.0, top: 20.0, bottom: 0),
+            child: OnBoardingProgressBar(
+              currentStep: 1,
+              totalSteps: 4,
+            ),
+          )
+        : const SizedBox();
   }
 
   Widget _buildBackBtn(
@@ -146,41 +158,52 @@ class _SignUpState extends State<SignUp> {
 
   Widget _sub_title(SignUpCoordinator coordinator) {
     return RichTextDescription(
-        key: const Key('SU_SubTitle'),
-        description: widget.signUpArguments.subTitle,
-        linkTextStyle: SU_subtitle_terms_style,
-        descriptionTextStyle: SU_subtitle_style,
-      onLinkClicked: (text,link){
-      coordinator.navigateToTermsCondition();
+      key: const Key('SU_SubTitle'),
+      description: widget.signUpArguments.subTitle,
+      linkTextStyle: SU_subtitle_terms_style,
+      descriptionTextStyle: SU_subtitle_style,
+      onLinkClicked: (text, link) {
+        coordinator.navigateToTermsCondition();
       },
     );
   }
 
-  Widget _buildLabelTextField(String label, TextEditingController controller,
-      SignUpCoordinator coordinator, String hint, String errorText, TextInputType textInputType) {
+  Widget _buildLabelTextField(
+      String label,
+      TextEditingController controller,
+      SignUpCoordinator coordinator,
+      String hint,
+      String errorText,
+      TextInputType textInputType) {
     return InputFieldWithLabel(
       label: label.tr,
       hintText: hint.tr,
       controller: controller,
       errorText: errorText.tr,
       keyboardType: textInputType,
-      inputFormatters: textInputType == TextInputType.number ? [
-        NIDAInputFormatter(mask: 'xxxxxxxx-xxxxx-xxxxx-xx',separator: '-')
-      ] : [],
+      inputFormatters: textInputType == TextInputType.number
+          ? [
+              NIDAInputFormatter(
+                  mask: 'xxxxxxxx-xxxxx-xxxxx-xx', separator: '-')
+            ]
+          : [],
       onChanged: (value) {
         _validateForm(coordinator);
         if (nidaNumberError.isNotEmpty || nidaNumber.text.length > 23) {
           coordinator.isValidNidaNumber(nidaNumber.text);
         }
-        if(agentIdError.isNotEmpty){
+        if (agentIdError.isNotEmpty) {
           coordinator.isValidAgentId(agentId.text);
         }
       },
     );
   }
 
-  Widget _buildLabelTextFieldMobNumber(String label,
-      TextEditingController controller, SignUpCoordinator coordinator, String hint) {
+  Widget _buildLabelTextFieldMobNumber(
+      String label,
+      TextEditingController controller,
+      SignUpCoordinator coordinator,
+      String hint) {
     return InputNumberFieldWithLabel(
       label: label.tr,
       controller: controller,
@@ -188,7 +211,7 @@ class _SignUpState extends State<SignUp> {
       hintText: hint.tr,
       key: const Key('mobileNumberTextField'),
       inputFormatters: <TextInputFormatter>[
-        NIDAInputFormatter(mask: 'xxx xxx xxx',separator: ' ')
+        NIDAInputFormatter(mask: 'xxx xxx xxx', separator: ' ')
       ],
       keyboardType: TextInputType.number,
       onChanged: (value) {
@@ -263,7 +286,8 @@ class _SignUpState extends State<SignUp> {
           coordinator.isValidMobileNumber(mobileNumber.text);
           coordinator.isValidAgentId(agentId.text);
           if (_isBtnEnabled && coordinator.isValidNidaNumber(nidaNumber.text)) {
-            coordinator.signup(widget.signUpArguments, mobileNumber.text, nidaNumber.text);
+            coordinator.signup(
+                widget.signUpArguments, mobileNumber.text, nidaNumber.text);
           }
         },
         child: Container(
@@ -303,7 +327,7 @@ class _SignUpState extends State<SignUp> {
   }
 
   void _validateForm(SignUpCoordinator coordinator) {
-    coordinator.validateForm(
-        nidaNumber.text, mobileNumber.text, agentId.text, widget.signUpArguments.userType);
+    coordinator.validateForm(nidaNumber.text, mobileNumber.text, agentId.text,
+        widget.signUpArguments.userType);
   }
 }

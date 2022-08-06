@@ -20,10 +20,11 @@ class BottomSheetAppLanguage extends StatelessWidget {
   final ChangeLanguageBottomSheet _sheetState;
   final CrayonPaymentBottomSheetCoordinator coordinator;
 
-  const BottomSheetAppLanguage(this.coordinator,
-      this._sheetState, {
-        Key? key,
-      }) : super(key: key);
+  const BottomSheetAppLanguage(
+    this.coordinator,
+    this._sheetState, {
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -53,28 +54,25 @@ class BottomSheetAppLanguage extends StatelessWidget {
             height: 20,
           ),
           if (_sheetState.additionalText != null) ...[
-
             ..._sheetState.additionalText!
                 .map(
-                  (additionalText) =>
-                  Padding(
+                  (additionalText) => Padding(
                     padding: const EdgeInsets.all(4.0),
                     child: _buildAdditionalText(additionalText),
                   ),
-            )
+                )
                 .toList(),
           ],
         ],
-        if(_sheetState.widgetOptions != null) ...[
+        if (_sheetState.widgetOptions != null) ...[
           SizedBox(
             height: 22,
           ),
-          ..._sheetState.widgetOptions!.map((widgetOption) =>
-              Padding(padding:  const EdgeInsets.all(4.0),
+          ..._sheetState.widgetOptions!.map((widgetOption) => Padding(
+                padding: const EdgeInsets.all(4.0),
                 child: _buildBottomWidget(context, widgetOption),
-              )
-          )
-        ]else...[
+              ))
+        ] else ...[
           SizedBox(
             height: 10,
           )
@@ -85,19 +83,17 @@ class BottomSheetAppLanguage extends StatelessWidget {
           ),
           ..._sheetState.buttonOptions!
               .map(
-                (buttonOption) =>
-                Padding(
+                (buttonOption) => Padding(
                   padding: const EdgeInsets.all(4.0),
                   child: _buildBottomButton(context, buttonOption),
                 ),
-          )
+              )
               .toList(),
-        ] else
-          ...[
-            SizedBox(
-              height: 100,
-            )
-          ],
+        ] else ...[
+          SizedBox(
+            height: 100,
+          )
+        ],
       ],
     );
   }
@@ -129,7 +125,8 @@ class BottomSheetAppLanguage extends StatelessWidget {
       key: const Key('subtitle'),
       linkTextStyle: ES_bold_text,
       descriptionTextStyle: ES_success_text,
-    );;
+    );
+    ;
   }
 
   Padding _buildAdditionalText(String additionalText) {
@@ -169,10 +166,7 @@ class BottomSheetAppLanguage extends StatelessWidget {
         child: CrayonPaymentTextButton(
           text: buttonOptions.text,
           key: const Key('bottomButtonText'),
-          textStyle: Theme
-              .of(context)
-              .textTheme
-              .headline4,
+          textStyle: Theme.of(context).textTheme.headline4,
           onPressed: callback,
         ),
       );
@@ -182,5 +176,4 @@ class BottomSheetAppLanguage extends StatelessWidget {
   Widget _buildBottomWidget(BuildContext context, Widget widgetOptions) {
     return widgetOptions;
   }
-
 }

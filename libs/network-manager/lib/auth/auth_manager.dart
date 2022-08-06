@@ -5,13 +5,14 @@ import 'package:core/storage/secure_storage/secure_storage_service.dart';
 import 'package:core/utils/extensions/string_extensions.dart';
 import 'package:flutter/services.dart';
 import 'package:network_manager/auth/common.dart';
+import 'package:shared_data_models/auth/auth_detail.dart';
 
 abstract class IAuthManager {
   /// Retrieves the access token for the currently authenticated user.
   Future<String?> getAccessToken();
 
   /// Determines whether or not the user has already authenticated with the platform.
-  Future<bool> isUserAuthenticated();
+  Future<bool> get isUserAuthenticated;
 
   Future clearAuthentication();
 
@@ -23,6 +24,11 @@ abstract class IAuthManager {
     String expiresIn,
     String individualId,
   );
+
+  Future setUserDetail({String? authInfo, UserDetailsLabel? key});
+
+  Future<String?> getUserInfo(String? key);
+
 }
 
 class AuthManager implements IAuthManager {
@@ -30,6 +36,7 @@ class AuthManager implements IAuthManager {
   static const _refreshTokenKey = 'refresh_token';
   static const _expiryDateKey = 'expiry_date';
   static const _individualIdKey = 'individual_id';
+  static const AuthDetail authInfo = AuthDetail();
 
   // the expiry buffer is to mitigate latency from the connection between client and server.
   // when a token is generated so is its expiry time in seconds.
@@ -40,30 +47,31 @@ class AuthManager implements IAuthManager {
   AuthManager(this._secureStorageService);
 
   @override
-  Future<bool> isUserAuthenticated() async =>
-      (await _getRefreshToken()) != null;
+  Future<bool> get isUserAuthenticated async {
+    final token = await getAccessToken();
+    if (token == null) {
+      return false;
+    } else {
+      return true;
+    }
+  }
 
   @override
   Future<String?> getAccessToken() async {
-    /*
-        TODO:
-          - Remove this AuthManager in favour of CrayonPaymentAuthManager
-          - Before removing we should extract all useful logic written here
-     */
+
     if (newLoginJourney) {
       CrayonPaymentLogger.logInfo('Attempting to retrieve access token');
       // check the user is authenticated
-      if (!await isUserAuthenticated()) {
-        CrayonPaymentLogger.logInfo('User has not yet authenticated, please src.');
+      if (!await isUserAuthenticated) {
+        CrayonPaymentLogger.logInfo(
+            'User has not yet authenticated, please src.');
         return null;
       }
       // check access token has not expired
       final expiryDateTime = await _getExpireTime();
       if (DateTime.now().toUtc().isAfter(expiryDateTime!)) {
         // access token has expired, need to refresh
-        CrayonPaymentLogger.logDebug(
-          'Access token has expired, refreshing using refresh token.',
-        );
+        CrayonPaymentLogger.logDebug('Access token has expired, refreshing using refresh token.',);
         await _refreshAccessToken();
       }
       CrayonPaymentLogger.logDebug('Access token is valid.');
@@ -102,6 +110,18 @@ class AuthManager implements IAuthManager {
         _accessTokenKey,
         accessToken,
       );
+
+  @override
+  Future setUserDetail({String? authInfo, UserDetailsLabel? key}) async {
+    await _secureStorageService.set(
+      key!.name,
+      authInfo,
+    );
+  }
+
+  @override
+  Future<String?> getUserInfo(String? key) async =>
+      await _secureStorageService.get(key!);
 
   Future _setRefreshToken(String refreshToken) async =>
       await _secureStorageService.set(

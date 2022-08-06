@@ -13,15 +13,13 @@ class CrayonPaymentKeyPad extends KeyPad {
   final bool? hasActionButton;
   final bool? showKeyPad;
 
-  CrayonPaymentKeyPad(
-    this.context,
-    this.onButtonPressedCallback, {
-    Key? key,
-    this.cancelButtonCallback,
-    this.doneButtonCallback,
-    this.hasActionButton,
-        this.showKeyPad
-  }) : super(onButtonPressedCallback, key: key);
+  CrayonPaymentKeyPad(this.context, this.onButtonPressedCallback,
+      {Key? key,
+      this.cancelButtonCallback,
+      this.doneButtonCallback,
+      this.hasActionButton,
+      this.showKeyPad})
+      : super(onButtonPressedCallback, key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -60,26 +58,34 @@ class CrayonPaymentKeyPad extends KeyPad {
           ),
         if (hasActionButton != null && hasActionButton!)
           Container(height: 1, color: Color(0xffF6F5F2)),
-        (this.showKeyPad==false) ? SizedBox() : _buildRow([
-          KeypadButtonType.digit(1),
-          KeypadButtonType.digit(2),
-          KeypadButtonType.digit(3),
-        ]),
-        (this.showKeyPad==false) ? SizedBox() :_buildRow([
-          KeypadButtonType.digit(4),
-          KeypadButtonType.digit(5),
-          KeypadButtonType.digit(6),
-        ]),
-        (this.showKeyPad==false) ? SizedBox() : _buildRow([
-          KeypadButtonType.digit(7),
-          KeypadButtonType.digit(8),
-          KeypadButtonType.digit(9),
-        ]),
-        (this.showKeyPad==false) ? SizedBox() : _buildRow([
-          KeypadButtonType.none(),
-          KeypadButtonType.digit(0),
-          KeypadButtonType.backspace()
-        ]),
+        (this.showKeyPad == false)
+            ? SizedBox()
+            : _buildRow([
+                KeypadButtonType.digit(1),
+                KeypadButtonType.digit(2),
+                KeypadButtonType.digit(3),
+              ]),
+        (this.showKeyPad == false)
+            ? SizedBox()
+            : _buildRow([
+                KeypadButtonType.digit(4),
+                KeypadButtonType.digit(5),
+                KeypadButtonType.digit(6),
+              ]),
+        (this.showKeyPad == false)
+            ? SizedBox()
+            : _buildRow([
+                KeypadButtonType.digit(7),
+                KeypadButtonType.digit(8),
+                KeypadButtonType.digit(9),
+              ]),
+        (this.showKeyPad == false)
+            ? SizedBox()
+            : _buildRow([
+                KeypadButtonType.none(),
+                KeypadButtonType.digit(0),
+                KeypadButtonType.backspace()
+              ]),
       ],
     );
   }

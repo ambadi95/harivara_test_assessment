@@ -146,7 +146,7 @@ class _BottomSheetDatePickerColumnState
       },
       onChangeCallback: (date) {
         if (selectedIndex == DateFieldIndex.start) {
-        //  _startDate = date;
+          //  _startDate = date;
         }
 
         if (selectedIndex == DateFieldIndex.end) {
@@ -190,12 +190,14 @@ class _BottomSheetDatePickerColumnState
 }
 
 InputBorder get _focusedBorder => OutlineInputBorder(
-      borderSide: BorderSide(color: CrayonPaymentColors.crayonPayment0A0403, width: 2),
+      borderSide:
+          BorderSide(color: CrayonPaymentColors.crayonPayment0A0403, width: 2),
       borderRadius: BorderRadius.circular(8),
     );
 
 InputBorder get _defaultBorder => OutlineInputBorder(
-      borderSide: BorderSide(color: CrayonPaymentColors.crayonPayment0A0403, width: 1),
+      borderSide:
+          BorderSide(color: CrayonPaymentColors.crayonPayment0A0403, width: 1),
       borderRadius: BorderRadius.circular(8),
     );
 

@@ -68,7 +68,7 @@ class _RefundExpandableDetailsState extends State<RefundExpandableDetails> {
                     ...widget.itemsWhenExpanded
                         .map(
                           (e) => Padding(
-                            padding: EdgeInsets.symmetric(vertical:2),
+                            padding: EdgeInsets.symmetric(vertical: 2),
                             child: e,
                           ),
                         )

@@ -6,7 +6,8 @@ abstract class CrayonPaymentTranslationsLoader {
   Future<Map<String, String>> getLocalJsonAssetAsMap(String path);
 }
 
-class CrayonPaymentTranslationsLoaderImpl implements CrayonPaymentTranslationsLoader {
+class CrayonPaymentTranslationsLoaderImpl
+    implements CrayonPaymentTranslationsLoader {
   @override
   Future<Map<String, String>> getLocalJsonAssetAsMap(String path) async {
     final jsonString = await rootBundle.loadString(path);

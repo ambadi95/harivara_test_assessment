@@ -36,7 +36,8 @@ class CrayonPaymentPageHeaderTextUnderIconRowWidget extends StatelessWidget {
 
     widgetsList.add(
       SizedBox(
-        key: Key('CrayonPaymentPageHeaderTextUnderIconWidget_bodyWidgetsList_SizedBox'),
+        key: Key(
+            'CrayonPaymentPageHeaderTextUnderIconWidget_bodyWidgetsList_SizedBox'),
         height: attributes.headerTopPadding,
       ),
     );
@@ -65,8 +66,8 @@ class CrayonPaymentPageHeaderTextUnderIconRowWidget extends StatelessWidget {
           ),
           text: TextUIDataModel(
             attr.title?.text ?? '',
-            styleVariant:
-                attr.title?.styleVariant ?? CrayonPaymentTextStyleVariant.headline2,
+            styleVariant: attr.title?.styleVariant ??
+                CrayonPaymentTextStyleVariant.headline2,
           ),
         );
         widgetsList.add(text);

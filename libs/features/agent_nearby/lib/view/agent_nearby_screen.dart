@@ -71,16 +71,17 @@ class AgentNearBy extends StatelessWidget {
     return SearchBarWidget(
       attributes: SearchBarAttributes(
           appearance: SearchBarAppearance(
-              cornerRadius: 20,
-              backgroundColor: AN_TextFieldBackground,
-              prefixIcon: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Image.asset(
-                  AN_Search,
-                  width: 16,
-                  height: 16,
-                ),
-              ),),
+            cornerRadius: 20,
+            backgroundColor: AN_TextFieldBackground,
+            prefixIcon: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Image.asset(
+                AN_Search,
+                width: 16,
+                height: 16,
+              ),
+            ),
+          ),
           dataModel: const SearchBarDataModel(
               hint: 'AN_Search',
               variant: CrayonPaymentTextStyleVariant.headline5)),
@@ -89,51 +90,49 @@ class AgentNearBy extends StatelessWidget {
 
   Widget _buildNearByAgentList(context) {
     return ListView.separated(
-      separatorBuilder: (context, index)=> divider(),
+      separatorBuilder: (context, index) => divider(),
       shrinkWrap: true,
       itemCount: agentMockData.length,
-      itemBuilder: (context, index) => _buildAgentCard(context,agentMockData[index]),
+      itemBuilder: (context, index) =>
+          _buildAgentCard(context, agentMockData[index]),
     );
   }
 
-  Widget _buildAgentCard(context, AgentNearbyModel agent){
+  Widget _buildAgentCard(context, AgentNearbyModel agent) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Image.asset(agentMock,width: 38,height: 38,),
+        Image.asset(
+          agentMock,
+          width: 38,
+          height: 38,
+        ),
         dynamicWSpacer(8),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CrayonPaymentText(
-              key: Key('${_identifier}_'+agent.name!),
-              text: TextUIDataModel(
-                agent.name!,
-                styleVariant: CrayonPaymentTextStyleVariant.headline4,
-                color: AN_CardTitle,
-                  fontWeight: FontWeight.w800
-              ),
+              key: Key('${_identifier}_' + agent.name!),
+              text: TextUIDataModel(agent.name!,
+                  styleVariant: CrayonPaymentTextStyleVariant.headline4,
+                  color: AN_CardTitle,
+                  fontWeight: FontWeight.w800),
             ),
             Row(
               children: [
                 CrayonPaymentText(
                   key: Key('${_identifier}_Id_label'),
-                  text: const TextUIDataModel(
-                    'AN_AgentName',
-                    styleVariant: CrayonPaymentTextStyleVariant.headline4,
-                    color: AN_CardSubTitle,
-                      fontWeight: FontWeight.w600
-
-                  ),
+                  text: const TextUIDataModel('AN_AgentName',
+                      styleVariant: CrayonPaymentTextStyleVariant.headline4,
+                      color: AN_CardSubTitle,
+                      fontWeight: FontWeight.w600),
                 ),
                 CrayonPaymentText(
-                  key: Key('${_identifier}_'+agent.agentId!),
-                  text: TextUIDataModel(
-                    agent.agentId!,
-                    styleVariant: CrayonPaymentTextStyleVariant.headline4,
-                    color: AN_CardSubTitle,
-                      fontWeight: FontWeight.w600
-                  ),
+                  key: Key('${_identifier}_' + agent.agentId!),
+                  text: TextUIDataModel(agent.agentId!,
+                      styleVariant: CrayonPaymentTextStyleVariant.headline4,
+                      color: AN_CardSubTitle,
+                      fontWeight: FontWeight.w600),
                 ),
               ],
             ),
@@ -141,7 +140,7 @@ class AgentNearBy extends StatelessWidget {
             SizedBox(
               width: MediaQuery.of(context).size.width * .55,
               child: CrayonPaymentText(
-                key: Key('${_identifier}_'+agent.address!),
+                key: Key('${_identifier}_' + agent.address!),
                 text: TextUIDataModel(
                   agent.address!,
                   styleVariant: CrayonPaymentTextStyleVariant.headline4,
@@ -154,9 +153,9 @@ class AgentNearBy extends StatelessWidget {
         Expanded(
           child: Row(
             children: [
-              actionButton(context,AN_Call,'Call'),
+              actionButton(context, AN_Call, 'Call'),
               dynamicWSpacer(10),
-              actionButton(context,AN_MapDirection,'0.17KM'),
+              actionButton(context, AN_MapDirection, '0.17KM'),
             ],
           ),
         )
@@ -164,27 +163,29 @@ class AgentNearBy extends StatelessWidget {
     );
   }
 
-  Widget actionButton(context,String image,String label){
+  Widget actionButton(context, String image, String label) {
     return Column(
       children: [
         Container(
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
-              color:  AN_CardActionBG1,
-              borderRadius: BorderRadius.circular(4.0)
-          ),
-          child: Image.asset(image,height: 12,width: 12),
+              color: AN_CardActionBG1,
+              borderRadius: BorderRadius.circular(4.0)),
+          child: Image.asset(image, height: 12, width: 12),
         ),
         dynamicHSpacer(4),
-        Text(label,style: const TextStyle(fontSize: 10,color: AN_ActionText),)
+        Text(
+          label,
+          style: const TextStyle(fontSize: 10, color: AN_ActionText),
+        )
       ],
     );
   }
 
-  Widget divider(){
+  Widget divider() {
     return const Padding(
-      padding:  EdgeInsets.symmetric(vertical: 16),
-      child:  Divider(),
+      padding: EdgeInsets.symmetric(vertical: 16),
+      child: Divider(),
     );
   }
 }

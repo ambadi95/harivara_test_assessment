@@ -8,12 +8,12 @@ typedef OnChangeCallback = void Function(
 );
 
 typedef TransactionsFilterTypeCallBack = void Function(
-    DateFilterType filterType,
-    );
+  DateFilterType filterType,
+);
 
 typedef FilterTransactionsCallBack = void Function(
-    List<dynamic> filters,
-    );
+  List<dynamic> filters,
+);
 
 typedef TransactionFilteringCallBack = void Function(
   DateTime? startDate,

@@ -6,8 +6,6 @@ abstract class IGetCardsService {
   static const getCardsApiIdentifier = 'getWallet';
 
   Future<GraphQLRequest> get getUsersCardsRequest;
-
-
 }
 
 class GetCardsService implements IGetCardsService {

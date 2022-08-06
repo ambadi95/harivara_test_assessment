@@ -3,7 +3,6 @@ import 'package:widget_library/colors/crayon_payment_colors.dart';
 import 'package:widget_library/expandable_details/data_model/expandable_details_options.dart';
 
 class ExpandDetailsDivider extends ExpandableDetailsOptions {
-
   final Color? _dividerColor;
   final EdgeInsetsGeometry? dividerPadding;
 
@@ -11,7 +10,8 @@ class ExpandDetailsDivider extends ExpandableDetailsOptions {
     Color? dividerColor,
     this.dividerPadding,
     Key? key,
-  })  : _dividerColor = dividerColor ?? CrayonPaymentColors.crayonPaymentGold.withAlpha(50),
+  })  : _dividerColor =
+            dividerColor ?? CrayonPaymentColors.crayonPaymentGold.withAlpha(50),
         super(key: key);
 
   @override

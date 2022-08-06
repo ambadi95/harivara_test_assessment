@@ -494,6 +494,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                         widget.homeScreenArgs.isAgent == true
                             ? _inviteAgentBoxView()
                             : _inviteBoxView(),
+
                       ],
                     )
                   ],

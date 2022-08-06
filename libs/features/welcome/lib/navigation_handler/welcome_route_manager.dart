@@ -21,25 +21,31 @@ class WelcomeRouteManager extends IRouteManager {
         return CrayonWelcomScreen(
           welcomeScreenArgs: arguments,
         );
-      case SignUp.viewPath :
+      case SignUp.viewPath:
         var arguments = settings.arguments as SignUpArguments;
-          return SignUp(signUpArguments: arguments,);
-      case DetailsScreen.viewPath :
+        return SignUp(
+          signUpArguments: arguments,
+        );
+      case DetailsScreen.viewPath:
         var arguments = settings.arguments as String;
-        return DetailsScreen(userType: arguments,);
-      case EnrollmentSuccessScreen.viewPath :
+        return DetailsScreen(
+          userType: arguments,
+        );
+      case EnrollmentSuccessScreen.viewPath:
         var argument = settings.arguments as bool;
         return EnrollmentSuccessScreen(
           isEnrolled: argument,
         );
-      case CrayonWelcomBackScreen.viewPath :
-         String arguments = settings.arguments as String;
+      case CrayonWelcomBackScreen.viewPath:
+        String arguments = settings.arguments as String;
         return CrayonWelcomBackScreen(
           userType: arguments,
         );
-      case AgentDetailsScreen.viewPath :
+      case AgentDetailsScreen.viewPath:
         var arguments = settings.arguments as AgentDetailScreenArguments;
-        return AgentDetailsScreen(agentDetailScreenArguments: arguments,);
+        return AgentDetailsScreen(
+          agentDetailScreenArguments: arguments,
+        );
       default:
         throw UnimplementedError();
     }

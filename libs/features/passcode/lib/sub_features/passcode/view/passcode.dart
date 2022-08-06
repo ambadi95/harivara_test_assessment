@@ -40,7 +40,6 @@ class _CrayonPasscodeScreenState extends State<CrayonPasscodeScreen> {
             widget.passcodeScreenArgs.initialPasscode,
           );
         },
-
         builder: (context, state, coordinator) => Scaffold(
           body: SafeArea(
             bottom: false,
@@ -104,7 +103,8 @@ class _CrayonPasscodeScreenState extends State<CrayonPasscodeScreen> {
     );
   }
 
-  Widget _onBoardingProgressBar(PasscodeCoordinator coordinator, CreatePasscodeReady state) {
+  Widget _onBoardingProgressBar(
+      PasscodeCoordinator coordinator, CreatePasscodeReady state) {
     if (!widget.passcodeScreenArgs.hasProgressBar) {
       return Container();
     }
@@ -256,7 +256,8 @@ class _CrayonPasscodeScreenState extends State<CrayonPasscodeScreen> {
                 keyboardType: TextInputType.number,
                 onCompleted: (v) {
                   debugPrint("Completed");
-                  coordinator.onPasscodeCallback(passcodeController.text,widget.passcodeScreenArgs.userType);
+                  coordinator.onPasscodeCallback(passcodeController.text,
+                      widget.passcodeScreenArgs.userType);
                   passcodeController.clear();
                 },
                 onChanged: (String value) {},

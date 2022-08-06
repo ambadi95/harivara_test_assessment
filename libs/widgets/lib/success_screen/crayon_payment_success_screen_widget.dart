@@ -42,8 +42,11 @@ class CrayonPaymentSuccessScreenWidget extends StatelessWidget {
               child: Opacity(
                 opacity: 0.2,
                 child: CrayonPaymentDecoratedBackground(
-                  backgroundGradientTopColor:
-                      CrayonPaymentTheme().themeData.colorPalette!.secondary.toColor(),
+                  backgroundGradientTopColor: CrayonPaymentTheme()
+                      .themeData
+                      .colorPalette!
+                      .secondary
+                      .toColor(),
                 ),
               ),
             ),

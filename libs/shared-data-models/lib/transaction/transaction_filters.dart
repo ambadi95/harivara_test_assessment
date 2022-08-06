@@ -19,9 +19,7 @@ class TransactionFilters with _$TransactionFilters {
 
   Map<String, dynamic> toJson() {
     final transactionRequest = {
-      'fromDate': startDate == null
-          ? DateTime.now()
-          : DateTime.now(),
+      'fromDate': startDate == null ? DateTime.now() : DateTime.now(),
       'operationType': operationType,
       'pageNo': pageNo,
       'size': size,

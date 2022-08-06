@@ -15,23 +15,23 @@ class DeviceDetailsModel {
   final String? interest;
   final String? amountToPaid;
 
-  const DeviceDetailsModel(
-      {this.brand,
-        this.model,
-        this.storage,
-        this.chip,
-        this.os,
-        this.price,
-        this.monthlyPrice,
-        this.imagePath,
-        this.humanInterfaceInput,
-        this.wirelessCarrier,
-        this.cellularTechnology,
-        this.waterResistanceLevel,
-        this.colour,
-        this.interest,
-        this.amountToPaid,
-      });
+  const DeviceDetailsModel({
+    this.brand,
+    this.model,
+    this.storage,
+    this.chip,
+    this.os,
+    this.price,
+    this.monthlyPrice,
+    this.imagePath,
+    this.humanInterfaceInput,
+    this.wirelessCarrier,
+    this.cellularTechnology,
+    this.waterResistanceLevel,
+    this.colour,
+    this.interest,
+    this.amountToPaid,
+  });
 
   factory DeviceDetailsModel.fromJson(Map<String, dynamic> json) =>
       DeviceDetailsModel(

@@ -81,7 +81,8 @@ class _SearchBarForMobileNumberState extends State<SearchBarForMobileNumber> {
     );
   }
 
-  CrayonPaymentTextStyleVariant get _textStyle => CrayonPaymentTextStyleVariant.bodyText2;
+  CrayonPaymentTextStyleVariant get _textStyle =>
+      CrayonPaymentTextStyleVariant.bodyText2;
 
   Widget _countryCodePicker(BuildContext context) {
     return CountryListPick(

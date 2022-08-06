@@ -21,10 +21,10 @@ class BottomSheetAgentEnrollment extends StatelessWidget {
   final CrayonPaymentBottomSheetCoordinator coordinator;
 
   const BottomSheetAgentEnrollment(
-      this.coordinator,
-      this._sheetState, {
-        Key? key,
-      }) : super(key: key);
+    this.coordinator,
+    this._sheetState, {
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -53,17 +53,16 @@ class BottomSheetAgentEnrollment extends StatelessWidget {
           SizedBox(
             height: 20,
           ),
-        if (_sheetState.additionalText != null) ...[
-
-          ..._sheetState.additionalText!
-              .map(
-                (additionalText) => Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: _buildAdditionalText(additionalText),
-            ),
-          )
-              .toList(),
-        ],
+          if (_sheetState.additionalText != null) ...[
+            ..._sheetState.additionalText!
+                .map(
+                  (additionalText) => Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: _buildAdditionalText(additionalText),
+                  ),
+                )
+                .toList(),
+          ],
         ],
         if (_sheetState.buttonOptions != null) ...[
           SizedBox(
@@ -72,10 +71,10 @@ class BottomSheetAgentEnrollment extends StatelessWidget {
           ..._sheetState.buttonOptions!
               .map(
                 (buttonOption) => Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: _buildBottomButton(context, buttonOption),
-            ),
-          )
+                  padding: const EdgeInsets.all(4.0),
+                  child: _buildBottomButton(context, buttonOption),
+                ),
+              )
               .toList(),
         ] else ...[
           SizedBox(
@@ -100,7 +99,7 @@ class BottomSheetAgentEnrollment extends StatelessWidget {
         textAlign: TextAlign.center,
         description: _sheetState.title!,
         key: const Key('title'),
-          linkTextStyle: ES_bold_text,
+        linkTextStyle: ES_bold_text,
         descriptionTextStyle: ES_success_text,
       ),
     );
@@ -113,7 +112,8 @@ class BottomSheetAgentEnrollment extends StatelessWidget {
       key: const Key('subtitle'),
       linkTextStyle: ES_bold_text,
       descriptionTextStyle: ES_success_text,
-    );;
+    );
+    ;
   }
 
   Padding _buildAdditionalText(String additionalText) {

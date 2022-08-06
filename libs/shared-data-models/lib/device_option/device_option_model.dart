@@ -8,16 +8,16 @@ class DeviceOptionModel {
   final String? monthlyPrice;
   final String? imagePath;
 
-
-  const DeviceOptionModel(
-      {this.brand,
-      this.model,
-      this.storage,
-      this.chip,
-      this.os,
-      this.price,
-      this.monthlyPrice,
-      this.imagePath,});
+  const DeviceOptionModel({
+    this.brand,
+    this.model,
+    this.storage,
+    this.chip,
+    this.os,
+    this.price,
+    this.monthlyPrice,
+    this.imagePath,
+  });
 
   factory DeviceOptionModel.fromJson(Map<String, dynamic> json) =>
       DeviceOptionModel(

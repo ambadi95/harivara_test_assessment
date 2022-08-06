@@ -6,7 +6,6 @@ import '../transaction_category.dart';
 import '../transaction_status.dart';
 import '../transaction_type.dart';
 
-
 abstract class PurchaseBaseTransaction extends PaymentBaseTransaction {
   final List<Refund>? refundTransactions;
 

@@ -6,7 +6,11 @@ class AddCardResponse {
   String? payment3dSecureUrl;
   final PaymentStatus? paymentStatus;
 
-  AddCardResponse({this.cardId, this.walletId,this.payment3dSecureUrl,this.paymentStatus});
+  AddCardResponse(
+      {this.cardId,
+      this.walletId,
+      this.payment3dSecureUrl,
+      this.paymentStatus});
 
   factory AddCardResponse.fromJson(Map<String, dynamic> json) {
     final result = AddCardResponse(

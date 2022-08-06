@@ -1,5 +1,6 @@
-
 import 'package:core/mobile_core.dart';
+import 'package:network_manager/auth/auth_manager.dart';
+import 'package:shared_data_models/auth/auth_detail.dart';
 import 'package:shared_data_models/customer_onboard/customer_details/response/customer_detail_response.dart';
 import 'package:task_manager/base_classes/base_data_provider.dart';
 import 'package:task_manager/task_manager.dart';
@@ -9,22 +10,27 @@ import 'package:welcome/sub_features/signup/viewmodel/signup_viewmodel.dart';
 import '../../../welcome_module.dart';
 import '../service/signup_service.dart';
 
-class SignupUseCase extends BaseDataProvider{
+class SignupUseCase extends BaseDataProvider {
   final SignupViewModel _signupViewModel;
-  SignupUseCase(this._signupViewModel,TaskManager taskManager) : super(taskManager);
+  final IAuthManager _authManager;
 
-  bool isValidNINDAnumber(String nidaNumber){
+  SignupUseCase(
+      this._signupViewModel, this._authManager, TaskManager taskManager)
+      : super(taskManager);
+
+  bool isValidNINDAnumber(String nidaNumber) {
     return _signupViewModel.isValidNidaNumber(nidaNumber);
   }
-  bool isValidMobileNumber(String mobileNumber){
+
+  bool isValidMobileNumber(String mobileNumber) {
     return _signupViewModel.isValidMobileNumber(mobileNumber);
   }
 
-  bool isValidAgentId(String agentId){
+  bool isValidAgentId(String agentId) {
     return agentId.isNotEmptyOrNull;
   }
 
-  Future<void> saveDetails(String nidaNumber, String mobileNumber) async{
+  Future<void> saveDetails(String nidaNumber, String mobileNumber) async {
     await _saveNIDANumber(nidaNumber);
     await _saveMobileNumber(mobileNumber);
   }
@@ -33,7 +39,7 @@ class SignupUseCase extends BaseDataProvider{
     return await setValueToStorage({'nidaNumber': nidaNumber});
   }
 
-  Future<void> saveCustomerId(String? customerId ) async {
+  Future<void> saveCustomerId(String? customerId) async {
     return await setValueToStorage({'customerId': customerId});
   }
 
@@ -52,8 +58,12 @@ class SignupUseCase extends BaseDataProvider{
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {
           final data = responseData;
-          return CustomerDetailResponse.fromJson(data);
+          CustomerDetailResponse detailResponse =
+              CustomerDetailResponse.fromJson(data);
+          _authManager.setUserDetail(
+              authInfo: detailResponse.data?.customerId.toString(),
+              key: UserDetailsLabel.id);
+          return detailResponse;
         });
   }
-
 }

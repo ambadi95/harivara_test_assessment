@@ -71,7 +71,8 @@ class _CrayonPaymentBottomNavigationTabWidgetState
     return CrayonPaymentScaffold(
       extendedBodyClip: true,
       body: IndexedStack(
-        key: Key('CrayonPaymentBottomNavigationTabWidget_BuildBottomBar_IndexedStack'),
+        key: Key(
+            'CrayonPaymentBottomNavigationTabWidget_BuildBottomBar_IndexedStack'),
         index: widget.attributes!.tabIndex,
         children: listOfScreens!,
       ),
@@ -82,7 +83,8 @@ class _CrayonPaymentBottomNavigationTabWidgetState
 
   Widget get bottomNavigationBar {
     return Container(
-      key: Key('CrayonPaymentBottomNavigationTabWidget_bottomNavigationBar_Container'),
+      key: Key(
+          'CrayonPaymentBottomNavigationTabWidget_bottomNavigationBar_Container'),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(
           topRight: Radius.circular(_Constants.borderRadius),

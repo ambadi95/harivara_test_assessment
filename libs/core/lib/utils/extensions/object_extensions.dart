@@ -5,7 +5,11 @@ extension NullChecking on Object? {
   /// - empty `Iterable` (list, set, ...)
   /// - empty `Map` (but will throw when being called on an object value declared `dynamic`
   /// such as `Map<String, dynamic>{'obj': 1}['otherKey']`)
-  bool get isEmptyOrNull => _isNull || _isStringObjectEmpty || _isIterableObjectEmpty || _isMapObjectEmpty;
+  bool get isEmptyOrNull =>
+      _isNull ||
+      _isStringObjectEmpty ||
+      _isIterableObjectEmpty ||
+      _isMapObjectEmpty;
 
   /// Returns true if object is:
   /// - non null `Object`
@@ -35,14 +39,16 @@ extension NullChecking on Object? {
   /// If `String` object, return String's method `isEmpty`
   ///
   /// Otherwise return `false` to not affect logical-OR expression. As `false` denotes undefined or N/A since object is not `String`
-  bool get _isStringObjectEmpty => (this is String) ? (this as String).isEmpty : false;
+  bool get _isStringObjectEmpty =>
+      (this is String) ? (this as String).isEmpty : false;
 
   /// **Private helper**
   ///
   /// If `Iterable` object, return Iterable's method `isEmpty`
   ///
   /// Otherwise return `false` to not affect logical-OR expression. As `false` denotes undefined or N/A since object is not `Iterable`
-  bool get _isIterableObjectEmpty => (this is Iterable) ? (this as Iterable).isEmpty : false;
+  bool get _isIterableObjectEmpty =>
+      (this is Iterable) ? (this as Iterable).isEmpty : false;
 
   /// **Private helper**
   ///

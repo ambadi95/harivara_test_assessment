@@ -37,30 +37,29 @@ class WelcomeNavigationHandler with ErrorHandler {
   }
 
   Future<void> navigateToSignUpScreen(String userType) async {
-    if(userType == 'Customer'){
+    if (userType == 'Customer') {
       var arguments = SignUpArguments(
-          'SU_title',
-          'SU_subtitle',
-          userType,
-          SignupType.customerSignUp,
+        'SU_title',
+        'SU_subtitle',
+        userType,
+        SignupType.customerSignUp,
         true,
-              );
+      );
       await _navigationManager.navigateTo(
           SignUp.viewPath, const NavigationType.push(),
           arguments: arguments);
-    }else{
+    } else {
       var arguments = SignUpArguments(
-          'SU_title_agent',
-          'SU_subtitle',
-          userType,
-          SignupType.agentSignUp,
-          true,
+        'SU_title_agent',
+        'SU_subtitle',
+        userType,
+        SignupType.agentSignUp,
+        true,
       );
       await _navigationManager.navigateTo(
           SignUp.viewPath, const NavigationType.push(),
           arguments: arguments);
     }
-
   }
 
   Future<void> navigateToCreatePasscodeScreen() async {
@@ -140,19 +139,22 @@ class WelcomeNavigationHandler with ErrorHandler {
 
   Future<void> navigateToTermsCondtionsScreen() async {
     _navigationManager.navigateTo(
-      CrayonTermsCondition.viewPath, const NavigationType.push(),
-       );
+      CrayonTermsCondition.viewPath,
+      const NavigationType.push(),
+    );
   }
 
   Future<void> navigateToAgentDetailScreen(String userType) async {
-    var arguments = AgentDetailScreenArguments('DV_title_agent','DV_subtitle',AgentDetailScreenType.Signup, userType,true);
+    var arguments = AgentDetailScreenArguments('DV_title_agent', 'DV_subtitle',
+        AgentDetailScreenType.Signup, userType, true);
     await _navigationManager.navigateTo(
         AgentDetailsScreen.viewPath, const NavigationType.push(),
         arguments: arguments);
   }
 
   Future<void> navigateToOtpScreenCustomerSignUp(
-      String userType, String mobileNumber, {String? userId}) async {
+      String userType, String mobileNumber,
+      {String? userId}) async {
     var arguments = OtpScreenArgs(
       'OTP Verification',
       'VO_otp_verification_description',
@@ -176,21 +178,20 @@ class WelcomeNavigationHandler with ErrorHandler {
     );
   }
 
-    Future<void> navigateToOtpScreenAgentResetPasscode(
-        String userType) async {
-      var arguments = OtpScreenArgs(
-        'OTP Verification',
-        'VO_otp_verification_description',
-        'passcodeModule/passcode',
-        false,
-        2,
-        OtpVerificationType.updatePasscodeAgent,
-        '',
-        6,
-        '1003232',
-        false,
-        userType,
-      );
+  Future<void> navigateToOtpScreenAgentResetPasscode(String userType) async {
+    var arguments = OtpScreenArgs(
+      'OTP Verification',
+      'VO_otp_verification_description',
+      'passcodeModule/passcode',
+      false,
+      2,
+      OtpVerificationType.updatePasscodeAgent,
+      '',
+      6,
+      '1003232',
+      false,
+      userType,
+    );
 
     _navigationManager.navigateTo(
       CrayonVerifyOtpScreen.viewPath,
@@ -252,17 +253,19 @@ class WelcomeNavigationHandler with ErrorHandler {
   }
 
   Future<void> navigateToResetPasscode(String userType) async {
-      var arguments = SignUpArguments(
-        'SU_reset_passcode',
-        'SU_reset_subtitle',
-        userType,
-        userType == 'Agent' ? SignupType.resetPasscodeAgent : SignupType.resetPasscodeCustomer,
-        false,
-      );
-      await _navigationManager.navigateTo(
-          SignUp.viewPath, const NavigationType.push(),
-          arguments: arguments);
-    }
+    var arguments = SignUpArguments(
+      'SU_reset_passcode',
+      'SU_reset_subtitle',
+      userType,
+      userType == 'Agent'
+          ? SignupType.resetPasscodeAgent
+          : SignupType.resetPasscodeCustomer,
+      false,
+    );
+    await _navigationManager.navigateTo(
+        SignUp.viewPath, const NavigationType.push(),
+        arguments: arguments);
+  }
 
 // Future<void> navigateToDestination(
 //     String? destination,

@@ -15,14 +15,13 @@ class AgentNearbyModel {
     this.distance,
   });
 
-  factory AgentNearbyModel.fromJson(Map<String, dynamic> json) => AgentNearbyModel(
+  factory AgentNearbyModel.fromJson(Map<String, dynamic> json) =>
+      AgentNearbyModel(
         agentId: json['agentId'],
         mobileNo: json['mobileNo'],
         name: json['name'],
         address: json['address'],
         imagePath: json['imagePath'],
         distance: json['distance'],
-  );
-
-
+      );
 }

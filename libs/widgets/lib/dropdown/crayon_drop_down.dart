@@ -37,10 +37,10 @@ class _DropdownMenuPainter extends CustomPainter {
     this.selectedIndex,
     this.resize,
   })  : _painter = BoxDecoration(
-                color: color,
-                borderRadius: BorderRadius.all(Radius.circular(8)),
-                boxShadow: kElevationToShadow[elevation!],)
-            .createBoxPainter(),
+          color: color,
+          borderRadius: BorderRadius.all(Radius.circular(8)),
+          boxShadow: kElevationToShadow[elevation!],
+        ).createBoxPainter(),
         super(repaint: resize);
 
   final Color? color;
@@ -79,7 +79,11 @@ class _DropdownMenuPainter extends CustomPainter {
     );
 
     final Rect rect = Rect.fromLTRB(
-        0.0, top.evaluate(resize!), size.width, bottom.evaluate(resize!),);
+      0.0,
+      top.evaluate(resize!),
+      size.width,
+      bottom.evaluate(resize!),
+    );
 
     _painter.paint(canvas, rect.topLeft, ImageConfiguration(size: rect.size));
   }
@@ -102,7 +106,10 @@ class _DropdownScrollBehavior extends ScrollBehavior {
 
   @override
   Widget buildViewportChrome(
-          BuildContext context, Widget child, AxisDirection axisDirection,) =>
+    BuildContext context,
+    Widget child,
+    AxisDirection axisDirection,
+  ) =>
       child;
 
   @override
@@ -162,24 +169,30 @@ class _DropdownMenuState<T> extends State<_DropdownMenu<T>> {
         final double start = (0.5 + (itemIndex + 1) * unit).clamp(0.0, 1.0);
         final double end = (start + 1.5 * unit).clamp(0.0, 1.0);
         opacity = CurvedAnimation(
-            parent: route.animation!, curve: Interval(start, end),);
+          parent: route.animation!,
+          curve: Interval(start, end),
+        );
       }
-      children.add(FadeTransition(
-        opacity: opacity,
-        child: InkWell(
+      children.add(
+        FadeTransition(
+          opacity: opacity,
+          child: InkWell(
             child: Container(
               padding: widget.padding,
               child: route.items![itemIndex],
             ),
             onTap: () => {
-                  debugPrint(
-                      "clicked " + route.items![itemIndex].value.toString(),),
-                  Navigator.pop(
-                    context,
-                    _DropdownRouteResult<T>(route.items![itemIndex].value!),
-                  ),
-                },),
-      ),);
+              debugPrint(
+                "clicked " + route.items![itemIndex].value.toString(),
+              ),
+              Navigator.pop(
+                context,
+                _DropdownRouteResult<T>(route.items![itemIndex].value!),
+              ),
+            },
+          ),
+        ),
+      );
     }
 
     return FadeTransition(
@@ -253,14 +266,16 @@ class _DropdownMenuRouteLayout<T> extends SingleChildLayoutDelegate {
 
   @override
   Offset getPositionForChild(Size size, Size childSize) {
-    assert(() {
-      final Rect container = Offset.zero & size;
-      if (container.intersect(buttonRect!) == buttonRect) {
-        assert(menuTop >= 0.0);
-        assert(menuTop + menuHeight <= size.height);
-      }
-      return true;
-    }(),);
+    assert(
+      () {
+        final Rect container = Offset.zero & size;
+        if (container.intersect(buttonRect!) == buttonRect) {
+          assert(menuTop >= 0.0);
+          assert(menuTop + menuHeight <= size.height);
+        }
+        return true;
+      }(),
+    );
     late double left;
     switch (textDirection) {
       case TextDirection.rtl:
@@ -347,8 +362,11 @@ class _DropdownRoute<T> extends PopupRoute<_DropdownRouteResult<T>> {
   final double? itemWidth;
 
   @override
-  Widget buildPage(BuildContext context, Animation<double> animation,
-      Animation<double> secondaryAnimation,) {
+  Widget buildPage(
+    BuildContext context,
+    Animation<double> animation,
+    Animation<double> secondaryAnimation,
+  ) {
     assert(debugCheckHasDirectionality(context));
     final double screenHeight = MediaQuery.of(context).size.height;
     final double maxMenuHeight = screenHeight - 2.0 * _kMenuItemHeight;
@@ -416,30 +434,32 @@ class _DropdownRoute<T> extends PopupRoute<_DropdownRouteResult<T>> {
 }
 
 class CrayonDropDown<T> extends StatefulWidget {
-  CrayonDropDown(
-      {Key? key,
-      required this.items,
-      this.value,
-      required this.title,
-      this.hint,
-      this.error = '',
-      this.itemTextstyle,
-      this.itemWidth,
-      this.boxHeight,
-      this.boxWidth,
-      this.boxPadding,
-      this.boxTextstyle,
-      required this.onChanged,
-      this.boxDecoration,
-      this.dropdownColor,
-      this.elevation = 8,
-      this.isDense = false,
-      this.icon,})
-      : assert(value == null ||
-            items
-                    .where((DropdownMenuItem<T> item) => item.value == value)
-                    .length ==
-                1,),
+  CrayonDropDown({
+    Key? key,
+    required this.items,
+    this.value,
+    required this.title,
+    this.hint,
+    this.error = '',
+    this.itemTextstyle,
+    this.itemWidth,
+    this.boxHeight,
+    this.boxWidth,
+    this.boxPadding,
+    this.boxTextstyle,
+    required this.onChanged,
+    this.boxDecoration,
+    this.dropdownColor,
+    this.elevation = 8,
+    this.isDense = false,
+    this.icon,
+  })  : assert(
+          value == null ||
+              items
+                      .where((DropdownMenuItem<T> item) => item.value == value)
+                      .length ==
+                  1,
+        ),
         super(key: key);
 
   ///title of the dropdown
@@ -542,11 +562,14 @@ class _CrayonDropDownState<T> extends State<CrayonDropDown<T>>
   }
 
   void _updateSelectedIndex() {
-    assert(widget.value == null ||
-        widget.items
-                .where((DropdownMenuItem<T> item) => item.value == widget.value)
-                .length ==
-            1,);
+    assert(
+      widget.value == null ||
+          widget.items
+                  .where(
+                      (DropdownMenuItem<T> item) => item.value == widget.value)
+                  .length ==
+              1,
+    );
     _selectedIndex = null;
     for (int itemIndex = 0; itemIndex < widget.items.length; itemIndex++) {
       if (widget.items[itemIndex].value == widget.value) {
@@ -594,37 +617,50 @@ class _CrayonDropDownState<T> extends State<CrayonDropDown<T>>
     int? hintIndex;
     if (widget.hint != null) {
       hintIndex = items.length;
-      items.add(DefaultTextStyle(
-        style: TextStyle(
-          fontFamily: 'Montserrat',
-            fontSize: 12, fontWeight: FontWeight.bold, color: Colors.black54,),
-        child: IgnorePointer(
-          child: widget.hint,
-          ignoringSemantics: false,
+      items.add(
+        DefaultTextStyle(
+          style: TextStyle(
+            fontFamily: 'Montserrat',
+            fontSize: 12,
+            fontWeight: FontWeight.bold,
+            color: Colors.black54,
+          ),
+          child: IgnorePointer(
+            child: widget.hint,
+            ignoringSemantics: false,
+          ),
         ),
-      ),);
+      );
     }
 
     Widget result = DefaultTextStyle(
       style: TextStyle(
-          fontSize: 14,
-          fontWeight: FontWeight.w400,
-          color: Color(0xff565451),
-          fontFamily: 'brown',),
+        fontSize: 14,
+        fontWeight: FontWeight.w400,
+        color: Color(0xff565451),
+        fontFamily: 'brown',
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(widget.title, style: SU_label_style,),
+          Text(
+            widget.title,
+            style: SU_label_style,
+          ),
           SizedBox(height: 8.0),
           Container(
             decoration: BoxDecoration(
-                color: Colors.transparent,
-                borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                border: Border.all(
-                    width: widget.error.isNotEmpty ? 2 :  1,
-                    color: widget.value == null
-                        ? widget.error.isNotEmpty ? HS_NotificationCountColor : SU_border_color
-                        : SU_border_color,),),
+              color: Colors.transparent,
+              borderRadius: BorderRadius.all(Radius.circular(8.0)),
+              border: Border.all(
+                width: widget.error.isNotEmpty ? 2 : 1,
+                color: widget.value == null
+                    ? widget.error.isNotEmpty
+                        ? HS_NotificationCountColor
+                        : SU_border_color
+                    : SU_border_color,
+              ),
+            ),
             width: widget.boxWidth,
             padding: const EdgeInsets.only(left: 12.0, right: 12.0),
             height: widget.boxHeight,
@@ -672,7 +708,10 @@ class _CrayonDropDownState<T> extends State<CrayonDropDown<T>>
     return Semantics(
       button: true,
       child: GestureDetector(
-          onTap: _handleTap, behavior: HitTestBehavior.opaque, child: result,),
+        onTap: _handleTap,
+        behavior: HitTestBehavior.opaque,
+        child: result,
+      ),
     );
   }
 }

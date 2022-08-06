@@ -7,26 +7,26 @@ import 'package:intl/intl.dart';
 import '../../../navigation_handler/welcome_navigation_handler.dart';
 import 'welcome_usecase.dart';
 
-class WelcomeCoordinator extends BaseViewModel<WelcomeScreenState>{
+class WelcomeCoordinator extends BaseViewModel<WelcomeScreenState> {
   final WelcomeNavigationHandler _navigationHandler;
   final WelcomeUseCase _welcomeUseCase;
 
   WelcomeCoordinator(
-      this._navigationHandler,
-      this._welcomeUseCase,) : super(const WelcomeScreenState(
-    currentLanguageCode: 'en',
-  ));
+    this._navigationHandler,
+    this._welcomeUseCase,
+  ) : super(const WelcomeScreenState(
+          currentLanguageCode: 'en',
+        ));
 
-
-  Future<void> getCurrentLocale()async{
+  Future<void> getCurrentLocale() async {
     var currentLanguageCode = '';
-    currentLanguageCode = await  _welcomeUseCase.getLocale();
+    currentLanguageCode = await _welcomeUseCase.getLocale();
     var currentLocale = Locale(currentLanguageCode);
     Get.updateLocale(currentLocale);
     Intl.defaultLocale = currentLocale.languageCode;
-   state = state.copyWith(
-     currentLanguageCode: currentLanguageCode,
-   );
+    state = state.copyWith(
+      currentLanguageCode: currentLanguageCode,
+    );
   }
 
   void setCurrentLocale(String currentLanguageCode) {
@@ -46,5 +46,4 @@ class WelcomeCoordinator extends BaseViewModel<WelcomeScreenState>{
   Future navigateToLogin(String userType) async {
     _navigationHandler.navigateToLogin(userType);
   }
-
 }

@@ -7,7 +7,12 @@ enum CrayonPaymentButtonType {
 }
 
 /// The possible button themes
-enum CrayonPaymentButtonThemeVariant { primary, secondary, tertiary, quaternary }
+enum CrayonPaymentButtonThemeVariant {
+  primary,
+  secondary,
+  tertiary,
+  quaternary
+}
 
 /// The possible button styles supported
 /// This is specific to CrayonPaymentInPageButton
@@ -17,4 +22,3 @@ enum CrayonPaymentButtonOverlayStyle {
   roundedOutlined,
   rectangularOutlined,
 }
-

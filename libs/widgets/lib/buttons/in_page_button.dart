@@ -152,8 +152,8 @@ class _ButtonRow extends StatelessWidget {
 }
 
 @immutable
-class _CrayonPaymentInPageButtonDefaultElevation extends MaterialStateProperty<double>
-    with Diagnosticable {
+class _CrayonPaymentInPageButtonDefaultElevation
+    extends MaterialStateProperty<double> with Diagnosticable {
   _CrayonPaymentInPageButtonDefaultElevation(this.elevation);
 
   final double elevation;

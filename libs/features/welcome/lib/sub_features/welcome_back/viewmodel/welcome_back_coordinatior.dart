@@ -56,4 +56,5 @@ class WelcomeBackCoordinator extends BaseViewModel<WelcomeScreenState> {
       print(response?.message);
     }
   }
+
 }

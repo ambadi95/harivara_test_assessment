@@ -25,7 +25,8 @@ class IconAttributes {
 
   IconAttributes({
     required this.iconName,
-    this.iconSizeWithPadding = const CrayonPaymentPadding(width: 40, height: 40),
+    this.iconSizeWithPadding =
+        const CrayonPaymentPadding(width: 40, height: 40),
     this.onTap,
   });
 }

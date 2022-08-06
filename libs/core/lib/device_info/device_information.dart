@@ -14,7 +14,8 @@ abstract class DeviceInformation {
     } else if (Platform.isIOS) {
       return DeviceInfoIos();
     } else {
-      throw FlutterError('DeviceInformation is only supporting IOS and Android');
+      throw FlutterError(
+          'DeviceInformation is only supporting IOS and Android');
     }
   }
 

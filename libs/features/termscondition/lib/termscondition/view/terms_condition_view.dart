@@ -37,11 +37,8 @@ class _CrayonTermsConditionState extends State<CrayonTermsCondition> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Expanded(
-              flex: 2,
-              child: _buildTitle(context, coordinator)),
-          Expanded(
-              flex:7,child: _belowView(context)),
+          Expanded(flex: 2, child: _buildTitle(context, coordinator)),
+          Expanded(flex: 7, child: _belowView(context)),
         ],
       ),
     );
@@ -52,7 +49,7 @@ class _CrayonTermsConditionState extends State<CrayonTermsCondition> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         InkWell(
-          onTap:()=> coordinator.goBack(),
+            onTap: () => coordinator.goBack(),
             child: const Icon(Icons.arrow_back)),
         const SizedBox(
           height: 10,
@@ -90,8 +87,7 @@ class _CrayonTermsConditionState extends State<CrayonTermsCondition> {
     );
   }
 
-
-  Widget _buildOptions(context, String label,String text) {
+  Widget _buildOptions(context, String label, String text) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 20, top: 20),
       child: Column(
@@ -114,7 +110,6 @@ class _CrayonTermsConditionState extends State<CrayonTermsCondition> {
                 color: TC_DescriptionColor,
                 fontWeight: FontWeight.w400),
           ),
-
         ],
       ),
     );
@@ -123,23 +118,22 @@ class _CrayonTermsConditionState extends State<CrayonTermsCondition> {
   _belowView(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
-          children: [
-            const SizedBox(
-              height: 20,
-            ),
-
-            _buildDescription(context),
-            const SizedBox(
-              height: 20,
-            ),
-            _buildOptions(context,'TC_TermsCondition_Subtitle','TC_Terms_Conditons_Desc')
-            ,const SizedBox(
-              height: 10,
-            ),
-            _buildOptions(context,'TC_Purpose_title','TC_Purpose_Desc')
-
-          ],
-        ),
+        children: [
+          const SizedBox(
+            height: 20,
+          ),
+          _buildDescription(context),
+          const SizedBox(
+            height: 20,
+          ),
+          _buildOptions(
+              context, 'TC_TermsCondition_Subtitle', 'TC_Terms_Conditons_Desc'),
+          const SizedBox(
+            height: 10,
+          ),
+          _buildOptions(context, 'TC_Purpose_title', 'TC_Purpose_Desc')
+        ],
+      ),
     );
   }
 }

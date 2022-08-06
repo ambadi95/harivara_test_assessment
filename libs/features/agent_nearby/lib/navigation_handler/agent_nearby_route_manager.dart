@@ -10,7 +10,7 @@ class AgentNearByRouteManager extends IRouteManager {
       case AgentNearBy.viewPath:
         return const AgentNearBy();
       default:
-      // TODO: implement getView
+        // TODO: implement getView
         throw UnimplementedError();
     }
     throw Exception('Route ${settings.name} not found');

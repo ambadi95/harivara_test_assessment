@@ -67,8 +67,8 @@ class TaskManager {
   }
 
   Future<dynamic> _executeDataNotifierTask(
-      Map<String, dynamic> requestData,
-      ) async {
+    Map<String, dynamic> requestData,
+  ) async {
     return await DIContainer.container<DataChangeObserverTaskResolver>()
         .execute('', requestData);
   }
@@ -93,8 +93,8 @@ class TaskManager {
   }
 
   Future<dynamic> _executeEnvironmentTask(
-      Map<String, dynamic> requestData,
-      ) async {
+    Map<String, dynamic> requestData,
+  ) async {
     return await DIContainer.container<EnvironmentResolver>()
         .loadEnvironment(requestData['environment'] as String? ?? '');
   }
@@ -112,7 +112,7 @@ class TaskManager {
 
   Future<StandardRequest> _executeStandardTask(Task task) async {
     final taskResolver =
-    ModuleResolver.getTaskResolver(task.moduleIdentifier, task.taskType);
+        ModuleResolver.getTaskResolver(task.moduleIdentifier, task.taskType);
     final apiIdentifier = task.apiIdentifier;
     final requestData = task.requestData;
     final request = await taskResolver!.execute(
@@ -124,8 +124,8 @@ class TaskManager {
   }
 
   Future<NetworkGraphQLResponse> _executeGraphQLNetworkOnlyTask(
-      Task task,
-      ) async {
+    Task task,
+  ) async {
     final request = await _request(task);
 
     final cachedResult = await _inCache(task, request.cachePolicy);
@@ -137,9 +137,9 @@ class TaskManager {
   }
 
   Future<NetworkGraphQLResponse> _runGraphQLRequest(
-      GraphQLRequest request,
-      Task task,
-      ) async {
+    GraphQLRequest request,
+    Task task,
+  ) async {
     try {
       _shouldDisplayBusyModal(request);
 
@@ -167,7 +167,7 @@ class TaskManager {
 
   Future<GraphQLRequest> _request(Task task) async {
     final taskResolver =
-    ModuleResolver.getTaskResolver(task.moduleIdentifier, task.taskType);
+        ModuleResolver.getTaskResolver(task.moduleIdentifier, task.taskType);
     final apiIdentifier = task.apiIdentifier;
     final requestData = task.requestData;
     final request = await taskResolver!.execute(
@@ -181,7 +181,7 @@ class TaskManager {
   Future<void> _executeAppLaunchDataOperation(List<Task> taskList) async {
     final List<Future<GraphQLRequest>> futureTasks = [];
     taskList.forEach(
-          (task) {
+      (task) {
         futureTasks.add(_request(task));
       },
     );
@@ -235,15 +235,15 @@ class TaskManager {
         DATA_KEY: [task.apiIdentifier],
         DATA_NOTIFIER_TYPE_KEY: DataNotifierTaskType.ADD,
         DATA_NOTIFIER_STREAM_CONTROLLER_KEY:
-        task.requestData[DATA_NOTIFIER_STREAM_CONTROLLER_KEY],
+            task.requestData[DATA_NOTIFIER_STREAM_CONTROLLER_KEY],
       },
     );
   }
 
   Future<NetworkGraphQLResponse?> _inCache(
-      Task task,
-      CachePolicy cachePolicy,
-      ) async {
+    Task task,
+    CachePolicy cachePolicy,
+  ) async {
     if (cachePolicy == CachePolicy.OnDemand) {
       final cachedResult = await _executeLocalCacheTask(
         requestData: {
@@ -255,7 +255,7 @@ class TaskManager {
       if (cachedResult.containsKey(task.apiIdentifier) &&
           cachedResult[task.apiIdentifier] != null) {
         final cachedNetworkResponse =
-        cachedResult[task.apiIdentifier] as NetworkGraphQLResponse;
+            cachedResult[task.apiIdentifier] as NetworkGraphQLResponse;
         return cachedNetworkResponse;
       }
     }
@@ -264,10 +264,10 @@ class TaskManager {
   }
 
   Future<void> _saveToCache(
-      String apiIdentifier,
-      NetworkGraphQLResponse response,
-      CachePolicy cachePolicy,
-      ) async {
+    String apiIdentifier,
+    NetworkGraphQLResponse response,
+    CachePolicy cachePolicy,
+  ) async {
     if (cachePolicy == CachePolicy.OnDemand && !(response.hasException)) {
       await _executeLocalCacheTask(
         requestData: {
@@ -291,14 +291,14 @@ class TaskManager {
 
   void _showBusyModal(int delay) {
     final taskResolver =
-    ModuleResolver.getTaskResolver('src', TaskType.PROGRESS_INDICATOR);
+        ModuleResolver.getTaskResolver('src', TaskType.PROGRESS_INDICATOR);
     taskResolver!.execute('busy_modal_show', {});
   }
 
   void _shouldHideBusyModal(GraphQLRequest request) {
     final index = _runningNetworkRequests.indexWhere(
-          (element) =>
-      element.toLowerCase().compareTo(request.name.toLowerCase()) == 0,
+      (element) =>
+          element.toLowerCase().compareTo(request.name.toLowerCase()) == 0,
     );
     if (index != -1) {
       _runningNetworkRequests.removeAt(index);
@@ -311,7 +311,7 @@ class TaskManager {
 
   void _hideBusyModal() {
     final taskResolver =
-    ModuleResolver.getTaskResolver('src', TaskType.PROGRESS_INDICATOR);
+        ModuleResolver.getTaskResolver('src', TaskType.PROGRESS_INDICATOR);
     taskResolver!.execute('busy_modal_hide', {});
   }
 }

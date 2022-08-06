@@ -27,9 +27,15 @@ class CrayonPaymentProgressBar extends StatelessWidget {
         value: value,
         valueColor: AlwaysStoppedAnimation<Color?>(
           valueColor ??
-              (CrayonPaymentTheme().defaultThemeData.highlightTextColor.isNullOrEmpty()
+              (CrayonPaymentTheme()
+                      .defaultThemeData
+                      .highlightTextColor
+                      .isNullOrEmpty()
                   ? Theme.of(context).primaryColor
-                  : CrayonPaymentTheme().defaultThemeData.highlightTextColor.toColor()),
+                  : CrayonPaymentTheme()
+                      .defaultThemeData
+                      .highlightTextColor
+                      .toColor()),
         ),
         backgroundColor: backgroundColor ?? Theme.of(context).backgroundColor,
       ),

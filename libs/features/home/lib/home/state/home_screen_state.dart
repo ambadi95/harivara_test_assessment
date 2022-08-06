@@ -8,7 +8,6 @@ class HomeScreenState with _$HomeScreenState {
   const factory HomeScreenState.initialState() = InitialState;
   const factory HomeScreenState.ready({
     required BuildContext context,
-
     @Default('') String error,
     @Default(false) bool isAgent,
     @Default(false) bool isLoading,

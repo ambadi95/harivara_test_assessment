@@ -1,3 +1,1 @@
-class SettingsViewModel{
-
-}
+class SettingsViewModel {}

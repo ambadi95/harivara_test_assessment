@@ -4,5 +4,4 @@ class ClientInformation {
   ClientInformation(this.environment);
 
   final Environment environment;
-
 }

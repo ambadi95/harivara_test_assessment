@@ -1,5 +1,3 @@
-
-
 abstract class IUserClient {
   Future<dynamic> getUserInformation(
     Function(String) onErrorCallback,
@@ -13,7 +11,6 @@ abstract class IUserClient {
     dynamic request,
     Function(String) onErrorCallback,
   );
-
 
   Future<bool> signOut(
     String mobileNumber,

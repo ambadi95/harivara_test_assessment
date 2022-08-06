@@ -51,7 +51,8 @@ class ErrorViewModel extends BaseViewModel<SuccessScreenBaseWidgetAttributes?> {
     );
   }
 
-  List<CrayonPaymentPageHeaderTextUnderIconWidgetElementAttributes> _buildAttributesList(
+  List<CrayonPaymentPageHeaderTextUnderIconWidgetElementAttributes>
+      _buildAttributesList(
     ErrorNode errorNode,
     String theme,
   ) {
@@ -79,7 +80,8 @@ class ErrorViewModel extends BaseViewModel<SuccessScreenBaseWidgetAttributes?> {
           ? errorNode.icon!
           : 'app_mobile_login:assets/images/ic_error.svg',
       padding: CrayonPaymentPadding(width: 123, height: 123),
-      format: CrayonPaymentPageHeaderTextUnderIconWidgetElementFormat.horizontal,
+      format:
+          CrayonPaymentPageHeaderTextUnderIconWidgetElementFormat.horizontal,
     );
   }
 
@@ -95,7 +97,8 @@ class ErrorViewModel extends BaseViewModel<SuccessScreenBaseWidgetAttributes?> {
           styleVariant: CrayonPaymentTextStyleVariant.headline1,
         ),
         padding: CrayonPaymentPadding(top: 42),
-        format: CrayonPaymentPageHeaderTextUnderIconWidgetElementFormat.horizontal,
+        format:
+            CrayonPaymentPageHeaderTextUnderIconWidgetElementFormat.horizontal,
       );
     }
     return null;
@@ -113,7 +116,8 @@ class ErrorViewModel extends BaseViewModel<SuccessScreenBaseWidgetAttributes?> {
           styleVariant: CrayonPaymentTextStyleVariant.headline2,
         ),
         padding: CrayonPaymentPadding(top: 8),
-        format: CrayonPaymentPageHeaderTextUnderIconWidgetElementFormat.horizontal,
+        format:
+            CrayonPaymentPageHeaderTextUnderIconWidgetElementFormat.horizontal,
       );
     }
     return null;
@@ -131,7 +135,8 @@ class ErrorViewModel extends BaseViewModel<SuccessScreenBaseWidgetAttributes?> {
   }
 
   BottomDecorationAttributes? getBottomDecorationAttributes(String theme) {
-    final color = CrayonPaymentTheme().themeData.colorPalette!.primary.toColor();
+    final color =
+        CrayonPaymentTheme().themeData.colorPalette!.primary.toColor();
     return BottomDecorationAttributes(
       image: 'app_mobile_login:assets/images/ic_error_bg.png',
       type: ImageType.Png,

@@ -15,7 +15,7 @@ import 'package:widget_library/icons/crayon_payment_bottom_sheet_icon.dart';
 import 'package:core/sheets/state/crayon_payment_bottom_sheet_state.dart';
 import 'package:welcome/sub_features/app_language/view/app_language.dart';
 
-class SettingsNavigationHandler with ErrorHandler{
+class SettingsNavigationHandler with ErrorHandler {
   final NavigationManager _navigationManager;
   SettingsNavigationHandler(this._navigationManager);
 
@@ -24,32 +24,32 @@ class SettingsNavigationHandler with ErrorHandler{
   }
 
   Future<void> navigateToSignUpScreen() async {
-
-      var arguments = SignUpArguments(
-        'SU_update_passcode',
-        'SU_update_subtitle',
-        'Agent',
-        SignupType.resetPasscodeAgent,
-        false,
-      );
-      await _navigationManager.navigateTo(
-          SignUp.viewPath, const NavigationType.push(),
-          arguments: arguments);
+    var arguments = SignUpArguments(
+      'SU_update_passcode',
+      'SU_update_subtitle',
+      'Agent',
+      SignupType.resetPasscodeAgent,
+      false,
+    );
+    await _navigationManager.navigateTo(
+        SignUp.viewPath, const NavigationType.push(),
+        arguments: arguments);
   }
 
   Future<void> navigateToAgentChangeLanguageBottomSheet() async {
-    final CrayonPaymentBottomSheetIcon icon = CrayonPaymentBottomSheetAppLanguageIconIcon();
-    final CrayonPaymentBottomSheetState infoState = CrayonPaymentBottomSheetState.changeLanguage(
+    final CrayonPaymentBottomSheetIcon icon =
+        CrayonPaymentBottomSheetAppLanguageIconIcon();
+    final CrayonPaymentBottomSheetState infoState =
+        CrayonPaymentBottomSheetState.changeLanguage(
       widgetOptions: [
-       const AppLanguage(),
+        const AppLanguage(),
       ],
-        buttonOptions: [
-          ButtonOptions(Black,'Continue', ()=>{goBack()},false),
-        ],
-        disableCloseButton: true,
-        bottomSheetIcon: icon,
-        title: 'App Language',
-
+      buttonOptions: [
+        ButtonOptions(Black, 'Continue', () => {goBack()}, false),
+      ],
+      disableCloseButton: true,
+      bottomSheetIcon: icon,
+      title: 'App Language',
     );
 
     _navigationManager.navigateTo(
@@ -60,19 +60,17 @@ class SettingsNavigationHandler with ErrorHandler{
   }
 
   Future<void> navigateToAgentDetailScreen() async {
-    var arguments = AgentDetailScreenArguments('DV_profile','DV_subtitle',AgentDetailScreenType.UpdateProfile, 'Agent',false);
+    var arguments = AgentDetailScreenArguments('DV_profile', 'DV_subtitle',
+        AgentDetailScreenType.UpdateProfile, 'Agent', false);
     await _navigationManager.navigateTo(
         AgentDetailsScreen.viewPath, const NavigationType.push(),
         arguments: arguments);
   }
 
   Future<void> signOut() async {
-      var arguments = WelcomeScreenArgs('', '', 'Agent');
+    var arguments = WelcomeScreenArgs('', '', 'Agent');
     _navigationManager.navigateTo(
-        CrayonWelcomScreen.viewPath,
-        const NavigationType.replace(),
-        arguments: arguments
-    );
+        CrayonWelcomScreen.viewPath, const NavigationType.replace(),
+        arguments: arguments);
   }
-
 }

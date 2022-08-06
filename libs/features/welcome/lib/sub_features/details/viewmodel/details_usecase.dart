@@ -1,4 +1,3 @@
-
 import 'package:shared_data_models/customer_onboard/customer_details/request/customer_details_request.dart';
 import 'package:shared_data_models/customer_onboard/customer_details/response/customer_detail_response.dart';
 import 'package:shared_data_models/customer_onboard/region_district/district_response/district_response.dart';
@@ -12,19 +11,20 @@ import '../../../data_model/region.dart';
 import '../../../welcome_module.dart';
 import 'details_view_model.dart';
 
-class DetailsUseCase extends BaseDataProvider{
+class DetailsUseCase extends BaseDataProvider {
   final DetailsViewModel detailsViewModel;
-  DetailsUseCase(this.detailsViewModel ,TaskManager taskManager) : super(taskManager);
+  DetailsUseCase(this.detailsViewModel, TaskManager taskManager)
+      : super(taskManager);
 
-  bool isValidName(String name){
+  bool isValidName(String name) {
     return detailsViewModel.isValidName(name);
   }
 
-  bool isValidEmail(String emailId){
+  bool isValidEmail(String emailId) {
     return detailsViewModel.isValidEmailId(emailId);
   }
 
-  bool isValidPoBox(String poBox){
+  bool isValidPoBox(String poBox) {
     return detailsViewModel.isValidPoBox(poBox);
   }
 
@@ -53,7 +53,8 @@ class DetailsUseCase extends BaseDataProvider{
         });
   }
 
-  Future<DistrictResponse?> getDistrict(String regionId,Function(String) onErrorCallback) async {
+  Future<DistrictResponse?> getDistrict(
+      String regionId, Function(String) onErrorCallback) async {
     return await executeApiRequest<DistrictResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
@@ -82,19 +83,19 @@ class DetailsUseCase extends BaseDataProvider{
     String nidaNo = await getnidaNumber();
     int customerId = int.parse(await getCustomerId());
     CustomerDetailsRequest customerDetailsRequest = CustomerDetailsRequest(
-        nidaNo: nidaNo.replaceAll("-", ""),
-        mobileNo: mobileNO,
-        customerId: customerId,
-        firstName: name.split(' ')[0],
-        lastName: name.split(' ')[1],
-        birthdate: dob,
-        gender: gender,
-        address: address,
-        profession: profession,
-        emailId: emailId,
-        poBoxNumber: poBox,
-        region: region,
-        district: district,
+      nidaNo: nidaNo.replaceAll("-", ""),
+      mobileNo: mobileNO,
+      customerId: customerId,
+      firstName: name.split(' ')[0],
+      lastName: name.split(' ')[1],
+      birthdate: dob,
+      gender: gender,
+      address: address,
+      profession: profession,
+      emailId: emailId,
+      poBoxNumber: poBox,
+      region: region,
+      district: district,
     );
     return await executeApiRequest<CustomerDetailResponse?>(
         taskType: TaskType.DATA_OPERATION,
@@ -108,5 +109,4 @@ class DetailsUseCase extends BaseDataProvider{
           return CustomerDetailResponse.fromJson(data);
         });
   }
-
 }

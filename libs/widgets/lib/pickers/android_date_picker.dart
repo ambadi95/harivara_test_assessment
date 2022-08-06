@@ -32,6 +32,7 @@ Widget androidDatePickerWidget(
     selectionColor: CrayonPaymentColors.crayonPaymentGold,
     startRangeSelectionColor: CrayonPaymentColors.crayonPaymentGold,
     endRangeSelectionColor: CrayonPaymentColors.crayonPaymentGold,
-    rangeSelectionColor: CrayonPaymentColors.crayonPaymentGold.withOpacity(0.15),
+    rangeSelectionColor:
+        CrayonPaymentColors.crayonPaymentGold.withOpacity(0.15),
   );
 }

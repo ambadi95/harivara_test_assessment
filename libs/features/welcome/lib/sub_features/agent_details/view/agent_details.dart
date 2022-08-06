@@ -21,7 +21,7 @@ class AgentDetailsScreen extends StatefulWidget {
   AgentDetailScreenArguments agentDetailScreenArguments;
   static const viewPath = '${WelcomeModule.moduleIdentifier}/agentDetails';
 
-   AgentDetailsScreen({Key? key, required this.agentDetailScreenArguments})
+  AgentDetailsScreen({Key? key, required this.agentDetailScreenArguments})
       : super(key: key);
 
   @override
@@ -78,7 +78,11 @@ class _AgentDetailsScreenState extends State<AgentDetailsScreen> {
               child: _buildContinueButton(coordinator),
             ),
             appBar: PreferredSize(
-              preferredSize: Size(double.infinity,  widget.agentDetailScreenArguments.isProgressBarVisible ? 102 : 58),
+              preferredSize: Size(
+                  double.infinity,
+                  widget.agentDetailScreenArguments.isProgressBarVisible
+                      ? 102
+                      : 58),
               child: _buildTopContainer(context, coordinator),
             ),
             body: SingleChildScrollView(
@@ -99,7 +103,9 @@ class _AgentDetailsScreenState extends State<AgentDetailsScreen> {
   ) {
     return Column(
       children: [
-        widget.agentDetailScreenArguments.isProgressBarVisible ? _onBoardingProgressBar() : const SizedBox(),
+        widget.agentDetailScreenArguments.isProgressBarVisible
+            ? _onBoardingProgressBar()
+            : const SizedBox(),
         _buildBackBtn(context, coordinator),
       ],
     );
@@ -171,13 +177,11 @@ class _AgentDetailsScreenState extends State<AgentDetailsScreen> {
   Widget _title() {
     return CrayonPaymentText(
       key: const Key('DV_title'),
-      text: TextUIDataModel(
-        widget.agentDetailScreenArguments.title.tr,
-        styleVariant: CrayonPaymentTextStyleVariant.headline2,
-        color: VO_TitleColor,
-        textAlign: TextAlign.left,
-        fontWeight: FontWeight.bold
-      ),
+      text: TextUIDataModel(widget.agentDetailScreenArguments.title.tr,
+          styleVariant: CrayonPaymentTextStyleVariant.headline2,
+          color: VO_TitleColor,
+          textAlign: TextAlign.left,
+          fontWeight: FontWeight.bold),
     );
   }
 
@@ -280,24 +284,29 @@ class _AgentDetailsScreenState extends State<AgentDetailsScreen> {
   }
 
   Widget _buildContinueButton(AgentDetailsCoordinator coordinator) {
-    return widget.agentDetailScreenArguments.agentDetailScreenType == AgentDetailScreenType.Signup ? GestureDetector(
-      onTap: () {
-        coordinator.navigateToOtpScreen(widget.agentDetailScreenArguments.userType, mobileNumber.text);
-      },
-      child: Container(
-        width: double.infinity,
-        height: 50,
-        decoration: BoxDecoration(
-            color: config_color.SU_button_color,
-            borderRadius: BorderRadius.circular(8.0)),
-        child: Center(
-          child: Text(
-            'SU_button_text'.tr,
-            style: SU_button_text_style,
-          ),
-        ),
-      ),
-    ): const SizedBox();
+    return widget.agentDetailScreenArguments.agentDetailScreenType ==
+            AgentDetailScreenType.Signup
+        ? GestureDetector(
+            onTap: () {
+              coordinator.navigateToOtpScreen(
+                  widget.agentDetailScreenArguments.userType,
+                  mobileNumber.text);
+            },
+            child: Container(
+              width: double.infinity,
+              height: 50,
+              decoration: BoxDecoration(
+                  color: config_color.SU_button_color,
+                  borderRadius: BorderRadius.circular(8.0)),
+              child: Center(
+                child: Text(
+                  'SU_button_text'.tr,
+                  style: SU_button_text_style,
+                ),
+              ),
+            ),
+          )
+        : const SizedBox();
   }
 
   void _listenToStateChanges(BuildContext context, AgentDetailsState state) {

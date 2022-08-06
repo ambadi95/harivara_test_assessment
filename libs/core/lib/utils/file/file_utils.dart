@@ -7,7 +7,7 @@ String extractFileExtension(File pickedFile) {
   return extension;
 }
 
-String extractFileExtensionFromPath(String filepath){
+String extractFileExtensionFromPath(String filepath) {
   final extension = p.extension(filepath);
   return extension;
 }

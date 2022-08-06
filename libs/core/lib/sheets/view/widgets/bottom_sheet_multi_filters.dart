@@ -129,7 +129,8 @@ class _BottomSheetMultiFiltersState extends State<BottomSheetMultiFilters> {
                   filter,
                 ),
               )
-              .toList()), expandDetailsBottomRow: [],
+              .toList()),
+          expandDetailsBottomRow: [],
         ),
       );
 

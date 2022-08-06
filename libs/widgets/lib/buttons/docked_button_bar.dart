@@ -280,8 +280,9 @@ class CrayonPaymentDockedButtonBar extends StatelessWidget {
         );
 
       case CrayonPaymentDockedButtonBarElementType.corneredButton:
-        final buttonPadding =
-            (button.padding != null) ? button.padding! : CrayonPaymentPadding(height: 0);
+        final buttonPadding = (button.padding != null)
+            ? button.padding!
+            : CrayonPaymentPadding(height: 0);
         Size? minimumSize;
         if (buttonPadding.width != 0 && buttonPadding.height != 0) {
           minimumSize = Size(
@@ -311,8 +312,9 @@ class CrayonPaymentDockedButtonBar extends StatelessWidget {
         );
 
       case CrayonPaymentDockedButtonBarElementType.swipeButton:
-        final buttonPadding =
-            (button.padding != null) ? button.padding! : CrayonPaymentPadding(height: 0);
+        final buttonPadding = (button.padding != null)
+            ? button.padding!
+            : CrayonPaymentPadding(height: 0);
         return Padding(
           padding: EdgeInsets.fromLTRB(
             buttonPadding.left,

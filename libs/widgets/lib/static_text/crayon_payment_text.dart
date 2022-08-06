@@ -101,10 +101,10 @@ TextStyle buildTextStyle({
 
     case CrayonPaymentTextStyleVariant.overline1:
       return Theme.of(context).textTheme.headline6!.copyWith(
-        height: lineHeight,
-        fontFamily: _fontFamily(),
-        fontSize: _isArabic ? 12 : 12,
-      );
+            height: lineHeight,
+            fontFamily: _fontFamily(),
+            fontSize: _isArabic ? 12 : 12,
+          );
 
     case CrayonPaymentTextStyleVariant.hints:
       return Theme.of(context)
@@ -129,7 +129,6 @@ TextStyle buildTextStyle({
             height: lineHeight,
             fontFamily: _fontFamily(),
             fontSize: _isArabic ? 22 : 20,
-
           );
 
     case CrayonPaymentTextStyleVariant.bodyText2:
@@ -220,7 +219,7 @@ class CrayonPaymentText extends StatelessWidget {
       context: context,
       variant: text.styleVariant ?? CrayonPaymentTextStyleVariant.normal,
       verticalSpacing: lineVerticalSpacing,
-    ).copyWith(color: text.color,fontWeight: text.fontWeight);
+    ).copyWith(color: text.color, fontWeight: text.fontWeight);
 
     return edgeInsets == null
         ? _buildText(textStyle)

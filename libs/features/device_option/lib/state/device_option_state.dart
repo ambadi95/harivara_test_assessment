@@ -13,5 +13,4 @@ class DeviceOptionState with _$DeviceOptionState {
     required String destination,
     @Default([]) List<DeviceOptionModel> DeviceOptionList,
   }) = DeviceOptionReady;
-
 }

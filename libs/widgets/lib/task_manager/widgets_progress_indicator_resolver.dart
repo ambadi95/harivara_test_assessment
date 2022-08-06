@@ -12,7 +12,8 @@ class WidgetsProgressIndicatorTaskResolver implements TaskResolver {
         return BusyModalController().hide(requestData);
 
       default:
-        throw TaskManagerException('The API Identifier "$apiIdentifier" does not match!');
+        throw TaskManagerException(
+            'The API Identifier "$apiIdentifier" does not match!');
     }
   }
 }

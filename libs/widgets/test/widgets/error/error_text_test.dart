@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-
   late Widget testWidget;
 
   final errorTextFinder = find.byKey(const Key('errorText'));
   final sizedBoxFinder = find.byKey(const Key('sizedBox'));
 
-  testWidgets('should show TextWidget if provided in constructor', (tester) async {
+  testWidgets('should show TextWidget if provided in constructor',
+      (tester) async {
     // Arrange
     const text = 'text';
     testWidget = const MaterialApp(
@@ -22,7 +22,8 @@ void main() {
     expect(sizedBoxFinder, findsNothing);
   });
 
-  testWidgets('should not show TextWidget when null passed in constructor', (tester) async {
+  testWidgets('should not show TextWidget when null passed in constructor',
+      (tester) async {
     // Arrange
     testWidget = const MaterialApp(
       home: ErrorText(null),

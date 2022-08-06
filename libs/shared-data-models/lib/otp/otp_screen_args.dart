@@ -24,6 +24,6 @@ class OtpScreenArgs {
     this.otpNumber,
     this.phoneNumber,
     this.isResetPasscode,
-      this.userType,
+    this.userType,
   );
 }

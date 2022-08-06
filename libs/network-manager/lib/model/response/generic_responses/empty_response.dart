@@ -1,1 +1,1 @@
-class EmptyResponse { }
+class EmptyResponse {}

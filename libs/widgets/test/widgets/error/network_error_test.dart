@@ -12,17 +12,18 @@ void main() {
       home: Scaffold(body: NetworkErrorScreen()),
     );
   });
-  testWidgets('CrayonPaymentNetworkErrorScreen WidgetTest', (WidgetTester tester) async {
+  testWidgets('CrayonPaymentNetworkErrorScreen WidgetTest',
+      (WidgetTester tester) async {
     final networkErrorScreenViewFinder =
-    find.byKey(const Key('NetworkErrorScreen'));
+        find.byKey(const Key('NetworkErrorScreen'));
     final networkScreenImageFinder =
-    find.byKey(const Key('NetworkErrorScreen_Image'));
+        find.byKey(const Key('NetworkErrorScreen_Image'));
     final networkScreenAppbarFinder =
-    find.byKey(const Key('NetworkErrorScreen_BackButton'));
+        find.byKey(const Key('NetworkErrorScreen_BackButton'));
     final networkScreenTitleFinder =
-    find.byKey(const Key('NetworkErrorScreen_Title'));
+        find.byKey(const Key('NetworkErrorScreen_Title'));
     final networkScreenSubtitleFinder =
-    find.byKey(const Key('NetworkErrorScreen_SubtiTitle'));
+        find.byKey(const Key('NetworkErrorScreen_SubtiTitle'));
     await tester.pumpWidget(testWidget);
 
     expect(networkErrorScreenViewFinder, findsOneWidget);

@@ -1,3 +1,1 @@
-class TermsConditionViewModel{
-
-}
+class TermsConditionViewModel {}

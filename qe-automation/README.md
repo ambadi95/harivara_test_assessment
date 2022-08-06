@@ -43,7 +43,7 @@
 - Place the app in apps folder (use name ‘app-debug.apk’) OR update app path in appium config to point to the debug app 
 generated from Android studio.
  
-- Start local selenium server using the command ‘appium -a 127.0.0.1 -p 4723 -pa /‘.
+- Start local selenium server using the command ‘appium -a 192.168.31.44 -p 4723 -pa /‘.
 
 - Execution should start.
 
@@ -62,7 +62,7 @@ Flutter Build commands to build app from Android studio. Debug builds are needed
 Start Local Appium Server using cmd line: 
 
 
-    appium -a 127.0.0.1 -p 4723 -pa /
+    appium -a 192.168.31.44 -p 4723 -pa /
     
 Execute commands for iOS and Android
 

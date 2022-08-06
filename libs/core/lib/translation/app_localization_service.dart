@@ -7,6 +7,8 @@ class AppLocalizationService implements IAppLocalizationService {
 
   @override
   String getValue(String key, {List<dynamic> args = const []}) {
-    return AppLocalizations.of(AppLocalizationService.context)?.translate(key, args: args) ?? key;
+    return AppLocalizations.of(AppLocalizationService.context)
+            ?.translate(key, args: args) ??
+        key;
   }
 }
