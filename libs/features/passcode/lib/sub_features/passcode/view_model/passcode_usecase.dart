@@ -54,6 +54,10 @@ class PasscodeUseCase extends BaseDataProvider {
     return await getValueFromSecureStorage('mobileNumber', defaultValue: '');
   }
 
+  Future<void> saveOnBordStatus(String id) async {
+    return await setValueToSecureStorage({'OnBoardStatus': id});
+  }
+
   Future<PasscodeResponse?> savePasscode(
       String passcode, Function(String) onErrorCallback) async {
     String custmerId = await getCustomerId();
@@ -69,6 +73,7 @@ class PasscodeUseCase extends BaseDataProvider {
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {
           final data = responseData;
+          saveOnBordStatus(custmerId);
           return PasscodeResponse.fromJson(data);
         });
   }

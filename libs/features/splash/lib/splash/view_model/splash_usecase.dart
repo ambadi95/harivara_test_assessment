@@ -11,4 +11,8 @@ class SplashUseCase extends BaseDataProvider {
   Future<String> getMobileNumber() async {
     return await getValueFromSecureStorage('mobileNumber', defaultValue: '');
   }
+
+  Future<String> getOnBoardStatus() async {
+    return await getValueFromSecureStorage('OnBoardStatus', defaultValue: '');
+  }
 }

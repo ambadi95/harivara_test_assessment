@@ -32,6 +32,10 @@ class LoginUseCase extends BaseDataProvider {
     return await setValueToSecureStorage({'mobileNumber': mobileNumber});
   }
 
+  Future<void> saveOnBordStatus(String id) async {
+    return await setValueToSecureStorage({'OnBoardStatus': id});
+  }
+
   Future<CustomerSignInResponse?> login(String mobileNumber, String passcode,
       Function(String) onErrorCallback) async {
     CrayonPaymentLogger.logInfo(
@@ -54,6 +58,7 @@ class LoginUseCase extends BaseDataProvider {
             _authManager.storeTokenInformation(customerSignInResponse.data!.token!, '', '', '');
             saveCustomerId(customerSignInResponse.data!.id);
             saveMobileNumber(mobileNumber.replaceAll(" ", ""));
+            saveOnBordStatus(customerSignInResponse.data!.id.toString());
           }
           return CustomerSignInResponse.fromJson(data);
         });
