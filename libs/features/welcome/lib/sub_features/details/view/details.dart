@@ -9,6 +9,7 @@ import 'package:shared_data_models/customer_onboard/region_district/district_res
 import 'package:welcome/sub_features/details/state/details_state.dart';
 import 'package:welcome/sub_features/details/viewmodel/details_coordinator.dart';
 import 'package:welcome/welcome_module.dart';
+import 'package:widget_library/alert_dialogue/crayon_payment_alert_dialogue.dart';
 import 'package:widget_library/buttons/crayon_back_button.dart';
 import 'package:widget_library/dropdown/crayon_drop_down.dart';
 import 'package:widget_library/input_fields/input_field_with_label.dart';
@@ -66,8 +67,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
 
   final FocusNode genderFocusNode = FocusNode();
 
-
   DateTime selectedDate = DateTime.now();
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
 
   Future<void> _selectDate(
       BuildContext context, DetailsCoordinator coordinator) async {
@@ -138,7 +139,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          _buildMainUI(coordinator),
+                          _buildMainUI(context, coordinator),
                         ],
                       ),
                     ),
@@ -163,9 +164,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
     DetailsCoordinator coordinator,
   ) {
     return Scaffold(
+      key: _scaffoldKey,
       body: Stack(
         children: [
-          SingleChildScrollView(child: _buildMainUI(coordinator)),
+          SingleChildScrollView(child: _buildMainUI(context, coordinator)),
           _createLoading(),
         ],
       ),
@@ -208,7 +210,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
     );
   }
 
-  Widget _buildMainUI(DetailsCoordinator coordinator) {
+  Widget _buildMainUI(BuildContext context, DetailsCoordinator coordinator) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
@@ -269,7 +271,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
               true),
           _buildRegionDropdown(coordinator),
           _buildDistrictDropdown(coordinator),
-          _buildContinueButton(coordinator)
+          _buildContinueButton(context, coordinator)
         ],
       ),
     );
@@ -521,19 +523,51 @@ class _DetailsScreenState extends State<DetailsScreen> {
     );
   }
 
-  Widget _buildContinueButton(DetailsCoordinator coordinator) {
+  Widget _buildContinueButton(
+      BuildContext buildContext, DetailsCoordinator coordinator) {
     return GestureDetector(
       onTap: () async {
+        coordinator.isValidName(name.text);
+        _checkDob(coordinator);
+        coordinator.isValidGender(gender.text);
         coordinator.isValidPoBox(poBox.text);
         coordinator.isValidEmail(emailId.text);
-        coordinator.isValidName(name.text);
-        coordinator.isValidGender(gender.text);
         coordinator.isValidDistrict(district.text);
         coordinator.isValidRegion(region.text);
         coordinator.isValidProfession(profession.text);
         coordinator.isValidAddress(address.text);
-        _checkDob(coordinator);
-        if (_isBtnEnabled &&
+
+         if (nameError.tr.isNotEmpty) {
+          _showSnackBar(context,nameError.tr);
+          return ;
+        }else if (dobError.tr.isNotEmpty) {
+          _showSnackBar(context,dobError.tr);
+          return;
+        }else if (genderError.tr.isNotEmpty) {
+          _showSnackBar(context,genderError.tr);
+          return;
+
+         }else if (professionError.tr.isNotEmpty) {
+          _showSnackBar(context,professionError.tr);
+          return;
+        }else if (emailError.tr.isNotEmpty) {
+          _showSnackBar(context,emailError.tr);
+          return;
+
+         }else if (addressError.tr.isNotEmpty) {
+          _showSnackBar(context,addressError.tr);
+          return;
+
+         }else if (regionError.tr.isNotEmpty) {
+          _showSnackBar(context,regionError.tr);
+          return;
+
+         }else if (districtError.tr.isNotEmpty) {
+          _showSnackBar(context,districtError.tr);
+          return;
+
+         }
+        if (
             coordinator.isValidPoBox(poBox.text) &&
             coordinator.isValidEmail(emailId.text) &&
             coordinator.isValidName(name.text)) {
@@ -554,9 +588,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
         width: double.infinity,
         height: 50,
         decoration: BoxDecoration(
-            color: _isBtnEnabled
-                ? config_color.SU_button_color
-                : config_color.SU_grey_color,
+            color:  config_color.SU_button_color
+                ,
             borderRadius: BorderRadius.circular(8.0)),
         child: Center(
           child: Text(
@@ -564,6 +597,22 @@ class _DetailsScreenState extends State<DetailsScreen> {
             style: SU_button_text_style,
           ),
         ),
+      ),
+    );
+  }
+
+  void _showSnackBar(BuildContext context, String errorMessage) {
+    final showMessage = ScaffoldMessenger.of(context);
+    showMessage.showSnackBar(
+      SnackBar(
+        backgroundColor: PRIMARY_COLOR,
+        key: Key('Detail_Screen_Error_SnackBar'),
+        content: Text(
+          errorMessage,
+          key: Key('Text'),
+          style: label_input_error_white_style,
+        ),
+        duration: Duration(seconds: 4),
       ),
     );
   }

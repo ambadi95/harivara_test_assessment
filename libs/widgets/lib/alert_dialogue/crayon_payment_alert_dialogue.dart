@@ -13,7 +13,7 @@ class CrayonPaymentAlertDialogue {
     String? cancelActionText,
   }) {
     if (Platform.isAndroid) {
-      return _showMaterialAlert(
+      return showMaterialAlert(
         context: context,
         title: title,
         content: content,
@@ -38,7 +38,7 @@ class CrayonPaymentAlertDialogue {
   /// Creates an Android material alert dialogue and displays it to the user.
   /// The dialogue will return a boolean representing whether the success action was
   /// chosen or the cancel action.
-  static Future<bool?> _showMaterialAlert({
+  static Future<bool?> showMaterialAlert({
     required BuildContext context,
     required String title,
     required String content,

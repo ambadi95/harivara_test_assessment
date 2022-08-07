@@ -119,6 +119,12 @@ const label_input_error_style = TextStyle(
   fontFamily: 'Montserrat',
   color: HS_NotificationCountColor,
 );
+const label_input_error_white_style = TextStyle(
+  fontSize: 16,
+  fontWeight: FontWeight.w600,
+  fontFamily: 'Montserrat',
+  color: Colors.white,
+);
 
 const SU_text_input_style =
 TextStyle(
