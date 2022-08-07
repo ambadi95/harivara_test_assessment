@@ -3,6 +3,7 @@ import 'package:config/Styles.dart';
 import 'package:core/view/base_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:shared_data_models/agent_onboard/agent_details/response/data.dart';
 import 'package:shared_data_models/kyc/agent_detail_screen_type.dart';
 import 'package:welcome/sub_features/agent_details/viewmodel/agent_details_coordinator.dart';
 import 'package:welcome/welcome_module.dart';
@@ -35,16 +36,14 @@ class _AgentDetailsScreenState extends State<AgentDetailsScreen> {
   String dobError = '';
   String genderError = '';
   String mobileError = '';
+  Data? agentDetails;
 
   final FocusNode? focusNode = FocusNode();
-  final TextEditingController name =
-      TextEditingController(text: 'Kaya Mrisho Kikwete');
-  final TextEditingController dob = TextEditingController(text: '22/6/2000');
-  final TextEditingController gender = TextEditingController(text: 'Male');
-  final TextEditingController mobileNumber =
-      TextEditingController(text: ' +255 621 067 201');
-  final TextEditingController emailId =
-      TextEditingController(text: 'kayamrisho@gmail.com');
+  final TextEditingController name = TextEditingController();
+  final TextEditingController dob = TextEditingController(text: '22/6/1986');
+  final TextEditingController gender = TextEditingController();
+  final TextEditingController mobileNumber = TextEditingController();
+  final TextEditingController emailId = TextEditingController();
 
   DateTime selectedDate = DateTime.now();
 
@@ -70,7 +69,12 @@ class _AgentDetailsScreenState extends State<AgentDetailsScreen> {
       BaseView<AgentDetailsCoordinator, AgentDetailsState>(
         onStateListenCallback: (preState, newState) =>
             {_listenToStateChanges(context, newState)},
-        setupViewModel: (coordinator) async {},
+        setupViewModel: (coordinator) async {
+          agentDetails = await coordinator.getAgentDetail();
+          name.text = agentDetails!.firstName! + ' ' + agentDetails!.lastName!;
+          mobileNumber.text = agentDetails!.mobileNo!;
+          emailId.text = agentDetails!.emailId!;
+        },
         builder: (context, state, coordinator) => SafeArea(
           child: Scaffold(
             bottomNavigationBar: Padding(
@@ -288,9 +292,17 @@ class _AgentDetailsScreenState extends State<AgentDetailsScreen> {
             AgentDetailScreenType.Signup
         ? GestureDetector(
             onTap: () {
-              coordinator.navigateToOtpScreen(
-                  widget.agentDetailScreenArguments.userType,
-                  mobileNumber.text);
+              coordinator.submitAgentDetail(
+                  agentDetails!.y9AgentId!,
+                  agentDetails!.firstName!,
+                  agentDetails!.lastName!,
+                  agentDetails?.middleName ?? ' ',
+                  agentDetails!.nidaNo!,
+                  agentDetails?.birthdate,
+                  agentDetails!.gender!,
+                  agentDetails!.mobileNo!,
+                  agentDetails!.emailId!);
+              //coordinator.navigateToOtpScreen(mobileNumber.text, name.text);
             },
             child: Container(
               width: double.infinity,

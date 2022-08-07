@@ -28,4 +28,10 @@ class HomeCoordinator extends BaseViewModel<HomeScreenState> {
   void navigateToSettingsScreen() {
     _navigationHandler.navigateToSettingsScreen();
   }
+
+  Future getAgentId() async {
+    String agentId = await _customerHomeUseCase.getAgentId();
+    String agentName = await _customerHomeUseCase.getAgentName();
+    return {'agentName': agentName, 'agentId': agentId};
+  }
 }

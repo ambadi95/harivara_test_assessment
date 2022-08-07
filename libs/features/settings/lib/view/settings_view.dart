@@ -76,9 +76,9 @@ class _SettingsState extends State<Settings> {
 
   Widget _buildContactText(context) {
     return InkWell(
-      onTap: (){
-        LauncherUtils.launcherUtilsInstance.makePhoneCall(phoneNumber:LauncherUtils.CONTACT_NUMBER);
-
+      onTap: () {
+        LauncherUtils.launcherUtilsInstance
+            .makePhoneCall(phoneNumber: LauncherUtils.CONTACT_NUMBER);
       },
       child: Center(
         child: CrayonPaymentText(

@@ -47,7 +47,6 @@ class Login extends StatelessWidget {
             orElse: () => _buildMainUI(context, coordinator));
       },
     );
-
   }
 
   @override
@@ -186,8 +185,8 @@ class Login extends StatelessWidget {
         coordinator.isAgentIdValid(agentIdController.text);
         if (isBtnEnabled) {
           // coordinator.navigateToWelcomeBackScreen(userType, mobileNumber.text);
-          coordinator.customerLogin(
-              mobileNumber.text, passcodeController.text, userType);
+          coordinator.login(mobileNumber.text, passcodeController.text,
+              userType, agentIdController.text);
         }
       },
     );

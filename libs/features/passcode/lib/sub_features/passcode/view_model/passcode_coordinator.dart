@@ -1,3 +1,4 @@
+import 'package:core/mobile_core.dart';
 import 'package:flutter/material.dart';
 import 'package:passcode/navigation_handler/passcode_navigation_handler.dart';
 import 'package:passcode/sub_features/passcode/view_model/passcode_usecase.dart';
@@ -178,8 +179,8 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
       await _passcodeUseCase.savePassCodeLocal(newPasscode);
       if (userType == "Customer") {
         state = currentState.copyWith(isLoading: true);
-        var response =
-            await _passcodeUseCase.savePasscode(newPasscode, (p0) => null);
+        var response = await _passcodeUseCase.savePasscode(
+            newPasscode, userType, (p0) => null);
         if (response!.status == true) {
           var loginResponse =
               await _passcodeUseCase.login(newPasscode, (p0) => null);
@@ -191,8 +192,15 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
         }
       } else {
         state = currentState.copyWith(isLoading: false);
-        _navigationHandler.navigateToAgentEnrollmentBottomSheet(
-            'AE_Message'.tr, 'AE_Continue'.tr);
+        var response = await _passcodeUseCase.savePasscodeAgent(
+            newPasscode, userType, (p0) => null);
+        if (response!.status == true) {
+          state = currentState.copyWith(currentStep: 5);
+          String agentName = await _passcodeUseCase.getAgentName();
+          _navigationHandler.navigateToAgentEnrollmentBottomSheet(
+              'AE_Message'.tr.replaceAll('_name_', agentName),
+              'AE_Continue'.tr);
+        }
       }
     } else {
       state = currentState.copyWith(

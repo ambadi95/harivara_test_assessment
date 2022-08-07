@@ -7,6 +7,7 @@ import 'package:network_manager/auth/user_client.dart';
 import 'package:network_manager/auth/user_manager.dart';
 import 'package:task_manager/module_resolver.dart';
 import 'package:task_manager/task_manager_impl.dart';
+import 'package:welcome/sub_features/agent_details/service/agent_details_service.dart';
 import 'package:welcome/sub_features/agent_details/viewmodel/agent_details_coordinator.dart';
 import 'package:welcome/sub_features/agent_details/viewmodel/agent_details_usecase.dart';
 import 'package:welcome/sub_features/agent_details/viewmodel/agent_details_view_model.dart';
@@ -39,11 +40,8 @@ class WelcomeModule {
     ModuleResolver.registerResolver(
       moduleIdentifier,
       SignupModuleResolver(
-        SignupApiResolver(
-          SignupService(),
-          DetailsService(),
-          EnrollmentService(),
-        ),
+        SignupApiResolver(SignupService(), DetailsService(),
+            EnrollmentService(), AgentDetailsService()),
       ),
     );
 

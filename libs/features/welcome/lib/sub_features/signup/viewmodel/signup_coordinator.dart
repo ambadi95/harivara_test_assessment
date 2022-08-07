@@ -18,13 +18,13 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
   }
 
   Future<void> signup(SignUpArguments signUpArguments, String mobileNumber,
-      String nindaNumber) async {
-    await continueToOtp(nindaNumber, mobileNumber);
+      String nindaNumber, String agentId) async {
     if (signUpArguments.signupType == SignupType.customerSignUp) {
       state = const SignUpState.loadingState();
       var response = await _signupUseCase.signUp(
           nindaNumber.replaceAll("-", ""), mobileNumber.trim(), (p0) => null);
       if (response!.status == true) {
+        await continueToOtp(nindaNumber, mobileNumber);
         state = const SignUpState.initialState();
         await _signupUseCase
             .saveCustomerId(response.data?.customerId.toString());
@@ -42,7 +42,18 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
       _navigationHandler
           .navigateToOtpScreenAgentResetPasscode(signUpArguments.userType);
     } else if (signUpArguments.signupType == SignupType.agentSignUp) {
-      _navigationHandler.navigateToAgentDetailScreen(signUpArguments.userType);
+      state = const SignUpState.loadingState();
+      var agentResponse =
+          await _signupUseCase.signUpAgent(nindaNumber, agentId, (p0) => null);
+      if (agentResponse?.status == true) {
+        await _signupUseCase.saveAgentDetails(nindaNumber, agentId);
+        state = const SignUpState.initialState();
+        _navigationHandler
+            .navigateToAgentDetailScreen(signUpArguments.userType);
+      } else {
+        state = const SignUpState.initialState();
+        state = SignUpState.agentIdError(agentResponse!.message!);
+      }
     } else if (signUpArguments.signupType ==
         SignupType.agentAidedCustomerOnBoarding) {
       _navigationHandler.navigateToOtpScreenCustomerSignUp(
@@ -123,10 +134,8 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
   }
 
   Future<void> continueToOtp(String nidaNumber, String mobileNumber) async {
-    await _signupUseCase.saveDetails(nidaNumber, '+255' + mobileNumber.replaceAll(" ", "")
-
-    );
-
+    await _signupUseCase.saveDetails(
+        nidaNumber, '+255' + mobileNumber.replaceAll(" ", ""));
   }
 
   void navigateToTermsCondition() {

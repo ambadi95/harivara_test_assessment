@@ -19,18 +19,18 @@ import 'package:config/Colors.dart' as config_color;
 class EnrollmentSuccessScreen extends StatefulWidget {
   static const viewPath = '${WelcomeModule.moduleIdentifier}/enrollmentSuccess';
   final bool isEnrolled;
-  const EnrollmentSuccessScreen({Key? key,  required this.isEnrolled})
+  const EnrollmentSuccessScreen({Key? key, required this.isEnrolled})
       : super(key: key);
 
   @override
   State<EnrollmentSuccessScreen> createState() =>
       _EnrollmentSuccessScreenState();
 }
+
 GetCustomerDetailsResponse? customerDetail;
 GlobalKey<FormState> _abcKey = GlobalKey<FormState>();
 
 class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
-
   @override
   void initState() {
     // TODO: implement initState
@@ -41,23 +41,23 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
   Widget build(BuildContext context) =>
       BaseView<EnrollmentSuccessCoordinator, EnrollmentSuccessState>(
         setupViewModel: (coordinator) async {
-         customerDetail = await coordinator.getCustomerDetails();
-         setState(() {
-         });
+          customerDetail = await coordinator.getCustomerDetails();
+          setState(() {});
         },
-
         builder: (context, state, coordinator) => SafeArea(
           child: Scaffold(
             key: _abcKey,
-            body: customerDetail.isNotEmptyOrNull ? _buildMainUI(coordinator) : _buildMainUIWithLoading(context,coordinator),
+            body: customerDetail.isNotEmptyOrNull
+                ? _buildMainUI(coordinator)
+                : _buildMainUIWithLoading(context, coordinator),
           ),
         ),
       );
 
   Widget _buildMainUIWithLoading(
-      BuildContext context,
-      EnrollmentSuccessCoordinator coordinator,
-      ) {
+    BuildContext context,
+    EnrollmentSuccessCoordinator coordinator,
+  ) {
     return Scaffold(
       body: Stack(
         children: [
@@ -75,7 +75,6 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
       ),
     );
   }
-
 
   Widget _buildMainUI(EnrollmentSuccessCoordinator coordinator) {
     return Padding(
@@ -133,7 +132,11 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
           child: RichTextDescription(
               textAlign: TextAlign.center,
               key: const Key('welcome'),
-              description: 'ES_welcome_Text'.tr.replaceAll('_name_', customerDetail!.data!.firstName! +' '+customerDetail!.data!.lastName!),
+              description: 'ES_welcome_Text'.tr.replaceAll(
+                  '_name_',
+                  customerDetail!.data!.firstName! +
+                      ' ' +
+                      customerDetail!.data!.lastName!),
               linkTextStyle: ES_bold_text,
               descriptionTextStyle: ES_success_text)),
     );
@@ -229,9 +232,9 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
 
   Widget _buildContactText(context) {
     return InkWell(
-      onTap: (){
-        LauncherUtils.launcherUtilsInstance.makePhoneCall(phoneNumber:LauncherUtils.CONTACT_NUMBER);
-
+      onTap: () {
+        LauncherUtils.launcherUtilsInstance
+            .makePhoneCall(phoneNumber: LauncherUtils.CONTACT_NUMBER);
       },
       child: Center(
         child: CrayonPaymentText(

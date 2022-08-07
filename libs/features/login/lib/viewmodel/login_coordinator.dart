@@ -60,11 +60,18 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
     await _navigationHandler.navigateToResetPasscode(userType);
   }
 
+  Future login(String mobileNumber, String passcode, String userType,
+      String agentId) async {
+    if (userType == 'Customer') {
+      await customerLogin(mobileNumber, passcode, userType);
+    } else {
+      await agentLogin(mobileNumber, passcode, userType, agentId);
+    }
+  }
+
   Future customerLogin(
       String mobileNumber, String passcode, String userType) async {
     state = LoginState.loading();
-    print(mobileNumber);
-    print(passcode);
     var response = await _loginUseCase.login(
         '+255' + mobileNumber, passcode, (p0) => null);
     print(response);
@@ -72,6 +79,21 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
       state = LoginState.successState();
       _navigationHandler.navigateToOtpScreen(
           userType, mobileNumber, response!.data!.id!);
+    } else {
+      state = LoginState.successState();
+      print(response?.message);
+    }
+  }
+
+  Future agentLogin(String mobileNumber, String passcode, String userType,
+      String agentId) async {
+    state = LoginState.loading();
+    var response = await _loginUseCase.loginAgent(
+        '+255' + mobileNumber, passcode, agentId, (p0) => null);
+    print(response);
+    if (response?.data != null) {
+      state = LoginState.successState();
+      _navigationHandler.navigateToOtpScreen(userType, mobileNumber, agentId);
     } else {
       state = LoginState.successState();
       print(response?.message);

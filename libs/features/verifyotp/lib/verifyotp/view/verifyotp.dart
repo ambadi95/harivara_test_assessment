@@ -67,7 +67,8 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
   Widget build(BuildContext context) =>
       BaseView<VerifyOtpCoordinator, VerifyOtpState>(
         setupViewModel: (coordinator) {
-          coordinator.generateOtp(widget.otpScreenArgs.refId);
+          coordinator.generateOtp(
+              widget.otpScreenArgs.refId, widget.otpScreenArgs.userType);
           coordinator.initialiseState(
             context,
             widget.otpScreenArgs.title,
@@ -174,15 +175,15 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
       padding: const EdgeInsets.only(bottom: 19),
       child: InkWell(
         onTap: () {
-          if (coordinator.otpController.text.isNotEmpty && coordinator.otpController.text.length == 6) {
+          if (coordinator.otpController.text.isNotEmpty &&
+              coordinator.otpController.text.length == 6) {
             coordinator.navigateToDestinationPath(
-                widget.otpScreenArgs.destinationPath,
-                widget.otpScreenArgs.userType,
-                widget.otpScreenArgs,
-                coordinator.otpController.text.toString(),
+              widget.otpScreenArgs.destinationPath,
+              widget.otpScreenArgs.userType,
+              widget.otpScreenArgs,
+              coordinator.otpController.text.toString(),
             );
           } else {
-
             _showAlertForOTPAttempts(coordinator);
           }
         },
@@ -193,7 +194,6 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
             height: 50,
             decoration: BoxDecoration(
                 color: isBtnEnabled ? LS_ButtonColor : SU_grey_color,
-
                 borderRadius: BorderRadius.circular(8.0)),
             child: Center(
               child: Text(
@@ -347,17 +347,14 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
             keyboardType: TextInputType.number,
             onCompleted: (v) {
               setState(() {
-                isBtnEnabled=true;
+                isBtnEnabled = true;
               });
-
             },
 
             onChanged: (String value) {
-
               setState(() {
-                isBtnEnabled=false;
+                isBtnEnabled = false;
               });
-
             },
           ),
         ),
@@ -461,7 +458,8 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
                     onTap: () async {
                       startTimer();
                       coordinator.otpController.clear();
-                     await coordinator.generateOtp(widget.otpScreenArgs.refId);
+                      await coordinator.generateOtp(widget.otpScreenArgs.refId,
+                          widget.otpScreenArgs.userType);
                     },
                     child: CrayonPaymentText(
                       key: const Key('verifyOtp Resend Now'),

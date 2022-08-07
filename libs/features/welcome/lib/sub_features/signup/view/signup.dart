@@ -214,6 +214,7 @@ class _SignUpState extends State<SignUp> {
       controller: controller,
       errorText: errorText.tr,
       keyboardType: textInputType,
+      textCapitalization: TextCapitalization.characters,
       inputFormatters: textInputType == TextInputType.number
           ? [
               NIDAInputFormatter(
@@ -319,8 +320,8 @@ class _SignUpState extends State<SignUp> {
           coordinator.isValidMobileNumber(mobileNumber.text);
           coordinator.isValidAgentId(agentId.text);
           if (_isBtnEnabled && coordinator.isValidNidaNumber(nidaNumber.text)) {
-            coordinator.signup(
-                widget.signUpArguments, mobileNumber.text, nidaNumber.text);
+            coordinator.signup(widget.signUpArguments, mobileNumber.text,
+                nidaNumber.text, agentId.text);
           }
         },
         child: Container(

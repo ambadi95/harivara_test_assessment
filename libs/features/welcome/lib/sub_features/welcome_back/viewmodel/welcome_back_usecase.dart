@@ -34,10 +34,8 @@ class WelcomeBackUseCase extends BaseDataProvider {
 
   Future<CustomerSignInResponse?> login(String mobileNumber, String passcode,
       Function(String) onErrorCallback) async {
-    SignInRequest signInRequest = SignInRequest(
-        mobileNumber: mobileNumber,
-        passcode: passcode
-    );
+    SignInRequest signInRequest =
+        SignInRequest(mobileNumber: mobileNumber, passcode: passcode);
     return await executeApiRequest<CustomerSignInResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
@@ -50,6 +48,4 @@ class WelcomeBackUseCase extends BaseDataProvider {
           return CustomerSignInResponse.fromJson(data);
         });
   }
-
 }
-

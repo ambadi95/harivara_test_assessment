@@ -1,4 +1,6 @@
 
+import 'dart:convert';
+
 import 'package:agent_nearby/agent_nearby_module.dart';
 import 'package:agent_nearby/navigation_handler/agent_nearby_route_manager.dart';
 import 'package:core/analytics/default_tracker_collection.dart';
@@ -16,16 +18,24 @@ import 'package:core/sheets/navigation/crayon_payment_bottom_sheet_navigation_ha
 import 'package:core/sheets/navigation/crayon_payment_bottom_sheet_route_manager.dart';
 import 'package:core/storage/secure_storage/secure_storage_service.dart';
 import 'package:core/storage/storage_service.dart';
+import 'package:core/translation/app_localization_service.dart';
 import 'package:core/translation/crayon_payment_transaltions_loader.dart';
+import 'package:core/translation/i_app_localization_service.dart';
 import 'package:core/utils/input_formatters/length_text_formatter.dart';
 import 'package:core/validators/input_entry_validator/input_entry_validator.dart';
 import 'package:device_option/device_option_module.dart';
 import 'package:device_option/navigation_handler/device_option_route_manager.dart';
+import 'package:flutter/services.dart';
 import 'package:home/home/home_module.dart';
 import 'package:home/home/navigation_handler/home_route_manager.dart';
 import 'package:login/login_module.dart';
 import 'package:login/navigation_handler/login_route_manager.dart';
 import 'package:network_manager/auth/auth_manager.dart';
+import 'package:network_manager/client/i_network_client.dart';
+import 'package:network_manager/global_control/global_control_notifier.dart';
+import 'package:network_manager/global_control/model/configuration/config.dart';
+import 'package:network_manager/network_manager.dart';
+import 'package:network_manager/utils/connectivity/i_connectivity.dart';
 import 'package:passcode/navigation_handler/passcode_route_manager.dart';
 import 'package:passcode/passcode_module.dart';
 import 'package:settings/navigation_handler/settings_route_manager.dart';
@@ -91,6 +101,7 @@ class AppModule {
     );
     _registerRouteManagers();
     _registerUtils();
+    await registerNetworkModule();
 
     SplashModule.registerDependencies();
     WelcomeModule.registerDependencies();
@@ -113,16 +124,6 @@ class AppModule {
 
 
     DIContainer.container.resolve<WidgetsModule>().registerDependencies();
-
-
-    DIContainer.container.registerSingleton<IInactivityService>(
-          (container) => InactivityService(
-        taskManager: container.resolve<TaskManager>(),
-        authManager: container.resolve<IAuthManager>(),
-        navigationManager: container.resolve<NavigationManager>(),
-      ),
-    );
-
 
 
 
@@ -249,4 +250,44 @@ void _registerBottomSheetFeature() {
 void _registerToolTipFeature() {
   final navigationManagerContainer = DIContainer.container<NavigationManager>();
 
+}
+Future registerNetworkModule({
+  String? environment,
+}) async {
+  WidgetsModule;
+  final networkConfigJson = await rootBundle
+      .loadString('assets/configuration/network_configuration_dev.json');
+  final networkConfig =
+  Config.fromJson(jsonDecode(networkConfigJson) as Map<String, dynamic>);
+  final mockNetworkClient = networkConfig.useMockNetworkClient ?? false;
+  NetworkManager.registerDependencies(useMockNetworkClient: mockNetworkClient);
+
+  await DIContainer.container.resolve<IConnectivity>().initialize();
+  DIContainer.container.registerSingleton<IInactivityService>(
+        (container) => InactivityService(
+      taskManager: container.resolve(),
+      authManager: container.resolve<IAuthManager>(),
+      navigationManager: container.resolve<NavigationManager>(),),
+  );
+  DIContainer.container.registerSingleton<IAppLocalizationService>(
+        (container) => AppLocalizationService(),
+  );
+// initialise dependencies
+  DIContainer.container
+      .resolve<GlobalControlNotifier>(NetworkManager.globalControlNotifierKey)
+      .initialise(networkConfig);
+  initializeGraphQLClient(networkConfig);
+}
+
+Future initializeGraphQLClient(Config config) async {
+  final header = {
+    'x-channel': 'x-channel',
+    'x-correlation-id': 'x-correlation-id',
+  };
+  DIContainer.container<INetworkClient>('network_client')
+      .initializeGraphQlClient(
+    config: config,
+    accessToken: 'accessToken',
+    headers: header,
+  );
 }

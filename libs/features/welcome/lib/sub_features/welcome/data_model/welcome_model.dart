@@ -4,12 +4,8 @@ class WelcomeScreenArgs {
   final String signUpDestination;
   final String signInDestination;
   final String userType;
-  final bool isSigned ;
+  final bool isSigned;
 
-  WelcomeScreenArgs(
-    this.signUpDestination,
-    this.signInDestination,
-    this.userType,
-      this.isSigned
-  );
+  WelcomeScreenArgs(this.signUpDestination, this.signInDestination,
+      this.userType, this.isSigned);
 }

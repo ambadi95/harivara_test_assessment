@@ -136,7 +136,7 @@
   "HS_Agent_Stay_Tunned": " Stay tuned !",
 
 
-  "AE_Message" : "Congratulations,\n%{Jakaya Mrisho Kikwete | click}% You \nhave successfully Onboarded into Y9 Agent App",
+  "AE_Message" : "Congratulations,\n%{_name_ | click}% You \nhave successfully Onboarded into Y9 Agent App",
   "AE_AgentId" : "Your Y9 Agent ID",
   "AE_Description" : "Your Y9 Agent ID has been sent successfully to your mobile number and Email ID",
   "AE_Continue" : "Continue to your Y9 Agent App",

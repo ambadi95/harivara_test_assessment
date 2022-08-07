@@ -70,14 +70,13 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
     var isnNameValid = _detailsUseCase.isValidName(name);
     var isMobileNoValid = mobNumber.isNotEmpty;
     var isDobValid = dob.isNotEmpty;
-    var isGenderValid = (gender== 'null') ? false: gender.isNotEmpty;
+    var isGenderValid = (gender == 'null') ? false : gender.isNotEmpty;
     var isProfessionValid = profession.isNotEmpty;
     var isEmailIdValid = _detailsUseCase.isValidEmail(emailId);
     var isAddressValid = address.isNotEmpty;
     var isPoBoxValid = /*_detailsUseCase.isValidPoBox(poBox)*/ true;
     var isRegionValid = region.isNotEmpty;
     var isDistrictValid = district.isNotEmpty;
-
 
     var _isValid = isnNameValid &&
         isMobileNoValid &&
@@ -89,7 +88,6 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
         isPoBoxValid &&
         isRegionValid &&
         isDistrictValid;
-
 
     return _isValid;
   }

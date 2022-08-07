@@ -1,5 +1,6 @@
 import 'package:core/mobile_core.dart';
 import 'package:network_manager/auth/auth_manager.dart';
+import 'package:shared_data_models/agent_onboard/signup/response/agent_sign_up_response.dart';
 import 'package:shared_data_models/auth/auth_detail.dart';
 import 'package:shared_data_models/customer_onboard/customer_details/response/customer_detail_response.dart';
 import 'package:task_manager/base_classes/base_data_provider.dart';
@@ -35,12 +36,21 @@ class SignupUseCase extends BaseDataProvider {
     await _saveMobileNumber(mobileNumber);
   }
 
+  Future<void> saveAgentDetails(String nidaNumber, String agentId) async {
+    await _saveNIDANumber(nidaNumber);
+    await saveAgentId(agentId);
+  }
+
   Future<void> _saveNIDANumber(String nidaNumber) async {
     return await setValueToStorage({'nidaNumber': nidaNumber});
   }
 
   Future<void> saveCustomerId(String? customerId) async {
     return await setValueToSecureStorage({'customerId': customerId});
+  }
+
+  Future<void> saveAgentId(String? agentId) async {
+    return await setValueToSecureStorage({'agentId': agentId});
   }
 
   Future<void> _saveMobileNumber(String mobileNumber) async {
@@ -67,6 +77,30 @@ class SignupUseCase extends BaseDataProvider {
               authInfo: detailResponse.data?.customerId.toString(),
               key: 'Customer_ID');
           return detailResponse;
+        });
+  }
+
+  Future<AgentSignUpResponse?> signUpAgent(String nindaNumber, String agentId,
+      Function(String) onErrorCallback) async {
+    return await executeApiRequest<AgentSignUpResponse?>(
+        taskType: TaskType.DATA_OPERATION,
+        taskSubType: TaskSubType.REST,
+        moduleIdentifier: WelcomeModule.moduleIdentifier,
+        requestData: {
+          "nidaNumber": nindaNumber.replaceAll("-", ""),
+          "agentId": agentId
+        },
+        serviceIdentifier: ISignupService.signUpAgentIdentifier,
+        onError: onErrorCallback,
+        modelBuilderCallback: (responseData) {
+          final data = responseData;
+          AgentSignUpResponse agentSignUpResponse =
+              AgentSignUpResponse.fromJson(data);
+          // _authManager.setUserDetail(
+          //     authInfo: detailResponse.data?.customerId.toString(),
+          //     key: 'Customer_ID');
+          print(data);
+          return agentSignUpResponse;
         });
   }
 }

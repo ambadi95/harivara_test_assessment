@@ -30,7 +30,6 @@ class WelcomeCoordinator extends BaseViewModel<WelcomeScreenState> {
     );
   }
 
-
   void setCurrentLocale(String currentLanguageCode) {
     var currentLocale = Locale(currentLanguageCode);
     Get.updateLocale(currentLocale);

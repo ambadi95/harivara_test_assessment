@@ -24,17 +24,18 @@ class SplashCoordinator extends BaseViewModel<SplashState> {
     );
   }
 
-  Future<bool> isSignedin()async{
+  Future<bool> isSignedin() async {
     String number = await _splashUseCase.getMobileNumber();
-    if(number.isNotEmpty){
+    if (number.isNotEmpty) {
       return true;
-    }else{
+    } else {
       return false;
     }
-
   }
 
-  Future<void> navigateToDestinationPath(String userType, bool isSignedin) async {
-    _navigationHandler.navigateToDestinationPath(WelcomeScreenArgs('', '', userType, isSignedin));
+  Future<void> navigateToDestinationPath(
+      String userType, bool isSignedin) async {
+    _navigationHandler.navigateToDestinationPath(
+        WelcomeScreenArgs('', '', userType, isSignedin));
   }
 }

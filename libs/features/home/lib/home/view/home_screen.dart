@@ -30,7 +30,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
   Widget build(BuildContext context) =>
       BaseView<HomeCoordinator, HomeScreenState>(
         onStateListenCallback: (preState, newState) => {},
-        setupViewModel: (coordinator) {
+        setupViewModel: (coordinator) async {
           coordinator.initialiseState(
               context, '', widget.homeScreenArgs.isAgent, false);
         },
@@ -320,8 +320,11 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
               text: new TextSpan(
             text: ' ',
             children: <TextSpan>[
-              new TextSpan(text: 'HS_Agent_Refer_Program'.tr, style: HS_invite_your_friends_style),
-              new TextSpan(text: 'HS_Agent_Stay_Tunned'.tr, style: HS_stay_tunned_style),
+              new TextSpan(
+                  text: 'HS_Agent_Refer_Program'.tr,
+                  style: HS_invite_your_friends_style),
+              new TextSpan(
+                  text: 'HS_Agent_Stay_Tunned'.tr, style: HS_stay_tunned_style),
             ],
           )),
           const SizedBox(
@@ -494,7 +497,6 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                         widget.homeScreenArgs.isAgent == true
                             ? _inviteAgentBoxView()
                             : _inviteBoxView(),
-
                       ],
                     )
                   ],

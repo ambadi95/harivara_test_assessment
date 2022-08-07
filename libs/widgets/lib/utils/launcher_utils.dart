@@ -5,7 +5,7 @@ class LauncherUtils {
 
   static LauncherUtils get launcherUtilsInstance => _launcherUtils;
 
-  static const String CONTACT_NUMBER="677-039-999";
+  static const String CONTACT_NUMBER = "677-039-999";
 
   //launch url in Browser
   Future<bool> launchInBrowser(
@@ -13,7 +13,6 @@ class LauncherUtils {
     if (await canLaunchUrl(Uri.parse(url!))) {
       return await launchUrl(
         Uri.parse(url),
-
       );
     } else {
       return false;

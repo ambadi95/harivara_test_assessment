@@ -24,7 +24,8 @@ class DeviceOptionUseCase extends BaseDataProvider {
       Function(String) onErrorCallback) async {
     String id = await getCustomerId();
 
-    MembershipRequest membershipRequest = MembershipRequest(customerId: int.parse(id));
+    MembershipRequest membershipRequest =
+        MembershipRequest(customerId: int.parse(id));
     String? token = await _authManager.getAccessToken();
 
     return await executeApiRequest<DeviceListResponse?>(

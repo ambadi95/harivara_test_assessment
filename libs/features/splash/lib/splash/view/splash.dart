@@ -31,12 +31,7 @@ class CrayonSplashScreen extends StatefulWidget {
       );
 
   factory CrayonSplashScreen.forMerchantApp() => CrayonSplashScreen(
-        welcomeScreenArgs: WelcomeScreenArgs(
-          '',
-          '',
-          'Agent',
-          false
-        ),
+        welcomeScreenArgs: WelcomeScreenArgs('', '', 'Agent', false),
       );
 }
 
@@ -92,7 +87,7 @@ class _CrayonSplashScreenState extends State<CrayonSplashScreen>
   @override
   Widget build(BuildContext context) =>
       BaseView<SplashCoordinator, SplashState>(
-        setupViewModel: (coordinator) async{
+        setupViewModel: (coordinator) async {
           _splashCoordinator = coordinator;
           isSigned = await coordinator.isSignedin();
           coordinator.initialiseState(context, 'Title', '');
@@ -164,10 +159,8 @@ class _CrayonSplashScreenState extends State<CrayonSplashScreen>
                           ? SizedBox()
                           : Column(
                               children: [
-
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
-
                                   children: [
                                     // const SizedBox(width: 20.0, height: 100.0),
 
@@ -230,8 +223,6 @@ class _CrayonSplashScreenState extends State<CrayonSplashScreen>
                                     ),
                                   ],
                                 ),
-
-
                               ],
                             )
                     ],
@@ -259,7 +250,8 @@ class _CrayonSplashScreenState extends State<CrayonSplashScreen>
 
   void _moveToDestinationPath() {
     Future.delayed(const Duration(seconds: 4), () {
-      _splashCoordinator!.navigateToDestinationPath(widget.welcomeScreenArgs.userType,isSigned);
+      _splashCoordinator!
+          .navigateToDestinationPath(widget.welcomeScreenArgs.userType, false);
     });
   }
 

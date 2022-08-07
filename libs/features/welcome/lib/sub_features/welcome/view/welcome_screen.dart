@@ -28,7 +28,6 @@ class CrayonWelcomScreen extends StatefulWidget {
 }
 
 class _CrayonWelcomScreenState extends State<CrayonWelcomScreen> {
-
   @override
   Widget build(BuildContext context) =>
       BaseView<WelcomeCoordinator, WelcomeScreenState>(
@@ -159,10 +158,12 @@ class _CrayonWelcomScreenState extends State<CrayonWelcomScreen> {
 
   Widget _buildThirdTitle(BuildContext context) {
     return InkWell(
-        onTap: (){
-          LauncherUtils.launcherUtilsInstance.launchInBrowser(url:"https://flutter.dev");
+        onTap: () {
+          LauncherUtils.launcherUtilsInstance
+              .launchInBrowser(url: "https://flutter.dev");
         },
-        child: Text('OB_WelcomeThirdTitle'.tr, style: WELCOME_THIRDHEADING_STYLE));
+        child:
+            Text('OB_WelcomeThirdTitle'.tr, style: WELCOME_THIRDHEADING_STYLE));
   }
 
   Widget _buildButtons(

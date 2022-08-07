@@ -41,7 +41,11 @@ class DeviceDetailUseCase extends BaseDataProvider {
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
         moduleIdentifier: DeviceOptionModule.moduleIdentifier,
-        requestData: {'deviceId': deviceId, 'token': token, 'customerId': int.parse(customerId)},
+        requestData: {
+          'deviceId': deviceId,
+          'token': token,
+          'customerId': int.parse(customerId)
+        },
         serviceIdentifier: IDeviceOptionService.selectDeviceIdentifier,
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {

@@ -1,3 +1,4 @@
+import 'package:core/mobile_core.dart';
 import 'package:task_manager/base_classes/base_view_model.dart';
 import '../../../navigation_handler/welcome_navigation_handler.dart';
 import '../state/agent_details_state.dart';
@@ -14,6 +15,43 @@ class AgentDetailsCoordinator extends BaseViewModel<AgentDetailsState> {
 
   void goBack() async {
     _navigationHandler.goBack();
+  }
+
+  Future getAgentDetail() async {
+    var response = await _agentDetailsUseCase.getAgentDetail((p0) => null);
+    if (response?.status == true) {
+      return response?.data;
+    }
+    return null;
+  }
+
+  Future submitAgentDetail(
+      String agentId,
+      String firstName,
+      String lastName,
+      String? middleName,
+      String nidaNo,
+      String? dob,
+      String? gender,
+      String mobileNo,
+      String emailId) async {
+    var submitResponse = await _agentDetailsUseCase.submitCustomerDetails(
+        agentId,
+        firstName,
+        lastName,
+        middleName ?? ' ',
+        nidaNo,
+        dob ?? ' ',
+        gender!,
+        mobileNo,
+        emailId,
+        (p0) => null);
+    if (submitResponse?.status == true) {
+      navigateToOtpScreen(mobileNo,firstName+ ' '+lastName);
+     // _navigationHandler.navigateToOtpScreen('Agent', agentId, mobileNo);
+    } else {
+      CrayonPaymentLogger.logError(submitResponse!.message!);
+    }
   }
 
   bool _validateForm(String name, String dob, String gender, String mobNumber,
@@ -37,8 +75,10 @@ class AgentDetailsCoordinator extends BaseViewModel<AgentDetailsState> {
         _validateForm(name, dob, gender, mobNumber, emailId));
   }
 
-  Future navigateToOtpScreen(String userType, String mobileNumber) async {
-    _navigationHandler.navigateToOtpScreen(userType, mobileNumber);
+  Future navigateToOtpScreen(String mobileNumber, String agentName) async {
+    await _agentDetailsUseCase.saveAgentName(agentName);
+    String agentId = await _agentDetailsUseCase.getAgentId();
+    _navigationHandler.navigateToOtpScreen('Agent', agentId, mobileNumber);
   }
 
   Future navigateToBottomSheet() async {

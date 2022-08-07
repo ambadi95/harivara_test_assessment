@@ -42,10 +42,9 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
   Widget build(BuildContext context) =>
       BaseView<WelcomeBackCoordinator, WelcomeScreenState>(
         setupViewModel: (coordinator) async {},
-        builder: (context, state, welcomeCoordinator) =>
-            Scaffold(
-              body: _buildMainUIWithLoading(context, welcomeCoordinator, state),
-            ),
+        builder: (context, state, welcomeCoordinator) => Scaffold(
+          body: _buildMainUIWithLoading(context, welcomeCoordinator, state),
+        ),
       );
 
   Widget _buildMainUIWithLoading(context,
@@ -82,22 +81,27 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(height: AppUtils.appUtilsInstance.getPercentageSize(
-                  ofWidth: false, percentage: 4)),
+              SizedBox(
+                  height: AppUtils.appUtilsInstance
+                      .getPercentageSize(ofWidth: false, percentage: 4)),
 
               _buildLogo(context),
-              SizedBox(height: AppUtils.appUtilsInstance.getPercentageSize(
-                  ofWidth: false, percentage: 4)),
+              SizedBox(
+                  height: AppUtils.appUtilsInstance
+                      .getPercentageSize(ofWidth: false, percentage: 4)),
 
               _buildTitle(context),
-              SizedBox(height: AppUtils.appUtilsInstance.getPercentageSize(
-                  ofWidth: false, percentage: 7)),
+              SizedBox(
+                  height: AppUtils.appUtilsInstance
+                      .getPercentageSize(ofWidth: false, percentage: 7)),
               _userImage(),
-              SizedBox(height: AppUtils.appUtilsInstance.getPercentageSize(
-                  ofWidth: false, percentage: 2)),
+              SizedBox(
+                  height: AppUtils.appUtilsInstance
+                      .getPercentageSize(ofWidth: false, percentage: 2)),
               _userInfo(context),
-              SizedBox(height: AppUtils.appUtilsInstance.getPercentageSize(
-                  ofWidth: false, percentage: 7)),
+              SizedBox(
+                  height: AppUtils.appUtilsInstance
+                      .getPercentageSize(ofWidth: false, percentage: 7)),
               _enterPassCodeTitle(context),
               _passcodeWidget(context, welcomeCoordinator),
               // const SizedBox(height: 57),
@@ -160,8 +164,8 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
     return Text('WB_EnterPassCode'.tr, style: WB_enter_passcode_title_style);
   }
 
-  Widget _passcodeWidget(BuildContext context,
-      WelcomeBackCoordinator coordinator) {
+  Widget _passcodeWidget(
+      BuildContext context, WelcomeBackCoordinator coordinator) {
     return PinCodeTextField(
       appContext: context,
       pastedTextStyle: const TextStyle(
@@ -183,8 +187,7 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
           disabledColor: Colors.white,
           selectedColor: Colors.black,
           activeColor: Colors.black,
-          inactiveColor: Colors.grey
-      ),
+          inactiveColor: Colors.grey),
       cursorColor: Colors.black,
       enableActiveFill: false,
       autoFocus: false,
@@ -198,13 +201,9 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
         passcodeController.clear();
         // await coordinator.navigationToDestination(widget.userType);
       },
-      onChanged: (String value) {
-
-
-      },
+      onChanged: (String value) {},
     );
   }
-
 
   Widget _buildResetPasscode(WelcomeBackCoordinator coordinator) {
     return Center(
@@ -217,21 +216,21 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: const [
-              Text('Forget Passcode?',
+              Text(
+                'Forget Passcode?',
                 style: WB_forget_passcode_text_style,
               ),
               SizedBox(
                 height: 5,
               ),
-              Text('Reset Now',
+              Text(
+                'Reset Now',
                 style: WB_reset_passcode_text_style,
               )
             ],
           ),
-
         ),
       ),
     );
   }
 }
-

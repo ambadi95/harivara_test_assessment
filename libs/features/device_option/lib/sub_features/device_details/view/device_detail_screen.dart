@@ -151,9 +151,7 @@ class _DeviceDetailScreenState extends State<DeviceDetailScreen> {
       buttonColor: LS_ButtonColor,
       textColor: White,
       textStyleVariant: CrayonPaymentTextStyleVariant.headline5,
-      onPressed: () {
-
-      },
+      onPressed: () {},
     );
   }
 
