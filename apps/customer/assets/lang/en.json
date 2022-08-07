@@ -149,8 +149,9 @@
 
 
   "SP_ni": "ni",
-  "SP_bora": "ni Bora",
-  "SP_isBetter": "is Better",
+  "SP_bora": " Bora",
+  "SP_is": "is",
+  "SP_better": " Better",
 
   "SU_reset_passcode" : "Reset Passcode",
   "SU_reset_subtitle" : "You can Reset the passcode here using OTP sent to your registered mobile number",
