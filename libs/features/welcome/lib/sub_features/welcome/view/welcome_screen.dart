@@ -160,7 +160,7 @@ class _CrayonWelcomScreenState extends State<CrayonWelcomScreen> {
   Widget _buildThirdTitle(BuildContext context) {
     return InkWell(
         onTap: (){
-          LauncherUtils.launcherUtilsInstance.launchInBrowser(url:"https://flutter.dev");
+          LauncherUtils.launcherUtilsInstance.launchInBrowser(url:"https://www.y9bank.com/");
         },
         child: Text('OB_WelcomeThirdTitle'.tr, style: WELCOME_THIRDHEADING_STYLE));
   }

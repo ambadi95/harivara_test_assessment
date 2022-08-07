@@ -163,6 +163,9 @@ class Login extends StatelessWidget {
           hintText: hint.tr,
           key: const Key('detailsTextField'),
           keyboardType: textInputType,
+          onEditComplete: (){
+            print("dggfg");
+          },
           onChanged: (value) {
             _validateForm(coordinator);
             if (errorText.isNotEmpty) {
