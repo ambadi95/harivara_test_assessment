@@ -333,17 +333,19 @@ class _DetailsScreenState extends State<DetailsScreen> {
       DetailsCoordinator coordinator) {
     return FocusScope(
       onFocusChange: (focus) {
-        if (dobError.isNotEmpty) {
-          coordinator.isValidDob(dob.text);
-        }
-        final DateFormat inputFormat = DateFormat('yyyy-MM-dd');
-        if (inputFormat
-                .parse(DateTime.now().toString())
-                .difference(inputFormat.parse(selectedDate.toString()))
-                .inDays
-                .abs() <
-            6575) {
-          coordinator.inVaidDob();
+        if(dob.text.isNotEmpty) {
+          if (dobError.isNotEmpty) {
+            coordinator.isValidDob(dob.text);
+          }
+          final DateFormat inputFormat = DateFormat('yyyy-MM-dd');
+          if (inputFormat
+              .parse(DateTime.now().toString())
+              .difference(inputFormat.parse(selectedDate.toString()))
+              .inDays
+              .abs() <
+              6575) {
+            coordinator.inVaidDob();
+          }
         }
       },
       canRequestFocus: true,
@@ -537,38 +539,40 @@ class _DetailsScreenState extends State<DetailsScreen> {
         coordinator.isValidProfession(profession.text);
         coordinator.isValidAddress(address.text);
 
-         if (nameError.tr.isNotEmpty) {
-          _showSnackBar(context,nameError.tr);
-          return ;
-        }else if (dobError.tr.isNotEmpty) {
-          _showSnackBar(context,dobError.tr);
-          return;
-        }else if (genderError.tr.isNotEmpty) {
-          _showSnackBar(context,genderError.tr);
-          return;
+        if (nameError.tr.isNotEmpty) {
+          // _showSnackBar(context,nameError.tr);
+          _showAlert(nameError.tr);
 
-         }else if (professionError.tr.isNotEmpty) {
-          _showSnackBar(context,professionError.tr);
           return;
-        }else if (emailError.tr.isNotEmpty) {
-          _showSnackBar(context,emailError.tr);
-          return;
+        } else if (dobError.tr.isNotEmpty) {
+          _showAlert(dobError.tr);
 
-         }else if (addressError.tr.isNotEmpty) {
-          _showSnackBar(context,addressError.tr);
           return;
+        } else if (genderError.tr.isNotEmpty) {
+          _showAlert(genderError.tr);
 
-         }else if (regionError.tr.isNotEmpty) {
-          _showSnackBar(context,regionError.tr);
           return;
-
-         }else if (districtError.tr.isNotEmpty) {
-          _showSnackBar(context,districtError.tr);
+        } else if (professionError.tr.isNotEmpty) {
+          _showAlert(professionError.tr);
           return;
+        } else if (emailError.tr.isNotEmpty) {
+          _showAlert(emailError.tr);
 
-         }
-        if (
-            coordinator.isValidPoBox(poBox.text) &&
+          return;
+        } else if (addressError.tr.isNotEmpty) {
+          _showAlert(addressError.tr);
+
+          return;
+        } else if (regionError.tr.isNotEmpty) {
+          _showAlert(regionError.tr);
+
+          return;
+        } else if (districtError.tr.isNotEmpty) {
+          _showAlert(districtError.tr);
+
+          return;
+        }
+        if (coordinator.isValidPoBox(poBox.text) &&
             coordinator.isValidEmail(emailId.text) &&
             coordinator.isValidName(name.text)) {
           await coordinator.submitDetails(
@@ -588,8 +592,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
         width: double.infinity,
         height: 50,
         decoration: BoxDecoration(
-            color:  config_color.SU_button_color
-                ,
+            color: config_color.SU_button_color,
             borderRadius: BorderRadius.circular(8.0)),
         child: Center(
           child: Text(
@@ -599,6 +602,14 @@ class _DetailsScreenState extends State<DetailsScreen> {
         ),
       ),
     );
+  }
+
+  void _showAlert(String errorMessage) {
+    CrayonPaymentAlertDialogue.showMaterialAlert(
+        context: context,
+        title: "Alert!",
+        content: errorMessage,
+        defaultActionText: "Close");
   }
 
   void _showSnackBar(BuildContext context, String errorMessage) {

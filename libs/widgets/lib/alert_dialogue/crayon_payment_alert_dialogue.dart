@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:config/Styles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -47,19 +48,37 @@ class CrayonPaymentAlertDialogue {
   }) {
     return showDialog(
       context: context,
+
       builder: (context) => AlertDialog(
-        title: Text(title),
-        content: Text(content),
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(12.0))
+        ),
+        title: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(title,style: label_input_error_red_style,),
+            SizedBox(height: 20,),
+            Text(content,style: label_input_error_18_style,),
+            SizedBox(height: 30,),
+
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(false),
+                child: Text(defaultActionText,style: SU_text_input_style,),
+              ),
+          ],
+        ),
+
         actions: <Widget>[
-          if (cancelActionText != null)
-            TextButton(
-              onPressed: () => Navigator.of(context).pop(false),
-              child: Text(cancelActionText),
-            ),
-          TextButton(
-            onPressed: () => Navigator.of(context).pop(true),
-            child: Text(defaultActionText),
-          ),
+          // if (cancelActionText != null)
+          //   TextButton(
+          //     onPressed: () => Navigator.of(context).pop(false),
+          //     child: Text(cancelActionText),
+          //   ),
+          // TextButton(
+          //   onPressed: () => Navigator.of(context).pop(true),
+          //   child: Text(defaultActionText),
+          // ),
         ],
       ),
     );
