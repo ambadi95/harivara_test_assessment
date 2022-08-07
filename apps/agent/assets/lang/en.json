@@ -122,8 +122,10 @@
   "VO_verify_button" : "Verify",
 
   "SP_ni": "ni",
-  "SP_bora": "ni Bora",
-  "SP_isBetter": "is Better",
+  "SP_bora": " Bora",
+  "SP_is": "is",
+  "SP_better": " Better",
+
 
   "HS_Agent_Id" : "Y9 Agent ID",
   "HS_TotalOnBoarderCustomers" : "Total Customers \nRegistered ",
