@@ -1,3 +1,4 @@
+import 'package:config/Colors.dart';
 import 'package:config/Config.dart';
 import 'package:config/Styles.dart';
 import 'package:flutter/material.dart';
@@ -5,7 +6,8 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:core/view/base_view.dart';
 import 'package:get/get.dart';
 import 'package:welcome/sub_features/welcome_back/constants/image_constant.dart';
-
+import 'package:config/Styles.dart';
+import 'package:widget_library/progress_bar/centered_circular_progress_bar.dart';
 import '../../../welcome_module.dart';
 import '../../welcome/state/welcome_screen_state.dart';
 import '../../welcome/viewmodel/welcome_coordinatior.dart';
@@ -55,10 +57,21 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
         child: Stack(
           children: [
             _buildMainUI(context, welcomeCoordinator, state),
+            if (state.isLoading) _createLoading(state),
           ],
         ),
       ),
     );
+  }
+
+
+  Widget _createLoading(WelcomeScreenState state) {
+    if (state.isLoading) {
+      return const CenteredCircularProgressBar(
+          color: PRIMARY_COLOR);
+    } else {
+      return Container();
+    }
   }
 
   Widget _buildMainUI(BuildContext context,
@@ -100,6 +113,9 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
                   ofWidth: false, percentage: 7)),
               _enterPassCodeTitle(context),
               _passcodeWidget(context, welcomeCoordinator),
+              SizedBox(height: AppUtils.appUtilsInstance.getPercentageSize(
+                  ofWidth: false, percentage: 7)),
+              Text(state.error, style: label_input_error_style),
               // const SizedBox(height: 57),
               // Image.asset(
               //   WB_OrIcon,
