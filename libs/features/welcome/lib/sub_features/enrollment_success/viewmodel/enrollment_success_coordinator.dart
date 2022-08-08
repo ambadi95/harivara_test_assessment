@@ -25,10 +25,10 @@ class EnrollmentSuccessCoordinator
     var response =
         await _enrollmentSuccessUseCase.getCustomerDetails((p0) => null);
     if (response?.status == true) {
-     // CrayonPaymentLogger.logInfo(response!.message!);
+      CrayonPaymentLogger.logInfo(response!.data!.referenceId!.toString());
       return response;
     } else {
-    //  CrayonPaymentLogger.logInfo(response!.message!);
+     CrayonPaymentLogger.logInfo(response!.message!);
     }
   }
 }

@@ -21,7 +21,8 @@ Data _$DataFromJson(Map<String, dynamic> json) => Data(
       poBoxNumber: json['poBoxNumber'] as String?,
       region: json['region'] as String?,
       district: json['district'] as String?,
-      referenceId: json['referenceId'],
+      referenceId: json['referenceId'] as int?,
+      deviceId: json['deviceId'] as int?,
     );
 
 Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{
@@ -40,4 +41,5 @@ Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{
       'region': instance.region,
       'district': instance.district,
       'referenceId': instance.referenceId,
+      'deviceId': instance.deviceId,
     };
