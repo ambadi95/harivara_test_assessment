@@ -40,10 +40,17 @@ class CrayonWelcomBackScreen extends StatefulWidget {
 TextEditingController passcodeController = TextEditingController();
 
 class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
+
+  String username = '';
+  String userID = '';
+
   @override
   Widget build(BuildContext context) =>
       BaseView<WelcomeBackCoordinator, WelcomeScreenState>(
-        setupViewModel: (coordinator) async {},
+        setupViewModel: (coordinator) async {
+          username = await coordinator.getUserName();
+          userID = await coordinator.getUserId();
+        },
         builder: (context, state, welcomeCoordinator) =>
             Scaffold(
               body: _buildMainUIWithLoading(context, welcomeCoordinator, state),
@@ -108,7 +115,7 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
               _userImage(),
               SizedBox(height: AppUtils.appUtilsInstance.getPercentageSize(
                   ofWidth: false, percentage: 2)),
-              _userInfo(context),
+              _userInfo(context,welcomeCoordinator),
               SizedBox(height: AppUtils.appUtilsInstance.getPercentageSize(
                   ofWidth: false, percentage: 7)),
               _enterPassCodeTitle(context),
@@ -167,8 +174,8 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
     );
   }
 
-  Widget _userInfo(BuildContext context) {
-    return Text('${'Emmanual Jisula\n    (684029684)'}',
+  Widget _userInfo(BuildContext context,WelcomeBackCoordinator coordinator) {
+    return Text(username,
         style: WB_user_info_style);
   }
 

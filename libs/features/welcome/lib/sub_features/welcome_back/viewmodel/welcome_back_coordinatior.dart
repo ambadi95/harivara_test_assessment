@@ -42,6 +42,14 @@ class WelcomeBackCoordinator extends BaseViewModel<WelcomeScreenState> {
     await _navigationHandler.navigateToResetPasscode(userType);
   }
 
+  Future<String> getUserName() async{
+    return await _welcomeUseCase.getCustomerName();
+  }
+
+  Future<String> getUserId() async{
+    return await _welcomeUseCase.getCustomerY9Id();
+  }
+
   void onPasscodeCallback(String passCode, String userType) {
     customerLogin(passCode, userType);
   }

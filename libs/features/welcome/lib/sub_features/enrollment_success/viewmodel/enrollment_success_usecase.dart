@@ -17,6 +17,14 @@ class EnrollmentSuccessUseCase extends BaseDataProvider {
     return await getValueFromSecureStorage('customerId', defaultValue: '');
   }
 
+  Future<void> saveCustomerUserId(String? customerId) async {
+    return await setValueToSecureStorage({'CustomerY9Id': customerId});
+  }
+
+  Future<void> saveCustomerName(String? customerId) async {
+    return await setValueToSecureStorage({'CustomerName': customerId});
+  }
+
   Future logout() async {
     _cacheTaskResolver.execute("", {CACHE_TYPE:TaskManagerCacheType.DELETE_ALL});
   }
@@ -34,6 +42,11 @@ class EnrollmentSuccessUseCase extends BaseDataProvider {
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {
           final data = responseData;
+          GetCustomerDetailsResponse customerDetailsResponse = GetCustomerDetailsResponse.fromJson(data);
+          String? firstName =customerDetailsResponse.data?.firstName!;
+          String? lastname = customerDetailsResponse.data?.lastName!;
+          String? customerRefId = customerDetailsResponse.data?.referenceId!.toString();
+          saveCustomerName(firstName!+" "+lastname!);
           return GetCustomerDetailsResponse.fromJson(data);
         });
   }
