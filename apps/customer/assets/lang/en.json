@@ -119,7 +119,7 @@
   "DD_MemoryStorage" : "Memory / Storage",
   "DD_WaterResistanceLevel" : "Water Resistance Level",
   "DD_Color" : "Colour",
-  "DD_Price" : "Price",
+  "DD_Price" : "Retail Price",
   "DD_EMIMonth" : "EMI/ Month",
   "DD_Interest" : "Interest %",
   "DD_TotalAmountPaid" : "Total Amount to be Paid",
