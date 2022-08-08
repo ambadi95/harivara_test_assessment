@@ -510,6 +510,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
             region.text = value.name!;
             _validateForm(coordinator);
             coordinator.isValidRegion(value.name!);
+            dis.clear();
+            district.clear();
             dis = await coordinator.getDistrict(value.id!);
             districtDropDown = getDistrictDropDownData(dis);
           },

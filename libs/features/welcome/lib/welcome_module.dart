@@ -5,6 +5,7 @@ import 'package:network_manager/auth/auth_manager.dart';
 import 'package:network_manager/auth/authorization_client.dart';
 import 'package:network_manager/auth/user_client.dart';
 import 'package:network_manager/auth/user_manager.dart';
+import 'package:task_manager/cache_task_resolver.dart';
 import 'package:task_manager/module_resolver.dart';
 import 'package:task_manager/task_manager_impl.dart';
 import 'package:welcome/sub_features/agent_details/viewmodel/agent_details_coordinator.dart';
@@ -103,7 +104,8 @@ class WelcomeModule {
         WelcomeNavigationHandler(container.resolve<NavigationManager>()),
         EnrollmentSuccessUseCase(
           container.resolve<IAuthManager>(),
-          container.resolve<TaskManager>(),
+            container.resolve<CacheTaskResolver>(),
+            container.resolve<TaskManager>(),
         ),
       ),
     );

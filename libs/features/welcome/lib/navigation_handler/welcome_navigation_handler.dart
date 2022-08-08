@@ -116,6 +116,12 @@ class WelcomeNavigationHandler with ErrorHandler {
         arguments: userType);
   }
 
+  Future<void> navigateToLoginFromLogout(String userType) async {
+    await _navigationManager.navigateTo(
+        Login.viewPath, const NavigationType.replace(),
+        arguments: userType);
+  }
+
   Future<void> navigateToAgentHome() async {
     var argument = HomeScreenArgs(true);
     await _navigationManager.navigateTo(

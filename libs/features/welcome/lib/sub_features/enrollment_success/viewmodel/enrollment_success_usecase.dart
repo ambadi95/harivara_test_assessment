@@ -8,11 +8,17 @@ import '../../../welcome_module.dart';
 
 class EnrollmentSuccessUseCase extends BaseDataProvider {
   final IAuthManager _authManager;
-  EnrollmentSuccessUseCase(this._authManager, TaskManager taskManager)
+  final CacheTaskResolver _cacheTaskResolver;
+
+  EnrollmentSuccessUseCase(this._authManager,this._cacheTaskResolver, TaskManager taskManager)
       : super(taskManager);
 
   Future<String> getCustomerId() async {
     return await getValueFromSecureStorage('customerId', defaultValue: '');
+  }
+
+  Future logout() async {
+    _cacheTaskResolver.execute("", {CACHE_TYPE:TaskManagerCacheType.DELETE_ALL});
   }
 
   Future<GetCustomerDetailsResponse?> getCustomerDetails(
