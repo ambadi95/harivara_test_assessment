@@ -84,6 +84,18 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          InkWell(
+            onTap: (){
+             coordinator.logout();
+            },
+            child: const Align(
+              alignment: Alignment.centerRight,
+              child:  Text(
+               'Logout',
+                style: TextStyle(color: PRIMARY_COLOR),
+              ),
+            ),
+          ),
           const SizedBox(
             height: 200,
           ),
