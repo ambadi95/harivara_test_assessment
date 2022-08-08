@@ -120,7 +120,7 @@ class _LoginState extends State<Login> {
             const SizedBox(
               height: 46,
             ),
-            _buildResetPasscode(coordinator),
+           // _buildResetPasscode(coordinator),
             const Spacer(),
             actionButton(coordinator),
             dynamicHSpacer(20),

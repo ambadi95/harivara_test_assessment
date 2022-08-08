@@ -110,7 +110,7 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
               //   scale: 2.0,
               // ),
               const Spacer(),
-              _buildResetPasscode(welcomeCoordinator)
+            //  _buildResetPasscode(welcomeCoordinator)
             ],
           ),
         ),
