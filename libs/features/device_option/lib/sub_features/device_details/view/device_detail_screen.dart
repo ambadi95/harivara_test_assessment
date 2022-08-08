@@ -98,7 +98,7 @@ class _DeviceDetailScreenState extends State<DeviceDetailScreen> {
           _buildOptionTitle(context),
           _buildTitle(context),
           Image.asset(
-            'assets/mobile_1.png',
+          widget.deviceId == 1 ?  'assets/a13.png' : 'assets/a03.png',
             width: 222,
             height: 300,
             package: 'shared_data_models',

@@ -85,9 +85,9 @@
   "PC_passcode_repetitive_message" : "Nambari ya siri haipaswi kuwa na nambari zinazojirudia, au mifumo ya kawaida kama 123456.",
   "PC_passcode_tip" : "Kidokezo: Epuka siku za kuzaliwa, na nambari zinazojirudia au zinazofuatana.",
 
-  "ES_welcome_Text" : "HII %{Ennamual Jisula | click}% ",
+  "ES_welcome_Text" : "HII %{_name_ | click}% ",
   "ES_success_text" : "You have successfully\nregistered on Y9 and your\ninterest on Membership device",
-  "ES_enroll_id" : "Your Reference ID\n XXXXX",
+  "ES_enroll_id" : "Your Reference ID\n {_id_ | click}",
   "ES_near_agent_button" : "Tazama karibu na Wakala (inakuja hivi karibuni)",
   "ES_select_membership" : "Chagua Uanachama Wako",
   "ES_view_membership" : "View Your Membership",

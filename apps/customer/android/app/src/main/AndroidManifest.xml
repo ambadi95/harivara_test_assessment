@@ -5,7 +5,9 @@
 
     <application
         android:icon="@mipmap/ic_launcher"
-        android:label="Y9">
+        android:label="Y9"
+        android:usesCleartextTraffic="true"
+        >
         <activity
             android:name="com.yalantis.ucrop.UCropActivity"
             android:screenOrientation="portrait"

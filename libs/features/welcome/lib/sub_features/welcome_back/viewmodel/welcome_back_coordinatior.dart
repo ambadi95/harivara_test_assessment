@@ -48,13 +48,15 @@ class WelcomeBackCoordinator extends BaseViewModel<WelcomeScreenState> {
 
   Future customerLogin(String passcode, String userType) async {
     String mobileNumber = await _welcomeUseCase.getMobileNumber();
-    print(mobileNumber);
+    state = state.copyWith(isLoading: true);
     var response = await _welcomeUseCase.login(
          mobileNumber, passcode, (p0) => null);
     if (response?.status == true) {
+      state = state.copyWith(isLoading: false);
       _navigationHandler.navigateToCustomerEnrollmentScreen();
     } else {
-      print(response?.message);
+      state = state.copyWith(isLoading: false);
+      state = state.copyWith(error: response!.message!);
     }
   }
 

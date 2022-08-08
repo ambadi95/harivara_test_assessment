@@ -264,6 +264,7 @@ class _CrayonPasscodeScreenState extends State<CrayonPasscodeScreen> {
                 enableActiveFill: false,
                 autoFocus: true,
                 autoDismissKeyboard: false,
+                autoDisposeControllers: false,
                 //errorAnimationController: errorController,
                 controller: passcodeController,
                 keyboardType: TextInputType.number,
