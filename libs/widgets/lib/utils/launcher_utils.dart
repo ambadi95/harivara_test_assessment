@@ -9,7 +9,7 @@ class LauncherUtils {
 
   //launch url in Browser
   Future<bool> launchInBrowser(
-      {String? url, Map<String, String>? headers}) async {
+      {String? url, Map<String, String>? headers,}) async {
     if (await canLaunchUrl(Uri.parse(url!))) {
       return await launchUrl(
         Uri.parse(url),
