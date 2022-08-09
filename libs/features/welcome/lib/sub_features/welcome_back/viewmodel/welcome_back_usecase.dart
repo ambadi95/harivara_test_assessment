@@ -32,6 +32,14 @@ class WelcomeBackUseCase extends BaseDataProvider {
     return await getValueFromSecureStorage('mobileNumber', defaultValue: '');
   }
 
+  Future<String> getCustomerName() async {
+    return await getValueFromSecureStorage('CustomerName', defaultValue: '');
+  }
+
+  Future<String> getCustomerY9Id() async {
+    return await getValueFromSecureStorage('CustomerY9Id', defaultValue: '');
+  }
+
   Future<CustomerSignInResponse?> login(String mobileNumber, String passcode,
       Function(String) onErrorCallback) async {
     SignInRequest signInRequest =

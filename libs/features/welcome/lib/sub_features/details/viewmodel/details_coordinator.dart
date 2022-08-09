@@ -1,4 +1,5 @@
 import 'package:core/mobile_core.dart';
+import 'package:flutter/src/widgets/focus_manager.dart';
 import 'package:shared_data_models/customer_onboard/region_district/region_response/datum.dart';
 import 'package:shared_data_models/customer_onboard/region_district/district_response/datum.dart'
     as b;
@@ -153,7 +154,12 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
     return result;
   }
 
-  bool isValidGender(String gender) {
+  bool inVaidDob(){
+      state =DetailsState.dobError('DV_invalid_dob_error_text');
+      return false;
+
+  }
+  bool isValidGender(String gender,) {
     var result = gender.isNotEmpty;
     if (!result) {
       state = const DetailsState.genderError('DV_gender_error_text');

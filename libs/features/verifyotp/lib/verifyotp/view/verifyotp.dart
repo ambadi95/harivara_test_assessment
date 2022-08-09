@@ -340,6 +340,7 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
                 inactiveColor: Colors.grey),
             cursorColor: Colors.black,
             enableActiveFill: false,
+            autoDisposeControllers: false,
             autoFocus: true,
             autoDismissKeyboard: true,
             //errorAnimationController: errorController,

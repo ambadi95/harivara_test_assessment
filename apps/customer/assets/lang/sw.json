@@ -36,6 +36,7 @@
   "DV_name_hint_text" : "Ingiza Jina",
   "DV_dob_label" : "Tarehe ya kuzaliwa",
   "DV_dob_error_text" : "DoB batili",
+  "DV_invalid_dob_error_text" : "Please enter a valid date of birth",
   "DV_dob_hint_text" : "Ingiza DoB",
   "DV_gender_label" : "Jinsia",
   "DV_gender_error_text" : "Jinsia Batili",
@@ -84,13 +85,15 @@
   "PC_passcode_repetitive_message" : "Nambari ya siri haipaswi kuwa na nambari zinazojirudia, au mifumo ya kawaida kama 123456.",
   "PC_passcode_tip" : "Kidokezo: Epuka siku za kuzaliwa, na nambari zinazojirudia au zinazofuatana.",
 
-  "ES_welcome_Text" : "HII %{Ennamual Jisula | click}% ",
+  "ES_welcome_Text" : "HII %{_name_ | click}% ",
   "ES_success_text" : "You have successfully\nregistered on Y9 and your\ninterest on Membership device",
-  "ES_enroll_id" : "Your Reference ID\n XXXXX",
+  "ES_enrolled_success_text" : "Congratulations! You have successfully selected your Membership with Y9",
+  "ES_enroll_id" : "Your Reference ID\n %{_id_ | click}%",
   "ES_near_agent_button" : "Tazama karibu na Wakala (inakuja hivi karibuni)",
   "ES_select_membership" : "Chagua Uanachama Wako",
   "ES_view_membership" : "View Your Membership",
   "ES_agent_contact_text" : "Y9 agent will contact you shortly on your Membership",
+  "ES_need_help_contact" : "Need Help Contact Us at +255 677-039-999",
 
 
 
@@ -147,9 +150,11 @@
 
 
 
+
   "SP_ni": "ni",
-  "SP_bora": "ni Bora",
-  "SP_isBetter": "is Better",
+  "SP_bora": " Bora",
+  "SP_is": "is",
+  "SP_better": " Better",
 
   "SU_reset_passcode" : "Weka upya Nambari ya siri",
   "SU_reset_subtitle" : "Unaweza Kuweka upya nambari ya siri hapa kwa kutumia OTP iliyotumwa kwa nambari yako ya simu iliyosajiliwa",

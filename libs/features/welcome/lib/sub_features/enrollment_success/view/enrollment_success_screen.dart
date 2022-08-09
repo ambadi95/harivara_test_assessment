@@ -83,6 +83,18 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          InkWell(
+            onTap: (){
+             coordinator.logout();
+            },
+            child: const Align(
+              alignment: Alignment.centerRight,
+              child:  Text(
+               'Logout',
+                style: TextStyle(color: PRIMARY_COLOR),
+              ),
+            ),
+          ),
           const SizedBox(
             height: 200,
           ),
@@ -149,7 +161,7 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
           child: RichTextDescription(
               textAlign: TextAlign.center,
               key: const Key('enID'),
-              description: 'ES_enroll_id'.tr,
+              description: 'ES_enroll_id'.tr.replaceAll('_id_', customerDetail!.data!.referenceId!.toString()),
               linkTextStyle: ES_bold_text,
               descriptionTextStyle: ES_bold_text)),
     );
@@ -162,7 +174,7 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
           child: RichTextDescription(
               textAlign: TextAlign.center,
               key: const Key('en_success'),
-              description: widget.isEnrolled
+              description: customerDetail!.data!.deviceId.isNotEmptyOrNull
                   ? 'ES_enrolled_success_text'
                   : 'ES_success_text'.tr,
               linkTextStyle: ES_bold_text,
@@ -171,7 +183,7 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
   }
 
   Widget _buildAgentContactText() {
-    return widget.isEnrolled
+    return customerDetail!.data!.deviceId.isNotEmptyOrNull
         ? SizedBox(
             width: 250,
             child: Text(
@@ -197,7 +209,7 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
             borderRadius: BorderRadius.circular(8.0)),
         child: Center(
           child: Text(
-            widget.isEnrolled
+           customerDetail!.data!.deviceId.isNotEmptyOrNull
                 ? 'ES_view_membership'.tr
                 : 'ES_select_membership'.tr,
             style: SU_button_text_style,

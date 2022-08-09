@@ -42,6 +42,14 @@ class WelcomeBackCoordinator extends BaseViewModel<WelcomeScreenState> {
     await _navigationHandler.navigateToResetPasscode(userType);
   }
 
+  Future<String> getUserName() async{
+    return await _welcomeUseCase.getCustomerName();
+  }
+
+  Future<String> getUserId() async{
+    return await _welcomeUseCase.getCustomerY9Id();
+  }
+
   void onPasscodeCallback(String passCode, String userType) {
     customerLogin(passCode, userType);
   }
@@ -51,10 +59,15 @@ class WelcomeBackCoordinator extends BaseViewModel<WelcomeScreenState> {
     print(mobileNumber);
     var response =
         await _welcomeUseCase.login(mobileNumber, passcode, (p0) => null);
+    state = state.copyWith(isLoading: true);
+    var response = await _welcomeUseCase.login(
+         mobileNumber, passcode, (p0) => null);
     if (response?.status == true) {
+      state = state.copyWith(isLoading: false);
       _navigationHandler.navigateToCustomerEnrollmentScreen();
     } else {
-      print(response?.message);
+      state = state.copyWith(isLoading: false);
+      state = state.copyWith(error: response!.message!);
     }
   }
 }

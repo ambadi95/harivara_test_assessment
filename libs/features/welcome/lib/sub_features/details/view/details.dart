@@ -9,6 +9,7 @@ import 'package:shared_data_models/customer_onboard/region_district/district_res
 import 'package:welcome/sub_features/details/state/details_state.dart';
 import 'package:welcome/sub_features/details/viewmodel/details_coordinator.dart';
 import 'package:welcome/welcome_module.dart';
+import 'package:widget_library/alert_dialogue/crayon_payment_alert_dialogue.dart';
 import 'package:widget_library/buttons/crayon_back_button.dart';
 import 'package:widget_library/dropdown/crayon_drop_down.dart';
 import 'package:widget_library/input_fields/input_field_with_label.dart';
@@ -64,9 +65,13 @@ class _DetailsScreenState extends State<DetailsScreen> {
   final TextEditingController region = TextEditingController();
   final TextEditingController district = TextEditingController();
 
-  DateTime selectedDate = DateTime.now();
+  final FocusNode genderFocusNode = FocusNode();
 
-  Future<void> _selectDate(BuildContext context) async {
+  DateTime selectedDate = DateTime.now();
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  Future<void> _selectDate(
+      BuildContext context, DetailsCoordinator coordinator) async {
     final DateTime? picked = await showDatePicker(
         context: context,
         helpText: 'Select Date of Birth',
@@ -94,7 +99,16 @@ class _DetailsScreenState extends State<DetailsScreen> {
       final DateFormat inputFormat = DateFormat('yyyy-MM-dd');
       setState(() {
         selectedDate = picked;
+
         var selected = inputFormat.parse(selectedDate.toString());
+        if (inputFormat
+                .parse(DateTime.now().toString())
+                .difference(inputFormat.parse(selectedDate.toString()))
+                .inDays
+                .abs() <
+            6575) {
+          coordinator.inVaidDob();
+        }
         var formatedDate = DateFormat('dd/MM/yyyy');
         dob.text = formatedDate.format(selected);
       });
@@ -125,7 +139,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          _buildMainUI(coordinator),
+                          _buildMainUI(context, coordinator),
                         ],
                       ),
                     ),
@@ -150,9 +164,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
     DetailsCoordinator coordinator,
   ) {
     return Scaffold(
+      key: _scaffoldKey,
       body: Stack(
         children: [
-          SingleChildScrollView(child: _buildMainUI(coordinator)),
+          SingleChildScrollView(child: _buildMainUI(context, coordinator)),
           _createLoading(),
         ],
       ),
@@ -195,7 +210,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
     );
   }
 
-  Widget _buildMainUI(DetailsCoordinator coordinator) {
+  Widget _buildMainUI(BuildContext context, DetailsCoordinator coordinator) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
@@ -205,11 +220,19 @@ class _DetailsScreenState extends State<DetailsScreen> {
           const SizedBox(
             height: 30,
           ),
-          _buildLabelTextField('DV_name_label'.tr, name, TextInputType.text,
-              coordinator, nameError, 'DV_name_hint_text', true),
+          _buildLabelTextField(
+              'name',
+              'DV_name_label'.tr,
+              name,
+              TextInputType.text,
+              coordinator,
+              nameError,
+              'DV_name_hint_text',
+              true),
           _buildLabelTextFieldDob('DV_dob_label'.tr, dob, coordinator),
           _buildGenderTypeDropdown(coordinator),
           _buildLabelTextField(
+              'profession',
               'DV_profession_label'.tr,
               profession,
               TextInputType.name,
@@ -218,6 +241,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
               'DV_profession_hint_text',
               true),
           _buildLabelTextField(
+              'contact',
               'DV_contact_no_label'.tr,
               mobileNumber,
               TextInputType.number,
@@ -226,6 +250,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
               'Enter Your Mobile Number',
               false),
           _buildLabelTextField(
+              'email',
               'DV_email_label'.tr,
               emailId,
               TextInputType.emailAddress,
@@ -235,11 +260,18 @@ class _DetailsScreenState extends State<DetailsScreen> {
               true),
           _buildLabelTextFieldAddress('DV_address_label'.tr, address,
               coordinator, 'DV_address_hint_text'),
-          _buildLabelTextField('DV_po_box_label'.tr, poBox, TextInputType.text,
-              coordinator, poBoxError, 'DV_poBox_hint_text', true),
+          _buildLabelTextField(
+              'pobox',
+              'DV_po_box_label'.tr,
+              poBox,
+              TextInputType.text,
+              coordinator,
+              poBoxError,
+              'DV_poBox_hint_text',
+              true),
           _buildRegionDropdown(coordinator),
           _buildDistrictDropdown(coordinator),
-          _buildContinueButton(coordinator)
+          _buildContinueButton(context, coordinator)
         ],
       ),
     );
@@ -253,6 +285,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
   }
 
   Widget _buildLabelTextField(
+      String tag,
       String label,
       TextEditingController controller,
       TextInputType textInputType,
@@ -260,58 +293,88 @@ class _DetailsScreenState extends State<DetailsScreen> {
       String errorText,
       String hint,
       bool enabled) {
-    return Padding(
-        padding: const EdgeInsets.only(bottom: 34),
-        child: InputFieldWithLabel(
-          label: label,
-          controller: controller,
-          errorText: errorText.tr,
-          enabled: enabled,
-          hintText: hint.tr,
-          key: const Key('detailsTextField'),
-          keyboardType: textInputType,
-          onChanged: (value) {
-            _validateForm(coordinator);
-            if (errorText.isNotEmpty) {
-              coordinator.isValidName(name.text);
-              coordinator.isValidEmail(emailId.text);
-              coordinator.isValidPoBox(poBox.text);
-              coordinator.isValidGender(gender.text);
-              coordinator.isValidDistrict(district.text);
-              coordinator.isValidRegion(region.text);
-              coordinator.isValidProfession(profession.text);
-            }
-          },
-        ));
+    return FocusScope(
+      child: Focus(
+        onFocusChange: (focus) {
+          _checkValid(
+            tag,
+            coordinator,
+          );
+        },
+        canRequestFocus: true,
+        child: Padding(
+            padding: const EdgeInsets.only(bottom: 34),
+            child: InputFieldWithLabel(
+              label: label,
+              controller: controller,
+              errorText: errorText.tr,
+              enabled: enabled,
+              hintText: hint.tr,
+              key: const Key('detailsTextField'),
+              keyboardType: textInputType,
+              onChanged: (value) {
+                _validateForm(coordinator);
+                if (errorText.isNotEmpty) {
+                  coordinator.isValidName(name.text);
+                  coordinator.isValidEmail(emailId.text);
+                  coordinator.isValidPoBox(poBox.text);
+                  coordinator.isValidGender(gender.text);
+                  coordinator.isValidDistrict(district.text);
+                  coordinator.isValidRegion(region.text);
+                  coordinator.isValidProfession(profession.text);
+                }
+              },
+            )),
+      ),
+    );
   }
 
   Widget _buildLabelTextFieldDob(String label, TextEditingController controller,
       DetailsCoordinator coordinator) {
-    return Padding(
-        padding: const EdgeInsets.only(bottom: 34),
-        child: InputFieldWithLabel(
-          label: label,
-          controller: controller,
-          errorText: dobError.tr,
-          hintText: 'DV_dob_hint_text'.tr,
-          key: const Key('detailsTextFieldDob'),
-          keyboardType: TextInputType.none,
-          onChanged: (value) {
-            _validateForm(coordinator);
-          },
-          decoration: const InputDecoration(
-            suffixIcon: Icon(Icons.calendar_month_outlined),
-            border: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                borderSide: BorderSide(color: config_color.SU_border_color)),
-          ),
-          onTap: () async {
-            await _selectDate(context);
-            if (dobError.isNotEmpty) {
-              coordinator.isValidDob(dob.text);
-            }
-          },
-        ));
+    return FocusScope(
+      onFocusChange: (focus) {
+        if(dob.text.isNotEmpty) {
+          if (dobError.isNotEmpty) {
+            coordinator.isValidDob(dob.text);
+          }
+          final DateFormat inputFormat = DateFormat('yyyy-MM-dd');
+          if (inputFormat
+              .parse(DateTime.now().toString())
+              .difference(inputFormat.parse(selectedDate.toString()))
+              .inDays
+              .abs() <
+              6575) {
+            coordinator.inVaidDob();
+          }
+        }
+      },
+      canRequestFocus: true,
+      child: Padding(
+          padding: const EdgeInsets.only(bottom: 34),
+          child: InputFieldWithLabel(
+            label: label,
+            controller: controller,
+            errorText: dobError.tr,
+            hintText: 'DV_dob_hint_text'.tr,
+            key: const Key('detailsTextFieldDob'),
+            keyboardType: TextInputType.none,
+            onChanged: (value) {
+              _validateForm(coordinator);
+            },
+            decoration: const InputDecoration(
+              suffixIcon: Icon(Icons.calendar_month_outlined),
+              border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                  borderSide: BorderSide(color: config_color.SU_border_color)),
+            ),
+            onTap: () async {
+              if (dobError.isNotEmpty) {
+                coordinator.isValidDob(dob.text);
+              }
+              await _selectDate(context, coordinator);
+            },
+          )),
+    );
   }
 
   Widget _buildLabelTextFieldAddress(
@@ -319,58 +382,72 @@ class _DetailsScreenState extends State<DetailsScreen> {
       TextEditingController controller,
       DetailsCoordinator coordinator,
       String hint) {
-    return Padding(
-        padding: const EdgeInsets.only(bottom: 34),
-        child: InputFieldWithLabel(
-          label: label,
-          maxLines: 2,
-          controller: controller,
-          errorText: addressError.tr,
-          hintText: hint.tr,
-          key: const Key('detailsTextFieldAddress'),
-          keyboardType: TextInputType.streetAddress,
-          onChanged: (value) {
-            _validateForm(coordinator);
-            if (addressError.isNotEmpty) {
-              coordinator.isValidAddress(value);
-            }
-          },
-        ));
+    return FocusScope(
+      child: Focus(
+        onFocusChange: (focus) {
+          if (controller.text.trim().toString().isNotEmpty) {
+            coordinator.isValidAddress(controller.text.trim().toString());
+          }
+        },
+        child: Padding(
+            padding: const EdgeInsets.only(bottom: 34),
+            child: InputFieldWithLabel(
+              label: label,
+              maxLines: 2,
+              controller: controller,
+              errorText: addressError.tr,
+              hintText: hint.tr,
+              key: const Key('detailsTextFieldAddress'),
+              keyboardType: TextInputType.streetAddress,
+              onChanged: (value) {
+                _validateForm(coordinator);
+                if (addressError.isNotEmpty) {
+                  coordinator.isValidAddress(value);
+                }
+              },
+            )),
+      ),
+    );
   }
 
   Widget _buildGenderTypeDropdown(DetailsCoordinator coordinator) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        CrayonDropDown(
-          title: 'DV_gender_label'.tr,
-          key: const Key('genderTypeDropDown'),
-          icon: const Icon(
-            Icons.keyboard_arrow_down,
-            color: ES_grey_button_color,
-          ),
-          hint: Text(
-            'DV_gender_hint_text'.tr,
-          ),
-          boxHeight: 60,
-          error: genderError,
-          value: _genderType,
-          items: genderTypeDropDown,
-          onChanged: (value) {
-            onGenderTypeChosen(value as GenderType, coordinator);
-            gender.text = value.gender;
-            _validateForm(coordinator);
-            coordinator.isValidGender(value.gender);
-          },
+    return FocusScope(
+      child: Focus(
+        onFocusChange: (focus) {},
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CrayonDropDown(
+              title: 'DV_gender_label'.tr,
+              key: const Key('genderTypeDropDown'),
+              icon: const Icon(
+                Icons.keyboard_arrow_down,
+                color: ES_grey_button_color,
+              ),
+              hint: Text(
+                'DV_gender_hint_text'.tr,
+              ),
+              boxHeight: 60,
+              error: genderError,
+              value: _genderType,
+              items: genderTypeDropDown,
+              onChanged: (value) {
+                onGenderTypeChosen(value as GenderType, coordinator);
+                gender.text = value.gender;
+                _validateForm(coordinator);
+                coordinator.isValidGender(value.gender);
+              },
+            ),
+            const SizedBox(
+              height: 6,
+            ),
+            Text(genderError.tr, style: label_input_error_style),
+            const SizedBox(
+              height: 10,
+            ),
+          ],
         ),
-        const SizedBox(
-          height: 6,
-        ),
-        Text(genderError.tr, style: label_input_error_style),
-        const SizedBox(
-          height: 10,
-        ),
-      ],
+      ),
     );
   }
 
@@ -433,6 +510,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
             region.text = value.name!;
             _validateForm(coordinator);
             coordinator.isValidRegion(value.name!);
+            dis.clear();
+            district.clear();
             dis = await coordinator.getDistrict(value.id!);
             districtDropDown = getDistrictDropDownData(dis);
           },
@@ -448,17 +527,54 @@ class _DetailsScreenState extends State<DetailsScreen> {
     );
   }
 
-  Widget _buildContinueButton(DetailsCoordinator coordinator) {
+  Widget _buildContinueButton(
+      BuildContext buildContext, DetailsCoordinator coordinator) {
     return GestureDetector(
       onTap: () async {
+        coordinator.isValidName(name.text);
+        _checkDob(coordinator);
+        coordinator.isValidGender(gender.text);
         coordinator.isValidPoBox(poBox.text);
         coordinator.isValidEmail(emailId.text);
-        coordinator.isValidName(name.text);
-        coordinator.isValidGender(gender.text);
         coordinator.isValidDistrict(district.text);
         coordinator.isValidRegion(region.text);
         coordinator.isValidProfession(profession.text);
         coordinator.isValidAddress(address.text);
+
+        if (nameError.tr.isNotEmpty) {
+          // _showSnackBar(context,nameError.tr);
+          _showAlert(nameError.tr);
+
+          return;
+        } else if (dobError.tr.isNotEmpty) {
+          _showAlert(dobError.tr);
+
+          return;
+        } else if (genderError.tr.isNotEmpty) {
+          _showAlert(genderError.tr);
+
+          return;
+        } else if (professionError.tr.isNotEmpty) {
+          _showAlert(professionError.tr);
+          return;
+        } else if (emailError.tr.isNotEmpty) {
+          _showAlert(emailError.tr);
+
+          return;
+        } else if (addressError.tr.isNotEmpty) {
+          _showAlert(addressError.tr);
+
+          return;
+        } else if (regionError.tr.isNotEmpty) {
+          _showAlert(regionError.tr);
+
+          return;
+        } else if (districtError.tr.isNotEmpty) {
+          _showAlert(districtError.tr);
+
+          return;
+        }
+        if (coordinator.isValidPoBox(poBox.text) &&
         coordinator.isValidDob(dob.text);
         if (_isBtnEnabled &&
             coordinator.isValidPoBox(poBox.text) &&
@@ -481,9 +597,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
         width: double.infinity,
         height: 50,
         decoration: BoxDecoration(
-            color: _isBtnEnabled
-                ? config_color.SU_button_color
-                : config_color.SU_grey_color,
+            color: config_color.SU_button_color,
             borderRadius: BorderRadius.circular(8.0)),
         child: Center(
           child: Text(
@@ -491,6 +605,30 @@ class _DetailsScreenState extends State<DetailsScreen> {
             style: SU_button_text_style,
           ),
         ),
+      ),
+    );
+  }
+
+  void _showAlert(String errorMessage) {
+    CrayonPaymentAlertDialogue.showMaterialAlert(
+        context: context,
+        title: "Alert!",
+        content: errorMessage,
+        defaultActionText: "Close");
+  }
+
+  void _showSnackBar(BuildContext context, String errorMessage) {
+    final showMessage = ScaffoldMessenger.of(context);
+    showMessage.showSnackBar(
+      SnackBar(
+        backgroundColor: PRIMARY_COLOR,
+        key: Key('Detail_Screen_Error_SnackBar'),
+        content: Text(
+          errorMessage,
+          key: Key('Text'),
+          style: label_input_error_white_style,
+        ),
+        duration: Duration(seconds: 4),
       ),
     );
   }
@@ -641,5 +779,43 @@ class _DetailsScreenState extends State<DetailsScreen> {
         poBox.text,
         region.text,
         district.text);
+  }
+
+  void _checkValid(String label, DetailsCoordinator coordinator) {
+    print(label);
+    switch (label) {
+      case 'name':
+        if (name.text.trim().toString().isNotEmpty == true) {
+          coordinator.isValidName(name.text);
+        }
+        break;
+
+      case 'profession':
+        if (profession.text.trim().toString().isNotEmpty == true) {
+          coordinator.isValidProfession(profession.text);
+        }
+        break;
+
+      case 'email':
+        if (emailId.text.trim().toString().isNotEmpty == true) {
+          coordinator.isValidEmail(emailId.text);
+        }
+        break;
+    }
+  }
+
+  void _checkDob(DetailsCoordinator coordinator) {
+    if (dobError.isNotEmpty) {
+      coordinator.isValidDob(dob.text);
+    }
+    final DateFormat inputFormat = DateFormat('yyyy-MM-dd');
+    if (inputFormat
+            .parse(DateTime.now().toString())
+            .difference(inputFormat.parse(selectedDate.toString()))
+            .inDays
+            .abs() <
+        6575) {
+      coordinator.inVaidDob();
+    }
   }
 }

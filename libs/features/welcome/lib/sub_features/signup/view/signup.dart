@@ -208,6 +208,38 @@ class _SignUpState extends State<SignUp> {
       String hint,
       String errorText,
       TextInputType textInputType) {
+    return FocusScope(
+      child: Focus(
+        onFocusChange: (focus) {
+
+          _checkValid(
+            label,
+            coordinator,
+          );
+        },
+        child: InputFieldWithLabel(
+          label: label.tr,
+          hintText: hint.tr,
+          controller: controller,
+          errorText: errorText.tr,
+          keyboardType: textInputType,
+          inputFormatters: textInputType == TextInputType.number
+              ? [
+                  NIDAInputFormatter(
+                      mask: 'xxxxxxxx-xxxxx-xxxxx-xx', separator: '-')
+                ]
+              : [],
+          onChanged: (value) {
+            _validateForm(coordinator);
+            if (nidaNumberError.isNotEmpty || nidaNumber.text.length > 23) {
+              coordinator.isValidNidaNumber(nidaNumber.text);
+            }
+            if (agentIdError.isNotEmpty) {
+              coordinator.isValidAgentId(agentId.text);
+            }
+          },
+        ),
+      ),
     return InputFieldWithLabel(
       label: label.tr,
       hintText: hint.tr,
@@ -238,22 +270,33 @@ class _SignUpState extends State<SignUp> {
       TextEditingController controller,
       SignUpCoordinator coordinator,
       String hint) {
-    return InputNumberFieldWithLabel(
-      label: label.tr,
-      controller: controller,
-      errorText: mobileNumberError.tr,
-      hintText: hint.tr,
-      key: const Key('mobileNumberTextField'),
-      inputFormatters: <TextInputFormatter>[
-        NIDAInputFormatter(mask: 'xxx xxx xxx', separator: ' ')
-      ],
-      keyboardType: TextInputType.number,
-      onChanged: (value) {
-        _validateForm(coordinator);
-        if (mobileNumberError.isNotEmpty || mobileNumber.text.length > 11) {
-          coordinator.isValidMobileNumber(mobileNumber.text);
-        }
-      },
+    return FocusScope(
+      child: Focus(
+        onFocusChange: (focus) {
+
+          _checkValid(
+            label,
+            coordinator,
+          );
+        },
+        child: InputNumberFieldWithLabel(
+          label: label.tr,
+          controller: controller,
+          errorText: mobileNumberError.tr,
+          hintText: hint.tr,
+          key: const Key('mobileNumberTextField'),
+          inputFormatters: <TextInputFormatter>[
+            NIDAInputFormatter(mask: 'xxx xxx xxx', separator: ' ')
+          ],
+          keyboardType: TextInputType.number,
+          onChanged: (value) {
+            _validateForm(coordinator);
+            if (mobileNumberError.isNotEmpty || mobileNumber.text.length > 11) {
+              coordinator.isValidMobileNumber(mobileNumber.text);
+            }
+          },
+        ),
+      ),
     );
     //   Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
     //   Text(label, style: SU_label_style),
@@ -363,5 +406,26 @@ class _SignUpState extends State<SignUp> {
   void _validateForm(SignUpCoordinator coordinator) {
     coordinator.validateForm(nidaNumber.text, mobileNumber.text, agentId.text,
         widget.signUpArguments.userType);
+  }
+
+  void _checkValid(String label, SignUpCoordinator coordinator) {
+    switch (label) {
+      case 'SU_ID_no_label':
+        if (nidaNumberError.isNotEmpty || nidaNumber.text.isNotEmpty==true) {
+          coordinator.isValidNidaNumber(nidaNumber.text);
+        }
+        break;
+      case 'SU_mobile_no_label':
+        if (mobileNumberError.isNotEmpty || mobileNumber.text.isNotEmpty==true) {
+          print("ffg");
+          coordinator.isValidMobileNumber(mobileNumber.text);
+        }
+        break;
+      case 'SU_agent_id_hint':
+        if (agentIdError.isNotEmpty) {
+          coordinator.isValidAgentId(agentId.text);
+        }
+        break;
+    }
   }
 }

@@ -74,14 +74,14 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
     state = LoginState.loading();
     var response = await _loginUseCase.login(
         '+255' + mobileNumber, passcode, (p0) => null);
-    print(response);
-    if (response?.data != null) {
+    if (response?.status == true) {
       state = LoginState.successState();
       _navigationHandler.navigateToOtpScreen(
           userType, mobileNumber, response!.data!.id!);
     } else {
-      state = LoginState.successState();
+      //state = LoginState.successState();
       print(response?.message);
+      state = LoginState.mobileNumberError(response!.message!);
     }
   }
 

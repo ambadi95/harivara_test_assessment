@@ -10,6 +10,7 @@ import 'package:get/get.dart';
 import 'package:welcome/sub_features/welcome/data_model/welcome_model.dart';
 import 'package:widget_library/page_header/text_ui_data_model.dart';
 import 'package:widget_library/static_text/crayon_payment_text.dart';
+import 'package:crayon_payment_customer/util/cross_fade.dart';
 
 class CrayonSplashScreen extends StatefulWidget {
   static const viewPath = '${SplashModule.moduleIdentifier}/splash';
@@ -45,6 +46,14 @@ class _CrayonSplashScreenState extends State<CrayonSplashScreen>
   SplashCoordinator? _splashCoordinator;
   bool? _isShow = false;
   bool isSigned = false;
+  late final AnimationController _controller = AnimationController(
+    duration: const Duration(seconds: 2),
+    vsync: this,
+  )..repeat(reverse: true);
+  late final Animation<double> _animation = CurvedAnimation(
+    parent: _controller,
+    curve: Curves.easeIn,
+  );
 
   @override
   void initState() {
@@ -76,11 +85,7 @@ class _CrayonSplashScreenState extends State<CrayonSplashScreen>
       begin: 1.0,
       end: 0.0,
     ).animate(_logoAnimationController!);
-    // _containerAnimationController!.addStatusListener((AnimationStatus status) {
-    //   if (status == AnimationStatus.completed) {
-    //     _logoAnimationController!.forward();
-    //   }
-    // });
+
     _addListener();
   }
 
@@ -149,16 +154,87 @@ class _CrayonSplashScreenState extends State<CrayonSplashScreen>
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      AnimatedBuilder(
-                        animation: _logoAnimationController!,
-                        builder: (context, child) {
-                          return Center(child: _buildLogo(context));
-                        },
-                      ),
                       _isShow == false
                           ? SizedBox()
                           : Column(
                               children: [
+                                _buildLogo(context),
+                                const SizedBox(width: 0.0, height: 10.0),
+
+                                // FadeTransition(
+                                //     opacity: _animation,
+                                //     child: Row(
+                                //       mainAxisAlignment: MainAxisAlignment.center,
+                                //       children: [
+                                //         Text('SP_ni'.tr,
+                                //           style: const TextStyle(
+                                //               color: Colors.white,
+                                //               fontSize: 32,
+                                //               fontWeight: FontWeight.normal,
+                                //               fontFamily: 'Montserrat',
+                                //               fontStyle: FontStyle.italic),),
+                                //         Text('SP_bora'.tr,
+                                //           style: const TextStyle(
+                                //               color: Colors.white,
+                                //               fontSize: 32,
+                                //               fontWeight: FontWeight.bold,
+                                //               fontFamily: 'Montserrat',
+                                //               fontStyle: FontStyle.italic),),
+                                //       ],
+                                //     )
+                                // ),
+                                CrossFade<String>(
+                                  initialData: '1',
+                                  data: "2",
+                                  builder: (value) => value == '1'
+                                      ? Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              'SP_ni'.tr,
+                                              style: const TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 32,
+                                                  fontWeight: FontWeight.normal,
+                                                  fontFamily: 'Montserrat',
+                                                  fontStyle: FontStyle.italic),
+                                            ),
+                                            Text(
+                                              'SP_bora'.tr,
+                                              style: const TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 32,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontFamily: 'Montserrat',
+                                                  fontStyle: FontStyle.italic),
+                                            ),
+                                          ],
+                                        )
+                                      : Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              'SP_is'.tr,
+                                              style: const TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 32,
+                                                  fontWeight: FontWeight.normal,
+                                                  fontFamily: 'Montserrat',
+                                                  fontStyle: FontStyle.italic),
+                                            ),
+                                            Text(
+                                              'SP_better'.tr,
+                                              style: const TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 32,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontFamily: 'Montserrat',
+                                                  fontStyle: FontStyle.italic),
+                                            ),
+                                          ],
+                                        ),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
@@ -223,6 +299,42 @@ class _CrayonSplashScreenState extends State<CrayonSplashScreen>
                                     ),
                                   ],
                                 ),
+                                // Row(
+                                //   mainAxisAlignment: MainAxisAlignment.center,
+                                //
+                                //   children: [
+                                //
+                                //     const SizedBox(width: 0.0, height: 10.0),
+                                //
+                                //
+                                //     SizedBox(
+                                //       child: AnimatedTextKit(
+                                //         totalRepeatCount: 3,
+                                //         animatedTexts: [
+                                //           // FadeAnimatedText(
+                                //           //   'SP_bora'.tr,
+                                //           //   textStyle: const TextStyle(
+                                //           //       color: Colors.white,
+                                //           //       fontSize: 32,
+                                //           //       fontWeight: FontWeight.bold,
+                                //           //       fontFamily: 'Montserrat',
+                                //           //       fontStyle: FontStyle.italic),
+                                //           // ),
+                                //           FadeAnimatedText(
+                                //             'SP_isBetter'.tr,
+                                //             textStyle: const TextStyle(
+                                //                 color: Colors.white,
+                                //                 fontSize: 32,
+                                //                 fontWeight: FontWeight.bold,
+                                //                 fontFamily: 'Montserrat',
+                                //                 fontStyle: FontStyle.italic),
+                                //           ),
+                                //         ],
+                                //         onTap: () {},
+                                //       ),
+                                //     ),
+                                //   ],
+                                // ),
                               ],
                             )
                     ],
@@ -249,6 +361,8 @@ class _CrayonSplashScreenState extends State<CrayonSplashScreen>
   }
 
   void _moveToDestinationPath() {
+    Future.delayed(const Duration(seconds: 8), () {
+      _splashCoordinator!.navigateToDestinationPath(widget.welcomeScreenArgs.userType,isSigned);
     Future.delayed(const Duration(seconds: 4), () {
       _splashCoordinator!
           .navigateToDestinationPath(widget.welcomeScreenArgs.userType, false);
@@ -261,10 +375,9 @@ class _CrayonSplashScreenState extends State<CrayonSplashScreen>
       child: FadeTransition(
         opacity: AlwaysStoppedAnimation<double>(2),
         child: Image.asset(
-          OB_AppLogo,
+          "assets/images/splashlogo.png",
           key: const Key('splashLogo'),
-          height: 150,
-          width: 150,
+          scale: 3.0,
           fit: BoxFit.cover,
         ),
       ),

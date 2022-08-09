@@ -23,6 +23,7 @@ class InputFieldWithLabel extends StatelessWidget {
   final TextCapitalization textCapitalization;
   final Function(String)? onChanged;
   final Function()? onTap;
+  final Function()? onEditComplete;
   final int maxLines;
 
   InputFieldWithLabel({
@@ -42,6 +43,7 @@ class InputFieldWithLabel extends StatelessWidget {
     this.inputFormatters,
     this.textInputStyle = SU_text_input_style,
     this.onTap,
+    this.onEditComplete,
     this.textCapitalization = TextCapitalization.words,
     this.maxLines = 1,
     Key? key,
@@ -101,6 +103,7 @@ class InputFieldWithLabel extends StatelessWidget {
           onChanged: onChanged,
           textCapitalization: textCapitalization,
           onTap: onTap,
+           onEditingComplete: onEditComplete,
           maxLines: maxLines,
         ),
         errorText.isNotEmptyOrNull

@@ -21,18 +21,29 @@ import '../state/login_state.dart';
 import '../viewmodel/login_coordinator.dart';
 import 'package:get/get.dart';
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
   final String userType;
-  final String _identifier = 'login';
   static const String viewPath = '${LoginModule.moduleIdentifier}/login';
 
   Login({Key? key, required this.userType}) : super(key: key);
 
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  final String _identifier = 'login';
+
   bool isBtnEnabled = false;
+
   String mobileNumberError = '';
+
   String agentIdError = '';
+
   TextEditingController mobileNumber = TextEditingController();
+
   TextEditingController passcodeController = TextEditingController();
+
   TextEditingController agentIdController = TextEditingController();
 
   @override
@@ -49,10 +60,12 @@ class Login extends StatelessWidget {
     );
   }
 
-  @override
+@override
   void dispose() {
     passcodeController.dispose();
     agentIdController.dispose();
+    mobileNumber.dispose();
+    super.dispose();
   }
 
   Widget _buildMainUIWithLoading(
@@ -93,7 +106,7 @@ class Login extends StatelessWidget {
             dynamicHSpacer(66),
             _buildLabelTextFieldMobNumber(context, 'LS_Mobile'.tr, coordinator),
             dynamicHSpacer(48),
-            userType == 'Customer'
+            widget.userType == 'Customer'
                 ? _passcodeWidget(context, coordinator)
                 : _buildLabelTextField(
                     'LS_agent_id'.tr,
@@ -106,7 +119,7 @@ class Login extends StatelessWidget {
             const SizedBox(
               height: 46,
             ),
-            _buildResetPasscode(coordinator),
+           // _buildResetPasscode(coordinator),
             const Spacer(),
             actionButton(coordinator),
             dynamicHSpacer(20),
@@ -162,6 +175,9 @@ class Login extends StatelessWidget {
           hintText: hint.tr,
           key: const Key('detailsTextField'),
           keyboardType: textInputType,
+          onEditComplete: (){
+            passcodeController.clear();
+          },
           onChanged: (value) {
             _validateForm(coordinator);
             if (errorText.isNotEmpty) {
@@ -185,8 +201,9 @@ class Login extends StatelessWidget {
         coordinator.isAgentIdValid(agentIdController.text);
         if (isBtnEnabled) {
           // coordinator.navigateToWelcomeBackScreen(userType, mobileNumber.text);
+
           coordinator.login(mobileNumber.text, passcodeController.text,
-              userType, agentIdController.text);
+              widget.userType, agentIdController.text);
         }
       },
     );
@@ -235,6 +252,7 @@ class Login extends StatelessWidget {
                 cursorColor: Colors.black,
                 enableActiveFill: false,
                 autoFocus: false,
+                autoDisposeControllers: false,
                 autoDismissKeyboard: true,
                 //errorAnimationController: errorController,
                 controller: passcodeController,
@@ -257,7 +275,7 @@ class Login extends StatelessWidget {
         padding: const EdgeInsets.only(bottom: 20),
         child: InkWell(
           onTap: () {
-            coordinator.navigateToResetNow(userType);
+            coordinator.navigateToResetNow(widget.userType);
           },
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -296,6 +314,6 @@ class Login extends StatelessWidget {
 
   void _validateForm(LoginCoordinator coordinator) {
     coordinator.validateForm(mobileNumber.text, passcodeController.text,
-        agentIdController.text, userType);
+        agentIdController.text, widget.userType);
   }
 }
