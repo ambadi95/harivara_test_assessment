@@ -25,5 +25,5 @@ const ST_language = 'assets/images/language_icon.png';
 const ST_sign_out = 'assets/images/sign_out_icon.png';
 
 
-enum UserType{ Customer,Agent}
+enum UserType{ Customer,Agent, AgentCustomer}
 
