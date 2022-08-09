@@ -46,7 +46,7 @@ class CrayonPaymentMaterialApp extends GetMaterialApp {
     bool checkerboardRasterCacheImages = false,
     bool checkerboardOffscreenLayers = false,
     bool showSemanticsDebugger = false,
-    bool debugShowCheckedModeBanner = true,
+    bool debugShowCheckedModeBanner = false,
     Map<LogicalKeySet, Intent>? shortcuts,
     ThemeData? highContrastTheme,
     ThemeData? highContrastDarkTheme,

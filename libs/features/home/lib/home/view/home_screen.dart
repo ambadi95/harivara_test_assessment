@@ -178,7 +178,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                         const SizedBox(
                           height: 5,
                         ),
-                        const Text("200", style: HS_account_id_style),
+                        const Text("0", style: HS_account_id_style),
                       ],
                     ),
                     const SizedBox(
@@ -194,7 +194,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                         const SizedBox(
                           height: 5,
                         ),
-                        const Text("100", style: HS_account_id_style),
+                        const Text("0", style: HS_account_id_style),
                       ],
                     ),
                   ],
