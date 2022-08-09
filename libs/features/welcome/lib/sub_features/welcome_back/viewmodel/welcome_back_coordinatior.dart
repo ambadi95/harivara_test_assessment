@@ -43,7 +43,6 @@ class WelcomeBackCoordinator extends BaseViewModel<WelcomeScreenState> {
       state = state.copyWith(isLoading: true);
       var response = await _welcomeUseCase.getAgentDetail((p0) => null);
       if(response?.status == true){
-        print(response);
         state = state.copyWith(isLoading: false);
         await _welcomeUseCase.saveAgentMobileNumber(response!.data!.mobileNo!);
         String name = response.data!.firstName! +' '+ response.data!.lastName!;
@@ -75,7 +74,7 @@ class WelcomeBackCoordinator extends BaseViewModel<WelcomeScreenState> {
   }
 
   Future<String> getUserName() async {
-    return await _welcomeUseCase.getCustomerName();
+    return await _welcomeUseCase.getAgentName();
   }
 
   Future<String> getUserId() async {

@@ -95,6 +95,7 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
       await _loginUseCase.saveAgentId(agentId);
       await _loginUseCase.saveMobileNumber(response!.data!.mobileNo!);
       await _loginUseCase.saveAgentName(response.data!.firstName! + ' '+response.data!.lastName!);
+      await _loginUseCase.saveOnBordStatus(agentId);
       await _navigationHandler.navigateToOtpScreenForAgent('Agent', response.data!.mobileNo!, agentId);
     }else{
       state = LoginState.successState();

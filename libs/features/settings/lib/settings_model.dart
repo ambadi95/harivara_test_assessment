@@ -4,6 +4,7 @@ import 'package:settings/navigation_handler/settings_navigation_handler.dart';
 import 'package:settings/view_model/settings_coordinator.dart';
 import 'package:settings/view_model/settings_usecase.dart';
 import 'package:settings/view_model/settings_viewmodel.dart';
+import 'package:task_manager/cache_task_resolver.dart';
 import 'package:task_manager/task_manager_impl.dart';
 
 class SettingsModule {
@@ -15,6 +16,7 @@ class SettingsModule {
         SettingsNavigationHandler(container.resolve<NavigationManager>()),
         SettingsUseCase(
           SettingsViewModel(),
+          container.resolve<CacheTaskResolver>(),
           container.resolve<TaskManager>(),
         ),
       ),

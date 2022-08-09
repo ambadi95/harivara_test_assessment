@@ -1,6 +1,8 @@
 import 'package:network_manager/auth/auth_manager.dart';
 import 'package:passcode/sub_features/passcode/service/passcode_service.dart';
 import 'package:passcode/sub_features/passcode/view_model/passcode_viewmodel.dart';
+import 'package:shared_data_models/agent_onboard/signin/request/agent_sign_in.dart';
+import 'package:shared_data_models/agent_onboard/signin/response/agent_sign_in_response.dart';
 import 'package:shared_data_models/customer_onboard/passcode/request/passcode_request.dart';
 import 'package:shared_data_models/customer_onboard/passcode/response/passcode_response.dart';
 import 'package:shared_data_models/welcome/signin/request/sign_in_request.dart';
@@ -52,6 +54,10 @@ class PasscodeUseCase extends BaseDataProvider {
 
   Future<String> getAgentName() async {
     return await getValueFromSecureStorage('agentName', defaultValue: '');
+  }
+
+  Future<String> getAgentMobileNumber()async{
+    return await getValueFromSecureStorage('agentMobileNumber', defaultValue: '');
   }
 
   Future<String> getAgentId() async {
@@ -131,4 +137,32 @@ class PasscodeUseCase extends BaseDataProvider {
           return CustomerSignInResponse.fromJson(data);
         });
   }
+
+  Future<AgentSignInResponse?> loginAgent(String passcode,
+      Function(String) onErrorCallback) async {
+    String agentMobileNumber = await getAgentMobileNumber();
+    String agentID = await getAgentId();
+    AgentSignIn getAgentRequest = AgentSignIn(
+        mobileNumber: agentMobileNumber,
+        y9AgentId: agentID,
+        passcode: passcode
+    );
+    return await executeApiRequest<AgentSignInResponse?>(
+        taskType: TaskType.DATA_OPERATION,
+        taskSubType: TaskSubType.REST,
+        moduleIdentifier: PasscodeModule.moduleIdentifier,
+        requestData: getAgentRequest.toJson(),
+        serviceIdentifier: IPasscodeService.agentLoginIdentifier,
+        onError: onErrorCallback,
+        modelBuilderCallback: (responseData) {
+          final data = responseData;
+          AgentSignInResponse agentSignInResponse =
+          AgentSignInResponse.fromJson(data);
+          _authManager.storeTokenInformation(
+              agentSignInResponse.data!.token!, '', '', '');
+          return AgentSignInResponse.fromJson(data);
+        });
+  }
+
+
 }

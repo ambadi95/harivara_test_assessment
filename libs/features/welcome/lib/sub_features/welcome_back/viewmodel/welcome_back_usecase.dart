@@ -1,5 +1,6 @@
 import 'package:login/login_module.dart';
 import 'package:login/service/login_service.dart';
+import 'package:network_manager/auth/auth_manager.dart';
 import 'package:shared_data_models/agent_onboard/agent_details/response/agent_details_response.dart';
 import 'package:shared_data_models/agent_onboard/signin/request/agent_sign_in.dart';
 import 'package:shared_data_models/agent_onboard/signin/response/agent_sign_in_response.dart';
@@ -16,7 +17,8 @@ import 'welcome_back_view_model.dart';
 
 class WelcomeBackUseCase extends BaseDataProvider {
   final WelcomeBackViewModel _welcomeBackViewModel;
-  WelcomeBackUseCase(this._welcomeBackViewModel, TaskManager taskManager)
+  final IAuthManager _authManager;
+  WelcomeBackUseCase(this._welcomeBackViewModel,this._authManager, TaskManager taskManager)
       : super(taskManager);
 
   Future<void> saveLocale(String currentLocale) async {
@@ -43,6 +45,11 @@ class WelcomeBackUseCase extends BaseDataProvider {
 
   Future<String> getAgentMobileNumber() async {
     return await getValueFromSecureStorage('agentMobileNumber', defaultValue: '');
+  }
+
+
+  Future<String> getAgentName() async {
+    return await getValueFromSecureStorage('agentName', defaultValue: '');
   }
 
   Future<String> getCustomerName() async {
@@ -111,6 +118,8 @@ class WelcomeBackUseCase extends BaseDataProvider {
           AgentSignInResponse agentSignInResponse =
           AgentSignInResponse.fromJson(data);
           print(agentSignInResponse);
+          _authManager.storeTokenInformation(
+              agentSignInResponse.data!.token!, '', '', '');
           return AgentSignInResponse.fromJson(data);
         });
   }

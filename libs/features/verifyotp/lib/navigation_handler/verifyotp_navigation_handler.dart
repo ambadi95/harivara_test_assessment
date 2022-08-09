@@ -4,6 +4,8 @@ import 'package:shared_data_models/passcode/passcode_screen_args.dart';
 import 'package:shared_data_models/passcode/passcode_verification_type.dart';
 import 'package:passcode/sub_features/passcode/view/passcode.dart';
 import 'package:welcome/sub_features/enrollment_success/view/enrollment_success_screen.dart';
+import 'package:welcome/sub_features/welcome/data_model/welcome_model.dart';
+import 'package:welcome/sub_features/welcome/view/welcome_screen.dart';
 import 'package:welcome/sub_features/welcome_back/view/welcome_back.dart';
 import 'package:widget_library/helpers/error/helper/error_helper.dart';
 
@@ -69,9 +71,15 @@ class VerifyOtpNavigationHandler with ErrorHandler {
   }
 
   Future<void> navigateToAgentWelcomeBack(String userType) async {
+    var args = WelcomeScreenArgs(
+      '',
+      '',
+        userType,
+      true
+    );
     _navigationManager.navigateTo(
-        CrayonWelcomBackScreen.viewPath, const NavigationType.replace(),
-        arguments: userType);
+        CrayonWelcomScreen.viewPath, const NavigationType.replace(),
+        arguments: args);
   }
 
   Future<void> goBack() async {

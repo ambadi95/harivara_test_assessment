@@ -28,6 +28,10 @@ class AgentDetailsUseCase extends BaseDataProvider {
     return await getValueFromSecureStorage('mobileNumber', defaultValue: '');
   }
 
+  Future<void> saveAgentMobileNumber(String mobileNumber) async {
+    return await setValueToSecureStorage({'agentMobileNumber': mobileNumber});
+  }
+
   Future<void> saveAgentName(String agentName) async {
     await setValueToSecureStorage({'agentName': agentName});
   }

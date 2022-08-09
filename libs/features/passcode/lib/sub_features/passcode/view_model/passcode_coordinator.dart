@@ -191,15 +191,27 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
           }
         }
       } else {
-        state = currentState.copyWith(isLoading: false);
+        state = currentState.copyWith(isLoading: true);
         var response = await _passcodeUseCase.savePasscodeAgent(
             newPasscode, userType, (p0) => null);
         if (response!.status == true) {
           state = currentState.copyWith(currentStep: 5);
-          String agentName = await _passcodeUseCase.getAgentName();
-          _navigationHandler.navigateToAgentEnrollmentBottomSheet(
-              'AE_Message'.tr.replaceAll('_name_', agentName),
-              'AE_Continue'.tr);
+          var loginResponse = await _passcodeUseCase.loginAgent(newPasscode, (p0) => null);
+          if(loginResponse!.status == true){
+            String agentId = await _passcodeUseCase.getAgentId();
+            await _passcodeUseCase.saveOnBordStatus(agentId);
+            String agentName = await _passcodeUseCase.getAgentName();
+            _navigationHandler.navigateToAgentEnrollmentBottomSheet(
+                'AE_Message'.tr.replaceAll('_name_', agentName),
+                'AE_Continue'.tr);
+            state = currentState.copyWith(isLoading: false);
+          }else{
+            state = currentState.copyWith(isLoading: false);
+            CrayonPaymentLogger.logError(loginResponse!.message!);
+        }
+        }else{
+          state = currentState.copyWith(isLoading: false);
+          CrayonPaymentLogger.logError(response!.message!);
         }
       }
     } else {
