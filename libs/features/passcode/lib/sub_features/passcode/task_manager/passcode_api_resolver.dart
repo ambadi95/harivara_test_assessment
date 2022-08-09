@@ -20,6 +20,8 @@ class PasscodeApiResolver extends TaskResolver {
         );
       case IPasscodeService.loginIdentifier:
         return _passcodeService.login(requestData);
+      case IPasscodeService.agentLoginIdentifier:
+        return _passcodeService.loginAgent(requestData);
       default:
         throw UnimplementedError();
     }

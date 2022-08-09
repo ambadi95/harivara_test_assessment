@@ -27,6 +27,7 @@ class SettingsCoordinator extends BaseViewModel<SettingsState> {
   }
 
   Future<void> signOut() async {
+    await _settingsUseCase.logout();
     await _navigationHandler.signOut();
   }
 }

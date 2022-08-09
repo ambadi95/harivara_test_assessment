@@ -139,14 +139,14 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                 children: [
                   Text(
                     widget.homeScreenArgs.isAgent == true
-                        ? userId.tr
+                        ? 'HS_Agent_Id'.tr
                         : 'HS_AccountId'.tr,
                     style: HS_title_style,
                   ),
                   const SizedBox(
                     height: 5,
                   ),
-                  Text((isAgent() == true) ? "356HYT6584" : "648960359535569",
+                  Text((isAgent() == true) ? userId : "648960359535569",
                       style: HS_account_id_style),
                 ],
               ),

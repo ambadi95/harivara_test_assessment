@@ -93,6 +93,7 @@ class WelcomeModule {
         WelcomeNavigationHandler(container.resolve<NavigationManager>()),
         WelcomeBackUseCase(
           WelcomeBackViewModel(),
+          container.resolve<IAuthManager>(),
           container.resolve<TaskManager>(),
         ),
       ),

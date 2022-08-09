@@ -7,6 +7,7 @@ abstract class IPasscodeService {
   static const passcodeIdentifier = 'passcode';
   static const resetPasscodeIdentifier = 'resetPasscode';
   static const loginIdentifier = 'login';
+  static const agentLoginIdentifier = 'agentLogin';
 
   Future<StandardRequest> savePasscode(
     Map<String, dynamic> requestData,
@@ -19,6 +20,10 @@ abstract class IPasscodeService {
   Future<StandardRequest> login(
     Map<String, dynamic> requestData,
   );
+
+  Future<StandardRequest> loginAgent(
+      Map<String, dynamic> requestData,
+      );
 }
 
 class PasscodeService implements IPasscodeService {
@@ -57,6 +62,20 @@ class PasscodeService implements IPasscodeService {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
     request.endpoint = 'customer-login';
+    request.customHeaders = {
+      'Content-Type': 'application/json',
+    };
+    request.jsonBody = json.encode(requestData);
+    return request;
+  }
+
+  @override
+  Future<StandardRequest> loginAgent(
+      Map<String, dynamic> requestData,
+      ) async {
+    var request = StandardRequest();
+    request.requestType = RequestType.POST;
+    request.endpoint = 'agent-login';
     request.customHeaders = {
       'Content-Type': 'application/json',
     };
