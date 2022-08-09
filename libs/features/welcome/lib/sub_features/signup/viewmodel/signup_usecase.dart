@@ -57,6 +57,12 @@ class SignupUseCase extends BaseDataProvider {
     return await setValueToSecureStorage({'mobileNumber': mobileNumber});
   }
 
+  Future<void> _saveAgentName(String mobileNumber) async {
+    return await setValueToSecureStorage({'AgentName': mobileNumber});
+  }
+
+
+
   Future<CustomerDetailResponse?> signUp(String nindaNumber, String phoneNo,
       Function(String) onErrorCallback) async {
     return await executeApiRequest<CustomerDetailResponse?>(
@@ -96,9 +102,36 @@ class SignupUseCase extends BaseDataProvider {
           final data = responseData;
           AgentSignUpResponse agentSignUpResponse =
               AgentSignUpResponse.fromJson(data);
-          // _authManager.setUserDetail(
-          //     authInfo: detailResponse.data?.customerId.toString(),
-          //     key: 'Customer_ID');
+
+          print(data);
+          return agentSignUpResponse;
+        });
+  }
+
+  Future<AgentSignUpResponse?> signUpCustomerByAgent(
+      {required String nindaNumber,
+      required String agentId,
+      required String customerMobile,
+      required Function(String) onErrorCallback}) async {
+    String? token = await _authManager.getAccessToken();
+
+    return await executeApiRequest<AgentSignUpResponse?>(
+        taskType: TaskType.DATA_OPERATION,
+        taskSubType: TaskSubType.REST,
+        moduleIdentifier: WelcomeModule.moduleIdentifier,
+        requestData: {
+          "nidaNumber": nindaNumber.replaceAll("-", ""),
+          "agentId": agentId,
+          'phoneNo' : customerMobile.replaceAll(" ", ""),
+          'token' : token
+        },
+        serviceIdentifier: ISignupService.signUpAgentIdentifier,
+        onError: onErrorCallback,
+        modelBuilderCallback: (responseData) {
+          final data = responseData;
+          AgentSignUpResponse agentSignUpResponse =
+              AgentSignUpResponse.fromJson(data);
+
           print(data);
           return agentSignUpResponse;
         });

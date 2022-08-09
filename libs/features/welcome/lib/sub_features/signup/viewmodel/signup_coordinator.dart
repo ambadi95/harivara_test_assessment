@@ -56,10 +56,21 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
       }
     } else if (signUpArguments.signupType ==
         SignupType.agentAidedCustomerOnBoarding) {
-      _navigationHandler.navigateToOtpScreenCustomerSignUp(
-        signUpArguments.userType,
-        mobileNumber,
-      );
+      state = const SignUpState.loadingState();
+      var response = await _signupUseCase.signUp(
+          nindaNumber.replaceAll("-", ""), mobileNumber.trim(), (p0) => null);
+      if (response!.status == true) {
+        await continueToOtp(nindaNumber, mobileNumber);
+        state = const SignUpState.initialState();
+        await _signupUseCase
+            .saveCustomerId(response.data?.customerId.toString());
+        _navigationHandler.navigateToOtpScreenCustomerSignUp(
+            signUpArguments.userType, mobileNumber,
+            userId: response.data?.customerId.toString());
+      } else {
+        state = const SignUpState.initialState();
+        state = SignUpState.mobileNumberError(response.message!);
+      }
     }
   }
 

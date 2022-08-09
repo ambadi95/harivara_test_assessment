@@ -137,16 +137,14 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    widget.homeScreenArgs.isAgent == true
-                        ? userId.tr
-                        : 'HS_AccountId'.tr,
+                  Text('HS_AccountId'.tr,
                     style: HS_title_style,
                   ),
                   const SizedBox(
                     height: 5,
                   ),
-                  Text((isAgent() == true) ? "356HYT6584" : "648960359535569",
+                  Text(widget.homeScreenArgs.isAgent
+                      ? userId.tr:'',
                       style: HS_account_id_style),
                 ],
               ),

@@ -13,6 +13,6 @@ class HomeUserCase extends BaseDataProvider {
   }
 
   Future<String> getAgentName() async {
-    return await getValueFromSecureStorage('CustomerName', defaultValue: '');
+    return await getValueFromSecureStorage('agentName', defaultValue: '');
   }
 }

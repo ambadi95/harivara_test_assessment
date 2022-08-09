@@ -14,7 +14,8 @@ class SignupApiResolver extends TaskResolver {
   final IWelcomeBackService _welcomeBackService;
 
   SignupApiResolver(this._signupService, this._detailsService,
-      this._enrollmentService, this._agentDetailsService, this._welcomeBackService);
+      this._enrollmentService, this._agentDetailsService,
+      this._welcomeBackService);
 
   @override
   Future execute(String identifier, Map<String, dynamic> requestData) {
@@ -29,6 +30,11 @@ class SignupApiResolver extends TaskResolver {
           requestData['nidaNumber'] as String,
           requestData['agentId'] as String,
         );
+      case ISignupService.signUpCustomerByAgent:
+        return _signupService.signupCustomerByAgent(
+          nidaNumber: requestData['nidaNumber'] as String,
+          agentId: requestData['agentId'] as String,
+          customerMobileNumber: requestData['mobileNo'] as String, token: requestData['token']);
       case IDetailsService.regionIdentifier:
         return _detailsService.getRegion();
       case IDetailsService.districtIdentifier:
@@ -44,7 +50,7 @@ class SignupApiResolver extends TaskResolver {
         return _agentDetailsService.submitAgentDetails(requestData);
       case IWelcomeBackService.getAgentDetailIdentifier:
         return _welcomeBackService.getAgentDetails(
-          requestData['agentId']
+            requestData['agentId']
         );
       case IWelcomeBackService.agentLoginIdentifier:
         return _welcomeBackService.loginAgent(
