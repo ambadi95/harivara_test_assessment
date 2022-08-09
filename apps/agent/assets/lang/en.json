@@ -130,7 +130,7 @@
   "HS_Agent_Id" : "Y9 Agent ID",
   "HS_TotalOnBoarderCustomers" : "Total Customers \nRegistered ",
   "HS_PendingCustomerRequests" : "Pending Customer \nRequest",
-  "HS_Customer_OnBoarding" : "Customer \nOnboarding",
+  "HS_Customer_OnBoarding" : "Customer \nRegistration",
   "HS_Customer_DeviceSwap" : "Device swap \n/ repair",
   "HS_Customer_AgentSupport" : "Agent \nSupport",
   "HS_Agent_Refer_Text": "Refer your Friends to register for Y9 Membership and you win Referral Bonus",

@@ -86,40 +86,40 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
             ],
           ),
           const Spacer(),
-          Stack(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(5.0),
-                child: Image.asset(
-                  HS_NotificationIcon,
-                  width: 30,
-                  height: 30,
-                ),
-              ),
-              Positioned(
-                top: 0,
-                right: 0,
-                child: Container(
-                  height: 20,
-                  width: 20,
-                  alignment: Alignment.center,
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: HS_NotificationCountColor,
-                  ),
-                  child: const Center(
-                    child: Text(
-                      "3",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 13),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          )
+          // Stack(
+          //   children: [
+          //     Padding(
+          //       padding: const EdgeInsets.all(5.0),
+          //       child: Image.asset(
+          //         HS_NotificationIcon,
+          //         width: 30,
+          //         height: 30,
+          //       ),
+          //     ),
+          //     Positioned(
+          //       top: 0,
+          //       right: 0,
+          //       child: Container(
+          //         height: 20,
+          //         width: 20,
+          //         alignment: Alignment.center,
+          //         decoration: const BoxDecoration(
+          //           shape: BoxShape.circle,
+          //           color: HS_NotificationCountColor,
+          //         ),
+          //         child: const Center(
+          //           child: Text(
+          //             "3",
+          //             style: TextStyle(
+          //                 color: Colors.white,
+          //                 fontWeight: FontWeight.w500,
+          //                 fontSize: 13),
+          //           ),
+          //         ),
+          //       ),
+          //     ),
+          //   ],
+          // )
         ],
       ),
     );
@@ -286,7 +286,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
             imagePath,
             width: 20,
             height: 20,
-            color: OB_WelcomeThirdTtileColor,
+            color: (title== 'HS_Customer_DeviceSwap'.tr || title== 'HS_Customer_AgentSupport'.tr)  ?  SU_border_color :  OB_WelcomeThirdTtileColor,
           ),
         ),
         const SizedBox(
@@ -295,7 +295,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
         Text(
           title,
           textAlign: TextAlign.center,
-          style: HS_card_items_style,
+          style:  (title== 'HS_Customer_DeviceSwap'.tr || title== 'HS_Customer_AgentSupport'.tr)  ? HS_card_items_grey_style : HS_card_items_style,
         ),
         const SizedBox(
           height: 10,

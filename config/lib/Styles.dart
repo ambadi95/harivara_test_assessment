@@ -268,6 +268,13 @@ const HS_card_items_style = TextStyle(
   fontStyle: FontStyle.normal,
   color: Colors.black,
 );
+const HS_card_items_grey_style = TextStyle(
+  fontSize: 12,
+  fontWeight: FontWeight.w500,
+  fontFamily: 'Montserrat',
+  fontStyle: FontStyle.normal,
+  color: SU_border_color,
+);
 const HS_invite_your_friends_style = TextStyle(
     fontSize: 18,
     fontWeight: FontWeight.w600,
