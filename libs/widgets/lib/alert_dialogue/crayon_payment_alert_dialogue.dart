@@ -48,27 +48,36 @@ class CrayonPaymentAlertDialogue {
   }) {
     return showDialog(
       context: context,
-
       builder: (context) => AlertDialog(
         shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(12.0))
-        ),
+            borderRadius: BorderRadius.all(Radius.circular(12.0))),
         title: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(title,style: label_input_error_red_style,),
-            SizedBox(height: 20,),
-            Text(content,style: label_input_error_18_style,),
-            SizedBox(height: 30,),
-
-              TextButton(
-                onPressed: () => Navigator.of(context).pop(false),
-                child: Text(defaultActionText,style: SU_text_input_style,),
+            Text(
+              title,
+              style: label_input_error_red_style,
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Text(
+              content,
+              style: label_input_error_18_style,
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(false),
+              child: Text(
+                defaultActionText,
+                style: SU_text_input_style,
               ),
+            ),
           ],
         ),
-
         actions: <Widget>[
           // if (cancelActionText != null)
           //   TextButton(

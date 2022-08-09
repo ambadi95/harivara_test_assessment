@@ -103,7 +103,7 @@ class InputFieldWithLabel extends StatelessWidget {
           onChanged: onChanged,
           textCapitalization: textCapitalization,
           onTap: onTap,
-           onEditingComplete: onEditComplete,
+          onEditingComplete: onEditComplete,
           maxLines: maxLines,
         ),
         errorText.isNotEmptyOrNull

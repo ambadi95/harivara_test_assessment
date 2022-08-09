@@ -154,12 +154,14 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
     return result;
   }
 
-  bool inVaidDob(){
-      state =DetailsState.dobError('DV_invalid_dob_error_text');
-      return false;
-
+  bool inVaidDob() {
+    state = DetailsState.dobError('DV_invalid_dob_error_text');
+    return false;
   }
-  bool isValidGender(String gender,) {
+
+  bool isValidGender(
+    String gender,
+  ) {
     var result = gender.isNotEmpty;
     if (!result) {
       state = const DetailsState.genderError('DV_gender_error_text');

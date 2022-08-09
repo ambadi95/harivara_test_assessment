@@ -47,8 +47,8 @@ class AgentDetailsCoordinator extends BaseViewModel<AgentDetailsState> {
         emailId,
         (p0) => null);
     if (submitResponse?.status == true) {
-      navigateToOtpScreen(mobileNo,firstName+ ' '+lastName);
-     // _navigationHandler.navigateToOtpScreen('Agent', agentId, mobileNo);
+      navigateToOtpScreen(mobileNo, firstName + ' ' + lastName);
+      // _navigationHandler.navigateToOtpScreen('Agent', agentId, mobileNo);
     } else {
       CrayonPaymentLogger.logError(submitResponse!.message!);
     }

@@ -52,7 +52,7 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
     if (userType == 'Customer') {
       // _navigationHandler.navigateToOtpScreen(userType, mobilNumber);
     } else {
-      _navigationHandler.navigateToOtpScreenForAgent(userType, mobilNumber);
+      //_navigationHandler.navigateToOtpScreenForAgent(userType, mobilNumber);
     }
   }
 
@@ -65,7 +65,8 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
     if (userType == 'Customer') {
       await customerLogin(mobileNumber, passcode, userType);
     } else {
-      await agentLogin(mobileNumber, passcode, userType, agentId);
+    await getAgentDetails(agentId);
+
     }
   }
 
@@ -85,18 +86,35 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
     }
   }
 
-  Future agentLogin(String mobileNumber, String passcode, String userType,
-      String agentId) async {
+  Future getAgentDetails(String agentId)async{
     state = LoginState.loading();
-    var response = await _loginUseCase.loginAgent(
-        '+255' + mobileNumber, passcode, agentId, (p0) => null);
-    print(response);
-    if (response?.data != null) {
+    var response = await _loginUseCase.getAgentDetail(agentId,(p0) => null);
+    if(response?.status == true){
+      print(response);
       state = LoginState.successState();
-      _navigationHandler.navigateToOtpScreen(userType, mobileNumber, agentId);
-    } else {
+      await _loginUseCase.saveAgentId(agentId);
+      await _loginUseCase.saveMobileNumber(response!.data!.mobileNo!);
+      await _loginUseCase.saveAgentName(response.data!.firstName! + ' '+response.data!.lastName!);
+      await _navigationHandler.navigateToOtpScreenForAgent('Agent', response.data!.mobileNo!, agentId);
+    }else{
       state = LoginState.successState();
-      print(response?.message);
+      state = LoginState.agentIdError('Agent ID not found');
+      CrayonPaymentLogger.logError(response!.message!);
     }
   }
+
+  // Future agentLogin(String mobileNumber, String nidanumber, String userType,
+  //     String agentId) async {
+  //   state = LoginState.loading();
+  //   var response = await _loginUseCase.loginAgent(
+  //       '+255' + mobileNumber, nidanumber, agentId, (p0) => null);
+  //   print(response);
+  //   if (response?.data != null) {
+  //     state = LoginState.successState();
+  //     _navigationHandler.navigateToOtpScreen(userType, mobileNumber, agentId);
+  //   } else {
+  //     state = LoginState.successState();
+  //     print(response?.message);
+  //   }
+  // }
 }

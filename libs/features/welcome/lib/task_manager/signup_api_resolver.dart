@@ -4,15 +4,17 @@ import 'package:welcome/sub_features/enrollment_success/service/enrollment_servi
 
 import '../sub_features/agent_details/service/agent_details_service.dart';
 import '../sub_features/signup/service/signup_service.dart';
+import '../sub_features/welcome_back/service/welcome_back_service.dart';
 
 class SignupApiResolver extends TaskResolver {
   final ISignupService _signupService;
   final IDetailsService _detailsService;
   final IEnrollmentService _enrollmentService;
   final IAgentDetailsService _agentDetailsService;
+  final IWelcomeBackService _welcomeBackService;
 
   SignupApiResolver(this._signupService, this._detailsService,
-      this._enrollmentService, this._agentDetailsService);
+      this._enrollmentService, this._agentDetailsService, this._welcomeBackService);
 
   @override
   Future execute(String identifier, Map<String, dynamic> requestData) {
@@ -40,6 +42,14 @@ class SignupApiResolver extends TaskResolver {
         return _agentDetailsService.getAgentDetail(requestData['agentId']);
       case IAgentDetailsService.submitAgentDetailIdentifier:
         return _agentDetailsService.submitAgentDetails(requestData);
+      case IWelcomeBackService.getAgentDetailIdentifier:
+        return _welcomeBackService.getAgentDetails(
+          requestData['agentId']
+        );
+      case IWelcomeBackService.agentLoginIdentifier:
+        return _welcomeBackService.loginAgent(
+            requestData
+        );
       default:
         throw UnimplementedError();
     }

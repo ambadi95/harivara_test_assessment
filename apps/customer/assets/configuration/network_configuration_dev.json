@@ -12,7 +12,7 @@
   "gqlEnvironments": [
     {
       "name": "default",
-      "host": "https://customerapi.y9bank.com/customers/v1/"
+      "host" : "https://y9-dev-capi.testmaya.com//customers/v1/"
     },
     {
       "name": "mock",

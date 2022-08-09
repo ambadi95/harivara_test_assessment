@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:core/mobile_core.dart';
 import 'package:welcome/sub_features/signup/view/signup.dart';
 import 'package:welcome/sub_features/signup/view/signup.dart';
 import 'package:welcome/sub_features/welcome/state/welcome_screen_state.dart';
@@ -38,30 +39,64 @@ class WelcomeBackCoordinator extends BaseViewModel<WelcomeScreenState> {
     }
   }
 
+    Future<String> getAgentDetails()async{
+      state = state.copyWith(isLoading: true);
+      var response = await _welcomeUseCase.getAgentDetail((p0) => null);
+      if(response?.status == true){
+        print(response);
+        state = state.copyWith(isLoading: false);
+        await _welcomeUseCase.saveAgentMobileNumber(response!.data!.mobileNo!);
+        String name = response.data!.firstName! +' '+ response.data!.lastName!;
+        return name;
+      }else{
+        state = state.copyWith(isLoading: false);
+        CrayonPaymentLogger.logError(response!.message!);
+        return '';
+      }
+    }
+
+    Future agentLogin(String passcode)async{
+      state = state.copyWith(isLoading: true);
+    var loginResponse = await _welcomeUseCase.loginAgent( passcode, (p0) => null);
+    if(loginResponse?.status == true){
+      state = state.copyWith(isLoading: false);
+      _navigationHandler.navigateToAgentHome();
+    }else {
+      state = state.copyWith(isLoading: false);
+      state = state.copyWith(error: loginResponse!.message!);
+      CrayonPaymentLogger.logError(loginResponse.message!);
+    }
+    }
+
+
+
   Future<void> navigateToResetNow(String userType) async {
     await _navigationHandler.navigateToResetPasscode(userType);
   }
 
-  Future<String> getUserName() async{
+  Future<String> getUserName() async {
     return await _welcomeUseCase.getCustomerName();
   }
 
-  Future<String> getUserId() async{
+  Future<String> getUserId() async {
     return await _welcomeUseCase.getCustomerY9Id();
   }
 
+
   void onPasscodeCallback(String passCode, String userType) {
-    customerLogin(passCode, userType);
+    if(userType == 'Customer'){
+      customerLogin(passCode, userType);
+    }else{
+      agentLogin(passCode);
+    }
+
   }
 
   Future customerLogin(String passcode, String userType) async {
     String mobileNumber = await _welcomeUseCase.getMobileNumber();
-    print(mobileNumber);
+    state = state.copyWith(isLoading: true);
     var response =
         await _welcomeUseCase.login(mobileNumber, passcode, (p0) => null);
-    state = state.copyWith(isLoading: true);
-    var response = await _welcomeUseCase.login(
-         mobileNumber, passcode, (p0) => null);
     if (response?.status == true) {
       state = state.copyWith(isLoading: false);
       _navigationHandler.navigateToCustomerEnrollmentScreen();

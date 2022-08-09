@@ -45,7 +45,7 @@ class LoginNavigationHandler with ErrorHandler {
   }
 
   Future<void> navigateToOtpScreenForAgent(
-      String userType, String mobileNumber) async {
+      String userType, String mobileNumber, String agentId) async {
     var arguments = OtpScreenArgs(
         'OTP Verification',
         'VO_otp_verification_description',
@@ -53,7 +53,7 @@ class LoginNavigationHandler with ErrorHandler {
         false,
         2,
         OtpVerificationType.agentSignIn,
-        '',
+        agentId,
         6,
         mobileNumber,
         false,

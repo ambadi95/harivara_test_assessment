@@ -24,9 +24,9 @@ class SplashCoordinator extends BaseViewModel<SplashState> {
     );
   }
 
-  Future<bool> isSignedin()async{
+  Future<bool> isSignedin() async {
     String number = await _splashUseCase.getOnBoardStatus();
-    if(number.isNotEmpty){
+    if (number.isNotEmpty) {
       return true;
     } else {
       return false;

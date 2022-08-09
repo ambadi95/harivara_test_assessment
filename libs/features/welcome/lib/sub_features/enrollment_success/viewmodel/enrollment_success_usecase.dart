@@ -10,7 +10,8 @@ class EnrollmentSuccessUseCase extends BaseDataProvider {
   final IAuthManager _authManager;
   final CacheTaskResolver _cacheTaskResolver;
 
-  EnrollmentSuccessUseCase(this._authManager,this._cacheTaskResolver, TaskManager taskManager)
+  EnrollmentSuccessUseCase(
+      this._authManager, this._cacheTaskResolver, TaskManager taskManager)
       : super(taskManager);
 
   Future<String> getCustomerId() async {
@@ -26,7 +27,8 @@ class EnrollmentSuccessUseCase extends BaseDataProvider {
   }
 
   Future logout() async {
-    _cacheTaskResolver.execute("", {CACHE_TYPE:TaskManagerCacheType.DELETE_ALL});
+    _cacheTaskResolver
+        .execute("", {CACHE_TYPE: TaskManagerCacheType.DELETE_ALL});
   }
 
   Future<GetCustomerDetailsResponse?> getCustomerDetails(
@@ -42,11 +44,13 @@ class EnrollmentSuccessUseCase extends BaseDataProvider {
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {
           final data = responseData;
-          GetCustomerDetailsResponse customerDetailsResponse = GetCustomerDetailsResponse.fromJson(data);
-          String? firstName =customerDetailsResponse.data?.firstName!;
+          GetCustomerDetailsResponse customerDetailsResponse =
+              GetCustomerDetailsResponse.fromJson(data);
+          String? firstName = customerDetailsResponse.data?.firstName!;
           String? lastname = customerDetailsResponse.data?.lastName!;
-          String? customerRefId = customerDetailsResponse.data?.referenceId!.toString();
-          saveCustomerName(firstName!+" "+lastname!);
+          String? customerRefId =
+              customerDetailsResponse.data?.referenceId!.toString();
+          saveCustomerName(firstName! + " " + lastname!);
           return GetCustomerDetailsResponse.fromJson(data);
         });
   }

@@ -235,69 +235,6 @@ class _CrayonSplashScreenState extends State<CrayonSplashScreen>
                                             ),
                                           ],
                                         ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    // const SizedBox(width: 20.0, height: 100.0),
-
-                                    // Text('SP_ni'.tr,style: const TextStyle(
-                                    //     color: Colors.white,
-                                    //     fontSize: 30,
-                                    //     fontWeight: FontWeight.normal,
-                                    //     fontFamily: 'Montserrat', fontStyle: FontStyle.italic) ,)
-                                    // ,
-                                    // Text('SP_bora'.tr,style: const TextStyle(
-                                    //     color: Colors.white,
-                                    //     fontSize: 32,
-                                    //     fontWeight: FontWeight.bold,
-                                    //     fontFamily: 'Montserrat',
-                                    //     fontStyle: FontStyle.italic) ,)
-                                    // ,
-                                    const SizedBox(width: 0.0, height: 80.0),
-
-                                    // SizedBox(
-                                    //     child: AnimatedTextKit(
-                                    //       animatedTexts: [
-                                    //         FadeAnimatedText('SP_ni'.tr,
-                                    //             textStyle: const TextStyle(
-                                    //                 color: Colors.white,
-                                    //                 fontSize: 28,
-                                    //                 fontFamily: 'Montserrat',
-                                    //                 fontStyle: FontStyle.italic),
-                                    //             ),
-                                    //       ],
-                                    //       onTap: () {
-                                    //       },
-                                    //     ),
-                                    //   ),
-
-                                    SizedBox(
-                                      child: AnimatedTextKit(
-                                        totalRepeatCount: 3,
-                                        animatedTexts: [
-                                          FadeAnimatedText(
-                                            'SP_bora'.tr,
-                                            textStyle: const TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 32,
-                                                fontWeight: FontWeight.bold,
-                                                fontFamily: 'Montserrat',
-                                                fontStyle: FontStyle.italic),
-                                          ),
-                                          FadeAnimatedText(
-                                            'SP_isBetter'.tr,
-                                            textStyle: const TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 32,
-                                                fontWeight: FontWeight.bold,
-                                                fontFamily: 'Montserrat',
-                                                fontStyle: FontStyle.italic),
-                                          ),
-                                        ],
-                                        onTap: () {},
-                                      ),
-                                    ),
-                                  ],
                                 ),
                                 // Row(
                                 //   mainAxisAlignment: MainAxisAlignment.center,
@@ -362,10 +299,8 @@ class _CrayonSplashScreenState extends State<CrayonSplashScreen>
 
   void _moveToDestinationPath() {
     Future.delayed(const Duration(seconds: 8), () {
-      _splashCoordinator!.navigateToDestinationPath(widget.welcomeScreenArgs.userType,isSigned);
-    Future.delayed(const Duration(seconds: 4), () {
-      _splashCoordinator!
-          .navigateToDestinationPath(widget.welcomeScreenArgs.userType, false);
+      _splashCoordinator!.navigateToDestinationPath(
+          widget.welcomeScreenArgs.userType, isSigned);
     });
   }
 

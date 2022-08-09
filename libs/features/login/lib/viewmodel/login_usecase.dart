@@ -1,7 +1,6 @@
 import 'package:core/logging/logger.dart';
 import 'package:network_manager/auth/auth_manager.dart';
-import 'package:shared_data_models/agent_onboard/signin/request/agent_sign_in.dart';
-import 'package:shared_data_models/agent_onboard/signin/response/agent_sign_in_response.dart';
+import 'package:shared_data_models/agent_onboard/agent_details/response/agent_details_response.dart';
 import 'package:task_manager/base_classes/base_data_provider.dart';
 import 'package:task_manager/task.dart';
 import 'package:task_manager/task_manager_impl.dart';
@@ -10,6 +9,8 @@ import '../login_module.dart';
 import '../service/login_service.dart';
 import 'package:shared_data_models/welcome/signin/request/sign_in_request.dart';
 import 'login_viewmodel.dart';
+import 'package:shared_data_models/agent_onboard/agent_detail_mob_nida/response/get_agent_response/get_agent_response.dart';
+import 'package:shared_data_models/agent_onboard/agent_detail_mob_nida/request/get_agent_request.dart';
 
 class LoginUseCase extends BaseDataProvider {
   final LoginViewModel _loginViewModel;
@@ -30,8 +31,16 @@ class LoginUseCase extends BaseDataProvider {
     return await setValueToSecureStorage({'customerId': customerId});
   }
 
+  Future<void> saveAgentId(String? agentId) async {
+    return await setValueToSecureStorage({'agentId': agentId});
+  }
+
   Future<void> saveMobileNumber(String mobileNumber) async {
     return await setValueToSecureStorage({'mobileNumber': mobileNumber});
+  }
+
+  Future<void> saveAgentName(String agentName) async {
+    return await setValueToSecureStorage({'CustomerName': agentName});
   }
 
   Future<void> saveOnBordStatus(String id) async {
@@ -68,31 +77,48 @@ class LoginUseCase extends BaseDataProvider {
         });
   }
 
-  Future<AgentSignInResponse?> loginAgent(String mobileNumber, String passcode,
-      String agentID, Function(String) onErrorCallback) async {
-    // CrayonPaymentLogger.logInfo(
-    //     mobileNumber.replaceAll("+255", "").replaceAll(" ", ""));
-    AgentSignIn agentSignIn = AgentSignIn(
-        mobileNumber: mobileNumber, passcode: passcode, y9AgentId: agentID);
-    return await executeApiRequest<AgentSignInResponse?>(
+
+  Future<AgentDetailsResponse?> getAgentDetail( String agentId,
+      Function(String) onErrorCallback) async {
+    return await executeApiRequest<AgentDetailsResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
         moduleIdentifier: LoginModule.moduleIdentifier,
-        requestData: agentSignIn.toJson(),
-        serviceIdentifier: ILoginService.loginIdentifier,
+        requestData: {"agentId": agentId},
+        serviceIdentifier: ILoginService.agentDetailIdentifier,
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {
           final data = responseData;
-          print(data);
-          AgentSignInResponse agentSignInResponse =
-              AgentSignInResponse.fromJson(data);
-          print(agentSignInResponse);
-          // if(customerSignInResponse.data != null){
-          //   _authManager.storeTokenInformation(customerSignInResponse.data!.token!, '', '', '');
-          //   saveCustomerId(customerSignInResponse.data!.id);
-          //   saveMobileNumber(mobileNumber.replaceAll(" ", ""));
-          // }
-          return AgentSignInResponse.fromJson(data);
+          return AgentDetailsResponse.fromJson(data);
         });
   }
+
+  // Future<GetAgentResponse?> loginAgent(String mobileNumber, String nidaNumber,
+  //     String agentID, Function(String) onErrorCallback) async {
+  //   // CrayonPaymentLogger.logInfo(
+  //   //     mobileNumber.replaceAll("+255", "").replaceAll(" ", ""));
+  //   GetAgentRequest getAgentRequest = GetAgentRequest(
+  //     nidaNo: nidaNumber.replaceAll("-", ""),
+  //     y9AgentId: agentID
+  //   );
+  //   return await executeApiRequest<GetAgentResponse?>(
+  //       taskType: TaskType.DATA_OPERATION,
+  //       taskSubType: TaskSubType.REST,
+  //       moduleIdentifier: LoginModule.moduleIdentifier,
+  //       requestData: getAgentRequest.toMap(),
+  //       serviceIdentifier: ILoginService.loginIdentifier,
+  //       onError: onErrorCallback,
+  //       modelBuilderCallback: (responseData) {
+  //         final data = responseData;
+  //         GetAgentResponse agentSignInResponse =
+  //         GetAgentResponse.fromMap(data);
+  //         print(agentSignInResponse);
+  //         // if(customerSignInResponse.data != null){
+  //         //   _authManager.storeTokenInformation(customerSignInResponse.data!.token!, '', '', '');
+  //         //   saveCustomerId(customerSignInResponse.data!.id);
+  //         //   saveMobileNumber(mobileNumber.replaceAll(" ", ""));
+  //         // }
+  //         return GetAgentResponse.fromMap(data);
+  //       });
+  // }
 }

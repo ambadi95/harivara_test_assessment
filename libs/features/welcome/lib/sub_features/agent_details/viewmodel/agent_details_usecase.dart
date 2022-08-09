@@ -64,15 +64,15 @@ class AgentDetailsUseCase extends BaseDataProvider {
       String emailId,
       Function(String) onErrorCallback) async {
     AgentDetailsRequest agentDetailRequest = AgentDetailsRequest(
-        y9AgentId: agentId ?? ' ',
-        firstName:firstName ?? ' ' ,
-        lastName:lastName ?? ' ',
-        middleName: middleName ?? ' ',
-        nidaNo: nidaNo ?? ' ',
-        mobileNo: mobileNo ?? ' ',
-        emailId: emailId ?? ' ',
-        birthdate: dob ?? ' ',
-        gender: gender ?? ' ');
+        y9AgentId: agentId,
+        firstName: firstName,
+        lastName: lastName,
+        middleName: middleName,
+        nidaNo: nidaNo,
+        mobileNo: mobileNo,
+        emailId: emailId,
+        birthdate: dob,
+        gender: gender);
     return await executeApiRequest<AgentDetailsResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,

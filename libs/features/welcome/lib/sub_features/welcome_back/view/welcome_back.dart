@@ -5,12 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:core/view/base_view.dart';
 import 'package:get/get.dart';
-import 'package:welcome/sub_features/welcome_back/constants/image_constant.dart';
-import 'package:config/Styles.dart';
 import 'package:widget_library/progress_bar/centered_circular_progress_bar.dart';
 import '../../../welcome_module.dart';
 import '../../welcome/state/welcome_screen_state.dart';
-import '../../welcome/viewmodel/welcome_coordinatior.dart';
 import '../viewmodel/welcome_back_coordinatior.dart';
 import 'package:crayon_payment_customer/util/app_utils.dart';
 
@@ -40,26 +37,26 @@ class CrayonWelcomBackScreen extends StatefulWidget {
 TextEditingController passcodeController = TextEditingController();
 
 class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
-
   String username = '';
   String userID = '';
 
   @override
   Widget build(BuildContext context) =>
       BaseView<WelcomeBackCoordinator, WelcomeScreenState>(
-        setupViewModel: (coordinator) async {},
+        setupViewModel: (coordinator) async {
+            username = await coordinator.getUserName();
+            userID = await coordinator.getUserId();
+        },
         builder: (context, state, welcomeCoordinator) => Scaffold(
           body: _buildMainUIWithLoading(context, welcomeCoordinator, state),
         ),
-        setupViewModel: (coordinator) async {
-          username = await coordinator.getUserName();
-          userID = await coordinator.getUserId();
-        },
-        builder: (context, state, welcomeCoordinator) =>
-            Scaffold(
-              body: _buildMainUIWithLoading(context, welcomeCoordinator, state),
-            ),
       );
+
+  @override
+  void dispose() {
+    passcodeController.dispose();
+    super.dispose();
+  }
 
   Widget _buildMainUIWithLoading(context,
       WelcomeBackCoordinator welcomeCoordinator, WelcomeScreenState state) {
@@ -75,11 +72,9 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
     );
   }
 
-
   Widget _createLoading(WelcomeScreenState state) {
     if (state.isLoading) {
-      return const CenteredCircularProgressBar(
-          color: PRIMARY_COLOR);
+      return const CenteredCircularProgressBar(color: PRIMARY_COLOR);
     } else {
       return Container();
     }
@@ -120,22 +115,18 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
                   height: AppUtils.appUtilsInstance
                       .getPercentageSize(ofWidth: false, percentage: 7)),
               _userImage(),
-              SizedBox(height: AppUtils.appUtilsInstance.getPercentageSize(
-                  ofWidth: false, percentage: 2)),
-              _userInfo(context,welcomeCoordinator),
-              SizedBox(height: AppUtils.appUtilsInstance.getPercentageSize(
-                  ofWidth: false, percentage: 7)),
               SizedBox(
                   height: AppUtils.appUtilsInstance
                       .getPercentageSize(ofWidth: false, percentage: 2)),
-              _userInfo(context),
+              _userInfo(context, welcomeCoordinator),
               SizedBox(
                   height: AppUtils.appUtilsInstance
                       .getPercentageSize(ofWidth: false, percentage: 7)),
               _enterPassCodeTitle(context),
               _passcodeWidget(context, welcomeCoordinator),
-              SizedBox(height: AppUtils.appUtilsInstance.getPercentageSize(
-                  ofWidth: false, percentage: 7)),
+              SizedBox(
+                  height: AppUtils.appUtilsInstance
+                      .getPercentageSize(ofWidth: false, percentage: 7)),
               Text(state.error, style: label_input_error_style),
               // const SizedBox(height: 57),
               // Image.asset(
@@ -147,7 +138,7 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
               //   scale: 2.0,
               // ),
               const Spacer(),
-            //  _buildResetPasscode(welcomeCoordinator)
+              //  _buildResetPasscode(welcomeCoordinator)
             ],
           ),
         ),
@@ -188,9 +179,8 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
     );
   }
 
-  Widget _userInfo(BuildContext context,WelcomeBackCoordinator coordinator) {
-    return Text(username,
-        style: WB_user_info_style);
+  Widget _userInfo(BuildContext context, WelcomeBackCoordinator coordinator) {
+    return Text(username, style: WB_user_info_style);
   }
 
   Widget _enterPassCodeTitle(BuildContext context) {
@@ -225,6 +215,7 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
       enableActiveFill: false,
       autoFocus: false,
       autoDismissKeyboard: true,
+      autoDisposeControllers: false,
       //errorAnimationController: errorController,
       controller: passcodeController,
       keyboardType: TextInputType.number,

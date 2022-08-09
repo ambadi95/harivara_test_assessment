@@ -160,9 +160,7 @@ class _CrayonWelcomScreenState extends State<CrayonWelcomScreen> {
     return InkWell(
         onTap: () {
           LauncherUtils.launcherUtilsInstance
-              .launchInBrowser(url: "https://flutter.dev");
-        onTap: (){
-          LauncherUtils.launcherUtilsInstance.launchInBrowser(url:"https://www.y9bank.com/");
+              .launchInBrowser(url: "https://www.y9bank.com/");
         },
         child:
             Text('OB_WelcomeThirdTitle'.tr, style: WELCOME_THIRDHEADING_STYLE));

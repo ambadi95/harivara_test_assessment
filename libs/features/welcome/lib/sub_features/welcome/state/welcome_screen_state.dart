@@ -9,5 +9,4 @@ class WelcomeScreenState with _$WelcomeScreenState {
     @Default(' ') String error,
     @Default(false) bool isLoading,
   }) = _WelcomeScreenState;
-
 }

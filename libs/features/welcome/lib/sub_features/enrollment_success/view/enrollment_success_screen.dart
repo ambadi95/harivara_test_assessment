@@ -84,13 +84,13 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           InkWell(
-            onTap: (){
-             coordinator.logout();
+            onTap: () {
+              coordinator.logout();
             },
             child: const Align(
               alignment: Alignment.centerRight,
-              child:  Text(
-               'Logout',
+              child: Text(
+                'Logout',
                 style: TextStyle(color: PRIMARY_COLOR),
               ),
             ),
@@ -161,7 +161,8 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
           child: RichTextDescription(
               textAlign: TextAlign.center,
               key: const Key('enID'),
-              description: 'ES_enroll_id'.tr.replaceAll('_id_', customerDetail!.data!.referenceId!.toString()),
+              description: 'ES_enroll_id'.tr.replaceAll(
+                  '_id_', customerDetail!.data!.referenceId!.toString()),
               linkTextStyle: ES_bold_text,
               descriptionTextStyle: ES_bold_text)),
     );
@@ -209,7 +210,7 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
             borderRadius: BorderRadius.circular(8.0)),
         child: Center(
           child: Text(
-           customerDetail!.data!.deviceId.isNotEmptyOrNull
+            customerDetail!.data!.deviceId.isNotEmptyOrNull
                 ? 'ES_view_membership'.tr
                 : 'ES_select_membership'.tr,
             style: SU_button_text_style,

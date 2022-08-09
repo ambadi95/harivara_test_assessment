@@ -12,7 +12,6 @@ class NetworkStandardResponse extends Response {
     Map<String, String> headers,
   ) : super(body, statusCode, headers: headers);
 
-
   /// Produces a map of decoded JSON
   Map<String, dynamic>? get jsonResult =>
       jsonDecode(body) as Map<String, dynamic>;

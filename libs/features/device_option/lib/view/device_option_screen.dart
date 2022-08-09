@@ -160,7 +160,9 @@ class _DeviceOptionState extends State<DeviceOption> {
         mainAxisSize: MainAxisSize.max,
         children: [
           Image.asset(
-            deviceList[index].deviceId == 1 ?  'assets/a13.png' : 'assets/a03.png',
+            deviceList[index].deviceId == 1
+                ? 'assets/a13.png'
+                : 'assets/a03.png',
             width: 65,
             package: 'shared_data_models',
           ),

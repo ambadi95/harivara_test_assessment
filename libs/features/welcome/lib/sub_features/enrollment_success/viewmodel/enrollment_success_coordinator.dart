@@ -12,8 +12,9 @@ class EnrollmentSuccessCoordinator
   final EnrollmentSuccessUseCase _enrollmentSuccessUseCase;
 
   EnrollmentSuccessCoordinator(
-      this._navigationHandler, this._enrollmentSuccessUseCase,)
-      : super(const EnrollmentSuccessState.initialState());
+    this._navigationHandler,
+    this._enrollmentSuccessUseCase,
+  ) : super(const EnrollmentSuccessState.initialState());
 
   Future navigateToAgentNearBy() async {
     _navigationHandler.navigateToNearByAgent();
@@ -23,12 +24,10 @@ class EnrollmentSuccessCoordinator
     _navigationHandler.navigateToDeviceOption(isEnrolled);
   }
 
-  logout(){
+  logout() {
     _enrollmentSuccessUseCase.logout();
     _navigationHandler.navigateToLoginFromLogout('Customer');
   }
-
-
 
   Future getCustomerDetails() async {
     var response =
@@ -37,7 +36,7 @@ class EnrollmentSuccessCoordinator
       CrayonPaymentLogger.logInfo(response!.data!.referenceId!.toString());
       return response;
     } else {
-     CrayonPaymentLogger.logInfo(response!.message!);
+      CrayonPaymentLogger.logInfo(response!.message!);
     }
   }
 }

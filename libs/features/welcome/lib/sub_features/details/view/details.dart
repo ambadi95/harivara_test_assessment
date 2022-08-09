@@ -333,16 +333,16 @@ class _DetailsScreenState extends State<DetailsScreen> {
       DetailsCoordinator coordinator) {
     return FocusScope(
       onFocusChange: (focus) {
-        if(dob.text.isNotEmpty) {
+        if (dob.text.isNotEmpty) {
           if (dobError.isNotEmpty) {
             coordinator.isValidDob(dob.text);
           }
           final DateFormat inputFormat = DateFormat('yyyy-MM-dd');
           if (inputFormat
-              .parse(DateTime.now().toString())
-              .difference(inputFormat.parse(selectedDate.toString()))
-              .inDays
-              .abs() <
+                  .parse(DateTime.now().toString())
+                  .difference(inputFormat.parse(selectedDate.toString()))
+                  .inDays
+                  .abs() <
               6575) {
             coordinator.inVaidDob();
           }
@@ -575,9 +575,6 @@ class _DetailsScreenState extends State<DetailsScreen> {
           return;
         }
         if (coordinator.isValidPoBox(poBox.text) &&
-        coordinator.isValidDob(dob.text);
-        if (_isBtnEnabled &&
-            coordinator.isValidPoBox(poBox.text) &&
             coordinator.isValidEmail(emailId.text) &&
             coordinator.isValidName(name.text)) {
           await coordinator.submitDetails(

@@ -211,7 +211,6 @@ class _SignUpState extends State<SignUp> {
     return FocusScope(
       child: Focus(
         onFocusChange: (focus) {
-
           _checkValid(
             label,
             coordinator,
@@ -240,28 +239,6 @@ class _SignUpState extends State<SignUp> {
           },
         ),
       ),
-    return InputFieldWithLabel(
-      label: label.tr,
-      hintText: hint.tr,
-      controller: controller,
-      errorText: errorText.tr,
-      keyboardType: textInputType,
-      textCapitalization: TextCapitalization.characters,
-      inputFormatters: textInputType == TextInputType.number
-          ? [
-              NIDAInputFormatter(
-                  mask: 'xxxxxxxx-xxxxx-xxxxx-xx', separator: '-')
-            ]
-          : [],
-      onChanged: (value) {
-        _validateForm(coordinator);
-        if (nidaNumberError.isNotEmpty || nidaNumber.text.length > 23) {
-          coordinator.isValidNidaNumber(nidaNumber.text);
-        }
-        if (agentIdError.isNotEmpty) {
-          coordinator.isValidAgentId(agentId.text);
-        }
-      },
     );
   }
 
@@ -273,7 +250,6 @@ class _SignUpState extends State<SignUp> {
     return FocusScope(
       child: Focus(
         onFocusChange: (focus) {
-
           _checkValid(
             label,
             coordinator,
@@ -411,12 +387,13 @@ class _SignUpState extends State<SignUp> {
   void _checkValid(String label, SignUpCoordinator coordinator) {
     switch (label) {
       case 'SU_ID_no_label':
-        if (nidaNumberError.isNotEmpty || nidaNumber.text.isNotEmpty==true) {
+        if (nidaNumberError.isNotEmpty || nidaNumber.text.isNotEmpty == true) {
           coordinator.isValidNidaNumber(nidaNumber.text);
         }
         break;
       case 'SU_mobile_no_label':
-        if (mobileNumberError.isNotEmpty || mobileNumber.text.isNotEmpty==true) {
+        if (mobileNumberError.isNotEmpty ||
+            mobileNumber.text.isNotEmpty == true) {
           print("ffg");
           coordinator.isValidMobileNumber(mobileNumber.text);
         }

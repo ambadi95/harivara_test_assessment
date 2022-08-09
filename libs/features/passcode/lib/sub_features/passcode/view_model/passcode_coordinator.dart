@@ -179,8 +179,8 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
       await _passcodeUseCase.savePassCodeLocal(newPasscode);
       if (userType == "Customer") {
         state = currentState.copyWith(isLoading: true);
-        var response = await _passcodeUseCase.savePasscode(
-            newPasscode, userType, (p0) => null);
+        var response =
+            await _passcodeUseCase.savePasscode(newPasscode, (p0) => null);
         if (response!.status == true) {
           var loginResponse =
               await _passcodeUseCase.login(newPasscode, (p0) => null);

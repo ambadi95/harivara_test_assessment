@@ -60,7 +60,7 @@ class _LoginState extends State<Login> {
     );
   }
 
-@override
+  @override
   void dispose() {
     passcodeController.dispose();
     agentIdController.dispose();
@@ -119,7 +119,7 @@ class _LoginState extends State<Login> {
             const SizedBox(
               height: 46,
             ),
-           // _buildResetPasscode(coordinator),
+            // _buildResetPasscode(coordinator),
             const Spacer(),
             actionButton(coordinator),
             dynamicHSpacer(20),
@@ -175,7 +175,8 @@ class _LoginState extends State<Login> {
           hintText: hint.tr,
           key: const Key('detailsTextField'),
           keyboardType: textInputType,
-          onEditComplete: (){
+          textCapitalization: TextCapitalization.characters,
+          onEditComplete: () {
             passcodeController.clear();
           },
           onChanged: (value) {
@@ -203,7 +204,7 @@ class _LoginState extends State<Login> {
           // coordinator.navigateToWelcomeBackScreen(userType, mobileNumber.text);
 
           coordinator.login(mobileNumber.text, passcodeController.text,
-              widget.userType, agentIdController.text);
+              widget.userType,agentIdController.text);
         }
       },
     );

@@ -22,7 +22,6 @@ class Data extends Equatable {
   final int? referenceId;
   final int? deviceId;
 
-
   const Data({
     this.customerId,
     this.firstName,
@@ -65,23 +64,22 @@ class Data extends Equatable {
     int? deviceId,
   }) {
     return Data(
-      customerId: customerId ?? this.customerId,
-      firstName: firstName ?? this.firstName,
-      lastName: lastName ?? this.lastName,
-      middleName: middleName ?? this.middleName,
-      nidaNo: nidaNo ?? this.nidaNo,
-      address: address ?? this.address,
-      mobileNo: mobileNo ?? this.mobileNo,
-      birthdate: birthdate ?? this.birthdate,
-      gender: gender ?? this.gender,
-      profession: profession ?? this.profession,
-      emailId: emailId ?? this.emailId,
-      poBoxNumber: poBoxNumber ?? this.poBoxNumber,
-      region: region ?? this.region,
-      district: district ?? this.district,
-      referenceId: referenceId ?? this.referenceId,
-      deviceId: deviceId ?? this.deviceId
-    );
+        customerId: customerId ?? this.customerId,
+        firstName: firstName ?? this.firstName,
+        lastName: lastName ?? this.lastName,
+        middleName: middleName ?? this.middleName,
+        nidaNo: nidaNo ?? this.nidaNo,
+        address: address ?? this.address,
+        mobileNo: mobileNo ?? this.mobileNo,
+        birthdate: birthdate ?? this.birthdate,
+        gender: gender ?? this.gender,
+        profession: profession ?? this.profession,
+        emailId: emailId ?? this.emailId,
+        poBoxNumber: poBoxNumber ?? this.poBoxNumber,
+        region: region ?? this.region,
+        district: district ?? this.district,
+        referenceId: referenceId ?? this.referenceId,
+        deviceId: deviceId ?? this.deviceId);
   }
 
   @override

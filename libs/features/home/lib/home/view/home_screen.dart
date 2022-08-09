@@ -25,6 +25,8 @@ class CrayonHomeScreen extends StatefulWidget {
 class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
   late BuildContext context;
   int selectedIndex = 0;
+  String username = '';
+  String userId = '';
 
   @override
   Widget build(BuildContext context) =>
@@ -33,6 +35,8 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
         setupViewModel: (coordinator) async {
           coordinator.initialiseState(
               context, '', widget.homeScreenArgs.isAgent, false);
+         username =  await coordinator.getAgentName();
+         userId = await coordinator.getAgentId();
         },
         builder: (context, state, coordinator) => Scaffold(
           body: SafeArea(

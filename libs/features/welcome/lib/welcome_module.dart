@@ -23,6 +23,7 @@ import 'package:welcome/sub_features/signup/viewmodel/signup_viewmodel.dart';
 import 'package:welcome/sub_features/welcome/viewmodel/welcome_usecase.dart';
 import 'package:welcome/sub_features/welcome/viewmodel/welcome_coordinatior.dart';
 import 'package:welcome/sub_features/welcome/viewmodel/welcome_view_model.dart';
+import 'package:welcome/sub_features/welcome_back/service/welcome_back_service.dart';
 import 'package:welcome/sub_features/welcome_back/viewmodel/welcome_back_coordinatior.dart';
 import 'package:welcome/sub_features/welcome_back/viewmodel/welcome_back_usecase.dart';
 import 'package:welcome/sub_features/welcome_back/viewmodel/welcome_back_view_model.dart';
@@ -42,7 +43,7 @@ class WelcomeModule {
       moduleIdentifier,
       SignupModuleResolver(
         SignupApiResolver(SignupService(), DetailsService(),
-            EnrollmentService(), AgentDetailsService()),
+            EnrollmentService(), AgentDetailsService(), WelcomeBackService()),
       ),
     );
 
@@ -102,8 +103,8 @@ class WelcomeModule {
         WelcomeNavigationHandler(container.resolve<NavigationManager>()),
         EnrollmentSuccessUseCase(
           container.resolve<IAuthManager>(),
-            container.resolve<CacheTaskResolver>(),
-            container.resolve<TaskManager>(),
+          container.resolve<CacheTaskResolver>(),
+          container.resolve<TaskManager>(),
         ),
       ),
     );
