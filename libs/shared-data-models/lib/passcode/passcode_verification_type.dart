@@ -1,22 +1,9 @@
 enum PassCodeVerificationType {
   create,
   verify,
-  verifyMerchantPasscode,
   customerSign,
-  payment,
   agentResetPasscode,
   agentVerifyResetPasscode,
-  reset,
-  newPasscode,
-  changePasscode,
-  changePasscodeMerchant,
-  changeNewPasscode,
-  changeNewMerchantPasscode,
-  changeConfirmMerchantPasscode,
-  reEnterPasscode,
-  activateBiometric,
-  resetNewPasscode,
-  resetReEnterPasscode,
-  agentOneTimePasscode,
   agentSignIn,
+  agentCustomerPasscode
 }

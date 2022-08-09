@@ -68,62 +68,22 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
           userType,
         );
         break;
-      case PassCodeVerificationType.verifyMerchantPasscode:
-        // TODO: Handle this case.
-        break;
-      case PassCodeVerificationType.customerSign:
-        // TODO: Handle this case.
-        break;
-      case PassCodeVerificationType.payment:
-        // TODO: Handle this case.
-        break;
-      case PassCodeVerificationType.reset:
-        await createPassCode(passCode);
-        // TODO: Handle this case.
-        break;
-      case PassCodeVerificationType.newPasscode:
-        // TODO: Handle this case.
-        break;
-      case PassCodeVerificationType.changePasscode:
-        // TODO: Handle this case.
-        break;
-      case PassCodeVerificationType.changePasscodeMerchant:
-        await createPassCode(passCode);
-        // TODO: Handle this case.
-        break;
-      case PassCodeVerificationType.changeNewPasscode:
-        // TODO: Handle this case.
-        break;
-      case PassCodeVerificationType.changeNewMerchantPasscode:
-        // TODO: Handle this case.
-        break;
-      case PassCodeVerificationType.changeConfirmMerchantPasscode:
-        // TODO: Handle this case.
-        break;
-      case PassCodeVerificationType.reEnterPasscode:
-        // TODO: Handle this case.
-        break;
-      case PassCodeVerificationType.activateBiometric:
-        // TODO: Handle this case.
-        break;
-      case PassCodeVerificationType.resetNewPasscode:
-        // TODO: Handle this case.
-        break;
-      case PassCodeVerificationType.resetReEnterPasscode:
-        // TODO: Handle this case.
-        break;
       case PassCodeVerificationType.agentResetPasscode:
-        // TODO: Handle this case.
         createResetPassCode(passCode);
         break;
       case PassCodeVerificationType.agentVerifyResetPasscode:
-        // TODO: Handle this case.
         await verifyPasscodeReset(currentState.initialPasscode, passCode,
             currentState.destinationPath, userType);
         break;
       case PassCodeVerificationType.agentSignIn:
         _navigationHandler
             .navigateToAgentHomeScreen('homemodule/CrayonHomeScreen');
+        break;
+      case PassCodeVerificationType.customerSign:
+        // TODO: Handle this case.
+        break;
+      case PassCodeVerificationType.agentCustomerPasscode:
+        // TODO: Handle this case.
         break;
     }
   }

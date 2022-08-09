@@ -1,4 +1,5 @@
 import 'package:config/Colors.dart';
+import 'package:config/Config.dart';
 import 'package:core/navigation/navigation_manager.dart';
 import 'package:core/navigation/navigation_type.dart';
 import 'package:core/sheets/data_model/button_options.dart';
@@ -69,7 +70,19 @@ class WelcomeNavigationHandler with ErrorHandler {
     );
   }
 
-  Future<void> openForNewPasscode(String userType) async {
+  Future<void> openForNewPasscode(UserType userType) async {
+    String user;
+    switch(userType){
+      case UserType.Customer:
+        user = 'Customer';
+        break;
+      case UserType.Agent:
+        user = 'Agent';
+        break;
+      case UserType.AgentCustomer:
+        user = 'AgentCustomer';
+        break;
+    }
     var arguments = PasscodeScreenArgs(
         'PC_create_passcode',
         'PC_passcode_message',
@@ -79,7 +92,7 @@ class WelcomeNavigationHandler with ErrorHandler {
         PassCodeVerificationType.create,
         false,
         '',
-        userType);
+        user );
 
     _navigationManager.navigateTo(
       CrayonPasscodeScreen.viewPath,

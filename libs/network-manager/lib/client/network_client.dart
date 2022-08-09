@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:io';
-
 import 'package:core/ioc/di_container.dart';
 import 'package:core/logging/logger.dart';
 import 'package:core/utils/extensions/string_extensions.dart';
@@ -118,7 +117,7 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
   ) async {
     if (!hasInternet) {
       CrayonPaymentLogger.logInfo<NetworkClient>(
-          'No active internet connection.');
+          'No active internet connection.',);
       return NetworkStandardResponse(
         '',
         HttpStatus.noConnectionToInternet,

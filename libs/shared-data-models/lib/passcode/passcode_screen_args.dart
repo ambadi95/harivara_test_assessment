@@ -11,6 +11,7 @@ class PasscodeScreenArgs {
   final String initialPasscode;
   final String userType;
 
+
   PasscodeScreenArgs(
     this.title,
     this.description,
