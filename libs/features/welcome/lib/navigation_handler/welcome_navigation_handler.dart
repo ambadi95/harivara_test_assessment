@@ -151,12 +151,15 @@ class WelcomeNavigationHandler with ErrorHandler {
   }
 
   Future<void> navigateToAgentDetailScreen(String userType) async {
+
     var arguments = AgentDetailScreenArguments('DV_title_agent', 'DV_subtitle',
         AgentDetailScreenType.Signup, userType, true);
     await _navigationManager.navigateTo(
         AgentDetailsScreen.viewPath, const NavigationType.push(),
         arguments: arguments);
   }
+
+
 
   Future<void> navigateToOtpScreenCustomerSignUp(
       String userType, String mobileNumber,
@@ -170,6 +173,32 @@ class WelcomeNavigationHandler with ErrorHandler {
       true,
       2,
       OtpVerificationType.mobile,
+      userId!,
+      6,
+      mobileNumber,
+      false,
+      userType,
+    );
+    _navigationManager.navigateTo(
+      CrayonVerifyOtpScreen.viewPath,
+      const NavigationType.push(),
+      preventDuplicates: false,
+      arguments: arguments,
+    );
+  }
+
+  Future<void> navigateToOtpScreenCustomerSignUpByAgent(
+      String userType, String mobileNumber,
+      {String? userId}) async {
+    var arguments = OtpScreenArgs(
+      'OTP Verification',
+      'VO_otp_verification_description',
+      userType == 'Customer'
+          ? 'welcomeModule/details'
+          : 'welcomeModule/agentDetails',
+      true,
+      2,
+      OtpVerificationType.customerSignUpAgent,
       userId!,
       6,
       mobileNumber,

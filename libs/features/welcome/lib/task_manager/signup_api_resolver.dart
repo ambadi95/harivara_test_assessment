@@ -13,8 +13,11 @@ class SignupApiResolver extends TaskResolver {
   final IAgentDetailsService _agentDetailsService;
   final IWelcomeBackService _welcomeBackService;
 
-  SignupApiResolver(this._signupService, this._detailsService,
-      this._enrollmentService, this._agentDetailsService,
+  SignupApiResolver(
+      this._signupService,
+      this._detailsService,
+      this._enrollmentService,
+      this._agentDetailsService,
       this._welcomeBackService);
 
   @override
@@ -32,9 +35,10 @@ class SignupApiResolver extends TaskResolver {
         );
       case ISignupService.signUpCustomerByAgent:
         return _signupService.signupCustomerByAgent(
-          nidaNumber: requestData['nidaNumber'] as String,
-          agentId: requestData['agentId'] as String,
-          customerMobileNumber: requestData['mobileNo'] as String, token: requestData['token']);
+            nidaNumber: requestData['nidaNumber'] as String,
+            agentId: requestData['agentId'] as String,
+            customerMobileNumber: requestData['mobileNo'] as String,
+            token: requestData['token'] as String);
       case IDetailsService.regionIdentifier:
         return _detailsService.getRegion();
       case IDetailsService.districtIdentifier:
@@ -49,13 +53,9 @@ class SignupApiResolver extends TaskResolver {
       case IAgentDetailsService.submitAgentDetailIdentifier:
         return _agentDetailsService.submitAgentDetails(requestData);
       case IWelcomeBackService.getAgentDetailIdentifier:
-        return _welcomeBackService.getAgentDetails(
-            requestData['agentId']
-        );
+        return _welcomeBackService.getAgentDetails(requestData['agentId']);
       case IWelcomeBackService.agentLoginIdentifier:
-        return _welcomeBackService.loginAgent(
-            requestData
-        );
+        return _welcomeBackService.loginAgent(requestData);
       default:
         throw UnimplementedError();
     }

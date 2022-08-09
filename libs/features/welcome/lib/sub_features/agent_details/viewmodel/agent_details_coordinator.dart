@@ -20,7 +20,8 @@ class AgentDetailsCoordinator extends BaseViewModel<AgentDetailsState> {
   Future getAgentDetail() async {
     var response = await _agentDetailsUseCase.getAgentDetail((p0) => null);
     if (response?.status == true) {
-      await _agentDetailsUseCase.saveAgentMobileNumber(response!.data!.mobileNo!);
+      await _agentDetailsUseCase
+          .saveAgentMobileNumber(response!.data!.mobileNo!);
       return response.data;
     }
     return null;

@@ -8,6 +8,8 @@ import 'package:shared_data_models/welcome/otp/request/otp_request.dart';
 abstract class IOtpService {
   static const otpIdentifier = 'otp';
   static const otpVerifyIdentifier = 'otpVerify';
+  static const otpGenCustomerByAgentIdentifier = 'otpGenCustomerByAgent';
+  static const otpVerifyCustomerByAgentIdentifier = 'otpVerifyCustomerByAgent';
 
   Future<StandardRequest> otpGen(
     Map<String, dynamic> requestData,
@@ -16,6 +18,14 @@ abstract class IOtpService {
   Future<StandardRequest> otpVerify(
     Map<String, dynamic> requestData,
   );
+
+  Future<StandardRequest> otpGenCustomerByAgent(
+      Map<String, dynamic> requestData,
+      );
+
+  Future<StandardRequest> otpVerifyCustomerByAgent(
+      Map<String, dynamic> requestData,
+      );
 }
 
 class OtpService implements IOtpService {
@@ -39,6 +49,30 @@ class OtpService implements IOtpService {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
     request.endpoint = 'otp-validate';
+    request.customHeaders = {
+      'Content-Type': 'application/json',
+    };
+    request.jsonBody = json.encode(requestData);
+    return request;
+  }
+
+  @override
+  Future<StandardRequest> otpGenCustomerByAgent(Map<String, dynamic> requestData) async{
+    var request = StandardRequest();
+    request.requestType = RequestType.POST;
+    request.endpoint = 'https://y9-dev-capi.testmaya.com/customers/v1/otp-gen[customer]';
+    request.customHeaders = {
+      'Content-Type': 'application/json',
+    };
+    request.jsonBody = json.encode(requestData);
+    return request;
+  }
+
+  @override
+  Future<StandardRequest> otpVerifyCustomerByAgent(Map<String, dynamic> requestData)async {
+    var request = StandardRequest();
+    request.requestType = RequestType.POST;
+    request.endpoint = 'https://y9-dev-capi.testmaya.com/customers/v1/otp-validate[customer]';
     request.customHeaders = {
       'Content-Type': 'application/json',
     };

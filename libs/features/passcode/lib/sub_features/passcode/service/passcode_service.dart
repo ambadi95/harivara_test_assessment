@@ -22,8 +22,8 @@ abstract class IPasscodeService {
   );
 
   Future<StandardRequest> loginAgent(
-      Map<String, dynamic> requestData,
-      );
+    Map<String, dynamic> requestData,
+  );
 }
 
 class PasscodeService implements IPasscodeService {
@@ -71,8 +71,8 @@ class PasscodeService implements IPasscodeService {
 
   @override
   Future<StandardRequest> loginAgent(
-      Map<String, dynamic> requestData,
-      ) async {
+    Map<String, dynamic> requestData,
+  ) async {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
     request.endpoint = 'agent-login';

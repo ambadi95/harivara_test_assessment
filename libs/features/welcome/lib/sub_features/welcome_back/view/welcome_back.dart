@@ -44,8 +44,8 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
   Widget build(BuildContext context) =>
       BaseView<WelcomeBackCoordinator, WelcomeScreenState>(
         setupViewModel: (coordinator) async {
-            username = await coordinator.getUserName();
-            userID = await coordinator.getUserId();
+          username = await coordinator.getUserName();
+          userID = await coordinator.getUserId();
         },
         builder: (context, state, welcomeCoordinator) => Scaffold(
           body: _buildMainUIWithLoading(context, welcomeCoordinator, state),

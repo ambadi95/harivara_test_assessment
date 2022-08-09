@@ -31,7 +31,7 @@ class HomeCoordinator extends BaseViewModel<HomeScreenState> {
 
   Future<String> getAgentId() async {
     String agentId = await _customerHomeUseCase.getAgentId();
-   return agentId;
+    return agentId;
   }
 
   Future<String> getAgentName() async {

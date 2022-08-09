@@ -71,12 +71,7 @@ class VerifyOtpNavigationHandler with ErrorHandler {
   }
 
   Future<void> navigateToAgentWelcomeBack(String userType) async {
-    var args = WelcomeScreenArgs(
-      '',
-      '',
-        userType,
-      true
-    );
+    var args = WelcomeScreenArgs('', '', userType, true);
     _navigationManager.navigateTo(
         CrayonWelcomScreen.viewPath, const NavigationType.replace(),
         arguments: args);

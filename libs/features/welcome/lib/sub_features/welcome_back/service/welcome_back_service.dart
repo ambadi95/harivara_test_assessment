@@ -10,9 +10,8 @@ abstract class IWelcomeBackService {
   Future<StandardRequest> getAgentDetails(String agentId);
 
   Future<StandardRequest> loginAgent(
-      Map<String, dynamic> requestData,
-      );
-
+    Map<String, dynamic> requestData,
+  );
 }
 
 class WelcomeBackService implements IWelcomeBackService {
@@ -29,8 +28,8 @@ class WelcomeBackService implements IWelcomeBackService {
 
   @override
   Future<StandardRequest> loginAgent(
-      Map<String, dynamic> requestData,
-      ) async {
+    Map<String, dynamic> requestData,
+  ) async {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
     request.endpoint = 'agent-login';
@@ -40,5 +39,4 @@ class WelcomeBackService implements IWelcomeBackService {
     request.jsonBody = json.encode(requestData);
     return request;
   }
-
 }

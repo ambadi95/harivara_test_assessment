@@ -56,8 +56,9 @@ class PasscodeUseCase extends BaseDataProvider {
     return await getValueFromSecureStorage('agentName', defaultValue: '');
   }
 
-  Future<String> getAgentMobileNumber()async{
-    return await getValueFromSecureStorage('agentMobileNumber', defaultValue: '');
+  Future<String> getAgentMobileNumber() async {
+    return await getValueFromSecureStorage('agentMobileNumber',
+        defaultValue: '');
   }
 
   Future<String> getAgentId() async {
@@ -138,15 +139,14 @@ class PasscodeUseCase extends BaseDataProvider {
         });
   }
 
-  Future<AgentSignInResponse?> loginAgent(String passcode,
-      Function(String) onErrorCallback) async {
+  Future<AgentSignInResponse?> loginAgent(
+      String passcode, Function(String) onErrorCallback) async {
     String agentMobileNumber = await getAgentMobileNumber();
     String agentID = await getAgentId();
     AgentSignIn getAgentRequest = AgentSignIn(
         mobileNumber: agentMobileNumber,
         y9AgentId: agentID,
-        passcode: passcode
-    );
+        passcode: passcode);
     return await executeApiRequest<AgentSignInResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
@@ -157,12 +157,10 @@ class PasscodeUseCase extends BaseDataProvider {
         modelBuilderCallback: (responseData) {
           final data = responseData;
           AgentSignInResponse agentSignInResponse =
-          AgentSignInResponse.fromJson(data);
+              AgentSignInResponse.fromJson(data);
           _authManager.storeTokenInformation(
               agentSignInResponse.data!.token!, '', '', '');
           return AgentSignInResponse.fromJson(data);
         });
   }
-
-
 }

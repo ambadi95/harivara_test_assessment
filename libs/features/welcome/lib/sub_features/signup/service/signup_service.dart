@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:core/logging/logger.dart';
 import 'package:network_manager/model/requests/request.dart';
 import 'package:network_manager/model/requests/standard/standard_request.dart';
 
@@ -80,6 +81,9 @@ class SignupService implements ISignupService {
       'mobileNo': customerMobileNumber,
       'y9AgentId': agentId,
     });
+    CrayonPaymentLogger.logInfo(request.jsonBody.toString());
+    CrayonPaymentLogger.logInfo(token);
+
     return request;
   }
 }

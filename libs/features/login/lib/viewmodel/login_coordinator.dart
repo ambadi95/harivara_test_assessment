@@ -65,8 +65,7 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
     if (userType == 'Customer') {
       await customerLogin(mobileNumber, passcode, userType);
     } else {
-    await getAgentDetails(agentId);
-
+      await getAgentDetails(agentId);
     }
   }
 
@@ -86,18 +85,20 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
     }
   }
 
-  Future getAgentDetails(String agentId)async{
+  Future getAgentDetails(String agentId) async {
     state = LoginState.loading();
-    var response = await _loginUseCase.getAgentDetail(agentId,(p0) => null);
-    if(response?.status == true){
+    var response = await _loginUseCase.getAgentDetail(agentId, (p0) => null);
+    if (response?.status == true) {
       print(response);
       state = LoginState.successState();
       await _loginUseCase.saveAgentId(agentId);
       await _loginUseCase.saveMobileNumber(response!.data!.mobileNo!);
-      await _loginUseCase.saveAgentName(response.data!.firstName! + ' '+response.data!.lastName!);
+      await _loginUseCase.saveAgentName(
+          response.data!.firstName! + ' ' + response.data!.lastName!);
       await _loginUseCase.saveOnBordStatus(agentId);
-      await _navigationHandler.navigateToOtpScreenForAgent('Agent', response.data!.mobileNo!, agentId);
-    }else{
+      await _navigationHandler.navigateToOtpScreenForAgent(
+          'Agent', response.data!.mobileNo!, agentId);
+    } else {
       state = LoginState.successState();
       state = LoginState.agentIdError('Agent ID not found');
       CrayonPaymentLogger.logError(response!.message!);

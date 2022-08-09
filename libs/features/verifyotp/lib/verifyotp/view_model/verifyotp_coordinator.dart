@@ -48,8 +48,14 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
   Future<void> generateOtp(
     String id,
     String userType,
+      OtpVerificationType otpVerificationType
   ) async {
-    var response = await _verifyOtpUseCase.otpGen(id, userType, (p0) => null);
+    var response;
+    if(otpVerificationType == OtpVerificationType.customerSignUpAgent){
+       response = await _verifyOtpUseCase.otpGenCustomerByAgent(id, 'Customer', (p0) => null);
+    } else {
+      response = await _verifyOtpUseCase.otpGen(id, userType, (p0) => null);
+    }
     if (response?.status == true) {
       int otp1 = response?.data?.token as int;
       otp = otp1.toString();
@@ -152,6 +158,13 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         _navigationHandler.navigateToCustomerEnrollmentScreen();
       } else {
         print('error');
+      }
+    }else if(otpScreenArgs.otpVerificationType == OtpVerificationType.customerSignUpAgent){
+      var responseSignin = await _verifyOtpUseCase.otpVerifyCustomerByAgent(
+          otpScreenArgs.refId,enterOtp, 'Customer',  (p0) => null);
+      if (responseSignin!.data!.status == "success") {
+        _navigationHandler.navigateToCustomerEnrollmentScreen();
+      } else {
       }
     } else if (otpScreenArgs.otpVerificationType ==
         OtpVerificationType.mobile) {

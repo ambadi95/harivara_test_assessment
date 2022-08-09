@@ -6,5 +6,6 @@ enum OtpVerificationType {
   updateMobile,
   agentSignIn,
   customerSign,
-  updatePasscodeAgent
+  updatePasscodeAgent,
+  customerSignUpAgent
 }

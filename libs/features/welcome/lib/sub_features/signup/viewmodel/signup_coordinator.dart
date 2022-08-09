@@ -57,15 +57,18 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
     } else if (signUpArguments.signupType ==
         SignupType.agentAidedCustomerOnBoarding) {
       state = const SignUpState.loadingState();
-      var response = await _signupUseCase.signUp(
-          nindaNumber.replaceAll("-", ""), mobileNumber.trim(), (p0) => null);
+      var response = await _signupUseCase.signUpCustomerByAgent(
+          nindaNumber: nindaNumber.replaceAll("-", ""),
+          customerMobile: mobileNumber.trim(),
+          onErrorCallback: (p0) => null,
+          agentId: await _signupUseCase.getAgentId());
       if (response!.status == true) {
         await continueToOtp(nindaNumber, mobileNumber);
         state = const SignUpState.initialState();
         await _signupUseCase
             .saveCustomerId(response.data?.customerId.toString());
-        _navigationHandler.navigateToOtpScreenCustomerSignUp(
-            signUpArguments.userType, mobileNumber,
+        _navigationHandler.navigateToOtpScreenCustomerSignUpByAgent(
+            'Customer', mobileNumber,
             userId: response.data?.customerId.toString());
       } else {
         state = const SignUpState.initialState();

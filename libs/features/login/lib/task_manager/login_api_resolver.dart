@@ -14,9 +14,7 @@ class LoginApiResolver extends TaskResolver {
       case ILoginService.loginAgentIdentifier:
         return _loginService.loginAgent(requestData);
       case ILoginService.agentDetailIdentifier:
-        return _loginService.getAgentDetails(
-        requestData['agentId']
-        );
+        return _loginService.getAgentDetails(requestData['agentId']);
       default:
         throw UnimplementedError();
     }

@@ -16,9 +16,7 @@ abstract class ILoginService {
     Map<String, dynamic> requestData,
   );
 
-  Future<StandardRequest>  getAgentDetails(
-      String agentId
-      );
+  Future<StandardRequest> getAgentDetails(String agentId);
 }
 
 class LoginService implements ILoginService {

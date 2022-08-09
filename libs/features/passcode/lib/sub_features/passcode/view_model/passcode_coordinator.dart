@@ -196,8 +196,9 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
             newPasscode, userType, (p0) => null);
         if (response!.status == true) {
           state = currentState.copyWith(currentStep: 5);
-          var loginResponse = await _passcodeUseCase.loginAgent(newPasscode, (p0) => null);
-          if(loginResponse!.status == true){
+          var loginResponse =
+              await _passcodeUseCase.loginAgent(newPasscode, (p0) => null);
+          if (loginResponse!.status == true) {
             String agentId = await _passcodeUseCase.getAgentId();
             await _passcodeUseCase.saveOnBordStatus(agentId);
             String agentName = await _passcodeUseCase.getAgentName();
@@ -205,11 +206,11 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
                 'AE_Message'.tr.replaceAll('_name_', agentName),
                 'AE_Continue'.tr);
             state = currentState.copyWith(isLoading: false);
-          }else{
+          } else {
             state = currentState.copyWith(isLoading: false);
             CrayonPaymentLogger.logError(loginResponse!.message!);
-        }
-        }else{
+          }
+        } else {
           state = currentState.copyWith(isLoading: false);
           CrayonPaymentLogger.logError(response!.message!);
         }

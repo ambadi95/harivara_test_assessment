@@ -153,6 +153,10 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
         request.endpoint,
         request.uriParameters,
       );
+    } else if(request.endpoint.contains('[customer]')){
+      uri = Uri.parse(
+        request.endpoint.replaceAll('[customer]', ''),
+      );
     } else {
       uri = Uri.parse(
         '${currentEnvironment.host}${request.endpoint}',
@@ -199,6 +203,10 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
     Uri uri;
     if (currentEnvironment.name == 'Local') {
       uri = Uri.parse('http://' + currentEnvironment.host + request.endpoint);
+    } else if(request.endpoint.contains('[customer]')){
+      uri = Uri.parse(
+        request.endpoint.replaceAll('[customer]', ''),
+      );
     } else {
       uri = Uri.parse(currentEnvironment.host + request.endpoint);
     }
@@ -236,7 +244,11 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
     Uri uri;
     if (currentEnvironment.name == 'Local') {
       uri = Uri.parse('http://' + currentEnvironment.host + request.endpoint);
-    } else {
+    }else if(request.endpoint.contains('[customer]')){
+      uri = Uri.parse(
+        request.endpoint.replaceAll('[customer]', ''),
+      );
+    }  else {
       uri = Uri.parse(currentEnvironment.host + request.endpoint);
     }
     if (_getStaticAuth != 'error') {

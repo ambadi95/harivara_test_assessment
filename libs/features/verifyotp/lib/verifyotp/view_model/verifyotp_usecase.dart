@@ -1,4 +1,5 @@
 import 'package:config/Config.dart';
+import 'package:core/mobile_core.dart';
 import 'package:shared_data_models/welcome/otp/request/otp_request.dart';
 import 'package:shared_data_models/welcome/otp/response/otp_response.dart';
 import 'package:shared_data_models/welcome/otp_verification/request/otp_verification_request.dart';
@@ -55,6 +56,26 @@ class VerifyOtpUseCase extends BaseDataProvider {
         });
   }
 
+  Future<OtpResponse?> otpGenCustomerByAgent(
+      String id, String userType, Function(String) onErrorCallback) async {
+    OtpRequest otpRequest = OtpRequest(id: id, type: userType);
+
+    CrayonPaymentLogger.logInfo(otpRequest.toJson().toString());
+
+    return await executeApiRequest<OtpResponse?>(
+        taskType: TaskType.DATA_OPERATION,
+        taskSubType: TaskSubType.REST,
+        moduleIdentifier: VerifyOtpModule.moduleIdentifier,
+        requestData: otpRequest.toJson(),
+        serviceIdentifier: IOtpService.otpGenCustomerByAgentIdentifier,
+        onError: onErrorCallback,
+        modelBuilderCallback: (responseData) {
+          CrayonPaymentLogger.logInfo(responseData.toString());
+          final data = responseData;
+          return OtpResponse.fromJson(data);
+        });
+  }
+
   Future<OtpVerificationResponse?> otpVerify(String id, String otp,
       String userType, Function(String) onErrorCallback) async {
     OtpVerificationRequest otpRequest =
@@ -68,6 +89,26 @@ class VerifyOtpUseCase extends BaseDataProvider {
         serviceIdentifier: IOtpService.otpVerifyIdentifier,
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {
+          final data = responseData;
+          return OtpVerificationResponse.fromJson(data);
+        });
+  }
+
+  Future<OtpVerificationResponse?> otpVerifyCustomerByAgent(String id, String otp,
+      String userType, Function(String) onErrorCallback) async {
+    OtpVerificationRequest otpRequest =
+    OtpVerificationRequest(id: id, type: userType, otp: otp);
+    CrayonPaymentLogger.logInfo(otpRequest.toJson().toString());
+
+    return await executeApiRequest<OtpVerificationResponse?>(
+        taskType: TaskType.DATA_OPERATION,
+        taskSubType: TaskSubType.REST,
+        moduleIdentifier: VerifyOtpModule.moduleIdentifier,
+        requestData: otpRequest.toJson(),
+        serviceIdentifier: IOtpService.otpVerifyCustomerByAgentIdentifier,
+        onError: onErrorCallback,
+        modelBuilderCallback: (responseData) {
+          CrayonPaymentLogger.logInfo(responseData.toString());
           final data = responseData;
           return OtpVerificationResponse.fromJson(data);
         });

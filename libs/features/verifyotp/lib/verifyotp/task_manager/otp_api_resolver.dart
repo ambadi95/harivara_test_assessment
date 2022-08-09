@@ -18,6 +18,14 @@ class OtpApiResolver extends TaskResolver {
         return _otpService.otpVerify(
           requestData,
         );
+      case IOtpService.otpGenCustomerByAgentIdentifier:
+        return _otpService.otpGenCustomerByAgent(
+          requestData,
+        );
+      case IOtpService.otpVerifyCustomerByAgentIdentifier:
+        return _otpService.otpVerifyCustomerByAgent(
+          requestData,
+        );
       default:
         throw UnimplementedError();
     }

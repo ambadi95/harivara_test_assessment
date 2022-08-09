@@ -18,7 +18,8 @@ import 'welcome_back_view_model.dart';
 class WelcomeBackUseCase extends BaseDataProvider {
   final WelcomeBackViewModel _welcomeBackViewModel;
   final IAuthManager _authManager;
-  WelcomeBackUseCase(this._welcomeBackViewModel,this._authManager, TaskManager taskManager)
+  WelcomeBackUseCase(
+      this._welcomeBackViewModel, this._authManager, TaskManager taskManager)
       : super(taskManager);
 
   Future<void> saveLocale(String currentLocale) async {
@@ -44,9 +45,9 @@ class WelcomeBackUseCase extends BaseDataProvider {
   }
 
   Future<String> getAgentMobileNumber() async {
-    return await getValueFromSecureStorage('agentMobileNumber', defaultValue: '');
+    return await getValueFromSecureStorage('agentMobileNumber',
+        defaultValue: '');
   }
-
 
   Future<String> getAgentName() async {
     return await getValueFromSecureStorage('agentName', defaultValue: '');
@@ -97,15 +98,14 @@ class WelcomeBackUseCase extends BaseDataProvider {
         });
   }
 
-  Future<AgentSignInResponse?> loginAgent(String passcode,
-    Function(String) onErrorCallback) async {
+  Future<AgentSignInResponse?> loginAgent(
+      String passcode, Function(String) onErrorCallback) async {
     String agentMobileNumber = await getAgentMobileNumber();
     String agentID = await getAgentId();
     AgentSignIn getAgentRequest = AgentSignIn(
         mobileNumber: agentMobileNumber,
         y9AgentId: agentID,
-      passcode: passcode
-    );
+        passcode: passcode);
     return await executeApiRequest<AgentSignInResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
@@ -116,7 +116,7 @@ class WelcomeBackUseCase extends BaseDataProvider {
         modelBuilderCallback: (responseData) {
           final data = responseData;
           AgentSignInResponse agentSignInResponse =
-          AgentSignInResponse.fromJson(data);
+              AgentSignInResponse.fromJson(data);
           print(agentSignInResponse);
           _authManager.storeTokenInformation(
               agentSignInResponse.data!.token!, '', '', '');

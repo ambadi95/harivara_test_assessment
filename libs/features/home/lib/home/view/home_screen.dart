@@ -35,8 +35,8 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
         setupViewModel: (coordinator) async {
           coordinator.initialiseState(
               context, '', widget.homeScreenArgs.isAgent, false);
-         username =  await coordinator.getAgentName();
-         userId = await coordinator.getAgentId();
+          username = await coordinator.getAgentName();
+          userId = await coordinator.getAgentId();
         },
         builder: (context, state, coordinator) => Scaffold(
           body: SafeArea(
@@ -76,7 +76,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
               const SizedBox(
                 height: 5.0,
               ),
-               Text(username, style: HS_name_text_style),
+              Text(username, style: HS_name_text_style),
             ],
           ),
           const Spacer(),
@@ -138,17 +138,13 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    widget.homeScreenArgs.isAgent == true
-                        ? 'HS_Agent_Id'.tr
-                        : 'HS_AccountId'.tr,
+                    'HS_AccountId'.tr,
                     style: HS_title_style,
                   ),
                   const SizedBox(
                     height: 5,
                   ),
-                  Text(widget.homeScreenArgs.isAgent
-                      ? userId.tr:'',
-                      style: HS_account_id_style),
+                  Text(isAgent() ? userId.tr : '', style: HS_account_id_style),
                 ],
               ),
               const Spacer(),

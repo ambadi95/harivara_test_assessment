@@ -31,6 +31,10 @@ class SignupUseCase extends BaseDataProvider {
     return agentId.isNotEmptyOrNull;
   }
 
+  Future<String> getAgentId() async {
+    return await getValueFromSecureStorage('agentId', defaultValue: '');
+  }
+
   Future<void> saveDetails(String nidaNumber, String mobileNumber) async {
     await _saveNIDANumber(nidaNumber);
     await _saveMobileNumber(mobileNumber);
@@ -60,8 +64,6 @@ class SignupUseCase extends BaseDataProvider {
   Future<void> _saveAgentName(String mobileNumber) async {
     return await setValueToSecureStorage({'AgentName': mobileNumber});
   }
-
-
 
   Future<CustomerDetailResponse?> signUp(String nindaNumber, String phoneNo,
       Function(String) onErrorCallback) async {
@@ -108,29 +110,30 @@ class SignupUseCase extends BaseDataProvider {
         });
   }
 
-  Future<AgentSignUpResponse?> signUpCustomerByAgent(
+  Future<CustomerDetailResponse?> signUpCustomerByAgent(
       {required String nindaNumber,
       required String agentId,
       required String customerMobile,
       required Function(String) onErrorCallback}) async {
     String? token = await _authManager.getAccessToken();
 
-    return await executeApiRequest<AgentSignUpResponse?>(
+    return await executeApiRequest<CustomerDetailResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
         moduleIdentifier: WelcomeModule.moduleIdentifier,
         requestData: {
           "nidaNumber": nindaNumber.replaceAll("-", ""),
           "agentId": agentId,
-          'phoneNo' : customerMobile.replaceAll(" ", ""),
-          'token' : token
+          'mobileNo': customerMobile.replaceAll(" ", ""),
+          'token': token
         },
-        serviceIdentifier: ISignupService.signUpAgentIdentifier,
+        serviceIdentifier: ISignupService.signUpCustomerByAgent,
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {
+          CrayonPaymentLogger.logInfo(responseData.toString());
           final data = responseData;
-          AgentSignUpResponse agentSignUpResponse =
-              AgentSignUpResponse.fromJson(data);
+          CustomerDetailResponse agentSignUpResponse =
+              CustomerDetailResponse.fromJson(data);
 
           print(data);
           return agentSignUpResponse;

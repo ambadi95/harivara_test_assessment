@@ -7,12 +7,12 @@ import 'package:task_manager/task_manager_impl.dart';
 class SettingsUseCase extends BaseDataProvider {
   final SettingsViewModel _settingsViewModel;
   final CacheTaskResolver _cacheTaskResolver;
-  SettingsUseCase(this._settingsViewModel,this._cacheTaskResolver, TaskManager taskManager)
+  SettingsUseCase(
+      this._settingsViewModel, this._cacheTaskResolver, TaskManager taskManager)
       : super(taskManager);
 
   Future logout() async {
     _cacheTaskResolver
         .execute("", {CACHE_TYPE: TaskManagerCacheType.DELETE_ALL});
   }
-
 }

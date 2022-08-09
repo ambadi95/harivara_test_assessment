@@ -39,35 +39,34 @@ class WelcomeBackCoordinator extends BaseViewModel<WelcomeScreenState> {
     }
   }
 
-    Future<String> getAgentDetails()async{
-      state = state.copyWith(isLoading: true);
-      var response = await _welcomeUseCase.getAgentDetail((p0) => null);
-      if(response?.status == true){
-        state = state.copyWith(isLoading: false);
-        await _welcomeUseCase.saveAgentMobileNumber(response!.data!.mobileNo!);
-        String name = response.data!.firstName! +' '+ response.data!.lastName!;
-        return name;
-      }else{
-        state = state.copyWith(isLoading: false);
-        CrayonPaymentLogger.logError(response!.message!);
-        return '';
-      }
+  Future<String> getAgentDetails() async {
+    state = state.copyWith(isLoading: true);
+    var response = await _welcomeUseCase.getAgentDetail((p0) => null);
+    if (response?.status == true) {
+      state = state.copyWith(isLoading: false);
+      await _welcomeUseCase.saveAgentMobileNumber(response!.data!.mobileNo!);
+      String name = response.data!.firstName! + ' ' + response.data!.lastName!;
+      return name;
+    } else {
+      state = state.copyWith(isLoading: false);
+      CrayonPaymentLogger.logError(response!.message!);
+      return '';
     }
+  }
 
-    Future agentLogin(String passcode)async{
-      state = state.copyWith(isLoading: true);
-    var loginResponse = await _welcomeUseCase.loginAgent( passcode, (p0) => null);
-    if(loginResponse?.status == true){
+  Future agentLogin(String passcode) async {
+    state = state.copyWith(isLoading: true);
+    var loginResponse =
+        await _welcomeUseCase.loginAgent(passcode, (p0) => null);
+    if (loginResponse?.status == true) {
       state = state.copyWith(isLoading: false);
       _navigationHandler.navigateToAgentHome();
-    }else {
+    } else {
       state = state.copyWith(isLoading: false);
       state = state.copyWith(error: loginResponse!.message!);
       CrayonPaymentLogger.logError(loginResponse.message!);
     }
-    }
-
-
+  }
 
   Future<void> navigateToResetNow(String userType) async {
     await _navigationHandler.navigateToResetPasscode(userType);
@@ -81,14 +80,12 @@ class WelcomeBackCoordinator extends BaseViewModel<WelcomeScreenState> {
     return await _welcomeUseCase.getCustomerY9Id();
   }
 
-
   void onPasscodeCallback(String passCode, String userType) {
-    if(userType == 'Customer'){
+    if (userType == 'Customer') {
       customerLogin(passCode, userType);
-    }else{
+    } else {
       agentLogin(passCode);
     }
-
   }
 
   Future customerLogin(String passcode, String userType) async {
