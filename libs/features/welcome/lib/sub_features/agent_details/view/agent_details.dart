@@ -292,17 +292,17 @@ class _AgentDetailsScreenState extends State<AgentDetailsScreen> {
             AgentDetailScreenType.Signup
         ? GestureDetector(
             onTap: () {
-              coordinator.submitAgentDetail(
-                  agentDetails!.y9AgentId!,
-                  agentDetails!.firstName!,
-                  agentDetails!.lastName!,
-                  agentDetails?.middleName ?? ' ',
-                  agentDetails!.nidaNo!,
-                  agentDetails?.birthdate,
-                  agentDetails!.gender!,
-                  agentDetails!.mobileNo!,
-                  agentDetails!.emailId!);
-              //coordinator.navigateToOtpScreen(mobileNumber.text, name.text);
+              // coordinator.submitAgentDetail(
+              //     agentDetails!.y9AgentId!,
+              //     agentDetails!.firstName!,
+              //     agentDetails!.lastName!,
+              //     agentDetails?.middleName ?? ' ',
+              //     agentDetails!.nidaNo!,
+              //     agentDetails?.birthdate,
+              //     agentDetails!.gender!,
+              //     agentDetails!.mobileNo!,
+              //     agentDetails!.emailId!);
+              coordinator.navigateToOtpScreen(mobileNumber.text, name.text);
             },
             child: Container(
               width: double.infinity,

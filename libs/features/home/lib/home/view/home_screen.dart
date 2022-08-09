@@ -76,7 +76,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
               const SizedBox(
                 height: 5.0,
               ),
-              const Text("Emmanual Jisula", style: HS_name_text_style),
+               Text(username, style: HS_name_text_style),
             ],
           ),
           const Spacer(),
@@ -139,7 +139,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                 children: [
                   Text(
                     widget.homeScreenArgs.isAgent == true
-                        ? 'HS_Agent_Id'.tr
+                        ? userId.tr
                         : 'HS_AccountId'.tr,
                     style: HS_title_style,
                   ),
