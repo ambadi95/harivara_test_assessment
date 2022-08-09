@@ -37,6 +37,12 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
               context, '', widget.homeScreenArgs.isAgent, false);
           username = await coordinator.getAgentName();
           userId = await coordinator.getAgentId();
+
+          setState(() {
+            username;
+            userId;
+          });
+
         },
         builder: (context, state, coordinator) => Scaffold(
           body: SafeArea(
@@ -227,7 +233,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                     children: [
                       InkWell(
                         onTap: () {
-                          coordinator.navigateToCustomerRegister();
+                          // coordinator.navigateToCustomerRegister();
                         },
                         child: _actionCommonView(
                             'HS_Customer_OnBoarding'.tr, HS_CustomerMangIcon),

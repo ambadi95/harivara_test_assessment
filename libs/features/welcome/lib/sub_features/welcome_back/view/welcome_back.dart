@@ -54,7 +54,7 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
 
   @override
   void dispose() {
-    passcodeController.dispose();
+    // passcodeController.dispose();
     super.dispose();
   }
 
