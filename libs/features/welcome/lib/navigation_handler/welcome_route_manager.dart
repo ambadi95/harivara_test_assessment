@@ -47,9 +47,9 @@ class WelcomeRouteManager extends IRouteManager {
           userType: type,
         );
       case EnrollmentSuccessScreen.viewPath:
-        var argument = settings.arguments as bool;
+        var argument = settings.arguments as UserType;
         return EnrollmentSuccessScreen(
-          isEnrolled: argument,
+          userType: argument,
         );
       case CrayonWelcomBackScreen.viewPath:
         String arguments = settings.arguments as String;

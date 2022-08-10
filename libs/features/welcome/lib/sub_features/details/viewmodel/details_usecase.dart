@@ -114,6 +114,7 @@ class DetailsUseCase extends BaseDataProvider {
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {
           final data = responseData;
+
           return CustomerDetailResponse.fromJson(data);
         });
   }

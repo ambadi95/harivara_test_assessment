@@ -47,9 +47,9 @@ class SignupApiResolver extends TaskResolver {
         return _detailsService.submitCustomerDetails(requestData['data'],requestData['userType']);
       case IEnrollmentService.enrollmentIdentifier:
         return _enrollmentService.getCustomerDetails(
-            requestData['customerId'], requestData['token']);
+            requestData['customerId'], requestData['token'],requestData['userType']);
       case IAgentDetailsService.detailIdentifier:
-        return _agentDetailsService.getAgentDetail(requestData['agentId']);
+        return _agentDetailsService.getAgentDetail(requestData['agentId'],);
       case IAgentDetailsService.submitAgentDetailIdentifier:
         return _agentDetailsService.submitAgentDetails(requestData);
       case IWelcomeBackService.getAgentDetailIdentifier:

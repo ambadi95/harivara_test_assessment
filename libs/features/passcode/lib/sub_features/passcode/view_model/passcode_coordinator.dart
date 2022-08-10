@@ -1,3 +1,4 @@
+import 'package:config/Config.dart';
 import 'package:core/mobile_core.dart';
 import 'package:flutter/material.dart';
 import 'package:passcode/navigation_handler/passcode_navigation_handler.dart';
@@ -147,7 +148,20 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
           if (loginResponse?.status == true) {
             state = currentState.copyWith(isLoading: false);
             _navigationHandler.navigateToCustomerEnrollmentScreen(
-                destinationPath, false);
+                destinationPath, false,UserType.Customer);
+          }
+        }
+      } else if(userType == "AgentCustomer"){
+        state = currentState.copyWith(isLoading: true);
+        var response =
+        await _passcodeUseCase.savePasscode(newPasscode, (p0) => null);
+        if (response!.status == true) {
+          var loginResponse =
+          await _passcodeUseCase.login(newPasscode, (p0) => null);
+          if (loginResponse?.status == true) {
+            state = currentState.copyWith(isLoading: false);
+            _navigationHandler.navigateToCustomerEnrollmentScreen(
+                destinationPath, false,UserType.AgentCustomer);
           }
         }
       } else {
@@ -197,8 +211,9 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
       state = currentState.copyWith(currentStep: 5);
       await _passcodeUseCase.savePassCodeLocal(newPasscode);
       if (userType == "Customer") {
+
         _navigationHandler.navigateToCustomerEnrollmentScreen(
-            destinationPath, true);
+            destinationPath, true,UserType.Customer);
       } else {
         _navigationHandler.navigateToResetPasscodeBottomSheet(
             'RP_Passcode_Reset'.tr, 'RP_Continue'.tr, 'RP_Passcode_Desc'.tr);

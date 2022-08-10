@@ -18,8 +18,8 @@ import 'package:config/Colors.dart' as config_color;
 
 class EnrollmentSuccessScreen extends StatefulWidget {
   static const viewPath = '${WelcomeModule.moduleIdentifier}/enrollmentSuccess';
-  final bool isEnrolled;
-  const EnrollmentSuccessScreen({Key? key, required this.isEnrolled})
+  final UserType userType;
+  const EnrollmentSuccessScreen({Key? key, required this.userType})
       : super(key: key);
 
   @override
@@ -41,7 +41,7 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
   Widget build(BuildContext context) =>
       BaseView<EnrollmentSuccessCoordinator, EnrollmentSuccessState>(
         setupViewModel: (coordinator) async {
-          customerDetail = await coordinator.getCustomerDetails();
+          customerDetail = await coordinator.getCustomerDetails(widget.userType);
           setState(() {});
         },
         builder: (context, state, coordinator) => SafeArea(
@@ -200,7 +200,7 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
   Widget _buildAgentNearByButton(EnrollmentSuccessCoordinator coordinator) {
     return GestureDetector(
       onTap: () {
-        coordinator.navigateToDeviceOption(widget.isEnrolled);
+        coordinator.navigateToDeviceOption(false);
       },
       child: Container(
         width: double.infinity,
