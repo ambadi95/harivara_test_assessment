@@ -83,7 +83,7 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          InkWell(
+         widget.userType == UserType.AgentCustomer ? const SizedBox(): InkWell(
             onTap: () {
               coordinator.logout();
             },
@@ -112,7 +112,7 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
           ),
           _buildEnrollmentIDText(),
           const Spacer(),
-          _buildAgentContactText(),
+          widget.userType == UserType.AgentCustomer ? const SizedBox(): _buildAgentContactText(),
           const SizedBox(
             height: 21,
           ),
@@ -120,12 +120,12 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
           const SizedBox(
             height: 24,
           ),
-          _buildExploreDeviceButton(coordinator),
-          const SizedBox(
+          widget.userType == UserType.AgentCustomer ? const SizedBox():  _buildExploreDeviceButton(coordinator),
+          widget.userType == UserType.AgentCustomer ? const SizedBox():   const SizedBox(
             height: 12,
           ),
-          _buildContactText(context),
-          const SizedBox(
+          widget.userType == UserType.AgentCustomer ? const SizedBox():  _buildContactText(context),
+          widget.userType == UserType.AgentCustomer ? const SizedBox():   const SizedBox(
             height: 25,
           ),
         ],
