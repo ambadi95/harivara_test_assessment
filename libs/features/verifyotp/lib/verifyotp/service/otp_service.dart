@@ -60,7 +60,7 @@ class OtpService implements IOtpService {
   Future<StandardRequest> otpGenCustomerByAgent(Map<String, dynamic> requestData) async{
     var request = StandardRequest();
     request.requestType = RequestType.POST;
-    request.endpoint = 'https://y9-dev-capi.testmaya.com/customers/v1/otp-gen[customer]';
+    request.endpoint =  '${customerEndpoint}otp-gen[customer]';
     request.customHeaders = {
       'Content-Type': 'application/json',
     };
@@ -72,7 +72,7 @@ class OtpService implements IOtpService {
   Future<StandardRequest> otpVerifyCustomerByAgent(Map<String, dynamic> requestData)async {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
-    request.endpoint = 'https://y9-dev-capi.testmaya.com/customers/v1/otp-validate[customer]';
+    request.endpoint =  '${customerEndpoint}otp-validate[customer]';
     request.customHeaders = {
       'Content-Type': 'application/json',
     };

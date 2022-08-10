@@ -25,7 +25,7 @@ class DetailsService implements IDetailsService {
   Future<StandardRequest> getRegion(UserType userType) async {
     var request = StandardRequest();
     request.requestType = RequestType.GET;
-    request.endpoint = userType == UserType.AgentCustomer ? 'https://y9-dev-capi.testmaya.com/customers/v1/region-details[customer]' :'region-details' ;
+    request.endpoint = userType == UserType.AgentCustomer ? customerEndpoint + 'region-details[customer]' :'region-details' ;
     request.customHeaders = {
       'Content-Type': 'application/json',
     };
@@ -36,7 +36,7 @@ class DetailsService implements IDetailsService {
   Future<StandardRequest> getDistrict(String regionId,UserType userType ) async {
     var request = StandardRequest();
     request.requestType = RequestType.GET;
-    request.endpoint = userType == UserType.AgentCustomer ? 'https://y9-dev-capi.testmaya.com/customers/v1/district-details/$regionId[customer]' :'district-details/$regionId';
+    request.endpoint = userType == UserType.AgentCustomer ?  customerEndpoint + 'district-details/$regionId[customer]' :'district-details/$regionId';
     request.customHeaders = {
       'Content-Type': 'application/json',
     };
@@ -50,7 +50,7 @@ class DetailsService implements IDetailsService {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
     request.endpoint = userType == UserType.AgentCustomer ?
-    'https://y9-dev-capi.testmaya.com/customers/v1/customer-details[customer]' : 'customer-details';
+    customerEndpoint + 'customer-details[customer]' : 'customer-details';
     request.customHeaders = {
       'Content-Type': 'application/json',
     };

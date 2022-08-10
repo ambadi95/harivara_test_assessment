@@ -55,7 +55,7 @@ class PasscodeService implements IPasscodeService {
       ) async {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
-    request.endpoint = userType == UserType.AgentCustomer ? 'https://y9-dev-capi.testmaya.com/customers/v1/save-passcode[customer]' : 'save-passcode';
+    request.endpoint = userType == UserType.AgentCustomer ? customerEndpoint + 'save-passcode[customer]' : 'save-passcode';
     request.customHeaders = {
       'Content-Type': 'application/json',
     };
