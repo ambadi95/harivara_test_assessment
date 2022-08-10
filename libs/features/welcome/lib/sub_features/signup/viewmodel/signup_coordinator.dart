@@ -59,7 +59,7 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
       state = const SignUpState.loadingState();
       var response = await _signupUseCase.signUpCustomerByAgent(
           nindaNumber: nindaNumber.replaceAll("-", ""),
-          customerMobile:'+255'+mobileNumber.replaceAll(" ", ""),
+          customerMobile: '+255' + mobileNumber.replaceAll(" ", ""),
           onErrorCallback: (p0) => null,
           agentId: await _signupUseCase.getAgentId());
       if (response!.status == true) {

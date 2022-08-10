@@ -5,9 +5,5 @@ class DeviceOptionArgs {
   final String destinationPath;
   final UserType userType;
 
-  DeviceOptionArgs(
-    this.isMember,
-    this.destinationPath,
-      this.userType
-  );
+  DeviceOptionArgs(this.isMember, this.destinationPath, this.userType);
 }

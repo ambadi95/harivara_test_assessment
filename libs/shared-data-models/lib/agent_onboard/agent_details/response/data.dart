@@ -11,7 +11,7 @@ class Data extends Equatable {
   final dynamic middleName;
   final String? nidaNo;
   final String? mobileNo;
-  final dynamic birthdate;
+  final String? birthDate;
   final String? gender;
   final String? emailId;
   final String? address;
@@ -23,7 +23,7 @@ class Data extends Equatable {
     this.middleName,
     this.nidaNo,
     this.mobileNo,
-    this.birthdate,
+    this.birthDate,
     this.gender,
     this.emailId,
     this.address,
@@ -40,7 +40,7 @@ class Data extends Equatable {
     dynamic middleName,
     String? nidaNo,
     String? mobileNo,
-    dynamic birthdate,
+    String? birthDate,
     String? gender,
     String? emailId,
     String? address,
@@ -52,7 +52,7 @@ class Data extends Equatable {
       middleName: middleName ?? this.middleName,
       nidaNo: nidaNo ?? this.nidaNo,
       mobileNo: mobileNo ?? this.mobileNo,
-      birthdate: birthdate ?? this.birthdate,
+      birthDate: birthDate ?? this.birthDate,
       gender: gender ?? this.gender,
       emailId: emailId ?? this.emailId,
       address: address ?? this.address,
@@ -71,7 +71,7 @@ class Data extends Equatable {
       middleName,
       nidaNo,
       mobileNo,
-      birthdate,
+      birthDate,
       gender,
       emailId,
       address,

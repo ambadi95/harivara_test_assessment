@@ -65,7 +65,7 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
     if (userType == 'Customer') {
       await customerLogin(mobileNumber, passcode, userType);
     } else {
-      await getAgentDetails(agentId);
+      await getAgentDetails(agentId,mobileNumber);
     }
   }
 
@@ -85,7 +85,7 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
     }
   }
 
-  Future getAgentDetails(String agentId) async {
+  Future getAgentDetails(String agentId, String mobileNumber) async {
     state = LoginState.loading();
     var response = await _loginUseCase.getAgentDetail(agentId, (p0) => null);
     if (response?.status == true) {

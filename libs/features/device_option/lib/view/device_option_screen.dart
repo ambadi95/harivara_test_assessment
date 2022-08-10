@@ -361,7 +361,8 @@ class _DeviceOptionState extends State<DeviceOption> {
       textColor: White,
       textStyleVariant: CrayonPaymentTextStyleVariant.headline4,
       onPressed: () {
-        coordinator.navigateToDeviceDetailScreen(id,widget.deviceOptionArgs.userType);
+        coordinator.navigateToDeviceDetailScreen(
+            id, widget.deviceOptionArgs.userType);
       },
     );
   }

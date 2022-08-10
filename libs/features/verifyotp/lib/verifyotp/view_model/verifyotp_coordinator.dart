@@ -45,14 +45,12 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
 
   String otp = '';
 
-  Future<void> generateOtp(
-    String id,
-    String userType,
-      OtpVerificationType otpVerificationType
-  ) async {
+  Future<void> generateOtp(String id, String userType,
+      OtpVerificationType otpVerificationType) async {
     var response;
-    if(otpVerificationType == OtpVerificationType.customerSignUpAgent){
-       response = await _verifyOtpUseCase.otpGenCustomerByAgent(id, 'Customer', (p0) => null);
+    if (otpVerificationType == OtpVerificationType.customerSignUpAgent) {
+      response = await _verifyOtpUseCase.otpGenCustomerByAgent(
+          id, 'Customer', (p0) => null);
     } else {
       response = await _verifyOtpUseCase.otpGen(id, userType, (p0) => null);
     }
@@ -159,9 +157,10 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
       } else {
         print('error');
       }
-    }else if(otpScreenArgs.otpVerificationType == OtpVerificationType.customerSignUpAgent){
+    } else if (otpScreenArgs.otpVerificationType ==
+        OtpVerificationType.customerSignUpAgent) {
       var responseSignin = await _verifyOtpUseCase.otpVerifyCustomerByAgent(
-          otpScreenArgs.refId,enterOtp, 'Customer',  (p0) => null);
+          otpScreenArgs.refId, enterOtp, 'Customer', (p0) => null);
       if (responseSignin!.data!.status == "success") {
         _navigationHandler.navigateToDestinationPath(
             destinationPath, 'AgentCustomer');

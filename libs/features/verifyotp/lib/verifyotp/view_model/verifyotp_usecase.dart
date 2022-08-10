@@ -94,10 +94,10 @@ class VerifyOtpUseCase extends BaseDataProvider {
         });
   }
 
-  Future<OtpVerificationResponse?> otpVerifyCustomerByAgent(String id, String otp,
-      String userType, Function(String) onErrorCallback) async {
+  Future<OtpVerificationResponse?> otpVerifyCustomerByAgent(String id,
+      String otp, String userType, Function(String) onErrorCallback) async {
     OtpVerificationRequest otpRequest =
-    OtpVerificationRequest(id: id, type: userType, otp: otp);
+        OtpVerificationRequest(id: id, type: userType, otp: otp);
     CrayonPaymentLogger.logInfo(otpRequest.toJson().toString());
 
     return await executeApiRequest<OtpVerificationResponse?>(

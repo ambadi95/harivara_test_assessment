@@ -117,7 +117,8 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
   ) async {
     if (!hasInternet) {
       CrayonPaymentLogger.logInfo<NetworkClient>(
-          'No active internet connection.',);
+        'No active internet connection.',
+      );
       return NetworkStandardResponse(
         '',
         HttpStatus.noConnectionToInternet,
@@ -152,7 +153,7 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
         request.endpoint,
         request.uriParameters,
       );
-    } else if(request.endpoint.contains('[customer]')){
+    } else if (request.endpoint.contains('[customer]')) {
       uri = Uri.parse(
         request.endpoint.replaceAll('[customer]', ''),
       );
@@ -202,7 +203,7 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
     Uri uri;
     if (currentEnvironment.name == 'Local') {
       uri = Uri.parse('http://' + currentEnvironment.host + request.endpoint);
-    } else if(request.endpoint.contains('[customer]')){
+    } else if (request.endpoint.contains('[customer]')) {
       uri = Uri.parse(
         request.endpoint.replaceAll('[customer]', ''),
       );
@@ -243,11 +244,11 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
     Uri uri;
     if (currentEnvironment.name == 'Local') {
       uri = Uri.parse('http://' + currentEnvironment.host + request.endpoint);
-    }else if(request.endpoint.contains('[customer]')){
+    } else if (request.endpoint.contains('[customer]')) {
       uri = Uri.parse(
         request.endpoint.replaceAll('[customer]', ''),
       );
-    }  else {
+    } else {
       uri = Uri.parse(currentEnvironment.host + request.endpoint);
     }
     if (_getStaticAuth != 'error') {

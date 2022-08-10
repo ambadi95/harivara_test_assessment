@@ -16,11 +16,11 @@ class DeviceOptionRouteManager extends IRouteManager {
           deviceOptionArgs: arguments,
         );
       case DeviceDetailScreen.viewPath:
-        var arguments = settings.arguments as Map ;
+        var arguments = settings.arguments as Map;
 
         return DeviceDetailScreen(
           deviceId: arguments['id'],
-          userType:arguments['userType'] ,
+          userType: arguments['userType'],
         );
       default:
         // TODO: implement getView

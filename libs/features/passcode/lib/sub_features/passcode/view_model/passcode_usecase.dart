@@ -74,29 +74,29 @@ class PasscodeUseCase extends BaseDataProvider {
     return await setValueToSecureStorage({'OnBoardStatus': id});
   }
 
-    Future<PasscodeResponse?> savePasscode(String passcode, String userType,
-        Function(String) onErrorCallback) async {
-      String custmerId = await getCustomerId();
-
-      PasscodeRequest passcodeRequest = PasscodeRequest(
-          id: int.parse(custmerId), type: userType, passcode: passcode);
-
-      return await executeApiRequest<PasscodeResponse?>(
-          taskType: TaskType.DATA_OPERATION,
-          taskSubType: TaskSubType.REST,
-          moduleIdentifier: PasscodeModule.moduleIdentifier,
-          requestData: passcodeRequest.toJson(),
-          serviceIdentifier: IPasscodeService.passcodeIdentifier,
-          onError: onErrorCallback,
-          modelBuilderCallback: (responseData) {
-            final data = responseData;
-            saveOnBordStatus(custmerId);
-            return PasscodeResponse.fromJson(data);
-          });
-    }
-
-  Future<PasscodeResponse?> savePasscodeAgentCustomer(String passcode, String userType,
+  Future<PasscodeResponse?> savePasscode(String passcode, String userType,
       Function(String) onErrorCallback) async {
+    String custmerId = await getCustomerId();
+
+    PasscodeRequest passcodeRequest = PasscodeRequest(
+        id: int.parse(custmerId), type: userType, passcode: passcode);
+
+    return await executeApiRequest<PasscodeResponse?>(
+        taskType: TaskType.DATA_OPERATION,
+        taskSubType: TaskSubType.REST,
+        moduleIdentifier: PasscodeModule.moduleIdentifier,
+        requestData: passcodeRequest.toJson(),
+        serviceIdentifier: IPasscodeService.passcodeIdentifier,
+        onError: onErrorCallback,
+        modelBuilderCallback: (responseData) {
+          final data = responseData;
+          saveOnBordStatus(custmerId);
+          return PasscodeResponse.fromJson(data);
+        });
+  }
+
+  Future<PasscodeResponse?> savePasscodeAgentCustomer(String passcode,
+      String userType, Function(String) onErrorCallback) async {
     String custmerId = await getCustomerId();
 
     PasscodeRequest passcodeRequest = PasscodeRequest(
@@ -118,8 +118,6 @@ class PasscodeUseCase extends BaseDataProvider {
           return PasscodeResponse.fromJson(data);
         });
   }
-
-
 
   Future<PasscodeResponse?> savePasscodeAgent(String passcode, String userType,
       Function(String) onErrorCallback) async {

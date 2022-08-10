@@ -72,7 +72,7 @@ class WelcomeNavigationHandler with ErrorHandler {
 
   Future<void> openForNewPasscode(UserType userType) async {
     String user;
-    switch(userType){
+    switch (userType) {
       case UserType.Customer:
         user = 'Customer';
         break;
@@ -92,7 +92,7 @@ class WelcomeNavigationHandler with ErrorHandler {
         PassCodeVerificationType.create,
         false,
         '',
-        user );
+        user);
 
     _navigationManager.navigateTo(
       CrayonPasscodeScreen.viewPath,
@@ -116,8 +116,9 @@ class WelcomeNavigationHandler with ErrorHandler {
     );
   }
 
-  Future<void> navigateToDeviceOption(bool isEnrolled, UserType userType) async {
-    var argument = DeviceOptionArgs(isEnrolled, '',userType);
+  Future<void> navigateToDeviceOption(
+      bool isEnrolled, UserType userType) async {
+    var argument = DeviceOptionArgs(isEnrolled, '', userType);
     await _navigationManager.navigateTo(
         DeviceOption.viewPath, const NavigationType.push(),
         arguments: argument);
@@ -164,15 +165,12 @@ class WelcomeNavigationHandler with ErrorHandler {
   }
 
   Future<void> navigateToAgentDetailScreen(String userType) async {
-
     var arguments = AgentDetailScreenArguments('DV_title_agent', 'DV_subtitle',
         AgentDetailScreenType.Signup, userType, true);
     await _navigationManager.navigateTo(
         AgentDetailsScreen.viewPath, const NavigationType.push(),
         arguments: arguments);
   }
-
-
 
   Future<void> navigateToOtpScreenCustomerSignUp(
       String userType, String mobileNumber,

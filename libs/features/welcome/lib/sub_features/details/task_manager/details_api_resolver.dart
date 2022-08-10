@@ -12,9 +12,11 @@ class DetailsApiResolver extends TaskResolver {
       case IDetailsService.regionIdentifier:
         return _detailsService.getRegion(requestData['userType']);
       case IDetailsService.districtIdentifier:
-        return _detailsService.getDistrict(requestData['regionId'],requestData['userType']);
+        return _detailsService.getDistrict(
+            requestData['regionId'], requestData['userType']);
       case IDetailsService.submitCustomerDetailIdentifier:
-          return _detailsService.submitCustomerDetails(requestData['data'],requestData['userType']);
+        return _detailsService.submitCustomerDetails(
+            requestData['data'], requestData['userType']);
       default:
         throw UnimplementedError();
     }
