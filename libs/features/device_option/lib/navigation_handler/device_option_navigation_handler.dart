@@ -13,8 +13,8 @@ class DeviceOptionNavigationHandler with ErrorHandler {
 
   Future<void> navigateToDeviceDetail(int id, UserType userType) async {
     var arguments = {
-      userType = userType,
-      id = id
+      'userType' : userType,
+      'id' : id
     };
     await _navigationManager.navigateTo(
         DeviceDetailScreen.viewPath, const NavigationType.push(),
