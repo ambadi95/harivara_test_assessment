@@ -48,6 +48,7 @@
   "DV_name_error_text" : "Enter First Name & Last Name",
   "DV_name_hint_text" : "Enter Name",
   "DV_dob_label" : "Date of birth",
+  "DV_invalid_dob_error_text" : "Please enter a valid date of birth",
   "DV_dob_error_text" : "Invalid Date of birth",
   "DV_dob_hint_text" : "Enter Date of birth",
   "DV_gender_label" : "Gender",
