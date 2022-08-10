@@ -30,8 +30,8 @@ class DeviceOption extends StatefulWidget {
 
   DeviceOption({Key? key, required this.deviceOptionArgs}) : super(key: key);
 
-  factory DeviceOption.forCustomerApp() =>
-      DeviceOption(deviceOptionArgs: DeviceOptionArgs(false, ''));
+  // factory DeviceOption.forCustomerApp() =>
+  //     DeviceOption(deviceOptionArgs: DeviceOptionArgs(false, '',UserType.AgentCustomer));
 
   @override
   State<DeviceOption> createState() => _DeviceOptionState();
@@ -361,7 +361,7 @@ class _DeviceOptionState extends State<DeviceOption> {
       textColor: White,
       textStyleVariant: CrayonPaymentTextStyleVariant.headline4,
       onPressed: () {
-        coordinator.navigateToDeviceDetailScreen(id);
+        coordinator.navigateToDeviceDetailScreen(id,widget.deviceOptionArgs.userType);
       },
     );
   }

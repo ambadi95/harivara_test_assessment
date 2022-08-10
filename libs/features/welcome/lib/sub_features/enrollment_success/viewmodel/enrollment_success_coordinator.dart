@@ -19,8 +19,8 @@ class EnrollmentSuccessCoordinator
     _navigationHandler.navigateToNearByAgent();
   }
 
-  Future navigateToDeviceOption(bool isEnrolled) async {
-    _navigationHandler.navigateToDeviceOption(isEnrolled);
+  Future navigateToDeviceOption(bool isEnrolled, UserType userType) async {
+    _navigationHandler.navigateToDeviceOption(isEnrolled, userType);
   }
 
   logout() {

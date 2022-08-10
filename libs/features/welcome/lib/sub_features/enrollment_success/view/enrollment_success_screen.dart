@@ -200,7 +200,7 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
   Widget _buildAgentNearByButton(EnrollmentSuccessCoordinator coordinator) {
     return GestureDetector(
       onTap: () {
-        coordinator.navigateToDeviceOption(false);
+        coordinator.navigateToDeviceOption(false, widget.userType);
       },
       child: Container(
         width: double.infinity,

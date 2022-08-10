@@ -116,8 +116,8 @@ class WelcomeNavigationHandler with ErrorHandler {
     );
   }
 
-  Future<void> navigateToDeviceOption(bool isEnrolled) async {
-    var argument = DeviceOptionArgs(isEnrolled, '');
+  Future<void> navigateToDeviceOption(bool isEnrolled, UserType userType) async {
+    var argument = DeviceOptionArgs(isEnrolled, '',userType);
     await _navigationManager.navigateTo(
         DeviceOption.viewPath, const NavigationType.push(),
         arguments: argument);

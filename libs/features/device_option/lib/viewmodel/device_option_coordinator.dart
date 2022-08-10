@@ -1,3 +1,4 @@
+import 'package:config/Config.dart';
 import 'package:core/view/analytics_state_notifier.dart';
 
 import '../navigation_handler/device_option_navigation_handler.dart';
@@ -28,11 +29,11 @@ class DeviceOptionCoordinator
     }
   }
 
-  Future navigateToDeviceDetailScreen(int deviceId) async {
-    _navigationHandler.navigateToDeviceDetail(deviceId);
+  Future navigateToDeviceDetailScreen(int deviceId, UserType userType) async {
+    _navigationHandler.navigateToDeviceDetail(deviceId,userType);
   }
 
-  Future<void> navigateToEnrolledScreen() async {
-    await _navigationHandler.navigateToCustomerEnrollmentScreen('', true);
+  Future<void> navigateToEnrolledScreen(UserType userType) async {
+    await _navigationHandler.navigateToCustomerEnrollmentScreen('', userType);
   }
 }

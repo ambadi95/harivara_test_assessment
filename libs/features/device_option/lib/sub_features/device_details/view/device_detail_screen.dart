@@ -1,4 +1,5 @@
 import 'package:config/Colors.dart';
+import 'package:config/Config.dart';
 import 'package:core/mobile_core.dart';
 import 'package:core/view/base_view.dart';
 import 'package:flutter/material.dart';
@@ -21,10 +22,11 @@ import 'package:shared_data_models/detail_detail/data.dart';
 
 class DeviceDetailScreen extends StatefulWidget {
   final int deviceId;
+  final UserType userType;
   static const String viewPath =
       '${DeviceOptionModule.moduleIdentifier}/device-detail-screen';
 
-  DeviceDetailScreen({Key? key, required this.deviceId}) : super(key: key);
+  DeviceDetailScreen({Key? key, required this.deviceId, required this.userType}) : super(key: key);
 
   @override
   State<DeviceDetailScreen> createState() => _DeviceDetailScreenState();
@@ -366,7 +368,8 @@ class _DeviceDetailScreenState extends State<DeviceDetailScreen> {
       textColor: White,
       textStyleVariant: CrayonPaymentTextStyleVariant.headline4,
       onPressed: () {
-        coordinator.navigateToEnrolledScreen(widget.deviceId);
+        print(widget.userType);
+        coordinator.navigateToEnrolledScreen(widget.deviceId,widget.userType);
       },
     );
   }

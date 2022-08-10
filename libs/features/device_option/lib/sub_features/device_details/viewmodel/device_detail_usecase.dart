@@ -37,6 +37,7 @@ class DeviceDetailUseCase extends BaseDataProvider {
       int deviceId, Function(String) onErrorCallback) async {
     String? token = await _authManager.getAccessToken();
     String customerId = await getCustomerId();
+
     return await executeApiRequest<CustomerSelectDeviceResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,

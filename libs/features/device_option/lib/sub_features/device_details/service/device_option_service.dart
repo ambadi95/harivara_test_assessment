@@ -35,7 +35,7 @@ class DeviceOptionService implements IDeviceOptionService {
   Future<StandardRequest> deviceDetail(int deviceId, String token) async {
     var request = StandardRequest();
     request.requestType = RequestType.GET;
-    request.endpoint = customerEndpoint + 'district-details/${deviceId.toString()}[customer]';
+    request.endpoint = customerEndpoint + 'device-details/${deviceId.toString()}[customer]';
     request.customHeaders = {
       'Content-Type': 'application/json',
       'Authorization': token,
