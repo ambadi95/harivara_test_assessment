@@ -87,7 +87,7 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
 
   Future getAgentDetails(String agentId, String mobileNumber) async {
     state = LoginState.loading();
-    var response = await _loginUseCase.getAgentDetail(agentId, (p0) => null);
+    var response = await _loginUseCase.getAgentDetail(agentId,'255'+mobileNumber.replaceAll(" ", ""), (p0) => null);
     if (response?.status == true) {
       print(response);
       state = LoginState.successState();
