@@ -99,10 +99,10 @@ class _SettingsState extends State<Settings> {
         _buildOptions(context, 'ST_view_profile', ST_view_profile, () async {
           await coordinator.navigateToUpdateProfile();
         }),
-        _buildOptions(context, 'ST_update_passcode', ST_update_passcode,
-            () async {
-          await coordinator.resetPasscode();
-        }),
+        // _buildOptions(context, 'ST_update_passcode', ST_update_passcode,
+        //     () async {
+        //   await coordinator.resetPasscode();
+        // }),
         _buildOptions(context, 'ST_App_Language', ST_language, () async {
           await coordinator.changeLanguage();
         }),

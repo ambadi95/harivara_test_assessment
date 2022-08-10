@@ -74,6 +74,7 @@ class _AgentDetailsScreenState extends State<AgentDetailsScreen> {
           name.text = agentDetails!.firstName! + ' ' + agentDetails!.lastName!;
           mobileNumber.text = agentDetails!.mobileNo!;
           emailId.text = agentDetails!.emailId!;
+          gender.text = agentDetails!.gender!;
         },
         builder: (context, state, coordinator) => SafeArea(
           child: Scaffold(
