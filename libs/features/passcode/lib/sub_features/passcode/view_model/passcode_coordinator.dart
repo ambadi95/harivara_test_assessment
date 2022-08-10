@@ -153,20 +153,7 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
                 destinationPath, false,UserType.Customer);
           }
         }
-      } else if(userType == "AgentCustomer"){
-        state = currentState.copyWith(isLoading: true);
-        var response =
-        await _passcodeUseCase.savePasscode(newPasscode, (p0) => null);
-        if (response!.status == true) {
-          var loginResponse =
-          await _passcodeUseCase.login(newPasscode, (p0) => null);
-          if (loginResponse?.status == true) {
-            state = currentState.copyWith(isLoading: false);
-            _navigationHandler.navigateToCustomerEnrollmentScreen(
-                destinationPath, false,UserType.AgentCustomer);
-          }
-        }
-      } else if(userType == 'Agent') {
+      }  else if(userType == 'Agent') {
         state = currentState.copyWith(isLoading: true);
         var response = await _passcodeUseCase.savePasscodeAgent(
             newPasscode, userType, (p0) => null);
@@ -188,7 +175,7 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
           }
         } else {
           state = currentState.copyWith(isLoading: false);
-          CrayonPaymentLogger.logError(response!.message!);
+          CrayonPaymentLogger.logError(response.message!);
         }
       }else{
         state = currentState.copyWith(isLoading: true);
@@ -197,7 +184,7 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
         if (response!.status == true) {
             state = currentState.copyWith(isLoading: false);
             _navigationHandler.navigateToCustomerEnrollmentScreen(
-                destinationPath, false);
+                destinationPath,false,UserType.AgentCustomer);
         }
       }
     } else {
