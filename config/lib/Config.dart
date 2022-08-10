@@ -24,7 +24,10 @@ const ST_update_passcode = 'assets/images/update_passcode_icon.png';
 const ST_language = 'assets/images/language_icon.png';
 const ST_sign_out = 'assets/images/sign_out_icon.png';
 
-const customerEndpoint = 'https://y9-dev-capi.testmaya.com/customers/v1/';
+//dev
+// const customerEndpoint = 'https://y9-dev-capi.testmaya.com/customers/v1/';
+//prod
+const customerEndpoint = 'https://customerapi.y9bank.com/customers/v1/';
 
 
 enum UserType{ Customer,Agent, AgentCustomer}
