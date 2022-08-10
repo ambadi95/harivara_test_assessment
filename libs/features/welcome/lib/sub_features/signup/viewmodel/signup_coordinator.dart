@@ -59,14 +59,13 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
       state = const SignUpState.loadingState();
       var response = await _signupUseCase.signUpCustomerByAgent(
           nindaNumber: nindaNumber.replaceAll("-", ""),
-          customerMobile: mobileNumber.trim(),
+          customerMobile:'+255'+mobileNumber.replaceAll(" ", ""),
           onErrorCallback: (p0) => null,
           agentId: await _signupUseCase.getAgentId());
       if (response!.status == true) {
         await continueToOtp(nindaNumber, mobileNumber);
         state = const SignUpState.initialState();
-        await _signupUseCase
-            .saveCustomerId(response.data?.customerId.toString());
+        await _signupUseCase.saveCustomerId(response.data?.customerId.toString());
         _navigationHandler.navigateToOtpScreenCustomerSignUpByAgent(
             'Customer', mobileNumber,
             userId: response.data?.customerId.toString());
