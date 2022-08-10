@@ -83,15 +83,15 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-         widget.userType == UserType.AgentCustomer ? const SizedBox(): InkWell(
+           InkWell(
             onTap: () {
-              coordinator.logout();
+              widget.userType == UserType.AgentCustomer ? coordinator.backToHome() : coordinator.logout();
             },
-            child: const Align(
+            child:  Align(
               alignment: Alignment.centerRight,
               child: Text(
-                'Logout',
-                style: TextStyle(color: PRIMARY_COLOR),
+                widget.userType == UserType.AgentCustomer ?  'Home': 'Logout',
+                style: const TextStyle(color: PRIMARY_COLOR),
               ),
             ),
           ),
