@@ -233,7 +233,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                     children: [
                       InkWell(
                         onTap: () {
-                          // coordinator.navigateToCustomerRegister();
+                           coordinator.navigateToCustomerRegister();
                         },
                         child: _actionCommonView(
                             'HS_Customer_OnBoarding'.tr, HS_CustomerMangIcon),
