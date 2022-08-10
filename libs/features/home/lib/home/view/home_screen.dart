@@ -10,6 +10,7 @@ import '../constants/image_constant.dart';
 import '../home_module.dart';
 import '../state/home_screen_state.dart';
 import '../viewmodel/home_coordinator.dart';
+import 'package:shared_data_models/home/customerCount/customer_count_response/data.dart';
 
 class CrayonHomeScreen extends StatefulWidget {
   static const viewPath = '${HomeModule.moduleIdentifier}/CrayonHomeScreen';
@@ -27,6 +28,8 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
   int selectedIndex = 0;
   String username = '';
   String userId = '';
+  Data customerCount =
+      const Data(initiatedCustomer: '0', enrolledCustomer: '0');
 
   @override
   Widget build(BuildContext context) =>
@@ -37,12 +40,12 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
               context, '', widget.homeScreenArgs.isAgent, false);
           username = await coordinator.getAgentName();
           userId = await coordinator.getAgentId();
-
           setState(() {
             username;
             userId;
           });
-
+          customerCount = await coordinator.getCustomerCount();
+          setState(() {});
         },
         builder: (context, state, coordinator) => Scaffold(
           body: SafeArea(
@@ -178,7 +181,8 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                         const SizedBox(
                           height: 5,
                         ),
-                        const Text("0", style: HS_account_id_style),
+                        Text(customerCount.enrolledCustomer!,
+                            style: HS_account_id_style),
                       ],
                     ),
                     const SizedBox(
@@ -194,7 +198,8 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                         const SizedBox(
                           height: 5,
                         ),
-                        const Text("0", style: HS_account_id_style),
+                        Text(customerCount.initiatedCustomer!,
+                            style: HS_account_id_style),
                       ],
                     ),
                   ],
@@ -233,7 +238,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                     children: [
                       InkWell(
                         onTap: () {
-                           coordinator.navigateToCustomerRegister();
+                          coordinator.navigateToCustomerRegister();
                         },
                         child: _actionCommonView(
                             'HS_Customer_OnBoarding'.tr, HS_CustomerMangIcon),
@@ -286,7 +291,10 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
             imagePath,
             width: 20,
             height: 20,
-            color: (title== 'HS_Customer_DeviceSwap'.tr || title== 'HS_Customer_AgentSupport'.tr)  ?  SU_border_color :  OB_WelcomeThirdTtileColor,
+            color: (title == 'HS_Customer_DeviceSwap'.tr ||
+                    title == 'HS_Customer_AgentSupport'.tr)
+                ? SU_border_color
+                : OB_WelcomeThirdTtileColor,
           ),
         ),
         const SizedBox(
@@ -295,7 +303,10 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
         Text(
           title,
           textAlign: TextAlign.center,
-          style:  (title== 'HS_Customer_DeviceSwap'.tr || title== 'HS_Customer_AgentSupport'.tr)  ? HS_card_items_grey_style : HS_card_items_style,
+          style: (title == 'HS_Customer_DeviceSwap'.tr ||
+                  title == 'HS_Customer_AgentSupport'.tr)
+              ? HS_card_items_grey_style
+              : HS_card_items_style,
         ),
         const SizedBox(
           height: 10,

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
 import 'package:core/ioc/di_container.dart';
 import 'package:core/logging/logger.dart';
@@ -117,7 +118,8 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
   ) async {
     if (!hasInternet) {
       CrayonPaymentLogger.logInfo<NetworkClient>(
-          'No active internet connection.',);
+        'No active internet connection.',
+      );
       return NetworkStandardResponse(
         '',
         HttpStatus.noConnectionToInternet,
@@ -152,7 +154,7 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
         request.endpoint,
         request.uriParameters,
       );
-    } else if(request.endpoint.contains('[customer]')){
+    } else if (request.endpoint.contains('[customer]')) {
       uri = Uri.parse(
         request.endpoint.replaceAll('[customer]', ''),
       );
@@ -177,7 +179,13 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
       'Sending GET request to the server for url: ${uri.toString()}',
     );
     try {
-      final response = await _httpClient.get(uri, headers: headers);
+      var getRequest = http.Request('GET',uri);
+      if(request.jsonBody !=null) {
+        getRequest.body = request.jsonBody!;
+      }
+      getRequest.headers.addAll(headers!);
+      final streamedResponse = await getRequest.send();
+      var response = await http.Response.fromStream(streamedResponse);
       return NetworkStandardResponse(
         response.body,
         response.statusCode,
@@ -202,7 +210,7 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
     Uri uri;
     if (currentEnvironment.name == 'Local') {
       uri = Uri.parse('http://' + currentEnvironment.host + request.endpoint);
-    } else if(request.endpoint.contains('[customer]')){
+    } else if (request.endpoint.contains('[customer]')) {
       uri = Uri.parse(
         request.endpoint.replaceAll('[customer]', ''),
       );
@@ -243,11 +251,11 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
     Uri uri;
     if (currentEnvironment.name == 'Local') {
       uri = Uri.parse('http://' + currentEnvironment.host + request.endpoint);
-    }else if(request.endpoint.contains('[customer]')){
+    } else if (request.endpoint.contains('[customer]')) {
       uri = Uri.parse(
         request.endpoint.replaceAll('[customer]', ''),
       );
-    }  else {
+    } else {
       uri = Uri.parse(currentEnvironment.host + request.endpoint);
     }
     if (_getStaticAuth != 'error') {

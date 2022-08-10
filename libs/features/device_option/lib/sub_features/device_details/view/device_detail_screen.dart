@@ -26,7 +26,8 @@ class DeviceDetailScreen extends StatefulWidget {
   static const String viewPath =
       '${DeviceOptionModule.moduleIdentifier}/device-detail-screen';
 
-  DeviceDetailScreen({Key? key, required this.deviceId, required this.userType}) : super(key: key);
+  DeviceDetailScreen({Key? key, required this.deviceId, required this.userType})
+      : super(key: key);
 
   @override
   State<DeviceDetailScreen> createState() => _DeviceDetailScreenState();
@@ -369,7 +370,7 @@ class _DeviceDetailScreenState extends State<DeviceDetailScreen> {
       textStyleVariant: CrayonPaymentTextStyleVariant.headline4,
       onPressed: () {
         print(widget.userType);
-        coordinator.navigateToEnrolledScreen(widget.deviceId,widget.userType);
+        coordinator.navigateToEnrolledScreen(widget.deviceId, widget.userType);
       },
     );
   }

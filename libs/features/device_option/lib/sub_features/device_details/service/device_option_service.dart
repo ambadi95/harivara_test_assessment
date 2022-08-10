@@ -35,7 +35,8 @@ class DeviceOptionService implements IDeviceOptionService {
   Future<StandardRequest> deviceDetail(int deviceId, String token) async {
     var request = StandardRequest();
     request.requestType = RequestType.GET;
-    request.endpoint = customerEndpoint + 'device-details/${deviceId.toString()}[customer]';
+    request.endpoint =
+        customerEndpoint + 'device-details/${deviceId.toString()}[customer]';
     request.customHeaders = {
       'Content-Type': 'application/json',
       'Authorization': token,
@@ -48,7 +49,7 @@ class DeviceOptionService implements IDeviceOptionService {
       int customerId, int device, String token) async {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
-    request.endpoint = customerEndpoint +'customer-device[customer]';
+    request.endpoint = customerEndpoint + 'customer-device[customer]';
     request.jsonBody =
         json.encode({"customerId": customerId, 'deviceId': device});
     request.customHeaders = {

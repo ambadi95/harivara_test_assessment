@@ -30,13 +30,13 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
       ];
 
   Future getRegion(UserType userType) async {
-    var response = await _detailsUseCase.getRegion((p0) => null,userType);
+    var response = await _detailsUseCase.getRegion((p0) => null, userType);
     return response?.data;
   }
 
-  Future getDistrict(int regionId,UserType userType) async {
-    var response =
-        await _detailsUseCase.getDistrict(regionId.toString(), (p0) => null,userType);
+  Future getDistrict(int regionId, UserType userType) async {
+    var response = await _detailsUseCase.getDistrict(
+        regionId.toString(), (p0) => null, userType);
     return response?.data;
   }
 
@@ -213,16 +213,17 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
   }
 
   Future submitDetails(
-      String name,
-      String dob,
-      String gender,
-      String address,
-      String profession,
-      String emailId,
-      String poBox,
-      String region,
-      String district,
-      UserType userType,) async {
+    String name,
+    String dob,
+    String gender,
+    String address,
+    String profession,
+    String emailId,
+    String poBox,
+    String region,
+    String district,
+    UserType userType,
+  ) async {
     state = const DetailsState.LoadingState();
     var response = await _detailsUseCase.submitCustomerDetails(
         name,
@@ -234,7 +235,8 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
         poBox,
         region,
         district,
-        (p0) => null,userType);
+        (p0) => null,
+        userType);
     if (response?.status == true) {
       state = const DetailsState.initialState();
       navigateToCreatePasscodeScreen(userType);

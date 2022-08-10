@@ -41,7 +41,8 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
   Widget build(BuildContext context) =>
       BaseView<EnrollmentSuccessCoordinator, EnrollmentSuccessState>(
         setupViewModel: (coordinator) async {
-          customerDetail = await coordinator.getCustomerDetails(widget.userType);
+          customerDetail =
+              await coordinator.getCustomerDetails(widget.userType);
           setState(() {});
         },
         builder: (context, state, coordinator) => SafeArea(
@@ -83,14 +84,16 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-           InkWell(
+          InkWell(
             onTap: () {
-              widget.userType == UserType.AgentCustomer ? coordinator.backToHome() : coordinator.logout();
+              widget.userType == UserType.AgentCustomer
+                  ? coordinator.backToHome()
+                  : coordinator.logout();
             },
-            child:  Align(
+            child: Align(
               alignment: Alignment.centerRight,
               child: Text(
-                widget.userType == UserType.AgentCustomer ?  'Home': 'Logout',
+                widget.userType == UserType.AgentCustomer ? 'Home' : 'Logout',
                 style: const TextStyle(color: PRIMARY_COLOR),
               ),
             ),
@@ -112,7 +115,9 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
           ),
           _buildEnrollmentIDText(),
           const Spacer(),
-          widget.userType == UserType.AgentCustomer ? const SizedBox(): _buildAgentContactText(),
+          widget.userType == UserType.AgentCustomer
+              ? const SizedBox()
+              : _buildAgentContactText(),
           const SizedBox(
             height: 21,
           ),
@@ -120,14 +125,22 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
           const SizedBox(
             height: 24,
           ),
-          widget.userType == UserType.AgentCustomer ? const SizedBox():  _buildExploreDeviceButton(coordinator),
-          widget.userType == UserType.AgentCustomer ? const SizedBox():   const SizedBox(
-            height: 12,
-          ),
-          widget.userType == UserType.AgentCustomer ? const SizedBox():  _buildContactText(context),
-          widget.userType == UserType.AgentCustomer ? const SizedBox():   const SizedBox(
-            height: 25,
-          ),
+          widget.userType == UserType.AgentCustomer
+              ? const SizedBox()
+              : _buildExploreDeviceButton(coordinator),
+          widget.userType == UserType.AgentCustomer
+              ? const SizedBox()
+              : const SizedBox(
+                  height: 12,
+                ),
+          widget.userType == UserType.AgentCustomer
+              ? const SizedBox()
+              : _buildContactText(context),
+          widget.userType == UserType.AgentCustomer
+              ? const SizedBox()
+              : const SizedBox(
+                  height: 25,
+                ),
         ],
       ),
     );

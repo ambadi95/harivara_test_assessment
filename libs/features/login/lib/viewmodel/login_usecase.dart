@@ -77,13 +77,12 @@ class LoginUseCase extends BaseDataProvider {
         });
   }
 
-  Future<AgentDetailsResponse?> getAgentDetail(
-      String agentId, Function(String) onErrorCallback) async {
+  Future<AgentDetailsResponse?> getAgentDetail(String agentId,String mobileNumber, Function(String) onErrorCallback) async {
     return await executeApiRequest<AgentDetailsResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
         moduleIdentifier: LoginModule.moduleIdentifier,
-        requestData: {"agentId": agentId},
+        requestData: {"agentId": agentId, 'mobileNumber' : mobileNumber},
         serviceIdentifier: ILoginService.agentDetailIdentifier,
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {

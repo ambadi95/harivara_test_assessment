@@ -514,7 +514,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
             coordinator.isValidRegion(value.name!);
             dis.clear();
             district.clear();
-            dis = await coordinator.getDistrict(value.id!,widget.userType);
+            dis = await coordinator.getDistrict(value.id!, widget.userType);
             districtDropDown = getDistrictDropDownData(dis);
           },
         ),

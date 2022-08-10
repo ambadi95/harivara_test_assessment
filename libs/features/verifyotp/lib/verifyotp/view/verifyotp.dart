@@ -68,7 +68,9 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
       BaseView<VerifyOtpCoordinator, VerifyOtpState>(
         setupViewModel: (coordinator) {
           coordinator.generateOtp(
-              widget.otpScreenArgs.refId, widget.otpScreenArgs.userType, widget.otpScreenArgs.otpVerificationType );
+              widget.otpScreenArgs.refId,
+              widget.otpScreenArgs.userType,
+              widget.otpScreenArgs.otpVerificationType);
           coordinator.initialiseState(
             context,
             widget.otpScreenArgs.title,
@@ -459,8 +461,10 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
                     onTap: () async {
                       startTimer();
                       coordinator.otpController.clear();
-                      await coordinator.generateOtp(widget.otpScreenArgs.refId,
-                          widget.otpScreenArgs.userType,widget.otpScreenArgs.otpVerificationType);
+                      await coordinator.generateOtp(
+                          widget.otpScreenArgs.refId,
+                          widget.otpScreenArgs.userType,
+                          widget.otpScreenArgs.otpVerificationType);
                     },
                     child: CrayonPaymentText(
                       key: const Key('verifyOtp Resend Now'),

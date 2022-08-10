@@ -16,9 +16,7 @@ abstract class IPasscodeService {
   );
 
   Future<StandardRequest> savePasscodeAgentCustomer(
-      Map<String, dynamic> requestData,
-      UserType userType
-      );
+      Map<String, dynamic> requestData, UserType userType);
 
   Future<StandardRequest> resetPasscode(
     Map<String, dynamic> requestData,
@@ -50,12 +48,12 @@ class PasscodeService implements IPasscodeService {
 
   @override
   Future<StandardRequest> savePasscodeAgentCustomer(
-      Map<String, dynamic> requestData,
-      UserType userType
-      ) async {
+      Map<String, dynamic> requestData, UserType userType) async {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
-    request.endpoint = userType == UserType.AgentCustomer ? customerEndpoint + 'save-passcode[customer]' : 'save-passcode';
+    request.endpoint = userType == UserType.AgentCustomer
+        ? customerEndpoint + 'save-passcode[customer]'
+        : 'save-passcode';
     request.customHeaders = {
       'Content-Type': 'application/json',
     };

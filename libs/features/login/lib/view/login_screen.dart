@@ -99,31 +99,43 @@ class _LoginState extends State<Login> {
             const CrayonPaymentAppBarButtonType.back(),
           ],
         ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _buildTitle(context),
-            dynamicHSpacer(66),
-            _buildLabelTextFieldMobNumber(context, 'LS_Mobile'.tr, coordinator),
-            dynamicHSpacer(48),
-            widget.userType == 'Customer'
-                ? _passcodeWidget(context, coordinator)
-                : _buildLabelTextField(
-                    'LS_agent_id'.tr,
-                    agentIdController,
-                    TextInputType.text,
-                    coordinator,
-                    agentIdError,
-                    'SU_agent_id_hint',
-                    true),
-            const SizedBox(
-              height: 46,
+        bottomNavigationBar: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Container(
+            height: 70,
+            child: Column(
+              children: [
+                actionButton(coordinator),
+                SizedBox(height: 20,)
+              ],
             ),
-            // _buildResetPasscode(coordinator),
-            const Spacer(),
-            actionButton(coordinator),
-            dynamicHSpacer(20),
-          ],
+          ),
+        ),
+        body: SingleChildScrollView(
+          child: Column(
+           crossAxisAlignment: CrossAxisAlignment.start,
+           children: [
+             _buildTitle(context),
+             SizedBox(height: 66,),
+             _buildLabelTextFieldMobNumber(context, 'LS_Mobile'.tr, coordinator),
+             SizedBox(height: 48,),
+             widget.userType == 'Customer'
+                 ? _passcodeWidget(context, coordinator)
+                 : _buildLabelTextField(
+                     'LS_agent_id'.tr,
+                     agentIdController,
+                     TextInputType.text,
+                     coordinator,
+                     agentIdError,
+                     'SU_agent_id_hint',
+                     true),
+             const SizedBox(
+               height: 46,
+             ),
+             // _buildResetPasscode(coordinator),
+
+           ],
+            ),
         ));
   }
 
@@ -176,9 +188,6 @@ class _LoginState extends State<Login> {
           key: const Key('detailsTextField'),
           keyboardType: textInputType,
           textCapitalization: TextCapitalization.characters,
-          onEditComplete: () {
-            passcodeController.clear();
-          },
           onChanged: (value) {
             _validateForm(coordinator);
             if (errorText.isNotEmpty) {

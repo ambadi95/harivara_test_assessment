@@ -24,7 +24,7 @@ class PasscodeNavigationHandler with ErrorHandler {
   }
 
   Future<void> navigateToCustomerEnrollmentScreen(
-      String destinationPath, bool isEnrolled,UserType userType) async {
+      String destinationPath, bool isEnrolled, UserType userType) async {
     UserType argument = userType;
     _navigationManager.navigateTo(
         destinationPath, const NavigationType.replace(),

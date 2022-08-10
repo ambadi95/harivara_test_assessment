@@ -30,7 +30,7 @@ class DeviceOptionCoordinator
   }
 
   Future navigateToDeviceDetailScreen(int deviceId, UserType userType) async {
-    _navigationHandler.navigateToDeviceDetail(deviceId,userType);
+    _navigationHandler.navigateToDeviceDetail(deviceId, userType);
   }
 
   Future<void> navigateToEnrolledScreen(UserType userType) async {

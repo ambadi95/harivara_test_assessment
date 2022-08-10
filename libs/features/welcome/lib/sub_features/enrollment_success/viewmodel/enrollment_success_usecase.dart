@@ -32,15 +32,15 @@ class EnrollmentSuccessUseCase extends BaseDataProvider {
         .execute("", {CACHE_TYPE: TaskManagerCacheType.DELETE_ALL});
   }
 
-  Future<GetCustomerDetailsResponse?> getCustomerDetails( UserType userType,
-      Function(String) onErrorCallback) async {
+  Future<GetCustomerDetailsResponse?> getCustomerDetails(
+      UserType userType, Function(String) onErrorCallback) async {
     String id = await getCustomerId();
     String? token = await _authManager.getAccessToken();
     return await executeApiRequest<GetCustomerDetailsResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
         moduleIdentifier: WelcomeModule.moduleIdentifier,
-        requestData: {"customerId": id, "token": token,'userType':userType},
+        requestData: {"customerId": id, "token": token, 'userType': userType},
         serviceIdentifier: IEnrollmentService.enrollmentIdentifier,
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {
