@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:config/Config.dart';
 import 'package:network_manager/model/requests/request.dart';
 import 'package:network_manager/model/requests/standard/standard_request.dart';
 
@@ -21,7 +22,7 @@ class DeviceOptionService implements IDeviceOptionService {
   Future<StandardRequest> deviceList(int customerId, String token) async {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
-    request.endpoint = 'device-list';
+    request.endpoint = customerEndpoint + 'device-list[customer]';
     request.jsonBody = json.encode({"customerId": customerId});
     request.customHeaders = {
       'Content-Type': 'application/json',
@@ -34,7 +35,7 @@ class DeviceOptionService implements IDeviceOptionService {
   Future<StandardRequest> deviceDetail(int deviceId, String token) async {
     var request = StandardRequest();
     request.requestType = RequestType.GET;
-    request.endpoint = 'device-details/' + deviceId.toString();
+    request.endpoint = customerEndpoint + 'district-details/${deviceId.toString()}[customer]';
     request.customHeaders = {
       'Content-Type': 'application/json',
       'Authorization': token,
@@ -47,7 +48,7 @@ class DeviceOptionService implements IDeviceOptionService {
       int customerId, int device, String token) async {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
-    request.endpoint = 'customer-device';
+    request.endpoint = customerEndpoint +'customer-device[customer]';
     request.jsonBody =
         json.encode({"customerId": customerId, 'deviceId': device});
     request.customHeaders = {
