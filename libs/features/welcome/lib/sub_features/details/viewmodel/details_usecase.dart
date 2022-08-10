@@ -89,7 +89,7 @@ class DetailsUseCase extends BaseDataProvider {
     int customerId = int.parse(await getCustomerId());
     CustomerDetailsRequest customerDetailsRequest = CustomerDetailsRequest(
       nidaNo: nidaNo.replaceAll("-", ""),
-      mobileNo: mobileNO.replaceAll(" ", ''),
+      mobileNo: mobileNO,
       customerId: customerId,
       firstName: name.split(' ')[0],
       lastName: name.split(' ')[1],
@@ -114,6 +114,7 @@ class DetailsUseCase extends BaseDataProvider {
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {
           final data = responseData;
+
           return CustomerDetailResponse.fromJson(data);
         });
   }

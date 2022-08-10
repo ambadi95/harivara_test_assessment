@@ -1,4 +1,5 @@
 import 'package:config/Colors.dart';
+import 'package:config/Config.dart';
 import 'package:core/navigation/navigation_manager.dart';
 import 'package:core/navigation/navigation_type.dart';
 import 'package:core/sheets/data_model/button_options.dart';
@@ -23,8 +24,8 @@ class PasscodeNavigationHandler with ErrorHandler {
   }
 
   Future<void> navigateToCustomerEnrollmentScreen(
-      String destinationPath, bool isEnrolled) async {
-    var argument = isEnrolled;
+      String destinationPath, bool isEnrolled,UserType userType) async {
+    UserType argument = userType;
     _navigationManager.navigateTo(
         destinationPath, const NavigationType.replace(),
         arguments: argument);
