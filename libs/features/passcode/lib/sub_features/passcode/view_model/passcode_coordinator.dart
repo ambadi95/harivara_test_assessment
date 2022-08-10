@@ -135,13 +135,15 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
     String userType,
   ) async {
     var currentState = state as CreatePasscodeReady;
+    print('%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%');
+    print(userType);
     if (oldPassCode == newPasscode) {
       state = currentState.copyWith(currentStep: 5);
       await _passcodeUseCase.savePassCodeLocal(newPasscode);
       if (userType == "Customer") {
         state = currentState.copyWith(isLoading: true);
         var response =
-            await _passcodeUseCase.savePasscode(newPasscode, (p0) => null);
+            await _passcodeUseCase.savePasscode(newPasscode,userType, (p0) => null);
         if (response!.status == true) {
           var loginResponse =
               await _passcodeUseCase.login(newPasscode, (p0) => null);
@@ -164,7 +166,7 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
                 destinationPath, false,UserType.AgentCustomer);
           }
         }
-      } else {
+      } else if(userType == 'Agent') {
         state = currentState.copyWith(isLoading: true);
         var response = await _passcodeUseCase.savePasscodeAgent(
             newPasscode, userType, (p0) => null);
@@ -182,11 +184,20 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
             state = currentState.copyWith(isLoading: false);
           } else {
             state = currentState.copyWith(isLoading: false);
-            CrayonPaymentLogger.logError(loginResponse!.message!);
+            CrayonPaymentLogger.logError(loginResponse.message!);
           }
         } else {
           state = currentState.copyWith(isLoading: false);
           CrayonPaymentLogger.logError(response!.message!);
+        }
+      }else{
+        state = currentState.copyWith(isLoading: true);
+        var response =
+        await _passcodeUseCase.savePasscodeAgentCustomer(newPasscode,userType, (p0) => null);
+        if (response!.status == true) {
+            state = currentState.copyWith(isLoading: false);
+            _navigationHandler.navigateToCustomerEnrollmentScreen(
+                destinationPath, false);
         }
       }
     } else {
