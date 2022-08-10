@@ -315,7 +315,7 @@ const HS_referal_code_style = TextStyle(
 
 const WB_title_style = TextStyle(
     color: WB_TitleColor,
-    fontWeight: FontWeight.w500,
+    fontWeight: FontWeight.bold,
     fontFamily: 'Montserrat',
     fontStyle: FontStyle.normal,
     fontSize: 20);
