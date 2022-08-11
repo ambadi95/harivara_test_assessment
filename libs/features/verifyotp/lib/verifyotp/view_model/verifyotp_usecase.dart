@@ -80,7 +80,6 @@ class VerifyOtpUseCase extends BaseDataProvider {
       String userType, Function(String) onErrorCallback) async {
     OtpVerificationRequest otpRequest =
         OtpVerificationRequest(id: id, type: userType, otp: otp);
-
     return await executeApiRequest<OtpVerificationResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,

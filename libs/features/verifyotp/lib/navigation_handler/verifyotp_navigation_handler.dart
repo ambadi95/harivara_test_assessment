@@ -1,3 +1,4 @@
+import 'package:config/Config.dart';
 import 'package:core/navigation/navigation_manager.dart';
 import 'package:core/navigation/navigation_type.dart';
 import 'package:shared_data_models/passcode/passcode_screen_args.dart';
@@ -22,7 +23,7 @@ class VerifyOtpNavigationHandler with ErrorHandler {
   }
 
   Future<void> navigateToCustomerEnrollmentScreen() async {
-    var argument = true;
+    var argument = UserType.Customer;
     _navigationManager.navigateTo(
         EnrollmentSuccessScreen.viewPath, const NavigationType.push(),
         arguments: argument);

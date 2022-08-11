@@ -150,8 +150,8 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
     int attempts = currentState.attemptsRemain;
     if (otpScreenArgs.otpVerificationType == OtpVerificationType.customerSign) {
       var responseSignin = await _verifyOtpUseCase.otpVerify(
-          otpScreenArgs.refId, otpScreenArgs.userType, enterOtp, (p0) => null);
-      if (responseSignin!.data!.status == "success") {
+          otpScreenArgs.refId, enterOtp,otpScreenArgs.userType, (p0) => null);
+      if (responseSignin!.status == true) {
         _navigationHandler.navigateToCustomerEnrollmentScreen();
       } else {
         print('error');

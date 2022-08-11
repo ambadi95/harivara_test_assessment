@@ -66,6 +66,10 @@ class PasscodeUseCase extends BaseDataProvider {
     return await getValueFromSecureStorage('agentId', defaultValue: '');
   }
 
+  Future<void> saveCustomerName(String customerName) async {
+    return await setValueToSecureStorage({'CustomerName': customerName});
+  }
+
   Future<String> getNumber() async {
     return await getValueFromSecureStorage('mobileNumber', defaultValue: '');
   }
@@ -157,6 +161,7 @@ class PasscodeUseCase extends BaseDataProvider {
               CustomerSignInResponse.fromJson(data);
           _authManager.storeTokenInformation(
               customerSignInResponse.data!.token!, '', '', '');
+          saveCustomerName(customerSignInResponse.data!.username!);
           return CustomerSignInResponse.fromJson(data);
         });
   }
