@@ -47,7 +47,8 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
           username = await coordinator.getUserName();
           userID = await coordinator.getUserId();
         },
-        builder: (context, state, welcomeCoordinator) => _buildMainUIWithLoading(context, welcomeCoordinator, state),
+        builder: (context, state, welcomeCoordinator) =>
+            _buildMainUIWithLoading(context, welcomeCoordinator, state),
       );
 
   @override
@@ -107,8 +108,7 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
                       .getPercentageSize(ofWidth: false, percentage: 4)),
 
               _buildTitle(context),
-              const SizedBox(
-                  height: 27),
+              const SizedBox(height: 27),
               _userImage(),
               SizedBox(
                   height: AppUtils.appUtilsInstance

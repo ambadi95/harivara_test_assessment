@@ -16,10 +16,7 @@ abstract class ILoginService {
     Map<String, dynamic> requestData,
   );
 
-  Future<StandardRequest> getAgentDetails(
-   String agentId,
-      String mobileNumber
-  );
+  Future<StandardRequest> getAgentDetails(String agentId, String mobileNumber);
 }
 
 class LoginService implements ILoginService {
@@ -39,16 +36,12 @@ class LoginService implements ILoginService {
 
   @override
   Future<StandardRequest> getAgentDetails(
-      String agentId,
-      String mobileNumber
-  ) async {
+      String agentId, String mobileNumber) async {
     var request = StandardRequest();
     request.requestType = RequestType.GET;
     request.endpoint = 'agent-details-by-agentid-mobile-number';
-    request.jsonBody = json.encode({
-      "mobileNumber": mobileNumber,
-      "y9AgentId": agentId
-    });
+    request.jsonBody =
+        json.encode({"mobileNumber": mobileNumber, "y9AgentId": agentId});
     request.customHeaders = {
       'Content-Type': 'application/json',
     };

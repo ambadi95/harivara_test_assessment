@@ -6,6 +6,7 @@ import 'package:shared_data_models/detail_detail/device_details.dart';
 import '../../../device_option_module.dart';
 import '../service/device_option_service.dart';
 import 'package:shared_data_models/customer_select_device/customer_select_device_response/customer_select_device_response.dart';
+import 'package:shared_data_models/device_option/detail_detail_response/detail_detail_response.dart';
 
 class DeviceDetailUseCase extends BaseDataProvider {
   DeviceDetailUseCase(TaskManager taskManager, this._authManager)
@@ -16,10 +17,10 @@ class DeviceDetailUseCase extends BaseDataProvider {
     return await getValueFromSecureStorage('customerId', defaultValue: '');
   }
 
-  Future<DeviceDetails?> getDeviceDetail(
+  Future<DetailDetailResponse?> getDeviceDetail(
       int deviceId, Function(String) onErrorCallback) async {
     String? token = await _authManager.getAccessToken();
-    return await executeApiRequest<DeviceDetails?>(
+    return await executeApiRequest<DetailDetailResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
         moduleIdentifier: DeviceOptionModule.moduleIdentifier,
@@ -28,8 +29,8 @@ class DeviceDetailUseCase extends BaseDataProvider {
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {
           final data = responseData;
-          DeviceDetails deviceListResponse = DeviceDetails.fromJson(data);
-          return DeviceDetails.fromJson(data);
+          DetailDetailResponse deviceListResponse = DetailDetailResponse.fromMap(data);
+          return DetailDetailResponse.fromMap(data);
         });
   }
 

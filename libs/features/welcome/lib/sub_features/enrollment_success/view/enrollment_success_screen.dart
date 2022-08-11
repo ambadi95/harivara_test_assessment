@@ -87,13 +87,19 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
           InkWell(
             onTap: () {
               widget.userType == UserType.AgentCustomer
-                  ? customerDetail!.data!.deviceId == null ? null : coordinator.backToHome()
+                  ? customerDetail!.data!.deviceId == null
+                      ? null
+                      : coordinator.backToHome()
                   : coordinator.logout();
             },
             child: Align(
               alignment: Alignment.centerRight,
               child: Text(
-                widget.userType == UserType.AgentCustomer ? customerDetail!.data!.deviceId != null ? 'Home' : '' : 'Logout',
+                widget.userType == UserType.AgentCustomer
+                    ? customerDetail!.data!.deviceId != null
+                        ? 'Home'
+                        : ''
+                    : 'Logout',
                 style: const TextStyle(color: PRIMARY_COLOR),
               ),
             ),

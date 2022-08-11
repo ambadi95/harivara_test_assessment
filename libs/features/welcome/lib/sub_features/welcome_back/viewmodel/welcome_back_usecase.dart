@@ -118,7 +118,7 @@ class WelcomeBackUseCase extends BaseDataProvider {
           AgentSignInResponse agentSignInResponse =
               AgentSignInResponse.fromJson(data);
           print(agentSignInResponse);
-          if(agentSignInResponse.status!){
+          if (agentSignInResponse.status!) {
             _authManager.storeTokenInformation(
                 agentSignInResponse.data!.token!, '', '', '');
           }

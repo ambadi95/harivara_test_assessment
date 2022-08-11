@@ -57,7 +57,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
     if (response?.status == true) {
       int otp1 = response?.data?.token as int;
       otp = otp1.toString();
-      otpController.text = otp;
+      //otpController.text = otp;
       CrayonPaymentLogger.logInfo(otp);
     }
   }

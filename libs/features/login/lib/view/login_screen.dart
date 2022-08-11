@@ -106,36 +106,42 @@ class _LoginState extends State<Login> {
             child: Column(
               children: [
                 actionButton(coordinator),
-                SizedBox(height: 20,)
+                SizedBox(
+                  height: 20,
+                )
               ],
             ),
           ),
         ),
         body: SingleChildScrollView(
           child: Column(
-           crossAxisAlignment: CrossAxisAlignment.start,
-           children: [
-             _buildTitle(context),
-             SizedBox(height: 66,),
-             _buildLabelTextFieldMobNumber(context, 'LS_Mobile'.tr, coordinator),
-             SizedBox(height: 48,),
-             widget.userType == 'Customer'
-                 ? _passcodeWidget(context, coordinator)
-                 : _buildLabelTextField(
-                     'LS_agent_id'.tr,
-                     agentIdController,
-                     TextInputType.text,
-                     coordinator,
-                     agentIdError,
-                     'SU_agent_id_hint',
-                     true),
-             const SizedBox(
-               height: 46,
-             ),
-             // _buildResetPasscode(coordinator),
-
-           ],
-            ),
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _buildTitle(context),
+              SizedBox(
+                height: 66,
+              ),
+              _buildLabelTextFieldMobNumber(
+                  context, 'LS_Mobile'.tr, coordinator),
+              SizedBox(
+                height: 48,
+              ),
+              widget.userType == 'Customer'
+                  ? _passcodeWidget(context, coordinator)
+                  : _buildLabelTextField(
+                      'LS_agent_id'.tr,
+                      agentIdController,
+                      TextInputType.text,
+                      coordinator,
+                      agentIdError,
+                      'SU_agent_id_hint',
+                      true),
+              const SizedBox(
+                height: 46,
+              ),
+              // _buildResetPasscode(coordinator),
+            ],
+          ),
         ));
   }
 

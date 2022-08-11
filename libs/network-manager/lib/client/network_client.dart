@@ -179,8 +179,8 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
       'Sending GET request to the server for url: ${uri.toString()}',
     );
     try {
-      var getRequest = http.Request('GET',uri);
-      if(request.jsonBody !=null) {
+      var getRequest = http.Request('GET', uri);
+      if (request.jsonBody != null) {
         getRequest.body = request.jsonBody!;
       }
       getRequest.headers.addAll(headers!);
