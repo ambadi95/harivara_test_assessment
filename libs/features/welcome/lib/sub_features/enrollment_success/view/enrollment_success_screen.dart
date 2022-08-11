@@ -27,10 +27,10 @@ class EnrollmentSuccessScreen extends StatefulWidget {
       _EnrollmentSuccessScreenState();
 }
 
-GetCustomerDetailsResponse? customerDetail;
 GlobalKey<FormState> _abcKey = GlobalKey<FormState>();
 
 class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
+  GetCustomerDetailsResponse? customerDetail;
   @override
   void initState() {
     // TODO: implement initState
@@ -87,13 +87,13 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
           InkWell(
             onTap: () {
               widget.userType == UserType.AgentCustomer
-                  ? coordinator.backToHome()
+                  ? customerDetail!.data!.deviceId == null ? null : coordinator.backToHome()
                   : coordinator.logout();
             },
             child: Align(
               alignment: Alignment.centerRight,
               child: Text(
-                widget.userType == UserType.AgentCustomer ? 'Home' : 'Logout',
+                widget.userType == UserType.AgentCustomer ? customerDetail!.data!.deviceId != null ? 'Home' : '' : 'Logout',
                 style: const TextStyle(color: PRIMARY_COLOR),
               ),
             ),
