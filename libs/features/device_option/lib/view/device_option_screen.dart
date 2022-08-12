@@ -183,7 +183,7 @@ class _DeviceOptionState extends State<DeviceOption> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
-                          width: 290,
+                          width: MediaQuery.of(context).size.width * 0.7 ,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
