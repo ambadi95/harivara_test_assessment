@@ -100,7 +100,7 @@ class PasscodeUseCase extends BaseDataProvider {
   }
 
   Future<PasscodeResponse?> savePasscodeAgentCustomer(String passcode,
-      String userType, Function(String) onErrorCallback) async {
+      UserType userType, Function(String) onErrorCallback) async {
     String custmerId = await getCustomerId();
 
     PasscodeRequest passcodeRequest = PasscodeRequest(
@@ -112,7 +112,7 @@ class PasscodeUseCase extends BaseDataProvider {
         moduleIdentifier: PasscodeModule.moduleIdentifier,
         requestData: {
           'data': passcodeRequest.toJson(),
-          'userType': UserType.AgentCustomer
+          'userType': userType == UserType.AgentCustomer ? "AgentCustomer" : (userType == UserType.Customer ? "Customer" : "Agent")
         },
         serviceIdentifier: IPasscodeService.agentCustomerSignUpIdentifier,
         onError: onErrorCallback,

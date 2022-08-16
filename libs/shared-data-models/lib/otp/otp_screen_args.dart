@@ -1,4 +1,5 @@
 import 'otp_verification_type.dart';
+import 'package:config/Config.dart';
 
 class OtpScreenArgs {
   final String title;
@@ -11,7 +12,7 @@ class OtpScreenArgs {
   final int otpNumber;
   final String phoneNumber;
   final bool isResetPasscode;
-  final String userType;
+  final UserType userType;
 
   OtpScreenArgs(
     this.title,

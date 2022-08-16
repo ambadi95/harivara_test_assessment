@@ -26,13 +26,13 @@ class CrayonSplashScreen extends StatefulWidget {
         welcomeScreenArgs: WelcomeScreenArgs(
           '',
           '',
-          'Customer',
+          UserType.Customer,
           false,
         ),
       );
 
   factory CrayonSplashScreen.forMerchantApp() => CrayonSplashScreen(
-        welcomeScreenArgs: WelcomeScreenArgs('', '', 'Agent', false),
+        welcomeScreenArgs: WelcomeScreenArgs('', '', UserType.Agent, false),
       );
 }
 
