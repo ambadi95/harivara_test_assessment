@@ -13,7 +13,7 @@ import 'package:network_manager/model/response/token/token_response.dart';
 import 'package:shared_data_models/auth/auth_detail.dart';
 import 'package:config/Config.dart';
 class AuthorizationClient {
-  final String _userType;
+  final UserType _userType;
   final INetworkClient _client;
   final IAuthManager _authManager;
   final IUserManager _userManager;
@@ -30,14 +30,14 @@ class AuthorizationClient {
     IAuthManager authManager,
     IUserManager userManager,
   ) =>
-      AuthorizationClient('MERCHANT', client, authManager, userManager);
+      AuthorizationClient(UserType.Agent, client, authManager, userManager);
 
   factory AuthorizationClient.forCustomerApp(
     INetworkClient client,
     IAuthManager authManager,
     IUserManager userManager,
   ) =>
-      AuthorizationClient('CUSTOMER', client, authManager, userManager);
+      AuthorizationClient(UserType.Customer, client, authManager, userManager);
 
   Future<TokenResponse?> requestToken(
     Function onErrorCallback,

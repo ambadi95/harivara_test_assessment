@@ -112,7 +112,7 @@ class PasscodeUseCase extends BaseDataProvider {
         moduleIdentifier: PasscodeModule.moduleIdentifier,
         requestData: {
           'data': passcodeRequest.toJson(),
-          'userType': userType == UserType.AgentCustomer ? "AgentCustomer" : (userType == UserType.Customer ? "Customer" : "Agent")
+          'userType': userType
         },
         serviceIdentifier: IPasscodeService.agentCustomerSignUpIdentifier,
         onError: onErrorCallback,

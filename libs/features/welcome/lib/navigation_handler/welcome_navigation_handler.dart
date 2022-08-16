@@ -130,7 +130,7 @@ class WelcomeNavigationHandler with ErrorHandler {
         arguments: userType);
   }
 
-  Future<void> navigateToLoginFromLogout(String userType) async {
+  Future<void> navigateToLoginFromLogout(UserType userType) async {
     await _navigationManager.navigateTo(
         Login.viewPath, const NavigationType.replace(),
         arguments: userType);
