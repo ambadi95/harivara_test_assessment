@@ -11,7 +11,7 @@ import 'package:network_manager/model/requests/request.dart';
 import 'package:network_manager/model/requests/standard/standard_request.dart';
 import 'package:network_manager/model/response/token/token_response.dart';
 import 'package:shared_data_models/auth/auth_detail.dart';
-
+import 'package:config/Config.dart';
 class AuthorizationClient {
   final String _userType;
   final INetworkClient _client;
@@ -49,7 +49,7 @@ class AuthorizationClient {
       request.endpoint = 'id-auth/v2/tokens';
       request.jsonBody = json.encode({
         'userId': mobileNumber,
-        'userType': _userType,
+        'userType': _userType == UserType.AgentCustomer ? "AgentCustomer" : (_userType == UserType.Customer ? "Customer": "Agent"),
       });
       request.customHeaders = {'Content-Type': 'application/json'};
 

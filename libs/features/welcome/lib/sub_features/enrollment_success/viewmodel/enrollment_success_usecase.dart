@@ -40,7 +40,7 @@ class EnrollmentSuccessUseCase extends BaseDataProvider {
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
         moduleIdentifier: WelcomeModule.moduleIdentifier,
-        requestData: {"customerId": id, "token": token, 'userType': userType},
+        requestData: {"customerId": id, "token": token, 'userType': userType == UserType.AgentCustomer ? "AgentCustomer" : (userType==UserType.Customer ? "Customer": "Agent")},
         serviceIdentifier: IEnrollmentService.enrollmentIdentifier,
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {

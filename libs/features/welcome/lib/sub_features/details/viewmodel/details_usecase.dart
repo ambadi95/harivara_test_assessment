@@ -50,7 +50,7 @@ class DetailsUseCase extends BaseDataProvider {
         moduleIdentifier: WelcomeModule.moduleIdentifier,
         serviceIdentifier: IDetailsService.regionIdentifier,
         onError: onErrorCallback,
-        requestData: {'userType': userType},
+        requestData: {'userType': userType == UserType.AgentCustomer ? "AgentCustomer" : (userType==UserType.Customer ? "Customer": "Agent")},
         modelBuilderCallback: (responseData) {
           final data = responseData;
           return RegionDetails.fromJson(data);
@@ -63,7 +63,7 @@ class DetailsUseCase extends BaseDataProvider {
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
         moduleIdentifier: WelcomeModule.moduleIdentifier,
-        requestData: {"regionId": regionId, 'userType': userType},
+        requestData: {"regionId": regionId, 'userType': userType == UserType.AgentCustomer ? "AgentCustomer" : (userType==UserType.Customer ? "Customer": "Agent")},
         serviceIdentifier: IDetailsService.districtIdentifier,
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {
@@ -108,7 +108,7 @@ class DetailsUseCase extends BaseDataProvider {
         moduleIdentifier: WelcomeModule.moduleIdentifier,
         requestData: {
           'data': customerDetailsRequest.toJson(),
-          'userType': userType
+          'userType': userType == UserType.AgentCustomer ? "AgentCustomer" : (userType == UserType.Customer ? "Customer": "Agent")
         },
         serviceIdentifier: IDetailsService.submitCustomerDetailIdentifier,
         onError: onErrorCallback,

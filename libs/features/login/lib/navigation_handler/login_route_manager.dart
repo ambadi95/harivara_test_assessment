@@ -9,9 +9,9 @@ class LoginRouteManager extends IRouteManager {
   Widget getView(RouteSettings settings) {
     switch (settings.name) {
       case Login.viewPath:
-        var arguments = settings.arguments as String;
+        var arguments = settings.arguments as UserType;
         return Login(
-          userType: arguments as UserType,
+          userType: arguments ,
         );
       default:
         // TODO: implement getView

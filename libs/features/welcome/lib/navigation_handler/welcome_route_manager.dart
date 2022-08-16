@@ -52,9 +52,9 @@ class WelcomeRouteManager extends IRouteManager {
           userType: argument,
         );
       case CrayonWelcomBackScreen.viewPath:
-        String arguments = settings.arguments as String;
+        var arguments = settings.arguments as UserType;
         return CrayonWelcomBackScreen(
-          userType: arguments as UserType,
+          userType: arguments ,
         );
       case AgentDetailsScreen.viewPath:
         var arguments = settings.arguments as AgentDetailScreenArguments;
