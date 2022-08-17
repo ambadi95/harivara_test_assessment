@@ -2,8 +2,8 @@
   "OB_WelcomeTitle" : "Welcome to the Y9 Agent",
   "OB_WelcomeSubTitle" : "Your Dream Digital Microfinance",
   "OB_WelcomeThirdTitle" : "y9bank.com",
-  "OB_SignIn" : "Sign-In",
-  "OB_SignUp" : "Sign-Up",
+  "OB_SignIn" : "Sign in",
+  "OB_SignUp" : "Sign up",
   "OB_Lang" : "EN",
   "OB_ni_bora" : "ni %{Bora|click}%",
 
@@ -15,7 +15,7 @@
   "LS_agent_id" : "Agent ID",
   "LS_agent_id_error" : "Invalid Agent ID",
   "LS_Passcode" : "Passcode",
-  "LS_SignIn" : "Sign-In",
+  "LS_SignIn" : "Sign in",
 
 
   "SU_title" : "Y9 Customer Registration",

@@ -86,7 +86,6 @@ class _DeviceOptionState extends State<DeviceOption> {
     );
   }
 
-  // void _listenToStateChanges(BuildContext context, DeviceOptionState state) {
   Widget _buildMainUI(context, DeviceOptionCoordinator coordinator) {
     return CrayonPaymentScaffold(
         appBarAttributes: CrayonPaymentAppBarAttributes(
