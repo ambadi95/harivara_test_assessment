@@ -7,7 +7,7 @@ import 'package:intl/intl.dart';
 
 import '../../../navigation_handler/welcome_navigation_handler.dart';
 import 'welcome_usecase.dart';
-
+import 'package:config/Config.dart';
 class WelcomeCoordinator extends BaseViewModel<WelcomeScreenState> {
   final WelcomeNavigationHandler _navigationHandler;
   final WelcomeUseCase _welcomeUseCase;
@@ -40,11 +40,11 @@ class WelcomeCoordinator extends BaseViewModel<WelcomeScreenState> {
     );
   }
 
-  Future navigateToSignUpScreen(String userType) async {
+  Future navigateToSignUpScreen(UserType userType) async {
     _navigationHandler.navigateToSignUpScreen(userType);
   }
 
-  Future navigateToLogin(String userType) async {
+  Future navigateToLogin(UserType userType) async {
     _navigationHandler.navigateToLogin(userType);
   }
 }

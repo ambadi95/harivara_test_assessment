@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:shared_data_models/signup/sign_up_type.dart';
 import 'package:task_manager/base_classes/base_view_model.dart';
 import 'package:welcome/sub_features/signup/state/signup_state.dart';
@@ -5,7 +7,7 @@ import 'package:welcome/sub_features/signup/viewmodel/signup_usecase.dart';
 
 import '../../../data_model/sign_up_arguments.dart';
 import '../../../navigation_handler/welcome_navigation_handler.dart';
-
+import 'package:config/Config.dart';
 class SignUpCoordinator extends BaseViewModel<SignUpState> {
   final SignupUseCase _signupUseCase;
   final WelcomeNavigationHandler _navigationHandler;
@@ -68,7 +70,7 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
         await _signupUseCase
             .saveCustomerId(response.data?.customerId.toString());
         _navigationHandler.navigateToOtpScreenCustomerSignUpByAgent(
-            'Customer', mobileNumber,
+            UserType.Customer, mobileNumber,
             userId: response.data?.customerId.toString());
       } else {
         state = const SignUpState.initialState();
@@ -98,12 +100,12 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
   }
 
   bool _validateForm(
-      String nidaNo, String mobNumber, String agentId, String userType) {
+      String nidaNo, String mobNumber, String agentId, UserType userType) {
     var agentID = agentId.isNotEmpty;
     var isnidaNumberValid = _signupUseCase.isValidNINDAnumber(nidaNo);
     var ismobileNoValid = _signupUseCase.isValidMobileNumber(mobNumber);
     var _isValid;
-    if (userType == 'Customer') {
+    if (userType == UserType.Customer) {
       _isValid = isnidaNumberValid && ismobileNoValid;
     } else {
       _isValid = isnidaNumberValid && agentID;
@@ -112,7 +114,7 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
   }
 
   void validateForm(
-      String nidaNo, String mobNumber, String agentId, String userType) {
+      String nidaNo, String mobNumber, String agentId,  userType) {
     state = SignUpState.SignUpFormState(
         _validateForm(nidaNo, mobNumber, agentId, userType));
   }

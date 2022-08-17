@@ -11,9 +11,9 @@ import 'package:network_manager/model/requests/request.dart';
 import 'package:network_manager/model/requests/standard/standard_request.dart';
 import 'package:network_manager/model/response/token/token_response.dart';
 import 'package:shared_data_models/auth/auth_detail.dart';
-
+import 'package:config/Config.dart';
 class AuthorizationClient {
-  final String _userType;
+  final UserType _userType;
   final INetworkClient _client;
   final IAuthManager _authManager;
   final IUserManager _userManager;
@@ -30,14 +30,14 @@ class AuthorizationClient {
     IAuthManager authManager,
     IUserManager userManager,
   ) =>
-      AuthorizationClient('MERCHANT', client, authManager, userManager);
+      AuthorizationClient(UserType.Agent, client, authManager, userManager);
 
   factory AuthorizationClient.forCustomerApp(
     INetworkClient client,
     IAuthManager authManager,
     IUserManager userManager,
   ) =>
-      AuthorizationClient('CUSTOMER', client, authManager, userManager);
+      AuthorizationClient(UserType.Customer, client, authManager, userManager);
 
   Future<TokenResponse?> requestToken(
     Function onErrorCallback,
@@ -49,7 +49,7 @@ class AuthorizationClient {
       request.endpoint = 'id-auth/v2/tokens';
       request.jsonBody = json.encode({
         'userId': mobileNumber,
-        'userType': _userType,
+        'userType': _userType == UserType.AgentCustomer ? "AgentCustomer" : (_userType == UserType.Customer ? "Customer": "Agent"),
       });
       request.customHeaders = {'Content-Type': 'application/json'};
 

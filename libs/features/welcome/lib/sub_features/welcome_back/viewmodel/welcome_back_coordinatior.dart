@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:config/Config.dart';
 import 'package:core/mobile_core.dart';
 import 'package:welcome/sub_features/welcome/state/welcome_screen_state.dart';
 import 'package:task_manager/base_classes/base_view_model.dart';
@@ -30,8 +31,8 @@ class WelcomeBackCoordinator extends BaseViewModel<WelcomeScreenState> {
   }
 
   Future<void> navigationToDestination(String userType) async {
-    if (userType == 'Customer') {
-      _navigationHandler.navigateToCustomerHome();
+    if (userType == UserType.Customer) {
+      _navigationHandler.navigateToCustomerEnrollmentScreen();
     } else {
       _navigationHandler.navigateToAgentHome();
     }
@@ -66,7 +67,7 @@ class WelcomeBackCoordinator extends BaseViewModel<WelcomeScreenState> {
     }
   }
 
-  Future<void> navigateToResetNow(String userType) async {
+  Future<void> navigateToResetNow(UserType userType) async {
     await _navigationHandler.navigateToResetPasscode(userType);
   }
 
@@ -82,9 +83,9 @@ class WelcomeBackCoordinator extends BaseViewModel<WelcomeScreenState> {
     return await _welcomeUseCase.getCustomerY9Id();
   }
 
-  void onPasscodeCallback(String passCode, String userType) {
-    if (userType == 'Customer') {
-      customerLogin(passCode, userType);
+  void onPasscodeCallback(String passCode, UserType userType) {
+    if (userType == UserType.Customer) {
+      customerLogin(passCode, userType==UserType.Customer ? "Customer" : "Agent");
     } else {
       agentLogin(passCode);
     }

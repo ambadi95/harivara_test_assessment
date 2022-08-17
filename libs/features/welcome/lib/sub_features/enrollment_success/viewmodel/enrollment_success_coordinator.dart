@@ -25,7 +25,7 @@ class EnrollmentSuccessCoordinator
 
   logout() {
     _enrollmentSuccessUseCase.logout();
-    _navigationHandler.navigateToLoginFromLogout('Customer');
+    _navigationHandler.navigateToLoginFromLogout(UserType.Customer);
   }
 
   Future backToHome() async {
