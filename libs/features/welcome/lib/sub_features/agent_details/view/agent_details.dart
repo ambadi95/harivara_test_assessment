@@ -1,5 +1,6 @@
 import 'package:config/Colors.dart';
 import 'package:config/Styles.dart';
+import 'package:core/mobile_core.dart';
 import 'package:core/view/base_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -40,7 +41,7 @@ class _AgentDetailsScreenState extends State<AgentDetailsScreen> {
 
   final FocusNode? focusNode = FocusNode();
   final TextEditingController name = TextEditingController();
-  final TextEditingController dob = TextEditingController(text: '22/6/1986');
+  final TextEditingController dob = TextEditingController();
   final TextEditingController gender = TextEditingController();
   final TextEditingController mobileNumber = TextEditingController();
   final TextEditingController emailId = TextEditingController();
@@ -75,6 +76,7 @@ class _AgentDetailsScreenState extends State<AgentDetailsScreen> {
           mobileNumber.text = agentDetails!.mobileNo!;
           emailId.text = agentDetails!.emailId!;
           gender.text = agentDetails!.gender!;
+          dob.text = agentDetails!.birthDate!.toString();
         },
         builder: (context, state, coordinator) => SafeArea(
           child: Scaffold(

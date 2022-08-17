@@ -1,3 +1,4 @@
+import 'package:config/Config.dart';
 import 'package:core/navigation/navigation_manager.dart';
 import 'package:core/navigation/navigation_type.dart';
 import 'package:welcome/sub_features/enrollment_success/view/enrollment_success_screen.dart';
@@ -10,15 +11,16 @@ class DeviceOptionNavigationHandler with ErrorHandler {
 
   DeviceOptionNavigationHandler(this._navigationManager);
 
-  Future<void> navigateToDeviceDetail(int id) async {
+  Future<void> navigateToDeviceDetail(int id, UserType userType) async {
+    var arguments = {'userType': userType, 'id': id};
     await _navigationManager.navigateTo(
         DeviceDetailScreen.viewPath, const NavigationType.push(),
-        arguments: id);
+        arguments: arguments);
   }
 
   Future<void> navigateToCustomerEnrollmentScreen(
-      String destinationPath, bool isEnrolled) async {
-    var argument = isEnrolled;
+      String destinationPath, UserType userType) async {
+    var argument = userType;
     _navigationManager.navigateTo(
         EnrollmentSuccessScreen.viewPath, const NavigationType.replace(),
         arguments: argument);

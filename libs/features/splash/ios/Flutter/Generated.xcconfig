@@ -1,6 +1,6 @@
 // This is a generated file; do not edit or check into version control.
-FLUTTER_ROOT=/Users/lucky/Downloads/flutter
-FLUTTER_APPLICATION_PATH=/Users/lucky/Documents/bitbucket/y9-frontend/libs/features/splash
+FLUTTER_ROOT=/Users/ashishmac/Downloads/flutter
+FLUTTER_APPLICATION_PATH=/Users/ashishmac/y9-frontend/libs/features/splash
 COCOAPODS_PARALLEL_CODE_SIGN=true
 FLUTTER_TARGET=lib/main.dart
 FLUTTER_BUILD_DIR=build

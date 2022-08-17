@@ -1,9 +1,9 @@
 import 'package:config/Colors.dart';
+import 'package:config/Config.dart';
 import 'package:core/mobile_core.dart';
 import 'package:core/view/base_view.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_data_models/device_option/device_detail_mockup.dart';
-import 'package:welcome/sub_features/details/viewmodel/details_coordinator.dart';
 import 'package:widget_library/app_bars/crayon_payment_app_bar_attributes.dart';
 import 'package:widget_library/app_bars/crayon_payment_app_bar_button_type.dart';
 import 'package:widget_library/buttons/docked_button.dart';
@@ -16,15 +16,17 @@ import 'package:widget_library/static_text/crayon_payment_text.dart';
 import '../../../device_option_module.dart';
 import '../state/device_detail_state.dart';
 import '../viewmodel/device_detail_coordinator.dart';
+import 'package:shared_data_models/device_option/detail_detail_response/data.dart';
 import 'package:get/get.dart';
-import 'package:shared_data_models/detail_detail/data.dart';
 
 class DeviceDetailScreen extends StatefulWidget {
   final int deviceId;
+  final UserType userType;
   static const String viewPath =
       '${DeviceOptionModule.moduleIdentifier}/device-detail-screen';
 
-  DeviceDetailScreen({Key? key, required this.deviceId}) : super(key: key);
+  DeviceDetailScreen({Key? key, required this.deviceId, required this.userType})
+      : super(key: key);
 
   @override
   State<DeviceDetailScreen> createState() => _DeviceDetailScreenState();
@@ -195,8 +197,8 @@ class _DeviceDetailScreenState extends State<DeviceDetailScreen> {
             value: detailDetail!.waterResistanceLevel!),
         divider(),
         productSpecLabel(label: 'DD_Color', value: detailDetail!.color!),
-        // divider(),
-        // productSpecLabel(label: 'DD_Price', value: detailDetail!.price.toString() == 'null' ? "TZS 1,87,00" : "TZS "+detailDetail!.price.toString()),
+        divider(),
+        productSpecLabel(label: 'DD_Price', value: detailDetail!.rretailPrice.toString() == 'null' ? "TZS 1,87,00" : "TZS "+detailDetail!.rretailPrice.toString()),
         // divider(),
         // productSpecLabel(label: 'DD_EMIMonth', value: ''),
         // divider(),
@@ -366,7 +368,8 @@ class _DeviceDetailScreenState extends State<DeviceDetailScreen> {
       textColor: White,
       textStyleVariant: CrayonPaymentTextStyleVariant.headline4,
       onPressed: () {
-        coordinator.navigateToEnrolledScreen(widget.deviceId);
+        print(widget.userType);
+        coordinator.navigateToEnrolledScreen(widget.deviceId, widget.userType);
       },
     );
   }

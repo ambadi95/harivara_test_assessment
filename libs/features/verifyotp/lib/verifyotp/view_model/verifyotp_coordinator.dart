@@ -45,22 +45,19 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
 
   String otp = '';
 
-  Future<void> generateOtp(
-    String id,
-    String userType,
-      OtpVerificationType otpVerificationType
-  ) async {
+  Future<void> generateOtp(String id, String userType,
+      OtpVerificationType otpVerificationType) async {
     var response;
-    if(otpVerificationType == OtpVerificationType.customerSignUpAgent){
-       response = await _verifyOtpUseCase.otpGenCustomerByAgent(id, 'Customer', (p0) => null);
+    if (otpVerificationType == OtpVerificationType.customerSignUpAgent) {
+      response = await _verifyOtpUseCase.otpGenCustomerByAgent(
+          id, 'Customer', (p0) => null);
     } else {
       response = await _verifyOtpUseCase.otpGen(id, userType, (p0) => null);
     }
     if (response?.status == true) {
       int otp1 = response?.data?.token as int;
       otp = otp1.toString();
-
-      otpController.text = otp;
+      //otpController.text = otp;
       CrayonPaymentLogger.logInfo(otp);
     }
   }
@@ -153,18 +150,19 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
     int attempts = currentState.attemptsRemain;
     if (otpScreenArgs.otpVerificationType == OtpVerificationType.customerSign) {
       var responseSignin = await _verifyOtpUseCase.otpVerify(
-          otpScreenArgs.refId, otpScreenArgs.userType, enterOtp, (p0) => null);
-      if (responseSignin!.data!.status == "success") {
+          otpScreenArgs.refId, enterOtp,otpScreenArgs.userType, (p0) => null);
+      if (responseSignin!.status == true) {
         _navigationHandler.navigateToCustomerEnrollmentScreen();
       } else {
         print('error');
       }
-    }else if(otpScreenArgs.otpVerificationType == OtpVerificationType.customerSignUpAgent){
+    } else if (otpScreenArgs.otpVerificationType ==
+        OtpVerificationType.customerSignUpAgent) {
       var responseSignin = await _verifyOtpUseCase.otpVerifyCustomerByAgent(
-          otpScreenArgs.refId,enterOtp, 'Customer',  (p0) => null);
+          otpScreenArgs.refId, enterOtp, 'Customer', (p0) => null);
       if (responseSignin!.data!.status == "success") {
-        _navigationHandler.navigateToCustomerEnrollmentScreen();
-      } else {
+        _navigationHandler.navigateToDestinationPath(
+            destinationPath, 'AgentCustomer');
       }
     } else if (otpScreenArgs.otpVerificationType ==
         OtpVerificationType.mobile) {

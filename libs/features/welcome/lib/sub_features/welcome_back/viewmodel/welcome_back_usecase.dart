@@ -118,8 +118,10 @@ class WelcomeBackUseCase extends BaseDataProvider {
           AgentSignInResponse agentSignInResponse =
               AgentSignInResponse.fromJson(data);
           print(agentSignInResponse);
-          _authManager.storeTokenInformation(
-              agentSignInResponse.data!.token!, '', '', '');
+          if (agentSignInResponse.status!) {
+            _authManager.storeTokenInformation(
+                agentSignInResponse.data!.token!, '', '', '');
+          }
           return AgentSignInResponse.fromJson(data);
         });
   }

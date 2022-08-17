@@ -44,12 +44,15 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
   Widget build(BuildContext context) =>
       BaseView<WelcomeBackCoordinator, WelcomeScreenState>(
         setupViewModel: (coordinator) async {
-          username = await coordinator.getUserName();
-          userID = await coordinator.getUserId();
+          if(widget.userType == 'Agent') {
+            username = await coordinator.getUserName();
+            userID = await coordinator.getUserId();
+          }else {
+            username = await coordinator.getCustomer();
+          }
         },
-        builder: (context, state, welcomeCoordinator) => Scaffold(
-          body: _buildMainUIWithLoading(context, welcomeCoordinator, state),
-        ),
+        builder: (context, state, welcomeCoordinator) =>
+            _buildMainUIWithLoading(context, welcomeCoordinator, state),
       );
 
   @override
@@ -63,6 +66,7 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
     return Scaffold(
       body: SafeArea(
         child: Stack(
+          fit: StackFit.loose,
           children: [
             _buildMainUI(context, welcomeCoordinator, state),
             if (state.isLoading) _createLoading(state),
@@ -87,10 +91,8 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
 
   Widget _buidlWelcomeBackUI(BuildContext context, WelcomeScreenState state,
       WelcomeBackCoordinator welcomeCoordinator) {
-    return Stack(
+    return ListView(
       children: [
-        // _createBackgroundImage(),
-        // _createOverLay(),
         Padding(
           padding: const EdgeInsets.only(
             left: 10,
@@ -103,17 +105,14 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
             children: [
               SizedBox(
                   height: AppUtils.appUtilsInstance
-                      .getPercentageSize(ofWidth: false, percentage: 4)),
-
+                      .getPercentageSize(ofWidth: false, percentage: 2)),
               _buildLogo(context),
               SizedBox(
                   height: AppUtils.appUtilsInstance
                       .getPercentageSize(ofWidth: false, percentage: 4)),
 
               _buildTitle(context),
-              SizedBox(
-                  height: AppUtils.appUtilsInstance
-                      .getPercentageSize(ofWidth: false, percentage: 7)),
+              const SizedBox(height: 27),
               _userImage(),
               SizedBox(
                   height: AppUtils.appUtilsInstance
@@ -121,12 +120,12 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
               _userInfo(context, welcomeCoordinator),
               SizedBox(
                   height: AppUtils.appUtilsInstance
-                      .getPercentageSize(ofWidth: false, percentage: 7)),
+                      .getPercentageSize(ofWidth: false, percentage: 5)),
               _enterPassCodeTitle(context),
               _passcodeWidget(context, welcomeCoordinator),
               SizedBox(
                   height: AppUtils.appUtilsInstance
-                      .getPercentageSize(ofWidth: false, percentage: 7)),
+                      .getPercentageSize(ofWidth: false, percentage: 2)),
               Text(state.error, style: label_input_error_style),
               // const SizedBox(height: 57),
               // Image.asset(
@@ -137,7 +136,6 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
               //   WB_touchIdIcon,
               //   scale: 2.0,
               // ),
-              const Spacer(),
               //  _buildResetPasscode(welcomeCoordinator)
             ],
           ),

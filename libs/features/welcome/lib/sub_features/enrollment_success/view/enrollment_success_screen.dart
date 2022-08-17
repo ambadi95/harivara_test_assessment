@@ -18,8 +18,8 @@ import 'package:config/Colors.dart' as config_color;
 
 class EnrollmentSuccessScreen extends StatefulWidget {
   static const viewPath = '${WelcomeModule.moduleIdentifier}/enrollmentSuccess';
-  final bool isEnrolled;
-  const EnrollmentSuccessScreen({Key? key, required this.isEnrolled})
+  final UserType userType;
+  const EnrollmentSuccessScreen({Key? key, required this.userType})
       : super(key: key);
 
   @override
@@ -27,10 +27,10 @@ class EnrollmentSuccessScreen extends StatefulWidget {
       _EnrollmentSuccessScreenState();
 }
 
-GetCustomerDetailsResponse? customerDetail;
 GlobalKey<FormState> _abcKey = GlobalKey<FormState>();
 
 class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
+  GetCustomerDetailsResponse? customerDetail;
   @override
   void initState() {
     // TODO: implement initState
@@ -41,7 +41,8 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
   Widget build(BuildContext context) =>
       BaseView<EnrollmentSuccessCoordinator, EnrollmentSuccessState>(
         setupViewModel: (coordinator) async {
-          customerDetail = await coordinator.getCustomerDetails();
+          customerDetail =
+              await coordinator.getCustomerDetails(widget.userType);
           setState(() {});
         },
         builder: (context, state, coordinator) => SafeArea(
@@ -85,13 +86,21 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
         children: [
           InkWell(
             onTap: () {
-              coordinator.logout();
+              widget.userType == UserType.AgentCustomer
+                  ? customerDetail!.data!.deviceId == null
+                      ? null
+                      : coordinator.backToHome()
+                  : coordinator.logout();
             },
-            child: const Align(
+            child: Align(
               alignment: Alignment.centerRight,
               child: Text(
-                'Logout',
-                style: TextStyle(color: PRIMARY_COLOR),
+                widget.userType == UserType.AgentCustomer
+                    ? customerDetail!.data!.deviceId != null
+                        ? 'Home'
+                        : ''
+                    : 'Logout',
+                style: const TextStyle(color: PRIMARY_COLOR),
               ),
             ),
           ),
@@ -112,7 +121,9 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
           ),
           _buildEnrollmentIDText(),
           const Spacer(),
-          _buildAgentContactText(),
+          widget.userType == UserType.AgentCustomer
+              ? const SizedBox()
+              : _buildAgentContactText(),
           const SizedBox(
             height: 21,
           ),
@@ -120,14 +131,22 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
           const SizedBox(
             height: 24,
           ),
-          _buildExploreDeviceButton(coordinator),
-          const SizedBox(
-            height: 12,
-          ),
-          _buildContactText(context),
-          const SizedBox(
-            height: 25,
-          ),
+          widget.userType == UserType.AgentCustomer
+              ? const SizedBox()
+              : _buildExploreDeviceButton(coordinator),
+          widget.userType == UserType.AgentCustomer
+              ? const SizedBox()
+              : const SizedBox(
+                  height: 12,
+                ),
+          widget.userType == UserType.AgentCustomer
+              ? const SizedBox()
+              : _buildContactText(context),
+          widget.userType == UserType.AgentCustomer
+              ? const SizedBox()
+              : const SizedBox(
+                  height: 25,
+                ),
         ],
       ),
     );
@@ -200,7 +219,7 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
   Widget _buildAgentNearByButton(EnrollmentSuccessCoordinator coordinator) {
     return GestureDetector(
       onTap: () {
-        coordinator.navigateToDeviceOption(widget.isEnrolled);
+        coordinator.navigateToDeviceOption(false, widget.userType);
       },
       child: Container(
         width: double.infinity,

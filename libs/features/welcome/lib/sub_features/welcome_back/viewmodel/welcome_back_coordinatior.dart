@@ -1,7 +1,5 @@
 import 'dart:ui';
 import 'package:core/mobile_core.dart';
-import 'package:welcome/sub_features/signup/view/signup.dart';
-import 'package:welcome/sub_features/signup/view/signup.dart';
 import 'package:welcome/sub_features/welcome/state/welcome_screen_state.dart';
 import 'package:task_manager/base_classes/base_view_model.dart';
 import 'package:get/get.dart';
@@ -76,6 +74,10 @@ class WelcomeBackCoordinator extends BaseViewModel<WelcomeScreenState> {
     return await _welcomeUseCase.getAgentName();
   }
 
+  Future<String> getCustomer()async{
+    return await _welcomeUseCase.getCustomerName();
+  }
+
   Future<String> getUserId() async {
     return await _welcomeUseCase.getCustomerY9Id();
   }
@@ -91,6 +93,7 @@ class WelcomeBackCoordinator extends BaseViewModel<WelcomeScreenState> {
   Future customerLogin(String passcode, String userType) async {
     String mobileNumber = await _welcomeUseCase.getMobileNumber();
     state = state.copyWith(isLoading: true);
+    print(mobileNumber);
     var response =
         await _welcomeUseCase.login(mobileNumber, passcode, (p0) => null);
     if (response?.status == true) {

@@ -222,6 +222,7 @@ class _SignUpState extends State<SignUp> {
           controller: controller,
           errorText: errorText.tr,
           keyboardType: textInputType,
+          textCapitalization: TextCapitalization.characters,
           inputFormatters: textInputType == TextInputType.number
               ? [
                   NIDAInputFormatter(

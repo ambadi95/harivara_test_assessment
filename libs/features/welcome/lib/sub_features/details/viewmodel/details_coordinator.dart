@@ -1,3 +1,4 @@
+import 'package:config/Config.dart';
 import 'package:core/mobile_core.dart';
 import 'package:flutter/src/widgets/focus_manager.dart';
 import 'package:shared_data_models/customer_onboard/region_district/region_response/datum.dart';
@@ -28,14 +29,14 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
         const GenderType(3, 'Prefer not to say'),
       ];
 
-  Future getRegion() async {
-    var response = await _detailsUseCase.getRegion((p0) => null);
+  Future getRegion(UserType userType) async {
+    var response = await _detailsUseCase.getRegion((p0) => null, userType);
     return response?.data;
   }
 
-  Future getDistrict(int regionId) async {
-    var response =
-        await _detailsUseCase.getDistrict(regionId.toString(), (p0) => null);
+  Future getDistrict(int regionId, UserType userType) async {
+    var response = await _detailsUseCase.getDistrict(
+        regionId.toString(), (p0) => null, userType);
     return response?.data;
   }
 
@@ -109,7 +110,7 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
         profession, mobNumber, emailId, address, poBox, region, district));
   }
 
-  Future navigateToCreatePasscodeScreen(String userType) async {
+  Future navigateToCreatePasscodeScreen(UserType userType) async {
     _navigationHandler.openForNewPasscode(userType);
   }
 
@@ -212,16 +213,17 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
   }
 
   Future submitDetails(
-      String name,
-      String dob,
-      String gender,
-      String address,
-      String profession,
-      String emailId,
-      String poBox,
-      String region,
-      String district,
-      String userType) async {
+    String name,
+    String dob,
+    String gender,
+    String address,
+    String profession,
+    String emailId,
+    String poBox,
+    String region,
+    String district,
+    UserType userType,
+  ) async {
     state = const DetailsState.LoadingState();
     var response = await _detailsUseCase.submitCustomerDetails(
         name,
@@ -233,7 +235,8 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
         poBox,
         region,
         district,
-        (p0) => null);
+        (p0) => null,
+        userType);
     if (response?.status == true) {
       state = const DetailsState.initialState();
       navigateToCreatePasscodeScreen(userType);

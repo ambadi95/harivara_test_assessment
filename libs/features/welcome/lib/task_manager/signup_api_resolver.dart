@@ -40,16 +40,20 @@ class SignupApiResolver extends TaskResolver {
             customerMobileNumber: requestData['mobileNo'] as String,
             token: requestData['token'] as String);
       case IDetailsService.regionIdentifier:
-        return _detailsService.getRegion();
+        return _detailsService.getRegion(requestData['userType']);
       case IDetailsService.districtIdentifier:
-        return _detailsService.getDistrict(requestData['regionId']);
+        return _detailsService.getDistrict(
+            requestData['regionId'], requestData['userType']);
       case IDetailsService.submitCustomerDetailIdentifier:
-        return _detailsService.submitCustomerDetails(requestData);
+        return _detailsService.submitCustomerDetails(
+            requestData['data'], requestData['userType']);
       case IEnrollmentService.enrollmentIdentifier:
-        return _enrollmentService.getCustomerDetails(
-            requestData['customerId'], requestData['token']);
+        return _enrollmentService.getCustomerDetails(requestData['customerId'],
+            requestData['token'], requestData['userType']);
       case IAgentDetailsService.detailIdentifier:
-        return _agentDetailsService.getAgentDetail(requestData['agentId']);
+        return _agentDetailsService.getAgentDetail(
+          requestData['agentId'],
+        );
       case IAgentDetailsService.submitAgentDetailIdentifier:
         return _agentDetailsService.submitAgentDetails(requestData);
       case IWelcomeBackService.getAgentDetailIdentifier:

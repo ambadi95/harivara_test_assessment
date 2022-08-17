@@ -1,4 +1,5 @@
 import 'package:config/Colors.dart';
+import 'package:config/Config.dart';
 import 'package:config/Styles.dart';
 import 'package:core/view/base_view.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:shared_data_models/customer_onboard/region_district/region_response/datum.dart';
 import 'package:shared_data_models/customer_onboard/region_district/district_response/datum.dart'
     as b;
+import 'package:welcome/data_model/details_arguments.dart';
 import 'package:welcome/sub_features/details/state/details_state.dart';
 import 'package:welcome/sub_features/details/viewmodel/details_coordinator.dart';
 import 'package:welcome/welcome_module.dart';
@@ -24,7 +26,7 @@ import '../../../data_model/gender_type.dart';
 
 class DetailsScreen extends StatefulWidget {
   static const viewPath = '${WelcomeModule.moduleIdentifier}/details';
-  final String userType;
+  final UserType userType;
 
   const DetailsScreen({Key? key, required this.userType}) : super(key: key);
 
@@ -122,7 +124,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
               {_listenToStateChanges(context, newState)},
           setupViewModel: (coordinator) async {
             coordinator.getMobileNumber();
-            List<Datum> regions = await coordinator.getRegion();
+            List<Datum> regions = await coordinator.getRegion(widget.userType);
             genderTypeDropDown = getDropDownData(coordinator.genderType);
             regionDropDown = getRegionDropDownData(regions);
           },
@@ -512,7 +514,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
             coordinator.isValidRegion(value.name!);
             dis.clear();
             district.clear();
-            dis = await coordinator.getDistrict(value.id!);
+            dis = await coordinator.getDistrict(value.id!, widget.userType);
             districtDropDown = getDistrictDropDownData(dis);
           },
         ),

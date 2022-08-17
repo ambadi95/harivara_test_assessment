@@ -35,8 +35,17 @@ class LoginUseCase extends BaseDataProvider {
     return await setValueToSecureStorage({'agentId': agentId});
   }
 
+  Future<void> saveCustomerMobileNumber(String mobileNumber) async {
+    return await setValueToSecureStorage({'mobileNumber': mobileNumber});
+  }
+
+
   Future<void> saveMobileNumber(String mobileNumber) async {
     return await setValueToSecureStorage({'agentMobileNumber': mobileNumber});
+  }
+
+  Future<void> saveCustomerName(String customerName) async {
+    return await setValueToSecureStorage({'CustomerName': customerName});
   }
 
   Future<void> saveAgentName(String agentName) async {
@@ -62,28 +71,27 @@ class LoginUseCase extends BaseDataProvider {
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {
           final data = responseData;
-          print(data);
           CustomerSignInResponse customerSignInResponse =
               CustomerSignInResponse.fromJson(data);
-          print(customerSignInResponse);
           if (customerSignInResponse.data != null) {
             _authManager.storeTokenInformation(
                 customerSignInResponse.data!.token!, '', '', '');
             saveCustomerId(customerSignInResponse.data!.id);
-            saveMobileNumber(mobileNumber.replaceAll(" ", ""));
+            saveCustomerMobileNumber(mobileNumber.replaceAll(" ", ""));
+            saveCustomerName(customerSignInResponse.data!.username!);
             saveOnBordStatus(customerSignInResponse.data!.id.toString());
           }
           return CustomerSignInResponse.fromJson(data);
         });
   }
 
-  Future<AgentDetailsResponse?> getAgentDetail(
-      String agentId, Function(String) onErrorCallback) async {
+  Future<AgentDetailsResponse?> getAgentDetail(String agentId,
+      String mobileNumber, Function(String) onErrorCallback) async {
     return await executeApiRequest<AgentDetailsResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
         moduleIdentifier: LoginModule.moduleIdentifier,
-        requestData: {"agentId": agentId},
+        requestData: {"agentId": agentId, 'mobileNumber': mobileNumber},
         serviceIdentifier: ILoginService.agentDetailIdentifier,
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {

@@ -1,3 +1,4 @@
+import 'package:config/Config.dart';
 import 'package:network_manager/auth/auth_manager.dart';
 import 'package:passcode/sub_features/passcode/service/passcode_service.dart';
 import 'package:passcode/sub_features/passcode/view_model/passcode_viewmodel.dart';
@@ -65,6 +66,10 @@ class PasscodeUseCase extends BaseDataProvider {
     return await getValueFromSecureStorage('agentId', defaultValue: '');
   }
 
+  Future<void> saveCustomerName(String customerName) async {
+    return await setValueToSecureStorage({'CustomerName': customerName});
+  }
+
   Future<String> getNumber() async {
     return await getValueFromSecureStorage('mobileNumber', defaultValue: '');
   }
@@ -73,28 +78,49 @@ class PasscodeUseCase extends BaseDataProvider {
     return await setValueToSecureStorage({'OnBoardStatus': id});
   }
 
-  Future<PasscodeResponse?> savePasscode(
-      String passcode, Function(String) onErrorCallback) async {
-    Future<PasscodeResponse?> savePasscode(String passcode, String userType,
-        Function(String) onErrorCallback) async {
-      String custmerId = await getCustomerId();
+  Future<PasscodeResponse?> savePasscode(String passcode, String userType,
+      Function(String) onErrorCallback) async {
+    String custmerId = await getCustomerId();
 
-      PasscodeRequest passcodeRequest = PasscodeRequest(
-          id: int.parse(custmerId), type: userType, passcode: passcode);
+    PasscodeRequest passcodeRequest = PasscodeRequest(
+        id: int.parse(custmerId), type: userType, passcode: passcode);
 
-      return await executeApiRequest<PasscodeResponse?>(
-          taskType: TaskType.DATA_OPERATION,
-          taskSubType: TaskSubType.REST,
-          moduleIdentifier: PasscodeModule.moduleIdentifier,
-          requestData: passcodeRequest.toJson(),
-          serviceIdentifier: IPasscodeService.passcodeIdentifier,
-          onError: onErrorCallback,
-          modelBuilderCallback: (responseData) {
-            final data = responseData;
-            saveOnBordStatus(custmerId);
-            return PasscodeResponse.fromJson(data);
-          });
-    }
+    return await executeApiRequest<PasscodeResponse?>(
+        taskType: TaskType.DATA_OPERATION,
+        taskSubType: TaskSubType.REST,
+        moduleIdentifier: PasscodeModule.moduleIdentifier,
+        requestData: passcodeRequest.toJson(),
+        serviceIdentifier: IPasscodeService.passcodeIdentifier,
+        onError: onErrorCallback,
+        modelBuilderCallback: (responseData) {
+          final data = responseData;
+          saveOnBordStatus(custmerId);
+          return PasscodeResponse.fromJson(data);
+        });
+  }
+
+  Future<PasscodeResponse?> savePasscodeAgentCustomer(String passcode,
+      String userType, Function(String) onErrorCallback) async {
+    String custmerId = await getCustomerId();
+
+    PasscodeRequest passcodeRequest = PasscodeRequest(
+        id: int.parse(custmerId), type: 'Customer', passcode: passcode);
+
+    return await executeApiRequest<PasscodeResponse?>(
+        taskType: TaskType.DATA_OPERATION,
+        taskSubType: TaskSubType.REST,
+        moduleIdentifier: PasscodeModule.moduleIdentifier,
+        requestData: {
+          'data': passcodeRequest.toJson(),
+          'userType': UserType.AgentCustomer
+        },
+        serviceIdentifier: IPasscodeService.agentCustomerSignUpIdentifier,
+        onError: onErrorCallback,
+        modelBuilderCallback: (responseData) {
+          final data = responseData;
+          saveOnBordStatus(custmerId);
+          return PasscodeResponse.fromJson(data);
+        });
   }
 
   Future<PasscodeResponse?> savePasscodeAgent(String passcode, String userType,
@@ -135,6 +161,7 @@ class PasscodeUseCase extends BaseDataProvider {
               CustomerSignInResponse.fromJson(data);
           _authManager.storeTokenInformation(
               customerSignInResponse.data!.token!, '', '', '');
+          saveCustomerName(customerSignInResponse.data!.username!);
           return CustomerSignInResponse.fromJson(data);
         });
   }

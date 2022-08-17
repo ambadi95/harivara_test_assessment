@@ -1,3 +1,5 @@
+import 'package:config/Config.dart';
+import 'package:core/logging/logger.dart';
 import 'package:core/navigation/i_route_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:welcome/data_model/agent_detail_arguments.dart';
@@ -28,13 +30,26 @@ class WelcomeRouteManager extends IRouteManager {
         );
       case DetailsScreen.viewPath:
         var arguments = settings.arguments as String;
+        CrayonPaymentLogger.logInfo(arguments);
+        UserType type = UserType.Customer;
+        switch (arguments) {
+          case 'AgentCustomer':
+            type = UserType.AgentCustomer;
+            break;
+          case 'Customer':
+            type = UserType.Customer;
+            break;
+          case 'Agent':
+            type = UserType.Agent;
+            break;
+        }
         return DetailsScreen(
-          userType: arguments,
+          userType: type,
         );
       case EnrollmentSuccessScreen.viewPath:
-        var argument = settings.arguments as bool;
+        var argument = settings.arguments as UserType;
         return EnrollmentSuccessScreen(
-          isEnrolled: argument,
+          userType: argument,
         );
       case CrayonWelcomBackScreen.viewPath:
         String arguments = settings.arguments as String;

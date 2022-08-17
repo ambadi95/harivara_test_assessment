@@ -44,6 +44,7 @@
   "DV_name_hint_text" : "Ingiza Jina",
   "DV_dob_label" : "Tarehe ya kuzaliwa",
   "DV_dob_error_text" : "DoB batili",
+  "DV_invalid_dob_error_text" : "Please enter a valid date of birth",
   "DV_dob_hint_text" : "Ingiza DoB",
   "DV_gender_label" : "Jinsia",
   "DV_gender_error_text" : "Jinsia Batili",

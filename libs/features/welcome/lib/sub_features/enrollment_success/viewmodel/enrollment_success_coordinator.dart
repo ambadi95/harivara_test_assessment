@@ -1,7 +1,6 @@
+import 'package:config/Config.dart';
 import 'package:core/logging/logger.dart';
 import 'package:task_manager/base_classes/base_view_model.dart';
-import 'package:task_manager/cache_task_resolver.dart';
-import 'package:task_manager/task.dart';
 import '../../../navigation_handler/welcome_navigation_handler.dart';
 import '../state/enrollment_success_state.dart';
 import 'enrollment_success_usecase.dart';
@@ -20,8 +19,8 @@ class EnrollmentSuccessCoordinator
     _navigationHandler.navigateToNearByAgent();
   }
 
-  Future navigateToDeviceOption(bool isEnrolled) async {
-    _navigationHandler.navigateToDeviceOption(isEnrolled);
+  Future navigateToDeviceOption(bool isEnrolled, UserType userType) async {
+    _navigationHandler.navigateToDeviceOption(isEnrolled, userType);
   }
 
   logout() {
@@ -29,9 +28,13 @@ class EnrollmentSuccessCoordinator
     _navigationHandler.navigateToLoginFromLogout('Customer');
   }
 
-  Future getCustomerDetails() async {
-    var response =
-        await _enrollmentSuccessUseCase.getCustomerDetails((p0) => null);
+  Future backToHome() async {
+    await _navigationHandler.navigateToAgentHome();
+  }
+
+  Future getCustomerDetails(UserType userType) async {
+    var response = await _enrollmentSuccessUseCase.getCustomerDetails(
+        userType, (p0) => null);
     if (response?.status == true) {
       CrayonPaymentLogger.logInfo(response!.data!.referenceId!.toString());
       return response;
