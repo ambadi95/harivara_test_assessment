@@ -17,6 +17,10 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
     _navigationHandler.goBack();
   }
 
+  Future navigateToAgentAidedCustomer()async{
+    await _navigationHandler.navigateToAgentAidedCustomerOnBoarding();
+  }
+
   Future<void> signup(SignUpArguments signUpArguments, String mobileNumber,
       String nindaNumber, String agentId) async {
     if (signUpArguments.signupType == SignupType.customerSignUp) {

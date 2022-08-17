@@ -2,6 +2,7 @@ import 'package:core/navigation/navigation_manager.dart';
 import 'package:core/navigation/navigation_type.dart';
 import 'package:shared_data_models/signup/sign_up_type.dart';
 import 'package:welcome/data_model/sign_up_arguments.dart';
+import 'package:welcome/sub_features/signup/sub_features/view/registration_approval.dart';
 import 'package:welcome/sub_features/signup/view/signup.dart';
 import 'package:widget_library/helpers/error/helper/error_helper.dart';
 import 'package:settings/view/settings_view.dart';
@@ -19,7 +20,7 @@ class HomeNavigationHandler with ErrorHandler {
     var arguments = SignUpArguments('SU_title', 'SU_subtitle', 'Customer',
         SignupType.agentAidedCustomerOnBoarding, true);
     await _navigationManager.navigateTo(
-        SignUp.viewPath, const NavigationType.push(),
+        RegistrationApproval.viewPath, const NavigationType.push(),
         arguments: arguments);
   }
 

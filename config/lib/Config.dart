@@ -13,6 +13,8 @@ const DO_selectFavorites = 'assets/images/select_fav.png';
 const DO_BackArrow = 'assets/images/back_arrow.png';
 const LS_BackArrow = 'assets/images/back_arrow.png';
 const LS_Flag = 'assets/images/flag.png';
+const RC_new_customer = 'assets/images/new_customer_icon.png';
+const RC_customer_approval = 'assets/images/customer_approval_icon.png';
 
 
  // MockUp Data

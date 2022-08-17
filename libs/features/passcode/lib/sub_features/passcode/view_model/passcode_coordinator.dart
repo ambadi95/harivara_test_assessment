@@ -135,8 +135,6 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
     String userType,
   ) async {
     var currentState = state as CreatePasscodeReady;
-    print('%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%');
-    print(userType);
     if (oldPassCode == newPasscode) {
       state = currentState.copyWith(currentStep: 5);
       await _passcodeUseCase.savePassCodeLocal(newPasscode);

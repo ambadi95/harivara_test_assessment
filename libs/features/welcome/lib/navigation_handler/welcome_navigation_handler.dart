@@ -63,6 +63,7 @@ class WelcomeNavigationHandler with ErrorHandler {
     }
   }
 
+
   Future<void> navigateToCreatePasscodeScreen() async {
     await _navigationManager.navigateTo(
       CrayonPasscodeScreen.viewPath,
@@ -313,6 +314,16 @@ class WelcomeNavigationHandler with ErrorHandler {
         SignUp.viewPath, const NavigationType.push(),
         arguments: arguments);
   }
+
+
+  Future<void> navigateToAgentAidedCustomerOnBoarding() async {
+    var arguments = SignUpArguments('SU_title', 'SU_subtitle', 'Customer',
+        SignupType.agentAidedCustomerOnBoarding, true);
+    await _navigationManager.navigateTo(
+        SignUp.viewPath, const NavigationType.push(),
+        arguments: arguments);
+  }
+
 
 // Future<void> navigateToDestination(
 //     String? destination,

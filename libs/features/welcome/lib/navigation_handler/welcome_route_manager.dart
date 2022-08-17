@@ -12,6 +12,7 @@ import 'package:welcome/sub_features/welcome/view/welcome_screen.dart';
 import 'package:welcome/sub_features/welcome_back/view/welcome_back.dart';
 
 import '../sub_features/agent_details/view/agent_details.dart';
+import '../sub_features/signup/sub_features/view/registration_approval.dart';
 import '../sub_features/welcome/data_model/welcome_model.dart';
 
 class WelcomeRouteManager extends IRouteManager {
@@ -60,6 +61,11 @@ class WelcomeRouteManager extends IRouteManager {
         var arguments = settings.arguments as AgentDetailScreenArguments;
         return AgentDetailsScreen(
           agentDetailScreenArguments: arguments,
+        );
+      case RegistrationApproval.viewPath :
+        var arguments = settings.arguments as SignUpArguments;
+        return RegistrationApproval(
+          signUpArguments: arguments,
         );
       default:
         throw UnimplementedError();
