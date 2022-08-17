@@ -144,9 +144,10 @@
   "AE_Description" : "Your Y9 Agent ID has been sent successfully to your mobile number and Email ID",
   "AE_Continue" : "Continue to your Y9 Agent App",
 
-  "DO_Title": "Device Options",
+  "DO_Title": "Membership Options",
   "D0_JoiningFee": "Joining Fee (one off)",
   "D0_DailyFee": "Daily Fee",
+  "D0_ViewDetails": "View Details",
 
   "DD_product" : "Product Details",
   "DD_Brand" : "Brand",

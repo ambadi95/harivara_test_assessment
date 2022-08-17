@@ -65,6 +65,9 @@ dependencies:
   termscondition:
     path: ../../libs/features/termscondition
 
+  kyc:
+    path: ../../libs/features/kyc
+
 
 
 dev_dependencies:
