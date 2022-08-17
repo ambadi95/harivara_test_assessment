@@ -11,13 +11,14 @@ import 'package:widget_library/page_header/text_ui_data_model.dart';
 import 'package:widget_library/progress_bar/centered_circular_progress_bar.dart';
 import 'package:widget_library/scaffold/crayon_payment_scaffold.dart';
 import 'package:widget_library/static_text/crayon_payment_text.dart';
+import 'package:widget_library/utils/icon_utils.dart';
 
 import '../state/kyc_credit_state.dart';
 import '../viewmodel/kyc_credit_coordinator.dart';
 import 'package:flutter_svg/svg.dart';
 
 class KycCreditScreen extends StatefulWidget {
-  static const viewPath = '${PasscodeModule.moduleIdentifier}/passcode';
+  static const viewPath = '${PasscodeModule.moduleIdentifier}/kycscreen';
   final KycScreenArgs kycScreenArgs;
 
   const KycCreditScreen({Key? key, required this.kycScreenArgs})
@@ -34,12 +35,16 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
   Widget build(BuildContext context) =>
       BaseView<KycCreditCoordinator, KycCreditState>(
         setupViewModel: (coordinator) {
-
+          coordinator.initialiseState(context);
         },
-        builder: (context, state, coordinator) => Scaffold(
-          body: SafeArea(
-            bottom: false,
-            child: state.when(
+        builder: (context, state, coordinator) => CrayonPaymentScaffold(
+            appBarAttributes: CrayonPaymentAppBarAttributes(
+              key: const Key('CardDetailsScreen_AppBarBackButton'),
+              left: [
+                const CrayonPaymentAppBarButtonType.back(),
+              ],
+            ),
+            body: state.when(
               initialState: () => const SizedBox(),
               ready: (
                   _,
@@ -53,9 +58,9 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
                     (state as KycCreditStateReady),
                   ),
             ),
-          ),
-        ),
-      );
+
+
+      ));
 
   Widget _buildMainUIWithLoading(
       BuildContext context,
@@ -87,28 +92,20 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
       KycCreditCoordinator coordinator,
       KycCreditStateReady state,
       ) {
-    return CrayonPaymentScaffold(
-        appBarAttributes: CrayonPaymentAppBarAttributes(
-          key: const Key('CardDetailsScreen_AppBarBackButton'),
-          left: [
-            const CrayonPaymentAppBarButtonType.back(),
-          ],
-        ),
-        body: Column(
+    return  Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _buildTitle(context),
-
             _image(context)
 
           ],
-        ));
+        );
   }
 
   Widget _buildTitle(context) {
     return CrayonPaymentText(
-      key: Key('${_identifier}_DO_Title'),
-      text: const TextUIDataModel('DO_Title',
+      key: Key('${_identifier}_KYC_Title'),
+      text: const TextUIDataModel('KYC_Title',
           styleVariant: CrayonPaymentTextStyleVariant.headlineThirtyTwo,
           color: AN_TitleColor,
           fontWeight: FontWeight.w800),
@@ -117,10 +114,8 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
 
 
   Widget _image(BuildContext context) {
-    return SvgPicture.asset(
-      widget.kycScreenArgs.image,
-      key: Key('getSvgFirstSvgPicture'),
-    );
+    return getSvg(widget.kycScreenArgs.image,height: 100,width: 100,);
+
   }
 
 

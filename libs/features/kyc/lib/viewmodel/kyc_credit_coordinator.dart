@@ -1,5 +1,6 @@
 import 'package:core/mobile_core.dart';
 import 'package:core/view/analytics_state_notifier.dart';
+import 'package:flutter/material.dart';
 
 import '../navigation_handler/kyc_credit_navigation_handler.dart';
 import '../state/kyc_credit_state.dart';
@@ -14,7 +15,14 @@ class KycCreditCoordinator extends AnalyticsStateNotifier<KycCreditState> {
       this._kycCreditUseCase,
       ) : super(const KycCreditState.initialState());
 
+  void initialiseState(
+      BuildContext context,
 
+      ) async {
+    state = KycCreditState.ready(
+        context: context,
+        error: "",isLoading: false);
+  }
  
 
 
