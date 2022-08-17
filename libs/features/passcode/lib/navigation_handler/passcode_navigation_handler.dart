@@ -32,7 +32,7 @@ class PasscodeNavigationHandler with ErrorHandler {
   }
 
   Future<void> navigateToAgentHomeScreen(String destinationPath) async {
-    var arguments = HomeScreenArgs(true);
+    var arguments = HomeScreenArgs(isAgent: true,userType: UserType.Agent);
     _navigationManager.navigateTo(
         destinationPath, const NavigationType.replace(),
         arguments: arguments);
@@ -82,7 +82,7 @@ class PasscodeNavigationHandler with ErrorHandler {
   }
 
   Future<void> navigateToAgentHome() async {
-    var argument = HomeScreenArgs(true);
+    var argument = HomeScreenArgs(isAgent: true,userType: UserType.Agent);
     await _navigationManager.navigateTo(
         CrayonHomeScreen.viewPath, const NavigationType.replace(),
         arguments: argument);

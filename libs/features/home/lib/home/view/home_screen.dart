@@ -89,40 +89,6 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
             ],
           ),
           const Spacer(),
-          // Stack(
-          //   children: [
-          //     Padding(
-          //       padding: const EdgeInsets.all(5.0),
-          //       child: Image.asset(
-          //         HS_NotificationIcon,
-          //         width: 30,
-          //         height: 30,
-          //       ),
-          //     ),
-          //     Positioned(
-          //       top: 0,
-          //       right: 0,
-          //       child: Container(
-          //         height: 20,
-          //         width: 20,
-          //         alignment: Alignment.center,
-          //         decoration: const BoxDecoration(
-          //           shape: BoxShape.circle,
-          //           color: HS_NotificationCountColor,
-          //         ),
-          //         child: const Center(
-          //           child: Text(
-          //             "3",
-          //             style: TextStyle(
-          //                 color: Colors.white,
-          //                 fontWeight: FontWeight.w500,
-          //                 fontSize: 13),
-          //           ),
-          //         ),
-          //       ),
-          //     ),
-          //   ],
-          // )
         ],
       ),
     );
@@ -230,7 +196,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                 Radius.circular(16),
               ),
             ),
-            child: (widget.homeScreenArgs.isAgent == true)
+            child: (widget.homeScreenArgs.isAgent)
                 ? Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -268,7 +234,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
 
   bool isAgent() {
     bool isAgent = false;
-    if (widget.homeScreenArgs.isAgent == true) {
+    if (widget.homeScreenArgs.isAgent) {
       return isAgent = true;
     }
     return isAgent;
@@ -334,13 +300,13 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
             height: 10,
           ),
           RichText(
-              text: new TextSpan(
+              text: TextSpan(
             text: ' ',
             children: <TextSpan>[
-              new TextSpan(
+               TextSpan(
                   text: 'HS_Agent_Refer_Program'.tr,
                   style: HS_invite_your_friends_style),
-              new TextSpan(
+               TextSpan(
                   text: 'HS_Agent_Stay_Tunned'.tr, style: HS_stay_tunned_style),
             ],
           )),
@@ -511,7 +477,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                       children: [
                         _userInfoView(),
                         _redBoxView(coordinator),
-                        widget.homeScreenArgs.isAgent == true
+                        widget.homeScreenArgs.isAgent
                             ? _inviteAgentBoxView()
                             : _inviteBoxView(),
                       ],

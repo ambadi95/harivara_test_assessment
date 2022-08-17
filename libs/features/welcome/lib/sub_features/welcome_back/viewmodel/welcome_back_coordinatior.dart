@@ -31,7 +31,7 @@ class WelcomeBackCoordinator extends BaseViewModel<WelcomeScreenState> {
 
   Future<void> navigationToDestination(String userType) async {
     if (userType == 'Customer') {
-      _navigationHandler.navigateToCustomerEnrollmentScreen();
+      _navigationHandler.navigateToCustomerHome();
     } else {
       _navigationHandler.navigateToAgentHome();
     }

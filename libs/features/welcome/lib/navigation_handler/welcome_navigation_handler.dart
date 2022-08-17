@@ -137,16 +137,16 @@ class WelcomeNavigationHandler with ErrorHandler {
   }
 
   Future<void> navigateToAgentHome() async {
-    var argument = HomeScreenArgs(true);
+    var argument = HomeScreenArgs(isAgent: true,userType: UserType.Agent);
     await _navigationManager.navigateTo(
         CrayonHomeScreen.viewPath, const NavigationType.replace(),
         arguments: argument);
   }
 
   Future<void> navigateToCustomerHome() async {
-    var argument = HomeScreenArgs(false);
+    var argument = HomeScreenArgs(isAgent: false,userType: UserType.Customer);
     await _navigationManager.navigateTo(
-        CrayonHomeScreen.viewPath, const NavigationType.push(),
+        CrayonHomeScreen.viewPath, const NavigationType.replace(),
         arguments: argument);
   }
 
