@@ -1,7 +1,9 @@
 import 'package:config/Colors.dart' as config_colors;
 import 'package:config/Colors.dart';
 import 'package:config/Config.dart';
+import 'package:config/Styles.dart';
 import 'package:core/view/base_view.dart';
+import 'package:crayon_payment_customer/util/app_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:passcode/passcode_module.dart';
 import 'package:shared_data_models/kyc/kyc_screen_args.dart';
@@ -16,6 +18,7 @@ import 'package:widget_library/utils/icon_utils.dart';
 import '../state/kyc_credit_state.dart';
 import '../viewmodel/kyc_credit_coordinator.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
 class KycCreditScreen extends StatefulWidget {
   static const viewPath = '${PasscodeModule.moduleIdentifier}/kycscreen';
@@ -30,6 +33,7 @@ class KycCreditScreen extends StatefulWidget {
 
 class _KycCreditScreenState extends State<KycCreditScreen> {
   final String _identifier = 'kyc_credit-screen';
+  bool _isBtnEnabled = false;
 
   @override
   Widget build(BuildContext context) =>
@@ -96,12 +100,53 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _buildTitle(context),
-            _image(context)
+             SizedBox(height: AppUtils.appUtilsInstance.getPercentageSize(percentage: 10),),
+            // _image(context)
+
+             FlutterLogo(),
+            SizedBox(height: AppUtils.appUtilsInstance.getPercentageSize(percentage: 5),),
+
+            _title(context),
+            SizedBox(height: AppUtils.appUtilsInstance.getPercentageSize(percentage: 5),),
+            _subTitle(context),
+
+
+            Spacer(),
+            _buildContinueButton(context, coordinator, state)
 
           ],
         );
   }
 
+  Widget _buildContinueButton(
+      BuildContext context,
+      KycCreditCoordinator coordinator,
+      KycCreditState state,
+      ) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
+      child: GestureDetector(
+        onTap: () async {
+
+        },
+        child: Container(
+          width: double.infinity,
+          height: 50,
+          decoration: BoxDecoration(
+              color: _isBtnEnabled
+                  ? SU_button_color
+                  : SU_grey_color,
+              borderRadius: BorderRadius.circular(8.0)),
+          child: Center(
+            child: Text(
+              'SU_button_text'.tr,
+              style: SU_button_text_style,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
   Widget _buildTitle(context) {
     return CrayonPaymentText(
       key: Key('${_identifier}_KYC_Title'),
@@ -116,6 +161,26 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
   Widget _image(BuildContext context) {
     return getSvg(widget.kycScreenArgs.image,height: 100,width: 100,);
 
+  }
+
+  _title(BuildContext context) {
+   return CrayonPaymentText(
+      key: Key('${_identifier}_KYC_Validation_With_Airtel'),
+      text: const TextUIDataModel('KYC_Validation_With_Airtel',
+          styleVariant: CrayonPaymentTextStyleVariant.headline6,
+          color: AN_TitleColor,
+          fontWeight: FontWeight.w600),
+    );
+  }
+
+  _subTitle(BuildContext context) {
+    return CrayonPaymentText(
+      key: Key('${_identifier}_KYC_Validation_With_Airtel'),
+      text: const TextUIDataModel('KYC_Validation_With_Airtel',
+          styleVariant: CrayonPaymentTextStyleVariant.headline6,
+          color: AN_TitleColor,
+          fontWeight: FontWeight.w600),
+    );
   }
 
 
