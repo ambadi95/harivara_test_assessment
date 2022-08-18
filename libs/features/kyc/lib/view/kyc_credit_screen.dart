@@ -36,7 +36,6 @@ class KycCreditScreen extends StatefulWidget {
 class _KycCreditScreenState extends State<KycCreditScreen> {
   final String _identifier = 'kyc_credit-screen';
   bool _isBtnEnabled = false;
-  bool _isChecked = false;
   bool _isKycPassEnabled = false;
 
   bool _isKycCreditLoanEnabled = false;
@@ -99,34 +98,8 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
     KycCreditCoordinator coordinator,
     KycCreditStateReady state,
   ) {
+
     return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Column(
-          children: [
-            _buildTitle(context),
-            SizedBox(
-              height:
-                  AppUtils.appUtilsInstance.getPercentageSize(percentage: 5),
-            ),
-            _subTitleMain(context),
-          ],
-        ),
-        Image(image: const AssetImage(AN_Kyc_Credit_Main)),
-        Container(
-          margin: const EdgeInsets.only(bottom: 40),
-          child: Column(
-            children: [
-              _getTermsCheckBox(context),
-              const SizedBox(height: 20,),
-              _buildCheckNowButton(context, coordinator, state),
-            ],
-          ),
-        )
-      ],
-      crossAxisAlignment: CrossAxisAlignment.start,
-    );
-    /*return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _buildTitle(context),
@@ -208,7 +181,7 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
 
         _buildContinueButton(context, coordinator, state)
       ],
-    );*/
+    );
   }
 
   Widget _getCircularIcon(BuildContext context) {
@@ -239,31 +212,7 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
     );
   }
 
-  Widget _buildCheckNowButton(BuildContext context,
-      KycCreditCoordinator coordinator,
-      KycCreditState state,){
-    return Padding(
-      padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
-      child: GestureDetector(
-        onTap: () async {
 
-        },
-        child: Container(
-          width: double.infinity,
-          height: 50,
-          decoration: BoxDecoration(
-              color: SU_button_color ,
-              borderRadius: BorderRadius.circular(8.0)),
-          child: Center(
-            child: Text(
-              'SU_button_text'.tr,
-              style: SU_button_text_style,
-            ),
-          ),
-        ),
-      ),
-    );
-  }
 
 
   Widget _buildContinueButton(
@@ -322,13 +271,7 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
     );
   }
 
-  Widget _image(BuildContext context) {
-    return getSvg(
-      widget.kycScreenArgs.image,
-      height: 100,
-      width: 100,
-    );
-  }
+
 
   _title(BuildContext context) {
     return CrayonPaymentText(
@@ -370,69 +313,7 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
     );
   }
 
-  _getTermsCheckBox(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(
-          height: 30,
-          width: 30,
-          child: Checkbox(
-              value: _isChecked,
-              activeColor: Black,
-              onChanged: (value) {
-                setState(() {
-                  _isChecked = value!;
-                });
-              }),
-        ),
-        const SizedBox(
-          width: 10,
-        ),
-
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _checkBoxText(context),
-            _termsText(context),
-          ],
-        ),
-
-//            _buildContinueButton(context, coordinator, state)
-      ],
-    );
-  }
 
 
-  Widget _checkBoxText(BuildContext context) {
-    return CrayonPaymentText(
-      key: Key('${_identifier}_KYC_Validation_With_Main_CheckBox'),
-      text: const TextUIDataModel('KYC_Validation_With_Main_CheckBox',
-          styleVariant: CrayonPaymentTextStyleVariant.headline4,
-          color: Black,
-          fontWeight: FontWeight.w500),
-    );
-  }
-  Widget _termsText(BuildContext context) {
-    return CrayonPaymentText(
-      key: Key('${_identifier}_KYC_Terms_and_Condition'),
-      text: const TextUIDataModel('KYC_Terms_and_Condition',
-          styleVariant: CrayonPaymentTextStyleVariant.headline4,
-          color: SU_subtitle_terms_color,
 
-          fontWeight: FontWeight.w500),
-    );
-  }
-
-
-  _subTitleMain(BuildContext context) {
-    return CrayonPaymentText(
-      key: Key('${_identifier}_KYC_Validation_With_Airtel_Subtitle'),
-      text: const TextUIDataModel('KYC_Validation_With_Airtel_Subtitle',
-          styleVariant: CrayonPaymentTextStyleVariant.headline6,
-          color: Black,
-          fontWeight: FontWeight.w400),
-    );
-  }
 }

@@ -10,21 +10,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/internacionalization.dart';
-import 'package:kyc/view/kyc_credit_screen.dart';
-
-//import 'package:kyc/view/kyc_credit_screen.dart';
 import 'package:splash/splash/view/splash.dart';
-import 'package:settings/view/settings_view.dart';
 import 'package:widget_library/theme/crayon_payment_theme.dart';
 import 'package:flutter_riverpod/src/framework.dart';
 import 'app_module.dart';
 import 'package:shared_data_models/kyc/kyc_screen_args.dart';
 import 'package:shared_data_models/kyc/kyc_type.dart';
 import 'package:shared_data_models/kyc/kyc_data_model.dart';
-import 'package:shared_data_models/kyc/kyc_screen_args.dart';
-import 'package:shared_data_models/kyc/kyc_type.dart';
-import 'package:shared_data_models/kyc/kyc_data_model.dart';
-
 import 'package:kyc/subfeatures/kycmain/view/kyc_credit_main_screen.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
