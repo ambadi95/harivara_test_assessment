@@ -30,7 +30,7 @@ class WelcomeBackCoordinator extends BaseViewModel<WelcomeScreenState> {
     );
   }
 
-  Future<void> navigationToDestination(String userType) async {
+  Future<void> navigationToDestination(UserType userType) async {
     if (userType == UserType.Customer) {
       _navigationHandler.navigateToCustomerEnrollmentScreen();
     } else {
@@ -85,13 +85,13 @@ class WelcomeBackCoordinator extends BaseViewModel<WelcomeScreenState> {
 
   void onPasscodeCallback(String passCode, UserType userType) {
     if (userType == UserType.Customer) {
-      customerLogin(passCode, userType==UserType.Customer ? "Customer" : "Agent");
+      customerLogin(passCode, userType);
     } else {
       agentLogin(passCode);
     }
   }
 
-  Future customerLogin(String passcode, String userType) async {
+  Future customerLogin(String passcode, UserType userType) async {
     String mobileNumber = await _welcomeUseCase.getMobileNumber();
     state = state.copyWith(isLoading: true);
     print(mobileNumber);
@@ -99,7 +99,7 @@ class WelcomeBackCoordinator extends BaseViewModel<WelcomeScreenState> {
         await _welcomeUseCase.login(mobileNumber, passcode, (p0) => null);
     if (response?.status == true) {
       state = state.copyWith(isLoading: false);
-      _navigationHandler.navigateToCustomerEnrollmentScreen();
+      _navigationHandler.navigateToHome(userType);
     } else {
       state = state.copyWith(isLoading: false);
       state = state.copyWith(error: response!.message!);

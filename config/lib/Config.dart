@@ -23,6 +23,10 @@ const ST_view_profile = 'assets/images/view_profile_icon.png';
 const ST_update_passcode = 'assets/images/update_passcode_icon.png';
 const ST_language = 'assets/images/language_icon.png';
 const ST_sign_out = 'assets/images/sign_out_icon.png';
+const ST_CallSupport = 'assets/images/call_support.png';
+const ST_TermsCondition = 'assets/images/terms_condition.png';
+const ST_faq = 'assets/images/faq.png';
+const ST_agent = 'assets/images/agent.png';
 
 //dev customer
  const customerEndpoint = 'https://y9-dev-capi.testmaya.com/customers/v1/';

@@ -30,19 +30,7 @@ class WelcomeRouteManager extends IRouteManager {
         );
       case DetailsScreen.viewPath:
         var arguments = settings.arguments as UserType;
-        CrayonPaymentLogger.logInfo(arguments==UserType.AgentCustomer ? "AgentCustomer" : (arguments==UserType.Customer ? "Customer" :"Agent"));
         UserType type = UserType.Customer;
-        // switch (arguments) {
-        //   case 'AgentCustomer':
-        //     type = UserType.AgentCustomer;
-        //     break;
-        //   case 'Customer':
-        //     type = UserType.Customer;
-        //     break;
-        //   case 'Agent':
-        //     type = UserType.Agent;
-        //     break;
-        // }
         return DetailsScreen(
           userType: type,
         );

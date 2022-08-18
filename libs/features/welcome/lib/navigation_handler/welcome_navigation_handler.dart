@@ -143,8 +143,8 @@ class WelcomeNavigationHandler with ErrorHandler {
         arguments: argument);
   }
 
-  Future<void> navigateToCustomerHome() async {
-    var argument = HomeScreenArgs(isAgent: false,userType: UserType.Customer);
+  Future<void> navigateToHome(UserType userType) async {
+    var argument = HomeScreenArgs(isAgent: userType == UserType.Customer ? false : true, userType : userType);
     await _navigationManager.navigateTo(
         CrayonHomeScreen.viewPath, const NavigationType.replace(),
         arguments: argument);
@@ -160,8 +160,7 @@ class WelcomeNavigationHandler with ErrorHandler {
   Future<void> navigateToTermsCondtionsScreen() async {
     _navigationManager.navigateTo(
       CrayonTermsCondition.viewPath,
-      const NavigationType.push(),
-    );
+      const NavigationType.push(),);
   }
 
   Future<void> navigateToAgentDetailScreen(UserType userType) async {
