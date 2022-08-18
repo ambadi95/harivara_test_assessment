@@ -6,6 +6,7 @@ import 'package:core/session_management/inactivity_service.dart';
 import 'package:core/session_management/inactivity_watcher.dart';
 import 'package:core/translation/crayon_payment_transaltions_loader.dart';
 import 'package:core/translation/crayon_payment_translations.dart';
+import 'package:downpayment/view/down_payment_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -17,9 +18,9 @@ import 'package:widget_library/theme/crayon_payment_theme.dart';
 import 'package:flutter_riverpod/src/framework.dart';
 import 'app_module.dart';
 
-import 'package:shared_data_models/kyc/kyc_screen_args.dart';
+import 'package:shared_data_models/downpayment/downpayment_screen_args.dart';
 import 'package:shared_data_models/kyc/kyc_type.dart';
-import 'package:shared_data_models/kyc/kyc_data_model.dart';
+import 'package:shared_data_models/downpayment/downpayment_data_model.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   HttpOverrides.global = new MyHttpOverrides();
@@ -69,7 +70,7 @@ class HomeWidget extends StatelessWidget {
       child: CrayonPaymentMaterialApp(
         key: Key('AppMaterialApp'),
         home: !_status
-            ? CrayonSplashScreen.forMerchantApp()
+            ? DownPaymentScreen(downPaymentScreenArgs: DownPaymentScreenArgs("","","","",[DownPaymentDataModel(title: "",isSelected: false)]))
             : CrayonSplashScreen.forMerchantApp(),
         theme: CrayonPaymentTheme().defaultTheme,
         onGenerateRoute: _navigationManager.getRoute,
