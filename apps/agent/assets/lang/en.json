@@ -198,5 +198,13 @@
 
 
    "KYC_Title": "KYC & Credit Check with Telco's ",
-    "KYC_Validation_With_Airtel" : "KYC Validation With Airtel Telco’s Record"
+    "KYC_Validation_With_Airtel" : "KYC Validation With Airtel Telco’s Record",
+
+  "DLC_Device_Loan": "Device Loan\\nCreation",
+  "DLC_Device_Title": "Device",
+  "DLC_Wallets_Title": "Wallets",
+  "DLC_Daily_Repayment": "Daily Repayment",
+  "DLC_Total_Amount_Repaid": "Total Amount to be Repaid",
+  "DLC_Final_Payment_Date": "Final Payment Date"
+
 }

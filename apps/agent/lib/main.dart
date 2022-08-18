@@ -69,9 +69,9 @@ class HomeWidget extends StatelessWidget {
       child: CrayonPaymentMaterialApp(
         key: Key('AppMaterialApp'),
         home: !_status
-            ? KycCreditScreen(kycScreenArgs: KycScreenArgs(KycFieldType.KYC_VALIDATION,"assets/images/airtel.svg","KYC Validation With Airtel Telco’s Record","Y9 checks your Telco records matching your NIDA Number and Mobile Number","",[KYCDataModel(title: "KYC pass with Telco",isSelected: false)]),)
-            : KycCreditScreen(kycScreenArgs: KycScreenArgs(KycFieldType.KYC_VALIDATION,"assets/images/airtel.svg","KYC Validation With Airtel Telco’s Record","Y9 checks your Telco records matching your NIDA Number and Mobile Number","",[KYCDataModel(title: "KYC pass with Telco",isSelected: false)]),)
-        ,theme: CrayonPaymentTheme().defaultTheme,
+            ? CrayonSplashScreen.forMerchantApp()
+            : CrayonSplashScreen.forMerchantApp(),
+        theme: CrayonPaymentTheme().defaultTheme,
         onGenerateRoute: _navigationManager.getRoute,
         translations: _translations,
         locale: Get.deviceLocale,
