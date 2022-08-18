@@ -195,8 +195,12 @@
 
 
   "KYC_Title": "KYC & Credit Check with Telco's ",
-  "KYC_Validation_With_Airtel" : "KYC Validation With Airtel Telco’s Record",
-
+  "KYC_Validation_With_Airtel" : "KYC Validation With\nAirtel Telco’s Record",
+  "KYC_Validation_With_Airtel_Subtitle" : "Y9 checks your Telco records matching\nyour NIDA Number and Mobile Number",
+  "KYC_Validation_With_Airtel_Pass_Check" : "KYC pass with Telco",
+  "KYC_Validation_With_Airtel_Loan_Check" : "Credit check for Loan ",
+  "KYC_Validation_With_Main_CheckBox" : "I hereby agree to check my credit\nscore and provide the eligible\nmembership plan accodring to Y9",
+  "KYC_Terms_and_Condition" : "Terms & Conditions",
   "DLC_Device_Loan": "Device Loan\\nCreation",
   "DLC_Device_Title": "Device",
   "DLC_Wallets_Title": "Wallets",

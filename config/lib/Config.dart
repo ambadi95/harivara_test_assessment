@@ -14,7 +14,8 @@ const DO_BackArrow = 'assets/images/back_arrow.png';
 const LS_BackArrow = 'assets/images/back_arrow.png';
 const LS_Flag = 'assets/images/flag.png';
 
-
+const AN_Kyc_Airtel = 'assets/images/kyc_airtel.png';
+const AN_Kyc_Credit_Main = 'assets/images/kyc_credit_main.png';
  // MockUp Data
 const agentMock = 'assets/images/agent_mock.png';
 const WB_or_icon = 'assets/images/orIcon.png';
