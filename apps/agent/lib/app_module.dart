@@ -57,7 +57,8 @@ import 'package:welcome/welcome_module.dart';
 import 'package:widget_library/app_mobile_widgets.dart';
 import 'package:widget_library/keypad/utils/keypad_button_pressed_value_updater.dart';
 import 'package:settings/settings_model.dart';
-
+import 'package:kyc/subfeatures/kycmain/kyccreditmain_module.dart';
+import 'package:kyc/subfeatures/kycmain/navigation_handler/kyc_main_route_manager.dart';
 
 class AppModule {
 
@@ -122,6 +123,7 @@ class AppModule {
 
 
     KycCreditModule.registerDependencies();
+    KycCreditMainModule.registerDependencies();
 
     TermsConditionModule.registerDependencies();
 
@@ -215,6 +217,11 @@ void _registerRouteManagers() {
   navigationManagerContainer.registerRouteManager(
     KycCreditModule.moduleIdentifier,
     KycCreditRouteManager(),
+  );
+
+  navigationManagerContainer.registerRouteManager(
+    KycCreditMainModule.moduleIdentifier,
+    KycCreditMainRouteManager(),
   );
 
   navigationManagerContainer.registerRouteManager(

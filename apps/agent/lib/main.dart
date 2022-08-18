@@ -25,6 +25,7 @@ import 'package:shared_data_models/kyc/kyc_screen_args.dart';
 import 'package:shared_data_models/kyc/kyc_type.dart';
 import 'package:shared_data_models/kyc/kyc_data_model.dart';
 
+import 'package:kyc/subfeatures/kycmain/view/kyc_credit_main_screen.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   HttpOverrides.global = new MyHttpOverrides();
@@ -73,7 +74,7 @@ class HomeWidget extends StatelessWidget {
       child: CrayonPaymentMaterialApp(
         key: Key('AppMaterialApp'),
         home: !_status
-            ? KycCreditScreen(
+            ? KycCreditMainScreen(
                 kycScreenArgs: KycScreenArgs(
                   KycFieldType.KYC_VALIDATION,
                   "",
