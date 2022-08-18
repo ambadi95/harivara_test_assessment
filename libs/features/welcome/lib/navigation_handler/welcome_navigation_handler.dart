@@ -19,6 +19,7 @@ import 'package:welcome/data_model/agent_detail_arguments.dart';
 import 'package:welcome/data_model/sign_up_arguments.dart';
 import 'package:welcome/sub_features/agent_details/view/agent_details.dart';
 import 'package:welcome/sub_features/details/view/details.dart';
+import 'package:welcome/sub_features/signup/sub_features/customer_onboarding_approval/view/customer_onboarding_approval.dart';
 import 'package:welcome/sub_features/signup/view/signup.dart';
 import 'package:widget_library/helpers/error/helper/error_helper.dart';
 import 'package:device_option/view/device_option_screen.dart';
@@ -88,7 +89,7 @@ class WelcomeNavigationHandler with ErrorHandler {
         'PC_create_passcode',
         'PC_passcode_message',
         'welcomeModule/enrollmentSuccess',
-        true,
+        userType == UserType.AgentCustomer ? false : true,
         3,
         PassCodeVerificationType.create,
         false,
@@ -208,7 +209,7 @@ class WelcomeNavigationHandler with ErrorHandler {
       userType == 'Customer'
           ? 'welcomeModule/details'
           : 'welcomeModule/agentDetails',
-      true,
+      false,
       2,
       OtpVerificationType.customerSignUpAgent,
       userId!,
@@ -323,6 +324,15 @@ class WelcomeNavigationHandler with ErrorHandler {
         SignUp.viewPath, const NavigationType.push(),
         arguments: arguments);
   }
+
+  Future<void> navigateToCustomerOnBoardingApproval() async {
+    var arguments = SignUpArguments('SU_title', 'SU_subtitle', 'Customer',
+        SignupType.agentAidedCustomerOnBoarding, true);
+    await _navigationManager.navigateTo(
+        CustomerOnBoardingApproval.viewPath, const NavigationType.push(),
+        arguments: arguments);
+  }
+
 
 
 // Future<void> navigateToDestination(

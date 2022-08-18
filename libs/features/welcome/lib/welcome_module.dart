@@ -15,7 +15,8 @@ import 'package:welcome/sub_features/enrollment_success/service/enrollment_servi
 import 'package:welcome/sub_features/enrollment_success/viewmodel/enrollment_success_coordinator.dart';
 import 'package:welcome/sub_features/enrollment_success/viewmodel/enrollment_success_usecase.dart';
 import 'package:welcome/sub_features/signup/service/signup_service.dart';
-import 'package:welcome/sub_features/signup/sub_features/viewmodel/registration_approval_coordinator.dart';
+import 'package:welcome/sub_features/signup/sub_features/customer_onboarding_approval/viewmodel/customer_onboarding_approval_coordinator.dart';
+import 'package:welcome/sub_features/signup/sub_features/customer_registration_options/viewmodel/registration_approval_coordinator.dart';
 import 'package:welcome/sub_features/signup/viewmodel/signup_usecase.dart';
 import 'package:welcome/sub_features/signup/viewmodel/signup_viewmodel.dart';
 import 'package:welcome/sub_features/welcome/viewmodel/welcome_usecase.dart';
@@ -68,6 +69,12 @@ class WelcomeModule {
 
     DIContainer.container.registerFactory<RegistrationApprovalCoordinator>(
           (container) => RegistrationApprovalCoordinator(
+        WelcomeNavigationHandler(container.resolve<NavigationManager>()),
+      ),
+    );
+
+    DIContainer.container.registerFactory<CustomerOnBoardingApprovalCoordinator>(
+          (container) => CustomerOnBoardingApprovalCoordinator(
         WelcomeNavigationHandler(container.resolve<NavigationManager>()),
       ),
     );

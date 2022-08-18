@@ -8,6 +8,7 @@ import 'package:welcome/sub_features/signup/state/signup_state.dart';
 import 'package:welcome/sub_features/signup/viewmodel/signup_coordinator.dart';
 import 'package:welcome/welcome_module.dart';
 import 'package:widget_library/html/rich_text_description.dart';
+import 'package:widget_library/input_fields/input_field_with_label.dart';
 import 'package:widget_library/page_header/text_ui_data_model.dart';
 import 'package:widget_library/progress_bar/centered_circular_progress_bar.dart';
 import 'package:widget_library/progress_bar/onboarding_progress_bar.dart';
@@ -16,23 +17,22 @@ import 'package:config/Colors.dart' as config_color;
 import 'package:get/get.dart';
 import 'package:widget_library/static_text/crayon_payment_text.dart';
 
-import '../../../../data_model/sign_up_arguments.dart';
+import '../../../../../data_model/sign_up_arguments.dart';
 
 
-class RegistrationApproval extends StatefulWidget {
+class CustomerOnBoardingApproval extends StatefulWidget {
   final SignUpArguments signUpArguments;
-  static const viewPath = '${WelcomeModule.moduleIdentifier}/registrationApproval';
+  static const viewPath = '${WelcomeModule.moduleIdentifier}/customerOnBoardingApproval';
 
-  const RegistrationApproval({required this.signUpArguments, Key? key}) : super(key: key);
+  const CustomerOnBoardingApproval({required this.signUpArguments, Key? key}) : super(key: key);
 
   @override
-  State<RegistrationApproval> createState() => _SignUpState();
+  State<CustomerOnBoardingApproval> createState() => _SignUpState();
 }
 
-class _SignUpState extends State<RegistrationApproval> {
+class _SignUpState extends State<CustomerOnBoardingApproval> {
   bool _isBtnEnabled = false;
-  bool _agentAidCustomerOnBoarding = false;
-  bool _customerApproval = false;
+  TextEditingController referenceID = TextEditingController();
 
   @override
   Widget build(BuildContext context) =>
@@ -124,7 +124,7 @@ class _SignUpState extends State<RegistrationApproval> {
           const SizedBox(
             height: 94,
           ),
-          selectableList()
+          _buildLabelTextField('Customer Reference ID',referenceID,coordinator,'Enter Reference ID', '',TextInputType.number)
         ],
       ),
     );
@@ -178,6 +178,32 @@ class _SignUpState extends State<RegistrationApproval> {
     );
   }
 
+  Widget _buildLabelTextField(
+      String label,
+      TextEditingController controller,
+      SignUpCoordinator coordinator,
+      String hint,
+      String errorText,
+      TextInputType textInputType) {
+    return FocusScope(
+      child: Focus(
+        onFocusChange: (focus) {
+        },
+        child: InputFieldWithLabel(
+          label: label.tr,
+          hintText: hint.tr,
+          controller: controller,
+          errorText: errorText.tr,
+          keyboardType: textInputType,
+          textCapitalization: TextCapitalization.characters,
+          onChanged: (value) {
+
+          },
+        ),
+      ),
+    );
+  }
+
 
   Widget _buildContinueButton(
       BuildContext context,
@@ -188,9 +214,6 @@ class _SignUpState extends State<RegistrationApproval> {
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
         onTap: () async {
-          if(_agentAidCustomerOnBoarding == true){
-            coordinator.navigateToAgentAidedCustomer();
-          }
         },
         child: Container(
           width: double.infinity,
@@ -202,68 +225,12 @@ class _SignUpState extends State<RegistrationApproval> {
               borderRadius: BorderRadius.circular(8.0)),
           child: Center(
             child: Text(
-              'SU_button_text'.tr,
+              'Fetch Details',
               style: SU_button_text_style,
             ),
           ),
         ),
       ),
-    );
-  }
-
-  Widget _selectableCard (bool selected, String image, String title, Function() onTap){
-    return InkWell(
-      onTap: onTap,
-      child: Container(
-        height: 98,
-        decoration: BoxDecoration(
-          border: Border.all(width:selected ? 2 : 1,color: selected ? RC_greyColor : SU_border_color),
-          borderRadius: BorderRadius.circular(8)
-        ),
-        child: Center(
-          child: Row(
-            children: [
-              const SizedBox(
-                width: 26,
-              ),
-              Image.asset(image,height: 24, width: 30,),
-             const SizedBox(
-                width: 26,
-              ),
-              CrayonPaymentText(text: TextUIDataModel(
-                title.tr,
-                styleVariant: CrayonPaymentTextStyleVariant.bodyText2,
-                color: AN_TitleColor,
-              ),),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget selectableList(){
-    return ListView(
-      shrinkWrap: true,
-      children: [
-        _selectableCard (_agentAidCustomerOnBoarding, RC_new_customer,'RC_agent_new_customer',() {
-          setState(() {
-            _agentAidCustomerOnBoarding = true;
-            _customerApproval = false;
-            _isBtnEnabled = true;
-          });
-        }),
-        const SizedBox(
-          height: 24,
-        ),
-        _selectableCard (_customerApproval,RC_customer_approval,'RC_customer_approval',(){
-          setState(() {
-            _agentAidCustomerOnBoarding = false;
-            _customerApproval = true;
-            _isBtnEnabled = true;
-          });
-        })
-      ],
     );
   }
 
