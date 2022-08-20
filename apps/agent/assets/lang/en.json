@@ -138,7 +138,6 @@
   "HS_Agent_Refer_Program": "Referral Program -",
   "HS_Agent_Stay_Tunned": " Stay tuned !",
 
-
   "AE_Message" : "Congratulations,\n%{_name_ | click}% You \nhave successfully Onboarded into Y9 Agent App",
   "AE_AgentId" : "Your Y9 Agent ID",
   "AE_Description" : "Your Y9 Agent ID has been sent successfully to your mobile number and Email ID",
@@ -211,7 +210,7 @@
   "DLC_Wallets_Title": "Wallets",
   "DLC_Daily_Repayment": "Daily Repayment",
   "DLC_Total_Amount_Repaid": "Total Amount to be Repaid",
-  "DLC_Final_Payment_Date": "Final Payment Date"
+  "DLC_Final_Payment_Date": "Final Payment Date",
   "TC_Purpose_Desc": "2.1. Y9 is a digital Microfinance provider aiming to help develop the lifestyle of the people of Tanzania and the African continent as a whole by providing financial services to the unbanked and under banked by creating access to digital education, digital healthcare, etc. by offering 4G smartphones on very fair terms to make it accessible to all citizens by enabling meaningful financial and digital inclusion.",
 
   "RC_agent_new_customer" : "New agent aid \nCustomer Onboarding",

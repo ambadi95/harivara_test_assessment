@@ -42,8 +42,6 @@ const AN_CardActionIcon2 = Color(0xFFDA2228);
 const AN_Divider = Color(0xFFEFEEE9);
 const AN_ActionText = Color(0xFF4B4B4B);
 const LS_ButtonColor = Color(0xFFDA2228);
-const AN_VerticalDivider = Color(0xFFBAB8B2);
-
 
 const HS_MorningTextColor = Color(0xFF4B4B4B);
 const HS_NotificationCountColor = Color(0xFFE03C31);
@@ -67,6 +65,8 @@ const VO_TitleColor= Color(0xFF040505);
 const VO_DescriptionColor= Color(0xFF160304);
 const VO_ResendTextColor= Color(0xFF676767);
 const ES_grey_button_color = Color(0xFF9CA3AF);
+const profilePicHolderYellowColor=Color.fromRGBO(246, 192, 80, 1.0);
+const READINGVIEW_COLOR=Color.fromRGBO(248, 245, 237,1);
 
 
 

@@ -34,7 +34,7 @@ class CrayonHomeScreen extends StatefulWidget {
 class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
   late BuildContext context;
   int selectedIndex = 0;
-  String username = '';
+  String username = 'Emmanual Jisula';
   String userId = '';
   Data customerCount =
       const Data(initiatedCustomer: '0', enrolledCustomer: '0');
@@ -80,6 +80,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
       );
 
   Widget _userInfoView() {
+    username = 'Emmanual Jisula';
     return Padding(
       padding: const EdgeInsets.all(10),
       child: Row(
@@ -107,7 +108,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
 
   Widget _redBoxView(HomeCoordinator coordinator) {
     return Container(
-      margin: const EdgeInsets.all(10.0),
+      margin: const EdgeInsets.all(16.0),
       padding: const EdgeInsets.all(20.0),
       clipBehavior: Clip.antiAliasWithSaveLayer,
       decoration: const BoxDecoration(
@@ -204,8 +205,8 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                         const SizedBox(
                           height: 5,
                         ),
-                        const Text("2,000 TZSHS ", style: HS_account_id_style),
-                      ],
+                        Row(children:[const Text("4,500", style: HS_account_id_style),const Text(" TZSHS", style: HS_card_items_style_w)],
+                        )],
                     ),
                     const SizedBox(width: 20,),
                     Column(
@@ -218,7 +219,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                         const SizedBox(
                           height: 5,
                         ),
-                        const Text("7,70,000 TZSHS ", style: HS_account_id_style),
+    Row(children:[const Text("7,70,000", style: HS_account_id_style),const Text(" TZSHS", style: HS_card_items_style_w)]),
                       ],
                     ),
                   ],
@@ -258,7 +259,6 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                       _actionCommonView(
                           'HS_LoanRepayment'.tr, HS_LoanRepayment),
                       _actionCommonView('HS_LoanDetails'.tr, HS_LoanDetail),
-                      _actionCommonView('HS_LoanStatements'.tr, HS_LoanStatement),
                     ],
                   ),
           )
@@ -371,14 +371,13 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
   Widget _inviteBoxView() {
     return Card(
       elevation: 20,
-      shadowColor: White,
       child: Container(
         margin: const EdgeInsets.all(10.0),
         padding: const EdgeInsets.all(20.0),
         width: double.maxFinite,
         clipBehavior: Clip.antiAliasWithSaveLayer,
         decoration: const BoxDecoration(
-          color: White,
+          color: READINGVIEW_COLOR,
           borderRadius: BorderRadius.all(
             Radius.circular(16),
           ),
@@ -433,10 +432,10 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
       width: 40,
       clipBehavior: Clip.antiAliasWithSaveLayer,
       decoration: const BoxDecoration(
-        color: Colors.grey,
         shape: BoxShape.circle,
+        color: profilePicHolderYellowColor,
       ),
-      child: Image.network('https://picsum.photos/id/237/50/50'),
+      child: const Center(child:Text('EJ',style: AN_TextFieldLabel_FF,)),
     );
   }
 

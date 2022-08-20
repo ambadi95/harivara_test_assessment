@@ -317,7 +317,7 @@ class WelcomeNavigationHandler with ErrorHandler {
 
 
   Future<void> navigateToAgentAidedCustomerOnBoarding() async {
-    var arguments = SignUpArguments('SU_title', 'SU_subtitle', 'Customer',
+    var arguments = SignUpArguments('SU_title', 'SU_subtitle', UserType.Customer,
         SignupType.agentAidedCustomerOnBoarding, true);
     await _navigationManager.navigateTo(
         SignUp.viewPath, const NavigationType.push(),
@@ -325,7 +325,7 @@ class WelcomeNavigationHandler with ErrorHandler {
   }
 
   Future<void> navigateToCustomerOnBoardingApproval() async {
-    var arguments = SignUpArguments('SU_title', 'SU_subtitle', 'Customer',
+    var arguments = SignUpArguments('SU_title', 'SU_subtitle',UserType.Customer,
         SignupType.agentAidedCustomerOnBoarding, true);
     await _navigationManager.navigateTo(
         CustomerOnBoardingApproval.viewPath, const NavigationType.push(),

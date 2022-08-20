@@ -268,6 +268,14 @@ const HS_card_items_style = TextStyle(
   fontStyle: FontStyle.normal,
   color: Colors.black,
 );
+
+const HS_card_items_style_w = TextStyle(
+  fontSize: 12,
+  fontWeight: FontWeight.w500,
+  fontFamily: 'Montserrat',
+  fontStyle: FontStyle.normal,
+  color: Colors.white,
+);
 const HS_card_items_grey_style = TextStyle(
   fontSize: 12,
   fontWeight: FontWeight.w500,
