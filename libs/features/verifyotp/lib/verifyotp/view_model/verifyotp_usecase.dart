@@ -40,8 +40,8 @@ class VerifyOtpUseCase extends BaseDataProvider {
   }
 
   Future<OtpResponse?> otpGen(
-      String id, String userType, Function(String) onErrorCallback) async {
-    OtpRequest otpRequest = OtpRequest(id: id, type: userType);
+      String id, UserType userType, Function(String) onErrorCallback) async {
+    OtpRequest otpRequest = OtpRequest(id: id, type: (userType==UserType.Customer ? "Customer" : "Agent"));
 
     return await executeApiRequest<OtpResponse?>(
         taskType: TaskType.DATA_OPERATION,
@@ -77,9 +77,9 @@ class VerifyOtpUseCase extends BaseDataProvider {
   }
 
   Future<OtpVerificationResponse?> otpVerify(String id, String otp,
-      String userType, Function(String) onErrorCallback) async {
+      UserType userType, Function(String) onErrorCallback) async {
     OtpVerificationRequest otpRequest =
-        OtpVerificationRequest(id: id, type: userType, otp: otp);
+        OtpVerificationRequest(id: id, type: userType== UserType.Customer ? "Customer" : "Agent", otp: otp);
     return await executeApiRequest<OtpVerificationResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,

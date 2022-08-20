@@ -13,7 +13,7 @@ import 'package:crayon_payment_customer/util/app_utils.dart';
 
 class CrayonWelcomBackScreen extends StatefulWidget {
   static const viewPath = '${WelcomeModule.moduleIdentifier}/welcomeback';
-  final String userType;
+  final UserType userType;
 
   // final WelcomeScreenArgs welcomeScreenArgs;
 

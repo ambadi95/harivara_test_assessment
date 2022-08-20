@@ -55,7 +55,7 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
   //   }
   // }
 
-  Future<void> onPasscodeCallback(String passCode, String userType) async {
+  Future<void> onPasscodeCallback(String passCode, UserType userType) async {
     var currentState = state as CreatePasscodeReady;
     switch (currentState.passCodeVerificationType) {
       case PassCodeVerificationType.create:
@@ -132,7 +132,7 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
     String oldPassCode,
     String newPasscode,
     String destinationPath,
-    String userType,
+    UserType userType,
   ) async {
     var currentState = state as CreatePasscodeReady;
     print('%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%');
@@ -140,10 +140,10 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
     if (oldPassCode == newPasscode) {
       state = currentState.copyWith(currentStep: 5);
       await _passcodeUseCase.savePassCodeLocal(newPasscode);
-      if (userType == "Customer") {
+      if (userType == UserType.Customer) {
         state = currentState.copyWith(isLoading: true);
         var response = await _passcodeUseCase.savePasscode(
-            newPasscode, userType, (p0) => null);
+            newPasscode, userType == UserType.Customer ? "Customer" : "Agnet", (p0) => null);
         if (response!.status == true) {
           var loginResponse =
               await _passcodeUseCase.login(newPasscode, (p0) => null);
@@ -153,10 +153,10 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
                 destinationPath, false, UserType.Customer);
           }
         }
-      } else if (userType == 'Agent') {
+      } else if (userType == UserType.Agent) {
         state = currentState.copyWith(isLoading: true);
         var response = await _passcodeUseCase.savePasscodeAgent(
-            newPasscode, userType, (p0) => null);
+            newPasscode, userType== UserType.Customer ? "Customer" : "Agent", (p0) => null);
         if (response!.status == true) {
           state = currentState.copyWith(currentStep: 5);
           var loginResponse =
@@ -202,13 +202,13 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
     String oldPassCode,
     String newPasscode,
     String destinationPath,
-    String userType,
+    UserType userType,
   ) async {
     var currentState = state as CreatePasscodeReady;
     if (oldPassCode == newPasscode) {
       state = currentState.copyWith(currentStep: 5);
       await _passcodeUseCase.savePassCodeLocal(newPasscode);
-      if (userType == "Customer") {
+      if (userType == UserType.Customer) {
         _navigationHandler.navigateToCustomerEnrollmentScreen(
             destinationPath, true, UserType.Customer);
       } else {
