@@ -6,6 +6,7 @@ import 'package:welcome/sub_features/signup/sub_features/customer_registration_o
 import 'package:welcome/sub_features/signup/view/signup.dart';
 import 'package:widget_library/helpers/error/helper/error_helper.dart';
 import 'package:settings/view/settings_view.dart';
+import 'package:config/Config.dart';
 
 class HomeNavigationHandler with ErrorHandler {
   final NavigationManager _navigationManager;
@@ -16,8 +17,8 @@ class HomeNavigationHandler with ErrorHandler {
     _navigationManager.goBack();
   }
 
-  Future<void> navigateToSignUpScreen(String userType) async {
-    var arguments = SignUpArguments('SU_title', 'SU_subtitle', 'Customer',
+  Future<void> navigateToSignUpScreen(UserType userType) async {
+    var arguments = SignUpArguments('SU_title', 'SU_subtitle', UserType.Customer,
         SignupType.agentAidedCustomerOnBoarding, true);
     await _navigationManager.navigateTo(
         RegistrationApproval.viewPath, const NavigationType.push(),

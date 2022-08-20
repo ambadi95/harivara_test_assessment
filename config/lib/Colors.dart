@@ -40,6 +40,7 @@ const AN_CardActionIcon2 = Color(0xFFDA2228);
 const AN_Divider = Color(0xFFEFEEE9);
 const AN_ActionText = Color(0xFF4B4B4B);
 const LS_ButtonColor = Color(0xFFDA2228);
+const AN_VerticalDivider = Color(0xFFBAB8B2);
 
 
 const HS_MorningTextColor = Color(0xFF4B4B4B);

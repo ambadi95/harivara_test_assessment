@@ -69,8 +69,8 @@ class HomeWidget extends StatelessWidget {
       child: CrayonPaymentMaterialApp(
         key: Key('AppMaterialApp'),
         home: !_status ?
-        CrayonSplashScreen.forCustomerApp()
-            : CrayonSplashScreen.forCustomerApp(),
+        CrayonHomeScreen.forCustomerApp()
+            : CrayonHomeScreen.forCustomerApp(),
 
         theme: CrayonPaymentTheme().defaultTheme,
         onGenerateRoute: _navigationManager.getRoute,

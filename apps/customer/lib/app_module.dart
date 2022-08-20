@@ -32,6 +32,8 @@ import 'package:network_manager/network_manager.dart';
 import 'package:network_manager/utils/connectivity/i_connectivity.dart';
 import 'package:passcode/navigation_handler/passcode_route_manager.dart';
 import 'package:passcode/passcode_module.dart';
+import 'package:settings/navigation_handler/settings_route_manager.dart';
+import 'package:settings/settings_model.dart';
 import 'package:task_manager/cache_manager/storage/crayon_payment_storage_service.dart';
 import 'package:task_manager/cache_manager/storage/file_storage/file_storage_service_impl.dart';
 import 'package:task_manager/cache_manager/storage/memory_storage/memory_storage_service_impl.dart';
@@ -98,16 +100,13 @@ class AppModule {
     PasscodeModule.registerDependencies();
     HomeModule.registerDependencies();
     VerifyOtpModule.registerDependencies();
-
     AgentNearByModule.registerDependencies();
-
     DeviceOptionModule.registerDependencies();
-
-
     LoginModule.registerDependencies();
 
     CustomerHomeModule.registerDependencies();
     TermsConditionModule.registerDependencies();
+    SettingsModule.registerDependencies();
 
     DIContainer.container.resolve<WidgetsModule>().registerDependencies();
 
@@ -188,6 +187,11 @@ void _registerRouteManagers() {
   navigationManagerContainer.registerRouteManager(
     TermsConditionModule.moduleIdentifier,
     TermsConditionRouteManager(),
+  );
+
+  navigationManagerContainer.registerRouteManager(
+    SettingsModule.moduleIdentifier,
+    SettingsRouteManager(),
   );
 
   DIContainer.container.registerSingleton<NativeDocumentDirectory>(

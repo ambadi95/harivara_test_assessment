@@ -28,6 +28,9 @@ import 'package:device_option/navigation_handler/device_option_route_manager.dar
 import 'package:flutter/services.dart';
 import 'package:home/home/home_module.dart';
 import 'package:home/home/navigation_handler/home_route_manager.dart';
+import 'package:kyc/kyc_credit_module.dart';
+import 'package:downpayment/downpayment_module.dart';
+import 'package:kyc/navigation_handler/kyc_credit_route_manager.dart';
 import 'package:login/login_module.dart';
 import 'package:login/navigation_handler/login_route_manager.dart';
 import 'package:network_manager/auth/auth_manager.dart';
@@ -55,7 +58,7 @@ import 'package:welcome/welcome_module.dart';
 import 'package:widget_library/app_mobile_widgets.dart';
 import 'package:widget_library/keypad/utils/keypad_button_pressed_value_updater.dart';
 import 'package:settings/settings_model.dart';
-
+import 'package:downpayment/navigation_handler/downpayment_route_manager.dart';
 
 class AppModule {
 
@@ -117,6 +120,10 @@ class AppModule {
     HomeModule.registerDependencies();
 
     SettingsModule.registerDependencies();
+
+
+    KycCreditModule.registerDependencies();
+    DownPaymentModule.registerDependencies();
 
     TermsConditionModule.registerDependencies();
 
@@ -205,6 +212,15 @@ void _registerRouteManagers() {
   navigationManagerContainer.registerRouteManager(
     SettingsModule.moduleIdentifier,
     SettingsRouteManager(),
+  );
+
+  navigationManagerContainer.registerRouteManager(
+    KycCreditModule.moduleIdentifier,
+    KycCreditRouteManager(),
+  );
+ navigationManagerContainer.registerRouteManager(
+    DownPaymentModule.moduleIdentifier,
+   DownPaymentRouteManager(),
   );
 
   navigationManagerContainer.registerRouteManager(

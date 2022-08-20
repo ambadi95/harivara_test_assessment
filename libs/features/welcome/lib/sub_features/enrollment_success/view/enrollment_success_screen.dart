@@ -3,6 +3,7 @@ import 'package:config/Config.dart';
 import 'package:config/Styles.dart';
 import 'package:core/mobile_core.dart';
 import 'package:core/view/base_view.dart';
+import 'package:crayon_payment_customer/util/app_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_data_models/customer_details/response/get_customer_details_response/get_customer_details_response.dart';
 import 'package:widget_library/html/rich_text_description.dart';
@@ -79,7 +80,7 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
 
   Widget _buildMainUI(EnrollmentSuccessCoordinator coordinator) {
     return Padding(
-      padding: const EdgeInsets.all(16),
+      padding:  EdgeInsets.all(AppUtils.appUtilsInstance.getPercentageSize(percentage: 4)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -104,8 +105,8 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
               ),
             ),
           ),
-          const SizedBox(
-            height: 200,
+           SizedBox(
+            height: AppUtils.appUtilsInstance.getPercentageSize(percentage: 10),
           ),
           _buildSucessIcon(),
           const SizedBox(

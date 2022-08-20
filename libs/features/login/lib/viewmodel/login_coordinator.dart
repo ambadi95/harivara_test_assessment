@@ -3,6 +3,7 @@ import 'package:core/view/analytics_state_notifier.dart';
 import '../navigation_handler/login_navigation_handler.dart';
 import '../state/login_state.dart';
 import 'login_usecase.dart';
+import 'package:config/Config.dart';
 
 class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
   final LoginNavigationHandler _navigationHandler;
@@ -14,12 +15,12 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
   ) : super(const LoginState.initialState());
 
   void validateForm(
-      String mobNumber, String passcode, String agentId, String userType) {
+      String mobNumber, String passcode, String agentId, UserType userType) {
     var agentID = agentId.isNotEmptyOrNull;
     var mobileNo = _loginUseCase.isValidMobileNumber(mobNumber);
     var passCode = passcode.length == 6;
     bool isValid;
-    if (userType == 'Customer') {
+    if (userType == UserType.Customer) {
       isValid = mobileNo && passCode;
     } else {
       isValid = mobileNo && agentID;
@@ -49,20 +50,20 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
 
   Future navigateToWelcomeBackScreen(
       String userType, String mobilNumber) async {
-    if (userType == 'Customer') {
+    if (userType == UserType.Customer) {
       // _navigationHandler.navigateToOtpScreen(userType, mobilNumber);
     } else {
       //_navigationHandler.navigateToOtpScreenForAgent(userType, mobilNumber);
     }
   }
 
-  Future<void> navigateToResetNow(String userType) async {
+  Future<void> navigateToResetNow(UserType userType) async {
     await _navigationHandler.navigateToResetPasscode(userType);
   }
 
-  Future login(String mobileNumber, String passcode, String userType,
+  Future login(String mobileNumber, String passcode, UserType userType,
       String agentId) async {
-    if (userType == 'Customer') {
+    if (userType == UserType.Customer) {
       await customerLogin(mobileNumber, passcode, userType);
     } else {
       await getAgentDetails(agentId, mobileNumber);
@@ -70,7 +71,7 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
   }
 
   Future customerLogin(
-      String mobileNumber, String passcode, String userType) async {
+      String mobileNumber, String passcode, UserType userType) async {
     state = LoginState.loading();
     var response = await _loginUseCase.login(
         '+255' + mobileNumber, passcode, (p0) => null);
@@ -98,7 +99,7 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
           response.data!.firstName! + ' ' + response.data!.lastName!);
       await _loginUseCase.saveOnBordStatus(agentId);
       await _navigationHandler.navigateToOtpScreenForAgent(
-          'Agent', response.data!.mobileNo!, agentId);
+          UserType.Agent, response.data!.mobileNo!, agentId);
     } else {
       state = LoginState.successState();
       state = LoginState.agentIdError('Agent ID not found');

@@ -8,6 +8,7 @@ import 'package:verifyotp/verifyotp/view/verifyotp.dart';
 import 'package:welcome/data_model/sign_up_arguments.dart';
 import 'package:welcome/sub_features/signup/view/signup.dart';
 import 'package:widget_library/helpers/error/helper/error_helper.dart';
+import 'package:config/Config.dart';
 
 class LoginNavigationHandler with ErrorHandler {
   final NavigationManager _navigationManager;
@@ -22,7 +23,7 @@ class LoginNavigationHandler with ErrorHandler {
   }
 
   Future<void> navigateToOtpScreen(
-      String userType, String mobileNumber, String id) async {
+      UserType userType, String mobileNumber, String id) async {
     var arguments = OtpScreenArgs(
         'OTP Verification',
         'VO_otp_verification_description',
@@ -45,7 +46,7 @@ class LoginNavigationHandler with ErrorHandler {
   }
 
   Future<void> navigateToOtpScreenForAgent(
-      String userType, String mobileNumber, String agentId) async {
+      UserType userType, String mobileNumber, String agentId) async {
     var arguments = OtpScreenArgs(
         'OTP Verification',
         'VO_otp_verification_description',
@@ -67,12 +68,12 @@ class LoginNavigationHandler with ErrorHandler {
     );
   }
 
-  Future<void> navigateToResetPasscode(String userType) async {
+  Future<void> navigateToResetPasscode(UserType userType) async {
     var arguments = SignUpArguments(
       'SU_reset_passcode',
       'SU_reset_subtitle',
       userType,
-      userType == 'Agent'
+      userType == UserType.Agent
           ? SignupType.resetPasscodeAgent
           : SignupType.resetPasscodeCustomer,
       false,

@@ -305,6 +305,13 @@ const HS_referal_code_title_style = TextStyle(
     fontStyle: FontStyle.normal,
     fontSize: 18);
 
+const HS_explore_title_style = TextStyle(
+    color: Color(0xFFC83732),
+    fontWeight: FontWeight.w600,
+    fontFamily: 'Montserrat',
+    fontStyle: FontStyle.normal,
+    fontSize: 14);
+
 const HS_referal_code_style = TextStyle(
     color: Colors.black,
     fontWeight: FontWeight.w600,

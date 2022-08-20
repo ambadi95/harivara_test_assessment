@@ -68,7 +68,7 @@
   "HS_LoadWallet": "Load Wallet",
   "HS_SendMoney": "Send Money",
   "HS_CollectMoney": "Collect Money",
-  "HS_LoanRepayment": "Loan Repayment",
+  "HS_LoanRepayment": "Loan \nRepayment",
   "HS_InviteYourFriends": "Invite your friends to Y9",
   "HS_InviteFriends": "Invite Friends to Y9 and get rewards when your friend sends their first payment.",
   "HS_ReferalCode": "Referal Code",
@@ -108,6 +108,7 @@
 
   "D0_JoiningFee": "Joining Fee (one off)",
   "D0_DailyFee": "Daily Fee",
+  "D0_ViewDetails": "View Details",
 
   "DD_product" : "Product Details",
   "DD_Brand" : "Brand",
@@ -174,9 +175,29 @@
   "TC_TermsCondition_Subtitle":"1. TERMS AND CONDITIONS ",
   "TC_Terms_Conditons_Desc": "1.1. These T&Cs replace all earlier terms and conditions (if any) except where we advise you otherwise. Your access and use of the App following any such change constitutes your agreement to follow and be bound by these T&Cs. For this reason, Y9 encourage you to review these T&Cs each time you access and use the App and/or avail Y9 Services.",
   "TC_Purpose_title":"2. PURPOSE",
-  "TC_Purpose_Desc": "2.1. Y9 is a digital Microfinance provider aiming to help develop the lifestyle of the people of Tanzania and the African continent as a whole by providing financial services to the unbanked and under banked by creating access to digital education, digital healthcare, etc. by offering 4G smartphones on very fair terms to make it accessible to all citizens by enabling meaningful financial and digital inclusion."
+  "TC_Purpose_Desc": "2.1. Y9 is a digital Microfinance provider aiming to help develop the lifestyle of the people of Tanzania and the African continent as a whole by providing financial services to the unbanked and under banked by creating access to digital education, digital healthcare, etc. by offering 4G smartphones on very fair terms to make it accessible to all citizens by enabling meaningful financial and digital inclusion.",
 
+  "HS_CardList1Title" : "Y9 Device Loan",
+  "HS_CardList2Title" : "Outstanding Due Amount",
+  "HS_CardList3Title" : "Total Amount to be \nRepaid",
+  "HS_LoanDetails" : "Loan \nDetails",
+  "HS_LoanStatements" : "Loan \nStatement",
+  "HS_Widget1Title" : "Reading is Fascinating",
+  "HS_Widget1Description" : "World best witters, works \nand write entertaining \nliterature for you",
+  "HS_explore" : "Explore",
+  "HS_Daily_Repayment_amount" : "Daily Repayment \nAmount",
 
+  "ST_title" : "Settings",
+  "ST_subTitle" : "Profile Management",
+  "ST_view_profile" : "View Profile",
+  "ST_update_passcode" : "Update Passcode",
+  "ST_App_Language" : "App Language",
+  "ST_sign_out" : "Sign Out",
+  "ST_support": "Support",
+  "ST_agents" : "Agents",
+  "ST_faq" : "Frequently Asked Queries",
+  "ST_term_condition" : "Terms & Conditions",
+  "ST_call_support" : "Call Support",
 
-
+  "ST_contact_text" : "Need Help or If You Have Any Query \n Contact Us at +255 677-039-999"
 }

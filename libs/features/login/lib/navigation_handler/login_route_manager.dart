@@ -1,3 +1,4 @@
+import 'package:config/Config.dart';
 import 'package:core/navigation/i_route_manager.dart';
 import 'package:flutter/material.dart';
 
@@ -8,9 +9,9 @@ class LoginRouteManager extends IRouteManager {
   Widget getView(RouteSettings settings) {
     switch (settings.name) {
       case Login.viewPath:
-        var arguments = settings.arguments as String;
+        var arguments = settings.arguments as UserType;
         return Login(
-          userType: arguments,
+          userType: arguments ,
         );
       default:
         // TODO: implement getView
