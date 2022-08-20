@@ -16,7 +16,8 @@ const LS_Flag = 'assets/images/flag.png';
 const RC_new_customer = 'assets/images/new_customer_icon.png';
 const RC_customer_approval = 'assets/images/customer_approval_icon.png';
 
-
+const AN_Kyc_Airtel = 'assets/images/kyc_airtel.png';
+const AN_Kyc_Credit_Main = 'assets/images/kyc_credit_main.png';
  // MockUp Data
 const agentMock = 'assets/images/agent_mock.png';
 const WB_or_icon = 'assets/images/orIcon.png';

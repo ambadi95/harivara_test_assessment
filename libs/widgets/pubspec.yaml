@@ -20,7 +20,7 @@ dependencies:
   flutter_svg_provider: ^1.0.3
   carousel_slider: ^4.0.0
   json_annotation: ^4.4.0
-  pdf_render: ^1.0.23
+  #pdf_render: ^1.0.23
   country_provider: ^1.0.2
   country_pickers: ^2.0.0
   json_serializable: ^6.1.4

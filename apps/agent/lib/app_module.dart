@@ -1,4 +1,3 @@
-
 import 'dart:convert';
 
 import 'package:agent_nearby/agent_nearby_module.dart';
@@ -58,11 +57,11 @@ import 'package:welcome/welcome_module.dart';
 import 'package:widget_library/app_mobile_widgets.dart';
 import 'package:widget_library/keypad/utils/keypad_button_pressed_value_updater.dart';
 import 'package:settings/settings_model.dart';
+import 'package:kyc/subfeatures/kycmain/kyccreditmain_module.dart';
+import 'package:kyc/subfeatures/kycmain/navigation_handler/kyc_main_route_manager.dart';
 import 'package:downpayment/navigation_handler/downpayment_route_manager.dart';
 
 class AppModule {
-
-
   // ignore: long-method
   static Future<void> registerDependencies() async {
     DefaultTrackerCollection collection = DefaultTrackerCollection();
@@ -85,8 +84,6 @@ class AppModule {
         container.resolve<TaskManager>(),
       ),
     );
-
-
 
     DIContainer.container.registerSingleton(
       (container) => CacheTaskResolver(
@@ -121,19 +118,14 @@ class AppModule {
 
     SettingsModule.registerDependencies();
 
-
     KycCreditModule.registerDependencies();
     DownPaymentModule.registerDependencies();
 
+    KycCreditMainModule.registerDependencies();
+
     TermsConditionModule.registerDependencies();
 
-
-
-
     DIContainer.container.resolve<WidgetsModule>().registerDependencies();
-
-
-
   }
 }
 
@@ -144,7 +136,7 @@ void _registerUtils() {
   );
 
   DIContainer.container.registerSingleton<CrayonPaymentTranslationsLoader>(
-        (container) => CrayonPaymentTranslationsLoaderImpl(),
+    (container) => CrayonPaymentTranslationsLoaderImpl(),
   );
 
   DIContainer.container.registerSingleton<GetContacts>(
@@ -155,8 +147,6 @@ void _registerUtils() {
     (container) => InputEntryValidatorImpl.forCustomerApp(),
   );
 
-
-
   DIContainer.container.registerSingleton<LengthTextFormatter>(
     (container) => LengthTextFormatterImpl.forCustomerApp(),
   );
@@ -164,7 +154,6 @@ void _registerUtils() {
   DIContainer.container.registerSingleton<KeyPadButtonPressedValueUpdater>(
     (container) => KeyPadButtonPressedValueUpdaterImpl(),
   );
-
 }
 
 // ignore: long-method
@@ -186,7 +175,6 @@ void _registerRouteManagers() {
     DeviceOptionRouteManager(),
   );
 
-
   navigationManagerContainer.registerRouteManager(
     LoginModule.moduleIdentifier,
     LoginRouteManager(),
@@ -197,12 +185,10 @@ void _registerRouteManagers() {
     HomeRouteManager(),
   );
 
-
   navigationManagerContainer.registerRouteManager(
     PasscodeModule.moduleIdentifier,
     PasscodeRouteManager(),
   );
-
 
   navigationManagerContainer.registerRouteManager(
     VerifyOtpModule.moduleIdentifier,
@@ -224,11 +210,14 @@ void _registerRouteManagers() {
   );
 
   navigationManagerContainer.registerRouteManager(
+    KycCreditMainModule.moduleIdentifier,
+    KycCreditMainRouteManager(),
+  );
+
+  navigationManagerContainer.registerRouteManager(
     TermsConditionModule.moduleIdentifier,
     TermsConditionRouteManager(),
   );
-
-
 
   DIContainer.container.registerSingleton<NativeDocumentDirectory>(
     (container) => NativeDocumentDirectoryImpl(),
@@ -241,7 +230,6 @@ void _registerRouteManagers() {
     ),
   );
 
-
   _registerBottomSheetFeature();
   _registerToolTipFeature();
 }
@@ -253,20 +241,18 @@ void _registerBottomSheetFeature() {
     CrayonPaymentBottomSheetRouteManager(),
   );
   DIContainer.container.registerFactory<CrayonPaymentBottomSheetCoordinator>(
-        (container) => CrayonPaymentBottomSheetCoordinator(
+    (container) => CrayonPaymentBottomSheetCoordinator(
       CrayonPaymentBottomSheetNavigationHandler(
         container.resolve<NavigationManager>(),
       ),
     ),
   );
-
-
 }
 
 void _registerToolTipFeature() {
   final navigationManagerContainer = DIContainer.container<NavigationManager>();
-
 }
+
 Future registerNetworkModule({
   String? environment,
 }) async {
@@ -274,19 +260,20 @@ Future registerNetworkModule({
   final networkConfigJson = await rootBundle
       .loadString('assets/configuration/network_configuration_dev.json');
   final networkConfig =
-  Config.fromJson(jsonDecode(networkConfigJson) as Map<String, dynamic>);
+      Config.fromJson(jsonDecode(networkConfigJson) as Map<String, dynamic>);
   final mockNetworkClient = networkConfig.useMockNetworkClient ?? false;
   NetworkManager.registerDependencies(useMockNetworkClient: mockNetworkClient);
 
   await DIContainer.container.resolve<IConnectivity>().initialize();
   DIContainer.container.registerSingleton<IInactivityService>(
-        (container) => InactivityService(
+    (container) => InactivityService(
       taskManager: container.resolve(),
       authManager: container.resolve<IAuthManager>(),
-      navigationManager: container.resolve<NavigationManager>(),),
+      navigationManager: container.resolve<NavigationManager>(),
+    ),
   );
   DIContainer.container.registerSingleton<IAppLocalizationService>(
-        (container) => AppLocalizationService(),
+    (container) => AppLocalizationService(),
   );
 // initialise dependencies
   DIContainer.container
