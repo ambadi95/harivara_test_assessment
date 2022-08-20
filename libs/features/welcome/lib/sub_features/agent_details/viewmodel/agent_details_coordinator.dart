@@ -1,3 +1,4 @@
+import 'package:config/Config.dart';
 import 'package:core/mobile_core.dart';
 import 'package:task_manager/base_classes/base_view_model.dart';
 import '../../../navigation_handler/welcome_navigation_handler.dart';
@@ -80,7 +81,7 @@ class AgentDetailsCoordinator extends BaseViewModel<AgentDetailsState> {
   Future navigateToOtpScreen(String mobileNumber, String agentName) async {
     await _agentDetailsUseCase.saveAgentName(agentName);
     String agentId = await _agentDetailsUseCase.getAgentId();
-    _navigationHandler.navigateToOtpScreen('Agent', agentId, mobileNumber);
+    _navigationHandler.navigateToOtpScreen(UserType.Agent, agentId, mobileNumber);
   }
 
   Future navigateToBottomSheet() async {

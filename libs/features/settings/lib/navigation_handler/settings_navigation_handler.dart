@@ -14,6 +14,7 @@ import 'package:widget_library/helpers/error/helper/error_helper.dart';
 import 'package:widget_library/icons/crayon_payment_bottom_sheet_icon.dart';
 import 'package:core/sheets/state/crayon_payment_bottom_sheet_state.dart';
 import 'package:welcome/sub_features/app_language/view/app_language.dart';
+import 'package:config/Config.dart';
 
 class SettingsNavigationHandler with ErrorHandler {
   final NavigationManager _navigationManager;
@@ -27,7 +28,7 @@ class SettingsNavigationHandler with ErrorHandler {
     var arguments = SignUpArguments(
       'SU_update_passcode',
       'SU_update_subtitle',
-      'Agent',
+      UserType.Agent,
       SignupType.resetPasscodeAgent,
       false,
     );
@@ -61,14 +62,14 @@ class SettingsNavigationHandler with ErrorHandler {
 
   Future<void> navigateToAgentDetailScreen() async {
     var arguments = AgentDetailScreenArguments('DV_profile', 'DV_subtitle',
-        AgentDetailScreenType.UpdateProfile, 'Agent', false);
+        AgentDetailScreenType.UpdateProfile, UserType.Agent, false);
     await _navigationManager.navigateTo(
         AgentDetailsScreen.viewPath, const NavigationType.push(),
         arguments: arguments);
   }
 
   Future<void> signOut() async {
-    var arguments = WelcomeScreenArgs('', '', 'Agent', false);
+    var arguments = WelcomeScreenArgs('', '', UserType.Agent, false);
     _navigationManager.navigateTo(
         CrayonWelcomScreen.viewPath, const NavigationType.replace(),
         arguments: arguments);
