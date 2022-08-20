@@ -14,7 +14,7 @@ import 'package:widget_library/input_fields/input_number_field_with_label.dart';
 import 'package:widget_library/buttons/crayon_back_button.dart';
 import 'package:config/Colors.dart' as config_color;
 import 'package:get/get.dart';
-
+import 'package:config/Config.dart';
 import '../../../data_model/sign_up_arguments.dart';
 
 class SignUp extends StatefulWidget {
@@ -51,7 +51,7 @@ class _SignUpState extends State<SignUp> {
                       height: 120,
                       child: Column(
                         children: [
-                          widget.signUpArguments.userType == 'Customer'
+                          widget.signUpArguments.userType == UserType.Customer
                               ? _carrierText()
                               : const SizedBox(
                                   height: 14,
@@ -101,7 +101,7 @@ class _SignUpState extends State<SignUp> {
   ) {
     return Column(
       children: [
-        _onBoardingProgressBar(),
+       // _onBoardingProgressBar(),
         _buildBackBtn(context, coordinator),
       ],
     );
@@ -143,7 +143,7 @@ class _SignUpState extends State<SignUp> {
           const SizedBox(
             height: 48,
           ),
-          widget.signUpArguments.userType == 'Customer'
+          widget.signUpArguments.userType == UserType.Customer
               ? _buildLabelTextFieldMobNumber('SU_mobile_no_label',
                   mobileNumber, coordinator, 'SU_subtitle_hint')
               : _buildLabelTextField('SU_agent_id_hint', agentId, coordinator,

@@ -24,7 +24,7 @@ class DetailsService implements IDetailsService {
   Future<StandardRequest> getRegion(UserType userType) async {
     var request = StandardRequest();
     request.requestType = RequestType.GET;
-    request.endpoint = userType == UserType.AgentCustomer
+    request.endpoint = (userType == UserType.AgentCustomer)
         ? customerEndpoint + 'region-details[customer]'
         : 'region-details';
     request.customHeaders = {
@@ -38,7 +38,7 @@ class DetailsService implements IDetailsService {
       String regionId, UserType userType) async {
     var request = StandardRequest();
     request.requestType = RequestType.GET;
-    request.endpoint = userType == UserType.AgentCustomer
+    request.endpoint = (userType == UserType.AgentCustomer)
         ? customerEndpoint + 'district-details/$regionId[customer]'
         : 'district-details/$regionId';
     request.customHeaders = {
@@ -52,7 +52,7 @@ class DetailsService implements IDetailsService {
       Map<String, dynamic> requestData, UserType userType) async {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
-    request.endpoint = userType == UserType.AgentCustomer
+    request.endpoint = (userType == UserType.AgentCustomer)
         ? customerEndpoint + 'customer-details[customer]'
         : 'customer-details';
     request.customHeaders = {

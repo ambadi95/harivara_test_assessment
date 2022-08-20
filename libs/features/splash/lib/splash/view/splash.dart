@@ -26,13 +26,13 @@ class CrayonSplashScreen extends StatefulWidget {
         welcomeScreenArgs: WelcomeScreenArgs(
           '',
           '',
-          'Customer',
+          UserType.Customer,
           false,
         ),
       );
 
   factory CrayonSplashScreen.forMerchantApp() => CrayonSplashScreen(
-        welcomeScreenArgs: WelcomeScreenArgs('', '', 'Agent', false),
+        welcomeScreenArgs: WelcomeScreenArgs('', '', UserType.Agent, false),
       );
 }
 
@@ -59,7 +59,7 @@ class _CrayonSplashScreenState extends State<CrayonSplashScreen>
   void initState() {
     super.initState();
     _containerAnimationController = AnimationController(
-        vsync: this, duration: Duration(milliseconds: 6000));
+        vsync: this, duration: Duration(milliseconds: 4000));
 
     _containerRadiusAnimation = BorderRadiusTween(
             begin: BorderRadius.circular(100.0),
@@ -298,7 +298,7 @@ class _CrayonSplashScreenState extends State<CrayonSplashScreen>
   }
 
   void _moveToDestinationPath() {
-    Future.delayed(const Duration(seconds: 8), () {
+    Future.delayed(const Duration(seconds: 7), () {
       _splashCoordinator!.navigateToDestinationPath(
         widget.welcomeScreenArgs.userType,
         isSigned,

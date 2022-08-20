@@ -18,9 +18,10 @@ import 'package:widget_library/utils/icon_utils.dart';
 
 import '../kyc_credit_module.dart';
 import '../state/kyc_credit_state.dart';
-import '../viewmodel/kyc_credit_coordinator.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+
+import '../viewmodel/kyc_credit_coordinator.dart';
 
 class KycCreditScreen extends StatefulWidget {
   static const viewPath = '${KycCreditModule.moduleIdentifier}/kycscreen';

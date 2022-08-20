@@ -28,6 +28,7 @@ import 'package:flutter/services.dart';
 import 'package:home/home/home_module.dart';
 import 'package:home/home/navigation_handler/home_route_manager.dart';
 import 'package:kyc/kyc_credit_module.dart';
+import 'package:downpayment/downpayment_module.dart';
 import 'package:kyc/navigation_handler/kyc_credit_route_manager.dart';
 import 'package:login/login_module.dart';
 import 'package:login/navigation_handler/login_route_manager.dart';
@@ -58,6 +59,7 @@ import 'package:widget_library/keypad/utils/keypad_button_pressed_value_updater.
 import 'package:settings/settings_model.dart';
 import 'package:kyc/subfeatures/kycmain/kyccreditmain_module.dart';
 import 'package:kyc/subfeatures/kycmain/navigation_handler/kyc_main_route_manager.dart';
+import 'package:downpayment/navigation_handler/downpayment_route_manager.dart';
 
 class AppModule {
   // ignore: long-method
@@ -117,6 +119,7 @@ class AppModule {
     SettingsModule.registerDependencies();
 
     KycCreditModule.registerDependencies();
+    DownPaymentModule.registerDependencies();
 
     KycCreditMainModule.registerDependencies();
 
@@ -200,6 +203,10 @@ void _registerRouteManagers() {
   navigationManagerContainer.registerRouteManager(
     KycCreditModule.moduleIdentifier,
     KycCreditRouteManager(),
+  );
+ navigationManagerContainer.registerRouteManager(
+    DownPaymentModule.moduleIdentifier,
+   DownPaymentRouteManager(),
   );
 
   navigationManagerContainer.registerRouteManager(

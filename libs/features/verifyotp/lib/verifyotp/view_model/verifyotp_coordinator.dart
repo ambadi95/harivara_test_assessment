@@ -45,7 +45,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
 
   String otp = '';
 
-  Future<void> generateOtp(String id, String userType,
+  Future<void> generateOtp(String id, UserType userType,
       OtpVerificationType otpVerificationType) async {
     var response;
     if (otpVerificationType == OtpVerificationType.customerSignUpAgent) {
@@ -145,7 +145,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
   }
 
   Future<void> navigateToDestinationPath(String destinationPath,
-      String userType, OtpScreenArgs otpScreenArgs, String enterOtp) async {
+      UserType userType, OtpScreenArgs otpScreenArgs, String enterOtp) async {
     var currentState = state as VerifyOtpStateReady;
     int attempts = currentState.attemptsRemain;
     if (otpScreenArgs.otpVerificationType == OtpVerificationType.customerSign) {
@@ -162,11 +162,11 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
           otpScreenArgs.refId, enterOtp, 'Customer', (p0) => null);
       if (responseSignin!.data!.status == "success") {
         _navigationHandler.navigateToDestinationPath(
-            destinationPath, 'AgentCustomer');
+            destinationPath, UserType.AgentCustomer);
       }
     } else if (otpScreenArgs.otpVerificationType ==
         OtpVerificationType.mobile) {
-      if (userType == 'Customer') {
+      if (userType == UserType.Customer) {
         state = currentState.copyWith(isLoading: true);
         var response = await _verifyOtpUseCase.otpVerify(otpScreenArgs.refId,
             enterOtp, otpScreenArgs.userType, (p0) => null);
