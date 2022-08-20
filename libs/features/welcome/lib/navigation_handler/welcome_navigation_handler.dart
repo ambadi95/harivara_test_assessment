@@ -37,8 +37,8 @@ class WelcomeNavigationHandler with ErrorHandler {
     _navigationManager.goBack();
   }
 
-  Future<void> navigateToSignUpScreen(String userType) async {
-    if (userType == 'Customer') {
+  Future<void> navigateToSignUpScreen(UserType userType) async {
+    if (userType == UserType.Customer) {
       var arguments = SignUpArguments(
         'SU_title',
         'SU_subtitle',
@@ -92,7 +92,7 @@ class WelcomeNavigationHandler with ErrorHandler {
         PassCodeVerificationType.create,
         false,
         '',
-        user);
+        userType);
 
     _navigationManager.navigateTo(
       CrayonPasscodeScreen.viewPath,
@@ -124,29 +124,29 @@ class WelcomeNavigationHandler with ErrorHandler {
         arguments: argument);
   }
 
-  Future<void> navigateToLogin(String userType) async {
+  Future<void> navigateToLogin(UserType userType) async {
     await _navigationManager.navigateTo(
         Login.viewPath, const NavigationType.push(),
         arguments: userType);
   }
 
-  Future<void> navigateToLoginFromLogout(String userType) async {
+  Future<void> navigateToLoginFromLogout(UserType userType) async {
     await _navigationManager.navigateTo(
         Login.viewPath, const NavigationType.replace(),
         arguments: userType);
   }
 
   Future<void> navigateToAgentHome() async {
-    var argument = HomeScreenArgs(true);
+    var argument = HomeScreenArgs(isAgent: true,userType: UserType.Agent);
     await _navigationManager.navigateTo(
         CrayonHomeScreen.viewPath, const NavigationType.replace(),
         arguments: argument);
   }
 
-  Future<void> navigateToCustomerHome() async {
-    var argument = HomeScreenArgs(false);
+  Future<void> navigateToHome(UserType userType) async {
+    var argument = HomeScreenArgs(isAgent: userType == UserType.Customer ? false : true, userType : userType);
     await _navigationManager.navigateTo(
-        CrayonHomeScreen.viewPath, const NavigationType.push(),
+        CrayonHomeScreen.viewPath, const NavigationType.replace(),
         arguments: argument);
   }
 
@@ -160,11 +160,10 @@ class WelcomeNavigationHandler with ErrorHandler {
   Future<void> navigateToTermsCondtionsScreen() async {
     _navigationManager.navigateTo(
       CrayonTermsCondition.viewPath,
-      const NavigationType.push(),
-    );
+      const NavigationType.push(),);
   }
 
-  Future<void> navigateToAgentDetailScreen(String userType) async {
+  Future<void> navigateToAgentDetailScreen(UserType userType) async {
     var arguments = AgentDetailScreenArguments('DV_title_agent', 'DV_subtitle',
         AgentDetailScreenType.Signup, userType, true);
     await _navigationManager.navigateTo(
@@ -173,12 +172,12 @@ class WelcomeNavigationHandler with ErrorHandler {
   }
 
   Future<void> navigateToOtpScreenCustomerSignUp(
-      String userType, String mobileNumber,
+      UserType userType, String mobileNumber,
       {String? userId}) async {
     var arguments = OtpScreenArgs(
       'OTP Verification',
       'VO_otp_verification_description',
-      userType == 'Customer'
+      userType == UserType.Customer
           ? 'welcomeModule/details'
           : 'welcomeModule/agentDetails',
       true,
@@ -199,12 +198,12 @@ class WelcomeNavigationHandler with ErrorHandler {
   }
 
   Future<void> navigateToOtpScreenCustomerSignUpByAgent(
-      String userType, String mobileNumber,
+      UserType userType, String mobileNumber,
       {String? userId}) async {
     var arguments = OtpScreenArgs(
       'OTP Verification',
       'VO_otp_verification_description',
-      userType == 'Customer'
+      userType == UserType.Customer
           ? 'welcomeModule/details'
           : 'welcomeModule/agentDetails',
       true,
@@ -224,7 +223,7 @@ class WelcomeNavigationHandler with ErrorHandler {
     );
   }
 
-  Future<void> navigateToOtpScreenAgentResetPasscode(String userType) async {
+  Future<void> navigateToOtpScreenAgentResetPasscode(UserType userType) async {
     var arguments = OtpScreenArgs(
       'OTP Verification',
       'VO_otp_verification_description',
@@ -248,11 +247,11 @@ class WelcomeNavigationHandler with ErrorHandler {
   }
 
   Future<void> navigateToOtpScreen(
-      String userType, String agentId, String mobileNumber) async {
+      UserType userType, String agentId, String mobileNumber) async {
     var arguments = OtpScreenArgs(
       'OTP Verification',
       'VO_otp_verification_description',
-      userType == 'Customer'
+      userType == UserType.Customer
           ? 'welcomeModule/details'
           : 'welcomeModule/agentDetails',
       true,
@@ -299,7 +298,7 @@ class WelcomeNavigationHandler with ErrorHandler {
     );
   }
 
-  Future<void> navigateToResetPasscode(String userType) async {
+  Future<void> navigateToResetPasscode(UserType userType) async {
     var arguments = SignUpArguments(
       'SU_reset_passcode',
       'SU_reset_subtitle',
@@ -318,7 +317,7 @@ class WelcomeNavigationHandler with ErrorHandler {
 //     String? destination,
 //     String userType,
 //     ) async {
-//   if (userType == 'Customer' &&
+//   if (userType == UserType.Customer &&
 //       destination == 'otpModule/mobileRegistration') {
 //     var arguments = new MobileScreenArgs(
 //       'otp-register-with-your-mobile-number',

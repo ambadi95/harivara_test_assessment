@@ -20,9 +20,10 @@ import '../login_module.dart';
 import '../state/login_state.dart';
 import '../viewmodel/login_coordinator.dart';
 import 'package:get/get.dart';
+import 'package:config/Config.dart';
 
 class Login extends StatefulWidget {
-  final String userType;
+  final UserType userType;
   static const String viewPath = '${LoginModule.moduleIdentifier}/login';
 
   Login({Key? key, required this.userType}) : super(key: key);
@@ -126,7 +127,7 @@ class _LoginState extends State<Login> {
               SizedBox(
                 height: 48,
               ),
-              widget.userType == 'Customer'
+              widget.userType == UserType.Customer
                   ? _passcodeWidget(context, coordinator)
                   : _buildLabelTextField(
                       'LS_agent_id'.tr,

@@ -16,7 +16,7 @@ class VerifyOtpNavigationHandler with ErrorHandler {
   VerifyOtpNavigationHandler(this._navigationManager);
 
   Future<void> navigateToDestinationPath(
-      String destinationPath, String userType) async {
+      String destinationPath, UserType userType) async {
     _navigationManager.navigateTo(
         destinationPath, const NavigationType.replace(),
         arguments: userType);
@@ -29,7 +29,7 @@ class VerifyOtpNavigationHandler with ErrorHandler {
         arguments: argument);
   }
 
-  Future<void> openForNewPasscode(String userType) async {
+  Future<void> openForNewPasscode(UserType userType) async {
     var arguments = PasscodeScreenArgs(
       'PC_create_passcode',
       'PC_passcode_message',
@@ -50,7 +50,7 @@ class VerifyOtpNavigationHandler with ErrorHandler {
     );
   }
 
-  Future<void> openForUpdateNewPasscode(String userType) async {
+  Future<void> openForUpdateNewPasscode(UserType userType) async {
     var arguments = PasscodeScreenArgs(
       'PC_create_passcode',
       'PC_passcode_message',
@@ -71,7 +71,7 @@ class VerifyOtpNavigationHandler with ErrorHandler {
     );
   }
 
-  Future<void> navigateToAgentWelcomeBack(String userType) async {
+  Future<void> navigateToAgentWelcomeBack(UserType userType) async {
     var args = WelcomeScreenArgs('', '', userType, true);
     _navigationManager.navigateTo(
         CrayonWelcomScreen.viewPath, const NavigationType.replace(),
