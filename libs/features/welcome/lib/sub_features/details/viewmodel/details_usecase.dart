@@ -108,8 +108,7 @@ class DetailsUseCase extends BaseDataProvider {
         moduleIdentifier: WelcomeModule.moduleIdentifier,
         requestData: {
           'data': customerDetailsRequest.toJson(),
-          'userType': userType
-        },
+          'userType': userType  },
         serviceIdentifier: IDetailsService.submitCustomerDetailIdentifier,
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {

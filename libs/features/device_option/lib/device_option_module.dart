@@ -3,6 +3,8 @@ import 'package:core/navigation/navigation_manager.dart';
 import 'package:device_option/sub_features/device_details/service/device_option_service.dart';
 import 'package:device_option/sub_features/device_details/viewmodel/device_detail_coordinator.dart';
 import 'package:device_option/sub_features/device_details/viewmodel/device_detail_usecase.dart';
+import 'package:device_option/sub_features/device_loan_creation/viewmodel/device_loan_creation_coordinator.dart';
+import 'package:device_option/sub_features/device_loan_creation/viewmodel/device_loan_creation_usecase.dart';
 import 'package:device_option/task_manager/device_option_api_resolver.dart';
 import 'package:device_option/task_manager/device_option_module_resolver.dart';
 import 'package:device_option/viewmodel/device_option_coordinator.dart';
@@ -40,6 +42,15 @@ class DeviceOptionModule {
       (container) => DeviceDetailCoordinator(
         DeviceOptionNavigationHandler(container.resolve<NavigationManager>()),
         DeviceDetailUseCase(
+          container.resolve<TaskManager>(),
+          container.resolve<IAuthManager>(),
+        ),
+      ),
+    );
+    DIContainer.container.registerFactory<DeviceLoanCreationCoordinator>(
+      (container) => DeviceLoanCreationCoordinator(
+        DeviceOptionNavigationHandler(container.resolve<NavigationManager>()),
+        DeviceLoanCreationUseCase(
           container.resolve<TaskManager>(),
           container.resolve<IAuthManager>(),
         ),

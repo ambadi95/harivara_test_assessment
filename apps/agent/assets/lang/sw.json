@@ -148,6 +148,7 @@
   "DO_Title": "Chaguo za Kifaa",
   "D0_JoiningFee": "Joining Fee (one off)",
   "D0_DailyFee": "Daily Fee",
+  "D0_ViewDetails": "View Details",
 
   "DD_product" : "Maelezo ya bidhaa",
   "DD_Brand" : "Chapa",
@@ -190,6 +191,27 @@
   "TC_TermsCondition_Subtitle":"1. VIGEZO NA MASHARTI ",
   "TC_Terms_Conditons_Desc": "1.1. T&Cs hizi huchukua nafasi ya sheria na masharti yote ya awali (ikiwa yapo) isipokuwa pale tunapokushauri vinginevyo. Ufikiaji na matumizi yako ya Programu kufuatia mabadiliko yoyote kama haya hujumuisha makubaliano yako ya kufuata na kufungwa na T&Cs hizi. Kwa sababu hii, Y9 inakuhimiza kukagua T&C hizi kila wakati unapofikia na kutumia Programu na/au kupata Huduma za Y9.",
   "TC_Purpose_title":"2. KUSUDI",
-  "TC_Purpose_Desc": "2.1. Y9 ni mtoa huduma wa huduma ndogo za kidijitali inayolenga kusaidia kuendeleza mtindo wa maisha wa watu wa Tanzania na bara la Afrika kwa ujumla kwa kutoa huduma za kifedha kwa watu wasio na benki na wasio na benki kwa kutoa fursa ya kupata elimu ya kidijitali, afya ya kidijitali n.k. kwa kutoa simu mahiri za 4G. kwa masharti ya haki sana ili kuifanya ipatikane kwa wananchi wote kwa kuwezesha ushirikishwaji wa maana wa kifedha na kidijitali."
+  "TC_Purpose_Desc": "2.1. Y9 ni mtoa huduma wa huduma ndogo za kidijitali inayolenga kusaidia kuendeleza mtindo wa maisha wa watu wa Tanzania na bara la Afrika kwa ujumla kwa kutoa huduma za kifedha kwa watu wasio na benki na wasio na benki kwa kutoa fursa ya kupata elimu ya kidijitali, afya ya kidijitali n.k. kwa kutoa simu mahiri za 4G. kwa masharti ya haki sana ili kuifanya ipatikane kwa wananchi wote kwa kuwezesha ushirikishwaji wa maana wa kifedha na kidijitali.",
+
+
+  "KYC_Title": "KYC & Credit Check with Telco's ",
+  "KYC_Validation_With_Airtel" : "KYC Validation With\nAirtel Telco’s Record",
+  "KYC_Validation_With_Airtel_Subtitle" : "Y9 checks your Telco records matching\nyour NIDA Number and Mobile Number",
+  "KYC_Validation_With_Airtel_Pass_Check" : "KYC pass with Telco",
+  "KYC_Validation_With_Airtel_Loan_Check" : "Credit check for Loan ",
+  "KYC_Validation_With_Main_CheckBox" : "I hereby agree to check my credit\nscore and provide the eligible\nmembership plan accodring to Y9",
+  "KYC_Terms_and_Condition" : "Terms & Conditions",
+  "DLC_Device_Loan": "Device Loan\\nCreation",
+  "DLC_Device_Title": "Device",
+  "DLC_Wallets_Title": "Wallets",
+  "DLC_Daily_Repayment": "Daily Repayment",
+  "DLC_Total_Amount_Repaid": "Total Amount to be Repaid",
+  "DLC_Final_Payment_Date": "Final Payment Date"
+
+
+  "TC_Purpose_Desc": "2.1. Y9 ni mtoa huduma wa huduma ndogo za kidijitali inayolenga kusaidia kuendeleza mtindo wa maisha wa watu wa Tanzania na bara la Afrika kwa ujumla kwa kutoa huduma za kifedha kwa watu wasio na benki na wasio na benki kwa kutoa fursa ya kupata elimu ya kidijitali, afya ya kidijitali n.k. kwa kutoa simu mahiri za 4G. kwa masharti ya haki sana ili kuifanya ipatikane kwa wananchi wote kwa kuwezesha ushirikishwaji wa maana wa kifedha na kidijitali.",
+
+  "RC_agent_new_customer" : "New agent aid \nCustomer Onboarding",
+  "RC_customer_approval" : "Customer Onboarding \nApproval"
 
 }

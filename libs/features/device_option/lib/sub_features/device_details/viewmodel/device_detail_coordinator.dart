@@ -6,6 +6,7 @@ import 'package:core/view/analytics_state_notifier.dart';
 import '../../../navigation_handler/device_option_navigation_handler.dart';
 import '../state/device_detail_state.dart';
 import 'device_detail_usecase.dart';
+import 'package:shared_data_models/device_option/detail_detail_response/data.dart';
 
 class DeviceDetailCoordinator
     extends AnalyticsStateNotifier<DeviceDetailState> {
@@ -33,5 +34,10 @@ class DeviceDetailCoordinator
       print('success');
       await _navigationHandler.navigateToCustomerEnrollmentScreen('', userType);
     }
+  }
+  Future<void> navigateToCustomerLoanCreationScreen(String image, Data deviceDetailData) async {
+
+      await _navigationHandler.navigateToDeviceLoanCreation(image, deviceDetailData);
+
   }
 }

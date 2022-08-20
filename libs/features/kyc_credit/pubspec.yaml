@@ -1,0 +1,72 @@
+name: kyc_credit
+description: kyc_credit
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.16.1 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  mocktail: ^0.2.0
+  freezed:
+  build_runner:
+  json_serializable:
+  network_image_mock: ^2.0.1
+  flutter_riverpod: ^1.0.3
+  cupertino_icons: ^1.0.2
+  pin_code_fields: ^7.4.0
+
+  core:
+    path: ../../core
+
+  network_manager:
+    path: ../../network-manager/
+
+  task_manager:
+    path: ../../task-manager/
+
+  widget_library:
+    path: ../../widgets/
+
+  shared_data_models:
+    path: ../../shared-data-models/
+
+  config:
+    path: ../../../config/
+
+  agent_nearby:
+    path: ../agent_nearby
+
+  device_option:
+    path: ../device_option
+
+  login:
+    path: ../login
+
+  passcode:
+    path: ../passcode
+
+  verifyotp:
+    path: ../../features/verifyotp
+
+  home:
+    path: ../home
+
+  termscondition:
+    path: ../../features/termscondition
+
+  crayon_payment_customer:
+    path: ../../../apps/customer
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^1.0.0
+
+
+
+flutter:
+  uses-material-design: true
+

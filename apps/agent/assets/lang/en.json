@@ -138,15 +138,15 @@
   "HS_Agent_Refer_Program": "Referral Program -",
   "HS_Agent_Stay_Tunned": " Stay tuned !",
 
-
   "AE_Message" : "Congratulations,\n%{_name_ | click}% You \nhave successfully Onboarded into Y9 Agent App",
   "AE_AgentId" : "Your Y9 Agent ID",
   "AE_Description" : "Your Y9 Agent ID has been sent successfully to your mobile number and Email ID",
   "AE_Continue" : "Continue to your Y9 Agent App",
 
-  "DO_Title": "Device Options",
+  "DO_Title": "Membership Options",
   "D0_JoiningFee": "Joining Fee (one off)",
   "D0_DailyFee": "Daily Fee",
+  "D0_ViewDetails": "View Details",
 
   "DD_product" : "Product Details",
   "DD_Brand" : "Brand",
@@ -193,6 +193,27 @@
   "TC_TermsCondition_Subtitle":"1. TERMS AND CONDITIONS ",
   "TC_Terms_Conditons_Desc": "1.1. These T&Cs replace all earlier terms and conditions (if any) except where we advise you otherwise. Your access and use of the App following any such change constitutes your agreement to follow and be bound by these T&Cs. For this reason, Y9 encourage you to review these T&Cs each time you access and use the App and/or avail Y9 Services.",
   "TC_Purpose_title":"2. PURPOSE",
-  "TC_Purpose_Desc": "2.1. Y9 is a digital Microfinance provider aiming to help develop the lifestyle of the people of Tanzania and the African continent as a whole by providing financial services to the unbanked and under banked by creating access to digital education, digital healthcare, etc. by offering 4G smartphones on very fair terms to make it accessible to all citizens by enabling meaningful financial and digital inclusion."
+  "TC_Purpose_Desc": "2.1. Y9 is a digital Microfinance provider aiming to help develop the lifestyle of the people of Tanzania and the African continent as a whole by providing financial services to the unbanked and under banked by creating access to digital education, digital healthcare, etc. by offering 4G smartphones on very fair terms to make it accessible to all citizens by enabling meaningful financial and digital inclusion.",
+
+
+   "KYC_Title": "KYC & Credit Check with Telco's ",
+  "KYC_Validation_With_Airtel" : "KYC Validation With\nAirtel Telco’s Record",
+    "KYC_Validation_With_Airtel_Subtitle" : "Y9 checks your Telco records matching\nyour NIDA Number and Mobile Number",
+    "KYC_Validation_With_Airtel_Pass_Check" : "KYC pass with Telco",
+    "KYC_Validation_With_Airtel_Loan_Check" : "Credit check for Loan",
+  "KYC_Validation_With_Main_CheckBox" : "I hereby agree to check my credit\nscore and provide the eligible\nmembership plan accodring to Y9",
+  "KYC_Terms_and_Condition" : "Terms & Conditions",
+  "KYC_Check_Now" : "Check Now",
+
+  "DLC_Device_Loan": "Device Loan\\nCreation",
+  "DLC_Device_Title": "Device",
+  "DLC_Wallets_Title": "Wallets",
+  "DLC_Daily_Repayment": "Daily Repayment",
+  "DLC_Total_Amount_Repaid": "Total Amount to be Repaid",
+  "DLC_Final_Payment_Date": "Final Payment Date",
+  "TC_Purpose_Desc": "2.1. Y9 is a digital Microfinance provider aiming to help develop the lifestyle of the people of Tanzania and the African continent as a whole by providing financial services to the unbanked and under banked by creating access to digital education, digital healthcare, etc. by offering 4G smartphones on very fair terms to make it accessible to all citizens by enabling meaningful financial and digital inclusion.",
+
+  "RC_agent_new_customer" : "New agent aid \nCustomer Onboarding",
+  "RC_customer_approval" : "Customer Onboarding \nApproval"
 
 }

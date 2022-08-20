@@ -1,4 +1,5 @@
 import 'package:shared_data_models/passcode/passcode_verification_type.dart';
+import 'package:config/Config.dart';
 
 class PasscodeScreenArgs {
   final String title;
@@ -9,7 +10,7 @@ class PasscodeScreenArgs {
   final PassCodeVerificationType passCodeVerificationType;
   final bool isForgotPassword;
   final String initialPasscode;
-  final String userType;
+  final UserType userType;
 
   PasscodeScreenArgs(
     this.title,

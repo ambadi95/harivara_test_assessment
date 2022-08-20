@@ -1,9 +1,10 @@
 import 'package:shared_data_models/signup/sign_up_type.dart';
+import 'package:config/Config.dart';
 
 class SignUpArguments {
   final String title;
   final String subTitle;
-  final String userType;
+  final UserType userType;
   final SignupType signupType;
   final bool isProgressBarVisible;
 

@@ -27,6 +27,8 @@ const Green = Color(0xFF22C55E);
 const AN_BackgroundColor = Color(0xFFFFFFFF);
 const AN_AppBarLeadingIcon = Color(0xFF2D2926);
 const AN_TitleColor = Color(0xFF040505);
+const AN_SubTitleColor = Color(0xFF676767);
+const AN_VerticalDivider = Color(0xFFBAB8B2);
 const AN_TextFieldLeadingIcon = Color(0xFF000000);
 const AN_TextFieldLabel = Color(0xFF000000);
 const AN_TextFieldBackground = Color(0xFFF3EEEB);
@@ -41,7 +43,6 @@ const AN_Divider = Color(0xFFEFEEE9);
 const AN_ActionText = Color(0xFF4B4B4B);
 const LS_ButtonColor = Color(0xFFDA2228);
 
-
 const HS_MorningTextColor = Color(0xFF4B4B4B);
 const HS_NotificationCountColor = Color(0xFFE03C31);
 const HS_RedCardIconsBackColor = Color(0xFFF3EEEB);
@@ -49,7 +50,7 @@ const HS_InviteBoxBackColor = Color(0xFFF3F4FA);
 
 const WB_TitleColor = Color(0xFF160304);
 const WB_EnterPassCodeTitleColor = Color(0xFF565451);
-
+const RC_greyColor = Color(0xFF333333);
 
 
 const DD_BackgroundColor = Color(0xFFFFFFFF);
@@ -64,6 +65,8 @@ const VO_TitleColor= Color(0xFF040505);
 const VO_DescriptionColor= Color(0xFF160304);
 const VO_ResendTextColor= Color(0xFF676767);
 const ES_grey_button_color = Color(0xFF9CA3AF);
+const profilePicHolderYellowColor=Color.fromRGBO(246, 192, 80, 1.0);
+const READINGVIEW_COLOR=Color.fromRGBO(248, 245, 237,1);
 
 
 

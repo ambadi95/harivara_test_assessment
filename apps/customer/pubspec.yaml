@@ -64,6 +64,9 @@ dependencies:
   termscondition:
     path: ../../libs/features/termscondition
 
+  settings:
+    path: ../../libs/features/settings
+
 
 dev_dependencies:
   flutter_test:
