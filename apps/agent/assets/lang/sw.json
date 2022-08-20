@@ -205,5 +205,9 @@
   "DLC_Final_Payment_Date": "Final Payment Date"
 
 
+  "TC_Purpose_Desc": "2.1. Y9 ni mtoa huduma wa huduma ndogo za kidijitali inayolenga kusaidia kuendeleza mtindo wa maisha wa watu wa Tanzania na bara la Afrika kwa ujumla kwa kutoa huduma za kifedha kwa watu wasio na benki na wasio na benki kwa kutoa fursa ya kupata elimu ya kidijitali, afya ya kidijitali n.k. kwa kutoa simu mahiri za 4G. kwa masharti ya haki sana ili kuifanya ipatikane kwa wananchi wote kwa kuwezesha ushirikishwaji wa maana wa kifedha na kidijitali.",
+
+  "RC_agent_new_customer" : "New agent aid \nCustomer Onboarding",
+  "RC_customer_approval" : "Customer Onboarding \nApproval"
 
 }

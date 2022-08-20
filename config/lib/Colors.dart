@@ -50,7 +50,7 @@ const HS_InviteBoxBackColor = Color(0xFFF3F4FA);
 
 const WB_TitleColor = Color(0xFF160304);
 const WB_EnterPassCodeTitleColor = Color(0xFF565451);
-
+const RC_greyColor = Color(0xFF333333);
 
 
 const DD_BackgroundColor = Color(0xFFFFFFFF);

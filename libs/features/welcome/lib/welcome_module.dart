@@ -2,9 +2,6 @@ import 'package:core/ioc/di_container.dart';
 import 'package:core/navigation/navigation_manager.dart';
 
 import 'package:network_manager/auth/auth_manager.dart';
-import 'package:network_manager/auth/authorization_client.dart';
-import 'package:network_manager/auth/user_client.dart';
-import 'package:network_manager/auth/user_manager.dart';
 import 'package:task_manager/cache_task_resolver.dart';
 import 'package:task_manager/module_resolver.dart';
 import 'package:task_manager/task_manager_impl.dart';
@@ -18,6 +15,8 @@ import 'package:welcome/sub_features/enrollment_success/service/enrollment_servi
 import 'package:welcome/sub_features/enrollment_success/viewmodel/enrollment_success_coordinator.dart';
 import 'package:welcome/sub_features/enrollment_success/viewmodel/enrollment_success_usecase.dart';
 import 'package:welcome/sub_features/signup/service/signup_service.dart';
+import 'package:welcome/sub_features/signup/sub_features/customer_onboarding_approval/viewmodel/customer_onboarding_approval_coordinator.dart';
+import 'package:welcome/sub_features/signup/sub_features/customer_registration_options/viewmodel/registration_approval_coordinator.dart';
 import 'package:welcome/sub_features/signup/viewmodel/signup_usecase.dart';
 import 'package:welcome/sub_features/signup/viewmodel/signup_viewmodel.dart';
 import 'package:welcome/sub_features/welcome/viewmodel/welcome_usecase.dart';
@@ -65,6 +64,18 @@ class WelcomeModule {
           container.resolve<IAuthManager>(),
           container.resolve<TaskManager>(),
         ),
+      ),
+    );
+
+    DIContainer.container.registerFactory<RegistrationApprovalCoordinator>(
+          (container) => RegistrationApprovalCoordinator(
+        WelcomeNavigationHandler(container.resolve<NavigationManager>()),
+      ),
+    );
+
+    DIContainer.container.registerFactory<CustomerOnBoardingApprovalCoordinator>(
+          (container) => CustomerOnBoardingApprovalCoordinator(
+        WelcomeNavigationHandler(container.resolve<NavigationManager>()),
       ),
     );
 
