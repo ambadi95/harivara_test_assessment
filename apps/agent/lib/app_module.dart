@@ -28,6 +28,8 @@ import 'package:device_option/navigation_handler/device_option_route_manager.dar
 import 'package:flutter/services.dart';
 import 'package:home/home/home_module.dart';
 import 'package:home/home/navigation_handler/home_route_manager.dart';
+import 'package:kyc/kyc_credit_module.dart';
+import 'package:kyc/navigation_handler/kyc_credit_route_manager.dart';
 import 'package:login/login_module.dart';
 import 'package:login/navigation_handler/login_route_manager.dart';
 import 'package:network_manager/auth/auth_manager.dart';
@@ -118,6 +120,9 @@ class AppModule {
 
     SettingsModule.registerDependencies();
 
+
+    KycCreditModule.registerDependencies();
+
     TermsConditionModule.registerDependencies();
 
 
@@ -205,6 +210,11 @@ void _registerRouteManagers() {
   navigationManagerContainer.registerRouteManager(
     SettingsModule.moduleIdentifier,
     SettingsRouteManager(),
+  );
+
+  navigationManagerContainer.registerRouteManager(
+    KycCreditModule.moduleIdentifier,
+    KycCreditRouteManager(),
   );
 
   navigationManagerContainer.registerRouteManager(

@@ -21,6 +21,7 @@ import '../device_option_module.dart';
 import '../state/device_option_state.dart';
 import '../viewmodel/device_option_coordinator.dart';
 import 'package:get/get.dart';
+import 'package:crayon_payment_customer/util/app_utils.dart';
 
 class DeviceOption extends StatefulWidget {
   static const String viewPath =
@@ -183,7 +184,7 @@ class _DeviceOptionState extends State<DeviceOption> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
-                          width: MediaQuery.of(context).size.width * 0.7 ,
+                          width: AppUtils.appUtilsInstance.getPercentageSize(percentage: 100,ofWidth: true)/1.5 ,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
@@ -354,7 +355,7 @@ class _DeviceOptionState extends State<DeviceOption> {
   Widget selectButton(DeviceOptionCoordinator coordinator, int id) {
     return CrayonPaymentDockedButton(
       key: const Key('Select'),
-      title: 'View Detail',
+      title: 'D0_ViewDetails'.tr,
       borderRadius: 8,
       height: CrayonPaymentDimensions.marginFortyEight,
       buttonColor: LS_ButtonColor,

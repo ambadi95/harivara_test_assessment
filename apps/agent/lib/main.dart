@@ -10,13 +10,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/internacionalization.dart';
+import 'package:kyc/view/kyc_credit_screen.dart';
 import 'package:splash/splash/view/splash.dart';
 import 'package:settings/view/settings_view.dart';
 import 'package:widget_library/theme/crayon_payment_theme.dart';
 import 'package:flutter_riverpod/src/framework.dart';
 import 'app_module.dart';
 
-
+import 'package:shared_data_models/kyc/kyc_screen_args.dart';
+import 'package:shared_data_models/kyc/kyc_type.dart';
+import 'package:shared_data_models/kyc/kyc_data_model.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   HttpOverrides.global = new MyHttpOverrides();
@@ -66,9 +69,9 @@ class HomeWidget extends StatelessWidget {
       child: CrayonPaymentMaterialApp(
         key: Key('AppMaterialApp'),
         home: !_status
-            ? CrayonSplashScreen.forMerchantApp()
-            : CrayonSplashScreen.forMerchantApp(),
-        theme: CrayonPaymentTheme().defaultTheme,
+            ? KycCreditScreen(kycScreenArgs: KycScreenArgs(KycFieldType.KYC_VALIDATION,"assets/images/airtel.svg","KYC Validation With Airtel Telco’s Record","Y9 checks your Telco records matching your NIDA Number and Mobile Number","",[KYCDataModel(title: "KYC pass with Telco",isSelected: false)]),)
+            : KycCreditScreen(kycScreenArgs: KycScreenArgs(KycFieldType.KYC_VALIDATION,"assets/images/airtel.svg","KYC Validation With Airtel Telco’s Record","Y9 checks your Telco records matching your NIDA Number and Mobile Number","",[KYCDataModel(title: "KYC pass with Telco",isSelected: false)]),)
+        ,theme: CrayonPaymentTheme().defaultTheme,
         onGenerateRoute: _navigationManager.getRoute,
         translations: _translations,
         locale: Get.deviceLocale,
