@@ -198,7 +198,11 @@ class _DeviceDetailScreenState extends State<DeviceDetailScreen> {
         divider(),
         productSpecLabel(label: 'DD_Color', value: detailDetail!.color!),
         divider(),
-        productSpecLabel(label: 'DD_Price', value: detailDetail!.rretailPrice.toString() == 'null' ? "TZS 1,87,00" : "TZS "+detailDetail!.rretailPrice.toString()),
+        productSpecLabel(
+            label: 'DD_Price',
+            value: detailDetail!.rretailPrice.toString() == 'null'
+                ? "TZS 1,87,00"
+                : "TZS " + detailDetail!.rretailPrice.toString()),
         // divider(),
         // productSpecLabel(label: 'DD_EMIMonth', value: ''),
         // divider(),
@@ -368,8 +372,12 @@ class _DeviceDetailScreenState extends State<DeviceDetailScreen> {
       textColor: White,
       textStyleVariant: CrayonPaymentTextStyleVariant.headline4,
       onPressed: () {
-        print(widget.userType);
-        coordinator.navigateToEnrolledScreen(widget.deviceId, widget.userType);
+        // print(widget.userType);
+
+        // coordinator.navigateToEnrolledScreen(widget.deviceId, widget.userType);
+        coordinator.navigateToCustomerLoanCreationScreen(
+            widget.deviceId == 1 ? 'assets/a13.png' : 'assets/a03.png',
+            detailDetail!);
       },
     );
   }
