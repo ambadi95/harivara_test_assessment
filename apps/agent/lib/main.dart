@@ -71,7 +71,7 @@ class HomeWidget extends StatelessWidget {
         theme: CrayonPaymentTheme().defaultTheme,
         onGenerateRoute: _navigationManager.getRoute,
         translations: _translations,
-        locale: Get.locale,
+        locale: Get.deviceLocale,
         builder: (context, child) {
           return child ?? Container();
         },
