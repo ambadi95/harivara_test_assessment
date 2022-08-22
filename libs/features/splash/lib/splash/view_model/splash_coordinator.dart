@@ -4,6 +4,9 @@ import 'package:splash/splash/state/splash_state.dart';
 import 'package:splash/splash/view_model/splash_usecase.dart';
 import 'package:task_manager/base_classes/base_view_model.dart';
 import 'package:welcome/sub_features/welcome/data_model/welcome_model.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
+import 'package:intl/intl.dart';
 
 class SplashCoordinator extends BaseViewModel<SplashState> {
   final SplashNavigationHandler _navigationHandler;
@@ -31,6 +34,13 @@ class SplashCoordinator extends BaseViewModel<SplashState> {
     } else {
       return false;
     }
+  }
+
+  Future<void> setCurrentLocale(String currentLanguageCode) async{
+    var currentLocale = Locale(currentLanguageCode);
+    Get.updateLocale(currentLocale);
+    Intl.defaultLocale = currentLocale.languageCode;
+    _splashUseCase.saveLocale(currentLanguageCode);
   }
 
   Future<void> navigateToDestinationPath(

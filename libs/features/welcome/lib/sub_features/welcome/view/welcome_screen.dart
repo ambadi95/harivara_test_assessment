@@ -32,7 +32,6 @@ class _CrayonWelcomScreenState extends State<CrayonWelcomScreen> {
   Widget build(BuildContext context) =>
       BaseView<WelcomeCoordinator, WelcomeScreenState>(
         setupViewModel: (coordinator) async {
-          await coordinator.setCurrentLocale('sw');
           await coordinator.getCurrentLocale();
         },
         builder: (context, state, welcomeCoordinator) => Scaffold(
