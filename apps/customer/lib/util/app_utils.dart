@@ -22,6 +22,7 @@ class AppUtils {
   // get percentage size
   double getPercentageSize({double? percentage = 0, bool ofWidth = true}) {
     if (ofWidth) {
+
       return (Get.width * percentage!) / 100;
     } else {
       return (Get.height * percentage!) / 100;

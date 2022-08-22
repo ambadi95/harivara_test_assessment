@@ -23,8 +23,13 @@ class KycCreditCoordinator extends AnalyticsStateNotifier<KycCreditState> {
         context: context,
         error: "",isLoading: false);
   }
- 
 
+  Future<void> showErrorBottomSheet(Widget errorWidget, BuildContext context) async {
+    await _navigationHandler.showErrorBottomSheet(errorWidget,context);
+  }
+  void goBack() async {
+    _navigationHandler.goBack();
+  }
 
 
  
