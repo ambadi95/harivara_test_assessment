@@ -37,3 +37,4 @@ libs/features/card-3-d-secure/features_card_3_d_secure.iml
 
 genhtml.perl
 
+/config/.dart_tool/
