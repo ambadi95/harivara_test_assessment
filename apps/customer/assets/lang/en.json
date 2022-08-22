@@ -2,9 +2,9 @@
   "OB_WelcomeTitle" : "Welcome to Y9",
   "OB_WelcomeSubTitle" : "Your Dream Digital Microfinance",
   "OB_WelcomeThirdTitle" : "y9bank.com",
-  "OB_SignIn" : "Sign-In",
-  "OB_SignUp" : "Sign-Up",
-  "OB_Lang" : "EN",
+  "OB_SignIn" : "Sign in",
+  "OB_SignUp" : "Sign up",
+  "OB_Lang" : "Swahili",
   "OB_ni_bora" : "ni %{Bora|click}%",
 
 
