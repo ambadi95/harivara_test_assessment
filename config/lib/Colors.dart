@@ -73,3 +73,4 @@ const READINGVIEW_COLOR=Color.fromRGBO(248, 245, 237,1);
 
 
 const TC_DescriptionColor=Color(0xFF160304);
+const DP_CircleColor=Color(0xFFFFBEBE);

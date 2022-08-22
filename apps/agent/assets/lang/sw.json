@@ -205,7 +205,8 @@
   "KYC_Validation_With_Airtel_Loan_Check" : "Credit check for Loan ",
   "KYC_Validation_With_Main_CheckBox" : "I hereby agree to check my credit\nscore and provide the eligible\nmembership plan accodring to Y9",
   "KYC_Terms_and_Condition" : "Terms & Conditions",
-  "DLC_Device_Loan": "Device Loan\\nCreation",
+
+  "DLC_Device_Loan": "Device Loan\nCreation",
   "DLC_Device_Title": "Device",
   "DLC_Wallets_Title": "Wallets",
   "DLC_Daily_Repayment": "Daily Repayment",

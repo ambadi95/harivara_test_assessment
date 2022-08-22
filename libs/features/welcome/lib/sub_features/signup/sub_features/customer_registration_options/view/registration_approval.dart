@@ -216,12 +216,13 @@ class _SignUpState extends State<RegistrationApproval> {
   }
 
   Widget _selectableCard (bool selected, String image, String title, Function() onTap){
+    print(selected);
     return InkWell(
       onTap: onTap,
       child: Container(
         height: 98,
         decoration: BoxDecoration(
-          border: Border.all(width:selected ? 2 : 1,color: selected ? RC_greyColor : SU_border_color),
+          border: Border.all(width:selected ? 2 : 1,color: (selected==true) ? SU_button_color :RC_greyColor ),
           borderRadius: BorderRadius.circular(8)
         ),
         child: Center(

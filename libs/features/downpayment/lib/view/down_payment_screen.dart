@@ -34,11 +34,18 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
   final String _identifier = 'downpayment-screen';
   bool _isBtnEnabled = false;
 
+  String username="";
+
   @override
   Widget build(BuildContext context) =>
       BaseView<DownPaymentCoordinator, DownPaymentState>(
-          setupViewModel: (coordinator) {
+          setupViewModel: (coordinator) async {
             coordinator.initialiseState(context);
+            username = await coordinator.getAgentName();
+            setState(() {
+              username;
+            });
+
           },
           builder: (context, state, coordinator) => CrayonPaymentScaffold(
                 appBarAttributes: CrayonPaymentAppBarAttributes(
@@ -110,6 +117,9 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  SizedBox(
+                    height: AppUtils.appUtilsInstance.getPercentageSize(percentage: 5),
+                  ),
                   Padding(
                     padding: const EdgeInsets.only(left: 7.0),
                     child: _getCircularIcon(
@@ -127,7 +137,7 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
                 child: Padding(
                   padding: EdgeInsets.only(
                       left: AppUtils.appUtilsInstance
-                          .getPercentageSize(percentage: 5)),
+                          .getPercentageSize(percentage: 9)),
                   child: SingleChildScrollView(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -136,7 +146,7 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
                         // FlutterLogo(),
                         SizedBox(
                           height: AppUtils.appUtilsInstance
-                              .getPercentageSize(percentage: 10),
+                              .getPercentageSize(percentage: 8),
                         ),
                         _title(context),
                         SizedBox(
@@ -284,12 +294,27 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
   }
 
   Widget _image(BuildContext context) {
-    return getSvg(
-      "assets/images/downpay_circle.svg",
+    return Container(
+      decoration: const BoxDecoration(
+        shape: BoxShape.circle,
+        color: DP_CircleColor,
+      ),
       height: 70,
       width: 70,
+      child: Center(child: CrayonPaymentText(
+        key: Key('${_identifier}_Agent_Name'),
+        text:  TextUIDataModel(
+            _getCaptialUserName(username),
+            styleVariant: CrayonPaymentTextStyleVariant.headline6,
+            color: AN_TitleColor,
+            fontWeight: FontWeight.w600),
+      )),
     );
   }
+
+    String _getCaptialUserName(String letter) => letter.isNotEmpty
+        ? letter.trim().split(' ').map((l) => l[0]).take(2).join()
+        : '';
 
   _title(BuildContext context) {
     return CrayonPaymentText(
@@ -329,7 +354,7 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
         icon!,
         SizedBox(
           width: AppUtils.appUtilsInstance
-              .getPercentageSize(percentage: 4, ofWidth: true),
+              .getPercentageSize(percentage: 7, ofWidth: true),
         ),
         text!
       ],

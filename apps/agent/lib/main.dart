@@ -33,7 +33,10 @@ void main() async {
   final translations = CrayonPaymentTranslations(
     DIContainer.container.resolve<CrayonPaymentTranslationsLoader>(),
   );
+  var locale = Locale('sw');
+  Get.updateLocale(locale);
   await translations.loadTranslationFiles();
+
   await CrayonPaymentTheme().initialize(loadCustomTheme: true);
 
   bool status = false;

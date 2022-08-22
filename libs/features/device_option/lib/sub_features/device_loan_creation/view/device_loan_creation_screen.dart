@@ -184,13 +184,15 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
   Widget selectButton(DeviceLoanCreationCoordinator coordinator) {
     return CrayonPaymentDockedButton(
       key: const Key('Select'),
-      title: 'Pay Now 40,000 TZHS',
+      title: 'Pay Now 60000.0 TZHS',
       borderRadius: 8,
       height: CrayonPaymentDimensions.marginFortyEight,
       buttonColor: LS_ButtonColor,
       textColor: White,
       textStyleVariant: CrayonPaymentTextStyleVariant.headline4,
-      onPressed: () {},
+      onPressed: () {
+        coordinator.navigateToDownPayment(detailDetail);
+      },
     );
   }
 
@@ -206,9 +208,9 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
               fontWeight: FontWeight.w600),
         ),
         dynamicHSpacer(30),
-        _rowTitleValue('D0_JoiningFee'.tr, '60,000 TZSHS'),
-        _rowTitleValue('DLC_Daily_Repayment'.tr, '60,000 TZSHS'),
-        _rowTitleValue('DLC_Total_Amount_Repaid'.tr, '60,000 TZSHS'),
+        _rowTitleValue('D0_JoiningFee'.tr, detailDetail!.joiningFees!.toString() + " TZSHS"),
+        _rowTitleValue('DLC_Daily_Repayment'.tr, detailDetail!.dailyFees==null ? "" : detailDetail!.dailyFees!.toString() + " TZSHS"),
+        _rowTitleValue('DLC_Total_Amount_Repaid'.tr, detailDetail!.amountToPay==null ? "60000.0 TZSHS" : detailDetail!.amountToPay!.toString() + " TZSHS"),
         _rowTitleValue('DLC_Final_Payment_Date'.tr, '10 Aug, 2023'),
       ],
     );
@@ -262,8 +264,11 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
         child: Padding(
           padding: EdgeInsets.only(top: 10, right: 20, left: 20, bottom: 10),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
+              Image.asset("assets/images/airtel.png"),
+
+              SizedBox(width:10),
               Text(
                 "Airtel Pay",
                 style: TextStyle(
@@ -271,6 +276,7 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
                     fontWeight: FontWeight.w500,
                     color: Colors.black),
               ),
+              Spacer(),
               Radio(
                 value: 1,
                 groupValue: _value,
