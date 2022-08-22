@@ -15,6 +15,7 @@ import 'package:widget_library/buttons/crayon_back_button.dart';
 import 'package:config/Colors.dart' as config_color;
 import 'package:get/get.dart';
 import 'package:widget_library/static_text/crayon_payment_text.dart';
+import 'package:widget_library/utils/icon_utils.dart';
 
 import '../../../../../data_model/sign_up_arguments.dart';
 import '../viewmodel/registration_approval_coordinator.dart';
@@ -31,8 +32,8 @@ class RegistrationApproval extends StatefulWidget {
 }
 
 class _SignUpState extends State<RegistrationApproval> {
-  bool _isBtnEnabled = false;
-  bool _agentAidCustomerOnBoarding = false;
+  bool _isBtnEnabled = true;
+  bool _agentAidCustomerOnBoarding = true;
   bool _customerApproval = false;
 
   @override
@@ -229,7 +230,16 @@ class _SignUpState extends State<RegistrationApproval> {
               const SizedBox(
                 width: 26,
               ),
-              Image.asset(image,height: 24, width: 30,),
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(6),
+                  color: SU_grey_icon_bg
+                ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: getSvg(image,height: 24, width: 30),
+                  )),
+              //Image.asset(image,height: 24, width: 30,),
              const SizedBox(
                 width: 26,
               ),
@@ -259,13 +269,13 @@ class _SignUpState extends State<RegistrationApproval> {
         const SizedBox(
           height: 24,
         ),
-        _selectableCard (_customerApproval,RC_customer_approval,'RC_customer_approval',(){
-          setState(() {
-            _agentAidCustomerOnBoarding = false;
-            _customerApproval = true;
-            _isBtnEnabled = true;
-          });
-        })
+        // _selectableCard (_customerApproval,RC_customer_approval,'RC_customer_approval',(){
+        //   setState(() {
+        //     _agentAidCustomerOnBoarding = false;
+        //     _customerApproval = true;
+        //     _isBtnEnabled = true;
+        //   });
+        // })
       ],
     );
   }

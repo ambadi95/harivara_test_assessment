@@ -37,6 +37,8 @@
   "SU_update_subtitle" : "You can Update the passcode here using OTP sent to your registered mobile number",
 
   "DV_title" : "Ingiza Maelezo ya Kibinafsi",
+  "DV_agent_aided_title" : "Customer Details",
+  "DV_agent_aided_subtitle" : "Your Personal details are shown as per your NIDA records",
   "DV_profile" : "Profile",
   "DV_subtitle" : "Thibitisha maelezo yako au usasishe ikiwa inahitajika",
   "DV_name_label" : "Jina",
@@ -146,6 +148,8 @@
   "AE_Continue" : "Continue to the app",
 
   "DO_Title": "Chaguo za Kifaa",
+  "DO_credit_score" : "CREDIT SCORE!",
+  "DO_credit_score_desc" : "Credit scoring is validated and you \nare Eligible for Device Loan",
   "D0_JoiningFee": "Joining Fee (one off)",
   "D0_DailyFee": "Daily Fee",
   "D0_ViewDetails": "View Details",
@@ -210,8 +214,9 @@
 
 
 
-  "RC_agent_new_customer" : "New agent aid \nCustomer Onboarding",
-  "RC_customer_approval" : "Customer Onboarding \nApproval",
+
+  "RC_agent_new_customer" : "New Customer \nOnboarding",
+  "RC_customer_approval" : "Pending Customer \nOnboarding",
 
   "DP_RequestPayment" : "Requested for Payment",
   "DP_WaitingForPayment" : "Waiting for Payment",

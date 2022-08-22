@@ -15,6 +15,7 @@ const SU_grey_color = Color(0xffBAB8B2);
 const SU_carrier_message_color = Color(0xFF676767);
 const SU_button_color = Color(0xFFDA2228);
 const SU_button_text_color = Color(0xFFFFFFFF);
+const SU_grey_icon_bg = Color(0xFFF5F7FB);
 
 
 ////Agent NearBy Screen
@@ -51,6 +52,7 @@ const HS_InviteBoxBackColor = Color(0xFFF3F4FA);
 const WB_TitleColor = Color(0xFF160304);
 const WB_EnterPassCodeTitleColor = Color(0xFF565451);
 const RC_greyColor = Color(0xFF333333);
+const MO_credit_info_bg =  Color(0xFFF3F3F3);
 
 
 const DD_BackgroundColor = Color(0xFFFFFFFF);
@@ -67,8 +69,6 @@ const VO_ResendTextColor= Color(0xFF676767);
 const ES_grey_button_color = Color(0xFF9CA3AF);
 const profilePicHolderYellowColor=Color.fromRGBO(246, 192, 80, 1.0);
 const READINGVIEW_COLOR=Color.fromRGBO(248, 245, 237,1);
-
-
 
 
 
