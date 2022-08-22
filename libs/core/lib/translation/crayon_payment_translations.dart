@@ -10,8 +10,8 @@ class CrayonPaymentTranslations extends Translations {
   CrayonPaymentTranslations(this._translationsLoader);
 
   final List<Locale> _supportedLocales = [
-    Locale('en'),
     Locale('sw'),
+    Locale('en'),
   ];
 
   final Map<String, Map<String, String>> _translationsMap = {};
