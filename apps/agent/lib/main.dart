@@ -70,16 +70,7 @@ class HomeWidget extends StatelessWidget {
       child: CrayonPaymentMaterialApp(
         key: Key('AppMaterialApp'),
         home: !_status
-            ? KycCreditMainScreen(
-                kycScreenArgs: KycScreenArgs(
-                  KycFieldType.KYC_VALIDATION,
-                  "",
-                  "",
-                  "",
-                  "",
-                  [KYCDataModel(title: "", isSelected: false)],
-                ),
-              )
+            ? DownPaymentScreen(downPaymentScreenArgs: DownPaymentScreenArgs("","","","",[DownPaymentDataModel(title: "",isSelected: false)]))
             : CrayonSplashScreen.forMerchantApp(),
         theme: CrayonPaymentTheme().defaultTheme,
         onGenerateRoute: _navigationManager.getRoute,

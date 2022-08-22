@@ -19,7 +19,8 @@ import '../state/downpayment_state.dart';
 import '../viewmodel/downpayment_coordinator.dart';
 
 class DownPaymentScreen extends StatefulWidget {
-  static const viewPath = '${DownPaymentModule.moduleIdentifier}/downpaymetnscreen';
+  static const viewPath =
+      '${DownPaymentModule.moduleIdentifier}/downpaymetnscreen';
   final DownPaymentScreenArgs downPaymentScreenArgs;
 
   const DownPaymentScreen({Key? key, required this.downPaymentScreenArgs})
@@ -36,39 +37,38 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
   @override
   Widget build(BuildContext context) =>
       BaseView<DownPaymentCoordinator, DownPaymentState>(
-        setupViewModel: (coordinator) {
-          coordinator.initialiseState(context);
-        },
-        builder: (context, state, coordinator) => CrayonPaymentScaffold(
-            appBarAttributes: CrayonPaymentAppBarAttributes(
-              key: const Key('CardDetailsScreen_AppBarBackButton'),
-              left: [
-                const CrayonPaymentAppBarButtonType.back(),
-              ],
-            ),
-            body: state.when(
-              initialState: () => const SizedBox(),
-              ready: (
-                  _,
-                  __,
-                  ___,
-
+          setupViewModel: (coordinator) {
+            coordinator.initialiseState(context);
+          },
+          builder: (context, state, coordinator) => CrayonPaymentScaffold(
+                appBarAttributes: CrayonPaymentAppBarAttributes(
+                  key: const Key('CardDetailsScreen_AppBarBackButton'),
+                  left: [
+                    const CrayonPaymentAppBarButtonType.back(),
+                  ],
+                ),
+                bottomNavigationBar:
+                    _buildContinueButton(context, coordinator, state),
+                body: state.when(
+                  initialState: () => const SizedBox(),
+                  ready: (
+                    _,
+                    __,
+                    ___,
                   ) =>
-                  _buildMainUIWithLoading(
+                      _buildMainUIWithLoading(
                     context,
                     coordinator,
                     (state as DownPaymentStateReady),
                   ),
-            ),
-
-
-      ));
+                ),
+              ));
 
   Widget _buildMainUIWithLoading(
-      BuildContext context,
-      DownPaymentCoordinator coordinator,
-      DownPaymentStateReady state,
-      ) {
+    BuildContext context,
+    DownPaymentCoordinator coordinator,
+    DownPaymentStateReady state,
+  ) {
     return Stack(
       children: [
         _buildMainUI(context, coordinator, state),
@@ -90,93 +90,127 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
   }
 
   Widget _buildMainUI(
-      BuildContext context,
-      DownPaymentCoordinator coordinator,
-      DownPaymentStateReady state,
-      ) {
+    BuildContext context,
+    DownPaymentCoordinator coordinator,
+    DownPaymentStateReady state,
+  ) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _buildTitle(context),
         SizedBox(
-          height: AppUtils.appUtilsInstance.getPercentageSize(percentage: 10),
+          height: AppUtils.appUtilsInstance.getPercentageSize(percentage: 5),
         ),
         // _image(context)
         Expanded(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+
+          child: Stack(
             children: [
-              Column(
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  _getCircularIcon(
-                    context,
+                  SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 7.0),
+                          child: _getCircularIcon(
+                            context,
+                          ),
+                        ),
+                        _getVerticalDivider(
+                            context,
+                            AppUtils.appUtilsInstance
+                                .getPercentageSize(percentage: 70)),
+                        _rowWidget(
+                          context,
+                          icon: _getCheckedIcon(
+                            context,
+                            Colors.green,
+                          ),
+                          text: _textWidget(context, 'DP_RequestPayment'.tr),
+                        ),
+                        _getVerticalDivider(
+                            context,
+                            AppUtils.appUtilsInstance
+                                .getPercentageSize(percentage: 10)),
+                        _rowWidget(
+                          context,
+                          icon: _getCheckedIcon(
+                            context,
+                            Colors.grey,
+                          ),
+                          text: _textWidget(context, 'DP_WaitingForPayment'.tr),
+                        ),
+                        _getVerticalDivider(
+                            context,
+                            AppUtils.appUtilsInstance
+                                .getPercentageSize(percentage: 10)),
+                        _rowWidget(
+                          context,
+                          icon: _getCheckedIcon(
+                            context,
+                            Colors.grey,
+                          ),
+                          text: _textWidget(context, 'DP_PaymentReceived'.tr),
+                        ),
+                        _getVerticalDivider(
+                            context,
+                            AppUtils.appUtilsInstance
+                                .getPercentageSize(percentage: 10)),
+                        _rowWidget(
+                          context,
+                          icon: _getCheckedIcon(
+                            context,
+                            Colors.grey,
+                          ),
+                          text: _textWidget(context, 'DP_LoanApproved'.tr),
+                        ),
+                        SizedBox(
+                          height: AppUtils.appUtilsInstance
+                              .getPercentageSize(percentage: 10),
+                        ),
+                      ],
+                    ),
                   ),
-                  Expanded(
-                    child: _getVerticalDivider(
-                        context,
-                        AppUtils.appUtilsInstance
-                            .getPercentageSize(percentage: 0)),
-                  ),
-                  _getVerticalDivider(
-                      context,
-                      AppUtils.appUtilsInstance
-                          .getPercentageSize(percentage: 20)),
-                  _getCheckedIcon(
-                    context,
-                    Colors.grey,
-                  ),
-                  _getVerticalDivider(
-                      context,
-                      AppUtils.appUtilsInstance
-                          .getPercentageSize(percentage: 15)),
-                  _getCheckedIcon(
-                    context,
-                    Colors.grey,
-                  ),
-                  const Spacer(
-                    flex: 1,
+                  const SizedBox(
+                    width: 10,
                   ),
                 ],
               ),
-              const SizedBox(
-                width: 30,
-              ),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // _getImage(context),
-                    SizedBox(
-                      height: AppUtils.appUtilsInstance
-                          .getPercentageSize(percentage: 5),
-                    ),
-                    _title(context),
-                    SizedBox(
-                      height: AppUtils.appUtilsInstance
-                          .getPercentageSize(percentage: 5),
-                    ),
-                    _subTitle(context),
-                    SizedBox(
-                      height: AppUtils.appUtilsInstance
-                          .getPercentageSize(percentage: 15),
-                    ),
-                    _downPaymentRequestPayment(context),
-                    SizedBox(
-                      height: AppUtils.appUtilsInstance
-                          .getPercentageSize(percentage: 15),
-                    ),
-                    _downpaymentWaitingPayment(context),
-                    const Spacer(
-                      flex: 1,
-                    ),
-                  ],
+              Padding(
+                padding: EdgeInsets.only(
+                    left: AppUtils.appUtilsInstance
+                        .getPercentageSize(percentage: 7)),
+                child: Padding(
+                  padding: const EdgeInsets.only(left:8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _image(context),
+                      // FlutterLogo(),
+                      SizedBox(
+                        height: AppUtils.appUtilsInstance
+                            .getPercentageSize(percentage: 10),
+                      ),
+                      _title(context),
+                      SizedBox(
+                        height: AppUtils.appUtilsInstance
+                            .getPercentageSize(percentage: 5),
+                      ),
+                      _subTitle(context),
+
+                      const Spacer(
+                        flex: 1,
+                      ),
+                    ],
+                  ),
                 ),
               )
             ],
           ),
         ),
-
-        _buildContinueButton(context, coordinator, state)
       ],
     );
   }
@@ -202,24 +236,25 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
   }
 
   Widget _getVerticalDivider(BuildContext context, double height) {
-    return Container(
-      width: 1,
-      height: height,
-      color: AN_VerticalDivider,
+    return Padding(
+      padding: const EdgeInsets.only(left: 9.0),
+      child: Container(
+        width: 1,
+        height: height,
+        color: AN_VerticalDivider,
+      ),
     );
   }
 
   Widget _buildContinueButton(
-      BuildContext context,
-      DownPaymentCoordinator coordinator,
-      DownPaymentState state,
-      ) {
+    BuildContext context,
+    DownPaymentCoordinator coordinator,
+    DownPaymentState state,
+  ) {
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
-        onTap: () async {
-
-        },
+        onTap: () async {},
         child: Container(
           width: double.infinity,
           height: 50,
@@ -247,63 +282,59 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
     );
   }
 
-  Widget _getImage(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(75.0),
-      child:  Image(
-        image: AssetImage(''),
-        height: 90,
-        width: 90,
-      ),
-    );
-  }
 
   Widget _image(BuildContext context) {
     return getSvg(
-      widget.downPaymentScreenArgs.image,
-      height: 100,
-      width: 100,
+      "assets/images/downpay_circle.svg",
+      height: 70,
+      width: 70,
     );
   }
 
   _title(BuildContext context) {
     return CrayonPaymentText(
       key: Key('${_identifier}_Payment_Request'),
-      text: const TextUIDataModel('70,000 TZSHS\npayment request has\nbeen sent to Y9',
+      text: const TextUIDataModel(
+          '70,000 TZSHS\npayment request has\nbeen sent to Y9',
           styleVariant: CrayonPaymentTextStyleVariant.headline6,
           color: AN_TitleColor,
           fontWeight: FontWeight.w600),
     );
   }
 
-  _downpaymentWaitingPayment(BuildContext context) {
+
+  _textWidget(BuildContext context, String? text) {
     return CrayonPaymentText(
       key: Key('${_identifier}_Waiting_Payment'),
-      text: const TextUIDataModel('Waiting for Payment',
+      text: TextUIDataModel(text!,
           styleVariant: CrayonPaymentTextStyleVariant.subtitle2,
           color: Black,
           fontWeight: FontWeight.w500),
     );
   }
 
-  _downPaymentRequestPayment(BuildContext context) {
-    return CrayonPaymentText(
-      key: Key('${_identifier}_Requested_for_Payment'),
-      text: const TextUIDataModel('Requested for Payment',
-          styleVariant: CrayonPaymentTextStyleVariant.subtitle2,
-          color: Black,
-          fontWeight: FontWeight.w500),
-    );
-  }
 
   _subTitle(BuildContext context) {
     return CrayonPaymentText(
       key: Key('${_identifier}_Transaction_Gateway'),
-      text: const TextUIDataModel('Transaction gateway will be closed in next 15 minutes',
+      text: const TextUIDataModel(
+          'Transaction gateway will be closed in next 15 minutes',
           styleVariant: CrayonPaymentTextStyleVariant.subtitle2,
           color: VO_ResendTextColor,
           fontWeight: FontWeight.w400),
     );
   }
 
+  _rowWidget(BuildContext context, {Widget? icon, Widget? text}) {
+    return Row(
+      children: [
+        icon!,
+        SizedBox(
+          width: AppUtils.appUtilsInstance
+              .getPercentageSize(percentage: 4, ofWidth: true),
+        ),
+        text!
+      ],
+    );
+  }
 }
