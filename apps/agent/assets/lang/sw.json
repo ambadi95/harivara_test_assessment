@@ -37,6 +37,8 @@
   "SU_update_subtitle" : "You can Update the passcode here using OTP sent to your registered mobile number",
 
   "DV_title" : "Ingiza Maelezo ya Kibinafsi",
+  "DV_agent_aided_title" : "Customer Details",
+  "DV_agent_aided_subtitle" : "Your Personal details are shown as per your NIDA records",
   "DV_profile" : "Profile",
   "DV_subtitle" : "Thibitisha maelezo yako au usasishe ikiwa inahitajika",
   "DV_name_label" : "Jina",
@@ -212,7 +214,7 @@
 
 
 
-  "RC_agent_new_customer" : "New agent aid \nCustomer Onboarding",
-  "RC_customer_approval" : "Customer Onboarding \nApproval"
+  "RC_agent_new_customer" : "New Customer \nOnboarding",
+  "RC_customer_approval" : "Pending Customer \nOnboarding"
 
 }

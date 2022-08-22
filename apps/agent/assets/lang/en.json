@@ -41,6 +41,8 @@
   "SU_update_subtitle" : "You can Update the passcode here using OTP sent to your registered mobile number",
 
   "DV_title" : "Enter Personal Details",
+  "DV_agent_aided_title" : "Customer Details",
+  "DV_agent_aided_subtitle" : "Your Personal details are shown as per your NIDA records",
   "DV_profile" : "Profile",
   "DV_title_agent" : "Your Details",
   "DV_subtitle" : "Displaying your Personal details as per ERP",
@@ -215,7 +217,7 @@
   "DLC_Final_Payment_Date": "Final Payment Date",
   "TC_Purpose_Desc": "2.1. Y9 is a digital Microfinance provider aiming to help develop the lifestyle of the people of Tanzania and the African continent as a whole by providing financial services to the unbanked and under banked by creating access to digital education, digital healthcare, etc. by offering 4G smartphones on very fair terms to make it accessible to all citizens by enabling meaningful financial and digital inclusion.",
 
-  "RC_agent_new_customer" : "New agent aid \nCustomer Onboarding",
-  "RC_customer_approval" : "Customer Onboarding \nApproval"
+  "RC_agent_new_customer" : "New Customer \nOnboarding",
+  "RC_customer_approval" : "Pending Customer \nOnboarding"
 
 }

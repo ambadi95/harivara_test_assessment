@@ -124,7 +124,8 @@ class _DeviceOptionState extends State<DeviceOption> {
   }
 
   Widget _creditScoreInfo() {
-    return Container(
+    return widget.deviceOptionArgs.userType == UserType.AgentCustomer ? Container(
+
       width: double.infinity,
       height: 92,
       decoration: BoxDecoration(
@@ -133,9 +134,13 @@ class _DeviceOptionState extends State<DeviceOption> {
         children: [
           Padding(
             padding: const EdgeInsets.only(left: 15),
-            child: getSvg(MO_credit_info_icon,
-            width: 54, height: 54,
-            ),
+            child: Image.asset(MO_credit_info_icon,
+              height: 54,
+              width: 54,
+            )
+            // getSvg(MO_credit_info_icon,
+            // width: 54, height: 54,
+            // ),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 17,left: 11),
@@ -166,7 +171,7 @@ class _DeviceOptionState extends State<DeviceOption> {
           )
         ],
       ),
-    );
+    ) : SizedBox();
   }
 
   Widget _buildSearchField(context) {

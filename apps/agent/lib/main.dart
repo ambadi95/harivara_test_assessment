@@ -25,6 +25,7 @@ import 'package:shared_data_models/kyc/kyc_type.dart';
 import 'package:shared_data_models/kyc/kyc_data_model.dart';
 import 'package:kyc/subfeatures/kycmain/view/kyc_credit_main_screen.dart';
 import 'package:shared_data_models/downpayment/downpayment_data_model.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   HttpOverrides.global = new MyHttpOverrides();
@@ -72,16 +73,8 @@ class HomeWidget extends StatelessWidget {
       inactivityService: _inactivityService,
       child: CrayonPaymentMaterialApp(
         key: Key('AppMaterialApp'),
-        home: !_status ?
-       // CrayonSplashScreen.forMerchantApp()
-       // DetailsScreen(userType: UserType.AgentCustomer)
-              DeviceOption(
-          deviceOptionArgs: DeviceOptionArgs(
-            false,
-            '',
-              UserType.AgentCustomer
-          ),
-       )
+        home: !_status
+            ? CrayonSplashScreen.forMerchantApp()
             : CrayonSplashScreen.forMerchantApp(),
         theme: CrayonPaymentTheme().defaultTheme,
         onGenerateRoute: _navigationManager.getRoute,
