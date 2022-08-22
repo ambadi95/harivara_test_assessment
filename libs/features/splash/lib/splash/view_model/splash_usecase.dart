@@ -12,6 +12,10 @@ class SplashUseCase extends BaseDataProvider {
     return await getValueFromSecureStorage('mobileNumber', defaultValue: '');
   }
 
+  Future<void> saveLocale(String currentLocale) async {
+    await setValueToStorage({'current_locale': currentLocale});
+  }
+
   Future<String> getOnBoardStatus() async {
     return await getValueFromSecureStorage('OnBoardStatus', defaultValue: '');
   }

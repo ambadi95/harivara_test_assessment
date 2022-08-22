@@ -93,6 +93,7 @@ class _CrayonSplashScreenState extends State<CrayonSplashScreen>
   Widget build(BuildContext context) =>
       BaseView<SplashCoordinator, SplashState>(
         setupViewModel: (coordinator) async {
+          await coordinator.setCurrentLocale('sw');
           _splashCoordinator = coordinator;
           isSigned = await coordinator.isSignedin();
           coordinator.initialiseState(context, 'Title', '');
