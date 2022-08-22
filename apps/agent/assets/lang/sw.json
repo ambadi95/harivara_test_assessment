@@ -146,6 +146,8 @@
   "AE_Continue" : "Continue to the app",
 
   "DO_Title": "Chaguo za Kifaa",
+  "DO_credit_score" : "CREDIT SCORE!",
+  "DO_credit_score_desc" : "Credit scoring is validated and you \nare Eligible for Device Loan",
   "D0_JoiningFee": "Joining Fee (one off)",
   "D0_DailyFee": "Daily Fee",
   "D0_ViewDetails": "View Details",
@@ -206,10 +208,9 @@
   "DLC_Wallets_Title": "Wallets",
   "DLC_Daily_Repayment": "Daily Repayment",
   "DLC_Total_Amount_Repaid": "Total Amount to be Repaid",
-  "DLC_Final_Payment_Date": "Final Payment Date"
+  "DLC_Final_Payment_Date": "Final Payment Date",
 
 
-  "TC_Purpose_Desc": "2.1. Y9 ni mtoa huduma wa huduma ndogo za kidijitali inayolenga kusaidia kuendeleza mtindo wa maisha wa watu wa Tanzania na bara la Afrika kwa ujumla kwa kutoa huduma za kifedha kwa watu wasio na benki na wasio na benki kwa kutoa fursa ya kupata elimu ya kidijitali, afya ya kidijitali n.k. kwa kutoa simu mahiri za 4G. kwa masharti ya haki sana ili kuifanya ipatikane kwa wananchi wote kwa kuwezesha ushirikishwaji wa maana wa kifedha na kidijitali.",
 
   "RC_agent_new_customer" : "New agent aid \nCustomer Onboarding",
   "RC_customer_approval" : "Customer Onboarding \nApproval"

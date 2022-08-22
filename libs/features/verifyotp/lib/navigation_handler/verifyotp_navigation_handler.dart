@@ -4,6 +4,7 @@ import 'package:core/navigation/navigation_type.dart';
 import 'package:shared_data_models/passcode/passcode_screen_args.dart';
 import 'package:shared_data_models/passcode/passcode_verification_type.dart';
 import 'package:passcode/sub_features/passcode/view/passcode.dart';
+import 'package:welcome/sub_features/details/view/details.dart';
 import 'package:welcome/sub_features/enrollment_success/view/enrollment_success_screen.dart';
 import 'package:welcome/sub_features/welcome/data_model/welcome_model.dart';
 import 'package:welcome/sub_features/welcome/view/welcome_screen.dart';
@@ -17,9 +18,18 @@ class VerifyOtpNavigationHandler with ErrorHandler {
 
   Future<void> navigateToDestinationPath(
       String destinationPath, UserType userType) async {
+    print('navigated 2');
     _navigationManager.navigateTo(
         destinationPath, const NavigationType.replace(),
         arguments: userType);
+  }
+
+  Future<void> navigateToDetailScreen() async {
+    print('navigated');
+    var argument = UserType.AgentCustomer;
+    _navigationManager.navigateTo(
+        DetailsScreen.viewPath, const NavigationType.replace(),
+        arguments: argument);
   }
 
   Future<void> navigateToCustomerEnrollmentScreen() async {

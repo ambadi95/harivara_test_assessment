@@ -30,6 +30,7 @@ const ST_CallSupport = 'assets/images/call_support.png';
 const ST_TermsCondition = 'assets/images/terms_condition.png';
 const ST_faq = 'assets/images/faq.png';
 const ST_agent = 'assets/images/agent.png';
+const MO_credit_info_icon = 'assets/images/edit.svg';
 
 //dev customer
  const customerEndpoint = 'https://y9-dev-capi.testmaya.com/customers/v1/';

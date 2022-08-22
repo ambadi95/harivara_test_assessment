@@ -144,6 +144,8 @@
   "AE_Continue" : "Continue to your Y9 Agent App",
 
   "DO_Title": "Membership Options",
+  "DO_credit_score" : "CREDIT SCORE!",
+  "DO_credit_score_desc" : "Credit scoring is validated and you \nare Eligible for Device Loan",
   "D0_JoiningFee": "Joining Fee (one off)",
   "D0_DailyFee": "Daily Fee",
   "D0_ViewDetails": "View Details",

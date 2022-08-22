@@ -1,0 +1,21 @@
+enum CustomerOnBoardingStatus {
+  Initiated,
+  Enrolled,
+  KYC_Initiated,
+  KYC_Success,
+  Credit_Check_Requested,
+  Credit_Check_Success,
+  Device_Selection,
+  Device_Selected,
+  Downpayment_Initiated,
+  Downpayment_Scuccess,
+  Downpayment_Failed,
+  Loan_Initiated,
+  Loan_Approved,
+  Device_Reg_Initiated,
+  Device_Reg_Success,
+  MDM_Reg_Initiated,
+  MDM_Reg_Success,
+  Repayment_Initiated,
+  Repayment_Success
+}
