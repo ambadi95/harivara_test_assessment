@@ -25,4 +25,5 @@ class DeviceOptionNavigationHandler with ErrorHandler {
         EnrollmentSuccessScreen.viewPath, const NavigationType.replace(),
         arguments: argument);
   }
+
 }

@@ -104,8 +104,8 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
               ),
             ),
           ),
-          const SizedBox(
-            height: 200,
+           SizedBox(
+            height: MediaQuery.of(context).size.height * .15,
           ),
           _buildSucessIcon(),
           const SizedBox(

@@ -51,11 +51,11 @@ class _SignUpState extends State<SignUp> {
                       height: 120,
                       child: Column(
                         children: [
-                          widget.signUpArguments.userType == 'Customer'
-                              ? _carrierText()
-                              : const SizedBox(
-                                  height: 14,
-                                ),
+                          // widget.signUpArguments.userType == 'Customer'
+                          //     ? _carrierText()
+                          //     : const SizedBox(
+                          //         height: 14,
+                          //       ),
                           const SizedBox(
                             height: 23,
                           ),
