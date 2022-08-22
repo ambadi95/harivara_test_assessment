@@ -37,12 +37,17 @@ class DeviceDetailCoordinator
   //navigateToSelectMembershipBottomSheet
   Future<void> navigateToSelectMembershipBottomSheet(
       String message, String buttonLabel,int deviceId, UserType userType) async {
+    var response =
+    await _DeviceOptionUseCase.selectDevice(deviceId, (p0) => null);
+    if (response?.status == true) {
+
+
     final CrayonPaymentBottomSheetIcon icon =
     CrayonPaymentBottomSheetSuccessIcon();
     final CrayonPaymentBottomSheetState infoState =
     CrayonPaymentBottomSheetState.agentEnrollment(
       buttonOptions: [
-        ButtonOptions(Black, buttonLabel, () => navigateToEnrolledScreen(deviceId,userType), false)
+        ButtonOptions(Black, buttonLabel, () => navigateToEnrolledScreen(userType), false)
       ],
       disableCloseButton: true,
       bottomSheetIcon: icon,
@@ -54,13 +59,9 @@ class DeviceDetailCoordinator
       const NavigationType.bottomSheet(),
       arguments: infoState,
     );
-  }
-  Future<void> navigateToEnrolledScreen(int deviceId, UserType userType) async {
-    var response =
-        await _DeviceOptionUseCase.selectDevice(deviceId, (p0) => null);
-    if (response?.status == true) {
-      print('success');
-      await _navigationHandler.navigateToCustomerEnrollmentScreen('', userType);
     }
   }
+  Future<void> navigateToEnrolledScreen( UserType userType) async {
+      await _navigationHandler.navigateToCustomerEnrollmentScreen('', userType);
+    }
 }
