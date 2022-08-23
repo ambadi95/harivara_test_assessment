@@ -372,18 +372,30 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
         onTap: () async {
-          setState(() {
             if (!_isKycPassEnabled) {
-              _isKycPassEnabled = true;
+              setState(() {
+
+                _isKycPassEnabled = true;
               coordinator.showErrorBottomSheet(
                   _getKycValidationFailedUi(context,coordinator,state), context);
+              });
+
             } else if (!_isKycCreditLoanEnabled) {
-              _isKycCreditLoanEnabled = true;
+
+              setState(() {
+
+                _isKycCreditLoanEnabled = true;
               _isBtnEnabled = true;
               coordinator.showErrorBottomSheet(
                   _getCreditCheckValidationFailedUi(context,coordinator,state), context);
+              });
+
+            }else{
+
+              coordinator.navigateToDeviceOption(false, UserType.AgentCustomer);
+
             }
-          });
+
 
         },
         child: Container(

@@ -8,10 +8,12 @@ import 'package:core/sheets/data_model/button_options.dart';
 import 'package:core/sheets/state/crayon_payment_bottom_sheet_state.dart';
 import 'package:crayon_payment_customer/home/view/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_data_models/device_option/device_option_args.dart';
 import 'package:welcome/sub_features/app_language/view/app_language.dart';
 import 'package:get/get.dart';
 import 'package:widget_library/helpers/error/helper/error_helper.dart';
 import 'package:widget_library/icons/crayon_payment_bottom_sheet_icon.dart';
+import 'package:device_option/view/device_option_screen.dart';
 
 class KycCreditNavigationHandler with ErrorHandler {
   final NavigationManager _navigationManager;
@@ -28,6 +30,8 @@ class KycCreditNavigationHandler with ErrorHandler {
   Future<void> goBack() async {
     _navigationManager.goBack();
   }
+
+
 
   Future<void> showErrorBottomSheet(Widget widget, BuildContext context) async {
     showModalBottomSheet(
@@ -52,5 +56,11 @@ class KycCreditNavigationHandler with ErrorHandler {
             ),
           );
         });
+  }
+
+  Future<void> navigateToDeviceOption(DeviceOptionArgs argument) async{
+    await _navigationManager.navigateTo(
+        DeviceOption.viewPath, const NavigationType.push(),
+        arguments: argument);
   }
 }

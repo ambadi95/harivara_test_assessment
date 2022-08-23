@@ -43,7 +43,7 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
 
   Data? detailDetail;
 
-  var _value = 0;
+  var _value = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -184,7 +184,7 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
   Widget selectButton(DeviceLoanCreationCoordinator coordinator) {
     return CrayonPaymentDockedButton(
       key: const Key('Select'),
-      title: 'Pay Now 60000.0 TZHS',
+      title: 'Pay Now 70000.0 TZHS',
       borderRadius: 8,
       height: CrayonPaymentDimensions.marginFortyEight,
       buttonColor: LS_ButtonColor,
@@ -210,7 +210,7 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
         dynamicHSpacer(30),
         _rowTitleValue('D0_JoiningFee'.tr, detailDetail!.joiningFees!.toString() + " TZSHS"),
         _rowTitleValue('DLC_Daily_Repayment'.tr, detailDetail!.dailyFees==null ? "" : detailDetail!.dailyFees!.toString() + " TZSHS"),
-        _rowTitleValue('DLC_Total_Amount_Repaid'.tr, detailDetail!.amountToPay==null ? "60000.0 TZSHS" : detailDetail!.amountToPay!.toString() + " TZSHS"),
+        _rowTitleValue('DLC_Total_Amount_Repaid'.tr, detailDetail!.amountToPay==null ? "70000.0 TZSHS" : detailDetail!.amountToPay!.toString() + " TZSHS"),
         _rowTitleValue('DLC_Final_Payment_Date'.tr, '10 Aug, 2023'),
       ],
     );
@@ -279,12 +279,10 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
               Spacer(),
               Radio(
                 value: 1,
-                groupValue: _value,
+                groupValue: 1,
                 activeColor: SU_button_color,
                 onChanged: (value) {
-                  setState(() {
-                    _value = value as int;
-                  });
+
                 },
               )
             ],
