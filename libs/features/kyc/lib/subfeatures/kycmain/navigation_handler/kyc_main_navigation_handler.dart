@@ -20,15 +20,14 @@ class KycCreditMainNavigationHandler with ErrorHandler {
   }
 
   Future<void> navigateToCreditCheck() async {
-    var arguments
-       =  KycScreenArgs(
-        KycFieldType.KYC_VALIDATION,
-        "",
-        "",
-        "",
-        "",
-        [KYCDataModel(title: "", isSelected: false)],
-      );
+    var arguments = KycScreenArgs(
+      KycFieldType.KYC_VALIDATION,
+      "",
+      "",
+      "",
+      "",
+      [KYCDataModel(title: "", isSelected: false)],
+    );
 
     await _navigationManager.navigateTo(
       KycCreditScreen.viewPath,
@@ -36,5 +35,4 @@ class KycCreditMainNavigationHandler with ErrorHandler {
       arguments: arguments,
     );
   }
-
 }

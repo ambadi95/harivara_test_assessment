@@ -1,3 +1,1 @@
-class KycCreditViewModel {
-
-}
+class KycCreditViewModel {}

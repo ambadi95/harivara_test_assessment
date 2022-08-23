@@ -184,7 +184,9 @@ class _DeviceOptionState extends State<DeviceOption> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
-                          width: AppUtils.appUtilsInstance.getPercentageSize(percentage: 100,ofWidth: true)/1.5 ,
+                          width: AppUtils.appUtilsInstance.getPercentageSize(
+                                  percentage: 100, ofWidth: true) /
+                              1.5,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [

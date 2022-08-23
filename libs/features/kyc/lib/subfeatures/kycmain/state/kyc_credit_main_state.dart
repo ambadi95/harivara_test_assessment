@@ -8,9 +8,7 @@ class KycCreditMainState with _$KycCreditMainState {
   const factory KycCreditMainState.initialState() = InitialState;
   const factory KycCreditMainState.ready({
     required BuildContext context,
-
     @Default('') String error,
     @Default(false) bool isLoading,
   }) = KycCreditMainStateReady;
-
 }

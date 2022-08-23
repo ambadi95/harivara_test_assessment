@@ -14,5 +14,4 @@ class DownPaymentNavigationHandler with ErrorHandler {
       NavigationType.push(),
     );
   }
-
 }

@@ -5,6 +5,7 @@ import 'package:splash/splash/view_model/splash_usecase.dart';
 import 'package:task_manager/base_classes/base_view_model.dart';
 import 'package:welcome/sub_features/welcome/data_model/welcome_model.dart';
 import 'package:config/Config.dart';
+
 class SplashCoordinator extends BaseViewModel<SplashState> {
   final SplashNavigationHandler _navigationHandler;
   final SplashUseCase _splashUseCase;

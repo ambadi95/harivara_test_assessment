@@ -30,4 +30,8 @@ class SettingsCoordinator extends BaseViewModel<SettingsState> {
     await _settingsUseCase.logout();
     await _navigationHandler.signOut();
   }
+
+  Future<void> navigateToAgentNearBy() async {
+    await _navigationHandler.navigateToAgentsNearBy();
+  }
 }

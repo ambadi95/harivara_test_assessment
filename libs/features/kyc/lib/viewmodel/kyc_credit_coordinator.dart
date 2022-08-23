@@ -11,21 +11,13 @@ class KycCreditCoordinator extends AnalyticsStateNotifier<KycCreditState> {
   final KycCreditUseCase _kycCreditUseCase;
 
   KycCreditCoordinator(
-      this._navigationHandler,
-      this._kycCreditUseCase,
-      ) : super(const KycCreditState.initialState());
+    this._navigationHandler,
+    this._kycCreditUseCase,
+  ) : super(const KycCreditState.initialState());
 
   void initialiseState(
-      BuildContext context,
-
-      ) async {
-    state = KycCreditState.ready(
-        context: context,
-        error: "",isLoading: false);
+    BuildContext context,
+  ) async {
+    state = KycCreditState.ready(context: context, error: "", isLoading: false);
   }
- 
-
-
-
- 
 }

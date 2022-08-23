@@ -15,6 +15,7 @@ import 'package:network_manager/model/response/token/token_response.dart';
 import 'package:network_manager/model/status/http_status.dart';
 import '../fake_models/fake_storage.dart';
 import 'package:config/Config.dart';
+
 class MockAuthManager extends Mock implements IAuthManager {}
 
 class MockUserManager extends Mock implements IUserManager {}

@@ -8,6 +8,7 @@ import 'package:welcome/sub_features/signup/viewmodel/signup_usecase.dart';
 import '../../../data_model/sign_up_arguments.dart';
 import '../../../navigation_handler/welcome_navigation_handler.dart';
 import 'package:config/Config.dart';
+
 class SignUpCoordinator extends BaseViewModel<SignUpState> {
   final SignupUseCase _signupUseCase;
   final WelcomeNavigationHandler _navigationHandler;
@@ -19,7 +20,7 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
     _navigationHandler.goBack();
   }
 
-  Future navigateToAgentAidedCustomer()async{
+  Future navigateToAgentAidedCustomer() async {
     await _navigationHandler.navigateToAgentAidedCustomerOnBoarding();
   }
 
@@ -117,8 +118,7 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
     return _isValid;
   }
 
-  void validateForm(
-      String nidaNo, String mobNumber, String agentId,  userType) {
+  void validateForm(String nidaNo, String mobNumber, String agentId, userType) {
     state = SignUpState.SignUpFormState(
         _validateForm(nidaNo, mobNumber, agentId, userType));
   }

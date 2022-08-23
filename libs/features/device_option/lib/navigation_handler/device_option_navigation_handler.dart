@@ -21,7 +21,8 @@ class DeviceOptionNavigationHandler with ErrorHandler {
         arguments: arguments);
   }
 
- Future<void> navigateToDeviceLoanCreation(String image, Data deviceDetailData) async {
+  Future<void> navigateToDeviceLoanCreation(
+      String image, Data deviceDetailData) async {
     var arguments = DeviceLoanCreationArgs(deviceDetailData, image);
     await _navigationManager.navigateTo(
         DeviceLoanCreationScreen.viewPath, const NavigationType.push(),

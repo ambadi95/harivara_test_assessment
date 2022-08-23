@@ -11,21 +11,14 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
   final DownPaymentUseCase _downPaymentUseCase;
 
   DownPaymentCoordinator(
-      this._navigationHandler,
-      this._downPaymentUseCase,
-      ) : super(const DownPaymentState.initialState());
+    this._navigationHandler,
+    this._downPaymentUseCase,
+  ) : super(const DownPaymentState.initialState());
 
   void initialiseState(
-      BuildContext context,
-
-      ) async {
-    state = DownPaymentState.ready(
-        context: context,
-        error: "",isLoading: false);
+    BuildContext context,
+  ) async {
+    state =
+        DownPaymentState.ready(context: context, error: "", isLoading: false);
   }
- 
-
-
-
- 
 }

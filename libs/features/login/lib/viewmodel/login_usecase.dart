@@ -39,7 +39,6 @@ class LoginUseCase extends BaseDataProvider {
     return await setValueToSecureStorage({'mobileNumber': mobileNumber});
   }
 
-
   Future<void> saveMobileNumber(String mobileNumber) async {
     return await setValueToSecureStorage({'agentMobileNumber': mobileNumber});
   }

@@ -19,7 +19,8 @@ import '../state/downpayment_state.dart';
 import '../viewmodel/downpayment_coordinator.dart';
 
 class DownPaymentScreen extends StatefulWidget {
-  static const viewPath = '${DownPaymentModule.moduleIdentifier}/downpaymetnscreen';
+  static const viewPath =
+      '${DownPaymentModule.moduleIdentifier}/downpaymetnscreen';
   final DownPaymentScreenArgs downPaymentScreenArgs;
 
   const DownPaymentScreen({Key? key, required this.downPaymentScreenArgs})
@@ -36,39 +37,36 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
   @override
   Widget build(BuildContext context) =>
       BaseView<DownPaymentCoordinator, DownPaymentState>(
-        setupViewModel: (coordinator) {
-          coordinator.initialiseState(context);
-        },
-        builder: (context, state, coordinator) => CrayonPaymentScaffold(
-            appBarAttributes: CrayonPaymentAppBarAttributes(
-              key: const Key('CardDetailsScreen_AppBarBackButton'),
-              left: [
-                const CrayonPaymentAppBarButtonType.back(),
-              ],
-            ),
-            body: state.when(
-              initialState: () => const SizedBox(),
-              ready: (
-                  _,
-                  __,
-                  ___,
-
+          setupViewModel: (coordinator) {
+            coordinator.initialiseState(context);
+          },
+          builder: (context, state, coordinator) => CrayonPaymentScaffold(
+                appBarAttributes: CrayonPaymentAppBarAttributes(
+                  key: const Key('CardDetailsScreen_AppBarBackButton'),
+                  left: [
+                    const CrayonPaymentAppBarButtonType.back(),
+                  ],
+                ),
+                body: state.when(
+                  initialState: () => const SizedBox(),
+                  ready: (
+                    _,
+                    __,
+                    ___,
                   ) =>
-                  _buildMainUIWithLoading(
+                      _buildMainUIWithLoading(
                     context,
                     coordinator,
                     (state as DownPaymentStateReady),
                   ),
-            ),
-
-
-      ));
+                ),
+              ));
 
   Widget _buildMainUIWithLoading(
-      BuildContext context,
-      DownPaymentCoordinator coordinator,
-      DownPaymentStateReady state,
-      ) {
+    BuildContext context,
+    DownPaymentCoordinator coordinator,
+    DownPaymentStateReady state,
+  ) {
     return Stack(
       children: [
         _buildMainUI(context, coordinator, state),
@@ -90,10 +88,10 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
   }
 
   Widget _buildMainUI(
-      BuildContext context,
-      DownPaymentCoordinator coordinator,
-      DownPaymentStateReady state,
-      ) {
+    BuildContext context,
+    DownPaymentCoordinator coordinator,
+    DownPaymentStateReady state,
+  ) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -210,16 +208,14 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
   }
 
   Widget _buildContinueButton(
-      BuildContext context,
-      DownPaymentCoordinator coordinator,
-      DownPaymentState state,
-      ) {
+    BuildContext context,
+    DownPaymentCoordinator coordinator,
+    DownPaymentState state,
+  ) {
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
-        onTap: () async {
-
-        },
+        onTap: () async {},
         child: Container(
           width: double.infinity,
           height: 50,
@@ -250,7 +246,7 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
   Widget _getImage(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(75.0),
-      child:  Image(
+      child: Image(
         image: AssetImage(''),
         height: 90,
         width: 90,
@@ -269,7 +265,8 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
   _title(BuildContext context) {
     return CrayonPaymentText(
       key: Key('${_identifier}_Payment_Request'),
-      text: const TextUIDataModel('70,000 TZSHS\npayment request has\nbeen sent to Y9',
+      text: const TextUIDataModel(
+          '70,000 TZSHS\npayment request has\nbeen sent to Y9',
           styleVariant: CrayonPaymentTextStyleVariant.headline6,
           color: AN_TitleColor,
           fontWeight: FontWeight.w600),
@@ -299,11 +296,11 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
   _subTitle(BuildContext context) {
     return CrayonPaymentText(
       key: Key('${_identifier}_Transaction_Gateway'),
-      text: const TextUIDataModel('Transaction gateway will be closed in next 15 minutes',
+      text: const TextUIDataModel(
+          'Transaction gateway will be closed in next 15 minutes',
           styleVariant: CrayonPaymentTextStyleVariant.subtitle2,
           color: VO_ResendTextColor,
           fontWeight: FontWeight.w400),
     );
   }
-
 }

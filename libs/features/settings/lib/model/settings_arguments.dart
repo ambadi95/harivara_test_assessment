@@ -5,9 +5,5 @@ class SettingsScreenArgs {
   final bool isAgent;
   final UserType userType;
 
-  SettingsScreenArgs({
-    required this.isAgent,
-    required this.userType}
-      );
+  SettingsScreenArgs({required this.isAgent, required this.userType});
 }
-

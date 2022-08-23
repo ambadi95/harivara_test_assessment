@@ -15,6 +15,7 @@ import 'package:widget_library/icons/crayon_payment_bottom_sheet_icon.dart';
 import 'package:core/sheets/state/crayon_payment_bottom_sheet_state.dart';
 import 'package:welcome/sub_features/app_language/view/app_language.dart';
 import 'package:config/Config.dart';
+import 'package:agent_nearby/view/agent_nearby_screen.dart';
 
 class SettingsNavigationHandler with ErrorHandler {
   final NavigationManager _navigationManager;
@@ -73,5 +74,12 @@ class SettingsNavigationHandler with ErrorHandler {
     _navigationManager.navigateTo(
         CrayonWelcomScreen.viewPath, const NavigationType.replace(),
         arguments: arguments);
+  }
+
+  Future<void> navigateToAgentsNearBy() async {
+    _navigationManager.navigateTo(
+      AgentNearBy.viewPath,
+      const NavigationType.push(),
+    );
   }
 }

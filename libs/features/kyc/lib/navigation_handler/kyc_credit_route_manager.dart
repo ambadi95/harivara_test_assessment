@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:kyc/view/kyc_credit_screen.dart';
 import 'package:shared_data_models/kyc/kyc_screen_args.dart';
 
-
 class KycCreditRouteManager extends IRouteManager {
   @override
   Widget getView(RouteSettings settings) {
@@ -11,7 +10,7 @@ class KycCreditRouteManager extends IRouteManager {
       case KycCreditScreen.viewPath:
         var arguments = settings.arguments as KycScreenArgs;
         return KycCreditScreen(
-           kycScreenArgs: arguments,
+          kycScreenArgs: arguments,
         );
       default:
         // TODO: implement getView

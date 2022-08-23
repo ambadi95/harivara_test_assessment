@@ -4,7 +4,6 @@ import 'package:welcome/sub_features/signup/state/signup_state.dart';
 
 import '../../../../../navigation_handler/welcome_navigation_handler.dart';
 
-
 class CustomerOnBoardingApprovalCoordinator extends BaseViewModel<SignUpState> {
   final WelcomeNavigationHandler _navigationHandler;
 

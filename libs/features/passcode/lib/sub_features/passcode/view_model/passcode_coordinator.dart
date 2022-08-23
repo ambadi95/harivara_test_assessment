@@ -140,8 +140,8 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
       await _passcodeUseCase.savePassCodeLocal(newPasscode);
       if (userType == UserType.Customer) {
         state = currentState.copyWith(isLoading: true);
-        var response = await _passcodeUseCase.savePasscode(
-            newPasscode, userType == UserType.Customer ? "Customer" : "Agnet", (p0) => null);
+        var response = await _passcodeUseCase.savePasscode(newPasscode,
+            userType == UserType.Customer ? "Customer" : "Agnet", (p0) => null);
         if (response!.status == true) {
           var loginResponse =
               await _passcodeUseCase.login(newPasscode, (p0) => null);
@@ -153,8 +153,8 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
         }
       } else if (userType == UserType.Agent) {
         state = currentState.copyWith(isLoading: true);
-        var response = await _passcodeUseCase.savePasscodeAgent(
-            newPasscode, userType== UserType.Customer ? "Customer" : "Agent", (p0) => null);
+        var response = await _passcodeUseCase.savePasscodeAgent(newPasscode,
+            userType == UserType.Customer ? "Customer" : "Agent", (p0) => null);
         if (response!.status == true) {
           state = currentState.copyWith(currentStep: 5);
           var loginResponse =

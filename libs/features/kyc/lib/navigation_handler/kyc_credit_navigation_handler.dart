@@ -15,6 +15,4 @@ class KycCreditNavigationHandler with ErrorHandler {
       NavigationType.push(),
     );
   }
-
-
 }

@@ -99,7 +99,6 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
     KycCreditCoordinator coordinator,
     KycCreditStateReady state,
   ) {
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -213,9 +212,6 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
     );
   }
 
-
-
-
   Widget _buildContinueButton(
     BuildContext context,
     KycCreditCoordinator coordinator,
@@ -272,8 +268,6 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
     );
   }
 
-
-
   _title(BuildContext context) {
     return CrayonPaymentText(
       key: Key('${_identifier}_KYC_Validation_With_Airtel'),
@@ -313,8 +307,4 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
           fontWeight: FontWeight.w400),
     );
   }
-
-
-
-
 }
