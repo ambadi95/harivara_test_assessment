@@ -67,6 +67,9 @@ dependencies:
   settings:
     path: ../../libs/features/settings
 
+  loan_details:
+    path: ../../libs/features/loan_details
+
 
 dev_dependencies:
   flutter_test:

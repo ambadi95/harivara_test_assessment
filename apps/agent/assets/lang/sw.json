@@ -188,6 +188,8 @@
   "DLC_Final_Payment_Date": "Final Payment Date",
 
   "RC_agent_new_customer" : "New agent aid \nCustomer Onboarding",
-  "RC_customer_approval" : "Customer Onboarding \nApproval"
+  "RC_customer_approval" : "Customer Onboarding \nApproval",
+
+
 
 }

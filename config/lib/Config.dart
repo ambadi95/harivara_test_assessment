@@ -33,6 +33,8 @@ const ST_TermsCondition = 'assets/images/terms_condition.png';
 const ST_faq = 'assets/images/faq.png';
 const ST_agent = 'assets/images/agent.png';
 
+const LD_loan_detail = 'assets/images/loan_detail.png';
+
 //dev customer
  const customerEndpoint = 'https://y9-dev-capi.testmaya.com/customers/v1/';
 //prod customer

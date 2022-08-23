@@ -22,6 +22,8 @@ import 'package:core/validators/input_entry_validator/input_entry_validator.dart
 import 'package:device_option/device_option_module.dart';
 import 'package:device_option/navigation_handler/device_option_route_manager.dart';
 import 'package:flutter/services.dart';
+import 'package:loan_details/loan_detail_module.dart';
+import 'package:loan_details/navigation_handler/loan_detail_route_manager.dart';
 import 'package:login/login_module.dart';
 import 'package:login/navigation_handler/login_route_manager.dart';
 import 'package:network_manager/auth/auth_manager.dart';
@@ -103,7 +105,7 @@ class AppModule {
     AgentNearByModule.registerDependencies();
     DeviceOptionModule.registerDependencies();
     LoginModule.registerDependencies();
-
+    LoanDetailModule.registerDependencies();
     CustomerHomeModule.registerDependencies();
     TermsConditionModule.registerDependencies();
     SettingsModule.registerDependencies();
@@ -192,6 +194,11 @@ void _registerRouteManagers() {
   navigationManagerContainer.registerRouteManager(
     SettingsModule.moduleIdentifier,
     SettingsRouteManager(),
+  );
+
+  navigationManagerContainer.registerRouteManager(
+    LoanDetailModule.moduleIdentifier,
+    LoanDetailRouteManager(),
   );
 
   DIContainer.container.registerSingleton<NativeDocumentDirectory>(
