@@ -106,6 +106,8 @@
   "ES_view_membership" : "View Your Membership",
   "ES_agent_contact_text" : "Y9 will contact you shortly on your Membership",
   "ES_need_help_contact" : "Need Help Contact Us at +255 677-039-999",
+  "ES_choose_product_message" : "Thank you for choosing our product, we will get in touch with you soon",
+  "ES_done" : "Done",
 
 
   "WB_WelcomeBack": "Welcome back to Y9 \nAgent login",

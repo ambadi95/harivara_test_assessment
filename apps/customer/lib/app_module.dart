@@ -12,6 +12,9 @@ import 'package:core/retrievers/app_info_retriever.dart';
 import 'package:core/session_management/inactivity_service.dart';
 import 'package:core/share_download/share_download_image.dart';
 import 'package:core/share_download/share_file_manager.dart';
+import 'package:core/sheets/coordinator/crayon_payment_bottom_sheet_coordinator.dart';
+import 'package:core/sheets/navigation/crayon_payment_bottom_sheet_navigation_handler.dart';
+import 'package:core/sheets/navigation/crayon_payment_bottom_sheet_route_manager.dart';
 import 'package:core/storage/secure_storage/secure_storage_service.dart';
 import 'package:core/storage/storage_service.dart';
 import 'package:core/translation/app_localization_service.dart';
@@ -207,6 +210,18 @@ void _registerRouteManagers() {
 
 void _registerBottomSheetFeature() {
   final navigationManagerContainer = DIContainer.container<NavigationManager>();
+
+  navigationManagerContainer.registerRouteManager(
+    CrayonPaymentBottomSheetRouteManager.moduleIdentifier,
+    CrayonPaymentBottomSheetRouteManager(),
+  );
+  DIContainer.container.registerFactory<CrayonPaymentBottomSheetCoordinator>(
+        (container) => CrayonPaymentBottomSheetCoordinator(
+      CrayonPaymentBottomSheetNavigationHandler(
+        container.resolve<NavigationManager>(),
+      ),
+    ),
+  );
 }
 
 void _registerToolTipFeature() {

@@ -104,8 +104,8 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
               ),
             ),
           ),
-          const SizedBox(
-            height: 200,
+           SizedBox(
+            height: MediaQuery.of(context).size.height * .15,
           ),
           _buildSucessIcon(),
           const SizedBox(
@@ -255,6 +255,7 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
         child: Center(
           child: Text(
             'ES_near_agent_button'.tr,
+            textAlign: TextAlign.center,
             style: const TextStyle(color: config_color.SECONDARY_COLOR),
           ),
         ),

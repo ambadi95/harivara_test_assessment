@@ -369,7 +369,7 @@ class _DeviceDetailScreenState extends State<DeviceDetailScreen> {
       textStyleVariant: CrayonPaymentTextStyleVariant.headline4,
       onPressed: () {
         print(widget.userType);
-        coordinator.navigateToEnrolledScreen(widget.deviceId, widget.userType);
+        coordinator.navigateToSelectMembershipBottomSheet('ES_choose_product_message','ES_done',widget.deviceId, widget.userType);
       },
     );
   }
