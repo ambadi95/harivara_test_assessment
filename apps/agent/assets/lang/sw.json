@@ -270,6 +270,8 @@
   "DLC_Daily_Repayment": "Daily Repayment",
   "DLC_Total_Amount_Repaid": "Total Amount to be Repaid",
   "DLC_Final_Payment_Date": "Final Payment Date",
+  "DLC_Airtel_Pay": "Airtel Pay",
+  "DLC_Loan_Details": "Loan Details",
 
   "RC_agent_new_customer" : "New Customer \nOnboarding",
   "RC_customer_approval" : "Pending Customer \nOnboarding",

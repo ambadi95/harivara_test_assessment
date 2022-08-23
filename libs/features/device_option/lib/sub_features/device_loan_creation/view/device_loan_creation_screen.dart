@@ -202,7 +202,7 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
       children: [
         CrayonPaymentText(
           key: Key(''),
-          text: TextUIDataModel("Loan Details",
+          text: TextUIDataModel('DLC_Loan_Details'.tr,
               styleVariant: CrayonPaymentTextStyleVariant.headline4,
               color: AN_CardTitle,
               fontWeight: FontWeight.w600),
@@ -269,12 +269,12 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
               Image.asset("assets/images/airtel.png"),
 
               SizedBox(width:10),
-              Text(
-                "Airtel Pay",
-                style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.black),
+              CrayonPaymentText(
+                key: Key('${_identifier}_Device_Loan_Airtel_Pay'),
+                text:  TextUIDataModel('DLC_Airtel_Pay'.tr,
+                    styleVariant: CrayonPaymentTextStyleVariant.headline4,
+                    color: SECONDARY_COLOR,
+                    fontWeight: FontWeight.w600),
               ),
               Spacer(),
               Radio(
