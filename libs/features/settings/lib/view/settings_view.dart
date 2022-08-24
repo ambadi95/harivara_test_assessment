@@ -152,6 +152,10 @@ class _SettingsState extends State<Settings> {
         _buildOptions(context, 'ST_term_condition', ST_TermsCondition, () async {
         }),
         _buildOptions(context, 'ST_call_support', ST_CallSupport, () async {
+          LauncherUtils.launcherUtilsInstance
+              .makePhoneCall(phoneNumber: LauncherUtils.CONTACT_NUMBER);
+
+
         }),
       ],
     );

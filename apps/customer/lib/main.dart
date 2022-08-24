@@ -71,7 +71,7 @@ class HomeWidget extends StatelessWidget {
       child: CrayonPaymentMaterialApp(
         key: Key('AppMaterialApp'),
         home: !_status ?
-        PaymentsScreen(paymentsScreenArgs: PaymentsScreenArgs('assets/images/mobile_0.png','PP_Daily_Repayment_Title','20,000 TZSHS'))
+        CrayonHomeScreen.forCustomerApp()
             : CrayonHomeScreen.forCustomerApp(),
 
         theme: CrayonPaymentTheme().defaultTheme,
