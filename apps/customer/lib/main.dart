@@ -73,15 +73,15 @@ class HomeWidget extends StatelessWidget {
         key: Key('AppMaterialApp'),
         home: !_status
             ?
-            /*CrayonHomeScreen.forCustomerApp()*/
-            LoanDetailScreen(
+        CrayonHomeScreen.forCustomerApp()
+           /* LoanDetailScreen(
                 loanDetailArgs: LoanDetailArgs(
                   "",
                   "",
                   "",
                   "",
                 ),
-              )
+              )*/
             : CrayonHomeScreen.forCustomerApp(),
         theme: CrayonPaymentTheme().defaultTheme,
         onGenerateRoute: _navigationManager.getRoute,

@@ -6,17 +6,18 @@ import 'package:shared_data_models/customer_onboard/region_district/district_res
 import 'package:shared_data_models/customer_onboard/region_district/region_response/region_details.dart';
 import 'package:task_manager/base_classes/base_data_provider.dart';
 import 'package:task_manager/task_manager.dart';
-import 'package:task_manager/task_manager_impl.dart';
+import 'package:welcome/sub_features/customer_profile_details/service/customer_details_service.dart';
+
+import 'package:welcome/sub_features/customer_profile_details/viewmodel/customer_details_view_model.dart';
 import 'package:welcome/sub_features/details/service/details_service.dart';
 
 import '../../../data_model/region.dart';
 import '../../../welcome_module.dart';
-import 'details_view_model.dart';
 
-class DetailsUseCase extends BaseDataProvider {
-  final DetailsViewModel detailsViewModel;
+class CustomerDetailsUseCase extends BaseDataProvider {
+  final CustomerDetailsViewModel detailsViewModel;
 
-  DetailsUseCase(this.detailsViewModel, TaskManager taskManager)
+  CustomerDetailsUseCase(this.detailsViewModel, TaskManager taskManager)
       : super(taskManager);
 
   bool isValidName(String name) {
@@ -49,7 +50,7 @@ class DetailsUseCase extends BaseDataProvider {
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
         moduleIdentifier: WelcomeModule.moduleIdentifier,
-        serviceIdentifier: IDetailsService.regionIdentifier,
+        serviceIdentifier: ICustomerDetailsService.regionIdentifier,
         onError: onErrorCallback,
         requestData: {'userType': userType},
         modelBuilderCallback: (responseData) {
@@ -65,16 +66,32 @@ class DetailsUseCase extends BaseDataProvider {
         taskSubType: TaskSubType.REST,
         moduleIdentifier: WelcomeModule.moduleIdentifier,
         requestData: {"regionId": regionId, 'userType': userType},
-        serviceIdentifier: IDetailsService.districtIdentifier,
+        serviceIdentifier: ICustomerDetailsService.districtIdentifier,
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {
           final data = responseData;
           return DistrictResponse.fromJson(data);
         });
   }
+  Future<GetCustomerDetailsResponse?> getCustomerDetails(
+      Function(String) onErrorCallback,
+      ) async {
+    int customerId = int.parse(await getCustomerId());
 
-
-
+    return await executeApiRequest<GetCustomerDetailsResponse?>(
+        taskType: TaskType.DATA_OPERATION,
+        taskSubType: TaskSubType.REST,
+        moduleIdentifier: WelcomeModule.moduleIdentifier,
+        requestData: {
+          "id": customerId,
+        },
+        serviceIdentifier: ICustomerDetailsService.customerDetailIdentifier,
+        onError: onErrorCallback,
+        modelBuilderCallback: (responseData) {
+          final data = responseData;
+          return GetCustomerDetailsResponse.fromJson(data);
+        });
+  }
   Future<CustomerDetailResponse?> submitCustomerDetails(
       String name,
       String dob,
@@ -113,7 +130,7 @@ class DetailsUseCase extends BaseDataProvider {
           'data': customerDetailsRequest.toJson(),
           'userType': userType
         },
-        serviceIdentifier: IDetailsService.submitCustomerDetailIdentifier,
+        serviceIdentifier: ICustomerDetailsService.submitCustomerDetailIdentifier,
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {
           final data = responseData;

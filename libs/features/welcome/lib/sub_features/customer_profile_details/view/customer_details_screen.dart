@@ -2,12 +2,16 @@ import 'package:config/Colors.dart';
 import 'package:config/Config.dart';
 import 'package:config/Styles.dart';
 import 'package:core/view/base_view.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:shared_data_models/customer_details/response/get_customer_details_response/get_customer_details_response.dart';
 import 'package:shared_data_models/customer_onboard/region_district/region_response/datum.dart';
 import 'package:shared_data_models/customer_onboard/region_district/district_response/datum.dart'
     as b;
 import 'package:welcome/data_model/details_arguments.dart';
+import 'package:welcome/sub_features/customer_profile_details/state/customer_details_state.dart';
+import 'package:welcome/sub_features/customer_profile_details/viewmodel/customer_details_coordinator.dart';
 import 'package:welcome/sub_features/details/state/details_state.dart';
 import 'package:welcome/sub_features/details/viewmodel/details_coordinator.dart';
 import 'package:welcome/welcome_module.dart';
@@ -21,23 +25,21 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:config/Colors.dart' as config_color;
 
-import '../../../data_model/district.dart';
 import '../../../data_model/gender_type.dart';
+import 'package:core/mobile_core.dart';
 
-class DetailsScreen extends StatefulWidget {
-  static const viewPath = '${WelcomeModule.moduleIdentifier}/details';
+class CustomerDetailsScreen extends StatefulWidget {
+  static const viewPath = '${WelcomeModule.moduleIdentifier}/customerDetails';
   final UserType userType;
 
-  const DetailsScreen({Key? key, required this.userType}) : super(key: key);
+  const CustomerDetailsScreen({Key? key, required this.userType})
+      : super(key: key);
 
   @override
-  State<DetailsScreen> createState() => _DetailsScreenState();
+  State<CustomerDetailsScreen> createState() => _CustomerDetailsScreenState();
 }
 
-class _DetailsScreenState extends State<DetailsScreen> {
-
-
-
+class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
   bool _isBtnEnabled = false;
   String nameError = '';
   String emailError = '';
@@ -76,7 +78,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
 
   Future<void> _selectDate(
-      BuildContext context, DetailsCoordinator coordinator) async {
+      BuildContext context, CustomerDetailsCoordinator coordinator) async {
     final DateTime? picked = await showDatePicker(
         context: context,
         helpText: 'Select Date of Birth',
@@ -119,25 +121,61 @@ class _DetailsScreenState extends State<DetailsScreen> {
       });
     }
   }
+  GlobalKey<FormState> _abcKey = GlobalKey<FormState>();
+  GetCustomerDetailsResponse? customerResponse;
 
   @override
   Widget build(BuildContext context) =>
-      BaseView<DetailsCoordinator, DetailsState>(
+      BaseView<CustomerDetailsCoordinator, CustomerDetailsState>(
           onStateListenCallback: (preState, newState) =>
               {_listenToStateChanges(context, newState)},
           setupViewModel: (coordinator) async {
-            coordinator.getMobileNumber();
-            List<Datum> regions = await coordinator.getRegion(widget.userType);
+            //   coordinator.getMobileNumber();
+
+            customerResponse = await coordinator.getCustomerDetails();
+            setState(() {
+              name.text = customerResponse!.data!.firstName??"";
+              dob.text = customerResponse!.data!.birthdate??"";
+              gender.text = customerResponse!.data!.gender??"";
+              profession.text = customerResponse!.data!.profession??"";
+              mobileNumber.text = customerResponse!.data!.mobileNo??"";
+              emailId.text = customerResponse!.data!.emailId??"";
+              address.text = customerResponse!.data!.address??"";
+              poBox.text = customerResponse!.data!.poBoxNumber??"";
+              region.text = customerResponse!.data!.region??"";
+              district.text = customerResponse!.data!.district??"";
+            });
+            /* List<Datum> regions = await coordinator.getRegion(widget.userType);
             genderTypeDropDown = getDropDownData(coordinator.genderType);
-            regionDropDown = getRegionDropDownData(regions);
+            regionDropDown = getRegionDropDownData(regions);*/
           },
           builder: (context, state, coordinator) => SafeArea(
-                child: state.maybeWhen(
+                child: Scaffold(
+                  key: _abcKey,
+                  body: customerResponse.isNotEmptyOrNull
+                      ? Column(
+                        children: [
+                          _buildTopContainer(context,coordinator),
+                          Expanded(
+                            child: SingleChildScrollView(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    _buildMainUI(context, coordinator),
+                                  ],
+                                ),
+                              ),
+                          ),
+                        ],
+                      )
+                      : _buildMainUIWithLoading(context, coordinator),
+                ), /*state.maybeWhen(
                   LoadingState: () =>
                       _buildMainUIWithLoading(context, coordinator),
                   orElse: () => Scaffold(
                     appBar: PreferredSize(
-                      preferredSize: Size(double.infinity, widget.userType == UserType.AgentCustomer ? 58 : 102),
+                      preferredSize: Size(double.infinity,
+                          widget.userType == UserType.AgentCustomer ? 58 : 58),
                       child: _buildTopContainer(context, coordinator),
                     ),
                     body: SingleChildScrollView(
@@ -149,30 +187,23 @@ class _DetailsScreenState extends State<DetailsScreen> {
                       ),
                     ),
                   ),
-                ),
+                ),*/
               ));
 
   Widget _buildTopContainer(
     BuildContext context,
-    DetailsCoordinator coordinator,
+    CustomerDetailsCoordinator coordinator,
   ) {
-    return Column(
-      children: [
-       widget.userType == UserType.AgentCustomer ? const SizedBox() : _onBoardingProgressBar(),
-        _buildBackBtn(context, coordinator),
-      ],
-    );
+    return _buildBackBtn(context, coordinator);
   }
 
   Widget _buildMainUIWithLoading(
-    BuildContext context,
-    DetailsCoordinator coordinator,
-  ) {
+      BuildContext context,
+      CustomerDetailsCoordinator coordinator,
+      ) {
     return Scaffold(
-      key: _scaffoldKey,
       body: Stack(
         children: [
-          SingleChildScrollView(child: _buildMainUI(context, coordinator)),
           _createLoading(),
         ],
       ),
@@ -182,9 +213,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
   Widget _createLoading() {
     return Center(
       child: Container(
-        color: Colors.black.withOpacity(0.4),
-        child: const CenteredCircularProgressBar(
-            color: config_color.PRIMARY_COLOR),
+        color: Colors.white,
+        child: const CenteredCircularProgressBar(color: PRIMARY_COLOR),
       ),
     );
   }
@@ -201,7 +231,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
 
   Widget _buildBackBtn(
     BuildContext context,
-    DetailsCoordinator coordinator,
+    CustomerDetailsCoordinator coordinator,
   ) {
     return Align(
       alignment: Alignment.topLeft,
@@ -215,7 +245,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
     );
   }
 
-  Widget _buildMainUI(BuildContext context, DetailsCoordinator coordinator) {
+  Widget _buildMainUI(
+      BuildContext context, CustomerDetailsCoordinator coordinator) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
@@ -233,8 +264,13 @@ class _DetailsScreenState extends State<DetailsScreen> {
               coordinator,
               nameError,
               'DV_name_hint_text',
-              true),
-          _buildLabelTextFieldDob('DV_dob_label'.tr, dob, coordinator),
+              false),
+          _buildLabelTextFieldDob(
+            'DV_dob_label'.tr,
+            dob,
+            coordinator,
+            false,
+          ),
           _buildGenderTypeDropdown(coordinator),
           _buildLabelTextField(
               'profession',
@@ -244,7 +280,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
               coordinator,
               professionError,
               'DV_profession_hint_text',
-              true),
+              false),
           _buildLabelTextField(
               'contact',
               'DV_contact_no_label'.tr,
@@ -262,9 +298,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
               coordinator,
               emailError,
               'DV_email_hint_text',
-              true),
+              false),
           _buildLabelTextFieldAddress('DV_address_label'.tr, address,
-              coordinator, 'DV_address_hint_text'),
+              coordinator, 'DV_address_hint_text', false),
           _buildLabelTextField(
               'pobox',
               'DV_po_box_label'.tr,
@@ -273,19 +309,30 @@ class _DetailsScreenState extends State<DetailsScreen> {
               coordinator,
               poBoxError,
               'DV_poBox_hint_text',
-              true),
+              false),
           _buildRegionDropdown(coordinator),
           _buildDistrictDropdown(coordinator),
-          _buildContinueButton(context, coordinator)
         ],
       ),
     );
   }
 
   Widget _title() {
-    return Text(
-      'DV_title'.tr,
-      style: SU_title_style,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Profile_Title'.tr,
+          style: SU_title_style,
+        ),
+        const SizedBox(
+          height: 5,
+        ),
+        Text(
+          'Profile_Sub_Title'.tr,
+          style: SU_subtitle_style,
+        ),
+      ],
     );
   }
 
@@ -294,7 +341,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
       String label,
       TextEditingController controller,
       TextInputType textInputType,
-      DetailsCoordinator coordinator,
+      CustomerDetailsCoordinator coordinator,
       String errorText,
       String hint,
       bool enabled) {
@@ -335,10 +382,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
   }
 
   Widget _buildLabelTextFieldDob(String label, TextEditingController controller,
-      DetailsCoordinator coordinator) {
+      CustomerDetailsCoordinator coordinator, bool enabled) {
     return FocusScope(
       onFocusChange: (focus) {
-        if (dob.text.isNotEmpty) {
+        /* if (dob.text.isNotEmpty) {
           if (dobError.isNotEmpty) {
             coordinator.isValidDob(dob.text);
           }
@@ -351,7 +398,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
               6575) {
             coordinator.inVaidDob();
           }
-        }
+        }*/
       },
       canRequestFocus: true,
       child: Padding(
@@ -361,6 +408,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
             controller: controller,
             errorText: dobError.tr,
             hintText: 'DV_dob_hint_text'.tr,
+            enabled: enabled,
             key: const Key('detailsTextFieldDob'),
             keyboardType: TextInputType.none,
             onChanged: (value) {
@@ -373,10 +421,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   borderSide: BorderSide(color: config_color.SU_border_color)),
             ),
             onTap: () async {
-              if (dobError.isNotEmpty) {
+              /*    if (dobError.isNotEmpty) {
                 coordinator.isValidDob(dob.text);
               }
-              await _selectDate(context, coordinator);
+              await _selectDate(context, coordinator);*/
             },
           )),
     );
@@ -385,8 +433,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
   Widget _buildLabelTextFieldAddress(
       String label,
       TextEditingController controller,
-      DetailsCoordinator coordinator,
-      String hint) {
+      CustomerDetailsCoordinator coordinator,
+      String hint,
+      bool enabled) {
     return FocusScope(
       child: Focus(
         onFocusChange: (focus) {
@@ -402,6 +451,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
               controller: controller,
               errorText: addressError.tr,
               hintText: hint.tr,
+              enabled: enabled,
               key: const Key('detailsTextFieldAddress'),
               keyboardType: TextInputType.streetAddress,
               onChanged: (value) {
@@ -415,14 +465,123 @@ class _DetailsScreenState extends State<DetailsScreen> {
     );
   }
 
-  Widget _buildGenderTypeDropdown(DetailsCoordinator coordinator) {
+  Widget _buildRegionDropdown(CustomerDetailsCoordinator coordinator) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'DV_region_label'.tr,
+          style: const TextStyle(color: Colors.black, fontSize: 14),
+        ),
+        const SizedBox(
+          height: 8,
+        ),
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: const BorderRadius.all(
+              Radius.circular(8.0),
+            ),
+            color: SU_border_color.withOpacity(0.3),
+            border: Border.all(color: SU_border_color),
+          ),
+          height: 56,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Row(
+              children:  [
+                Expanded(
+                  child: Text(
+                    region.text.toString(),
+                    style: SU_label_style,
+                  ),
+                ),
+                const   Icon(
+                  Icons.keyboard_arrow_down,
+                  color: Black,
+                ),
+              ],
+            ),
+          ),
+        ),
+        /*CrayonDropDown(
+          title: 'DV_region_label'.tr,
+          key: const Key('regionDropDown'),
+          icon: const Icon(
+            Icons.keyboard_arrow_down,
+            color: ES_grey_button_color,
+          ),
+          hint: Text(
+            'DV_region_hint_text'.tr,
+          ),
+          boxHeight: 60,
+          isDense: false,
+          error: regionError,
+          value: _region,
+          items: regionDropDown,
+          onChanged: (value) async {
+            onRegionChosen(value as Datum, coordinator);
+            region.text = value.name!;
+            _validateForm(coordinator);
+            coordinator.isValidRegion(value.name!);
+            dis.clear();
+            district.clear();
+            dis = await coordinator.getDistrict(value.id!, widget.userType);
+            districtDropDown = getDistrictDropDownData(dis);
+          },
+        ),*/
+        const SizedBox(
+          height: 6,
+        ),
+        Text(regionError.tr, style: label_input_error_style),
+        const SizedBox(
+          height: 10,
+        ),
+      ],
+    );
+  }
+
+  Widget _buildGenderTypeDropdown(CustomerDetailsCoordinator coordinator) {
     return FocusScope(
       child: Focus(
         onFocusChange: (focus) {},
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CrayonDropDown(
+            Text(
+              'DV_gender_label'.tr,
+              style: const TextStyle(color: Colors.black, fontSize: 14),
+            ),
+            const SizedBox(
+              height: 8,
+            ),
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.all(
+                  Radius.circular(8.0),
+                ),
+                color: SU_border_color.withOpacity(0.3),
+                border: Border.all(color: SU_border_color),
+              ),
+              height: 56,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Row(
+                  children:  [
+                    Expanded(
+                      child: Text(
+                        gender.text.toString(),
+                        style: SU_label_style,
+                      ),
+                    ),
+                    const Icon(
+                      Icons.keyboard_arrow_down,
+                      color: Black,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            /*CrayonDropDown(
               title: 'DV_gender_label'.tr,
               key: const Key('genderTypeDropDown'),
               icon: const Icon(
@@ -442,7 +601,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 _validateForm(coordinator);
                 coordinator.isValidGender(value.gender);
               },
-            ),
+            ),*/
             const SizedBox(
               height: 6,
             ),
@@ -456,11 +615,45 @@ class _DetailsScreenState extends State<DetailsScreen> {
     );
   }
 
-  Widget _buildDistrictDropdown(DetailsCoordinator coordinator) {
+  Widget _buildDistrictDropdown(CustomerDetailsCoordinator coordinator) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        CrayonDropDown(
+        Text(
+          'DV_district_label'.tr,
+          style: const TextStyle(color: Colors.black, fontSize: 14),
+        ),
+        const SizedBox(
+          height: 8,
+        ),
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: const BorderRadius.all(
+              Radius.circular(8.0),
+            ),
+            color: SU_border_color.withOpacity(0.3),
+            border: Border.all(color: SU_border_color),
+          ),
+          height: 56,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Row(
+              children:  [
+                Expanded(
+                  child: Text(
+                    district.text.toString(),
+                    style: SU_label_style,
+                  ),
+                ),
+                const   Icon(
+                  Icons.keyboard_arrow_down,
+                  color: Black,
+                ),
+              ],
+            ),
+          ),
+        ),
+        /*CrayonDropDown(
           title: 'DV_district_label'.tr,
           key: const Key('districtDropDown'),
           icon: const Icon(
@@ -480,7 +673,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
             _validateForm(coordinator);
             coordinator.isValidDistrict(value.name!);
           },
-        ),
+        ),*/
         const SizedBox(
           height: 6,
         ),
@@ -492,48 +685,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
     );
   }
 
-  Widget _buildRegionDropdown(DetailsCoordinator coordinator) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        CrayonDropDown(
-          title: 'DV_region_label'.tr,
-          key: const Key('regionDropDown'),
-          icon: const Icon(
-            Icons.keyboard_arrow_down,
-            color: ES_grey_button_color,
-          ),
-          hint: Text(
-            'DV_region_hint_text'.tr,
-          ),
-          boxHeight: 60,
-          error: regionError,
-          value: _region,
-          items: regionDropDown,
-          onChanged: (value) async {
-            onRegionChosen(value as Datum, coordinator);
-            region.text = value.name!;
-            _validateForm(coordinator);
-            coordinator.isValidRegion(value.name!);
-            dis.clear();
-            district.clear();
-            dis = await coordinator.getDistrict(value.id!, widget.userType);
-            districtDropDown = getDistrictDropDownData(dis);
-          },
-        ),
-        const SizedBox(
-          height: 6,
-        ),
-        Text(regionError.tr, style: label_input_error_style),
-        const SizedBox(
-          height: 10,
-        ),
-      ],
-    );
-  }
-
   Widget _buildContinueButton(
-      BuildContext buildContext, DetailsCoordinator coordinator) {
+      BuildContext buildContext, CustomerDetailsCoordinator coordinator) {
     return GestureDetector(
       onTap: () async {
         coordinator.isValidName(name.text);
@@ -703,26 +856,26 @@ class _DetailsScreenState extends State<DetailsScreen> {
 
   void onGenderTypeChosen(
     GenderType value,
-    DetailsCoordinator coordinator,
+    CustomerDetailsCoordinator coordinator,
   ) {
     coordinator.setGenderType(value);
   }
 
   void onRegionChosen(
     Datum value,
-    DetailsCoordinator coordinator,
+    CustomerDetailsCoordinator coordinator,
   ) {
     coordinator.setRegion(value);
   }
 
   void onDistrictChosen(
     b.Datum value,
-    DetailsCoordinator coordinator,
+    CustomerDetailsCoordinator coordinator,
   ) {
     coordinator.setDistrict(value);
   }
 
-  void _listenToStateChanges(BuildContext context, DetailsState state) {
+  void _listenToStateChanges(BuildContext context, CustomerDetailsState state) {
     state.maybeWhen(
         DetailsFormState: (isValid) {
           _isBtnEnabled = isValid;
@@ -769,7 +922,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
         orElse: () => null);
   }
 
-  void _validateForm(DetailsCoordinator coordinator) {
+  void _validateForm(CustomerDetailsCoordinator coordinator) {
     coordinator.validateForm(
         name.text,
         dob.text,
@@ -783,7 +936,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
         district.text);
   }
 
-  void _checkValid(String label, DetailsCoordinator coordinator) {
+  void _checkValid(String label, CustomerDetailsCoordinator coordinator) {
     print(label);
     switch (label) {
       case 'name':
@@ -806,7 +959,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
     }
   }
 
-  void _checkDob(DetailsCoordinator coordinator) {
+  void _checkDob(CustomerDetailsCoordinator coordinator) {
     if (dobError.isNotEmpty) {
       coordinator.isValidDob(dob.text);
     }

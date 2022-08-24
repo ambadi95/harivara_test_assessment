@@ -7,6 +7,7 @@ import '../navigation_handler/settings_navigation_handler.dart';
 class SettingsCoordinator extends BaseViewModel<SettingsState> {
   final SettingsUseCase _settingsUseCase;
   final SettingsNavigationHandler _navigationHandler;
+
   SettingsCoordinator(this._navigationHandler, this._settingsUseCase)
       : super(const SettingsState.initialState());
 
@@ -24,6 +25,10 @@ class SettingsCoordinator extends BaseViewModel<SettingsState> {
 
   Future<void> navigateToUpdateProfile() async {
     await _navigationHandler.navigateToAgentDetailScreen();
+  }
+
+  Future<void> navigateToCustomerProfileScreen() async {
+    await _navigationHandler.navigateToCustomerDetailScreen();
   }
 
   Future<void> signOut() async {

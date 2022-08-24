@@ -6,18 +6,20 @@ import 'package:shared_data_models/customer_onboard/region_district/district_res
     as b;
 import 'package:task_manager/base_classes/base_view_model.dart';
 import 'package:welcome/data_model/gender_type.dart';
+import 'package:welcome/sub_features/customer_profile_details/state/customer_details_state.dart';
 import 'package:welcome/sub_features/details/state/details_state.dart';
 import 'package:welcome/sub_features/details/viewmodel/details_usecase.dart';
 import '../../../navigation_handler/welcome_navigation_handler.dart';
+import 'customer_details_usecase.dart';
 
-class DetailsCoordinator extends BaseViewModel<DetailsState> {
-  final DetailsUseCase _detailsUseCase;
+class CustomerDetailsCoordinator extends BaseViewModel<CustomerDetailsState> {
+  final CustomerDetailsUseCase _customerDetailsUseCase;
   final WelcomeNavigationHandler _navigationHandler;
 
-  DetailsCoordinator(
+  CustomerDetailsCoordinator(
     this._navigationHandler,
-    this._detailsUseCase,
-  ) : super(const DetailsState.initialState());
+    this._customerDetailsUseCase,
+  ) : super(const CustomerDetailsState.initialState());
 
   void goBack() async {
     _navigationHandler.goBack();
@@ -30,33 +32,43 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
       ];
 
   Future getRegion(UserType userType) async {
-    var response = await _detailsUseCase.getRegion((p0) => null, userType);
+    var response =
+        await _customerDetailsUseCase.getRegion((p0) => null, userType);
     return response?.data;
   }
 
   Future getDistrict(int regionId, UserType userType) async {
-    var response = await _detailsUseCase.getDistrict(
+    var response = await _customerDetailsUseCase.getDistrict(
         regionId.toString(), (p0) => null, userType);
     return response?.data;
   }
 
-
+  Future getCustomerDetails() async {
+    var response =
+        await _customerDetailsUseCase.getCustomerDetails((p0) => null);
+    if (response?.status == true) {
+      CrayonPaymentLogger.logInfo(response!.data!.referenceId!.toString());
+      return response;
+    } else {
+      CrayonPaymentLogger.logInfo(response!.message!);
+    }
+  }
 
   void setGenderType(GenderType genderType) {
-    state = DetailsState.onGenderTypeChoosen(genderType);
+    state = CustomerDetailsState.onGenderTypeChoosen(genderType);
   }
 
   void setRegion(Datum region) {
-    state = DetailsState.onRegionChoosen(region);
+    state = CustomerDetailsState.onRegionChoosen(region);
   }
 
   void setDistrict(b.Datum district) {
-    state = DetailsState.onDistrictChoosen(district);
+    state = CustomerDetailsState.onDistrictChoosen(district);
   }
 
   Future<void> getMobileNumber() async {
-    String getMobileNo = await _detailsUseCase.getMobileNumber();
-    state = DetailsState.getMobileNumber(getMobileNo);
+    String getMobileNo = await _customerDetailsUseCase.getMobileNumber();
+    state = CustomerDetailsState.getMobileNumber(getMobileNo);
   }
 
   bool _validateForm(
@@ -71,14 +83,14 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
       String region,
       String district) {
     print("dfgfg${gender}");
-    var isnNameValid = _detailsUseCase.isValidName(name);
+    var isnNameValid = _customerDetailsUseCase.isValidName(name);
     var isMobileNoValid = mobNumber.isNotEmpty;
     var isDobValid = dob.isNotEmpty;
     var isGenderValid = (gender == 'null') ? false : gender.isNotEmpty;
     var isProfessionValid = profession.isNotEmpty;
-    var isEmailIdValid = _detailsUseCase.isValidEmail(emailId);
+    var isEmailIdValid = _customerDetailsUseCase.isValidEmail(emailId);
     var isAddressValid = address.isNotEmpty;
-    var isPoBoxValid = /*_detailsUseCase.isValidPoBox(poBox)*/ true;
+    var isPoBoxValid = /*_customerDetailsUseCase.isValidPoBox(poBox)*/ true;
     var isRegionValid = region.isNotEmpty;
     var isDistrictValid = district.isNotEmpty;
 
@@ -108,8 +120,17 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
       String region,
       String district) {
     print(gender);
-    state = DetailsState.DetailsFormState(_validateForm(name, dob, gender,
-        profession, mobNumber, emailId, address, poBox, region, district));
+    state = CustomerDetailsState.DetailsFormState(_validateForm(
+        name,
+        dob,
+        gender,
+        profession,
+        mobNumber,
+        emailId,
+        address,
+        poBox,
+        region,
+        district));
   }
 
   Future navigateToCreatePasscodeScreen(UserType userType) async {
@@ -117,31 +138,31 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
   }
 
   bool isValidName(String name) {
-    bool result = _detailsUseCase.isValidName(name);
+    bool result = _customerDetailsUseCase.isValidName(name);
     if (!result) {
-      state = const DetailsState.nameError('DV_name_error_text');
+      state = const CustomerDetailsState.nameError('DV_name_error_text');
     } else {
-      state = const DetailsState.nameError('');
+      state = const CustomerDetailsState.nameError('');
     }
     return result;
   }
 
   bool isValidEmail(String emailId) {
-    bool result = _detailsUseCase.isValidEmail(emailId);
+    bool result = _customerDetailsUseCase.isValidEmail(emailId);
     if (!result) {
-      state = const DetailsState.emailError('DV_email_error_text');
+      state = const CustomerDetailsState.emailError('DV_email_error_text');
     } else {
-      state = const DetailsState.emailError('');
+      state = const CustomerDetailsState.emailError('');
     }
     return result;
   }
 
   bool isValidPoBox(String poBox) {
-    // bool result = _detailsUseCase.isValidPoBox(poBox);
+    // bool result = _customerDetailsUseCase.isValidPoBox(poBox);
     // if (!result) {
-    //   state = const DetailsState.poBoxError('DV_poBox_error_text');
+    //   state = const CustomerDetailsState.poBoxError('DV_poBox_error_text');
     // } else {
-    //   state = const DetailsState.poBoxError('');
+    //   state = const CustomerDetailsState.poBoxError('');
     // }
     // return result;
     return true;
@@ -150,15 +171,15 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
   bool isValidDob(String dob) {
     var result = dob.isNotEmpty;
     if (!result) {
-      state = const DetailsState.dobError('DV_dob_error_text');
+      state = const CustomerDetailsState.dobError('DV_dob_error_text');
     } else {
-      state = const DetailsState.dobError('');
+      state = const CustomerDetailsState.dobError('');
     }
     return result;
   }
 
   bool inVaidDob() {
-    state = DetailsState.dobError('DV_invalid_dob_error_text');
+    state = CustomerDetailsState.dobError('DV_invalid_dob_error_text');
     return false;
   }
 
@@ -167,9 +188,9 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
   ) {
     var result = gender.isNotEmpty;
     if (!result) {
-      state = const DetailsState.genderError('DV_gender_error_text');
+      state = const CustomerDetailsState.genderError('DV_gender_error_text');
     } else {
-      state = const DetailsState.genderError('');
+      state = const CustomerDetailsState.genderError('');
     }
     return result;
   }
@@ -177,9 +198,10 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
   bool isValidProfession(String prof) {
     var result = prof.isNotEmpty;
     if (!result) {
-      state = const DetailsState.professionError('DV_profession_error_text');
+      state = const CustomerDetailsState.professionError(
+          'DV_profession_error_text');
     } else {
-      state = const DetailsState.professionError('');
+      state = const CustomerDetailsState.professionError('');
     }
     return result;
   }
@@ -187,9 +209,9 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
   bool isValidAddress(String address) {
     var result = address.isNotEmpty;
     if (!result) {
-      state = const DetailsState.addressError('DV_address_error_text');
+      state = const CustomerDetailsState.addressError('DV_address_error_text');
     } else {
-      state = const DetailsState.addressError('');
+      state = const CustomerDetailsState.addressError('');
     }
     return result;
   }
@@ -197,9 +219,9 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
   bool isValidRegion(String region) {
     var result = region.isNotEmpty;
     if (!result) {
-      state = const DetailsState.regionError('DV_region_error_text');
+      state = const CustomerDetailsState.regionError('DV_region_error_text');
     } else {
-      state = const DetailsState.regionError('');
+      state = const CustomerDetailsState.regionError('');
     }
     return result;
   }
@@ -207,9 +229,10 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
   bool isValidDistrict(String district) {
     var result = district.isNotEmpty;
     if (!result) {
-      state = const DetailsState.districtError('DV_district_error_text');
+      state =
+          const CustomerDetailsState.districtError('DV_district_error_text');
     } else {
-      state = const DetailsState.districtError('');
+      state = const CustomerDetailsState.districtError('');
     }
     return result;
   }
@@ -226,8 +249,8 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
     String district,
     UserType userType,
   ) async {
-    state = const DetailsState.LoadingState();
-    var response = await _detailsUseCase.submitCustomerDetails(
+    state = const CustomerDetailsState.LoadingState();
+    var response = await _customerDetailsUseCase.submitCustomerDetails(
         name,
         dob,
         gender,
@@ -240,10 +263,10 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
         (p0) => null,
         userType);
     if (response?.status == true) {
-      state = const DetailsState.initialState();
+      state = const CustomerDetailsState.initialState();
       navigateToCreatePasscodeScreen(userType);
     } else {
-      state = const DetailsState.initialState();
+      state = const CustomerDetailsState.initialState();
       print(response?.message);
     }
   }

@@ -10,6 +10,10 @@ import 'package:welcome/sub_features/agent_details/viewmodel/agent_details_coord
 import 'package:welcome/sub_features/agent_details/viewmodel/agent_details_usecase.dart';
 import 'package:welcome/sub_features/agent_details/viewmodel/agent_details_view_model.dart';
 import 'package:welcome/sub_features/agent_enrollment/viewmodel/agent_enrollment_coordinator.dart';
+import 'package:welcome/sub_features/customer_profile_details/service/customer_details_service.dart';
+import 'package:welcome/sub_features/customer_profile_details/viewmodel/customer_details_coordinator.dart';
+import 'package:welcome/sub_features/customer_profile_details/viewmodel/customer_details_usecase.dart';
+import 'package:welcome/sub_features/customer_profile_details/viewmodel/customer_details_view_model.dart';
 import 'package:welcome/sub_features/details/viewmodel/details_usecase.dart';
 import 'package:welcome/sub_features/enrollment_success/service/enrollment_service.dart';
 import 'package:welcome/sub_features/enrollment_success/viewmodel/enrollment_success_coordinator.dart';
@@ -41,8 +45,13 @@ class WelcomeModule {
     ModuleResolver.registerResolver(
       moduleIdentifier,
       SignupModuleResolver(
-        SignupApiResolver(SignupService(), DetailsService(),
-            EnrollmentService(), AgentDetailsService(), WelcomeBackService()),
+        SignupApiResolver(
+            SignupService(),
+            DetailsService(),
+            EnrollmentService(),
+            AgentDetailsService(),
+            WelcomeBackService(),
+            CustomerDetailsService()),
       ),
     );
 
@@ -68,13 +77,14 @@ class WelcomeModule {
     );
 
     DIContainer.container.registerFactory<RegistrationApprovalCoordinator>(
-          (container) => RegistrationApprovalCoordinator(
+      (container) => RegistrationApprovalCoordinator(
         WelcomeNavigationHandler(container.resolve<NavigationManager>()),
       ),
     );
 
-    DIContainer.container.registerFactory<CustomerOnBoardingApprovalCoordinator>(
-          (container) => CustomerOnBoardingApprovalCoordinator(
+    DIContainer.container
+        .registerFactory<CustomerOnBoardingApprovalCoordinator>(
+      (container) => CustomerOnBoardingApprovalCoordinator(
         WelcomeNavigationHandler(container.resolve<NavigationManager>()),
       ),
     );
@@ -88,6 +98,17 @@ class WelcomeModule {
         ),
       ),
     );
+
+    DIContainer.container.registerFactory<CustomerDetailsCoordinator>(
+          (container) => CustomerDetailsCoordinator(
+        WelcomeNavigationHandler(container.resolve<NavigationManager>()),
+        CustomerDetailsUseCase(
+          CustomerDetailsViewModel(),
+          container.resolve<TaskManager>(),
+        ),
+      ),
+    );
+
 
     DIContainer.container.registerFactory<AgentDetailsCoordinator>(
       (container) => AgentDetailsCoordinator(

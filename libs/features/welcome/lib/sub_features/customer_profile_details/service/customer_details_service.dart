@@ -5,12 +5,12 @@ import 'package:core/logging/logger.dart';
 import 'package:network_manager/model/requests/request.dart';
 import 'package:network_manager/model/requests/standard/standard_request.dart';
 
-abstract class IDetailsService {
+abstract class ICustomerDetailsService {
   static const detailIdentifier = 'details';
   static const regionIdentifier = 'getRegion';
   static const districtIdentifier = 'getDistrict';
   static const submitCustomerDetailIdentifier = 'submitCustomerDetail';
-
+  static const customerDetailIdentifier = 'getCustomerProfileData';
 
   Future<StandardRequest> getRegion(UserType type);
 
@@ -19,10 +19,10 @@ abstract class IDetailsService {
   Future<StandardRequest> submitCustomerDetails(
       Map<String, dynamic> requestData, UserType type);
 
-
+  Future<StandardRequest> getCustomerDetails(int customerId);
 }
 
-class DetailsService implements IDetailsService {
+class CustomerDetailsService implements ICustomerDetailsService {
   @override
   Future<StandardRequest> getRegion(UserType userType) async {
     var request = StandardRequest();
@@ -66,4 +66,15 @@ class DetailsService implements IDetailsService {
     return request;
   }
 
+  @override
+  Future<StandardRequest> getCustomerDetails(int customerId) async {
+    var request = StandardRequest();
+    request.requestType = RequestType.GET;
+    request.endpoint = 'customer-details/$customerId';
+    request.customHeaders = {
+      'Content-Type': 'application/json',
+    };
+
+    return request;
+  }
 }

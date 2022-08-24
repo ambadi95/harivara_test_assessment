@@ -101,11 +101,12 @@ class _LoanDetailScreenState extends State<LoanDetailScreen> {
         SizedBox(
           height: AppUtils.appUtilsInstance.getPercentageSize(percentage: 10),
         ),
-        const Image(
-          image: AssetImage(LD_loan_detail),
-          height: 170,
-          //fit: BoxFit.cover,
-        ),
+        _getLoanDetailBanner(
+            title: "Y9 Device Loan",
+            deviceName: "Samsung - A13",
+            deviceStats: "8GB, 128GB Storage| Exynos 2100 |\nAndroid12",
+            deviceImage: LD_loan_detail_banner_image,
+            deviceId: "648960359535569"),
         _getSpaceBetweenWidget(4),
         _getLoanDetailWithCurrencyWidget(
             title: 'LD_Loan_Detail_Amount', value: "6,85,000 "),
@@ -117,12 +118,10 @@ class _LoanDetailScreenState extends State<LoanDetailScreen> {
             title: 'LD_Loan_Detail_Repayment', value: "Daily EMI"),
         _getSpaceBetweenWidget(4),
         _getLoanDetailWithCurrencyWidget(
-            title: 'LD_Loan__Detail_Daily_Repayment_Amount',
-            value: "2,000 "),
+            title: 'LD_Loan__Detail_Daily_Repayment_Amount', value: "2,000 "),
         _getSpaceBetweenWidget(4),
         _getLoanDetailWithCurrencyWidget(
-            title: 'LD_Loan_Detail_Total_Repayed_Amount',
-            value: "7,70,000 "),
+            title: 'LD_Loan_Detail_Total_Repayed_Amount', value: "7,70,000 "),
         _getSpaceBetweenWidget(4),
         _getLoanDetailWidget(
             title: 'LD_Loan_Detail_Loan_Tenure', value: "365 days"),
@@ -145,6 +144,78 @@ class _LoanDetailScreenState extends State<LoanDetailScreen> {
         _buildNoteWidget(context),
         _getSpaceBetweenWidget(10),
       ],
+    );
+  }
+
+  Widget _getLoanDetailBanner({
+    required String title,
+    required String deviceName,
+    required String deviceStats,
+    required String deviceImage,
+    required String deviceId,
+  }) {
+    return Container(
+      height: 170,
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(horizontal: 15),
+      decoration: BoxDecoration(
+        color: Loan_Banner_Background,
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Row(
+        children: [
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: const TextStyle(
+                  color: White,
+                  fontSize: 12,
+                  fontWeight: FontWeight.w500,
+                  fontFamily: 'Montserrat',
+                ),
+              ),
+              _getSpaceBetweenWidget(2),
+              Text(
+                deviceId,
+                style: const TextStyle(
+                  color: White,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                  fontFamily: 'Montserrat',
+                ),
+              ),
+              _getSpaceBetweenWidget(4),
+              Text(
+                deviceName,
+                style: const TextStyle(
+                  color: White,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  fontFamily: 'Montserrat',
+                ),
+              ),
+              _getSpaceBetweenWidget(2),
+              Text(
+                deviceStats,
+                style: const TextStyle(
+                  color: White,
+                  fontSize: 10,
+                  fontWeight: FontWeight.w400,
+                  fontFamily: 'Montserrat',
+                ),
+              ),
+            ],
+          ),
+          const Image(
+            image: AssetImage(LD_loan_detail_banner_image),
+            width: 160,
+            //fit: BoxFit.cover,
+          ),
+        ],
+      ),
     );
   }
 

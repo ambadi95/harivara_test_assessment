@@ -158,6 +158,7 @@
   "ST_title": "Settings",
   "ST_subTitle": "Profile Management",
   "ST_view_profile": "View Profile",
+  "ST_my_profile": "My Profile",
   "ST_update_passcode": "Update Passcode",
   "ST_App_Language": "App Language",
   "ST_sign_out": "Sign Out",
@@ -181,5 +182,8 @@
   "LD_Loan_Detail_Device_Insurance_ID": "Device Insurance ID",
   "LD_Loan_Detail_Note": "** Note: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
   "LD_Loan_Detail_Terms_and_conditions": "By signing up to Y9, you all ready agree to the",
-  "LD_Loan_Detail_Terms": " Terms & Conditions."
+  "LD_Loan_Detail_Terms": " Terms & Conditions.",
+
+  "Profile_Title": "Profile",
+  "Profile_Sub_Title": "Your Personal details are shown as per your NIDA records"
 }

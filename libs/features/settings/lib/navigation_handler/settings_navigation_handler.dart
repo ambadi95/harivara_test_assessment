@@ -7,6 +7,8 @@ import 'package:shared_data_models/signup/sign_up_type.dart';
 import 'package:welcome/data_model/agent_detail_arguments.dart';
 import 'package:welcome/data_model/sign_up_arguments.dart';
 import 'package:welcome/sub_features/agent_details/view/agent_details.dart';
+import 'package:welcome/sub_features/customer_profile_details/view/customer_details_screen.dart';
+import 'package:welcome/sub_features/details/view/details.dart';
 import 'package:welcome/sub_features/signup/view/signup.dart';
 import 'package:welcome/sub_features/welcome/data_model/welcome_model.dart';
 import 'package:welcome/sub_features/welcome/view/welcome_screen.dart';
@@ -65,6 +67,12 @@ class SettingsNavigationHandler with ErrorHandler {
         AgentDetailScreenType.UpdateProfile, UserType.Agent, false);
     await _navigationManager.navigateTo(
         AgentDetailsScreen.viewPath, const NavigationType.push(),
+        arguments: arguments);
+  }
+  Future<void> navigateToCustomerDetailScreen() async {
+    var arguments = UserType.Customer ;
+    await _navigationManager.navigateTo(
+        CustomerDetailsScreen.viewPath, const NavigationType.push(),
         arguments: arguments);
   }
 
