@@ -56,6 +56,8 @@ dev_dependencies:
   freezed:
   build_runner:
   json_serializable:
+  flutter_svg: ^1.1.4
+
 
 
 flutter:

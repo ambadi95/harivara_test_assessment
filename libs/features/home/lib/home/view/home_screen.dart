@@ -12,6 +12,7 @@ import '../home_module.dart';
 import '../state/home_screen_state.dart';
 import '../viewmodel/home_coordinator.dart';
 import 'package:shared_data_models/home/customerCount/customer_count_response/data.dart';
+import 'package:flutter_svg/svg.dart';
 
 class CrayonHomeScreen extends StatefulWidget {
   static const viewPath = '${HomeModule.moduleIdentifier}/CrayonHomeScreen';
@@ -287,15 +288,16 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
           clipBehavior: Clip.antiAliasWithSaveLayer,
           decoration: const BoxDecoration(
               color: HS_RedCardIconsBackColor, shape: BoxShape.circle),
-          child: Image.asset(
-            imagePath,
-            width: 20,
-            height: 20,
-            // color: (title == 'HS_Customer_DeviceSwap'.tr ||
-            //         title == 'HS_Customer_AgentSupport'.tr)
-            //     ? SU_border_color
-            //     : OB_WelcomeThirdTtileColor,
-          ),
+          child: SvgPicture.asset(imagePath)
+          // Image.asset(
+          //   imagePath,
+          //   width: 20,
+          //   height: 20,
+          //   // color: (title == 'HS_Customer_DeviceSwap'.tr ||
+          //   //         title == 'HS_Customer_AgentSupport'.tr)
+          //   //     ? SU_border_color
+          //   //     : OB_WelcomeThirdTtileColor,
+          // ),
         ),
         const SizedBox(
           height: 10,
@@ -457,24 +459,30 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
             FloatingActionButtonLocation.miniCenterDocked,
         bottomNavigationBar: SizedBox(
           height: 55,
-          child: BottomNavigationBar(
+          child:
+          BottomNavigationBar(
             currentIndex: selectedIndex,
             type: BottomNavigationBarType.fixed,
             items: [
               BottomNavigationBarItem(
-                  icon: Image.asset(
-                    HS_HomeIcon,
-                    scale: 2.0,
-                  ),
+                  icon: SvgPicture.asset(HS_HomeIcon,
+                  color: selectedIndex == 0 ? const Color(0xFFDA2228) : const Color(0xFF000000)),
+                  // Image.asset(
+                  //   HS_HomeIcon,
+                  //   scale: 2.0,
+                  // ),
                   label: ''),
               BottomNavigationBarItem(
-                  icon: Image.asset(
-                    HS_SettingIcon,
-                    scale: 2.0,
-                  ),
-                  label: '')
-            ],
-            onTap: (index) {
+                  icon: SvgPicture.asset(HS_SettingIcon,
+                  color: selectedIndex == 1 ? const Color(0xFFDA2228) : const Color(0xFF000000)),
+
+    //   HS_SettingIcon,
+    //   scale: 2.0,
+    // ),
+    label: '')
+    ],
+    onTap: (index) {
+                  // Image.asset(
               setState(() {
                 selectedIndex = index;
               });

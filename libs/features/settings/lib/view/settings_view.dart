@@ -10,6 +10,7 @@ import 'package:get/get.dart';
 import 'package:widget_library/utils/launcher_utils.dart';
 import '../model/settings_arguments.dart';
 import '../state/settings_state.dart';
+import 'package:flutter_svg/svg.dart';
 
 class Settings extends StatefulWidget {
   final String _identifier = 'settings';
@@ -170,11 +171,12 @@ class _SettingsState extends State<Settings> {
         padding: const EdgeInsets.only(bottom: 20, top: 20),
         child: Row(
           children: [
-            Image.asset(
-              image,
-              width: 28,
-              height: 28,
-            ),
+            SvgPicture.asset(image),
+            // Image.asset(
+            //   image,
+            //   width: 28,
+            //   height: 28,
+            // ),
             const SizedBox(
               width: 30,
             ),
