@@ -15,6 +15,7 @@ class Settings extends StatefulWidget {
   final String _identifier = 'settings';
   static const String viewPath = '${SettingsModule.moduleIdentifier}/settings';
   final SettingsScreenArgs screenArgs;
+
   const Settings({Key? key, required this.screenArgs}) : super(key: key);
 
   @override
@@ -42,15 +43,14 @@ class _SettingsState extends State<Settings> {
             height: 48,
           ),
           _buildProfileOptionList(coordinator),
-
-          widget.screenArgs.isAgent ? const SizedBox() : _buildSupportOptionsList(coordinator),
-
+          widget.screenArgs.isAgent
+              ? const SizedBox()
+              : _buildSupportOptionsList(coordinator),
           const SizedBox(
             height: 30,
           ),
           _buildSignout(coordinator),
           const Spacer(),
-
           _buildContactText(context)
         ],
       ),
@@ -112,17 +112,19 @@ class _SettingsState extends State<Settings> {
           height: 20,
         ),
         _buildOptions(context, 'ST_view_profile', ST_view_profile, () async {
-          widget.screenArgs.isAgent ? await coordinator.navigateToUpdateProfile() : (){};
+          widget.screenArgs.isAgent
+              ? await coordinator.navigateToUpdateProfile()
+              : () {};
         }),
         _buildOptions(context, 'ST_update_passcode', ST_update_passcode,
             () async {
-         widget.screenArgs.isAgent ? await coordinator.resetPasscode() : (){};
+          widget.screenArgs.isAgent ? await coordinator.resetPasscode() : () {};
         }),
         _buildOptions(context, 'ST_App_Language', ST_language, () async {
-          widget.screenArgs.isAgent ? await coordinator.changeLanguage() : (){};
+          widget.screenArgs.isAgent
+              ? await coordinator.changeLanguage()
+              : () {};
         }),
-
-
       ],
     );
   }
@@ -131,7 +133,9 @@ class _SettingsState extends State<Settings> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SizedBox(height: 40,),
+        const SizedBox(
+          height: 40,
+        ),
         CrayonPaymentText(
           key: Key('${widget._identifier}_ST_support'),
           text: TextUIDataModel('ST_support'.tr,
@@ -142,26 +146,24 @@ class _SettingsState extends State<Settings> {
         const SizedBox(
           height: 20,
         ),
-        _buildOptions(context, 'ST_agents', ST_agent, () async {
-
+        _buildOptions(context, 'ST_agents', ST_agent, () async {}),
+        _buildOptions(context, 'ST_faq', ST_faq, () async {
+          coordinator.navigateToTermsCondtionsScreen();
         }),
-        _buildOptions(context, 'ST_faq', ST_faq,
-                () async {
-
-            }),
-        _buildOptions(context, 'ST_term_condition', ST_TermsCondition, () async {
+        _buildOptions(context, 'ST_term_condition', ST_TermsCondition,
+            () async {
+          LauncherUtils.launcherUtilsInstance
+              .launchInBrowser(url: LauncherUtils.Y9_BANK_URL);
         }),
         _buildOptions(context, 'ST_call_support', ST_CallSupport, () async {
           LauncherUtils.launcherUtilsInstance
               .makePhoneCall(phoneNumber: LauncherUtils.CONTACT_NUMBER);
-
-
         }),
       ],
     );
   }
 
-  Widget _buildSignout(coordinator){
+  Widget _buildSignout(coordinator) {
     return _buildOptions(context, 'ST_sign_out', ST_sign_out, () async {
       await coordinator.signOut();
     });
