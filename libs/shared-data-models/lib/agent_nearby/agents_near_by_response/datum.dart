@@ -13,32 +13,39 @@ class Datum extends Equatable {
   final String? region;
   final String? district;
   final String? imageUrl;
+  final double? lat;
+  final double? long;
+  final double? distance;
 
-  const Datum({
-    this.y9AgentId,
-    this.firstName,
-    this.lastName,
-    this.middleName,
-    this.mobileNo,
-    this.address,
-    this.poBoxNumber,
-    this.region,
-    this.district,
-    this.imageUrl,
-  });
+  const Datum(
+      {this.y9AgentId,
+      this.firstName,
+      this.lastName,
+      this.middleName,
+      this.mobileNo,
+      this.address,
+      this.poBoxNumber,
+      this.region,
+      this.district,
+      this.imageUrl,
+      this.lat,
+      this.long,
+      this.distance});
 
   factory Datum.fromMap(Map<String, dynamic> data) => Datum(
-        y9AgentId: data['y9AgentId'] as String?,
-        firstName: data['firstName'] as String?,
-        lastName: data['lastName'] as String?,
-        middleName: data['middleName'] as dynamic,
-        mobileNo: data['mobileNo'] as String?,
-        address: data['address'] as String?,
-        poBoxNumber: data['poBoxNumber'] as String?,
-        region: data['region'] as String?,
-        district: data['district'] as String?,
-        imageUrl: data['imageUrl'] as String?,
-      );
+      y9AgentId: data['y9AgentId'] as String?,
+      firstName: data['firstName'] as String?,
+      lastName: data['lastName'] as String?,
+      middleName: data['middleName'] as dynamic,
+      mobileNo: data['mobileNo'] as String?,
+      address: data['address'] as String?,
+      poBoxNumber: data['poBoxNumber'] as String?,
+      region: data['region'] as String?,
+      district: data['district'] as String?,
+      imageUrl: data['imageUrl'] as String?,
+      lat: data['lat'] as double,
+      long: data['long'] as double,
+      distance: data['distance'] as double);
 
   Map<String, dynamic> toMap() => {
         'y9AgentId': y9AgentId,
@@ -51,6 +58,9 @@ class Datum extends Equatable {
         'region': region,
         'district': district,
         'imageUrl': imageUrl,
+        'lat': lat,
+        'long': long,
+        'distance': distance
       };
 
   /// `dart:convert`
@@ -65,30 +75,34 @@ class Datum extends Equatable {
   /// Converts [Datum] to a JSON string.
   String toJson() => json.encode(toMap());
 
-  Datum copyWith({
-    String? y9AgentId,
-    String? firstName,
-    String? lastName,
-    dynamic middleName,
-    String? mobileNo,
-    String? address,
-    String? poBoxNumber,
-    String? region,
-    String? district,
-    String? imageUrl,
-  }) {
+  Datum copyWith(
+      {String? y9AgentId,
+      String? firstName,
+      String? lastName,
+      dynamic middleName,
+      String? mobileNo,
+      String? address,
+      String? poBoxNumber,
+      String? region,
+      String? district,
+      String? imageUrl,
+      double? lat,
+      double? long,
+      double? distance}) {
     return Datum(
-      y9AgentId: y9AgentId ?? this.y9AgentId,
-      firstName: firstName ?? this.firstName,
-      lastName: lastName ?? this.lastName,
-      middleName: middleName ?? this.middleName,
-      mobileNo: mobileNo ?? this.mobileNo,
-      address: address ?? this.address,
-      poBoxNumber: poBoxNumber ?? this.poBoxNumber,
-      region: region ?? this.region,
-      district: district ?? this.district,
-      imageUrl: imageUrl ?? this.imageUrl,
-    );
+        y9AgentId: y9AgentId ?? this.y9AgentId,
+        firstName: firstName ?? this.firstName,
+        lastName: lastName ?? this.lastName,
+        middleName: middleName ?? this.middleName,
+        mobileNo: mobileNo ?? this.mobileNo,
+        address: address ?? this.address,
+        poBoxNumber: poBoxNumber ?? this.poBoxNumber,
+        region: region ?? this.region,
+        district: district ?? this.district,
+        imageUrl: imageUrl ?? this.imageUrl,
+        lat: lat ?? this.lat,
+        long: long ?? this.long,
+        distance: distance ?? this.distance);
   }
 
   @override
@@ -107,6 +121,9 @@ class Datum extends Equatable {
       region,
       district,
       imageUrl,
+      lat,
+      long,
+      distance
     ];
   }
 }

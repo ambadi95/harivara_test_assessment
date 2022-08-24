@@ -1,3 +1,4 @@
+import 'package:location/location.dart';
 import 'package:task_manager/base_classes/base_data_provider.dart';
 import 'package:task_manager/task.dart';
 import 'package:task_manager/task_manager_impl.dart';
@@ -26,6 +27,16 @@ class AgentNearbyUseCase extends BaseDataProvider {
   Future<String> hasValidLocation() async {
     var locationError = await _agentNearbyViewModel.hasValidLocation();
     return locationError;
+  }
+
+  Future<LocationData> getCurrentLocation ()async{
+    var locationData = await _agentNearbyViewModel.getCurrentLocation();
+    return locationData;
+  }
+
+  double calculateDistance(double currentLat,double currentLong,double lat,double long){
+    var distance = _agentNearbyViewModel.calculateDistance(currentLat, currentLong, lat, long);
+    return distance;
   }
 
   Future<AgentsNearByResponse?> agentsNearBy(String genericSearchValue,

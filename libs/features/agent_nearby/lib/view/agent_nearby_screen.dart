@@ -7,6 +7,7 @@ import 'package:shared_data_models/agent_nearby/agents_near_by_response/datum.da
 import 'package:widget_library/app_bars/crayon_payment_app_bar_attributes.dart';
 import 'package:widget_library/app_bars/crayon_payment_app_bar_button_type.dart';
 import 'package:widget_library/page_header/text_ui_data_model.dart';
+import 'package:widget_library/progress_bar/centered_circular_progress_bar.dart';
 import 'package:widget_library/scaffold/crayon_payment_scaffold.dart';
 import 'package:widget_library/search_bar/search_bar_widget_model.dart';
 import 'package:widget_library/spacers/crayon_payment_spacers.dart';
@@ -26,12 +27,18 @@ class AgentNearBy extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseView<AgentNearbyCoordinator, AgentNearByState>(
-      setupViewModel: (coordinator) {
-        coordinator.hasValidLocation(context);
+      setupViewModel: (coordinator) async{
+      await coordinator.hasValidLocation(context);
+      coordinator.agentNearbyList();
         coordinator.search('');
       },
       builder: (context, state, coordinator) {
-        return _buildMainUI(context, coordinator,state);
+        return Stack(
+          children: [
+            _buildMainUI(context, coordinator,state),
+           state.isLoading == true ? _createLoading() : SizedBox()
+          ],
+        );
       },
     );
   }
@@ -102,11 +109,11 @@ class AgentNearBy extends StatelessWidget {
       shrinkWrap: true,
       itemCount: state.agentNearbyList.length,
       itemBuilder: (context, index) =>
-          _buildAgentCard(context, state.agentNearbyList[index]),
+          _buildAgentCard(context, state.agentNearbyList[index], coordinator),
     );
   }
 
-  Widget _buildAgentCard(context, Datum agent) {
+  Widget _buildAgentCard(context, Datum agent, AgentNearbyCoordinator coordinator) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -166,7 +173,9 @@ class AgentNearBy extends StatelessWidget {
                     .makePhoneCall(phoneNumber: agent.mobileNo);
               }),
               dynamicWSpacer(10),
-              actionButton(context, AN_MapDirection, '0.17KM', () {}),
+              actionButton(context, AN_MapDirection, agent.distance!.toStringAsFixed(2)  + 'Km', () {
+               coordinator.navigateToMap(agent.lat!, agent.long!);
+              }),
             ],
           ),
         )
@@ -192,6 +201,15 @@ class AgentNearBy extends StatelessWidget {
             style: const TextStyle(fontSize: 10, color: AN_ActionText),
           )
         ],
+      ),
+    );
+  }
+
+  Widget _createLoading() {
+    return Center(
+      child: Container(
+        color: Colors.black.withOpacity(0.4),
+        child: const CenteredCircularProgressBar(color: PRIMARY_COLOR),
       ),
     );
   }

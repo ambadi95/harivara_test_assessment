@@ -1,6 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:location/location.dart';
 import 'package:geocoding/geocoding.dart' as reversegeocoding;
+import 'dart:math' show cos, sqrt, asin;
 
 class AgentNearbyViewModel {
   final int _scanLocationTimeout = 15;
@@ -59,13 +60,33 @@ class AgentNearbyViewModel {
         _locationData.latitude!,
         _locationData.longitude!,
       );
-
       if (placeMarks.isEmpty) {
         return 'welcome-unable-to-detect-location';
       }
-      return 'welcome-coming-soon';
+      return 'Location Detected';
     } catch (e) {
       return 'welcome-unable-to-detect-location';
     }
+  }
+
+  Future<LocationData> getCurrentLocation()async{
+    var _locationData = await Future.any([
+      _location.getLocation(),
+      Future.delayed(Duration(seconds: _scanLocationTimeout), () => null),
+    ]);
+    if(_locationData != null){
+      return _locationData;
+    }else{
+      return _locationData!;
+    }
+  }
+
+  double calculateDistance(lat1, lon1, lat2, lon2){
+    var p = 0.017453292519943295;
+    var c = cos;
+    var a = 0.5 - c((lat2 - lat1) * p)/2 +
+        c(lat1 * p) * c(lat2 * p) *
+            (1 - c((lon2 - lon1) * p))/2;
+    return 12742 * asin(sqrt(a));
   }
 }
