@@ -6,10 +6,14 @@ import 'package:core/sheets/data_model/button_options.dart';
 import 'package:core/sheets/state/crayon_payment_bottom_sheet_state.dart';
 import 'package:home/home/home_screen_arguments.dart';
 import 'package:home/home/view/home_screen.dart';
+import 'package:shared_data_models/kyc/kyc_data_model.dart';
+import 'package:shared_data_models/kyc/kyc_type.dart';
 import 'package:welcome/sub_features/enrollment_success/view/enrollment_success_screen.dart';
 import 'package:widget_library/helpers/error/helper/error_helper.dart';
 import 'package:widget_library/icons/crayon_payment_bottom_sheet_icon.dart';
 import 'package:get/get.dart';
+import 'package:kyc/subfeatures/kycmain/view/kyc_credit_main_screen.dart';
+import 'package:shared_data_models/kyc/kyc_screen_args.dart';
 
 class PasscodeNavigationHandler with ErrorHandler {
   final NavigationManager _navigationManager;
@@ -32,7 +36,7 @@ class PasscodeNavigationHandler with ErrorHandler {
   }
 
   Future<void> navigateToAgentHomeScreen(String destinationPath) async {
-    var arguments = HomeScreenArgs(isAgent: true,userType: UserType.Agent);
+    var arguments = HomeScreenArgs(isAgent: true, userType: UserType.Agent);
     _navigationManager.navigateTo(
         destinationPath, const NavigationType.replace(),
         arguments: arguments);
@@ -82,9 +86,23 @@ class PasscodeNavigationHandler with ErrorHandler {
   }
 
   Future<void> navigateToAgentHome() async {
-    var argument = HomeScreenArgs(isAgent: true,userType: UserType.Agent);
+    var argument = HomeScreenArgs(isAgent: true, userType: UserType.Agent);
     await _navigationManager.navigateTo(
         CrayonHomeScreen.viewPath, const NavigationType.push(),
+        arguments: argument);
+  }
+
+  void navigateToKYCScreen() async {
+    var argument = KycScreenArgs(
+      KycFieldType.KYC_VALIDATION,
+      "",
+      "",
+      "",
+      "",
+      [KYCDataModel(title: "", isSelected: false)],
+    );
+    await _navigationManager.navigateTo(
+        KycCreditMainScreen.viewPath, const NavigationType.push(),
         arguments: argument);
   }
 }

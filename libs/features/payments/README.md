@@ -1,6 +1,6 @@
-# kyc_credit
+# payments
 
-kyc_credit
+payments
 
 ## Getting Started
 

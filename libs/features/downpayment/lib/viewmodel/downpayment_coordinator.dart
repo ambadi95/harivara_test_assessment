@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import '../navigation_handler/down_payment_navigation_handler.dart';
 import '../state/downpayment_state.dart';
 import 'downpayment_usecase.dart';
-
 class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
   final DownPaymentNavigationHandler _navigationHandler;
   final DownPaymentUseCase _downPaymentUseCase;
@@ -23,9 +22,11 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
         context: context,
         error: "",isLoading: false);
   }
- 
 
 
+  Future<String> getAgentName() async {
+    return _downPaymentUseCase.getAgentName();
+  }
 
  
 }

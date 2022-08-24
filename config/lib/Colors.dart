@@ -13,8 +13,11 @@ const SU_label_color= Color(0xFF565451);
 const SU_border_color = Color(0xffBAB8B2);
 const SU_grey_color = Color(0xffBAB8B2);
 const SU_carrier_message_color = Color(0xFF676767);
+const SU_telco_button_color= Color(0xFF9CA3AF);
+const SU_telco_green_checkbox_color = Color(0xFF00A43C);
 const SU_button_color = Color(0xFFDA2228);
 const SU_button_text_color = Color(0xFFFFFFFF);
+const SU_grey_icon_bg = Color(0xFFF5F7FB);
 
 
 ////Agent NearBy Screen
@@ -51,6 +54,7 @@ const HS_InviteBoxBackColor = Color(0xFFF3F4FA);
 const WB_TitleColor = Color(0xFF160304);
 const WB_EnterPassCodeTitleColor = Color(0xFF565451);
 const RC_greyColor = Color(0xFF333333);
+const MO_credit_info_bg =  Color(0xFFF3F3F3);
 
 
 const DD_BackgroundColor = Color(0xFFFFFFFF);
@@ -70,6 +74,9 @@ const READINGVIEW_COLOR=Color.fromRGBO(248, 245, 237,1);
 
 
 
-
-
 const TC_DescriptionColor=Color(0xFF160304);
+const DP_CircleColor=Color(0xFFFFBEBE);
+
+
+const PS_AirtelPayContainerColor=Color(0xFFF5F7FB);
+const PS_DailyRepaymentContainerColor=Color(0xFFF4EEEB);
