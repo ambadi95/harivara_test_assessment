@@ -181,7 +181,17 @@
   "TC_TermsCondition_Subtitle":"1. VIGEZO NA MASHARTI ",
   "TC_Terms_Conditons_Desc": "1.1. T&Cs hizi huchukua nafasi ya sheria na masharti yote ya awali (ikiwa yapo) isipokuwa pale tunapokushauri vinginevyo. Ufikiaji na matumizi yako ya Programu kufuatia mabadiliko yoyote kama haya hujumuisha makubaliano yako ya kufuata na kufungwa na T&Cs hizi. Kwa sababu hii, Y9 inakuhimiza kukagua T&C hizi kila wakati unapofikia na kutumia Programu na/au kupata Huduma za Y9.",
   "TC_Purpose_title":"2. KUSUDI",
-  "TC_Purpose_Desc": "2.1. Y9 ni mtoa huduma wa huduma ndogo za kidijitali inayolenga kusaidia kuendeleza mtindo wa maisha wa watu wa Tanzania na bara la Afrika kwa ujumla kwa kutoa huduma za kifedha kwa watu wasio na benki na wasio na benki kwa kutoa fursa ya kupata elimu ya kidijitali, afya ya kidijitali n.k. kwa kutoa simu mahiri za 4G. kwa masharti ya haki sana ili kuifanya ipatikane kwa wananchi wote kwa kuwezesha ushirikishwaji wa maana wa kifedha na kidijitali."
+  "TC_Purpose_Desc": "2.1. Y9 ni mtoa huduma wa huduma ndogo za kidijitali inayolenga kusaidia kuendeleza mtindo wa maisha wa watu wa Tanzania na bara la Afrika kwa ujumla kwa kutoa huduma za kifedha kwa watu wasio na benki na wasio na benki kwa kutoa fursa ya kupata elimu ya kidijitali, afya ya kidijitali n.k. kwa kutoa simu mahiri za 4G. kwa masharti ya haki sana ili kuifanya ipatikane kwa wananchi wote kwa kuwezesha ushirikishwaji wa maana wa kifedha na kidijitali.",
+
+
+  "LR_paying_for" : "You are paying for",
+  "LR_device_loan" : "Y9 Device Loan",
+  "LR_amount_to_pay" : "Choose the amount to pay",
+  "LR_due_amount" : "Pay Due Amount",
+  "LR_daily_repayment" : "Daily Repayment",
+  "LR_loan_amount" : "Total Loan Amount",
+  "LR_custom_amount" : "Pay Custom Amount",
+  "LR_pay_now" : "Pay Now"
 
 
 }

@@ -223,6 +223,13 @@ const ES_success_text = TextStyle(
   color: SECONDARY_COLOR,
 );
 
+const LR_payment_amount = TextStyle(
+  fontSize: 12,
+  fontWeight: FontWeight.bold,
+  fontFamily: 'Montserrat',
+  color: Colors.black
+);
+
 const ES_bold_text = TextStyle(
   fontSize: 20,
   fontWeight: FontWeight.bold,

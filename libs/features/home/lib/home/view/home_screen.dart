@@ -256,8 +256,13 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      _actionCommonView(
-                          'HS_LoanRepayment'.tr, HS_LoanRepayment),
+                      InkWell(
+                        onTap: (){
+                          coordinator.navigationToBottomSheet();
+                        },
+                        child: _actionCommonView(
+                            'HS_LoanRepayment'.tr, HS_LoanRepayment),
+                      ),
                       _actionCommonView('HS_LoanDetails'.tr, HS_LoanDetail),
                     ],
                   ),
@@ -323,6 +328,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
       clipBehavior: Clip.antiAliasWithSaveLayer,
       decoration: const BoxDecoration(
         color: HS_InviteBoxBackColor,
+
         borderRadius: BorderRadius.all(
           Radius.circular(16),
         ),
