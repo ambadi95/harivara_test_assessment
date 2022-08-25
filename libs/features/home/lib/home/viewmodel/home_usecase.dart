@@ -6,11 +6,6 @@ import 'package:shared_data_models/home/customerCount/customer_count_response/cu
 import 'package:task_manager/base_classes/base_data_provider.dart';
 import 'package:task_manager/task.dart';
 import 'package:task_manager/task_manager_impl.dart';
-import 'package:shared_data_models/home/customerCount/customer_count_response/customer_count_response.dart';
-<<<<<<< HEAD
-=======
-
->>>>>>> db02bb9bd0345733ecb8c9a4e57696958e7b9e40
 import 'home_view_model.dart';
 
 class HomeUserCase extends BaseDataProvider {
