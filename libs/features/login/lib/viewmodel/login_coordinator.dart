@@ -3,7 +3,7 @@ import 'package:core/view/analytics_state_notifier.dart';
 import '../navigation_handler/login_navigation_handler.dart';
 import '../state/login_state.dart';
 import 'login_usecase.dart';
-
+import 'package:crayon_payment_customer/util/app_utils.dart';
 class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
   final LoginNavigationHandler _navigationHandler;
   final LoginUseCase _loginUseCase;
@@ -62,6 +62,10 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
 
   Future login(String mobileNumber, String passcode, String userType,
       String agentId) async {
+    bool internetStatus = await AppUtils.appUtilsInstance.checkInternet();
+    if (!internetStatus) {
+      return;
+    }
     if (userType == 'Customer') {
       await customerLogin(mobileNumber, passcode, userType);
     } else {
@@ -71,6 +75,10 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
 
   Future customerLogin(
       String mobileNumber, String passcode, String userType) async {
+    bool internetStatus = await AppUtils.appUtilsInstance.checkInternet();
+    if (!internetStatus) {
+      return;
+    }
     state = LoginState.loading();
     var response = await _loginUseCase.login(
         '+255' + mobileNumber, passcode, (p0) => null);
@@ -86,6 +94,11 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
   }
 
   Future getAgentDetails(String agentId, String mobileNumber) async {
+
+    bool internetStatus = await AppUtils.appUtilsInstance.checkInternet();
+    if (!internetStatus) {
+      return;
+    }
     state = LoginState.loading();
     var response = await _loginUseCase.getAgentDetail(
         agentId, '255' + mobileNumber.replaceAll(" ", ""), (p0) => null);
