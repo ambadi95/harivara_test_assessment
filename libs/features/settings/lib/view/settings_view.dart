@@ -106,9 +106,9 @@ class _SettingsState extends State<Settings> {
         _buildOptions(context, 'ST_App_Language', ST_language, () async {
           await coordinator.changeLanguage();
         }),
-        const SizedBox(
-          height: 30,
-        ),
+        // const SizedBox(
+        //   height: 30,
+        // ),
         _buildOptions(context, 'ST_sign_out', ST_sign_out, () async {
           await coordinator.signOut();
         }),
