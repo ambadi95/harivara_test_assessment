@@ -37,7 +37,7 @@ class HomeUserCase extends BaseDataProvider {
         modelBuilderCallback: (responseData) {
           final data = responseData;
           CustomerCountResponse deviceListResponse =
-              CustomerCountResponse.fromMap(data);
+          CustomerCountResponse.fromMap(data);
           return CustomerCountResponse.fromMap(data);
         });
   }
