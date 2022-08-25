@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:config/Colors.dart';
 import 'package:config/Config.dart';
 import 'package:core/view/base_view.dart';
@@ -344,8 +346,9 @@ class _DeviceOptionState extends State<DeviceOption> {
           price,
           style: const TextStyle(
             fontSize: 11,
-            fontFamily: 'Montserrat',
             color: DD_TextLabel,
+            fontWeight: FontWeight.w400,
+              fontFamily: 'Montserrat'
           ),
         ),
         dynamicHSpacer(4),
@@ -360,19 +363,13 @@ class _DeviceOptionState extends State<DeviceOption> {
         style: TextStyle(fontSize:8,  color: DD_TextLabel, fontWeight: FontWeight.w600, fontFamily: 'Montserrat')),
         ],
         ),
-        ),
-        // Text(
-        //   label,
-        //   style: const TextStyle(
-        //       fontSize: 13, color: DD_TextLabel, fontWeight: FontWeight.w600, fontFamily: 'Montserrat',),
-        // ),
+        )
       ],
     );
   }
 
   Widget selectButton(DeviceOptionCoordinator coordinator, int id) {
     return CrayonPaymentDockedButton(
-
       key: const Key('Select'),
       title: 'View Details',
       borderRadius: 5,
