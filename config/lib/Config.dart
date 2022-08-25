@@ -25,14 +25,14 @@ const ST_language = 'assets/images/language_icon.png';
 const ST_sign_out = 'assets/images/sign_out_icon.png';
 
 //dev customer
- const customerEndpoint = 'https://y9-dev-capi.testmaya.com/customers/v1/';
+//  const customerEndpoint = 'https://y9-dev-capi.testmaya.com/customers/v1/';
 //prod customer
-//const customerEndpoint = 'https://customerapi.y9bank.com/customers/v1/';
+const customerEndpoint = 'https://customerapi.y9bank.com/customers/v1/';
 
 //dev agent
 //const agentEndPoint = 'https://y9-dev-aapi.testmaya.com/agents/v1/';
 //prod agent
-//const agentEndPoint = ' https://agentapi.y9bank.com/agents/v1/';
+//const agentEndPoint = 'https://agentapi.y9bank.com/agents/v1/';
 
 
 enum UserType{ Customer,Agent, AgentCustomer}
