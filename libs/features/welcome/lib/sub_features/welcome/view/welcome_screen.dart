@@ -153,7 +153,7 @@ class _CrayonWelcomScreenState extends State<CrayonWelcomScreen> {
   }
 
   Widget _buildSubTitle(BuildContext context) {
-    return Text('OB_WelcomeSubTitle'.tr, style: WELCOME_SUBHEADING_STYLE);
+    return Expanded(child:  Text('OB_WelcomeSubTitle'.tr, textAlign: TextAlign.center, style: WELCOME_SUBHEADING_STYLE));
   }
 
   Widget _buildThirdTitle(BuildContext context) {

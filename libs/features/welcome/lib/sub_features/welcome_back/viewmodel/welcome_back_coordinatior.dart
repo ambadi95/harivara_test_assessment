@@ -1,5 +1,7 @@
 import 'dart:ui';
 import 'package:core/mobile_core.dart';
+import 'package:crayon_payment_customer/util/app_utils.dart';
+import 'package:flutter/foundation.dart';
 import 'package:welcome/sub_features/welcome/state/welcome_screen_state.dart';
 import 'package:task_manager/base_classes/base_view_model.dart';
 import 'package:get/get.dart';
@@ -38,6 +40,10 @@ class WelcomeBackCoordinator extends BaseViewModel<WelcomeScreenState> {
   }
 
   Future<String> getAgentDetails() async {
+    bool internetStatus = await AppUtils.appUtilsInstance.checkInternet();
+    if (!internetStatus) {
+      return '';
+    }
     state = state.copyWith(isLoading: true);
     var response = await _welcomeUseCase.getAgentDetail((p0) => null);
     if (response?.status == true) {
@@ -52,7 +58,13 @@ class WelcomeBackCoordinator extends BaseViewModel<WelcomeScreenState> {
     }
   }
 
+
   Future agentLogin(String passcode) async {
+    bool internetStatus = await AppUtils.appUtilsInstance.checkInternet();
+    if (!internetStatus) {
+
+      return;
+    }
     state = state.copyWith(isLoading: true);
     var loginResponse =
         await _welcomeUseCase.loginAgent(passcode, (p0) => null);
@@ -74,7 +86,7 @@ class WelcomeBackCoordinator extends BaseViewModel<WelcomeScreenState> {
     return await _welcomeUseCase.getAgentName();
   }
 
-  Future<String> getCustomer()async{
+  Future<String> getCustomer() async {
     return await _welcomeUseCase.getCustomerName();
   }
 
@@ -91,6 +103,11 @@ class WelcomeBackCoordinator extends BaseViewModel<WelcomeScreenState> {
   }
 
   Future customerLogin(String passcode, String userType) async {
+    bool internetStatus = await AppUtils.appUtilsInstance.checkInternet();
+    if (!internetStatus) {
+
+      return;
+    }
     String mobileNumber = await _welcomeUseCase.getMobileNumber();
     state = state.copyWith(isLoading: true);
     print(mobileNumber);

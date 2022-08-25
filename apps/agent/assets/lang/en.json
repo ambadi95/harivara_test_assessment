@@ -9,8 +9,8 @@
 
 
   "LS_Login" : "Login to Your Y9 \nAgent",
-  "LS_Mobile" : "Mobile number",
-  "LS_mobile_error_text" : "Invalid Mobile number",
+  "LS_Mobile" : "Mobile Number",
+  "LS_mobile_error_text" : "Invalid Mobile Number",
   "LS_mobile_hint_text" : "Enter Mobile Number",
   "LS_agent_id" : "Agent ID",
   "LS_agent_id_error" : "Invalid Agent ID",
@@ -90,7 +90,7 @@
   "DV_button_text" : "Continue",
 
   "PC_create_passcode" : "Create new passcode",
-  "PC_passcode_message" : "This will be used to sign-in",
+  "PC_passcode_message" : "This will be used to sign in",
   "PC_re_enter_passcode" : "Re-enter new passcode",
   "PC_confirm_passcode" : "Confirm passcode",
   "PC_passcode_does_not_match" : "Passcode does not match.",
@@ -178,7 +178,7 @@
   "DD_MemberBenefit8": "Access to your Y9 Account",
 
   "RP_Passcode_Reset" : "Passcode has been Reset successfully",
-  "RP_Passcode_Desc" : "Please use the new passcode to Sign-in and proceed further",
+  "RP_Passcode_Desc" : "Please use the new passcode to Sign in and proceed further",
   "RP_Continue" : "Continue",
 
   "ST_title" : "Settings",

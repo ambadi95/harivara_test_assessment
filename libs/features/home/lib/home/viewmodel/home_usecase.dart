@@ -2,10 +2,12 @@ import 'package:config/Config.dart';
 import 'package:home/home/home_module.dart';
 import 'package:home/home/service/home_service.dart';
 import 'package:network_manager/auth/auth_manager.dart';
+import 'package:shared_data_models/home/customerCount/customer_count_response/customer_count_response.dart';
 import 'package:task_manager/base_classes/base_data_provider.dart';
 import 'package:task_manager/task.dart';
 import 'package:task_manager/task_manager_impl.dart';
-import 'package:shared_data_models/home/customerCount/customer_count_response/customer_count_response.dart ';
+import 'package:shared_data_models/home/customerCount/customer_count_response/customer_count_response.dart';
+
 import 'home_view_model.dart';
 
 class HomeUserCase extends BaseDataProvider {
@@ -37,7 +39,7 @@ class HomeUserCase extends BaseDataProvider {
         modelBuilderCallback: (responseData) {
           final data = responseData;
           CustomerCountResponse deviceListResponse =
-              CustomerCountResponse.fromMap(data);
+          CustomerCountResponse.fromMap(data);
           return CustomerCountResponse.fromMap(data);
         });
   }
