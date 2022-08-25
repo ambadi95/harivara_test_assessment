@@ -32,7 +32,7 @@ class CrayonVerifyOtpScreen extends StatefulWidget {
 
 class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
   late Timer _timer;
-  final ValueNotifier<int> _startValue = ValueNotifier<int>(60);
+  ValueNotifier<int> _startValue = ValueNotifier<int>(60);
 
   bool isBtnEnabled = false;
 
@@ -66,11 +66,7 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
   @override
   Widget build(BuildContext context) =>
       BaseView<VerifyOtpCoordinator, VerifyOtpState>(
-        setupViewModel: (coordinator) {
-          coordinator.generateOtp(
-              widget.otpScreenArgs.refId,
-              widget.otpScreenArgs.userType,
-              widget.otpScreenArgs.otpVerificationType);
+        setupViewModel: (coordinator)async {
           coordinator.initialiseState(
             context,
             widget.otpScreenArgs.title,
@@ -79,6 +75,13 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
             widget.otpScreenArgs.otpVerificationType,
             '',
           );
+        await  coordinator.generateOtp(
+              widget.otpScreenArgs.refId,
+              widget.otpScreenArgs.userType,
+              widget.otpScreenArgs.otpVerificationType,
+          false
+        );
+
         },
         builder: (context, state, coordinator) => Scaffold(
           body: SafeArea(
@@ -185,8 +188,6 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
               widget.otpScreenArgs,
               coordinator.otpController.text.toString(),
             );
-          } else {
-            _showAlertForOTPAttempts(coordinator);
           }
         },
         child: Padding(
@@ -459,12 +460,17 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
                   )
                 : InkWell(
                     onTap: () async {
-                      startTimer();
                       coordinator.otpController.clear();
                       await coordinator.generateOtp(
                           widget.otpScreenArgs.refId,
                           widget.otpScreenArgs.userType,
-                          widget.otpScreenArgs.otpVerificationType);
+                          widget.otpScreenArgs.otpVerificationType,
+                        true
+                      );
+                      _startValue = ValueNotifier<int>(60);
+                      setState(() {
+                      });
+                      startTimer();
                     },
                     child: CrayonPaymentText(
                       key: const Key('verifyOtp Resend Now'),
