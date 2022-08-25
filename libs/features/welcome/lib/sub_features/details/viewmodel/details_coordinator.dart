@@ -1,5 +1,7 @@
 import 'package:config/Config.dart';
 import 'package:core/mobile_core.dart';
+import 'package:crayon_payment_customer/util/app_utils.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/src/widgets/focus_manager.dart';
 import 'package:shared_data_models/customer_onboard/region_district/region_response/datum.dart';
 import 'package:shared_data_models/customer_onboard/region_district/district_response/datum.dart'
@@ -30,17 +32,27 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
       ];
 
   Future getRegion(UserType userType) async {
+    bool internetStatus = await AppUtils.appUtilsInstance.checkInternet();
+    if (!internetStatus) {
+      return;
+    }
     var response = await _detailsUseCase.getRegion((p0) => null, userType);
     return response?.data;
   }
 
   Future getDistrict(int regionId, UserType userType) async {
+    bool internetStatus = await AppUtils.appUtilsInstance.checkInternet();
+    if (!internetStatus) {
+
+      return;
+    }
     var response = await _detailsUseCase.getDistrict(
         regionId.toString(), (p0) => null, userType);
     return response?.data;
   }
 
   void setGenderType(GenderType genderType) {
+
     state = DetailsState.onGenderTypeChoosen(genderType);
   }
 
@@ -53,6 +65,11 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
   }
 
   Future<void> getMobileNumber() async {
+    bool internetStatus = await AppUtils.appUtilsInstance.checkInternet();
+    if (!internetStatus) {
+
+      return;
+    }
     String getMobileNo = await _detailsUseCase.getMobileNumber();
     state = DetailsState.getMobileNumber(getMobileNo);
   }
@@ -68,7 +85,9 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
       String poBox,
       String region,
       String district) {
-    print("dfgfg${gender}");
+    if (kDebugMode) {
+      print("dfgfg$gender");
+    }
     var isnNameValid = _detailsUseCase.isValidName(name);
     var isMobileNoValid = mobNumber.isNotEmpty;
     var isDobValid = dob.isNotEmpty;
@@ -224,6 +243,11 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
     String district,
     UserType userType,
   ) async {
+    bool internetStatus = await AppUtils.appUtilsInstance.checkInternet();
+    if (!internetStatus) {
+
+      return;
+    }
     state = const DetailsState.LoadingState();
     var response = await _detailsUseCase.submitCustomerDetails(
         name,

@@ -11,7 +11,7 @@ import 'package:widget_library/bottom_sheet/alert_bottom_sheet.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
-
+import 'package:crayon_payment_customer/util/app_utils.dart';
 class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
   final VerifyOtpNavigationHandler _navigationHandler;
   final VerifyOtpUseCase _verifyOtpUseCase;
@@ -51,6 +51,11 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
     if(isLoaderVisible == true) {
       state = currentState.copyWith(isLoading: true);
     }
+      OtpVerificationType otpVerificationType) async {
+    bool internetStatus = await AppUtils.appUtilsInstance.checkInternet();
+    if (!internetStatus) {
+      return;
+    }
     var response;
     if (otpVerificationType == OtpVerificationType.customerSignUpAgent) {
       response = await _verifyOtpUseCase.otpGenCustomerByAgent(
@@ -80,6 +85,10 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
     String? mobileNum,
     isResetPasscode = false,
   }) async {
+    bool internetStatus = await AppUtils.appUtilsInstance.checkInternet();
+    if (!internetStatus) {
+      return;
+    }
     if (otpVerificationType == OtpVerificationType.mobile) {
       //state = const VerifyOtpState.loadingState();
       // try {
@@ -152,6 +161,10 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
 
   Future<void> navigateToDestinationPath(String destinationPath,
       String userType, OtpScreenArgs otpScreenArgs, String enterOtp) async {
+    bool internetStatus = await AppUtils.appUtilsInstance.checkInternet();
+    if (!internetStatus) {
+      return;
+    }
     var currentState = state as VerifyOtpStateReady;
     int attempts = currentState.attemptsRemain;
     if (otpScreenArgs.otpVerificationType == OtpVerificationType.customerSign) {

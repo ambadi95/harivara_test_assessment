@@ -1,4 +1,5 @@
 import 'package:core/mobile_core.dart';
+import 'package:crayon_payment_customer/util/app_utils.dart';
 import 'package:task_manager/base_classes/base_view_model.dart';
 import '../../../navigation_handler/welcome_navigation_handler.dart';
 import '../state/agent_details_state.dart';
@@ -18,6 +19,10 @@ class AgentDetailsCoordinator extends BaseViewModel<AgentDetailsState> {
   }
 
   Future getAgentDetail() async {
+    bool internetStatus = await AppUtils.appUtilsInstance.checkInternet();
+    if (!internetStatus) {
+      return;
+    }
     var response = await _agentDetailsUseCase.getAgentDetail((p0) => null);
     if (response?.status == true) {
       await _agentDetailsUseCase
@@ -37,6 +42,10 @@ class AgentDetailsCoordinator extends BaseViewModel<AgentDetailsState> {
       String? gender,
       String mobileNo,
       String emailId) async {
+    bool internetStatus = await AppUtils.appUtilsInstance.checkInternet();
+    if (!internetStatus) {
+      return;
+    }
     var submitResponse = await _agentDetailsUseCase.submitCustomerDetails(
         agentId,
         firstName,
