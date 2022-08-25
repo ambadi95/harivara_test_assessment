@@ -8,14 +8,14 @@ import 'package:widget_library/static_text/crayon_payment_text.dart';
 import '../state/termscondition_state.dart';
 import '../termscondition_module.dart';
 import '../view_model/termscondition_coordinator.dart';
-
+import 'package:shared_data_models/termscondition_faq_screen_args/termscondition_faq_screen_args.dart';
 class CrayonTermsCondition extends StatefulWidget {
+
   final String _identifier = 'termscondition';
-  static const String viewPath =
-      '${TermsConditionModule.moduleIdentifier}/termscondition';
-
-  const CrayonTermsCondition({Key? key}) : super(key: key);
-
+  static const String viewPath = '${TermsConditionModule.moduleIdentifier}/termscondition';
+  final TermsConditionAndFaqScreenArgs termsConditionAndFaqScreenArgs;
+  const CrayonTermsCondition({Key? key, required this.termsConditionAndFaqScreenArgs})
+      : super(key: key);
   @override
   State<CrayonTermsCondition> createState() => _CrayonTermsConditionState();
 }
@@ -56,7 +56,7 @@ class _CrayonTermsConditionState extends State<CrayonTermsCondition> {
         ),
         CrayonPaymentText(
           key: Key('${widget._identifier}_TC_Title'),
-          text: TextUIDataModel('TC_Title'.tr,
+          text: TextUIDataModel(widget.termsConditionAndFaqScreenArgs.isFAQ == true ? 'FAQ_Title'.tr :'TC_Title'.tr,
               styleVariant: CrayonPaymentTextStyleVariant.headlineThirtyTwo,
               color: SU_title_color,
               fontWeight: FontWeight.bold,

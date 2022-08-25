@@ -8,6 +8,7 @@ import 'package:kyc/view/kyc_credit_screen.dart';
 import 'package:shared_data_models/kyc/kyc_data_model.dart';
 import 'package:shared_data_models/kyc/kyc_screen_args.dart';
 import 'package:shared_data_models/kyc/kyc_type.dart';
+import 'package:shared_data_models/termscondition_faq_screen_args/termscondition_faq_screen_args.dart';
 import 'package:termscondition/termscondition/view/terms_condition_view.dart';
 import 'package:widget_library/helpers/error/helper/error_helper.dart';
 import 'package:get/get.dart';
@@ -42,10 +43,11 @@ class KycCreditMainNavigationHandler with ErrorHandler {
   }
 
   Future<void> navigateToTermsCondtionsScreen() async {
+    var arguments = TermsConditionAndFaqScreenArgs(isFAQ: false);
     _navigationManager.navigateTo(
-      CrayonTermsCondition.viewPath,
-      const NavigationType.push(),
-    );
+        CrayonTermsCondition.viewPath,
+        const NavigationType.push(),arguments: arguments);
+
   }
 
 
