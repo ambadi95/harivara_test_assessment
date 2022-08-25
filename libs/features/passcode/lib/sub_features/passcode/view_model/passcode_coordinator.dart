@@ -8,7 +8,7 @@ import 'package:shared_data_models/passcode/passcode_verification_type.dart';
 import 'package:widget_library/keypad/keypad_button_type.dart';
 import 'package:get/get.dart';
 import '../state/passcode_state.dart';
-
+import 'package:crayon_payment_customer/util/app_utils.dart';
 class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
   final PasscodeNavigationHandler _navigationHandler;
   final PasscodeUseCase _passcodeUseCase;
@@ -56,6 +56,10 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
   // }
 
   Future<void> onPasscodeCallback(String passCode, String userType) async {
+    bool internetStatus = await AppUtils.appUtilsInstance.checkInternet();
+    if (!internetStatus) {
+      return;
+    }
     var currentState = state as CreatePasscodeReady;
     switch (currentState.passCodeVerificationType) {
       case PassCodeVerificationType.create:
@@ -90,6 +94,10 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
   }
 
   Future<void> createPassCode(String passcode) async {
+    bool internetStatus = await AppUtils.appUtilsInstance.checkInternet();
+    if (!internetStatus) {
+      return;
+    }
     var currentState = state as CreatePasscodeReady;
     var error = await _passcodeUseCase.validateCustomerPasscode(passcode);
     if (error.isEmpty) {
@@ -109,6 +117,10 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
   }
 
   Future<void> createResetPassCode(String passcode) async {
+    bool internetStatus = await AppUtils.appUtilsInstance.checkInternet();
+    if (!internetStatus) {
+      return;
+    }
     var currentState = state as CreatePasscodeReady;
     var error = await _passcodeUseCase.validateCustomerPasscode(passcode);
     if (error.isEmpty) {
@@ -134,6 +146,10 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
     String destinationPath,
     String userType,
   ) async {
+    bool internetStatus = await AppUtils.appUtilsInstance.checkInternet();
+    if (!internetStatus) {
+      return;
+    }
     var currentState = state as CreatePasscodeReady;
     print('%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%');
     print(userType);
@@ -204,6 +220,10 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
     String destinationPath,
     String userType,
   ) async {
+    bool internetStatus = await AppUtils.appUtilsInstance.checkInternet();
+    if (!internetStatus) {
+      return;
+    }
     var currentState = state as CreatePasscodeReady;
     if (oldPassCode == newPasscode) {
       state = currentState.copyWith(currentStep: 5);

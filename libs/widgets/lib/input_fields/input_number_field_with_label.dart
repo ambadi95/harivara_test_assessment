@@ -90,6 +90,7 @@ class InputNumberFieldWithLabel extends StatelessWidget {
               ),
             ),
             hintText: hintText,
+            hintStyle: TextStyle(fontSize: 16,  fontFamily: 'Montserrat' ),
             prefixIcon: SizedBox(
               width: 100,
               child: Row(

@@ -38,6 +38,8 @@ class _LoginState extends State<Login> {
 
   String mobileNumberError = '';
 
+  String passCodeError = '';
+
   String agentIdError = '';
 
   TextEditingController mobileNumber = TextEditingController();
@@ -46,12 +48,16 @@ class _LoginState extends State<Login> {
 
   TextEditingController agentIdController = TextEditingController();
 
+
+
   @override
   Widget build(BuildContext context) {
     return BaseView<LoginCoordinator, LoginState>(
       onStateListenCallback: (preState, newState) =>
           {_listenToStateChanges(context, newState)},
-      setupViewModel: (coordinator) {},
+      setupViewModel: (coordinator) {
+
+      },
       builder: (context, state, coordinator) {
         return state.maybeWhen(
             loading: () => _buildMainUIWithLoading(context, coordinator),
@@ -250,6 +256,7 @@ class _LoginState extends State<Login> {
                   fontWeight: FontWeight.bold,
                 ),
                 length: 6,
+
                 obscureText: true,
                 obscuringCharacter: '*',
                 blinkWhenObscuring: true,
@@ -270,6 +277,7 @@ class _LoginState extends State<Login> {
                 autoFocus: false,
                 autoDisposeControllers: false,
                 autoDismissKeyboard: true,
+
                 //errorAnimationController: errorController,
                 controller: passcodeController,
                 keyboardType: TextInputType.number,
@@ -313,11 +321,29 @@ class _LoginState extends State<Login> {
       ),
     );
   }
-
+  void _showSnackBar(BuildContext context, String errorMessage) {
+    final showMessage = ScaffoldMessenger.of(context);
+    showMessage.showSnackBar(
+      SnackBar(
+        backgroundColor: PRIMARY_COLOR,
+        key: Key('Detail_Screen_Error_SnackBar'),
+        content: Text(
+          errorMessage,
+          key: Key('Text'),
+          style: label_input_error_white_style,
+        ),
+        duration: Duration(seconds: 4),
+      ),
+    );
+  }
   void _listenToStateChanges(BuildContext context, LoginState state) {
     state.maybeWhen(
         mobileNumberError: (message) {
           mobileNumberError = message;
+        },
+        passCodeError: (message) {
+          passCodeError = message;
+          _showSnackBar(context,message);
         },
         loginFormState: (isValid) {
           isBtnEnabled = isValid;

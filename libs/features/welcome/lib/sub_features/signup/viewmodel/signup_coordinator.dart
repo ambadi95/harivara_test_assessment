@@ -1,3 +1,4 @@
+import 'package:crayon_payment_customer/util/app_utils.dart';
 import 'package:shared_data_models/signup/sign_up_type.dart';
 import 'package:task_manager/base_classes/base_view_model.dart';
 import 'package:welcome/sub_features/signup/state/signup_state.dart';
@@ -19,6 +20,11 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
 
   Future<void> signup(SignUpArguments signUpArguments, String mobileNumber,
       String nindaNumber, String agentId) async {
+    bool internetStatus = await AppUtils.appUtilsInstance.checkInternet();
+    if (!internetStatus) {
+
+      return;
+    }
     if (signUpArguments.signupType == SignupType.customerSignUp) {
       state = const SignUpState.loadingState();
       var response = await _signupUseCase.signUp(

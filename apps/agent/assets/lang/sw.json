@@ -19,7 +19,9 @@
 
   "SU_title" : "Weka Nambari yako ya NIDA & Kitambulisho cha Wakala",
   "SU_subtitle" : "Kwa kujisajili kwenye Y9 Pay, unakubali \n%{Sheria na Masharti. | https://www.google.com}%.",
-  "SU_ID_no_label" : "Namba ya NIDA",
+  "SU_ID_no_label" : "Nambari ya NIDA",
+  "SU_title_hint_agent" : "Weka Nambari ya NIDA",
+  "SU_title_agent" : "Weka Nambari yako ya NIDA & Kitambulisho cha Wakala",
   "SU_agent_id_label" : "\nKitambulisho cha wakala wa Y9",
   "SU_mobile_no_label" : "Namba ya simu ya mkononi",
   "SU_agent_id_hint" : "Weka Kitambulisho cha Wakala wa Y9",
@@ -37,7 +39,7 @@
   "SU_update_subtitle" : "You can Update the passcode here using OTP sent to your registered mobile number",
 
   "DV_title" : "Ingiza Maelezo ya Kibinafsi",
-  "DV_profile" : "Profile",
+  "DV_profile" : "Wasifu",
   "DV_subtitle" : "Thibitisha maelezo yako au usasishe ikiwa inahitajika",
   "DV_name_label" : "Jina",
   "DV_name_error_text" : "Jina Batili",

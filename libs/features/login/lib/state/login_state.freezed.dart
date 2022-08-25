@@ -19,6 +19,7 @@ mixin _$LoginState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String mobileNumberError) mobileNumberError,
+    required TResult Function(String passCodeError) passCodeError,
     required TResult Function() loading,
     required TResult Function() initialState,
     required TResult Function() successState,
@@ -29,6 +30,7 @@ mixin _$LoginState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String mobileNumberError)? mobileNumberError,
+    TResult Function(String passCodeError)? passCodeError,
     TResult Function()? loading,
     TResult Function()? initialState,
     TResult Function()? successState,
@@ -39,6 +41,7 @@ mixin _$LoginState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String mobileNumberError)? mobileNumberError,
+    TResult Function(String passCodeError)? passCodeError,
     TResult Function()? loading,
     TResult Function()? initialState,
     TResult Function()? successState,
@@ -50,6 +53,7 @@ mixin _$LoginState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(MobileNumberError value) mobileNumberError,
+    required TResult Function(PassCodeError value) passCodeError,
     required TResult Function(LoadingState value) loading,
     required TResult Function(InitialState value) initialState,
     required TResult Function(SuccessState value) successState,
@@ -60,6 +64,7 @@ mixin _$LoginState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(MobileNumberError value)? mobileNumberError,
+    TResult Function(PassCodeError value)? passCodeError,
     TResult Function(LoadingState value)? loading,
     TResult Function(InitialState value)? initialState,
     TResult Function(SuccessState value)? successState,
@@ -70,6 +75,7 @@ mixin _$LoginState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(MobileNumberError value)? mobileNumberError,
+    TResult Function(PassCodeError value)? passCodeError,
     TResult Function(LoadingState value)? loading,
     TResult Function(InitialState value)? initialState,
     TResult Function(SuccessState value)? successState,
@@ -163,6 +169,7 @@ class _$MobileNumberError implements MobileNumberError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String mobileNumberError) mobileNumberError,
+    required TResult Function(String passCodeError) passCodeError,
     required TResult Function() loading,
     required TResult Function() initialState,
     required TResult Function() successState,
@@ -176,6 +183,7 @@ class _$MobileNumberError implements MobileNumberError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String mobileNumberError)? mobileNumberError,
+    TResult Function(String passCodeError)? passCodeError,
     TResult Function()? loading,
     TResult Function()? initialState,
     TResult Function()? successState,
@@ -189,6 +197,7 @@ class _$MobileNumberError implements MobileNumberError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String mobileNumberError)? mobileNumberError,
+    TResult Function(String passCodeError)? passCodeError,
     TResult Function()? loading,
     TResult Function()? initialState,
     TResult Function()? successState,
@@ -206,6 +215,7 @@ class _$MobileNumberError implements MobileNumberError {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(MobileNumberError value) mobileNumberError,
+    required TResult Function(PassCodeError value) passCodeError,
     required TResult Function(LoadingState value) loading,
     required TResult Function(InitialState value) initialState,
     required TResult Function(SuccessState value) successState,
@@ -219,6 +229,7 @@ class _$MobileNumberError implements MobileNumberError {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(MobileNumberError value)? mobileNumberError,
+    TResult Function(PassCodeError value)? passCodeError,
     TResult Function(LoadingState value)? loading,
     TResult Function(InitialState value)? initialState,
     TResult Function(SuccessState value)? successState,
@@ -232,6 +243,7 @@ class _$MobileNumberError implements MobileNumberError {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(MobileNumberError value)? mobileNumberError,
+    TResult Function(PassCodeError value)? passCodeError,
     TResult Function(LoadingState value)? loading,
     TResult Function(InitialState value)? initialState,
     TResult Function(SuccessState value)? successState,
@@ -253,6 +265,170 @@ abstract class MobileNumberError implements LoginState {
   String get mobileNumberError;
   @JsonKey(ignore: true)
   _$$MobileNumberErrorCopyWith<_$MobileNumberError> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PassCodeErrorCopyWith<$Res> {
+  factory _$$PassCodeErrorCopyWith(
+          _$PassCodeError value, $Res Function(_$PassCodeError) then) =
+      __$$PassCodeErrorCopyWithImpl<$Res>;
+  $Res call({String passCodeError});
+}
+
+/// @nodoc
+class __$$PassCodeErrorCopyWithImpl<$Res> extends _$LoginStateCopyWithImpl<$Res>
+    implements _$$PassCodeErrorCopyWith<$Res> {
+  __$$PassCodeErrorCopyWithImpl(
+      _$PassCodeError _value, $Res Function(_$PassCodeError) _then)
+      : super(_value, (v) => _then(v as _$PassCodeError));
+
+  @override
+  _$PassCodeError get _value => super._value as _$PassCodeError;
+
+  @override
+  $Res call({
+    Object? passCodeError = freezed,
+  }) {
+    return _then(_$PassCodeError(
+      passCodeError == freezed
+          ? _value.passCodeError
+          : passCodeError // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PassCodeError implements PassCodeError {
+  const _$PassCodeError(this.passCodeError);
+
+  @override
+  final String passCodeError;
+
+  @override
+  String toString() {
+    return 'LoginState.passCodeError(passCodeError: $passCodeError)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PassCodeError &&
+            const DeepCollectionEquality()
+                .equals(other.passCodeError, passCodeError));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(passCodeError));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$PassCodeErrorCopyWith<_$PassCodeError> get copyWith =>
+      __$$PassCodeErrorCopyWithImpl<_$PassCodeError>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String mobileNumberError) mobileNumberError,
+    required TResult Function(String passCodeError) passCodeError,
+    required TResult Function() loading,
+    required TResult Function() initialState,
+    required TResult Function() successState,
+    required TResult Function(String agentIdError) agentIdError,
+    required TResult Function(bool isValid) loginFormState,
+  }) {
+    return passCodeError(this.passCodeError);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String mobileNumberError)? mobileNumberError,
+    TResult Function(String passCodeError)? passCodeError,
+    TResult Function()? loading,
+    TResult Function()? initialState,
+    TResult Function()? successState,
+    TResult Function(String agentIdError)? agentIdError,
+    TResult Function(bool isValid)? loginFormState,
+  }) {
+    return passCodeError?.call(this.passCodeError);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String mobileNumberError)? mobileNumberError,
+    TResult Function(String passCodeError)? passCodeError,
+    TResult Function()? loading,
+    TResult Function()? initialState,
+    TResult Function()? successState,
+    TResult Function(String agentIdError)? agentIdError,
+    TResult Function(bool isValid)? loginFormState,
+    required TResult orElse(),
+  }) {
+    if (passCodeError != null) {
+      return passCodeError(this.passCodeError);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(MobileNumberError value) mobileNumberError,
+    required TResult Function(PassCodeError value) passCodeError,
+    required TResult Function(LoadingState value) loading,
+    required TResult Function(InitialState value) initialState,
+    required TResult Function(SuccessState value) successState,
+    required TResult Function(AgentIdError value) agentIdError,
+    required TResult Function(LoginFormState value) loginFormState,
+  }) {
+    return passCodeError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(MobileNumberError value)? mobileNumberError,
+    TResult Function(PassCodeError value)? passCodeError,
+    TResult Function(LoadingState value)? loading,
+    TResult Function(InitialState value)? initialState,
+    TResult Function(SuccessState value)? successState,
+    TResult Function(AgentIdError value)? agentIdError,
+    TResult Function(LoginFormState value)? loginFormState,
+  }) {
+    return passCodeError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(MobileNumberError value)? mobileNumberError,
+    TResult Function(PassCodeError value)? passCodeError,
+    TResult Function(LoadingState value)? loading,
+    TResult Function(InitialState value)? initialState,
+    TResult Function(SuccessState value)? successState,
+    TResult Function(AgentIdError value)? agentIdError,
+    TResult Function(LoginFormState value)? loginFormState,
+    required TResult orElse(),
+  }) {
+    if (passCodeError != null) {
+      return passCodeError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PassCodeError implements LoginState {
+  const factory PassCodeError(final String passCodeError) = _$PassCodeError;
+
+  String get passCodeError;
+  @JsonKey(ignore: true)
+  _$$PassCodeErrorCopyWith<_$PassCodeError> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -297,6 +473,7 @@ class _$LoadingState implements LoadingState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String mobileNumberError) mobileNumberError,
+    required TResult Function(String passCodeError) passCodeError,
     required TResult Function() loading,
     required TResult Function() initialState,
     required TResult Function() successState,
@@ -310,6 +487,7 @@ class _$LoadingState implements LoadingState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String mobileNumberError)? mobileNumberError,
+    TResult Function(String passCodeError)? passCodeError,
     TResult Function()? loading,
     TResult Function()? initialState,
     TResult Function()? successState,
@@ -323,6 +501,7 @@ class _$LoadingState implements LoadingState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String mobileNumberError)? mobileNumberError,
+    TResult Function(String passCodeError)? passCodeError,
     TResult Function()? loading,
     TResult Function()? initialState,
     TResult Function()? successState,
@@ -340,6 +519,7 @@ class _$LoadingState implements LoadingState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(MobileNumberError value) mobileNumberError,
+    required TResult Function(PassCodeError value) passCodeError,
     required TResult Function(LoadingState value) loading,
     required TResult Function(InitialState value) initialState,
     required TResult Function(SuccessState value) successState,
@@ -353,6 +533,7 @@ class _$LoadingState implements LoadingState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(MobileNumberError value)? mobileNumberError,
+    TResult Function(PassCodeError value)? passCodeError,
     TResult Function(LoadingState value)? loading,
     TResult Function(InitialState value)? initialState,
     TResult Function(SuccessState value)? successState,
@@ -366,6 +547,7 @@ class _$LoadingState implements LoadingState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(MobileNumberError value)? mobileNumberError,
+    TResult Function(PassCodeError value)? passCodeError,
     TResult Function(LoadingState value)? loading,
     TResult Function(InitialState value)? initialState,
     TResult Function(SuccessState value)? successState,
@@ -425,6 +607,7 @@ class _$InitialState implements InitialState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String mobileNumberError) mobileNumberError,
+    required TResult Function(String passCodeError) passCodeError,
     required TResult Function() loading,
     required TResult Function() initialState,
     required TResult Function() successState,
@@ -438,6 +621,7 @@ class _$InitialState implements InitialState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String mobileNumberError)? mobileNumberError,
+    TResult Function(String passCodeError)? passCodeError,
     TResult Function()? loading,
     TResult Function()? initialState,
     TResult Function()? successState,
@@ -451,6 +635,7 @@ class _$InitialState implements InitialState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String mobileNumberError)? mobileNumberError,
+    TResult Function(String passCodeError)? passCodeError,
     TResult Function()? loading,
     TResult Function()? initialState,
     TResult Function()? successState,
@@ -468,6 +653,7 @@ class _$InitialState implements InitialState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(MobileNumberError value) mobileNumberError,
+    required TResult Function(PassCodeError value) passCodeError,
     required TResult Function(LoadingState value) loading,
     required TResult Function(InitialState value) initialState,
     required TResult Function(SuccessState value) successState,
@@ -481,6 +667,7 @@ class _$InitialState implements InitialState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(MobileNumberError value)? mobileNumberError,
+    TResult Function(PassCodeError value)? passCodeError,
     TResult Function(LoadingState value)? loading,
     TResult Function(InitialState value)? initialState,
     TResult Function(SuccessState value)? successState,
@@ -494,6 +681,7 @@ class _$InitialState implements InitialState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(MobileNumberError value)? mobileNumberError,
+    TResult Function(PassCodeError value)? passCodeError,
     TResult Function(LoadingState value)? loading,
     TResult Function(InitialState value)? initialState,
     TResult Function(SuccessState value)? successState,
@@ -553,6 +741,7 @@ class _$SuccessState implements SuccessState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String mobileNumberError) mobileNumberError,
+    required TResult Function(String passCodeError) passCodeError,
     required TResult Function() loading,
     required TResult Function() initialState,
     required TResult Function() successState,
@@ -566,6 +755,7 @@ class _$SuccessState implements SuccessState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String mobileNumberError)? mobileNumberError,
+    TResult Function(String passCodeError)? passCodeError,
     TResult Function()? loading,
     TResult Function()? initialState,
     TResult Function()? successState,
@@ -579,6 +769,7 @@ class _$SuccessState implements SuccessState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String mobileNumberError)? mobileNumberError,
+    TResult Function(String passCodeError)? passCodeError,
     TResult Function()? loading,
     TResult Function()? initialState,
     TResult Function()? successState,
@@ -596,6 +787,7 @@ class _$SuccessState implements SuccessState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(MobileNumberError value) mobileNumberError,
+    required TResult Function(PassCodeError value) passCodeError,
     required TResult Function(LoadingState value) loading,
     required TResult Function(InitialState value) initialState,
     required TResult Function(SuccessState value) successState,
@@ -609,6 +801,7 @@ class _$SuccessState implements SuccessState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(MobileNumberError value)? mobileNumberError,
+    TResult Function(PassCodeError value)? passCodeError,
     TResult Function(LoadingState value)? loading,
     TResult Function(InitialState value)? initialState,
     TResult Function(SuccessState value)? successState,
@@ -622,6 +815,7 @@ class _$SuccessState implements SuccessState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(MobileNumberError value)? mobileNumberError,
+    TResult Function(PassCodeError value)? passCodeError,
     TResult Function(LoadingState value)? loading,
     TResult Function(InitialState value)? initialState,
     TResult Function(SuccessState value)? successState,
@@ -706,6 +900,7 @@ class _$AgentIdError implements AgentIdError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String mobileNumberError) mobileNumberError,
+    required TResult Function(String passCodeError) passCodeError,
     required TResult Function() loading,
     required TResult Function() initialState,
     required TResult Function() successState,
@@ -719,6 +914,7 @@ class _$AgentIdError implements AgentIdError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String mobileNumberError)? mobileNumberError,
+    TResult Function(String passCodeError)? passCodeError,
     TResult Function()? loading,
     TResult Function()? initialState,
     TResult Function()? successState,
@@ -732,6 +928,7 @@ class _$AgentIdError implements AgentIdError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String mobileNumberError)? mobileNumberError,
+    TResult Function(String passCodeError)? passCodeError,
     TResult Function()? loading,
     TResult Function()? initialState,
     TResult Function()? successState,
@@ -749,6 +946,7 @@ class _$AgentIdError implements AgentIdError {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(MobileNumberError value) mobileNumberError,
+    required TResult Function(PassCodeError value) passCodeError,
     required TResult Function(LoadingState value) loading,
     required TResult Function(InitialState value) initialState,
     required TResult Function(SuccessState value) successState,
@@ -762,6 +960,7 @@ class _$AgentIdError implements AgentIdError {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(MobileNumberError value)? mobileNumberError,
+    TResult Function(PassCodeError value)? passCodeError,
     TResult Function(LoadingState value)? loading,
     TResult Function(InitialState value)? initialState,
     TResult Function(SuccessState value)? successState,
@@ -775,6 +974,7 @@ class _$AgentIdError implements AgentIdError {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(MobileNumberError value)? mobileNumberError,
+    TResult Function(PassCodeError value)? passCodeError,
     TResult Function(LoadingState value)? loading,
     TResult Function(InitialState value)? initialState,
     TResult Function(SuccessState value)? successState,
@@ -864,6 +1064,7 @@ class _$LoginFormState implements LoginFormState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String mobileNumberError) mobileNumberError,
+    required TResult Function(String passCodeError) passCodeError,
     required TResult Function() loading,
     required TResult Function() initialState,
     required TResult Function() successState,
@@ -877,6 +1078,7 @@ class _$LoginFormState implements LoginFormState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String mobileNumberError)? mobileNumberError,
+    TResult Function(String passCodeError)? passCodeError,
     TResult Function()? loading,
     TResult Function()? initialState,
     TResult Function()? successState,
@@ -890,6 +1092,7 @@ class _$LoginFormState implements LoginFormState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String mobileNumberError)? mobileNumberError,
+    TResult Function(String passCodeError)? passCodeError,
     TResult Function()? loading,
     TResult Function()? initialState,
     TResult Function()? successState,
@@ -907,6 +1110,7 @@ class _$LoginFormState implements LoginFormState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(MobileNumberError value) mobileNumberError,
+    required TResult Function(PassCodeError value) passCodeError,
     required TResult Function(LoadingState value) loading,
     required TResult Function(InitialState value) initialState,
     required TResult Function(SuccessState value) successState,
@@ -920,6 +1124,7 @@ class _$LoginFormState implements LoginFormState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(MobileNumberError value)? mobileNumberError,
+    TResult Function(PassCodeError value)? passCodeError,
     TResult Function(LoadingState value)? loading,
     TResult Function(InitialState value)? initialState,
     TResult Function(SuccessState value)? successState,
@@ -933,6 +1138,7 @@ class _$LoginFormState implements LoginFormState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(MobileNumberError value)? mobileNumberError,
+    TResult Function(PassCodeError value)? passCodeError,
     TResult Function(LoadingState value)? loading,
     TResult Function(InitialState value)? initialState,
     TResult Function(SuccessState value)? successState,

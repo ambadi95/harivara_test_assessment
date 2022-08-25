@@ -8,6 +8,9 @@ class LoginState with _$LoginState {
   const factory LoginState.mobileNumberError(String mobileNumberError) =
       MobileNumberError;
 
+  const factory LoginState.passCodeError(String passCodeError) =
+  PassCodeError;
+
   const factory LoginState.loading() = LoadingState;
 
   const factory LoginState.initialState() = InitialState;

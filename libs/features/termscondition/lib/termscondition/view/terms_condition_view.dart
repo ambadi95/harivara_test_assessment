@@ -38,7 +38,7 @@ class _CrayonTermsConditionState extends State<CrayonTermsCondition> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(flex: 2, child: _buildTitle(context, coordinator)),
-          Expanded(flex: 7, child: _belowView(context)),
+           Expanded(flex: 6, child: _belowView(context)),
         ],
       ),
     );

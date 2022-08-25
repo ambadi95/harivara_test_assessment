@@ -11,7 +11,7 @@ import 'package:widget_library/bottom_sheet/alert_bottom_sheet.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
-
+import 'package:crayon_payment_customer/util/app_utils.dart';
 class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
   final VerifyOtpNavigationHandler _navigationHandler;
   final VerifyOtpUseCase _verifyOtpUseCase;
@@ -46,7 +46,15 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
   String otp = '';
 
   Future<void> generateOtp(String id, String userType,
-      OtpVerificationType otpVerificationType) async {
+      OtpVerificationType otpVerificationType, isLoaderVisible) async {
+    var currentState = state as VerifyOtpStateReady;
+    if(isLoaderVisible == true) {
+      state = currentState.copyWith(isLoading: true);
+    }
+    bool internetStatus = await AppUtils.appUtilsInstance.checkInternet();
+    if (!internetStatus) {
+      return;
+    }
     var response;
     if (otpVerificationType == OtpVerificationType.customerSignUpAgent) {
       response = await _verifyOtpUseCase.otpGenCustomerByAgent(
@@ -55,6 +63,8 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
       response = await _verifyOtpUseCase.otpGen(id, userType, (p0) => null);
     }
     if (response?.status == true) {
+      state = currentState.copyWith(isLoading: false);
+      state = currentState.copyWith(attemptsRemain: 3);
       int otp1 = response?.data?.token as int;
       otp = otp1.toString();
       //otpController.text = otp;
@@ -74,6 +84,10 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
     String? mobileNum,
     isResetPasscode = false,
   }) async {
+    bool internetStatus = await AppUtils.appUtilsInstance.checkInternet();
+    if (!internetStatus) {
+      return;
+    }
     if (otpVerificationType == OtpVerificationType.mobile) {
       //state = const VerifyOtpState.loadingState();
       // try {
@@ -146,23 +160,35 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
 
   Future<void> navigateToDestinationPath(String destinationPath,
       String userType, OtpScreenArgs otpScreenArgs, String enterOtp) async {
+    bool internetStatus = await AppUtils.appUtilsInstance.checkInternet();
+    if (!internetStatus) {
+      return;
+    }
     var currentState = state as VerifyOtpStateReady;
     int attempts = currentState.attemptsRemain;
     if (otpScreenArgs.otpVerificationType == OtpVerificationType.customerSign) {
+      state = currentState.copyWith(isLoading: true);
       var responseSignin = await _verifyOtpUseCase.otpVerify(
           otpScreenArgs.refId, enterOtp,otpScreenArgs.userType, (p0) => null);
       if (responseSignin!.status == true) {
+        state = currentState.copyWith(isLoading: false);
         _navigationHandler.navigateToCustomerEnrollmentScreen();
       } else {
-        print('error');
+        state = currentState.copyWith(isLoading: false);
+        otpAttempts(attempts);
       }
     } else if (otpScreenArgs.otpVerificationType ==
         OtpVerificationType.customerSignUpAgent) {
+      state = currentState.copyWith(isLoading: true);
       var responseSignin = await _verifyOtpUseCase.otpVerifyCustomerByAgent(
           otpScreenArgs.refId, enterOtp, 'Customer', (p0) => null);
-      if (responseSignin!.data!.status == "success") {
+      if (responseSignin!.status == true) {
+        state = currentState.copyWith(isLoading: false);
         _navigationHandler.navigateToDestinationPath(
             destinationPath, 'AgentCustomer');
+      }else{
+        state = currentState.copyWith(isLoading: false);
+        otpAttempts(attempts);
       }
     } else if (otpScreenArgs.otpVerificationType ==
         OtpVerificationType.mobile) {
@@ -170,20 +196,13 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         state = currentState.copyWith(isLoading: true);
         var response = await _verifyOtpUseCase.otpVerify(otpScreenArgs.refId,
             enterOtp, otpScreenArgs.userType, (p0) => null);
-        if (response!.data!.status == "success") {
+        if (response!.status == true) {
           state = currentState.copyWith(isLoading: false);
           _navigationHandler.navigateToDestinationPath(
               destinationPath, userType);
         } else {
-          otpController.text = "";
           state = currentState.copyWith(isLoading: false);
-          // state =  currentState.copyWith(attemptsRemainFlag: true);
-          if (attempts > 1) {
-            state = currentState.copyWith(attemptsRemain: attempts - 1);
-          } else {
-            state = currentState.copyWith(attemptsRemain: 3);
-            _showAlertForOTPAttempts();
-          }
+          otpAttempts(attempts);
         }
       } else {
         state = currentState.copyWith(isLoading: true);
@@ -193,23 +212,21 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
           state = currentState.copyWith(isLoading: false);
           _navigationHandler.openForNewPasscode(userType);
         } else {
-          otpController.text = "";
           state = currentState.copyWith(isLoading: false);
-          // state =  currentState.copyWith(attemptsRemainFlag: true);
-          if (attempts > 1) {
-            state = currentState.copyWith(attemptsRemain: attempts - 1);
-          } else {
-            state = currentState.copyWith(attemptsRemain: 3);
-            _showAlertForOTPAttempts();
-          }
+          otpAttempts(attempts);
         }
       }
     } else if (otpScreenArgs.otpVerificationType ==
         OtpVerificationType.agentSignIn) {
+      state = currentState.copyWith(isLoading: true);
       var responseSignin = await _verifyOtpUseCase.otpVerify(
           otpScreenArgs.refId, enterOtp, otpScreenArgs.userType, (p0) => null);
       if (responseSignin?.status == true) {
+        state = currentState.copyWith(isLoading: false);
         _navigationHandler.navigateToAgentWelcomeBack(userType);
+      }else{
+        state = currentState.copyWith(isLoading: false);
+        otpAttempts(attempts);
       }
     } else if (otpScreenArgs.otpVerificationType ==
         OtpVerificationType.updatePasscodeAgent) {
@@ -220,6 +237,17 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
   Future<void> goBack() async {
     _navigationHandler.goBack();
   }
+
+  otpAttempts(int attempts ){
+    var currentState = state as VerifyOtpStateReady;
+    otpController.text = "";
+    if (attempts > 1) {
+      state = currentState.copyWith(attemptsRemain: attempts - 1);
+    } else {
+      state = currentState.copyWith(attemptsRemain: 3);
+      _showAlertForOTPAttempts();
+    }
+}
 
 //
 // Future<void> _handleOtpError(
@@ -265,10 +293,13 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
           alertIcon: "assets/images/incorrect_otp.png",
           onClose: () {
             goBack();
+            goBack();
+            goBack();
           },
           packageName: ""),
       isScrollControlled: false,
       isDismissible: true,
     );
   }
+
 }
