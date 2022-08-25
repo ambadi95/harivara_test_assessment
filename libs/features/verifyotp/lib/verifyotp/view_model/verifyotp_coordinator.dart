@@ -51,7 +51,6 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
     if(isLoaderVisible == true) {
       state = currentState.copyWith(isLoading: true);
     }
-      OtpVerificationType otpVerificationType) async {
     bool internetStatus = await AppUtils.appUtilsInstance.checkInternet();
     if (!internetStatus) {
       return;
