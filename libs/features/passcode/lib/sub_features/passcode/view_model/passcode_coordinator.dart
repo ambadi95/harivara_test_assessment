@@ -181,8 +181,9 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
             newPasscode, userType, (p0) => null);
         if (response!.status == true) {
           state = currentState.copyWith(isLoading: false);
-          _navigationHandler.navigateToCustomerEnrollmentScreen(
-              destinationPath, false, UserType.AgentCustomer);
+          _navigationHandler.navigateToKYCScreen();
+          // _navigationHandler.navigateToCustomerEnrollmentScreen(
+          //     destinationPath, false, UserType.AgentCustomer);
         }
       }
     } else {

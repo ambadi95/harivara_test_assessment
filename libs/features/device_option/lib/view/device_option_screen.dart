@@ -10,12 +10,14 @@ import 'package:widget_library/app_bars/crayon_payment_app_bar_attributes.dart';
 import 'package:widget_library/app_bars/crayon_payment_app_bar_button_type.dart';
 import 'package:widget_library/buttons/docked_button.dart';
 import 'package:widget_library/dimensions/crayon_payment_dimensions.dart';
+import 'package:widget_library/image/svg_image.dart';
 import 'package:widget_library/page_header/text_ui_data_model.dart';
 import 'package:widget_library/progress_bar/centered_circular_progress_bar.dart';
 import 'package:widget_library/scaffold/crayon_payment_scaffold.dart';
 import 'package:widget_library/search_bar/search_bar_widget_model.dart';
 import 'package:widget_library/spacers/crayon_payment_spacers.dart';
 import 'package:widget_library/static_text/crayon_payment_text.dart';
+import 'package:widget_library/utils/icon_utils.dart';
 import 'package:widget_library/widget_library.dart';
 import '../device_option_module.dart';
 import '../state/device_option_state.dart';
@@ -100,7 +102,9 @@ class _DeviceOptionState extends State<DeviceOption> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _buildTitle(context),
-            // dynamicHSpacer(24),
+            dynamicHSpacer(28),
+            _creditScoreInfo(),
+            dynamicHSpacer(28),
             // _buildSearchField(context),
             dynamicHSpacer(24),
             Expanded(child: _buildDeviceList(context, coordinator)),
@@ -117,6 +121,57 @@ class _DeviceOptionState extends State<DeviceOption> {
           color: AN_TitleColor,
           fontWeight: FontWeight.w800),
     );
+  }
+
+  Widget _creditScoreInfo() {
+    return widget.deviceOptionArgs.userType == UserType.AgentCustomer ? Container(
+
+      width: double.infinity,
+      height: 92,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(4), color: MO_credit_info_bg),
+      child: Row(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 15),
+            child: Image.asset(MO_credit_info_icon,
+              height: 54,
+              width: 54,
+            )
+            // getSvg(MO_credit_info_icon,
+            // width: 54, height: 54,
+            // ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 17,left: 11),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CrayonPaymentText(
+                  key: Key('${_identifier}_DO_CREDIT_SCORE'),
+                  text: TextUIDataModel('DO_credit_score'.tr,
+                      styleVariant:
+                          CrayonPaymentTextStyleVariant.headline5,
+                      color: AN_TitleColor,
+                      fontWeight: FontWeight.bold),
+                ),
+                SizedBox(
+                  height: 4,
+                ),
+                CrayonPaymentText(
+                  key: Key('${_identifier}_DO_CREDIT_SCORE_DESC'),
+                  text: TextUIDataModel('DO_credit_score_desc'.tr,
+                      styleVariant:
+                      CrayonPaymentTextStyleVariant.headline5,
+                      color: AN_TitleColor,
+                      fontWeight: FontWeight.w500),
+                )
+              ],
+            ),
+          )
+        ],
+      ),
+    ) : SizedBox();
   }
 
   Widget _buildSearchField(context) {
@@ -184,7 +239,9 @@ class _DeviceOptionState extends State<DeviceOption> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
-                          width: AppUtils.appUtilsInstance.getPercentageSize(percentage: 100,ofWidth: true)/1.5 ,
+                          width: AppUtils.appUtilsInstance.getPercentageSize(
+                                  percentage: 100, ofWidth: true) /
+                              1.5,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [

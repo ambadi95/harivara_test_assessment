@@ -45,6 +45,11 @@ dependencies:
   verifyotp:
     path: ../verifyotp
 
+  termscondition:
+    path: ../termscondition
+
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

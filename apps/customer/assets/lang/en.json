@@ -199,5 +199,14 @@
   "ST_term_condition" : "Terms & Conditions",
   "ST_call_support" : "Call Support",
 
-  "ST_contact_text" : "Need Help or If You Have Any Query \n Contact Us at +255 677-039-999"
+  "ST_contact_text" : "Need Help or If You Have Any Query \n Contact Us at +255 677-039-999",
+
+
+  "PP_Daily_Repayment_Title" : "Daily Repayment",
+  "PP_Airtel_Pay" : "Airtel Pay",
+  "PP_PayNow" : "Pay Now",
+  "PP_Wallets_Title" : "Wallets",
+
+
+  "FAQ_Title": "FAQ"
 }

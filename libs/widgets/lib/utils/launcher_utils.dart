@@ -5,7 +5,8 @@ class LauncherUtils {
 
   static LauncherUtils get launcherUtilsInstance => _launcherUtils;
 
-  static const String CONTACT_NUMBER = "+255 677-039-999";
+  static const String CONTACT_NUMBER = '+255 677-039-999';
+  static const String Y9_BANK_URL = 'https://www.y9bank.com/';
 
   //launch url in Browser
   Future<bool> launchInBrowser({

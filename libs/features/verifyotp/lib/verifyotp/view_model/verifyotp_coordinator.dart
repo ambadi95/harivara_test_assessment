@@ -161,8 +161,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
       var responseSignin = await _verifyOtpUseCase.otpVerifyCustomerByAgent(
           otpScreenArgs.refId, enterOtp, 'Customer', (p0) => null);
       if (responseSignin!.data!.status == "success") {
-        _navigationHandler.navigateToDestinationPath(
-            destinationPath, UserType.AgentCustomer);
+         _navigationHandler.navigateToDetailScreen();
       }
     } else if (otpScreenArgs.otpVerificationType ==
         OtpVerificationType.mobile) {
