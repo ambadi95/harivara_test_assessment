@@ -31,6 +31,7 @@ class CrayonPaymentDimensions {
   static const double defaultButtonRadius = 26;
   static const double marginThirtyTwo = 32;
   static const double marginFortyEight = 48;
+  static const double heightThirtyNine = 39;
   static const double marginFourteen = 14;
   static const double marginTwo = 2;
   static const double marginOne = 2;

@@ -36,11 +36,20 @@ class SplashCoordinator extends BaseViewModel<SplashState> {
     }
   }
 
+  Future<String> getCurrentLocale() async {
+   String currentLanguageCode = await _splashUseCase.getLocale();
+    return currentLanguageCode;
+
+  }
+
   Future<void> setCurrentLocale(String currentLanguageCode) async{
+    String currentLang = await getCurrentLocale();
+    if(currentLang == ''){
     var currentLocale = Locale(currentLanguageCode);
     Get.updateLocale(currentLocale);
     Intl.defaultLocale = currentLocale.languageCode;
     _splashUseCase.saveLocale(currentLanguageCode);
+    }
   }
 
   Future<void> navigateToDestinationPath(

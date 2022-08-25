@@ -6,6 +6,7 @@ import 'package:shared_data_models/home/customerCount/customer_count_response/cu
 import 'package:task_manager/base_classes/base_data_provider.dart';
 import 'package:task_manager/task.dart';
 import 'package:task_manager/task_manager_impl.dart';
+import 'package:shared_data_models/home/customerCount/customer_count_response/customer_count_response.dart';
 
 import 'home_view_model.dart';
 
@@ -38,7 +39,7 @@ class HomeUserCase extends BaseDataProvider {
         modelBuilderCallback: (responseData) {
           final data = responseData;
           CustomerCountResponse deviceListResponse =
-              CustomerCountResponse.fromMap(data);
+          CustomerCountResponse.fromMap(data);
           return CustomerCountResponse.fromMap(data);
         });
   }

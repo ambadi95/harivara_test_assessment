@@ -256,7 +256,7 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
           child: Text(
             'ES_near_agent_button'.tr,
             textAlign: TextAlign.center,
-            style: const TextStyle(color: config_color.SECONDARY_COLOR),
+            style: const TextStyle(color: config_color.White),
           ),
         ),
       ),
