@@ -1,4 +1,5 @@
 import 'package:config/Config.dart';
+import 'package:shared_data_models/customer_details/response/get_customer_details_response/get_customer_details_response.dart';
 import 'package:shared_data_models/customer_onboard/customer_details/request/customer_details_request.dart';
 import 'package:shared_data_models/customer_onboard/customer_details/response/customer_detail_response.dart';
 import 'package:shared_data_models/customer_onboard/region_district/district_response/district_response.dart';
@@ -72,6 +73,8 @@ class DetailsUseCase extends BaseDataProvider {
         });
   }
 
+
+
   Future<CustomerDetailResponse?> submitCustomerDetails(
       String name,
       String dob,
@@ -108,7 +111,8 @@ class DetailsUseCase extends BaseDataProvider {
         moduleIdentifier: WelcomeModule.moduleIdentifier,
         requestData: {
           'data': customerDetailsRequest.toJson(),
-          'userType': userType  },
+          'userType': userType
+        },
         serviceIdentifier: IDetailsService.submitCustomerDetailIdentifier,
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {

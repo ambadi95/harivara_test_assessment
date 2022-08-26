@@ -8,13 +8,9 @@ import 'package:shared_data_models/welcome/signin/response/customer_sign_in_resp
 
 import 'kyc_credit_main_viewmodel.dart';
 
-
 class KycCreditMainUseCase extends BaseDataProvider {
   final KycCreditMainViewModel _kycCreditMainViewModel;
 
-
   KycCreditMainUseCase(this._kycCreditMainViewModel, TaskManager taskManager)
       : super(taskManager);
-
-
 }

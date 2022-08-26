@@ -11,7 +11,7 @@ class LoginRouteManager extends IRouteManager {
       case Login.viewPath:
         var arguments = settings.arguments as UserType;
         return Login(
-          userType: arguments ,
+          userType: arguments,
         );
       default:
         // TODO: implement getView

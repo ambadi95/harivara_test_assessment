@@ -8,9 +8,7 @@ class DownPaymentState with _$DownPaymentState {
   const factory DownPaymentState.initialState() = InitialState;
   const factory DownPaymentState.ready({
     required BuildContext context,
-
     @Default('') String error,
     @Default(false) bool isLoading,
   }) = DownPaymentStateReady;
-
 }

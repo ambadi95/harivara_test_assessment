@@ -97,11 +97,15 @@
 
   "WB_WelcomeBack": "Welcome back to Y9",
   "WB_EnterPassCode": "Enter Passcode",
+  "AN_Title": "Agents Near by",
+  "AN_Search": "Search by Name / Id/ Region / District/ Po#",
+  "AN_AgentName": "Y9 Agent ID:",
+  "AN_Call": "Call",
 
 
 
   "AN_Title" : "Agents Near by",
-  "AN_Search" : "Search by Name / Id/ Region / District/ Po#",
+  "AN_Search" : "Search by Region / District/ Po#",
   "AN_AgentName" : "Y9 Agent ID:",
   "AN_Call" : "Call",
 
@@ -136,20 +140,15 @@
   "DD_MemberBenefit6": "Membership and Loyalty Benefits",
   "DD_MemberBenefit7": "Huge incentives for referrals of family and friends",
   "DD_MemberBenefit8": "Access to your Y9 Account",
-
-
-
   "VO_OtpVerification": "OTP Verification",
-  "VO_otp_verification_description" : "An OTP will be sent to your Mobile Number (ending with xxx{})",
+  "VO_otp_verification_description": "An OTP will be sent to your Mobile Number (ending with xxx{})",
   "VO_DidNotGetCode": "Didn't get a code?",
   "VO_ResendNow": "Resend Now",
-  "VO_Incorrect_OTP":"Incorrect OTP. Please try again.",
-  "VO_Incorrect_OTP_Title":"Incorrect OTP",
-  "VO_Incorrect_OTP_Alert_Msg":"You have used all your attempts. Please sign up again.",
-  "VO_resend_otp" : "Resend in %s seconds.",
-  "VO_verify_button" : "Verify",
-
-
+  "VO_Incorrect_OTP": "Incorrect OTP. Please try again.",
+  "VO_Incorrect_OTP_Title": "Incorrect OTP",
+  "VO_Incorrect_OTP_Alert_Msg": "You have used all your attempts. Please sign up again.",
+  "VO_resend_otp": "Resend in %s seconds.",
+  "VO_verify_button": "Verify",
   "SP_ni": "ni",
   "SP_bora": " Bora",
   "SP_is": "is",
@@ -199,6 +198,23 @@
   "ST_term_condition" : "Terms & Conditions",
   "ST_call_support" : "Call Support",
 
+  "LD_Loan_Detail": "Loan Details",
+  "LD_Loan_Detail_Amount": "Loan Amount",
+  "LD_Loan_Detail_Down_Payment": "Joining Fee / Downpayment",
+  "LD_Loan_Detail_Repayment": "Repayment Type",
+  "LD_Loan__Detail_Daily_Repayment_Amount": "Daily Repayment Amount",
+  "LD_Loan_Detail_Total_Repayed_Amount": "Total Amount to be Repaid",
+  "LD_Loan_Detail_Loan_Tenure": "Loan Tenure",
+  "LD_Loan_Detail_Start_Date": "Loan Start Date",
+  "LD_Loan_Detail_Final_Date": "Final Payment Date",
+  "LD_Loan_Detail_Device_Insurance": "Device Insurance",
+  "LD_Loan_Detail_Device_Insurance_ID": "Device Insurance ID",
+  "LD_Loan_Detail_Note": "** Note: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+  "LD_Loan_Detail_Terms_and_conditions": "By signing up to Y9, you all ready agree to the",
+  "LD_Loan_Detail_Terms": " Terms & Conditions.",
+
+  "Profile_Title": "Profile",
+  "Profile_Sub_Title": "Your Personal details are shown as per your NIDA records"
   "ST_contact_text" : "Need Help or If You Have Any Query \n Contact Us at +255 677-039-999",
 
 
@@ -219,6 +235,18 @@
   "LR_custom_amount" : "Pay Custom \nAmount",
   "LR_pay_now" : "Pay Now",
   "LR_payment_label" : "Payment of {} will be adjusted in total \nPayable amount",
+  "LR_proceed" : "Proceed"
+
+  "ST_contact_text" : "Need Help or If You Have Any Query \n Contact Us at +255 677-039-999",
+
+
+  "PP_Daily_Repayment_Title" : "Daily Repayment",
+  "PP_Airtel_Pay" : "Airtel Pay",
+  "PP_PayNow" : "Pay Now",
+  "PP_Wallets_Title" : "Wallets",
+
+
+  "FAQ_Title": "FAQ"
   "LR_proceed" : "Proceed",
   "CA_custom_amount" : "Pay Custom Amount"
 }

@@ -71,7 +71,10 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
   }
 
   Future customerLogin(
-      String mobileNumber, String passcode, UserType userType) async {
+    String mobileNumber,
+    String passcode,
+    UserType userType,
+  ) async {
     state = LoginState.loading();
     var response = await _loginUseCase.login(
         '+255' + mobileNumber, passcode, (p0) => null);
@@ -107,18 +110,18 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
     }
   }
 
-  // Future agentLogin(String mobileNumber, String nidanumber, String userType,
-  //     String agentId) async {
-  //   state = LoginState.loading();
-  //   var response = await _loginUseCase.loginAgent(
-  //       '+255' + mobileNumber, nidanumber, agentId, (p0) => null);
-  //   print(response);
-  //   if (response?.data != null) {
-  //     state = LoginState.successState();
-  //     _navigationHandler.navigateToOtpScreen(userType, mobileNumber, agentId);
-  //   } else {
-  //     state = LoginState.successState();
-  //     print(response?.message);
-  //   }
-  // }
+// Future agentLogin(String mobileNumber, String nidanumber, String userType,
+//     String agentId) async {
+//   state = LoginState.loading();
+//   var response = await _loginUseCase.loginAgent(
+//       '+255' + mobileNumber, nidanumber, agentId, (p0) => null);
+//   print(response);
+//   if (response?.data != null) {
+//     state = LoginState.successState();
+//     _navigationHandler.navigateToOtpScreen(userType, mobileNumber, agentId);
+//   } else {
+//     state = LoginState.successState();
+//     print(response?.message);
+//   }
+// }
 }

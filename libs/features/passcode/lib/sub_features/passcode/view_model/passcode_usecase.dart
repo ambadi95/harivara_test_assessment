@@ -110,10 +110,7 @@ class PasscodeUseCase extends BaseDataProvider {
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
         moduleIdentifier: PasscodeModule.moduleIdentifier,
-        requestData: {
-          'data': passcodeRequest.toJson(),
-          'userType': userType
-        },
+        requestData: {'data': passcodeRequest.toJson(), 'userType': userType},
         serviceIdentifier: IPasscodeService.agentCustomerSignUpIdentifier,
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {

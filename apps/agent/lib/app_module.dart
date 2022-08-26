@@ -30,6 +30,8 @@ import 'package:home/home/navigation_handler/home_route_manager.dart';
 import 'package:kyc/kyc_credit_module.dart';
 import 'package:downpayment/downpayment_module.dart';
 import 'package:kyc/navigation_handler/kyc_credit_route_manager.dart';
+import 'package:loan_details/loan_detail_module.dart';
+import 'package:loan_details/navigation_handler/loan_detail_route_manager.dart';
 import 'package:login/login_module.dart';
 import 'package:login/navigation_handler/login_route_manager.dart';
 import 'package:network_manager/auth/auth_manager.dart';
@@ -125,6 +127,7 @@ class AppModule {
 
     TermsConditionModule.registerDependencies();
 
+
     DIContainer.container.resolve<WidgetsModule>().registerDependencies();
   }
 }
@@ -159,6 +162,8 @@ void _registerUtils() {
 // ignore: long-method
 void _registerRouteManagers() {
   final navigationManagerContainer = DIContainer.container<NavigationManager>();
+
+
 
   navigationManagerContainer.registerRouteManager(
     WelcomeModule.moduleIdentifier,

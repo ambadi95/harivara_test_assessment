@@ -68,6 +68,9 @@ dependencies:
   kyc:
     path: ../../libs/features/kyc
 
+  loan_details:
+    path: ../../libs/features/loan_details
+
   downpayment:
     path: ../../libs/features/downpayment
 

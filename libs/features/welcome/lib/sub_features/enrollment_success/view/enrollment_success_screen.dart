@@ -80,7 +80,8 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
 
   Widget _buildMainUI(EnrollmentSuccessCoordinator coordinator) {
     return Padding(
-      padding:  EdgeInsets.all(AppUtils.appUtilsInstance.getPercentageSize(percentage: 4)),
+      padding: EdgeInsets.all(
+          AppUtils.appUtilsInstance.getPercentageSize(percentage: 4)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -105,7 +106,7 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
               ),
             ),
           ),
-           SizedBox(
+          SizedBox(
             height: AppUtils.appUtilsInstance.getPercentageSize(percentage: 10),
           ),
           _buildSucessIcon(),

@@ -34,6 +34,9 @@ const ST_faq = 'assets/images/faq.png';
 const ST_agent = 'assets/images/agent.png';
 const MO_credit_info_icon = 'assets/images/credit_info.png';
 
+const LD_loan_detail = 'assets/images/loan_detail.png';
+const LD_loan_detail_banner_image = 'assets/images/loan_detail_banner_image.png';
+
 //dev customer
  const customerEndpoint = 'https://y9-dev-capi.testmaya.com/customers/v1/';
 //prod customer

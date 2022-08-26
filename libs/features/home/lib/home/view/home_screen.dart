@@ -24,11 +24,11 @@ class CrayonHomeScreen extends StatefulWidget {
   State<CrayonHomeScreen> createState() => _CrayonCustomerHomeScreenState();
 
   factory CrayonHomeScreen.forCustomerApp() => CrayonHomeScreen(
-    homeScreenArgs: HomeScreenArgs(
-      userType: UserType.Customer,
-      isAgent: false,
-    ),
-  );
+        homeScreenArgs: HomeScreenArgs(
+          userType: UserType.Customer,
+          isAgent: false,
+        ),
+      );
 }
 
 class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
@@ -46,7 +46,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
         setupViewModel: (coordinator) async {
           coordinator.initialiseState(
               context, '', widget.homeScreenArgs.isAgent, false);
-          if(widget.homeScreenArgs.isAgent){
+          if (widget.homeScreenArgs.isAgent) {
             username = await coordinator.getAgentName();
             userId = await coordinator.getAgentId();
             setState(() {
@@ -56,7 +56,6 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
             customerCount = await coordinator.getCustomerCount();
             setState(() {});
           }
-
         },
         builder: (context, state, coordinator) => Scaffold(
           body: SafeArea(
@@ -121,31 +120,34 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
         children: [
           Row(
             children: [
-              isAgent() ? Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'HS_AccountId'.tr,
-                    style: HS_title_style,
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  Text( userId.tr, style: HS_account_id_style),
-                ],
-              ) : Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'HS_CardList1Title'.tr,
-                    style: HS_title_style,
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  const Text( "648960359535569", style: HS_account_id_style),
-                ],
-              ),
+              isAgent()
+                  ? Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'HS_AccountId'.tr,
+                          style: HS_title_style,
+                        ),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        Text(userId.tr, style: HS_account_id_style),
+                      ],
+                    )
+                  : Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'HS_CardList1Title'.tr,
+                          style: HS_title_style,
+                        ),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        const Text("648960359535569",
+                            style: HS_account_id_style),
+                      ],
+                    ),
               const Spacer(),
               Image.asset(
                 OB_AppLogo,
@@ -205,10 +207,17 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                         const SizedBox(
                           height: 5,
                         ),
-                        Row(children:[const Text("4,500", style: HS_account_id_style),const Text(" TZSHS", style: HS_card_items_style_w)],
-                        )],
+                        Row(
+                          children: [
+                            const Text("4,500", style: HS_account_id_style),
+                            const Text(" TZSHS", style: HS_card_items_style_w)
+                          ],
+                        )
+                      ],
                     ),
-                    const SizedBox(width: 20,),
+                    const SizedBox(
+                      width: 20,
+                    ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -219,7 +228,10 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                         const SizedBox(
                           height: 5,
                         ),
-    Row(children:[const Text("7,70,000", style: HS_account_id_style),const Text(" TZSHS", style: HS_card_items_style_w)]),
+                        Row(children: [
+                          const Text("7,70,000", style: HS_account_id_style),
+                          const Text(" TZSHS", style: HS_card_items_style_w)
+                        ]),
                       ],
                     ),
                   ],
@@ -344,10 +356,10 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
               text: TextSpan(
             text: ' ',
             children: <TextSpan>[
-               TextSpan(
+              TextSpan(
                   text: 'HS_Agent_Refer_Program'.tr,
                   style: HS_invite_your_friends_style),
-               TextSpan(
+              TextSpan(
                   text: 'HS_Agent_Stay_Tunned'.tr, style: HS_stay_tunned_style),
             ],
           )),
@@ -399,7 +411,6 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
             const SizedBox(
               height: 10,
             ),
-
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -441,7 +452,11 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
         shape: BoxShape.circle,
         color: profilePicHolderYellowColor,
       ),
-      child: const Center(child:Text('EJ',style: AN_TextFieldLabel_FF,)),
+      child: const Center(
+          child: Text(
+        'EJ',
+        style: AN_TextFieldLabel_FF,
+      )),
     );
   }
 
@@ -455,8 +470,11 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
     );
   }
 
-  _buildMainUI(BuildContext context, HomeCoordinator coordinator,
-      HomeScreenReady state) {
+  _buildMainUI(
+    BuildContext context,
+    HomeCoordinator coordinator,
+    HomeScreenReady state,
+  ) {
     return Scaffold(
         backgroundColor: Colors.white,
         floatingActionButtonLocation:
@@ -506,6 +524,10 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                   ],
                 ),
               )
-            :  Settings(screenArgs: SettingsScreenArgs(isAgent: isAgent(),userType: widget.homeScreenArgs.userType),));
+            : Settings(
+                screenArgs: SettingsScreenArgs(
+                    isAgent: isAgent(),
+                    userType: widget.homeScreenArgs.userType),
+              ));
   }
 }

@@ -64,6 +64,9 @@ const DD_TextLabel = Color(0xFF000000);
 const DD_TextValue = Color(0xFF000000);
 const DD_BUTTON_COLOR = Color(0xFFF4EFEF);
 
+Color  Loan_Detail_Background = Color(0xFFF4EEEB);
+Color  Loan_Banner_Background = Color(0xFFC83732);
+
 
 const VO_TitleColor= Color(0xFF040505);
 const VO_DescriptionColor= Color(0xFF160304);
@@ -84,6 +87,9 @@ const LR_Color00384E = Color(0xFF00384E);
 const LR_Color22C55E = Color(0xFF22C55E);
 const LR_ColorA3A3A3 = Color(0xFFA3A3A3);
 const LR_ColorBAB8B2 = Color(0xFFBAB8B2);
+
+
+
 
 
 

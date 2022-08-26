@@ -102,7 +102,7 @@ class _SignUpState extends State<SignUp> {
   ) {
     return Column(
       children: [
-       // _onBoardingProgressBar(),
+        // _onBoardingProgressBar(),
         _buildBackBtn(context, coordinator),
       ],
     );
