@@ -1,4 +1,3 @@
-
 import 'package:task_manager/api_task_resolver.dart';
 import 'package:task_manager/module_resolver.dart';
 import 'package:task_manager/task.dart';

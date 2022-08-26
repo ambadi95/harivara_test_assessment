@@ -11,7 +11,9 @@ class SettingsRouteManager extends IRouteManager {
     switch (settings.name) {
       case Settings.viewPath:
         var arguments = settings.arguments as SettingsScreenArgs;
-        return  Settings(screenArgs: arguments,);
+        return Settings(
+          screenArgs: arguments,
+        );
     }
     throw UnimplementedError();
   }

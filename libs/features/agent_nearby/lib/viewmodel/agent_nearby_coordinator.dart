@@ -1,8 +1,11 @@
 import 'package:core/view/analytics_state_notifier.dart';
-
+import 'package:flutter/cupertino.dart';
+import 'package:shared_data_models/agent_nearby/agents_near_by_response/datum.dart';
+import 'package:widget_library/utils/launcher_utils.dart';
 import '../navigation_handler/agent_nearby_navigation_handler.dart';
 import '../state/agent_nearby_state.dart';
 import 'agent_nearby_usecase.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AgentNearbyCoordinator extends AnalyticsStateNotifier<AgentNearByState> {
   final AgentNearbyNavigationHandler _navigationHandler;
@@ -12,4 +15,98 @@ class AgentNearbyCoordinator extends AnalyticsStateNotifier<AgentNearByState> {
     this._navigationHandler,
     this._agentNearbyUseCase,
   ) : super(const AgentNearByState());
+
+var _currentLocation;
+  Future<void> hasValidLocation(BuildContext context) async {
+    var locationPermissionError =
+        await _agentNearbyUseCase.hasLocationPermission();
+    if (locationPermissionError.isEmpty) {
+      state = state.copyWith(
+        isLoading: true,
+      );
+      var location = await _agentNearbyUseCase.hasValidLocation();
+      if (location.isNotEmpty) {
+        _currentLocation =  await _agentNearbyUseCase.getCurrentLocation();
+       print(_currentLocation);
+        state = state.copyWith(
+          isLoading: false,
+        );
+      }
+    } else {
+      state = state.copyWith(
+        isLoading: false,
+      );
+    }
+  }
+
+  distance(double lat, double long){
+    double distance = _agentNearbyUseCase.calculateDistance(_currentLocation.latitude, _currentLocation.longitude, lat, long);
+  return distance;
+}
+
+   void navigateToMap(double lat, double lng) async {
+    var uri = Uri.parse("google.navigation:q=$lat,$lng&mode=d");
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
+    } else {
+      throw 'Could not launch ${uri.toString()}';
+    }
+  }
+
+
+  List<Datum> get nearByAgent => [
+    const Datum(y9AgentId: '356HYT6584',firstName: 'Christine',
+        lastName: 'Nshengoma',middleName: null,mobileNo: '255755781425',
+      address: '28081994',poBoxNumber: '67QV+43P', district: 'Tanzina',imageUrl: '',region: 'Dodoma', lat: 13.063831, long: 80.249931 ,
+    ),
+    const Datum(y9AgentId: '356HYT6583',firstName: 'Dennis ',
+        lastName: 'Nakajumo',middleName: null,mobileNo: '255786713333',
+        address: '28081994',poBoxNumber: '57QV+43P', district: 'Africa',imageUrl: '',region: 'Tabora',lat: 13.0768943, long: 80.1381482
+    ),
+    const Datum(y9AgentId: '356HYT6583',firstName: 'Mark ',
+        lastName: 'Lucas',middleName: null,mobileNo: '255786713333',
+        address: '28081994',poBoxNumber: '57QV+43P', district: 'Africa',imageUrl: '',region: 'Tabora',lat: 13.063866, long: 80.149900
+    ),
+  ];
+
+  List<Datum> newList = [];
+
+   agentNearbyList(){
+    for(int i = 0;i<nearByAgent.length; i++){
+    double dis =  distance(nearByAgent[i].lat!, nearByAgent[i].long!);
+    newList.add(Datum(firstName: nearByAgent[i].firstName,
+        lastName:  nearByAgent[i].lastName,
+        address:  nearByAgent[i].address,y9AgentId:  nearByAgent[i].y9AgentId,poBoxNumber:  nearByAgent[i].poBoxNumber,
+      region:  nearByAgent[i].region,district:  nearByAgent[i].district,mobileNo:  nearByAgent[i].mobileNo,imageUrl:  nearByAgent[i].imageUrl,
+      middleName:  nearByAgent[i].middleName, distance: dis,long: nearByAgent[i].long, lat: nearByAgent[i].lat
+    )) ;
+    }
+    state = state.copyWith(agentNearbyList: newList..sort((a,b)=> a.distance!.compareTo(b.distance!)));
+  }
+
+  List<Datum> list = [];
+  Future search(String searchText)async{
+    if(searchText.isEmpty){
+      list = newList;
+      state = state.copyWith(agentNearbyList: list);
+    }else{
+      List<Datum> list1 = [];
+      List<Datum> list2 = [];
+      List<Datum> list3 = [];
+      list = newList.where((agents)=> agents.region!.toLowerCase().contains(searchText.toLowerCase())).toList();
+      list1 = newList.where((agents)=> agents.region!.toLowerCase().contains(searchText.toLowerCase())).toList();
+      list2 = newList.where((agents)=> agents.district!.toLowerCase().contains(searchText.toLowerCase())).toList();
+      list3 = newList.where((agents)=> agents.poBoxNumber!.toLowerCase().contains(searchText.toLowerCase())).toList();
+      if(list1.isNotEmpty){
+        state = state.copyWith(agentNearbyList: list1);
+      }else if(list2.isNotEmpty){
+        state = state.copyWith(agentNearbyList: list2);
+      }else if(list3.isNotEmpty){
+        state = state.copyWith(agentNearbyList: list3);
+      }else {
+        state = state.copyWith(agentNearbyList: list);
+      }
+    }
+  }
+
 }

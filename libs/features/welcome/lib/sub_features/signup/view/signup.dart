@@ -28,6 +28,7 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+
   bool _isBtnEnabled = false;
   String nidaNumberError = '';
   String mobileNumberError = '';
@@ -101,7 +102,7 @@ class _SignUpState extends State<SignUp> {
   ) {
     return Column(
       children: [
-       // _onBoardingProgressBar(),
+        // _onBoardingProgressBar(),
         _buildBackBtn(context, coordinator),
       ],
     );

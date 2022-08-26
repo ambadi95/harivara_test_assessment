@@ -14,6 +14,7 @@ import 'package:shared_data_models/passcode/passcode_screen_args.dart';
 import 'package:shared_data_models/passcode/passcode_verification_type.dart';
 import 'package:login/view/login_screen.dart';
 import 'package:shared_data_models/signup/sign_up_type.dart';
+import 'package:shared_data_models/termscondition_faq_screen_args/termscondition_faq_screen_args.dart';
 import 'package:verifyotp/verifyotp/view/verifyotp.dart';
 import 'package:welcome/data_model/agent_detail_arguments.dart';
 import 'package:welcome/data_model/sign_up_arguments.dart';
@@ -160,9 +161,10 @@ class WelcomeNavigationHandler with ErrorHandler {
   }
 
   Future<void> navigateToTermsCondtionsScreen() async {
+    var arguments = TermsConditionAndFaqScreenArgs(isFAQ: false);
     _navigationManager.navigateTo(
       CrayonTermsCondition.viewPath,
-      const NavigationType.push(),);
+      const NavigationType.push(),arguments: arguments);
   }
 
   Future<void> navigateToAgentDetailScreen(UserType userType) async {

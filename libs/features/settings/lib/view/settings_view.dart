@@ -115,6 +115,10 @@ class _SettingsState extends State<Settings> {
           widget.screenArgs.isAgent
               ? await coordinator.navigateToUpdateProfile()
               : await coordinator.navigateToCustomerProfileScreen() /*() {}*/;
+        _buildOptions(context, 'ST_view_profile', ST_view_profile, () async {
+          widget.screenArgs.isAgent
+              ? await coordinator.navigateToUpdateProfile()
+              : () {};
         }),
         _buildOptions(context, 'ST_update_passcode', ST_update_passcode,
             () async {
@@ -147,10 +151,18 @@ class _SettingsState extends State<Settings> {
           height: 20,
         ),
         _buildOptions(context, 'ST_agents', ST_agent, () async {}),
-        _buildOptions(context, 'ST_faq', ST_faq, () async {}),
-        _buildOptions(
-            context, 'ST_term_condition', ST_TermsCondition, () async {}),
-        _buildOptions(context, 'ST_call_support', ST_CallSupport, () async {}),
+        _buildOptions(context, 'ST_faq', ST_faq, () async {
+          coordinator.navigateToTermsCondtionsScreen();
+        }),
+        _buildOptions(context, 'ST_term_condition', ST_TermsCondition,
+            () async {
+          LauncherUtils.launcherUtilsInstance
+              .launchInBrowser(url: LauncherUtils.Y9_BANK_URL);
+        }),
+        _buildOptions(context, 'ST_call_support', ST_CallSupport, () async {
+          LauncherUtils.launcherUtilsInstance
+              .makePhoneCall(phoneNumber: LauncherUtils.CONTACT_NUMBER);
+        }),
       ],
     );
   }

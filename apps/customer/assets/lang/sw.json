@@ -184,6 +184,51 @@
   "TC_Purpose_title":"2. KUSUDI",
   "TC_Purpose_Desc": "2.1. Y9 ni mtoa huduma wa huduma ndogo za kidijitali inayolenga kusaidia kuendeleza mtindo wa maisha wa watu wa Tanzania na bara la Afrika kwa ujumla kwa kutoa huduma za kifedha kwa watu wasio na benki na wasio na benki kwa kutoa fursa ya kupata elimu ya kidijitali, afya ya kidijitali n.k. kwa kutoa simu mahiri za 4G. kwa masharti ya haki sana ili kuifanya ipatikane kwa wananchi wote kwa kuwezesha ushirikishwaji wa maana wa kifedha na kidijitali.",
 
+  "TC_Purpose_Desc": "2.1. Y9 ni mtoa huduma wa huduma ndogo za kidijitali inayolenga kusaidia kuendeleza mtindo wa maisha wa watu wa Tanzania na bara la Afrika kwa ujumla kwa kutoa huduma za kifedha kwa watu wasio na benki na wasio na benki kwa kutoa fursa ya kupata elimu ya kidijitali, afya ya kidijitali n.k. kwa kutoa simu mahiri za 4G. kwa masharti ya haki sana ili kuifanya ipatikane kwa wananchi wote kwa kuwezesha ushirikishwaji wa maana wa kifedha na kidijitali.",
+
+  "LR_paying_for" : "You are paying for",
+  "LR_device_loan" : "Y9 Device Loan",
+  "LR_amount_to_pay" : "Choose the amount to pay",
+  "LR_due_amount" : "Pay Due Amount",
+  "LR_daily_repayment" : "Daily Repayment",
+  "LR_loan_amount" : "Total Loan Amount",
+  "LR_custom_amount" : "Pay Custom Amount",
+  "LR_pay_now" : "Pay Now"
+  "TC_Purpose_Desc": "2.1. Y9 ni mtoa huduma wa huduma ndogo za kidijitali inayolenga kusaidia kuendeleza mtindo wa maisha wa watu wa Tanzania na bara la Afrika kwa ujumla kwa kutoa huduma za kifedha kwa watu wasio na benki na wasio na benki kwa kutoa fursa ya kupata elimu ya kidijitali, afya ya kidijitali n.k. kwa kutoa simu mahiri za 4G. kwa masharti ya haki sana ili kuifanya ipatikane kwa wananchi wote kwa kuwezesha ushirikishwaji wa maana wa kifedha na kidijitali.",
+
+
+
+  "HS_CardList1Title" : "Y9 Device Loan",
+  "HS_CardList2Title" : "Outstanding Due Amount",
+  "HS_CardList3Title" : "Total Amount to be \nRepaid",
+  "HS_LoanDetails" : "Loan \nDetails",
+  "HS_LoanStatements" : "Loan \nStatement",
+  "HS_Widget1Title" : "Reading is Fascinating",
+  "HS_Widget1Description" : "World best witters, works \nand write entertaining \nliterature for you",
+  "HS_explore" : "Explore",
+  "HS_Daily_Repayment_amount" : "Outstanding Due\nAmount",
+
+  "ST_title" : "Settings",
+  "ST_subTitle" : "Profile Management",
+  "ST_view_profile" : "View Profile",
+  "ST_update_passcode" : "Update Passcode",
+  "ST_App_Language" : "App Language",
+  "ST_sign_out" : "Sign Out",
+  "ST_support": "Support",
+  "ST_agents" : "Agents",
+  "ST_faq" : "Frequently Asked Queries",
+  "ST_term_condition" : "Terms & Conditions",
+  "ST_call_support" : "Call Support",
+
+  "ST_contact_text" : "Need Help or If You Have Any Query \n Contact Us at +255 677-039-999",
+
+
+  "PP_Daily_Repayment_Title" : "Daily Repayment",
+  "PP_Airtel_Pay" : "Airtel Pay",
+  "PP_PayNow" : "Pay Now",
+  "PP_Wallets_Title" : "Wallets",
+
+  "FAQ_Title": "FAQ"
 
   "LD_Loan_Detail": "Loan Details",
   "LD_Loan_Detail_Amount": "Loan Amount",

@@ -150,7 +150,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
     int attempts = currentState.attemptsRemain;
     if (otpScreenArgs.otpVerificationType == OtpVerificationType.customerSign) {
       var responseSignin = await _verifyOtpUseCase.otpVerify(
-          otpScreenArgs.refId, enterOtp,otpScreenArgs.userType, (p0) => null);
+          otpScreenArgs.refId, enterOtp, otpScreenArgs.userType, (p0) => null);
       if (responseSignin!.status == true) {
         _navigationHandler.navigateToCustomerEnrollmentScreen();
       } else {
@@ -161,8 +161,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
       var responseSignin = await _verifyOtpUseCase.otpVerifyCustomerByAgent(
           otpScreenArgs.refId, enterOtp, 'Customer', (p0) => null);
       if (responseSignin!.data!.status == "success") {
-        _navigationHandler.navigateToDestinationPath(
-            destinationPath, UserType.AgentCustomer);
+         _navigationHandler.navigateToDetailScreen();
       }
     } else if (otpScreenArgs.otpVerificationType ==
         OtpVerificationType.mobile) {

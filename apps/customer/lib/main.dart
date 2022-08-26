@@ -15,7 +15,9 @@ import 'package:get/get.dart';
 import 'package:home/home/home_screen_arguments.dart';
 import 'package:home/home/view/home_screen.dart';
 import 'package:loan_details/view/loan_detail_screen.dart';
+import 'package:payments/view/payments_screen.dart';
 import 'package:shared_data_models/device_option/device_option_args.dart';
+import 'package:shared_data_models/payments/payments_screen_args.dart';
 import 'package:splash/splash/view/splash.dart';
 import 'package:welcome/sub_features/enrollment_success/view/enrollment_success_screen.dart';
 import 'package:welcome/sub_features/welcome/view/welcome_screen.dart';
@@ -74,14 +76,6 @@ class HomeWidget extends StatelessWidget {
         home: !_status
             ?
         CrayonHomeScreen.forCustomerApp()
-           /* LoanDetailScreen(
-                loanDetailArgs: LoanDetailArgs(
-                  "",
-                  "",
-                  "",
-                  "",
-                ),
-              )*/
             : CrayonHomeScreen.forCustomerApp(),
         theme: CrayonPaymentTheme().defaultTheme,
         onGenerateRoute: _navigationManager.getRoute,

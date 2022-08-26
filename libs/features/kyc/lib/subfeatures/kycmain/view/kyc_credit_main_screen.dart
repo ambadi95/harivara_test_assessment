@@ -104,6 +104,7 @@ class _KycCreditMainScreenState extends State<KycCreditMainScreen> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _buildTitle(context, coordinator),
             SizedBox(

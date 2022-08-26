@@ -35,4 +35,9 @@ class SettingsCoordinator extends BaseViewModel<SettingsState> {
     await _settingsUseCase.logout();
     await _navigationHandler.signOut();
   }
+
+    Future<void> navigateToTermsCondtionsScreen() async {
+      await _navigationHandler.navigateToTermsCondtionsScreen();
+
+  }
 }

@@ -1,4 +1,5 @@
 import 'dart:io';
+
 import 'package:core/app/crayon_payment_material_app.dart';
 import 'package:core/ioc/di_container.dart';
 import 'package:core/navigation/navigation_manager.dart';
@@ -8,14 +9,13 @@ import 'package:core/translation/crayon_payment_transaltions_loader.dart';
 import 'package:core/translation/crayon_payment_translations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/src/framework.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/internacionalization.dart';
 import 'package:loan_details/view/loan_detail_screen.dart';
 import 'package:splash/splash/view/splash.dart';
-import 'package:welcome/data_model/sign_up_arguments.dart';
-import 'package:welcome/sub_features/signup/view/signup.dart';
 import 'package:widget_library/theme/crayon_payment_theme.dart';
-import 'package:flutter_riverpod/src/framework.dart';
+
 import 'app_module.dart';
 import 'package:shared_data_models/kyc/kyc_screen_args.dart';
 import 'package:shared_data_models/loan_detail/loan_detail_screen_args.dart';
@@ -33,7 +33,10 @@ void main() async {
   final translations = CrayonPaymentTranslations(
     DIContainer.container.resolve<CrayonPaymentTranslationsLoader>(),
   );
+  var locale = Locale('sw');
+  Get.updateLocale(locale);
   await translations.loadTranslationFiles();
+
   await CrayonPaymentTheme().initialize(loadCustomTheme: true);
 
   bool status = false;
@@ -74,16 +77,7 @@ class HomeWidget extends StatelessWidget {
       child: CrayonPaymentMaterialApp(
         key: Key('AppMaterialApp'),
         home: !_status
-            ?  KycCreditMainScreen(
-                kycScreenArgs: KycScreenArgs(
-                  KycFieldType.KYC_VALIDATION,
-                  "",
-                  "",
-                  "",
-                  "",
-                  [KYCDataModel(title: "", isSelected: false)],
-                ),
-              )
+            ? CrayonSplashScreen.forMerchantApp()
             : CrayonSplashScreen.forMerchantApp(),
         theme: CrayonPaymentTheme().defaultTheme,
         onGenerateRoute: _navigationManager.getRoute,

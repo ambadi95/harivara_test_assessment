@@ -3,11 +3,18 @@ import 'package:core/navigation/navigation_manager.dart';
 import 'package:core/navigation/navigation_type.dart';
 import 'package:device_option/sub_features/device_loan_creation/view/device_loan_creation_screen.dart';
 import 'package:shared_data_models/deviceloancreation/devicecreation_screen_args.dart';
+import 'package:shared_data_models/downpayment/downpayment_screen_args.dart';
 import 'package:welcome/sub_features/enrollment_success/view/enrollment_success_screen.dart';
 import 'package:widget_library/helpers/error/helper/error_helper.dart';
 
 import '../sub_features/device_details/view/device_detail_screen.dart';
 import 'package:shared_data_models/device_option/detail_detail_response/data.dart';
+
+
+import 'package:shared_data_models/downpayment/downpayment_data_model.dart';
+import 'package:downpayment/view/down_payment_screen.dart';
+
+
 
 class DeviceOptionNavigationHandler with ErrorHandler {
   final NavigationManager _navigationManager;
@@ -21,7 +28,8 @@ class DeviceOptionNavigationHandler with ErrorHandler {
         arguments: arguments);
   }
 
- Future<void> navigateToDeviceLoanCreation(String image, Data deviceDetailData) async {
+  Future<void> navigateToDeviceLoanCreation(
+      String image, Data deviceDetailData) async {
     var arguments = DeviceLoanCreationArgs(deviceDetailData, image);
     await _navigationManager.navigateTo(
         DeviceLoanCreationScreen.viewPath, const NavigationType.push(),
@@ -34,5 +42,12 @@ class DeviceOptionNavigationHandler with ErrorHandler {
     _navigationManager.navigateTo(
         EnrollmentSuccessScreen.viewPath, const NavigationType.replace(),
         arguments: argument);
+  }
+
+  navigateToDownPaymentScreen(Data? detailDetail) {
+    var arguments=  DownPaymentScreenArgs("","","","",[DownPaymentDataModel(title: "",isSelected: false)]);
+    _navigationManager.navigateTo(
+        DownPaymentScreen.viewPath, const NavigationType.push(),
+        arguments: arguments);
   }
 }

@@ -30,6 +30,10 @@ class HomeCoordinator extends BaseViewModel<HomeScreenState> {
     _navigationHandler.navigateToSettingsScreen();
   }
 
+  void navigationToBottomSheet(){
+    _navigationHandler.navigateToLoanRepaymentBottomSheet("message", "buttonLabel");
+  }
+
   Future<String> getAgentId() async {
     String agentId = await _customerHomeUseCase.getAgentId();
     return agentId;

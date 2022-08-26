@@ -19,12 +19,13 @@ import 'package:widget_library/static_text/crayon_payment_text.dart';
 
 import '../../../../../data_model/sign_up_arguments.dart';
 
-
 class CustomerOnBoardingApproval extends StatefulWidget {
   final SignUpArguments signUpArguments;
-  static const viewPath = '${WelcomeModule.moduleIdentifier}/customerOnBoardingApproval';
+  static const viewPath =
+      '${WelcomeModule.moduleIdentifier}/customerOnBoardingApproval';
 
-  const CustomerOnBoardingApproval({required this.signUpArguments, Key? key}) : super(key: key);
+  const CustomerOnBoardingApproval({required this.signUpArguments, Key? key})
+      : super(key: key);
 
   @override
   State<CustomerOnBoardingApproval> createState() => _SignUpState();
@@ -38,33 +39,33 @@ class _SignUpState extends State<CustomerOnBoardingApproval> {
   Widget build(BuildContext context) =>
       BaseView<SignUpCoordinator, SignUpState>(
           onStateListenCallback: (preState, newState) =>
-          {_listenToStateChanges(context, newState)},
+              {_listenToStateChanges(context, newState)},
           setupViewModel: (coordinator) async {},
           builder: (context, state, coordinator) => SafeArea(
-            child: Scaffold(
-              bottomNavigationBar: state.maybeWhen(
-                loadingState: () =>
-                    _buildMainUIWithLoading(context, coordinator),
-                orElse: () => SizedBox(
-                  height: 120,
-                  child: Column(
-                    children: [
-                      const SizedBox(
-                        height: 23,
+                child: Scaffold(
+                  bottomNavigationBar: state.maybeWhen(
+                    loadingState: () =>
+                        _buildMainUIWithLoading(context, coordinator),
+                    orElse: () => SizedBox(
+                      height: 120,
+                      child: Column(
+                        children: [
+                          const SizedBox(
+                            height: 23,
+                          ),
+                          _buildContinueButton(context, coordinator, state)
+                        ],
                       ),
-                      _buildContinueButton(context, coordinator, state)
-                    ],
+                    ),
                   ),
-                ),
-              ),
-              body: state.maybeWhen(
-                orElse: () => SingleChildScrollView(
-                    child: SafeArea(
+                  body: state.maybeWhen(
+                    orElse: () => SingleChildScrollView(
+                        child: SafeArea(
                       child: _UI(coordinator),
                     )),
-              ),
-            ),
-          ));
+                  ),
+                ),
+              ));
 
   Widget _UI(SignUpCoordinator coordinator) {
     return Column(
@@ -77,9 +78,9 @@ class _SignUpState extends State<CustomerOnBoardingApproval> {
   }
 
   Widget _buildMainUIWithLoading(
-      BuildContext context,
-      SignUpCoordinator coordinator,
-      ) {
+    BuildContext context,
+    SignUpCoordinator coordinator,
+  ) {
     return Stack(
       children: [
         _UI(coordinator),
@@ -89,12 +90,15 @@ class _SignUpState extends State<CustomerOnBoardingApproval> {
   }
 
   Widget _buildTopContainer(
-      BuildContext context,
-      SignUpCoordinator coordinator,
-      ) {
+    BuildContext context,
+    SignUpCoordinator coordinator,
+  ) {
     return Column(
       children: [
-        widget.signUpArguments.signupType == SignupType.agentAidedCustomerOnBoarding ? const SizedBox() :  _onBoardingProgressBar(),
+        widget.signUpArguments.signupType ==
+                SignupType.agentAidedCustomerOnBoarding
+            ? const SizedBox()
+            : _onBoardingProgressBar(),
         _buildBackBtn(context, coordinator),
       ],
     );
@@ -124,7 +128,8 @@ class _SignUpState extends State<CustomerOnBoardingApproval> {
           const SizedBox(
             height: 94,
           ),
-          _buildLabelTextField('Customer Reference ID',referenceID,coordinator,'Enter Reference ID', '',TextInputType.number)
+          _buildLabelTextField('Customer Reference ID', referenceID,
+              coordinator, 'Enter Reference ID', '', TextInputType.number)
         ],
       ),
     );
@@ -133,20 +138,20 @@ class _SignUpState extends State<CustomerOnBoardingApproval> {
   Widget _onBoardingProgressBar() {
     return widget.signUpArguments.isProgressBarVisible
         ? const Padding(
-      padding:
-      EdgeInsets.only(left: 20.0, right: 20.0, top: 20.0, bottom: 0),
-      child: OnBoardingProgressBar(
-        currentStep: 1,
-        totalSteps: 4,
-      ),
-    )
+            padding:
+                EdgeInsets.only(left: 20.0, right: 20.0, top: 20.0, bottom: 0),
+            child: OnBoardingProgressBar(
+              currentStep: 1,
+              totalSteps: 4,
+            ),
+          )
         : const SizedBox();
   }
 
   Widget _buildBackBtn(
-      BuildContext context,
-      SignUpCoordinator coordinator,
-      ) {
+    BuildContext context,
+    SignUpCoordinator coordinator,
+  ) {
     return Align(
       alignment: Alignment.topLeft,
       child: CrayonBackButton(
@@ -187,8 +192,7 @@ class _SignUpState extends State<CustomerOnBoardingApproval> {
       TextInputType textInputType) {
     return FocusScope(
       child: Focus(
-        onFocusChange: (focus) {
-        },
+        onFocusChange: (focus) {},
         child: InputFieldWithLabel(
           label: label.tr,
           hintText: hint.tr,
@@ -196,25 +200,21 @@ class _SignUpState extends State<CustomerOnBoardingApproval> {
           errorText: errorText.tr,
           keyboardType: textInputType,
           textCapitalization: TextCapitalization.characters,
-          onChanged: (value) {
-
-          },
+          onChanged: (value) {},
         ),
       ),
     );
   }
 
-
   Widget _buildContinueButton(
-      BuildContext context,
-      SignUpCoordinator coordinator,
-      SignUpState state,
-      ) {
+    BuildContext context,
+    SignUpCoordinator coordinator,
+    SignUpState state,
+  ) {
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
-        onTap: () async {
-        },
+        onTap: () async {},
         child: Container(
           width: double.infinity,
           height: 50,
