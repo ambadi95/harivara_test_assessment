@@ -68,6 +68,19 @@ const ES_grey_button_color = Color(0xFF9CA3AF);
 const profilePicHolderYellowColor=Color.fromRGBO(246, 192, 80, 1.0);
 const READINGVIEW_COLOR=Color.fromRGBO(248, 245, 237,1);
 
+const LR_Color565451 = Color(0xFF565451);
+const LR_Black = Color(0xFF000000);
+const LR_White = Color(0xFFFFFFFF);
+const LR_Color676767 = Color(0xFF676767);
+const LR_ColorDA2228 = Color(0xFFDA2228);
+const LR_ColorF4EEEB = Color(0xFFF4EEEB);
+const LR_ColorF3F4FA = Color(0xFFF3F4FA);
+const LR_Color9CA3AF = Color(0xFF9CA3AF);
+const LR_Color00384E = Color(0xFF00384E);
+const LR_Color22C55E = Color(0xFF22C55E);
+const LR_ColorA3A3A3 = Color(0xFFA3A3A3);
+const LR_ColorBAB8B2 = Color(0xFFBAB8B2);
+
 
 
 

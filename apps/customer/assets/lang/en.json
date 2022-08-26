@@ -208,6 +208,8 @@
   "LR_daily_repayment" : "Daily \nRepayment",
   "LR_loan_amount" : "Total Loan \nAmount",
   "LR_custom_amount" : "Pay Custom \nAmount",
-  "LR_pay_now" : "Pay Now"
+  "LR_pay_now" : "Pay Now",
+  "LR_payment_label" : "Payment of {} will be adjusted in total \nPayable amount",
+  "LR_proceed" : "Proceed"
 
 }

@@ -14,6 +14,8 @@ import 'package:settings/view/settings_view.dart';
 import 'package:config/Config.dart';
 import 'package:widget_library/icons/crayon_payment_bottom_sheet_icon.dart';
 
+import '../constants/image_constant.dart';
+
 class HomeNavigationHandler with ErrorHandler {
   final NavigationManager _navigationManager;
 
@@ -38,19 +40,14 @@ class HomeNavigationHandler with ErrorHandler {
     );
   }
 
-  Future<void> navigateToAgentEnrollmentBottomSheet(
-      String message, String buttonLabel) async {
-    final CrayonPaymentBottomSheetIcon icon =
-    CrayonPaymentBottomSheetSuccessIcon();
+  Future<void> navigateToCustomPayBottomSheet() async {
     final CrayonPaymentBottomSheetState infoState =
-    CrayonPaymentBottomSheetState.agentEnrollment(
+    CrayonPaymentBottomSheetState.customAmount(
 
       buttonOptions: [
-        ButtonOptions(Black, buttonLabel, () => (){}, false)
+        ButtonOptions(Black, 'LR_proceed', () => (){}, false)
       ],
-      disableCloseButton: true,
-      bottomSheetIcon: icon,
-      title: message,
+      title: 'LR_custom_amount',
     );
 
     _navigationManager.navigateTo(
@@ -68,11 +65,12 @@ class HomeNavigationHandler with ErrorHandler {
       label1: 'LR_paying_for',
       label2: 'LR_device_loan',
       label3: 'LR_amount_to_pay',
-      imageUrl: "",
+      imageUrl: HS_LoanRepaymentMock,
       infoMessage: '',
       loanId: '64512378965435',
       onPressedCustomAmount: (){},
       onPressedPayNow: (){},
+
       loanPaymentList: [
         LoanPaymentMethod(
             name: 'LR_due_amount', amount: "4,500TZSHS", isSelected: false),
