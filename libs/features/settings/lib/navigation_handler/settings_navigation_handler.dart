@@ -4,6 +4,7 @@ import 'package:core/navigation/navigation_type.dart';
 import 'package:core/sheets/data_model/button_options.dart';
 import 'package:shared_data_models/kyc/agent_detail_screen_type.dart';
 import 'package:shared_data_models/signup/sign_up_type.dart';
+import 'package:shared_data_models/termscondition_faq_screen_args/termscondition_faq_screen_args.dart';
 import 'package:welcome/data_model/agent_detail_arguments.dart';
 import 'package:welcome/data_model/sign_up_arguments.dart';
 import 'package:welcome/sub_features/agent_details/view/agent_details.dart';
@@ -15,7 +16,7 @@ import 'package:widget_library/icons/crayon_payment_bottom_sheet_icon.dart';
 import 'package:core/sheets/state/crayon_payment_bottom_sheet_state.dart';
 import 'package:welcome/sub_features/app_language/view/app_language.dart';
 import 'package:config/Config.dart';
-import 'package:agent_nearby/view/agent_nearby_screen.dart';
+import 'package:termscondition/termscondition/view/terms_condition_view.dart';
 
 class SettingsNavigationHandler with ErrorHandler {
   final NavigationManager _navigationManager;
@@ -76,10 +77,10 @@ class SettingsNavigationHandler with ErrorHandler {
         arguments: arguments);
   }
 
-  Future<void> navigateToAgentsNearBy() async {
-    _navigationManager.navigateTo(
-      AgentNearBy.viewPath,
-      const NavigationType.push(),
-    );
+ Future<void> navigateToTermsCondtionsScreen() async {
+   var arguments = TermsConditionAndFaqScreenArgs(isFAQ: true);
+   _navigationManager.navigateTo(
+       CrayonTermsCondition.viewPath,
+       const NavigationType.push(),arguments: arguments);
   }
 }

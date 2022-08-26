@@ -15,6 +15,7 @@ class Settings extends StatefulWidget {
   final String _identifier = 'settings';
   static const String viewPath = '${SettingsModule.moduleIdentifier}/settings';
   final SettingsScreenArgs screenArgs;
+
   const Settings({Key? key, required this.screenArgs}) : super(key: key);
 
   @override
@@ -145,13 +146,19 @@ class _SettingsState extends State<Settings> {
         const SizedBox(
           height: 20,
         ),
-        _buildOptions(context, 'ST_agents', ST_agent, () async {
-          coordinator.navigateToAgentNearBy();
+        _buildOptions(context, 'ST_agents', ST_agent, () async {}),
+        _buildOptions(context, 'ST_faq', ST_faq, () async {
+          coordinator.navigateToTermsCondtionsScreen();
         }),
-        _buildOptions(context, 'ST_faq', ST_faq, () async {}),
-        _buildOptions(
-            context, 'ST_term_condition', ST_TermsCondition, () async {}),
-        _buildOptions(context, 'ST_call_support', ST_CallSupport, () async {}),
+        _buildOptions(context, 'ST_term_condition', ST_TermsCondition,
+            () async {
+          LauncherUtils.launcherUtilsInstance
+              .launchInBrowser(url: LauncherUtils.Y9_BANK_URL);
+        }),
+        _buildOptions(context, 'ST_call_support', ST_CallSupport, () async {
+          LauncherUtils.launcherUtilsInstance
+              .makePhoneCall(phoneNumber: LauncherUtils.CONTACT_NUMBER);
+        }),
       ],
     );
   }

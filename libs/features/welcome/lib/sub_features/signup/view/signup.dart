@@ -28,6 +28,7 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+
   bool _isBtnEnabled = false;
   String nidaNumberError = '';
   String mobileNumberError = '';

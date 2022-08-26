@@ -43,7 +43,7 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
 
   Data? detailDetail;
 
-  var _value = 0;
+  var _value = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -184,13 +184,15 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
   Widget selectButton(DeviceLoanCreationCoordinator coordinator) {
     return CrayonPaymentDockedButton(
       key: const Key('Select'),
-      title: 'Pay Now 40,000 TZHS',
+      title: 'Pay Now 70000.0 TZHS',
       borderRadius: 8,
       height: CrayonPaymentDimensions.marginFortyEight,
       buttonColor: LS_ButtonColor,
       textColor: White,
       textStyleVariant: CrayonPaymentTextStyleVariant.headline4,
-      onPressed: () {},
+      onPressed: () {
+        coordinator.navigateToDownPayment(detailDetail);
+      },
     );
   }
 
@@ -200,15 +202,15 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
       children: [
         CrayonPaymentText(
           key: Key(''),
-          text: TextUIDataModel("Loan Details",
+          text: TextUIDataModel('DLC_Loan_Details'.tr,
               styleVariant: CrayonPaymentTextStyleVariant.headline4,
               color: AN_CardTitle,
               fontWeight: FontWeight.w600),
         ),
         dynamicHSpacer(30),
-        _rowTitleValue('D0_JoiningFee'.tr, '60,000 TZSHS'),
-        _rowTitleValue('DLC_Daily_Repayment'.tr, '60,000 TZSHS'),
-        _rowTitleValue('DLC_Total_Amount_Repaid'.tr, '60,000 TZSHS'),
+        _rowTitleValue('D0_JoiningFee'.tr, detailDetail!.joiningFees!.toString() + " TZSHS"),
+        _rowTitleValue('DLC_Daily_Repayment'.tr, detailDetail!.dailyFees==null ? "" : detailDetail!.dailyFees!.toString() + " TZSHS"),
+        _rowTitleValue('DLC_Total_Amount_Repaid'.tr, detailDetail!.amountToPay==null ? "70000.0 TZSHS" : detailDetail!.amountToPay!.toString() + " TZSHS"),
         _rowTitleValue('DLC_Final_Payment_Date'.tr, '10 Aug, 2023'),
       ],
     );
@@ -262,23 +264,25 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
         child: Padding(
           padding: EdgeInsets.only(top: 10, right: 20, left: 20, bottom: 10),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Text(
-                "Airtel Pay",
-                style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.black),
+              Image.asset("assets/images/airtel.png"),
+
+              SizedBox(width:10),
+              CrayonPaymentText(
+                key: Key('${_identifier}_Device_Loan_Airtel_Pay'),
+                text:  TextUIDataModel('DLC_Airtel_Pay'.tr,
+                    styleVariant: CrayonPaymentTextStyleVariant.headline4,
+                    color: SECONDARY_COLOR,
+                    fontWeight: FontWeight.w600),
               ),
+              Spacer(),
               Radio(
                 value: 1,
-                groupValue: _value,
+                groupValue: 1,
                 activeColor: SU_button_color,
                 onChanged: (value) {
-                  setState(() {
-                    _value = value as int;
-                  });
+
                 },
               )
             ],

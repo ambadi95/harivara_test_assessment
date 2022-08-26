@@ -199,5 +199,27 @@
   "ST_term_condition" : "Terms & Conditions",
   "ST_call_support" : "Call Support",
 
-  "ST_contact_text" : "Need Help or If You Have Any Query \n Contact Us at +255 677-039-999"
+  "ST_contact_text" : "Need Help or If You Have Any Query \n Contact Us at +255 677-039-999",
+
+  "LR_paying_for" : "You are paying for",
+  "LR_device_loan" : "Y9 Device Loan",
+  "LR_amount_to_pay" : "Choose the amount to pay",
+  "LR_due_amount" : "Pay Due \nAmount",
+  "LR_daily_repayment" : "Daily \nRepayment",
+  "LR_loan_amount" : "Total Loan \nAmount",
+  "LR_custom_amount" : "Pay Custom \nAmount",
+  "LR_pay_now" : "Pay Now",
+  "LR_payment_label" : "Payment of {} will be adjusted in total \nPayable amount",
+  "LR_proceed" : "Proceed"
+
+  "ST_contact_text" : "Need Help or If You Have Any Query \n Contact Us at +255 677-039-999",
+
+
+  "PP_Daily_Repayment_Title" : "Daily Repayment",
+  "PP_Airtel_Pay" : "Airtel Pay",
+  "PP_PayNow" : "Pay Now",
+  "PP_Wallets_Title" : "Wallets",
+
+
+  "FAQ_Title": "FAQ"
 }

@@ -15,11 +15,13 @@ import 'package:widget_library/alert_dialogue/crayon_payment_alert_dialogue.dart
 import 'package:widget_library/buttons/crayon_back_button.dart';
 import 'package:widget_library/dropdown/crayon_drop_down.dart';
 import 'package:widget_library/input_fields/input_field_with_label.dart';
+import 'package:widget_library/page_header/text_ui_data_model.dart';
 import 'package:widget_library/progress_bar/centered_circular_progress_bar.dart';
 import 'package:widget_library/progress_bar/onboarding_progress_bar.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:config/Colors.dart' as config_color;
+import 'package:widget_library/static_text/crayon_payment_text.dart';
 
 import '../../../data_model/district.dart';
 import '../../../data_model/gender_type.dart';
@@ -222,8 +224,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _title(),
+          _subtitle(),
           const SizedBox(
-            height: 30,
+            height: 39,
           ),
           _buildLabelTextField(
               'name',
@@ -284,9 +287,32 @@ class _DetailsScreenState extends State<DetailsScreen> {
 
   Widget _title() {
     return Text(
-      'DV_title'.tr,
+     widget.userType == UserType.AgentCustomer ? 'DV_agent_aided_title'.tr : 'DV_title'.tr,
       style: SU_title_style,
     );
+  }
+
+  Widget _subtitle() {
+    return widget.userType == UserType.AgentCustomer ? Container(
+      padding: const EdgeInsets.only(
+        right: 16,
+        top: 16,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          CrayonPaymentText(
+            key: const Key('DV_subTitle'),
+            text: TextUIDataModel(
+              'DV_agent_aided_subtitle'.tr,
+              styleVariant: CrayonPaymentTextStyleVariant.headline4,
+              color: VO_DescriptionColor,
+              textAlign: TextAlign.left,
+            ),
+          ),
+        ],
+      ),
+    ): const SizedBox();
   }
 
   Widget _buildLabelTextField(

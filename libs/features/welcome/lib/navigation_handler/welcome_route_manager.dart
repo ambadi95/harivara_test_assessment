@@ -34,7 +34,7 @@ class WelcomeRouteManager extends IRouteManager {
         var arguments = settings.arguments as UserType;
         UserType type = UserType.Customer;
         return DetailsScreen(
-          userType: type,
+          userType: arguments,
         );
       case EnrollmentSuccessScreen.viewPath:
         var argument = settings.arguments as UserType;

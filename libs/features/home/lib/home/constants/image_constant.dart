@@ -16,3 +16,4 @@ const String HS_LoanStatement = 'assets/home/loan_statement.png';
 const String HS_LoanRepayment = 'assets/home/loan_repayment.png';
 const String HS_LoanDetail = 'assets/home/loan_detail.png';
 const String HS_Reading = 'assets/home/reading.png';
+const String HS_LoanRepaymentMock = 'assets/home/loan_repayment_mock.png';
