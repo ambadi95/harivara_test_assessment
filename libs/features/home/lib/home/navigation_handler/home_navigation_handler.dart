@@ -5,7 +5,9 @@ import 'package:core/sheets/data_model/button_options.dart';
 import 'package:core/sheets/data_model/loan_payment.dart';
 import 'package:core/sheets/data_model/loan_repayment.dart';
 import 'package:core/sheets/state/crayon_payment_bottom_sheet_state.dart';
+import 'package:loan_details/view/loan_detail_screen.dart';
 import 'package:payments/view/payments_screen.dart';
+import 'package:shared_data_models/loan_detail/loan_detail_screen_args.dart';
 import 'package:shared_data_models/payments/payments_screen_args.dart';
 import 'package:shared_data_models/signup/sign_up_type.dart';
 import 'package:welcome/data_model/sign_up_arguments.dart';
@@ -63,6 +65,13 @@ class HomeNavigationHandler with ErrorHandler {
     await _navigationManager.navigateTo(
       PaymentsScreen.viewPath,
       arguments: paymentsScreenArgs,
+      const NavigationType.push(),
+    );
+  }
+
+  Future<void> navigateToLoanDetailScreen() async {
+    await _navigationManager.navigateTo(
+      LoanDetailScreen.viewPath,
       const NavigationType.push(),
     );
   }

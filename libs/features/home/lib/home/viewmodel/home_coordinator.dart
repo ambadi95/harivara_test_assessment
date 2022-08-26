@@ -31,6 +31,10 @@ class HomeCoordinator extends BaseViewModel<HomeScreenState> {
     _navigationHandler.navigateToSettingsScreen();
   }
 
+  void navigateToLoanDetailScreen() {
+    _navigationHandler.navigateToLoanDetailScreen();
+  }
+
   void navigationToBottomSheet() {
     _navigationHandler.navigateToLoanRepaymentBottomSheet(
         "message", "buttonLabel");

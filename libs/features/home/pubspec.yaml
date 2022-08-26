@@ -47,6 +47,9 @@ dependencies:
   payments:
     path: ../../features/payments
 
+  loan_details:
+    path: ../../features/loan_details
+
 
 
 

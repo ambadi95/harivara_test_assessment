@@ -23,9 +23,9 @@ import 'package:get/get.dart';
 
 class LoanDetailScreen extends StatefulWidget {
   static const viewPath = '${LoanDetailModule.moduleIdentifier}/loandetail';
-  final LoanDetailArgs loanDetailArgs;
+  //final LoanDetailArgs loanDetailArgs;
 
-  const LoanDetailScreen({Key? key, required this.loanDetailArgs})
+  const LoanDetailScreen({Key? key, })
       : super(key: key);
 
   @override
