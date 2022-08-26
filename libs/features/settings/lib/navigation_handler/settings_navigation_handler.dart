@@ -28,11 +28,11 @@ class SettingsNavigationHandler with ErrorHandler {
     _navigationManager.goBack();
   }
 
-  Future<void> navigateToSignUpScreen() async {
+  Future<void> navigateToSignUpScreen(UserType userType) async {
     var arguments = SignUpArguments(
       'SU_update_passcode',
       'SU_update_subtitle',
-      UserType.Agent,
+      userType,
       SignupType.resetPasscodeAgent,
       false,
     );
@@ -85,8 +85,8 @@ class SettingsNavigationHandler with ErrorHandler {
         arguments: arguments);
   }
 
- Future<void> navigateToTermsCondtionsScreen() async {
-   var arguments = TermsConditionAndFaqScreenArgs(isFAQ: true);
+ Future<void> navigateToTermsCondtionsScreen(bool isFaq) async {
+   var arguments = TermsConditionAndFaqScreenArgs(isFAQ: isFaq);
    _navigationManager.navigateTo(
        CrayonTermsCondition.viewPath,
        const NavigationType.push(),arguments: arguments);

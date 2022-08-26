@@ -67,6 +67,7 @@ class SignupUseCase extends BaseDataProvider {
 
   Future<CustomerDetailResponse?> signUp(String nindaNumber, String phoneNo,
       Function(String) onErrorCallback) async {
+    CrayonPaymentLogger.logInfo(phoneNo.replaceAll(" ", ""));
     return await executeApiRequest<CustomerDetailResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
