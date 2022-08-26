@@ -2,29 +2,29 @@ import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 
-import 'data.dart';
+import 'datum.dart';
 
-class DetailDetailResponse extends Equatable {
+class AgentsNearByResponse extends Equatable {
   final bool? status;
   final String? code;
   final String? message;
-  final Data? data;
+  final List<Datum>? data;
 
-  const DetailDetailResponse({
+  const AgentsNearByResponse({
     this.status,
     this.code,
     this.message,
     this.data,
   });
 
-  factory DetailDetailResponse.fromMap(Map<String, dynamic> data) {
-    return DetailDetailResponse(
+  factory AgentsNearByResponse.fromMap(Map<String, dynamic> data) {
+    return AgentsNearByResponse(
       status: data['status'] as bool?,
       code: data['code'] as String?,
       message: data['message'] as String?,
-      data: data['data'] == null
-          ? null
-          : Data.fromMap(data['data'] as Map<String, dynamic>),
+      data: (data['data'] as List<dynamic>?)
+          ?.map((e) => Datum.fromMap(e as Map<String, dynamic>))
+          .toList(),
     );
   }
 
@@ -32,29 +32,29 @@ class DetailDetailResponse extends Equatable {
         'status': status,
         'code': code,
         'message': message,
-        'data': data?.toMap(),
+        'data': data?.map((e) => e.toMap()).toList(),
       };
 
   /// `dart:convert`
   ///
-  /// Parses the string and returns the resulting Json object as [DetailDetailResponse].
-  factory DetailDetailResponse.fromJson(String data) {
-    return DetailDetailResponse.fromMap(
+  /// Parses the string and returns the resulting Json object as [AgentsNearByResponse].
+  factory AgentsNearByResponse.fromJson(String data) {
+    return AgentsNearByResponse.fromMap(
         json.decode(data) as Map<String, dynamic>);
   }
 
   /// `dart:convert`
   ///
-  /// Converts [DetailDetailResponse] to a JSON string.
+  /// Converts [AgentsNearByResponse] to a JSON string.
   String toJson() => json.encode(toMap());
 
-  DetailDetailResponse copyWith({
+  AgentsNearByResponse copyWith({
     bool? status,
     String? code,
     String? message,
-    Data? data,
+    List<Datum>? data,
   }) {
-    return DetailDetailResponse(
+    return AgentsNearByResponse(
       status: status ?? this.status,
       code: code ?? this.code,
       message: message ?? this.message,

@@ -10,13 +10,13 @@ import 'package:task_manager/task_manager.dart';
 
 import 'navigation_handler/down_payment_navigation_handler.dart';
 
-  class DownPaymentModule {
+class DownPaymentModule {
   static const moduleIdentifier = 'downpaymentmodule';
 
   static void registerDependencies() {
     DIContainer.container.registerFactory<DownPaymentCoordinator>(
-          (container) => DownPaymentCoordinator(
-            DownPaymentNavigationHandler(container.resolve<NavigationManager>()),
+      (container) => DownPaymentCoordinator(
+        DownPaymentNavigationHandler(container.resolve<NavigationManager>()),
         DownPaymentUseCase(
           DownPaymentViewModel(),
           container.resolve<TaskManager>(),

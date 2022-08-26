@@ -11,6 +11,4 @@ class DeviceLoanCreationUseCase extends BaseDataProvider {
   DeviceLoanCreationUseCase(TaskManager taskManager, this._authManager)
       : super(taskManager);
   final IAuthManager _authManager;
-
-
 }

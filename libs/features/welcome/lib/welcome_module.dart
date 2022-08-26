@@ -68,13 +68,14 @@ class WelcomeModule {
     );
 
     DIContainer.container.registerFactory<RegistrationApprovalCoordinator>(
-          (container) => RegistrationApprovalCoordinator(
+      (container) => RegistrationApprovalCoordinator(
         WelcomeNavigationHandler(container.resolve<NavigationManager>()),
       ),
     );
 
-    DIContainer.container.registerFactory<CustomerOnBoardingApprovalCoordinator>(
-          (container) => CustomerOnBoardingApprovalCoordinator(
+    DIContainer.container
+        .registerFactory<CustomerOnBoardingApprovalCoordinator>(
+      (container) => CustomerOnBoardingApprovalCoordinator(
         WelcomeNavigationHandler(container.resolve<NavigationManager>()),
       ),
     );

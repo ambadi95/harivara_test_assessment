@@ -44,19 +44,19 @@ class WelcomeRouteManager extends IRouteManager {
       case CrayonWelcomBackScreen.viewPath:
         var arguments = settings.arguments as UserType;
         return CrayonWelcomBackScreen(
-          userType: arguments ,
+          userType: arguments,
         );
       case AgentDetailsScreen.viewPath:
         var arguments = settings.arguments as AgentDetailScreenArguments;
         return AgentDetailsScreen(
           agentDetailScreenArguments: arguments,
         );
-      case RegistrationApproval.viewPath :
+      case RegistrationApproval.viewPath:
         var arguments = settings.arguments as SignUpArguments;
         return RegistrationApproval(
           signUpArguments: arguments,
         );
-      case CustomerOnBoardingApproval.viewPath :
+      case CustomerOnBoardingApproval.viewPath:
         var arguments = settings.arguments as SignUpArguments;
         return CustomerOnBoardingApproval(
           signUpArguments: arguments,

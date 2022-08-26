@@ -75,7 +75,7 @@ class WelcomeBackCoordinator extends BaseViewModel<WelcomeScreenState> {
     return await _welcomeUseCase.getAgentName();
   }
 
-  Future<String> getCustomer()async{
+  Future<String> getCustomer() async {
     return await _welcomeUseCase.getCustomerName();
   }
 

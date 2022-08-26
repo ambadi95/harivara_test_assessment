@@ -136,7 +136,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
                       _buildMainUIWithLoading(context, coordinator),
                   orElse: () => Scaffold(
                     appBar: PreferredSize(
-                      preferredSize: Size(double.infinity, widget.userType == UserType.AgentCustomer ? 58 : 102),
+                      preferredSize: Size(double.infinity,
+                          widget.userType == UserType.AgentCustomer ? 58 : 102),
                       child: _buildTopContainer(context, coordinator),
                     ),
                     body: SingleChildScrollView(
@@ -157,7 +158,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
   ) {
     return Column(
       children: [
-       widget.userType == UserType.AgentCustomer ? const SizedBox() : _onBoardingProgressBar(),
+        widget.userType == UserType.AgentCustomer
+            ? const SizedBox()
+            : _onBoardingProgressBar(),
         _buildBackBtn(context, coordinator),
       ],
     );
