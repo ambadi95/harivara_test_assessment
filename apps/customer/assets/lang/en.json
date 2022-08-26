@@ -219,6 +219,6 @@
   "LR_custom_amount" : "Pay Custom \nAmount",
   "LR_pay_now" : "Pay Now",
   "LR_payment_label" : "Payment of {} will be adjusted in total \nPayable amount",
-  "LR_proceed" : "Proceed"
-
+  "LR_proceed" : "Proceed",
+  "CA_custom_amount" : "Pay Custom Amount"
 }

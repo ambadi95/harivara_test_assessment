@@ -16,11 +16,12 @@ import 'package:widget_library/scaffold/crayon_payment_scaffold.dart';
 import 'package:widget_library/spacers/crayon_payment_spacers.dart';
 import 'package:widget_library/static_text/crayon_payment_text.dart';
 
+import '../payments_module.dart';
 import '../state/payments_state.dart';
 
 class PaymentsScreen extends StatefulWidget {
   static const viewPath =
-      '${DownPaymentModule.moduleIdentifier}/paymentsscreen';
+      '${PaymentsModule.moduleIdentifier}/paymentsscreen';
   final PaymentsScreenArgs paymentsScreenArgs;
 
   const PaymentsScreen({Key? key, required this.paymentsScreenArgs})
@@ -39,7 +40,6 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
       BaseView<PaymentsCoordinator, PaymentsState>(
           setupViewModel: (coordinator) async {
             coordinator.initialiseState(context);
-
           },
           builder: (context, state, coordinator) => CrayonPaymentScaffold(
                 appBarAttributes: CrayonPaymentAppBarAttributes(

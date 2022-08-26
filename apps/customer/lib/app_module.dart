@@ -165,6 +165,7 @@ void _registerRouteManagers() {
     AgentNearByModule.moduleIdentifier,
     AgentNearByRouteManager(),
   );
+
  navigationManagerContainer.registerRouteManager(
     PaymentsModule.moduleIdentifier,
    PaymentsRouteManager(),

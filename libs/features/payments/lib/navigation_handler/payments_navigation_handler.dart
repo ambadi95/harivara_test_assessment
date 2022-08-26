@@ -18,6 +18,7 @@ class PaymentsNavigationHandler with ErrorHandler {
       NavigationType.push(),
     );
   }
+
   Future<void> navigateToPaymentSuccessfullBottomSheet(
       ) async {
     final CrayonPaymentBottomSheetIcon icon =
@@ -40,4 +41,5 @@ class PaymentsNavigationHandler with ErrorHandler {
       arguments: infoState,
     );
   }
+
 }

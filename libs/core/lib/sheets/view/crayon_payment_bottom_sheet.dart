@@ -46,6 +46,7 @@ class CrayonPaymentBottomSheet extends StatelessWidget {
 
     return Container(
       padding: padding,
+      height: 1500,
       key: const Key('bottomSheet'),
       decoration: _buildBoxDecoration,
       child: state.maybeWhen(

@@ -5,6 +5,8 @@ import 'package:core/sheets/data_model/button_options.dart';
 import 'package:core/sheets/data_model/loan_payment.dart';
 import 'package:core/sheets/data_model/loan_repayment.dart';
 import 'package:core/sheets/state/crayon_payment_bottom_sheet_state.dart';
+import 'package:payments/view/payments_screen.dart';
+import 'package:shared_data_models/payments/payments_screen_args.dart';
 import 'package:shared_data_models/signup/sign_up_type.dart';
 import 'package:welcome/data_model/sign_up_arguments.dart';
 import 'package:welcome/sub_features/signup/sub_features/customer_registration_options/view/registration_approval.dart';
@@ -41,13 +43,14 @@ class HomeNavigationHandler with ErrorHandler {
   }
 
   Future<void> navigateToCustomPayBottomSheet() async {
+    await goBack();
     final CrayonPaymentBottomSheetState infoState =
     CrayonPaymentBottomSheetState.customAmount(
 
       buttonOptions: [
         ButtonOptions(Black, 'LR_proceed', () => (){}, false)
       ],
-      title: 'LR_custom_amount',
+      title: 'CA_custom_amount',
     );
 
     _navigationManager.navigateTo(
@@ -57,8 +60,18 @@ class HomeNavigationHandler with ErrorHandler {
     );
   }
 
+  Future<void> navigateToPaymentScreen() async {
+    PaymentsScreenArgs paymentsScreenArgs = PaymentsScreenArgs(HS_LoanRepaymentMock, 'Paying Custom Amount', '3,000 TZSHS');
+    await _navigationManager.navigateTo(
+      PaymentsScreen.viewPath,
+      arguments: paymentsScreenArgs,
+      const NavigationType.push(),
+    );
+  }
+
   Future<void> navigateToLoanRepaymentBottomSheet(
       String message, String buttonLabel) async {
+
     final CrayonPaymentBottomSheetState infoState =
         CrayonPaymentBottomSheetState.loanRepayment(
             loanRepayment: LoanRepayment(
@@ -68,8 +81,8 @@ class HomeNavigationHandler with ErrorHandler {
       imageUrl: HS_LoanRepaymentMock,
       infoMessage: '',
       loanId: '64512378965435',
-      onPressedCustomAmount: (){},
-      onPressedPayNow: (){},
+      onPressedCustomAmount: ()=>navigateToCustomPayBottomSheet(),
+      onPressedPayNow: ()=>navigateToPaymentScreen(),
 
       loanPaymentList: [
         LoanPaymentMethod(
@@ -84,6 +97,8 @@ class HomeNavigationHandler with ErrorHandler {
             name: 'LR_custom_amount', amount: "", isSelected: false),
       ],
     ));
+
+
 
     _navigationManager.navigateTo(
       'bottomSheet/crayonPaymentBottomSheet',

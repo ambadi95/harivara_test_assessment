@@ -26,61 +26,80 @@ class BottomSheetLoanRepayment extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return SizedBox(
+      height: MediaQuery.of(context).size.height,
+      child: ListView(
+        shrinkWrap: true,
+        key: Key('$_identifier'),
+        children: [
+          _onTabContainer(context),
+          SizedBox(
+            height: 32,
+          ),
+          _buildTitlePayingFor,
+          SizedBox(
+            height: 16,
+          ),
+          _deviceLoanContainer,
+          SizedBox(
+            height: 24,
+          ),
 
-
-    return ListView(
-      shrinkWrap: true,
-      key: Key('$_identifier'),
-      children: [
-        _buildTitlePayingFor,
-        SizedBox(
-          height: 16,
-        ),
-        _deviceLoanContainer,
-        SizedBox(
-          height: 24,
-        ),
-
-        Align(
-          alignment: Alignment.topLeft,
-            child: _buildTitleAmountToPay),
-        SizedBox(
-          height: 14,
-        ),
-        GridView.builder(
-            shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
-            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: 200,
-                childAspectRatio: 3 / 2,
-                crossAxisSpacing: 20,
-                mainAxisSpacing: 20
-            ),
-            itemCount: _sheetState.loanRepayment.loanPaymentList.length,
-            itemBuilder: (BuildContext ctx, index) {
-              return _paymentWidget(
-                  _sheetState.loanRepayment.loanPaymentList[index]);
-            }),
-        SizedBox(
-          height: 24,
-        ),
-        _sheetState.loanRepayment.isAmountSelected ? selectedBanner() : SizedBox(),
-        !_sheetState.loanRepayment.isPayNowSelected ? CrayonPaymentDockedButton(
-          key: const Key('bottomButtonDocked'),
-          title: 'Pay Now',
-          borderRadius: 8,
-          buttonColor: _sheetState.loanRepayment.isAmountSelected ? LR_ColorDA2228 : LR_Color9CA3AF,
-          onPressed: _sheetState.loanRepayment.onPressedPayNow,
-        ) : CrayonPaymentDockedButton(
-          key: const Key('bottomButtonDocked'),
-          title: 'Pay Now',
-          borderRadius: 8,
-          buttonColor: LR_ColorDA2228 ,
-          onPressed: _sheetState.loanRepayment.onPressedCustomAmount,
-        )
-      ],
+          Align(
+            alignment: Alignment.topLeft,
+              child: _buildTitleAmountToPay),
+          SizedBox(
+            height: 14,
+          ),
+          GridView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                  maxCrossAxisExtent: 200,
+                  childAspectRatio: 3 / 2,
+                  crossAxisSpacing: 20,
+                  mainAxisSpacing: 20
+              ),
+              itemCount: _sheetState.loanRepayment.loanPaymentList.length,
+              itemBuilder: (BuildContext ctx, index) {
+                return _paymentWidget(
+                    _sheetState.loanRepayment.loanPaymentList[index]);
+              }),
+          SizedBox(
+            height: 24,
+          ),
+          _sheetState.loanRepayment.isAmountSelected ? selectedBanner() : SizedBox(),
+          !_sheetState.loanRepayment.isPayNowSelected ? CrayonPaymentDockedButton(
+            key: const Key('bottomButtonDocked'),
+            title: 'Pay Now',
+            borderRadius: 8,
+            buttonColor: _sheetState.loanRepayment.isAmountSelected ? LR_ColorDA2228 : LR_Color9CA3AF,
+            onPressed: _sheetState.loanRepayment.onPressedPayNow,
+          ) : CrayonPaymentDockedButton(
+            key: const Key('bottomButtonDocked'),
+            title: 'Pay Now',
+            borderRadius: 8,
+            buttonColor: LR_ColorDA2228 ,
+            onPressed: _sheetState.loanRepayment.onPressedCustomAmount,
+          )
+        ],
+      ),
     );
   }
+
+  Widget _onTabContainer(BuildContext context){
+    return Padding(
+      padding:  EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * .3),
+      child: Container(
+        height: 5,
+        decoration: BoxDecoration(
+            color: LR_ColorF3F4FA,
+            borderRadius: BorderRadius.circular(4)
+        ),
+      ),
+    );
+  }
+
 
   Widget get _buildImage {
     return SvgPicture.asset(
