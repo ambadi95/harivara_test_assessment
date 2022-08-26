@@ -41,4 +41,8 @@ class SettingsCoordinator extends BaseViewModel<SettingsState> {
       await _navigationHandler.navigateToTermsCondtionsScreen(isFaq);
 
   }
+
+  Future<void> navigateToAgentNearBy() async {
+    await _navigationHandler.navigateToAgentNearBy();
+  }
 }

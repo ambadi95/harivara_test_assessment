@@ -1,3 +1,4 @@
+import 'package:agent_nearby/view/agent_nearby_screen.dart';
 import 'package:config/Colors.dart';
 import 'package:core/navigation/navigation_manager.dart';
 import 'package:core/navigation/navigation_type.dart';
@@ -90,5 +91,10 @@ class SettingsNavigationHandler with ErrorHandler {
    _navigationManager.navigateTo(
        CrayonTermsCondition.viewPath,
        const NavigationType.push(),arguments: arguments);
+  }
+
+  Future<void> navigateToAgentNearBy() async {
+    await _navigationManager.navigateTo(
+      AgentNearBy.viewPath, const NavigationType.push(),);
   }
 }

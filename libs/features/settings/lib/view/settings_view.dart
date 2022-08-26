@@ -152,7 +152,9 @@ class _SettingsState extends State<Settings> {
         const SizedBox(
           height: 20,
         ),
-        _buildOptions(context, 'ST_agents', ST_agent, () async {}),
+        _buildOptions(context, 'ST_agents', ST_agent, () async {
+          coordinator.navigateToAgentNearBy();
+        }),
         _buildOptions(context, 'ST_faq', ST_faq, () async {
           coordinator.navigateToTermsCondtionsScreen(true);
 
