@@ -67,6 +67,9 @@ dependencies:
   settings:
     path: ../../libs/features/settings
 
+  payments:
+    path: ../../libs/features/payments
+
 
 dev_dependencies:
   flutter_test:

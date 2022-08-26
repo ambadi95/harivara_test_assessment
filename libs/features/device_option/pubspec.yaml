@@ -35,6 +35,9 @@ dependencies:
   config:
     path: ../../../config/
 
+  downpayment:
+    path: ../../features/downpayment/
+
   welcome:
     path:  ../welcome
 
