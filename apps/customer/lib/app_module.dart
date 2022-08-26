@@ -55,6 +55,8 @@ import 'home/home_module.dart';
 import 'home/navigation_handler/home_route_manager.dart';
 import 'package:termscondition/termscondition/navigation_handler/termscond_route_manager.dart';
 import 'package:termscondition/termscondition/termscondition_module.dart';
+import 'package:payments/payments_module.dart';
+import 'package:payments/navigation_handler/payments_route_manager.dart';
 
 class AppModule {
   // ignore: long-method
@@ -110,6 +112,7 @@ class AppModule {
     CustomerHomeModule.registerDependencies();
     TermsConditionModule.registerDependencies();
     SettingsModule.registerDependencies();
+    PaymentsModule.registerDependencies();
 
     DIContainer.container.resolve<WidgetsModule>().registerDependencies();
 
@@ -161,6 +164,10 @@ void _registerRouteManagers() {
   navigationManagerContainer.registerRouteManager(
     AgentNearByModule.moduleIdentifier,
     AgentNearByRouteManager(),
+  );
+ navigationManagerContainer.registerRouteManager(
+    PaymentsModule.moduleIdentifier,
+   PaymentsRouteManager(),
   );
 
   navigationManagerContainer.registerRouteManager(
@@ -218,7 +225,6 @@ void _registerBottomSheetFeature() {
     CrayonPaymentBottomSheetRouteManager.moduleIdentifier,
     CrayonPaymentBottomSheetRouteManager(),
   );
-
   DIContainer.container.registerFactory<CrayonPaymentBottomSheetCoordinator>(
         (container) => CrayonPaymentBottomSheetCoordinator(
       CrayonPaymentBottomSheetNavigationHandler(
@@ -227,6 +233,7 @@ void _registerBottomSheetFeature() {
     ),
   );
 }
+
 
 void _registerToolTipFeature() {
   final navigationManagerContainer = DIContainer.container<NavigationManager>();

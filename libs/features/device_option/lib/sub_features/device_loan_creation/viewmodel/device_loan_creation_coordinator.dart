@@ -4,6 +4,7 @@ import 'package:config/Config.dart';
 import 'package:core/view/analytics_state_notifier.dart';
 import 'package:device_option/sub_features/device_loan_creation/state/device_loan_creation_state.dart';
 import 'package:device_option/sub_features/device_loan_creation/viewmodel/device_loan_creation_usecase.dart';
+import 'package:shared_data_models/device_option/detail_detail_response/data.dart';
 
 import '../../../navigation_handler/device_option_navigation_handler.dart';
 
@@ -17,6 +18,13 @@ class DeviceLoanCreationCoordinator
       this._navigationHandler,
       this._DeviceOptionUseCase,
       ) : super(const DeviceLoanCreationState.initialState());
+
+  void navigateToDownPayment(Data? detailDetail) async{
+
+    await _navigationHandler.navigateToDownPaymentScreen(detailDetail);
+
+
+  }
 
 
 }

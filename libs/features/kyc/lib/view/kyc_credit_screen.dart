@@ -5,23 +5,18 @@ import 'package:config/Styles.dart';
 import 'package:core/view/base_view.dart';
 import 'package:crayon_payment_customer/util/app_utils.dart';
 import 'package:flutter/material.dart';
-import 'package:passcode/passcode_module.dart';
 import 'package:shared_data_models/kyc/kyc_screen_args.dart';
-import 'package:shared_data_models/kyc/kyc_type.dart';
 import 'package:widget_library/app_bars/crayon_payment_app_bar_attributes.dart';
 import 'package:widget_library/app_bars/crayon_payment_app_bar_button_type.dart';
 import 'package:widget_library/page_header/text_ui_data_model.dart';
 import 'package:widget_library/progress_bar/centered_circular_progress_bar.dart';
 import 'package:widget_library/scaffold/crayon_payment_scaffold.dart';
 import 'package:widget_library/static_text/crayon_payment_text.dart';
-import 'package:widget_library/utils/icon_utils.dart';
-
 import '../kyc_credit_module.dart';
 import '../state/kyc_credit_state.dart';
-import 'package:flutter_svg/svg.dart';
+import '../viewmodel/kyc_credit_coordinator.dart';
 import 'package:get/get.dart';
 
-import '../viewmodel/kyc_credit_coordinator.dart';
 
 class KycCreditScreen extends StatefulWidget {
   static const viewPath = '${KycCreditModule.moduleIdentifier}/kycscreen';
@@ -99,7 +94,6 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
     KycCreditCoordinator coordinator,
     KycCreditStateReady state,
   ) {
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -129,7 +123,9 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
                           .getPercentageSize(percentage: 10)),
                   _getCheckedIcon(
                     context,
-                    !_isKycPassEnabled ? Colors.grey : Colors.green,
+                    !_isKycPassEnabled
+                        ? Colors.grey
+                        : SU_telco_green_checkbox_color,
                   ),
                   _getVerticalDivider(
                       context,
@@ -137,7 +133,9 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
                           .getPercentageSize(percentage: 15)),
                   _getCheckedIcon(
                     context,
-                    !_isKycCreditLoanEnabled ? Colors.grey : Colors.green,
+                    !_isKycCreditLoanEnabled
+                        ? Colors.grey
+                        : SU_telco_green_checkbox_color,
                   ),
                   const Spacer(
                     flex: 1,
@@ -155,7 +153,9 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
                     height: AppUtils.appUtilsInstance
                         .getPercentageSize(percentage: 5),
                   ),
-                  _title(context),
+                  (_isKycPassEnabled || _isKycCreditLoanEnabled)
+                      ? _kycCreditTitle(context)
+                      : _title(context),
                   SizedBox(
                     height: AppUtils.appUtilsInstance
                         .getPercentageSize(percentage: 5),
@@ -191,7 +191,11 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
         shape: BoxShape.circle,
         color: AN_VerticalDivider,
       ),
-      margin: const EdgeInsets.only(top: 30),
+      margin: EdgeInsets.only(
+        top: AppUtils.appUtilsInstance.getPercentageSize(
+          percentage: 8,
+        ),
+      ),
       height: 5,
       width: 5,
     );
@@ -201,7 +205,9 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
     return Icon(
       Icons.check_circle,
       color: color,
-      size: 20,
+      size: AppUtils.appUtilsInstance.getPercentageSize(
+        percentage: 5,
+      ),
     );
   }
 
@@ -213,8 +219,149 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
     );
   }
 
+  Widget _getKycValidationFailedUi(BuildContext context,
+      KycCreditCoordinator coordinator,
+      KycCreditState state,) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: ListView(
+        children: [
+          const Image(
+            image: AssetImage(AN_Kyc_Credit_ERROR),
+            width: 78,
+            height: 78,
+          ),
+          CrayonPaymentText(
+            key: Key('${_identifier}_KYC_Verification_Failed'),
+            text: const TextUIDataModel('KYC_Verification_Failed',
+                textAlign: TextAlign.center,
+                styleVariant: CrayonPaymentTextStyleVariant.subtitle1,
+                color: Black,
+                fontWeight: FontWeight.w600),
+          ),
+          SizedBox(
+            height: AppUtils.appUtilsInstance.getPercentageSize(
+              percentage: 8,
+            ),
+          ),
+          CrayonPaymentText(
+            key: Key('${_identifier}_KYC_Verification_Failed_Title'),
+            text: const TextUIDataModel('KYC_Verification_Failed_Title',
+                textAlign: TextAlign.center,
+                styleVariant: CrayonPaymentTextStyleVariant.subtitle2,
+                color: AN_SubTitleColor,
+                fontWeight: FontWeight.w400),
+          ),
+          SizedBox(
+            height: AppUtils.appUtilsInstance.getPercentageSize(
+              percentage: 8,
+            ),
+          ),
+          CrayonPaymentText(
+            key: Key('${_identifier}_KYC_Verification_Failed_SubTitle'),
+            text: const TextUIDataModel('KYC_Verification_Failed_SubTitle',
+                styleVariant: CrayonPaymentTextStyleVariant.subtitle2,
+                textAlign: TextAlign.center,
+                color: AN_SubTitleColor,
+                fontWeight: FontWeight.w400),
+          ),
+          SizedBox(
+            height: AppUtils.appUtilsInstance.getPercentageSize(
+              percentage: 8,
+            ),
+          ),
+          _buildGoBackButton(context, coordinator, state),
+        ],
+      ),
+    );
+  }
 
+  Widget _getCreditCheckValidationFailedUi(
+    BuildContext context,
+    KycCreditCoordinator coordinator,
+      KycCreditState state,
+  ) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: ListView(
+        children: [
+          const Image(
+            image: AssetImage(AN_Kyc_Credit_ERROR),
+            width: 78,
+            height: 78,
+          ),
+          CrayonPaymentText(
+            key: Key('${_identifier}_Credit_Check_Failed'),
+            text: const TextUIDataModel('Credit_Check_Failed',
+                textAlign: TextAlign.center,
+                styleVariant: CrayonPaymentTextStyleVariant.subtitle1,
+                color: Black,
+                fontWeight: FontWeight.w600),
+          ),
+          SizedBox(
+            height: AppUtils.appUtilsInstance.getPercentageSize(
+              percentage: 8,
+            ),
+          ),
+          CrayonPaymentText(
+            key: Key('${_identifier}_Credit_Check_Failed_Title'),
+            text: const TextUIDataModel('Credit_Check_Failed_Title',
+                textAlign: TextAlign.center,
+                styleVariant: CrayonPaymentTextStyleVariant.subtitle2,
+                color: AN_SubTitleColor,
+                fontWeight: FontWeight.w400),
+          ),
+          SizedBox(
+            height: AppUtils.appUtilsInstance.getPercentageSize(
+              percentage: 8,
+            ),
+          ),
+          CrayonPaymentText(
+            key: Key('${_identifier}_Credit_Check_Failed_SubTitle'),
+            text: const TextUIDataModel('Credit_Check_Failed_SubTitle',
+                styleVariant: CrayonPaymentTextStyleVariant.subtitle2,
+                textAlign: TextAlign.center,
+                color: AN_SubTitleColor,
+                fontWeight: FontWeight.w400),
+          ),
+          SizedBox(
+            height: AppUtils.appUtilsInstance.getPercentageSize(
+              percentage: 8,
+            ),
+          ),
+          _buildGoBackButton(context, coordinator, state),
+        ],
+      ),
+    );
+  }
 
+  Widget _buildGoBackButton(
+    BuildContext context,
+    KycCreditCoordinator coordinator,
+    KycCreditState state,
+  ) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
+      child: GestureDetector(
+        onTap: () async {
+          coordinator.goBack();
+        },
+        child: Container(
+          width: double.infinity,
+          height: 50,
+          decoration: BoxDecoration(
+              color: SU_button_color ,
+              borderRadius: BorderRadius.circular(2.0)),
+          child: Center(
+            child: Text(
+              'Back_To_Home'.tr,
+              style: SU_button_text_style,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
 
   Widget _buildContinueButton(
     BuildContext context,
@@ -225,21 +372,38 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
         onTap: () async {
-          setState(() {
             if (!_isKycPassEnabled) {
-              _isKycPassEnabled = true;
+              setState(() {
+
+                _isKycPassEnabled = true;
+              coordinator.showErrorBottomSheet(
+                  _getKycValidationFailedUi(context,coordinator,state), context);
+              });
+
             } else if (!_isKycCreditLoanEnabled) {
-              _isKycCreditLoanEnabled = true;
+
+              setState(() {
+
+                _isKycCreditLoanEnabled = true;
               _isBtnEnabled = true;
+              coordinator.showErrorBottomSheet(
+                  _getCreditCheckValidationFailedUi(context,coordinator,state), context);
+              });
+
+            }else{
+
+              coordinator.navigateToDeviceOption(false, UserType.AgentCustomer);
+
             }
-          });
+
+
         },
         child: Container(
           width: double.infinity,
           height: 50,
           decoration: BoxDecoration(
-              color: _isBtnEnabled ? SU_button_color : SU_grey_color,
-              borderRadius: BorderRadius.circular(8.0)),
+              color: _isBtnEnabled ? SU_button_color : SU_telco_button_color,
+              borderRadius: BorderRadius.circular(2.0)),
           child: Center(
             child: Text(
               'SU_button_text'.tr,
@@ -264,20 +428,30 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
   Widget _getImage(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(75.0),
-      child: const Image(
-        image: AssetImage(AN_Kyc_Airtel),
+      child: Image(
+        image: AssetImage((_isKycPassEnabled || _isKycCreditLoanEnabled)
+            ? AN_Kyc_Credit_Check
+            : AN_Kyc_Airtel),
         height: 90,
         width: 90,
       ),
     );
   }
 
-
-
   _title(BuildContext context) {
     return CrayonPaymentText(
       key: Key('${_identifier}_KYC_Validation_With_Airtel'),
       text: const TextUIDataModel('KYC_Validation_With_Airtel',
+          styleVariant: CrayonPaymentTextStyleVariant.headline2,
+          color: AN_TitleColor,
+          fontWeight: FontWeight.w600),
+    );
+  }
+
+  _kycCreditTitle(BuildContext context) {
+    return CrayonPaymentText(
+      key: Key('${_identifier}Credit_Score_With_Telco'),
+      text: const TextUIDataModel('Credit_Score_With_Telco',
           styleVariant: CrayonPaymentTextStyleVariant.headline2,
           color: AN_TitleColor,
           fontWeight: FontWeight.w600),
@@ -313,8 +487,4 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
           fontWeight: FontWeight.w400),
     );
   }
-
-
-
-
 }

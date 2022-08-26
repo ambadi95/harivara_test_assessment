@@ -212,4 +212,14 @@
   "LR_payment_label" : "Payment of {} will be adjusted in total \nPayable amount",
   "LR_proceed" : "Proceed"
 
+  "ST_contact_text" : "Need Help or If You Have Any Query \n Contact Us at +255 677-039-999",
+
+
+  "PP_Daily_Repayment_Title" : "Daily Repayment",
+  "PP_Airtel_Pay" : "Airtel Pay",
+  "PP_PayNow" : "Pay Now",
+  "PP_Wallets_Title" : "Wallets",
+
+
+  "FAQ_Title": "FAQ"
 }
