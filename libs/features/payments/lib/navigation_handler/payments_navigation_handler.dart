@@ -19,21 +19,19 @@ class PaymentsNavigationHandler with ErrorHandler {
     );
   }
 
-  Future<void> navigateToPaymentSuccessfullBottomSheet(
-      ) async {
+  Future<void> navigateToPaymentSuccessfullBottomSheet() async {
     final CrayonPaymentBottomSheetIcon icon =
-    CrayonPaymentBottomSheetSuccessIcon();
+        CrayonPaymentBottomSheetSuccessIcon();
     final CrayonPaymentBottomSheetState infoState =
-    CrayonPaymentBottomSheetState.agentEnrollment(
-        buttonOptions: [
-          ButtonOptions(Black, 'Continue', () {}, false)
-        ],
-        disableCloseButton: true,
-        bottomSheetIcon: icon,additionalText: [],
-        title:
-        'Payment Successful',
-        subtitle: "Thank you for your payment. An automated payment receipt will be sent yo your registered mobile number ",
-       );
+        CrayonPaymentBottomSheetState.agentEnrollment(
+      buttonOptions: [ButtonOptions(Black, 'Continue', () {}, false)],
+      disableCloseButton: true,
+      bottomSheetIcon: icon,
+      additionalText: [],
+      title: 'Payment Successful',
+      subtitle:
+          "Thank you for your payment. An automated payment receipt will be sent yo your registered mobile number ",
+    );
 
     _navigationManager.navigateTo(
       'bottomSheet/crayonPaymentBottomSheet',
@@ -41,5 +39,4 @@ class PaymentsNavigationHandler with ErrorHandler {
       arguments: infoState,
     );
   }
-
 }

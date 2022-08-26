@@ -14,7 +14,8 @@ class CustomerDetailsState with _$CustomerDetailsState {
 
   const factory CustomerDetailsState.successState() = SuccessState;
 
-  const factory CustomerDetailsState.DetailsFormState(bool isValid) = DetailsFormState;
+  const factory CustomerDetailsState.DetailsFormState(bool isValid) =
+      DetailsFormState;
 
   const factory CustomerDetailsState.LoadingState() = LoadingState;
 
@@ -29,22 +30,26 @@ class CustomerDetailsState with _$CustomerDetailsState {
 
   const factory CustomerDetailsState.dobError(String dobError) = DobError;
 
-  const factory CustomerDetailsState.genderError(String genderError) = GenderError;
+  const factory CustomerDetailsState.genderError(String genderError) =
+      GenderError;
 
   const factory CustomerDetailsState.professionError(String professionError) =
       ProfessionError;
 
-  const factory CustomerDetailsState.addressError(String addressError) = AddressError;
+  const factory CustomerDetailsState.addressError(String addressError) =
+      AddressError;
 
-  const factory CustomerDetailsState.regionError(String addressError) = RegionError;
+  const factory CustomerDetailsState.regionError(String addressError) =
+      RegionError;
 
   const factory CustomerDetailsState.districtError(String districtError) =
       DistrictError;
 
-  const factory CustomerDetailsState.onGenderTypeChoosen(GenderType genderType) =
-      GenderTypeChoosen;
+  const factory CustomerDetailsState.onGenderTypeChoosen(
+      GenderType genderType) = GenderTypeChoosen;
 
-  const factory CustomerDetailsState.onRegionChoosen(Datum region) = RegionChoosen;
+  const factory CustomerDetailsState.onRegionChoosen(Datum region) =
+      RegionChoosen;
 
   const factory CustomerDetailsState.onDistrictChoosen(b.Datum district) =
       DistrictChoosen;

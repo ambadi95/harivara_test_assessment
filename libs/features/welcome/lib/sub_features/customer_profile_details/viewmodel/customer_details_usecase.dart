@@ -73,9 +73,10 @@ class CustomerDetailsUseCase extends BaseDataProvider {
           return DistrictResponse.fromJson(data);
         });
   }
+
   Future<GetCustomerDetailsResponse?> getCustomerDetails(
-      Function(String) onErrorCallback,
-      ) async {
+    Function(String) onErrorCallback,
+  ) async {
     int customerId = int.parse(await getCustomerId());
 
     return await executeApiRequest<GetCustomerDetailsResponse?>(
@@ -92,6 +93,7 @@ class CustomerDetailsUseCase extends BaseDataProvider {
           return GetCustomerDetailsResponse.fromJson(data);
         });
   }
+
   Future<CustomerDetailResponse?> submitCustomerDetails(
       String name,
       String dob,
@@ -130,7 +132,8 @@ class CustomerDetailsUseCase extends BaseDataProvider {
           'data': customerDetailsRequest.toJson(),
           'userType': userType
         },
-        serviceIdentifier: ICustomerDetailsService.submitCustomerDetailIdentifier,
+        serviceIdentifier:
+            ICustomerDetailsService.submitCustomerDetailIdentifier,
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {
           final data = responseData;

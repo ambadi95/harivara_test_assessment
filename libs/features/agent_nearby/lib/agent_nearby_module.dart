@@ -19,7 +19,6 @@ class AgentNearByModule {
           AgentNearbyViewModel(),
           container.resolve<TaskManager>(),
         ),
-
       ),
     );
   }

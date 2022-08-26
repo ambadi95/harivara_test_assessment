@@ -121,6 +121,7 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
       });
     }
   }
+
   GlobalKey<FormState> _abcKey = GlobalKey<FormState>();
   GetCustomerDetailsResponse? customerResponse;
 
@@ -134,16 +135,16 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
 
             customerResponse = await coordinator.getCustomerDetails();
             setState(() {
-              name.text = customerResponse!.data!.firstName??"";
-              dob.text = customerResponse!.data!.birthdate??"";
-              gender.text = customerResponse!.data!.gender??"";
-              profession.text = customerResponse!.data!.profession??"";
-              mobileNumber.text = customerResponse!.data!.mobileNo??"";
-              emailId.text = customerResponse!.data!.emailId??"";
-              address.text = customerResponse!.data!.address??"";
-              poBox.text = customerResponse!.data!.poBoxNumber??"";
-              region.text = customerResponse!.data!.region??"";
-              district.text = customerResponse!.data!.district??"";
+              name.text = customerResponse!.data!.firstName ?? "";
+              dob.text = customerResponse!.data!.birthdate ?? "";
+              gender.text = customerResponse!.data!.gender ?? "";
+              profession.text = customerResponse!.data!.profession ?? "";
+              mobileNumber.text = customerResponse!.data!.mobileNo ?? "";
+              emailId.text = customerResponse!.data!.emailId ?? "";
+              address.text = customerResponse!.data!.address ?? "";
+              poBox.text = customerResponse!.data!.poBoxNumber ?? "";
+              region.text = customerResponse!.data!.region ?? "";
+              district.text = customerResponse!.data!.district ?? "";
             });
             /* List<Datum> regions = await coordinator.getRegion(widget.userType);
             genderTypeDropDown = getDropDownData(coordinator.genderType);
@@ -154,10 +155,10 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
                   key: _abcKey,
                   body: customerResponse.isNotEmptyOrNull
                       ? Column(
-                        children: [
-                          _buildTopContainer(context,coordinator),
-                          Expanded(
-                            child: SingleChildScrollView(
+                          children: [
+                            _buildTopContainer(context, coordinator),
+                            Expanded(
+                              child: SingleChildScrollView(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -165,9 +166,9 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
                                   ],
                                 ),
                               ),
-                          ),
-                        ],
-                      )
+                            ),
+                          ],
+                        )
                       : _buildMainUIWithLoading(context, coordinator),
                 ), /*state.maybeWhen(
                   LoadingState: () =>
@@ -198,9 +199,9 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
   }
 
   Widget _buildMainUIWithLoading(
-      BuildContext context,
-      CustomerDetailsCoordinator coordinator,
-      ) {
+    BuildContext context,
+    CustomerDetailsCoordinator coordinator,
+  ) {
     return Scaffold(
       body: Stack(
         children: [
@@ -488,14 +489,14 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Row(
-              children:  [
+              children: [
                 Expanded(
                   child: Text(
                     region.text.toString(),
                     style: SU_label_style,
                   ),
                 ),
-                const   Icon(
+                const Icon(
                   Icons.keyboard_arrow_down,
                   color: Black,
                 ),
@@ -566,7 +567,7 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: Row(
-                  children:  [
+                  children: [
                     Expanded(
                       child: Text(
                         gender.text.toString(),
@@ -638,14 +639,14 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Row(
-              children:  [
+              children: [
                 Expanded(
                   child: Text(
                     district.text.toString(),
                     style: SU_label_style,
                   ),
                 ),
-                const   Icon(
+                const Icon(
                   Icons.keyboard_arrow_down,
                   color: Black,
                 ),

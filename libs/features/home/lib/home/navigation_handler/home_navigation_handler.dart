@@ -45,11 +45,8 @@ class HomeNavigationHandler with ErrorHandler {
   Future<void> navigateToCustomPayBottomSheet() async {
     await goBack();
     final CrayonPaymentBottomSheetState infoState =
-    CrayonPaymentBottomSheetState.customAmount(
-
-      buttonOptions: [
-        ButtonOptions(Black, 'LR_proceed', () => (){}, false)
-      ],
+        CrayonPaymentBottomSheetState.customAmount(
+      buttonOptions: [ButtonOptions(Black, 'LR_proceed', () => () {}, false)],
       title: 'CA_custom_amount',
     );
 
@@ -61,7 +58,8 @@ class HomeNavigationHandler with ErrorHandler {
   }
 
   Future<void> navigateToPaymentScreen() async {
-    PaymentsScreenArgs paymentsScreenArgs = PaymentsScreenArgs(HS_LoanRepaymentMock, 'Paying Custom Amount', '3,000 TZSHS');
+    PaymentsScreenArgs paymentsScreenArgs = PaymentsScreenArgs(
+        HS_LoanRepaymentMock, 'Paying Custom Amount', '3,000 TZSHS');
     await _navigationManager.navigateTo(
       PaymentsScreen.viewPath,
       arguments: paymentsScreenArgs,
@@ -71,7 +69,6 @@ class HomeNavigationHandler with ErrorHandler {
 
   Future<void> navigateToLoanRepaymentBottomSheet(
       String message, String buttonLabel) async {
-
     final CrayonPaymentBottomSheetState infoState =
         CrayonPaymentBottomSheetState.loanRepayment(
             loanRepayment: LoanRepayment(
@@ -81,9 +78,8 @@ class HomeNavigationHandler with ErrorHandler {
       imageUrl: HS_LoanRepaymentMock,
       infoMessage: '',
       loanId: '64512378965435',
-      onPressedCustomAmount: ()=>navigateToCustomPayBottomSheet(),
-      onPressedPayNow: ()=>navigateToPaymentScreen(),
-
+      onPressedCustomAmount: () => navigateToCustomPayBottomSheet(),
+      onPressedPayNow: () => navigateToPaymentScreen(),
       loanPaymentList: [
         LoanPaymentMethod(
             name: 'LR_due_amount', amount: "4,500TZSHS", isSelected: false),
@@ -97,8 +93,6 @@ class HomeNavigationHandler with ErrorHandler {
             name: 'LR_custom_amount', amount: "", isSelected: false),
       ],
     ));
-
-
 
     _navigationManager.navigateTo(
       'bottomSheet/crayonPaymentBottomSheet',

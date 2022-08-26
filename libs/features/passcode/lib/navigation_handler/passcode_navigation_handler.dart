@@ -48,7 +48,6 @@ class PasscodeNavigationHandler with ErrorHandler {
         CrayonPaymentBottomSheetSuccessIcon();
     final CrayonPaymentBottomSheetState infoState =
         CrayonPaymentBottomSheetState.agentEnrollment(
-
       buttonOptions: [
         ButtonOptions(Black, buttonLabel, () => navigateToAgentHome(), false)
       ],

@@ -32,7 +32,6 @@ class BottomSheetCustomAmount extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     TextEditingController mobileNumber = TextEditingController();
 
     return ListView(
@@ -60,7 +59,7 @@ class BottomSheetCustomAmount extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: Align(
-         alignment: Alignment.topLeft,
+        alignment: Alignment.topLeft,
         child: RichTextDescription(
           textAlign: TextAlign.center,
           description: _sheetState.title!,
@@ -86,15 +85,14 @@ class BottomSheetCustomAmount extends StatelessWidget {
     );
   }
 
-  Widget _onTabContainer(BuildContext context){
+  Widget _onTabContainer(BuildContext context) {
     return Padding(
-      padding:  EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * .3),
+      padding: EdgeInsets.symmetric(
+          horizontal: MediaQuery.of(context).size.width * .3),
       child: Container(
         height: 5,
         decoration: BoxDecoration(
-          color: LR_ColorF3F4FA,
-          borderRadius: BorderRadius.circular(4)
-        ),
+            color: LR_ColorF3F4FA, borderRadius: BorderRadius.circular(4)),
       ),
     );
   }

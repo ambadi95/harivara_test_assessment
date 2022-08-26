@@ -72,8 +72,9 @@ class SettingsNavigationHandler with ErrorHandler {
         AgentDetailsScreen.viewPath, const NavigationType.push(),
         arguments: arguments);
   }
+
   Future<void> navigateToCustomerDetailScreen() async {
-    var arguments = UserType.Customer ;
+    var arguments = UserType.Customer;
     await _navigationManager.navigateTo(
         CustomerDetailsScreen.viewPath, const NavigationType.push(),
         arguments: arguments);
@@ -86,15 +87,17 @@ class SettingsNavigationHandler with ErrorHandler {
         arguments: arguments);
   }
 
- Future<void> navigateToTermsCondtionsScreen(bool isFaq) async {
-   var arguments = TermsConditionAndFaqScreenArgs(isFAQ: isFaq);
-   _navigationManager.navigateTo(
-       CrayonTermsCondition.viewPath,
-       const NavigationType.push(),arguments: arguments);
+  Future<void> navigateToTermsCondtionsScreen(bool isFaq) async {
+    var arguments = TermsConditionAndFaqScreenArgs(isFAQ: isFaq);
+    _navigationManager.navigateTo(
+        CrayonTermsCondition.viewPath, const NavigationType.push(),
+        arguments: arguments);
   }
 
   Future<void> navigateToAgentNearBy() async {
     await _navigationManager.navigateTo(
-      AgentNearBy.viewPath, const NavigationType.push(),);
+      AgentNearBy.viewPath,
+      const NavigationType.push(),
+    );
   }
 }

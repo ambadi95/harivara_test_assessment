@@ -1,3 +1,1 @@
-class LoanDetailViewModel{
-
-}
+class LoanDetailViewModel {}

@@ -117,7 +117,9 @@ class _SettingsState extends State<Settings> {
         _buildOptions(context, 'ST_my_profile', ST_view_profile, () async {
           widget.screenArgs.isAgent
               ? await coordinator.navigateToUpdateProfile()
-              : await coordinator.navigateToCustomerProfileScreen(); }),/*() {}*/
+              : await coordinator.navigateToCustomerProfileScreen();
+        }),
+        /*() {}*/
         // _buildOptions(context, 'ST_view_profile', ST_view_profile, () async {
         //   widget.screenArgs.isAgent
         //       ? await coordinator.navigateToUpdateProfile()
@@ -125,11 +127,10 @@ class _SettingsState extends State<Settings> {
         // }),
         _buildOptions(context, 'ST_update_passcode', ST_update_passcode,
             () async {
-           await coordinator.resetPasscode( widget.screenArgs.userType);
+          await coordinator.resetPasscode(widget.screenArgs.userType);
         }),
         _buildOptions(context, 'ST_App_Language', ST_language, () async {
-
-               await coordinator.changeLanguage();
+          await coordinator.changeLanguage();
         }),
       ],
     );
@@ -157,11 +158,10 @@ class _SettingsState extends State<Settings> {
         }),
         _buildOptions(context, 'ST_faq', ST_faq, () async {
           coordinator.navigateToTermsCondtionsScreen(true);
-
         }),
         _buildOptions(context, 'ST_term_condition', ST_TermsCondition,
             () async {
-              coordinator.navigateToTermsCondtionsScreen(false);
+          coordinator.navigateToTermsCondtionsScreen(false);
         }),
         _buildOptions(context, 'ST_call_support', ST_CallSupport, () async {
           LauncherUtils.launcherUtilsInstance

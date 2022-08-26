@@ -1,3 +1,1 @@
-class ConfigureMdmViewModel{
-
-}
+class ConfigureMdmViewModel {}

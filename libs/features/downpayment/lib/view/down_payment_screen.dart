@@ -34,7 +34,7 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
   final String _identifier = 'downpayment-screen';
   bool _isBtnEnabled = false;
 
-  String username="";
+  String username = "";
 
   @override
   Widget build(BuildContext context) =>
@@ -45,7 +45,6 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
             setState(() {
               username;
             });
-
           },
           builder: (context, state, coordinator) => CrayonPaymentScaffold(
                 appBarAttributes: CrayonPaymentAppBarAttributes(
@@ -118,7 +117,8 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
-                    height: AppUtils.appUtilsInstance.getPercentageSize(percentage: 5),
+                    height: AppUtils.appUtilsInstance
+                        .getPercentageSize(percentage: 5),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 7.0),
@@ -301,10 +301,10 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
       ),
       height: 70,
       width: 70,
-      child: Center(child: CrayonPaymentText(
+      child: Center(
+          child: CrayonPaymentText(
         key: Key('${_identifier}_Agent_Name'),
-        text:  TextUIDataModel(
-            _getCaptialUserName(username),
+        text: TextUIDataModel(_getCaptialUserName(username),
             styleVariant: CrayonPaymentTextStyleVariant.headline6,
             color: AN_TitleColor,
             fontWeight: FontWeight.w600),
@@ -312,9 +312,9 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
     );
   }
 
-    String _getCaptialUserName(String letter) => letter.isNotEmpty
-        ? letter.trim().split(' ').map((l) => l[0]).take(2).join()
-        : '';
+  String _getCaptialUserName(String letter) => letter.isNotEmpty
+      ? letter.trim().split(' ').map((l) => l[0]).take(2).join()
+      : '';
 
   _title(BuildContext context) {
     return CrayonPaymentText(

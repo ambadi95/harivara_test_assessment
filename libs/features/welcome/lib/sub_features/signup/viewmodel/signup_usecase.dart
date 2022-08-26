@@ -65,6 +65,10 @@ class SignupUseCase extends BaseDataProvider {
     return await setValueToSecureStorage({'AgentName': mobileNumber});
   }
 
+  Future<void> _saveCustomerName(String mobileNumber) async {
+    return await setValueToSecureStorage({'CustomerName': mobileNumber});
+  }
+
   Future<CustomerDetailResponse?> signUp(String nindaNumber, String phoneNo,
       Function(String) onErrorCallback) async {
     CrayonPaymentLogger.logInfo(phoneNo.replaceAll(" ", ""));

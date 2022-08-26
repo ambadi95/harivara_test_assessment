@@ -11,15 +11,12 @@ abstract class IDetailsService {
   static const districtIdentifier = 'getDistrict';
   static const submitCustomerDetailIdentifier = 'submitCustomerDetail';
 
-
   Future<StandardRequest> getRegion(UserType type);
 
   Future<StandardRequest> getDistrict(String regionId, UserType type);
 
   Future<StandardRequest> submitCustomerDetails(
       Map<String, dynamic> requestData, UserType type);
-
-
 }
 
 class DetailsService implements IDetailsService {
@@ -65,5 +62,4 @@ class DetailsService implements IDetailsService {
     request.jsonBody = json.encode(requestData);
     return request;
   }
-
 }

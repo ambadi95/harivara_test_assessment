@@ -27,7 +27,7 @@ class LoginNavigationHandler with ErrorHandler {
     var arguments = OtpScreenArgs(
         'OTP Verification',
         'VO_otp_verification_description',
-        'welcomeModule/enrollmentSuccess',
+        'homemodule/CrayonHomeScreen',
         false,
         2,
         OtpVerificationType.customerSign,

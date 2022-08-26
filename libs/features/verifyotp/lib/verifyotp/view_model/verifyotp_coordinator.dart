@@ -152,7 +152,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
       var responseSignin = await _verifyOtpUseCase.otpVerify(
           otpScreenArgs.refId, enterOtp, otpScreenArgs.userType, (p0) => null);
       if (responseSignin!.status == true) {
-        _navigationHandler.navigateToCustomerEnrollmentScreen();
+        _navigationHandler.navigateToHomeScreen(userType);
       } else {
         print('error');
       }
@@ -161,7 +161,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
       var responseSignin = await _verifyOtpUseCase.otpVerifyCustomerByAgent(
           otpScreenArgs.refId, enterOtp, 'Customer', (p0) => null);
       if (responseSignin!.data!.status == "success") {
-         _navigationHandler.navigateToDetailScreen();
+        _navigationHandler.navigateToDetailScreen();
       }
     } else if (otpScreenArgs.otpVerificationType ==
         OtpVerificationType.mobile) {

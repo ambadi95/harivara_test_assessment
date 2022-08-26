@@ -65,7 +65,6 @@ class WelcomeNavigationHandler with ErrorHandler {
     }
   }
 
-
   Future<void> navigateToCreatePasscodeScreen() async {
     await _navigationManager.navigateTo(
       CrayonPasscodeScreen.viewPath,
@@ -140,14 +139,16 @@ class WelcomeNavigationHandler with ErrorHandler {
   }
 
   Future<void> navigateToAgentHome() async {
-    var argument = HomeScreenArgs(isAgent: true,userType: UserType.Agent);
+    var argument = HomeScreenArgs(isAgent: true, userType: UserType.Agent);
     await _navigationManager.navigateTo(
         CrayonHomeScreen.viewPath, const NavigationType.replace(),
         arguments: argument);
   }
 
   Future<void> navigateToHome(UserType userType) async {
-    var argument = HomeScreenArgs(isAgent: userType == UserType.Customer ? false : true, userType : userType);
+    var argument = HomeScreenArgs(
+        isAgent: userType == UserType.Customer ? false : true,
+        userType: userType);
     await _navigationManager.navigateTo(
         CrayonHomeScreen.viewPath, const NavigationType.replace(),
         arguments: argument);
@@ -163,8 +164,8 @@ class WelcomeNavigationHandler with ErrorHandler {
   Future<void> navigateToTermsCondtionsScreen() async {
     var arguments = TermsConditionAndFaqScreenArgs(isFAQ: false);
     _navigationManager.navigateTo(
-      CrayonTermsCondition.viewPath,
-      const NavigationType.push(),arguments: arguments);
+        CrayonTermsCondition.viewPath, const NavigationType.push(),
+        arguments: arguments);
   }
 
   Future<void> navigateToAgentDetailScreen(UserType userType) async {
@@ -317,24 +318,21 @@ class WelcomeNavigationHandler with ErrorHandler {
         arguments: arguments);
   }
 
-
   Future<void> navigateToAgentAidedCustomerOnBoarding() async {
-    var arguments = SignUpArguments('SU_title', 'SU_subtitle', UserType.Customer,
-        SignupType.agentAidedCustomerOnBoarding, true);
+    var arguments = SignUpArguments('SU_title', 'SU_subtitle',
+        UserType.Customer, SignupType.agentAidedCustomerOnBoarding, true);
     await _navigationManager.navigateTo(
         SignUp.viewPath, const NavigationType.push(),
         arguments: arguments);
   }
 
   Future<void> navigateToCustomerOnBoardingApproval() async {
-    var arguments = SignUpArguments('SU_title', 'SU_subtitle',UserType.Customer,
-        SignupType.agentAidedCustomerOnBoarding, true);
+    var arguments = SignUpArguments('SU_title', 'SU_subtitle',
+        UserType.Customer, SignupType.agentAidedCustomerOnBoarding, true);
     await _navigationManager.navigateTo(
         CustomerOnBoardingApproval.viewPath, const NavigationType.push(),
         arguments: arguments);
   }
-
-
 
 // Future<void> navigateToDestination(
 //     String? destination,
