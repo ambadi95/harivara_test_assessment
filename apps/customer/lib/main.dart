@@ -14,6 +14,7 @@ import 'package:flutter_riverpod/src/framework.dart';
 import 'package:get/get.dart';
 import 'package:home/home/home_screen_arguments.dart';
 import 'package:home/home/view/home_screen.dart';
+import 'package:loan_details/view/loan_detail_screen.dart';
 import 'package:payments/view/payments_screen.dart';
 import 'package:shared_data_models/device_option/device_option_args.dart';
 import 'package:shared_data_models/payments/payments_screen_args.dart';
@@ -21,6 +22,7 @@ import 'package:splash/splash/view/splash.dart';
 import 'package:welcome/sub_features/enrollment_success/view/enrollment_success_screen.dart';
 import 'package:welcome/sub_features/welcome/view/welcome_screen.dart';
 import 'package:widget_library/theme/crayon_payment_theme.dart';
+import 'package:shared_data_models/loan_detail/loan_detail_screen_args.dart';
 
 import 'app_module.dart';
 
@@ -58,11 +60,12 @@ class HomeWidget extends StatelessWidget {
   final IInactivityService _inactivityService;
   final bool _status;
 
-  HomeWidget(this._translations,
-      this._navigationManager,
-      this._inactivityService,
-      this._status,);
-
+  HomeWidget(
+    this._translations,
+    this._navigationManager,
+    this._inactivityService,
+    this._status,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -70,10 +73,10 @@ class HomeWidget extends StatelessWidget {
       inactivityService: _inactivityService,
       child: CrayonPaymentMaterialApp(
         key: Key('AppMaterialApp'),
-        home: !_status ?
+        home: !_status
+            ?
         CrayonHomeScreen.forCustomerApp()
             : CrayonHomeScreen.forCustomerApp(),
-
         theme: CrayonPaymentTheme().defaultTheme,
         onGenerateRoute: _navigationManager.getRoute,
         translations: _translations,
@@ -85,7 +88,6 @@ class HomeWidget extends StatelessWidget {
     );
   }
 }
-
 
 class MyHttpOverrides extends HttpOverrides {
   @override

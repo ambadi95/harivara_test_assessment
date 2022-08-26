@@ -470,8 +470,11 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
     );
   }
 
-  _buildMainUI(BuildContext context, HomeCoordinator coordinator,
-      HomeScreenReady state) {
+  _buildMainUI(
+    BuildContext context,
+    HomeCoordinator coordinator,
+    HomeScreenReady state,
+  ) {
     return Scaffold(
         backgroundColor: Colors.white,
         floatingActionButtonLocation:

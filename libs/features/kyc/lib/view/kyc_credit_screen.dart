@@ -14,7 +14,9 @@ import 'package:widget_library/scaffold/crayon_payment_scaffold.dart';
 import 'package:widget_library/static_text/crayon_payment_text.dart';
 import '../kyc_credit_module.dart';
 import '../state/kyc_credit_state.dart';
+import 'package:flutter_svg/svg.dart';
 import '../viewmodel/kyc_credit_coordinator.dart';
+
 import 'package:get/get.dart';
 
 

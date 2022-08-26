@@ -40,6 +40,8 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
     return response?.data;
   }
 
+
+
   void setGenderType(GenderType genderType) {
     state = DetailsState.onGenderTypeChoosen(genderType);
   }

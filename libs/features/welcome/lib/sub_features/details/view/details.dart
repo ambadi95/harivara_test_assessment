@@ -37,6 +37,9 @@ class DetailsScreen extends StatefulWidget {
 }
 
 class _DetailsScreenState extends State<DetailsScreen> {
+
+
+
   bool _isBtnEnabled = false;
   String nameError = '';
   String emailError = '';

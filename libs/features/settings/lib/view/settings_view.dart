@@ -111,6 +111,10 @@ class _SettingsState extends State<Settings> {
         const SizedBox(
           height: 20,
         ),
+        _buildOptions(context, 'ST_my_profile', ST_view_profile, () async {
+          widget.screenArgs.isAgent
+              ? await coordinator.navigateToUpdateProfile()
+              : await coordinator.navigateToCustomerProfileScreen() /*() {}*/;
         _buildOptions(context, 'ST_view_profile', ST_view_profile, () async {
           widget.screenArgs.isAgent
               ? await coordinator.navigateToUpdateProfile()

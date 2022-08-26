@@ -67,6 +67,9 @@ dependencies:
   settings:
     path: ../../libs/features/settings
 
+  loan_details:
+    path: ../../libs/features/loan_details
+
   payments:
     path: ../../libs/features/payments
 
