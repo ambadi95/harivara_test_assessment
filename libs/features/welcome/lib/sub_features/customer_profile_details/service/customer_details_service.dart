@@ -30,9 +30,6 @@ class CustomerDetailsService implements ICustomerDetailsService {
     request.endpoint = (userType == UserType.AgentCustomer)
         ? customerEndpoint + 'region-details[customer]'
         : 'region-details';
-    request.customHeaders = {
-      'Content-Type': 'application/json',
-    };
     return request;
   }
 
@@ -44,9 +41,6 @@ class CustomerDetailsService implements ICustomerDetailsService {
     request.endpoint = (userType == UserType.AgentCustomer)
         ? customerEndpoint + 'district-details/$regionId[customer]'
         : 'district-details/$regionId';
-    request.customHeaders = {
-      'Content-Type': 'application/json',
-    };
     return request;
   }
 
@@ -71,9 +65,6 @@ class CustomerDetailsService implements ICustomerDetailsService {
     var request = StandardRequest();
     request.requestType = RequestType.GET;
     request.endpoint = 'customer-details/$customerId';
-    request.customHeaders = {
-      'Content-Type': 'application/json',
-    };
 
     return request;
   }

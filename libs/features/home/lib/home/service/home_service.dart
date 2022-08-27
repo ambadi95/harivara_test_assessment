@@ -20,10 +20,7 @@ class HomeService implements IHomeService {
     request.requestType = RequestType.GET;
     request.endpoint =
         '${customerEndpoint}agent-customer-count/$agentId[customer]';
-    request.customHeaders = {
-      'Content-Type': 'application/json',
-      'Authorization': token,
-    };
+
     return request;
   }
 
@@ -33,10 +30,7 @@ class HomeService implements IHomeService {
     var request = StandardRequest();
     request.requestType = RequestType.GET;
     request.endpoint = 'loans/loan-details/$customerId';
-    request.customHeaders = {
-      'Content-Type': 'application/json',
-      'Authorization': token,
-    };
+
     return request;
   }
 }

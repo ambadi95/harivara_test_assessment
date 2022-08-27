@@ -38,6 +38,8 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
     return result;
   }
 
+
+
   bool isAgentIdValid(String agentId) {
     var result = _loginUseCase.isValidAgentId(agentId);
     if (!result) {
@@ -67,6 +69,21 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
       await customerLogin(mobileNumber, passcode, userType);
     } else {
       await getAgentDetails(agentId, mobileNumber);
+    }
+  }
+
+  Future calljwttoken(
+  ) async {
+    state = LoginState.loading();
+    var response = await _loginUseCase.callJWTToken(
+         (p0) => null);
+    if (response?.status == true) {
+      state = LoginState.successState();
+    } else {
+      state = LoginState.initialState();
+
+      // calljwttoken();
+      print(response?.message);
     }
   }
 
