@@ -24,6 +24,19 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
     await _navigationHandler.navigateToAgentAidedCustomerOnBoarding();
   }
 
+
+  Future calljwttoken(
+      ) async {
+    var response = await _signupUseCase.callJWTToken(
+            (p0) => null);
+    if (response?.status == true) {
+
+    } else {
+      print(response?.message);
+    }
+  }
+
+
   Future<void> signup(SignUpArguments signUpArguments, String mobileNumber,
       String nindaNumber, String agentId) async {
     if (signUpArguments.signupType == SignupType.customerSignUp) {

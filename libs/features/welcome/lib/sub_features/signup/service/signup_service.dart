@@ -5,9 +5,15 @@ import 'package:network_manager/model/requests/request.dart';
 import 'package:network_manager/model/requests/standard/standard_request.dart';
 
 abstract class ISignupService {
+  static const jwtIdentifier = 'jwt';
   static const signupIdentifier = 'signup';
   static const signUpAgentIdentifier = 'signUpAgent';
   static const signUpCustomerByAgent = 'signUpCustomerByAgent';
+
+
+  Future<StandardRequest> jwttoken(
+      Map<String, dynamic> requestData,
+      );
 
   Future<StandardRequest> signup(
     String nindaNumber,
@@ -27,6 +33,26 @@ abstract class ISignupService {
 }
 
 class SignupService implements ISignupService {
+
+
+
+  @override
+  Future<StandardRequest> jwttoken(
+      Map<String, dynamic> requestData,
+      ) async {
+    var request = StandardRequest();
+    request.requestType = RequestType.POST;
+    request.endpoint = 'auth/token';
+    request.customHeaders = {
+      'Content-Type': 'application/json',
+      'Accept' : 'application/json',
+    };
+    request.jsonBody = json.encode(requestData);
+    return request;
+  }
+
+
+
   @override
   Future<StandardRequest> signup(
     String nindaNumber,
