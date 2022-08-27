@@ -27,9 +27,7 @@ class DetailsService implements IDetailsService {
     request.endpoint = (userType == UserType.AgentCustomer)
         ? customerEndpoint + 'region-details[customer]'
         : 'region-details';
-    request.customHeaders = {
-      'Content-Type': 'application/json',
-    };
+        request.customHeaders = await request.headers();
     return request;
   }
 
@@ -41,9 +39,7 @@ class DetailsService implements IDetailsService {
     request.endpoint = (userType == UserType.AgentCustomer)
         ? customerEndpoint + 'district-details/$regionId[customer]'
         : 'district-details/$regionId';
-    request.customHeaders = {
-      'Content-Type': 'application/json',
-    };
+        request.customHeaders = await request.headers();
     return request;
   }
 
@@ -55,9 +51,7 @@ class DetailsService implements IDetailsService {
     request.endpoint = (userType == UserType.AgentCustomer)
         ? customerEndpoint + 'customer-details[customer]'
         : 'customer-details';
-    request.customHeaders = {
-      'Content-Type': 'application/json',
-    };
+        request.customHeaders = await request.headers();
     CrayonPaymentLogger.logInfo(requestData.toString());
     request.jsonBody = json.encode(requestData);
     return request;

@@ -23,9 +23,7 @@ class WelcomeBackService implements IWelcomeBackService {
     var request = StandardRequest();
     request.requestType = RequestType.GET;
     request.endpoint = 'agent-details/$agentId';
-    request.customHeaders = {
-      'Content-Type': 'application/json',
-    };
+        request.customHeaders = await request.headers();
     return request;
   }
 
@@ -34,9 +32,7 @@ class WelcomeBackService implements IWelcomeBackService {
     var request = StandardRequest();
     request.requestType = RequestType.GET;
     request.endpoint = 'customer-details/$customerId';
-    request.customHeaders = {
-      'Content-Type': 'application/json',
-    };
+        request.customHeaders = await request.headers();
     return request;
   }
 
@@ -47,9 +43,7 @@ class WelcomeBackService implements IWelcomeBackService {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
     request.endpoint = 'agent-login';
-    request.customHeaders = {
-      'Content-Type': 'application/json',
-    };
+        request.customHeaders = await request.headers();
     request.jsonBody = json.encode(requestData);
     return request;
   }

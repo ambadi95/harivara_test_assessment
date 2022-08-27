@@ -60,9 +60,7 @@ class LoginService implements ILoginService {
     request.endpoint = 'agent-details-by-agentid-mobile-number';
     request.jsonBody =
         json.encode({"mobileNumber": mobileNumber, "y9AgentId": agentId});
-    request.customHeaders = {
-      'Content-Type': 'application/json',
-    };
+        request.customHeaders = await request.headers();
     return request;
   }
 
@@ -73,9 +71,7 @@ class LoginService implements ILoginService {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
     request.endpoint = 'agent-login';
-    request.customHeaders = {
-      'Content-Type': 'application/json',
-    };
+        request.customHeaders = await request.headers();
     request.jsonBody = json.encode(requestData);
     return request;
   }

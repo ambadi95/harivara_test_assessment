@@ -39,9 +39,7 @@ class PasscodeService implements IPasscodeService {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
     request.endpoint = 'save-passcode';
-    request.customHeaders = {
-      'Content-Type': 'application/json',
-    };
+        request.customHeaders = await request.headers();
     request.jsonBody = json.encode(requestData);
     return request;
   }
@@ -54,9 +52,7 @@ class PasscodeService implements IPasscodeService {
     request.endpoint = userType == UserType.AgentCustomer
         ? customerEndpoint + 'save-passcode[customer]'
         : 'save-passcode';
-    request.customHeaders = {
-      'Content-Type': 'application/json',
-    };
+        request.customHeaders = await request.headers();
     request.jsonBody = json.encode(requestData);
     return request;
   }
@@ -68,9 +64,7 @@ class PasscodeService implements IPasscodeService {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
     request.endpoint = 'save-passcode';
-    request.customHeaders = {
-      'Content-Type': 'application/json',
-    };
+        request.customHeaders = await request.headers();
     request.jsonBody = json.encode(requestData);
     return request;
   }
@@ -82,9 +76,7 @@ class PasscodeService implements IPasscodeService {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
     request.endpoint = 'customer-login';
-    request.customHeaders = {
-      'Content-Type': 'application/json',
-    };
+        request.customHeaders = await request.headers();
     request.jsonBody = json.encode(requestData);
     return request;
   }
@@ -96,9 +88,7 @@ class PasscodeService implements IPasscodeService {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
     request.endpoint = 'agent-login';
-    request.customHeaders = {
-      'Content-Type': 'application/json',
-    };
+        request.customHeaders = await request.headers();
     request.jsonBody = json.encode(requestData);
     return request;
   }
