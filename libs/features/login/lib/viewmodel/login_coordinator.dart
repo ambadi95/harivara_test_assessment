@@ -74,11 +74,13 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
 
   Future calljwttoken(
   ) async {
+    state = LoginState.loading();
     var response = await _loginUseCase.callJWTToken(
          (p0) => null);
     if (response?.status == true) {
       state = LoginState.successState();
     } else {
+      calljwttoken();
       print(response?.message);
     }
   }

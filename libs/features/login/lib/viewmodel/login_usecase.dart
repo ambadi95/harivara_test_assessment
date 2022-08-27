@@ -86,7 +86,7 @@ class LoginUseCase extends BaseDataProvider {
   Future<JwtTokenResponse?> callJWTToken(
       Function(String) onErrorCallback) async {
 
-    await executeApiRequest<JwtTokenResponse?>(
+  return  await executeApiRequest<JwtTokenResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
         moduleIdentifier: LoginModule.moduleIdentifier,
@@ -108,6 +108,8 @@ class LoginUseCase extends BaseDataProvider {
             );
 
           }
+
+          return jwtTokenResponse;
         });
   }
 

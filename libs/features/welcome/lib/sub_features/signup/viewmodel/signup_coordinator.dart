@@ -27,11 +27,16 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
 
   Future calljwttoken(
       ) async {
+    state = const SignUpState.loadingState();
+
     var response = await _signupUseCase.callJWTToken(
             (p0) => null);
     if (response?.status == true) {
+      state = const SignUpState.initialState();
 
     } else {
+      state = const SignUpState.initialState();
+
       print(response?.message);
     }
   }
