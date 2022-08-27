@@ -80,7 +80,9 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
     if (response?.status == true) {
       state = LoginState.successState();
     } else {
-      calljwttoken();
+      state = LoginState.initialState();
+
+      // calljwttoken();
       print(response?.message);
     }
   }
