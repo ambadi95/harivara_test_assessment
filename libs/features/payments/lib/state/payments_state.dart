@@ -8,9 +8,7 @@ class PaymentsState with _$PaymentsState {
   const factory PaymentsState.initialState() = InitialState;
   const factory PaymentsState.ready({
     required BuildContext context,
-
     @Default('') String error,
     @Default(false) bool isLoading,
   }) = PaymentsStateReady;
-
 }

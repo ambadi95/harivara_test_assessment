@@ -16,11 +16,11 @@ import 'package:widget_library/scaffold/crayon_payment_scaffold.dart';
 import 'package:widget_library/spacers/crayon_payment_spacers.dart';
 import 'package:widget_library/static_text/crayon_payment_text.dart';
 
+import '../payments_module.dart';
 import '../state/payments_state.dart';
 
 class PaymentsScreen extends StatefulWidget {
-  static const viewPath =
-      '${DownPaymentModule.moduleIdentifier}/paymentsscreen';
+  static const viewPath = '${PaymentsModule.moduleIdentifier}/paymentsscreen';
   final PaymentsScreenArgs paymentsScreenArgs;
 
   const PaymentsScreen({Key? key, required this.paymentsScreenArgs})
@@ -33,13 +33,11 @@ class PaymentsScreen extends StatefulWidget {
 class _PaymentsScreenState extends State<PaymentsScreen> {
   final String _identifier = 'payments-screen';
 
-
   @override
   Widget build(BuildContext context) =>
       BaseView<PaymentsCoordinator, PaymentsState>(
           setupViewModel: (coordinator) async {
             coordinator.initialiseState(context);
-
           },
           builder: (context, state, coordinator) => CrayonPaymentScaffold(
                 appBarAttributes: CrayonPaymentAppBarAttributes(
@@ -48,8 +46,7 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
                     const CrayonPaymentAppBarButtonType.back(),
                   ],
                 ),
-                bottomNavigationBar:
-                    _payNowButton(context, coordinator, state),
+                bottomNavigationBar: _payNowButton(context, coordinator, state),
                 body: state.when(
                   initialState: () => const SizedBox(),
                   ready: (
@@ -118,7 +115,8 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
         decoration: BoxDecoration(
           color: PS_DailyRepaymentContainerColor,
           borderRadius: BorderRadius.circular(5),
-          border: Border.all(color: PS_DailyRepaymentContainerColor, width: 0.1),
+          border:
+              Border.all(color: PS_DailyRepaymentContainerColor, width: 0.1),
         ),
         child: Padding(
           padding: EdgeInsets.only(top: 10, right: 20, left: 20, bottom: 10),
@@ -126,34 +124,37 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Card(
-                color: White,
+                  color: White,
                   child: Padding(
                     padding: const EdgeInsets.all(10.0),
-                    child: Image.asset(widget.paymentsScreenArgs.image,),
+                    child: Image.asset(
+                      widget.paymentsScreenArgs.image,
+                    ),
                   )),
               SizedBox(width: 10),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                CrayonPaymentText(
-                  key: Key('${_identifier}_daily_Repayment'),
-                  text:  TextUIDataModel(widget.paymentsScreenArgs.title.tr,
-                      styleVariant: CrayonPaymentTextStyleVariant.headline5,
-                      color: VO_ResendTextColor,
-                      fontWeight: FontWeight.w400),
-                ),
-                SizedBox(
-                  height: AppUtils.appUtilsInstance.getPercentageSize(percentage: 2),
-                ),
-                CrayonPaymentText(
-                  key: Key('${_identifier}_daily_repayment_price'),
-                  text: const TextUIDataModel('2,000 TZSHS',
-                      styleVariant: CrayonPaymentTextStyleVariant.headline6,
-                      color: SECONDARY_COLOR,
-                      fontWeight: FontWeight.w600),
-                ),
-              ],)
-
+                  CrayonPaymentText(
+                    key: Key('${_identifier}_daily_Repayment'),
+                    text: TextUIDataModel(widget.paymentsScreenArgs.title.tr,
+                        styleVariant: CrayonPaymentTextStyleVariant.headline5,
+                        color: VO_ResendTextColor,
+                        fontWeight: FontWeight.w400),
+                  ),
+                  SizedBox(
+                    height: AppUtils.appUtilsInstance
+                        .getPercentageSize(percentage: 2),
+                  ),
+                  CrayonPaymentText(
+                    key: Key('${_identifier}_daily_repayment_price'),
+                    text: const TextUIDataModel('2,000 TZSHS',
+                        styleVariant: CrayonPaymentTextStyleVariant.headline6,
+                        color: SECONDARY_COLOR,
+                        fontWeight: FontWeight.w600),
+                  ),
+                ],
+              )
             ],
           ),
         ));
@@ -165,7 +166,7 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
       children: [
         CrayonPaymentText(
           key: Key('${_identifier}_Wallets_title'),
-          text:  TextUIDataModel('PP_Wallets_Title'.tr,
+          text: TextUIDataModel('PP_Wallets_Title'.tr,
               styleVariant: CrayonPaymentTextStyleVariant.headline5,
               color: WB_EnterPassCodeTitleColor,
               fontWeight: FontWeight.w400),
@@ -189,12 +190,11 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
                   SizedBox(width: 10),
                   CrayonPaymentText(
                     key: Key('${_identifier}_Airtel_Pay'),
-                    text:  TextUIDataModel('PP_Airtel_Pay'.tr,
+                    text: TextUIDataModel('PP_Airtel_Pay'.tr,
                         styleVariant: CrayonPaymentTextStyleVariant.headline4,
                         color: SECONDARY_COLOR,
                         fontWeight: FontWeight.w600),
                   ),
-
                   Spacer(),
                   Radio(
                     value: 1,
@@ -218,17 +218,22 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
         onTap: () async {
-          coordinator.navigateToPaymentSuccessBottomSheet();
+          try {
+            await coordinator.paymentApi(
+              widget.paymentsScreenArgs.price,
+              "Airtel",
+            );
+            coordinator.navigateToPaymentSuccessBottomSheet();
+          } catch (e) {}
         },
         child: Container(
           width: double.infinity,
           height: 50,
           decoration: BoxDecoration(
-              color:SU_button_color,
-              borderRadius: BorderRadius.circular(8.0)),
+              color: SU_button_color, borderRadius: BorderRadius.circular(8.0)),
           child: Center(
             child: Text(
-              'PP_PayNow'.tr + " "+ widget.paymentsScreenArgs.price,
+              'PP_PayNow'.tr + " " + widget.paymentsScreenArgs.price,
               style: SU_button_text_style,
             ),
           ),
@@ -246,5 +251,4 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
           fontWeight: FontWeight.w800),
     );
   }
-
 }

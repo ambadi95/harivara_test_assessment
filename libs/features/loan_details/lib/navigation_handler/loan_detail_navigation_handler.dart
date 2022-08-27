@@ -7,7 +7,6 @@ import 'package:get/get.dart';
 import 'package:termscondition/termscondition/view/terms_condition_view.dart';
 import 'package:widget_library/helpers/error/helper/error_helper.dart';
 
-
 class LoanDetailNavigationHandler with ErrorHandler {
   final NavigationManager _navigationManager;
 
@@ -23,12 +22,11 @@ class LoanDetailNavigationHandler with ErrorHandler {
   Future<void> goBack() async {
     _navigationManager.goBack();
   }
+
   Future<void> navigateToTermsCondtionsScreen() async {
     _navigationManager.navigateTo(
       CrayonTermsCondition.viewPath,
       const NavigationType.push(),
     );
   }
-
-
 }

@@ -18,28 +18,22 @@ abstract class IWelcomeBackService {
 }
 
 class WelcomeBackService implements IWelcomeBackService {
-
   @override
   Future<StandardRequest> getAgentDetails(String agentId) async {
     var request = StandardRequest();
     request.requestType = RequestType.GET;
     request.endpoint = 'agent-details/$agentId';
-    request.customHeaders = {
-      'Content-Type': 'application/json',
-    };
     return request;
   }
 
   @override
-  Future<StandardRequest> getCustomerDetails(String customerId) async{
+  Future<StandardRequest> getCustomerDetails(String customerId) async {
     var request = StandardRequest();
     request.requestType = RequestType.GET;
     request.endpoint = 'customer-details/$customerId';
-    request.customHeaders = {
-      'Content-Type': 'application/json',
-    };
     return request;
   }
+
   @override
   Future<StandardRequest> loginAgent(
     Map<String, dynamic> requestData,
@@ -47,11 +41,7 @@ class WelcomeBackService implements IWelcomeBackService {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
     request.endpoint = 'agent-login';
-    request.customHeaders = {
-      'Content-Type': 'application/json',
-    };
     request.jsonBody = json.encode(requestData);
     return request;
   }
-
 }

@@ -8,9 +8,7 @@ class LoanDetailState with _$LoanDetailState {
   const factory LoanDetailState.initialState() = InitialState;
   const factory LoanDetailState.ready({
     required BuildContext context,
-
     @Default('') String error,
     @Default(false) bool isLoading,
   }) = LoanDetailStateReady;
-
 }

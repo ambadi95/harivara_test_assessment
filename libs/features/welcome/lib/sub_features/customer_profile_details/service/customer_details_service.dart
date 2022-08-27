@@ -9,14 +9,14 @@ abstract class ICustomerDetailsService {
   static const detailIdentifier = 'details';
   static const regionIdentifier = 'getRegion';
   static const districtIdentifier = 'getDistrict';
-  static const submitCustomerDetailIdentifier = 'submitCustomerDetail';
+  static const updateCustomerDetails = 'saveCustomerDetails';
   static const customerDetailIdentifier = 'getCustomerProfileData';
 
   Future<StandardRequest> getRegion(UserType type);
 
   Future<StandardRequest> getDistrict(String regionId, UserType type);
 
-  Future<StandardRequest> submitCustomerDetails(
+  Future<StandardRequest> saveCustomerDetails(
       Map<String, dynamic> requestData, UserType type);
 
   Future<StandardRequest> getCustomerDetails(int customerId);
@@ -30,9 +30,6 @@ class CustomerDetailsService implements ICustomerDetailsService {
     request.endpoint = (userType == UserType.AgentCustomer)
         ? customerEndpoint + 'region-details[customer]'
         : 'region-details';
-    request.customHeaders = {
-      'Content-Type': 'application/json',
-    };
     return request;
   }
 
@@ -44,23 +41,20 @@ class CustomerDetailsService implements ICustomerDetailsService {
     request.endpoint = (userType == UserType.AgentCustomer)
         ? customerEndpoint + 'district-details/$regionId[customer]'
         : 'district-details/$regionId';
-    request.customHeaders = {
-      'Content-Type': 'application/json',
-    };
     return request;
   }
 
   @override
-  Future<StandardRequest> submitCustomerDetails(
+  Future<StandardRequest> saveCustomerDetails(
       Map<String, dynamic> requestData, UserType userType) async {
+
     var request = StandardRequest();
-    request.requestType = RequestType.POST;
-    request.endpoint = (userType == UserType.AgentCustomer)
-        ? customerEndpoint + 'customer-details[customer]'
-        : 'customer-details';
+    request.requestType = RequestType.PUT;
+    request.endpoint = 'customer-details';
     request.customHeaders = {
       'Content-Type': 'application/json',
     };
+
     CrayonPaymentLogger.logInfo(requestData.toString());
     request.jsonBody = json.encode(requestData);
     return request;
@@ -71,9 +65,6 @@ class CustomerDetailsService implements ICustomerDetailsService {
     var request = StandardRequest();
     request.requestType = RequestType.GET;
     request.endpoint = 'customer-details/$customerId';
-    request.customHeaders = {
-      'Content-Type': 'application/json',
-    };
 
     return request;
   }

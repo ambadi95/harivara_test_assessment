@@ -11,15 +11,12 @@ abstract class IDetailsService {
   static const districtIdentifier = 'getDistrict';
   static const submitCustomerDetailIdentifier = 'submitCustomerDetail';
 
-
   Future<StandardRequest> getRegion(UserType type);
 
   Future<StandardRequest> getDistrict(String regionId, UserType type);
 
   Future<StandardRequest> submitCustomerDetails(
       Map<String, dynamic> requestData, UserType type);
-
-
 }
 
 class DetailsService implements IDetailsService {
@@ -30,9 +27,6 @@ class DetailsService implements IDetailsService {
     request.endpoint = (userType == UserType.AgentCustomer)
         ? customerEndpoint + 'region-details[customer]'
         : 'region-details';
-    request.customHeaders = {
-      'Content-Type': 'application/json',
-    };
     return request;
   }
 
@@ -44,9 +38,6 @@ class DetailsService implements IDetailsService {
     request.endpoint = (userType == UserType.AgentCustomer)
         ? customerEndpoint + 'district-details/$regionId[customer]'
         : 'district-details/$regionId';
-    request.customHeaders = {
-      'Content-Type': 'application/json',
-    };
     return request;
   }
 
@@ -58,12 +49,8 @@ class DetailsService implements IDetailsService {
     request.endpoint = (userType == UserType.AgentCustomer)
         ? customerEndpoint + 'customer-details[customer]'
         : 'customer-details';
-    request.customHeaders = {
-      'Content-Type': 'application/json',
-    };
     CrayonPaymentLogger.logInfo(requestData.toString());
     request.jsonBody = json.encode(requestData);
     return request;
   }
-
 }

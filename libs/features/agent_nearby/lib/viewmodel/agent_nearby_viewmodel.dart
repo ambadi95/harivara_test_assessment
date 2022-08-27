@@ -69,24 +69,24 @@ class AgentNearbyViewModel {
     }
   }
 
-  Future<LocationData> getCurrentLocation()async{
+  Future<LocationData> getCurrentLocation() async {
     var _locationData = await Future.any([
       _location.getLocation(),
       Future.delayed(Duration(seconds: _scanLocationTimeout), () => null),
     ]);
-    if(_locationData != null){
+    if (_locationData != null) {
       return _locationData;
-    }else{
+    } else {
       return _locationData!;
     }
   }
 
-  double calculateDistance(lat1, lon1, lat2, lon2){
+  double calculateDistance(lat1, lon1, lat2, lon2) {
     var p = 0.017453292519943295;
     var c = cos;
-    var a = 0.5 - c((lat2 - lat1) * p)/2 +
-        c(lat1 * p) * c(lat2 * p) *
-            (1 - c((lon2 - lon1) * p))/2;
+    var a = 0.5 -
+        c((lat2 - lat1) * p) / 2 +
+        c(lat1 * p) * c(lat2 * p) * (1 - c((lon2 - lon1) * p)) / 2;
     return 12742 * asin(sqrt(a));
   }
 }

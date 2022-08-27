@@ -1,6 +1,7 @@
 import 'package:agent_nearby/viewmodel/agent_nearby_coordinator.dart';
 import 'package:config/Colors.dart';
 import 'package:config/Config.dart';
+import 'package:config/Styles.dart';
 import 'package:core/view/base_view.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_data_models/agent_nearby/agents_near_by_response/datum.dart';
@@ -27,23 +28,24 @@ class AgentNearBy extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseView<AgentNearbyCoordinator, AgentNearByState>(
-      setupViewModel: (coordinator) async{
-      await coordinator.hasValidLocation(context);
-      coordinator.agentNearbyList();
+      setupViewModel: (coordinator) async {
+        await coordinator.hasValidLocation(context);
+        coordinator.agentNearbyList('');
         coordinator.search('');
       },
       builder: (context, state, coordinator) {
         return Stack(
           children: [
-            _buildMainUI(context, coordinator,state),
-           state.isLoading == true ? _createLoading() : SizedBox()
+            _buildMainUI(context, coordinator, state),
+            state.isLoading == true ? _createLoading() : SizedBox()
           ],
         );
       },
     );
   }
 
-  Widget _buildMainUI(context, AgentNearbyCoordinator coordinator, AgentNearByState state) {
+  Widget _buildMainUI(
+      context, AgentNearbyCoordinator coordinator, AgentNearByState state) {
     return CrayonPaymentScaffold(
         appBarAttributes: CrayonPaymentAppBarAttributes(
           key: const Key('CardDetailsScreen_AppBarBackButton'),
@@ -78,11 +80,10 @@ class AgentNearBy extends StatelessWidget {
 
   Widget _buildSearchField(context, AgentNearbyCoordinator coordinator) {
     return SearchBarWidget(
-      onSearch:(value) {
-        coordinator.search(value);
+      onSearch: (value) {
       },
-      onTextChanged: (v){
-        coordinator.search(v);
+      onTextChanged: (v) {
+        coordinator.agentNearbyList(v);
       },
       attributes: SearchBarAttributes(
           appearance: SearchBarAppearance(
@@ -103,7 +104,8 @@ class AgentNearBy extends StatelessWidget {
     );
   }
 
-  Widget _buildNearByAgentList(context, AgentNearbyCoordinator coordinator, AgentNearByState state) {
+  Widget _buildNearByAgentList(
+      context, AgentNearbyCoordinator coordinator, AgentNearByState state) {
     return ListView.separated(
       separatorBuilder: (context, index) => divider(),
       shrinkWrap: true,
@@ -113,25 +115,22 @@ class AgentNearBy extends StatelessWidget {
     );
   }
 
-  Widget _buildAgentCard(context, Datum agent, AgentNearbyCoordinator coordinator) {
+  Widget _buildAgentCard(
+      context, Datum agent, AgentNearbyCoordinator coordinator) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Image.asset(
-          agentMock,
-          width: 38,
-          height: 38,
-        ),
+        _userImage(agent.firstName!,agent.lastName!),
         dynamicWSpacer(8),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CrayonPaymentText(
               key: Key('${_identifier}_' + agent.firstName!),
-              text: TextUIDataModel(agent.firstName! +' '+ agent.lastName!,
-                  styleVariant: CrayonPaymentTextStyleVariant.headline4,
+              text: TextUIDataModel(agent.firstName! + ' ' + agent.lastName!,
+                  styleVariant: CrayonPaymentTextStyleVariant.headline18,
                   color: AN_CardTitle,
-                  fontWeight: FontWeight.w800),
+                  fontWeight: FontWeight.bold),
             ),
             Row(
               children: [
@@ -140,14 +139,15 @@ class AgentNearBy extends StatelessWidget {
                   text: const TextUIDataModel('AN_AgentName',
                       styleVariant: CrayonPaymentTextStyleVariant.headline4,
                       color: AN_CardSubTitle,
-                      fontWeight: FontWeight.bold),
+                      fontWeight: FontWeight.w500),
                 ),
+
                 CrayonPaymentText(
                   key: Key('${_identifier}_' + agent.y9AgentId!),
                   text: TextUIDataModel(agent.y9AgentId!,
                       styleVariant: CrayonPaymentTextStyleVariant.headline4,
                       color: AN_CardSubTitle,
-                      fontWeight: FontWeight.w600),
+                      fontWeight: FontWeight.w500),
                 ),
               ],
             ),
@@ -173,8 +173,9 @@ class AgentNearBy extends StatelessWidget {
                     .makePhoneCall(phoneNumber: agent.mobileNo);
               }),
               dynamicWSpacer(10),
-              actionButton(context, AN_MapDirection, agent.distance!.toStringAsFixed(2)  + 'Km', () {
-               coordinator.navigateToMap(agent.lat!, agent.long!);
+              actionButton(context, AN_MapDirection,
+                  agent.distance!.toStringAsFixed(2) + 'Km', () {
+                coordinator.navigateToMap(agent.lat!, agent.long!);
               }),
             ],
           ),
@@ -211,6 +212,23 @@ class AgentNearBy extends StatelessWidget {
         color: Colors.black.withOpacity(0.4),
         child: const CenteredCircularProgressBar(color: PRIMARY_COLOR),
       ),
+    );
+  }
+
+  _userImage(String firstName, String lastName) {
+    return Container(
+      height: 40,
+      width: 40,
+      clipBehavior: Clip.antiAliasWithSaveLayer,
+      decoration: const BoxDecoration(
+        shape: BoxShape.circle,
+        color: profilePicHolderYellowColor,
+      ),
+      child:  Center(
+          child: Text(
+            '${firstName[0]}' +'${lastName[0]}',
+            style: AN_TextFieldLabel_FF,
+          )),
     );
   }
 

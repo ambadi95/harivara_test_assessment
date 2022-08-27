@@ -17,7 +17,7 @@ class CrayonPaymentScaffold extends StatelessWidget {
   final CrayonPaymentBrightness themeBrightness;
   final EdgeInsets screenPadding;
   final EdgeInsets appBarPadding;
-  final Color ?scaffoldBackgroundColor ;
+  final Color? scaffoldBackgroundColor;
 
   static final EdgeInsets _screenPadding = EdgeInsets.symmetric(
     horizontal: CrayonPaymentDimensions.defaultMargin,
@@ -34,7 +34,7 @@ class CrayonPaymentScaffold extends StatelessWidget {
     this.extendedBodyClip = false,
     required this.body,
     this.bottomNavigationBar,
-    this.scaffoldBackgroundColor =Colors.white,
+    this.scaffoldBackgroundColor = Colors.white,
     this.themeBrightness = CrayonPaymentBrightness.light,
     EdgeInsets? screenPadding,
     EdgeInsets? appBarPadding,

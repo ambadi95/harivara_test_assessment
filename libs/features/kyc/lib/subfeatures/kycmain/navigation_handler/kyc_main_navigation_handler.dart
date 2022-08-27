@@ -12,6 +12,7 @@ import 'package:shared_data_models/termscondition_faq_screen_args/termscondition
 import 'package:termscondition/termscondition/view/terms_condition_view.dart';
 import 'package:widget_library/helpers/error/helper/error_helper.dart';
 import 'package:get/get.dart';
+
 class KycCreditMainNavigationHandler with ErrorHandler {
   final NavigationManager _navigationManager;
 
@@ -25,15 +26,14 @@ class KycCreditMainNavigationHandler with ErrorHandler {
   }
 
   Future<void> navigateToCreditCheck() async {
-    var arguments
-       =  KycScreenArgs(
-        KycFieldType.KYC_VALIDATION,
-        "",
-        "",
-        "",
-        "",
-        [KYCDataModel(title: "", isSelected: false)],
-      );
+    var arguments = KycScreenArgs(
+      KycFieldType.KYC_VALIDATION,
+      "",
+      "",
+      "",
+      "",
+      [KYCDataModel(title: "", isSelected: false)],
+    );
 
     await _navigationManager.navigateTo(
       KycCreditScreen.viewPath,
@@ -45,18 +45,16 @@ class KycCreditMainNavigationHandler with ErrorHandler {
   Future<void> navigateToTermsCondtionsScreen() async {
     var arguments = TermsConditionAndFaqScreenArgs(isFAQ: false);
     _navigationManager.navigateTo(
-        CrayonTermsCondition.viewPath,
-        const NavigationType.push(),arguments: arguments);
-
+        CrayonTermsCondition.viewPath, const NavigationType.push(),
+        arguments: arguments);
   }
-
-
 
   Future<void> goBack() async {
     _navigationManager.goBack();
   }
 
-  Future<void> showCheckBoxErrorBottomSheet(Widget widget, BuildContext context) async {
+  Future<void> showCheckBoxErrorBottomSheet(
+      Widget widget, BuildContext context) async {
     showModalBottomSheet(
         barrierColor: const Color(0xFF9B9B9B).withOpacity(0.3),
         backgroundColor: Colors.transparent,
@@ -80,5 +78,4 @@ class KycCreditMainNavigationHandler with ErrorHandler {
           );
         });
   }
-
 }

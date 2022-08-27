@@ -9,10 +9,11 @@ class TermsConditionRouteManager extends IRouteManager {
   @override
   Widget getView(RouteSettings settings) {
     switch (settings.name) {
-
-    case CrayonTermsCondition.viewPath:
-      var arguments = settings.arguments as TermsConditionAndFaqScreenArgs;
-      return  CrayonTermsCondition(termsConditionAndFaqScreenArgs: arguments,);
+      case CrayonTermsCondition.viewPath:
+        var arguments = settings.arguments as TermsConditionAndFaqScreenArgs;
+        return CrayonTermsCondition(
+          termsConditionAndFaqScreenArgs: arguments,
+        );
     }
     throw UnimplementedError();
   }
