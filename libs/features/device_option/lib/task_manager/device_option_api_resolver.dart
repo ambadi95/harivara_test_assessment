@@ -11,7 +11,7 @@ class DeviceDetailApiResolver extends TaskResolver {
     switch (identifier) {
       case IDeviceOptionService.deviceOptionIdentifier:
         return _deviceDetailService.deviceList(
-            int.parse(requestData['customerId']), requestData['token']);
+            int.parse(requestData['customerId']),);
       case IDeviceOptionService.deviceDetailIdentifier:
         return _deviceDetailService.deviceDetail(
             requestData['deviceId'], requestData['token']);

@@ -72,10 +72,7 @@ class SignupService implements ISignupService {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
     request.endpoint = 'register-customer';
-    request.customHeaders = {
-      'Content-Type': 'application/json',
-      'Authorization': token,
-    };
+    request.customHeaders = await  request.headers();
     request.jsonBody = json.encode({
       'nidaNo': nidaNumber,
       'mobileNo': customerMobileNumber,

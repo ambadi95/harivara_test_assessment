@@ -4,11 +4,15 @@ import 'package:network_manager/model/requests/request.dart';
 import 'package:network_manager/model/requests/standard/standard_request.dart';
 
 abstract class ILoginService {
+  static const jwtIdentifier = 'jwt';
   static const loginIdentifier = 'login';
   static const loginAgentIdentifier = 'loginAgent';
   static const agentDetailIdentifier = 'getAgent';
 
-  Future<StandardRequest> login(
+  Future<StandardRequest> jwttoken(
+    Map<String, dynamic> requestData,
+  );
+ Future<StandardRequest> login(
     Map<String, dynamic> requestData,
   );
 
@@ -21,15 +25,28 @@ abstract class ILoginService {
 
 class LoginService implements ILoginService {
   @override
+  Future<StandardRequest> jwttoken(
+    Map<String, dynamic> requestData,
+  ) async {
+    var request = StandardRequest();
+    request.requestType = RequestType.POST;
+    request.endpoint = 'auth/token';
+    request.customHeaders = {
+      'Content-Type': 'application/json',
+      'Accept' : 'application/json',
+    };
+    request.jsonBody = json.encode(requestData);
+    return request;
+  }
+
+  @override
   Future<StandardRequest> login(
     Map<String, dynamic> requestData,
   ) async {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
     request.endpoint = 'customer-login';
-    request.customHeaders = {
-      'Content-Type': 'application/json',
-    };
+    request.customHeaders = await request.headers();
     request.jsonBody = json.encode(requestData);
     return request;
   }
