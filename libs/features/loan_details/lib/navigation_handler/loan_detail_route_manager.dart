@@ -10,10 +10,10 @@ class LoanDetailRouteManager extends IRouteManager {
   Widget getView(RouteSettings settings) {
     switch (settings.name) {
       case LoanDetailScreen.viewPath:
-        // var arguments = settings.arguments as LoanDetailArgs;
+       var arguments = settings.arguments as LoanDetailArgs;
         return LoanDetailScreen(
-            // loanDetailArgs: arguments,
-            );
+          loanDetailArgs: arguments,
+        );
       default:
         // TODO: implement getView
         throw Exception('Route ${settings.name} not found');

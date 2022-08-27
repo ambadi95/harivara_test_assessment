@@ -53,4 +53,15 @@ class CustomerDetailsState with _$CustomerDetailsState {
 
   const factory CustomerDetailsState.onDistrictChoosen(b.Datum district) =
       DistrictChoosen;
+
+  const factory CustomerDetailsState.getRegion(
+      String selectedRegion,
+      ) = GetSelectedRegion;
+
+  const factory CustomerDetailsState.getDistrict(
+      String selectedDistrict,
+      ) = GetSelectedDistrict;
+
+
+
 }

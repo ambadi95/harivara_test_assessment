@@ -284,25 +284,24 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                     ],
                   )
                 : Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          coordinator.navigationToBottomSheet();
-                        },
-                        child: _actionCommonView(
-                            'HS_LoanRepayment'.tr, HS_LoanRepayment),
-                      ),
-                      InkWell(
-                        onTap: () {
-                          coordinator.navigateToLoanDetailScreen();
-                        },
-                        child: _actionCommonView(
-                            'HS_LoanDetails'.tr, HS_LoanDetail),
-                      ),
-                    ],
-                  ),
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                InkWell(
+                  onTap: () {
+                    coordinator.navigationToBottomSheet();
+                  },
+                  child: _actionCommonView(
+                      'HS_LoanRepayment'.tr, HS_LoanRepayment),
+                ),
+                InkWell(
+                  onTap: () {
+                    coordinator.navigateToLoanDetailScreen(loanDetailResponse);
+                  },
+                  child: _actionCommonView('HS_LoanDetails'.tr, HS_LoanDetail),
+                ),
+              ],
+            ),
           )
         ],
       ),
