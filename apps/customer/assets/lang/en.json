@@ -97,10 +97,6 @@
 
   "WB_WelcomeBack": "Welcome back to Y9",
   "WB_EnterPassCode": "Enter Passcode",
-  "AN_Title": "Agents Near by",
-  "AN_Search": "Search by Name / Id/ Region / District/ Po#",
-  "AN_AgentName": "Y9 Agent ID:",
-  "AN_Call": "Call",
 
 
 
@@ -214,7 +210,7 @@
   "LD_Loan_Detail_Terms": " Terms & Conditions.",
 
   "Profile_Title": "Profile",
-  "Profile_Sub_Title": "Your Personal details are shown as per your NIDA records"
+  "Profile_Sub_Title": "Your Personal details are shown as per your NIDA records",
   "ST_contact_text" : "Need Help or If You Have Any Query \n Contact Us at +255 677-039-999",
 
   "LR_paying_for" : "You are paying for",
@@ -226,9 +222,8 @@
   "LR_custom_amount" : "Pay Custom \nAmount",
   "LR_pay_now" : "Pay Now",
   "LR_payment_label" : "Payment of {} will be adjusted in total \nPayable amount",
-  "LR_proceed" : "Proceed"
+  "LR_proceed" : "Proceed",
 
-  "ST_contact_text" : "Need Help or If You Have Any Query \n Contact Us at +255 677-039-999",
 
 
   "PP_Daily_Repayment_Title" : "Daily Repayment",
