@@ -79,11 +79,7 @@ class PasscodeService extends IPasscodeService {
     request.requestType = RequestType.POST;
     request.jsonBody = json.encode({'userIdentifier': mobileNumber});
     request.endpoint = 'customer/customers/v1.0/customer/block/$mobileNumber';
-    request.customHeaders = {
-      'accept': 'application/json',
-      'Content-Type': 'application/json',
-      'x-CrayonPayment-channel': 'app'
-    };
+
     return request;
   }
 
@@ -96,10 +92,7 @@ class PasscodeService extends IPasscodeService {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
     request.endpoint = 'customer/customers/v2.0/identity';
-    request.customHeaders = {
-      'Content-Type': 'application/json',
-      'x-CrayonPayment-channel': 'app',
-    };
+
     request.jsonBody = json.encode(
       {'language': language, 'mobileNo': mobileNo, 'password': passcode},
     );
@@ -117,10 +110,7 @@ class PasscodeService extends IPasscodeService {
     request.requestType = RequestType.GET;
     request.endpoint =
         'otpapi/util/v1.0/otp?otpServiceCode=$flag&mobileNo=$mobileNo';
-    request.customHeaders = {
-      'Content-Type': 'application/json',
-      'x-CrayonPayment-channel': 'app',
-    };
+
 
     return request;
   }
@@ -135,10 +125,7 @@ class PasscodeService extends IPasscodeService {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
     request.endpoint = 'agent/merchants/v2.0/agent/${mobileNo}/password';
-    request.customHeaders = {
-      'Content-Type': 'application/json',
-      'x-CrayonPayment-channel': 'app'
-    };
+
     request.jsonBody = jsonEncode({
       'confirmNewPassword': confirmNewPassword,
       'mobileNo': mobileNo,
@@ -155,10 +142,7 @@ class PasscodeService extends IPasscodeService {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
     request.endpoint = 'paymentconfirm/wallets/v2.0/pay';
-    request.customHeaders = {
-      'Content-Type': 'application/json',
-      'x-CrayonPayment-channel': 'app',
-    };
+
     request.jsonBody = json.encode(requestData);
     return request;
   }
@@ -172,10 +156,7 @@ class PasscodeService extends IPasscodeService {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
     request.endpoint = 'customer/customers/v2.0/identity';
-    request.customHeaders = {
-      'Content-Type': 'application/json',
-      'x-CrayonPayment-channel': 'app',
-    };
+
     request.jsonBody = json.encode(
       {'language': language, 'mobileNo': mobileNo, 'password': passcode},
     );
@@ -191,10 +172,6 @@ class PasscodeService extends IPasscodeService {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
     request.endpoint = 'agent/merchants/v2.0/identity';
-    request.customHeaders = {
-      'Content-Type': 'application/json',
-      'x-CrayonPayment-channel': 'app'
-    };
     //userId need to change
     var data = {
       'language': language,
@@ -216,10 +193,7 @@ class PasscodeService extends IPasscodeService {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
     request.endpoint = 'customer/customers/v2.0/customer/$mobileNo/password';
-    request.customHeaders = {
-      'Content-Type': 'application/json',
-      'x-CrayonPayment-channel': 'app',
-    };
+
     request.jsonBody = json.encode(
       {
         'confirmNewPassword': confirmPassword,
@@ -241,10 +215,7 @@ class PasscodeService extends IPasscodeService {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
     request.endpoint = 'agent/merchants/v2.0/agent/$mobileNo/password';
-    request.customHeaders = {
-      'Content-Type': 'application/json',
-      'x-CrayonPayment-channel': 'app',
-    };
+
 
     request.jsonBody = json.encode(
       {
@@ -266,10 +237,6 @@ class PasscodeService extends IPasscodeService {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
     request.endpoint = 'customer/customers/v1.0/customer/reset-passcode';
-    request.customHeaders = {
-      'Content-Type': 'application/json',
-      'x-CrayonPayment-channel': 'app',
-    };
     request.jsonBody = json.encode(
       {
         'confirmPassword': confirmPassword,

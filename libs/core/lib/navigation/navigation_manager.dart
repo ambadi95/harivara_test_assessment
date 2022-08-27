@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:core/logging/logger.dart';
 import 'package:core/navigation/i_route_manager.dart';
 import 'package:core/navigation/modal_bottom_sheet.dart';
 import 'package:core/navigation/navigation_arguments.dart';
@@ -251,6 +252,7 @@ class NavigationManagerImpl extends NavigationManager {
     ModalBottomSheet? modalBottomSheet,
   }) {
     final featureName = _returnModuleName(bottomSheetPath);
+    CrayonPaymentLogger.logInfo(_routeManagers.toString());
     final dialogWidget =
         _routeManagers[featureName]!.getBottomSheet(bottomSheetPath, arguments);
 

@@ -25,6 +25,9 @@ import 'package:core/validators/input_entry_validator/input_entry_validator.dart
 import 'package:device_option/device_option_module.dart';
 import 'package:device_option/navigation_handler/device_option_route_manager.dart';
 import 'package:flutter/services.dart';
+import 'package:home/home/navigation_handler/home_route_manager.dart';
+import 'package:loan_details/loan_detail_module.dart';
+import 'package:loan_details/navigation_handler/loan_detail_route_manager.dart';
 import 'package:login/login_module.dart';
 import 'package:login/navigation_handler/login_route_manager.dart';
 import 'package:network_manager/auth/auth_manager.dart';
@@ -104,11 +107,12 @@ class AppModule {
     WelcomeModule.registerDependencies();
     PasscodeModule.registerDependencies();
     HomeModule.registerDependencies();
+
     VerifyOtpModule.registerDependencies();
     AgentNearByModule.registerDependencies();
     DeviceOptionModule.registerDependencies();
     LoginModule.registerDependencies();
-
+    LoanDetailModule.registerDependencies();
     CustomerHomeModule.registerDependencies();
     TermsConditionModule.registerDependencies();
     SettingsModule.registerDependencies();
@@ -116,12 +120,6 @@ class AppModule {
 
     DIContainer.container.resolve<WidgetsModule>().registerDependencies();
 
-    // DIContainer.container.registerSingleton<IInactivityService>(
-    //       (container) => InactivityService(
-    //     taskManager: container.resolve<TaskManager>(),
-    //     navigationManager: container.resolve<NavigationManager>(),
-    //   ),
-    // );
   }
 }
 
@@ -165,6 +163,7 @@ void _registerRouteManagers() {
     AgentNearByModule.moduleIdentifier,
     AgentNearByRouteManager(),
   );
+
  navigationManagerContainer.registerRouteManager(
     PaymentsModule.moduleIdentifier,
    PaymentsRouteManager(),
@@ -191,9 +190,16 @@ void _registerRouteManagers() {
   );
 
   navigationManagerContainer.registerRouteManager(
+    HomeModule.moduleIdentifier,
+    HomeRouteManager(),
+  );
+
+
+  navigationManagerContainer.registerRouteManager(
     VerifyOtpModule.moduleIdentifier,
     VerifyOtpRouteManager(),
   );
+
   navigationManagerContainer.registerRouteManager(
     TermsConditionModule.moduleIdentifier,
     TermsConditionRouteManager(),
@@ -202,6 +208,11 @@ void _registerRouteManagers() {
   navigationManagerContainer.registerRouteManager(
     SettingsModule.moduleIdentifier,
     SettingsRouteManager(),
+  );
+
+  navigationManagerContainer.registerRouteManager(
+    LoanDetailModule.moduleIdentifier,
+    LoanDetailRouteManager(),
   );
 
   DIContainer.container.registerSingleton<NativeDocumentDirectory>(
@@ -225,6 +236,7 @@ void _registerBottomSheetFeature() {
     CrayonPaymentBottomSheetRouteManager.moduleIdentifier,
     CrayonPaymentBottomSheetRouteManager(),
   );
+
   DIContainer.container.registerFactory<CrayonPaymentBottomSheetCoordinator>(
         (container) => CrayonPaymentBottomSheetCoordinator(
       CrayonPaymentBottomSheetNavigationHandler(

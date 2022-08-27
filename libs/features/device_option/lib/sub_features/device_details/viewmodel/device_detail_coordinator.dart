@@ -35,9 +35,10 @@ class DeviceDetailCoordinator
       await _navigationHandler.navigateToCustomerEnrollmentScreen('', userType);
     }
   }
-  Future<void> navigateToCustomerLoanCreationScreen(String image, Data deviceDetailData) async {
 
-      await _navigationHandler.navigateToDeviceLoanCreation(image, deviceDetailData);
-
+  Future<void> navigateToCustomerLoanCreationScreen(
+      String image, Data deviceDetailData) async {
+    await _navigationHandler.navigateToDeviceLoanCreation(
+        image, deviceDetailData);
   }
 }

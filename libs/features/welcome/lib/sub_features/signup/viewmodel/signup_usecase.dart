@@ -1,5 +1,6 @@
 import 'package:core/mobile_core.dart';
 import 'package:network_manager/auth/auth_manager.dart';
+import 'package:network_manager/model/response/jwt/jwt_token_response.dart';
 import 'package:shared_data_models/agent_onboard/signup/response/agent_sign_up_response.dart';
 import 'package:shared_data_models/auth/auth_detail.dart';
 import 'package:shared_data_models/customer_onboard/customer_details/response/customer_detail_response.dart';
@@ -65,8 +66,13 @@ class SignupUseCase extends BaseDataProvider {
     return await setValueToSecureStorage({'AgentName': mobileNumber});
   }
 
+  Future<void> _saveCustomerName(String mobileNumber) async {
+    return await setValueToSecureStorage({'CustomerName': mobileNumber});
+  }
+
   Future<CustomerDetailResponse?> signUp(String nindaNumber, String phoneNo,
       Function(String) onErrorCallback) async {
+    CrayonPaymentLogger.logInfo(phoneNo.replaceAll(" ", ""));
     return await executeApiRequest<CustomerDetailResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
@@ -85,6 +91,36 @@ class SignupUseCase extends BaseDataProvider {
               authInfo: detailResponse.data?.customerId.toString(),
               key: 'Customer_ID');
           return detailResponse;
+        });
+  }
+
+  Future<JwtTokenResponse?> callJWTToken(
+      Function(String) onErrorCallback) async {
+
+
+    await executeApiRequest<JwtTokenResponse?>(
+        taskType: TaskType.DATA_OPERATION,
+        taskSubType: TaskSubType.REST,
+        moduleIdentifier: WelcomeModule.moduleIdentifier,
+        requestData:{
+          'username': 'y9dev',
+          'password': 'P@ssw0rd',
+          'clientid':'7dcd46ae-5f2f-4b14-a9a2-c48796180517'
+        },
+        serviceIdentifier: ISignupService.jwtIdentifier,
+        onError: onErrorCallback,
+        modelBuilderCallback: (responseData) {
+          final data = responseData;
+
+          JwtTokenResponse jwtTokenResponse = JwtTokenResponse.fromJson(data);
+
+          if(jwtTokenResponse.status==true){
+            _authManager.storeJWTToken(
+              jwtTokenResponse.data!.jwttoken!,
+
+            );
+
+          }
         });
   }
 
@@ -137,6 +173,29 @@ class SignupUseCase extends BaseDataProvider {
 
           print(data);
           return agentSignUpResponse;
+        });
+  }
+
+  Future<CustomerDetailResponse?> getCustomerDetails(String nindaNumber, String phoneNo,
+      Function(String) onErrorCallback) async {
+    return await executeApiRequest<CustomerDetailResponse?>(
+        taskType: TaskType.DATA_OPERATION,
+        taskSubType: TaskSubType.REST,
+        moduleIdentifier: WelcomeModule.moduleIdentifier,
+        requestData: {
+          "nidaNo": nindaNumber.replaceAll("-", ""),
+          "mobileNo": phoneNo.replaceAll(" ", "")
+        },
+        serviceIdentifier: ISignupService.getCustomerDetailIdentifier,
+        onError: onErrorCallback,
+        modelBuilderCallback: (responseData) {
+          final data = responseData;
+          CustomerDetailResponse detailResponse =
+          CustomerDetailResponse.fromJson(data);
+          _authManager.setUserDetail(
+              authInfo: detailResponse.data?.customerId.toString(),
+              key: 'Customer_ID');
+          return detailResponse;
         });
   }
 }

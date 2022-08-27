@@ -14,9 +14,10 @@ import 'package:widget_library/scaffold/crayon_payment_scaffold.dart';
 import 'package:widget_library/static_text/crayon_payment_text.dart';
 import '../kyc_credit_module.dart';
 import '../state/kyc_credit_state.dart';
+import 'package:flutter_svg/svg.dart';
 import '../viewmodel/kyc_credit_coordinator.dart';
-import 'package:get/get.dart';
 
+import 'package:get/get.dart';
 
 class KycCreditScreen extends StatefulWidget {
   static const viewPath = '${KycCreditModule.moduleIdentifier}/kycscreen';
@@ -220,9 +221,11 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
     );
   }
 
-  Widget _getKycValidationFailedUi(BuildContext context,
-      KycCreditCoordinator coordinator,
-      KycCreditState state,) {
+  Widget _getKycValidationFailedUi(
+    BuildContext context,
+    KycCreditCoordinator coordinator,
+    KycCreditState state,
+  ) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: ListView(
@@ -280,7 +283,7 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
   Widget _getCreditCheckValidationFailedUi(
     BuildContext context,
     KycCreditCoordinator coordinator,
-      KycCreditState state,
+    KycCreditState state,
   ) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -351,8 +354,7 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
           width: double.infinity,
           height: 50,
           decoration: BoxDecoration(
-              color: SU_button_color ,
-              borderRadius: BorderRadius.circular(2.0)),
+              color: SU_button_color, borderRadius: BorderRadius.circular(2.0)),
           child: Center(
             child: Text(
               'Back_To_Home'.tr,
@@ -373,31 +375,25 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
         onTap: () async {
-            if (!_isKycPassEnabled) {
-              setState(() {
-
-                _isKycPassEnabled = true;
+          if (!_isKycPassEnabled) {
+            setState(() {
+              _isKycPassEnabled = true;
               coordinator.showErrorBottomSheet(
-                  _getKycValidationFailedUi(context,coordinator,state), context);
-              });
-
-            } else if (!_isKycCreditLoanEnabled) {
-
-              setState(() {
-
-                _isKycCreditLoanEnabled = true;
+                  _getKycValidationFailedUi(context, coordinator, state),
+                  context);
+            });
+          } else if (!_isKycCreditLoanEnabled) {
+            setState(() {
+              _isKycCreditLoanEnabled = true;
               _isBtnEnabled = true;
               coordinator.showErrorBottomSheet(
-                  _getCreditCheckValidationFailedUi(context,coordinator,state), context);
-              });
-
-            }else{
-
-              coordinator.navigateToDeviceOption(false, UserType.AgentCustomer);
-
-            }
-
-
+                  _getCreditCheckValidationFailedUi(
+                      context, coordinator, state),
+                  context);
+            });
+          } else {
+            coordinator.navigateToDeviceOption(false, UserType.AgentCustomer);
+          }
         },
         child: Container(
           width: double.infinity,

@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 
 import '../view/configuremdm_screen.dart';
 
-
-
 class ConfigureMdmRouteManager extends IRouteManager {
   @override
   Widget getView(RouteSettings settings) {

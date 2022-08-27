@@ -14,6 +14,9 @@ class HomeApiResolver extends TaskResolver {
       case IHomeService.customerCountIdentifier:
         return _homeService.getCustomerCount(
             requestData['token'], requestData['agentId']);
+      case IHomeService.customerLoanDetails:
+        return _homeService.getLoanDetails(
+            requestData['token'], requestData['customerId']);
       default:
         throw UnimplementedError();
     }

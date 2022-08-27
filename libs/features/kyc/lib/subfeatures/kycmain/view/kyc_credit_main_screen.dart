@@ -173,7 +173,7 @@ class _KycCreditMainScreenState extends State<KycCreditMainScreen> {
               percentage: 8,
             ),
           ),
-        /*  CrayonPaymentText(
+          /*  CrayonPaymentText(
             key: Key('${_identifier}_KYC_Verification_Failed_SubTitle'),
             text: const TextUIDataModel('KYC_Verification_Failed_SubTitle',
                 styleVariant: CrayonPaymentTextStyleVariant.subtitle2,

@@ -41,7 +41,9 @@ class _SignUpState extends State<SignUp> {
       BaseView<SignUpCoordinator, SignUpState>(
           onStateListenCallback: (preState, newState) =>
               {_listenToStateChanges(context, newState)},
-          setupViewModel: (coordinator) async {},
+          setupViewModel: (coordinator) async {
+            coordinator.calljwttoken();
+          },
           builder: (context, state, coordinator) => SafeArea(
                 child: Scaffold(
                   bottomNavigationBar: state.maybeWhen(
@@ -101,7 +103,7 @@ class _SignUpState extends State<SignUp> {
   ) {
     return Column(
       children: [
-       // _onBoardingProgressBar(),
+        // _onBoardingProgressBar(),
         _buildBackBtn(context, coordinator),
       ],
     );

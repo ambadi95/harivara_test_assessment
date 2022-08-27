@@ -14,7 +14,7 @@ const DO_BackArrow = 'assets/images/back_arrow.png';
 const LS_BackArrow = 'assets/images/back_arrow.png';
 const LS_Flag = 'assets/images/flag.png';
 const RC_new_customer = 'assets/images/new_customer_icon.svg';
-const RC_customer_approval = 'assets/images/customer_approval_icon.png';
+const RC_customer_approval = 'assets/images/customer_approval_icon.svg';
 
 const AN_Kyc_Airtel = 'assets/images/kyc_airtel.png';
 const AN_Kyc_Credit_Check = 'assets/images/credit_check.png';
@@ -55,11 +55,5 @@ enum UserType{ Customer,Agent, AgentCustomer}
 const customerEndpoint = 'https://y9-dev-capi.testmaya.com/customers/v1/';
 
 //PROD CUSTOMER INSTANCE
-//const customerEndpoint = 'https://customerapi.y9bank.com/customers/v1/';
-
-//DEV AGENT INSTANCE
-//const agentEndPoint = 'https://y9-dev-aapi.testmaya.com/agents/v1/';
-
-//PROD AGENT INSTANCE
-//const agentEndPoint = ' https://agentapi.y9bank.com/agents/v1/';
-
+const LD_loan_detail = 'assets/images/loan_detail.png';
+const LD_loan_detail_banner_image = 'assets/images/loan_detail_banner_image.png';

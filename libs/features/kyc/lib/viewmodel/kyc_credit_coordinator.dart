@@ -13,22 +13,21 @@ class KycCreditCoordinator extends AnalyticsStateNotifier<KycCreditState> {
   final KycCreditUseCase _kycCreditUseCase;
 
   KycCreditCoordinator(
-      this._navigationHandler,
-      this._kycCreditUseCase,
-      ) : super(const KycCreditState.initialState());
+    this._navigationHandler,
+    this._kycCreditUseCase,
+  ) : super(const KycCreditState.initialState());
 
   void initialiseState(
-      BuildContext context,
-
-      ) async {
-    state = KycCreditState.ready(
-        context: context,
-        error: "",isLoading: false);
+    BuildContext context,
+  ) async {
+    state = KycCreditState.ready(context: context, error: "", isLoading: false);
   }
 
-  Future<void> showErrorBottomSheet(Widget errorWidget, BuildContext context) async {
-    await _navigationHandler.showErrorBottomSheet(errorWidget,context);
+  Future<void> showErrorBottomSheet(
+      Widget errorWidget, BuildContext context) async {
+    await _navigationHandler.showErrorBottomSheet(errorWidget, context);
   }
+
   void goBack() async {
     _navigationHandler.goBack();
   }
@@ -37,7 +36,4 @@ class KycCreditCoordinator extends AnalyticsStateNotifier<KycCreditState> {
     var argument = DeviceOptionArgs(isEnrolled, '', userType);
     await _navigationHandler.navigateToDeviceOption(argument);
   }
-
-
- 
 }

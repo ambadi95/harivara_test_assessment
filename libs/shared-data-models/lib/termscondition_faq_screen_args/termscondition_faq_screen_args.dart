@@ -3,6 +3,5 @@ class TermsConditionAndFaqScreenArgs {
 
   TermsConditionAndFaqScreenArgs({
     required this.isFAQ,
-  }
-  );
+  });
 }

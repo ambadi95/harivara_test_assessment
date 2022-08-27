@@ -28,13 +28,16 @@ class KycCreditMainCoordinator
   Future<void> navigateToKycCreditAirtel() async {
     await _navigationHandler.navigateToCreditCheck();
   }
+
   Future<void> navigateToTermsCondtionsScreen() async {
     await _navigationHandler.navigateToTermsCondtionsScreen();
   }
 
-  Future<void> showErrorBottomSheet(Widget errorWidget, BuildContext context) async {
-    await _navigationHandler.showCheckBoxErrorBottomSheet(errorWidget,context);
+  Future<void> showErrorBottomSheet(
+      Widget errorWidget, BuildContext context) async {
+    await _navigationHandler.showCheckBoxErrorBottomSheet(errorWidget, context);
   }
+
   void goBack() async {
     _navigationHandler.goBack();
   }

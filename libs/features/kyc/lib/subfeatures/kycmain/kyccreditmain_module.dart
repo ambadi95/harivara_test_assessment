@@ -12,7 +12,7 @@ class KycCreditMainModule {
 
   static void registerDependencies() {
     DIContainer.container.registerFactory<KycCreditMainCoordinator>(
-          (container) => KycCreditMainCoordinator(
+      (container) => KycCreditMainCoordinator(
         KycCreditMainNavigationHandler(container.resolve<NavigationManager>()),
         KycCreditMainUseCase(
           KycCreditMainViewModel(),

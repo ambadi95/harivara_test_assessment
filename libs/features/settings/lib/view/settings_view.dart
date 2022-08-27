@@ -59,13 +59,16 @@ class _SettingsState extends State<Settings> {
   }
 
   Widget _buildTitle(context) {
-    return CrayonPaymentText(
-      key: Key('${widget._identifier}_ST_Title'),
-      text: TextUIDataModel('ST_title'.tr,
-          styleVariant: CrayonPaymentTextStyleVariant.headlineThirtyTwo,
-          color: AN_TitleColor,
-          fontWeight: FontWeight.bold,
-          textAlign: TextAlign.center),
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: CrayonPaymentText(
+        key: Key('${widget._identifier}_ST_Title'),
+        text: TextUIDataModel('ST_title'.tr,
+            styleVariant: CrayonPaymentTextStyleVariant.headlineThirtyTwo,
+            color: AN_TitleColor,
+            fontWeight: FontWeight.bold,
+            textAlign: TextAlign.center),
+      ),
     );
   }
 
@@ -112,19 +115,28 @@ class _SettingsState extends State<Settings> {
         const SizedBox(
           height: 20,
         ),
+        _buildOptions(context, 'ST_my_profile', ST_view_profile, () async {
+          widget.screenArgs.isAgent
+              ? await coordinator.navigateToUpdateProfile()
+              : await coordinator.navigateToCustomerProfileScreen();
+              : await coordinator.navigateToCustomerProfileScreen();  }),/*() {}*/
         _buildOptions(context, 'ST_view_profile', ST_view_profile, () async {
           widget.screenArgs.isAgent
               ? await coordinator.navigateToUpdateProfile()
               : () {};
         }),
+        /*() {}*/
+        // _buildOptions(context, 'ST_view_profile', ST_view_profile, () async {
+        //   widget.screenArgs.isAgent
+        //       ? await coordinator.navigateToUpdateProfile()
+        //       : () {};
+        // }),
         _buildOptions(context, 'ST_update_passcode', ST_update_passcode,
             () async {
-          widget.screenArgs.isAgent ? await coordinator.resetPasscode() : () {};
+          await coordinator.resetPasscode(widget.screenArgs.userType);
         }),
         _buildOptions(context, 'ST_App_Language', ST_language, () async {
-          widget.screenArgs.isAgent
-              ? await coordinator.changeLanguage()
-              : () {};
+          await coordinator.changeLanguage();
         }),
       ],
     );
@@ -147,9 +159,11 @@ class _SettingsState extends State<Settings> {
         const SizedBox(
           height: 20,
         ),
-        _buildOptions(context, 'ST_agents', ST_agent, () async {}),
+        _buildOptions(context, 'ST_agents', ST_agent, () async {
+          coordinator.navigateToAgentNearBy();
+        }),
         _buildOptions(context, 'ST_faq', ST_faq, () async {
-          coordinator.navigateToTermsCondtionsScreen();
+          coordinator.navigateToTermsCondtionsScreen(true);
         }),
         _buildOptions(context, 'ST_term_condition', ST_TermsCondition,
             () async {

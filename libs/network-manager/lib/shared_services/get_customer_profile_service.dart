@@ -20,10 +20,7 @@ class CustomerProfileService implements ICustomerProfileService {
     var request = StandardRequest();
     request.requestType = RequestType.GET;
     request.endpoint = 'customer/customers/v1.0/customer/$customerId';
-    request.customHeaders = {
-      'Content-Type': 'application/json',
-      'x-CrayonPayment-channel': 'app',
-    };
+
     return request;
   }
 }

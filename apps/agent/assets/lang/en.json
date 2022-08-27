@@ -236,12 +236,18 @@
   "DLC_Loan_Details": "Loan Details",
 
   "RC_agent_new_customer" : "New Customer \nOnboarding",
-  "RC_customer_approval" : "Pending Customer \nOnboarding",
+  "RC_customer_approval" : "Existing Customer \nOnboarding",
 
   "DP_RequestPayment" : "Requested for Payment",
   "DP_WaitingForPayment" : "Waiting for Payment",
   "DP_PaymentReceived" : "Payment Received",
-  "DP_LoanApproved" : "Loan Approved"
+  "DP_LoanApproved" : "Loan Approved",
 
-
+  "PC_customer_ref_id" : "Customer Reference ID",
+  "PC_customer_ref_id_hint" : "Enter Reference ID",
+  "PC_ref_id_error_text" : "Invalid Reference ID",
+  "PC_fetch_details" : "Fetch Details",
+  "PC_alert_message" : "Provided Customer Reference ID and Mobile Number doesn't match with our record.",
+  "PC_alert_title" : "Details Mismatch",
+  "PC_button_close" : "Close"
 }

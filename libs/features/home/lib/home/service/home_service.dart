@@ -7,8 +7,10 @@ import 'package:network_manager/model/requests/standard/standard_request.dart';
 
 abstract class IHomeService {
   static const customerCountIdentifier = 'customerCount';
+  static const customerLoanDetails = 'loanDetails';
 
   Future<StandardRequest> getCustomerCount(String token, String agentId);
+  Future<StandardRequest> getLoanDetails(String token, String customerId);
 }
 
 class HomeService implements IHomeService {
@@ -18,10 +20,17 @@ class HomeService implements IHomeService {
     request.requestType = RequestType.GET;
     request.endpoint =
         '${customerEndpoint}agent-customer-count/$agentId[customer]';
-    request.customHeaders = {
-      'Content-Type': 'application/json',
-      'Authorization': token,
-    };
+
+    return request;
+  }
+
+  @override
+  Future<StandardRequest> getLoanDetails(
+      String token, String customerId) async {
+    var request = StandardRequest();
+    request.requestType = RequestType.GET;
+    request.endpoint = 'loans/loan-details/$customerId';
+
     return request;
   }
 }
