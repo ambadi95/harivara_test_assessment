@@ -9,14 +9,14 @@ abstract class ICustomerDetailsService {
   static const detailIdentifier = 'details';
   static const regionIdentifier = 'getRegion';
   static const districtIdentifier = 'getDistrict';
-  static const submitCustomerDetailIdentifier = 'submitCustomerDetail';
+  static const updateCustomerDetails = 'saveCustomerDetails';
   static const customerDetailIdentifier = 'getCustomerProfileData';
 
   Future<StandardRequest> getRegion(UserType type);
 
   Future<StandardRequest> getDistrict(String regionId, UserType type);
 
-  Future<StandardRequest> submitCustomerDetails(
+  Future<StandardRequest> saveCustomerDetails(
       Map<String, dynamic> requestData, UserType type);
 
   Future<StandardRequest> getCustomerDetails(int customerId);
@@ -51,16 +51,16 @@ class CustomerDetailsService implements ICustomerDetailsService {
   }
 
   @override
-  Future<StandardRequest> submitCustomerDetails(
+  Future<StandardRequest> saveCustomerDetails(
       Map<String, dynamic> requestData, UserType userType) async {
+
     var request = StandardRequest();
-    request.requestType = RequestType.POST;
-    request.endpoint = (userType == UserType.AgentCustomer)
-        ? customerEndpoint + 'customer-details[customer]'
-        : 'customer-details';
+    request.requestType = RequestType.PUT;
+    request.endpoint = 'customer-details';
     request.customHeaders = {
       'Content-Type': 'application/json',
     };
+
     CrayonPaymentLogger.logInfo(requestData.toString());
     request.jsonBody = json.encode(requestData);
     return request;

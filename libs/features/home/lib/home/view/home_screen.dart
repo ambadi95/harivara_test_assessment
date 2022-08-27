@@ -297,7 +297,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                 ),
                 InkWell(
                   onTap: () {
-                    coordinator.navigateToLoanDetailScreen();
+                    coordinator.navigateToLoanDetailScreen(loanDetailResponse);
                   },
                   child: _actionCommonView('HS_LoanDetails'.tr, HS_LoanDetail),
                 ),
