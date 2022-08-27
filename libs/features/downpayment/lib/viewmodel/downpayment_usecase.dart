@@ -11,10 +11,8 @@ import 'downpayment_viewmodel.dart';
 class DownPaymentUseCase extends BaseDataProvider {
   final DownPaymentViewModel _downpaymentviewmodel;
 
-
   DownPaymentUseCase(this._downpaymentviewmodel, TaskManager taskManager)
       : super(taskManager);
-
 
   Future<String> getAgentName() async {
     return await getValueFromSecureStorage('agentName', defaultValue: '');

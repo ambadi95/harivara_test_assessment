@@ -73,8 +73,6 @@ class DetailsUseCase extends BaseDataProvider {
         });
   }
 
-
-
   Future<CustomerDetailResponse?> submitCustomerDetails(
       String name,
       String dob,

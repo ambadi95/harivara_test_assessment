@@ -100,7 +100,7 @@ class WelcomeModule {
     );
 
     DIContainer.container.registerFactory<CustomerDetailsCoordinator>(
-          (container) => CustomerDetailsCoordinator(
+      (container) => CustomerDetailsCoordinator(
         WelcomeNavigationHandler(container.resolve<NavigationManager>()),
         CustomerDetailsUseCase(
           CustomerDetailsViewModel(),
@@ -108,7 +108,6 @@ class WelcomeModule {
         ),
       ),
     );
-
 
     DIContainer.container.registerFactory<AgentDetailsCoordinator>(
       (container) => AgentDetailsCoordinator(

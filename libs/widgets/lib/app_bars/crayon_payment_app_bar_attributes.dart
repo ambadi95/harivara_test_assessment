@@ -11,7 +11,7 @@ class CrayonPaymentAppBarAttributes {
   Widget? subWidgets;
   CrayonPaymentBrightness brightness;
   double titleOffsetFromTop;
-  Color appBarColor ;
+  Color appBarColor;
 
   CrayonPaymentAppBarAttributes({
     this.key,
@@ -20,7 +20,7 @@ class CrayonPaymentAppBarAttributes {
     this.left,
     this.right,
     this.subWidgets,
-    this.appBarColor =Colors.white,
+    this.appBarColor = Colors.white,
     this.brightness = CrayonPaymentBrightness.light,
     this.titleOffsetFromTop = 0.0,
   });

@@ -25,7 +25,7 @@ class LoanDetailScreen extends StatefulWidget {
   static const viewPath = '${LoanDetailModule.moduleIdentifier}/loandetail';
   final LoanDetailArgs loanDetailArgs;
 
-  const LoanDetailScreen({Key? key, required this.loanDetailArgs})
+  const LoanDetailScreen({Key? key,required this.loanDetailArgs })
       : super(key: key);
 
   @override
@@ -106,38 +106,38 @@ class _LoanDetailScreenState extends State<LoanDetailScreen> {
             deviceName: "Samsung - A13",
             deviceStats: "8GB, 128GB Storage| Exynos 2100 |\nAndroid12",
             deviceImage: LD_loan_detail_banner_image,
-            deviceId: "648960359535569"),
+            loanId: widget.loanDetailArgs.loanDetailResponse.data?.loanId??"-"),
         _getSpaceBetweenWidget(4),
         _getLoanDetailWithCurrencyWidget(
-            title: 'LD_Loan_Detail_Amount', value: "6,85,000 "),
+            title: 'LD_Loan_Detail_Amount', value: widget.loanDetailArgs.loanDetailResponse.data?.loanAmount??"-"),
         _getSpaceBetweenWidget(4),
         _getLoanDetailWithCurrencyWidget(
-            title: 'LD_Loan_Detail_Down_Payment', value: "40,000 "),
+            title: 'LD_Loan_Detail_Down_Payment', value: widget.loanDetailArgs.loanDetailResponse.data?.joiningFee??"-"),
         _getSpaceBetweenWidget(4),
         _getLoanDetailWidget(
-            title: 'LD_Loan_Detail_Repayment', value: "Daily EMI"),
+            title: 'LD_Loan_Detail_Repayment', value: widget.loanDetailArgs.loanDetailResponse.data?.repaymentType??"-"),
         _getSpaceBetweenWidget(4),
         _getLoanDetailWithCurrencyWidget(
-            title: 'LD_Loan__Detail_Daily_Repayment_Amount', value: "2,000 "),
+            title: 'LD_Loan__Detail_Daily_Repayment_Amount', value: widget.loanDetailArgs.loanDetailResponse.data?.repaymentFee??"-"),
         _getSpaceBetweenWidget(4),
         _getLoanDetailWithCurrencyWidget(
-            title: 'LD_Loan_Detail_Total_Repayed_Amount', value: "7,70,000 "),
+            title: 'LD_Loan_Detail_Total_Repayed_Amount', value: widget.loanDetailArgs.loanDetailResponse.data?.totalAmountToBeRepaid??"-"),
         _getSpaceBetweenWidget(4),
         _getLoanDetailWidget(
-            title: 'LD_Loan_Detail_Loan_Tenure', value: "365 days"),
+            title: 'LD_Loan_Detail_Loan_Tenure', value: widget.loanDetailArgs.loanDetailResponse.data?.loanTenure??"-"),
         _getSpaceBetweenWidget(4),
         _getLoanDetailWidget(
-            title: 'LD_Loan_Detail_Start_Date', value: "10 Aug, 2022"),
+            title: 'LD_Loan_Detail_Start_Date', value: widget.loanDetailArgs.loanDetailResponse.data?.loanStartDate??"-"),
         _getSpaceBetweenWidget(4),
         _getLoanDetailWidget(
-            title: 'LD_Loan_Detail_Final_Date', value: "10 Aug, 2023"),
+            title: 'LD_Loan_Detail_Final_Date', value: widget.loanDetailArgs.loanDetailResponse.data?.finalPaymentDate??"-"),
         _getSpaceBetweenWidget(4),
         _getLoanDetailWidget(
-            title: 'LD_Loan_Detail_Device_Insurance', value: "Y9 Standard"),
+            title: 'LD_Loan_Detail_Device_Insurance', value: widget.loanDetailArgs.loanDetailResponse.data?.deviceInsurance??"-"),
         _getSpaceBetweenWidget(4),
         _getLoanDetailWidget(
             title: 'LD_Loan_Detail_Device_Insurance_ID',
-            value: "824596945683495"),
+            value: widget.loanDetailArgs.loanDetailResponse.data?.deviceInsuranceId??"-"),
         _getSpaceBetweenWidget(8),
         _buildTermsAndConditionWidget(context, coordinator),
         _getSpaceBetweenWidget(10),
@@ -152,7 +152,7 @@ class _LoanDetailScreenState extends State<LoanDetailScreen> {
     required String deviceName,
     required String deviceStats,
     required String deviceImage,
-    required String deviceId,
+    required String loanId,
   }) {
     return Container(
       height: 170,
@@ -179,7 +179,7 @@ class _LoanDetailScreenState extends State<LoanDetailScreen> {
               ),
               _getSpaceBetweenWidget(2),
               Text(
-                deviceId,
+                loanId,
                 style: const TextStyle(
                   color: White,
                   fontSize: 20,
@@ -332,7 +332,7 @@ class _LoanDetailScreenState extends State<LoanDetailScreen> {
         const Padding(
           padding: EdgeInsets.only(top: 5),
           child: Text(
-            "TZSHS",
+            " TZSHS",
             style: TextStyle(
                 color: Colors.black, fontSize: 10, fontWeight: FontWeight.w600),
           ),

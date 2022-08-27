@@ -6,6 +6,7 @@
   "OB_SignUp" : "Jisajili",
   "OB_Lang" : "SW",
   "OB_ni_bora" : "ni %{Bora|click}%",
+  "ST_view_profile": "View Profile",
   "ST_my_profile": "My Profile",
 
   "DO_Title": "Chaguo za Kifaa",
@@ -103,8 +104,8 @@
 
 
   "AN_Title" : "Wakala wa karibu",
-  "AN_Search" : "Tafuta kwa Jina / Kitambulisho/ Mkoa / Wilaya/ Po#",
-  "AN_AgentName" : "Y9 Kitambulisho cha wakala:",
+  "AN_Search" : "Tafuta kwa Jina Mkoa / Wilaya",
+  "AN_AgentName" : "Y9 Kitambulisho cha wakala: ",
   "AN_Call" : "Wito",
 
   "D0_JoiningFee": "Joining Fee (one off)",
@@ -184,6 +185,8 @@
   "TC_Purpose_Desc": "2.1. Y9 ni mtoa huduma wa huduma ndogo za kidijitali inayolenga kusaidia kuendeleza mtindo wa maisha wa watu wa Tanzania na bara la Afrika kwa ujumla kwa kutoa huduma za kifedha kwa watu wasio na benki na wasio na benki kwa kutoa fursa ya kupata elimu ya kidijitali, afya ya kidijitali n.k. kwa kutoa simu mahiri za 4G. kwa masharti ya haki sana ili kuifanya ipatikane kwa wananchi wote kwa kuwezesha ushirikishwaji wa maana wa kifedha na kidijitali.",
 
 
+
+
   "LR_paying_for" : "You are paying for",
   "LR_device_loan" : "Y9 Device Loan",
   "LR_amount_to_pay" : "Choose the amount to pay",
@@ -204,8 +207,9 @@
   "HS_explore" : "Explore",
   "HS_Daily_Repayment_amount" : "Outstanding Due\nAmount",
 
-  "ST_title" : "Settings",
+  "ST_title" : "Mipangilio",
   "ST_subTitle" : "Profile Management",
+  "ST_view_profile" : "View Profile",
   "ST_update_passcode" : "Update Passcode",
   "ST_App_Language" : "App Language",
   "ST_sign_out" : "Sign Out",
@@ -241,5 +245,19 @@
   "LD_Loan_Detail_Terms": " Terms & Conditions.",
 
   "Profile_Title": "Profile",
-  "Profile_Sub_Title": "Your Personal details are shown as per your NIDA records"
+  "Profile_Sub_Title": "Your Personal details are shown as per your NIDA records",
+
+  "LR_paying_for" : "You are paying for",
+  "LR_device_loan" : "Y9 Device Loan",
+  "LR_amount_to_pay" : "Choose the amount to pay",
+  "LR_due_amount" : "Pay Due \nAmount",
+  "LR_daily_repayment" : "Daily \nRepayment",
+  "LR_loan_amount" : "Total Loan \nAmount",
+  "LR_custom_amount" : "Pay Custom \nAmount",
+  "LR_pay_now" : "Pay Now",
+  "LR_payment_label" : "Payment of {} will be adjusted in total \nPayable amount",
+  "LR_proceed" : "Proceed",
+
+
+  "CA_custom_amount" : "Pay Custom Amount"
 }

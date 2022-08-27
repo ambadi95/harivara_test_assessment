@@ -110,8 +110,8 @@ class HomeWidget extends StatelessWidget {
         key: Key('AppMaterialApp'),
         home: !_status
             ?
-        CrayonHomeScreen.forCustomerApp()
-            : CrayonHomeScreen.forCustomerApp(),
+        CrayonSplashScreen.forCustomerApp()
+            : CrayonSplashScreen.forCustomerApp(),
         theme: CrayonPaymentTheme().defaultTheme,
         onGenerateRoute: _navigationManager.getRoute,
         translations: _translations,
@@ -123,6 +123,8 @@ class HomeWidget extends StatelessWidget {
     );
   }
 }
+//CrayonHomeScreen
+//CrayonSplashScreen
 
 Future<void> _setupCrashlytics() async {
   if (kDebugMode) {

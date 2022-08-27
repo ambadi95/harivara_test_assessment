@@ -65,8 +65,13 @@ class SignupUseCase extends BaseDataProvider {
     return await setValueToSecureStorage({'AgentName': mobileNumber});
   }
 
+  Future<void> _saveCustomerName(String mobileNumber) async {
+    return await setValueToSecureStorage({'CustomerName': mobileNumber});
+  }
+
   Future<CustomerDetailResponse?> signUp(String nindaNumber, String phoneNo,
       Function(String) onErrorCallback) async {
+    CrayonPaymentLogger.logInfo(phoneNo.replaceAll(" ", ""));
     return await executeApiRequest<CustomerDetailResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
@@ -137,6 +142,29 @@ class SignupUseCase extends BaseDataProvider {
 
           print(data);
           return agentSignUpResponse;
+        });
+  }
+
+  Future<CustomerDetailResponse?> getCustomerDetails(String nindaNumber, String phoneNo,
+      Function(String) onErrorCallback) async {
+    return await executeApiRequest<CustomerDetailResponse?>(
+        taskType: TaskType.DATA_OPERATION,
+        taskSubType: TaskSubType.REST,
+        moduleIdentifier: WelcomeModule.moduleIdentifier,
+        requestData: {
+          "nidaNo": nindaNumber.replaceAll("-", ""),
+          "mobileNo": phoneNo.replaceAll(" ", "")
+        },
+        serviceIdentifier: ISignupService.getCustomerDetailIdentifier,
+        onError: onErrorCallback,
+        modelBuilderCallback: (responseData) {
+          final data = responseData;
+          CustomerDetailResponse detailResponse =
+          CustomerDetailResponse.fromJson(data);
+          _authManager.setUserDetail(
+              authInfo: detailResponse.data?.customerId.toString(),
+              key: 'Customer_ID');
+          return detailResponse;
         });
   }
 }

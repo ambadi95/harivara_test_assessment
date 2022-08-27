@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:home/home/home_screen_arguments.dart';
 import 'package:settings/model/settings_arguments.dart';
 import 'package:settings/view/settings_view.dart';
+import 'package:shared_data_models/loan_detail/response/loan_detail_response/loan_detail_response.dart';
 import '../constants/image_constant.dart';
 import '../home_module.dart';
 import '../state/home_screen_state.dart';
@@ -36,8 +37,13 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
   int selectedIndex = 0;
   String username = 'Emmanual Jisula';
   String userId = '';
+  String? deviceLoan;
+  String? outstandingAmount;
+  String? repaidAmount;
+
   Data customerCount =
       const Data(initiatedCustomer: '0', enrolledCustomer: '0');
+  LoanDetailResponse loanDetailResponse = LoanDetailResponse();
 
   @override
   Widget build(BuildContext context) =>
@@ -54,6 +60,19 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
               userId;
             });
             customerCount = await coordinator.getCustomerCount();
+            setState(() {});
+          } else {
+            username = await coordinator.getCustomerName();
+            userId = await coordinator.getCustomerId();
+            setState(() {
+              username;
+              userId;
+            });
+            loanDetailResponse = (await coordinator.getLoanDetails())!;
+            deviceLoan = loanDetailResponse.data?.loanId ?? "-";
+            outstandingAmount =
+                loanDetailResponse.data?.outStandingAmount ?? "-";
+            repaidAmount = loanDetailResponse.data?.repaymentFee ?? "-";
             setState(() {});
           }
         },
@@ -144,8 +163,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                         const SizedBox(
                           height: 5,
                         ),
-                        const Text("648960359535569",
-                            style: HS_account_id_style),
+                        Text(deviceLoan ?? "-", style: HS_account_id_style),
                       ],
                     ),
               const Spacer(),
@@ -209,7 +227,8 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                         ),
                         Row(
                           children: [
-                            const Text("4,500", style: HS_account_id_style),
+                            Text(outstandingAmount ?? '-',
+                                style: HS_account_id_style),
                             const Text(" TZSHS", style: HS_card_items_style_w)
                           ],
                         )
@@ -229,7 +248,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                           height: 5,
                         ),
                         Row(children: [
-                          const Text("7,70,000", style: HS_account_id_style),
+                          Text(repaidAmount ?? "-", style: HS_account_id_style),
                           const Text(" TZSHS", style: HS_card_items_style_w)
                         ]),
                       ],
@@ -265,19 +284,24 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                     ],
                   )
                 : Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      InkWell(
-                        onTap: (){
-                          coordinator.navigationToBottomSheet();
-                        },
-                        child: _actionCommonView(
-                            'HS_LoanRepayment'.tr, HS_LoanRepayment),
-                      ),
-                      _actionCommonView('HS_LoanDetails'.tr, HS_LoanDetail),
-                    ],
-                  ),
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                InkWell(
+                  onTap: () {
+                    coordinator.navigationToBottomSheet();
+                  },
+                  child: _actionCommonView(
+                      'HS_LoanRepayment'.tr, HS_LoanRepayment),
+                ),
+                InkWell(
+                  onTap: () {
+                    coordinator.navigateToLoanDetailScreen(loanDetailResponse);
+                  },
+                  child: _actionCommonView('HS_LoanDetails'.tr, HS_LoanDetail),
+                ),
+              ],
+            ),
           )
         ],
       ),
@@ -340,7 +364,6 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
       clipBehavior: Clip.antiAliasWithSaveLayer,
       decoration: const BoxDecoration(
         color: HS_InviteBoxBackColor,
-
         borderRadius: BorderRadius.all(
           Radius.circular(16),
         ),

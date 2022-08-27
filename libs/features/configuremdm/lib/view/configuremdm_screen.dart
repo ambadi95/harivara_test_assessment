@@ -15,13 +15,11 @@ import 'package:widget_library/progress_bar/centered_circular_progress_bar.dart'
 import 'package:widget_library/scaffold/crayon_payment_scaffold.dart';
 import 'package:widget_library/static_text/crayon_payment_text.dart';
 
-
 class ConfigureMdmScreen extends StatefulWidget {
   static const viewPath =
       '${DownPaymentModule.moduleIdentifier}/configuremdmscreen';
 
-  const ConfigureMdmScreen({Key? key})
-      : super(key: key);
+  const ConfigureMdmScreen({Key? key}) : super(key: key);
 
   @override
   State<ConfigureMdmScreen> createState() => _ConfigureMdmScreenState();
@@ -31,14 +29,11 @@ class _ConfigureMdmScreenState extends State<ConfigureMdmScreen> {
   final String _identifier = 'configure-mdm-screen';
   bool _isBtnEnabled = false;
 
-
   @override
   Widget build(BuildContext context) =>
       BaseView<ConfigureMdmCoordinator, ConfigureMdmState>(
           setupViewModel: (coordinator) async {
             coordinator.initialiseState(context);
-
-
           },
           builder: (context, state, coordinator) => CrayonPaymentScaffold(
                 appBarAttributes: CrayonPaymentAppBarAttributes(
@@ -101,11 +96,9 @@ class _ConfigureMdmScreenState extends State<ConfigureMdmScreen> {
         SizedBox(
           height: AppUtils.appUtilsInstance.getPercentageSize(percentage: 5),
         ),
-
       ],
     );
   }
-
 
   Widget _buildContinueButton(
     BuildContext context,
@@ -143,30 +136,23 @@ class _ConfigureMdmScreenState extends State<ConfigureMdmScreen> {
     );
   }
 
-
-
-
   _title(BuildContext context) {
     return CrayonPaymentText(
       key: Key('${_identifier}_Configure_Title1'),
-      text: const TextUIDataModel(
-          '',
+      text: const TextUIDataModel('',
           styleVariant: CrayonPaymentTextStyleVariant.headline6,
           color: AN_TitleColor,
           fontWeight: FontWeight.w600),
     );
   }
 
-
   _subTitle(BuildContext context) {
     return CrayonPaymentText(
       key: Key('${_identifier}_ConfigureMDM_SubTitle'),
-      text: const TextUIDataModel(
-          '',
+      text: const TextUIDataModel('',
           styleVariant: CrayonPaymentTextStyleVariant.subtitle2,
           color: VO_ResendTextColor,
           fontWeight: FontWeight.w400),
     );
   }
-
 }

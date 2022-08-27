@@ -97,13 +97,14 @@
 
   "WB_WelcomeBack": "Welcome back to Y9",
   "WB_EnterPassCode": "Enter Passcode",
+  "AN_Title": "Agents Near by",
+  "AN_Search": "Search by Region / District",
+  "AN_AgentName": "Y9 Agent id: ",
+  "AN_Call": "Call",
 
 
 
-  "AN_Title" : "Agents Near by",
-  "AN_Search" : "Search by Region / District/ Po#",
-  "AN_AgentName" : "Y9 Agent ID:",
-  "AN_Call" : "Call",
+
 
 
   "D0_JoiningFee": "Joining Fee (one off)",
@@ -182,6 +183,8 @@
   "HS_explore" : "Explore",
   "HS_Daily_Repayment_amount" : "Outstanding Due\nAmount",
 
+  "ST_my_profile": "My Profile",
+
   "ST_title" : "Settings",
   "ST_subTitle" : "Profile Management",
   "ST_view_profile" : "View Profile",
@@ -213,6 +216,15 @@
   "Profile_Sub_Title": "Your Personal details are shown as per your NIDA records",
   "ST_contact_text" : "Need Help or If You Have Any Query \n Contact Us at +255 677-039-999",
 
+
+  "PP_Daily_Repayment_Title" : "Daily Repayment",
+  "PP_Airtel_Pay" : "Airtel Pay",
+  "PP_PayNow" : "Pay Now",
+  "PP_Wallets_Title" : "Wallets",
+
+
+  "FAQ_Title": "FAQ",
+
   "LR_paying_for" : "You are paying for",
   "LR_device_loan" : "Y9 Device Loan",
   "LR_amount_to_pay" : "Choose the amount to pay",
@@ -226,11 +238,5 @@
 
 
 
-  "PP_Daily_Repayment_Title" : "Daily Repayment",
-  "PP_Airtel_Pay" : "Airtel Pay",
-  "PP_PayNow" : "Pay Now",
-  "PP_Wallets_Title" : "Wallets",
-
-
-  "FAQ_Title": "FAQ"
+  "CA_custom_amount" : "Pay Custom Amount"
 }

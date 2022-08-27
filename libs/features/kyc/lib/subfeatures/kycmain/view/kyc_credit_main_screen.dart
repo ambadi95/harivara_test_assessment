@@ -74,14 +74,11 @@ class _KycCreditMainScreenState extends State<KycCreditMainScreen> {
   ) {
     return Stack(
       children: [
-
-         _buildMainUI(context, coordinator, state),
+        _buildMainUI(context, coordinator, state),
         if (state.isLoading) _createLoading(state),
       ],
     );
   }
-
-
 
   Widget _createLoading(KycCreditMainStateReady state) {
     if (state.isLoading) {
