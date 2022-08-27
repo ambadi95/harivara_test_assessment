@@ -24,8 +24,7 @@ class CrayonHomeScreen extends StatefulWidget {
   @override
   State<CrayonHomeScreen> createState() => _CrayonCustomerHomeScreenState();
 
-  factory CrayonHomeScreen.forCustomerApp() =>
-      CrayonHomeScreen(
+  factory CrayonHomeScreen.forCustomerApp() => CrayonHomeScreen(
         homeScreenArgs: HomeScreenArgs(
           userType: UserType.Customer,
           isAgent: false,
@@ -43,7 +42,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
   String? repaidAmount;
 
   Data customerCount =
-  const Data(initiatedCustomer: '0', enrolledCustomer: '0');
+      const Data(initiatedCustomer: '0', enrolledCustomer: '0');
   LoanDetailResponse loanDetailResponse = LoanDetailResponse();
 
   @override
@@ -77,24 +76,25 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
             setState(() {});
           }
         },
-        builder: (context, state, coordinator) =>
-            Scaffold(
-              body: SafeArea(
-                bottom: false,
-                child: state.when(
-                  initialState: () => SizedBox(),
-                  ready: (_,
-                      __,
-                      ___,
-                      ____,) =>
-                      _buildMainUIWithLoading(
-                        context,
-                        coordinator,
-                        (state as HomeScreenReady),
-                      ),
-                ),
+        builder: (context, state, coordinator) => Scaffold(
+          body: SafeArea(
+            bottom: false,
+            child: state.when(
+              initialState: () => SizedBox(),
+              ready: (
+                _,
+                __,
+                ___,
+                ____,
+              ) =>
+                  _buildMainUIWithLoading(
+                context,
+                coordinator,
+                (state as HomeScreenReady),
               ),
             ),
+          ),
+        ),
       );
 
   Widget _userInfoView() {
@@ -141,32 +141,31 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
             children: [
               isAgent()
                   ? Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'HS_AccountId'.tr,
-                    style: HS_title_style,
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  Text(userId.tr, style: HS_account_id_style),
-                ],
-              )
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'HS_AccountId'.tr,
+                          style: HS_title_style,
+                        ),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        Text(userId.tr, style: HS_account_id_style),
+                      ],
+                    )
                   : Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'HS_CardList1Title'.tr,
-                    style: HS_title_style,
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  Text(deviceLoan ?? "-",
-                      style: HS_account_id_style),
-                ],
-              ),
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'HS_CardList1Title'.tr,
+                          style: HS_title_style,
+                        ),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        Text(deviceLoan ?? "-", style: HS_account_id_style),
+                      ],
+                    ),
               const Spacer(),
               Image.asset(
                 OB_AppLogo,
@@ -180,82 +179,82 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
           ),
           (isAgent() == true)
               ? Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'HS_TotalOnBoarderCustomers'.tr,
-                    style: HS_title_style,
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  Text(customerCount.enrolledCustomer!,
-                      style: HS_account_id_style),
-                ],
-              ),
-              const SizedBox(
-                width: 20,
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'HS_PendingCustomerRequests'.tr,
-                    style: HS_title_style,
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  const Text('-', style: HS_account_id_style),
-                ],
-              ),
-            ],
-          )
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'HS_TotalOnBoarderCustomers'.tr,
+                          style: HS_title_style,
+                        ),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        Text(customerCount.enrolledCustomer!,
+                            style: HS_account_id_style),
+                      ],
+                    ),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'HS_PendingCustomerRequests'.tr,
+                          style: HS_title_style,
+                        ),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        const Text('-', style: HS_account_id_style),
+                      ],
+                    ),
+                  ],
+                )
               : Row(
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'HS_Daily_Repayment_amount'.tr,
-                    style: HS_title_style,
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  Row(
-                    children: [
-                      Text(outstandingAmount ?? '-',
-                          style: HS_account_id_style),
-                      const Text(" TZSHS", style: HS_card_items_style_w)
-                    ],
-                  )
-                ],
-              ),
-              const SizedBox(
-                width: 20,
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'HS_CardList3Title'.tr,
-                    style: HS_title_style,
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  Row(children: [
-                    Text(repaidAmount ?? "-", style: HS_account_id_style),
-                    const Text(" TZSHS", style: HS_card_items_style_w)
-                  ]),
-                ],
-              ),
-            ],
-          ),
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'HS_Daily_Repayment_amount'.tr,
+                          style: HS_title_style,
+                        ),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        Row(
+                          children: [
+                            Text(outstandingAmount ?? '-',
+                                style: HS_account_id_style),
+                            const Text(" TZSHS", style: HS_card_items_style_w)
+                          ],
+                        )
+                      ],
+                    ),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'HS_CardList3Title'.tr,
+                          style: HS_title_style,
+                        ),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        Row(children: [
+                          Text(repaidAmount ?? "-", style: HS_account_id_style),
+                          const Text(" TZSHS", style: HS_card_items_style_w)
+                        ]),
+                      ],
+                    ),
+                  ],
+                ),
           const SizedBox(
             height: 30,
           ),
@@ -268,22 +267,22 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
             ),
             child: (widget.homeScreenArgs.isAgent)
                 ? Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                InkWell(
-                  onTap: () {
-                    coordinator.navigateToCustomerRegister();
-                  },
-                  child: _actionCommonView(
-                      'HS_Customer_OnBoarding'.tr, HS_CustomerMangIcon),
-                ),
-                _actionCommonView(
-                    'HS_Customer_DeviceSwap'.tr, HS_DeviceSwapIcon),
-                _actionCommonView(
-                    'HS_Customer_AgentSupport'.tr, HS_AgentSupportIcon),
-              ],
-            )
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          coordinator.navigateToCustomerRegister();
+                        },
+                        child: _actionCommonView(
+                            'HS_Customer_OnBoarding'.tr, HS_CustomerMangIcon),
+                      ),
+                      _actionCommonView(
+                          'HS_Customer_DeviceSwap'.tr, HS_DeviceSwapIcon),
+                      _actionCommonView(
+                          'HS_Customer_AgentSupport'.tr, HS_AgentSupportIcon),
+                    ],
+                  )
                 : Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -346,7 +345,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
           title,
           textAlign: TextAlign.center,
           style: (title == 'HS_Customer_DeviceSwap'.tr ||
-              title == 'HS_Customer_AgentSupport'.tr)
+                  title == 'HS_Customer_AgentSupport'.tr)
               ? HS_card_items_grey_style
               : HS_card_items_style,
         ),
@@ -378,16 +377,15 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
           ),
           RichText(
               text: TextSpan(
-                text: ' ',
-                children: <TextSpan>[
-                  TextSpan(
-                      text: 'HS_Agent_Refer_Program'.tr,
-                      style: HS_invite_your_friends_style),
-                  TextSpan(
-                      text: 'HS_Agent_Stay_Tunned'.tr,
-                      style: HS_stay_tunned_style),
-                ],
-              )),
+            text: ' ',
+            children: <TextSpan>[
+              TextSpan(
+                  text: 'HS_Agent_Refer_Program'.tr,
+                  style: HS_invite_your_friends_style),
+              TextSpan(
+                  text: 'HS_Agent_Stay_Tunned'.tr, style: HS_stay_tunned_style),
+            ],
+          )),
           const SizedBox(
             height: 10,
           ),
@@ -479,9 +477,9 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
       ),
       child: const Center(
           child: Text(
-            'EJ',
-            style: AN_TextFieldLabel_FF,
-          )),
+        'EJ',
+        style: AN_TextFieldLabel_FF,
+      )),
     );
   }
 
@@ -495,13 +493,15 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
     );
   }
 
-  _buildMainUI(BuildContext context,
-      HomeCoordinator coordinator,
-      HomeScreenReady state,) {
+  _buildMainUI(
+    BuildContext context,
+    HomeCoordinator coordinator,
+    HomeScreenReady state,
+  ) {
     return Scaffold(
         backgroundColor: Colors.white,
         floatingActionButtonLocation:
-        FloatingActionButtonLocation.miniCenterDocked,
+            FloatingActionButtonLocation.miniCenterDocked,
         bottomNavigationBar: SizedBox(
           height: 55,
           child: BottomNavigationBar(
@@ -533,24 +533,24 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
         ),
         body: selectedIndex == 0
             ? SingleChildScrollView(
-          child: Column(
-            children: [
-              Column(
-                children: [
-                  _userInfoView(),
-                  _redBoxView(coordinator),
-                  widget.homeScreenArgs.isAgent
-                      ? _inviteAgentBoxView()
-                      : _inviteBoxView(),
-                ],
+                child: Column(
+                  children: [
+                    Column(
+                      children: [
+                        _userInfoView(),
+                        _redBoxView(coordinator),
+                        widget.homeScreenArgs.isAgent
+                            ? _inviteAgentBoxView()
+                            : _inviteBoxView(),
+                      ],
+                    )
+                  ],
+                ),
               )
-            ],
-          ),
-        )
             : Settings(
-          screenArgs: SettingsScreenArgs(
-              isAgent: isAgent(),
-              userType: widget.homeScreenArgs.userType),
-        ));
+                screenArgs: SettingsScreenArgs(
+                    isAgent: isAgent(),
+                    userType: widget.homeScreenArgs.userType),
+              ));
   }
 }

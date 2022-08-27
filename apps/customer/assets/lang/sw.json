@@ -104,8 +104,8 @@
 
 
   "AN_Title" : "Wakala wa karibu",
-  "AN_Search" : "Tafuta kwa Jina / Kitambulisho/ Mkoa / Wilaya/ Po#",
-  "AN_AgentName" : "Y9 Kitambulisho cha wakala:",
+  "AN_Search" : "Tafuta kwa Jina Mkoa / Wilaya",
+  "AN_AgentName" : "Y9 Kitambulisho cha wakala: ",
   "AN_Call" : "Wito",
 
   "D0_JoiningFee": "Joining Fee (one off)",

@@ -69,7 +69,7 @@ class VerifyOtpNavigationHandler with ErrorHandler {
       'welcomeModule/enrollmentSuccess',
       false,
       3,
-      PassCodeVerificationType.agentResetPasscode,
+      PassCodeVerificationType.customerResetPasscode,
       false,
       '',
       userType,

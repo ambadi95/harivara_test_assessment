@@ -187,4 +187,25 @@ class PasscodeUseCase extends BaseDataProvider {
           return AgentSignInResponse.fromJson(data);
         });
   }
+
+  Future<PasscodeResponse?> resetPasscodeCustomer(String passcode, String userType,
+      Function(String) onErrorCallback) async {
+    String custmerId = await getCustomerId();
+    PasscodeRequest passcodeRequest = PasscodeRequest(
+        id: int.parse(custmerId), type: 'Customer', passcode: passcode);
+
+    return await executeApiRequest<PasscodeResponse?>(
+        taskType: TaskType.DATA_OPERATION,
+        taskSubType: TaskSubType.REST,
+        moduleIdentifier: PasscodeModule.moduleIdentifier,
+        requestData: passcodeRequest.toJson(),
+        serviceIdentifier: IPasscodeService.resetPasscodeIdentifier,
+        onError: onErrorCallback,
+        modelBuilderCallback: (responseData) {
+          final data = responseData;
+          return PasscodeResponse.fromJson(data);
+        });
+  }
+
+
 }

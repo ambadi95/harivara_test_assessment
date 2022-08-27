@@ -99,27 +99,44 @@ class AgentNearbyCoordinator extends AnalyticsStateNotifier<AgentNearByState> {
 
   List<Datum> newList = [];
 
-  agentNearbyList() {
-    for (int i = 0; i < nearByAgent.length; i++) {
-      double dis = distance(nearByAgent[i].lat!, nearByAgent[i].long!);
-      newList.add(Datum(
-          firstName: nearByAgent[i].firstName,
-          lastName: nearByAgent[i].lastName,
-          address: nearByAgent[i].address,
-          y9AgentId: nearByAgent[i].y9AgentId,
-          poBoxNumber: nearByAgent[i].poBoxNumber,
-          region: nearByAgent[i].region,
-          district: nearByAgent[i].district,
-          mobileNo: nearByAgent[i].mobileNo,
-          imageUrl: nearByAgent[i].imageUrl,
-          middleName: nearByAgent[i].middleName,
-          distance: dis,
-          long: nearByAgent[i].long,
-          lat: nearByAgent[i].lat));
-    }
+  Future<void> agentNearbyList(String search) async {
+    newList = [];
     state = state.copyWith(
-        agentNearbyList: newList
-          ..sort((a, b) => a.distance!.compareTo(b.distance!)));
+      isLoading: true,
+    );
+    var response = await _agentNearbyUseCase.agentsNearBy(search, (p0) => null);
+    if (response?.status == true) {
+      for (int i = 0; i < response!.data!.length; i++) {
+        double dis = distance(13.0768943,80.149900);
+        if(newList.contains(response.data)){}
+        else {
+          newList.add(Datum(
+              firstName: response.data![i].firstName,
+              lastName: response.data![i].lastName,
+              address: '',
+              y9AgentId: response.data![i].y9AgentId,
+              poBoxNumber: '',
+              region: response.data![i].region,
+              district: response.data![i].district,
+              mobileNo: response.data![i].mobileNo,
+              imageUrl: '',
+              middleName: response.data![i].middleName,
+              distance: dis,
+              long: 80.149900,
+              lat: 13.0768943));
+        }
+      }
+      state = state.copyWith(
+          agentNearbyList: newList
+            ..sort((a, b) => a.distance!.compareTo(b.distance!)));
+      state = state.copyWith(
+        isLoading: false,
+      );
+    } else {
+      state = state.copyWith(
+        isLoading: false,
+      );
+    }
   }
 
   List<Datum> list = [];
