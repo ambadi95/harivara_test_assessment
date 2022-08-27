@@ -187,6 +187,15 @@
 
 
 
+  "LR_paying_for" : "You are paying for",
+  "LR_device_loan" : "Y9 Device Loan",
+  "LR_amount_to_pay" : "Choose the amount to pay",
+  "LR_due_amount" : "Pay Due Amount",
+  "LR_daily_repayment" : "Daily Repayment",
+  "LR_loan_amount" : "Total Loan Amount",
+  "LR_custom_amount" : "Pay Custom Amount",
+  "LR_pay_now" : "Pay Now",
+
 
   "HS_CardList1Title" : "Y9 Device Loan",
   "HS_CardList2Title" : "Outstanding Due Amount",
@@ -200,6 +209,7 @@
 
   "ST_title" : "Mipangilio",
   "ST_subTitle" : "Profile Management",
+  "ST_view_profile" : "View Profile",
   "ST_update_passcode" : "Update Passcode",
   "ST_App_Language" : "App Language",
   "ST_sign_out" : "Sign Out",

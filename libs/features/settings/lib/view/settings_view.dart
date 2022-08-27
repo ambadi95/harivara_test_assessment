@@ -118,6 +118,11 @@ class _SettingsState extends State<Settings> {
           widget.screenArgs.isAgent
               ? await coordinator.navigateToUpdateProfile()
               : await coordinator.navigateToCustomerProfileScreen();
+              : await coordinator.navigateToCustomerProfileScreen();  }),/*() {}*/
+        _buildOptions(context, 'ST_view_profile', ST_view_profile, () async {
+          widget.screenArgs.isAgent
+              ? await coordinator.navigateToUpdateProfile()
+              : () {};
         }),
         /*() {}*/
         // _buildOptions(context, 'ST_view_profile', ST_view_profile, () async {
@@ -161,7 +166,8 @@ class _SettingsState extends State<Settings> {
         }),
         _buildOptions(context, 'ST_term_condition', ST_TermsCondition,
             () async {
-          coordinator.navigateToTermsCondtionsScreen(false);
+          LauncherUtils.launcherUtilsInstance
+              .launchInBrowser(url: LauncherUtils.Y9_BANK_URL);
         }),
         _buildOptions(context, 'ST_call_support', ST_CallSupport, () async {
           LauncherUtils.launcherUtilsInstance
