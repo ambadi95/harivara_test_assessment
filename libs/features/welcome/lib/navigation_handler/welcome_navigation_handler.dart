@@ -335,6 +335,30 @@ class WelcomeNavigationHandler with ErrorHandler {
         arguments: arguments);
   }
 
+  Future<void> navigateToOtpScreenCustomerResetPasscode(String userType, String mobileNumber, String id) async {
+    var arguments = OtpScreenArgs(
+      'OTP Verification',
+      'VO_otp_verification_description',
+      'passcodeModule/passcode',
+      false,
+      2,
+      OtpVerificationType.resetPasscodeCustomer,
+      id,
+      6,
+      mobileNumber,
+      false,
+       UserType.Customer,
+    );
+
+    _navigationManager.navigateTo(
+      CrayonVerifyOtpScreen.viewPath,
+      const NavigationType.push(),
+      preventDuplicates: false,
+      arguments: arguments,
+    );
+  }
+
+
 // Future<void> navigateToDestination(
 //     String? destination,
 //     String userType,
