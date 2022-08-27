@@ -133,22 +133,43 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
           setupViewModel: (coordinator) async {
             //   coordinator.getMobileNumber();
 
-            customerResponse = await coordinator.getCustomerDetails();
-            setState(() {
-              name.text = customerResponse!.data!.firstName ?? "";
-              dob.text = customerResponse!.data!.birthdate ?? "";
-              gender.text = customerResponse!.data!.gender ?? "";
-              profession.text = customerResponse!.data!.profession ?? "";
-              mobileNumber.text = customerResponse!.data!.mobileNo ?? "";
-              emailId.text = customerResponse!.data!.emailId ?? "";
-              address.text = customerResponse!.data!.address ?? "";
-              poBox.text = customerResponse!.data!.poBoxNumber ?? "";
-              region.text = customerResponse!.data!.region ?? "";
-              district.text = customerResponse!.data!.district ?? "";
-            });
-            /* List<Datum> regions = await coordinator.getRegion(widget.userType);
+            List<Datum> regions = await coordinator.getRegion(widget.userType);
             genderTypeDropDown = getDropDownData(coordinator.genderType);
-            regionDropDown = getRegionDropDownData(regions);*/
+            regionDropDown = getRegionDropDownData(regions);
+
+            customerResponse = await coordinator.getCustomerDetails();
+
+            String firstName = customerResponse!.data!.firstName ?? "";
+            String lastName = customerResponse!.data!.lastName ?? "";
+            name.text = firstName + " " + lastName;
+            dob.text = customerResponse!.data!.birthdate ?? "";
+            gender.text = customerResponse!.data!.gender ?? "";
+            profession.text = customerResponse!.data!.profession ?? "";
+            mobileNumber.text = customerResponse!.data!.mobileNo ?? "";
+            emailId.text = customerResponse!.data!.emailId ?? "";
+            address.text = customerResponse!.data!.address ?? "";
+            poBox.text = customerResponse!.data!.poBoxNumber ?? "";
+
+            region.text = customerResponse!.data!.region ?? "";
+
+            district.text = customerResponse!.data!.district ?? "";
+            for (var element in regions) {
+              if (element.name! == region.text) {
+                _region = element;
+                dis = await coordinator.getDistrict(_region!.id!, widget.userType);
+                districtDropDown = getDistrictDropDownData(dis);
+                for (var disElement in dis) {
+
+                  if (disElement.name! == district.text) {
+                    _district = disElement;
+                  }
+                }
+              }
+            }
+
+            setState(() {
+
+            });
           },
           builder: (context, state, coordinator) => SafeArea(
                 child: Scaffold(
@@ -272,7 +293,16 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
             coordinator,
             false,
           ),
-          _buildGenderTypeDropdown(coordinator),
+          //_buildGenderTypeDropdown(coordinator),
+          _buildLabelTextField(
+              'DV_gender_label'.tr,
+              'DV_gender_label'.tr,
+              gender,
+              TextInputType.name,
+              coordinator,
+              professionError,
+              'DV_profession_hint_text',
+              false),
           _buildLabelTextField(
               'profession',
               'DV_profession_label'.tr,
@@ -281,7 +311,7 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
               coordinator,
               professionError,
               'DV_profession_hint_text',
-              false),
+              true),
           _buildLabelTextField(
               'contact',
               'DV_contact_no_label'.tr,
@@ -299,9 +329,9 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
               coordinator,
               emailError,
               'DV_email_hint_text',
-              false),
+              true),
           _buildLabelTextFieldAddress('DV_address_label'.tr, address,
-              coordinator, 'DV_address_hint_text', false),
+              coordinator, 'DV_address_hint_text', true),
           _buildLabelTextField(
               'pobox',
               'DV_po_box_label'.tr,
@@ -310,10 +340,90 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
               coordinator,
               poBoxError,
               'DV_poBox_hint_text',
-              false),
+              true),
           _buildRegionDropdown(coordinator),
           _buildDistrictDropdown(coordinator),
+          _buildSaveButton(context, coordinator)
         ],
+      ),
+    );
+  }
+
+  Widget _buildSaveButton(
+      BuildContext buildContext, CustomerDetailsCoordinator coordinator) {
+    return GestureDetector(
+      onTap: () async {
+        //  coordinator.isValidName(name.text);
+        // _checkDob(coordinator);
+        // coordinator.isValidGender(gender.text);
+        coordinator.isValidPoBox(poBox.text);
+        coordinator.isValidEmail(emailId.text);
+        coordinator.isValidDistrict(district.text);
+        coordinator.isValidRegion(region.text);
+        coordinator.isValidProfession(profession.text);
+        coordinator.isValidAddress(address.text);
+
+        if (nameError.tr.isNotEmpty) {
+          // _showSnackBar(context,nameError.tr);
+          _showAlert(nameError.tr);
+
+          return;
+        } else if (dobError.tr.isNotEmpty) {
+          _showAlert(dobError.tr);
+
+          return;
+        } else if (genderError.tr.isNotEmpty) {
+          _showAlert(genderError.tr);
+
+          return;
+        } else if (professionError.tr.isNotEmpty) {
+          _showAlert(professionError.tr);
+          return;
+        } else if (emailError.tr.isNotEmpty) {
+          _showAlert(emailError.tr);
+
+          return;
+        } else if (addressError.tr.isNotEmpty) {
+          _showAlert(addressError.tr);
+
+          return;
+        } else if (regionError.tr.isNotEmpty) {
+          _showAlert(regionError.tr);
+
+          return;
+        } else if (districtError.tr.isNotEmpty) {
+          _showAlert(districtError.tr);
+
+          return;
+        }
+        if (coordinator.isValidPoBox(poBox.text) &&
+            coordinator.isValidEmail(emailId.text) &&
+            coordinator.isValidName(name.text)) {
+          await coordinator.updateDetails(
+              name.text,
+              dob.text,
+              gender.text,
+              address.text,
+              district.text,
+              emailId.text,
+              poBox.text,
+              profession.text,
+              region.text,
+              widget.userType);
+        }
+      },
+      child: Container(
+        width: double.infinity,
+        height: 50,
+        decoration: BoxDecoration(
+            color: config_color.SU_button_color,
+            borderRadius: BorderRadius.circular(8.0)),
+        child: Center(
+          child: Text(
+            'Save_Text'.tr,
+            style: SU_button_text_style,
+          ),
+        ),
       ),
     );
   }
@@ -413,7 +523,7 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
             key: const Key('detailsTextFieldDob'),
             keyboardType: TextInputType.none,
             onChanged: (value) {
-              _validateForm(coordinator);
+              //  _validateForm(coordinator);
             },
             decoration: const InputDecoration(
               suffixIcon: Icon(Icons.calendar_month_outlined),
@@ -422,7 +532,7 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
                   borderSide: BorderSide(color: config_color.SU_border_color)),
             ),
             onTap: () async {
-              /*    if (dobError.isNotEmpty) {
+              /* if (dobError.isNotEmpty) {
                 coordinator.isValidDob(dob.text);
               }
               await _selectDate(context, coordinator);*/
@@ -470,41 +580,7 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          'DV_region_label'.tr,
-          style: const TextStyle(color: Colors.black, fontSize: 14),
-        ),
-        const SizedBox(
-          height: 8,
-        ),
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: const BorderRadius.all(
-              Radius.circular(8.0),
-            ),
-            color: SU_border_color.withOpacity(0.3),
-            border: Border.all(color: SU_border_color),
-          ),
-          height: 56,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Text(
-                    region.text.toString(),
-                    style: SU_label_style,
-                  ),
-                ),
-                const Icon(
-                  Icons.keyboard_arrow_down,
-                  color: Black,
-                ),
-              ],
-            ),
-          ),
-        ),
-        /*CrayonDropDown(
+        CrayonDropDown(
           title: 'DV_region_label'.tr,
           key: const Key('regionDropDown'),
           icon: const Icon(
@@ -512,7 +588,9 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
             color: ES_grey_button_color,
           ),
           hint: Text(
-            'DV_region_hint_text'.tr,
+            _region.isEmptyOrNull
+                ? 'DV_region_hint_text'.tr
+                :  _region!.name!,
           ),
           boxHeight: 60,
           isDense: false,
@@ -529,7 +607,7 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
             dis = await coordinator.getDistrict(value.id!, widget.userType);
             districtDropDown = getDistrictDropDownData(dis);
           },
-        ),*/
+        ),
         const SizedBox(
           height: 6,
         ),
@@ -548,41 +626,7 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              'DV_gender_label'.tr,
-              style: const TextStyle(color: Colors.black, fontSize: 14),
-            ),
-            const SizedBox(
-              height: 8,
-            ),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: const BorderRadius.all(
-                  Radius.circular(8.0),
-                ),
-                color: SU_border_color.withOpacity(0.3),
-                border: Border.all(color: SU_border_color),
-              ),
-              height: 56,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Text(
-                        gender.text.toString(),
-                        style: SU_label_style,
-                      ),
-                    ),
-                    const Icon(
-                      Icons.keyboard_arrow_down,
-                      color: Black,
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            /*CrayonDropDown(
+            CrayonDropDown(
               title: 'DV_gender_label'.tr,
               key: const Key('genderTypeDropDown'),
               icon: const Icon(
@@ -602,7 +646,7 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
                 _validateForm(coordinator);
                 coordinator.isValidGender(value.gender);
               },
-            ),*/
+            ),
             const SizedBox(
               height: 6,
             ),
@@ -620,41 +664,7 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          'DV_district_label'.tr,
-          style: const TextStyle(color: Colors.black, fontSize: 14),
-        ),
-        const SizedBox(
-          height: 8,
-        ),
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: const BorderRadius.all(
-              Radius.circular(8.0),
-            ),
-            color: SU_border_color.withOpacity(0.3),
-            border: Border.all(color: SU_border_color),
-          ),
-          height: 56,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Text(
-                    district.text.toString(),
-                    style: SU_label_style,
-                  ),
-                ),
-                const Icon(
-                  Icons.keyboard_arrow_down,
-                  color: Black,
-                ),
-              ],
-            ),
-          ),
-        ),
-        /*CrayonDropDown(
+        CrayonDropDown(
           title: 'DV_district_label'.tr,
           key: const Key('districtDropDown'),
           icon: const Icon(
@@ -662,7 +672,9 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
             color: ES_grey_button_color,
           ),
           hint: Text(
-            'DV_district_hint_text'.tr,
+            _district.isEmptyOrNull
+                ? 'DV_district_hint_text'.tr
+                : _district!.name!,
           ),
           boxHeight: 60,
           error: districtError,
@@ -674,7 +686,7 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
             _validateForm(coordinator);
             coordinator.isValidDistrict(value.name!);
           },
-        ),*/
+        ),
         const SizedBox(
           height: 6,
         ),
@@ -683,85 +695,6 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
           height: 10,
         ),
       ],
-    );
-  }
-
-  Widget _buildContinueButton(
-      BuildContext buildContext, CustomerDetailsCoordinator coordinator) {
-    return GestureDetector(
-      onTap: () async {
-        coordinator.isValidName(name.text);
-        _checkDob(coordinator);
-        coordinator.isValidGender(gender.text);
-        coordinator.isValidPoBox(poBox.text);
-        coordinator.isValidEmail(emailId.text);
-        coordinator.isValidDistrict(district.text);
-        coordinator.isValidRegion(region.text);
-        coordinator.isValidProfession(profession.text);
-        coordinator.isValidAddress(address.text);
-
-        if (nameError.tr.isNotEmpty) {
-          // _showSnackBar(context,nameError.tr);
-          _showAlert(nameError.tr);
-
-          return;
-        } else if (dobError.tr.isNotEmpty) {
-          _showAlert(dobError.tr);
-
-          return;
-        } else if (genderError.tr.isNotEmpty) {
-          _showAlert(genderError.tr);
-
-          return;
-        } else if (professionError.tr.isNotEmpty) {
-          _showAlert(professionError.tr);
-          return;
-        } else if (emailError.tr.isNotEmpty) {
-          _showAlert(emailError.tr);
-
-          return;
-        } else if (addressError.tr.isNotEmpty) {
-          _showAlert(addressError.tr);
-
-          return;
-        } else if (regionError.tr.isNotEmpty) {
-          _showAlert(regionError.tr);
-
-          return;
-        } else if (districtError.tr.isNotEmpty) {
-          _showAlert(districtError.tr);
-
-          return;
-        }
-        if (coordinator.isValidPoBox(poBox.text) &&
-            coordinator.isValidEmail(emailId.text) &&
-            coordinator.isValidName(name.text)) {
-          await coordinator.submitDetails(
-              name.text,
-              dob.text,
-              gender.text,
-              address.text,
-              profession.text,
-              emailId.text,
-              poBox.text,
-              region.text,
-              district.text,
-              widget.userType);
-        }
-      },
-      child: Container(
-        width: double.infinity,
-        height: 50,
-        decoration: BoxDecoration(
-            color: config_color.SU_button_color,
-            borderRadius: BorderRadius.circular(8.0)),
-        child: Center(
-          child: Text(
-            'SU_button_text'.tr,
-            style: SU_button_text_style,
-          ),
-        ),
-      ),
     );
   }
 
@@ -920,6 +853,17 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
         onDistrictChoosen: (value) {
           _district = value;
         },
+        /*  getRegion: (regionValue) {
+          var item = regionDropDown.firstWhereOrNull(
+            (
+              element,
+            ) =>
+                element.value != null && element.value!.name == regionValue,
+          );
+          if (item != null) {
+            _region = item.value;
+          }
+        },*/
         orElse: () => null);
   }
 

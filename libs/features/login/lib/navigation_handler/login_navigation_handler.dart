@@ -48,17 +48,18 @@ class LoginNavigationHandler with ErrorHandler {
   Future<void> navigateToOtpScreenForAgent(
       UserType userType, String mobileNumber, String agentId) async {
     var arguments = OtpScreenArgs(
-        'OTP Verification',
-        'VO_otp_verification_description',
-        'welcomeModule/welcomeback',
-        false,
-        2,
-        OtpVerificationType.agentSignIn,
-        agentId,
-        6,
-        mobileNumber,
-        false,
-        userType);
+      'OTP Verification',
+      'VO_otp_verification_description',
+      'welcomeModule/welcomeback',
+      false,
+      2,
+      OtpVerificationType.agentSignIn,
+      agentId,
+      6,
+      mobileNumber,
+      false,
+      userType,
+    );
 
     _navigationManager.navigateTo(
       CrayonVerifyOtpScreen.viewPath,
