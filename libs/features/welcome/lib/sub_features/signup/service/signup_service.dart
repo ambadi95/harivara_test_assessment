@@ -39,10 +39,6 @@ class SignupService implements ISignupService {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
     request.endpoint = 'auth/token';
-    request.customHeaders = {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-    };
     request.jsonBody = json.encode(requestData);
     return request;
   }
@@ -55,7 +51,6 @@ class SignupService implements ISignupService {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
     request.endpoint = 'register-customer';
-    request.customHeaders = await request.headers();
     request.jsonBody = json.encode({
       'nidaNo': nindaNumber,
       'mobileNo': '+255' + phoneNo,
@@ -71,7 +66,6 @@ class SignupService implements ISignupService {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
     request.endpoint = 'register-agent';
-    request.customHeaders = await request.headers();
     request.jsonBody = json.encode({
       'nidaNo': nidaNumber,
       'y9AgentId': agentId,
@@ -88,7 +82,6 @@ class SignupService implements ISignupService {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
     request.endpoint = 'register-customer';
-    request.customHeaders = await request.headers();
     request.jsonBody = json.encode({
       'nidaNo': nidaNumber,
       'mobileNo': customerMobileNumber,

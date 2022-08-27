@@ -24,7 +24,6 @@ class DeviceOptionService implements IDeviceOptionService {
     request.requestType = RequestType.POST;
     request.endpoint = customerEndpoint + 'device-list[customer]';
     request.jsonBody = json.encode({"customerId": customerId});
-    request.customHeaders = await  request.headers();
     return request;
   }
 
@@ -34,7 +33,6 @@ class DeviceOptionService implements IDeviceOptionService {
     request.requestType = RequestType.GET;
     request.endpoint =
         customerEndpoint + 'device-details/${deviceId.toString()}[customer]';
-    request.customHeaders = await  request.headers();
 
     return request;
   }
@@ -47,7 +45,6 @@ class DeviceOptionService implements IDeviceOptionService {
     request.endpoint = customerEndpoint + 'customer-device[customer]';
     request.jsonBody =
         json.encode({"customerId": customerId, 'deviceId': device});
-    request.customHeaders = await  request.headers();
 
     return request;
   }

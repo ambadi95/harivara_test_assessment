@@ -20,7 +20,6 @@ class HomeService implements IHomeService {
     request.requestType = RequestType.GET;
     request.endpoint =
         '${customerEndpoint}agent-customer-count/$agentId[customer]';
-    request.customHeaders = await  request.headers();
 
     return request;
   }
@@ -31,7 +30,6 @@ class HomeService implements IHomeService {
     var request = StandardRequest();
     request.requestType = RequestType.GET;
     request.endpoint = 'loans/loan-details/$customerId';
-    request.customHeaders = await request.headers();
 
     return request;
   }

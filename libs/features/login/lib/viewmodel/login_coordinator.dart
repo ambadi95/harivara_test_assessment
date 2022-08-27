@@ -74,12 +74,10 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
 
   Future calljwttoken(
   ) async {
-    // state = LoginState.loading();
     var response = await _loginUseCase.callJWTToken(
          (p0) => null);
     if (response?.status == true) {
       state = LoginState.successState();
-
     } else {
       print(response?.message);
     }
@@ -92,7 +90,7 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
   ) async {
     state = LoginState.loading();
     var response = await _loginUseCase.login(
-        '255' + mobileNumber, passcode, (p0) => null);
+        '+255' + mobileNumber, passcode, (p0) => null);
     if (response?.status == true) {
       state = LoginState.successState();
       _navigationHandler.navigateToOtpScreen(

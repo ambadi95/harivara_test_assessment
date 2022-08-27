@@ -86,7 +86,6 @@ class LoginUseCase extends BaseDataProvider {
   Future<JwtTokenResponse?> callJWTToken(
       Function(String) onErrorCallback) async {
 
-
     await executeApiRequest<JwtTokenResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
@@ -103,10 +102,9 @@ class LoginUseCase extends BaseDataProvider {
 
           JwtTokenResponse jwtTokenResponse = JwtTokenResponse.fromJson(data);
 
-          if(jwtTokenResponse.status==true){
+          if(jwtTokenResponse.status == true){
             _authManager.storeJWTToken(
               jwtTokenResponse.data!.jwttoken!,
-
             );
 
           }

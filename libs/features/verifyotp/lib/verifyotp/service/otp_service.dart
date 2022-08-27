@@ -36,7 +36,6 @@ class OtpService implements IOtpService {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
     request.endpoint = 'otp-gen';
-        request.customHeaders = await request.headers();
     request.jsonBody = json.encode(requestData);
     return request;
   }
@@ -47,7 +46,6 @@ class OtpService implements IOtpService {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
     request.endpoint = 'otp-validate';
-        request.customHeaders = await request.headers();
     request.jsonBody = json.encode(requestData);
     return request;
   }
@@ -58,7 +56,6 @@ class OtpService implements IOtpService {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
     request.endpoint = '${customerEndpoint}otp-gen[customer]';
-        request.customHeaders = await request.headers();
     request.jsonBody = json.encode(requestData);
     return request;
   }
@@ -69,7 +66,6 @@ class OtpService implements IOtpService {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
     request.endpoint = '${customerEndpoint}otp-validate[customer]';
-        request.customHeaders = await request.headers();
     request.jsonBody = json.encode(requestData);
     return request;
   }
