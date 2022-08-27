@@ -121,7 +121,8 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
                   _getVerticalDivider(
                       context,
                       AppUtils.appUtilsInstance
-                          .getPercentageSize(percentage: 10)),
+                          .getPercentageSize(percentage: 50)),
+
                   _getCheckedIcon(
                     context,
                     !_isKycPassEnabled

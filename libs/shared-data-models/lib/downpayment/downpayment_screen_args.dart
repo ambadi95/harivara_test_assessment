@@ -1,5 +1,3 @@
-import 'package:shared_data_models/kyc/kyc_data_model.dart';
-import 'package:shared_data_models/kyc/kyc_type.dart';
 import 'package:shared_data_models/downpayment/downpayment_data_model.dart';
 
 class DownPaymentScreenArgs {

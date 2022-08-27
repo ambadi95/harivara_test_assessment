@@ -25,4 +25,10 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
   Future<String> getAgentName() async {
     return _downPaymentUseCase.getAgentName();
   }
+
+  Future<void> navigateToScanCodeScreen() async {
+    await _navigationHandler.navigateToScanQrCode();
+  }
+
+
 }

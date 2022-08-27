@@ -46,6 +46,9 @@ dependencies:
   verifyotp:
     path: ../verifyotp
 
+  scanqrcode:
+    path: ../scanqrcode
+
 
 
 dev_dependencies:

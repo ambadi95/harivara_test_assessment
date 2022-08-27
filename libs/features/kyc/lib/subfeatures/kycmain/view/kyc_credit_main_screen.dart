@@ -82,9 +82,11 @@ class _KycCreditMainScreenState extends State<KycCreditMainScreen> {
 
   Widget _createLoading(KycCreditMainStateReady state) {
     if (state.isLoading) {
-      return Container(
+      return
+        Container(
         color: Colors.black.withOpacity(0.4),
-        child: const CenteredCircularProgressBar(
+        child: const
+        CenteredCircularProgressBar(
             color: config_colors.PRIMARY_COLOR),
       );
     } else {
@@ -97,35 +99,37 @@ class _KycCreditMainScreenState extends State<KycCreditMainScreen> {
     KycCreditMainCoordinator coordinator,
     KycCreditMainStateReady state,
   ) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _buildTitle(context, coordinator),
-            SizedBox(
-              height:
-                  AppUtils.appUtilsInstance.getPercentageSize(percentage: 5),
-            ),
-            _subTitleMain(context),
-          ],
-        ),
-        const Image(image: AssetImage(AN_Kyc_Credit_Main)),
-        Container(
-          margin: const EdgeInsets.only(bottom: 40),
-          child: Column(
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _getTermsCheckBox(context, coordinator),
-              const SizedBox(
-                height: 20,
+              _buildTitle(context, coordinator),
+              SizedBox(
+                height:
+                    AppUtils.appUtilsInstance.getPercentageSize(percentage: 5),
               ),
-              _buildCheckNowButton(context, coordinator, state),
+              _subTitleMain(context),
             ],
           ),
-        )
-      ],
-      crossAxisAlignment: CrossAxisAlignment.start,
+          const Image(image: AssetImage(AN_Kyc_Credit_Main)),
+          Container(
+            margin: const EdgeInsets.only(bottom: 40),
+            child: Column(
+              children: [
+                _getTermsCheckBox(context, coordinator),
+                const SizedBox(
+                  height: 20,
+                ),
+                _buildCheckNowButton(context, coordinator, state),
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 
@@ -221,7 +225,7 @@ class _KycCreditMainScreenState extends State<KycCreditMainScreen> {
     KycCreditMainState state,
   ) {
     return Padding(
-      padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
+      padding: const EdgeInsets.only(left: 16, right: 16),
       child: GestureDetector(
         onTap: () async {
           if (_isChecked) {
