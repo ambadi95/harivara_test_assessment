@@ -53,7 +53,6 @@ class _LoginState extends State<Login> {
       onStateListenCallback: (preState, newState) =>
           {_listenToStateChanges(context, newState)},
       setupViewModel: (coordinator) async{
-
        await  coordinator.calljwttoken();
       },
       builder: (context, state, coordinator) {

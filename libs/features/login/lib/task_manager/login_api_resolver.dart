@@ -10,6 +10,7 @@ class LoginApiResolver extends TaskResolver {
   Future execute(String identifier, Map<String, dynamic> requestData) {
     switch (identifier) {
       case ILoginService.jwtIdentifier:
+        return _loginService.jwttoken(requestData);
       case ILoginService.loginIdentifier:
         return _loginService.login(requestData);
       case ILoginService.loginAgentIdentifier:

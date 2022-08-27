@@ -27,7 +27,9 @@ class SignupApiResolver extends TaskResolver {
   @override
   Future execute(String identifier, Map<String, dynamic> requestData) {
     switch (identifier) {
-      case ISignupService.signupIdentifier:
+      case ISignupService.jwtIdentifier:
+        return _signupService.jwttoken(requestData);
+        case ISignupService.signupIdentifier:
         return _signupService.signup(
           requestData['nindaNumber'] as String,
           requestData['phoneNo'] as String,
