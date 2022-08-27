@@ -94,7 +94,7 @@ class CustomerDetailsUseCase extends BaseDataProvider {
         });
   }
 
-  Future<CustomerDetailResponse?> submitCustomerDetails(
+  Future<CustomerDetailResponse?> updateCustomerDetails(
       String name,
       String dob,
       String gender,
@@ -124,16 +124,19 @@ class CustomerDetailsUseCase extends BaseDataProvider {
       region: region,
       district: district,
     );
+    print("//////");
+    print({'data': customerDetailsRequest.toJson(), 'userType': userType});
+    print("//////");
     return await executeApiRequest<CustomerDetailResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
         moduleIdentifier: WelcomeModule.moduleIdentifier,
         requestData: {
           'data': customerDetailsRequest.toJson(),
-          'userType': userType
+          'userType': userType,
         },
         serviceIdentifier:
-            ICustomerDetailsService.submitCustomerDetailIdentifier,
+            ICustomerDetailsService.updateCustomerDetails,
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {
           final data = responseData;

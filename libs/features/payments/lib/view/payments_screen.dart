@@ -218,7 +218,13 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
         onTap: () async {
-          coordinator.navigateToPaymentSuccessBottomSheet();
+          try {
+            await coordinator.paymentApi(
+              widget.paymentsScreenArgs.price,
+              "Airtel",
+            );
+            coordinator.navigateToPaymentSuccessBottomSheet();
+          } catch (e) {}
         },
         child: Container(
           width: double.infinity,

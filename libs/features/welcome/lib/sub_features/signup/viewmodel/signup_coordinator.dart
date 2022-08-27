@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:core/logging/logger.dart';
 import 'package:shared_data_models/signup/sign_up_type.dart';
 import 'package:task_manager/base_classes/base_view_model.dart';
 import 'package:welcome/sub_features/signup/state/signup_state.dart';
@@ -64,8 +65,18 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
       _navigationHandler
           .navigateToOtpScreenAgentResetPasscode(signUpArguments.userType);
     } else if (signUpArguments.signupType == SignupType.resetPasscodeCustomer) {
-      _navigationHandler
-          .navigateToOtpScreenAgentResetPasscode(signUpArguments.userType);
+      var detailResponse = await _signupUseCase.getCustomerDetails(nindaNumber, mobileNumber, (p0) => null);
+      if(detailResponse?.status == true){
+        await _signupUseCase
+            .saveCustomerId(detailResponse!.data?.customerId.toString());
+        String customerID = detailResponse.data!.customerId.toString();
+        _navigationHandler.navigateToOtpScreenCustomerResetPasscode('Customer',mobileNumber,customerID);
+      }else{
+        state = SignUpState.mobileNumberError(detailResponse!.message!);
+        CrayonPaymentLogger.logError(detailResponse.message!);
+      }
+      // _navigationHandler
+      //     .navigateToOtpScreenAgentResetPasscode(signUpArguments.userType);
     } else if (signUpArguments.signupType == SignupType.agentSignUp) {
       state = const SignUpState.loadingState();
       var agentResponse =

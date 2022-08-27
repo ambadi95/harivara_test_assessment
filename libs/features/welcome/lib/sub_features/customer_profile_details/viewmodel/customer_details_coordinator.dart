@@ -1,5 +1,6 @@
 import 'package:config/Config.dart';
 import 'package:core/mobile_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/src/widgets/focus_manager.dart';
 import 'package:shared_data_models/customer_onboard/region_district/region_response/datum.dart';
 import 'package:shared_data_models/customer_onboard/region_district/district_response/datum.dart'
@@ -48,6 +49,8 @@ class CustomerDetailsCoordinator extends BaseViewModel<CustomerDetailsState> {
         await _customerDetailsUseCase.getCustomerDetails((p0) => null);
     if (response?.status == true) {
       CrayonPaymentLogger.logInfo(response!.data!.referenceId!.toString());
+      state = CustomerDetailsState.getRegion(response.data!.region!);
+      state = CustomerDetailsState.getDistrict(response.data!.district!);
       return response;
     } else {
       CrayonPaymentLogger.logInfo(response!.message!);
@@ -82,7 +85,6 @@ class CustomerDetailsCoordinator extends BaseViewModel<CustomerDetailsState> {
       String poBox,
       String region,
       String district) {
-    print("dfgfg${gender}");
     var isnNameValid = _customerDetailsUseCase.isValidName(name);
     var isMobileNoValid = mobNumber.isNotEmpty;
     var isDobValid = dob.isNotEmpty;
@@ -237,20 +239,20 @@ class CustomerDetailsCoordinator extends BaseViewModel<CustomerDetailsState> {
     return result;
   }
 
-  Future submitDetails(
+  Future updateDetails(
     String name,
     String dob,
     String gender,
     String address,
-    String profession,
+    String district,
     String emailId,
     String poBox,
+    String profession,
     String region,
-    String district,
     UserType userType,
   ) async {
     state = const CustomerDetailsState.LoadingState();
-    var response = await _customerDetailsUseCase.submitCustomerDetails(
+    var response = await _customerDetailsUseCase.updateCustomerDetails(
         name,
         dob,
         gender,
@@ -264,10 +266,15 @@ class CustomerDetailsCoordinator extends BaseViewModel<CustomerDetailsState> {
         userType);
     if (response?.status == true) {
       state = const CustomerDetailsState.initialState();
-      navigateToCreatePasscodeScreen(userType);
+      if (kDebugMode) {
+        print(response?.message);
+      }
+      //   navigateToCreatePasscodeScreen(userType);
     } else {
       state = const CustomerDetailsState.initialState();
-      print(response?.message);
+      if (kDebugMode) {
+        print(response?.message);
+      }
     }
   }
 }

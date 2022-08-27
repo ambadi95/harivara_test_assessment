@@ -33,8 +33,8 @@ class RegistrationApproval extends StatefulWidget {
 }
 
 class _SignUpState extends State<RegistrationApproval> {
-  bool _isBtnEnabled = true;
-  bool _agentAidCustomerOnBoarding = true;
+  bool _isBtnEnabled = false;
+  bool _agentAidCustomerOnBoarding = false;
   bool _customerApproval = false;
 
   @override
@@ -220,7 +220,6 @@ class _SignUpState extends State<RegistrationApproval> {
 
   Widget _selectableCard(
       bool selected, String image, String title, Function() onTap) {
-    print(selected);
     return InkWell(
       onTap: onTap,
       child: Container(
@@ -277,13 +276,13 @@ class _SignUpState extends State<RegistrationApproval> {
         const SizedBox(
           height: 24,
         ),
-        // _selectableCard (_customerApproval,RC_customer_approval,'RC_customer_approval',(){
-        //   setState(() {
-        //     _agentAidCustomerOnBoarding = false;
-        //     _customerApproval = true;
-        //     _isBtnEnabled = true;
-        //   });
-        // })
+        _selectableCard (_customerApproval,RC_customer_approval,'RC_customer_approval',(){
+          setState(() {
+            _agentAidCustomerOnBoarding = false;
+            _customerApproval = true;
+            _isBtnEnabled = true;
+          });
+        })
       ],
     );
   }

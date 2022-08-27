@@ -1,3 +1,5 @@
+import 'package:config/Colors.dart';
+import 'package:config/Styles.dart';
 import 'package:core/translation/app_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -32,7 +34,7 @@ class AlertBottomSheet extends StatelessWidget {
         Container(
           width: double.infinity,
           padding:
-              const EdgeInsets.only(left: 30, right: 30, top: 47, bottom: 68),
+              const EdgeInsets.only(left: 30, right: 30, top: 47, bottom: 33),
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.only(
@@ -50,7 +52,7 @@ class AlertBottomSheet extends StatelessWidget {
                   if (alertIcon != null)
                     Image.asset(
                       '$alertIcon',
-                      scale: 2.0,
+                      scale: 1.0,
                     ),
                   SizedBox(
                     height: 36,
@@ -80,13 +82,13 @@ class AlertBottomSheet extends StatelessWidget {
                       color: Color(0xff676767),
                     ),
                   ),
-                  if (onBottomButtonPress != null &&
-                      bottomButtonText!.isNotEmpty)
+                  if (onBottomButtonPress != null && bottomButtonText!.isNotEmpty
+                     )
                     SizedBox(
                       height: 32,
                     ),
-                  if (onBottomButtonPress != null &&
-                      bottomButtonText!.isNotEmpty)
+                  if (onBottomButtonPress != null && bottomButtonText!.isNotEmpty
+                     )
                     _requestOtpButton(context, bottomButtonText)
                 ],
               ),
@@ -107,10 +109,26 @@ class AlertBottomSheet extends StatelessWidget {
   }
 
   Widget _requestOtpButton(BuildContext context, String? onBottomButtonText) {
-    return CrayonPaymentDockedButton(
-      title: AppLocalizations.of(context)!.translate(onBottomButtonText!),
-      buttonColor: const Color(0xff23211E),
-      onPressed: () => onBottomButtonPress!(),
+    return GestureDetector(
+      onTap:() => onBottomButtonPress!(),
+      child: Container(
+        width: double.infinity,
+        height: 50,
+        decoration: BoxDecoration(
+            color: SU_button_color,
+            borderRadius: BorderRadius.circular(8.0)),
+        child: Center(
+          child: Text(
+            onBottomButtonText!,
+            style: SU_button_text_style,
+          ),
+        ),
+      ),
     );
+    // return CrayonPaymentDockedButton(
+    //   title: onBottomButtonText!,
+    //   buttonColor: const Color(0xff23211E),
+    //   onPressed: () => onBottomButtonPress!(),
+    // );
   }
 }

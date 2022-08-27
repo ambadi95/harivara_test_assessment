@@ -31,8 +31,9 @@ class HomeCoordinator extends BaseViewModel<HomeScreenState> {
     _navigationHandler.navigateToSettingsScreen();
   }
 
-  void navigateToLoanDetailScreen() {
-    _navigationHandler.navigateToLoanDetailScreen();
+  void navigateToLoanDetailScreen(LoanDetailResponse loanDetailResponse) {
+
+    _navigationHandler.navigateToLoanDetailScreen(loanDetailResponse);
   }
 
   void navigationToBottomSheet() {
@@ -77,5 +78,4 @@ class HomeCoordinator extends BaseViewModel<HomeScreenState> {
       return response;
     }
   }
-
 }

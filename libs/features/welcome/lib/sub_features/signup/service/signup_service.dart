@@ -9,6 +9,7 @@ abstract class ISignupService {
   static const signupIdentifier = 'signup';
   static const signUpAgentIdentifier = 'signUpAgent';
   static const signUpCustomerByAgent = 'signUpCustomerByAgent';
+  static const getCustomerDetailIdentifier = 'getCustomerDetail';
 
   Future<StandardRequest> jwttoken(
     Map<String, dynamic> requestData,
@@ -23,6 +24,12 @@ abstract class ISignupService {
     String nidaNumber,
     String agentId,
   );
+
+  Future<StandardRequest> getCustomerDetail(
+      String nindaNumber,
+      String phoneNo,
+      );
+
 
   Future<StandardRequest> signupCustomerByAgent(
       {required String nidaNumber,
@@ -90,6 +97,24 @@ class SignupService implements ISignupService {
     CrayonPaymentLogger.logInfo(request.jsonBody.toString());
     CrayonPaymentLogger.logInfo(token);
 
+    return request;
+  }
+
+  @override
+  Future<StandardRequest> getCustomerDetail(
+      String nindaNumber,
+      String phoneNo,
+      ) async {
+    var request = StandardRequest();
+    request.requestType = RequestType.GET;
+    request.endpoint = 'customer-details';
+    request.customHeaders = {
+      'Content-Type': 'application/json',
+    };
+    request.jsonBody = json.encode({
+      'nidaNo': nindaNumber,
+      'mobileNo': '+255' + phoneNo,
+    });
     return request;
   }
 }

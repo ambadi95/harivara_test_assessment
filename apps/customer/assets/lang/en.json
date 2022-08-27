@@ -98,8 +98,8 @@
   "WB_WelcomeBack": "Welcome back to Y9",
   "WB_EnterPassCode": "Enter Passcode",
   "AN_Title": "Agents Near by",
-  "AN_Search": "Search by Name / Id/ Region / District/ Po#",
-  "AN_AgentName": "Y9 Agent ID:",
+  "AN_Search": "Search by Region / District",
+  "AN_AgentName": "Y9 Agent id: ",
   "AN_Call": "Call",
 
 
@@ -235,6 +235,7 @@
   "LR_pay_now" : "Pay Now",
   "LR_payment_label" : "Payment of {} will be adjusted in total \nPayable amount",
   "LR_proceed" : "Proceed",
+
 
 
   "CA_custom_amount" : "Pay Custom Amount"
