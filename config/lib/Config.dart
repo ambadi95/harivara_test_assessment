@@ -14,7 +14,7 @@ const DO_BackArrow = 'assets/images/back_arrow.png';
 const LS_BackArrow = 'assets/images/back_arrow.png';
 const LS_Flag = 'assets/images/flag.png';
 const RC_new_customer = 'assets/images/new_customer_icon.svg';
-const RC_customer_approval = 'assets/images/customer_approval_icon.png';
+const RC_customer_approval = 'assets/images/customer_approval_icon.svg';
 
 const AN_Kyc_Airtel = 'assets/images/kyc_airtel.png';
 const AN_Kyc_Credit_Check = 'assets/images/credit_check.png';

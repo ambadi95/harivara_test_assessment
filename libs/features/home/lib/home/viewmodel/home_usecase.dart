@@ -28,7 +28,6 @@ class HomeUserCase extends BaseDataProvider {
     return await getValueFromSecureStorage('agentName', defaultValue: '');
   }
 
-
   Future<String> getCustomerName() async {
     return await getValueFromSecureStorage('CustomerName', defaultValue: '');
   }
@@ -66,7 +65,7 @@ class HomeUserCase extends BaseDataProvider {
         modelBuilderCallback: (responseData) {
           final data = responseData;
           LoanDetailResponse loanDetailResponse =
-          LoanDetailResponse.fromJson(data);
+              LoanDetailResponse.fromJson(data);
           return loanDetailResponse;
         });
   }

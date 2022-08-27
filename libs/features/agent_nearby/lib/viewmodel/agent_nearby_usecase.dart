@@ -6,6 +6,7 @@ import 'package:shared_data_models/agent_nearby/agents_near_by_response/agents_n
 import '../agent_nearby_module.dart';
 import '../service/agents_nearby_service.dart';
 import 'agent_nearby_viewmodel.dart';
+import 'package:shared_data_models/agent_nearby/agents_near_by_list/agents_near_by_list.dart';
 
 class AgentNearbyUseCase extends BaseDataProvider {
   final AgentNearbyViewModel _agentNearbyViewModel;
@@ -41,9 +42,9 @@ class AgentNearbyUseCase extends BaseDataProvider {
     return distance;
   }
 
-  Future<AgentsNearByResponse?> agentsNearBy(
+  Future<AgentsNearByList?> agentsNearBy(
       String genericSearchValue, Function(String) onErrorCallback) async {
-    return await executeApiRequest<AgentsNearByResponse?>(
+    return await executeApiRequest<AgentsNearByList?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
         moduleIdentifier: AgentNearByModule.moduleIdentifier,
@@ -55,9 +56,9 @@ class AgentNearbyUseCase extends BaseDataProvider {
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {
           final data = responseData;
-          AgentsNearByResponse agentsNearByResponse =
-              AgentsNearByResponse.fromMap(data);
-          return AgentsNearByResponse.fromMap(data);
+          AgentsNearByList agentsNearByList =
+          AgentsNearByList.fromMap(data);
+          return AgentsNearByList.fromMap(data);
         });
   }
 }

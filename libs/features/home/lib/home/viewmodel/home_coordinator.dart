@@ -77,5 +77,4 @@ class HomeCoordinator extends BaseViewModel<HomeScreenState> {
       return response;
     }
   }
-
 }

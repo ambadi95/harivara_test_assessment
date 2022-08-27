@@ -25,8 +25,9 @@ class LoanDetailScreen extends StatefulWidget {
   static const viewPath = '${LoanDetailModule.moduleIdentifier}/loandetail';
   //final LoanDetailArgs loanDetailArgs;
 
-  const LoanDetailScreen({Key? key, })
-      : super(key: key);
+  const LoanDetailScreen({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<LoanDetailScreen> createState() => _LoanDetailScreenState();
