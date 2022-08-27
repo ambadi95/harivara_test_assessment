@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:config/Config.dart';
 import 'package:core/logging/logger.dart';
 import 'package:network_manager/model/requests/request.dart';
 import 'package:network_manager/model/requests/standard/standard_request.dart';
@@ -71,7 +72,7 @@ class SignupService implements ISignupService {
       required String token}) async {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
-    request.endpoint = 'register-customer';
+    request.endpoint = '${customerEndpoint}register-customer[customer]';
     request.customHeaders = {
       'Content-Type': 'application/json',
       'Authorization': token,

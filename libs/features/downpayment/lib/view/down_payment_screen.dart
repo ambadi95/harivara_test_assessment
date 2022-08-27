@@ -111,7 +111,7 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
         // _image(context)
 
         Expanded(
-          flex: 2,
+          flex: 5,
           child: Row(
             children: [
               Column(
@@ -165,7 +165,7 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
         ),
 
         Expanded(
-          flex: 4,
+          flex: 5,
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -265,7 +265,9 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
-        onTap: () async {},
+        onTap: () async {
+          await coordinator.navigateToScanCodeScreen();
+        },
         child: Container(
           width: double.infinity,
           height: 50,

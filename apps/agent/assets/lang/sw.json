@@ -106,6 +106,13 @@
   "SU_reset_subtitle": "You can Reset the passcode here using OTP sent to your registered mobile number",
   "SU_update_passcode": "Update Passcode",
   "SU_update_subtitle": "You can Update the passcode here using OTP sent to your registered mobile number",
+  "SU_scan_code_IMEI1_button" : "Changanua Msimbo wa QR wa IMEI1",
+  "SU_enter_IMEI1_button" : "Ingiza IMEI1",
+  "SU_scan_code_IMEI2_button" : "Changanua Msimbo wa QR wa IMEI2",
+  "SU_enter_IMEI2_button" : "Ingiza IMEI2",
+  "SU_register_device_button" : "Sajili Kifaa",
+  "SU_or_text" : "AU",
+
   "DV_title": "Ingiza Maelezo ya Kibinafsi",
   "DV_profile": "Profile",
   "DV_subtitle": "Thibitisha maelezo yako au usasishe ikiwa inahitajika",

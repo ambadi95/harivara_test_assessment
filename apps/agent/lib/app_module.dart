@@ -40,6 +40,8 @@ import 'package:network_manager/network_manager.dart';
 import 'package:network_manager/utils/connectivity/i_connectivity.dart';
 import 'package:passcode/navigation_handler/passcode_route_manager.dart';
 import 'package:passcode/passcode_module.dart';
+import 'package:scanqrcode/navigation_handler/scanqrcode_route_manager.dart';
+import 'package:scanqrcode/scanqrcode_module.dart';
 import 'package:settings/navigation_handler/settings_route_manager.dart';
 import 'package:splash/splash_module.dart';
 import 'package:task_manager/cache_manager/storage/file_storage/file_storage_service_impl.dart';
@@ -119,7 +121,10 @@ class AppModule {
     SettingsModule.registerDependencies();
 
     KycCreditModule.registerDependencies();
+
     DownPaymentModule.registerDependencies();
+
+    ScanQRCodeModule.registerDependencies();
 
     KycCreditMainModule.registerDependencies();
 
@@ -204,9 +209,15 @@ void _registerRouteManagers() {
     KycCreditModule.moduleIdentifier,
     KycCreditRouteManager(),
   );
+
  navigationManagerContainer.registerRouteManager(
     DownPaymentModule.moduleIdentifier,
    DownPaymentRouteManager(),
+  );
+
+  navigationManagerContainer.registerRouteManager(
+    ScanQRCodeModule.moduleIdentifier,
+    ScanQRCodeRouteManager(),
   );
 
   navigationManagerContainer.registerRouteManager(
