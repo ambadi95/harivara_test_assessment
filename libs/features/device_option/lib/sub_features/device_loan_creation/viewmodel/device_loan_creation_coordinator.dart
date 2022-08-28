@@ -8,23 +8,17 @@ import 'package:shared_data_models/device_option/detail_detail_response/data.dar
 
 import '../../../navigation_handler/device_option_navigation_handler.dart';
 
-
 class DeviceLoanCreationCoordinator
     extends AnalyticsStateNotifier<DeviceLoanCreationState> {
   final DeviceOptionNavigationHandler _navigationHandler;
   final DeviceLoanCreationUseCase _DeviceOptionUseCase;
 
   DeviceLoanCreationCoordinator(
-      this._navigationHandler,
-      this._DeviceOptionUseCase,
-      ) : super(const DeviceLoanCreationState.initialState());
+    this._navigationHandler,
+    this._DeviceOptionUseCase,
+  ) : super(const DeviceLoanCreationState.initialState());
 
-  void navigateToDownPayment(Data? detailDetail) async{
-
+  void navigateToDownPayment(Data? detailDetail) async {
     await _navigationHandler.navigateToDownPaymentScreen(detailDetail);
-
-
   }
-
-
 }

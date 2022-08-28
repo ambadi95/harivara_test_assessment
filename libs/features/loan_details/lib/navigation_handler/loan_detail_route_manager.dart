@@ -5,15 +5,14 @@ import 'package:loan_details/view/loan_detail_screen.dart';
 import 'package:shared_data_models/kyc/kyc_screen_args.dart';
 import 'package:shared_data_models/loan_detail/loan_detail_screen_args.dart';
 
-
 class LoanDetailRouteManager extends IRouteManager {
   @override
   Widget getView(RouteSettings settings) {
     switch (settings.name) {
       case LoanDetailScreen.viewPath:
-        var arguments = settings.arguments as LoanDetailArgs;
+       var arguments = settings.arguments as LoanDetailArgs;
         return LoanDetailScreen(
-           loanDetailArgs: arguments,
+          loanDetailArgs: arguments,
         );
       default:
         // TODO: implement getView

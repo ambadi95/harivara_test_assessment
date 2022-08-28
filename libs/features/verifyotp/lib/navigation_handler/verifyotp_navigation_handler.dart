@@ -1,6 +1,8 @@
 import 'package:config/Config.dart';
 import 'package:core/navigation/navigation_manager.dart';
 import 'package:core/navigation/navigation_type.dart';
+import 'package:home/home/home_screen_arguments.dart';
+import 'package:home/home/view/home_screen.dart';
 import 'package:shared_data_models/passcode/passcode_screen_args.dart';
 import 'package:shared_data_models/passcode/passcode_verification_type.dart';
 import 'package:passcode/sub_features/passcode/view/passcode.dart';
@@ -67,7 +69,7 @@ class VerifyOtpNavigationHandler with ErrorHandler {
       'welcomeModule/enrollmentSuccess',
       false,
       3,
-      PassCodeVerificationType.agentResetPasscode,
+      PassCodeVerificationType.customerResetPasscode,
       false,
       '',
       userType,
@@ -85,6 +87,13 @@ class VerifyOtpNavigationHandler with ErrorHandler {
     var args = WelcomeScreenArgs('', '', userType, true);
     _navigationManager.navigateTo(
         CrayonWelcomScreen.viewPath, const NavigationType.replace(),
+        arguments: args);
+  }
+
+  Future<void> navigateToHomeScreen(UserType userType) async {
+    var args = HomeScreenArgs(userType: userType, isAgent: false);
+    _navigationManager.navigateTo(
+        CrayonHomeScreen.viewPath, const NavigationType.replace(),
         arguments: args);
   }
 

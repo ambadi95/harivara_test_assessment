@@ -48,7 +48,6 @@ class PasscodeNavigationHandler with ErrorHandler {
         CrayonPaymentBottomSheetSuccessIcon();
     final CrayonPaymentBottomSheetState infoState =
         CrayonPaymentBottomSheetState.agentEnrollment(
-
       buttonOptions: [
         ButtonOptions(Black, buttonLabel, () => navigateToAgentHome(), false)
       ],
@@ -78,6 +77,28 @@ class PasscodeNavigationHandler with ErrorHandler {
             bottomSheetIcon: icon,
             title: message,
             additionalText: [description]);
+
+    _navigationManager.navigateTo(
+      'bottomSheet/crayonPaymentBottomSheet',
+      const NavigationType.bottomSheet(),
+      arguments: infoState,
+    );
+  }
+
+  Future<void> navigateToResetPasscodeBottomSheetCustomer(
+      String message, String buttonLabel, String description) async {
+    final CrayonPaymentBottomSheetIcon icon =
+    CrayonPaymentBottomSheetSuccessIcon();
+    final CrayonPaymentBottomSheetState infoState =
+    CrayonPaymentBottomSheetState.agentEnrollment(
+        buttonOptions: [
+          ButtonOptions(
+              Black, buttonLabel, () => navigateToAgentHome(), false)
+        ],
+        disableCloseButton: true,
+        bottomSheetIcon: icon,
+        title: message,
+        additionalText: [description]);
 
     _navigationManager.navigateTo(
       'bottomSheet/crayonPaymentBottomSheet',

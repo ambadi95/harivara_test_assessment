@@ -1,5 +1,6 @@
 import 'package:config/Config.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_data_models/loan_detail/response/loan_detail_response/loan_detail_response.dart';
 import 'package:task_manager/base_classes/base_view_model.dart';
 import 'package:shared_data_models/home/customerCount/customer_count_response/data.dart';
 import '../navigation_handler/home_navigation_handler.dart';
@@ -30,8 +31,14 @@ class HomeCoordinator extends BaseViewModel<HomeScreenState> {
     _navigationHandler.navigateToSettingsScreen();
   }
 
-  void navigationToBottomSheet(){
-    _navigationHandler.navigateToLoanRepaymentBottomSheet("message", "buttonLabel");
+  void navigateToLoanDetailScreen(LoanDetailResponse loanDetailResponse) {
+
+    _navigationHandler.navigateToLoanDetailScreen(loanDetailResponse);
+  }
+
+  void navigationToBottomSheet() {
+    _navigationHandler.navigateToLoanRepaymentBottomSheet(
+        "message", "buttonLabel");
   }
 
   Future<String> getAgentId() async {
@@ -44,6 +51,16 @@ class HomeCoordinator extends BaseViewModel<HomeScreenState> {
     return agentName;
   }
 
+  Future<String> getCustomerId() async {
+    String agentId = await _customerHomeUseCase.getCustomerId();
+    return agentId;
+  }
+
+  Future<String> getCustomerName() async {
+    String agentName = await _customerHomeUseCase.getCustomerName();
+    return agentName;
+  }
+
   Future<Data> getCustomerCount() async {
     print('jhgsdjahgsdjgsa');
     var response = await _customerHomeUseCase.getCustomerCount((p0) => null);
@@ -52,6 +69,13 @@ class HomeCoordinator extends BaseViewModel<HomeScreenState> {
       return response!.data!;
     } else {
       return const Data(enrolledCustomer: '0', initiatedCustomer: '0');
+    }
+  }
+
+  Future<LoanDetailResponse?> getLoanDetails() async {
+    var response = await _customerHomeUseCase.getLoanDetails((p0) => null);
+    if (response?.status == true) {
+      return response;
     }
   }
 }

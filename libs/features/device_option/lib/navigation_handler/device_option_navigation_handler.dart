@@ -10,11 +10,8 @@ import 'package:widget_library/helpers/error/helper/error_helper.dart';
 import '../sub_features/device_details/view/device_detail_screen.dart';
 import 'package:shared_data_models/device_option/detail_detail_response/data.dart';
 
-
 import 'package:shared_data_models/downpayment/downpayment_data_model.dart';
 import 'package:downpayment/view/down_payment_screen.dart';
-
-
 
 class DeviceOptionNavigationHandler with ErrorHandler {
   final NavigationManager _navigationManager;
@@ -45,7 +42,8 @@ class DeviceOptionNavigationHandler with ErrorHandler {
   }
 
   navigateToDownPaymentScreen(Data? detailDetail) {
-    var arguments=  DownPaymentScreenArgs("","","","",[DownPaymentDataModel(title: "",isSelected: false)]);
+    var arguments = DownPaymentScreenArgs(
+        "", "", "", "", [DownPaymentDataModel(title: "", isSelected: false)]);
     _navigationManager.navigateTo(
         DownPaymentScreen.viewPath, const NavigationType.push(),
         arguments: arguments);

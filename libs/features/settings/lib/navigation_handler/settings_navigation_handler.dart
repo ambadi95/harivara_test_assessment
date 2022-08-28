@@ -1,3 +1,4 @@
+import 'package:agent_nearby/view/agent_nearby_screen.dart';
 import 'package:config/Colors.dart';
 import 'package:core/navigation/navigation_manager.dart';
 import 'package:core/navigation/navigation_type.dart';
@@ -28,11 +29,11 @@ class SettingsNavigationHandler with ErrorHandler {
     _navigationManager.goBack();
   }
 
-  Future<void> navigateToSignUpScreen() async {
+  Future<void> navigateToSignUpScreen(UserType userType) async {
     var arguments = SignUpArguments(
       'SU_update_passcode',
       'SU_update_subtitle',
-      UserType.Agent,
+      userType,
       SignupType.resetPasscodeAgent,
       false,
     );
@@ -71,8 +72,9 @@ class SettingsNavigationHandler with ErrorHandler {
         AgentDetailsScreen.viewPath, const NavigationType.push(),
         arguments: arguments);
   }
+
   Future<void> navigateToCustomerDetailScreen() async {
-    var arguments = UserType.Customer ;
+    var arguments = UserType.Customer;
     await _navigationManager.navigateTo(
         CustomerDetailsScreen.viewPath, const NavigationType.push(),
         arguments: arguments);
@@ -85,10 +87,17 @@ class SettingsNavigationHandler with ErrorHandler {
         arguments: arguments);
   }
 
- Future<void> navigateToTermsCondtionsScreen() async {
-   var arguments = TermsConditionAndFaqScreenArgs(isFAQ: true);
-   _navigationManager.navigateTo(
-       CrayonTermsCondition.viewPath,
-       const NavigationType.push(),arguments: arguments);
+  Future<void> navigateToTermsCondtionsScreen(bool isFaq) async {
+    var arguments = TermsConditionAndFaqScreenArgs(isFAQ: isFaq);
+    _navigationManager.navigateTo(
+        CrayonTermsCondition.viewPath, const NavigationType.push(),
+        arguments: arguments);
+  }
+
+  Future<void> navigateToAgentNearBy() async {
+    await _navigationManager.navigateTo(
+      AgentNearBy.viewPath,
+      const NavigationType.push(),
+    );
   }
 }

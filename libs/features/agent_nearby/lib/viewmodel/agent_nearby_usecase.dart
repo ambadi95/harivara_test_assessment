@@ -6,6 +6,7 @@ import 'package:shared_data_models/agent_nearby/agents_near_by_response/agents_n
 import '../agent_nearby_module.dart';
 import '../service/agents_nearby_service.dart';
 import 'agent_nearby_viewmodel.dart';
+import 'package:shared_data_models/agent_nearby/agents_near_by_list/agents_near_by_list.dart';
 
 class AgentNearbyUseCase extends BaseDataProvider {
   final AgentNearbyViewModel _agentNearbyViewModel;
@@ -29,35 +30,35 @@ class AgentNearbyUseCase extends BaseDataProvider {
     return locationError;
   }
 
-  Future<LocationData> getCurrentLocation ()async{
+  Future<LocationData> getCurrentLocation() async {
     var locationData = await _agentNearbyViewModel.getCurrentLocation();
     return locationData;
   }
 
-  double calculateDistance(double currentLat,double currentLong,double lat,double long){
-    var distance = _agentNearbyViewModel.calculateDistance(currentLat, currentLong, lat, long);
+  double calculateDistance(
+      double currentLat, double currentLong, double lat, double long) {
+    var distance = _agentNearbyViewModel.calculateDistance(
+        currentLat, currentLong, lat, long);
     return distance;
   }
 
-  Future<AgentsNearByResponse?> agentsNearBy(String genericSearchValue,
-      Function(String) onErrorCallback) async {
-
-    return await executeApiRequest<AgentsNearByResponse?>(
+  Future<AgentsNearByList?> agentsNearBy(
+      String genericSearchValue, Function(String) onErrorCallback) async {
+    return await executeApiRequest<AgentsNearByList?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
         moduleIdentifier: AgentNearByModule.moduleIdentifier,
         requestData: {
-          'genericSearchValue' : genericSearchValue
+          'genericSearchValue': genericSearchValue
           //pass token
         },
         serviceIdentifier: IAgentsNearByService.agentsIdentifier,
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {
-
           final data = responseData;
-          AgentsNearByResponse agentsNearByResponse =
-          AgentsNearByResponse.fromMap(data);
-          return AgentsNearByResponse.fromMap(data);
+          AgentsNearByList agentsNearByList =
+          AgentsNearByList.fromMap(data);
+          return AgentsNearByList.fromMap(data);
         });
   }
 }

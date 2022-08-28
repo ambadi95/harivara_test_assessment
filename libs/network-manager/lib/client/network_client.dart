@@ -223,10 +223,11 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
         request.customHeaders = {
           'Authorization': value,
           'Content-Type': 'application/json',
+
         };
       });
     }
-
+     request.customHeaders =await request.headers();
     final headers = buildHeaders(request.customHeaders);
     CrayonPaymentLogger.logDebug<NetworkClient>(
       'Sending POST request to the server for url: ${uri.toString()}',

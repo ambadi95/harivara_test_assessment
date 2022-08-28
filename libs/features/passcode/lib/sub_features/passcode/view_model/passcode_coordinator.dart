@@ -74,7 +74,7 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
         break;
       case PassCodeVerificationType.agentVerifyResetPasscode:
         await verifyPasscodeReset(currentState.initialPasscode, passCode,
-            currentState.destinationPath, userType);
+            currentState.destinationPath, 'Agent');
         break;
       case PassCodeVerificationType.agentSignIn:
         _navigationHandler
@@ -86,6 +86,34 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
       case PassCodeVerificationType.agentCustomerPasscode:
         // TODO: Handle this case.
         break;
+      case PassCodeVerificationType.customerResetPasscode:
+        createPassCodeResetCustomer(passCode);
+        // TODO: Handle this case.
+        break;
+      case PassCodeVerificationType.verifyResetCustomerPasscode:
+      // TODO: Handle this case.
+        verifyPasscodeReset(currentState.initialPasscode, passCode,
+            currentState.destinationPath, 'Customer');
+        break;
+    }
+  }
+
+  Future<void> createPassCodeResetCustomer(String passcode) async {
+    var currentState = state as CreatePasscodeReady;
+    var error = await _passcodeUseCase.validateCustomerPasscode(passcode);
+    if (error.isEmpty) {
+      state = currentState.copyWith(
+        passCodeVerificationType: PassCodeVerificationType.verifyResetCustomerPasscode,
+        pageTitle: 'PC_confirm_passcode',
+        pageDescription: 'PC_re_enter_passcode',
+        currentPasscode: '',
+        initialPasscode: passcode,
+      );
+    } else {
+      state = currentState.copyWith(
+        pageDescription: 'PC_passcode_repetitive_message',
+        currentPasscode: '',
+      );
     }
   }
 
@@ -197,22 +225,32 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
     }
   }
 
+
   Future<void> verifyPasscodeReset(
-    String oldPassCode,
-    String newPasscode,
-    String destinationPath,
-    UserType userType,
-  ) async {
+      String oldPassCode,
+      String newPasscode,
+      String destinationPath,
+      String userType,
+      ) async {
     var currentState = state as CreatePasscodeReady;
     if (oldPassCode == newPasscode) {
       state = currentState.copyWith(currentStep: 5);
       await _passcodeUseCase.savePassCodeLocal(newPasscode);
-      if (userType == UserType.Customer) {
-        _navigationHandler.navigateToCustomerEnrollmentScreen(
-            destinationPath, true, UserType.Customer);
+      if (userType == "Customer") {
+        var resetResponse = await _passcodeUseCase.resetPasscodeCustomer(newPasscode, userType, (p0) => null);
+        if(resetResponse?.status == true) {
+          _navigationHandler.navigateToResetPasscodeBottomSheet(
+            'RP_success_message'.tr,
+            'SU_button_text'.tr,
+            'PR_message'.tr,
+          );
+        }else{
+          CrayonPaymentLogger.logError(resetResponse!.message!);
+        }
+        // _navigationHandler.navigateToCustomerEnrollmentScreen(
+        //     destinationPath, true, UserType.Customer);
       } else {
-        _navigationHandler.navigateToResetPasscodeBottomSheet(
-            'RP_Passcode_Reset'.tr, 'RP_Continue'.tr, 'RP_Passcode_Desc'.tr);
+
       }
     } else {
       state = currentState.copyWith(

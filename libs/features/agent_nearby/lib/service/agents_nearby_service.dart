@@ -17,9 +17,6 @@ class AgentsNearByService implements IAgentsNearByService {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
     request.endpoint = 'nearby-agents';
-    request.customHeaders = {
-      'Content-Type': 'application/json',
-    };
     request.jsonBody = json.encode({"genericSearchValue": genericSearchValue});
     return request;
   }

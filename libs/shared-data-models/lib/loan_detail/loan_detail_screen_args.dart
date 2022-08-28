@@ -1,21 +1,15 @@
 import 'package:shared_data_models/kyc/kyc_data_model.dart';
 import 'package:shared_data_models/kyc/kyc_type.dart';
+import 'package:shared_data_models/loan_detail/response/loan_detail_response/loan_detail_response.dart';
 import 'package:shared_data_models/passcode/passcode_verification_type.dart';
 
 class LoanDetailArgs {
-  /*final KycFieldType kycFieldType;*/
-  final String image;
-  final String title;
-  final String subTitle;
-  final String destinationPath;
-  /*final List<KYCDataModel> kycDataModelList;*/
+ final  LoanDetailResponse loanDetailResponse;
 
   LoanDetailArgs(
     /*this.kycFieldType,*/
-    this.image,
-    this.title,
-    this.subTitle,
-    this.destinationPath,
+    this.loanDetailResponse,
+
     /*this.kycDataModelList,*/
   );
 }
