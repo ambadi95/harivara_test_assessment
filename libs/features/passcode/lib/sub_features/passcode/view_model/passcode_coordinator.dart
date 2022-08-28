@@ -70,7 +70,7 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
         );
         break;
       case PassCodeVerificationType.agentResetPasscode:
-        createResetPassCode(passCode);
+        createPassCodeResetAgent(passCode);
         break;
       case PassCodeVerificationType.agentVerifyResetPasscode:
         await verifyPasscodeReset(currentState.initialPasscode, passCode,
@@ -104,6 +104,25 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
     if (error.isEmpty) {
       state = currentState.copyWith(
         passCodeVerificationType: PassCodeVerificationType.verifyResetCustomerPasscode,
+        pageTitle: 'PC_confirm_passcode',
+        pageDescription: 'PC_re_enter_passcode',
+        currentPasscode: '',
+        initialPasscode: passcode,
+      );
+    } else {
+      state = currentState.copyWith(
+        pageDescription: 'PC_passcode_repetitive_message',
+        currentPasscode: '',
+      );
+    }
+  }
+
+  Future<void> createPassCodeResetAgent(String passcode) async {
+    var currentState = state as CreatePasscodeReady;
+    var error = await _passcodeUseCase.validateCustomerPasscode(passcode);
+    if (error.isEmpty) {
+      state = currentState.copyWith(
+        passCodeVerificationType: PassCodeVerificationType.agentVerifyResetPasscode,
         pageTitle: 'PC_confirm_passcode',
         pageDescription: 'PC_re_enter_passcode',
         currentPasscode: '',
@@ -250,7 +269,16 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
         // _navigationHandler.navigateToCustomerEnrollmentScreen(
         //     destinationPath, true, UserType.Customer);
       } else {
-
+        var resetResponse = await _passcodeUseCase.resetPasscodeAgent(newPasscode, userType, (p0) => null);
+        if(resetResponse?.status == true) {
+          _navigationHandler.navigateToResetPasscodeBottomSheet(
+            'RP_success_message'.tr,
+            'SU_button_text'.tr,
+            'PR_message'.tr,
+          );
+        }else{
+          CrayonPaymentLogger.logError(resetResponse!.message!);
+        }
       }
     } else {
       state = currentState.copyWith(

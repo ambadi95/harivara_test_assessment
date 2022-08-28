@@ -7,6 +7,7 @@ import 'package:network_manager/model/requests/standard/standard_request.dart';
 abstract class IPasscodeService {
   static const passcodeIdentifier = 'passcode';
   static const resetPasscodeIdentifier = 'resetPasscode';
+  static const resetPasscodeAgentIdentifier = 'resetPasscodeAgent';
   static const loginIdentifier = 'login';
   static const agentLoginIdentifier = 'agentLogin';
   static const agentCustomerSignUpIdentifier = 'agentCustomerSignup';
@@ -21,6 +22,10 @@ abstract class IPasscodeService {
   Future<StandardRequest> resetPasscode(
     Map<String, dynamic> requestData,
   );
+
+  Future<StandardRequest> resetPasscodeAgent(
+      Map<String, dynamic> requestData,
+      );
 
   Future<StandardRequest> login(
     Map<String, dynamic> requestData,
@@ -61,7 +66,18 @@ class PasscodeService implements IPasscodeService {
   ) async {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
-    request.endpoint = 'save-passcode';
+    request.endpoint = 'reset-passcode';
+    request.jsonBody = json.encode(requestData);
+    return request;
+  }
+
+  @override
+  Future<StandardRequest> resetPasscodeAgent(
+      Map<String, dynamic> requestData,
+      ) async {
+    var request = StandardRequest();
+    request.requestType = RequestType.POST;
+    request.endpoint = 'reset-passcode';
     request.jsonBody = json.encode(requestData);
     return request;
   }

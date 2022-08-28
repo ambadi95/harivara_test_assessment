@@ -179,7 +179,7 @@ class _SettingsState extends State<Settings> {
 
   Widget _buildSignout(coordinator) {
     return _buildOptions(context, 'ST_sign_out', ST_sign_out, () async {
-      await coordinator.signOut();
+      await coordinator.signOut(widget.screenArgs.userType);
     });
   }
 

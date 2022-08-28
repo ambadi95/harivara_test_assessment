@@ -62,8 +62,14 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
         state = SignUpState.mobileNumberError(response.message!);
       }
     } else if (signUpArguments.signupType == SignupType.resetPasscodeAgent) {
-      _navigationHandler
-          .navigateToOtpScreenAgentResetPasscode(signUpArguments.userType);
+      var agentDetailResponse = await _signupUseCase.getAgentDetail(agentId, nindaNumber.replaceAll("-", ""), (p0) => null);
+      if(agentDetailResponse?.status == true){
+        _navigationHandler
+            .navigateToOtpScreenAgentResetPasscode(signUpArguments.userType, agentDetailResponse!.data!.y9AgentId!,agentDetailResponse.data!.mobileNo!);
+      }else{
+        state = SignUpState.mobileNumberError(agentDetailResponse!.message!);
+        CrayonPaymentLogger.logError(agentDetailResponse.message!);
+      }
     } else if (signUpArguments.signupType == SignupType.resetPasscodeCustomer) {
       var detailResponse = await _signupUseCase.getCustomerDetails(nindaNumber, mobileNumber, (p0) => null);
       if(detailResponse?.status == true){
@@ -119,11 +125,11 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
       _navigationHandler.navigateToOtpScreenCustomerSignUp(
           signUpArguments.userType, mobileNumber);
     } else if (signUpArguments.signupType == SignupType.resetPasscodeAgent) {
-      _navigationHandler
-          .navigateToOtpScreenAgentResetPasscode(signUpArguments.userType);
+      // _navigationHandler
+      //     .navigateToOtpScreenAgentResetPasscode(signUpArguments.userType);
     } else if (signUpArguments.signupType == SignupType.resetPasscodeCustomer) {
-      _navigationHandler
-          .navigateToOtpScreenAgentResetPasscode(signUpArguments.userType);
+      // _navigationHandler
+      //     .navigateToOtpScreenAgentResetPasscode(signUpArguments.userType);
     } else if (signUpArguments.signupType == SignupType.agentSignUp) {
       _navigationHandler.navigateToAgentDetailScreen(signUpArguments.userType);
     } else if (signUpArguments.signupType ==

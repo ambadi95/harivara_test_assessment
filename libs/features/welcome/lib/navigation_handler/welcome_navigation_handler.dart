@@ -229,7 +229,7 @@ class WelcomeNavigationHandler with ErrorHandler {
     );
   }
 
-  Future<void> navigateToOtpScreenAgentResetPasscode(UserType userType) async {
+  Future<void> navigateToOtpScreenAgentResetPasscode(UserType userType, String agentId, String mobileNumber) async {
     var arguments = OtpScreenArgs(
       'OTP Verification',
       'VO_otp_verification_description',
@@ -237,9 +237,9 @@ class WelcomeNavigationHandler with ErrorHandler {
       false,
       2,
       OtpVerificationType.updatePasscodeAgent,
-      '',
+      agentId,
       6,
-      '1003232',
+      mobileNumber,
       false,
       userType,
     );

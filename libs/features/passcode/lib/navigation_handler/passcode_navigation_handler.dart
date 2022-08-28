@@ -26,6 +26,9 @@ class PasscodeNavigationHandler with ErrorHandler {
       const NavigationType.replace(),
     );
   }
+  Future<void> goBack() async {
+    _navigationManager.goBack();
+  }
 
   Future<void> navigateToCustomerEnrollmentScreen(
       String destinationPath, bool isEnrolled, UserType userType) async {
@@ -71,7 +74,7 @@ class PasscodeNavigationHandler with ErrorHandler {
         CrayonPaymentBottomSheetState.agentEnrollment(
             buttonOptions: [
               ButtonOptions(
-                  Black, buttonLabel, () => navigateToAgentHome(), false)
+                  Black, buttonLabel, () {  goBack(); goBack(); goBack(); goBack(); }, false)
             ],
             disableCloseButton: true,
             bottomSheetIcon: icon,

@@ -1,6 +1,7 @@
 import 'package:core/mobile_core.dart';
 import 'package:network_manager/auth/auth_manager.dart';
 import 'package:network_manager/model/response/jwt/jwt_token_response.dart';
+import 'package:shared_data_models/agent_onboard/agent_details/response/agent_details_response.dart';
 import 'package:shared_data_models/agent_onboard/signup/response/agent_sign_up_response.dart';
 import 'package:shared_data_models/auth/auth_detail.dart';
 import 'package:shared_data_models/customer_onboard/customer_details/response/customer_detail_response.dart';
@@ -178,6 +179,7 @@ class SignupUseCase extends BaseDataProvider {
 
   Future<CustomerDetailResponse?> getCustomerDetails(String nindaNumber, String phoneNo,
       Function(String) onErrorCallback) async {
+
     return await executeApiRequest<CustomerDetailResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
@@ -196,6 +198,21 @@ class SignupUseCase extends BaseDataProvider {
               authInfo: detailResponse.data?.customerId.toString(),
               key: 'Customer_ID');
           return detailResponse;
+        });
+  }
+
+  Future<AgentDetailsResponse?> getAgentDetail(String agentId,
+      String nidaNumber, Function(String) onErrorCallback) async {
+    return await executeApiRequest<AgentDetailsResponse?>(
+        taskType: TaskType.DATA_OPERATION,
+        taskSubType: TaskSubType.REST,
+        moduleIdentifier: WelcomeModule.moduleIdentifier,
+        requestData: {"agentId": agentId, "nidaNumber": nidaNumber},
+        serviceIdentifier: ISignupService.agentDetailIdentifier,
+        onError: onErrorCallback,
+        modelBuilderCallback: (responseData) {
+          final data = responseData;
+          return AgentDetailsResponse.fromJson(data);
         });
   }
 }

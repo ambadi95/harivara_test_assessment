@@ -213,6 +213,9 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
     } else if (otpScreenArgs.otpVerificationType ==
         OtpVerificationType.resetPasscodeCustomer) {
       _navigationHandler.openForUpdateNewPasscode(userType);
+    } else if (otpScreenArgs.otpVerificationType ==
+        OtpVerificationType.updatePasscodeAgent) {
+      _navigationHandler.openForUpdateNewPasscodeAgent(userType);
     }
   }
 
