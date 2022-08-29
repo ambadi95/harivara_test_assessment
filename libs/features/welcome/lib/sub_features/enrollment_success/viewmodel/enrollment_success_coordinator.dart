@@ -33,13 +33,17 @@ class EnrollmentSuccessCoordinator
   }
 
   Future getCustomerDetails(UserType userType) async {
-    var response = await _enrollmentSuccessUseCase.getCustomerDetails(
-        userType, (p0) => null);
-    if (response?.status == true) {
-      CrayonPaymentLogger.logInfo(response!.data!.referenceId!.toString());
-      return response;
-    } else {
-      CrayonPaymentLogger.logInfo(response!.message!);
+    try {
+      var response = await _enrollmentSuccessUseCase.getCustomerDetails(
+          userType, (p0) => null);
+      if (response?.status == true) {
+        CrayonPaymentLogger.logInfo(response!.data!.referenceId!.toString());
+        return response;
+      } else {
+        CrayonPaymentLogger.logInfo(response!.message!);
+      }
+    }  catch (e) {
+      print(e.toString());
     }
   }
 }

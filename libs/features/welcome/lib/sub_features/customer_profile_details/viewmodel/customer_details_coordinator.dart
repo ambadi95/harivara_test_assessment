@@ -45,15 +45,19 @@ class CustomerDetailsCoordinator extends BaseViewModel<CustomerDetailsState> {
   }
 
   Future getCustomerDetails() async {
-    var response =
-        await _customerDetailsUseCase.getCustomerDetails((p0) => null);
-    if (response?.status == true) {
-      CrayonPaymentLogger.logInfo(response!.data!.referenceId!.toString());
-      state = CustomerDetailsState.getRegion(response.data!.region!);
-      state = CustomerDetailsState.getDistrict(response.data!.district!);
-      return response;
-    } else {
-      CrayonPaymentLogger.logInfo(response!.message!);
+    try {
+      var response =
+          await _customerDetailsUseCase.getCustomerDetails((p0) => null);
+      if (response?.status == true) {
+        CrayonPaymentLogger.logInfo(response!.data!.referenceId!.toString());
+        state = CustomerDetailsState.getRegion(response.data!.region!);
+        state = CustomerDetailsState.getDistrict(response.data!.district!);
+        return response;
+      } else {
+        CrayonPaymentLogger.logInfo(response!.message!);
+      }
+    }  catch (e) {
+      print(e.toString());
     }
   }
 
@@ -251,30 +255,34 @@ class CustomerDetailsCoordinator extends BaseViewModel<CustomerDetailsState> {
     String region,
     UserType userType,
   ) async {
-    state = const CustomerDetailsState.LoadingState();
-    var response = await _customerDetailsUseCase.updateCustomerDetails(
-        name,
-        dob,
-        gender,
-        address,
-        profession,
-        emailId,
-        poBox,
-        region,
-        district,
-        (p0) => null,
-        userType);
-    if (response?.status == true) {
-      state = const CustomerDetailsState.initialState();
-      if (kDebugMode) {
-        print(response?.message);
+    try {
+      state = const CustomerDetailsState.LoadingState();
+      var response = await _customerDetailsUseCase.updateCustomerDetails(
+          name,
+          dob,
+          gender,
+          address,
+          profession,
+          emailId,
+          poBox,
+          region,
+          district,
+          (p0) => null,
+          userType);
+      if (response?.status == true) {
+        state = const CustomerDetailsState.initialState();
+        if (kDebugMode) {
+          print(response?.message);
+        }
+        //   navigateToCreatePasscodeScreen(userType);
+      } else {
+        state = const CustomerDetailsState.initialState();
+        if (kDebugMode) {
+          print(response?.message);
+        }
       }
-      //   navigateToCreatePasscodeScreen(userType);
-    } else {
+    }  catch (e) {
       state = const CustomerDetailsState.initialState();
-      if (kDebugMode) {
-        print(response?.message);
-      }
     }
   }
 }
