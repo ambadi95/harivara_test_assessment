@@ -63,6 +63,8 @@
   "DV_district_hint_text" : "Select District",
 
   "HS_GoodMorning": "Good Morning",
+  "HS_GoodAfternoon": "Good Afternoon",
+  "HS_GoodEvening": "Good Evening",
   "HS_YourBalance": "Your Balance",
   "HS_AccountId": "Y9 Account Id",
   "HS_LoadWallet": "Load Wallet",
