@@ -25,6 +25,22 @@ class KycCreditMainCoordinator
         KycCreditMainState.ready(context: context, error: "", isLoading: false);
   }
 
+  //call mno consent
+  Future callMnoConsent(BuildContext context
+      ) async {
+    state = KycCreditMainState.ready(context: context,isLoading:true );
+    var response = await _kycCreditMainUseCase.callMnoConsent('',
+            (p0) => null);
+    if (response?.status == true) {
+      state = KycCreditMainState.ready(context: context,isLoading:false );
+    } else {
+      state = KycCreditMainState.ready(context: context,isLoading:false,error: response!.message! );
+      print(response?.message);
+    }
+  }
+
+
+
   Future<void> navigateToKycCreditAirtel() async {
     await _navigationHandler.navigateToCreditCheck();
   }
