@@ -44,7 +44,7 @@ class KycCreditCoordinator extends AnalyticsStateNotifier<KycCreditState> {
       state = KycCreditState.ready(context: context,isLoading:false,error: response!.message! );
       _showSnackBar(context,response.message!);
 
-      callCreditCheck(context);
+      callCreditScore(context);
       print(response.message);
     }
   }
