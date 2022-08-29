@@ -189,6 +189,7 @@
   "RP_Passcode_Desc" : "Please use the new passcode to Sign-in and proceed further",
   "RP_Continue" : "Continue",
 
+  "ST_my_profile": "View Profile",
   "ST_title" : "Settings",
   "ST_subTitle" : "Profile Management",
   "ST_view_profile" : "View Profile",
@@ -249,5 +250,8 @@
   "PC_fetch_details" : "Fetch Details",
   "PC_alert_message" : "Provided Customer Reference ID and Mobile Number doesn't match with our record.",
   "PC_alert_title" : "Details Mismatch",
-  "PC_button_close" : "Close"
+  "PC_button_close" : "Close",
+
+  "RP_success_message": "Passcode has been updated successfully",
+  "PR_message" : "You will be Signed out of the app, please use the new passcode to Sign-in again"
 }
