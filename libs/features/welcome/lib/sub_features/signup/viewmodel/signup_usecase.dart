@@ -168,7 +168,10 @@ class SignupUseCase extends BaseDataProvider {
           final data = responseData;
           CustomerDetailResponse agentSignUpResponse =
               CustomerDetailResponse.fromJson(data);
-
+          _authManager.setUserDetail(
+              authInfo: agentSignUpResponse.data?.customerId.toString(),
+              key: 'Customer_ID');
+           _saveMobileNumber(customerMobile.replaceAll(" ", ""));
           print(data);
           return agentSignUpResponse;
         });

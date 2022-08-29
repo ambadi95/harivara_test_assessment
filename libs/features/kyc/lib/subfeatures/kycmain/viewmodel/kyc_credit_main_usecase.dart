@@ -22,7 +22,7 @@ class KycCreditMainUseCase extends BaseDataProvider {
         taskSubType: TaskSubType.REST,
         moduleIdentifier: KycCreditMainModule.moduleIdentifier,
         requestData:{
-          "customerId": 55,
+          "customerId": int.parse(customerId),
           "consent": "accepted"
         },
         serviceIdentifier: KycMainService.consentIndentifier,

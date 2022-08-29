@@ -19,6 +19,10 @@ class KycCreditUseCase extends BaseDataProvider {
   KycCreditUseCase(this._kycCreditViewModel, TaskManager taskManager)
       : super(taskManager);
 
+  Future<String> getMobileNumber() async {
+    return await getValueFromSecureStorage('mobileNumber', defaultValue: '');
+  }
+
   Future<KycCheckResponse?> callKycCheck(String mobileNumber,
       Function(String) onErrorCallback) async {
 
@@ -27,7 +31,7 @@ class KycCreditUseCase extends BaseDataProvider {
         taskSubType: TaskSubType.REST,
         moduleIdentifier: KycCreditModule.moduleIdentifier,
         requestData:{
-          "mobileNumber": "686531710",
+          "mobileNumber": mobileNumber,
         },
         serviceIdentifier: KycCreditService.kycCheckIdentifier,
         onError: onErrorCallback,
@@ -44,7 +48,7 @@ Future<KycCheckResponse?> callCreditCheck(String customerId,
         taskSubType: TaskSubType.REST,
         moduleIdentifier: KycCreditModule.moduleIdentifier,
         requestData:{
-          "customerId": 55,
+          "customerId": int.parse(customerId),
         },
         serviceIdentifier: KycCreditService.creditCheckIdentifier,
         onError: onErrorCallback,
