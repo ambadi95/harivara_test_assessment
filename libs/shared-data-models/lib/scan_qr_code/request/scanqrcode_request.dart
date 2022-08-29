@@ -1,5 +1,5 @@
 class ScanQRCodeRequest {
-  final String customerId;
+  final int customerId;
   final int deviceId;
   final String imei1;
   final String imei2;

@@ -11,7 +11,7 @@ class ScanQrCodeApiResolver extends TaskResolver {
     switch (identifier) {
 
       case IScanQRCodeService.deviceRegisterIdentifier:
-        return _scanQRCodeService.login(requestData);
+        return _scanQRCodeService.deviceRegister(requestData);
 
       default:
         throw UnimplementedError();

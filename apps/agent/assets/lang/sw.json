@@ -33,6 +33,9 @@
   "SU_agent_id_error_text" : "Kitambulisho batili cha Wakala wa Y9",
   "SU_valid_IMEI1" : "IMEI1 si sahihi",
   "SU_valid_IMEI2" : "IMEI2 si sahihi",
+  "SU_close" : "Funga",
+  "SU_success_msg_1" : "Hongera! Furahia matumizi yako na Y9.",
+  "SU_success_msg_2" : "Tafadhali ingia katika programu ya Y9 katika kifaa chako kipya ili kupata manufaa yetu yote",
 
   "SU_reset_passcode" : "Reset Passcode",
   "SU_reset_subtitle" : "You can Reset the passcode here using OTP sent to your registered mobile number",

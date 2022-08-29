@@ -47,6 +47,10 @@
   "SU_valid_IMEI2" : "Invalid IMEI2",
   "SU_register_device_button" : "Register Device",
   "SU_or_text" : "OR",
+  "SU_close" : "Close",
+  "SU_success_msg_1" : "Congratulations! Enjoy your experience with Y9.",
+  "SU_success_msg_2" : "Please sign in to Y9 app in your new device to avail our all benifits",
+
 
   "DV_title" : "Enter Personal Details",
   "DV_agent_aided_title" : "Customer Details",

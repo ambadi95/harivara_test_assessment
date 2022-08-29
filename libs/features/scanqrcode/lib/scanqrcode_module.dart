@@ -13,6 +13,7 @@ import 'navigation_handler/scanqrcode_navigation_handler.dart';
 class ScanQRCodeModule {
   static const moduleIdentifier = 'scanQrCodeModule';
 
+
   static void registerDependencies() {
     ModuleResolver.registerResolver(
       moduleIdentifier,

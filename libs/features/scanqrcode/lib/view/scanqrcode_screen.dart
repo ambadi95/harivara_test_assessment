@@ -73,36 +73,47 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
         onStateListenCallback: (preState, newState) =>
         {_listenToStateChanges(context, newState)},
         setupViewModel: (coordinator) {},
-        builder: (context, state, coordinator) => SafeArea(
-          child: Scaffold(
-            body: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _buildMainUI(coordinator),
-                ],
-              ),
-            ),
-          ),
-        ),
+        builder: (context, state, coordinator) {
+          return state.maybeWhen(
+              loading: () => _buildMainUIWithLoading(context, coordinator),
+              orElse: () => _buildMainUI( coordinator));
+        },
       );
 
+  Widget _buildMainUIWithLoading(
+      BuildContext context,
+      ScanQRCodeCoordinator coordinator,
+      ) {
+    return Scaffold(
+      body: Stack(
+        children: [
+          _buildMainUI(coordinator),
+          _createLoading(),
+        ],
+      ),
+    );
+  }
 
 
-  Widget _createLoading(ScanQRCodeStateReady state) {
-    if (state.isLoading) {
-      return Container(
+
+  Widget _createLoading() {
+    return Center(
+      child: Container(
         color: Colors.black.withOpacity(0.4),
-        child: const CenteredCircularProgressBar(
-            color: config_colors.PRIMARY_COLOR),
-      );
-    } else {
-      return Container();
-    }
+        child: const CenteredCircularProgressBar(color: PRIMARY_COLOR),
+      ),
+    );
   }
 
   Widget _buildMainUI(ScanQRCodeCoordinator coordinator) {
-    return SingleChildScrollView(
+    return CrayonPaymentScaffold(
+        appBarAttributes: CrayonPaymentAppBarAttributes(
+        key: const Key('CardDetailsScreen_AppBarBackButton'),
+    left: [
+    const CrayonPaymentAppBarButtonType.back(),
+    ],
+    ),
+    body: SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -140,6 +151,7 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
           // ),
         ],
       ),
+    )
     );
   }
 
@@ -148,7 +160,10 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
-        onTap: () async {},
+        onTap: () async {
+          var imei1 = coordinator.scanQRCodeImei1Method();
+          print("imei1 for scan => $imei1");
+        },
         child: Container(
           width: double.infinity,
           height: 50,
@@ -217,7 +232,10 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
-        onTap: () async {},
+        onTap: () async {
+          var imei2 = coordinator.scanQRCodeImei2Method();
+          print("imei2 for scan => $imei2");
+          },
         child: Container(
           width: double.infinity,
           height: 50,
@@ -240,12 +258,13 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
         onTap: ()  {
-          coordinator.isImei1numberValid(imei1Number.text);
-          coordinator.isImei2numberValid(imei2Number.text);
-          if (_isBtnEnabled) {
-            coordinator.deviceRegister("12345", 12345,
-                imei1Number.text, imei2Number.text);
-          }
+          // coordinator.isImei1numberValid(imei1Number.text);
+          // coordinator.isImei2numberValid(imei2Number.text);
+          // if (_isBtnEnabled) {
+          //   coordinator.deviceRegister(123456, 12345,
+          //       imei1Number.text, imei2Number.text);
+          // }
+          coordinator.successFulScreen();
         },
         child: Container(
           width: double.infinity,

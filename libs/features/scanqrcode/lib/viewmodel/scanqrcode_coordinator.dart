@@ -1,11 +1,14 @@
 
+import 'package:config/Config.dart';
 import 'package:core/mobile_core.dart';
+import 'package:core/navigation/navigation_type.dart';
 import 'package:core/view/analytics_state_notifier.dart';
+import 'package:crayon_payment_customer/util/app_utils.dart';
 import 'package:flutter/material.dart';
-import 'package:scanqrcode/view/scanqrcode_screen.dart';
 import 'package:scanqrcode/viewmodel/scanqrcode_usecase.dart';
 import '../navigation_handler/scanqrcode_navigation_handler.dart';
 import '../state/scanqrcode_state.dart';
+
 
 class ScanQRCodeCoordinator extends AnalyticsStateNotifier<ScanQRCodeState> {
   final ScanQRCodeNavigationHandler _navigationHandler;
@@ -28,9 +31,27 @@ class ScanQRCodeCoordinator extends AnalyticsStateNotifier<ScanQRCodeState> {
   }
 
 
-    void validateForm(String customerId, int deviceId, String imei1, String imei2) {
+void successFulScreen(){
+  _navigationHandler.navigateToSuccessScreen(UserType.Agent);
+}
+
+  void goBackToAgentHomeScreen(){
+    _navigationHandler.navigateToAgentHome();
+  }
+
+  void validateForm(String customerId, int deviceId, String imei1, String imei2) {
       state = ScanQRCodeState.deviceRegisterFormState(
           _validateForm(customerId, deviceId, imei1, imei2));
+    }
+
+    Future<String> scanQRCodeImei1Method(){
+      var result = _scanQRCodeUseCase.scanBarcodeImei1();
+      return result;
+    }
+
+    Future<String> scanQRCodeImei2Method(){
+      var result = _scanQRCodeUseCase.scanBarcodeImei2();
+      return result;
     }
 
   bool _validateForm(String customerId, int deviceId, String imei1, String imei2) {
@@ -67,14 +88,14 @@ class ScanQRCodeCoordinator extends AnalyticsStateNotifier<ScanQRCodeState> {
     return result;
   }
 
-  Future deviceRegister(String customerId, int deviceId, String imei1,
+  Future deviceRegister(int customerId, int deviceId, String imei1,
       String imei2) async {
       await deviceRegisterAPI(customerId, deviceId, imei1, imei2);
   }
 
 
   Future deviceRegisterAPI(
-      String customerId,
+      int customerId,
       int deviceId,
       String imei1,
       String imei2
@@ -85,16 +106,19 @@ class ScanQRCodeCoordinator extends AnalyticsStateNotifier<ScanQRCodeState> {
           customerId, deviceId, imei1, imei2, (p0) => null);
       if (response?.status == true) {
         state = const ScanQRCodeState.successState();
-            print("status");
-        // _navigationHandler.navigateToOtpScreen(
-        //      mobileNumber, response!.data!.id!);
+        print("status");
+        successFulScreen();
       } else {
-        print(response?.message);
+        print("response?.message");
         state = const ScanQRCodeState.imei1Error("error");
       }
-    }  catch (e) {
+    } catch (e) {
       state = const ScanQRCodeState.initialState();
-      print(e.toString());
+      print(e);
+      // AppUtils.appUtilsInstance.showErrorBottomSheet(
+      //   title: e.toString(),
+      //   onClose: () {goBack();},
+      // );
     }
   }
-  }
+}

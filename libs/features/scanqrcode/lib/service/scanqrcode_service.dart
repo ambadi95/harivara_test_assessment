@@ -7,7 +7,7 @@ abstract class IScanQRCodeService {
 
   static const deviceRegisterIdentifier = 'device-register';
 
-  Future<StandardRequest> login(
+  Future<StandardRequest> deviceRegister(
       Map<String, dynamic> requestData,
       );
 
@@ -16,18 +16,19 @@ abstract class IScanQRCodeService {
 class ScanQRCodeService implements IScanQRCodeService {
 
   @override
-  Future<StandardRequest> login(
+  Future<StandardRequest> deviceRegister(
       Map<String, dynamic> requestData,
       ) async {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
     request.endpoint = 'customer-device';
     request.jsonBody =  json.encode({
-      "customerId": requestData["customerID"],
-      "deviceId": requestData["deviceID"],
+      "customerId": requestData["customerId"],
+      "deviceId": requestData["deviceId"],
       "imei1": requestData["imei1"],
       "imei2": requestData["imei2"],
     });
+    print("device register===> $request");
     return request;
   }
 
