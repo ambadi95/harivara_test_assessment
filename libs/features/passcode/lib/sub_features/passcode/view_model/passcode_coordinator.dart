@@ -280,7 +280,7 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
       if (oldPassCode == newPasscode) {
         state = currentState.copyWith(currentStep: 5);
         await _passcodeUseCase.savePassCodeLocal(newPasscode);
-        if (userType == "Customer") {
+        if (userType == UserType.Customer) {
           var resetResponse = await _passcodeUseCase.resetPasscodeCustomer(
               newPasscode, userType, (p0) => null);
           if (resetResponse?.status == true) {
@@ -296,15 +296,21 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
           }
           // _navigationHandler.navigateToCustomerEnrollmentScreen(
           //     destinationPath, true, UserType.Customer);
+        } else {
+          var resetResponse = await _passcodeUseCase.resetPasscodeAgent(
+              newPasscode, (p0) => null);
+          if (resetResponse?.status == true) {
+            _passcodeUseCase.logout();
+            _navigationHandler.navigateToResetPasscodeBottomSheet(
+                'RP_success_message'.tr,
+                'SU_button_text'.tr,
+                'PR_message'.tr,
+                userType
+            );
+          } else {
+            CrayonPaymentLogger.logError(resetResponse!.message!);
+          }
         }
-      } else {
-        state = currentState.copyWith(
-          pageDescription: 'PC_passcode_does_not_match',
-          passCodeVerificationType: PassCodeVerificationType.agentResetPasscode,
-          pageTitle: 'PC_create_passcode',
-          initialPasscode: '',
-          currentPasscode: '',
-        );
       }
     } catch (e) {
       print(e.toString());

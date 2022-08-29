@@ -8,6 +8,7 @@ class AgentNearByState with _$AgentNearByState {
   const factory AgentNearByState({
     @Default([]) List<Datum> agentNearbyList,
     @Default(false) bool isLoading,
+    @Default(false) bool isFetchingLocation,
     @Default(false) bool isLocationVerified,
     @Default('') String locationError,
   }) = _AgentNearByState;
