@@ -74,60 +74,60 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
           createResetPassCode(passCode);
           break;
         case PassCodeVerificationType.agentVerifyResetPasscode:
-          await verifyPasscodeReset(currentState.initialPasscode, passCode,
-              currentState.destinationPath, userType);
+          await verifyPasscodeReset(currentState.initialPasscode, passCode, currentState.destinationPath, userType);
           break;
         case PassCodeVerificationType.agentSignIn:
           _navigationHandler
               .navigateToAgentHomeScreen('homemodule/CrayonHomeScreen');
           break;
         case PassCodeVerificationType.customerSign:
-          // TODO: Handle this case.
+        // TODO: Handle this case.
           break;
         case PassCodeVerificationType.agentCustomerPasscode:
-          // TODO: Handle this case.
+        // TODO: Handle this case.
           break;
       }
-    }  catch (e) {
+    } catch (e) {
       print(e.toString());
-    switch (currentState.passCodeVerificationType) {
-      case PassCodeVerificationType.create:
-        await createPassCode(passCode);
-        break;
-      case PassCodeVerificationType.verify:
-        await verifyPasscode(
-          currentState.initialPasscode,
-          passCode,
-          currentState.destinationPath,
-          userType,
-        );
-        break;
-      case PassCodeVerificationType.agentResetPasscode:
-        createResetPassCode(passCode);
-        break;
-      case PassCodeVerificationType.agentVerifyResetPasscode:
-        await verifyPasscodeReset(currentState.initialPasscode, passCode,
-            currentState.destinationPath, 'Agent');
-        break;
-      case PassCodeVerificationType.agentSignIn:
-        _navigationHandler
-            .navigateToAgentHomeScreen('homemodule/CrayonHomeScreen');
-        break;
-      case PassCodeVerificationType.customerSign:
+      switch (currentState.passCodeVerificationType) {
+        case PassCodeVerificationType.create:
+          await createPassCode(passCode);
+          break;
+        case PassCodeVerificationType.verify:
+          await verifyPasscode(
+            currentState.initialPasscode,
+            passCode,
+            currentState.destinationPath,
+            userType,
+          );
+          break;
+        case PassCodeVerificationType.agentResetPasscode:
+          createResetPassCode(passCode);
+          break;
+        case PassCodeVerificationType.agentVerifyResetPasscode:
+          await verifyPasscodeReset(currentState.initialPasscode, passCode,
+              currentState.destinationPath,  UserType.Agent);
+          break;
+        case PassCodeVerificationType.agentSignIn:
+          _navigationHandler
+              .navigateToAgentHomeScreen('homemodule/CrayonHomeScreen');
+          break;
+        case PassCodeVerificationType.customerSign:
         // TODO: Handle this case.
-        break;
-      case PassCodeVerificationType.agentCustomerPasscode:
+          break;
+        case PassCodeVerificationType.agentCustomerPasscode:
         // TODO: Handle this case.
-        break;
-      case PassCodeVerificationType.customerResetPasscode:
-        createPassCodeResetCustomer(passCode);
+          break;
+        case PassCodeVerificationType.customerResetPasscode:
+          createPassCodeResetCustomer(passCode);
+          // TODO: Handle this case.
+          break;
+        case PassCodeVerificationType.verifyResetCustomerPasscode:
         // TODO: Handle this case.
-        break;
-      case PassCodeVerificationType.verifyResetCustomerPasscode:
-      // TODO: Handle this case.
-        verifyPasscodeReset(currentState.initialPasscode, passCode,
-            currentState.destinationPath, 'Customer');
-        break;
+          verifyPasscodeReset(currentState.initialPasscode, passCode,
+              currentState.destinationPath, UserType.Customer);
+          break;
+      }
     }
   }
 
@@ -275,7 +275,7 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
       String oldPassCode,
       String newPasscode,
       String destinationPath,
-      String userType,
+      UserType userType,
       ) async {
     var currentState = state as CreatePasscodeReady;
     try {
@@ -298,45 +298,27 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
           currentPasscode: '',
         );
       }
-    }  catch (e) {
+    } catch (e) {
       print(e.toString());
-    if (oldPassCode == newPasscode) {
-      state = currentState.copyWith(currentStep: 5);
-      await _passcodeUseCase.savePassCodeLocal(newPasscode);
-      if (userType == "Customer") {
-        var resetResponse = await _passcodeUseCase.resetPasscodeCustomer(newPasscode, userType, (p0) => null);
-        if(resetResponse?.status == true) {
-          _navigationHandler.navigateToResetPasscodeBottomSheet(
-            'RP_success_message'.tr,
-            'SU_button_text'.tr,
-            'PR_message'.tr,
-          );
-        }else{
-          CrayonPaymentLogger.logError(resetResponse!.message!);
-        }
-        // _navigationHandler.navigateToCustomerEnrollmentScreen(
-        //     destinationPath, true, UserType.Customer);
-      } else {
-
-      }
-    } else {
-      state = currentState.copyWith(
-        pageDescription: 'PC_passcode_does_not_match',
-        passCodeVerificationType: PassCodeVerificationType.agentResetPasscode,
-        pageTitle: 'PC_create_passcode',
-        initialPasscode: '',
-        currentPasscode: '',
-      );
-    try {
       if (oldPassCode == newPasscode) {
         state = currentState.copyWith(currentStep: 5);
         await _passcodeUseCase.savePassCodeLocal(newPasscode);
-        if (userType == UserType.Customer) {
-          _navigationHandler.navigateToCustomerEnrollmentScreen(
-              destinationPath, true, UserType.Customer);
+        if (userType == "Customer") {
+          var resetResponse = await _passcodeUseCase.resetPasscodeCustomer(
+              newPasscode, userType, (p0) => null);
+          if (resetResponse?.status == true) {
+            _navigationHandler.navigateToResetPasscodeBottomSheet(
+              'RP_success_message'.tr,
+              'SU_button_text'.tr,
+              'PR_message'.tr,
+            );
+          } else {
+            CrayonPaymentLogger.logError(resetResponse!.message!);
+          }
+          // _navigationHandler.navigateToCustomerEnrollmentScreen(
+          //     destinationPath, true, UserType.Customer);
         } else {
-          _navigationHandler.navigateToResetPasscodeBottomSheet(
-              'RP_Passcode_Reset'.tr, 'RP_Continue'.tr, 'RP_Passcode_Desc'.tr);
+
         }
       } else {
         state = currentState.copyWith(
@@ -346,13 +328,37 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
           initialPasscode: '',
           currentPasscode: '',
         );
+        try {
+          if (oldPassCode == newPasscode) {
+            state = currentState.copyWith(currentStep: 5);
+            await _passcodeUseCase.savePassCodeLocal(newPasscode);
+            if (userType == UserType.Customer) {
+              _navigationHandler.navigateToCustomerEnrollmentScreen(
+                  destinationPath, true, UserType.Customer);
+            } else {
+              _navigationHandler.navigateToResetPasscodeBottomSheet(
+                  'RP_Passcode_Reset'.tr, 'RP_Continue'.tr,
+                  'RP_Passcode_Desc'.tr);
+            }
+          } else {
+            state = currentState.copyWith(
+              pageDescription: 'PC_passcode_does_not_match',
+              passCodeVerificationType: PassCodeVerificationType
+                  .agentResetPasscode,
+              pageTitle: 'PC_create_passcode',
+              initialPasscode: '',
+              currentPasscode: '',
+            );
+          }
+        } catch (e) {
+          print(e.toString());
+        }
       }
-    }  catch (e) {
-      print(e.toString());
     }
   }
 
-  Future<void> _navigateToDestinationPath(String destinationPath) async {
-    _navigationHandler.navigateToDestinationPath(destinationPath);
+      Future<void> _navigateToDestinationPath(String destinationPath) async {
+        _navigationHandler.navigateToDestinationPath(destinationPath);
+      }
+
   }
-}
