@@ -21,6 +21,7 @@ class StandardRequest extends Request {
        hashMap.putIfAbsent('Content-Type',() => 'application/json');
        hashMap.putIfAbsent('Accept' ,() => 'application/json');
      }else{
+       hashMap.putIfAbsent('Authorization', ()   =>  'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ5OWRldiIsInJvbGVzIjoiIiwiZXhwIjoxNjYxNzk1MzQzLCJpYXQiOjE2NjE3NTkzNDN9.MJ0BJQBTkc5S8Jh5QIMZkQO9zZHOLPoomsoCURBO4LE');
        hashMap.putIfAbsent('Content-Type',() => 'application/json');
        hashMap.putIfAbsent('Accept' ,() => 'application/json');
      }

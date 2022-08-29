@@ -18,10 +18,13 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/src/framework.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/internacionalization.dart';
+import 'package:kyc/subfeatures/kycmain/view/kyc_credit_main_screen.dart';
 import 'package:splash/splash/view/splash.dart';
 import 'package:widget_library/theme/crayon_payment_theme.dart';
 import 'app_module.dart';
-
+import 'package:shared_data_models/kyc/kyc_screen_args.dart';
+import 'package:shared_data_models/kyc/kyc_type.dart';
+import 'package:shared_data_models/kyc/kyc_data_model.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -103,8 +106,22 @@ class HomeWidget extends StatelessWidget {
       child: CrayonPaymentMaterialApp(
         key: Key('AppMaterialApp'),
         home: !_status
-            ? CrayonSplashScreen.forMerchantApp()
-            : CrayonSplashScreen.forMerchantApp(),
+            ? KycCreditMainScreen(kycScreenArgs: KycScreenArgs(
+          KycFieldType.KYC_VALIDATION,
+          "",
+          "",
+          "",
+          "",
+          [KYCDataModel(title: "", isSelected: false)],
+        ),)
+            : KycCreditMainScreen(kycScreenArgs: KycScreenArgs(
+          KycFieldType.KYC_VALIDATION,
+          "",
+          "",
+          "",
+          "",
+          [KYCDataModel(title: "", isSelected: false)],
+        ),),
         theme: CrayonPaymentTheme().defaultTheme,
         onGenerateRoute: _navigationManager.getRoute,
         translations: _translations,

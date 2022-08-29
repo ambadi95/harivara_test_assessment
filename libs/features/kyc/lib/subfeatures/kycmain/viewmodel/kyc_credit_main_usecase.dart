@@ -22,7 +22,7 @@ class KycCreditMainUseCase extends BaseDataProvider {
         taskSubType: TaskSubType.REST,
         moduleIdentifier: KycCreditMainModule.moduleIdentifier,
         requestData:{
-          "customerId": "1",
+          "customerId": 55,
           "consent": "accepted"
         },
         serviceIdentifier: KycMainService.consentIndentifier,
@@ -34,5 +34,8 @@ class KycCreditMainUseCase extends BaseDataProvider {
         });
   }
 
+  Future<String> getCustomerId() async {
+    return await getValueFromSecureStorage('customerId', defaultValue: '');
+  }
 
 }
