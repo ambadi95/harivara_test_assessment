@@ -64,8 +64,6 @@ dependencies:
   crayon_payment_customer:
     path: ../../../apps/customer
 
-  kyc:
-    path: ../kyc
 
 dev_dependencies:
   flutter_test:
