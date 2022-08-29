@@ -10,8 +10,12 @@ class KycCheckApiResolver extends TaskResolver {
   @override
   Future execute(String identifier, Map<String, dynamic> requestData) {
     switch (identifier) {
-      case KycCreditService.kyccheckIndentifier:
+      case KycCreditService.kycCheckIdentifier:
         return _kycCreditService.kycCheck(requestData);
+      case KycCreditService.creditScoreIdentifier:
+        return _kycCreditService.creditScore(requestData);
+      case KycCreditService.creditCheckIdentifier:
+        return _kycCreditService.creditCheck(requestData);
 
       default:
         throw UnimplementedError();

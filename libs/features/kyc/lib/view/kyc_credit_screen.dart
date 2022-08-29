@@ -42,6 +42,7 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
       BaseView<KycCreditCoordinator, KycCreditState>(
           setupViewModel: (coordinator) {
             coordinator.initialiseState(context);
+            coordinator.callKycCheck(context);
           },
           builder: (context, state, coordinator) => CrayonPaymentScaffold(
                 appBarAttributes: CrayonPaymentAppBarAttributes(

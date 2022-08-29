@@ -111,7 +111,13 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
   }
 
   Future navigateToCreatePasscodeScreen(UserType userType) async {
-    _navigationHandler.openForNewPasscode(userType);
+    //for agent customer onboarding we are not creating customer passcode
+    if(userType == UserType.AgentCustomer) {
+      _navigationHandler.navigateToKycScreen();
+
+    }else {
+      _navigationHandler.openForNewPasscode(userType);
+    }
   }
 
   bool isValidName(String name) {
@@ -240,7 +246,11 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
           userType);
       if (response?.status == true) {
         state = const DetailsState.initialState();
-        navigateToCreatePasscodeScreen(userType);
+        if(userType == UserType.AgentCustomer){
+          _navigationHandler.navigateToKYCScreen();
+        } else {
+          navigateToCreatePasscodeScreen(userType);
+        }
       } else {
         state = const DetailsState.initialState();
         print(response?.message);

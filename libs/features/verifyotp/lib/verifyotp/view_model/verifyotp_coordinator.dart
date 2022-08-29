@@ -1,6 +1,7 @@
 import 'package:config/Config.dart';
 import 'package:core/logging/logger.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_data_models/customer_onboard/Customer_onboarding_status/customer_onboarding_status.dart';
 import 'package:shared_data_models/otp/otp_screen_args.dart';
 import 'package:shared_data_models/otp/otp_verification_type.dart';
 import 'package:task_manager/base_classes/base_view_model.dart';
@@ -61,7 +62,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         //otpController.text = otp;
         CrayonPaymentLogger.logInfo(otp);
       }
-    }  catch (e) {
+    } catch (e) {
       print(e.toString());
     }
   }
@@ -164,15 +165,15 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         OtpVerificationType.customerSignUpAgent) {
       var responseSignin = await _verifyOtpUseCase.otpVerifyCustomerByAgent(
           otpScreenArgs.refId, enterOtp, 'Customer', (p0) => null);
-      if (responseSignin!.data!.status == "success") {
+      if (responseSignin!.status == true) {
         var getWorkFlowStatus = await _verifyOtpUseCase.workFlowCustomerByAgent(
             otpScreenArgs.refId, (p0) => null);
         if (getWorkFlowStatus!.status!) {
           CrayonPaymentLogger.logInfo('I am in WorkFlow Status');
           //TODO Workflow Navigation
-          
+
           navigationToWorkFlow(getWorkFlowStatus.data!.status!);
-          _navigationHandler.navigateToDetailScreen();
+         // _navigationHandler.navigateToDetailScreen();
         }
       }
     } else if (otpScreenArgs.otpVerificationType ==
@@ -181,7 +182,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         state = currentState.copyWith(isLoading: true);
         var response = await _verifyOtpUseCase.otpVerify(otpScreenArgs.refId,
             enterOtp, otpScreenArgs.userType, (p0) => null);
-        if (response!.data!.status == "success") {
+        if (response!.status == true) {
           state = currentState.copyWith(isLoading: false);
           _navigationHandler.navigateToDestinationPath(
               destinationPath, userType);
@@ -202,7 +203,9 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
             enterOtp, otpScreenArgs.userType, (p0) => null);
         if (response!.status == true) {
           state = currentState.copyWith(isLoading: false);
-          _navigationHandler.openForNewPasscode(userType);
+
+            _navigationHandler.openForNewPasscode(userType);
+
         } else {
           otpController.text = "";
           state = currentState.copyWith(isLoading: false);
@@ -286,66 +289,65 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
     );
   }
 
-  navigationToWorkFlow(String status){
-    switch(status){
+  navigationToWorkFlow(String status) {
+    switch (status) {
       case "Initiated":
-        //TODO Navigate to Detail Screen
+        _navigationHandler.navigateToDetailScreen();
         break;
       case "Enrolled":
-      //TODO Navigate to Detail Screen
+     //   _navigationHandler.navigateToDetailScreen();
         break;
       case "KYC_Initiated":
-      //TODO Navigate to Detail Screen
+        _navigationHandler.navigateToKYCScreen();
         break;
       case "KYC_Success":
-      //TODO Navigate to Detail Screen
+        _navigationHandler.navigateToKYCScreen();
         break;
       case "Credit_Check_Requested":
-      //TODO Navigate to Detail Screen
+        _navigationHandler.navigateToKYCScreen();
         break;
       case "Credit_Check_Success":
-      //TODO Navigate to Detail Screen
+        //TODO Navigate to Credit_Check_Success Screen
         break;
       case "Device_Selection":
-      //TODO Navigate to Detail Screen
+        _navigationHandler.navigateToDeviceOption(false,UserType.AgentCustomer);
         break;
       case "Device_Selected":
-      //TODO Navigate to Detail Screen
+        _navigationHandler.navigateToDeviceOption(true,UserType.AgentCustomer);
         break;
       case "Downpayment_Initiated":
-      //TODO Navigate to Detail Screen
+        _navigationHandler.navigateToDownPaymentScreen();
         break;
       case "Downpayment_Scuccess":
-      //TODO Navigate to Detail Screen
+        _navigationHandler.navigateToDownPaymentScreen();
         break;
       case "Downpayment_Failed":
-      //TODO Navigate to Detail Screen
+        _navigationHandler.navigateToDownPaymentScreen();
         break;
       case "Loan_Initiated":
-      //TODO Navigate to Detail Screen
+        //_navigationHandler.navigateToDeviceLoanCreation();
         break;
       case "Loan_Approved":
-      //TODO Navigate to Detail Screen
+        //TODO Navigate to Loan_Approved Screen
         break;
       case "Device_Reg_Initiated":
-      //TODO Navigate to Detail Screen
+        //TODO Navigate to Device_Reg_Initiated Screen
         break;
       case "Device_Reg_Success":
-      //TODO Navigate to Detail Screen
+        //TODO Navigate to Device_Reg_Success Screen
         break;
       case "MDM_Reg_Initiated":
-      //TODO Navigate to Detail Screen
+        //TODO Navigate to MDM_Reg_Initiated Screen
         break;
       case "MDM_Reg_Success":
-      //TODO Navigate to Detail Screen
+        //TODO Navigate to MDM_Reg_Success Screen
         break;
       case "Repayment_Initiated":
-      //TODO Navigate to Detail Screen
+        //TODO Navigate to Repayment_Initiated Screen
         break;
       case "Repayment_Success":
-      //TODO Navigate to Detail Screen
+        //TODO Navigate to Repayment_Success Screen
         break;
-
     }
   }
 }

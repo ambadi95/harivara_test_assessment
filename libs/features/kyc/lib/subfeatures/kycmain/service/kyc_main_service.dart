@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:config/Config.dart';
 import 'package:network_manager/model/requests/request.dart';
 import 'package:network_manager/model/requests/standard/standard_request.dart';
 
@@ -23,7 +24,7 @@ class IKycMainService implements KycMainService {
   ) async {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
-    request.endpoint = 'creditcheck/save-mno-consent';
+    request.endpoint = customerEndpoint + 'creditcheck/save-mno-consent[customer]';
     request.jsonBody = json.encode(requestData);
     return request;
   }
