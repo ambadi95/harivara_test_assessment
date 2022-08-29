@@ -167,10 +167,11 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
       if (responseSignin!.data!.status == "success") {
         var getWorkFlowStatus = await _verifyOtpUseCase.workFlowCustomerByAgent(
             otpScreenArgs.refId, (p0) => null);
-        if (getWorkFlowStatus!.data!.status == "success") {
+        if (getWorkFlowStatus!.status!) {
           CrayonPaymentLogger.logInfo('I am in WorkFlow Status');
           //TODO Workflow Navigation
-          //_navigationHandler.navigateToDetailScreen();
+          navigationToWorkFlow(getWorkFlowStatus.data!.status!);
+          _navigationHandler.navigateToDetailScreen();
         }
       }
     } else if (otpScreenArgs.otpVerificationType ==
@@ -282,5 +283,68 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
       isScrollControlled: false,
       isDismissible: true,
     );
+  }
+
+  navigationToWorkFlow(String status){
+    switch(status){
+      case "Initiated":
+        //TODO Navigate to Detail Screen
+        break;
+      case "Enrolled":
+      //TODO Navigate to Detail Screen
+        break;
+      case "KYC_Initiated":
+      //TODO Navigate to Detail Screen
+        break;
+      case "KYC_Success":
+      //TODO Navigate to Detail Screen
+        break;
+      case "Credit_Check_Requested":
+      //TODO Navigate to Detail Screen
+        break;
+      case "Credit_Check_Success":
+      //TODO Navigate to Detail Screen
+        break;
+      case "Device_Selection":
+      //TODO Navigate to Detail Screen
+        break;
+      case "Device_Selected":
+      //TODO Navigate to Detail Screen
+        break;
+      case "Downpayment_Initiated":
+      //TODO Navigate to Detail Screen
+        break;
+      case "Downpayment_Scuccess":
+      //TODO Navigate to Detail Screen
+        break;
+      case "Downpayment_Failed":
+      //TODO Navigate to Detail Screen
+        break;
+      case "Loan_Initiated":
+      //TODO Navigate to Detail Screen
+        break;
+      case "Loan_Approved":
+      //TODO Navigate to Detail Screen
+        break;
+      case "Device_Reg_Initiated":
+      //TODO Navigate to Detail Screen
+        break;
+      case "Device_Reg_Success":
+      //TODO Navigate to Detail Screen
+        break;
+      case "MDM_Reg_Initiated":
+      //TODO Navigate to Detail Screen
+        break;
+      case "MDM_Reg_Success":
+      //TODO Navigate to Detail Screen
+        break;
+      case "Repayment_Initiated":
+      //TODO Navigate to Detail Screen
+        break;
+      case "Repayment_Success":
+      //TODO Navigate to Detail Screen
+        break;
+
+    }
   }
 }

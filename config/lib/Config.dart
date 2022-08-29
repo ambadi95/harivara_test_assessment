@@ -20,7 +20,7 @@ const AN_Kyc_Airtel = 'assets/images/kyc_airtel.png';
 const AN_Kyc_Credit_Check = 'assets/images/credit_check.png';
 const AN_Kyc_Credit_Main = 'assets/images/kyc_credit_main.png';
 const AN_Kyc_Credit_ERROR = 'assets/images/kyc_and_credit_error.png';
- // MockUp Data
+// MockUp Data
 const agentMock = 'assets/images/agent_mock.png';
 const WB_or_icon = 'assets/images/orIcon.png';
 const MO_credit_info_icon = 'assets/images/credit_info.png';
