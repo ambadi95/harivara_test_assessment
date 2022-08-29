@@ -84,6 +84,8 @@
   "DV_district_hint_text" : "Enter District",
 
   "HS_GoodMorning": "Good Morning",
+  "HS_GoodAfternoon": "Good Afternoon",
+  "HS_GoodEvening": "Good Evening",
   "HS_YourBalance": "Your Balance",
   "HS_AccountId": "Y9 Agent Id",
   "HS_LoadWallet": "Load Wallet",

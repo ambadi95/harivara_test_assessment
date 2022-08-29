@@ -20,14 +20,12 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
   PasscodeCoordinator(this._navigationHandler, this._passcodeUseCase)
       : super(const CreatePasscodeState.initialState());
 
-  void initialiseState(
-    BuildContext context,
-    String pageTitle,
-    String pageDescription,
-    String destinationPath,
-    PassCodeVerificationType passCodeVerificationType,
-    String initialPasscode,
-  ) async {
+  void initialiseState(BuildContext context,
+      String pageTitle,
+      String pageDescription,
+      String destinationPath,
+      PassCodeVerificationType passCodeVerificationType,
+      String initialPasscode,) async {
     state = CreatePasscodeState.ready(
         context: context,
         initialPasscode: initialPasscode,
@@ -81,54 +79,31 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
           break;
         case PassCodeVerificationType.agentVerifyResetPasscode:
           await verifyPasscodeReset(currentState.initialPasscode, passCode,
-              currentState.destinationPath, UserType.Agent);
-          break;
-        case PassCodeVerificationType.agentSignIn:
-          _navigationHandler
-              .navigateToAgentHomeScreen('homemodule/CrayonHomeScreen');
-          break;
-        case PassCodeVerificationType.customerSign:
-          // TODO: Handle this case.
-          break;
-        case PassCodeVerificationType.agentCustomerPasscode:
-          // TODO: Handle this case.
-          break;
-        case PassCodeVerificationType.customerResetPasscode:
-          createPassCodeResetCustomer(passCode);
-          // TODO: Handle this case.
-          break;
-        case PassCodeVerificationType.verifyResetCustomerPasscode:
-          // TODO: Handle this case.
-          verifyPasscodeReset(currentState.initialPasscode, passCode,
-              currentState.destinationPath, UserType.Customer);
-          break;
-      }
-      /* switch (currentState.passCodeVerificationType) {
-        case PassCodeVerificationType.create:
-          await createPassCode(passCode);
-          break;
-        case PassCodeVerificationType.verify:
-          await verifyPasscode(
-            currentState.initialPasscode,
-            passCode,
-            currentState.destinationPath,
-            userType,
-          );
-          break;
-        case PassCodeVerificationType.agentResetPasscode:
-          createResetPassCode(passCode);
-          break;
-        case PassCodeVerificationType.agentVerifyResetPasscode:
-          await verifyPasscodeReset(currentState.initialPasscode, passCode,
               currentState.destinationPath, userType);
           break;
         case PassCodeVerificationType.agentSignIn:
           _navigationHandler
               .navigateToAgentHomeScreen('homemodule/CrayonHomeScreen');
           break;
-      }*/
+        case PassCodeVerificationType.customerSign:
+        // TODO: Handle this case.
+          break;
+        case PassCodeVerificationType.agentCustomerPasscode:
+        // TODO: Handle this case.
+          break;
+        case PassCodeVerificationType.customerResetPasscode:
+          createPassCodeResetCustomer(passCode);
+          // TODO: Handle this case.
+          break;
+        case PassCodeVerificationType.verifyResetCustomerPasscode:
+        // TODO: Handle this case.
+          verifyPasscodeReset(currentState.initialPasscode, passCode,
+              currentState.destinationPath, UserType.Customer);
+          break;
+      }
     } catch (e) {
-      /*   switch (currentState.passCodeVerificationType) {
+      print(e.toString());
+      switch (currentState.passCodeVerificationType) {
         case PassCodeVerificationType.create:
           await createPassCode(passCode);
           break;
@@ -145,40 +120,29 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
           break;
         case PassCodeVerificationType.agentVerifyResetPasscode:
           await verifyPasscodeReset(currentState.initialPasscode, passCode,
-              currentState.destinationPath, UserType.Agent);
+              currentState.destinationPath,  UserType.Agent);
           break;
         case PassCodeVerificationType.agentSignIn:
           _navigationHandler
               .navigateToAgentHomeScreen('homemodule/CrayonHomeScreen');
           break;
         case PassCodeVerificationType.customerSign:
-          // TODO: Handle this case.
+        // TODO: Handle this case.
           break;
         case PassCodeVerificationType.agentCustomerPasscode:
-          // TODO: Handle this case.
+        // TODO: Handle this case.
           break;
-        case PassCodeVerificationType.customerResetPasscode:
-          createPassCodeResetCustomer(passCode);
-          // TODO: Handle this case.
-          break;
-        case PassCodeVerificationType.verifyResetCustomerPasscode:
-          // TODO: Handle this case.
-          verifyPasscodeReset(currentState.initialPasscode, passCode,
-              currentState.destinationPath, UserType.Customer);
-          break;
-      }*/
+      }
     }
   }
 
   Future<void> createPassCodeResetCustomer(String passcode) async {
-    print("///");
-    print("Create passcode");
     var currentState = state as CreatePasscodeReady;
     var error = await _passcodeUseCase.validateCustomerPasscode(passcode);
     if (error.isEmpty) {
       state = currentState.copyWith(
-        passCodeVerificationType:
-            PassCodeVerificationType.verifyResetCustomerPasscode,
+        passCodeVerificationType: PassCodeVerificationType
+            .verifyResetCustomerPasscode,
         pageTitle: 'PC_confirm_passcode',
         pageDescription: 'PC_re_enter_passcode',
         currentPasscode: '',
@@ -222,7 +186,7 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
       if (error.isEmpty) {
         state = currentState.copyWith(
           passCodeVerificationType:
-              PassCodeVerificationType.agentVerifyResetPasscode,
+          PassCodeVerificationType.agentVerifyResetPasscode,
           pageTitle: 'PC_confirm_passcode',
           pageDescription: 'PC_re_enter_passcode',
           currentPasscode: '',
@@ -239,12 +203,10 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
     }
   }
 
-  Future<void> verifyPasscode(
-    String oldPassCode,
-    String newPasscode,
-    String destinationPath,
-    UserType userType,
-  ) async {
+  Future<void> verifyPasscode(String oldPassCode,
+      String newPasscode,
+      String destinationPath,
+      UserType userType,) async {
     var currentState = state as CreatePasscodeReady;
     try {
       if (oldPassCode == newPasscode) {
@@ -252,13 +214,12 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
         await _passcodeUseCase.savePassCodeLocal(newPasscode);
         if (userType == UserType.Customer) {
           state = currentState.copyWith(isLoading: true);
-          var response = await _passcodeUseCase.savePasscode(
-              newPasscode,
-              userType == UserType.Customer ? "Customer" : "Agnet",
-              (p0) => null);
+          var response = await _passcodeUseCase.savePasscode(newPasscode,
+              userType == UserType.Customer ? "Customer" : "Agnet", (
+                  p0) => null);
           if (response!.status == true) {
             var loginResponse =
-                await _passcodeUseCase.login(newPasscode, (p0) => null);
+            await _passcodeUseCase.login(newPasscode, (p0) => null);
             if (loginResponse?.status == true) {
               state = currentState.copyWith(isLoading: false);
               _navigationHandler.navigateToCustomerEnrollmentScreen(
@@ -267,14 +228,13 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
           }
         } else if (userType == UserType.Agent) {
           state = currentState.copyWith(isLoading: true);
-          var response = await _passcodeUseCase.savePasscodeAgent(
-              newPasscode,
-              userType == UserType.Customer ? "Customer" : "Agent",
-              (p0) => null);
+          var response = await _passcodeUseCase.savePasscodeAgent(newPasscode,
+              userType == UserType.Customer ? "Customer" : "Agent", (
+                  p0) => null);
           if (response!.status == true) {
             state = currentState.copyWith(currentStep: 5);
             var loginResponse =
-                await _passcodeUseCase.loginAgent(newPasscode, (p0) => null);
+            await _passcodeUseCase.loginAgent(newPasscode, (p0) => null);
             if (loginResponse!.status == true) {
               String agentId = await _passcodeUseCase.getAgentId();
               await _passcodeUseCase.saveOnBordStatus(agentId);
@@ -324,101 +284,61 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
     }
   }
 
-  Future<void> verifyPasscodeReset(
-    String oldPassCode,
-    String newPasscode,
-    String destinationPath,
-    UserType userType,
-  ) async {
+
+  Future<void> verifyPasscodeReset(String oldPassCode,
+      String newPasscode,
+      String destinationPath,
+      UserType userType,) async {
     var currentState = state as CreatePasscodeReady;
     try {
       if (oldPassCode == newPasscode) {
         state = currentState.copyWith(currentStep: 5);
         await _passcodeUseCase.savePassCodeLocal(newPasscode);
         if (userType == UserType.Customer) {
-          _navigationHandler.navigateToCustomerEnrollmentScreen(
-              destinationPath, true, UserType.Customer);
-        } else {
-          _navigationHandler.navigateToResetPasscodeBottomSheet(
-              'RP_Passcode_Reset'.tr, 'RP_Continue'.tr, 'RP_Passcode_Desc'.tr);
-        }
-      } else {
-        state = currentState.copyWith(
-          pageDescription: 'PC_passcode_does_not_match',
-          passCodeVerificationType: PassCodeVerificationType.agentResetPasscode,
-          pageTitle: 'PC_create_passcode',
-          initialPasscode: '',
-          currentPasscode: '',
-        );
-      }
-    } catch (e) {
-      print(e.toString());
-      if (oldPassCode == newPasscode) {
-        try {
-          state = currentState.copyWith(currentStep: 5);
-          await _passcodeUseCase.savePassCodeLocal(newPasscode);
-          if (userType == "Customer") {
-            var resetResponse = await _passcodeUseCase.resetPasscodeCustomer(
-                newPasscode, userType, (p0) => null);
-            if (resetResponse?.status == true) {
-              _navigationHandler.navigateToResetPasscodeBottomSheet(
+          var resetResponse = await _passcodeUseCase.resetPasscodeCustomer(
+              newPasscode, userType, (p0) => null);
+          if (resetResponse?.status == true) {
+            _passcodeUseCase.logout();
+            _navigationHandler.navigateToResetPasscodeBottomSheet(
                 'RP_success_message'.tr,
                 'SU_button_text'.tr,
                 'PR_message'.tr,
-              );
-            } else {
-              CrayonPaymentLogger.logError(resetResponse!.message!);
-            }
-            // _navigationHandler.navigateToCustomerEnrollmentScreen(
-            //     destinationPath, true, UserType.Customer);
-          } else {}
-        }  catch (e) {
-          state = currentState.copyWith(isLoading: false);
-          AppUtils.appUtilsInstance.showErrorBottomSheet(
-            title: e.toString(),
-            onClose: () {goBack();},
-          );
-        }
-      }
-      else {
-        state = currentState.copyWith(
-          pageDescription: 'PC_passcode_does_not_match',
-          passCodeVerificationType: PassCodeVerificationType.agentResetPasscode,
-          pageTitle: 'PC_create_passcode',
-          initialPasscode: '',
-          currentPasscode: '',
-        );
-        try {
-          if (oldPassCode == newPasscode) {
-            state = currentState.copyWith(currentStep: 5);
-            await _passcodeUseCase.savePassCodeLocal(newPasscode);
-            if (userType == UserType.Customer) {
-              _navigationHandler.navigateToCustomerEnrollmentScreen(
-                  destinationPath, true, UserType.Customer);
-            } else {
-              _navigationHandler.navigateToResetPasscodeBottomSheet(
-                  'RP_Passcode_Reset'.tr,
-                  'RP_Continue'.tr,
-                  'RP_Passcode_Desc'.tr);
-            }
+                userType
+            );
+          } else {
+            CrayonPaymentLogger.logError(resetResponse!.message!);
+          }
+          // _navigationHandler.navigateToCustomerEnrollmentScreen(
+          //     destinationPath, true, UserType.Customer);
+        } else {
+          var resetResponse = await _passcodeUseCase.resetPasscodeAgent(
+              newPasscode, (p0) => null);
+          if (resetResponse?.status == true) {
+            _passcodeUseCase.logout();
+            _navigationHandler.navigateToResetPasscodeBottomSheet(
+                'RP_success_message'.tr,
+                'SU_button_text'.tr,
+                'PR_message'.tr,
+                userType
+            );
           } else {
             state = currentState.copyWith(
               pageDescription: 'PC_passcode_does_not_match',
-              passCodeVerificationType:
-                  PassCodeVerificationType.agentResetPasscode,
+              passCodeVerificationType: PassCodeVerificationType
+                  .agentResetPasscode,
               pageTitle: 'PC_create_passcode',
               initialPasscode: '',
               currentPasscode: '',
             );
           }
-        } catch (e) {
-          state = currentState.copyWith(isLoading: false);
-          AppUtils.appUtilsInstance.showErrorBottomSheet(
-            title: e.toString(),
-            onClose: () {goBack();},
-          );
         }
       }
+    }catch (e) {
+      state = currentState.copyWith(isLoading: false);
+      AppUtils.appUtilsInstance.showErrorBottomSheet(
+        title: e.toString(),
+        onClose: () {goBack();},
+      );
     }
   }
 

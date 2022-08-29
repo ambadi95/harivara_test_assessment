@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AgentNearByState {
   List<Datum> get agentNearbyList => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
+  bool get isFetchingLocation => throw _privateConstructorUsedError;
   bool get isLocationVerified => throw _privateConstructorUsedError;
   String get locationError => throw _privateConstructorUsedError;
 
@@ -34,6 +35,7 @@ abstract class $AgentNearByStateCopyWith<$Res> {
   $Res call(
       {List<Datum> agentNearbyList,
       bool isLoading,
+      bool isFetchingLocation,
       bool isLocationVerified,
       String locationError});
 }
@@ -51,6 +53,7 @@ class _$AgentNearByStateCopyWithImpl<$Res>
   $Res call({
     Object? agentNearbyList = freezed,
     Object? isLoading = freezed,
+    Object? isFetchingLocation = freezed,
     Object? isLocationVerified = freezed,
     Object? locationError = freezed,
   }) {
@@ -62,6 +65,10 @@ class _$AgentNearByStateCopyWithImpl<$Res>
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isFetchingLocation: isFetchingLocation == freezed
+          ? _value.isFetchingLocation
+          : isFetchingLocation // ignore: cast_nullable_to_non_nullable
               as bool,
       isLocationVerified: isLocationVerified == freezed
           ? _value.isLocationVerified
@@ -85,6 +92,7 @@ abstract class _$$_AgentNearByStateCopyWith<$Res>
   $Res call(
       {List<Datum> agentNearbyList,
       bool isLoading,
+      bool isFetchingLocation,
       bool isLocationVerified,
       String locationError});
 }
@@ -104,6 +112,7 @@ class __$$_AgentNearByStateCopyWithImpl<$Res>
   $Res call({
     Object? agentNearbyList = freezed,
     Object? isLoading = freezed,
+    Object? isFetchingLocation = freezed,
     Object? isLocationVerified = freezed,
     Object? locationError = freezed,
   }) {
@@ -115,6 +124,10 @@ class __$$_AgentNearByStateCopyWithImpl<$Res>
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isFetchingLocation: isFetchingLocation == freezed
+          ? _value.isFetchingLocation
+          : isFetchingLocation // ignore: cast_nullable_to_non_nullable
               as bool,
       isLocationVerified: isLocationVerified == freezed
           ? _value.isLocationVerified
@@ -134,6 +147,7 @@ class _$_AgentNearByState implements _AgentNearByState {
   const _$_AgentNearByState(
       {final List<Datum> agentNearbyList = const [],
       this.isLoading = false,
+      this.isFetchingLocation = false,
       this.isLocationVerified = false,
       this.locationError = ''})
       : _agentNearbyList = agentNearbyList;
@@ -151,6 +165,9 @@ class _$_AgentNearByState implements _AgentNearByState {
   final bool isLoading;
   @override
   @JsonKey()
+  final bool isFetchingLocation;
+  @override
+  @JsonKey()
   final bool isLocationVerified;
   @override
   @JsonKey()
@@ -158,7 +175,7 @@ class _$_AgentNearByState implements _AgentNearByState {
 
   @override
   String toString() {
-    return 'AgentNearByState(agentNearbyList: $agentNearbyList, isLoading: $isLoading, isLocationVerified: $isLocationVerified, locationError: $locationError)';
+    return 'AgentNearByState(agentNearbyList: $agentNearbyList, isLoading: $isLoading, isFetchingLocation: $isFetchingLocation, isLocationVerified: $isLocationVerified, locationError: $locationError)';
   }
 
   @override
@@ -170,6 +187,8 @@ class _$_AgentNearByState implements _AgentNearByState {
                 .equals(other._agentNearbyList, _agentNearbyList) &&
             const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
             const DeepCollectionEquality()
+                .equals(other.isFetchingLocation, isFetchingLocation) &&
+            const DeepCollectionEquality()
                 .equals(other.isLocationVerified, isLocationVerified) &&
             const DeepCollectionEquality()
                 .equals(other.locationError, locationError));
@@ -180,6 +199,7 @@ class _$_AgentNearByState implements _AgentNearByState {
       runtimeType,
       const DeepCollectionEquality().hash(_agentNearbyList),
       const DeepCollectionEquality().hash(isLoading),
+      const DeepCollectionEquality().hash(isFetchingLocation),
       const DeepCollectionEquality().hash(isLocationVerified),
       const DeepCollectionEquality().hash(locationError));
 
@@ -193,6 +213,7 @@ abstract class _AgentNearByState implements AgentNearByState {
   const factory _AgentNearByState(
       {final List<Datum> agentNearbyList,
       final bool isLoading,
+      final bool isFetchingLocation,
       final bool isLocationVerified,
       final String locationError}) = _$_AgentNearByState;
 
@@ -200,6 +221,8 @@ abstract class _AgentNearByState implements AgentNearByState {
   List<Datum> get agentNearbyList;
   @override
   bool get isLoading;
+  @override
+  bool get isFetchingLocation;
   @override
   bool get isLocationVerified;
   @override

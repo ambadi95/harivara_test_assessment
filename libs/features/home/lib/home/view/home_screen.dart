@@ -36,7 +36,7 @@ class CrayonHomeScreen extends StatefulWidget {
 class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
   late BuildContext context;
   int selectedIndex = 0;
-  String username = 'Emmanual Jisula';
+  String username = '';
   String userId = '';
   String? deviceLoan;
   String? outstandingAmount;
@@ -53,6 +53,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
         setupViewModel: (coordinator) async {
           coordinator.initialiseState(
               context, '', widget.homeScreenArgs.isAgent, false);
+
           if (widget.homeScreenArgs.isAgent) {
             username = await coordinator.getAgentName();
             userId = await coordinator.getAgentId();
@@ -99,7 +100,6 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
       );
 
   Widget _userInfoView() {
-    username = 'Emmanual Jisula';
     return Padding(
       padding: const EdgeInsets.all(10),
       child: Row(
@@ -110,7 +110,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'HS_GoodMorning'.tr,
+                greeting(),
                 style: HS_morning_text_style,
               ),
               const SizedBox(
@@ -476,7 +476,21 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
     );
   }
 
-  _userImage() {
+  String _getUserInitials() {
+    if (username != null && username.contains(" ")) {
+      var details = username.split(" ");
+      return "${details[0].substring(0, 1).toString().toUpperCase()}${details[1].substring(0, 1).toString().toUpperCase()}";
+    } else {
+      if (username != null && username.length > 2) {
+        return username.substring(0, 2).toUpperCase();
+      } else {
+        return "";
+      }
+    }
+  }
+
+  Widget _userImage() {
+    String initial = _getUserInitials();
     return Container(
       height: 40,
       width: 40,
@@ -485,12 +499,23 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
         shape: BoxShape.circle,
         color: profilePicHolderYellowColor,
       ),
-      child: const Center(
+      child: Center(
           child: Text(
-        'EJ',
+        initial,
         style: AN_TextFieldLabel_FF,
       )),
     );
+  }
+
+  String greeting() {
+    var hour = DateTime.now().hour;
+    if (hour < 12) {
+      return  'HS_GoodMorning'.tr;
+    }
+    if (hour < 17) {
+      return 'HS_GoodAfternoon'.tr;
+    }
+    return 'HS_GoodEvening'.tr;
   }
 
   _buildMainUIWithLoading(BuildContext context, HomeCoordinator coordinator,

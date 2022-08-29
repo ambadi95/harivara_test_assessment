@@ -48,6 +48,11 @@ class KycCreditMainCoordinator
   }
 
 
+  Future<String> getCustomerId() async {
+    String customerId = await _kycCreditMainUseCase.getCustomerId();
+    return customerId;
+  }
+
 
   Future<void> navigateToKycCreditAirtel() async {
     await _navigationHandler.navigateToCreditCheck();
