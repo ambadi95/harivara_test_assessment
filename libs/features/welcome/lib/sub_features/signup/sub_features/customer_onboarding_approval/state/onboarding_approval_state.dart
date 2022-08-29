@@ -8,5 +8,8 @@ class OnBoardingApprovalState with _$OnBoardingApprovalState {
       {@Default(false) bool isValid,
       @Default('') String mobileNumberError,
       @Default('') String referenceIdError,
+        @Default('') String referenceId,
+        @Default('') String customerId,
+      @Default(false) bool isCustomerExist,
       @Default(false) bool isLoading}) = _OnBoardingApprovalState;
 }
