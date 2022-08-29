@@ -41,8 +41,10 @@
   "SU_update_subtitle" : "You can Update the passcode here using OTP sent to your registered mobile number",
   "SU_scan_code_IMEI1_button" : "Scan QR Code of IMEI1",
   "SU_enter_IMEI1_button" : "Enter IMEI1",
+  "SU_valid_IMEI1" : "Invalid IMEI1",
   "SU_scan_code_IMEI2_button" : "Scan QR Code of IMEI2",
   "SU_enter_IMEI2_button" : "Enter IMEI2",
+  "SU_valid_IMEI2" : "Invalid IMEI2",
   "SU_register_device_button" : "Register Device",
   "SU_or_text" : "OR",
 

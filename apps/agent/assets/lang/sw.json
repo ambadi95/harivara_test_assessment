@@ -31,6 +31,8 @@
   "SU_title_error_text" : "Nambari ya NIDA si sahihi",
   "SU_subtitle_error_text" : "Nambari ya Simu batili",
   "SU_agent_id_error_text" : "Kitambulisho batili cha Wakala wa Y9",
+  "SU_valid_IMEI1" : "IMEI1 si sahihi",
+  "SU_valid_IMEI2" : "IMEI2 si sahihi",
 
   "SU_reset_passcode" : "Reset Passcode",
   "SU_reset_subtitle" : "You can Reset the passcode here using OTP sent to your registered mobile number",
