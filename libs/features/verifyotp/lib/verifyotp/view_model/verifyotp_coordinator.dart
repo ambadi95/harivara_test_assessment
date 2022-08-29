@@ -61,7 +61,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         //otpController.text = otp;
         CrayonPaymentLogger.logInfo(otp);
       }
-    }  catch (e) {
+    } catch (e) {
       print(e.toString());
     }
   }
@@ -170,7 +170,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         if (getWorkFlowStatus!.status!) {
           CrayonPaymentLogger.logInfo('I am in WorkFlow Status');
           //TODO Workflow Navigation
-          
+
           navigationToWorkFlow(getWorkFlowStatus.data!.status!);
           _navigationHandler.navigateToDetailScreen();
         }
@@ -286,66 +286,65 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
     );
   }
 
-  navigationToWorkFlow(String status){
-    switch(status){
+  navigationToWorkFlow(String status) {
+    switch (status) {
       case "Initiated":
-        //TODO Navigate to Detail Screen
+        _navigationHandler.navigateToDetailScreen();
         break;
       case "Enrolled":
-      //TODO Navigate to Detail Screen
+     //   _navigationHandler.navigateToDetailScreen();
         break;
       case "KYC_Initiated":
-      //TODO Navigate to Detail Screen
+        _navigationHandler.navigateToKYCScreen();
         break;
       case "KYC_Success":
-      //TODO Navigate to Detail Screen
+        _navigationHandler.navigateToKYCScreen();
         break;
       case "Credit_Check_Requested":
-      //TODO Navigate to Detail Screen
+        _navigationHandler.navigateToKYCScreen();
         break;
       case "Credit_Check_Success":
-      //TODO Navigate to Detail Screen
+        //TODO Navigate to Credit_Check_Success Screen
         break;
       case "Device_Selection":
-      //TODO Navigate to Detail Screen
+        _navigationHandler.navigateToDeviceOption(false,UserType.AgentCustomer);
         break;
       case "Device_Selected":
-      //TODO Navigate to Detail Screen
+        _navigationHandler.navigateToDeviceOption(true,UserType.AgentCustomer);
         break;
       case "Downpayment_Initiated":
-      //TODO Navigate to Detail Screen
+        _navigationHandler.navigateToDownPaymentScreen();
         break;
       case "Downpayment_Scuccess":
-      //TODO Navigate to Detail Screen
+        _navigationHandler.navigateToDownPaymentScreen();
         break;
       case "Downpayment_Failed":
-      //TODO Navigate to Detail Screen
+        _navigationHandler.navigateToDownPaymentScreen();
         break;
       case "Loan_Initiated":
-      //TODO Navigate to Detail Screen
+        //_navigationHandler.navigateToDeviceLoanCreation();
         break;
       case "Loan_Approved":
-      //TODO Navigate to Detail Screen
+        //TODO Navigate to Loan_Approved Screen
         break;
       case "Device_Reg_Initiated":
-      //TODO Navigate to Detail Screen
+        //TODO Navigate to Device_Reg_Initiated Screen
         break;
       case "Device_Reg_Success":
-      //TODO Navigate to Detail Screen
+        //TODO Navigate to Device_Reg_Success Screen
         break;
       case "MDM_Reg_Initiated":
-      //TODO Navigate to Detail Screen
+        //TODO Navigate to MDM_Reg_Initiated Screen
         break;
       case "MDM_Reg_Success":
-      //TODO Navigate to Detail Screen
+        //TODO Navigate to MDM_Reg_Success Screen
         break;
       case "Repayment_Initiated":
-      //TODO Navigate to Detail Screen
+        //TODO Navigate to Repayment_Initiated Screen
         break;
       case "Repayment_Success":
-      //TODO Navigate to Detail Screen
+        //TODO Navigate to Repayment_Success Screen
         break;
-
     }
   }
 }

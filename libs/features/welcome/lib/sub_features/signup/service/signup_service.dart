@@ -95,7 +95,7 @@ class SignupService implements ISignupService {
       required String token}) async {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
-    request.endpoint = customerEndpoint +  'register-customer[customer]';
+    request.endpoint = customerEndpoint +  'register-customer-by-agent[customer]';
     request.jsonBody = json.encode({
       'nidaNo': nidaNumber,
       'mobileNo': customerMobileNumber,
