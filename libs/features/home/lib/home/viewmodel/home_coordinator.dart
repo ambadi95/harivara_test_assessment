@@ -72,7 +72,7 @@ class HomeCoordinator extends BaseViewModel<HomeScreenState> {
         return const Data(enrolledCustomer: '0', initiatedCustomer: '0');
       }
     }  catch (e) {
-      print(e.toString());
+
       throw null! ;
     }
   }
