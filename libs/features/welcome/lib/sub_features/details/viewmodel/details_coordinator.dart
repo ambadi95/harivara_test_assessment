@@ -224,25 +224,29 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
     String district,
     UserType userType,
   ) async {
-    state = const DetailsState.LoadingState();
-    var response = await _detailsUseCase.submitCustomerDetails(
-        name,
-        dob,
-        gender,
-        address,
-        profession,
-        emailId,
-        poBox,
-        region,
-        district,
-        (p0) => null,
-        userType);
-    if (response?.status == true) {
-      state = const DetailsState.initialState();
-      navigateToCreatePasscodeScreen(userType);
-    } else {
-      state = const DetailsState.initialState();
-      print(response?.message);
+    try {
+      state = const DetailsState.LoadingState();
+      var response = await _detailsUseCase.submitCustomerDetails(
+          name,
+          dob,
+          gender,
+          address,
+          profession,
+          emailId,
+          poBox,
+          region,
+          district,
+          (p0) => null,
+          userType);
+      if (response?.status == true) {
+        state = const DetailsState.initialState();
+        navigateToCreatePasscodeScreen(userType);
+      } else {
+        state = const DetailsState.initialState();
+        print(response?.message);
+      }
+    }  catch (e) {
+      state = const DetailsState.LoadingState();
     }
   }
 }

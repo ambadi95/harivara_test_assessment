@@ -1,6 +1,5 @@
 import 'dart:developer';
 
-import 'package:core/logging/logger.dart';
 import 'package:shared_data_models/signup/sign_up_type.dart';
 import 'package:task_manager/base_classes/base_view_model.dart';
 import 'package:welcome/sub_features/signup/state/signup_state.dart';
@@ -45,6 +44,62 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
 
   Future<void> signup(SignUpArguments signUpArguments, String mobileNumber,
       String nindaNumber, String agentId) async {
+    try {
+      if (signUpArguments.signupType == SignupType.customerSignUp) {
+        state = const SignUpState.loadingState();
+        var response = await _signupUseCase.signUp(
+            nindaNumber.replaceAll("-", ""), mobileNumber.trim(), (p0) => null);
+        if (response!.status == true) {
+          await continueToOtp(nindaNumber, mobileNumber);
+          state = const SignUpState.initialState();
+          await _signupUseCase
+              .saveCustomerId(response.data?.customerId.toString());
+          _navigationHandler.navigateToOtpScreenCustomerSignUp(
+              signUpArguments.userType, mobileNumber,
+              userId: response.data?.customerId.toString());
+        } else {
+          state = const SignUpState.initialState();
+          state = SignUpState.mobileNumberError(response.message!);
+        }
+      } else if (signUpArguments.signupType == SignupType.resetPasscodeAgent) {
+        _navigationHandler
+            .navigateToOtpScreenAgentResetPasscode(signUpArguments.userType);
+      } else if (signUpArguments.signupType == SignupType.resetPasscodeCustomer) {
+        _navigationHandler
+            .navigateToOtpScreenAgentResetPasscode(signUpArguments.userType);
+      } else if (signUpArguments.signupType == SignupType.agentSignUp) {
+        state = const SignUpState.loadingState();
+        var agentResponse =
+            await _signupUseCase.signUpAgent(nindaNumber, agentId, (p0) => null);
+        if (agentResponse?.status == true) {
+          await _signupUseCase.saveAgentDetails(nindaNumber, agentId);
+          state = const SignUpState.initialState();
+          _navigationHandler
+              .navigateToAgentDetailScreen(signUpArguments.userType);
+        } else {
+          state = const SignUpState.initialState();
+          state = SignUpState.agentIdError(agentResponse!.message!);
+        }
+      } else if (signUpArguments.signupType ==
+          SignupType.agentAidedCustomerOnBoarding) {
+        state = const SignUpState.loadingState();
+        var response = await _signupUseCase.signUpCustomerByAgent(
+            nindaNumber: nindaNumber.replaceAll("-", ""),
+            customerMobile: '+255' + mobileNumber.replaceAll(" ", ""),
+            onErrorCallback: (p0) => null,
+            agentId: await _signupUseCase.getAgentId());
+        if (response!.status == true) {
+          await continueToOtp(nindaNumber, mobileNumber);
+          state = const SignUpState.initialState();
+          await _signupUseCase
+              .saveCustomerId(response.data?.customerId.toString());
+          _navigationHandler.navigateToOtpScreenCustomerSignUpByAgent(
+              UserType.Customer, mobileNumber,
+              userId: response.data?.customerId.toString());
+        } else {
+          state = const SignUpState.initialState();
+          state = SignUpState.mobileNumberError(response.message!);
+        }
     if (signUpArguments.signupType == SignupType.customerSignUp) {
       state = const SignUpState.loadingState();
       var response = await _signupUseCase.signUp(
@@ -116,6 +171,8 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
         state = const SignUpState.initialState();
         state = SignUpState.mobileNumberError(response.message!);
       }
+    }  catch (e) {
+      state = const SignUpState.initialState();
     }
   }
 

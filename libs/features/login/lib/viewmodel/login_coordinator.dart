@@ -93,37 +93,47 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
     UserType userType,
   ) async {
     state = LoginState.loading();
-    var response = await _loginUseCase.login(
-        '+255' + mobileNumber, passcode, (p0) => null);
-    if (response?.status == true) {
-      state = LoginState.successState();
-      _navigationHandler.navigateToOtpScreen(
-          userType, mobileNumber, response!.data!.id!);
-    } else {
-      //state = LoginState.successState();
-      print(response?.message);
-      state = LoginState.mobileNumberError(response!.message!);
+    try {
+      var response = await _loginUseCase.login(
+          '+255' + mobileNumber, passcode, (p0) => null);
+      if (response?.status == true) {
+        state = LoginState.successState();
+        _navigationHandler.navigateToOtpScreen(
+            userType, mobileNumber, response!.data!.id!);
+      } else {
+        //state = LoginState.successState();
+        print(response?.message);
+        state = LoginState.mobileNumberError(response!.message!);
+      }
+    }  catch (e) {
+      state = LoginState.initialState();
+      print(e.toString());
     }
   }
 
   Future getAgentDetails(String agentId, String mobileNumber) async {
     state = LoginState.loading();
-    var response = await _loginUseCase.getAgentDetail(
-        agentId, '255' + mobileNumber.replaceAll(" ", ""), (p0) => null);
-    if (response?.status == true) {
-      print(response);
-      state = LoginState.successState();
-      await _loginUseCase.saveAgentId(agentId);
-      await _loginUseCase.saveMobileNumber(response!.data!.mobileNo!);
-      await _loginUseCase.saveAgentName(
-          response.data!.firstName! + ' ' + response.data!.lastName!);
-      await _loginUseCase.saveOnBordStatus(agentId);
-      await _navigationHandler.navigateToOtpScreenForAgent(
-          UserType.Agent, response.data!.mobileNo!, agentId);
-    } else {
-      state = LoginState.successState();
-      state = LoginState.agentIdError('Agent ID not found');
-      CrayonPaymentLogger.logError(response!.message!);
+    try {
+      var response = await _loginUseCase.getAgentDetail(
+          agentId, '255' + mobileNumber.replaceAll(" ", ""), (p0) => null);
+      if (response?.status == true) {
+        print(response);
+        state = LoginState.successState();
+        await _loginUseCase.saveAgentId(agentId);
+        await _loginUseCase.saveMobileNumber(response!.data!.mobileNo!);
+        await _loginUseCase.saveAgentName(
+            response.data!.firstName! + ' ' + response.data!.lastName!);
+        await _loginUseCase.saveOnBordStatus(agentId);
+        await _navigationHandler.navigateToOtpScreenForAgent(
+            UserType.Agent, response.data!.mobileNo!, agentId);
+      } else {
+        state = LoginState.successState();
+        state = LoginState.agentIdError('Agent ID not found');
+        CrayonPaymentLogger.logError(response!.message!);
+      }
+    }  catch (e) {
+      state = LoginState.initialState();
+      print(e.toString());
     }
   }
 
