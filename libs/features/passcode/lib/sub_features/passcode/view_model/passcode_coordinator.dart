@@ -278,6 +278,28 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
       String userType,
       ) async {
     var currentState = state as CreatePasscodeReady;
+    try {
+      if (oldPassCode == newPasscode) {
+        state = currentState.copyWith(currentStep: 5);
+        await _passcodeUseCase.savePassCodeLocal(newPasscode);
+        if (userType == UserType.Customer) {
+          _navigationHandler.navigateToCustomerEnrollmentScreen(
+              destinationPath, true, UserType.Customer);
+        } else {
+          _navigationHandler.navigateToResetPasscodeBottomSheet(
+              'RP_Passcode_Reset'.tr, 'RP_Continue'.tr, 'RP_Passcode_Desc'.tr);
+        }
+      } else {
+        state = currentState.copyWith(
+          pageDescription: 'PC_passcode_does_not_match',
+          passCodeVerificationType: PassCodeVerificationType.agentResetPasscode,
+          pageTitle: 'PC_create_passcode',
+          initialPasscode: '',
+          currentPasscode: '',
+        );
+      }
+    }  catch (e) {
+      print(e.toString());
     if (oldPassCode == newPasscode) {
       state = currentState.copyWith(currentStep: 5);
       await _passcodeUseCase.savePassCodeLocal(newPasscode);
