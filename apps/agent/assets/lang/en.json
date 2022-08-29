@@ -88,7 +88,7 @@
   "DV_district_label" : "District",
   "DV_district_error_text" : "Invalid District",
   "DV_district_hint_text" : "Enter District",
-
+  "Save_Text": "Save",
   "HS_GoodMorning": "Good Morning",
   "HS_GoodAfternoon": "Good Afternoon",
   "HS_GoodEvening": "Good Evening",
