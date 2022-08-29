@@ -53,14 +53,34 @@ class KycCreditCoordinator extends AnalyticsStateNotifier<KycCreditState> {
   Future callCreditCheck(BuildContext context
       ) async {
       state = KycCreditState.ready(context: context,isLoading:true);
-    var response = await _kycCreditUseCase.callCreditCheck('',
+
+      String customerId=await  _kycCreditUseCase.getCustomerId();
+    var response = await _kycCreditUseCase.callCreditCheck(customerId,
             (p0) => null);
     if (response?.status == true) {
       state = KycCreditState.ready(context: context,isLoading:false );
     } else {
-      state = KycCreditState.ready(context: context,isLoading:false,error: response!.message! );
+      state = KycCreditState.ready(context: context,isLoading:false,error: response!.message!);
       _showSnackBar(context,response.message!);
 
+      print(response.message);
+    }
+  }
+
+  //
+  // call credit score
+  Future callCreditScore(BuildContext context
+      ) async {
+      state = KycCreditState.ready(context: context,isLoading:true);
+
+      String customerId=await  _kycCreditUseCase.getCustomerId();
+    var response = await _kycCreditUseCase.callCreditScore(customerId,
+            (p0) => null);
+    if (response?.status == true) {
+      state = KycCreditState.ready(context: context,isLoading:false );
+    } else {
+      state = KycCreditState.ready(context: context,isLoading:false,error: response!.message!);
+      _showSnackBar(context,response.message!);
       print(response.message);
     }
   }

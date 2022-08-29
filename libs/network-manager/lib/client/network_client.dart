@@ -187,6 +187,7 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
       final streamedResponse = await getRequest.send();
       var response = await http.Response.fromStream(streamedResponse);
 
+      print(response.body);
       return NetworkStandardResponse(
         response.body,
         response.statusCode,

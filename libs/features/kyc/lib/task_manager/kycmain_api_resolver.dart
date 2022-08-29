@@ -12,6 +12,8 @@ class KycCheckApiResolver extends TaskResolver {
     switch (identifier) {
       case KycCreditService.kycCheckIdentifier:
         return _kycCreditService.kycCheck(requestData);
+      case KycCreditService.creditScoreIdentifier:
+        return _kycCreditService.creditScore(requestData);
       case KycCreditService.creditCheckIdentifier:
         return _kycCreditService.creditCheck(requestData);
 

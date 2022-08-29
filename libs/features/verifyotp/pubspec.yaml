@@ -42,7 +42,7 @@ dependencies:
     path: ../home
 
   kyc:
-    path: ../kyc
+    path: ../../features/kyc
 
 dev_dependencies:
   flutter_test:

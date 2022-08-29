@@ -23,14 +23,17 @@ class KycCreditUseCase extends BaseDataProvider {
     return await getValueFromSecureStorage('mobileNumber', defaultValue: '');
   }
 
-  Future<KycCheckResponse?> callKycCheck(String mobileNumber,
-      Function(String) onErrorCallback) async {
+  Future<String> getCustomerId() async {
+    return await getValueFromSecureStorage('customerId', defaultValue: '');
+  }
 
+  Future<KycCheckResponse?> callKycCheck(
+      String mobileNumber, Function(String) onErrorCallback) async {
     return await executeApiRequest<KycCheckResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
         moduleIdentifier: KycCreditModule.moduleIdentifier,
-        requestData:{
+        requestData: {
           "mobileNumber": mobileNumber,
         },
         serviceIdentifier: KycCreditService.kycCheckIdentifier,
@@ -40,14 +43,13 @@ class KycCreditUseCase extends BaseDataProvider {
         });
   }
 
-Future<KycCheckResponse?> callCreditCheck(String customerId,
-      Function(String) onErrorCallback) async {
-
+  Future<KycCheckResponse?> callCreditCheck(
+      String customerId, Function(String) onErrorCallback) async {
     return await executeApiRequest<KycCheckResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
         moduleIdentifier: KycCreditModule.moduleIdentifier,
-        requestData:{
+        requestData: {
           "customerId": int.parse(customerId),
         },
         serviceIdentifier: KycCreditService.creditCheckIdentifier,
@@ -55,15 +57,36 @@ Future<KycCheckResponse?> callCreditCheck(String customerId,
         modelBuilderCallback: (responseData) {
           KycCheckResponse checkResponse;
           try {
-             checkResponse = KycCheckResponse.fromJson(
-                responseData);
-          }catch(e){
-            checkResponse= const KycCheckResponse(status: false,code: "400",message: "Something went wrong");
+            checkResponse = KycCheckResponse.fromJson(responseData);
+          } catch (e) {
+            checkResponse = const KycCheckResponse(
+                status: false, code: "400", message: "Something went wrong");
           }
-
-
           return checkResponse;
         });
   }
 
+  Future<KycCheckResponse?> callCreditScore(
+      String customerId, Function(String) onErrorCallback) async {
+    return await executeApiRequest<KycCheckResponse?>(
+        taskType: TaskType.DATA_OPERATION,
+        taskSubType: TaskSubType.REST,
+        moduleIdentifier: KycCreditModule.moduleIdentifier,
+        requestData: {
+          "consent" : "accepted",
+          "customerId": int.parse(customerId),
+        },
+        serviceIdentifier: KycCreditService.creditScoreIdentifier,
+        onError: onErrorCallback,
+        modelBuilderCallback: (responseData) {
+          KycCheckResponse checkResponse;
+          try {
+            checkResponse = KycCheckResponse.fromJson(responseData);
+          } catch (e) {
+            checkResponse = const KycCheckResponse(
+                status: false, code: "400", message: "Something went wrong");
+          }
+          return checkResponse;
+        });
+  }
 }
