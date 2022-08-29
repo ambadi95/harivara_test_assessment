@@ -3,6 +3,8 @@ import 'package:core/navigation/navigation_manager.dart';
 import 'package:core/navigation/navigation_type.dart';
 import 'package:home/home/home_screen_arguments.dart';
 import 'package:home/home/view/home_screen.dart';
+import 'package:shared_data_models/kyc/kyc_data_model.dart';
+import 'package:shared_data_models/kyc/kyc_type.dart';
 import 'package:shared_data_models/passcode/passcode_screen_args.dart';
 import 'package:shared_data_models/passcode/passcode_verification_type.dart';
 import 'package:passcode/sub_features/passcode/view/passcode.dart';
@@ -10,8 +12,9 @@ import 'package:welcome/sub_features/details/view/details.dart';
 import 'package:welcome/sub_features/enrollment_success/view/enrollment_success_screen.dart';
 import 'package:welcome/sub_features/welcome/data_model/welcome_model.dart';
 import 'package:welcome/sub_features/welcome/view/welcome_screen.dart';
-import 'package:welcome/sub_features/welcome_back/view/welcome_back.dart';
 import 'package:widget_library/helpers/error/helper/error_helper.dart';
+import 'package:kyc/view/kyc_credit_screen.dart';
+import 'package:shared_data_models/kyc/kyc_screen_args.dart';
 
 class VerifyOtpNavigationHandler with ErrorHandler {
   final NavigationManager _navigationManager;
@@ -31,6 +34,20 @@ class VerifyOtpNavigationHandler with ErrorHandler {
     var argument = UserType.AgentCustomer;
     _navigationManager.navigateTo(
         DetailsScreen.viewPath, const NavigationType.replace(),
+        arguments: argument);
+  }
+
+  Future<void> navigateToKycScreen() async {
+    var argument = KycScreenArgs(
+      KycFieldType.KYC_VALIDATION,
+      "",
+      "",
+      "",
+      "",
+      [KYCDataModel(title: "", isSelected: false)],
+    );
+    _navigationManager.navigateTo(
+        KycCreditScreen.viewPath, const NavigationType.replace(),
         arguments: argument);
   }
 

@@ -4,6 +4,7 @@ import 'package:network_manager/model/response/jwt/jwt_token_response.dart';
 import 'package:shared_data_models/agent_onboard/agent_details/response/agent_details_response.dart';
 import 'package:shared_data_models/agent_onboard/signup/response/agent_sign_up_response.dart';
 import 'package:shared_data_models/auth/auth_detail.dart';
+import 'package:shared_data_models/customer_details/response/get_customer_details_response/get_customer_details_response.dart';
 import 'package:shared_data_models/customer_onboard/customer_details/response/customer_detail_response.dart';
 import 'package:task_manager/base_classes/base_data_provider.dart';
 import 'package:task_manager/task_manager.dart';
@@ -190,6 +191,29 @@ class SignupUseCase extends BaseDataProvider {
           final data = responseData;
           CustomerDetailResponse detailResponse =
               CustomerDetailResponse.fromJson(data);
+          _authManager.setUserDetail(
+              authInfo: detailResponse.data?.customerId.toString(),
+              key: 'Customer_ID');
+          return detailResponse;
+        });
+  }
+
+  Future<GetCustomerDetailsResponse?> getCustomerDetailsByMobileNumber( String phoneNo,
+      Function(String) onErrorCallback) async {
+
+    return await executeApiRequest<GetCustomerDetailsResponse?>(
+        taskType: TaskType.DATA_OPERATION,
+        taskSubType: TaskSubType.REST,
+        moduleIdentifier: WelcomeModule.moduleIdentifier,
+        requestData: {
+          "mobileNo": phoneNo.replaceAll(" ", "")
+        },
+        serviceIdentifier: ISignupService.getCustomerDetailByMobileNumberIdentifier,
+        onError: onErrorCallback,
+        modelBuilderCallback: (responseData) {
+          final data = responseData;
+          GetCustomerDetailsResponse detailResponse =
+          GetCustomerDetailsResponse.fromJson(data);
           _authManager.setUserDetail(
               authInfo: detailResponse.data?.customerId.toString(),
               key: 'Customer_ID');

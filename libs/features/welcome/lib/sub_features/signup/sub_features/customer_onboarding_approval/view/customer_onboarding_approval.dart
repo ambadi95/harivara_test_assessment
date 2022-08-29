@@ -46,9 +46,11 @@ class _SignUpState extends State<CustomerOnBoardingApproval> {
   Widget build(BuildContext context) =>
       BaseView<CustomerOnBoardingApprovalCoordinator, OnBoardingApprovalState>(
         onStateListenCallback: (preState, newState) => {
+          referenceID.text = newState.referenceId
           //_listenToStateChanges(context, newState)
         },
-        setupViewModel: (coordinator) async {},
+        setupViewModel: (coordinator) async {
+        },
         builder: (context, state, coordinator) => SafeArea(
           child: Scaffold(
             bottomNavigationBar: SizedBox(
@@ -133,22 +135,24 @@ class _SignUpState extends State<CustomerOnBoardingApproval> {
           const SizedBox(
             height: 94,
           ),
-          _buildLabelTextField(
-              'PC_customer_ref_id',
-              referenceID,
-              coordinator,
-              'PC_customer_ref_id_hint',
-              state.referenceIdError,
-              TextInputType.number),
-          const SizedBox(
-            height: 64,
-          ),
           _buildLabelTextFieldMobNumber(
               'SU_mobile_no_label',
               state.mobileNumberError,
               mobileNumber,
               coordinator,
-              'SU_subtitle_hint')
+              'SU_subtitle_hint'),
+          const SizedBox(
+            height: 64,
+          ),
+          state.isCustomerExist
+              ? _buildLabelTextField(
+                  'PC_customer_ref_id',
+                  referenceID,
+                  coordinator,
+                  'PC_customer_ref_id_hint',
+                  state.referenceIdError,
+                  TextInputType.number)
+              : const SizedBox(),
         ],
       ),
     );
@@ -217,6 +221,7 @@ class _SignUpState extends State<CustomerOnBoardingApproval> {
           hintText: hint.tr,
           controller: controller,
           errorText: errorText.tr,
+          enabled: false,
           keyboardType: textInputType,
           textCapitalization: TextCapitalization.characters,
           onChanged: (value) {
@@ -272,7 +277,11 @@ class _SignUpState extends State<CustomerOnBoardingApproval> {
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
         onTap: () async {
-          coordinator.getCustomerDetails(mobileNumber.text, referenceID.text);
+          state.isCustomerExist
+              ? coordinator.navigateToOtpScreen(
+                  mobileNumber.text, state.customerId)
+              : coordinator.getCustomerDetails(
+                  mobileNumber.text, referenceID.text);
         },
         child: Container(
           width: double.infinity,
@@ -284,7 +293,7 @@ class _SignUpState extends State<CustomerOnBoardingApproval> {
               borderRadius: BorderRadius.circular(8.0)),
           child: Center(
             child: Text(
-              'PC_fetch_details'.tr,
+              state.isCustomerExist? 'SU_button_text':  'PC_fetch_details'.tr,
               style: SU_button_text_style,
             ),
           ),
