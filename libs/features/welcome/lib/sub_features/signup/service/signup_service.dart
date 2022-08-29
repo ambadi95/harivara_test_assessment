@@ -11,6 +11,7 @@ abstract class ISignupService {
   static const signUpAgentIdentifier = 'signUpAgent';
   static const signUpCustomerByAgent = 'signUpCustomerByAgent';
   static const getCustomerDetailIdentifier = 'getCustomerDetail';
+  static const getCustomerDetailByMobileNumberIdentifier = 'getCustomerDetailByMobileNumber';
   static const agentDetailIdentifier = 'getAgent';
 
 
@@ -32,6 +33,10 @@ abstract class ISignupService {
     String nindaNumber,
     String phoneNo,
   );
+
+  Future<StandardRequest> getCustomerDetailByMobileNo(
+      String phoneNo,
+      );
 
   Future<StandardRequest> signupCustomerByAgent(
       {required String nidaNumber,
@@ -120,6 +125,19 @@ class SignupService implements ISignupService {
       'nidaNo': nindaNumber,
       'mobileNo': '+255' + phoneNo,
     });
+    return request;
+  }
+
+  @override
+  Future<StandardRequest> getCustomerDetailByMobileNo(
+      String phoneNo,
+      ) async {
+    var request = StandardRequest();
+    request.requestType = RequestType.GET;
+    request.endpoint = customerEndpoint +  'customer-details-by-mobile/$phoneNo[customer]';
+    request.customHeaders = {
+      'Content-Type': 'application/json',
+    };
     return request;
   }
 

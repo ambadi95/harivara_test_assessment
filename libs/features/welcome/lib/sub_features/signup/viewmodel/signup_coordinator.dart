@@ -57,14 +57,7 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
           state = const SignUpState.initialState();
           state = SignUpState.mobileNumberError(response.message!);
         }
-      } else if (signUpArguments.signupType == SignupType.resetPasscodeAgent) {
-        _navigationHandler.navigateToOtpScreenAgentResetPasscode(
-            signUpArguments.userType, agentId, mobileNumber);
-      } else
-      if (signUpArguments.signupType == SignupType.resetPasscodeCustomer) {
-        _navigationHandler.navigateToOtpScreenAgentResetPasscode(
-            signUpArguments.userType, agentId, mobileNumber);
-      } else if (signUpArguments.signupType == SignupType.agentSignUp) {
+      }  else if (signUpArguments.signupType == SignupType.agentSignUp) {
         state = const SignUpState.loadingState();
         var agentResponse =
         await _signupUseCase.signUpAgent(nindaNumber, agentId, (p0) => null);
@@ -97,7 +90,8 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
           state = const SignUpState.initialState();
           state = SignUpState.mobileNumberError(response.message!);
         }
-        if (signUpArguments.signupType == SignupType.customerSignUp) {
+      }
+        else if (signUpArguments.signupType == SignupType.customerSignUp) {
           state = const SignUpState.loadingState();
           var response = await _signupUseCase.signUp(
               nindaNumber.replaceAll("-", ""), mobileNumber.trim(), (
@@ -116,16 +110,20 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
           }
         } else
         if (signUpArguments.signupType == SignupType.resetPasscodeAgent) {
+          print('gherer');
+          state = const SignUpState.loadingState();
           var agentDetailResponse = await _signupUseCase.getAgentDetail(
               agentId, nindaNumber.replaceAll("-", ""), (p0) => null);
           if (agentDetailResponse?.status == true) {
+            state = const SignUpState.initialState();
             _navigationHandler
                 .navigateToOtpScreenAgentResetPasscode(
                 signUpArguments.userType, agentDetailResponse!.data!.y9AgentId!,
                 agentDetailResponse.data!.mobileNo!);
           } else {
+            state = const SignUpState.initialState();
             state =
-                SignUpState.mobileNumberError(agentDetailResponse!.message!);
+                SignUpState.agentIdError(agentDetailResponse!.message!);
             CrayonPaymentLogger.logError(agentDetailResponse.message!);
           }
         } else
@@ -158,7 +156,27 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
             state = SignUpState.agentIdError(agentResponse!.message!);
           }
         }
-      }
+        // else if (signUpArguments.signupType ==
+        //     SignupType.agentAidedCustomerOnBoarding) {
+        //   state = const SignUpState.loadingState();
+        //   var response = await _signupUseCase.signUpCustomerByAgent(
+        //       nindaNumber: nindaNumber.replaceAll("-", ""),
+        //       customerMobile: '+255' + mobileNumber.replaceAll(" ", ""),
+        //       onErrorCallback: (p0) => null,
+        //       agentId: await _signupUseCase.getAgentId());
+        //   if (response!.status == true) {
+        //     await continueToOtp(nindaNumber, mobileNumber);
+        //     state = const SignUpState.initialState();
+        //     await _signupUseCase
+        //         .saveCustomerId(response.data?.customerId.toString());
+        //     _navigationHandler.navigateToOtpScreenCustomerSignUpByAgent(
+        //         UserType.Customer, mobileNumber,
+        //         userId: response.data?.customerId.toString());
+        //   } else {
+        //     state = const SignUpState.initialState();
+        //     state = SignUpState.mobileNumberError(response.message!);
+        //   }
+        // }
     } catch (e) {
       state = const SignUpState.initialState();
     }

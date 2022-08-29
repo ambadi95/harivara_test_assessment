@@ -7,6 +7,8 @@ import 'package:device_option/view/device_option_screen.dart';
 import 'package:downpayment/view/down_payment_screen.dart';
 import 'package:home/home/home_screen_arguments.dart';
 import 'package:home/home/view/home_screen.dart';
+import 'package:shared_data_models/kyc/kyc_data_model.dart';
+import 'package:shared_data_models/kyc/kyc_type.dart';
 import 'package:kyc/subfeatures/kycmain/view/kyc_credit_main_screen.dart';
 import 'package:shared_data_models/device_option/device_option_args.dart';
 import 'package:shared_data_models/deviceloancreation/devicecreation_screen_args.dart';
@@ -22,8 +24,9 @@ import 'package:welcome/sub_features/details/view/details.dart';
 import 'package:welcome/sub_features/enrollment_success/view/enrollment_success_screen.dart';
 import 'package:welcome/sub_features/welcome/data_model/welcome_model.dart';
 import 'package:welcome/sub_features/welcome/view/welcome_screen.dart';
-import 'package:welcome/sub_features/welcome_back/view/welcome_back.dart';
 import 'package:widget_library/helpers/error/helper/error_helper.dart';
+import 'package:kyc/view/kyc_credit_screen.dart';
+import 'package:shared_data_models/kyc/kyc_screen_args.dart';
 import 'package:shared_data_models/device_option/detail_detail_response/data.dart';
 
 class VerifyOtpNavigationHandler with ErrorHandler {
@@ -44,6 +47,20 @@ class VerifyOtpNavigationHandler with ErrorHandler {
     var argument = UserType.AgentCustomer;
     _navigationManager.navigateTo(
         DetailsScreen.viewPath, const NavigationType.replace(),
+        arguments: argument);
+  }
+
+  Future<void> navigateToKycScreen() async {
+    var argument = KycScreenArgs(
+      KycFieldType.KYC_VALIDATION,
+      "",
+      "",
+      "",
+      "",
+      [KYCDataModel(title: "", isSelected: false)],
+    );
+    _navigationManager.navigateTo(
+        KycCreditScreen.viewPath, const NavigationType.replace(),
         arguments: argument);
   }
 

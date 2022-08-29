@@ -86,7 +86,12 @@ class WelcomeModule {
         .registerFactory<CustomerOnBoardingApprovalCoordinator>(
       (container) => CustomerOnBoardingApprovalCoordinator(
         WelcomeNavigationHandler(container.resolve<NavigationManager>()),
-      ),
+          SignupUseCase(
+            SignupViewModel(),
+            container.resolve<IAuthManager>(),
+            container.resolve<TaskManager>(),
+          ),
+        ),
     );
 
     DIContainer.container.registerFactory<DetailsCoordinator>(

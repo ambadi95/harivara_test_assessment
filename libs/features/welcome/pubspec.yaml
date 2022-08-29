@@ -57,6 +57,10 @@ dependencies:
   termscondition:
     path: ../../features/termscondition
 
+  kyc:
+    path: ../../features/kyc
+
+
   crayon_payment_customer:
     path: ../../../apps/customer
 

@@ -111,7 +111,13 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
   }
 
   Future navigateToCreatePasscodeScreen(UserType userType) async {
-    _navigationHandler.openForNewPasscode(userType);
+    //for agent customer onboarding we are not creating customer passcode
+    if(userType == UserType.AgentCustomer) {
+      _navigationHandler.navigateToKycScreen();
+
+    }else {
+      _navigationHandler.openForNewPasscode(userType);
+    }
   }
 
   bool isValidName(String name) {
