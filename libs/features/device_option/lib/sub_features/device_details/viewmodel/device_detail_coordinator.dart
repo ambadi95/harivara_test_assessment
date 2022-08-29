@@ -28,11 +28,15 @@ class DeviceDetailCoordinator
   }
 
   Future<void> navigateToEnrolledScreen(int deviceId, UserType userType) async {
-    var response =
-        await _DeviceOptionUseCase.selectDevice(deviceId, (p0) => null);
-    if (response?.status == true) {
-      print('success');
-      await _navigationHandler.navigateToCustomerEnrollmentScreen('', userType);
+    try {
+      var response =
+          await _DeviceOptionUseCase.selectDevice(deviceId, (p0) => null);
+      if (response?.status == true) {
+        print('success');
+        await _navigationHandler.navigateToCustomerEnrollmentScreen('', userType);
+      }
+    }  catch (e) {
+      print(e.toString());
     }
   }
 
