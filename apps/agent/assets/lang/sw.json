@@ -165,6 +165,7 @@
   "DD_MemberBenefit6": "Faida za Uanachama na Uaminifu",
   "DD_MemberBenefit7": "Motisha kubwa kwa rufaa ya familia na marafiki",
   "DD_MemberBenefit8": "Ufikiaji wa Akaunti yako ya Y9",
+  "ST_my_profile": "View Profile",
   "ST_title": "Mipangilio",
   "ST_subTitle": "Usimamizi wa Wasifu",
   "ST_view_profile": "Tazama Wasifu",
@@ -223,6 +224,9 @@
   "PC_fetch_details" : "Pata Maelezo",
   "PC_alert_message" : "Kitambulisho cha Marejeleo ya Mteja Aliyetolewa na Nambari ya Simu ya Mkononi hailingani na rekodi zetu.",
   "PC_alert_title" : "Maelezo ya Kutolingana",
-  "PC_button_close" : "Funga"
+  "PC_button_close" : "Funga",
+
+  "RP_success_message": "Passcode has been updated successfully",
+  "PR_message" : "You will be Signed out of the app, please use the new passcode to Sign-in again"
 
 }
