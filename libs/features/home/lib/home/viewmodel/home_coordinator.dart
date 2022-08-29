@@ -63,12 +63,17 @@ class HomeCoordinator extends BaseViewModel<HomeScreenState> {
 
   Future<Data> getCustomerCount() async {
     print('jhgsdjahgsdjgsa');
-    var response = await _customerHomeUseCase.getCustomerCount((p0) => null);
-    if (response?.status == true) {
-      print(response);
-      return response!.data!;
-    } else {
-      return const Data(enrolledCustomer: '0', initiatedCustomer: '0');
+    try {
+      var response = await _customerHomeUseCase.getCustomerCount((p0) => null);
+      if (response?.status == true) {
+        print(response);
+        return response!.data!;
+      } else {
+        return const Data(enrolledCustomer: '0', initiatedCustomer: '0');
+      }
+    }  catch (e) {
+      print(e.toString());
+      throw null! ;
     }
   }
 
