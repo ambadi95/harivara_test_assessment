@@ -107,9 +107,9 @@ class AgentNearbyCoordinator extends AnalyticsStateNotifier<AgentNearByState> {
     var response = await _agentNearbyUseCase.agentsNearBy(search, (p0) => null);
     if (response?.status == true) {
       for (int i = 0; i < response!.data!.length; i++) {
-        double dis = distance(13.0768943,80.149900);
-        if(newList.contains(response.data)){}
-        else {
+        double dis = distance(13.0768943, 80.149900);
+        if (newList.contains(response.data)) {
+        } else {
           newList.add(Datum(
               firstName: response.data![i].firstName,
               lastName: response.data![i].lastName,

@@ -161,7 +161,13 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
       var responseSignin = await _verifyOtpUseCase.otpVerifyCustomerByAgent(
           otpScreenArgs.refId, enterOtp, 'Customer', (p0) => null);
       if (responseSignin!.data!.status == "success") {
-        _navigationHandler.navigateToDetailScreen();
+        var getWorkFlowStatus = await _verifyOtpUseCase.workFlowCustomerByAgent(
+            otpScreenArgs.refId, (p0) => null);
+        if (getWorkFlowStatus!.data!.status == "success") {
+          CrayonPaymentLogger.logInfo('I am in WorkFlow Status');
+          //TODO Workflow Navigation
+          //_navigationHandler.navigateToDetailScreen();
+        }
       }
     } else if (otpScreenArgs.otpVerificationType ==
         OtpVerificationType.mobile) {

@@ -29,7 +29,7 @@ class SignupApiResolver extends TaskResolver {
     switch (identifier) {
       case ISignupService.jwtIdentifier:
         return _signupService.jwttoken(requestData);
-        case ISignupService.signupIdentifier:
+      case ISignupService.signupIdentifier:
         return _signupService.signup(
           requestData['nindaNumber'] as String,
           requestData['phoneNo'] as String,

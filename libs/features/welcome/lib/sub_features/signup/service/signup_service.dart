@@ -29,10 +29,9 @@ abstract class ISignupService {
   );
 
   Future<StandardRequest> getCustomerDetail(
-      String nindaNumber,
-      String phoneNo,
-      );
-
+    String nindaNumber,
+    String phoneNo,
+  );
 
   Future<StandardRequest> signupCustomerByAgent(
       {required String nidaNumber,
@@ -103,16 +102,14 @@ class SignupService implements ISignupService {
       'y9AgentId': agentId,
     });
     CrayonPaymentLogger.logInfo(request.jsonBody.toString());
-    CrayonPaymentLogger.logInfo(token);
-
     return request;
   }
 
   @override
   Future<StandardRequest> getCustomerDetail(
-      String nindaNumber,
-      String phoneNo,
-      ) async {
+    String nindaNumber,
+    String phoneNo,
+  ) async {
     var request = StandardRequest();
     request.requestType = RequestType.GET;
     request.endpoint = 'customer-details';

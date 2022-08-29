@@ -25,23 +25,18 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
     await _navigationHandler.navigateToAgentAidedCustomerOnBoarding();
   }
 
-
-  Future calljwttoken(
-      ) async {
+  Future calljwttoken() async {
     state = const SignUpState.loadingState();
 
-    var response = await _signupUseCase.callJWTToken(
-            (p0) => null);
+    var response = await _signupUseCase.callJWTToken((p0) => null);
     if (response?.status == true) {
       state = const SignUpState.initialState();
-
     } else {
       state = const SignUpState.initialState();
 
       print(response?.message);
     }
   }
-
 
   Future<void> signup(SignUpArguments signUpArguments, String mobileNumber,
       String nindaNumber, String agentId) async {
@@ -71,13 +66,15 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
         CrayonPaymentLogger.logError(agentDetailResponse.message!);
       }
     } else if (signUpArguments.signupType == SignupType.resetPasscodeCustomer) {
-      var detailResponse = await _signupUseCase.getCustomerDetails(nindaNumber, mobileNumber, (p0) => null);
-      if(detailResponse?.status == true){
+      var detailResponse = await _signupUseCase.getCustomerDetails(
+          nindaNumber, mobileNumber, (p0) => null);
+      if (detailResponse?.status == true) {
         await _signupUseCase
             .saveCustomerId(detailResponse!.data?.customerId.toString());
         String customerID = detailResponse.data!.customerId.toString();
-        _navigationHandler.navigateToOtpScreenCustomerResetPasscode('Customer',mobileNumber,customerID);
-      }else{
+        _navigationHandler.navigateToOtpScreenCustomerResetPasscode(
+            'Customer', mobileNumber, customerID);
+      } else {
         state = SignUpState.mobileNumberError(detailResponse!.message!);
         CrayonPaymentLogger.logError(detailResponse.message!);
       }

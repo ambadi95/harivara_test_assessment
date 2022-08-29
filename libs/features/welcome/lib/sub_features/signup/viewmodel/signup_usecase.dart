@@ -97,16 +97,14 @@ class SignupUseCase extends BaseDataProvider {
 
   Future<JwtTokenResponse?> callJWTToken(
       Function(String) onErrorCallback) async {
-
-
     await executeApiRequest<JwtTokenResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
         moduleIdentifier: WelcomeModule.moduleIdentifier,
-        requestData:{
+        requestData: {
           'username': 'y9dev',
           'password': 'P@ssw0rd',
-          'clientid':'7dcd46ae-5f2f-4b14-a9a2-c48796180517'
+          'clientid': '7dcd46ae-5f2f-4b14-a9a2-c48796180517'
         },
         serviceIdentifier: ISignupService.jwtIdentifier,
         onError: onErrorCallback,
@@ -115,12 +113,10 @@ class SignupUseCase extends BaseDataProvider {
 
           JwtTokenResponse jwtTokenResponse = JwtTokenResponse.fromJson(data);
 
-          if(jwtTokenResponse.status==true){
+          if (jwtTokenResponse.status == true) {
             _authManager.storeJWTToken(
               jwtTokenResponse.data!.jwttoken!,
-
             );
-
           }
         });
   }
@@ -193,7 +189,7 @@ class SignupUseCase extends BaseDataProvider {
         modelBuilderCallback: (responseData) {
           final data = responseData;
           CustomerDetailResponse detailResponse =
-          CustomerDetailResponse.fromJson(data);
+              CustomerDetailResponse.fromJson(data);
           _authManager.setUserDetail(
               authInfo: detailResponse.data?.customerId.toString(),
               key: 'Customer_ID');

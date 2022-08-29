@@ -10,18 +10,16 @@ class ScanQRCodeCoordinator extends AnalyticsStateNotifier<ScanQRCodeState> {
   final ScanQRCodeUseCase _scanQRCodeUseCase;
 
   ScanQRCodeCoordinator(
-      this._navigationHandler,
-      this._scanQRCodeUseCase,
-      ) : super(const ScanQRCodeState.initialState());
+    this._navigationHandler,
+    this._scanQRCodeUseCase,
+  ) : super(const ScanQRCodeState.initialState());
 
   void initialiseState(
-      BuildContext context,
-      ) async {
-    state = ScanQRCodeState.ready(
-        context: context,
-        error: "",isLoading: false);
+    BuildContext context,
+  ) async {
+    state =
+        ScanQRCodeState.ready(context: context, error: "", isLoading: false);
   }
-
 
   Future<String> getAgentName() async {
     return _scanQRCodeUseCase.getAgentName();

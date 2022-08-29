@@ -4,6 +4,7 @@ import 'package:shared_data_models/welcome/otp/request/otp_request.dart';
 import 'package:shared_data_models/welcome/otp/response/otp_response.dart';
 import 'package:shared_data_models/welcome/otp_verification/request/otp_verification_request.dart';
 import 'package:shared_data_models/welcome/otp_verification/response/otp_verification_response.dart';
+import 'package:shared_data_models/workflow_status/work_flow_status_response/work_flow_status_response.dart';
 import 'package:task_manager/base_classes/base_data_provider.dart';
 import 'package:task_manager/task_manager.dart';
 import 'package:task_manager/task_manager_impl.dart';
@@ -113,6 +114,22 @@ class VerifyOtpUseCase extends BaseDataProvider {
           CrayonPaymentLogger.logInfo(responseData.toString());
           final data = responseData;
           return OtpVerificationResponse.fromJson(data);
+        });
+  }
+
+  Future<WorkFlowStatusResponse?> workFlowCustomerByAgent(
+      String id, Function(String) onErrorCallback) async {
+    return await executeApiRequest<WorkFlowStatusResponse?>(
+        taskType: TaskType.DATA_OPERATION,
+        taskSubType: TaskSubType.REST,
+        moduleIdentifier: VerifyOtpModule.moduleIdentifier,
+        requestData: { "customerId" : id },
+        serviceIdentifier: IOtpService.workFlowCustomerByAgentIdentifier,
+        onError: onErrorCallback,
+        modelBuilderCallback: (responseData) {
+          CrayonPaymentLogger.logInfo(responseData.toString());
+          final data = responseData;
+          return WorkFlowStatusResponse.fromJson(data);
         });
   }
 }

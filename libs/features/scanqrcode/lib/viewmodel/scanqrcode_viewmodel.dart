@@ -1,1 +1,1 @@
-class ScanQRCodeViewModel{}
+class ScanQRCodeViewModel {}

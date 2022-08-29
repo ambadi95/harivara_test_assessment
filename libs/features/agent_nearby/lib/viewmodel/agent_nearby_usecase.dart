@@ -56,8 +56,7 @@ class AgentNearbyUseCase extends BaseDataProvider {
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {
           final data = responseData;
-          AgentsNearByList agentsNearByList =
-          AgentsNearByList.fromMap(data);
+          AgentsNearByList agentsNearByList = AgentsNearByList.fromMap(data);
           return AgentsNearByList.fromMap(data);
         });
   }

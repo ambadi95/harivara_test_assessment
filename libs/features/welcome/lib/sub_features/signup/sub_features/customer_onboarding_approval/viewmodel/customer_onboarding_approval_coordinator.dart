@@ -7,7 +7,8 @@ import '../../../../../navigation_handler/welcome_navigation_handler.dart';
 import '../state/onboarding_approval_state.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
-class CustomerOnBoardingApprovalCoordinator extends BaseViewModel<OnBoardingApprovalState> {
+class CustomerOnBoardingApprovalCoordinator
+    extends BaseViewModel<OnBoardingApprovalState> {
   final WelcomeNavigationHandler _navigationHandler;
 
   CustomerOnBoardingApprovalCoordinator(this._navigationHandler)
@@ -21,37 +22,38 @@ class CustomerOnBoardingApprovalCoordinator extends BaseViewModel<OnBoardingAppr
     _navigationHandler.navigateToTermsCondtionsScreen();
   }
 
-  validateMobileNumber(String mobileNumber){
-    if(mobileNumber.length == 11){
+  validateMobileNumber(String mobileNumber) {
+    if (mobileNumber.length == 11) {
       state = state.copyWith(mobileNumberError: 'LS_mobile_error_text');
-    }else{
+    } else {
       state = state.copyWith(mobileNumberError: '');
     }
   }
 
   validateReferenceId(String referenceId) {
-    if(referenceId.isEmpty){
-      state =  state.copyWith(referenceIdError: 'PC_ref_id_error_text');
-    }else{
-      state =  state.copyWith(referenceIdError: '');
+    if (referenceId.isEmpty) {
+      state = state.copyWith(referenceIdError: 'PC_ref_id_error_text');
+    } else {
+      state = state.copyWith(referenceIdError: '');
     }
   }
 
-   validateForm(String mobNumber, String reference) {
-    if(mobNumber.length == 11 && reference.isNotEmpty){
-   state =  state.copyWith(isValid: true);
-    }else{
-     state = state.copyWith(isValid: false);
+  validateForm(String mobNumber, String reference) {
+    if (mobNumber.length == 11 && reference.isNotEmpty) {
+      state = state.copyWith(isValid: true);
+    } else {
+      state = state.copyWith(isValid: false);
     }
   }
-  Future getCustomerDetails(String mobileNumber, String referenceID)async{
+
+  Future getCustomerDetails(String mobileNumber, String referenceID) async {
     _showAlertDataMismatch();
     //navigateToOtpScreen( mobileNumber);
   }
 
-
-  Future navigateToOtpScreen(String mobileNumber)async{
-    _navigationHandler.navigateToOtpScreen(UserType.Customer,'4',mobileNumber);
+  Future navigateToOtpScreen(String mobileNumber) async {
+    _navigationHandler.navigateToOtpScreen(
+        UserType.Customer, '4', mobileNumber);
   }
 
   _showAlertDataMismatch() {
@@ -61,7 +63,7 @@ class CustomerOnBoardingApprovalCoordinator extends BaseViewModel<OnBoardingAppr
           alertTitle: 'PC_alert_title'.tr,
           alertIcon: "assets/images/alert_icon.png",
           bottomButtonText: 'PC_button_close'.tr,
-          onBottomButtonPress: (){
+          onBottomButtonPress: () {
             goBack();
           },
           // onClose: () {
