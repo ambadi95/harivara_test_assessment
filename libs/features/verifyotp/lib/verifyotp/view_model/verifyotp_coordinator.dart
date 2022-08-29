@@ -62,7 +62,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         //otpController.text = otp;
         CrayonPaymentLogger.logInfo(otp);
       }
-    }  catch (e) {
+    } catch (e) {
       print(e.toString());
     }
   }
@@ -168,11 +168,12 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
       if (responseSignin!.status == true) {
         var getWorkFlowStatus = await _verifyOtpUseCase.workFlowCustomerByAgent(
             otpScreenArgs.refId, (p0) => null);
-        if (getWorkFlowStatus!.status == true) {
+        if (getWorkFlowStatus!.status!) {
           CrayonPaymentLogger.logInfo('I am in WorkFlow Status');
-          workFlow(getWorkFlowStatus.data!.status!);
           //TODO Workflow Navigation
-          //_navigationHandler.navigateToDetailScreen();
+
+          navigationToWorkFlow(getWorkFlowStatus.data!.status!);
+         // _navigationHandler.navigateToDetailScreen();
         }
       }
     } else if (otpScreenArgs.otpVerificationType ==
@@ -273,16 +274,6 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
 //   }
 // }
 
-  Future<void> workFlow(String workFlowStatus)async{
-      switch(workFlowStatus){
-        case 'Initiated' : { _navigationHandler.navigateToDetailScreen();}
-          break;
-        case 'Enrolled' :  { _navigationHandler.navigateToKycScreen();}
-          break;
-
-      }
-}
-
   _showAlertForOTPAttempts() {
     Get.bottomSheet(
       AlertBottomSheet(
@@ -296,5 +287,67 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
       isScrollControlled: false,
       isDismissible: true,
     );
+  }
+
+  navigationToWorkFlow(String status) {
+    switch (status) {
+      case "Initiated":
+        _navigationHandler.navigateToDetailScreen();
+        break;
+      case "Enrolled":
+     //   _navigationHandler.navigateToDetailScreen();
+        break;
+      case "KYC_Initiated":
+        _navigationHandler.navigateToKYCScreen();
+        break;
+      case "KYC_Success":
+        _navigationHandler.navigateToKYCScreen();
+        break;
+      case "Credit_Check_Requested":
+        _navigationHandler.navigateToKYCScreen();
+        break;
+      case "Credit_Check_Success":
+        //TODO Navigate to Credit_Check_Success Screen
+        break;
+      case "Device_Selection":
+        _navigationHandler.navigateToDeviceOption(false,UserType.AgentCustomer);
+        break;
+      case "Device_Selected":
+        _navigationHandler.navigateToDeviceOption(true,UserType.AgentCustomer);
+        break;
+      case "Downpayment_Initiated":
+        _navigationHandler.navigateToDownPaymentScreen();
+        break;
+      case "Downpayment_Scuccess":
+        _navigationHandler.navigateToDownPaymentScreen();
+        break;
+      case "Downpayment_Failed":
+        _navigationHandler.navigateToDownPaymentScreen();
+        break;
+      case "Loan_Initiated":
+        //_navigationHandler.navigateToDeviceLoanCreation();
+        break;
+      case "Loan_Approved":
+        //TODO Navigate to Loan_Approved Screen
+        break;
+      case "Device_Reg_Initiated":
+        //TODO Navigate to Device_Reg_Initiated Screen
+        break;
+      case "Device_Reg_Success":
+        //TODO Navigate to Device_Reg_Success Screen
+        break;
+      case "MDM_Reg_Initiated":
+        //TODO Navigate to MDM_Reg_Initiated Screen
+        break;
+      case "MDM_Reg_Success":
+        //TODO Navigate to MDM_Reg_Success Screen
+        break;
+      case "Repayment_Initiated":
+        //TODO Navigate to Repayment_Initiated Screen
+        break;
+      case "Repayment_Success":
+        //TODO Navigate to Repayment_Success Screen
+        break;
+    }
   }
 }

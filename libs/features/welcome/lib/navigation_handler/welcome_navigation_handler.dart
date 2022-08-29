@@ -7,6 +7,7 @@ import 'package:core/sheets/state/crayon_payment_bottom_sheet_state.dart';
 import 'package:flutter/material.dart';
 import 'package:home/home/home_screen_arguments.dart';
 import 'package:home/home/view/home_screen.dart';
+import 'package:kyc/subfeatures/kycmain/view/kyc_credit_main_screen.dart';
 import 'package:kyc/view/kyc_credit_screen.dart';
 import 'package:passcode/sub_features/passcode/view/passcode.dart';
 import 'package:shared_data_models/device_option/device_option_args.dart';
@@ -375,6 +376,20 @@ class WelcomeNavigationHandler with ErrorHandler {
       preventDuplicates: false,
       arguments: arguments,
     );
+  }
+
+  void navigateToKYCScreen() async {
+    var argument = KycScreenArgs(
+      KycFieldType.KYC_VALIDATION,
+      "",
+      "",
+      "",
+      "",
+      [KYCDataModel(title: "", isSelected: false)],
+    );
+    await _navigationManager.navigateTo(
+        KycCreditMainScreen.viewPath, const NavigationType.push(),
+        arguments: argument);
   }
 
 // Future<void> navigateToDestination(

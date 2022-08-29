@@ -246,7 +246,11 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
           userType);
       if (response?.status == true) {
         state = const DetailsState.initialState();
-        navigateToCreatePasscodeScreen(userType);
+        if(userType == UserType.AgentCustomer){
+          _navigationHandler.navigateToKYCScreen();
+        } else {
+          navigateToCreatePasscodeScreen(userType);
+        }
       } else {
         state = const DetailsState.initialState();
         print(response?.message);
