@@ -6,7 +6,8 @@
   "OB_SignUp" : "Jisajili",
   "OB_Lang" : "SW",
   "OB_ni_bora" : "ni %{Bora|click}%",
-
+  "ST_view_profile": "View Profile",
+  "ST_my_profile": "My Profile",
 
   "DO_Title": "Chaguo za Kifaa",
   "DO_Search": "Tafuta kwa Jina / Chapa / bei / hifadhi / nk.",
@@ -103,8 +104,8 @@
 
 
   "AN_Title" : "Wakala wa karibu",
-  "AN_Search" : "Tafuta kwa Jina / Kitambulisho/ Mkoa / Wilaya/ Po#",
-  "AN_AgentName" : "Y9 Kitambulisho cha wakala:",
+  "AN_Search" : "Tafuta kwa Jina Mkoa / Wilaya",
+  "AN_AgentName" : "Y9 Kitambulisho cha wakala: ",
   "AN_Call" : "Wito",
 
   "D0_JoiningFee": "Joining Fee (one off)",
@@ -185,6 +186,17 @@
 
 
 
+
+  "LR_paying_for" : "You are paying for",
+  "LR_device_loan" : "Y9 Device Loan",
+  "LR_amount_to_pay" : "Choose the amount to pay",
+  "LR_due_amount" : "Pay Due Amount",
+  "LR_daily_repayment" : "Daily Repayment",
+  "LR_loan_amount" : "Total Loan Amount",
+  "LR_custom_amount" : "Pay Custom Amount",
+  "LR_pay_now" : "Pay Now",
+
+
   "HS_CardList1Title" : "Y9 Device Loan",
   "HS_CardList2Title" : "Outstanding Due Amount",
   "HS_CardList3Title" : "Total Amount to be \nRepaid",
@@ -195,7 +207,7 @@
   "HS_explore" : "Explore",
   "HS_Daily_Repayment_amount" : "Outstanding Due\nAmount",
 
-  "ST_title" : "Settings",
+  "ST_title" : "Mipangilio",
   "ST_subTitle" : "Profile Management",
   "ST_view_profile" : "View Profile",
   "ST_update_passcode" : "Update Passcode",
@@ -215,6 +227,37 @@
   "PP_PayNow" : "Pay Now",
   "PP_Wallets_Title" : "Wallets",
 
-  "FAQ_Title": "FAQ"
+  "FAQ_Title": "FAQ",
 
+  "LD_Loan_Detail": "Loan Details",
+  "LD_Loan_Detail_Amount": "Loan Amount",
+  "LD_Loan_Detail_Down_Payment": "Joining Fee / Downpayment",
+  "LD_Loan_Detail_Repayment": "Repayment Type",
+  "LD_Loan__Detail_Daily_Repayment_Amount": "Daily Repayment Amount",
+  "LD_Loan_Detail_Total_Repayed_Amount": "Total Amount to be Repaid",
+  "LD_Loan_Detail_Loan_Tenure": "Loan Tenure",
+  "LD_Loan_Detail_Start_Date": "Loan Start Date",
+  "LD_Loan_Detail_Final_Date": "Final Payment Date",
+  "LD_Loan_Detail_Device_Insurance": "Device Insurance",
+  "LD_Loan_Detail_Device_Insurance_ID": "Device Insurance ID",
+  "LD_Loan_Detail_Note": "** Note: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+  "LD_Loan_Detail_Terms_and_conditions": "By signing up to Y9, you all ready agree to the",
+  "LD_Loan_Detail_Terms": " Terms & Conditions.",
+
+  "Profile_Title": "Profile",
+  "Profile_Sub_Title": "Your Personal details are shown as per your NIDA records",
+
+  "LR_paying_for" : "You are paying for",
+  "LR_device_loan" : "Y9 Device Loan",
+  "LR_amount_to_pay" : "Choose the amount to pay",
+  "LR_due_amount" : "Pay Due \nAmount",
+  "LR_daily_repayment" : "Daily \nRepayment",
+  "LR_loan_amount" : "Total Loan \nAmount",
+  "LR_custom_amount" : "Pay Custom \nAmount",
+  "LR_pay_now" : "Pay Now",
+  "LR_payment_label" : "Payment of {} will be adjusted in total \nPayable amount",
+  "LR_proceed" : "Proceed",
+
+
+  "CA_custom_amount" : "Pay Custom Amount"
 }

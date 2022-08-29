@@ -7,7 +7,4 @@ class ConfigureMdmNavigationHandler with ErrorHandler {
   final NavigationManager _navigationManager;
 
   ConfigureMdmNavigationHandler(this._navigationManager);
-
-
-
 }

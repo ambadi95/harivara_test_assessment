@@ -1,5 +1,6 @@
 import 'package:core/logging/logger.dart';
 import 'package:network_manager/auth/auth_manager.dart';
+import 'package:network_manager/model/response/jwt/jwt_token_response.dart';
 import 'package:shared_data_models/agent_onboard/agent_details/response/agent_details_response.dart';
 import 'package:task_manager/base_classes/base_data_provider.dart';
 import 'package:task_manager/task.dart';
@@ -9,8 +10,6 @@ import '../login_module.dart';
 import '../service/login_service.dart';
 import 'package:shared_data_models/welcome/signin/request/sign_in_request.dart';
 import 'login_viewmodel.dart';
-import 'package:shared_data_models/agent_onboard/agent_detail_mob_nida/response/get_agent_response/get_agent_response.dart';
-import 'package:shared_data_models/agent_onboard/agent_detail_mob_nida/request/get_agent_request.dart';
 
 class LoginUseCase extends BaseDataProvider {
   final LoginViewModel _loginViewModel;
@@ -38,7 +37,6 @@ class LoginUseCase extends BaseDataProvider {
   Future<void> saveCustomerMobileNumber(String mobileNumber) async {
     return await setValueToSecureStorage({'mobileNumber': mobileNumber});
   }
-
 
   Future<void> saveMobileNumber(String mobileNumber) async {
     return await setValueToSecureStorage({'agentMobileNumber': mobileNumber});
@@ -84,6 +82,38 @@ class LoginUseCase extends BaseDataProvider {
           return CustomerSignInResponse.fromJson(data);
         });
   }
+
+  Future<JwtTokenResponse?> callJWTToken(
+      Function(String) onErrorCallback) async {
+
+  return  await executeApiRequest<JwtTokenResponse?>(
+        taskType: TaskType.DATA_OPERATION,
+        taskSubType: TaskSubType.REST,
+        moduleIdentifier: LoginModule.moduleIdentifier,
+        requestData:{
+          'username': 'y9dev',
+          'password': 'P@ssw0rd',
+          'clientid':'7dcd46ae-5f2f-4b14-a9a2-c48796180517'
+        },
+        serviceIdentifier: ILoginService.jwtIdentifier,
+        onError: onErrorCallback,
+        modelBuilderCallback: (responseData) {
+          final data = responseData;
+
+          JwtTokenResponse jwtTokenResponse = JwtTokenResponse.fromJson(data);
+
+          if(jwtTokenResponse.status == true){
+            _authManager.storeJWTToken(
+              jwtTokenResponse.data!.jwttoken!,
+            );
+
+          }
+
+          return jwtTokenResponse;
+        });
+  }
+
+
 
   Future<AgentDetailsResponse?> getAgentDetail(String agentId,
       String mobileNumber, Function(String) onErrorCallback) async {

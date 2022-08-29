@@ -44,10 +44,10 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
   Widget build(BuildContext context) =>
       BaseView<WelcomeBackCoordinator, WelcomeScreenState>(
         setupViewModel: (coordinator) async {
-          if(widget.userType == 'Agent') {
+          if (widget.userType == 'Agent') {
             username = await coordinator.getUserName();
             userID = await coordinator.getUserId();
-          }else {
+          } else {
             username = await coordinator.getCustomer();
           }
         },
@@ -136,7 +136,7 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
               //   WB_touchIdIcon,
               //   scale: 2.0,
               // ),
-              //  _buildResetPasscode(welcomeCoordinator)
+               _buildResetPasscode(welcomeCoordinator)
             ],
           ),
         ),

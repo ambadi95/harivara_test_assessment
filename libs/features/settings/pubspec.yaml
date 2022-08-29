@@ -49,6 +49,10 @@ dependencies:
   passcode:
     path: ../passcode
 
+  agent_nearby:
+    path: ../agent_nearby
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

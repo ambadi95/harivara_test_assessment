@@ -1,3 +1,1 @@
-class PaymentsViewModel{
-
-}
+class PaymentsViewModel {}

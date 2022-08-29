@@ -2,7 +2,6 @@ import 'package:task_manager/base_classes/base_view_model.dart';
 import 'package:welcome/sub_features/signup/state/signup_state.dart';
 import '../../../../../navigation_handler/welcome_navigation_handler.dart';
 
-
 class RegistrationApprovalCoordinator extends BaseViewModel<SignUpState> {
   final WelcomeNavigationHandler _navigationHandler;
 
@@ -17,11 +16,11 @@ class RegistrationApprovalCoordinator extends BaseViewModel<SignUpState> {
     _navigationHandler.navigateToTermsCondtionsScreen();
   }
 
-  Future navigateToAgentAidedCustomer()async{
+  Future navigateToAgentAidedCustomer() async {
     await _navigationHandler.navigateToAgentAidedCustomerOnBoarding();
   }
 
-  Future navigateCustomerOnBoardingApproval()async{
+  Future navigateCustomerOnBoardingApproval() async {
     await _navigationHandler.navigateToCustomerOnBoardingApproval();
   }
 }

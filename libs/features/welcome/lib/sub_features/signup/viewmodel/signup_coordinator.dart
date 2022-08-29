@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:core/logging/logger.dart';
 import 'package:shared_data_models/signup/sign_up_type.dart';
 import 'package:task_manager/base_classes/base_view_model.dart';
 import 'package:welcome/sub_features/signup/state/signup_state.dart';
@@ -8,6 +9,7 @@ import 'package:welcome/sub_features/signup/viewmodel/signup_usecase.dart';
 import '../../../data_model/sign_up_arguments.dart';
 import '../../../navigation_handler/welcome_navigation_handler.dart';
 import 'package:config/Config.dart';
+
 class SignUpCoordinator extends BaseViewModel<SignUpState> {
   final SignupUseCase _signupUseCase;
   final WelcomeNavigationHandler _navigationHandler;
@@ -19,9 +21,27 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
     _navigationHandler.goBack();
   }
 
-  Future navigateToAgentAidedCustomer()async{
+  Future navigateToAgentAidedCustomer() async {
     await _navigationHandler.navigateToAgentAidedCustomerOnBoarding();
   }
+
+
+  Future calljwttoken(
+      ) async {
+    state = const SignUpState.loadingState();
+
+    var response = await _signupUseCase.callJWTToken(
+            (p0) => null);
+    if (response?.status == true) {
+      state = const SignUpState.initialState();
+
+    } else {
+      state = const SignUpState.initialState();
+
+      print(response?.message);
+    }
+  }
+
 
   Future<void> signup(SignUpArguments signUpArguments, String mobileNumber,
       String nindaNumber, String agentId) async {
@@ -42,11 +62,27 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
         state = SignUpState.mobileNumberError(response.message!);
       }
     } else if (signUpArguments.signupType == SignupType.resetPasscodeAgent) {
-      _navigationHandler
-          .navigateToOtpScreenAgentResetPasscode(signUpArguments.userType);
+      var agentDetailResponse = await _signupUseCase.getAgentDetail(agentId, nindaNumber.replaceAll("-", ""), (p0) => null);
+      if(agentDetailResponse?.status == true){
+        _navigationHandler
+            .navigateToOtpScreenAgentResetPasscode(signUpArguments.userType, agentDetailResponse!.data!.y9AgentId!,agentDetailResponse.data!.mobileNo!);
+      }else{
+        state = SignUpState.mobileNumberError(agentDetailResponse!.message!);
+        CrayonPaymentLogger.logError(agentDetailResponse.message!);
+      }
     } else if (signUpArguments.signupType == SignupType.resetPasscodeCustomer) {
-      _navigationHandler
-          .navigateToOtpScreenAgentResetPasscode(signUpArguments.userType);
+      var detailResponse = await _signupUseCase.getCustomerDetails(nindaNumber, mobileNumber, (p0) => null);
+      if(detailResponse?.status == true){
+        await _signupUseCase
+            .saveCustomerId(detailResponse!.data?.customerId.toString());
+        String customerID = detailResponse.data!.customerId.toString();
+        _navigationHandler.navigateToOtpScreenCustomerResetPasscode('Customer',mobileNumber,customerID);
+      }else{
+        state = SignUpState.mobileNumberError(detailResponse!.message!);
+        CrayonPaymentLogger.logError(detailResponse.message!);
+      }
+      // _navigationHandler
+      //     .navigateToOtpScreenAgentResetPasscode(signUpArguments.userType);
     } else if (signUpArguments.signupType == SignupType.agentSignUp) {
       state = const SignUpState.loadingState();
       var agentResponse =
@@ -89,11 +125,11 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
       _navigationHandler.navigateToOtpScreenCustomerSignUp(
           signUpArguments.userType, mobileNumber);
     } else if (signUpArguments.signupType == SignupType.resetPasscodeAgent) {
-      _navigationHandler
-          .navigateToOtpScreenAgentResetPasscode(signUpArguments.userType);
+      // _navigationHandler
+      //     .navigateToOtpScreenAgentResetPasscode(signUpArguments.userType);
     } else if (signUpArguments.signupType == SignupType.resetPasscodeCustomer) {
-      _navigationHandler
-          .navigateToOtpScreenAgentResetPasscode(signUpArguments.userType);
+      // _navigationHandler
+      //     .navigateToOtpScreenAgentResetPasscode(signUpArguments.userType);
     } else if (signUpArguments.signupType == SignupType.agentSignUp) {
       _navigationHandler.navigateToAgentDetailScreen(signUpArguments.userType);
     } else if (signUpArguments.signupType ==
@@ -117,8 +153,7 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
     return _isValid;
   }
 
-  void validateForm(
-      String nidaNo, String mobNumber, String agentId,  userType) {
+  void validateForm(String nidaNo, String mobNumber, String agentId, userType) {
     state = SignUpState.SignUpFormState(
         _validateForm(nidaNo, mobNumber, agentId, userType));
   }

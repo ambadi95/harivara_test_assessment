@@ -5,7 +5,6 @@ import 'package:shared_data_models/kyc/kyc_screen_args.dart';
 
 import '../view/down_payment_screen.dart';
 
-
 class DownPaymentRouteManager extends IRouteManager {
   @override
   Widget getView(RouteSettings settings) {
@@ -13,7 +12,7 @@ class DownPaymentRouteManager extends IRouteManager {
       case DownPaymentScreen.viewPath:
         var arguments = settings.arguments as DownPaymentScreenArgs;
         return DownPaymentScreen(
-           downPaymentScreenArgs: arguments,
+          downPaymentScreenArgs: arguments,
         );
       default:
         // TODO: implement getView

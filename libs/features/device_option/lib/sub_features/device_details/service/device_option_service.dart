@@ -9,7 +9,7 @@ abstract class IDeviceOptionService {
   static const deviceDetailIdentifier = 'deviceDetail';
   static const selectDeviceIdentifier = 'selectDevice';
 
-  Future<StandardRequest> deviceList(int customerId, String token);
+  Future<StandardRequest> deviceList(int customerId);
 
   Future<StandardRequest> deviceDetail(int deviceId, String token);
 
@@ -19,15 +19,11 @@ abstract class IDeviceOptionService {
 
 class DeviceOptionService implements IDeviceOptionService {
   @override
-  Future<StandardRequest> deviceList(int customerId, String token) async {
+  Future<StandardRequest> deviceList(int customerId) async {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
     request.endpoint = customerEndpoint + 'device-list[customer]';
     request.jsonBody = json.encode({"customerId": customerId});
-    request.customHeaders = {
-      'Content-Type': 'application/json',
-      'Authorization': token,
-    };
     return request;
   }
 
@@ -37,10 +33,7 @@ class DeviceOptionService implements IDeviceOptionService {
     request.requestType = RequestType.GET;
     request.endpoint =
         customerEndpoint + 'device-details/${deviceId.toString()}[customer]';
-    request.customHeaders = {
-      'Content-Type': 'application/json',
-      'Authorization': token,
-    };
+
     return request;
   }
 
@@ -52,10 +45,7 @@ class DeviceOptionService implements IDeviceOptionService {
     request.endpoint = customerEndpoint + 'customer-device[customer]';
     request.jsonBody =
         json.encode({"customerId": customerId, 'deviceId': device});
-    request.customHeaders = {
-      'Content-Type': 'application/json',
-      'Authorization': token,
-    };
+
     return request;
   }
 }

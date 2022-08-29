@@ -5,9 +5,5 @@ class HomeScreenArgs {
   final bool isAgent;
   final UserType userType;
 
-  HomeScreenArgs({
-    required this.isAgent,
-      required this.userType}
-  );
+  HomeScreenArgs({required this.isAgent, required this.userType});
 }
-

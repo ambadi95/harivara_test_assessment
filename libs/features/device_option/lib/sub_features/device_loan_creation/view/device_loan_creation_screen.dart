@@ -208,9 +208,18 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
               fontWeight: FontWeight.w600),
         ),
         dynamicHSpacer(30),
-        _rowTitleValue('D0_JoiningFee'.tr, detailDetail!.joiningFees!.toString() + " TZSHS"),
-        _rowTitleValue('DLC_Daily_Repayment'.tr, detailDetail!.dailyFees==null ? "" : detailDetail!.dailyFees!.toString() + " TZSHS"),
-        _rowTitleValue('DLC_Total_Amount_Repaid'.tr, detailDetail!.amountToPay==null ? "70000.0 TZSHS" : detailDetail!.amountToPay!.toString() + " TZSHS"),
+        _rowTitleValue('D0_JoiningFee'.tr,
+            detailDetail!.joiningFees!.toString() + " TZSHS"),
+        _rowTitleValue(
+            'DLC_Daily_Repayment'.tr,
+            detailDetail!.dailyFees == null
+                ? ""
+                : detailDetail!.dailyFees!.toString() + " TZSHS"),
+        _rowTitleValue(
+            'DLC_Total_Amount_Repaid'.tr,
+            detailDetail!.amountToPay == null
+                ? "70000.0 TZSHS"
+                : detailDetail!.amountToPay!.toString() + " TZSHS"),
         _rowTitleValue('DLC_Final_Payment_Date'.tr, '10 Aug, 2023'),
       ],
     );
@@ -267,11 +276,10 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Image.asset("assets/images/airtel.png"),
-
-              SizedBox(width:10),
+              SizedBox(width: 10),
               CrayonPaymentText(
                 key: Key('${_identifier}_Device_Loan_Airtel_Pay'),
-                text:  TextUIDataModel('DLC_Airtel_Pay'.tr,
+                text: TextUIDataModel('DLC_Airtel_Pay'.tr,
                     styleVariant: CrayonPaymentTextStyleVariant.headline4,
                     color: SECONDARY_COLOR,
                     fontWeight: FontWeight.w600),
@@ -281,9 +289,7 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
                 value: 1,
                 groupValue: 1,
                 activeColor: SU_button_color,
-                onChanged: (value) {
-
-                },
+                onChanged: (value) {},
               )
             ],
           ),

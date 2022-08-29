@@ -136,7 +136,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
                       _buildMainUIWithLoading(context, coordinator),
                   orElse: () => Scaffold(
                     appBar: PreferredSize(
-                      preferredSize: Size(double.infinity, widget.userType == UserType.AgentCustomer ? 58 : 102),
+                      preferredSize: Size(double.infinity,
+                          widget.userType == UserType.AgentCustomer ? 58 : 102),
                       child: _buildTopContainer(context, coordinator),
                     ),
                     body: SingleChildScrollView(
@@ -157,7 +158,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
   ) {
     return Column(
       children: [
-       widget.userType == UserType.AgentCustomer ? const SizedBox() : _onBoardingProgressBar(),
+        widget.userType == UserType.AgentCustomer
+            ? const SizedBox()
+            : _onBoardingProgressBar(),
         _buildBackBtn(context, coordinator),
       ],
     );
@@ -284,32 +287,36 @@ class _DetailsScreenState extends State<DetailsScreen> {
 
   Widget _title() {
     return Text(
-     widget.userType == UserType.AgentCustomer ? 'DV_agent_aided_title'.tr : 'DV_title'.tr,
+      widget.userType == UserType.AgentCustomer
+          ? 'DV_agent_aided_title'.tr
+          : 'DV_title'.tr,
       style: SU_title_style,
     );
   }
 
   Widget _subtitle() {
-    return widget.userType == UserType.AgentCustomer ? Container(
-      padding: const EdgeInsets.only(
-        right: 16,
-        top: 16,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          CrayonPaymentText(
-            key: const Key('DV_subTitle'),
-            text: TextUIDataModel(
-              'DV_agent_aided_subtitle'.tr,
-              styleVariant: CrayonPaymentTextStyleVariant.headline4,
-              color: VO_DescriptionColor,
-              textAlign: TextAlign.left,
+    return widget.userType == UserType.AgentCustomer
+        ? Container(
+            padding: const EdgeInsets.only(
+              right: 16,
+              top: 16,
             ),
-          ),
-        ],
-      ),
-    ): const SizedBox();
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CrayonPaymentText(
+                  key: const Key('DV_subTitle'),
+                  text: TextUIDataModel(
+                    'DV_agent_aided_subtitle'.tr,
+                    styleVariant: CrayonPaymentTextStyleVariant.headline4,
+                    color: VO_DescriptionColor,
+                    textAlign: TextAlign.left,
+                  ),
+                ),
+              ],
+            ),
+          )
+        : const SizedBox();
   }
 
   Widget _buildLabelTextField(

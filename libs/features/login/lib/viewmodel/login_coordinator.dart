@@ -38,6 +38,8 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
     return result;
   }
 
+
+
   bool isAgentIdValid(String agentId) {
     var result = _loginUseCase.isValidAgentId(agentId);
     if (!result) {
@@ -70,8 +72,26 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
     }
   }
 
+  Future calljwttoken(
+  ) async {
+    state = LoginState.loading();
+    var response = await _loginUseCase.callJWTToken(
+         (p0) => null);
+    if (response?.status == true) {
+      state = LoginState.successState();
+    } else {
+      state = LoginState.initialState();
+
+      // calljwttoken();
+      print(response?.message);
+    }
+  }
+
   Future customerLogin(
-      String mobileNumber, String passcode, UserType userType) async {
+    String mobileNumber,
+    String passcode,
+    UserType userType,
+  ) async {
     state = LoginState.loading();
     var response = await _loginUseCase.login(
         '+255' + mobileNumber, passcode, (p0) => null);
@@ -107,18 +127,18 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
     }
   }
 
-  // Future agentLogin(String mobileNumber, String nidanumber, String userType,
-  //     String agentId) async {
-  //   state = LoginState.loading();
-  //   var response = await _loginUseCase.loginAgent(
-  //       '+255' + mobileNumber, nidanumber, agentId, (p0) => null);
-  //   print(response);
-  //   if (response?.data != null) {
-  //     state = LoginState.successState();
-  //     _navigationHandler.navigateToOtpScreen(userType, mobileNumber, agentId);
-  //   } else {
-  //     state = LoginState.successState();
-  //     print(response?.message);
-  //   }
-  // }
+// Future agentLogin(String mobileNumber, String nidanumber, String userType,
+//     String agentId) async {
+//   state = LoginState.loading();
+//   var response = await _loginUseCase.loginAgent(
+//       '+255' + mobileNumber, nidanumber, agentId, (p0) => null);
+//   print(response);
+//   if (response?.data != null) {
+//     state = LoginState.successState();
+//     _navigationHandler.navigateToOtpScreen(userType, mobileNumber, agentId);
+//   } else {
+//     state = LoginState.successState();
+//     print(response?.message);
+//   }
+// }
 }

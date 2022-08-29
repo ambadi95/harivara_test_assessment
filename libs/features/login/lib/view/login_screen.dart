@@ -52,7 +52,9 @@ class _LoginState extends State<Login> {
     return BaseView<LoginCoordinator, LoginState>(
       onStateListenCallback: (preState, newState) =>
           {_listenToStateChanges(context, newState)},
-      setupViewModel: (coordinator) {},
+      setupViewModel: (coordinator) async{
+       await  coordinator.calljwttoken();
+      },
       builder: (context, state, coordinator) {
         return state.maybeWhen(
             loading: () => _buildMainUIWithLoading(context, coordinator),
@@ -140,7 +142,7 @@ class _LoginState extends State<Login> {
               const SizedBox(
                 height: 46,
               ),
-              // _buildResetPasscode(coordinator),
+               _buildResetPasscode(coordinator),
             ],
           ),
         ));

@@ -31,8 +31,6 @@ class KycCreditNavigationHandler with ErrorHandler {
     _navigationManager.goBack();
   }
 
-
-
   Future<void> showErrorBottomSheet(Widget widget, BuildContext context) async {
     showModalBottomSheet(
         barrierColor: const Color(0xFF9B9B9B).withOpacity(0.3),
@@ -58,7 +56,7 @@ class KycCreditNavigationHandler with ErrorHandler {
         });
   }
 
-  Future<void> navigateToDeviceOption(DeviceOptionArgs argument) async{
+  Future<void> navigateToDeviceOption(DeviceOptionArgs argument) async {
     await _navigationManager.navigateTo(
         DeviceOption.viewPath, const NavigationType.push(),
         arguments: argument);

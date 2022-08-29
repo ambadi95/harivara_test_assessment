@@ -11,9 +11,6 @@ import 'kyc_credit_viewmodel.dart';
 class KycCreditUseCase extends BaseDataProvider {
   final KycCreditViewModel _kycCreditViewModel;
 
-
   KycCreditUseCase(this._kycCreditViewModel, TaskManager taskManager)
       : super(taskManager);
-
-
 }

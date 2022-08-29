@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:payments/view/payments_screen.dart';
 import 'package:shared_data_models/payments/payments_screen_args.dart';
 
-
-
 class PaymentsRouteManager extends IRouteManager {
   @override
   Widget getView(RouteSettings settings) {
@@ -12,7 +10,7 @@ class PaymentsRouteManager extends IRouteManager {
       case PaymentsScreen.viewPath:
         var arguments = settings.arguments as PaymentsScreenArgs;
         return PaymentsScreen(
-           paymentsScreenArgs: arguments,
+          paymentsScreenArgs: arguments,
         );
       default:
         // TODO: implement getView

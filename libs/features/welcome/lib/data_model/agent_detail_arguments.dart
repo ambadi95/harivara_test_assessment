@@ -1,5 +1,6 @@
 import 'package:shared_data_models/kyc/agent_detail_screen_type.dart';
 import 'package:config/Config.dart';
+
 class AgentDetailScreenArguments {
   String title;
   String subTitle;

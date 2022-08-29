@@ -25,6 +25,7 @@ PreferredSizeWidget CrayonPaymentDefaultAppBar(
   return AppBar(
     key: attributes.key ?? const Key('${_identifier}'),
     centerTitle: true,
+    backgroundColor: attributes.appBarColor,
     automaticallyImplyLeading: false,
     systemOverlayStyle: SystemUiOverlayStyle(
       systemNavigationBarIconBrightness: crayonPaymentBrightness,
