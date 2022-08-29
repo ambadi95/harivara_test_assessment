@@ -19,26 +19,30 @@ class PaymentsUseCase extends BaseDataProvider {
   Future<String> getAgentName() async {
     return await getValueFromSecureStorage('agentName', defaultValue: '');
   }
+
   Future<String> getMobileNumber() async {
     return await getValueFromSecureStorage('mobileNumber', defaultValue: '');
   }
+
   Future<String> getCustomerId() async {
     return await getValueFromSecureStorage('customerId', defaultValue: '');
   }
 
   Future<CustomerDetailResponse?> hitPaymentApi(
-      String amount,
-      String paymentType,
-      Function(String) onErrorCallback,
-      ) async {
+    String amount,
+    String paymentType,
+    Function(String) onErrorCallback,
+  ) async {
     String mobileNO = await getMobileNumber();
+    print(mobileNO);
+    mobileNO = mobileNO.substring(4, mobileNO.length);
     int customerId = int.parse(await getCustomerId());
 
-    Map<String,String> params = {
-    "amountPaid": amount,
-    "customerId": customerId.toString(),
-    "mobileNumber": mobileNO,
-    "paymentType": paymentType
+    Map<String, String> params = {
+      "amountPaid": amount,
+      "customerId": customerId.toString(),
+      "mobileNumber": mobileNO,
+      "paymentType": paymentType
     };
 
     print("//////");
@@ -49,8 +53,7 @@ class PaymentsUseCase extends BaseDataProvider {
         taskSubType: TaskSubType.REST,
         moduleIdentifier: PaymentsModule.moduleIdentifier,
         requestData: params,
-        serviceIdentifier:
-        IPaymentService.paymentIdentifier,
+        serviceIdentifier: IPaymentService.paymentIdentifier,
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {
           final data = responseData;
@@ -61,7 +64,4 @@ class PaymentsUseCase extends BaseDataProvider {
           return CustomerDetailResponse.fromJson(data);
         });
   }
-
-
-
 }

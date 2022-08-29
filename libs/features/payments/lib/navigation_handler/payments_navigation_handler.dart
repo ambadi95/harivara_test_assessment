@@ -26,7 +26,10 @@ class PaymentsNavigationHandler with ErrorHandler {
         CrayonPaymentBottomSheetSuccessIcon();
     final CrayonPaymentBottomSheetState infoState =
         CrayonPaymentBottomSheetState.agentEnrollment(
-      buttonOptions: [ButtonOptions(Black, 'Continue', () {}, false)],
+      buttonOptions: [ButtonOptions(Black, 'Continue', () {
+        goBack();
+        goBack();
+      }, false)],
       disableCloseButton: true,
       bottomSheetIcon: icon,
       additionalText: [],

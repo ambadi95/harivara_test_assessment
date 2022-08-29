@@ -47,13 +47,15 @@ class PaymentsCoordinator extends AnalyticsStateNotifier<PaymentsState> {
         (p0) => null,
       );
       if (response?.status == true) {
-        state = const PaymentsState.initialState();
+        state =
+            PaymentsState.ready(context: context, error: "", isLoading: false);
         navigateToPaymentSuccessBottomSheet();
         if (kDebugMode) {
           print(response?.message);
         }
       } else {
-        state = const PaymentsState.initialState();
+        state =
+            PaymentsState.ready(context: context, error: "", isLoading: false);
         if (kDebugMode) {
           print(response?.message);
         }

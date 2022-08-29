@@ -222,7 +222,7 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
             await coordinator.paymentApi(
               "2000"
               /*widget.paymentsScreenArgs.price*/,
-              "Airtel",
+              "Repayment",
               context,
             );
 
