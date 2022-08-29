@@ -40,8 +40,7 @@ class LoginService implements ILoginService {
     var request = StandardRequest();
     request.requestType = RequestType.GET;
     request.endpoint = 'agent-details-by-agentid-mobile-number';
-    request.jsonBody =
-        json.encode({"mobileNumber": mobileNumber, "y9AgentId": agentId});
+    request.jsonBody = json.encode({"mobileNumber": mobileNumber, "y9AgentId": agentId});
     request.customHeaders = {
       'Content-Type': 'application/json',
     };
@@ -58,7 +57,8 @@ class LoginService implements ILoginService {
     request.customHeaders = {
       'Content-Type': 'application/json',
     };
-    request.jsonBody = json.encode(requestData);
+    request.jsonBody = json.encode({"mobileNumber": requestData["mobileNumber"], "passcode": requestData["passcode"]});;
+    // json.encode(requestData);
     return request;
   }
 }

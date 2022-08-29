@@ -1,4 +1,4 @@
-import 'package:core/mobile_core.dart';
+
 import 'package:core/view/analytics_state_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:scanqrcode/viewmodel/scanqrcode_usecase.dart';
@@ -26,4 +26,23 @@ class ScanQRCodeCoordinator extends AnalyticsStateNotifier<ScanQRCodeState> {
   Future<String> getAgentName() async {
     return _scanQRCodeUseCase.getAgentName();
   }
-}
+
+
+    void validateForm(String customerId, int deviceId,  imei1, String imei2) {
+      state = ScanQRCodeState.DetailsFormState(
+          _validateForm(customerId, deviceId, imei1, imei2));
+    }
+
+  bool _validateForm(String customerId, int deviceId, String imei1, String imei2) {
+    var isCustomerIdValid = customerId.isNotEmpty;
+    var isDeviceIdValid = deviceId != 0;
+    var isImei1Valid = imei1.isNotEmpty;
+    var isImei2Valid = imei2.isNotEmpty;
+    var isValid = isCustomerIdValid &&
+        isDeviceIdValid &&
+        isImei1Valid &&
+        isImei2Valid ;
+    return isValid;
+  }
+
+  }

@@ -22,18 +22,27 @@ mixin _$ScanQRCodeState {
     required TResult Function(
             BuildContext context, String error, bool isLoading)
         ready,
+    required TResult Function(bool isValid) DetailsFormState,
+    required TResult Function(String nameError) imei1Error,
+    required TResult Function(String nameError) imei2Error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(BuildContext context, String error, bool isLoading)? ready,
+    TResult Function(bool isValid)? DetailsFormState,
+    TResult Function(String nameError)? imei1Error,
+    TResult Function(String nameError)? imei2Error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(BuildContext context, String error, bool isLoading)? ready,
+    TResult Function(bool isValid)? DetailsFormState,
+    TResult Function(String nameError)? imei1Error,
+    TResult Function(String nameError)? imei2Error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -41,18 +50,27 @@ mixin _$ScanQRCodeState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitialState value) initialState,
     required TResult Function(ScanQRCodeStateReady value) ready,
+    required TResult Function(DetailsFormState value) DetailsFormState,
+    required TResult Function(imei1Error value) imei1Error,
+    required TResult Function(imei2Error value) imei2Error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
     TResult Function(ScanQRCodeStateReady value)? ready,
+    TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(imei1Error value)? imei1Error,
+    TResult Function(imei2Error value)? imei2Error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
     TResult Function(ScanQRCodeStateReady value)? ready,
+    TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(imei1Error value)? imei1Error,
+    TResult Function(imei2Error value)? imei2Error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -120,6 +138,9 @@ class _$InitialState implements InitialState {
     required TResult Function(
             BuildContext context, String error, bool isLoading)
         ready,
+    required TResult Function(bool isValid) DetailsFormState,
+    required TResult Function(String nameError) imei1Error,
+    required TResult Function(String nameError) imei2Error,
   }) {
     return initialState();
   }
@@ -129,6 +150,9 @@ class _$InitialState implements InitialState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(BuildContext context, String error, bool isLoading)? ready,
+    TResult Function(bool isValid)? DetailsFormState,
+    TResult Function(String nameError)? imei1Error,
+    TResult Function(String nameError)? imei2Error,
   }) {
     return initialState?.call();
   }
@@ -138,6 +162,9 @@ class _$InitialState implements InitialState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(BuildContext context, String error, bool isLoading)? ready,
+    TResult Function(bool isValid)? DetailsFormState,
+    TResult Function(String nameError)? imei1Error,
+    TResult Function(String nameError)? imei2Error,
     required TResult orElse(),
   }) {
     if (initialState != null) {
@@ -151,6 +178,9 @@ class _$InitialState implements InitialState {
   TResult map<TResult extends Object?>({
     required TResult Function(InitialState value) initialState,
     required TResult Function(ScanQRCodeStateReady value) ready,
+    required TResult Function(DetailsFormState value) DetailsFormState,
+    required TResult Function(imei1Error value) imei1Error,
+    required TResult Function(imei2Error value) imei2Error,
   }) {
     return initialState(this);
   }
@@ -160,6 +190,9 @@ class _$InitialState implements InitialState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
     TResult Function(ScanQRCodeStateReady value)? ready,
+    TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(imei1Error value)? imei1Error,
+    TResult Function(imei2Error value)? imei2Error,
   }) {
     return initialState?.call(this);
   }
@@ -169,6 +202,9 @@ class _$InitialState implements InitialState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
     TResult Function(ScanQRCodeStateReady value)? ready,
+    TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(imei1Error value)? imei1Error,
+    TResult Function(imei2Error value)? imei2Error,
     required TResult orElse(),
   }) {
     if (initialState != null) {
@@ -274,6 +310,9 @@ class _$ScanQRCodeStateReady implements ScanQRCodeStateReady {
     required TResult Function(
             BuildContext context, String error, bool isLoading)
         ready,
+    required TResult Function(bool isValid) DetailsFormState,
+    required TResult Function(String nameError) imei1Error,
+    required TResult Function(String nameError) imei2Error,
   }) {
     return ready(context, error, isLoading);
   }
@@ -283,6 +322,9 @@ class _$ScanQRCodeStateReady implements ScanQRCodeStateReady {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(BuildContext context, String error, bool isLoading)? ready,
+    TResult Function(bool isValid)? DetailsFormState,
+    TResult Function(String nameError)? imei1Error,
+    TResult Function(String nameError)? imei2Error,
   }) {
     return ready?.call(context, error, isLoading);
   }
@@ -292,6 +334,9 @@ class _$ScanQRCodeStateReady implements ScanQRCodeStateReady {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(BuildContext context, String error, bool isLoading)? ready,
+    TResult Function(bool isValid)? DetailsFormState,
+    TResult Function(String nameError)? imei1Error,
+    TResult Function(String nameError)? imei2Error,
     required TResult orElse(),
   }) {
     if (ready != null) {
@@ -305,6 +350,9 @@ class _$ScanQRCodeStateReady implements ScanQRCodeStateReady {
   TResult map<TResult extends Object?>({
     required TResult Function(InitialState value) initialState,
     required TResult Function(ScanQRCodeStateReady value) ready,
+    required TResult Function(DetailsFormState value) DetailsFormState,
+    required TResult Function(imei1Error value) imei1Error,
+    required TResult Function(imei2Error value) imei2Error,
   }) {
     return ready(this);
   }
@@ -314,6 +362,9 @@ class _$ScanQRCodeStateReady implements ScanQRCodeStateReady {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
     TResult Function(ScanQRCodeStateReady value)? ready,
+    TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(imei1Error value)? imei1Error,
+    TResult Function(imei2Error value)? imei2Error,
   }) {
     return ready?.call(this);
   }
@@ -323,6 +374,9 @@ class _$ScanQRCodeStateReady implements ScanQRCodeStateReady {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
     TResult Function(ScanQRCodeStateReady value)? ready,
+    TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(imei1Error value)? imei1Error,
+    TResult Function(imei2Error value)? imei2Error,
     required TResult orElse(),
   }) {
     if (ready != null) {
@@ -343,5 +397,467 @@ abstract class ScanQRCodeStateReady implements ScanQRCodeState {
   bool get isLoading;
   @JsonKey(ignore: true)
   _$$ScanQRCodeStateReadyCopyWith<_$ScanQRCodeStateReady> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DetailsFormStateCopyWith<$Res> {
+  factory _$$DetailsFormStateCopyWith(
+          _$DetailsFormState value, $Res Function(_$DetailsFormState) then) =
+      __$$DetailsFormStateCopyWithImpl<$Res>;
+  $Res call({bool isValid});
+}
+
+/// @nodoc
+class __$$DetailsFormStateCopyWithImpl<$Res>
+    extends _$ScanQRCodeStateCopyWithImpl<$Res>
+    implements _$$DetailsFormStateCopyWith<$Res> {
+  __$$DetailsFormStateCopyWithImpl(
+      _$DetailsFormState _value, $Res Function(_$DetailsFormState) _then)
+      : super(_value, (v) => _then(v as _$DetailsFormState));
+
+  @override
+  _$DetailsFormState get _value => super._value as _$DetailsFormState;
+
+  @override
+  $Res call({
+    Object? isValid = freezed,
+  }) {
+    return _then(_$DetailsFormState(
+      isValid == freezed
+          ? _value.isValid
+          : isValid // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DetailsFormState implements DetailsFormState {
+  const _$DetailsFormState(this.isValid);
+
+  @override
+  final bool isValid;
+
+  @override
+  String toString() {
+    return 'ScanQRCodeState.DetailsFormState(isValid: $isValid)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DetailsFormState &&
+            const DeepCollectionEquality().equals(other.isValid, isValid));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(isValid));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$DetailsFormStateCopyWith<_$DetailsFormState> get copyWith =>
+      __$$DetailsFormStateCopyWithImpl<_$DetailsFormState>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialState,
+    required TResult Function(
+            BuildContext context, String error, bool isLoading)
+        ready,
+    required TResult Function(bool isValid) DetailsFormState,
+    required TResult Function(String nameError) imei1Error,
+    required TResult Function(String nameError) imei2Error,
+  }) {
+    return DetailsFormState(isValid);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initialState,
+    TResult Function(BuildContext context, String error, bool isLoading)? ready,
+    TResult Function(bool isValid)? DetailsFormState,
+    TResult Function(String nameError)? imei1Error,
+    TResult Function(String nameError)? imei2Error,
+  }) {
+    return DetailsFormState?.call(isValid);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialState,
+    TResult Function(BuildContext context, String error, bool isLoading)? ready,
+    TResult Function(bool isValid)? DetailsFormState,
+    TResult Function(String nameError)? imei1Error,
+    TResult Function(String nameError)? imei2Error,
+    required TResult orElse(),
+  }) {
+    if (DetailsFormState != null) {
+      return DetailsFormState(isValid);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialState value) initialState,
+    required TResult Function(ScanQRCodeStateReady value) ready,
+    required TResult Function(DetailsFormState value) DetailsFormState,
+    required TResult Function(imei1Error value) imei1Error,
+    required TResult Function(imei2Error value) imei2Error,
+  }) {
+    return DetailsFormState(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InitialState value)? initialState,
+    TResult Function(ScanQRCodeStateReady value)? ready,
+    TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(imei1Error value)? imei1Error,
+    TResult Function(imei2Error value)? imei2Error,
+  }) {
+    return DetailsFormState?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialState value)? initialState,
+    TResult Function(ScanQRCodeStateReady value)? ready,
+    TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(imei1Error value)? imei1Error,
+    TResult Function(imei2Error value)? imei2Error,
+    required TResult orElse(),
+  }) {
+    if (DetailsFormState != null) {
+      return DetailsFormState(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DetailsFormState implements ScanQRCodeState {
+  const factory DetailsFormState(final bool isValid) = _$DetailsFormState;
+
+  bool get isValid;
+  @JsonKey(ignore: true)
+  _$$DetailsFormStateCopyWith<_$DetailsFormState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$imei1ErrorCopyWith<$Res> {
+  factory _$$imei1ErrorCopyWith(
+          _$imei1Error value, $Res Function(_$imei1Error) then) =
+      __$$imei1ErrorCopyWithImpl<$Res>;
+  $Res call({String nameError});
+}
+
+/// @nodoc
+class __$$imei1ErrorCopyWithImpl<$Res>
+    extends _$ScanQRCodeStateCopyWithImpl<$Res>
+    implements _$$imei1ErrorCopyWith<$Res> {
+  __$$imei1ErrorCopyWithImpl(
+      _$imei1Error _value, $Res Function(_$imei1Error) _then)
+      : super(_value, (v) => _then(v as _$imei1Error));
+
+  @override
+  _$imei1Error get _value => super._value as _$imei1Error;
+
+  @override
+  $Res call({
+    Object? nameError = freezed,
+  }) {
+    return _then(_$imei1Error(
+      nameError == freezed
+          ? _value.nameError
+          : nameError // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$imei1Error implements imei1Error {
+  const _$imei1Error(this.nameError);
+
+  @override
+  final String nameError;
+
+  @override
+  String toString() {
+    return 'ScanQRCodeState.imei1Error(nameError: $nameError)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$imei1Error &&
+            const DeepCollectionEquality().equals(other.nameError, nameError));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(nameError));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$imei1ErrorCopyWith<_$imei1Error> get copyWith =>
+      __$$imei1ErrorCopyWithImpl<_$imei1Error>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialState,
+    required TResult Function(
+            BuildContext context, String error, bool isLoading)
+        ready,
+    required TResult Function(bool isValid) DetailsFormState,
+    required TResult Function(String nameError) imei1Error,
+    required TResult Function(String nameError) imei2Error,
+  }) {
+    return imei1Error(nameError);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initialState,
+    TResult Function(BuildContext context, String error, bool isLoading)? ready,
+    TResult Function(bool isValid)? DetailsFormState,
+    TResult Function(String nameError)? imei1Error,
+    TResult Function(String nameError)? imei2Error,
+  }) {
+    return imei1Error?.call(nameError);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialState,
+    TResult Function(BuildContext context, String error, bool isLoading)? ready,
+    TResult Function(bool isValid)? DetailsFormState,
+    TResult Function(String nameError)? imei1Error,
+    TResult Function(String nameError)? imei2Error,
+    required TResult orElse(),
+  }) {
+    if (imei1Error != null) {
+      return imei1Error(nameError);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialState value) initialState,
+    required TResult Function(ScanQRCodeStateReady value) ready,
+    required TResult Function(DetailsFormState value) DetailsFormState,
+    required TResult Function(imei1Error value) imei1Error,
+    required TResult Function(imei2Error value) imei2Error,
+  }) {
+    return imei1Error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InitialState value)? initialState,
+    TResult Function(ScanQRCodeStateReady value)? ready,
+    TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(imei1Error value)? imei1Error,
+    TResult Function(imei2Error value)? imei2Error,
+  }) {
+    return imei1Error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialState value)? initialState,
+    TResult Function(ScanQRCodeStateReady value)? ready,
+    TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(imei1Error value)? imei1Error,
+    TResult Function(imei2Error value)? imei2Error,
+    required TResult orElse(),
+  }) {
+    if (imei1Error != null) {
+      return imei1Error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class imei1Error implements ScanQRCodeState {
+  const factory imei1Error(final String nameError) = _$imei1Error;
+
+  String get nameError;
+  @JsonKey(ignore: true)
+  _$$imei1ErrorCopyWith<_$imei1Error> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$imei2ErrorCopyWith<$Res> {
+  factory _$$imei2ErrorCopyWith(
+          _$imei2Error value, $Res Function(_$imei2Error) then) =
+      __$$imei2ErrorCopyWithImpl<$Res>;
+  $Res call({String nameError});
+}
+
+/// @nodoc
+class __$$imei2ErrorCopyWithImpl<$Res>
+    extends _$ScanQRCodeStateCopyWithImpl<$Res>
+    implements _$$imei2ErrorCopyWith<$Res> {
+  __$$imei2ErrorCopyWithImpl(
+      _$imei2Error _value, $Res Function(_$imei2Error) _then)
+      : super(_value, (v) => _then(v as _$imei2Error));
+
+  @override
+  _$imei2Error get _value => super._value as _$imei2Error;
+
+  @override
+  $Res call({
+    Object? nameError = freezed,
+  }) {
+    return _then(_$imei2Error(
+      nameError == freezed
+          ? _value.nameError
+          : nameError // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$imei2Error implements imei2Error {
+  const _$imei2Error(this.nameError);
+
+  @override
+  final String nameError;
+
+  @override
+  String toString() {
+    return 'ScanQRCodeState.imei2Error(nameError: $nameError)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$imei2Error &&
+            const DeepCollectionEquality().equals(other.nameError, nameError));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(nameError));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$imei2ErrorCopyWith<_$imei2Error> get copyWith =>
+      __$$imei2ErrorCopyWithImpl<_$imei2Error>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialState,
+    required TResult Function(
+            BuildContext context, String error, bool isLoading)
+        ready,
+    required TResult Function(bool isValid) DetailsFormState,
+    required TResult Function(String nameError) imei1Error,
+    required TResult Function(String nameError) imei2Error,
+  }) {
+    return imei2Error(nameError);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initialState,
+    TResult Function(BuildContext context, String error, bool isLoading)? ready,
+    TResult Function(bool isValid)? DetailsFormState,
+    TResult Function(String nameError)? imei1Error,
+    TResult Function(String nameError)? imei2Error,
+  }) {
+    return imei2Error?.call(nameError);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialState,
+    TResult Function(BuildContext context, String error, bool isLoading)? ready,
+    TResult Function(bool isValid)? DetailsFormState,
+    TResult Function(String nameError)? imei1Error,
+    TResult Function(String nameError)? imei2Error,
+    required TResult orElse(),
+  }) {
+    if (imei2Error != null) {
+      return imei2Error(nameError);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialState value) initialState,
+    required TResult Function(ScanQRCodeStateReady value) ready,
+    required TResult Function(DetailsFormState value) DetailsFormState,
+    required TResult Function(imei1Error value) imei1Error,
+    required TResult Function(imei2Error value) imei2Error,
+  }) {
+    return imei2Error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InitialState value)? initialState,
+    TResult Function(ScanQRCodeStateReady value)? ready,
+    TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(imei1Error value)? imei1Error,
+    TResult Function(imei2Error value)? imei2Error,
+  }) {
+    return imei2Error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialState value)? initialState,
+    TResult Function(ScanQRCodeStateReady value)? ready,
+    TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(imei1Error value)? imei1Error,
+    TResult Function(imei2Error value)? imei2Error,
+    required TResult orElse(),
+  }) {
+    if (imei2Error != null) {
+      return imei2Error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class imei2Error implements ScanQRCodeState {
+  const factory imei2Error(final String nameError) = _$imei2Error;
+
+  String get nameError;
+  @JsonKey(ignore: true)
+  _$$imei2ErrorCopyWith<_$imei2Error> get copyWith =>
       throw _privateConstructorUsedError;
 }
