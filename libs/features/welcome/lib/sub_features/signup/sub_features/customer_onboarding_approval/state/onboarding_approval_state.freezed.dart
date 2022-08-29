@@ -19,6 +19,9 @@ mixin _$OnBoardingApprovalState {
   bool get isValid => throw _privateConstructorUsedError;
   String get mobileNumberError => throw _privateConstructorUsedError;
   String get referenceIdError => throw _privateConstructorUsedError;
+  String get referenceId => throw _privateConstructorUsedError;
+  String get customerId => throw _privateConstructorUsedError;
+  bool get isCustomerExist => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -35,6 +38,9 @@ abstract class $OnBoardingApprovalStateCopyWith<$Res> {
       {bool isValid,
       String mobileNumberError,
       String referenceIdError,
+      String referenceId,
+      String customerId,
+      bool isCustomerExist,
       bool isLoading});
 }
 
@@ -52,6 +58,9 @@ class _$OnBoardingApprovalStateCopyWithImpl<$Res>
     Object? isValid = freezed,
     Object? mobileNumberError = freezed,
     Object? referenceIdError = freezed,
+    Object? referenceId = freezed,
+    Object? customerId = freezed,
+    Object? isCustomerExist = freezed,
     Object? isLoading = freezed,
   }) {
     return _then(_value.copyWith(
@@ -67,6 +76,18 @@ class _$OnBoardingApprovalStateCopyWithImpl<$Res>
           ? _value.referenceIdError
           : referenceIdError // ignore: cast_nullable_to_non_nullable
               as String,
+      referenceId: referenceId == freezed
+          ? _value.referenceId
+          : referenceId // ignore: cast_nullable_to_non_nullable
+              as String,
+      customerId: customerId == freezed
+          ? _value.customerId
+          : customerId // ignore: cast_nullable_to_non_nullable
+              as String,
+      isCustomerExist: isCustomerExist == freezed
+          ? _value.isCustomerExist
+          : isCustomerExist // ignore: cast_nullable_to_non_nullable
+              as bool,
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -86,6 +107,9 @@ abstract class _$$_OnBoardingApprovalStateCopyWith<$Res>
       {bool isValid,
       String mobileNumberError,
       String referenceIdError,
+      String referenceId,
+      String customerId,
+      bool isCustomerExist,
       bool isLoading});
 }
 
@@ -106,6 +130,9 @@ class __$$_OnBoardingApprovalStateCopyWithImpl<$Res>
     Object? isValid = freezed,
     Object? mobileNumberError = freezed,
     Object? referenceIdError = freezed,
+    Object? referenceId = freezed,
+    Object? customerId = freezed,
+    Object? isCustomerExist = freezed,
     Object? isLoading = freezed,
   }) {
     return _then(_$_OnBoardingApprovalState(
@@ -121,6 +148,18 @@ class __$$_OnBoardingApprovalStateCopyWithImpl<$Res>
           ? _value.referenceIdError
           : referenceIdError // ignore: cast_nullable_to_non_nullable
               as String,
+      referenceId: referenceId == freezed
+          ? _value.referenceId
+          : referenceId // ignore: cast_nullable_to_non_nullable
+              as String,
+      customerId: customerId == freezed
+          ? _value.customerId
+          : customerId // ignore: cast_nullable_to_non_nullable
+              as String,
+      isCustomerExist: isCustomerExist == freezed
+          ? _value.isCustomerExist
+          : isCustomerExist // ignore: cast_nullable_to_non_nullable
+              as bool,
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -136,6 +175,9 @@ class _$_OnBoardingApprovalState implements _OnBoardingApprovalState {
       {this.isValid = false,
       this.mobileNumberError = '',
       this.referenceIdError = '',
+      this.referenceId = '',
+      this.customerId = '',
+      this.isCustomerExist = false,
       this.isLoading = false});
 
   @override
@@ -149,11 +191,20 @@ class _$_OnBoardingApprovalState implements _OnBoardingApprovalState {
   final String referenceIdError;
   @override
   @JsonKey()
+  final String referenceId;
+  @override
+  @JsonKey()
+  final String customerId;
+  @override
+  @JsonKey()
+  final bool isCustomerExist;
+  @override
+  @JsonKey()
   final bool isLoading;
 
   @override
   String toString() {
-    return 'OnBoardingApprovalState(isValid: $isValid, mobileNumberError: $mobileNumberError, referenceIdError: $referenceIdError, isLoading: $isLoading)';
+    return 'OnBoardingApprovalState(isValid: $isValid, mobileNumberError: $mobileNumberError, referenceIdError: $referenceIdError, referenceId: $referenceId, customerId: $customerId, isCustomerExist: $isCustomerExist, isLoading: $isLoading)';
   }
 
   @override
@@ -166,6 +217,12 @@ class _$_OnBoardingApprovalState implements _OnBoardingApprovalState {
                 .equals(other.mobileNumberError, mobileNumberError) &&
             const DeepCollectionEquality()
                 .equals(other.referenceIdError, referenceIdError) &&
+            const DeepCollectionEquality()
+                .equals(other.referenceId, referenceId) &&
+            const DeepCollectionEquality()
+                .equals(other.customerId, customerId) &&
+            const DeepCollectionEquality()
+                .equals(other.isCustomerExist, isCustomerExist) &&
             const DeepCollectionEquality().equals(other.isLoading, isLoading));
   }
 
@@ -175,6 +232,9 @@ class _$_OnBoardingApprovalState implements _OnBoardingApprovalState {
       const DeepCollectionEquality().hash(isValid),
       const DeepCollectionEquality().hash(mobileNumberError),
       const DeepCollectionEquality().hash(referenceIdError),
+      const DeepCollectionEquality().hash(referenceId),
+      const DeepCollectionEquality().hash(customerId),
+      const DeepCollectionEquality().hash(isCustomerExist),
       const DeepCollectionEquality().hash(isLoading));
 
   @JsonKey(ignore: true)
@@ -190,6 +250,9 @@ abstract class _OnBoardingApprovalState implements OnBoardingApprovalState {
       {final bool isValid,
       final String mobileNumberError,
       final String referenceIdError,
+      final String referenceId,
+      final String customerId,
+      final bool isCustomerExist,
       final bool isLoading}) = _$_OnBoardingApprovalState;
 
   @override
@@ -198,6 +261,12 @@ abstract class _OnBoardingApprovalState implements OnBoardingApprovalState {
   String get mobileNumberError;
   @override
   String get referenceIdError;
+  @override
+  String get referenceId;
+  @override
+  String get customerId;
+  @override
+  bool get isCustomerExist;
   @override
   bool get isLoading;
   @override

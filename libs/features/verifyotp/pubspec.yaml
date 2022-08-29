@@ -41,6 +41,9 @@ dependencies:
   home:
     path: ../home
 
+  kyc:
+    path: ../kyc
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

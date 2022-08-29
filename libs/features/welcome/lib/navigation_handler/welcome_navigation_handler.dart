@@ -309,7 +309,7 @@ class WelcomeNavigationHandler with ErrorHandler {
       'SU_reset_passcode',
       'SU_reset_subtitle',
       userType,
-      userType == 'Agent'
+      userType == UserType.Agent
           ? SignupType.resetPasscodeAgent
           : SignupType.resetPasscodeCustomer,
       false,

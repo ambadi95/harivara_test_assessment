@@ -1,6 +1,7 @@
 import 'package:config/Config.dart';
 import 'package:core/logging/logger.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_data_models/customer_onboard/Customer_onboarding_status/customer_onboarding_status.dart';
 import 'package:shared_data_models/otp/otp_screen_args.dart';
 import 'package:shared_data_models/otp/otp_verification_type.dart';
 import 'package:task_manager/base_classes/base_view_model.dart';
@@ -164,11 +165,12 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         OtpVerificationType.customerSignUpAgent) {
       var responseSignin = await _verifyOtpUseCase.otpVerifyCustomerByAgent(
           otpScreenArgs.refId, enterOtp, 'Customer', (p0) => null);
-      if (responseSignin!.data!.status == "success") {
+      if (responseSignin!.status == true) {
         var getWorkFlowStatus = await _verifyOtpUseCase.workFlowCustomerByAgent(
             otpScreenArgs.refId, (p0) => null);
-        if (getWorkFlowStatus!.data!.status == "success") {
+        if (getWorkFlowStatus!.status == true) {
           CrayonPaymentLogger.logInfo('I am in WorkFlow Status');
+          workFlow(getWorkFlowStatus.data!.status!);
           //TODO Workflow Navigation
           //_navigationHandler.navigateToDetailScreen();
         }
@@ -179,7 +181,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         state = currentState.copyWith(isLoading: true);
         var response = await _verifyOtpUseCase.otpVerify(otpScreenArgs.refId,
             enterOtp, otpScreenArgs.userType, (p0) => null);
-        if (response!.data!.status == "success") {
+        if (response!.status == true) {
           state = currentState.copyWith(isLoading: false);
           _navigationHandler.navigateToDestinationPath(
               destinationPath, userType);
@@ -268,6 +270,16 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
 //       return message;
 //   }
 // }
+
+  Future<void> workFlow(String workFlowStatus)async{
+      switch(workFlowStatus){
+        case 'Initiated' : { _navigationHandler.navigateToDetailScreen();}
+          break;
+        case 'Enrolled' :  { _navigationHandler.navigateToKycScreen();}
+          break;
+
+      }
+}
 
   _showAlertForOTPAttempts() {
     Get.bottomSheet(
