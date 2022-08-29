@@ -238,7 +238,7 @@ class _LoanDetailScreenState extends State<LoanDetailScreen> {
           ),
           const Image(
             image: AssetImage(LD_loan_detail_banner_image),
-            width: 160,
+            width: 130,
             //fit: BoxFit.cover,
           ),
         ],

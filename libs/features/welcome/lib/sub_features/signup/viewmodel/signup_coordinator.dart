@@ -5,7 +5,7 @@ import 'package:shared_data_models/signup/sign_up_type.dart';
 import 'package:task_manager/base_classes/base_view_model.dart';
 import 'package:welcome/sub_features/signup/state/signup_state.dart';
 import 'package:welcome/sub_features/signup/viewmodel/signup_usecase.dart';
-
+import 'package:crayon_payment_customer/util/app_utils.dart';
 import '../../../data_model/sign_up_arguments.dart';
 import '../../../navigation_handler/welcome_navigation_handler.dart';
 import 'package:config/Config.dart';
@@ -28,13 +28,21 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
   Future calljwttoken() async {
     state = const SignUpState.loadingState();
 
-    var response = await _signupUseCase.callJWTToken((p0) => null);
-    if (response?.status == true) {
-      state = const SignUpState.initialState();
-    } else {
-      state = const SignUpState.initialState();
+    try {
+      var response = await _signupUseCase.callJWTToken((p0) => null);
+      if (response?.status == true) {
+        state = const SignUpState.initialState();
+      } else {
+        state = const SignUpState.initialState();
 
-      print(response?.message);
+        print(response?.message);
+      }
+    }  catch (e) {
+      state = const SignUpState.initialState();
+      AppUtils.appUtilsInstance.showErrorBottomSheet(
+        title: e.toString(),
+        onClose: () {goBack();},
+      );
     }
   }
 
@@ -181,6 +189,10 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
       }
     } catch (e) {
       state = const SignUpState.initialState();
+      AppUtils.appUtilsInstance.showErrorBottomSheet(
+        title: e.toString(),
+        onClose: () {goBack();},
+      );
     }
   }
 

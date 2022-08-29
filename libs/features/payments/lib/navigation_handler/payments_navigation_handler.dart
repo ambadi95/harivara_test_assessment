@@ -18,7 +18,9 @@ class PaymentsNavigationHandler with ErrorHandler {
       NavigationType.push(),
     );
   }
-
+  Future<void> goBack() async {
+    _navigationManager.goBack();
+  }
   Future<void> navigateToPaymentSuccessfullBottomSheet() async {
     final CrayonPaymentBottomSheetIcon icon =
         CrayonPaymentBottomSheetSuccessIcon();

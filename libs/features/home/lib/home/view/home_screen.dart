@@ -15,7 +15,6 @@ import '../state/home_screen_state.dart';
 import '../viewmodel/home_coordinator.dart';
 import 'package:shared_data_models/home/customerCount/customer_count_response/data.dart';
 
-
 class CrayonHomeScreen extends StatefulWidget {
   static const viewPath = '${HomeModule.moduleIdentifier}/CrayonHomeScreen';
   final HomeScreenArgs homeScreenArgs;
@@ -286,24 +285,26 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                     ],
                   )
                 : Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                InkWell(
-                  onTap: () {
-                    coordinator.navigationToBottomSheet();
-                  },
-                  child: _actionCommonView(
-                      'HS_LoanRepayment'.tr, HS_LoanRepayment),
-                ),
-                InkWell(
-                  onTap: () {
-                    coordinator.navigateToLoanDetailScreen(loanDetailResponse);
-                  },
-                  child: _actionCommonView('HS_LoanDetails'.tr, HS_LoanDetail),
-                ),
-              ],
-            ),
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          coordinator.navigationToBottomSheet(loanDetailResponse);
+                        },
+                        child: _actionCommonView(
+                            'HS_LoanRepayment'.tr, HS_LoanRepayment),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          coordinator
+                              .navigateToLoanDetailScreen(loanDetailResponse);
+                        },
+                        child: _actionCommonView(
+                            'HS_LoanDetails'.tr, HS_LoanDetail),
+                      ),
+                    ],
+                  ),
           )
         ],
       ),
@@ -330,19 +331,22 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
           clipBehavior: Clip.antiAliasWithSaveLayer,
           decoration: const BoxDecoration(
               color: HS_RedCardIconsBackColor, shape: BoxShape.circle),
-          child: getSvg(imagePath,color: (title == 'HS_Customer_DeviceSwap'.tr ||
-            title == 'HS_Customer_AgentSupport'.tr)
-              ? SU_border_color
-              : OB_WelcomeThirdTtileColor,),
-        //   Image.asset(
-        //     imagePath,
-        //     width: 20,
-        //     height: 20,
-        //     // color: (title == 'HS_Customer_DeviceSwap'.tr ||
-        //     //         title == 'HS_Customer_AgentSupport'.tr)
-        //     //     ? SU_border_color
-        //     //     : OB_WelcomeThirdTtileColor,
-        //   ),
+          child: getSvg(
+            imagePath,
+            color: (title == 'HS_Customer_DeviceSwap'.tr ||
+                    title == 'HS_Customer_AgentSupport'.tr)
+                ? SU_border_color
+                : OB_WelcomeThirdTtileColor,
+          ),
+          //   Image.asset(
+          //     imagePath,
+          //     width: 20,
+          //     height: 20,
+          //     // color: (title == 'HS_Customer_DeviceSwap'.tr ||
+          //     //         title == 'HS_Customer_AgentSupport'.tr)
+          //     //     ? SU_border_color
+          //     //     : OB_WelcomeThirdTtileColor,
+          //   ),
         ),
         const SizedBox(
           height: 10,
@@ -516,7 +520,9 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
             items: [
               BottomNavigationBarItem(
                   icon: getSvg(HS_HomeIcon,
-                  color: selectedIndex == 0 ? const Color(0xFFDA2228) : const Color(0xFF000000)),
+                      color: selectedIndex == 0
+                          ? const Color(0xFFDA2228)
+                          : const Color(0xFF000000)),
                   // Image.asset(
                   //   HS_HomeIcon,
                   //   scale: 2.0,
@@ -524,15 +530,17 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                   label: ''),
               BottomNavigationBarItem(
                   icon: getSvg(HS_SettingIcon,
-                  color: selectedIndex == 1 ? const Color(0xFFDA2228) : const Color(0xFF000000)),
+                      color: selectedIndex == 1
+                          ? const Color(0xFFDA2228)
+                          : const Color(0xFF000000)),
 
-    //   HS_SettingIcon,
-    //   scale: 2.0,
-    // ),
-    label: '')
-    ],
-    onTap: (index) {
-                  // Image.asset(
+                  //   HS_SettingIcon,
+                  //   scale: 2.0,
+                  // ),
+                  label: '')
+            ],
+            onTap: (index) {
+              // Image.asset(
               setState(() {
                 selectedIndex = index;
               });

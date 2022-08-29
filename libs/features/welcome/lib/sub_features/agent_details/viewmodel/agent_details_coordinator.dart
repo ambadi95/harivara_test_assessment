@@ -4,7 +4,7 @@ import 'package:task_manager/base_classes/base_view_model.dart';
 import '../../../navigation_handler/welcome_navigation_handler.dart';
 import '../state/agent_details_state.dart';
 import 'agent_details_usecase.dart';
-
+import 'package:crayon_payment_customer/util/app_utils.dart';
 class AgentDetailsCoordinator extends BaseViewModel<AgentDetailsState> {
   final AgentDetailsUseCase _agentDetailsUseCase;
   final WelcomeNavigationHandler _navigationHandler;
@@ -28,7 +28,10 @@ class AgentDetailsCoordinator extends BaseViewModel<AgentDetailsState> {
       }
       return null;
     }  catch (e) {
-      return null ;
+      AppUtils.appUtilsInstance.showErrorBottomSheet(
+        title: e.toString(),
+        onClose: () {goBack();},
+      );
     }
   }
 
@@ -62,6 +65,10 @@ class AgentDetailsCoordinator extends BaseViewModel<AgentDetailsState> {
       }
     }  catch (e) {
       print(e.toString());
+      AppUtils.appUtilsInstance.showErrorBottomSheet(
+        title: e.toString(),
+        onClose: () {goBack();},
+      );
     }
   }
 

@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:payments/state/payments_state.dart';
 import 'package:payments/viewmodel/payments_usecase.dart';
-
+import 'package:crayon_payment_customer/util/app_utils.dart';
 import '../navigation_handler/payments_navigation_handler.dart';
 
 class PaymentsCoordinator extends AnalyticsStateNotifier<PaymentsState> {
@@ -22,6 +22,10 @@ class PaymentsCoordinator extends AnalyticsStateNotifier<PaymentsState> {
     state = PaymentsState.ready(context: context, error: "", isLoading: false);
   }
 
+  Future<void> goBack() async {
+    _navigationHandler.goBack();
+  }
+
   Future<String> getAgentName() async {
     return _downPaymentUseCase.getAgentName();
   }
@@ -33,8 +37,10 @@ class PaymentsCoordinator extends AnalyticsStateNotifier<PaymentsState> {
   Future paymentApi(
     String amount,
     String paymentType,
+    BuildContext context,
   ) async {
     try {
+      state = PaymentsState.ready(context: context, error: "", isLoading: true);
       var response = await _downPaymentUseCase.hitPaymentApi(
         amount,
         paymentType,
@@ -42,6 +48,7 @@ class PaymentsCoordinator extends AnalyticsStateNotifier<PaymentsState> {
       );
       if (response?.status == true) {
         state = const PaymentsState.initialState();
+        navigateToPaymentSuccessBottomSheet();
         if (kDebugMode) {
           print(response?.message);
         }
@@ -51,9 +58,16 @@ class PaymentsCoordinator extends AnalyticsStateNotifier<PaymentsState> {
           print(response?.message);
         }
       }
-    }  catch (e) {
-
+    } catch (e) {
       print(e.toString());
+      state =
+          PaymentsState.ready(context: context, error: "", isLoading: false);
+      AppUtils.appUtilsInstance.showErrorBottomSheet(
+        title: e.toString(),
+        onClose: () {
+          goBack();
+        },
+      );
     }
   }
 }

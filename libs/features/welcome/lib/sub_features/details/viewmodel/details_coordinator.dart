@@ -1,5 +1,6 @@
 import 'package:config/Config.dart';
 import 'package:core/mobile_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/src/widgets/focus_manager.dart';
 import 'package:shared_data_models/customer_onboard/region_district/region_response/datum.dart';
 import 'package:shared_data_models/customer_onboard/region_district/district_response/datum.dart'
@@ -9,7 +10,7 @@ import 'package:welcome/data_model/gender_type.dart';
 import 'package:welcome/sub_features/details/state/details_state.dart';
 import 'package:welcome/sub_features/details/viewmodel/details_usecase.dart';
 import '../../../navigation_handler/welcome_navigation_handler.dart';
-
+import 'package:crayon_payment_customer/util/app_utils.dart';
 class DetailsCoordinator extends BaseViewModel<DetailsState> {
   final DetailsUseCase _detailsUseCase;
   final WelcomeNavigationHandler _navigationHandler;
@@ -246,7 +247,11 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
         print(response?.message);
       }
     }  catch (e) {
-      state = const DetailsState.LoadingState();
+      state = const DetailsState.initialState();
+      AppUtils.appUtilsInstance.showErrorBottomSheet(
+        title: e.toString(),
+        onClose: () {goBack();},
+      );
     }
   }
 }

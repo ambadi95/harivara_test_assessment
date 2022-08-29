@@ -6,10 +6,12 @@ import 'package:shared_data_models/home/customerCount/customer_count_response/da
 import '../navigation_handler/home_navigation_handler.dart';
 import '../state/home_screen_state.dart';
 import 'home_usecase.dart';
+import 'package:crayon_payment_customer/util/app_utils.dart';
 
 class HomeCoordinator extends BaseViewModel<HomeScreenState> {
   final HomeUserCase _customerHomeUseCase;
   final HomeNavigationHandler _navigationHandler;
+
   HomeCoordinator(this._navigationHandler, this._customerHomeUseCase)
       : super(const HomeScreenState.initialState());
 
@@ -32,13 +34,12 @@ class HomeCoordinator extends BaseViewModel<HomeScreenState> {
   }
 
   void navigateToLoanDetailScreen(LoanDetailResponse loanDetailResponse) {
-
     _navigationHandler.navigateToLoanDetailScreen(loanDetailResponse);
   }
 
-  void navigationToBottomSheet() {
+  void navigationToBottomSheet(LoanDetailResponse loanDetailResponse) {
     _navigationHandler.navigateToLoanRepaymentBottomSheet(
-        "message", "buttonLabel");
+        "message", "buttonLabel",loanDetailResponse);
   }
 
   Future<String> getAgentId() async {
@@ -71,9 +72,14 @@ class HomeCoordinator extends BaseViewModel<HomeScreenState> {
       } else {
         return const Data(enrolledCustomer: '0', initiatedCustomer: '0');
       }
-    }  catch (e) {
-
-      throw null! ;
+    } catch (e) {
+      AppUtils.appUtilsInstance.showErrorBottomSheet(
+        title: e.toString(),
+        onClose: () {
+          goBack();
+        },
+      );
+      throw null!;
     }
   }
 
@@ -83,8 +89,14 @@ class HomeCoordinator extends BaseViewModel<HomeScreenState> {
       if (response?.status == true) {
         return response;
       }
-    }  catch (e) {
+    } catch (e) {
       print(e.toString());
+      AppUtils.appUtilsInstance.showErrorBottomSheet(
+        title: e.toString(),
+        onClose: () {
+          goBack();
+        },
+      );
     }
   }
 }

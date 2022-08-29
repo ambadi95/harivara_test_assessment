@@ -1,5 +1,6 @@
 import 'package:config/Config.dart';
 import 'package:core/logging/logger.dart';
+import 'package:flutter/foundation.dart';
 import 'package:task_manager/base_classes/base_view_model.dart';
 import '../../../navigation_handler/welcome_navigation_handler.dart';
 import '../state/enrollment_success_state.dart';
@@ -43,7 +44,13 @@ class EnrollmentSuccessCoordinator
         CrayonPaymentLogger.logInfo(response!.message!);
       }
     }  catch (e) {
-      print(e.toString());
+      if (kDebugMode) {
+        print(e.toString());
+      }
+     /* AppUtils.appUtilsInstance.showErrorBottomSheet(
+        title: e.toString(),
+        onClose: () {goBack();},
+      );*/
     }
   }
 }

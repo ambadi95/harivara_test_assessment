@@ -193,7 +193,7 @@ class BottomSheetLoanRepayment extends StatelessWidget {
   Widget _paymentWidget(LoanPaymentMethod paymentMethod) {
     return InkWell(
       onTap: () {
-        coordinator.choosePaymentMethod(paymentMethod);
+        coordinator.choosePaymentMethod(paymentMethod,paymentMethod.amount);
       },
       child: Container(
         decoration: BoxDecoration(

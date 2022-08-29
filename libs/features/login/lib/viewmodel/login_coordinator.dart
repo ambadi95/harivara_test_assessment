@@ -4,7 +4,7 @@ import '../navigation_handler/login_navigation_handler.dart';
 import '../state/login_state.dart';
 import 'login_usecase.dart';
 import 'package:config/Config.dart';
-
+import 'package:crayon_payment_customer/util/app_utils.dart';
 class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
   final LoginNavigationHandler _navigationHandler;
   final LoginUseCase _loginUseCase;
@@ -74,16 +74,24 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
 
   Future calljwttoken(
   ) async {
-    state = LoginState.loading();
-    var response = await _loginUseCase.callJWTToken(
-         (p0) => null);
-    if (response?.status == true) {
-      state = LoginState.successState();
-    } else {
-      state = LoginState.initialState();
+    try {
+      state = LoginState.loading();
+      var response = await _loginUseCase.callJWTToken(
+           (p0) => null);
+      if (response?.status == true) {
+        state = LoginState.successState();
+      } else {
+        state = LoginState.initialState();
 
-      // calljwttoken();
-      print(response?.message);
+        // calljwttoken();
+        print(response?.message);
+      }
+    }  catch (e) {
+      state = LoginState.initialState();
+      AppUtils.appUtilsInstance.showErrorBottomSheet(
+        title: e.toString(),
+        onClose: () {goBack();},
+      );
     }
   }
 
@@ -107,6 +115,10 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
       }
     }  catch (e) {
       state = LoginState.initialState();
+      AppUtils.appUtilsInstance.showErrorBottomSheet(
+        title: e.toString(),
+        onClose: () {goBack();},
+      );
       print(e.toString());
     }
   }
@@ -134,9 +146,15 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
     }  catch (e) {
       state = LoginState.initialState();
       print(e.toString());
+      AppUtils.appUtilsInstance.showErrorBottomSheet(
+        title: e.toString(),
+        onClose: () {goBack();},
+      );
     }
   }
-
+  void goBack() async {
+    _navigationHandler.goBack();
+  }
 // Future agentLogin(String mobileNumber, String nidanumber, String userType,
 //     String agentId) async {
 //   state = LoginState.loading();

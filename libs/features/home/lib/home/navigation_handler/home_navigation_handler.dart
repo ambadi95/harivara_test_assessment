@@ -93,11 +93,12 @@ class HomeNavigationHandler with ErrorHandler {
     );
   }
 
-  String _selectedAmount = "";
+
 
   Future<void> navigateToLoanRepaymentBottomSheet(
     String message,
     String buttonLabel,
+      LoanDetailResponse loanDetailResponse
   ) async {
 
     final CrayonPaymentBottomSheetState infoState =
@@ -108,11 +109,11 @@ class HomeNavigationHandler with ErrorHandler {
       label3: 'LR_amount_to_pay',
       imageUrl: HS_LoanRepaymentMock,
       infoMessage: '',
-      selectedAmount:_selectedAmount ,
-      loanId: '64512378965435',
+      selectedAmount:"5500" ,
+      loanId: loanDetailResponse.data?.loanId??"-",
       onPressedCustomAmount: () => navigateToCustomPayBottomSheet(),
       onPressedPayNow: () {
-        navigateToPaymentScreen(_selectedAmount);
+        navigateToPaymentScreen("5000");
       },
       loanPaymentList: [
         LoanPaymentMethod(
