@@ -170,6 +170,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         if (getWorkFlowStatus!.status!) {
           CrayonPaymentLogger.logInfo('I am in WorkFlow Status');
           //TODO Workflow Navigation
+          
           navigationToWorkFlow(getWorkFlowStatus.data!.status!);
           _navigationHandler.navigateToDetailScreen();
         }
