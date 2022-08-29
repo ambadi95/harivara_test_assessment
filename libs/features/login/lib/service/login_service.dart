@@ -44,6 +44,7 @@ class LoginService implements ILoginService {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
     request.endpoint = 'customer-login';
+    request.jsonBody =  json.encode({"mobileNumber": requestData["mobileNumber"], "passcode": requestData["passcode"]});;
     return request;
   }
 

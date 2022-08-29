@@ -188,8 +188,8 @@ class PasscodeUseCase extends BaseDataProvider {
         });
   }
 
-  Future<PasscodeResponse?> resetPasscodeCustomer(String passcode, String userType,
-      Function(String) onErrorCallback) async {
+  Future<PasscodeResponse?> resetPasscodeCustomer(String passcode,
+      String userType, Function(String) onErrorCallback) async {
     String custmerId = await getCustomerId();
     PasscodeRequest passcodeRequest = PasscodeRequest(
         id: int.parse(custmerId), type: 'Customer', passcode: passcode);
@@ -206,6 +206,4 @@ class PasscodeUseCase extends BaseDataProvider {
           return PasscodeResponse.fromJson(data);
         });
   }
-
-
 }

@@ -91,7 +91,7 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
         // TODO: Handle this case.
         break;
       case PassCodeVerificationType.verifyResetCustomerPasscode:
-      // TODO: Handle this case.
+        // TODO: Handle this case.
         verifyPasscodeReset(currentState.initialPasscode, passCode,
             currentState.destinationPath, 'Customer');
         break;
@@ -103,7 +103,8 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
     var error = await _passcodeUseCase.validateCustomerPasscode(passcode);
     if (error.isEmpty) {
       state = currentState.copyWith(
-        passCodeVerificationType: PassCodeVerificationType.verifyResetCustomerPasscode,
+        passCodeVerificationType:
+            PassCodeVerificationType.verifyResetCustomerPasscode,
         pageTitle: 'PC_confirm_passcode',
         pageDescription: 'PC_re_enter_passcode',
         currentPasscode: '',
@@ -225,33 +226,31 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
     }
   }
 
-
   Future<void> verifyPasscodeReset(
-      String oldPassCode,
-      String newPasscode,
-      String destinationPath,
-      String userType,
-      ) async {
+    String oldPassCode,
+    String newPasscode,
+    String destinationPath,
+    String userType,
+  ) async {
     var currentState = state as CreatePasscodeReady;
     if (oldPassCode == newPasscode) {
       state = currentState.copyWith(currentStep: 5);
       await _passcodeUseCase.savePassCodeLocal(newPasscode);
       if (userType == "Customer") {
-        var resetResponse = await _passcodeUseCase.resetPasscodeCustomer(newPasscode, userType, (p0) => null);
-        if(resetResponse?.status == true) {
+        var resetResponse = await _passcodeUseCase.resetPasscodeCustomer(
+            newPasscode, userType, (p0) => null);
+        if (resetResponse?.status == true) {
           _navigationHandler.navigateToResetPasscodeBottomSheet(
             'RP_success_message'.tr,
             'SU_button_text'.tr,
             'PR_message'.tr,
           );
-        }else{
+        } else {
           CrayonPaymentLogger.logError(resetResponse!.message!);
         }
         // _navigationHandler.navigateToCustomerEnrollmentScreen(
         //     destinationPath, true, UserType.Customer);
-      } else {
-
-      }
+      } else {}
     } else {
       state = currentState.copyWith(
         pageDescription: 'PC_passcode_does_not_match',

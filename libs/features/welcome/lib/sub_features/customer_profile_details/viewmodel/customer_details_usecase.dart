@@ -135,8 +135,7 @@ class CustomerDetailsUseCase extends BaseDataProvider {
           'data': customerDetailsRequest.toJson(),
           'userType': userType,
         },
-        serviceIdentifier:
-            ICustomerDetailsService.updateCustomerDetails,
+        serviceIdentifier: ICustomerDetailsService.updateCustomerDetails,
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {
           final data = responseData;

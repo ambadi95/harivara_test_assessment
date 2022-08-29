@@ -29,7 +29,7 @@ class SignupApiResolver extends TaskResolver {
     switch (identifier) {
       case ISignupService.jwtIdentifier:
         return _signupService.jwttoken(requestData);
-        case ISignupService.signupIdentifier:
+      case ISignupService.signupIdentifier:
         return _signupService.signup(
           requestData['nindaNumber'] as String,
           requestData['phoneNo'] as String,
@@ -75,7 +75,8 @@ class SignupApiResolver extends TaskResolver {
       case IWelcomeBackService.agentLoginIdentifier:
         return _welcomeBackService.loginAgent(requestData);
       case ISignupService.getCustomerDetailIdentifier:
-        return _signupService.getCustomerDetail(requestData['nidaNo'], requestData['mobileNo']);
+        return _signupService.getCustomerDetail(
+            requestData['nidaNo'], requestData['mobileNo']);
 
       default:
         throw UnimplementedError();

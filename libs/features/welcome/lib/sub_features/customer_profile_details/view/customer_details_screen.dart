@@ -156,10 +156,10 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
             for (var element in regions) {
               if (element.name! == region.text) {
                 _region = element;
-                dis = await coordinator.getDistrict(_region!.id!, widget.userType);
+                dis = await coordinator.getDistrict(
+                    _region!.id!, widget.userType);
                 districtDropDown = getDistrictDropDownData(dis);
                 for (var disElement in dis) {
-
                   if (disElement.name! == district.text) {
                     _district = disElement;
                   }
@@ -167,9 +167,7 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
               }
             }
 
-            setState(() {
-
-            });
+            setState(() {});
           },
           builder: (context, state, coordinator) => SafeArea(
                 child: Scaffold(
@@ -588,9 +586,7 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
             color: ES_grey_button_color,
           ),
           hint: Text(
-            _region.isEmptyOrNull
-                ? 'DV_region_hint_text'.tr
-                :  _region!.name!,
+            _region.isEmptyOrNull ? 'DV_region_hint_text'.tr : _region!.name!,
           ),
           boxHeight: 60,
           isDense: false,

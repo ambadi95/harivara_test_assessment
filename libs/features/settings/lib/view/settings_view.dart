@@ -118,7 +118,9 @@ class _SettingsState extends State<Settings> {
         _buildOptions(context, 'ST_my_profile', ST_view_profile, () async {
           widget.screenArgs.isAgent
               ? await coordinator.navigateToUpdateProfile()
-              : await coordinator.navigateToCustomerProfileScreen();  }),/*() {}*/
+              : await coordinator.navigateToCustomerProfileScreen();
+        }),
+        /*() {}*/
         _buildOptions(context, 'ST_view_profile', ST_view_profile, () async {
           widget.screenArgs.isAgent
               ? await coordinator.navigateToUpdateProfile()

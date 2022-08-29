@@ -335,7 +335,8 @@ class WelcomeNavigationHandler with ErrorHandler {
         arguments: arguments);
   }
 
-  Future<void> navigateToOtpScreenCustomerResetPasscode(String userType, String mobileNumber, String id) async {
+  Future<void> navigateToOtpScreenCustomerResetPasscode(
+      String userType, String mobileNumber, String id) async {
     var arguments = OtpScreenArgs(
       'OTP Verification',
       'VO_otp_verification_description',
@@ -347,7 +348,7 @@ class WelcomeNavigationHandler with ErrorHandler {
       6,
       mobileNumber,
       false,
-       UserType.Customer,
+      UserType.Customer,
     );
 
     _navigationManager.navigateTo(
@@ -357,7 +358,6 @@ class WelcomeNavigationHandler with ErrorHandler {
       arguments: arguments,
     );
   }
-
 
 // Future<void> navigateToDestination(
 //     String? destination,
@@ -381,7 +381,5 @@ class WelcomeNavigationHandler with ErrorHandler {
 //       NavigationType.push(),
 //       arguments: arguments,
 //     );
-
-
 
 }
