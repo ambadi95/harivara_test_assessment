@@ -35,7 +35,7 @@ class KycCreditMainCoordinator
       state = KycCreditMainState.ready(context: context,isLoading:false );
     } else {
       state = KycCreditMainState.ready(context: context,isLoading:false,error: response!.message! );
-      print(response?.message);
+      print(response.message);
     }
   }
 
