@@ -136,7 +136,7 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
               //   WB_touchIdIcon,
               //   scale: 2.0,
               // ),
-              //  _buildResetPasscode(welcomeCoordinator)
+               _buildResetPasscode(welcomeCoordinator)
             ],
           ),
         ),

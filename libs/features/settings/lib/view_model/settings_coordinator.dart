@@ -17,7 +17,7 @@ class SettingsCoordinator extends BaseViewModel<SettingsState> {
   }
 
   Future<void> resetPasscode(UserType userType) async {
-    await _navigationHandler.navigateToSignUpScreen(userType);
+    await _navigationHandler.navigateToResetPasscode(userType);
   }
 
   Future<void> changeLanguage() async {
@@ -32,9 +32,9 @@ class SettingsCoordinator extends BaseViewModel<SettingsState> {
     await _navigationHandler.navigateToCustomerDetailScreen();
   }
 
-  Future<void> signOut() async {
+  Future<void> signOut(UserType userType) async {
     await _settingsUseCase.logout();
-    await _navigationHandler.signOut();
+    await _navigationHandler.signOut(userType);
   }
 
   Future<void> navigateToTermsCondtionsScreen(bool isFaq) async {

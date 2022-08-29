@@ -29,12 +29,12 @@ class SettingsNavigationHandler with ErrorHandler {
     _navigationManager.goBack();
   }
 
-  Future<void> navigateToSignUpScreen(UserType userType) async {
+  Future<void> navigateToResetPasscode(UserType userType) async {
     var arguments = SignUpArguments(
       'SU_update_passcode',
       'SU_update_subtitle',
       userType,
-      SignupType.resetPasscodeAgent,
+      userType == UserType.Agent ?  SignupType.resetPasscodeAgent :  SignupType.resetPasscodeCustomer,
       false,
     );
     await _navigationManager.navigateTo(
@@ -80,8 +80,8 @@ class SettingsNavigationHandler with ErrorHandler {
         arguments: arguments);
   }
 
-  Future<void> signOut() async {
-    var arguments = WelcomeScreenArgs('', '', UserType.Agent, false);
+  Future<void> signOut(UserType userType) async {
+    var arguments = WelcomeScreenArgs('', '', userType, false);
     _navigationManager.navigateTo(
         CrayonWelcomScreen.viewPath, const NavigationType.replace(),
         arguments: arguments);

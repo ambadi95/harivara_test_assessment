@@ -11,6 +11,8 @@ abstract class ISignupService {
   static const signUpAgentIdentifier = 'signUpAgent';
   static const signUpCustomerByAgent = 'signUpCustomerByAgent';
   static const getCustomerDetailIdentifier = 'getCustomerDetail';
+  static const agentDetailIdentifier = 'getAgent';
+
 
   Future<StandardRequest> jwttoken(
     Map<String, dynamic> requestData,
@@ -36,7 +38,12 @@ abstract class ISignupService {
       required String agentId,
       required String customerMobileNumber,
       required String token});
+
+
+  Future<StandardRequest> getAgentDetails(Map<String, dynamic> requestData);
 }
+
+
 
 class SignupService implements ISignupService {
   @override
@@ -113,6 +120,18 @@ class SignupService implements ISignupService {
       'nidaNo': nindaNumber,
       'mobileNo': '+255' + phoneNo,
     });
+    return request;
+  }
+
+  @override
+  Future<StandardRequest> getAgentDetails(
+      Map<String, dynamic> requestData) async {
+    var request = StandardRequest();
+    request.requestType = RequestType.GET;
+    request.endpoint = 'agent-details';
+    request.jsonBody =
+        json.encode({"nidaNo": requestData["nidaNumber"], "y9AgentId": requestData["agentId"]});
+    print(requestData);
     return request;
   }
 }

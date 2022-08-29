@@ -12,4 +12,10 @@ class ScanQRCodeState with _$ScanQRCodeState {
     @Default(false) bool isLoading,
   }) = ScanQRCodeStateReady;
 
+  const factory ScanQRCodeState.DetailsFormState(bool isValid) = DetailsFormState;
+
+  const factory ScanQRCodeState.imei1Error(String nameError) = imei1Error;
+
+  const factory ScanQRCodeState.imei2Error(String nameError) = imei2Error;
+
 }
