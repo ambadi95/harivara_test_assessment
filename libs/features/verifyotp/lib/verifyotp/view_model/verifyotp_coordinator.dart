@@ -160,11 +160,15 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         OtpVerificationType.customerSignUpAgent) {
       var responseSignin = await _verifyOtpUseCase.otpVerifyCustomerByAgent(
           otpScreenArgs.refId, enterOtp, 'Customer', (p0) => null);
-      if (responseSignin!.data!.status == "success") {
+      if (responseSignin!.status == true) {
         var getWorkFlowStatus = await _verifyOtpUseCase.workFlowCustomerByAgent(
             otpScreenArgs.refId, (p0) => null);
-        if (getWorkFlowStatus!.data!.status == "success") {
+        if (getWorkFlowStatus!.status == true) {
           CrayonPaymentLogger.logInfo('I am in WorkFlow Status');
+          if(getWorkFlowStatus.data!.status == 'Initiated'){
+            _navigationHandler.navigateToDetailScreen();
+          }
+
           //TODO Workflow Navigation
           //_navigationHandler.navigateToDetailScreen();
         }
@@ -175,7 +179,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         state = currentState.copyWith(isLoading: true);
         var response = await _verifyOtpUseCase.otpVerify(otpScreenArgs.refId,
             enterOtp, otpScreenArgs.userType, (p0) => null);
-        if (response!.data!.status == "success") {
+        if (response!.status == true) {
           state = currentState.copyWith(isLoading: false);
           _navigationHandler.navigateToDestinationPath(
               destinationPath, userType);
