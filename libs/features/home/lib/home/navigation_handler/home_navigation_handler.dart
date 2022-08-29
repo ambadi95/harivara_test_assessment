@@ -101,7 +101,7 @@ class HomeNavigationHandler with ErrorHandler {
     );
   }
 
-
+  String _selectedAmount = "5500";
 
   Future<void> navigateToLoanRepaymentBottomSheet(
     String message,
@@ -117,26 +117,26 @@ class HomeNavigationHandler with ErrorHandler {
       label3: 'LR_amount_to_pay',
       imageUrl: HS_LoanRepaymentMock,
       infoMessage: '',
-      selectedAmount:"5500" ,
-      loanId: loanDetailResponse.data?.loanId??"-",
+      selectedAmount:_selectedAmount ,
+      loanId:loanDetailResponse==null? loanDetailResponse.data?.loanId??"-":"648960359535569",
       onPressedCustomAmount: () => navigateToCustomPayBottomSheet(),
       onPressedPayNow: () {
-        navigateToPaymentScreen("5000");
+        navigateToPaymentScreen(_selectedAmount);
       },
       loanPaymentList: [
         LoanPaymentMethod(
           name: 'LR_due_amount',
-          amount: "4,500TZSHS",
+          amount: loanDetailResponse==null? loanDetailResponse.data!.outStandingAmount!+" TZSHS":"4,500 TZSHS",
           isSelected: false,
         ),
         LoanPaymentMethod(
           name: 'LR_daily_repayment',
-          amount: '2,000TZSHS',
+          amount: loanDetailResponse==null? loanDetailResponse.data!.dailyRepaymentAmount!+" TZSHS":"2,000 TZSHS",
           isSelected: false,
         ),
         LoanPaymentMethod(
           name: 'LR_loan_amount',
-          amount: "7,70,000TZSHS",
+          amount:  loanDetailResponse==null? loanDetailResponse.data!.totalAmountToBeRepaid!+" TZSHS":"7,70,000 TZSHS",
           isSelected: false,
         ),
         LoanPaymentMethod(

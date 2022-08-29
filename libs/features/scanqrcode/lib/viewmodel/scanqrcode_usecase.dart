@@ -7,8 +7,8 @@ import 'package:task_manager/task_manager_impl.dart';
 import 'package:shared_data_models/scan_qr_code/response/scan_qr_code_response.dart';
 import 'package:shared_data_models/scan_qr_code/request/scanqrcode_request.dart';
 import 'dart:async';
-import 'package:flutter/services.dart';
-import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+// import 'package:flutter/services.dart';
+// import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import '../scanqrcode_module.dart';
 
 class ScanQRCodeUseCase extends BaseDataProvider {
@@ -59,27 +59,27 @@ class ScanQRCodeUseCase extends BaseDataProvider {
   }
 
   Future<String> scanBarcodeImei1() async {
-    String barcodeScanRes;
-    try {
-      barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
-          '#ff6666', 'Cancel', true, ScanMode.BARCODE);
-      print(barcodeScanRes);
-
-    } on PlatformException {
-      barcodeScanRes = 'Failed to get platform version.';
-    }
+    String barcodeScanRes="";
+    // try {
+    //   barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
+    //       '#ff6666', 'Cancel', true, ScanMode.BARCODE);
+    //   print(barcodeScanRes);
+    //
+    // } on PlatformException {
+    //   barcodeScanRes = 'Failed to get platform version.';
+    // }
     return barcodeScanRes;
   }
 
   Future<String> scanBarcodeImei2() async {
-    String barcodeScanRes;
-    try {
-      barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
-          '#ff6666', 'Cancel', true, ScanMode.BARCODE);
-      print(barcodeScanRes);
-    } on PlatformException {
-      barcodeScanRes = 'Failed to get platform version.';
-    }
+    String barcodeScanRes="";
+    // try {
+    //   barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
+    //       '#ff6666', 'Cancel', true, ScanMode.BARCODE);
+    //   print(barcodeScanRes);
+    // } on PlatformException {
+    //   barcodeScanRes = 'Failed to get platform version.';
+    // }
     return barcodeScanRes;
   }
 
