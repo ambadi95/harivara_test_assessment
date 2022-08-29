@@ -78,9 +78,13 @@ class HomeCoordinator extends BaseViewModel<HomeScreenState> {
   }
 
   Future<LoanDetailResponse?> getLoanDetails() async {
-    var response = await _customerHomeUseCase.getLoanDetails((p0) => null);
-    if (response?.status == true) {
-      return response;
+    try {
+      var response = await _customerHomeUseCase.getLoanDetails((p0) => null);
+      if (response?.status == true) {
+        return response;
+      }
+    }  catch (e) {
+      print(e.toString());
     }
   }
 }

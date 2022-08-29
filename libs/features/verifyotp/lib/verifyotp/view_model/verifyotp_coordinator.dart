@@ -47,18 +47,22 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
 
   Future<void> generateOtp(String id, UserType userType,
       OtpVerificationType otpVerificationType) async {
-    var response;
-    if (otpVerificationType == OtpVerificationType.customerSignUpAgent) {
-      response = await _verifyOtpUseCase.otpGenCustomerByAgent(
-          id, 'Customer', (p0) => null);
-    } else {
-      response = await _verifyOtpUseCase.otpGen(id, userType, (p0) => null);
-    }
-    if (response?.status == true) {
-      int otp1 = response?.data?.token as int;
-      otp = otp1.toString();
-      //otpController.text = otp;
-      CrayonPaymentLogger.logInfo(otp);
+    try {
+      var response;
+      if (otpVerificationType == OtpVerificationType.customerSignUpAgent) {
+        response = await _verifyOtpUseCase.otpGenCustomerByAgent(
+            id, 'Customer', (p0) => null);
+      } else {
+        response = await _verifyOtpUseCase.otpGen(id, userType, (p0) => null);
+      }
+      if (response?.status == true) {
+        int otp1 = response?.data?.token as int;
+        otp = otp1.toString();
+        //otpController.text = otp;
+        CrayonPaymentLogger.logInfo(otp);
+      }
+    }  catch (e) {
+      print(e.toString());
     }
   }
 
