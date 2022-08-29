@@ -69,11 +69,12 @@ class HomeNavigationHandler with ErrorHandler {
     );
   }
 
-  Future<void> navigateToPaymentScreen() async {
+  Future<void> navigateToPaymentScreen(String paymentPrice) async {
     PaymentsScreenArgs paymentsScreenArgs = PaymentsScreenArgs(
       HS_LoanRepaymentMock,
       'Paying Custom Amount',
-      '3,000 TZSHS',
+      paymentPrice,
+
     );
     await _navigationManager.navigateTo(
       PaymentsScreen.viewPath,
@@ -98,7 +99,7 @@ class HomeNavigationHandler with ErrorHandler {
     String message,
     String buttonLabel,
   ) async {
-    _selectedAmount = "";
+
     final CrayonPaymentBottomSheetState infoState =
         CrayonPaymentBottomSheetState.loanRepayment(
             loanRepayment: LoanRepayment(
@@ -107,10 +108,11 @@ class HomeNavigationHandler with ErrorHandler {
       label3: 'LR_amount_to_pay',
       imageUrl: HS_LoanRepaymentMock,
       infoMessage: '',
+      selectedAmount:_selectedAmount ,
       loanId: '64512378965435',
       onPressedCustomAmount: () => navigateToCustomPayBottomSheet(),
       onPressedPayNow: () {
-        navigateToPaymentScreen();
+        navigateToPaymentScreen(_selectedAmount);
       },
       loanPaymentList: [
         LoanPaymentMethod(

@@ -186,6 +186,9 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
       getRequest.headers.addAll(headers!);
       final streamedResponse = await getRequest.send();
       var response = await http.Response.fromStream(streamedResponse);
+      if(response.statusCode!=200){
+        throw 'Something went wrong' ;
+      }
       return NetworkStandardResponse(
         response.body,
         response.statusCode,
@@ -234,7 +237,9 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
     );
     final response =
         await _httpClient.post(uri, headers: headers, body: request.jsonBody);
-
+    if(response.statusCode!=200){
+      throw 'Something went wrong' ;
+    }
     return NetworkStandardResponse(
       response.body,
       response.statusCode,
@@ -273,7 +278,9 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
     );
     final response =
         await _httpClient.put(uri, headers: headers, body: request.jsonBody);
-
+    if(response.statusCode!=200){
+      throw 'Something went wrong' ;
+    }
     return NetworkStandardResponse(
       response.body,
       response.statusCode,

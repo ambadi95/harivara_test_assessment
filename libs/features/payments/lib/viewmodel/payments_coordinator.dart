@@ -34,21 +34,26 @@ class PaymentsCoordinator extends AnalyticsStateNotifier<PaymentsState> {
     String amount,
     String paymentType,
   ) async {
-    var response = await _downPaymentUseCase.hitPaymentApi(
-      amount,
-      paymentType,
-      (p0) => null,
-    );
-    if (response?.status == true) {
-      state = const PaymentsState.initialState();
-      if (kDebugMode) {
-        print(response?.message);
+    try {
+      var response = await _downPaymentUseCase.hitPaymentApi(
+        amount,
+        paymentType,
+        (p0) => null,
+      );
+      if (response?.status == true) {
+        state = const PaymentsState.initialState();
+        if (kDebugMode) {
+          print(response?.message);
+        }
+      } else {
+        state = const PaymentsState.initialState();
+        if (kDebugMode) {
+          print(response?.message);
+        }
       }
-    } else {
-      state = const PaymentsState.initialState();
-      if (kDebugMode) {
-        print(response?.message);
-      }
+    }  catch (e) {
+
+      print(e.toString());
     }
   }
 }
