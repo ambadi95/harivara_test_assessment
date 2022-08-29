@@ -24,8 +24,7 @@ import '../state/kyc_credit_main_state.dart';
 import '../viewmodel/kyc_credit_main_coordinator.dart';
 
 class KycCreditMainScreen extends StatefulWidget {
-  static const viewPath =
-      '${KycCreditMainModule.moduleIdentifier}/kyccreditmainscreen';
+  static const viewPath = '${KycCreditMainModule.moduleIdentifier}/kyccreditmainscreen';
   final KycScreenArgs kycScreenArgs;
 
   const KycCreditMainScreen({Key? key, required this.kycScreenArgs})
@@ -229,7 +228,7 @@ class _KycCreditMainScreenState extends State<KycCreditMainScreen> {
       child: GestureDetector(
         onTap: () async {
           if (_isChecked) {
-            await coordinator.navigateToKycCreditAirtel();
+            await coordinator.callMnoConsent(context);
           } else {
             coordinator.showErrorBottomSheet(
                 _getCheckBoxUnCheckErrorBottomSheetUi(

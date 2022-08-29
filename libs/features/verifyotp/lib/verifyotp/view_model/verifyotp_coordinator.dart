@@ -202,7 +202,9 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
             enterOtp, otpScreenArgs.userType, (p0) => null);
         if (response!.status == true) {
           state = currentState.copyWith(isLoading: false);
-          _navigationHandler.openForNewPasscode(userType);
+
+            _navigationHandler.openForNewPasscode(userType);
+
         } else {
           otpController.text = "";
           state = currentState.copyWith(isLoading: false);

@@ -209,11 +209,11 @@ class PasscodeUseCase extends BaseDataProvider {
         });
   }
 
-  Future<PasscodeResponse?> resetPasscodeAgent(String passcode, String userType,
+  Future<PasscodeResponse?> resetPasscodeAgent(String passcode,
       Function(String) onErrorCallback) async {
     String agentId = await getAgentId();
     PasscodeRequestAgent passcodeRequest = PasscodeRequestAgent(
-        y9AgentId: agentId, type: userType, passcode: passcode);
+        y9AgentId: agentId, type: 'Agent', passcode: passcode);
 
     return await executeApiRequest<PasscodeResponse?>(
         taskType: TaskType.DATA_OPERATION,

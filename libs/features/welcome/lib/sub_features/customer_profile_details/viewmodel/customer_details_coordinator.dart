@@ -140,7 +140,9 @@ class CustomerDetailsCoordinator extends BaseViewModel<CustomerDetailsState> {
   }
 
   Future navigateToCreatePasscodeScreen(UserType userType) async {
-    _navigationHandler.openForNewPasscode(userType);
+
+      _navigationHandler.openForNewPasscode(userType);
+
   }
 
   bool isValidName(String name) {

@@ -28,17 +28,24 @@ class KycCreditMainCoordinator
   //call mno consent
   Future callMnoConsent(BuildContext context
       ) async {
-    state = KycCreditMainState.ready(context: context,isLoading:true );
-    var response = await _kycCreditMainUseCase.callMnoConsent('',
+    state = KycCreditMainState.ready(context: context,isLoading:true);
+    String customerId= await getCustomerId();
+    var response = await _kycCreditMainUseCase.callMnoConsent(customerId,
             (p0) => null);
     if (response?.status == true) {
       state = KycCreditMainState.ready(context: context,isLoading:false );
+      navigateToKycCreditAirtel();
     } else {
       state = KycCreditMainState.ready(context: context,isLoading:false,error: response!.message! );
       print(response.message);
     }
   }
 
+
+  Future<String> getCustomerId() async {
+    String customerId = await _kycCreditMainUseCase.getCustomerId();
+    return customerId;
+  }
 
 
   Future<void> navigateToKycCreditAirtel() async {

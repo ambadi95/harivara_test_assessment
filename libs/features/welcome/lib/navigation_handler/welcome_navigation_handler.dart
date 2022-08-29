@@ -7,8 +7,12 @@ import 'package:core/sheets/state/crayon_payment_bottom_sheet_state.dart';
 import 'package:flutter/material.dart';
 import 'package:home/home/home_screen_arguments.dart';
 import 'package:home/home/view/home_screen.dart';
+import 'package:kyc/view/kyc_credit_screen.dart';
 import 'package:passcode/sub_features/passcode/view/passcode.dart';
 import 'package:shared_data_models/device_option/device_option_args.dart';
+import 'package:shared_data_models/kyc/kyc_data_model.dart';
+import 'package:shared_data_models/kyc/kyc_screen_args.dart';
+import 'package:shared_data_models/kyc/kyc_type.dart';
 import 'package:shared_data_models/otp/otp_screen_args.dart';
 import 'package:shared_data_models/otp/otp_verification_type.dart';
 import 'package:shared_data_models/passcode/passcode_screen_args.dart';
@@ -64,6 +68,20 @@ class WelcomeNavigationHandler with ErrorHandler {
           SignUp.viewPath, const NavigationType.push(),
           arguments: arguments);
     }
+  }
+
+  Future<void> navigateToKycScreen() async {
+    var argument = KycScreenArgs(
+      KycFieldType.KYC_VALIDATION,
+      "",
+      "",
+      "",
+      "",
+      [KYCDataModel(title: "", isSelected: false)],
+    );
+    _navigationManager.navigateTo(
+        KycCreditScreen.viewPath, const NavigationType.replace(),
+        arguments: argument);
   }
 
   Future<void> navigateToCreatePasscodeScreen() async {
@@ -309,7 +327,7 @@ class WelcomeNavigationHandler with ErrorHandler {
       'SU_reset_passcode',
       'SU_reset_subtitle',
       userType,
-      userType == 'Agent'
+      userType == UserType.Agent
           ? SignupType.resetPasscodeAgent
           : SignupType.resetPasscodeCustomer,
       false,

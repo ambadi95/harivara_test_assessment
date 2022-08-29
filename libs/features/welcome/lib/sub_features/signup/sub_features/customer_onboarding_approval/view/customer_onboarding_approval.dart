@@ -293,7 +293,7 @@ class _SignUpState extends State<CustomerOnBoardingApproval> {
               borderRadius: BorderRadius.circular(8.0)),
           child: Center(
             child: Text(
-              state.isCustomerExist? 'SU_button_text':  'PC_fetch_details'.tr,
+              state.isCustomerExist? 'SU_button_text'.tr:  'PC_fetch_details'.tr,
               style: SU_button_text_style,
             ),
           ),

@@ -37,7 +37,8 @@ class AgentNearBy extends StatelessWidget {
         return Stack(
           children: [
             _buildMainUI(context, coordinator, state),
-            state.isLoading == true ? _createLoading() : SizedBox()
+            state.isLoading == true ? _createLoading() : SizedBox(),
+            state.isFetchingLocation == true ? _createLocationFetchingLoader() : SizedBox()
           ],
         );
       },
@@ -83,7 +84,7 @@ class AgentNearBy extends StatelessWidget {
       onSearch: (value) {
       },
       onTextChanged: (v) {
-        coordinator.agentNearbyList(v);
+        coordinator.search(v);
       },
       attributes: SearchBarAttributes(
           appearance: SearchBarAppearance(
@@ -211,6 +212,19 @@ class AgentNearBy extends StatelessWidget {
       child: Container(
         color: Colors.black.withOpacity(0.4),
         child: const CenteredCircularProgressBar(color: PRIMARY_COLOR),
+      ),
+    );
+  }
+
+  Widget _createLocationFetchingLoader() {
+    return Center(
+      child: Material(
+        child: Container(
+          child: const Text('Fetching your location..', style: TextStyle(
+            color: Colors.black,
+            fontSize: 16,
+          )),
+        ),
       ),
     );
   }

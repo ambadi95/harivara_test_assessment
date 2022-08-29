@@ -110,6 +110,7 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
           }
         } else
         if (signUpArguments.signupType == SignupType.resetPasscodeAgent) {
+          print('gherer');
           state = const SignUpState.loadingState();
           var agentDetailResponse = await _signupUseCase.getAgentDetail(
               agentId, nindaNumber.replaceAll("-", ""), (p0) => null);
