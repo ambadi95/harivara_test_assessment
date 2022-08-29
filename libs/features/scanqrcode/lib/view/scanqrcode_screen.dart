@@ -1,9 +1,11 @@
 import 'package:config/Colors.dart' as config_colors;
 import 'package:config/Colors.dart';
 import 'package:config/Styles.dart';
+import 'package:core/mobile_core.dart';
 import 'package:core/view/base_view.dart';
 import 'package:crayon_payment_customer/util/app_utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:scanqrcode/scanqrcode_module.dart';
 import 'package:widget_library/app_bars/crayon_payment_app_bar_attributes.dart';
@@ -46,11 +48,11 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
 
   void _listenToStateChanges(BuildContext context, ScanQRCodeState state) {
     state.maybeWhen(
-        DetailsFormState: (isValid) {
-          _isBtnEnabled = isValid;
-        },
         imei1Error: (message) {
           imei1NumberError = message;
+        },
+        deviceRegisterFormState: (isValid) {
+          _isBtnEnabled = isValid;
         },
         imei2Error: (message) {
           imei2NumberError = message;
@@ -59,41 +61,59 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
   }
 
   @override
+  void dispose() {
+    imei1Number.dispose();
+    imei2Number.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) =>
       BaseView<ScanQRCodeCoordinator, ScanQRCodeState>(
         onStateListenCallback: (preState, newState) =>
         {_listenToStateChanges(context, newState)},
         setupViewModel: (coordinator) {},
-        builder: (context, state, coordinator) => SafeArea(
-          child: Scaffold(
-            body: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _buildMainUI(coordinator),
-                ],
-              ),
-            ),
-          ),
-        ),
+        builder: (context, state, coordinator) {
+          return state.maybeWhen(
+              loading: () => _buildMainUIWithLoading(context, coordinator),
+              orElse: () => _buildMainUI( coordinator));
+        },
       );
 
+  Widget _buildMainUIWithLoading(
+      BuildContext context,
+      ScanQRCodeCoordinator coordinator,
+      ) {
+    return Scaffold(
+      body: Stack(
+        children: [
+          _buildMainUI(coordinator),
+          _createLoading(),
+        ],
+      ),
+    );
+  }
 
 
-  Widget _createLoading(ScanQRCodeStateReady state) {
-    if (state.isLoading) {
-      return Container(
+
+  Widget _createLoading() {
+    return Center(
+      child: Container(
         color: Colors.black.withOpacity(0.4),
-        child: const CenteredCircularProgressBar(
-            color: config_colors.PRIMARY_COLOR),
-      );
-    } else {
-      return Container();
-    }
+        child: const CenteredCircularProgressBar(color: PRIMARY_COLOR),
+      ),
+    );
   }
 
   Widget _buildMainUI(ScanQRCodeCoordinator coordinator) {
-    return SingleChildScrollView(
+    return CrayonPaymentScaffold(
+        appBarAttributes: CrayonPaymentAppBarAttributes(
+        key: const Key('CardDetailsScreen_AppBarBackButton'),
+    left: [
+    const CrayonPaymentAppBarButtonType.back(),
+    ],
+    ),
+    body: SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -110,7 +130,7 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
               coordinator,
               'SU_enter_IMEI1_button',
               imei1NumberError,
-              TextInputType.text),
+              TextInputType.number),
           dynamicHSpacer(70),
           // FOR IMEI2
           _buildScanIMEI2UiButton(coordinator),
@@ -122,7 +142,7 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
               coordinator,
               'SU_enter_IMEI2_button',
               imei2NumberError,
-              TextInputType.text),
+              TextInputType.number),
           dynamicHSpacer(30),
           _buildRegisterButtonButton(coordinator),
           // SizedBox(
@@ -131,6 +151,7 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
           // ),
         ],
       ),
+    )
     );
   }
 
@@ -139,7 +160,10 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
-        onTap: () async {},
+        onTap: () async {
+          var imei1 = coordinator.scanQRCodeImei1Method();
+          print("imei1 for scan => $imei1");
+        },
         child: Container(
           width: double.infinity,
           height: 50,
@@ -164,6 +188,7 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
       String hint,
       String errorText,
       TextInputType textInputType) {
+    print("error ==> $errorText");
     return Padding(
       padding: const EdgeInsets.only(left:15, right:15),
       child: InputFieldWithLabel(
@@ -173,6 +198,7 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
         hintText: hint.tr,
         key: const Key('imei1Text'),
         keyboardType: textInputType,
+        inputFormatters: [FilteringTextInputFormatter.digitsOnly, LengthLimitingTextInputFormatter(16)],
         onChanged: (value) {
           _validateForm(coordinator);
         },
@@ -195,6 +221,7 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
       hintText: hint.tr,
       key: const Key('imei2Text'),
       keyboardType: textInputType,
+        inputFormatters: [FilteringTextInputFormatter.digitsOnly, LengthLimitingTextInputFormatter(16),],
       onChanged: (value) {
         _validateForm(coordinator);
       },
@@ -205,7 +232,10 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
-        onTap: () async {},
+        onTap: () async {
+          var imei2 = coordinator.scanQRCodeImei2Method();
+          print("imei2 for scan => $imei2");
+          },
         child: Container(
           width: double.infinity,
           height: 50,
@@ -227,14 +257,20 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
-        onTap: () async {
-         // print("first textfiled ===> $")
+        onTap: ()  {
+          // coordinator.isImei1numberValid(imei1Number.text);
+          // coordinator.isImei2numberValid(imei2Number.text);
+          // if (_isBtnEnabled) {
+          //   coordinator.deviceRegister(123456, 12345,
+          //       imei1Number.text, imei2Number.text);
+          // }
+          coordinator.successFulScreen();
         },
         child: Container(
           width: double.infinity,
           height: 50,
           decoration: BoxDecoration(
-              color: SU_button_color,
+              color:  _isBtnEnabled ? LS_ButtonColor : SU_grey_color,
               borderRadius: BorderRadius.circular(8.0)),
           child: Center(
             child: Text(

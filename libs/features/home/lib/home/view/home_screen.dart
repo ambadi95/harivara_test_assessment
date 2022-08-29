@@ -278,8 +278,11 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                         child: _actionCommonView(
                             'HS_Customer_OnBoarding'.tr, HS_CustomerMangIcon),
                       ),
-                      _actionCommonView(
-                          'HS_Customer_DeviceSwap'.tr, HS_DeviceSwapIcon),
+                      InkWell(onTap:()  {
+                        coordinator.devicereg();
+                      },
+                     child: _actionCommonView(
+                          'HS_Customer_DeviceSwap'.tr, HS_DeviceSwapIcon)),
                       _actionCommonView(
                           'HS_Customer_AgentSupport'.tr, HS_AgentSupportIcon),
                     ],

@@ -8,6 +8,7 @@ import 'package:core/sheets/state/crayon_payment_bottom_sheet_state.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:loan_details/view/loan_detail_screen.dart';
 import 'package:payments/view/payments_screen.dart';
+import 'package:scanqrcode/view/scanqrcode_screen.dart';
 import 'package:shared_data_models/loan_detail/loan_detail_screen_args.dart';
 import 'package:shared_data_models/loan_detail/response/loan_detail_response/loan_detail_response.dart';
 import 'package:shared_data_models/payments/payments_screen_args.dart';
@@ -29,6 +30,13 @@ class HomeNavigationHandler with ErrorHandler {
 
   Future<void> goBack() async {
     _navigationManager.goBack();
+  }
+
+  Future<void> navigateTodevice(UserType userType) async {
+    await _navigationManager.navigateTo(
+      ScanQrCodeScreen.viewPath,
+      const NavigationType.push(),
+    );
   }
 
   Future<void> navigateToSignUpScreen(UserType userType) async {

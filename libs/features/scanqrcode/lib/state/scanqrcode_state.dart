@@ -4,7 +4,7 @@ part 'scanqrcode_state.freezed.dart';
 
 @freezed
 class ScanQRCodeState with _$ScanQRCodeState {
-  const factory ScanQRCodeState.initialState() = InitialState;
+
   const factory ScanQRCodeState.ready({
     required BuildContext context,
 
@@ -12,10 +12,17 @@ class ScanQRCodeState with _$ScanQRCodeState {
     @Default(false) bool isLoading,
   }) = ScanQRCodeStateReady;
 
-  const factory ScanQRCodeState.DetailsFormState(bool isValid) = DetailsFormState;
+  const factory ScanQRCodeState.loading() = LoadingState;
+
+  const factory ScanQRCodeState.initialState() = InitialState;
+
+  const factory ScanQRCodeState.successState() = SuccessState;
+
+  const factory ScanQRCodeState.deviceRegisterFormState(bool isValid) = deviceRegisterFormState;
 
   const factory ScanQRCodeState.imei1Error(String nameError) = imei1Error;
 
   const factory ScanQRCodeState.imei2Error(String nameError) = imei2Error;
+
 
 }

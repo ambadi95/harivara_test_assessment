@@ -25,6 +25,11 @@ class HomeCoordinator extends BaseViewModel<HomeScreenState> {
     _navigationHandler.navigateToSignUpScreen(UserType.Customer);
   }
 
+  void devicereg() {
+    _navigationHandler.navigateTodevice(UserType.Customer);
+  }
+
+
   void goBack() async {
     _navigationHandler.goBack();
   }
