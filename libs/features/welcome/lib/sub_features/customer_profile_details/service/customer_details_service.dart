@@ -47,6 +47,8 @@ class CustomerDetailsService implements ICustomerDetailsService {
   @override
   Future<StandardRequest> saveCustomerDetails(
       Map<String, dynamic> requestData, UserType userType) async {
+    print("////");
+
     var request = StandardRequest();
     request.requestType = RequestType.PUT;
     request.endpoint = 'customer-details';
