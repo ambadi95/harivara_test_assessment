@@ -4,6 +4,7 @@ import 'package:core/view/base_view.dart';
 import 'package:flutter/material.dart';
 import 'package:scanqrcode/state/scanqrcode_state.dart';
 import 'package:scanqrcode/viewmodel/scanqrcode_coordinator.dart';
+import 'package:shared_data_models/scan_qr_code/scan_qrcode_args.dart';
 import 'package:welcome/sub_features/agent_enrollment/viewmodel/agent_enrollment_coordinator.dart';
 import 'package:widget_library/html/rich_text_description.dart';
 import 'package:get/get.dart';
@@ -14,8 +15,8 @@ class SuccessScreen extends StatefulWidget {
   static const viewPath =
       '${ScanQRCodeModule.moduleIdentifier}/successScreen';
 
-  final String username;
-  const SuccessScreen({Key? key, required this.username}) : super(key: key);
+  //final ScreenScreenArgs screenScreenArgs;
+  const SuccessScreen({Key? key}) : super(key: key);
 
   @override
   State<SuccessScreen> createState() => _SuccessScreenState();
@@ -42,7 +43,7 @@ class _SuccessScreenState extends State<SuccessScreen> {
           const SizedBox(
             height: 200,
           ),
-          Text("Hi ${widget.username}"),
+         // Text("Hi ${widget.username}"),
           _buildSuccessIcon(),
           const SizedBox(
             height: 24,

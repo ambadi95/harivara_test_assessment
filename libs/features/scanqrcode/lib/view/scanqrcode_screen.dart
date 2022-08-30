@@ -24,9 +24,9 @@ import 'package:widget_library/spacers/crayon_payment_spacers.dart';
 class ScanQrCodeScreen extends StatefulWidget {
   static const viewPath =
       '${ScanQRCodeModule.moduleIdentifier}/scanqrcodescreen';
-  final ScanQRCodeArgs scanQRCodeArgs;
+  //final ScanQRCodeArgs scanQRCodeArgs;
 
-  const ScanQrCodeScreen({Key? key, required this.scanQRCodeArgs}) : super(key: key);
+  const ScanQrCodeScreen({Key? key,}) : super(key: key);
 
   @override
   State<ScanQrCodeScreen> createState() => _ScanQrCodeScreenState();
@@ -44,7 +44,8 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
   void _validateForm(ScanQRCodeCoordinator coordinator) {
     coordinator.validateForm(
         '12345', // ADD CUSTOMER ID
-        widget.scanQRCodeArgs.deviceId,
+        123456,
+        //widget.scanQRCodeArgs.deviceId,
         imei1Number.text,
         imei2Number.text
     );
@@ -270,15 +271,17 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
         onTap: ()  {
-          coordinator.isImei1numberValid(imei1Number.text);
-          coordinator.isImei2numberValid(imei2Number.text);
-          if(imei1Number.text.trim() != "" && imei2Number.text.trim() !="") {
-              _isBtnEnabled = true;
-            if (_isBtnEnabled) {
-              coordinator.deviceRegister(widget.scanQRCodeArgs.deviceId,
-                  imei1Number.text, imei2Number.text);
-            }
-          }
+          // coordinator.isImei1numberValid(imei1Number.text);
+          // coordinator.isImei2numberValid(imei2Number.text);
+          // if(imei1Number.text.trim() != "" && imei2Number.text.trim() !="") {
+          //     _isBtnEnabled = true;
+          //   if (_isBtnEnabled) {
+          //     coordinator.deviceRegister(
+          //        12345,
+          //         //widget.scanQRCodeArgs.deviceId,
+          //         imei1Number.text, imei2Number.text);
+          //   }
+          // }
           coordinator.successFulScreen();
         },
         child: Container(
