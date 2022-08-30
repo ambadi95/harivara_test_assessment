@@ -87,6 +87,7 @@ class KycCreditCoordinator extends AnalyticsStateNotifier<KycCreditState> {
       ) async {
       state = KycCreditState.ready(context: context,isLoading:true);
       String customerId=await  _kycCreditUseCase.getCustomerId();
+      print(customerId);
     var response = await _kycCreditUseCase.callCreditScore(customerId,
             (p0) => null);
     if (response?.status == true) {

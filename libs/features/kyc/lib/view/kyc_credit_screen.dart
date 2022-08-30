@@ -39,16 +39,17 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
   bool _eligibilityFound = false;
 
   KycCreditCoordinator? kycCreditCoordinator;
+
   @override
   Widget build(BuildContext context) =>
       BaseView<KycCreditCoordinator, KycCreditState>(
           setupViewModel: (coordinator) {
             coordinator.initialiseState(context);
-            kycCreditCoordinator=coordinator;
+            kycCreditCoordinator = coordinator;
             // coordinator.callKycCheck(context);
           },
           onStateListenCallback: (preState, newState) =>
-          {_listenToStateChanges(context, newState as KycCreditStateReady)},
+              {_listenToStateChanges(context, newState as KycCreditStateReady)},
           builder: (context, state, coordinator) => CrayonPaymentScaffold(
                 appBarAttributes: CrayonPaymentAppBarAttributes(
                   key: const Key('CardDetailsScreen_AppBarBackButton'),
@@ -61,9 +62,9 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
                   ready: (
                     _,
                     __,
-                    ___, 
-                      ____,
-                      _____,
+                    ___,
+                    ____,
+                    _____,
                   ) =>
                       _buildMainUIWithLoading(
                     context,
@@ -130,7 +131,6 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
                       context,
                       AppUtils.appUtilsInstance
                           .getPercentageSize(percentage: 50)),
-
                   _getCheckedIcon(
                     context,
                     !_isKycPassEnabled
@@ -158,7 +158,7 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _getImage(coordinator,context),
+                  _getImage(coordinator, context),
                   SizedBox(
                     height: AppUtils.appUtilsInstance
                         .getPercentageSize(percentage: 5),
@@ -377,20 +377,14 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
   Widget _buildContinueButton(
     BuildContext context,
     KycCreditCoordinator coordinator,
-      KycCreditStateReady state,
+    KycCreditStateReady state,
   ) {
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
         onTap: () async {
-
-
-
-
           if (!_isKycPassEnabled) {
-
-               await coordinator.callKycCheck(context);
-
+            await coordinator.callKycCheck(context);
           } else if (!_isKycCreditLoanEnabled) {
             await coordinator.callCreditScore(context);
           }
@@ -399,7 +393,7 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
           width: double.infinity,
           height: 50,
           decoration: BoxDecoration(
-              color: _isBtnEnabled ? SU_button_color : SU_telco_button_color,
+              color:  SU_button_color ,
               borderRadius: BorderRadius.circular(2.0)),
           child: Center(
             child: Text(
@@ -422,7 +416,7 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
     );
   }
 
-  Widget _getImage(KycCreditCoordinator coordinator,BuildContext context) {
+  Widget _getImage(KycCreditCoordinator coordinator, BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(75.0),
       child: Image(
@@ -486,36 +480,33 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
   }
 
   _listenToStateChanges(BuildContext context, KycCreditStateReady state) async {
-    if(state.isKycError == false && state.error == "Kyc Done") {
-
+    //kyc done
+    if (state.isKycError == false && state.error == "Kyc Done") {
       setState(() {
-        _isKycPassEnabled=true;
+        _isKycPassEnabled = true;
       });
       await kycCreditCoordinator!.callCreditScore(context);
 
-
-
-    }else if(state.isKycError==true && state.error.isNotEmpty==true){
-
+//showing kyc error
+    } else if (state.isKycError == true && state.error.isNotEmpty == true) {
       kycCreditCoordinator!.showErrorBottomSheet(
           _getKycValidationFailedUi(context, kycCreditCoordinator!, state),
           context);
       return;
-    }else if(state.isCreditCheckError == false && state.error == 'Credit Eligible'){
+    } else if (state.isCreditCheckError == false &&
+        state.error == 'Credit Eligible') {
+      setState(() {
+        _isKycCreditLoanEnabled = true;
+      });
+      kycCreditCoordinator!.navigateToDeviceOption(false, UserType.AgentCustomer);
 
-        setState(() {
-          _isKycCreditLoanEnabled=true;
-        });
       return;
-    }else if (state.isCreditCheckError==true && state.error.isNotEmpty==true){
+    } else if (state.isCreditCheckError == true &&
+        state.error.isNotEmpty == true) {
       kycCreditCoordinator!.showErrorBottomSheet(
           _getCreditCheckValidationFailedUi(
               context, kycCreditCoordinator!, state),
           context);
     }
-
   }
-
-
-
 }
