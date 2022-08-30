@@ -1,4 +1,6 @@
 
+import 'package:flutter/services.dart';
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:scanqrcode/service/scanqrcode_service.dart';
 import 'package:scanqrcode/viewmodel/scanqrcode_viewmodel.dart';
 import 'package:task_manager/base_classes/base_data_provider.dart';
@@ -7,8 +9,6 @@ import 'package:task_manager/task_manager_impl.dart';
 import 'package:shared_data_models/scan_qr_code/response/scan_qr_code_response.dart';
 import 'package:shared_data_models/scan_qr_code/request/scanqrcode_request.dart';
 import 'dart:async';
-// import 'package:flutter/services.dart';
-// import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import '../scanqrcode_module.dart';
 
 class ScanQRCodeUseCase extends BaseDataProvider {
@@ -23,6 +23,14 @@ class ScanQRCodeUseCase extends BaseDataProvider {
     return await getValueFromSecureStorage('agentName', defaultValue: '');
   }
 
+  Future<String> getCustomerId() async {
+    return await getValueFromSecureStorage('customerId', defaultValue: '');
+  }
+
+  Future<String> getDeviceId() async {
+    return await getValueFromSecureStorage('deviceId', defaultValue: '');
+  }
+
   bool isValidIMEINumber(String imeiNumber) {
     return _scanQRCodeViewModel.isValidIMEINumber(imeiNumber);
   }
@@ -31,9 +39,11 @@ class ScanQRCodeUseCase extends BaseDataProvider {
     return await setValueToSecureStorage({'deviceRegistrationStatus': status});
   }
 
-  Future<ScanQRCodeResponse?> deviceRegistrationAPI(int customerId, int deviceId, String imei1, String imei2,
+  Future<ScanQRCodeResponse?> deviceRegistrationAPI(int deviceId, String imei1, String imei2,
       Function(String) onErrorCallback) async {
-    ScanQRCodeRequest scanQRCodeRequest = ScanQRCodeRequest(customerId, deviceId, imei1 , imei2 );
+    String customerID = await getCustomerId();
+
+    ScanQRCodeRequest scanQRCodeRequest = ScanQRCodeRequest(int.parse(customerID), deviceId, imei1 , imei2 );
     return await executeApiRequest<ScanQRCodeResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
@@ -60,26 +70,26 @@ class ScanQRCodeUseCase extends BaseDataProvider {
 
   Future<String> scanBarcodeImei1() async {
     String barcodeScanRes="";
-    // try {
-    //   barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
-    //       '#ff6666', 'Cancel', true, ScanMode.BARCODE);
-    //   print(barcodeScanRes);
-    //
-    // } on PlatformException {
-    //   barcodeScanRes = 'Failed to get platform version.';
-    // }
+    try {
+      barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
+          '#ff6666', 'Cancel', true, ScanMode.BARCODE);
+      print(barcodeScanRes);
+
+    } on PlatformException {
+      barcodeScanRes = 'Failed to get platform version.';
+    }
     return barcodeScanRes;
   }
 
   Future<String> scanBarcodeImei2() async {
     String barcodeScanRes="";
-    // try {
-    //   barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
-    //       '#ff6666', 'Cancel', true, ScanMode.BARCODE);
-    //   print(barcodeScanRes);
-    // } on PlatformException {
-    //   barcodeScanRes = 'Failed to get platform version.';
-    // }
+    try {
+      barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
+          '#ff6666', 'Cancel', true, ScanMode.BARCODE);
+      print(barcodeScanRes);
+    } on PlatformException {
+      barcodeScanRes = 'Failed to get platform version.';
+    }
     return barcodeScanRes;
   }
 

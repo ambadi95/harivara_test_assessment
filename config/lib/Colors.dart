@@ -63,6 +63,7 @@ const DD_TitleColor = Color(0xFF040505);
 const DD_TextLabel = Color(0xFF000000);
 const DD_TextValue = Color(0xFF000000);
 const DD_BUTTON_COLOR = Color(0xFFF4EFEF);
+const DD_DEVICE_REGISTER = Color(0xFF160304);
 
 Color  Loan_Detail_Background = Color(0xFFF4EEEB);
 Color  Loan_Banner_Background = Color(0xFFC83732);

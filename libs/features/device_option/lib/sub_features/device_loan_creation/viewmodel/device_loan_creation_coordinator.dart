@@ -18,7 +18,7 @@ class DeviceLoanCreationCoordinator
     this._DeviceOptionUseCase,
   ) : super(const DeviceLoanCreationState.initialState());
 
-  void navigateToDownPayment(Data? detailDetail) async {
-    await _navigationHandler.navigateToDownPaymentScreen(detailDetail);
+  void navigateToDownPayment(int? deviceId) async {
+    await _navigationHandler.navigateToDownPaymentScreen(deviceId!);
   }
 }

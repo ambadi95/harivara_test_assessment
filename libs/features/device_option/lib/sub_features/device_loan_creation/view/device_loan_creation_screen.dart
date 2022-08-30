@@ -129,7 +129,7 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
                               "|" +
                               detailDetail!.processor! +
                               "|" +
-                              detailDetail!.operatingSystem!,
+                              detailDetail!.operatingSystem! ,
                           styleVariant: CrayonPaymentTextStyleVariant.overline1,
                           color: SU_carrier_message_color,
                         ),
@@ -191,7 +191,7 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
       textColor: White,
       textStyleVariant: CrayonPaymentTextStyleVariant.headline4,
       onPressed: () {
-        coordinator.navigateToDownPayment(detailDetail);
+        coordinator.navigateToDownPayment(detailDetail?.deviceId);
       },
     );
   }

@@ -13,7 +13,9 @@ import '../scanqrcode_module.dart';
 class SuccessScreen extends StatefulWidget {
   static const viewPath =
       '${ScanQRCodeModule.moduleIdentifier}/successScreen';
-  const SuccessScreen({Key? key}) : super(key: key);
+
+  final String username;
+  const SuccessScreen({Key? key, required this.username}) : super(key: key);
 
   @override
   State<SuccessScreen> createState() => _SuccessScreenState();
@@ -40,6 +42,7 @@ class _SuccessScreenState extends State<SuccessScreen> {
           const SizedBox(
             height: 200,
           ),
+          Text("Hi ${widget.username}"),
           _buildSuccessIcon(),
           const SizedBox(
             height: 24,

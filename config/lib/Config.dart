@@ -44,6 +44,7 @@ const ST_TermsCondition = 'assets/images/term'
     'Condition.svg';
 const ST_faq = 'assets/images/faq.svg';
 const ST_agent = 'assets/images/agent.svg';
+const ST_scan_icon = 'assets/images/scan_image.svg';
 
 // USERTYPE
 enum UserType { Customer, Agent, AgentCustomer }

@@ -88,14 +88,13 @@ void successFulScreen(){
     return result;
   }
 
-  Future deviceRegister(int customerId, int deviceId, String imei1,
+  Future deviceRegister(int deviceId, String imei1,
       String imei2) async {
-      await deviceRegisterAPI(customerId, deviceId, imei1, imei2);
+      await deviceRegisterAPI(deviceId, imei1, imei2);
   }
 
 
   Future deviceRegisterAPI(
-      int customerId,
       int deviceId,
       String imei1,
       String imei2
@@ -103,10 +102,10 @@ void successFulScreen(){
     state = const ScanQRCodeState.loading();
     try {
       var response = await _scanQRCodeUseCase.deviceRegistrationAPI(
-          customerId, deviceId, imei1, imei2, (p0) => null);
+         deviceId, imei1, imei2, (p0) => null);
       if (response?.status == true) {
         state = const ScanQRCodeState.successState();
-        print("status");
+         //String username = getAgentName();
         successFulScreen();
       } else {
         print("response?.message");
