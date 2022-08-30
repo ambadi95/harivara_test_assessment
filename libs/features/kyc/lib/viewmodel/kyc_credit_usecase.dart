@@ -68,6 +68,7 @@ class KycCreditUseCase extends BaseDataProvider {
 
   Future<KycCheckResponse?> callCreditScore(
       String customerId, Function(String) onErrorCallback) async {
+
     return await executeApiRequest<KycCheckResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
