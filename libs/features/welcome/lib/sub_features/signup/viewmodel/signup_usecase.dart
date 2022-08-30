@@ -1,8 +1,10 @@
 import 'package:core/mobile_core.dart';
 import 'package:network_manager/auth/auth_manager.dart';
 import 'package:network_manager/model/response/jwt/jwt_token_response.dart';
+import 'package:shared_data_models/agent_onboard/agent_details/response/agent_details_response.dart';
 import 'package:shared_data_models/agent_onboard/signup/response/agent_sign_up_response.dart';
 import 'package:shared_data_models/auth/auth_detail.dart';
+import 'package:shared_data_models/customer_details/response/get_customer_details_response/get_customer_details_response.dart';
 import 'package:shared_data_models/customer_onboard/customer_details/response/customer_detail_response.dart';
 import 'package:task_manager/base_classes/base_data_provider.dart';
 import 'package:task_manager/task_manager.dart';
@@ -96,16 +98,14 @@ class SignupUseCase extends BaseDataProvider {
 
   Future<JwtTokenResponse?> callJWTToken(
       Function(String) onErrorCallback) async {
-
-
     await executeApiRequest<JwtTokenResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
         moduleIdentifier: WelcomeModule.moduleIdentifier,
-        requestData:{
+        requestData: {
           'username': 'y9dev',
           'password': 'P@ssw0rd',
-          'clientid':'7dcd46ae-5f2f-4b14-a9a2-c48796180517'
+          'clientid': '7dcd46ae-5f2f-4b14-a9a2-c48796180517'
         },
         serviceIdentifier: ISignupService.jwtIdentifier,
         onError: onErrorCallback,
@@ -114,12 +114,10 @@ class SignupUseCase extends BaseDataProvider {
 
           JwtTokenResponse jwtTokenResponse = JwtTokenResponse.fromJson(data);
 
-          if(jwtTokenResponse.status==true){
+          if (jwtTokenResponse.status == true) {
             _authManager.storeJWTToken(
               jwtTokenResponse.data!.jwttoken!,
-
             );
-
           }
         });
   }
@@ -170,7 +168,10 @@ class SignupUseCase extends BaseDataProvider {
           final data = responseData;
           CustomerDetailResponse agentSignUpResponse =
               CustomerDetailResponse.fromJson(data);
-
+          _authManager.setUserDetail(
+              authInfo: agentSignUpResponse.data?.customerId.toString(),
+              key: 'Customer_ID');
+           _saveMobileNumber(customerMobile.replaceAll(" ", ""));
           print(data);
           return agentSignUpResponse;
         });
@@ -178,6 +179,7 @@ class SignupUseCase extends BaseDataProvider {
 
   Future<CustomerDetailResponse?> getCustomerDetails(String nindaNumber, String phoneNo,
       Function(String) onErrorCallback) async {
+
     return await executeApiRequest<CustomerDetailResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
@@ -191,11 +193,49 @@ class SignupUseCase extends BaseDataProvider {
         modelBuilderCallback: (responseData) {
           final data = responseData;
           CustomerDetailResponse detailResponse =
-          CustomerDetailResponse.fromJson(data);
+              CustomerDetailResponse.fromJson(data);
           _authManager.setUserDetail(
               authInfo: detailResponse.data?.customerId.toString(),
               key: 'Customer_ID');
           return detailResponse;
+        });
+  }
+
+  Future<GetCustomerDetailsResponse?> getCustomerDetailsByMobileNumber( String phoneNo,
+      Function(String) onErrorCallback) async {
+
+    return await executeApiRequest<GetCustomerDetailsResponse?>(
+        taskType: TaskType.DATA_OPERATION,
+        taskSubType: TaskSubType.REST,
+        moduleIdentifier: WelcomeModule.moduleIdentifier,
+        requestData: {
+          "mobileNo": phoneNo.replaceAll(" ", "")
+        },
+        serviceIdentifier: ISignupService.getCustomerDetailByMobileNumberIdentifier,
+        onError: onErrorCallback,
+        modelBuilderCallback: (responseData) {
+          final data = responseData;
+          GetCustomerDetailsResponse detailResponse =
+          GetCustomerDetailsResponse.fromJson(data);
+          _authManager.setUserDetail(
+              authInfo: detailResponse.data?.customerId.toString(),
+              key: 'Customer_ID');
+          return detailResponse;
+        });
+  }
+
+  Future<AgentDetailsResponse?> getAgentDetail(String agentId,
+      String nidaNumber, Function(String) onErrorCallback) async {
+    return await executeApiRequest<AgentDetailsResponse?>(
+        taskType: TaskType.DATA_OPERATION,
+        taskSubType: TaskSubType.REST,
+        moduleIdentifier: WelcomeModule.moduleIdentifier,
+        requestData: {"agentId": agentId, "nidaNumber": nidaNumber},
+        serviceIdentifier: ISignupService.agentDetailIdentifier,
+        onError: onErrorCallback,
+        modelBuilderCallback: (responseData) {
+          final data = responseData;
+          return AgentDetailsResponse.fromJson(data);
         });
   }
 }

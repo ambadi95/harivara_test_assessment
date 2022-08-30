@@ -1,5 +1,6 @@
 import 'package:config/Config.dart';
 import 'package:core/mobile_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/src/widgets/focus_manager.dart';
 import 'package:shared_data_models/customer_onboard/region_district/region_response/datum.dart';
 import 'package:shared_data_models/customer_onboard/region_district/district_response/datum.dart'
@@ -9,7 +10,7 @@ import 'package:welcome/data_model/gender_type.dart';
 import 'package:welcome/sub_features/details/state/details_state.dart';
 import 'package:welcome/sub_features/details/viewmodel/details_usecase.dart';
 import '../../../navigation_handler/welcome_navigation_handler.dart';
-
+import 'package:crayon_payment_customer/util/app_utils.dart';
 class DetailsCoordinator extends BaseViewModel<DetailsState> {
   final DetailsUseCase _detailsUseCase;
   final WelcomeNavigationHandler _navigationHandler;
@@ -111,7 +112,13 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
   }
 
   Future navigateToCreatePasscodeScreen(UserType userType) async {
-    _navigationHandler.openForNewPasscode(userType);
+    //for agent customer onboarding we are not creating customer passcode
+    if(userType == UserType.AgentCustomer) {
+      _navigationHandler.navigateToKycScreen();
+
+    }else {
+      _navigationHandler.openForNewPasscode(userType);
+    }
   }
 
   bool isValidName(String name) {
@@ -224,25 +231,37 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
     String district,
     UserType userType,
   ) async {
-    state = const DetailsState.LoadingState();
-    var response = await _detailsUseCase.submitCustomerDetails(
-        name,
-        dob,
-        gender,
-        address,
-        profession,
-        emailId,
-        poBox,
-        region,
-        district,
-        (p0) => null,
-        userType);
-    if (response?.status == true) {
+    try {
+      state = const DetailsState.LoadingState();
+      var response = await _detailsUseCase.submitCustomerDetails(
+          name,
+          dob,
+          gender,
+          address,
+          profession,
+          emailId,
+          poBox,
+          region,
+          district,
+          (p0) => null,
+          userType);
+      if (response?.status == true) {
+        state = const DetailsState.initialState();
+        if(userType == UserType.AgentCustomer){
+          _navigationHandler.navigateToKYCScreen();
+        } else {
+          navigateToCreatePasscodeScreen(userType);
+        }
+      } else {
+        state = const DetailsState.initialState();
+        print(response?.message);
+      }
+    }  catch (e) {
       state = const DetailsState.initialState();
-      navigateToCreatePasscodeScreen(userType);
-    } else {
-      state = const DetailsState.initialState();
-      print(response?.message);
+      AppUtils.appUtilsInstance.showErrorBottomSheet(
+        title: e.toString(),
+        onClose: () {goBack();},
+      );
     }
   }
 }

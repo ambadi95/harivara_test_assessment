@@ -186,6 +186,16 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
       getRequest.headers.addAll(headers!);
       final streamedResponse = await getRequest.send();
       var response = await http.Response.fromStream(streamedResponse);
+      print(response.body);
+      if (response.statusCode != 200) {
+        var res = json.decode(response.body);
+        if(res['message']!=null){
+          throw res['message'];
+        }
+        else{
+          throw 'Something went wrong';
+        }
+      }
       return NetworkStandardResponse(
         response.body,
         response.statusCode,
@@ -223,18 +233,27 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
         request.customHeaders = {
           'Authorization': value,
           'Content-Type': 'application/json',
-
         };
       });
     }
-     request.customHeaders =await request.headers();
+    request.customHeaders = await request.headers();
     final headers = buildHeaders(request.customHeaders);
     CrayonPaymentLogger.logDebug<NetworkClient>(
       'Sending POST request to the server for url: ${uri.toString()}',
     );
     final response =
         await _httpClient.post(uri, headers: headers, body: request.jsonBody);
-
+    print(response.body);
+    if (response.statusCode != 200) {
+      var res = json.decode(response.body);
+      if(res['message']!=null)
+      {
+        throw res['message'];
+      }
+      else{
+        throw 'Something went wrong';
+      }
+    }
     return NetworkStandardResponse(
       response.body,
       response.statusCode,
@@ -273,7 +292,16 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
     );
     final response =
         await _httpClient.put(uri, headers: headers, body: request.jsonBody);
-
+    print(response.body);
+    if (response.statusCode != 200) {
+      var res = json.decode(response.body);
+      if(res['message']!=null){
+        throw res['message'];
+      }
+      else{
+        throw 'Something went wrong';
+      }
+    }
     return NetworkStandardResponse(
       response.body,
       response.statusCode,

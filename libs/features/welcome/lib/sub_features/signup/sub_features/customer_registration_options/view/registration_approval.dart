@@ -276,7 +276,9 @@ class _SignUpState extends State<RegistrationApproval> {
         const SizedBox(
           height: 24,
         ),
-        _selectableCard (_customerApproval,RC_customer_approval,'RC_customer_approval',(){
+        _selectableCard(
+            _customerApproval, RC_customer_approval, 'RC_customer_approval',
+            () {
           setState(() {
             _agentAidCustomerOnBoarding = false;
             _customerApproval = true;

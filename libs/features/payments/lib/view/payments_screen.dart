@@ -78,7 +78,7 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
   Widget _createLoading(PaymentsStateReady state) {
     if (state.isLoading) {
       return Container(
-        color: Colors.black.withOpacity(0.4),
+        color: Colors.transparent,
         child: const CenteredCircularProgressBar(
             color: config_colors.PRIMARY_COLOR),
       );
@@ -148,7 +148,7 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
                   ),
                   CrayonPaymentText(
                     key: Key('${_identifier}_daily_repayment_price'),
-                    text: const TextUIDataModel('2,000 TZSHS',
+                    text:  TextUIDataModel('${widget.paymentsScreenArgs.price} TZSHS',
                         styleVariant: CrayonPaymentTextStyleVariant.headline6,
                         color: SECONDARY_COLOR,
                         fontWeight: FontWeight.w600),
@@ -218,13 +218,15 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
         onTap: () async {
-          try {
+
             await coordinator.paymentApi(
-              widget.paymentsScreenArgs.price,
-              "Airtel",
+              "2000"
+              /*widget.paymentsScreenArgs.price*/,
+              "Repayment",
+              context,
             );
-            coordinator.navigateToPaymentSuccessBottomSheet();
-          } catch (e) {}
+
+
         },
         child: Container(
           width: double.infinity,

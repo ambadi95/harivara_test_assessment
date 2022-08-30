@@ -8,6 +8,7 @@ import 'package:core/sheets/state/crayon_payment_bottom_sheet_state.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:loan_details/view/loan_detail_screen.dart';
 import 'package:payments/view/payments_screen.dart';
+import 'package:scanqrcode/view/scanqrcode_screen.dart';
 import 'package:shared_data_models/loan_detail/loan_detail_screen_args.dart';
 import 'package:shared_data_models/loan_detail/response/loan_detail_response/loan_detail_response.dart';
 import 'package:shared_data_models/payments/payments_screen_args.dart';
@@ -29,6 +30,13 @@ class HomeNavigationHandler with ErrorHandler {
 
   Future<void> goBack() async {
     _navigationManager.goBack();
+  }
+
+  Future<void> navigateTodevice(UserType userType) async {
+    await _navigationManager.navigateTo(
+      ScanQrCodeScreen.viewPath,
+      const NavigationType.push(),
+    );
   }
 
   Future<void> navigateToSignUpScreen(UserType userType) async {
@@ -69,11 +77,12 @@ class HomeNavigationHandler with ErrorHandler {
     );
   }
 
-  Future<void> navigateToPaymentScreen() async {
+  Future<void> navigateToPaymentScreen(String paymentPrice) async {
     PaymentsScreenArgs paymentsScreenArgs = PaymentsScreenArgs(
       HS_LoanRepaymentMock,
       'Paying Custom Amount',
-      '3,000 TZSHS',
+      paymentPrice,
+
     );
     await _navigationManager.navigateTo(
       PaymentsScreen.viewPath,
@@ -92,13 +101,14 @@ class HomeNavigationHandler with ErrorHandler {
     );
   }
 
-  String _selectedAmount = "";
+  String _selectedAmount = "5500";
 
   Future<void> navigateToLoanRepaymentBottomSheet(
     String message,
     String buttonLabel,
+      LoanDetailResponse loanDetailResponse
   ) async {
-    _selectedAmount = "";
+
     final CrayonPaymentBottomSheetState infoState =
         CrayonPaymentBottomSheetState.loanRepayment(
             loanRepayment: LoanRepayment(
@@ -107,25 +117,26 @@ class HomeNavigationHandler with ErrorHandler {
       label3: 'LR_amount_to_pay',
       imageUrl: HS_LoanRepaymentMock,
       infoMessage: '',
-      loanId: '64512378965435',
+      selectedAmount:_selectedAmount ,
+      loanId:loanDetailResponse==null? loanDetailResponse.data?.loanId??"-":"648960359535569",
       onPressedCustomAmount: () => navigateToCustomPayBottomSheet(),
       onPressedPayNow: () {
-        navigateToPaymentScreen();
+        navigateToPaymentScreen(_selectedAmount);
       },
       loanPaymentList: [
         LoanPaymentMethod(
           name: 'LR_due_amount',
-          amount: "4,500TZSHS",
+          amount: loanDetailResponse==null? loanDetailResponse.data!.outStandingAmount!+" TZSHS":"4,500 TZSHS",
           isSelected: false,
         ),
         LoanPaymentMethod(
           name: 'LR_daily_repayment',
-          amount: '2,000TZSHS',
+          amount: loanDetailResponse==null? loanDetailResponse.data!.dailyRepaymentAmount!+" TZSHS":"2,000 TZSHS",
           isSelected: false,
         ),
         LoanPaymentMethod(
           name: 'LR_loan_amount',
-          amount: "7,70,000TZSHS",
+          amount:  loanDetailResponse==null? loanDetailResponse.data!.totalAmountToBeRepaid!+" TZSHS":"7,70,000 TZSHS",
           isSelected: false,
         ),
         LoanPaymentMethod(

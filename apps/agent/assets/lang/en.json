@@ -41,10 +41,16 @@
   "SU_update_subtitle" : "You can Update the passcode here using OTP sent to your registered mobile number",
   "SU_scan_code_IMEI1_button" : "Scan QR Code of IMEI1",
   "SU_enter_IMEI1_button" : "Enter IMEI1",
+  "SU_valid_IMEI1" : "Invalid IMEI1",
   "SU_scan_code_IMEI2_button" : "Scan QR Code of IMEI2",
   "SU_enter_IMEI2_button" : "Enter IMEI2",
+  "SU_valid_IMEI2" : "Invalid IMEI2",
   "SU_register_device_button" : "Register Device",
   "SU_or_text" : "OR",
+  "SU_close" : "Close",
+  "SU_success_msg_1" : "Congratulations! Enjoy your experience with Y9.",
+  "SU_success_msg_2" : "Please sign in to Y9 app in your new device to avail our all benifits",
+
 
   "DV_title" : "Enter Personal Details",
   "DV_agent_aided_title" : "Customer Details",
@@ -82,8 +88,10 @@
   "DV_district_label" : "District",
   "DV_district_error_text" : "Invalid District",
   "DV_district_hint_text" : "Enter District",
-
+  "Save_Text": "Save",
   "HS_GoodMorning": "Good Morning",
+  "HS_GoodAfternoon": "Good Afternoon",
+  "HS_GoodEvening": "Good Evening",
   "HS_YourBalance": "Your Balance",
   "HS_AccountId": "Y9 Agent Id",
   "HS_LoadWallet": "Load Wallet",
@@ -189,6 +197,7 @@
   "RP_Passcode_Desc" : "Please use the new passcode to Sign-in and proceed further",
   "RP_Continue" : "Continue",
 
+  "ST_my_profile": "View Profile",
   "ST_title" : "Settings",
   "ST_subTitle" : "Profile Management",
   "ST_view_profile" : "View Profile",
@@ -249,5 +258,8 @@
   "PC_fetch_details" : "Fetch Details",
   "PC_alert_message" : "Provided Customer Reference ID and Mobile Number doesn't match with our record.",
   "PC_alert_title" : "Details Mismatch",
-  "PC_button_close" : "Close"
+  "PC_button_close" : "Close",
+
+  "RP_success_message": "Passcode has been updated successfully",
+  "PR_message" : "You will be Signed out of the app, please use the new passcode to Sign-in again"
 }

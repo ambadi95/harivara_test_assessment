@@ -1,6 +1,4 @@
-
 class JwtTokenResponseData {
-
   String? jwttoken;
 
   JwtTokenResponseData({
@@ -17,7 +15,6 @@ class JwtTokenResponseData {
 }
 
 class JwtTokenResponse {
-
   bool? status;
   String? code;
   String? message;
@@ -33,7 +30,9 @@ class JwtTokenResponse {
     status = json['status'];
     code = json['code']?.toString();
     message = json['message']?.toString();
-    data = (json['data'] != null) ? JwtTokenResponseData.fromJson(json['data']) : null;
+    data = (json['data'] != null)
+        ? JwtTokenResponseData.fromJson(json['data'])
+        : null;
   }
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};

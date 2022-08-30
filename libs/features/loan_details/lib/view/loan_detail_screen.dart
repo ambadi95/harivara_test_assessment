@@ -25,7 +25,7 @@ class LoanDetailScreen extends StatefulWidget {
   static const viewPath = '${LoanDetailModule.moduleIdentifier}/loandetail';
   final LoanDetailArgs loanDetailArgs;
 
-  const LoanDetailScreen({Key? key,required this.loanDetailArgs })
+  const LoanDetailScreen({Key? key, required this.loanDetailArgs})
       : super(key: key);
 
   @override
@@ -106,38 +106,65 @@ class _LoanDetailScreenState extends State<LoanDetailScreen> {
             deviceName: "Samsung - A13",
             deviceStats: "8GB, 128GB Storage| Exynos 2100 |\nAndroid12",
             deviceImage: LD_loan_detail_banner_image,
-            loanId: widget.loanDetailArgs.loanDetailResponse.data?.loanId??"-"),
+            loanId:
+                widget.loanDetailArgs.loanDetailResponse.data?.loanId ?? "-"),
         _getSpaceBetweenWidget(4),
         _getLoanDetailWithCurrencyWidget(
-            title: 'LD_Loan_Detail_Amount', value: widget.loanDetailArgs.loanDetailResponse.data?.loanAmount??"-"),
+            title: 'LD_Loan_Detail_Amount',
+            value: widget.loanDetailArgs.loanDetailResponse.data?.loanAmount ??
+                "-"),
         _getSpaceBetweenWidget(4),
         _getLoanDetailWithCurrencyWidget(
-            title: 'LD_Loan_Detail_Down_Payment', value: widget.loanDetailArgs.loanDetailResponse.data?.joiningFee??"-"),
+            title: 'LD_Loan_Detail_Down_Payment',
+            value: widget.loanDetailArgs.loanDetailResponse.data?.joiningFee ??
+                "-"),
         _getSpaceBetweenWidget(4),
         _getLoanDetailWidget(
-            title: 'LD_Loan_Detail_Repayment', value: widget.loanDetailArgs.loanDetailResponse.data?.repaymentType??"-"),
+            title: 'LD_Loan_Detail_Repayment',
+            value:
+                widget.loanDetailArgs.loanDetailResponse.data?.repaymentType ??
+                    "-"),
         _getSpaceBetweenWidget(4),
         _getLoanDetailWithCurrencyWidget(
-            title: 'LD_Loan__Detail_Daily_Repayment_Amount', value: widget.loanDetailArgs.loanDetailResponse.data?.repaymentFee??"-"),
+            title: 'LD_Loan__Detail_Daily_Repayment_Amount',
+            value:
+                widget.loanDetailArgs.loanDetailResponse.data?.repaymentFee ??
+                    "-"),
         _getSpaceBetweenWidget(4),
         _getLoanDetailWithCurrencyWidget(
-            title: 'LD_Loan_Detail_Total_Repayed_Amount', value: widget.loanDetailArgs.loanDetailResponse.data?.totalAmountToBeRepaid??"-"),
+            title: 'LD_Loan_Detail_Total_Repayed_Amount',
+            value: widget.loanDetailArgs.loanDetailResponse.data
+                    ?.totalAmountToBeRepaid ??
+                "-"),
         _getSpaceBetweenWidget(4),
         _getLoanDetailWidget(
-            title: 'LD_Loan_Detail_Loan_Tenure', value: widget.loanDetailArgs.loanDetailResponse.data?.loanTenure??"-"),
+            title: 'LD_Loan_Detail_Loan_Tenure',
+            value: widget.loanDetailArgs.loanDetailResponse.data?.loanTenure ??
+                "-"),
         _getSpaceBetweenWidget(4),
         _getLoanDetailWidget(
-            title: 'LD_Loan_Detail_Start_Date', value: widget.loanDetailArgs.loanDetailResponse.data?.loanStartDate??"-"),
+            title: 'LD_Loan_Detail_Start_Date',
+            value:
+                widget.loanDetailArgs.loanDetailResponse.data?.loanStartDate ??
+                    "-"),
         _getSpaceBetweenWidget(4),
         _getLoanDetailWidget(
-            title: 'LD_Loan_Detail_Final_Date', value: widget.loanDetailArgs.loanDetailResponse.data?.finalPaymentDate??"-"),
+            title: 'LD_Loan_Detail_Final_Date',
+            value: widget
+                    .loanDetailArgs.loanDetailResponse.data?.finalPaymentDate ??
+                "-"),
         _getSpaceBetweenWidget(4),
         _getLoanDetailWidget(
-            title: 'LD_Loan_Detail_Device_Insurance', value: widget.loanDetailArgs.loanDetailResponse.data?.deviceInsurance??"-"),
+            title: 'LD_Loan_Detail_Device_Insurance',
+            value: widget
+                    .loanDetailArgs.loanDetailResponse.data?.deviceInsurance ??
+                "-"),
         _getSpaceBetweenWidget(4),
         _getLoanDetailWidget(
             title: 'LD_Loan_Detail_Device_Insurance_ID',
-            value: widget.loanDetailArgs.loanDetailResponse.data?.deviceInsuranceId??"-"),
+            value: widget.loanDetailArgs.loanDetailResponse.data
+                    ?.deviceInsuranceId ??
+                "-"),
         _getSpaceBetweenWidget(8),
         _buildTermsAndConditionWidget(context, coordinator),
         _getSpaceBetweenWidget(10),
@@ -211,7 +238,7 @@ class _LoanDetailScreenState extends State<LoanDetailScreen> {
           ),
           const Image(
             image: AssetImage(LD_loan_detail_banner_image),
-            width: 160,
+            width: 130,
             //fit: BoxFit.cover,
           ),
         ],

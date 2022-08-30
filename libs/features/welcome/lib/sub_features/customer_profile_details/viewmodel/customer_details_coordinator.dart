@@ -12,7 +12,7 @@ import 'package:welcome/sub_features/details/state/details_state.dart';
 import 'package:welcome/sub_features/details/viewmodel/details_usecase.dart';
 import '../../../navigation_handler/welcome_navigation_handler.dart';
 import 'customer_details_usecase.dart';
-
+import 'package:crayon_payment_customer/util/app_utils.dart';
 class CustomerDetailsCoordinator extends BaseViewModel<CustomerDetailsState> {
   final CustomerDetailsUseCase _customerDetailsUseCase;
   final WelcomeNavigationHandler _navigationHandler;
@@ -45,15 +45,20 @@ class CustomerDetailsCoordinator extends BaseViewModel<CustomerDetailsState> {
   }
 
   Future getCustomerDetails() async {
-    var response =
-        await _customerDetailsUseCase.getCustomerDetails((p0) => null);
-    if (response?.status == true) {
-      CrayonPaymentLogger.logInfo(response!.data!.referenceId!.toString());
-      state = CustomerDetailsState.getRegion(response.data!.region!);
-      state = CustomerDetailsState.getDistrict(response.data!.district!);
-      return response;
-    } else {
-      CrayonPaymentLogger.logInfo(response!.message!);
+    try {
+      var response =
+          await _customerDetailsUseCase.getCustomerDetails((p0) => null);
+      if (response?.status == true) {
+        CrayonPaymentLogger.logInfo(response!.data!.referenceId!.toString());
+        state = CustomerDetailsState.getRegion(response.data!.region!);
+        state = CustomerDetailsState.getDistrict(response.data!.district!);
+        return response;
+      } else {
+        CrayonPaymentLogger.logInfo(response!.message!);
+      }
+    }  catch (e) {
+      print(e.toString());
+     throw e.toString();
     }
   }
 
@@ -136,7 +141,9 @@ class CustomerDetailsCoordinator extends BaseViewModel<CustomerDetailsState> {
   }
 
   Future navigateToCreatePasscodeScreen(UserType userType) async {
-    _navigationHandler.openForNewPasscode(userType);
+
+      _navigationHandler.openForNewPasscode(userType);
+
   }
 
   bool isValidName(String name) {
@@ -251,30 +258,38 @@ class CustomerDetailsCoordinator extends BaseViewModel<CustomerDetailsState> {
     String region,
     UserType userType,
   ) async {
-    state = const CustomerDetailsState.LoadingState();
-    var response = await _customerDetailsUseCase.updateCustomerDetails(
-        name,
-        dob,
-        gender,
-        address,
-        profession,
-        emailId,
-        poBox,
-        region,
-        district,
-        (p0) => null,
-        userType);
-    if (response?.status == true) {
-      state = const CustomerDetailsState.initialState();
-      if (kDebugMode) {
-        print(response?.message);
+    try {
+      state = const CustomerDetailsState.LoadingState();
+      var response = await _customerDetailsUseCase.updateCustomerDetails(
+          name,
+          dob,
+          gender,
+          address,
+          profession,
+          emailId,
+          poBox,
+          region,
+          district,
+          (p0) => null,
+          userType);
+      if (response?.status == true) {
+        state = const CustomerDetailsState.initialState();
+        if (kDebugMode) {
+          print(response?.message);
+        }
+        //   navigateToCreatePasscodeScreen(userType);
+      } else {
+        state = const CustomerDetailsState.initialState();
+        if (kDebugMode) {
+          print(response?.message);
+        }
       }
-      //   navigateToCreatePasscodeScreen(userType);
-    } else {
+    }  catch (e) {
       state = const CustomerDetailsState.initialState();
-      if (kDebugMode) {
-        print(response?.message);
-      }
+      AppUtils.appUtilsInstance.showErrorBottomSheet(
+        title: e.toString(),
+        onClose: () {goBack();},
+      );
     }
   }
 }

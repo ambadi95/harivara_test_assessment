@@ -22,19 +22,19 @@ class AgentNearbyCoordinator extends AnalyticsStateNotifier<AgentNearByState> {
         await _agentNearbyUseCase.hasLocationPermission();
     if (locationPermissionError.isEmpty) {
       state = state.copyWith(
-        isLoading: true,
+        isFetchingLocation: true,
       );
       var location = await _agentNearbyUseCase.hasValidLocation();
       if (location.isNotEmpty) {
         _currentLocation = await _agentNearbyUseCase.getCurrentLocation();
         print(_currentLocation);
         state = state.copyWith(
-          isLoading: false,
+          isFetchingLocation: false,
         );
       }
     } else {
       state = state.copyWith(
-        isLoading: false,
+        isFetchingLocation: false,
       );
     }
   }
@@ -107,9 +107,9 @@ class AgentNearbyCoordinator extends AnalyticsStateNotifier<AgentNearByState> {
     var response = await _agentNearbyUseCase.agentsNearBy(search, (p0) => null);
     if (response?.status == true) {
       for (int i = 0; i < response!.data!.length; i++) {
-        double dis = distance(13.0768943,80.149900);
-        if(newList.contains(response.data)){}
-        else {
+        double dis = distance(13.0768943, 80.149900);
+        if (newList.contains(response.data)) {
+        } else {
           newList.add(Datum(
               firstName: response.data![i].firstName,
               lastName: response.data![i].lastName,
@@ -146,31 +146,16 @@ class AgentNearbyCoordinator extends AnalyticsStateNotifier<AgentNearByState> {
       state = state.copyWith(agentNearbyList: list);
     } else {
       List<Datum> list1 = [];
-      List<Datum> list2 = [];
-      List<Datum> list3 = [];
       list = newList
           .where((agents) =>
               agents.region!.toLowerCase().contains(searchText.toLowerCase()))
           .toList();
       list1 = newList
           .where((agents) =>
-              agents.region!.toLowerCase().contains(searchText.toLowerCase()))
-          .toList();
-      list2 = newList
-          .where((agents) =>
               agents.district!.toLowerCase().contains(searchText.toLowerCase()))
-          .toList();
-      list3 = newList
-          .where((agents) => agents.poBoxNumber!
-              .toLowerCase()
-              .contains(searchText.toLowerCase()))
           .toList();
       if (list1.isNotEmpty) {
         state = state.copyWith(agentNearbyList: list1);
-      } else if (list2.isNotEmpty) {
-        state = state.copyWith(agentNearbyList: list2);
-      } else if (list3.isNotEmpty) {
-        state = state.copyWith(agentNearbyList: list3);
       } else {
         state = state.copyWith(agentNearbyList: list);
       }

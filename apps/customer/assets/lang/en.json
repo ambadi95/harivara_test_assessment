@@ -61,8 +61,10 @@
   "DV_district_label" : "District",
   "DV_district_error_text" : "Invalid District",
   "DV_district_hint_text" : "Select District",
-
+  "Save_Text": "Save",
   "HS_GoodMorning": "Good Morning",
+  "HS_GoodAfternoon": "Good Afternoon",
+  "HS_GoodEvening": "Good Evening",
   "HS_YourBalance": "Your Balance",
   "HS_AccountId": "Y9 Account Id",
   "HS_LoadWallet": "Load Wallet",
@@ -238,5 +240,8 @@
 
 
 
-  "CA_custom_amount" : "Pay Custom Amount"
+  "CA_custom_amount" : "Pay Custom Amount",
+
+  "RP_success_message": "Passcode has been updated successfully",
+  "PR_message" : "You will be Signed out of the app, please use the new passcode to Sign-in again"
 }

@@ -87,10 +87,10 @@ TextStyle buildTextStyle({
           );
     case CrayonPaymentTextStyleVariant.headline18:
       return Theme.of(context).textTheme.headline4!.copyWith(
-        height: lineHeight,
-        fontFamily: _fontFamily(),
-        fontSize: _isArabic ? 18 : 18,
-      );
+            height: lineHeight,
+            fontFamily: _fontFamily(),
+            fontSize: _isArabic ? 18 : 18,
+          );
 
     case CrayonPaymentTextStyleVariant.headline5:
       return Theme.of(context).textTheme.headline5!.copyWith(

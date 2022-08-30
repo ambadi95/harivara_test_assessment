@@ -50,6 +50,8 @@ dependencies:
   loan_details:
     path: ../../features/loan_details
 
+  scanqrcode:
+    path: ../../features/scanqrcode
 
 
 

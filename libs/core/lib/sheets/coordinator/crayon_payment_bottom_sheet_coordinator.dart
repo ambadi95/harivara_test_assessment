@@ -249,7 +249,7 @@ class CrayonPaymentBottomSheetCoordinator
     });
   }
 
-  void choosePaymentMethod(LoanPaymentMethod paymentMethod) {
+  void choosePaymentMethod(LoanPaymentMethod paymentMethod,String amount) {
     final currentState = state as LoanRepaymentBottomSheet;
     currentState.loanRepayment.loanPaymentList.forEach((element) {
       if (element == paymentMethod) {

@@ -47,7 +47,7 @@ class _CrayonSplashScreenState extends State<CrayonSplashScreen>
   bool? _isShow = false;
   bool isSigned = false;
   late final AnimationController _controller = AnimationController(
-    duration: const Duration(seconds: 2),
+    duration: const Duration(milliseconds: 500),
     vsync: this,
   )..repeat(reverse: true);
   late final Animation<double> _animation = CurvedAnimation(
@@ -59,7 +59,7 @@ class _CrayonSplashScreenState extends State<CrayonSplashScreen>
   void initState() {
     super.initState();
     _containerAnimationController = AnimationController(
-        vsync: this, duration: Duration(milliseconds: 4000));
+        vsync: this, duration: Duration(milliseconds: 1000));
 
     _containerRadiusAnimation = BorderRadiusTween(
             begin: BorderRadius.circular(100.0),
@@ -78,7 +78,7 @@ class _CrayonSplashScreenState extends State<CrayonSplashScreen>
 
     _containerAnimationController!.forward();
     _logoAnimationController =
-        AnimationController(vsync: this, duration: Duration(seconds: 3));
+        AnimationController(vsync: this, duration: Duration(milliseconds: 500));
 
     //Implement animation here
     _logoAnimation = Tween(
@@ -93,6 +93,7 @@ class _CrayonSplashScreenState extends State<CrayonSplashScreen>
   Widget build(BuildContext context) =>
       BaseView<SplashCoordinator, SplashState>(
         setupViewModel: (coordinator) async {
+          await coordinator.setCurrentLocale('sw');
           _splashCoordinator = coordinator;
           isSigned = await coordinator.isSignedin();
           coordinator.initialiseState(context, 'Title', '');

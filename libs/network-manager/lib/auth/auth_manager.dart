@@ -102,7 +102,7 @@ class AuthManager implements IAuthManager {
 
   // retrieve  JWT TOken
   Future<String?> getJWTToken() async =>
-   'Bearer ${await _secureStorageService.get(_jwtTokenKey)}';
+      'Bearer ${await _secureStorageService.get(_jwtTokenKey)}';
 
   Future<String?> _getRefreshToken() async =>
       await _secureStorageService.get(_refreshTokenKey);

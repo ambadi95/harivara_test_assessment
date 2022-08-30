@@ -21,7 +21,9 @@ class LoginNavigationHandler with ErrorHandler {
       NavigationType.push(),
     );
   }
-
+  Future<void> goBack() async {
+    _navigationManager.goBack();
+  }
   Future<void> navigateToOtpScreen(
       UserType userType, String mobileNumber, String id) async {
     var arguments = OtpScreenArgs(
