@@ -58,6 +58,10 @@ class SignupApiResolver extends TaskResolver {
         return _customerDetailsService.getCustomerDetails(
           requestData['id'],
         );
+      case ICustomerDetailsService.updateCustomerDetails:
+        return _customerDetailsService.saveCustomerDetails(
+            requestData['data'], requestData['userType']);
+
 
       case IEnrollmentService.enrollmentIdentifier:
         return _enrollmentService.getCustomerDetails(requestData['customerId'],
