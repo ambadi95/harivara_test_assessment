@@ -81,7 +81,7 @@ class WelcomeNavigationHandler with ErrorHandler {
       [KYCDataModel(title: "", isSelected: false)],
     );
     _navigationManager.navigateTo(
-        KycCreditScreen.viewPath, const NavigationType.replace(),
+        KycCreditMainScreen.viewPath, const NavigationType.replace(),
         arguments: argument);
   }
 

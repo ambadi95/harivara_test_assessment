@@ -31,9 +31,11 @@ class IKycCreditService implements KycCreditService {
   Future<StandardRequest> kycCheck(
     Map<String, dynamic> requestData,
   ) async {
+
+    String number = requestData['mobileNumber'].toString().substring(4);
     var request = StandardRequest();
     request.requestType = RequestType.GET;
-    request.endpoint = customerEndpoint + 'payment/kyc-check/${requestData['mobileNumber']}[customer]';
+    request.endpoint = customerEndpoint + 'payment/kyc-check/${number}[customer]';
     request.jsonBody = json.encode(requestData);
     return request;
   }
@@ -55,7 +57,7 @@ class IKycCreditService implements KycCreditService {
   ) async {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
-    request.endpoint = customerEndpoint + 'creditcheck/credit-score';
+    request.endpoint = customerEndpoint + 'creditcheck/credit-score[customer]';
     request.jsonBody = json.encode(requestData);
     return request;
   }

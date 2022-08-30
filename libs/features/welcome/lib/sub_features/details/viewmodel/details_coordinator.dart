@@ -1,7 +1,5 @@
 import 'package:config/Config.dart';
-import 'package:core/mobile_core.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/src/widgets/focus_manager.dart';
+
 import 'package:shared_data_models/customer_onboard/region_district/region_response/datum.dart';
 import 'package:shared_data_models/customer_onboard/region_district/district_response/datum.dart'
     as b;
@@ -11,6 +9,7 @@ import 'package:welcome/sub_features/details/state/details_state.dart';
 import 'package:welcome/sub_features/details/viewmodel/details_usecase.dart';
 import '../../../navigation_handler/welcome_navigation_handler.dart';
 import 'package:crayon_payment_customer/util/app_utils.dart';
+
 class DetailsCoordinator extends BaseViewModel<DetailsState> {
   final DetailsUseCase _detailsUseCase;
   final WelcomeNavigationHandler _navigationHandler;
@@ -113,10 +112,9 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
 
   Future navigateToCreatePasscodeScreen(UserType userType) async {
     //for agent customer onboarding we are not creating customer passcode
-    if(userType == UserType.AgentCustomer) {
+    if (userType == UserType.AgentCustomer) {
       _navigationHandler.navigateToKycScreen();
-
-    }else {
+    } else {
       _navigationHandler.openForNewPasscode(userType);
     }
   }
@@ -247,20 +245,22 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
           userType);
       if (response?.status == true) {
         state = const DetailsState.initialState();
-        if(userType == UserType.AgentCustomer){
-          _navigationHandler.navigateToKYCScreen();
-        } else {
-          navigateToCreatePasscodeScreen(userType);
-        }
+        _detailsUseCase.saveCustomerId(response!.data!.customerId.toString());
+        _detailsUseCase
+            .saveCustomerMobileNumber(response.data!.mobileNo.toString());
+
+        navigateToCreatePasscodeScreen(userType);
       } else {
         state = const DetailsState.initialState();
         print(response?.message);
       }
-    }  catch (e) {
+    } catch (e) {
       state = const DetailsState.initialState();
       AppUtils.appUtilsInstance.showErrorBottomSheet(
         title: e.toString(),
-        onClose: () {goBack();},
+        onClose: () {
+          goBack();
+        },
       );
     }
   }
