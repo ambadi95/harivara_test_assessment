@@ -27,7 +27,6 @@ class BottomSheetLoanRepayment extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height,
       child: ListView(
         shrinkWrap: true,
         key: Key('$_identifier'),

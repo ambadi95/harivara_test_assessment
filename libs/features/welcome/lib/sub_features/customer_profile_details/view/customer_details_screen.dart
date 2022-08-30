@@ -2,6 +2,7 @@ import 'package:config/Colors.dart';
 import 'package:config/Config.dart';
 import 'package:config/Styles.dart';
 import 'package:core/view/base_view.dart';
+import 'package:crayon_payment_customer/util/app_utils.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -327,7 +328,7 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
               coordinator,
               emailError,
               'DV_email_hint_text',
-              true),
+              false),
           _buildLabelTextFieldAddress('DV_address_label'.tr, address,
               coordinator, 'DV_address_hint_text', true),
           _buildLabelTextField(
@@ -397,6 +398,7 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
         if (coordinator.isValidPoBox(poBox.text) &&
             coordinator.isValidEmail(emailId.text) &&
             coordinator.isValidName(name.text)) {
+          AppUtils.appUtilsInstance.removeFocusFromEditText(context: context);
           await coordinator.updateDetails(
               name.text,
               dob.text,
@@ -407,7 +409,7 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
               poBox.text,
               profession.text,
               region.text,
-              widget.userType);
+              widget.userType,context);
         }
       },
       child: Container(
@@ -601,6 +603,7 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
             dis.clear();
             district.clear();
             dis = await coordinator.getDistrict(value.id!, widget.userType);
+            districtDropDown.clear();
             districtDropDown = getDistrictDropDownData(dis);
           },
         ),

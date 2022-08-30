@@ -20,6 +20,7 @@ import 'package:core/sheets/state/crayon_payment_bottom_sheet_state.dart';
 import 'package:welcome/sub_features/app_language/view/app_language.dart';
 import 'package:config/Config.dart';
 import 'package:termscondition/termscondition/view/terms_condition_view.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SettingsNavigationHandler with ErrorHandler {
   final NavigationManager _navigationManager;
@@ -99,5 +100,14 @@ class SettingsNavigationHandler with ErrorHandler {
       AgentNearBy.viewPath,
       const NavigationType.push(),
     );
+  }
+
+  void navigateToTermsCondition() async {
+    var uri = Uri.parse("https://y9bank.com/term-of-services/");
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
+    } else {
+      throw 'Could not launch ${uri.toString()}';
+    }
   }
 }

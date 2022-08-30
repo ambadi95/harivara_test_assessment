@@ -6,6 +6,7 @@ import 'package:payments/state/payments_state.dart';
 import 'package:payments/viewmodel/payments_usecase.dart';
 import 'package:crayon_payment_customer/util/app_utils.dart';
 import '../navigation_handler/payments_navigation_handler.dart';
+import 'package:task_manager/base_classes/base_data_provider.dart';
 
 class PaymentsCoordinator extends AnalyticsStateNotifier<PaymentsState> {
   final PaymentsNavigationHandler _navigationHandler;
@@ -33,6 +34,11 @@ class PaymentsCoordinator extends AnalyticsStateNotifier<PaymentsState> {
   void navigateToPaymentSuccessBottomSheet() async {
     await _navigationHandler.navigateToPaymentSuccessfullBottomSheet();
   }
+
+  Future<String> getPaymentAmount() async {
+    return await _downPaymentUseCase.getPaymentAmount();
+  }
+
 
   Future paymentApi(
     String amount,
