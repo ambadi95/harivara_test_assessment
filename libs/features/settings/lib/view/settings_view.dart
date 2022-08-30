@@ -162,7 +162,7 @@ class _SettingsState extends State<Settings> {
         _buildOptions(context, 'ST_term_condition', ST_TermsCondition,
             () async {
           LauncherUtils.launcherUtilsInstance
-              .launchInBrowser(url: LauncherUtils.Y9_BANK_URL);
+              .launchInBrowser(url: 'https://y9bank.com/term-of-services/');
         }),
         _buildOptions(context, 'ST_call_support', ST_CallSupport, () async {
           LauncherUtils.launcherUtilsInstance

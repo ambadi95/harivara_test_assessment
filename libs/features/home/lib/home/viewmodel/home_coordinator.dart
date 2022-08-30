@@ -42,9 +42,23 @@ class HomeCoordinator extends BaseViewModel<HomeScreenState> {
     _navigationHandler.navigateToLoanDetailScreen(loanDetailResponse);
   }
 
-  void navigationToBottomSheet(LoanDetailResponse loanDetailResponse) {
-    _navigationHandler.navigateToLoanRepaymentBottomSheet(
-        "message", "buttonLabel",loanDetailResponse);
+  void navigationToBottomSheet(BuildContext context,LoanDetailResponse loanDetailResponse) {
+    if(loanDetailResponse.data == null){
+      _navigationHandler.navigateToLoanRepaymentBottomSheet(
+          "message", "buttonLabel",context,loanDetailResponse);
+    }else {
+      _navigationHandler.navigateToLoanRepaymentBottomSheet(
+          "message", "buttonLabel",context,loanDetailResponse);
+    }
+
+  }
+
+  void navigationToReaderBrowser(){
+    _navigationHandler.navigateToBrowser('dd','https://readnow.world/5yee');
+  }
+
+  void navigateToBrowser(){
+    _navigationHandler.navigateToTermsCondition();
   }
 
   Future<String> getAgentId() async {
