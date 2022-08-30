@@ -1,5 +1,6 @@
 import 'package:config/Config.dart';
 import 'package:core/mobile_core.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/src/widgets/focus_manager.dart';
 import 'package:shared_data_models/customer_onboard/region_district/region_response/datum.dart';
@@ -13,6 +14,7 @@ import 'package:welcome/sub_features/details/viewmodel/details_usecase.dart';
 import '../../../navigation_handler/welcome_navigation_handler.dart';
 import 'customer_details_usecase.dart';
 import 'package:crayon_payment_customer/util/app_utils.dart';
+
 class CustomerDetailsCoordinator extends BaseViewModel<CustomerDetailsState> {
   final CustomerDetailsUseCase _customerDetailsUseCase;
   final WelcomeNavigationHandler _navigationHandler;
@@ -45,20 +47,28 @@ class CustomerDetailsCoordinator extends BaseViewModel<CustomerDetailsState> {
   }
 
   Future getCustomerDetails() async {
+    //state = const CustomerDetailsState.LoadingState();
     try {
       var response =
           await _customerDetailsUseCase.getCustomerDetails((p0) => null);
       if (response?.status == true) {
+        //    state = const CustomerDetailsState.initialState();
         CrayonPaymentLogger.logInfo(response!.data!.referenceId!.toString());
         state = CustomerDetailsState.getRegion(response.data!.region!);
         state = CustomerDetailsState.getDistrict(response.data!.district!);
         return response;
       } else {
+        //     state = const CustomerDetailsState.initialState();
         CrayonPaymentLogger.logInfo(response!.message!);
       }
-    }  catch (e) {
-      print(e.toString());
-     throw e.toString();
+    } catch (e) {
+      //  state = const CustomerDetailsState.initialState();
+      AppUtils.appUtilsInstance.showErrorBottomSheet(
+        title: e.toString(),
+        onClose: () {
+          goBack();
+        },
+      );
     }
   }
 
@@ -141,9 +151,7 @@ class CustomerDetailsCoordinator extends BaseViewModel<CustomerDetailsState> {
   }
 
   Future navigateToCreatePasscodeScreen(UserType userType) async {
-
-      _navigationHandler.openForNewPasscode(userType);
-
+    _navigationHandler.openForNewPasscode(userType);
   }
 
   bool isValidName(String name) {
@@ -247,19 +255,20 @@ class CustomerDetailsCoordinator extends BaseViewModel<CustomerDetailsState> {
   }
 
   Future updateDetails(
-    String name,
-    String dob,
-    String gender,
-    String address,
-    String district,
-    String emailId,
-    String poBox,
-    String profession,
-    String region,
-    UserType userType,
-  ) async {
+      String name,
+      String dob,
+      String gender,
+      String address,
+      String district,
+      String emailId,
+      String poBox,
+      String profession,
+      String region,
+      UserType userType,
+      BuildContext context) async {
     try {
-      state = const CustomerDetailsState.LoadingState();
+      AppUtils.appUtilsInstance.showCircularDialog(context);
+
       var response = await _customerDetailsUseCase.updateCustomerDetails(
           name,
           dob,
@@ -273,22 +282,26 @@ class CustomerDetailsCoordinator extends BaseViewModel<CustomerDetailsState> {
           (p0) => null,
           userType);
       if (response?.status == true) {
-        state = const CustomerDetailsState.initialState();
+        goBack();
+        AppUtils.appUtilsInstance.showSuccess(
+            title: "Updated", message: "Profile update successfully");
         if (kDebugMode) {
           print(response?.message);
         }
         //   navigateToCreatePasscodeScreen(userType);
       } else {
-        state = const CustomerDetailsState.initialState();
+        goBack();
         if (kDebugMode) {
           print(response?.message);
         }
       }
-    }  catch (e) {
-      state = const CustomerDetailsState.initialState();
+    } catch (e) {
+      goBack();
       AppUtils.appUtilsInstance.showErrorBottomSheet(
         title: e.toString(),
-        onClose: () {goBack();},
+        onClose: () {
+          goBack();
+        },
       );
     }
   }
