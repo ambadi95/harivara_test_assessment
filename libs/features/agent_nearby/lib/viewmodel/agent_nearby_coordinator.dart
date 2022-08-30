@@ -107,7 +107,12 @@ class AgentNearbyCoordinator extends AnalyticsStateNotifier<AgentNearByState> {
     var response = await _agentNearbyUseCase.agentsNearBy(search, (p0) => null);
     if (response?.status == true) {
       for (int i = 0; i < response!.data!.length; i++) {
-        double dis = distance(13.0768943, 80.149900);
+        double? dis = 0.0;
+        double? currentLat = response.data![i].latitude;
+        double? currentLong = response.data![i].longitude;
+        if(currentLat != null && currentLong != null){
+          dis = distance(currentLat, currentLong);
+        }
         if (newList.contains(response.data)) {
         } else {
           newList.add(Datum(
@@ -122,8 +127,8 @@ class AgentNearbyCoordinator extends AnalyticsStateNotifier<AgentNearByState> {
               imageUrl: '',
               middleName: response.data![i].middleName,
               distance: dis,
-              long: 80.149900,
-              lat: 13.0768943));
+              long: response.data![i].longitude,
+              lat: response.data![i].latitude));
         }
       }
       state = state.copyWith(
