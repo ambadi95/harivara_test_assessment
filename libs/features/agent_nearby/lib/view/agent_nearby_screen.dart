@@ -38,7 +38,9 @@ class AgentNearBy extends StatelessWidget {
           children: [
             _buildMainUI(context, coordinator, state),
             state.isLoading == true ? _createLoading() : SizedBox(),
-            state.isFetchingLocation == true ? _createLocationFetchingLoader() : SizedBox()
+            state.isFetchingLocation == true
+                ? _createLocationFetchingLoader()
+                : SizedBox()
           ],
         );
       },
@@ -81,8 +83,7 @@ class AgentNearBy extends StatelessWidget {
 
   Widget _buildSearchField(context, AgentNearbyCoordinator coordinator) {
     return SearchBarWidget(
-      onSearch: (value) {
-      },
+      onSearch: (value) {},
       onTextChanged: (v) {
         coordinator.search(v);
       },
@@ -121,7 +122,7 @@ class AgentNearBy extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _userImage(agent.firstName!,agent.lastName!),
+        _userImage(agent.firstName!, agent.lastName!),
         dynamicWSpacer(8),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -142,7 +143,6 @@ class AgentNearBy extends StatelessWidget {
                       color: AN_CardSubTitle,
                       fontWeight: FontWeight.w500),
                 ),
-
                 CrayonPaymentText(
                   key: Key('${_identifier}_' + agent.y9AgentId!),
                   text: TextUIDataModel(agent.y9AgentId!,
@@ -174,9 +174,16 @@ class AgentNearBy extends StatelessWidget {
                     .makePhoneCall(phoneNumber: agent.mobileNo);
               }),
               dynamicWSpacer(10),
-              actionButton(context, AN_MapDirection,
-                  agent.distance!.toStringAsFixed(2) + 'Km', () {
-                coordinator.navigateToMap(agent.lat!, agent.long!);
+              actionButton(
+                  context,
+                  AN_MapDirection,
+                  agent.distance == 0.0
+                      ? 'N/A'
+                      : agent.distance!.toStringAsFixed(2) + 'Km', () {
+                if (agent.distance == 0.0) {
+                } else {
+                  coordinator.navigateToMap(agent.lat!, agent.long!);
+                }
               }),
             ],
           ),
@@ -220,10 +227,11 @@ class AgentNearBy extends StatelessWidget {
     return Center(
       child: Material(
         child: Container(
-          child: const Text('Fetching your location..', style: TextStyle(
-            color: Colors.black,
-            fontSize: 16,
-          )),
+          child: const Text('Fetching your location..',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 16,
+              )),
         ),
       ),
     );
@@ -238,11 +246,11 @@ class AgentNearBy extends StatelessWidget {
         shape: BoxShape.circle,
         color: profilePicHolderYellowColor,
       ),
-      child:  Center(
+      child: Center(
           child: Text(
-            '${firstName[0]}' +'${lastName[0]}',
-            style: AN_TextFieldLabel_FF,
-          )),
+        '${firstName[0]}' + '${lastName[0]}',
+        style: AN_TextFieldLabel_FF,
+      )),
     );
   }
 
