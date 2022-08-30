@@ -44,8 +44,7 @@ class HomeCoordinator extends BaseViewModel<HomeScreenState> {
 
   void navigationToBottomSheet(BuildContext context,LoanDetailResponse loanDetailResponse) {
     if(loanDetailResponse.data == null){
-      _navigationHandler.navigateToLoanRepaymentBottomSheet(
-          "message", "buttonLabel",context,loanDetailResponse);
+     _navigationHandler.navigateToLoanDetailsSheetCustomer();
     }else {
       _navigationHandler.navigateToLoanRepaymentBottomSheet(
           "message", "buttonLabel",context,loanDetailResponse);
