@@ -55,6 +55,7 @@ const customerEndpoint = 'https://y9-dev-capi.testmaya.com/customers/v1/';
 const LD_loan_detail = 'assets/images/loan_detail.png';
 const LD_loan_detail_banner_image =
     'assets/images/loan_detail_banner_image.png';
+const LD_loan_detail_banner_image2 = 'assets/images/loan_detail_banner_image_2.png';
 
 enum WorkFlowStatus {
   Initiated,

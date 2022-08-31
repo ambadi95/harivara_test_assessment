@@ -20,6 +20,9 @@ Data _$DataFromJson(Map<String, dynamic> json) => Data(
       repaymentFee: json['repaymentFee'] == null ? "0" :  json['repaymentFee'] as String?,
       repaymentType: json['repaymentType'] as String?,
       totalAmountToBeRepaid: json['totalAmountToBeRepaid'] == null ? "0" :  json['totalAmountToBeRepaid'] as String?,
+      brand: json['brand'] == null ? "" :  json['brand'] as String?,
+      modelNumber: json['modelNumber'] == null ? "0" :  json['modelNumber'] as String?,
+      deviceId: json['deviceId'] == null ? 0 :  json['deviceId'] as int?
     );
 
 Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{
@@ -36,4 +39,7 @@ Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{
       'repaymentFee': instance.repaymentFee,
       'repaymentType': instance.repaymentType,
       'totalAmountToBeRepaid': instance.totalAmountToBeRepaid,
+      'brand':instance.brand,
+      'modelNumber':instance.modelNumber,
+      'deviceId':instance.deviceId
     };

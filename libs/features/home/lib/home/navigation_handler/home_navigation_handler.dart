@@ -123,7 +123,7 @@ class HomeNavigationHandler with ErrorHandler {
       label1: 'LR_paying_for',
       label2: 'LR_device_loan',
       label3: 'LR_amount_to_pay',
-      imageUrl: HS_LoanRepaymentMock,
+      imageUrl: loanDetailResponse.data?.modelNumber=="A03 Core"?LD_loan_detail_banner_image2:LD_loan_detail_banner_image,
       infoMessage: '',
       selectedAmount:_selectedAmount ,
       loanId:loanDetailResponse.data!=null? loanDetailResponse.data?.loanId??"-":"648960359535569",
@@ -136,21 +136,25 @@ class HomeNavigationHandler with ErrorHandler {
           name: 'LR_due_amount',
           amount: loanDetailResponse.data!=null? loanDetailResponse.data!.outStandingAmount!+" TZSHS":"4,500 TZSHS",
           isSelected: false,
+          selectedOption:  'LR_due_amount'
         ),
         LoanPaymentMethod(
           name: 'LR_daily_repayment',
           amount: loanDetailResponse.data!=null? loanDetailResponse.data!.dailyRepaymentAmount!+" TZSHS":"2,000 TZSHS",
           isSelected: false,
+            selectedOption:   'LR_daily_repayment'
         ),
         LoanPaymentMethod(
           name: 'LR_loan_amount',
           amount:  loanDetailResponse.data!=null? loanDetailResponse.data!.totalAmountToBeRepaid!+" TZSHS":"7,70,000 TZSHS",
           isSelected: false,
+            selectedOption:   'LR_loan_amount'
         ),
         LoanPaymentMethod(
           name: 'LR_custom_amount',
           amount: "",
           isSelected: false,
+            selectedOption:   'LR_custom_amount'
         ),
       ],
     ));
