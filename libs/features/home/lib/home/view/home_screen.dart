@@ -5,6 +5,7 @@ import 'package:core/view/base_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:home/home/home_screen_arguments.dart';
+import 'package:home/home/view/reading_in_app_browser.dart';
 import 'package:settings/model/settings_arguments.dart';
 import 'package:settings/view/settings_view.dart';
 import 'package:widget_library/utils/icon_utils.dart';
@@ -34,7 +35,7 @@ class CrayonHomeScreen extends StatefulWidget {
 }
 
 class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
-  late BuildContext context;
+
   int selectedIndex = 0;
   String username = '';
   String userId = '';
@@ -293,7 +294,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                     children: [
                       InkWell(
                         onTap: () {
-                          coordinator.navigationToBottomSheet(loanDetailResponse);
+                          coordinator.navigationToBottomSheet(context,loanDetailResponse);
                         },
                         child: _actionCommonView(
                             'HS_LoanRepayment'.tr, HS_LoanRepayment),
@@ -422,7 +423,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
     );
   }
 
-  Widget _inviteBoxView() {
+  Widget _inviteBoxView(HomeCoordinator coordinator) {
     return Card(
       elevation: 20,
       child: Container(
@@ -461,9 +462,18 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                     const SizedBox(
                       height: 24,
                     ),
-                    Text(
-                      'HS_explore'.tr,
-                      style: HS_explore_title_style,
+                    InkWell(
+                      onTap: (){
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const ReadingInAppBrowser()),
+                        );
+                      //  coordinator.navigationToReaderBrowser();
+                      },
+                      child: Text(
+                        'HS_explore'.tr,
+                        style: HS_explore_title_style,
+                      ),
                     ),
                   ],
                 ),
@@ -588,7 +598,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                         _redBoxView(coordinator),
                         widget.homeScreenArgs.isAgent
                             ? _inviteAgentBoxView()
-                            : _inviteBoxView(),
+                            : _inviteBoxView(coordinator),
                       ],
                     )
                   ],

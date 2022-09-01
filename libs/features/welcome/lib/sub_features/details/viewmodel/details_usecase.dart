@@ -43,6 +43,15 @@ class DetailsUseCase extends BaseDataProvider {
     return await getValueFromSecureStorage('customerId', defaultValue: '');
   }
 
+  Future<void> saveCustomerId(String? customerId) async {
+    return await setValueToSecureStorage({'customerId': customerId});
+  }
+
+  Future<void> saveCustomerMobileNumber(String mobileNumber) async {
+    return await setValueToSecureStorage({'mobileNumber': mobileNumber});
+  }
+
+
   Future<RegionDetails?> getRegion(
       Function(String) onErrorCallback, UserType userType) async {
     return await executeApiRequest<RegionDetails?>(

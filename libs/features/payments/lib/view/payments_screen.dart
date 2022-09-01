@@ -32,12 +32,13 @@ class PaymentsScreen extends StatefulWidget {
 
 class _PaymentsScreenState extends State<PaymentsScreen> {
   final String _identifier = 'payments-screen';
-
+  String paymentAmount = "";
   @override
   Widget build(BuildContext context) =>
       BaseView<PaymentsCoordinator, PaymentsState>(
           setupViewModel: (coordinator) async {
             coordinator.initialiseState(context);
+            paymentAmount = await coordinator.getPaymentAmount();
           },
           builder: (context, state, coordinator) => CrayonPaymentScaffold(
                 appBarAttributes: CrayonPaymentAppBarAttributes(
@@ -99,7 +100,7 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
         SizedBox(
           height: AppUtils.appUtilsInstance.getPercentageSize(percentage: 10),
         ),
-        _dailyRepaymentWidget(),
+        _dailyRepaymentWidget(coordinator),
         SizedBox(
           height: AppUtils.appUtilsInstance.getPercentageSize(percentage: 15),
         ),
@@ -108,7 +109,7 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
     );
   }
 
-  _dailyRepaymentWidget() {
+  _dailyRepaymentWidget(PaymentsCoordinator coordinator) {
     return Container(
         height: 80,
         width: double.infinity,
@@ -148,7 +149,7 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
                   ),
                   CrayonPaymentText(
                     key: Key('${_identifier}_daily_repayment_price'),
-                    text:  TextUIDataModel('${widget.paymentsScreenArgs.price} TZSHS',
+                    text:  TextUIDataModel('${paymentAmount} TZSHS',
                         styleVariant: CrayonPaymentTextStyleVariant.headline6,
                         color: SECONDARY_COLOR,
                         fontWeight: FontWeight.w600),
@@ -235,7 +236,7 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
               color: SU_button_color, borderRadius: BorderRadius.circular(8.0)),
           child: Center(
             child: Text(
-              'PP_PayNow'.tr + " " + widget.paymentsScreenArgs.price,
+              'PP_PayNow'.tr + " " + paymentAmount,
               style: SU_button_text_style,
             ),
           ),

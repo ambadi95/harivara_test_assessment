@@ -8,6 +8,7 @@ import 'package:core/sheets/view/widgets/top_bars.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:task_manager/task.dart';
 import 'package:widget_library/buttons/docked_button.dart';
 import 'package:widget_library/buttons/text_button.dart';
 import 'package:widget_library/colors/crayon_payment_colors.dart';
@@ -74,14 +75,26 @@ class BottomSheetCustomAmount extends StatelessWidget {
   Widget _buildTextField(TextEditingController amount) {
     return InputFieldWithLabel(
       label: '',
-      controller: amount,
+      // controller: amount,
       hintText: 'Enter the amount',
       key: const Key('mobileNumberTextField'),
-      inputFormatters: <TextInputFormatter>[
-        //NIDAInputFormatter(mask: 'xxx xxx xxx', separator: ' ')
-      ],
+      // inputFormatters: <TextInputFormatter>[
+      //   //NIDAInputFormatter(mask: 'xxx xxx xxx', separator: ' ')
+      // ],
       keyboardType: TextInputType.number,
-      onChanged: (value) {},
+      onChanged: (value) {
+        savePaymentAmount(value);
+      },
+    );
+  }
+
+  Future<void> savePaymentAmount(String paymentAmount) async {
+    Task(
+      requestData: {
+        CACHE_TYPE: TaskManagerCacheType.SECURE_SET,
+        DATA_KEY: {'paymentAmount': paymentAmount},
+      },
+      taskType: TaskType.CACHE_OPERATION,
     );
   }
 

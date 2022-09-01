@@ -222,6 +222,14 @@ const ES_success_text = TextStyle(
   color: SECONDARY_COLOR,
 );
 
+const ES_bottom_success_text = TextStyle(
+  fontSize: 14,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Montserrat',
+  color: WB_EnterPassCodeTitleColor,
+);
+
+
 
 
 const ES_bold_text = TextStyle(

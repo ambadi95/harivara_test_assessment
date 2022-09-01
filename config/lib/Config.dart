@@ -44,6 +44,7 @@ const ST_TermsCondition = 'assets/images/term'
     'Condition.svg';
 const ST_faq = 'assets/images/faq.svg';
 const ST_agent = 'assets/images/agent.svg';
+const ST_scan_icon = 'assets/images/scan_image.svg';
 
 // USERTYPE
 enum UserType { Customer, Agent, AgentCustomer }
@@ -55,6 +56,7 @@ const customerEndpoint = 'https://y9-dev-capi.testmaya.com/customers/v1/';
 const LD_loan_detail = 'assets/images/loan_detail.png';
 const LD_loan_detail_banner_image =
     'assets/images/loan_detail_banner_image.png';
+const LD_loan_detail_banner_image2 = 'assets/images/loan_detail_banner_image_2.png';
 
 enum WorkFlowStatus {
   Initiated,

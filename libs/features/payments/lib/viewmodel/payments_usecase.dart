@@ -28,6 +28,10 @@ class PaymentsUseCase extends BaseDataProvider {
     return await getValueFromSecureStorage('customerId', defaultValue: '');
   }
 
+  Future<String> getPaymentAmount() async {
+    return await getValueFromSecureStorage('paymentAmount', defaultValue: '');
+  }
+
   Future<CustomerDetailResponse?> hitPaymentApi(
     String amount,
     String paymentType,

@@ -8,6 +8,7 @@ import 'package:core/sheets/state/crayon_payment_bottom_sheet_state.dart';
 import 'package:core/utils/extensions/list_extensions.dart';
 import 'package:shared_data_models/date_filter/date_filter_type.dart';
 import 'package:task_manager/base_classes/base_view_model.dart';
+import 'package:task_manager/task.dart';
 import 'package:widget_library/icons/crayon_payment_bottom_sheet_icon.dart';
 
 import '../data_model/loan_payment.dart';
@@ -258,8 +259,10 @@ class CrayonPaymentBottomSheetCoordinator
         element.isSelected = false;
       }
     });
+
     if (paymentMethod.amount.isNotEmpty) {
       currentState.loanRepayment.isAmountSelected = true;
+      savePaymentAmount(paymentMethod.amount);
     } else {
       currentState.loanRepayment.isAmountSelected = false;
       currentState.loanRepayment.isPayNowSelected = true;
@@ -267,6 +270,16 @@ class CrayonPaymentBottomSheetCoordinator
     currentState.loanRepayment.selectedAmount = paymentMethod.amount;
     state = currentState.copyWith(
       loanRepayment: currentState.loanRepayment,
+    );
+  }
+
+  Future<void> savePaymentAmount(String paymentAmount) async {
+    Task(
+      requestData: {
+        CACHE_TYPE: TaskManagerCacheType.SECURE_SET,
+        DATA_KEY: {'paymentAmount': paymentAmount},
+      },
+      taskType: TaskType.CACHE_OPERATION,
     );
   }
 }

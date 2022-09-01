@@ -31,11 +31,17 @@
   "SU_title_error_text" : "Nambari ya NIDA si sahihi",
   "SU_subtitle_error_text" : "Nambari ya Simu batili",
   "SU_agent_id_error_text" : "Kitambulisho batili cha Wakala wa Y9",
-  "SU_valid_IMEI1" : "IMEI1 si sahihi",
-  "SU_valid_IMEI2" : "IMEI2 si sahihi",
+  "SU_valid_IMEI1" : "IMEI-1 si sahihi",
+  "SU_valid_IMEI2" : "IMEI-2 si sahihi",
+  "SU_enter_IMEI2_button" : "Weka nambari ya IMEI-2",
+  "SU_enter_IMEI1_button" : "Weka nambari ya IMEI-1",
   "SU_close" : "Funga",
   "SU_success_msg_1" : "Hongera! Furahia matumizi yako na Y9.",
   "SU_success_msg_2" : "Tafadhali ingia katika programu ya Y9 katika kifaa chako kipya ili kupata manufaa yetu yote",
+  "SU_success_msg_3" : "Maelezo yote yanatumwa kwa ufanisi kwa nambari yako ya simu iliyosajiliwa",
+  "SU_device_registration" : "Usajili wa Kifaa",
+  "SU_device_reg_sub_heading" : "Tafuta aina ya kifaa chako katika Miongozo ya Kifaa ili kupata maelezo zaidi",
+  "SU_scan_code_IMEI_button" : "(Ingiza au Changanua IMEI kutoka kwa kisanduku cha kifaa)",
 
   "SU_reset_passcode" : "Reset Passcode",
   "SU_reset_subtitle" : "You can Reset the passcode here using OTP sent to your registered mobile number",
@@ -78,6 +84,9 @@
   "DV_district_error_text" : "Wilaya Batili",
   "DV_district_hint_text" : "Ingiza Wilaya",
   "Save_Text": "Hifadhi",
+  "DAILY_EMI": "Emi ya kila siku",
+  "MONTHLY_EMI": "Emi ya kila mwezi",
+  "Y9_DEVICE_LOAN": "Mkopo wa Kifaa cha Y9",
 
 
 
@@ -206,6 +215,7 @@
   "Credit_Check_Failed_Title": "Sorry for inconvenience your credit score dosen’t mach the minimum requirement. you can’t proceed further",
   "Credit_Check_Failed_SubTitle": "Details will be sent to customer registered email id and mobile number",
   "Back_To_Home": "Back to Home",
+  "Back": "Back",
   "KYC_Check_Now" : "Check Now",
 
   "Terms_And_Condition_Error":"Please accept the terms and conditions to proceed further",

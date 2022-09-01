@@ -119,9 +119,9 @@ class _KycCreditMainScreenState extends State<KycCreditMainScreen> {
             margin: const EdgeInsets.only(bottom: 40),
             child: Column(
               children: [
-                _getTermsCheckBox(context, coordinator),
+                // _getTermsCheckBox(context, coordinator),
                 const SizedBox(
-                  height: 20,
+                  height: 50,
                 ),
                 _buildCheckNowButton(context, coordinator, state),
               ],
@@ -209,7 +209,7 @@ class _KycCreditMainScreenState extends State<KycCreditMainScreen> {
               color: SU_button_color, borderRadius: BorderRadius.circular(2.0)),
           child: Center(
             child: Text(
-              'Back_To_Home'.tr,
+              'Back'.tr,
               style: SU_button_text_style,
             ),
           ),
@@ -227,14 +227,15 @@ class _KycCreditMainScreenState extends State<KycCreditMainScreen> {
       padding: const EdgeInsets.only(left: 16, right: 16),
       child: GestureDetector(
         onTap: () async {
-          if (_isChecked) {
-            await coordinator.callMnoConsent(context);
-          } else {
-            coordinator.showErrorBottomSheet(
-                _getCheckBoxUnCheckErrorBottomSheetUi(
-                    context, coordinator, state),
-                context);
-          }
+          coordinator.callMnoConsent(context);
+          // if (_isChecked) {
+          //   await coordinator.callMnoConsent(context);
+          // } else {
+          //   coordinator.showErrorBottomSheet(
+          //       _getCheckBoxUnCheckErrorBottomSheetUi(
+          //           context, coordinator, state),
+          //       context);
+          // }
         },
         child: Container(
           width: double.infinity,
