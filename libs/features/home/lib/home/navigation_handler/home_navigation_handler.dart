@@ -74,7 +74,7 @@ class HomeNavigationHandler with ErrorHandler {
         )
       ],
       title: 'CA_custom_amount',
-       outstandingAmount: outstandingAmount ?? ""
+       outstandingAmount: outstandingAmount
     );
 
     _navigationManager.navigateTo(
@@ -183,7 +183,7 @@ class HomeNavigationHandler with ErrorHandler {
    navigateToBrowser(String text, String path) async {
     var arguments = {'text': text, 'path': path};
     return WebViewPage(
-      title: TextUIDataModel(text!),
+      title: TextUIDataModel(text),
       launchType: LaunchType.Network,
       url: path,
       leadingActionIcon: const Icon(Icons.arrow_back),
