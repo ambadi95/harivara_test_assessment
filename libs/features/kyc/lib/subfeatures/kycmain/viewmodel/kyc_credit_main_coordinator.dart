@@ -30,13 +30,14 @@ class KycCreditMainCoordinator
       ) async {
     try {
       state = KycCreditMainState.ready(context: context,isLoading:true );
-      var response = await _kycCreditMainUseCase.callMnoConsent('',
+      String customerId= await _kycCreditMainUseCase.getCustomerId();
+      var response = await _kycCreditMainUseCase.callMnoConsent(customerId,
               (p0) => null);
       if (response?.status == true) {
         state = KycCreditMainState.ready(context: context,isLoading:false );
+        navigateToKycCreditAirtel();
       } else {
         state = KycCreditMainState.ready(context: context,isLoading:false,error: response!.message! );
-        print(response.message);
       }
     } on Exception catch (e) {
       state = KycCreditMainState.ready(context: context,isLoading:true );

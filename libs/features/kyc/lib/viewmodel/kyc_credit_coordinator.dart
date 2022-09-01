@@ -5,7 +5,8 @@ import 'package:core/mobile_core.dart';
 import 'package:core/view/analytics_state_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_data_models/device_option/device_option_args.dart';
-
+import 'package:get/get.dart';
+import 'package:widget_library/bottom_sheet/alert_bottom_sheet.dart';
 import '../navigation_handler/kyc_credit_navigation_handler.dart';
 import '../state/kyc_credit_state.dart';
 import 'kyc_credit_usecase.dart';
@@ -18,6 +19,7 @@ class KycCreditCoordinator extends AnalyticsStateNotifier<KycCreditState> {
     this._navigationHandler,
     this._kycCreditUseCase,
   ) : super(const KycCreditState.initialState());
+
 
   void initialiseState(
     BuildContext context,
@@ -39,16 +41,28 @@ class KycCreditCoordinator extends AnalyticsStateNotifier<KycCreditState> {
     var response = await _kycCreditUseCase.callKycCheck(mobileNumber,
             (p0) => null);
     if (response?.status == true) {
-      state = KycCreditState.ready(context: context,isLoading:false );
+      state = KycCreditState.ready(context: context,isLoading:false,error: 'Kyc Done' ,isKycError: false,isCreditCheckError: false);
     } else {
-      state = KycCreditState.ready(context: context,isLoading:false,error: response!.message! );
-      _showSnackBar(context,response.message!);
-
-      callCreditScore(context);
+      state = KycCreditState.ready(context: context,isLoading:false,error: response!.message! ,isKycError: true,isCreditCheckError: false);
+      // _showAlertForErrorMessage(response.message!);
       print(response.message);
+
     }
   }
-
+  _showAlertForErrorMessage(String errorMessage) {
+    Get.bottomSheet(
+      AlertBottomSheet(
+          alertMessage: errorMessage,
+          alertTitle: 'Error',
+          alertIcon: "assets/images/alert_icon.png",
+          onClose: () {
+            goBack();
+          },
+          packageName: ""),
+      isScrollControlled: false,
+      isDismissible: true,
+    );
+  }
   //call credit check
   Future callCreditCheck(BuildContext context
       ) async {
@@ -61,7 +75,7 @@ class KycCreditCoordinator extends AnalyticsStateNotifier<KycCreditState> {
       state = KycCreditState.ready(context: context,isLoading:false );
     } else {
       state = KycCreditState.ready(context: context,isLoading:false,error: response!.message!);
-      _showSnackBar(context,response.message!);
+      _showAlertForErrorMessage(response.message!);
 
       print(response.message);
     }
@@ -72,33 +86,22 @@ class KycCreditCoordinator extends AnalyticsStateNotifier<KycCreditState> {
   Future callCreditScore(BuildContext context
       ) async {
       state = KycCreditState.ready(context: context,isLoading:true);
-
       String customerId=await  _kycCreditUseCase.getCustomerId();
+      print(customerId);
     var response = await _kycCreditUseCase.callCreditScore(customerId,
             (p0) => null);
     if (response?.status == true) {
-      state = KycCreditState.ready(context: context,isLoading:false );
+      state = KycCreditState.ready(context: context,isLoading:false ,isKycError: false,isCreditCheckError: false,error: 'Credit Eligible');
+      // await callCreditCheck(context);
     } else {
-      state = KycCreditState.ready(context: context,isLoading:false,error: response!.message!);
-      _showSnackBar(context,response.message!);
+      state = KycCreditState.ready(context: context,isLoading:false,error: response!.message ?? "Something went wrong,Please try again later",isKycError: false,isCreditCheckError: true);
+       // _showAlertForErrorMessage(response.message!);
       print(response.message);
     }
   }
-  void _showSnackBar(BuildContext context, String errorMessage) {
-    final showMessage = ScaffoldMessenger.of(context);
-    showMessage.showSnackBar(
-      SnackBar(
-        backgroundColor: PRIMARY_COLOR,
-        key: const Key('Detail_Screen_Error_SnackBar'),
-        content: Text(
-          errorMessage,
-          key:const  Key('Text'),
-          style: label_input_error_white_style,
-        ),
-        duration: const Duration(seconds: 4),
-      ),
-    );
-  }
+
+
+
   void goBack() async {
     _navigationHandler.goBack();
   }
