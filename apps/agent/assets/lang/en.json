@@ -235,6 +235,7 @@
   "Credit_Check_Failed_Title": "Sorry for inconvenience your credit score dosen’t mach the minimum requirement. you can’t proceed further",
   "Credit_Check_Failed_SubTitle": "Details will be sent to customer registered email id and mobile number",
   "Back_To_Home": "Back to Home",
+  "Back": "Back",
   "KYC_Check_Now" : "Check Now",
 
   "Terms_And_Condition_Error":"Please accept the terms and conditions to proceed further",

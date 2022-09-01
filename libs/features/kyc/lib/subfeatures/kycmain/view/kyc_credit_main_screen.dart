@@ -209,7 +209,7 @@ class _KycCreditMainScreenState extends State<KycCreditMainScreen> {
               color: SU_button_color, borderRadius: BorderRadius.circular(2.0)),
           child: Center(
             child: Text(
-              'Back_To_Home'.tr,
+              'Back'.tr,
               style: SU_button_text_style,
             ),
           ),

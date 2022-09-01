@@ -189,10 +189,9 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
       print(response.body);
       if (response.statusCode != 200) {
         var res = json.decode(response.body);
-        if(res['message']!=null){
+        if (res['message'] != null) {
           throw res['message'];
-        }
-        else{
+        } else {
           throw 'Something went wrong';
         }
       }
@@ -244,13 +243,14 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
     final response =
         await _httpClient.post(uri, headers: headers, body: request.jsonBody);
     print(response.body);
+    if (response.statusCode == 500) {
+      return _internalServerMessage();
+    }
     if (response.statusCode != 200) {
       var res = json.decode(response.body);
-      if(res['message']!=null)
-      {
+      if (res['message'] != null) {
         throw res['message'];
-      }
-      else{
+      } else {
         throw 'Something went wrong';
       }
     }
@@ -295,10 +295,9 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
     print(response.body);
     if (response.statusCode != 200) {
       var res = json.decode(response.body);
-      if(res['message']!=null){
+      if (res['message'] != null) {
         throw res['message'];
-      }
-      else{
+      } else {
         throw 'Something went wrong';
       }
     }
@@ -381,5 +380,13 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
   Context _addAdditionalHeaders(Map<String, String> additionalHeaders) {
     final linkHeaders = HttpLinkHeaders(headers: additionalHeaders);
     return Context.fromMap({HttpLinkHeaders: linkHeaders});
+  }
+
+  NetworkStandardResponse _internalServerMessage() {
+    return NetworkStandardResponse(
+      '{"status":false,"code":"Server Error","message":"Internal Server Error","data":{"status":"error","data":null}}',
+      500,
+      {},
+    );
   }
 }
