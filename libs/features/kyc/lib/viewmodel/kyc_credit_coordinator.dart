@@ -38,7 +38,7 @@ class KycCreditCoordinator extends AnalyticsStateNotifier<KycCreditState> {
       ) async {
       state = KycCreditState.ready(context: context,isLoading:true);
       String mobileNumber = await _kycCreditUseCase.getMobileNumber();
-    var response = await _kycCreditUseCase.callKycCheck('+255686531710',
+    var response = await _kycCreditUseCase.callKycCheck(mobileNumber,
             (p0) => null);
     if (response?.status == true) {
       state = KycCreditState.ready(context: context,isLoading:false,error: 'Kyc Done' ,isKycError: false,isCreditCheckError: false);
