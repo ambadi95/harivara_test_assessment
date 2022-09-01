@@ -4,7 +4,7 @@ import 'package:core/view/analytics_state_notifier.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+// import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:scanqrcode/viewmodel/scanqrcode_usecase.dart';
 import 'package:widget_library/bottom_sheet/alert_bottom_sheet.dart';
 import '../navigation_handler/scanqrcode_navigation_handler.dart';
@@ -58,8 +58,8 @@ void successFulScreen(){
   Future<String> scanBarcodeImei1() async {
     String barcodeScanRes = "";
     try {
-      barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
-          '#ff6666', 'Cancel', true, ScanMode.BARCODE);
+      // barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
+      //     '#ff6666', 'Cancel', true, ScanMode.BARCODE);
       if (kDebugMode) {
         print(barcodeScanRes);
       }
@@ -73,8 +73,8 @@ void successFulScreen(){
   Future<String> scanBarcodeImei2() async {
     String barcodeScanRes="";
     try {
-      barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
-          '#ff6666', 'Cancel', true, ScanMode.BARCODE);
+      // barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
+      //     '#ff6666', 'Cancel', true, ScanMode.BARCODE);
       if (kDebugMode) {
         print(barcodeScanRes);
       }

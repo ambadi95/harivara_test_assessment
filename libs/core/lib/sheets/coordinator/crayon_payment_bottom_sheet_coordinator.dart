@@ -262,7 +262,8 @@ class CrayonPaymentBottomSheetCoordinator
 
     if (paymentMethod.amount.isNotEmpty) {
       currentState.loanRepayment.isAmountSelected = true;
-      savePaymentAmount(paymentMethod.amount);
+      currentState.loanRepayment.onSelectedAmount(paymentMethod.amount);
+      currentState.loanRepayment.onSelectedLabel(paymentMethod.name);
     } else {
       currentState.loanRepayment.isAmountSelected = false;
       currentState.loanRepayment.isPayNowSelected = true;
@@ -273,13 +274,25 @@ class CrayonPaymentBottomSheetCoordinator
     );
   }
 
-  Future<void> savePaymentAmount(String paymentAmount) async {
-    Task(
-      requestData: {
-        CACHE_TYPE: TaskManagerCacheType.SECURE_SET,
-        DATA_KEY: {'paymentAmount': paymentAmount},
-      },
-      taskType: TaskType.CACHE_OPERATION,
-    );
+  void checkAmount(String amount,) {
+    final currentState = state as CustomAmountBottomSheet;
+    double outstandingAmount = removeCharacter(currentState.outstandingAmount);
+    double enterAmount = removeCharacter(amount);
+    if (outstandingAmount > enterAmount) {
+      currentState.enteredAmount(amount);
+      state = currentState.copyWith(
+        isAmountValidated: true,
+      );
+    }else{
+      state = currentState.copyWith(
+        isAmountValidated: false,
+      );
+    }
   }
+
+  double removeCharacter(String amount) {
+    return double.parse(
+        amount.replaceAll(",", "").replaceAll("TZSHS", "").trim());
+  }
+
 }
