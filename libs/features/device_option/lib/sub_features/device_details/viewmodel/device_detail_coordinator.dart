@@ -32,7 +32,6 @@ class DeviceDetailCoordinator
       var response =
           await _DeviceOptionUseCase.selectDevice(deviceId, (p0) => null);
       if (response?.status == true) {
-        print('success');
         await _navigationHandler.navigateToCustomerEnrollmentScreen('', userType);
       }
     }  catch (e) {

@@ -4,6 +4,7 @@ import 'package:core/mobile_core.dart';
 import 'package:core/view/base_view.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_data_models/device_option/device_detail_mockup.dart';
+import 'package:shared_data_models/deviceloancreation/loan_preview_response_model.dart';
 import 'package:widget_library/app_bars/crayon_payment_app_bar_attributes.dart';
 import 'package:widget_library/app_bars/crayon_payment_app_bar_button_type.dart';
 import 'package:widget_library/buttons/docked_button.dart';
@@ -43,6 +44,8 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
 
   Data? detailDetail;
 
+  LoanPreviewResponseModel? loanPreviewResponseModel;
+
   var _value = 1;
 
   @override
@@ -50,6 +53,14 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
     return BaseView<DeviceLoanCreationCoordinator, DeviceLoanCreationState>(
       setupViewModel: (coordinator) async {
         detailDetail = widget.deviceLoanCreationArgs.deviceDetailData;
+        if (detailDetail != null && detailDetail!.deviceId != 0) {
+          loanPreviewResponseModel =
+              await coordinator.getLoanPreview(detailDetail!.deviceId!);
+          print("loanPreviewResponse${loanPreviewResponseModel}");
+          setState(() {
+            loanPreviewResponseModel;
+          });
+        }
       },
       onStateListenCallback: (preState, newState) =>
           {_listenToStateChanges(context, newState)},
@@ -81,10 +92,12 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
           const CrayonPaymentAppBarButtonType.back(),
         ],
       ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.only(left: 16, right: 16, bottom: 18),
-        child: selectButton(coordinator),
-      ),
+      bottomNavigationBar: loanPreviewResponseModel != null
+          ? Padding(
+              padding: const EdgeInsets.only(left: 16, right: 16, bottom: 18),
+              child: selectButton(coordinator),
+            )
+          : SizedBox(),
       body: ListView(
         children: [
           _buildOptionTitle(context),
@@ -129,7 +142,7 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
                               "|" +
                               detailDetail!.processor! +
                               "|" +
-                              detailDetail!.operatingSystem! ,
+                              detailDetail!.operatingSystem!,
                           styleVariant: CrayonPaymentTextStyleVariant.overline1,
                           color: SU_carrier_message_color,
                         ),
@@ -144,17 +157,16 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
           dynamicHSpacer(10),
           Divider(),
           dynamicHSpacer(10),
-          _loanDetails(context),
-          dynamicHSpacer(40),
-          CrayonPaymentText(
-            key: Key(''),
-            text: TextUIDataModel('DLC_Wallets_Title'.tr,
-                styleVariant: CrayonPaymentTextStyleVariant.headline4,
-                color: AN_CardTitle,
-                fontWeight: FontWeight.w600),
-          ),
-          dynamicHSpacer(20),
-          _radioButton(),
+          loanPreviewResponseModel == null
+              ? CrayonPaymentText(
+                  key: Key('${_identifier}_ERROR_API'),
+                  text: TextUIDataModel(
+                      'Something went wrong,Please try again later!',
+                      styleVariant: CrayonPaymentTextStyleVariant.headline4,
+                      color: AN_TitleColor,
+                      fontWeight: FontWeight.w600),
+                )
+              : _loanDetails(context),
           dynamicHSpacer(20),
         ],
       ),
@@ -184,7 +196,8 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
   Widget selectButton(DeviceLoanCreationCoordinator coordinator) {
     return CrayonPaymentDockedButton(
       key: const Key('Select'),
-      title: 'Pay Now 70000.0 TZHS',
+      title:
+          'Pay Now ${loanPreviewResponseModel!.data!.totalAmountToBeRepaid}TZHS',
       borderRadius: 8,
       height: CrayonPaymentDimensions.marginFortyEight,
       buttonColor: LS_ButtonColor,
@@ -209,18 +222,27 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
         ),
         dynamicHSpacer(30),
         _rowTitleValue('D0_JoiningFee'.tr,
-            detailDetail!.joiningFees!.toString() + " TZSHS"),
+            loanPreviewResponseModel!.data!.joiningFee!.toString() + " TZSHS"),
         _rowTitleValue(
             'DLC_Daily_Repayment'.tr,
-            detailDetail!.dailyFees == null
-                ? ""
-                : detailDetail!.dailyFees!.toString() + " TZSHS"),
+            loanPreviewResponseModel!.data!.dailyRepaymentAmount!.toString() +
+                " TZSHS"),
         _rowTitleValue(
             'DLC_Total_Amount_Repaid'.tr,
-            detailDetail!.amountToPay == null
-                ? "70000.0 TZSHS"
-                : detailDetail!.amountToPay!.toString() + " TZSHS"),
-        _rowTitleValue('DLC_Final_Payment_Date'.tr, '10 Aug, 2023'),
+            loanPreviewResponseModel!.data!.totalAmountToBeRepaid!.toString() +
+                " TZSHS"),
+        _rowTitleValue('DLC_Final_Payment_Date'.tr,
+            loanPreviewResponseModel!.data!.finalPaymentDate.toString()),
+        dynamicHSpacer(40),
+        CrayonPaymentText(
+          key: Key(''),
+          text: TextUIDataModel('DLC_Wallets_Title'.tr,
+              styleVariant: CrayonPaymentTextStyleVariant.headline4,
+              color: AN_CardTitle,
+              fontWeight: FontWeight.w600),
+        ),
+        dynamicHSpacer(20),
+        _radioButton(),
       ],
     );
   }
