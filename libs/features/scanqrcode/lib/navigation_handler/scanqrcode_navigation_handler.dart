@@ -29,7 +29,12 @@ class ScanQRCodeNavigationHandler with ErrorHandler {
         arguments: argument);
   }
 
-  Future<void> navigateToSuccessScreen(UserType userType) async {
+  Future<void> goBack() async {
+    _navigationManager.goBack();
+  }
+
+
+  Future<void> navigateToSuccessScreen() async {
    // var argument = username;
     await _navigationManager.navigateTo(
       SuccessScreen.viewPath,
