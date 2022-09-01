@@ -24,9 +24,9 @@ import 'package:widget_library/spacers/crayon_payment_spacers.dart';
 class ScanQrCodeScreen extends StatefulWidget {
   static const viewPath =
       '${ScanQRCodeModule.moduleIdentifier}/scanqrcodescreen';
-  //final ScanQRCodeArgs scanQRCodeArgs;
 
-  const ScanQrCodeScreen({Key? key,}) : super(key: key);
+  final int deviceId;
+  const ScanQrCodeScreen({Key? key, required this.deviceId}) : super(key: key);
 
   @override
   State<ScanQrCodeScreen> createState() => _ScanQrCodeScreenState();
@@ -40,12 +40,13 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
   String imei1NumberError = '';
   String imei2NumberError = '';
   bool _isBtnEnabled = false;
+  String username = "";
 
   void _validateForm(ScanQRCodeCoordinator coordinator) {
     coordinator.validateForm(
         customerId, // ADD CUSTOMER ID
-       1,
-       imei1Number.text,
+        widget.deviceId,
+        imei1Number.text,
         imei2Number.text
     );
   }
@@ -78,6 +79,7 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
         {_listenToStateChanges(context, newState)},
         setupViewModel: (coordinator) async{
           customerId = await coordinator.getCustomerID();
+          username = await coordinator.getCustomerName();
           },
         builder: (context, state, coordinator) {
           return state.maybeWhen(
@@ -124,6 +126,7 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           _title(context),
+          Text("Hi $username"),
           dynamicHSpacer(8),
           _subTitle(context),
           dynamicHSpacer(50),
@@ -252,10 +255,9 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
               _isBtnEnabled = true;
             if (_isBtnEnabled) {
               coordinator.deviceRegister(
-                context, imei1Number.text, imei2Number.text);
+                context,widget.deviceId,  imei1Number.text, imei2Number.text);
             }
           }
-          //coordinator.successFulScreen();
         },
         child: Container(
           width: double.infinity,

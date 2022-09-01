@@ -16,6 +16,9 @@ class ScanQRCodeUseCase extends BaseDataProvider {
       : super(taskManager);
 
 
+  Future<String> getAgentName() async {
+    return await getValueFromSecureStorage('agentName', defaultValue: '');
+  }
 
   Future<String> getCustomerName() async {
     return await getValueFromSecureStorage('CustomerName', defaultValue: '');
@@ -37,17 +40,16 @@ class ScanQRCodeUseCase extends BaseDataProvider {
     return await setValueToSecureStorage({'deviceRegistrationStatus': status});
   }
 
-  Future<ScanQRCodeResponse?> deviceRegistrationAPI(String imei1, String imei2,
+  Future<ScanQRCodeResponse?> deviceRegistrationAPI(int deviceId, String imei1, String imei2,
       Function(String) onErrorCallback) async {
     String customerId = await getCustomerId();
-    String deviceId = await getDeviceId();
     return await executeApiRequest<ScanQRCodeResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
         moduleIdentifier: ScanQRCodeModule.moduleIdentifier,
         requestData: {
           "customerId": int.parse(customerId),
-          "deviceId": int.parse(deviceId),
+          "deviceId": deviceId,//int.parse(deviceId),
           "imei1": imei1,
           "imei2": imei2
         },

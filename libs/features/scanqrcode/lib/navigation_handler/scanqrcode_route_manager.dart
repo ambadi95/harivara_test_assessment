@@ -10,15 +10,15 @@ class ScanQRCodeRouteManager extends IRouteManager {
   Widget getView(RouteSettings settings) {
     switch (settings.name) {
       case ScanQrCodeScreen.viewPath:
-      // var arguments = settings.arguments as ScanQRCodeArgs;
+       var arguments = settings.arguments as int;
        return ScanQrCodeScreen (
-         //scanQRCodeArgs: arguments,
+         deviceId: arguments,
        );
 
         case SuccessScreen.viewPath:
-          //var arguments = settings.arguments as ScreenScreenArgs;
+          var arguments = settings.arguments as String;
         return SuccessScreen(
-         // screenScreenArgs : arguments,
+         screenScreenArgs : arguments,
         );
 
         default:

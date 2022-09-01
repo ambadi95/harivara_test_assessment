@@ -15,8 +15,8 @@ class SuccessScreen extends StatefulWidget {
   static const viewPath =
       '${ScanQRCodeModule.moduleIdentifier}/successScreen';
 
-  //final ScreenScreenArgs screenScreenArgs;
-  const SuccessScreen({Key? key}) : super(key: key);
+  final String screenScreenArgs;
+  const SuccessScreen({Key? key, required this.screenScreenArgs}) : super(key: key);
 
   @override
   State<SuccessScreen> createState() => _SuccessScreenState();

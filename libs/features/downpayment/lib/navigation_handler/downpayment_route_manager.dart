@@ -10,9 +10,9 @@ class DownPaymentRouteManager extends IRouteManager {
   Widget getView(RouteSettings settings) {
     switch (settings.name) {
       case DownPaymentScreen.viewPath:
-       // var arguments = settings.arguments as DownPaymentScreenArgs;
-        return const DownPaymentScreen(
-          //downPaymentScreenArgs: arguments,
+        var arguments = settings.arguments as int;
+        return DownPaymentScreen(
+          deviceId: arguments,
         );
       default:
         // TODO: implement getView

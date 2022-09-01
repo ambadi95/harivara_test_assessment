@@ -29,7 +29,7 @@ class ScanQRCodeCoordinator extends AnalyticsStateNotifier<ScanQRCodeState> {
   }
 
   Future<String> getCustomerName() async {
-    return _scanQRCodeUseCase.getCustomerName();
+    return _scanQRCodeUseCase.getAgentName();
   }
 
   Future<String> getCustomerID() async {
@@ -120,19 +120,20 @@ void successFulScreen(){
     return result;
   }
 
-  Future deviceRegister(BuildContext context, String imei1,
+  Future deviceRegister(BuildContext context, int deviceId, String imei1,
       String imei2) async {
-      await deviceRegisterAPI(context, imei1, imei2);
+      await deviceRegisterAPI(context, deviceId , imei1, imei2);
   }
 
 
   Future deviceRegisterAPI(
       BuildContext context,
+       int deviceId,
       String imei1,
       String imei2
       ) async {
     state = ScanQRCodeState.ready(context: context,isLoading:true);
-    var response = await _scanQRCodeUseCase.deviceRegistrationAPI(imei1, imei2, (p0) => null);
+    var response = await _scanQRCodeUseCase.deviceRegistrationAPI(deviceId, imei1, imei2, (p0) => null);
     if (response?.status == true) {
     state = ScanQRCodeState.ready(context: context,isLoading:false );
       if(response?.message == "Device registration success"){

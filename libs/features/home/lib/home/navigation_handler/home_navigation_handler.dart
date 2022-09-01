@@ -53,6 +53,7 @@ class HomeNavigationHandler with ErrorHandler {
         arguments: arguments);
   }
 
+
   Future<void> navigateToSettingsScreen() async {
     await _navigationManager.navigateTo(
       Settings.viewPath,
