@@ -62,6 +62,12 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
                     _,
                     __,
                     ___,
+                      ____,
+                      _____,
+                      ______,
+                      _______,
+                      ________,
+
                   ) =>
                       _buildMainUIWithLoading(
                     context,
