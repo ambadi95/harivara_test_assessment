@@ -3,7 +3,6 @@ class PaymentsScreenArgs {
   final String title;
   final String price;
 
-
   PaymentsScreenArgs(
     this.image,
     this.title,

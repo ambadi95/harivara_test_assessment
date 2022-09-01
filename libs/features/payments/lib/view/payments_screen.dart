@@ -33,12 +33,13 @@ class PaymentsScreen extends StatefulWidget {
 class _PaymentsScreenState extends State<PaymentsScreen> {
   final String _identifier = 'payments-screen';
   String paymentAmount = "";
+
   @override
   Widget build(BuildContext context) =>
       BaseView<PaymentsCoordinator, PaymentsState>(
           setupViewModel: (coordinator) async {
             coordinator.initialiseState(context);
-            paymentAmount = await coordinator.getPaymentAmount();
+            paymentAmount = widget.paymentsScreenArgs.price;
           },
           builder: (context, state, coordinator) => CrayonPaymentScaffold(
                 appBarAttributes: CrayonPaymentAppBarAttributes(
@@ -138,7 +139,7 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
                 children: [
                   CrayonPaymentText(
                     key: Key('${_identifier}_daily_Repayment'),
-                    text: TextUIDataModel(widget.paymentsScreenArgs.title.tr,
+                    text: TextUIDataModel(widget.paymentsScreenArgs.title.tr.replaceAll("\n", ""),
                         styleVariant: CrayonPaymentTextStyleVariant.headline5,
                         color: VO_ResendTextColor,
                         fontWeight: FontWeight.w400),
@@ -149,7 +150,7 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
                   ),
                   CrayonPaymentText(
                     key: Key('${_identifier}_daily_repayment_price'),
-                    text:  TextUIDataModel('${paymentAmount} TZSHS',
+                    text: TextUIDataModel(paymentAmount,
                         styleVariant: CrayonPaymentTextStyleVariant.headline6,
                         color: SECONDARY_COLOR,
                         fontWeight: FontWeight.w600),
@@ -219,15 +220,11 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
         onTap: () async {
-
-            await coordinator.paymentApi(
-              "2000"
-              /*widget.paymentsScreenArgs.price*/,
-              "Repayment",
-              context,
-            );
-
-
+          await coordinator.paymentApi(
+            "2000" /*widget.paymentsScreenArgs.price*/,
+            "Repayment",
+            context,
+          );
         },
         child: Container(
           width: double.infinity,

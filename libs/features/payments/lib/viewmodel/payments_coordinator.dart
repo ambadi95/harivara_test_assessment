@@ -35,10 +35,6 @@ class PaymentsCoordinator extends AnalyticsStateNotifier<PaymentsState> {
     await _navigationHandler.navigateToPaymentSuccessfullBottomSheet();
   }
 
-  Future<String> getPaymentAmount() async {
-    return await _downPaymentUseCase.getPaymentAmount();
-  }
-
 
   Future paymentApi(
     String amount,

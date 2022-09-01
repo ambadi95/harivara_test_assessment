@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:config/Config.dart';
 import 'package:network_manager/model/requests/request.dart';
 import 'package:network_manager/model/requests/standard/standard_request.dart';
 
@@ -21,14 +22,9 @@ class ScanQRCodeService implements IScanQRCodeService {
       ) async {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
-    request.endpoint = 'customer-device';
-    request.jsonBody =  json.encode({
-      "customerId": requestData["customerId"],
-      "deviceId": requestData["deviceId"],
-      "imei1": requestData["imei1"],
-      "imei2": requestData["imei2"],
-    });
-    print("device register===> $request");
+    request.endpoint = customerEndpoint + "device/customer-device[customer]";
+    request.jsonBody =  json.encode(requestData);
+    print("device register===> ${request.jsonBody}");
     return request;
   }
 

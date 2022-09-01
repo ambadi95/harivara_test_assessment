@@ -13,6 +13,8 @@ class LoanRepayment {
   bool isAmountSelected;
   String selectedAmount;
   bool isPayNowSelected;
+  final Function(String) onSelectedAmount;
+  final Function(String) onSelectedLabel;
 
   LoanRepayment(
       {required this.imageUrl,
@@ -24,6 +26,8 @@ class LoanRepayment {
       required this.loanId,
       required this.loanPaymentList,
       required this.infoMessage,
+      required this.onSelectedAmount,
+        required  this.onSelectedLabel,
       this.isAmountSelected = false,
       this.selectedAmount = '',
       this.isPayNowSelected = false});

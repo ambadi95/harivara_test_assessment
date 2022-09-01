@@ -15,8 +15,8 @@ class SuccessScreen extends StatefulWidget {
   static const viewPath =
       '${ScanQRCodeModule.moduleIdentifier}/successScreen';
 
-  //final ScreenScreenArgs screenScreenArgs;
-  const SuccessScreen({Key? key}) : super(key: key);
+  final String screenScreenArgs;
+  const SuccessScreen({Key? key, required this.screenScreenArgs}) : super(key: key);
 
   @override
   State<SuccessScreen> createState() => _SuccessScreenState();
@@ -29,7 +29,7 @@ class _SuccessScreenState extends State<SuccessScreen> {
   Widget build(BuildContext context) =>
       BaseView<ScanQRCodeCoordinator, ScanQRCodeState>(
         setupViewModel: (coordinator) async {
-          username = await coordinator.getCustomerName();
+          username = await coordinator.getAgentName();
         },
         builder: (context, state, coordinator) => SafeArea(
           child: Scaffold(
