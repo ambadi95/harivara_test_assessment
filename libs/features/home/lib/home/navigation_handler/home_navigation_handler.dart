@@ -1,4 +1,5 @@
 import 'package:config/Colors.dart';
+import 'package:core/logging/logger.dart';
 import 'package:core/navigation/modal_bottom_sheet.dart';
 import 'package:core/navigation/navigation_manager.dart';
 import 'package:core/navigation/navigation_type.dart';
@@ -60,22 +61,33 @@ class HomeNavigationHandler with ErrorHandler {
     );
   }
 
-  Future<void> navigateToCustomPayBottomSheet(String outstandingAmount) async {
+  Future<void> navigateToCustomPayBottomSheet({
+    String outstandingAmount = '',
+  }) async {
     await goBack();
+    String _selectedAmount = "";
+    String _selectedPaymentMethod = "Paying Custom Amount";
 
     final CrayonPaymentBottomSheetState infoState =
         CrayonPaymentBottomSheetState.customAmount(
-      buttonOptions: [
-        ButtonOptions(
-          Black,
-          'LR_proceed',
-          () => () {},
-          false,
-        )
-      ],
-      title: 'CA_custom_amount',
-       outstandingAmount: outstandingAmount ?? ""
-    );
+            buttonOptions: [
+          ButtonOptions(
+            Black,
+            'LR_proceed',
+            () =>  navigateToPaymentScreen(_selectedAmount,_selectedPaymentMethod),
+            false,
+          ),
+        ],
+            title: 'CA_custom_amount',
+            isAmountValidated: false,
+            enteredAmount: (String value) {
+              _selectedAmount = value + " TZSHS";
+            },
+            onSelectedLabel: (String value) {
+              _selectedAmount = "Paying Custom Amount";
+            },
+
+            outstandingAmount: outstandingAmount ?? "");
 
     _navigationManager.navigateTo(
       'bottomSheet/crayonPaymentBottomSheet',
@@ -84,13 +96,17 @@ class HomeNavigationHandler with ErrorHandler {
     );
   }
 
-  Future<void> navigateToPaymentScreen(String paymentPrice) async {
+  int removeCharacter(String amount){
+    return int.parse(amount.replaceAll(",", "").replaceAll("TZSHS", "").trim());
+  }
+
+  Future<void> navigateToPaymentScreen(String paymentPrice, String paymentMethod) async {
     PaymentsScreenArgs paymentsScreenArgs = PaymentsScreenArgs(
       HS_LoanRepaymentMock,
-      'Paying Custom Amount',
+      paymentMethod,
       paymentPrice,
-
     );
+
     await _navigationManager.navigateTo(
       PaymentsScreen.viewPath,
       arguments: paymentsScreenArgs,
@@ -108,67 +124,79 @@ class HomeNavigationHandler with ErrorHandler {
     );
   }
 
-  String _selectedAmount = "5500";
-
   Future<void> navigateToLoanRepaymentBottomSheet(
-    String message,
-    String buttonLabel,
+      String message,
+      String buttonLabel,
       BuildContext context,
-      LoanDetailResponse loanDetailResponse
-  ) async {
-
+      LoanDetailResponse loanDetailResponse) async {
+    String _selectedAmount = "";
+    String _selectedMethod = "";
     final CrayonPaymentBottomSheetState infoState =
         CrayonPaymentBottomSheetState.loanRepayment(
             loanRepayment: LoanRepayment(
       label1: 'LR_paying_for',
       label2: 'LR_device_loan',
       label3: 'LR_amount_to_pay',
-      imageUrl: loanDetailResponse.data?.modelNumber=="A03 Core"?LD_loan_detail_banner_image2:LD_loan_detail_banner_image,
+      imageUrl: loanDetailResponse.data?.modelNumber == "A03 Core"
+          ? LD_loan_detail_banner_image2
+          : LD_loan_detail_banner_image,
       infoMessage: '',
-      selectedAmount:_selectedAmount ,
-      loanId:loanDetailResponse.data!=null? loanDetailResponse.data?.loanId??"-":"648960359535569",
-      onPressedCustomAmount: () => navigateToCustomPayBottomSheet(loanDetailResponse.data!.outStandingAmount!),
+      selectedAmount: _selectedAmount,
+      loanId: loanDetailResponse.data != null
+          ? loanDetailResponse.data?.loanId ?? "-"
+          : "648960359535569",
+      onPressedCustomAmount: () => navigateToCustomPayBottomSheet(
+          outstandingAmount: loanDetailResponse.data != null
+              ? loanDetailResponse.data!.outStandingAmount! + " TZSHS"
+              : "4,500 TZSHS",),
       onPressedPayNow: () {
-        navigateToPaymentScreen(_selectedAmount);
+        navigateToPaymentScreen(_selectedAmount,_selectedMethod);
       },
       loanPaymentList: [
         LoanPaymentMethod(
-          name: 'LR_due_amount',
-          amount: loanDetailResponse.data!=null? loanDetailResponse.data!.outStandingAmount!+" TZSHS":"4,500 TZSHS",
-          isSelected: false,
-          selectedOption:  'LR_due_amount'
-        ),
+            name: 'LR_due_amount',
+            amount: loanDetailResponse.data != null
+                ? loanDetailResponse.data!.outStandingAmount! + " TZSHS"
+                : "4,500 TZSHS",
+            isSelected: false,
+            selectedOption: 'LR_due_amount'),
         LoanPaymentMethod(
-          name: 'LR_daily_repayment',
-          amount: loanDetailResponse.data!=null? loanDetailResponse.data!.dailyRepaymentAmount!+" TZSHS":"2,000 TZSHS",
-          isSelected: false,
-            selectedOption:   'LR_daily_repayment'
-        ),
+            name: 'LR_daily_repayment',
+            amount: loanDetailResponse.data != null
+                ? loanDetailResponse.data!.dailyRepaymentAmount! + " TZSHS"
+                : "2,000 TZSHS",
+            isSelected: false,
+            selectedOption: 'LR_daily_repayment'),
         LoanPaymentMethod(
-          name: 'LR_loan_amount',
-          amount:  loanDetailResponse.data!=null? loanDetailResponse.data!.totalAmountToBeRepaid!+" TZSHS":"7,70,000 TZSHS",
-          isSelected: false,
-            selectedOption:   'LR_loan_amount'
-        ),
+            name: 'LR_loan_amount',
+            amount: loanDetailResponse.data != null
+                ? loanDetailResponse.data!.totalAmountToBeRepaid! + " TZSHS"
+                : "7,70,000 TZSHS",
+            isSelected: false,
+            selectedOption: 'LR_loan_amount'),
         LoanPaymentMethod(
-          name: 'LR_custom_amount',
-          amount: "",
-          isSelected: false,
-            selectedOption:   'LR_custom_amount'
-        ),
+            name: 'LR_custom_amount',
+            amount: "",
+            isSelected: false,
+            selectedOption: 'LR_custom_amount'),
       ],
+      onSelectedAmount: (String value) {
+        _selectedAmount = value;
+        CrayonPaymentLogger.logInfo(_selectedAmount);
+      },
+      onSelectedLabel: (String value) {
+        _selectedMethod = value;
+      }
     ));
 
-    _navigationManager.navigateTo(
-      'bottomSheet/crayonPaymentBottomSheet',
-      const NavigationType.bottomSheet(),
-      arguments: infoState,
-      //barrierDismissiable: true,
+    _navigationManager.navigateTo('bottomSheet/crayonPaymentBottomSheet',
+        const NavigationType.bottomSheet(),
+        arguments: infoState,
+        //barrierDismissiable: true,
         modalBottomSheet: ModalBottomSheet(
-          context : context,
+          context: context,
           height: MediaQuery.of(context).size.height * 0.60,
-        )
-    );
+        ));
   }
 
   void navigateToTermsCondition() async {
@@ -180,7 +208,7 @@ class HomeNavigationHandler with ErrorHandler {
     }
   }
 
-   navigateToBrowser(String text, String path) async {
+  navigateToBrowser(String text, String path) async {
     var arguments = {'text': text, 'path': path};
     return WebViewPage(
       title: TextUIDataModel(text!),
@@ -190,20 +218,16 @@ class HomeNavigationHandler with ErrorHandler {
     );
   }
 
-  Future<void> navigateToLoanDetailsSheetCustomer(
-       ) async {
+  Future<void> navigateToLoanDetailsSheetCustomer() async {
     final CrayonPaymentBottomSheetIcon icon =
-    CrayonPaymentBottomSheetExclamatoryIcon();
+        CrayonPaymentBottomSheetExclamatoryIcon();
     final CrayonPaymentBottomSheetState infoState =
-    CrayonPaymentBottomSheetState.infoState(
-        buttonOptions: [
-          ButtonOptions(
-              Black, "Close", () => goBack(), false)
-        ],
-        disableCloseButton: true,
-        bottomSheetIcon: icon,
-        subtitle: "No Loan Details available for this user",
-       );
+        CrayonPaymentBottomSheetState.infoState(
+      buttonOptions: [ButtonOptions(Black, "Close", () => goBack(), false)],
+      disableCloseButton: true,
+      bottomSheetIcon: icon,
+      subtitle: "No Loan Details available for this user",
+    );
 
     _navigationManager.navigateTo(
       'bottomSheet/crayonPaymentBottomSheet',

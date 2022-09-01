@@ -7,6 +7,7 @@ import 'package:core/sheets/data_model/loan_payment.dart';
 import 'package:core/sheets/state/crayon_payment_bottom_sheet_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:widget_library/buttons/docked_button.dart';
 import 'package:widget_library/buttons/text_button.dart';
 import 'package:widget_library/html/rich_text_description.dart';
@@ -192,7 +193,7 @@ class BottomSheetLoanRepayment extends StatelessWidget {
   Widget _paymentWidget(LoanPaymentMethod paymentMethod) {
     return InkWell(
       onTap: () {
-        coordinator.choosePaymentMethod(paymentMethod,paymentMethod.amount);
+        coordinator.choosePaymentMethod(paymentMethod, paymentMethod.amount);
       },
       child: Container(
         decoration: BoxDecoration(
@@ -295,8 +296,7 @@ class BottomSheetLoanRepayment extends StatelessWidget {
                 width: 14,
               ),
               RichTextDescription(
-                description: 'LR_payment_label'
-                    .replaceAll('{}', _sheetState.loanRepayment.selectedAmount),
+                description: 'LR_payment_label'.tr.replaceAll('{}', _sheetState.loanRepayment.selectedAmount),
                 key: const Key('subtitleLebel'),
                 linkTextStyle: ES_bold_text,
                 descriptionTextStyle: LR_payStatusLabel,
