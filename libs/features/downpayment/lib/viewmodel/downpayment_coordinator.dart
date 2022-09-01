@@ -30,5 +30,12 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
     await _navigationHandler.navigateToScanQrCode(deviceId);
   }
 
-
+  Future<void> createLoan() async {
+    var createLoan = await _downPaymentUseCase.createLoan(1, (p0) => null);
+    if (createLoan?.status == true) {
+      print("Success");
+    } else {
+      print("Failed");
+    }
+  }
 }

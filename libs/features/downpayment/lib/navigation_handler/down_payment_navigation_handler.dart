@@ -3,7 +3,6 @@ import 'package:core/navigation/navigation_type.dart';
 import 'package:scanqrcode/view/scanqrcode_screen.dart';
 import 'package:widget_library/helpers/error/helper/error_helper.dart';
 
-
 class DownPaymentNavigationHandler with ErrorHandler {
   final NavigationManager _navigationManager;
 
@@ -17,5 +16,4 @@ class DownPaymentNavigationHandler with ErrorHandler {
         arguments: arguments
         );
   }
-
 }

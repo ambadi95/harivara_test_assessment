@@ -61,6 +61,12 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
                     _,
                     __,
                     ___,
+                      ____,
+                      _____,
+                      ______,
+                      _______,
+                      ________,
+
                   ) =>
                       _buildMainUIWithLoading(
                     context,
@@ -266,7 +272,8 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
         onTap: () async {
-          await coordinator.navigateToScanCodeScreen(1);
+          await coordinator
+              .navigateToScanCodeScreen(widget.downPaymentScreenArgs.deviceId);
         },
         child: Container(
           width: double.infinity,

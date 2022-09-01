@@ -25,6 +25,11 @@ class DeviceOptionNavigationHandler with ErrorHandler {
         arguments: arguments);
   }
 
+  Future<void> goBack() async {
+    _navigationManager.goBack();
+  }
+
+
   Future<void> navigateToDeviceLoanCreation(
       String image, Data deviceDetailData) async {
     var arguments = DeviceLoanCreationArgs(deviceDetailData, image);
