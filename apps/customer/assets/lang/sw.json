@@ -61,8 +61,9 @@
   "DV_district_label" : "Wilaya",
   "DV_district_error_text" : "Wilaya Batili",
   "DV_district_hint_text" : "Ingiza Wilaya",
-
-
+  "Y9_DEVICE_LOAN": "Mkopo wa Kifaa cha Y9",
+  "DAILY_EMI": "Emi ya kila siku",
+  "MONTHLY_EMI": "Emi ya kila mwezi",
   "Save_Text": "Hifadhi",
   "HS_GoodMorning": "Habari za asubuhi",
   "HS_GoodAfternoon": "Mchana Mwema",

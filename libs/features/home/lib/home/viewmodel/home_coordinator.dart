@@ -39,7 +39,11 @@ class HomeCoordinator extends BaseViewModel<HomeScreenState> {
   }
 
   void navigateToLoanDetailScreen(LoanDetailResponse loanDetailResponse) {
-    _navigationHandler.navigateToLoanDetailScreen(loanDetailResponse);
+    if(loanDetailResponse.data == null){
+      _navigationHandler.navigateToLoanDetailsSheetCustomer();
+    }else {
+      _navigationHandler.navigateToLoanDetailScreen(loanDetailResponse);
+    }
   }
 
   void navigationToBottomSheet(BuildContext context,LoanDetailResponse loanDetailResponse) {
