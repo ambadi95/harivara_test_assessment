@@ -23,10 +23,14 @@ class SuccessScreen extends StatefulWidget {
 }
 
 class _SuccessScreenState extends State<SuccessScreen> {
+  String username = "";
+
   @override
   Widget build(BuildContext context) =>
       BaseView<ScanQRCodeCoordinator, ScanQRCodeState>(
-        setupViewModel: (coordinator) async {},
+        setupViewModel: (coordinator) async {
+          username = await coordinator.getCustomerName();
+        },
         builder: (context, state, coordinator) => SafeArea(
           child: Scaffold(
             body: _buildMainUI(coordinator),
@@ -34,7 +38,8 @@ class _SuccessScreenState extends State<SuccessScreen> {
         ),
       );
 
-  Widget _buildMainUI(ScanQRCodeCoordinator coordinator) {
+  Widget _buildMainUI(ScanQRCodeCoordinator coordinator){
+
     return Padding(
       padding: const EdgeInsets.all(16),
       child: Column(
@@ -43,17 +48,20 @@ class _SuccessScreenState extends State<SuccessScreen> {
           const SizedBox(
             height: 200,
           ),
-         // Text("Hi ${widget.username}"),
+
           _buildSuccessIcon(),
           const SizedBox(
             height: 24,
           ),
+          Text("Hi $username"),
           _buildEnrollmentText(),
           const SizedBox(
             height: 24,
           ),
           _buildEnrollmentIDText(),
           const Spacer(),
+          _buildBottomEnrollmentIDText(),
+          const SizedBox(height: 8),
           _buildAgentHomeButton(coordinator),
         ],
       ),
@@ -87,6 +95,19 @@ class _SuccessScreenState extends State<SuccessScreen> {
               description: 'SU_success_msg_2'.tr,
               linkTextStyle: ES_bold_text,
               descriptionTextStyle: ES_success_text)),
+    );
+  }
+
+  Widget _buildBottomEnrollmentIDText() {
+    return Center(
+      child: SizedBox(
+          width: 280,
+          child: RichTextDescription(
+              textAlign: TextAlign.center,
+              key: const Key('enID'),
+              description: 'SU_success_msg_3'.tr,
+              linkTextStyle: ES_bold_text,
+              descriptionTextStyle: ES_bottom_success_text)),
     );
   }
 

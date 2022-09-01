@@ -34,7 +34,7 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
   final String _identifier = 'kyc_credit-screen';
   bool _isBtnEnabled = false;
   bool _isKycPassEnabled = false;
-
+  bool _isChecked = false;
   bool _isKycCreditLoanEnabled = false;
 
   @override
@@ -183,8 +183,73 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
           ),
         ),
 
-        _buildContinueButton(context, coordinator, state)
+        _buildContinueButton(context, coordinator, state),
+        //_getTermsCheckBox(context, coordinator),
       ],
+    );
+  }
+  _getTermsCheckBox(
+      BuildContext context,
+      KycCreditCoordinator coordinator,
+      ) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SizedBox(
+          height: 30,
+          width: 30,
+          child: Checkbox(
+              value: _isChecked,
+              activeColor: Black,
+              onChanged: (value) {
+                setState(() {
+                  _isChecked = value!;
+                });
+              }),
+        ),
+        const SizedBox(
+          width: 10,
+        ),
+
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _checkBoxText(context),
+            _termsText(context, coordinator),
+          ],
+        ),
+
+//            _buildContinueButton(context, coordinator, state)
+      ],
+    );
+  }
+
+  Widget _checkBoxText(BuildContext context) {
+    return CrayonPaymentText(
+      key: Key('${_identifier}_KYC_Validation_With_Main_CheckBox'),
+      text: const TextUIDataModel('KYC_Validation_With_Main_CheckBox',
+          styleVariant: CrayonPaymentTextStyleVariant.headline4,
+          color: Black,
+          fontWeight: FontWeight.w500),
+    );
+  }
+
+  Widget _termsText(
+      BuildContext context,
+      KycCreditCoordinator coordinator,
+      ) {
+    return InkWell(
+      onTap: () {
+       // coordinator.navigateToTermsCondtionsScreen();
+      },
+      child: CrayonPaymentText(
+        key: Key('${_identifier}_KYC_Terms_and_Condition'),
+        text: const TextUIDataModel('KYC_Terms_and_Condition',
+            styleVariant: CrayonPaymentTextStyleVariant.headline4,
+            color: SU_subtitle_terms_color,
+            fontWeight: FontWeight.w500),
+      ),
     );
   }
 

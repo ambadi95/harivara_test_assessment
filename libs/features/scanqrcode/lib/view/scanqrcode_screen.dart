@@ -34,7 +34,8 @@ class ScanQrCodeScreen extends StatefulWidget {
 
 class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
   final String _identifier = 'scancode-screen';
-  String username = "";
+  String customerId = "";
+  String deviceId = "";
   TextEditingController imei1Number = TextEditingController();
   TextEditingController imei2Number = TextEditingController();
   String imei1NumberError = '';
@@ -43,8 +44,8 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
 
   void _validateForm(ScanQRCodeCoordinator coordinator) {
     coordinator.validateForm(
-        '12345', // ADD CUSTOMER ID
-        123456,
+        customerId, // ADD CUSTOMER ID
+        int.parse(deviceId),
         //widget.scanQRCodeArgs.deviceId,
         imei1Number.text,
         imei2Number.text
@@ -77,7 +78,10 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
       BaseView<ScanQRCodeCoordinator, ScanQRCodeState>(
         onStateListenCallback: (preState, newState) =>
         {_listenToStateChanges(context, newState)},
-        setupViewModel: (coordinator) {},
+        setupViewModel: (coordinator) async{
+          customerId = await coordinator.getCustomerID();
+          deviceId = await coordinator.getDeviceID();
+        },
         builder: (context, state, coordinator) {
           return state.maybeWhen(
               loading: () => _buildMainUIWithLoading(context, coordinator),
@@ -271,17 +275,16 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
         onTap: ()  {
-          // coordinator.isImei1numberValid(imei1Number.text);
-          // coordinator.isImei2numberValid(imei2Number.text);
-          // if(imei1Number.text.trim() != "" && imei2Number.text.trim() !="") {
-          //     _isBtnEnabled = true;
-          //   if (_isBtnEnabled) {
-          //     coordinator.deviceRegister(
-          //        12345,
-          //         //widget.scanQRCodeArgs.deviceId,
-          //         imei1Number.text, imei2Number.text);
-          //   }
-          // }
+          coordinator.isImei1numberValid(imei1Number.text);
+          coordinator.isImei2numberValid(imei2Number.text);
+          if(imei1Number.text.trim() != "" && imei2Number.text.trim() !="") {
+              _isBtnEnabled = true;
+            if (_isBtnEnabled) {
+              coordinator.deviceRegister(
+                  int.parse(deviceId),
+                  imei1Number.text, imei2Number.text);
+            }
+          }
           coordinator.successFulScreen();
         },
         child: Container(

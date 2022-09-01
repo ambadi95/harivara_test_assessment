@@ -19,8 +19,8 @@ class ScanQRCodeUseCase extends BaseDataProvider {
 
 
 
-  Future<String> getAgentName() async {
-    return await getValueFromSecureStorage('agentName', defaultValue: '');
+  Future<String> getCustomerName() async {
+    return await getValueFromSecureStorage('CustomerName', defaultValue: '');
   }
 
   Future<String> getCustomerId() async {

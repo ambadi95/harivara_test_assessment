@@ -47,7 +47,8 @@
   "SU_register_device_button" : "Register Device",
   "SU_close" : "Close",
   "SU_success_msg_1" : "Congratulations! Enjoy your experience with Y9.",
-  "SU_success_msg_2" : "Please sign in to Y9 app in your new device to avail our all benifits",
+  "SU_success_msg_2" : "Please sign in to Y9 app in your new device to avail our all benefits",
+  "SU_success_msg_3" : "All details are successfully sent to your registered mobile number",
   "SU_device_registration" : "Device Registration",
   "SU_device_reg_sub_heading" : "Find your device type in the Device Guides to get more information",
 
