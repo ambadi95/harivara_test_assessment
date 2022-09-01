@@ -122,8 +122,7 @@ class _LoanDetailScreenState extends State<LoanDetailScreen> {
         _getLoanDetailWidget(
             title: 'LD_Loan_Detail_Repayment'.tr,
             value:
-            getEmiString(widget.loanDetailArgs.loanDetailResponse.data?.repaymentType) ??
-                    "-"),
+            getEmiString(widget.loanDetailArgs.loanDetailResponse.data?.repaymentType) ),
         _getSpaceBetweenWidget(4),
         _getLoanDetailWithCurrencyWidget(
             title: 'LD_Loan__Detail_Daily_Repayment_Amount'.tr,
@@ -145,8 +144,7 @@ class _LoanDetailScreenState extends State<LoanDetailScreen> {
         _getLoanDetailWidget(
             title: 'LD_Loan_Detail_Start_Date'.tr,
             value:
-            formattDate(widget.loanDetailArgs.loanDetailResponse.data?.loanStartDate) ??
-                    "-"),
+            formattDate(widget.loanDetailArgs.loanDetailResponse.data?.loanStartDate)),
         _getSpaceBetweenWidget(4),
         _getLoanDetailWidget(
             title: 'LD_Loan_Detail_Final_Date'.tr,
@@ -389,7 +387,7 @@ class _LoanDetailScreenState extends State<LoanDetailScreen> {
   }
 
   String formattDate(String? date) {
-    DateTime dateTime = DateTime.parse(date!!);
+    DateTime dateTime = DateTime.parse(date!);
     return DateFormat('dd/mm/yyyy').format(dateTime).toString();
   }
 
@@ -399,7 +397,7 @@ class _LoanDetailScreenState extends State<LoanDetailScreen> {
     } else if (key == 'MONTHLY_EMI') {
       return 'MONTHLY_EMI'.tr ;
     } else {
-      return key!!;
+      return key!;
     }
   }
 }

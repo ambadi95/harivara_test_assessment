@@ -54,6 +54,7 @@ class HomeNavigationHandler with ErrorHandler {
         arguments: arguments);
   }
 
+
   Future<void> navigateToSettingsScreen() async {
     await _navigationManager.navigateTo(
       Settings.viewPath,
@@ -211,7 +212,7 @@ class HomeNavigationHandler with ErrorHandler {
   navigateToBrowser(String text, String path) async {
     var arguments = {'text': text, 'path': path};
     return WebViewPage(
-      title: TextUIDataModel(text!),
+      title: TextUIDataModel(text),
       launchType: LaunchType.Network,
       url: path,
       leadingActionIcon: const Icon(Icons.arrow_back),
