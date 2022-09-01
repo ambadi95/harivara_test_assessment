@@ -3,6 +3,7 @@ import 'package:task_manager/task.dart';
 import 'package:task_manager/task_manager_impl.dart';
 import 'package:shared_data_models/loan_detail/create_loan_response/create_loan_response.dart';
 import 'package:shared_data_models/loan_detail/loan_approval_response/loan_approval_response.dart';
+import 'package:shared_data_models/commonresponse/common_response.dart';
 import '../downpayment_module.dart';
 import '../service/downpayment_service.dart';
 import 'downpayment_viewmodel.dart';
@@ -25,6 +26,10 @@ class DownPaymentUseCase extends BaseDataProvider {
     return await getValueFromSecureStorage('customerId', defaultValue: '');
   }
 
+  Future<String> getMobileNumber() async {
+    return await getValueFromSecureStorage('mobileNumber', defaultValue: '');
+  }
+
   Future<CreateLoanResponse?> createLoan(
       int deviceId, Function(String) onErrorCallback) async {
     String agentId = await getAgentId();
@@ -44,6 +49,65 @@ class DownPaymentUseCase extends BaseDataProvider {
             checkResponse = CreateLoanResponse.fromMap(responseData);
           } catch (e) {
             checkResponse = const CreateLoanResponse(
+                status: false, code: "400", message: "Something went wrong");
+          }
+          return checkResponse;
+        });
+  }
+
+
+ Future<CommonResponse?> makePayment(
+      int deviceId, Function(String) onErrorCallback) async {
+    String mobileNumber = await getMobileNumber();
+    String customerId = await getCustomerId();
+    return await executeApiRequest<CommonResponse?>(
+        taskType: TaskType.DATA_OPERATION,
+        taskSubType: TaskSubType.REST,
+        moduleIdentifier: DownPaymentModule.moduleIdentifier,
+        requestData: {
+          "amountPaid": "2000",
+          "customerId": "86",
+          "mobileNumber": "686531710",
+          "paymentType": "Downpayment"
+        },
+        serviceIdentifier: DownPaymentService.makePaymentIdentifier,
+        onError: onErrorCallback,
+        modelBuilderCallback: (responseData) {
+          CommonResponse checkResponse;
+          try {
+            checkResponse = CommonResponse.fromMap(responseData);
+          } catch (e) {
+            checkResponse = const CommonResponse(
+                status: false, code: "400", message: "Something went wrong");
+          }
+          return checkResponse;
+        });
+  }
+
+ Future<CommonResponse?> checkPaymentStatus(
+      int deviceId, Function(String) onErrorCallback) async {
+    String mobileNumber = await getMobileNumber();
+    String customerId = await getCustomerId();
+    return await executeApiRequest<CommonResponse?>(
+        taskType: TaskType.DATA_OPERATION,
+        taskSubType: TaskSubType.REST,
+        moduleIdentifier: DownPaymentModule.moduleIdentifier,
+        requestData: {
+          "transaction": {
+            "airtel_money_id": "",
+            "id": "",
+            "message": "",
+            "status_code": ""
+          }
+        },
+        serviceIdentifier: DownPaymentService.paymentStatusIdentifier,
+        onError: onErrorCallback,
+        modelBuilderCallback: (responseData) {
+          CommonResponse checkResponse;
+          try {
+            checkResponse = CommonResponse.fromMap(responseData);
+          } catch (e) {
+            checkResponse = const CommonResponse(
                 status: false, code: "400", message: "Something went wrong");
           }
           return checkResponse;

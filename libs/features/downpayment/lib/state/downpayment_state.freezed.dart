@@ -20,20 +20,45 @@ mixin _$DownPaymentState {
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
     required TResult Function(
-            BuildContext context, String error, bool isLoading)
+            BuildContext context,
+            String error,
+            bool isLoading,
+            bool paymentRequested,
+            bool waitForPayment,
+            bool paymentReceived,
+            bool loanApproved,
+            bool loanActivated)
         ready,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialState,
-    TResult Function(BuildContext context, String error, bool isLoading)? ready,
+    TResult Function(
+            BuildContext context,
+            String error,
+            bool isLoading,
+            bool paymentRequested,
+            bool waitForPayment,
+            bool paymentReceived,
+            bool loanApproved,
+            bool loanActivated)?
+        ready,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
-    TResult Function(BuildContext context, String error, bool isLoading)? ready,
+    TResult Function(
+            BuildContext context,
+            String error,
+            bool isLoading,
+            bool paymentRequested,
+            bool waitForPayment,
+            bool paymentReceived,
+            bool loanApproved,
+            bool loanActivated)?
+        ready,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -118,7 +143,14 @@ class _$InitialState implements InitialState {
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
     required TResult Function(
-            BuildContext context, String error, bool isLoading)
+            BuildContext context,
+            String error,
+            bool isLoading,
+            bool paymentRequested,
+            bool waitForPayment,
+            bool paymentReceived,
+            bool loanApproved,
+            bool loanActivated)
         ready,
   }) {
     return initialState();
@@ -128,7 +160,16 @@ class _$InitialState implements InitialState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialState,
-    TResult Function(BuildContext context, String error, bool isLoading)? ready,
+    TResult Function(
+            BuildContext context,
+            String error,
+            bool isLoading,
+            bool paymentRequested,
+            bool waitForPayment,
+            bool paymentReceived,
+            bool loanApproved,
+            bool loanActivated)?
+        ready,
   }) {
     return initialState?.call();
   }
@@ -137,7 +178,16 @@ class _$InitialState implements InitialState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
-    TResult Function(BuildContext context, String error, bool isLoading)? ready,
+    TResult Function(
+            BuildContext context,
+            String error,
+            bool isLoading,
+            bool paymentRequested,
+            bool waitForPayment,
+            bool paymentReceived,
+            bool loanApproved,
+            bool loanActivated)?
+        ready,
     required TResult orElse(),
   }) {
     if (initialState != null) {
@@ -187,7 +237,15 @@ abstract class _$$DownPaymentStateReadyCopyWith<$Res> {
   factory _$$DownPaymentStateReadyCopyWith(_$DownPaymentStateReady value,
           $Res Function(_$DownPaymentStateReady) then) =
       __$$DownPaymentStateReadyCopyWithImpl<$Res>;
-  $Res call({BuildContext context, String error, bool isLoading});
+  $Res call(
+      {BuildContext context,
+      String error,
+      bool isLoading,
+      bool paymentRequested,
+      bool waitForPayment,
+      bool paymentReceived,
+      bool loanApproved,
+      bool loanActivated});
 }
 
 /// @nodoc
@@ -206,6 +264,11 @@ class __$$DownPaymentStateReadyCopyWithImpl<$Res>
     Object? context = freezed,
     Object? error = freezed,
     Object? isLoading = freezed,
+    Object? paymentRequested = freezed,
+    Object? waitForPayment = freezed,
+    Object? paymentReceived = freezed,
+    Object? loanApproved = freezed,
+    Object? loanActivated = freezed,
   }) {
     return _then(_$DownPaymentStateReady(
       context: context == freezed
@@ -220,6 +283,26 @@ class __$$DownPaymentStateReadyCopyWithImpl<$Res>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      paymentRequested: paymentRequested == freezed
+          ? _value.paymentRequested
+          : paymentRequested // ignore: cast_nullable_to_non_nullable
+              as bool,
+      waitForPayment: waitForPayment == freezed
+          ? _value.waitForPayment
+          : waitForPayment // ignore: cast_nullable_to_non_nullable
+              as bool,
+      paymentReceived: paymentReceived == freezed
+          ? _value.paymentReceived
+          : paymentReceived // ignore: cast_nullable_to_non_nullable
+              as bool,
+      loanApproved: loanApproved == freezed
+          ? _value.loanApproved
+          : loanApproved // ignore: cast_nullable_to_non_nullable
+              as bool,
+      loanActivated: loanActivated == freezed
+          ? _value.loanActivated
+          : loanActivated // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -228,7 +311,14 @@ class __$$DownPaymentStateReadyCopyWithImpl<$Res>
 
 class _$DownPaymentStateReady implements DownPaymentStateReady {
   const _$DownPaymentStateReady(
-      {required this.context, this.error = '', this.isLoading = false});
+      {required this.context,
+      this.error = '',
+      this.isLoading = false,
+      this.paymentRequested = false,
+      this.waitForPayment = false,
+      this.paymentReceived = false,
+      this.loanApproved = false,
+      this.loanActivated = false});
 
   @override
   final BuildContext context;
@@ -238,10 +328,25 @@ class _$DownPaymentStateReady implements DownPaymentStateReady {
   @override
   @JsonKey()
   final bool isLoading;
+  @override
+  @JsonKey()
+  final bool paymentRequested;
+  @override
+  @JsonKey()
+  final bool waitForPayment;
+  @override
+  @JsonKey()
+  final bool paymentReceived;
+  @override
+  @JsonKey()
+  final bool loanApproved;
+  @override
+  @JsonKey()
+  final bool loanActivated;
 
   @override
   String toString() {
-    return 'DownPaymentState.ready(context: $context, error: $error, isLoading: $isLoading)';
+    return 'DownPaymentState.ready(context: $context, error: $error, isLoading: $isLoading, paymentRequested: $paymentRequested, waitForPayment: $waitForPayment, paymentReceived: $paymentReceived, loanApproved: $loanApproved, loanActivated: $loanActivated)';
   }
 
   @override
@@ -251,7 +356,17 @@ class _$DownPaymentStateReady implements DownPaymentStateReady {
             other is _$DownPaymentStateReady &&
             const DeepCollectionEquality().equals(other.context, context) &&
             const DeepCollectionEquality().equals(other.error, error) &&
-            const DeepCollectionEquality().equals(other.isLoading, isLoading));
+            const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
+            const DeepCollectionEquality()
+                .equals(other.paymentRequested, paymentRequested) &&
+            const DeepCollectionEquality()
+                .equals(other.waitForPayment, waitForPayment) &&
+            const DeepCollectionEquality()
+                .equals(other.paymentReceived, paymentReceived) &&
+            const DeepCollectionEquality()
+                .equals(other.loanApproved, loanApproved) &&
+            const DeepCollectionEquality()
+                .equals(other.loanActivated, loanActivated));
   }
 
   @override
@@ -259,7 +374,12 @@ class _$DownPaymentStateReady implements DownPaymentStateReady {
       runtimeType,
       const DeepCollectionEquality().hash(context),
       const DeepCollectionEquality().hash(error),
-      const DeepCollectionEquality().hash(isLoading));
+      const DeepCollectionEquality().hash(isLoading),
+      const DeepCollectionEquality().hash(paymentRequested),
+      const DeepCollectionEquality().hash(waitForPayment),
+      const DeepCollectionEquality().hash(paymentReceived),
+      const DeepCollectionEquality().hash(loanApproved),
+      const DeepCollectionEquality().hash(loanActivated));
 
   @JsonKey(ignore: true)
   @override
@@ -272,30 +392,58 @@ class _$DownPaymentStateReady implements DownPaymentStateReady {
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
     required TResult Function(
-            BuildContext context, String error, bool isLoading)
+            BuildContext context,
+            String error,
+            bool isLoading,
+            bool paymentRequested,
+            bool waitForPayment,
+            bool paymentReceived,
+            bool loanApproved,
+            bool loanActivated)
         ready,
   }) {
-    return ready(context, error, isLoading);
+    return ready(context, error, isLoading, paymentRequested, waitForPayment,
+        paymentReceived, loanApproved, loanActivated);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialState,
-    TResult Function(BuildContext context, String error, bool isLoading)? ready,
+    TResult Function(
+            BuildContext context,
+            String error,
+            bool isLoading,
+            bool paymentRequested,
+            bool waitForPayment,
+            bool paymentReceived,
+            bool loanApproved,
+            bool loanActivated)?
+        ready,
   }) {
-    return ready?.call(context, error, isLoading);
+    return ready?.call(context, error, isLoading, paymentRequested,
+        waitForPayment, paymentReceived, loanApproved, loanActivated);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
-    TResult Function(BuildContext context, String error, bool isLoading)? ready,
+    TResult Function(
+            BuildContext context,
+            String error,
+            bool isLoading,
+            bool paymentRequested,
+            bool waitForPayment,
+            bool paymentReceived,
+            bool loanApproved,
+            bool loanActivated)?
+        ready,
     required TResult orElse(),
   }) {
     if (ready != null) {
-      return ready(context, error, isLoading);
+      return ready(context, error, isLoading, paymentRequested, waitForPayment,
+          paymentReceived, loanApproved, loanActivated);
     }
     return orElse();
   }
@@ -336,11 +484,21 @@ abstract class DownPaymentStateReady implements DownPaymentState {
   const factory DownPaymentStateReady(
       {required final BuildContext context,
       final String error,
-      final bool isLoading}) = _$DownPaymentStateReady;
+      final bool isLoading,
+      final bool paymentRequested,
+      final bool waitForPayment,
+      final bool paymentReceived,
+      final bool loanApproved,
+      final bool loanActivated}) = _$DownPaymentStateReady;
 
   BuildContext get context;
   String get error;
   bool get isLoading;
+  bool get paymentRequested;
+  bool get waitForPayment;
+  bool get paymentReceived;
+  bool get loanApproved;
+  bool get loanActivated;
   @JsonKey(ignore: true)
   _$$DownPaymentStateReadyCopyWith<_$DownPaymentStateReady> get copyWith =>
       throw _privateConstructorUsedError;

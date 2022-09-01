@@ -10,6 +10,10 @@ class DownPaymentApiResolver extends TaskResolver {
   @override
   Future execute(String identifier, Map<String, dynamic> requestData) {
     switch (identifier) {
+      case DownPaymentService.makePaymentIdentifier:
+        return _downPaymentService.makePayment(requestData);
+      case DownPaymentService.paymentStatusIdentifier:
+        return _downPaymentService.checkPaymentStatus(requestData);
       case DownPaymentService.createLoanIdentifier:
         return _downPaymentService.createLoan(requestData);
       case DownPaymentService.activateLoanIdentifier:
