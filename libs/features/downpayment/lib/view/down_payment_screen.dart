@@ -21,9 +21,10 @@ import '../viewmodel/downpayment_coordinator.dart';
 class DownPaymentScreen extends StatefulWidget {
   static const viewPath =
       '${DownPaymentModule.moduleIdentifier}/downpaymetnscreen';
+  //final DownPaymentScreenArgs downPaymentScreenArgs;
+  final DownPaymentScreenArgs downPaymentScreenArgs;
 
-  final int deviceId;
-  const DownPaymentScreen({Key? key, required this.deviceId})
+  const DownPaymentScreen({Key? key, required this.downPaymentScreenArgs})
       : super(key: key);
 
   @override
