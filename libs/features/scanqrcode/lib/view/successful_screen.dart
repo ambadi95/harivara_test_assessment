@@ -29,7 +29,7 @@ class _SuccessScreenState extends State<SuccessScreen> {
   Widget build(BuildContext context) =>
       BaseView<ScanQRCodeCoordinator, ScanQRCodeState>(
         setupViewModel: (coordinator) async {
-          username = await coordinator.getCustomerName();
+          username = await coordinator.getAgentName();
         },
         builder: (context, state, coordinator) => SafeArea(
           child: Scaffold(

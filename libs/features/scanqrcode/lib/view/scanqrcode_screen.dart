@@ -79,7 +79,6 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
         {_listenToStateChanges(context, newState)},
         setupViewModel: (coordinator) async{
           customerId = await coordinator.getCustomerID();
-          username = await coordinator.getCustomerName();
           },
         builder: (context, state, coordinator) {
           return state.maybeWhen(
@@ -126,7 +125,6 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           _title(context),
-          Text("Hi $username"),
           dynamicHSpacer(8),
           _subTitle(context),
           dynamicHSpacer(50),
