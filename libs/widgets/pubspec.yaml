@@ -47,6 +47,9 @@ dependencies:
   config:
     path: ../../config
 
+  login:
+   path : ../features/login/
+
 
 
 dev_dependencies:

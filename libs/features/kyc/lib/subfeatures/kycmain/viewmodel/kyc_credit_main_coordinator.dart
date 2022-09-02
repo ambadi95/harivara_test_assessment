@@ -1,7 +1,7 @@
 import 'package:core/mobile_core.dart';
 import 'package:core/view/analytics_state_notifier.dart';
 import 'package:flutter/material.dart';
-import 'package:crayon_payment_customer/util/app_utils.dart';
+import 'package:widget_library/utils/app_utils.dart';
 import '../navigation_handler/kyc_main_navigation_handler.dart';
 import '../state/kyc_credit_main_state.dart';
 import 'kyc_credit_main_usecase.dart';

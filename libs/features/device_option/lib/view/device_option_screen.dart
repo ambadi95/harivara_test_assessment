@@ -23,7 +23,7 @@ import '../device_option_module.dart';
 import '../state/device_option_state.dart';
 import '../viewmodel/device_option_coordinator.dart';
 import 'package:get/get.dart';
-import 'package:crayon_payment_customer/util/app_utils.dart';
+import 'package:widget_library/utils/app_utils.dart';
 
 class DeviceOption extends StatefulWidget {
   static const String viewPath =

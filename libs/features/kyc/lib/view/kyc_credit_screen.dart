@@ -3,7 +3,7 @@ import 'package:config/Colors.dart';
 import 'package:config/Config.dart';
 import 'package:config/Styles.dart';
 import 'package:core/view/base_view.dart';
-import 'package:crayon_payment_customer/util/app_utils.dart';
+import 'package:widget_library/utils/app_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_data_models/kyc/kyc_screen_args.dart';
 import 'package:widget_library/app_bars/crayon_payment_app_bar_attributes.dart';

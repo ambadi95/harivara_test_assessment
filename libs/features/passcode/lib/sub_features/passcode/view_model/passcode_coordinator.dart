@@ -11,7 +11,7 @@ import 'package:widget_library/keypad/keypad_button_type.dart';
 import 'package:get/get.dart';
 import '../state/passcode_state.dart';
 import '../view/passcode.dart';
-import 'package:crayon_payment_customer/util/app_utils.dart';
+import 'package:widget_library/utils/app_utils.dart';
 
 class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
   final PasscodeNavigationHandler _navigationHandler;
