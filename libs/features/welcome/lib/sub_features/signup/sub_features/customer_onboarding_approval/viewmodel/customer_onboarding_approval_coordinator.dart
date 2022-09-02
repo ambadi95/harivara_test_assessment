@@ -1,5 +1,5 @@
 import 'package:config/Config.dart';
-import 'package:crayon_payment_customer/util/app_utils.dart';
+import 'package:widget_library/utils/app_utils.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:task_manager/base_classes/base_view_model.dart';
 import 'package:get/get_core/src/get_main.dart';
