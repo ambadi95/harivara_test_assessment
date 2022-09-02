@@ -1,4 +1,5 @@
 import 'package:config/Config.dart';
+import 'package:crayon_payment_customer/util/app_utils.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:task_manager/base_classes/base_view_model.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -49,14 +50,29 @@ class CustomerOnBoardingApprovalCoordinator
   }
 
   Future getCustomerDetails(String mobileNumber, String referenceID) async {
-    var detailResponse = await _signupUseCase.getCustomerDetailsByMobileNumber('+255'+mobileNumber, (p0) => null);
-    if(detailResponse!.status == true){
-      state = state.copyWith(isCustomerExist: true,referenceId:detailResponse.data!.referenceId.toString(), customerId:detailResponse.data!.customerId.toString());
-    //  navigateToOtpScreen(mobileNumber, detailResponse.data!.customerId.toString());
-    }else{
-      _showAlertDataMismatch();
+    state = state.copyWith(isLoading: true);
+    try {
+      var detailResponse = await _signupUseCase
+          .getCustomerDetailsByMobileNumber(
+          '+255' + mobileNumber, (p0) => null);
+      if (detailResponse!.status == true) {
+        state = state.copyWith(isCustomerExist: true,
+            referenceId: detailResponse.data!.referenceId.toString(),
+            customerId: detailResponse.data!.customerId.toString(),
+            isLoading: false);
+      } else {
+        state = state.copyWith(isLoading: false);
+        _showAlertDataMismatch();
+      }
+    }catch (e){
+      print(e.toString());
+      AppUtils.appUtilsInstance.showErrorBottomSheet(
+        title: e.toString(),
+        onClose: () {
+          goBack();
+        },
+      );
     }
-    //navigateToOtpScreen( mobileNumber);
   }
 
   Future navigateToOtpScreen(String mobileNumber, String customerId) async {

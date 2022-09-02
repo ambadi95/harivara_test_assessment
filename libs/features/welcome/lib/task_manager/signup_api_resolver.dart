@@ -50,7 +50,9 @@ class SignupApiResolver extends TaskResolver {
       case IDetailsService.districtIdentifier:
         return _detailsService.getDistrict(
             requestData['regionId'], requestData['userType']);
-
+      case IDetailsService.getCustomerDetailIdentifier:
+        return _detailsService.getCustomerDetail(
+            requestData['mobileNo']);
       case IDetailsService.submitCustomerDetailIdentifier:
         return _detailsService.submitCustomerDetails(
             requestData['data'], requestData['userType']);
