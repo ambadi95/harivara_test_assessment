@@ -165,13 +165,13 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
                     _getVerticalDivider(
                         context,
                         AppUtils.appUtilsInstance
-                            .getPercentageSize(percentage: 14)),
+                            .getPercentageSize(percentage: 13)),
                   ],)),
               Expanded(
                 flex: 8,
                 child: SizedBox(
                   height: AppUtils.appUtilsInstance
-                      .getPercentageSize(percentage: 14),
+                      .getPercentageSize(percentage: 13),
                 ),
               ),
             ],
@@ -193,7 +193,7 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
                     _getVerticalDivider(
                         context,
                         AppUtils.appUtilsInstance
-                            .getPercentageSize(percentage: 8)),
+                            .getPercentageSize(percentage: 7)),
                     _getCheckedIcon(
                       context,
                       !_isKycCreditLoanEnabled
@@ -549,7 +549,7 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
     return CrayonPaymentText(
       key: Key('${_identifier}Credit_Score_With_Telco'),
       text: const TextUIDataModel('Credit_Score_With_Telco',
-          styleVariant: CrayonPaymentTextStyleVariant.headline2,
+          styleVariant: CrayonPaymentTextStyleVariant.headline3,
           color: AN_TitleColor,
           fontWeight: FontWeight.w600),
     );
