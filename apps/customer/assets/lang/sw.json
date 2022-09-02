@@ -21,7 +21,7 @@
 
 
   "SU_title" : "Weka Nambari ya NIDA",
-  "SU_subtitle" : "Kwa kujisajili kwenye Y9 Pay, unakubali Sheria na Masharti.",
+  "SU_subtitle" : "Kwa kujisajili kwenye Y9 Pay, unakubali \n%{Sheria na Masharti|https://www.google.com}%.",
   "SU_ID_no_label" : "Namba ya NIDA",
   "SU_mobile_no_label" : "Namba ya simu ya mkononi",
   "SU_carrier_message" : "Huenda ukatozwa ada za mtoa huduma za SMS.",

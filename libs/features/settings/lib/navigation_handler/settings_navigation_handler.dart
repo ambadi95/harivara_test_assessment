@@ -103,7 +103,7 @@ class SettingsNavigationHandler with ErrorHandler {
   }
 
   void navigateToTermsCondition() async {
-    var uri = Uri.parse("https://y9bank.com/term-of-services/");
+    var uri = Uri.parse(y9TermsCondition);
     if (await canLaunchUrl(uri)) {
       await launchUrl(uri);
     } else {
