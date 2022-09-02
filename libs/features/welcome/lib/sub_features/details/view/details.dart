@@ -125,32 +125,37 @@ class _DetailsScreenState extends State<DetailsScreen> {
           onStateListenCallback: (preState, newState) =>
               {_listenToStateChanges(context, newState)},
           setupViewModel: (coordinator) async {
-           await coordinator.getMobileNumber();
+            await coordinator.getMobileNumber();
             List<Datum> regions = await coordinator.getRegion(widget.userType);
             genderTypeDropDown = getDropDownData(coordinator.genderType);
             regionDropDown = getRegionDropDownData(regions);
-            customerDetail =  await coordinator.getCustomerDetail(regionDropDown,widget.userType);
-           name.text = customerDetail!.data!.firstName! +' '+customerDetail!.data!.lastName!;
-           dob.text = customerDetail!.data!.birthdate!;
-           profession.text = customerDetail!.data!.profession!;
-           emailId.text = customerDetail!.data!.emailId!;
-           address.text = customerDetail!.data!.address!;
-           poBox.text = customerDetail!.data!.poBoxNumber!;
-           district.text = customerDetail!.data!.district!;
-           region.text = customerDetail!.data!.region!;
-           gender.text = customerDetail!.data!.gender!;
-           if(customerDetail!.data != null){
-             coordinator.isValidDob(dob.text);
+            customerDetail = await coordinator.getCustomerDetail(
+                regionDropDown, widget.userType);
+            name.text = customerDetail!.data!.firstName! +
+                ' ' +
+                customerDetail!.data!.lastName!;
+            dob.text = customerDetail!.data!.birthdate!;
+            selectedDate = DateFormat('dd/MM/yyyy')
+                .parse(customerDetail!.data!.birthdate.toString());
+            profession.text = customerDetail!.data!.profession!;
+            emailId.text = customerDetail!.data!.emailId!;
+            address.text = customerDetail!.data!.address!;
+            poBox.text = customerDetail!.data!.poBoxNumber!;
+            district.text = customerDetail!.data!.district!;
+            region.text = customerDetail!.data!.region!;
+            gender.text = customerDetail!.data!.gender!;
+            if (customerDetail!.data != null) {
+              coordinator.isValidDob(dob.text);
 
-             coordinator.isValidDistrict(district.text);
-             coordinator.isValidRegion(region.text);
-           }
-           if(_region != null){
-             dis = await coordinator.getDistrict(_region!.id!, widget.userType);
-             districtDropDown = getDistrictDropDownData(dis);
-             coordinator.fetchDistrictState(customerDetail!.data!.district!);
-
-           }
+              coordinator.isValidDistrict(district.text);
+              coordinator.isValidRegion(region.text);
+            }
+            if (_region != null) {
+              dis =
+                  await coordinator.getDistrict(_region!.id!, widget.userType);
+              districtDropDown = getDistrictDropDownData(dis);
+              coordinator.fetchDistrictState(customerDetail!.data!.district!);
+            }
           },
           builder: (context, state, coordinator) => SafeArea(
                 child: state.maybeWhen(
@@ -774,8 +779,6 @@ class _DetailsScreenState extends State<DetailsScreen> {
     coordinator.setDistrict(value);
   }
 
-
-
   void _listenToStateChanges(BuildContext context, DetailsState state) {
     state.maybeWhen(
         DetailsFormState: (isValid) {
@@ -820,21 +823,24 @@ class _DetailsScreenState extends State<DetailsScreen> {
         onDistrictChoosen: (value) {
           _district = value;
         },
-        onGenderTypeFetched: (genderType){
-          var item = genderTypeDropDown.firstWhereOrNull((element) => element.value != null && element.value!.gender == genderType);
-          if(item != null){
+        onGenderTypeFetched: (genderType) {
+          var item = genderTypeDropDown.firstWhereOrNull((element) =>
+              element.value != null && element.value!.gender == genderType);
+          if (item != null) {
             _genderType = item.value;
           }
         },
-        onRegionFetched: (region){
-          var regionItem = regionDropDown.firstWhereOrNull((element) => element.value != null && element.value!.name == region);
-          if(regionItem !=null){
+        onRegionFetched: (region) {
+          var regionItem = regionDropDown.firstWhereOrNull((element) =>
+              element.value != null && element.value!.name == region);
+          if (regionItem != null) {
             _region = regionItem.value;
           }
-         },
-        onDistrictFetched: (district){
-          var districtItem = districtDropDown.firstWhereOrNull((element) => element.value != null && element.value!.name == district);
-          if(districtItem != null){
+        },
+        onDistrictFetched: (district) {
+          var districtItem = districtDropDown.firstWhereOrNull((element) =>
+              element.value != null && element.value!.name == district);
+          if (districtItem != null) {
             _district = districtItem.value;
           }
         },
@@ -883,6 +889,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
       coordinator.isValidDob(dob.text);
     }
     final DateFormat inputFormat = DateFormat('yyyy-MM-dd');
+
     if (inputFormat
             .parse(DateTime.now().toString())
             .difference(inputFormat.parse(selectedDate.toString()))
