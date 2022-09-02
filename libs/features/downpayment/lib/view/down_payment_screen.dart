@@ -22,9 +22,9 @@ class DownPaymentScreen extends StatefulWidget {
   static const viewPath =
       '${DownPaymentModule.moduleIdentifier}/downpaymetnscreen';
   //final DownPaymentScreenArgs downPaymentScreenArgs;
-  final DownPaymentScreenArgs downPaymentScreenArgs;
+  final int deviceId;
 
-  const DownPaymentScreen({Key? key, required this.downPaymentScreenArgs})
+  const DownPaymentScreen({Key? key, required this.deviceId})
       : super(key: key);
 
   @override
@@ -274,7 +274,7 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
       child: GestureDetector(
         onTap: () async {
           await coordinator
-              .navigateToScanCodeScreen(widget.downPaymentScreenArgs.deviceId);
+              .navigateToScanCodeScreen(widget.deviceId);
         },
         child: Container(
           width: double.infinity,
