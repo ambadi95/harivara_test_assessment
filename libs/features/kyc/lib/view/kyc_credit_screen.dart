@@ -46,7 +46,7 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
           setupViewModel: (coordinator) {
             coordinator.initialiseState(context);
             kycCreditCoordinator = coordinator;
-            // coordinator.callKycCheck(context);
+            coordinator.callKycCheck(context);
           },
           onStateListenCallback: (preState, newState) =>
               {_listenToStateChanges(context, newState as KycCreditStateReady)},
@@ -489,17 +489,21 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
         onTap: () async {
-          if (!_isKycPassEnabled) {
-            await coordinator.callKycCheck(context);
-          } else if (!_isKycCreditLoanEnabled) {
-            await coordinator.callCreditScore(context);
+          if (_isKycPassEnabled == true && _isKycCreditLoanEnabled == true) {
+            kycCreditCoordinator!.navigateToDeviceOption(
+                false, UserType.AgentCustomer);
           }
+
+          //   await coordinator.callKycCheck(context);
+          // } else if (!_isKycCreditLoanEnabled) {
+          //   await coordinator.callCreditScore(context);
+          // }
         },
         child: Container(
           width: double.infinity,
           height: 50,
           decoration: BoxDecoration(
-              color:  SU_button_color ,
+              color: (_isKycPassEnabled == true && _isKycCreditLoanEnabled == true) ?  SU_button_color  :SU_grey_color,
               borderRadius: BorderRadius.circular(2.0)),
           child: Center(
             child: Text(
@@ -607,8 +611,6 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
       setState(() {
         _isKycCreditLoanEnabled = true;
       });
-      kycCreditCoordinator!.navigateToDeviceOption(false, UserType.AgentCustomer);
-
       return;
     } else if (state.isCreditCheckError == true &&
         state.error.isNotEmpty == true) {
