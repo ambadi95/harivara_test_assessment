@@ -29,7 +29,7 @@ class KycCreditMainCoordinator
   Future callMnoConsent(BuildContext context
       ) async {
     try {
-      state = KycCreditMainState.ready(context: context,isLoading:true );
+      state = KycCreditMainState.ready(context: context,isLoading:true);
       String customerId= await _kycCreditMainUseCase.getCustomerId();
       var response = await _kycCreditMainUseCase.callMnoConsent(customerId,
               (p0) => null);

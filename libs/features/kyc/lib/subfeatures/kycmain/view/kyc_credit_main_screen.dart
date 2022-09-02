@@ -24,7 +24,8 @@ import '../state/kyc_credit_main_state.dart';
 import '../viewmodel/kyc_credit_main_coordinator.dart';
 
 class KycCreditMainScreen extends StatefulWidget {
-  static const viewPath = '${KycCreditMainModule.moduleIdentifier}/kyccreditmainscreen';
+  static const viewPath =
+      '${KycCreditMainModule.moduleIdentifier}/kyccreditmainscreen';
   final KycScreenArgs kycScreenArgs;
 
   const KycCreditMainScreen({Key? key, required this.kycScreenArgs})
@@ -45,32 +46,32 @@ class _KycCreditMainScreenState extends State<KycCreditMainScreen> {
             coordinator.initialiseState(context);
           },
           builder: (context, state, coordinator) => CrayonPaymentScaffold(
-            appBarAttributes: CrayonPaymentAppBarAttributes(
-              key: const Key('CardDetailsScreen_AppBarBackButton'),
-              left: [
-                const CrayonPaymentAppBarButtonType.back(),
-              ],
-            ),
-            body: state.when(
-              initialState: () => const SizedBox(),
-              ready: (
-                  _,
-                  __,
-                  ___,
+                appBarAttributes: CrayonPaymentAppBarAttributes(
+                  key: const Key('CardDetailsScreen_AppBarBackButton'),
+                  left: [
+                    const CrayonPaymentAppBarButtonType.back(),
+                  ],
+                ),
+                body: state.when(
+                  initialState: () => const SizedBox(),
+                  ready: (
+                    _,
+                    __,
+                    ___,
                   ) =>
-                  _buildMainUIWithLoading(
+                      _buildMainUIWithLoading(
                     context,
                     coordinator,
                     (state as KycCreditMainStateReady),
                   ),
-            ),
-          ));
+                ),
+              ));
 
   Widget _buildMainUIWithLoading(
-      BuildContext context,
-      KycCreditMainCoordinator coordinator,
-      KycCreditMainStateReady state,
-      ) {
+    BuildContext context,
+    KycCreditMainCoordinator coordinator,
+    KycCreditMainStateReady state,
+  ) {
     return Stack(
       children: [
         _buildMainUI(context, coordinator, state),
@@ -81,23 +82,18 @@ class _KycCreditMainScreenState extends State<KycCreditMainScreen> {
 
   Widget _createLoading(KycCreditMainStateReady state) {
     if (state.isLoading) {
-      return
-        Container(
-          color: Colors.black.withOpacity(0.4),
-          child: const
-          CenteredCircularProgressBar(
-              color: config_colors.PRIMARY_COLOR),
-        );
+      return const CenteredCircularProgressBar(color: PRIMARY_COLOR);
+
     } else {
       return Container();
     }
   }
 
   Widget _buildMainUI(
-      BuildContext context,
-      KycCreditMainCoordinator coordinator,
-      KycCreditMainStateReady state,
-      ) {
+    BuildContext context,
+    KycCreditMainCoordinator coordinator,
+    KycCreditMainStateReady state,
+  ) {
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -109,7 +105,7 @@ class _KycCreditMainScreenState extends State<KycCreditMainScreen> {
               _buildTitle(context, coordinator),
               SizedBox(
                 height:
-                AppUtils.appUtilsInstance.getPercentageSize(percentage: 5),
+                    AppUtils.appUtilsInstance.getPercentageSize(percentage: 5),
               ),
               _subTitleMain(context),
             ],
@@ -133,10 +129,10 @@ class _KycCreditMainScreenState extends State<KycCreditMainScreen> {
   }
 
   Widget _getCheckBoxUnCheckErrorBottomSheetUi(
-      BuildContext context,
-      KycCreditMainCoordinator coordinator,
-      KycCreditMainState state,
-      ) {
+    BuildContext context,
+    KycCreditMainCoordinator coordinator,
+    KycCreditMainState state,
+  ) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: ListView(
@@ -148,7 +144,7 @@ class _KycCreditMainScreenState extends State<KycCreditMainScreen> {
           ),
           CrayonPaymentText(
             key: Key('${_identifier}_KYC_Terms_and_Condition_ERROR'),
-            text:  TextUIDataModel('Terms_And_Condition_Error'.tr,
+            text: const TextUIDataModel('Error',
                 textAlign: TextAlign.center,
                 styleVariant: CrayonPaymentTextStyleVariant.subtitle1,
                 color: Black,
@@ -172,19 +168,19 @@ class _KycCreditMainScreenState extends State<KycCreditMainScreen> {
           //     percentage: 8,
           //   ),
           // ),
-          //   CrayonPaymentText(
-          //   key: Key('${_identifier}_KYC_Verification_Failed_SubTitle'),
-          //   text: const TextUIDataModel('KYC_Verification_Failed_SubTitle',
-          //       styleVariant: CrayonPaymentTextStyleVariant.subtitle2,
-          //       textAlign: TextAlign.center,
-          //       color: AN_SubTitleColor,
-          //       fontWeight: FontWeight.w400),
-          // ),
-          // SizedBox(
-          //   height: AppUtils.appUtilsInstance.getPercentageSize(
-          //     percentage: 8,
-          //   ),
-          // ),
+          CrayonPaymentText(
+            key: Key('${_identifier}_KYC_Verification_Failed_SubTitle'),
+            text: TextUIDataModel('Terms_And_Condition_Error'.tr,
+                styleVariant: CrayonPaymentTextStyleVariant.subtitle2,
+                textAlign: TextAlign.center,
+                color: AN_SubTitleColor,
+                fontWeight: FontWeight.w400),
+          ),
+          SizedBox(
+            height: AppUtils.appUtilsInstance.getPercentageSize(
+              percentage: 8,
+            ),
+          ),
           _buildGoBackButton(context, coordinator, state),
         ],
       ),
@@ -192,10 +188,10 @@ class _KycCreditMainScreenState extends State<KycCreditMainScreen> {
   }
 
   Widget _buildGoBackButton(
-      BuildContext context,
-      KycCreditMainCoordinator coordinator,
-      KycCreditMainState state,
-      ) {
+    BuildContext context,
+    KycCreditMainCoordinator coordinator,
+    KycCreditMainState state,
+  ) {
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
@@ -219,10 +215,10 @@ class _KycCreditMainScreenState extends State<KycCreditMainScreen> {
   }
 
   Widget _buildCheckNowButton(
-      BuildContext context,
-      KycCreditMainCoordinator coordinator,
-      KycCreditMainState state,
-      ) {
+    BuildContext context,
+    KycCreditMainCoordinator coordinator,
+    KycCreditMainState state,
+  ) {
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 16),
       child: GestureDetector(
@@ -230,18 +226,20 @@ class _KycCreditMainScreenState extends State<KycCreditMainScreen> {
           // coordinator.callMnoConsent(context);
           if (_isChecked) {
             await coordinator.callMnoConsent(context);
-          } else {
+          }
+          /*  else {
             coordinator.showErrorBottomSheet(
                 _getCheckBoxUnCheckErrorBottomSheetUi(
                     context, coordinator, state),
                 context);
-          }
+          }*/
         },
         child: Container(
           width: double.infinity,
           height: 50,
           decoration: BoxDecoration(
-              color: SU_button_color, borderRadius: BorderRadius.circular(2.0)),
+              color: _isChecked == true ? SU_button_color : SU_grey_color,
+              borderRadius: BorderRadius.circular(2.0)),
           child: Center(
             child: Text(
               'KYC_Check_Now'.tr,
@@ -254,9 +252,9 @@ class _KycCreditMainScreenState extends State<KycCreditMainScreen> {
   }
 
   Widget _buildTitle(
-      context,
-      KycCreditMainCoordinator coordinator,
-      ) {
+    context,
+    KycCreditMainCoordinator coordinator,
+  ) {
     return CrayonPaymentText(
       key: Key('${_identifier}_KYC_Titlee'),
       text: const TextUIDataModel('KYC_Title',
@@ -267,9 +265,9 @@ class _KycCreditMainScreenState extends State<KycCreditMainScreen> {
   }
 
   _getTermsCheckBox(
-      BuildContext context,
-      KycCreditMainCoordinator coordinator,
-      ) {
+    BuildContext context,
+    KycCreditMainCoordinator coordinator,
+  ) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -314,9 +312,9 @@ class _KycCreditMainScreenState extends State<KycCreditMainScreen> {
   }
 
   Widget _termsText(
-      BuildContext context,
-      KycCreditMainCoordinator coordinator,
-      ) {
+    BuildContext context,
+    KycCreditMainCoordinator coordinator,
+  ) {
     return InkWell(
       onTap: () {
         coordinator.navigateToTermsCondtionsScreen();
