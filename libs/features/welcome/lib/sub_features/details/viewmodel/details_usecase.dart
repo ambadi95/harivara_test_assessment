@@ -51,6 +51,10 @@ class DetailsUseCase extends BaseDataProvider {
     return await setValueToSecureStorage({'mobileNumber': mobileNumber});
   }
 
+  Future<void> saveNewCustomerName(String fullName) async {
+    return await setValueToSecureStorage({'newCustomerName': fullName});
+  }
+
 
   Future<RegionDetails?> getRegion(
       Function(String) onErrorCallback, UserType userType) async {

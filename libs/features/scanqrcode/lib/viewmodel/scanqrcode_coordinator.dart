@@ -28,8 +28,8 @@ class ScanQRCodeCoordinator extends AnalyticsStateNotifier<ScanQRCodeState> {
         ScanQRCodeState.ready(context: context, error: "", isLoading: false);
   }
 
-  Future<String> getAgentName() async {
-    return _scanQRCodeUseCase.getAgentName();
+  Future<String> getNewCustomerName() async {
+    return _scanQRCodeUseCase.getNewCustomerName();
   }
 
   Future<String> getCustomerID() async {
