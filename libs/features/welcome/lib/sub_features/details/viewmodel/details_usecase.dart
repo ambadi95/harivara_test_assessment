@@ -81,6 +81,25 @@ class DetailsUseCase extends BaseDataProvider {
           return DistrictResponse.fromJson(data);
         });
   }
+  Future<GetCustomerDetailsResponse?> getCustomerDetailsByMobileNumber(
+      Function(String) onErrorCallback) async {
+      String phoneNo = await getMobileNumber();
+    return await executeApiRequest<GetCustomerDetailsResponse?>(
+        taskType: TaskType.DATA_OPERATION,
+        taskSubType: TaskSubType.REST,
+        moduleIdentifier: WelcomeModule.moduleIdentifier,
+        requestData: {
+          "mobileNo": phoneNo.replaceAll(" ", "")
+        },
+        serviceIdentifier: IDetailsService.getCustomerDetailIdentifier,
+        onError: onErrorCallback,
+        modelBuilderCallback: (responseData) {
+          final data = responseData;
+          GetCustomerDetailsResponse detailResponse =
+          GetCustomerDetailsResponse.fromJson(data);
+          return detailResponse;
+        });
+  }
 
   Future<CustomerDetailResponse?> submitCustomerDetails(
       String name,
