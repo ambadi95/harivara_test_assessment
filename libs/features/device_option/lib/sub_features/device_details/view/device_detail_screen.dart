@@ -375,7 +375,7 @@ class _DeviceDetailScreenState extends State<DeviceDetailScreen> {
       onPressed: () {
         // print(widget.userType);
 
-       // coordinator.navigateToDownPayment(detailDetail?.deviceId);
+      // coordinator.navigateToDownPayment(detailDetail?.deviceId);
         coordinator.navigateToCustomerLoanCreationScreen(
             widget.deviceId == 1 ? 'assets/a13.png' : 'assets/a03.png',
             detailDetail!);

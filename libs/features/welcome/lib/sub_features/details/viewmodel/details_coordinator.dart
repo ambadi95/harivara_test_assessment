@@ -248,7 +248,7 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
         _detailsUseCase.saveCustomerId(response!.data!.customerId.toString());
         _detailsUseCase
             .saveCustomerMobileNumber(response.data!.mobileNo.toString());
-        _detailsUseCase.saveNewCustomerName(response!.data!.firstName.toString() + "" + response!.data!.lastName.toString());
+        _detailsUseCase.saveNewCustomerName(response!.data!.firstName.toString() + " " + response!.data!.lastName.toString());
         navigateToCreatePasscodeScreen(userType);
       } else {
         state = const DetailsState.initialState();
