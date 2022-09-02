@@ -39,7 +39,6 @@ class _SuccessScreenState extends State<SuccessScreen> {
       );
 
   Widget _buildMainUI(ScanQRCodeCoordinator coordinator){
-
     return Padding(
       padding: const EdgeInsets.all(16),
       child: Column(

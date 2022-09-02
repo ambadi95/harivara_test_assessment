@@ -51,6 +51,9 @@ class _KycCreditMainScreenState extends State<KycCreditMainScreen> {
                     const CrayonPaymentAppBarButtonType.back(),
                   ],
                 ),
+                bottomNavigationBar:  Container(
+                    margin: const EdgeInsets.only(bottom: 20),
+                    child: _buildCheckNowButton(context, coordinator, state)),
                 body: state.when(
                   initialState: () => const SizedBox(),
                   ready: (
@@ -102,32 +105,31 @@ class _KycCreditMainScreenState extends State<KycCreditMainScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _buildTitle(context, coordinator),
-              SizedBox(
-                height:
-                    AppUtils.appUtilsInstance.getPercentageSize(percentage: 5),
-              ),
-              _subTitleMain(context),
-            ],
-          ),
-          const Image(image: AssetImage(AN_Kyc_Credit_Main)),
-          Container(
-            margin: const EdgeInsets.only(bottom: 40),
-            child: Column(
-              children: [
-                // _getTermsCheckBox(context, coordinator),
-                const SizedBox(
-                  height: 50,
-                ),
-                _buildCheckNowButton(context, coordinator, state),
-              ],
+      children: [
+        _buildTitle(context, coordinator),
+            SizedBox(
+              height:
+                  AppUtils.appUtilsInstance.getPercentageSize(percentage: 5),
             ),
-          )
-        ],
+        _subTitleMain(context),
+          SizedBox(
+            height:
+            AppUtils.appUtilsInstance.getPercentageSize(percentage: 10),
+          ),
+        const Image(image: AssetImage(AN_Kyc_Credit_Main)),
+        // Container(
+        //   margin: const EdgeInsets.only(bottom: 40),
+        //   child: Column(
+        //     children: [
+        //       // _getTermsCheckBox(context, coordinator),
+        //       const SizedBox(
+        //         height: 50,
+        //       ),
+        //       _buildCheckNowButton(context, coordinator, state),
+        //     ],
+        //   ),
+        // )
+      ],
       ),
     );
   }
@@ -266,6 +268,16 @@ class _KycCreditMainScreenState extends State<KycCreditMainScreen> {
     );
   }
 
+
+    _subTitleMain(BuildContext context) {
+      return Text('KYC_Validation_With_Airtel_Subtitle'.tr,
+          style: const TextStyle(
+              color: Black,
+              fontSize: 16,
+              fontFamily: 'Montserrat',
+              fontWeight: FontWeight.w400));
+    }
+
   _getTermsCheckBox(
     BuildContext context,
     KycCreditMainCoordinator coordinator,
@@ -331,13 +343,4 @@ class _KycCreditMainScreenState extends State<KycCreditMainScreen> {
     );
   }
 
-  _subTitleMain(BuildContext context) {
-    return CrayonPaymentText(
-      key: Key('${_identifier}_KYC_Validation_With_Airtel_Subtitle'),
-      text: const TextUIDataModel('KYC_Validation_With_Airtel_Subtitle',
-          styleVariant: CrayonPaymentTextStyleVariant.headline6,
-          color: Black,
-          fontWeight: FontWeight.w400),
-    );
-  }
 }

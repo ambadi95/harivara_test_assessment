@@ -130,7 +130,7 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
                   _getVerticalDivider(
                       context,
                       AppUtils.appUtilsInstance
-                          .getPercentageSize(percentage: 50)),
+                          .getPercentageSize(percentage: 56)),
                   _getCheckedIcon(
                     context,
                     !_isKycPassEnabled
@@ -140,7 +140,7 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
                   _getVerticalDivider(
                       context,
                       AppUtils.appUtilsInstance
-                          .getPercentageSize(percentage: 15)),
+                          .getPercentageSize(percentage: 8)),
                   _getCheckedIcon(
                     context,
                     !_isKycCreditLoanEnabled
@@ -148,12 +148,12 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
                         : SU_telco_green_checkbox_color,
                   ),
                   const Spacer(
-                    flex: 1,
+                    flex: 9,
                   ),
                 ],
               ),
               const SizedBox(
-                width: 34,
+                width: 20,
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -168,17 +168,17 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
                       : _title(context),
                   SizedBox(
                     height: AppUtils.appUtilsInstance
-                        .getPercentageSize(percentage: 5),
+                        .getPercentageSize(percentage: 2),
                   ),
                   _subTitle(context),
                   SizedBox(
                     height: AppUtils.appUtilsInstance
-                        .getPercentageSize(percentage: 15),
+                        .getPercentageSize(percentage: 17),
                   ),
                   _kycPassCheckText(context),
                   SizedBox(
                     height: AppUtils.appUtilsInstance
-                        .getPercentageSize(percentage: 15),
+                        .getPercentageSize(percentage: 8),
                   ),
                   _kycLoanCheckText(context),
                   const Spacer(
@@ -433,7 +433,7 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
     return CrayonPaymentText(
       key: Key('${_identifier}_KYC_Validation_With_Airtel'),
       text: const TextUIDataModel('KYC_Validation_With_Airtel',
-          styleVariant: CrayonPaymentTextStyleVariant.headline2,
+          styleVariant: CrayonPaymentTextStyleVariant.headline3,
           color: AN_TitleColor,
           fontWeight: FontWeight.w600),
     );
@@ -455,7 +455,7 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
       text: const TextUIDataModel('KYC_Validation_With_Airtel_Loan_Check',
           styleVariant: CrayonPaymentTextStyleVariant.subtitle2,
           color: Black,
-          fontWeight: FontWeight.w500),
+          fontWeight: FontWeight.w600),
     );
   }
 
@@ -465,16 +465,16 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
       text: const TextUIDataModel('KYC_Validation_With_Airtel_Pass_Check',
           styleVariant: CrayonPaymentTextStyleVariant.subtitle2,
           color: Black,
-          fontWeight: FontWeight.w500),
+          fontWeight: FontWeight.w600),
     );
   }
 
   _subTitle(BuildContext context) {
-    return CrayonPaymentText(
-      key: Key('${_identifier}_KYC_Validation_With_Airtel_Subtitle'),
-      text: const TextUIDataModel('KYC_Validation_With_Airtel_Subtitle',
-          styleVariant: CrayonPaymentTextStyleVariant.subtitle2,
+    return Text('KYC_Validation_With_Airtel_Subtitle'.tr,
+          style: const TextStyle(
           color: AN_SubTitleColor,
+          fontSize: 12,
+          fontFamily: 'Montserrat',
           fontWeight: FontWeight.w400),
     );
   }
