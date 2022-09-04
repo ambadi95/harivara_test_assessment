@@ -10,6 +10,7 @@ class TextUIDataModel {
   final int? maxLines;
   final FontWeight? fontWeight;
 
+
   const TextUIDataModel(
     this.text, {
     this.color,
@@ -18,6 +19,7 @@ class TextUIDataModel {
     this.textAlign = TextAlign.start,
     this.maxLines,
     this.fontWeight,
+
   });
 
   TextUIDataModel copyWith({
@@ -37,3 +39,4 @@ class TextUIDataModel {
         fontWeight: fontWeight ?? this.fontWeight,
       );
 }
+

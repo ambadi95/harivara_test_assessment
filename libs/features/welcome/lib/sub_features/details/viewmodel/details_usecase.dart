@@ -51,6 +51,11 @@ class DetailsUseCase extends BaseDataProvider {
     return await setValueToSecureStorage({'mobileNumber': mobileNumber});
   }
 
+  Future<void> saveNewCustomerName(String fullName) async {
+    print("fullname===> $fullName");
+    return await setValueToSecureStorage({'newCustomerName': fullName});
+  }
+
 
   Future<RegionDetails?> getRegion(
       Function(String) onErrorCallback, UserType userType) async {
@@ -79,6 +84,25 @@ class DetailsUseCase extends BaseDataProvider {
         modelBuilderCallback: (responseData) {
           final data = responseData;
           return DistrictResponse.fromJson(data);
+        });
+  }
+  Future<GetCustomerDetailsResponse?> getCustomerDetailsByMobileNumber(
+      Function(String) onErrorCallback) async {
+      String phoneNo = await getMobileNumber();
+    return await executeApiRequest<GetCustomerDetailsResponse?>(
+        taskType: TaskType.DATA_OPERATION,
+        taskSubType: TaskSubType.REST,
+        moduleIdentifier: WelcomeModule.moduleIdentifier,
+        requestData: {
+          "mobileNo": phoneNo.replaceAll(" ", "")
+        },
+        serviceIdentifier: IDetailsService.getCustomerDetailIdentifier,
+        onError: onErrorCallback,
+        modelBuilderCallback: (responseData) {
+          final data = responseData;
+          GetCustomerDetailsResponse detailResponse =
+          GetCustomerDetailsResponse.fromJson(data);
+          return detailResponse;
         });
   }
 

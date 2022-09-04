@@ -48,4 +48,10 @@ class DetailsState with _$DetailsState {
 
   const factory DetailsState.onDistrictChoosen(b.Datum district) =
       DistrictChoosen;
+
+  const factory  DetailsState.onGenderTypeFetched(String genderType) = OnGenderTypeFetched;
+
+  const factory  DetailsState.onRegionFetched(String genderType) = OnRegionFetched;
+
+  const factory  DetailsState.onDistrictFetched(String genderType) = OnDistrictFetched;
 }

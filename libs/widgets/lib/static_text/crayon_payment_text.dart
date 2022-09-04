@@ -56,6 +56,7 @@ TextStyle buildTextStyle({
   final bool _isArabic = (Get.locale == const Locale('ar')) ? true : false;
 
   String _fontFamily() {
+    //return 'Montserrat';
     return _isArabic ? 'Zarid-Medium' : 'Montserrat';
   }
 
@@ -128,8 +129,7 @@ TextStyle buildTextStyle({
     case CrayonPaymentTextStyleVariant.subtitle2:
       return Theme.of(context)
           .textTheme
-          .subtitle2!
-          .copyWith(height: lineHeight);
+          .subtitle2!.copyWith(height: lineHeight, fontFamily: _fontFamily());
 
     case CrayonPaymentTextStyleVariant.bodyText1:
       return Theme.of(context).textTheme.bodyText1!.copyWith(

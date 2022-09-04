@@ -10,6 +10,9 @@ abstract class IDetailsService {
   static const regionIdentifier = 'getRegion';
   static const districtIdentifier = 'getDistrict';
   static const submitCustomerDetailIdentifier = 'submitCustomerDetail';
+  static const getCustomerDetailIdentifier = 'getCustomerDetail';
+
+  Future<StandardRequest> getCustomerDetail(String mobileNumber);
 
   Future<StandardRequest> getRegion(UserType type);
 
@@ -27,6 +30,14 @@ class DetailsService implements IDetailsService {
     request.endpoint = (userType == UserType.AgentCustomer)
         ? customerEndpoint + 'region-details[customer]'
         : 'region-details';
+    return request;
+  }
+
+  @override
+  Future<StandardRequest> getCustomerDetail(String mobileNumber) async {
+    var request = StandardRequest();
+    request.requestType = RequestType.GET;
+    request.endpoint = customerEndpoint + 'customer-details-by-mobile/$mobileNumber[customer]';
     return request;
   }
 

@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:payments/state/payments_state.dart';
 import 'package:payments/viewmodel/payments_usecase.dart';
-import 'package:crayon_payment_customer/util/app_utils.dart';
+import 'package:widget_library/utils/app_utils.dart';
 import '../navigation_handler/payments_navigation_handler.dart';
 import 'package:task_manager/base_classes/base_data_provider.dart';
 

@@ -3,7 +3,7 @@ import 'package:config/Colors.dart';
 import 'package:config/Config.dart';
 import 'package:config/Styles.dart';
 import 'package:core/view/base_view.dart';
-import 'package:crayon_payment_customer/util/app_utils.dart';
+import 'package:widget_library/utils/app_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:passcode/passcode_module.dart';
 import 'package:shared_data_models/kyc/kyc_screen_args.dart';
@@ -24,7 +24,8 @@ import '../state/kyc_credit_main_state.dart';
 import '../viewmodel/kyc_credit_main_coordinator.dart';
 
 class KycCreditMainScreen extends StatefulWidget {
-  static const viewPath = '${KycCreditMainModule.moduleIdentifier}/kyccreditmainscreen';
+  static const viewPath =
+      '${KycCreditMainModule.moduleIdentifier}/kyccreditmainscreen';
   final KycScreenArgs kycScreenArgs;
 
   const KycCreditMainScreen({Key? key, required this.kycScreenArgs})
@@ -81,13 +82,8 @@ class _KycCreditMainScreenState extends State<KycCreditMainScreen> {
 
   Widget _createLoading(KycCreditMainStateReady state) {
     if (state.isLoading) {
-      return
-        Container(
-        color: Colors.black.withOpacity(0.4),
-        child: const
-        CenteredCircularProgressBar(
-            color: config_colors.PRIMARY_COLOR),
-      );
+      return const CenteredCircularProgressBar(color: PRIMARY_COLOR);
+
     } else {
       return Container();
     }
@@ -102,24 +98,23 @@ class _KycCreditMainScreenState extends State<KycCreditMainScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _buildTitle(context, coordinator),
-              SizedBox(
-                height:
-                    AppUtils.appUtilsInstance.getPercentageSize(percentage: 5),
-              ),
-              _subTitleMain(context),
-            ],
+      children: [
+        _buildTitle(context, coordinator),
+            SizedBox(
+              height:
+                  AppUtils.appUtilsInstance.getPercentageSize(percentage: 5),
+            ),
+        _subTitleMain(context),
+          SizedBox(
+            height:
+            AppUtils.appUtilsInstance.getPercentageSize(percentage: 10),
           ),
           const Image(image: AssetImage(AN_Kyc_Credit_Main)),
           Container(
             margin: const EdgeInsets.only(bottom: 40),
             child: Column(
               children: [
-                // _getTermsCheckBox(context, coordinator),
+                _getTermsCheckBox(context, coordinator),
                 const SizedBox(
                   height: 50,
                 ),
@@ -148,7 +143,7 @@ class _KycCreditMainScreenState extends State<KycCreditMainScreen> {
           ),
           CrayonPaymentText(
             key: Key('${_identifier}_KYC_Terms_and_Condition_ERROR'),
-            text: const TextUIDataModel('KYC_Terms_and_Condition',
+            text: const TextUIDataModel('Error',
                 textAlign: TextAlign.center,
                 styleVariant: CrayonPaymentTextStyleVariant.subtitle1,
                 color: Black,
@@ -159,22 +154,22 @@ class _KycCreditMainScreenState extends State<KycCreditMainScreen> {
               percentage: 8,
             ),
           ),
+          // CrayonPaymentText(
+          //   key: Key('${_identifier}_Terms_And_Condition_Error'),
+          //   text: const TextUIDataModel('Terms_And_Condition_Error',
+          //       textAlign: TextAlign.center,
+          //       styleVariant: CrayonPaymentTextStyleVariant.subtitle2,
+          //       color: AN_SubTitleColor,
+          //       fontWeight: FontWeight.w400),
+          // ),
+          // SizedBox(
+          //   height: AppUtils.appUtilsInstance.getPercentageSize(
+          //     percentage: 8,
+          //   ),
+          // ),
           CrayonPaymentText(
-            key: Key('${_identifier}_Terms_And_Condition_Error'),
-            text: const TextUIDataModel('Terms_And_Condition_Error',
-                textAlign: TextAlign.center,
-                styleVariant: CrayonPaymentTextStyleVariant.subtitle2,
-                color: AN_SubTitleColor,
-                fontWeight: FontWeight.w400),
-          ),
-          SizedBox(
-            height: AppUtils.appUtilsInstance.getPercentageSize(
-              percentage: 8,
-            ),
-          ),
-          /*  CrayonPaymentText(
             key: Key('${_identifier}_KYC_Verification_Failed_SubTitle'),
-            text: const TextUIDataModel('KYC_Verification_Failed_SubTitle',
+            text: TextUIDataModel('Terms_And_Condition_Error'.tr,
                 styleVariant: CrayonPaymentTextStyleVariant.subtitle2,
                 textAlign: TextAlign.center,
                 color: AN_SubTitleColor,
@@ -184,7 +179,7 @@ class _KycCreditMainScreenState extends State<KycCreditMainScreen> {
             height: AppUtils.appUtilsInstance.getPercentageSize(
               percentage: 8,
             ),
-          ),*/
+          ),
           _buildGoBackButton(context, coordinator, state),
         ],
       ),
@@ -227,21 +222,23 @@ class _KycCreditMainScreenState extends State<KycCreditMainScreen> {
       padding: const EdgeInsets.only(left: 16, right: 16),
       child: GestureDetector(
         onTap: () async {
-          coordinator.callMnoConsent(context);
-          // if (_isChecked) {
-          //   await coordinator.callMnoConsent(context);
-          // } else {
-          //   coordinator.showErrorBottomSheet(
-          //       _getCheckBoxUnCheckErrorBottomSheetUi(
-          //           context, coordinator, state),
-          //       context);
-          // }
+          // coordinator.callMnoConsent(context);
+          if (_isChecked) {
+            await coordinator.callMnoConsent(context);
+          }
+          /*  else {
+            coordinator.showErrorBottomSheet(
+                _getCheckBoxUnCheckErrorBottomSheetUi(
+                    context, coordinator, state),
+                context);
+          }*/
         },
         child: Container(
           width: double.infinity,
           height: 50,
           decoration: BoxDecoration(
-              color: SU_button_color, borderRadius: BorderRadius.circular(2.0)),
+              color: _isChecked == true ? SU_button_color : SU_grey_color,
+              borderRadius: BorderRadius.circular(2.0)),
           child: Center(
             child: Text(
               'KYC_Check_Now'.tr,
@@ -265,6 +262,16 @@ class _KycCreditMainScreenState extends State<KycCreditMainScreen> {
           fontWeight: FontWeight.w800),
     );
   }
+
+
+    _subTitleMain(BuildContext context) {
+      return Text('KYC_Validation_With_Airtel_Subtitle'.tr,
+          style: const TextStyle(
+              color: Black,
+              fontSize: 16,
+              fontFamily: 'Montserrat',
+              fontWeight: FontWeight.w400));
+    }
 
   _getTermsCheckBox(
     BuildContext context,
@@ -331,13 +338,4 @@ class _KycCreditMainScreenState extends State<KycCreditMainScreen> {
     );
   }
 
-  _subTitleMain(BuildContext context) {
-    return CrayonPaymentText(
-      key: Key('${_identifier}_KYC_Validation_With_Airtel_Subtitle'),
-      text: const TextUIDataModel('KYC_Validation_With_Airtel_Subtitle',
-          styleVariant: CrayonPaymentTextStyleVariant.headline6,
-          color: Black,
-          fontWeight: FontWeight.w400),
-    );
-  }
 }

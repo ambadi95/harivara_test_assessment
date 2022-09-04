@@ -64,6 +64,7 @@ import 'package:settings/settings_model.dart';
 import 'package:kyc/subfeatures/kycmain/kyccreditmain_module.dart';
 import 'package:kyc/subfeatures/kycmain/navigation_handler/kyc_main_route_manager.dart';
 import 'package:downpayment/navigation_handler/downpayment_route_manager.dart';
+import 'package:widget_library/utils/app_utils.dart';
 
 class AppModule {
   // ignore: long-method
@@ -97,9 +98,19 @@ class AppModule {
         memoryStorageService: MemoryStorageServiceImpl(),
       ),
     );
+
+    AppUtils.appUtilsInstance.updateCacheTaskResolverInstance( CacheTaskResolver(
+      secureStorageService: DIContainer.container<StorageService>(),
+      fileStorageService: FileStorageServiceImpl(),
+      unsecureStorageService: UnsecureStorageServiceImpl(),
+      memoryStorageService: MemoryStorageServiceImpl(),
+    ),);
+
     DIContainer.container.registerSingleton<NavigationManager>(
       (container) => NavigationManagerImpl(),
     );
+    AppUtils.appUtilsInstance.updateNavigationHandlerInstance(NavigationManagerImpl());
+
     DIContainer.container.registerSingleton<WidgetsModule>(
       (container) => WidgetsModuleImpl(container.resolve<NavigationManager>()),
     );
@@ -292,9 +303,7 @@ Future registerNetworkModule({
     (container) => AppLocalizationService(),
   );
 // initialise dependencies
-  DIContainer.container
-      .resolve<GlobalControlNotifier>(NetworkManager.globalControlNotifierKey)
-      .initialise(networkConfig);
+  DIContainer.container.resolve<GlobalControlNotifier>(NetworkManager.globalControlNotifierKey).initialise(networkConfig);
   initializeGraphQLClient(networkConfig);
 }
 
