@@ -602,9 +602,15 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
             coordinator.isValidRegion(value.name!);
             dis.clear();
             district.clear();
+            AppUtils.appUtilsInstance.showCircularDialog(context);
             dis = await coordinator.getDistrict(value.id!, widget.userType);
+            Navigator.pop(context);
             districtDropDown.clear();
             districtDropDown = getDistrictDropDownData(dis);
+            _district = districtDropDown.elementAt(0).value;
+            setState(() {
+
+            });
           },
         ),
         const SizedBox(

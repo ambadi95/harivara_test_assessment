@@ -46,6 +46,10 @@ const ST_faq = 'assets/images/faq.svg';
 const ST_agent = 'assets/images/agent.svg';
 const ST_scan_icon = 'assets/images/scan_image.svg';
 
+//Static Link
+
+const y9TermsCondition = 'https://y9bank.com/term-of-services/';
+
 // USERTYPE
 enum UserType { Customer, Agent, AgentCustomer }
 
