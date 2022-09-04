@@ -18,6 +18,15 @@ dependencies:
   shared_data_models:
     path: ../shared-data-models/
 
+  crayon_payment_agent:
+    path: ../../../y9-frontend/apps/agent/
+
+  config:
+    path: ../../../y9-frontend/config/
+
+  widget_library:
+    path: ../widgets/
+
 
   # third-party dependencies
 

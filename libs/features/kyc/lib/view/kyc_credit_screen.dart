@@ -3,7 +3,7 @@ import 'package:config/Colors.dart';
 import 'package:config/Config.dart';
 import 'package:config/Styles.dart';
 import 'package:core/view/base_view.dart';
-import 'package:crayon_payment_customer/util/app_utils.dart';
+import 'package:widget_library/utils/app_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_data_models/kyc/kyc_screen_args.dart';
 import 'package:widget_library/app_bars/crayon_payment_app_bar_attributes.dart';
@@ -46,7 +46,7 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
           setupViewModel: (coordinator) {
             coordinator.initialiseState(context);
             kycCreditCoordinator = coordinator;
-            // coordinator.callKycCheck(context);
+            coordinator.callKycCheck(context);
           },
           onStateListenCallback: (preState, newState) =>
               {_listenToStateChanges(context, newState as KycCreditStateReady)},
@@ -57,6 +57,7 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
                     const CrayonPaymentAppBarButtonType.back(),
                   ],
                 ),
+
                 body: state.when(
                   initialState: () => const SizedBox(),
                   ready: (
@@ -104,94 +105,199 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
     KycCreditCoordinator coordinator,
     KycCreditStateReady state,
   ) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        _buildTitle(context),
-        SizedBox(
-          height: AppUtils.appUtilsInstance.getPercentageSize(percentage: 10),
-        ),
-        // _image(context)
-        Expanded(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Column(
-                children: [
-                  _getCircularIcon(
-                    context,
-                  ),
-                  Expanded(
-                    child: _getVerticalDivider(
-                        context,
-                        AppUtils.appUtilsInstance
-                            .getPercentageSize(percentage: 0)),
-                  ),
-                  _getVerticalDivider(
-                      context,
-                      AppUtils.appUtilsInstance
-                          .getPercentageSize(percentage: 50)),
-                  _getCheckedIcon(
-                    context,
-                    !_isKycPassEnabled
-                        ? Colors.grey
-                        : SU_telco_green_checkbox_color,
-                  ),
-                  _getVerticalDivider(
-                      context,
-                      AppUtils.appUtilsInstance
-                          .getPercentageSize(percentage: 15)),
-                  _getCheckedIcon(
-                    context,
-                    !_isKycCreditLoanEnabled
-                        ? Colors.grey
-                        : SU_telco_green_checkbox_color,
-                  ),
-                  const Spacer(
-                    flex: 1,
-                  ),
-                ],
-              ),
-              const SizedBox(
-                width: 34,
-              ),
-              Column(
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _buildTitle(context),
+          SizedBox(
+            height: AppUtils.appUtilsInstance.getPercentageSize(percentage: 12),
+          ),
+         Row(
+           mainAxisAlignment: MainAxisAlignment.start,
+           children: [
+           Expanded(
+               flex: 1,
+               child: Column(
+                 children: [
+                 Container(
+                 width: 1,
+                 height: 10,
+                 color: Colors.white,
+               ),
+                 _getCircularIcon(
+                   context,
+                 ),
+                 _getVerticalDivider(
+                     context,
+                     AppUtils.appUtilsInstance
+                         .getPercentageSize(percentage: 41)),
+               ],)),
+           Expanded(
+             flex: 8,
+            child: Container(
+              margin: const EdgeInsets.only(left: 10),
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _getImage(coordinator, context),
-                  SizedBox(
-                    height: AppUtils.appUtilsInstance
-                        .getPercentageSize(percentage: 5),
-                  ),
-                  (_isKycPassEnabled || _isKycCreditLoanEnabled)
-                      ? _kycCreditTitle(context)
-                      : _title(context),
-                  SizedBox(
-                    height: AppUtils.appUtilsInstance
-                        .getPercentageSize(percentage: 5),
-                  ),
-                  _subTitle(context),
-                  SizedBox(
-                    height: AppUtils.appUtilsInstance
-                        .getPercentageSize(percentage: 15),
-                  ),
-                  _kycPassCheckText(context),
-                  SizedBox(
-                    height: AppUtils.appUtilsInstance
-                        .getPercentageSize(percentage: 15),
-                  ),
-                  _kycLoanCheckText(context),
-                  const Spacer(
-                    flex: 1,
-                  ),
-                ],
-              )
+               _getImage(coordinator, context),
+               SizedBox(
+                 height: AppUtils.appUtilsInstance
+                     .getPercentageSize(percentage: 5),
+               ),
+               (_isKycPassEnabled || _isKycCreditLoanEnabled)
+                   ? _kycCreditTitle(context)
+                   : _title(context),
+               SizedBox(
+                 height: AppUtils.appUtilsInstance
+                     .getPercentageSize(percentage: 2),
+               ),
+               _subTitle(context),
+           ],),
+            ))
+         ],),
+
+          Row(
+            children: [
+              Expanded(
+                  flex: 1,
+                  child: Column(children: [
+                    _getVerticalDivider(
+                        context,
+                        AppUtils.appUtilsInstance
+                            .getPercentageSize(percentage: 13)),
+                  ],)),
+              Expanded(
+                flex: 8,
+                child: SizedBox(
+                  height: AppUtils.appUtilsInstance
+                      .getPercentageSize(percentage: 13),
+                ),
+              ),
             ],
           ),
-        ),
 
-        _buildContinueButton(context, coordinator, state)
-      ],
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                  flex: 1,
+                  child: Column(children: [
+                    _getCheckedIcon(
+                      context,
+                      !_isKycPassEnabled
+                          ? Colors.grey
+                          : SU_telco_green_checkbox_color,
+                    ),
+                    _getVerticalDivider(
+                        context,
+                        AppUtils.appUtilsInstance
+                            .getPercentageSize(percentage: 7)),
+                    _getCheckedIcon(
+                      context,
+                      !_isKycCreditLoanEnabled
+                          ? Colors.grey
+                          : SU_telco_green_checkbox_color,
+                    ),
+                  ],)),
+              Expanded(
+                  flex: 8,
+                  child: Container(
+                    margin: EdgeInsets.only(left: 10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                      _kycPassCheckText(context),
+                      SizedBox(
+                        height: AppUtils.appUtilsInstance
+                            .getPercentageSize(percentage: 8),
+                      ),
+                      _kycLoanCheckText(context),
+                    ],),
+                  ))
+            ],),
+          SizedBox(
+            height: AppUtils.appUtilsInstance
+                .getPercentageSize(percentage: 20),
+          ),
+          _buildContinueButton(context, coordinator, state)
+
+          // Expanded(
+          //   child: Row(
+          //     mainAxisAlignment: MainAxisAlignment.start,
+          //     children: [
+          //       Column(
+          //         children: [
+          //           _getCircularIcon(
+          //             context,
+          //           ),
+          //           _getVerticalDivider(
+          //               context,
+          //               AppUtils.appUtilsInstance
+          //                   .getPercentageSize(percentage: 57)),
+          //           _getCheckedIcon(
+          //             context,
+          //             !_isKycPassEnabled
+          //                 ? Colors.grey
+          //                 : SU_telco_green_checkbox_color,
+          //           ),
+          //           _getVerticalDivider(
+          //               context,
+          //               AppUtils.appUtilsInstance
+          //                   .getPercentageSize(percentage: 8)),
+          //           _getCheckedIcon(
+          //             context,
+          //             !_isKycCreditLoanEnabled
+          //                 ? Colors.grey
+          //                 : SU_telco_green_checkbox_color,
+          //           ),
+          //           // const Spacer(
+          //           //   flex: 9,
+          //           // ),
+          //         ],
+          //       ),
+          //       const SizedBox(
+          //         width: 20,
+          //       ),
+          //       Column(
+          //         crossAxisAlignment: CrossAxisAlignment.start,
+          //         children: [
+          //           _getImage(coordinator, context),
+          //           SizedBox(
+          //             height: AppUtils.appUtilsInstance
+          //                 .getPercentageSize(percentage: 5),
+          //           ),
+          //           (_isKycPassEnabled || _isKycCreditLoanEnabled)
+          //               ? _kycCreditTitle(context)
+          //               : _title(context),
+          //           SizedBox(
+          //             height: AppUtils.appUtilsInstance
+          //                 .getPercentageSize(percentage: 2),
+          //           ),
+          //           _subTitle(context),
+          //           SizedBox(
+          //             height: AppUtils.appUtilsInstance
+          //                 .getPercentageSize(percentage: 17),
+          //           ),
+          //           _kycPassCheckText(context),
+          //           SizedBox(
+          //             height: AppUtils.appUtilsInstance
+          //                 .getPercentageSize(percentage: 8),
+          //           ),
+          //           _kycLoanCheckText(context),
+          //           const Spacer(
+          //             flex: 1,
+          //           ),
+          //         ],
+          //       )
+          //     ],
+          //   ),
+          // ),
+
+          //_buildContinueButton(context, coordinator, state)
+        ],
+      ),
     );
   }
 
@@ -383,17 +489,21 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
         onTap: () async {
-          if (!_isKycPassEnabled) {
-            await coordinator.callKycCheck(context);
-          } else if (!_isKycCreditLoanEnabled) {
-            await coordinator.callCreditScore(context);
+          if (_isKycPassEnabled == true && _isKycCreditLoanEnabled == true) {
+            kycCreditCoordinator!.navigateToDeviceOption(
+                false, UserType.AgentCustomer);
           }
+
+          //   await coordinator.callKycCheck(context);
+          // } else if (!_isKycCreditLoanEnabled) {
+          //   await coordinator.callCreditScore(context);
+          // }
         },
         child: Container(
           width: double.infinity,
           height: 50,
           decoration: BoxDecoration(
-              color:  SU_button_color ,
+              color: (_isKycPassEnabled == true && _isKycCreditLoanEnabled == true) ?  SU_button_color  :SU_grey_color,
               borderRadius: BorderRadius.circular(2.0)),
           child: Center(
             child: Text(
@@ -433,7 +543,7 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
     return CrayonPaymentText(
       key: Key('${_identifier}_KYC_Validation_With_Airtel'),
       text: const TextUIDataModel('KYC_Validation_With_Airtel',
-          styleVariant: CrayonPaymentTextStyleVariant.headline2,
+          styleVariant: CrayonPaymentTextStyleVariant.headline3,
           color: AN_TitleColor,
           fontWeight: FontWeight.w600),
     );
@@ -443,7 +553,7 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
     return CrayonPaymentText(
       key: Key('${_identifier}Credit_Score_With_Telco'),
       text: const TextUIDataModel('Credit_Score_With_Telco',
-          styleVariant: CrayonPaymentTextStyleVariant.headline2,
+          styleVariant: CrayonPaymentTextStyleVariant.headline3,
           color: AN_TitleColor,
           fontWeight: FontWeight.w600),
     );
@@ -455,7 +565,7 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
       text: const TextUIDataModel('KYC_Validation_With_Airtel_Loan_Check',
           styleVariant: CrayonPaymentTextStyleVariant.subtitle2,
           color: Black,
-          fontWeight: FontWeight.w500),
+          fontWeight: FontWeight.w600),
     );
   }
 
@@ -465,17 +575,20 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
       text: const TextUIDataModel('KYC_Validation_With_Airtel_Pass_Check',
           styleVariant: CrayonPaymentTextStyleVariant.subtitle2,
           color: Black,
-          fontWeight: FontWeight.w500),
+          fontWeight: FontWeight.w600),
     );
   }
 
   _subTitle(BuildContext context) {
-    return CrayonPaymentText(
-      key: Key('${_identifier}_KYC_Validation_With_Airtel_Subtitle'),
-      text: const TextUIDataModel('KYC_Validation_With_Airtel_Subtitle',
-          styleVariant: CrayonPaymentTextStyleVariant.subtitle2,
-          color: AN_SubTitleColor,
-          fontWeight: FontWeight.w400),
+    return Container(
+      width: MediaQuery.of(context).size.width*0.6,
+      child: Text('KYC_Validation_With_Airtel_Subtitle'.tr,
+            style: const TextStyle(
+            color: AN_SubTitleColor,
+            fontSize: 12,
+            fontFamily: 'Montserrat',
+            fontWeight: FontWeight.w400),
+      ),
     );
   }
 
@@ -498,8 +611,6 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
       setState(() {
         _isKycCreditLoanEnabled = true;
       });
-      kycCreditCoordinator!.navigateToDeviceOption(false, UserType.AgentCustomer);
-
       return;
     } else if (state.isCreditCheckError == true &&
         state.error.isNotEmpty == true) {
