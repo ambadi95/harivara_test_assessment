@@ -99,9 +99,10 @@ class _DeviceDetailScreenState extends State<DeviceDetailScreen> {
         children: [
           _buildOptionTitle(context),
           _buildTitle(context),
+          dynamicHSpacer(25),
           Image.asset(
             widget.deviceId == 1 ? 'assets/a13.png' : 'assets/a03.png',
-            width: 222,
+            width: 200,
             height: 300,
             package: 'shared_data_models',
           ),
@@ -374,7 +375,7 @@ class _DeviceDetailScreenState extends State<DeviceDetailScreen> {
       onPressed: () {
         // print(widget.userType);
 
-        // coordinator.navigateToEnrolledScreen(widget.deviceId, widget.userType);
+      // coordinator.navigateToDownPayment(detailDetail?.deviceId);
         coordinator.navigateToCustomerLoanCreationScreen(
             widget.deviceId == 1 ? 'assets/a13.png' : 'assets/a03.png',
             detailDetail!);

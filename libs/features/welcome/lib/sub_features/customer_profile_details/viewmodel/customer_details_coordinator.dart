@@ -13,7 +13,7 @@ import 'package:welcome/sub_features/details/state/details_state.dart';
 import 'package:welcome/sub_features/details/viewmodel/details_usecase.dart';
 import '../../../navigation_handler/welcome_navigation_handler.dart';
 import 'customer_details_usecase.dart';
-import 'package:crayon_payment_customer/util/app_utils.dart';
+import 'package:widget_library/utils/app_utils.dart';
 
 class CustomerDetailsCoordinator extends BaseViewModel<CustomerDetailsState> {
   final CustomerDetailsUseCase _customerDetailsUseCase;

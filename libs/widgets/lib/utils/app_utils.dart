@@ -2,10 +2,15 @@ import 'dart:io';
 
 import 'package:config/Colors.dart';
 import 'package:config/Config.dart';
+import 'package:core/navigation/navigation_manager.dart';
+import 'package:core/navigation/navigation_type.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:login/view/login_screen.dart';
+import 'package:task_manager/cache_task_resolver.dart';
+import 'package:task_manager/task.dart';
 import 'package:widget_library/bottom_sheet/alert_bottom_sheet.dart';
 
 class AppUtils {
@@ -13,9 +18,21 @@ class AppUtils {
 
   static AppUtils get appUtilsInstance => _appUtils;
 
+  CacheTaskResolver? _cacheTaskResolver;
+
+  NavigationManager? _navigationManager;
+
   // hide keyboard
   hideKeyboard() {
     SystemChannels.textInput.invokeMethod('TextInput.hide');
+  }
+
+  updateCacheTaskResolverInstance(CacheTaskResolver cacheTaskResolverInstance) {
+    _cacheTaskResolver = cacheTaskResolverInstance;
+  }
+
+  updateNavigationHandlerInstance(NavigationManager navigationManagerInstance) {
+    _navigationManager = navigationManagerInstance;
   }
 
   // get percentage size
@@ -24,6 +41,18 @@ class AppUtils {
       return (Get.width * percentage!) / 100;
     } else {
       return (Get.height * percentage!) / 100;
+    }
+  }
+
+  Future<void> logoutUser(UserType userType) async {
+    if (_cacheTaskResolver != null) {
+      _cacheTaskResolver!
+          .execute("", {CACHE_TYPE: TaskManagerCacheType.DELETE_ALL});
+    }
+    if (_navigationManager != null) {
+      await _navigationManager!.navigateTo(
+          Login.viewPath, const NavigationType.replace(),
+          arguments: userType);
     }
   }
 
@@ -56,9 +85,11 @@ class AppUtils {
       duration: Duration(milliseconds: 1500),
     );
   }
+
   void removeFocusFromEditText({required BuildContext context}) {
     FocusScope.of(context).requestFocus(FocusNode());
   }
+
   Future showErrorBottomSheet(
       {required String title, required Function onClose}) {
     return Get.bottomSheet(

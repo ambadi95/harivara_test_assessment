@@ -6,7 +6,7 @@ import 'package:shared_data_models/home/customerCount/customer_count_response/da
 import '../navigation_handler/home_navigation_handler.dart';
 import '../state/home_screen_state.dart';
 import 'home_usecase.dart';
-import 'package:crayon_payment_customer/util/app_utils.dart';
+import 'package:widget_library/utils/app_utils.dart';
 
 class HomeCoordinator extends BaseViewModel<HomeScreenState> {
   final HomeUserCase _customerHomeUseCase;

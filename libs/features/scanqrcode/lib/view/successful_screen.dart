@@ -29,7 +29,8 @@ class _SuccessScreenState extends State<SuccessScreen> {
   Widget build(BuildContext context) =>
       BaseView<ScanQRCodeCoordinator, ScanQRCodeState>(
         setupViewModel: (coordinator) async {
-          username = await coordinator.getAgentName();
+
+          username = await coordinator.getNewCustomerName();
         },
         builder: (context, state, coordinator) => SafeArea(
           child: Scaffold(
@@ -39,7 +40,6 @@ class _SuccessScreenState extends State<SuccessScreen> {
       );
 
   Widget _buildMainUI(ScanQRCodeCoordinator coordinator){
-
     return Padding(
       padding: const EdgeInsets.all(16),
       child: Column(

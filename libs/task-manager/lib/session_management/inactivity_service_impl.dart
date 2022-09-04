@@ -115,6 +115,8 @@ class InactivityService extends IInactivityService {
   }
 
   void _timedOut() async {
+
+
     // Perform a 'logout'
     await taskManager.execute(
       Task(

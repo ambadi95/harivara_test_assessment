@@ -1,4 +1,6 @@
 import 'package:config/Config.dart';
+import 'package:flutter/material.dart';
+import 'package:shared_data_models/customer_details/response/get_customer_details_response/get_customer_details_response.dart';
 
 import 'package:shared_data_models/customer_onboard/region_district/region_response/datum.dart';
 import 'package:shared_data_models/customer_onboard/region_district/district_response/datum.dart'
@@ -8,7 +10,7 @@ import 'package:welcome/data_model/gender_type.dart';
 import 'package:welcome/sub_features/details/state/details_state.dart';
 import 'package:welcome/sub_features/details/viewmodel/details_usecase.dart';
 import '../../../navigation_handler/welcome_navigation_handler.dart';
-import 'package:crayon_payment_customer/util/app_utils.dart';
+import 'package:widget_library/utils/app_utils.dart';
 
 class DetailsCoordinator extends BaseViewModel<DetailsState> {
   final DetailsUseCase _detailsUseCase;
@@ -28,6 +30,30 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
         const GenderType(2, 'Female'),
         const GenderType(3, 'Prefer not to say'),
       ];
+
+  Future<GetCustomerDetailsResponse> getCustomerDetail(List<DropdownMenuItem<Datum>> regionDropDown, userType)async{
+    state = const DetailsState.LoadingState();
+    var customerResponse = await _detailsUseCase.getCustomerDetailsByMobileNumber( (p0) => null);
+    if(customerResponse!.status == true){
+      state = const DetailsState.successState();
+      if(customerResponse.data !=null) {
+        state =
+            DetailsState.onGenderTypeFetched(customerResponse.data!.gender!);
+        state = DetailsState.onRegionFetched(customerResponse.data!.region!);
+      }
+      return customerResponse;
+    }else{
+      state = const DetailsState.successState();
+     print('failed');
+     return customerResponse;
+    }
+  }
+
+  void fetchDistrictState(String district) {
+    state = DetailsState.onDistrictFetched(district);
+  }
+
+
 
   Future getRegion(UserType userType) async {
     var response = await _detailsUseCase.getRegion((p0) => null, userType);
@@ -248,7 +274,7 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
         _detailsUseCase.saveCustomerId(response!.data!.customerId.toString());
         _detailsUseCase
             .saveCustomerMobileNumber(response.data!.mobileNo.toString());
-
+        _detailsUseCase.saveNewCustomerName(response!.data!.firstName.toString() + " " + response!.data!.lastName.toString());
         navigateToCreatePasscodeScreen(userType);
       } else {
         state = const DetailsState.initialState();
