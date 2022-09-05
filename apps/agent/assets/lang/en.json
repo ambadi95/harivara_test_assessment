@@ -249,7 +249,8 @@
   "DLC_Airtel_Pay": "Airtel Pay",
   "DLC_Loan_Details": "Loan Details",
   "DLC_Down_Payment" : "Down Payment",
-  "DLC_Down_Payment_Subtitle" : "Transaction gateway will be closed in next 15 minutes",
+  "DLC_Down_Payment_Subtitle" : "Transaction gateway will be closed in next",
+  "DLC_resend" : "Resend",
 
   "RC_agent_new_customer" : "New Customer \nOnboarding",
   "RC_customer_approval" : "Existing Customer \nOnboarding",

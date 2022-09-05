@@ -52,43 +52,43 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
             coordinator.makePayment(context,widget.downPaymentScreenArgs.amount);
           },
           onStateListenCallback: (preState, newState) => {
-                _listenToStateChanges(
-                    context, newState as DownPaymentStateReady)
-              },
+            _listenToStateChanges(
+                context, newState as DownPaymentStateReady)
+          },
           builder: (context, state, coordinator) => CrayonPaymentScaffold(
-                appBarAttributes: CrayonPaymentAppBarAttributes(
-                  key: const Key('CardDetailsScreen_AppBarBackButton'),
-                  left: [
-                    const CrayonPaymentAppBarButtonType.back(),
-                  ],
-                ),
-                bottomNavigationBar:
-                    _buildContinueButton(context, coordinator, state),
-                body: state.when(
-                  initialState: () => const SizedBox(),
-                  ready: (
-                    _,
-                    __,
-                    ___,
-                    ____,
-                    _____,
-                    ______,
-                    _______,
-                    ________,
+            appBarAttributes: CrayonPaymentAppBarAttributes(
+              key: const Key('CardDetailsScreen_AppBarBackButton'),
+              left: [
+                const CrayonPaymentAppBarButtonType.back(),
+              ],
+            ),
+            bottomNavigationBar:
+            _buildContinueButton(context, coordinator, state),
+            body: state.when(
+              initialState: () => const SizedBox(),
+              ready: (
+                  _,
+                  __,
+                  ___,
+                  ____,
+                  _____,
+                  ______,
+                  _______,
+                  ________,
                   ) =>
-                      _buildMainUIWithLoading(
+                  _buildMainUIWithLoading(
                     context,
                     coordinator,
                     (state as DownPaymentStateReady),
                   ),
-                ),
-              ));
+            ),
+          ));
 
   Widget _buildMainUIWithLoading(
-    BuildContext context,
-    DownPaymentCoordinator coordinator,
-    DownPaymentStateReady state,
-  ) {
+      BuildContext context,
+      DownPaymentCoordinator coordinator,
+      DownPaymentStateReady state,
+      ) {
     return Stack(
       children: [
         _buildMainUI(context, coordinator, state),
@@ -107,10 +107,10 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
   }
 
   Widget _buildMainUI(
-    BuildContext context,
-    DownPaymentCoordinator coordinator,
-    DownPaymentStateReady state,
-  ) {
+      BuildContext context,
+      DownPaymentCoordinator coordinator,
+      DownPaymentStateReady state,
+      ) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -264,10 +264,10 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
   }
 
   Widget _buildContinueButton(
-    BuildContext context,
-    DownPaymentCoordinator coordinator,
-    DownPaymentState state,
-  ) {
+      BuildContext context,
+      DownPaymentCoordinator coordinator,
+      DownPaymentState state,
+      ) {
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
@@ -311,12 +311,12 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
       width: 70,
       child: Center(
           child: CrayonPaymentText(
-        key: Key('${_identifier}_Agent_Name'),
-        text: TextUIDataModel(_getCaptialUserName(username),
-            styleVariant: CrayonPaymentTextStyleVariant.headline6,
-            color: AN_TitleColor,
-            fontWeight: FontWeight.w600),
-      )),
+            key: Key('${_identifier}_Agent_Name'),
+            text: TextUIDataModel(_getCaptialUserName(username),
+                styleVariant: CrayonPaymentTextStyleVariant.headline6,
+                color: AN_TitleColor,
+                fontWeight: FontWeight.w600),
+          )),
     );
   }
 
