@@ -1,4 +1,5 @@
 import 'package:config/Config.dart';
+import 'package:core/mobile_core.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_data_models/customer_details/response/get_customer_details_response/get_customer_details_response.dart';
 
@@ -34,12 +35,18 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
   Future<GetCustomerDetailsResponse> getCustomerDetail(List<DropdownMenuItem<Datum>> regionDropDown, userType)async{
     state = const DetailsState.LoadingState();
     var customerResponse = await _detailsUseCase.getCustomerDetailsByMobileNumber( (p0) => null);
-    if(customerResponse!.status == true){
+    if(customerResponse!.status == true ){
       state = const DetailsState.successState();
       if(customerResponse.data !=null) {
-        state =
-            DetailsState.onGenderTypeFetched(customerResponse.data!.gender!);
-        state = DetailsState.onRegionFetched(customerResponse.data!.region!);
+
+        if(customerResponse.data!.gender?.isEmptyOrNull==false){
+          state =
+              DetailsState.onGenderTypeFetched(customerResponse.data!.gender!);
+        }else if(customerResponse.data!.region?.isEmptyOrNull==false){
+          state = DetailsState.onRegionFetched(customerResponse.data!.region!);
+
+        }
+
       }
       return customerResponse;
     }else{
@@ -254,6 +261,7 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
     String region,
     String district,
     UserType userType,
+      String postType
   ) async {
     try {
       state = const DetailsState.LoadingState();
@@ -268,13 +276,13 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
           region,
           district,
           (p0) => null,
-          userType);
+          userType,postType);
       if (response?.status == true) {
         state = const DetailsState.initialState();
         _detailsUseCase.saveCustomerId(response!.data!.customerId.toString());
         _detailsUseCase
             .saveCustomerMobileNumber(response.data!.mobileNo.toString());
-        _detailsUseCase.saveNewCustomerName(response!.data!.firstName.toString() + " " + response!.data!.lastName.toString());
+        _detailsUseCase.saveNewCustomerName(response.data!.firstName.toString() + " " + response.data!.lastName.toString());
         navigateToCreatePasscodeScreen(userType);
       } else {
         state = const DetailsState.initialState();
