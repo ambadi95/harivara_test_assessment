@@ -43,4 +43,5 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
       print("Failed");
     }
   }
+
 }

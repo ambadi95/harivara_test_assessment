@@ -2,6 +2,7 @@ import 'package:config/Colors.dart' as config_colors;
 import 'package:config/Colors.dart';
 import 'package:config/Styles.dart';
 import 'package:core/view/base_view.dart';
+import 'package:widget_library/spacers/crayon_payment_spacers.dart';
 import 'package:widget_library/utils/app_utils.dart';
 import 'package:downpayment/downpayment_module.dart';
 import 'package:flutter/material.dart';
@@ -31,11 +32,34 @@ class DownPaymentScreen extends StatefulWidget {
   State<DownPaymentScreen> createState() => _DownPaymentScreenState();
 }
 
-class _DownPaymentScreenState extends State<DownPaymentScreen> {
+class _DownPaymentScreenState extends State<DownPaymentScreen> { //with TickerProviderStateMixin{
   final String _identifier = 'downpayment-screen';
   bool _isBtnEnabled = false;
-
+  int _counter = 0;
+  late AnimationController _controller;
+  int levelClock = 180;
   String username = "";
+
+
+  // @override
+  // void dispose() {
+  //   _controller.dispose();
+  //   super.dispose();
+  // }
+
+  // @override
+  // void initState() {
+  //   super.initState();
+  //
+  //   _controller = AnimationController(
+  //       vsync: this,
+  //       duration: Duration(
+  //           seconds:
+  //           levelClock)
+  //   );
+  //   _controller.forward();
+  // }
+
 
   @override
   Widget build(BuildContext context) =>
@@ -338,24 +362,67 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
   }
 
   _textWidget(BuildContext context, String? text) {
-    return CrayonPaymentText(
-      key: Key('${_identifier}_Waiting_Payment'),
-      text: TextUIDataModel(text!,
-          styleVariant: CrayonPaymentTextStyleVariant.subtitle2,
-          color: Black,
-          fontWeight: FontWeight.w500),
+    return Row(
+      children: [
+        CrayonPaymentText(
+          key: Key('${_identifier}_Waiting_Payment'),
+          text: TextUIDataModel(text!,
+              styleVariant: CrayonPaymentTextStyleVariant.subtitle2,
+              color: Black,
+              fontWeight: FontWeight.w500),
+        ),
+        dynamicWSpacer(30),
+        Text('DLC_resend'.tr,style: const TextStyle(
+          decoration: TextDecoration.underline,
+          fontFamily: 'Montserrat',
+          fontSize: 12,
+          color: SU_subtitle_terms_color
+          ))
+      ],
     );
   }
 
   _subTitle(BuildContext context){
-    return CrayonPaymentText(
-      key: Key('${_identifier}_DLC_Down_Payment_Subtitle'),
-      text: const TextUIDataModel(
-          'DLC_Down_Payment_Subtitle',
-          styleVariant: CrayonPaymentTextStyleVariant.subtitle2,
-          color: VO_ResendTextColor,
-          fontWeight: FontWeight.w400),
-    );
+    return
+      Row(
+        children: [
+          CrayonPaymentText(
+          key: Key('${_identifier}_DLC_Down_Payment_Subtitle'),
+          text: const TextUIDataModel(
+              'DLC_Down_Payment_Subtitle',
+              styleVariant: CrayonPaymentTextStyleVariant.subtitle2,
+              color: VO_ResendTextColor,
+              fontWeight: FontWeight.w400),
+    ),
+    // Countdown(
+    //         animation: StepTween(
+    //           begin: levelClock * 60, // THIS IS A USER ENTERED NUMBER
+    //           end: 0,
+    //         ).animate(_controller),
+    //       ),
+        ],
+      );
+    // RichText(
+    //   text: TextSpan(
+    //     text: 'DLC_Down_Payment_Subtitle'.tr,
+    //     style: const TextStyle(
+    //         fontFamily: 'Montserrat',
+    //         fontSize: 14, color: DD_TextLabel, fontWeight: FontWeight.w600
+    //     ),
+    //     children: <TextSpan>[
+    //       Countdown(
+    //         animation: StepTween(
+    //           begin: levelClock, // THIS IS A USER ENTERED NUMBER
+    //           end: 0,
+    //         ).animate(_controller),
+    //       ),
+    //       TextSpan(
+    //           text: '15 mins',
+    //           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 9, color : Color(0xFFDA2228))),
+    //
+    //     ],
+    //   ),
+    // );
   }
 
   _rowWidget(BuildContext context, {Widget? icon, Widget? text}) {
@@ -371,3 +438,30 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
     );
   }
 }
+
+
+// class Countdown extends AnimatedWidget {
+//   Countdown({Key? key, required this.animation}) : super(key: key, listenable: animation);
+//   Animation<int> animation;
+//
+//   @override
+//   build(BuildContext context) {
+//     Duration clockTimer = Duration(seconds: animation.value);
+//
+//     String timerText =
+//         '${clockTimer.inMinutes.remainder(60).toString()}:${clockTimer.inSeconds.remainder(60).toString().padLeft(2, '0')}';
+//
+//     print('animation.value  ${animation.value} ');
+//     print('inMinutes ${clockTimer.inMinutes.toString()}');
+//     print('inSeconds ${clockTimer.inSeconds.toString()}');
+//     print('inSeconds.remainder ${clockTimer.inSeconds.remainder(60).toString()}');
+//
+//     return Text(
+//       "$timerText",
+//       style: TextStyle(
+//         fontSize: 110,
+//         color: Theme.of(context).primaryColor,
+//       ),
+//     );
+//   }
+// }
