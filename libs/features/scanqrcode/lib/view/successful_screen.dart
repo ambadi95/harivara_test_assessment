@@ -29,8 +29,10 @@ class _SuccessScreenState extends State<SuccessScreen> {
   Widget build(BuildContext context) =>
       BaseView<ScanQRCodeCoordinator, ScanQRCodeState>(
         setupViewModel: (coordinator) async {
-
           username = await coordinator.getNewCustomerName();
+          setState(() {
+            username;
+          });
         },
         builder: (context, state, coordinator) => SafeArea(
           child: Scaffold(
@@ -46,14 +48,14 @@ class _SuccessScreenState extends State<SuccessScreen> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const SizedBox(
-            height: 200,
+            height: 120,
           ),
 
           _buildSuccessIcon(),
           const SizedBox(
             height: 24,
           ),
-          Text("Hi $username"),
+          Text("Hi $username", style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600, fontFamily: 'Montserrat')),
           _buildEnrollmentText(),
           const SizedBox(
             height: 24,
@@ -61,7 +63,7 @@ class _SuccessScreenState extends State<SuccessScreen> {
           _buildEnrollmentIDText(),
           const Spacer(),
           _buildBottomEnrollmentIDText(),
-          const SizedBox(height: 8),
+          const SizedBox(height: 20),
           _buildAgentHomeButton(coordinator),
         ],
       ),
@@ -87,14 +89,12 @@ class _SuccessScreenState extends State<SuccessScreen> {
 
   Widget _buildEnrollmentIDText() {
     return Center(
-      child: SizedBox(
-          width: 280,
-          child: RichTextDescription(
+      child:   RichTextDescription(
               textAlign: TextAlign.center,
               key: const Key('enID'),
               description: 'SU_success_msg_2'.tr,
               linkTextStyle: ES_bold_text,
-              descriptionTextStyle: ES_success_text)),
+              descriptionTextStyle: ES_success_text),
     );
   }
 

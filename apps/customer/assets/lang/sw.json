@@ -168,6 +168,7 @@
   "HS_Agent_Id" : "Kitambulisho cha wakala wa Y9",
   "HS_TotalOnBoarderCustomers" : "Jumla ya Wateja \nImesajiliwa ",
   "HS_PendingCustomerRequests" : "Mteja Anayesubiri \nOmbi",
+  "HS_TotalCustomerBoarding" : "Jumla ya Wateja\nImeingia",
   "HS_Customer_OnBoarding" : "Mteja \nKupanda",
   "HS_Customer_DeviceSwap" : "Kubadilisha kifaa\n/ ukarabati",
   "HS_Customer_AgentSupport" : "Wakala \nMsaada",

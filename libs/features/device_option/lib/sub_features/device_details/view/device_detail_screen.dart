@@ -113,6 +113,29 @@ class _DeviceDetailScreenState extends State<DeviceDetailScreen> {
           dynamicHSpacer(20),
           _membershipList(context),
           dynamicHSpacer(22),
+          CrayonPaymentText(
+            key: Key('${_identifier}_DD_Price'),
+            text: TextUIDataModel('DD_Price',
+                styleVariant: CrayonPaymentTextStyleVariant.headline6,
+                color: DD_TextLabel,
+                fontWeight: FontWeight.w600)), dynamicHSpacer(10),
+          Row(
+
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              _productPrice(context, 'D0_JoiningFee'.tr,
+                  detailDetail!.joiningFees.toString()),
+
+              _productPrice(context, 'D0_DailyFee'.tr,
+                  detailDetail!.dailyFees.toString()),
+              dynamicWSpacer(10),
+            ],
+          ),
+          // _productPrice(context,
+          //     label: 'DD_Price',
+          //     value: detailDetail!.rretailPrice.toString() == 'null'
+          //         ? "TZS 1,87,00"
+          //         : "TZS " + detailDetail!.rretailPrice.toString()),
           // _membershipTermsTitle(context),
           // dynamicHSpacer(15),
           // _membershipTermButton(context),
@@ -121,6 +144,40 @@ class _DeviceDetailScreenState extends State<DeviceDetailScreen> {
           dynamicHSpacer(22),
         ],
       ),
+    );
+  }
+
+
+  Widget _productPrice(context, String price, String label) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          price,
+          style: const TextStyle(
+            fontSize: 12,
+            color: DD_TextLabel,
+            fontFamily: 'Montserrat',
+          ),
+        ),
+
+        dynamicHSpacer(1),
+        RichText(
+          text: TextSpan(
+            text:  label,
+            style: const TextStyle(
+                fontFamily: 'Montserrat',
+                fontSize: 14, color: DD_TextLabel, fontWeight: FontWeight.w600
+            ),
+            children: <TextSpan>[
+              TextSpan(
+                  text: '  TZSHS',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 9)),
+
+            ],
+          ),
+        ),
+      ],
     );
   }
 
@@ -199,11 +256,11 @@ class _DeviceDetailScreenState extends State<DeviceDetailScreen> {
         divider(),
         productSpecLabel(label: 'DD_Color', value: detailDetail!.color!),
         divider(),
-        productSpecLabel(
-            label: 'DD_Price',
-            value: detailDetail!.rretailPrice.toString() == 'null'
-                ? "TZS 1,87,00"
-                : "TZS " + detailDetail!.rretailPrice.toString()),
+        // productSpecLabel(
+        //     label: 'DD_Price',
+        //     value: detailDetail!.rretailPrice.toString() == 'null'
+        //         ? "TZS 1,87,00"
+        //         : "TZS " + detailDetail!.rretailPrice.toString()),
         // divider(),
         // productSpecLabel(label: 'DD_EMIMonth', value: ''),
         // divider(),
