@@ -1,5 +1,6 @@
 import 'package:config/Config.dart';
 import 'package:core/mobile_core.dart';
+import 'package:shared_data_models/otp/otp_verification_type.dart';
 import 'package:shared_data_models/welcome/otp/request/otp_request.dart';
 import 'package:shared_data_models/welcome/otp/response/otp_response.dart';
 import 'package:shared_data_models/welcome/otp_verification/request/otp_verification_request.dart';
@@ -41,9 +42,54 @@ class VerifyOtpUseCase extends BaseDataProvider {
   }
 
   Future<OtpResponse?> otpGen(
-      String id, UserType userType, Function(String) onErrorCallback) async {
+      String id,
+      UserType userType,
+      OtpVerificationType otpVerificationType,
+      Function(String) onErrorCallback) async {
+    String? eventName;
+    switch(otpVerificationType){
+
+      case OtpVerificationType.payment:
+        // TODO: Handle this case.
+        break;
+      case OtpVerificationType.mobile:
+        // TODO: Handle this case.
+        break;
+      case OtpVerificationType.id:
+        // TODO: Handle this case.
+        break;
+      case OtpVerificationType.retry:
+        // TODO: Handle this case.
+        break;
+      case OtpVerificationType.updateMobile:
+        // TODO: Handle this case.
+        break;
+      case OtpVerificationType.agentSignIn:
+        eventName = 'Agent Login';
+        break;
+      case OtpVerificationType.customerSignIn:
+        eventName =  'Customer Login';
+        break;
+      case OtpVerificationType.agentSignUp:
+        eventName = 'Agent Registration';
+        break;
+      case OtpVerificationType.customerSignUp:
+        eventName = 'Customer Registration';
+        break;
+      case OtpVerificationType.updatePasscodeAgent:
+        // TODO: Handle this case.
+        break;
+      case OtpVerificationType.customerSignUpAgent:
+        // TODO: Handle this case.
+        break;
+      case OtpVerificationType.resetPasscodeCustomer:
+        // TODO: Handle this case.
+        break;
+    }
     OtpRequest otpRequest = OtpRequest(
-        id: id, type: (userType == UserType.Customer ? "Customer" : "Agent"));
+        id: id,
+        event: eventName,
+        type: (userType == UserType.Customer ? "Customer" : "Agent"));
 
     return await executeApiRequest<OtpResponse?>(
         taskType: TaskType.DATA_OPERATION,
@@ -123,7 +169,7 @@ class VerifyOtpUseCase extends BaseDataProvider {
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
         moduleIdentifier: VerifyOtpModule.moduleIdentifier,
-        requestData: { "customerId" : id },
+        requestData: {"customerId": id},
         serviceIdentifier: IOtpService.workFlowCustomerByAgentIdentifier,
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {

@@ -135,6 +135,7 @@ TextStyle buildTextStyle({
       return Theme.of(context).textTheme.bodyText1!.copyWith(
             height: lineHeight,
             fontFamily: _fontFamily(),
+            fontWeight: FontWeight.bold,
             fontSize: _isArabic ? 22 : 20,
           );
 

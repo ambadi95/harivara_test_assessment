@@ -5,7 +5,9 @@ enum OtpVerificationType {
   retry,
   updateMobile,
   agentSignIn,
-  customerSign,
+  customerSignIn,
+  agentSignUp,
+  customerSignUp,
   updatePasscodeAgent,
   customerSignUpAgent,
   resetPasscodeCustomer

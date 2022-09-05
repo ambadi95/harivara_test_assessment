@@ -1,10 +1,12 @@
 import 'package:core/mobile_core.dart';
 import 'package:core/view/analytics_state_notifier.dart';
+import 'package:flutter/cupertino.dart';
 import '../navigation_handler/login_navigation_handler.dart';
 import '../state/login_state.dart';
 import 'login_usecase.dart';
 import 'package:config/Config.dart';
 import 'package:widget_library/utils/app_utils.dart';
+
 class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
   final LoginNavigationHandler _navigationHandler;
   final LoginUseCase _loginUseCase;
@@ -15,13 +17,16 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
   ) : super(const LoginState.initialState());
 
   void validateForm(
-      String mobNumber, String passcode, String agentId, UserType userType) {
+      String mobNumber, String passcode, String agentId, UserType userType, bool havePasscode) {
     var agentID = agentId.isNotEmptyOrNull;
     var mobileNo = _loginUseCase.isValidMobileNumber(mobNumber);
     var passCode = passcode.length == 6;
     bool isValid;
     if (userType == UserType.Customer) {
-      isValid = mobileNo && passCode;
+      isValid = mobileNo;
+      if(havePasscode){
+        isValid = mobileNo && passCode;
+      }
     } else {
       isValid = mobileNo && agentID;
     }
@@ -37,8 +42,6 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
     }
     return result;
   }
-
-
 
   bool isAgentIdValid(String agentId) {
     var result = _loginUseCase.isValidAgentId(agentId);
@@ -72,12 +75,10 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
     }
   }
 
-  Future calljwttoken(
-  ) async {
+  Future calljwttoken() async {
     try {
       state = LoginState.loading();
-      var response = await _loginUseCase.callJWTToken(
-           (p0) => null);
+      var response = await _loginUseCase.callJWTToken((p0) => null);
       if (response?.status == true) {
         state = LoginState.successState();
       } else {
@@ -86,11 +87,13 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
         // calljwttoken();
         print(response?.message);
       }
-    }  catch (e) {
+    } catch (e) {
       state = LoginState.initialState();
       AppUtils.appUtilsInstance.showErrorBottomSheet(
         title: e.toString(),
-        onClose: () {goBack();},
+        onClose: () {
+          goBack();
+        },
       );
     }
   }
@@ -109,15 +112,46 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
         _navigationHandler.navigateToOtpScreen(
             userType, mobileNumber, response!.data!.id!);
       } else {
-        //state = LoginState.successState();
-        print(response?.message);
         state = LoginState.mobileNumberError(response!.message!);
       }
-    }  catch (e) {
+    } catch (e) {
       state = LoginState.initialState();
       AppUtils.appUtilsInstance.showErrorBottomSheet(
         title: e.toString(),
-        onClose: () {goBack();},
+        onClose: () {
+          goBack();
+        },
+      );
+      print(e.toString());
+    }
+  }
+
+  Future checkPasscode(
+    String mobileNumber,
+    BuildContext context,
+  ) async {
+    state = LoginState.loading();
+    try {
+      var response = await _loginUseCase.getPasscodeCheck(
+          '+255' + mobileNumber.trim().replaceAll(" ", ""), (p0) => null);
+      if (response?.status == true) {
+        if (response?.data?.passcodeSet == false) {
+          state = LoginState.showPasscode(true);
+        } else {
+          _navigationHandler.navigateToOtpBottomSheet(
+              'OB_WelcomeTitle', 'LS_Passcode_message', 'VO_OtpVerification',context);
+        }
+        state = LoginState.successState();
+      } else {
+        state = LoginState.mobileNumberError(response!.message!);
+      }
+    } catch (e) {
+      state = LoginState.initialState();
+      AppUtils.appUtilsInstance.showErrorBottomSheet(
+        title: e.toString(),
+        onClose: () {
+          goBack();
+        },
       );
       print(e.toString());
     }
@@ -143,15 +177,18 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
         state = LoginState.agentIdError('Agent ID not found');
         CrayonPaymentLogger.logError(response!.message!);
       }
-    }  catch (e) {
+    } catch (e) {
       state = LoginState.initialState();
       print(e.toString());
       AppUtils.appUtilsInstance.showErrorBottomSheet(
         title: e.toString(),
-        onClose: () {goBack();},
+        onClose: () {
+          goBack();
+        },
       );
     }
   }
+
   void goBack() async {
     _navigationHandler.goBack();
   }

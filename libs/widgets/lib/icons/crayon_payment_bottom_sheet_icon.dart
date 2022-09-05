@@ -1,8 +1,7 @@
 abstract class CrayonPaymentBottomSheetIcon {
   final String svgAssetPath;
 
-  CrayonPaymentBottomSheetIcon(this.svgAssetPath)
-      : assert(svgAssetPath.contains('.svg'));
+  CrayonPaymentBottomSheetIcon(this.svgAssetPath);
 }
 
 class CrayonPaymentBottomSheetSuccessIcon extends CrayonPaymentBottomSheetIcon {
@@ -68,4 +67,13 @@ class CrayonPaymentBottomSheetLogoutIcon extends CrayonPaymentBottomSheetIcon {
       : super(
           'packages/widget_library/assets/images/ic_sign_out_outlined.svg',
         );
+
+}
+
+class CrayonPaymentBottomSheetY9Logo extends CrayonPaymentBottomSheetIcon {
+  CrayonPaymentBottomSheetY9Logo()
+      : super(
+    'packages/widget_library/assets/images/y9_logo.png',
+  );
+
 }

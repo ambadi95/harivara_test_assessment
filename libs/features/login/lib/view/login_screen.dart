@@ -37,6 +37,8 @@ class _LoginState extends State<Login> {
 
   bool isBtnEnabled = false;
 
+  bool havePasscode = false;
+
   String mobileNumberError = '';
 
   String agentIdError = '';
@@ -52,8 +54,8 @@ class _LoginState extends State<Login> {
     return BaseView<LoginCoordinator, LoginState>(
       onStateListenCallback: (preState, newState) =>
           {_listenToStateChanges(context, newState)},
-      setupViewModel: (coordinator) async{
-       await  coordinator.calljwttoken();
+      setupViewModel: (coordinator) async {
+        await coordinator.calljwttoken();
       },
       builder: (context, state, coordinator) {
         return state.maybeWhen(
@@ -130,7 +132,9 @@ class _LoginState extends State<Login> {
                 height: 48,
               ),
               widget.userType == UserType.Customer
-                  ? _passcodeWidget(context, coordinator)
+                  ? havePasscode
+                      ? _passcodeWidget(context, coordinator)
+                      : SizedBox()
                   : _buildLabelTextField(
                       'LS_agent_id'.tr,
                       agentIdController,
@@ -142,7 +146,11 @@ class _LoginState extends State<Login> {
               const SizedBox(
                 height: 46,
               ),
-               _buildResetPasscode(coordinator),
+              widget.userType == UserType.Customer
+                  ? havePasscode
+                      ? _buildResetPasscode(coordinator)
+                      : SizedBox()
+                  : _buildResetPasscode(coordinator),
             ],
           ),
         ));
@@ -171,6 +179,7 @@ class _LoginState extends State<Login> {
       ],
       keyboardType: TextInputType.number,
       onChanged: (value) {
+        _validateForm(coordinator);
         if (mobileNumberError.isNotEmpty || mobileNumber.text.length > 11) {
           coordinator.isMobileNumberValid(mobileNumber.text);
         }
@@ -220,9 +229,13 @@ class _LoginState extends State<Login> {
         coordinator.isAgentIdValid(agentIdController.text);
         if (isBtnEnabled) {
           // coordinator.navigateToWelcomeBackScreen(userType, mobileNumber.text);
+          if(havePasscode){
+            coordinator.login(mobileNumber.text, passcodeController.text,
+                widget.userType, agentIdController.text);
+          } else {
+            coordinator.checkPasscode(mobileNumber.text,context);
+          }
 
-          coordinator.login(mobileNumber.text, passcodeController.text,
-              widget.userType, agentIdController.text);
         }
       },
     );
@@ -328,11 +341,14 @@ class _LoginState extends State<Login> {
         agentIdError: (message) {
           agentIdError = message;
         },
+        showPasscode: (hasPasscode) {
+          havePasscode = hasPasscode;
+        },
         orElse: () => null);
   }
 
   void _validateForm(LoginCoordinator coordinator) {
     coordinator.validateForm(mobileNumber.text, passcodeController.text,
-        agentIdController.text, widget.userType);
+        agentIdController.text, widget.userType, havePasscode);
   }
 }

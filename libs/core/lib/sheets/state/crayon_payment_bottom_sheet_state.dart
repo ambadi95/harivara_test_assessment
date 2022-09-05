@@ -16,6 +16,7 @@ class CrayonPaymentBottomSheetState with _$CrayonPaymentBottomSheetState {
 
   const factory CrayonPaymentBottomSheetState.infoState({
     required CrayonPaymentBottomSheetIcon bottomSheetIcon,
+    @Default(true) bool isSvg,
     String? title,
     String? subtitle,
     List<String>? additionalText,

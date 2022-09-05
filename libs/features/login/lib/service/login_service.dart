@@ -8,6 +8,9 @@ abstract class ILoginService {
   static const loginIdentifier = 'login';
   static const loginAgentIdentifier = 'loginAgent';
   static const agentDetailIdentifier = 'getAgent';
+  static const checkPasscodeIdentifier = 'checkPasscode';
+
+
 
   Future<StandardRequest> jwttoken(
     Map<String, dynamic> requestData,
@@ -21,6 +24,9 @@ abstract class ILoginService {
   );
 
   Future<StandardRequest> getAgentDetails(String agentId, String mobileNumber);
+
+  Future<StandardRequest> checkPasscode(String mobileNumber);
+
 }
 
 class LoginService implements ILoginService {
@@ -67,6 +73,16 @@ class LoginService implements ILoginService {
     request.requestType = RequestType.POST;
     request.endpoint = 'agent-login';
     request.jsonBody = json.encode(requestData);
+    return request;
+  }
+
+  @override
+  Future<StandardRequest> checkPasscode(
+      String mobileNumber
+      ) async {
+    var request = StandardRequest();
+    request.requestType = RequestType.GET;
+    request.endpoint = 'check/passcode/$mobileNumber';
     return request;
   }
 }

@@ -54,7 +54,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         response = await _verifyOtpUseCase.otpGenCustomerByAgent(
             id, 'Customer', (p0) => null);
       } else {
-        response = await _verifyOtpUseCase.otpGen(id, userType, (p0) => null);
+        response = await _verifyOtpUseCase.otpGen(id, userType, otpVerificationType,(p0) => null);
       }
       if (response?.status == true) {
         int otp1 = response?.data?.token as int;
@@ -63,7 +63,6 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         CrayonPaymentLogger.logInfo(otp);
       }
     }  catch (e) {
-      print(e.toString());
       AppUtils.appUtilsInstance.showErrorBottomSheet(
         title: e.toString(),
         onClose: () {goBack();},
@@ -154,11 +153,11 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
   }
 
   Future<void> navigateToDestinationPath(String destinationPath,
-      UserType userType, OtpScreenArgs otpScreenArgs, String enterOtp) async {
+      UserType userType, OtpScreenArgs otpScreenArgs, String enterOtp, OtpVerificationType otpVerificationType) async {
     try {
       var currentState = state as VerifyOtpStateReady;
       int attempts = currentState.attemptsRemain;
-      if (otpScreenArgs.otpVerificationType == OtpVerificationType.customerSign) {
+      if (otpScreenArgs.otpVerificationType == OtpVerificationType.customerSignIn) {
         var responseSignin = await _verifyOtpUseCase.otpVerify(
             otpScreenArgs.refId, enterOtp, otpScreenArgs.userType, (p0) => null);
         if (responseSignin!.status == true) {

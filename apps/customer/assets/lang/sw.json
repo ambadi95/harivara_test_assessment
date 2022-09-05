@@ -6,8 +6,7 @@
   "OB_SignUp" : "Jisajili",
   "OB_Lang" : "SW",
   "OB_ni_bora" : "ni %{Bora|click}%",
-  "ST_view_profile": "View Profile",
-  "ST_my_profile": "My Profile",
+
 
   "DO_Title": "Chaguo za Kifaa",
   "DO_Search": "Tafuta kwa Jina / Chapa / bei / hifadhi / nk.",
@@ -18,6 +17,7 @@
   "LS_mobile_hint_text" : "Weka Nambari ya Simu",
   "LS_Passcode" : "Nambari ya siri",
   "LS_SignIn" : "Weka sahihi",
+  "LS_Passcode_message" : "As this is your first Login to your Y9 App, we will be doing an OTP verification after which you can set your personalised Passcodefor your Y9 App",
 
 
   "SU_title" : "Weka Nambari ya NIDA",

@@ -18,6 +18,7 @@
   "LS_mobile_hint_text" : "Enter Mobile Number",
   "LS_Passcode" : "Passcode",
   "LS_SignIn" : "Sign-In",
+  "LS_Passcode_message" : "As this is your first Login to your Y9 App, \nwe will be doing an OTP verification after \nwhich you can set your personalised \nPasscodefor your Y9 App",
 
 
   "SU_title" : "Enter NIDA Number",
