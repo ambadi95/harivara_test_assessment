@@ -5,6 +5,7 @@ import 'package:welcome/sub_features/welcome/state/welcome_screen_state.dart';
 import 'package:task_manager/base_classes/base_view_model.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:widget_library/utils/app_utils.dart';
 
 import '../../../navigation_handler/welcome_navigation_handler.dart';
 import 'welcome_back_usecase.dart';
@@ -94,6 +95,8 @@ class WelcomeBackCoordinator extends BaseViewModel<WelcomeScreenState> {
   }
 
   void onPasscodeCallback(String passCode, UserType userType) {
+    AppUtils.appUtilsInstance.saveUserType(userType);
+
     if (userType == UserType.Customer) {
       customerLogin(passCode, userType);
     } else {
@@ -106,7 +109,6 @@ class WelcomeBackCoordinator extends BaseViewModel<WelcomeScreenState> {
     state = state.copyWith(isLoading: true);
     try {
 
-      print(mobileNumber);
       var response =
           await _welcomeUseCase.login(mobileNumber, passcode, (p0) => null);
       if (response?.status == true) {

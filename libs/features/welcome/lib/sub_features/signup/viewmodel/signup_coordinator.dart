@@ -58,6 +58,9 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
           state = const SignUpState.initialState();
           await _signupUseCase
               .saveCustomerId(response.data?.customerId.toString());
+
+          AppUtils.appUtilsInstance.saveUserType(UserType.Customer) ;
+
           _navigationHandler.navigateToOtpScreenCustomerSignUp(
               signUpArguments.userType, mobileNumber,
               userId: response.data?.customerId.toString());
@@ -70,7 +73,11 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
         var agentResponse =
         await _signupUseCase.signUpAgent(nindaNumber, agentId, (p0) => null);
         if (agentResponse?.status == true) {
+
+          AppUtils.appUtilsInstance.saveUserType(UserType.Agent) ;
+
           await _signupUseCase.saveAgentDetails(nindaNumber, agentId);
+
           state = const SignUpState.initialState();
           _navigationHandler
               .navigateToAgentDetailScreen(signUpArguments.userType);

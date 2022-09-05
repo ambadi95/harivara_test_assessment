@@ -174,6 +174,8 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
         CrayonPaymentLogger.logInfo(value);
       });
     }
+    request.customHeaders = await request.headers();
+    print(request.customHeaders.toString());
 
     final headers = buildHeaders(request.customHeaders);
     CrayonPaymentLogger.logDebug<NetworkClient>(
@@ -243,6 +245,8 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
       });
     }
     request.customHeaders = await request.headers();
+
+    print(request.customHeaders.toString());
     final headers = buildHeaders(request.customHeaders);
     CrayonPaymentLogger.logDebug<NetworkClient>(
       'Sending POST request to the server for url: ${uri.toString()}',

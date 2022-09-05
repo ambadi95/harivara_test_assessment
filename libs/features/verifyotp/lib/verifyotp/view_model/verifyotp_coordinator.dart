@@ -316,6 +316,8 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         break;
       case "Credit_Check_Success":
         //TODO Navigate to Credit_Check_Success Screen
+        _navigationHandler.navigateToKYCScreen();
+
         break;
       case "Device_Selection":
         _navigationHandler.navigateToDeviceOption(false,UserType.AgentCustomer);

@@ -23,11 +23,11 @@ mixin _$DownPaymentState {
             BuildContext context,
             String error,
             bool isLoading,
-            bool paymentRequested,
-            bool waitForPayment,
-            bool paymentReceived,
-            bool loanApproved,
-            bool loanActivated)
+            num paymentRequested,
+            num waitForPayment,
+            num paymentReceived,
+            num loanApproved,
+            num loanActivated)
         ready,
   }) =>
       throw _privateConstructorUsedError;
@@ -38,11 +38,11 @@ mixin _$DownPaymentState {
             BuildContext context,
             String error,
             bool isLoading,
-            bool paymentRequested,
-            bool waitForPayment,
-            bool paymentReceived,
-            bool loanApproved,
-            bool loanActivated)?
+            num paymentRequested,
+            num waitForPayment,
+            num paymentReceived,
+            num loanApproved,
+            num loanActivated)?
         ready,
   }) =>
       throw _privateConstructorUsedError;
@@ -53,11 +53,11 @@ mixin _$DownPaymentState {
             BuildContext context,
             String error,
             bool isLoading,
-            bool paymentRequested,
-            bool waitForPayment,
-            bool paymentReceived,
-            bool loanApproved,
-            bool loanActivated)?
+            num paymentRequested,
+            num waitForPayment,
+            num paymentReceived,
+            num loanApproved,
+            num loanActivated)?
         ready,
     required TResult orElse(),
   }) =>
@@ -146,11 +146,11 @@ class _$InitialState implements InitialState {
             BuildContext context,
             String error,
             bool isLoading,
-            bool paymentRequested,
-            bool waitForPayment,
-            bool paymentReceived,
-            bool loanApproved,
-            bool loanActivated)
+            num paymentRequested,
+            num waitForPayment,
+            num paymentReceived,
+            num loanApproved,
+            num loanActivated)
         ready,
   }) {
     return initialState();
@@ -164,11 +164,11 @@ class _$InitialState implements InitialState {
             BuildContext context,
             String error,
             bool isLoading,
-            bool paymentRequested,
-            bool waitForPayment,
-            bool paymentReceived,
-            bool loanApproved,
-            bool loanActivated)?
+            num paymentRequested,
+            num waitForPayment,
+            num paymentReceived,
+            num loanApproved,
+            num loanActivated)?
         ready,
   }) {
     return initialState?.call();
@@ -182,11 +182,11 @@ class _$InitialState implements InitialState {
             BuildContext context,
             String error,
             bool isLoading,
-            bool paymentRequested,
-            bool waitForPayment,
-            bool paymentReceived,
-            bool loanApproved,
-            bool loanActivated)?
+            num paymentRequested,
+            num waitForPayment,
+            num paymentReceived,
+            num loanApproved,
+            num loanActivated)?
         ready,
     required TResult orElse(),
   }) {
@@ -241,11 +241,11 @@ abstract class _$$DownPaymentStateReadyCopyWith<$Res> {
       {BuildContext context,
       String error,
       bool isLoading,
-      bool paymentRequested,
-      bool waitForPayment,
-      bool paymentReceived,
-      bool loanApproved,
-      bool loanActivated});
+      num paymentRequested,
+      num waitForPayment,
+      num paymentReceived,
+      num loanApproved,
+      num loanActivated});
 }
 
 /// @nodoc
@@ -286,23 +286,23 @@ class __$$DownPaymentStateReadyCopyWithImpl<$Res>
       paymentRequested: paymentRequested == freezed
           ? _value.paymentRequested
           : paymentRequested // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as num,
       waitForPayment: waitForPayment == freezed
           ? _value.waitForPayment
           : waitForPayment // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as num,
       paymentReceived: paymentReceived == freezed
           ? _value.paymentReceived
           : paymentReceived // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as num,
       loanApproved: loanApproved == freezed
           ? _value.loanApproved
           : loanApproved // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as num,
       loanActivated: loanActivated == freezed
           ? _value.loanActivated
           : loanActivated // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as num,
     ));
   }
 }
@@ -314,11 +314,11 @@ class _$DownPaymentStateReady implements DownPaymentStateReady {
       {required this.context,
       this.error = '',
       this.isLoading = false,
-      this.paymentRequested = false,
-      this.waitForPayment = false,
-      this.paymentReceived = false,
-      this.loanApproved = false,
-      this.loanActivated = false});
+      this.paymentRequested = 0,
+      this.waitForPayment = 0,
+      this.paymentReceived = 0,
+      this.loanApproved = 0,
+      this.loanActivated = 0});
 
   @override
   final BuildContext context;
@@ -330,19 +330,19 @@ class _$DownPaymentStateReady implements DownPaymentStateReady {
   final bool isLoading;
   @override
   @JsonKey()
-  final bool paymentRequested;
+  final num paymentRequested;
   @override
   @JsonKey()
-  final bool waitForPayment;
+  final num waitForPayment;
   @override
   @JsonKey()
-  final bool paymentReceived;
+  final num paymentReceived;
   @override
   @JsonKey()
-  final bool loanApproved;
+  final num loanApproved;
   @override
   @JsonKey()
-  final bool loanActivated;
+  final num loanActivated;
 
   @override
   String toString() {
@@ -395,11 +395,11 @@ class _$DownPaymentStateReady implements DownPaymentStateReady {
             BuildContext context,
             String error,
             bool isLoading,
-            bool paymentRequested,
-            bool waitForPayment,
-            bool paymentReceived,
-            bool loanApproved,
-            bool loanActivated)
+            num paymentRequested,
+            num waitForPayment,
+            num paymentReceived,
+            num loanApproved,
+            num loanActivated)
         ready,
   }) {
     return ready(context, error, isLoading, paymentRequested, waitForPayment,
@@ -414,11 +414,11 @@ class _$DownPaymentStateReady implements DownPaymentStateReady {
             BuildContext context,
             String error,
             bool isLoading,
-            bool paymentRequested,
-            bool waitForPayment,
-            bool paymentReceived,
-            bool loanApproved,
-            bool loanActivated)?
+            num paymentRequested,
+            num waitForPayment,
+            num paymentReceived,
+            num loanApproved,
+            num loanActivated)?
         ready,
   }) {
     return ready?.call(context, error, isLoading, paymentRequested,
@@ -433,11 +433,11 @@ class _$DownPaymentStateReady implements DownPaymentStateReady {
             BuildContext context,
             String error,
             bool isLoading,
-            bool paymentRequested,
-            bool waitForPayment,
-            bool paymentReceived,
-            bool loanApproved,
-            bool loanActivated)?
+            num paymentRequested,
+            num waitForPayment,
+            num paymentReceived,
+            num loanApproved,
+            num loanActivated)?
         ready,
     required TResult orElse(),
   }) {
@@ -485,20 +485,20 @@ abstract class DownPaymentStateReady implements DownPaymentState {
       {required final BuildContext context,
       final String error,
       final bool isLoading,
-      final bool paymentRequested,
-      final bool waitForPayment,
-      final bool paymentReceived,
-      final bool loanApproved,
-      final bool loanActivated}) = _$DownPaymentStateReady;
+      final num paymentRequested,
+      final num waitForPayment,
+      final num paymentReceived,
+      final num loanApproved,
+      final num loanActivated}) = _$DownPaymentStateReady;
 
   BuildContext get context;
   String get error;
   bool get isLoading;
-  bool get paymentRequested;
-  bool get waitForPayment;
-  bool get paymentReceived;
-  bool get loanApproved;
-  bool get loanActivated;
+  num get paymentRequested;
+  num get waitForPayment;
+  num get paymentReceived;
+  num get loanApproved;
+  num get loanActivated;
   @JsonKey(ignore: true)
   _$$DownPaymentStateReadyCopyWith<_$DownPaymentStateReady> get copyWith =>
       throw _privateConstructorUsedError;

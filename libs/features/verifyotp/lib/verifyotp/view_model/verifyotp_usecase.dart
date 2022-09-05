@@ -45,6 +45,7 @@ class VerifyOtpUseCase extends BaseDataProvider {
     OtpRequest otpRequest = OtpRequest(
         id: id, type: (userType == UserType.Customer ? "Customer" : "Agent"));
 
+    print(otpRequest.toJson().toString());
     return await executeApiRequest<OtpResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
