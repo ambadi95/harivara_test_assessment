@@ -117,7 +117,7 @@ class DetailsUseCase extends BaseDataProvider {
       String region,
       String district,
       Function(String) onErrorCallback,
-      UserType userType) async {
+      UserType userType,String postType) async {
     String mobileNO = await getMobileNumber();
     String nidaNo = await getnidaNumber();
     int customerId = int.parse(await getCustomerId());
@@ -142,7 +142,8 @@ class DetailsUseCase extends BaseDataProvider {
         moduleIdentifier: WelcomeModule.moduleIdentifier,
         requestData: {
           'data': customerDetailsRequest.toJson(),
-          'userType': userType
+          'userType': userType,
+           "postType" : postType
         },
         serviceIdentifier: IDetailsService.submitCustomerDetailIdentifier,
         onError: onErrorCallback,

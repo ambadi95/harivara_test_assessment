@@ -131,30 +131,33 @@ class _DetailsScreenState extends State<DetailsScreen> {
             regionDropDown = getRegionDropDownData(regions);
             customerDetail = await coordinator.getCustomerDetail(
                 regionDropDown, widget.userType);
-            name.text = customerDetail!.data!.firstName! +
-                ' ' +
-                customerDetail!.data!.lastName!;
-            dob.text = customerDetail!.data!.birthdate!;
-            selectedDate = DateFormat('dd/MM/yyyy')
-                .parse(customerDetail!.data!.birthdate.toString());
-            profession.text = customerDetail!.data!.profession!;
-            emailId.text = customerDetail!.data!.emailId!;
-            address.text = customerDetail!.data!.address!;
-            poBox.text = customerDetail!.data!.poBoxNumber!;
-            district.text = customerDetail!.data!.district!;
-            region.text = customerDetail!.data!.region!;
-            gender.text = customerDetail!.data!.gender!;
-            if (customerDetail!.data != null) {
-              coordinator.isValidDob(dob.text);
+            if(customerDetail!.data!=null && customerDetail!.data!.firstName!=null) {
+              name.text = customerDetail!.data!.firstName! +
+                  ' ' +
+                  customerDetail!.data!.lastName!;
+              dob.text = customerDetail!.data!.birthdate!;
+              selectedDate = DateFormat('dd/MM/yyyy')
+                  .parse(customerDetail!.data!.birthdate.toString());
+              profession.text = customerDetail!.data!.profession!;
+              emailId.text = customerDetail!.data!.emailId!;
+              address.text = customerDetail!.data!.address!;
+              poBox.text = customerDetail!.data!.poBoxNumber!;
+              district.text = customerDetail!.data!.district!;
+              region.text = customerDetail!.data!.region!;
+              gender.text = customerDetail!.data!.gender!;
 
-              coordinator.isValidDistrict(district.text);
-              coordinator.isValidRegion(region.text);
-            }
-            if (_region != null) {
-              dis =
-                  await coordinator.getDistrict(_region!.id!, widget.userType);
-              districtDropDown = getDistrictDropDownData(dis);
-              coordinator.fetchDistrictState(customerDetail!.data!.district!);
+              if (customerDetail!.data != null) {
+                coordinator.isValidDob(dob.text);
+
+                coordinator.isValidDistrict(district.text);
+                coordinator.isValidRegion(region.text);
+              }
+              if (_region != null) {
+                dis =
+                await coordinator.getDistrict(_region!.id!, widget.userType);
+                districtDropDown = getDistrictDropDownData(dis);
+                coordinator.fetchDistrictState(customerDetail!.data!.district!);
+              }
             }
           },
           builder: (context, state, coordinator) => SafeArea(
@@ -649,7 +652,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
               poBox.text,
               region.text,
               district.text,
-              widget.userType);
+              widget.userType,
+              customerDetail!.data==null || customerDetail!.data!.firstName==null ? "POST" :" PUT");
         }
       },
       child: Container(

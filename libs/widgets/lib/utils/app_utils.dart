@@ -22,11 +22,19 @@ class AppUtils {
 
   NavigationManager? _navigationManager;
 
+   UserType? userType;
+
   // hide keyboard
   hideKeyboard() {
     SystemChannels.textInput.invokeMethod('TextInput.hide');
   }
 
+
+
+  saveUserType(UserType userTypeValue){
+    userType=userTypeValue;
+
+  }
   updateCacheTaskResolverInstance(CacheTaskResolver cacheTaskResolverInstance) {
     _cacheTaskResolver = cacheTaskResolverInstance;
   }
@@ -34,6 +42,8 @@ class AppUtils {
   updateNavigationHandlerInstance(NavigationManager navigationManagerInstance) {
     _navigationManager = navigationManagerInstance;
   }
+
+
 
   // get percentage size
   double getPercentageSize({double? percentage = 0, bool ofWidth = true}) {
@@ -45,6 +55,9 @@ class AppUtils {
   }
 
   Future<void> logoutUser(UserType userType) async {
+
+
+
     if (_cacheTaskResolver != null) {
       _cacheTaskResolver!
           .execute("", {CACHE_TYPE: TaskManagerCacheType.DELETE_ALL});
@@ -52,7 +65,7 @@ class AppUtils {
     if (_navigationManager != null) {
       await _navigationManager!.navigateTo(
           Login.viewPath, const NavigationType.replace(),
-          arguments: userType);
+          arguments: this.userType ?? UserType.Customer);
     }
   }
 
