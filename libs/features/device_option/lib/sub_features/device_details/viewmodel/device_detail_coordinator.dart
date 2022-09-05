@@ -48,4 +48,6 @@ class DeviceDetailCoordinator
   void navigateToDownPayment(int? deviceId) async {
     await _navigationHandler.navigateToDownPaymentScreen(deviceId!);
   }
+
+
 }

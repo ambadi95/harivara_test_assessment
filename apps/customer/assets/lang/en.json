@@ -21,7 +21,7 @@
 
 
   "SU_title" : "Enter NIDA Number",
-  "SU_subtitle" : "By signing up to Y9, you here by agree to the \n%{Terms & Conditions|https://www.google.com}%.",
+  "SU_subtitle" : "By signing up to Y9, you hereby agree to\nthe %{Terms & Conditions|https://www.google.com}%.",
   "SU_ID_no_label" : "NIDA Number",
   "SU_mobile_no_label" : "Mobile Number",
   "SU_carrier_message" : "Carrier SMS charges may apply.",
@@ -69,7 +69,7 @@
   "HS_GoodAfternoon": "Good Afternoon",
   "HS_GoodEvening": "Good Evening",
   "HS_YourBalance": "Your Balance",
-  "HS_AccountId": "Y9 Account Id",
+  "HS_AccountId": "Y9 Account ID",
   "HS_LoadWallet": "Load Wallet",
   "HS_SendMoney": "Send Money",
   "HS_CollectMoney": "Collect Money",
@@ -104,7 +104,7 @@
   "WB_EnterPassCode": "Enter Passcode",
   "AN_Title": "Agents Near by",
   "AN_Search": "Search by Region / District",
-  "AN_AgentName": "Y9 Agent id: ",
+  "AN_AgentName": "Y9 Agent ID: ",
   "AN_Call": "Call",
 
 
@@ -133,6 +133,7 @@
   "DD_SelectDevice" : "Select Device",
   "DD_MembershipTerms" : "Membership Terms",
   "DD_MembershipBenefits" : "Y9 Membership Benefits",
+
 
   "DD_MemberBenefit1": "Loan to Finance your Smartphone Device",
   "DD_MemberBenefit2": "Customised Digital Platforms as per Customer needs",
@@ -165,6 +166,7 @@
   "HS_Agent_Id" : "Y9 Agent ID",
   "HS_TotalOnBoarderCustomers" : "Total Onboarded\nCustomers",
   "HS_PendingCustomerRequests" : "Pending Customer\nRequest",
+  "HS_TotalCustomerBoarding" : "Total Customers \nOnboarded",
   "HS_Customer_OnBoarding" : "Customer Onboarding",
   "HS_Customer_DeviceSwap" : "Device swap",
   "HS_Customer_AgentSupport" : "Agent Support",

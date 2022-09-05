@@ -204,7 +204,7 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
               Expanded(
                   flex: 8,
                   child: Container(
-                    margin: EdgeInsets.only(left: 10),
+                    margin: const EdgeInsets.only(left: 10),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [

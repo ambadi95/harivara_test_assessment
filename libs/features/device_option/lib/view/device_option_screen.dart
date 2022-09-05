@@ -104,9 +104,8 @@ class _DeviceOptionState extends State<DeviceOption> {
             _buildTitle(context),
             dynamicHSpacer(28),
             _creditScoreInfo(),
-            dynamicHSpacer(28),
+            dynamicHSpacer(20),
             // _buildSearchField(context),
-            dynamicHSpacer(24),
             Expanded(child: _buildDeviceList(context, coordinator)),
             dynamicHSpacer(16),
           ],
@@ -127,7 +126,7 @@ class _DeviceOptionState extends State<DeviceOption> {
     return widget.deviceOptionArgs.userType == UserType.AgentCustomer
         ? Container(
             width: double.infinity,
-            height: 92,
+            height: 102,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(4),
                 color: MO_credit_info_bg),
@@ -166,7 +165,7 @@ class _DeviceOptionState extends State<DeviceOption> {
                             styleVariant:
                                 CrayonPaymentTextStyleVariant.headline5,
                             color: AN_TitleColor,
-                            fontWeight: FontWeight.w500),
+                            fontWeight: FontWeight.w600),
                       )
                     ],
                   ),
@@ -364,23 +363,24 @@ class _DeviceOptionState extends State<DeviceOption> {
                   //     ),
                   //   ],
                   // ),
-                  dynamicHSpacer(10),
+                  dynamicHSpacer(7),
                   CrayonPaymentText(
                     key: Key('${_identifier}_pricing_label'),
                     text: const TextUIDataModel(
                       'DO_Pricing_option',
-                      styleVariant: CrayonPaymentTextStyleVariant.headline4,
+                      styleVariant: CrayonPaymentTextStyleVariant.headline5,
                       color: DD_TextValue,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                   dynamicHSpacer(6),
                   Row(
                     children: [
                       priceButton(context, 'D0_JoiningFee'.tr,
-                          deviceList[index].joiningFees.toString() + ' TZSHS  '),
+                          deviceList[index].joiningFees.toString()),
                       dynamicWSpacer(18),
                       priceButton(context, 'D0_DailyFee'.tr,
-                          deviceList[index].dailyFees.toString() + ' TZSHS '),
+                          deviceList[index].dailyFees.toString()),
                     ],
                   ),
                   dynamicHSpacer(20),
@@ -408,12 +408,22 @@ class _DeviceOptionState extends State<DeviceOption> {
             fontFamily: 'Montserrat',
           ),
         ),
-        dynamicHSpacer(7),
-        Text(
-          label,
-          style: const TextStyle(
-            fontFamily: 'Montserrat',
-              fontSize: 14, color: DD_TextLabel, fontWeight: FontWeight.w600),
+
+        dynamicHSpacer(1),
+        RichText(
+          text: TextSpan(
+            text:  label,
+            style: const TextStyle(
+                fontFamily: 'Montserrat',
+                fontSize: 14, color: DD_TextLabel, fontWeight: FontWeight.w600
+            ),
+            children: <TextSpan>[
+              TextSpan(
+                  text: '  TZSHS',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 9)),
+
+            ],
+          ),
         ),
       ],
     );
@@ -423,7 +433,7 @@ class _DeviceOptionState extends State<DeviceOption> {
     return CrayonPaymentDockedButton(
       key: const Key('Select'),
       title: 'D0_ViewDetails'.tr,
-      borderRadius: 8,
+      borderRadius: 5,
       height: CrayonPaymentDimensions.marginFortyEight,
       buttonColor: LS_ButtonColor,
       textColor: White,

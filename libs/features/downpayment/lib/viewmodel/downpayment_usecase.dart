@@ -30,6 +30,10 @@ class DownPaymentUseCase extends BaseDataProvider {
     return await getValueFromSecureStorage('mobileNumber', defaultValue: '');
   }
 
+  Future<String> getNewCustomerName() async {
+    return await getValueFromSecureStorage('newCustomerName', defaultValue: '');
+  }
+
   Future<CreateLoanResponse?> createLoan(
       int deviceId, Function(String) onErrorCallback) async {
     String agentId = await getAgentId();

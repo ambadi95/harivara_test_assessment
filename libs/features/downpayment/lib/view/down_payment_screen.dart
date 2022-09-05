@@ -42,7 +42,7 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
       BaseView<DownPaymentCoordinator, DownPaymentState>(
           setupViewModel: (coordinator) async {
             coordinator.initialiseState(context);
-            username = await coordinator.getAgentName();
+            username = await coordinator.getNewCustomerName(); //getAgentName();
             setState(() {
               username;
             });
@@ -114,7 +114,7 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
         SizedBox(
           height: AppUtils.appUtilsInstance.getPercentageSize(percentage: 5),
         ),
-        // _image(context)
+        //_image(context)
 
         Expanded(
           flex: 5,
@@ -188,7 +188,7 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
                 _getVerticalDivider(
                     context,
                     AppUtils.appUtilsInstance
-                        .getPercentageSize(percentage: 10)),
+                        .getPercentageSize(percentage: 8)),
                 _rowWidget(
                   context,
                   icon: _getCheckedIcon(
@@ -200,7 +200,7 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
                 _getVerticalDivider(
                     context,
                     AppUtils.appUtilsInstance
-                        .getPercentageSize(percentage: 10)),
+                        .getPercentageSize(percentage: 8)),
                 _rowWidget(
                   context,
                   icon: _getCheckedIcon(
@@ -212,7 +212,7 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
                 _getVerticalDivider(
                     context,
                     AppUtils.appUtilsInstance
-                        .getPercentageSize(percentage: 10)),
+                        .getPercentageSize(percentage: 8)),
                 _rowWidget(
                   context,
                   icon: _getCheckedIcon(
@@ -223,7 +223,7 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
                 ),
                 SizedBox(
                   height: AppUtils.appUtilsInstance
-                      .getPercentageSize(percentage: 10),
+                      .getPercentageSize(percentage: 8),
                 ),
               ],
             ),
@@ -295,8 +295,8 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
 
   Widget _buildTitle(context) {
     return CrayonPaymentText(
-      key: Key('${_identifier}_Downpayment_Title'),
-      text: const TextUIDataModel('Downpayment',
+      key: Key('${_identifier}_DLC_Down_Payment'),
+      text: const TextUIDataModel('DLC_Down_Payment',
           styleVariant: CrayonPaymentTextStyleVariant.headlineThirtyTwo,
           color: AN_TitleColor,
           fontWeight: FontWeight.w800),
@@ -330,7 +330,7 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
     return CrayonPaymentText(
       key: Key('${_identifier}_Payment_Request'),
       text: const TextUIDataModel(
-          '70,000 TZSHS\npayment request has\nbeen sent to Y9',
+          '70,000 TZSHS payment\nrequest has been sent\nto Y9',
           styleVariant: CrayonPaymentTextStyleVariant.headline6,
           color: AN_TitleColor,
           fontWeight: FontWeight.w600),
@@ -347,11 +347,11 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
     );
   }
 
-  _subTitle(BuildContext context) {
+  _subTitle(BuildContext context){
     return CrayonPaymentText(
-      key: Key('${_identifier}_Transaction_Gateway'),
+      key: Key('${_identifier}_DLC_Down_Payment_Subtitle'),
       text: const TextUIDataModel(
-          'Transaction gateway will be closed in next 15 minutes',
+          'DLC_Down_Payment_Subtitle',
           styleVariant: CrayonPaymentTextStyleVariant.subtitle2,
           color: VO_ResendTextColor,
           fontWeight: FontWeight.w400),
