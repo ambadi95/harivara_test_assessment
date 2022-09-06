@@ -120,11 +120,8 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> with TickerProvid
 
   Widget _createLoading(DownPaymentStateReady state) {
     if (state.isLoading) {
-      return Container(
-        color: Colors.black.withOpacity(0.4),
-        child: const CenteredCircularProgressBar(
-            color: config_colors.PRIMARY_COLOR),
-      );
+      return const CenteredCircularProgressBar(color: PRIMARY_COLOR);
+
     } else {
       return Container();
     }
@@ -423,9 +420,18 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> with TickerProvid
 
   _listenToStateChanges(BuildContext context, DownPaymentStateReady newState) {
     //kyc done
-    if (newState.waitForPayment == 1) {
+    if (newState.waitForPayment == 1 && newState.paymentReceived == 0) {
 
-      downPaymentCoordinator!.createLoan(widget.downPaymentScreenArgs.deviceId.toString());
+      Future.delayed(const Duration(seconds: 25), () {
+
+        downPaymentCoordinator!.checkPaymentStatus(context);
+
+
+      });
+
+    }if (newState.paymentReceived == 1) {
+
+      downPaymentCoordinator!.createLoan(context,widget.downPaymentScreenArgs.deviceId.toString());
     }
   }
 }
