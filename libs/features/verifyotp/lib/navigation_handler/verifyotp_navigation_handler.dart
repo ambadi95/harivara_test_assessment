@@ -58,6 +58,7 @@ class VerifyOtpNavigationHandler with ErrorHandler {
       "",
       "",
       [KYCDataModel(title: "", isSelected: false)],
+      false
     );
     _navigationManager.navigateTo(
         KycCreditScreen.viewPath, const NavigationType.replace(),
@@ -167,13 +168,13 @@ class VerifyOtpNavigationHandler with ErrorHandler {
 
   navigateToDownPaymentScreen() {
     var arguments = DownPaymentScreenArgs(
-        0, "", "", "", "", [DownPaymentDataModel(title: "", isSelected: false)]);
+        0, "", "", "",0,0,0,0,0);
     _navigationManager.navigateTo(
         DownPaymentScreen.viewPath, const NavigationType.push(),
         arguments: arguments);
   }
 
-  void navigateToKYCScreen() async {
+  void navigateToKYCScreen(bool kycCheck) async {
     var argument = KycScreenArgs(
       KycFieldType.KYC_VALIDATION,
       "",
@@ -181,6 +182,7 @@ class VerifyOtpNavigationHandler with ErrorHandler {
       "",
       "",
       [KYCDataModel(title: "", isSelected: false)],
+        kycCheck
     );
     await _navigationManager.navigateTo(
         KycCreditMainScreen.viewPath, const NavigationType.push(),

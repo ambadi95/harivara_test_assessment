@@ -9,6 +9,7 @@ import 'package:widget_library/utils/icon_utils.dart';
 
 class SearchBarWidget extends StatefulWidget {
   final void Function(String)? onSearch;
+  final void Function()? onEditingComplete;
   final void Function(String)? onTextChanged;
   final List<TextInputFormatter>? inputFormatters;
   final int _debounceDuration;
@@ -20,6 +21,7 @@ class SearchBarWidget extends StatefulWidget {
     this.onSearch,
     Key? key,
     this.onTextChanged,
+    this.onEditingComplete,
     int? debounceDuration,
     SearchBarAttributes? attributes,
     this.textInputType,
@@ -69,7 +71,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
             widget.onTextChanged?.call(predicate);
           });
         },
-        
+
         textInputAction: widget.textInputAction??TextInputAction.done,
         onEditingComplete: _callOnSearch,
         cursorColor: CrayonPaymentColors.crayonPaymentGold,
