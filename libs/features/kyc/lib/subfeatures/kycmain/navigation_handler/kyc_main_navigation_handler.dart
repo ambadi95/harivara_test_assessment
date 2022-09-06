@@ -33,6 +33,7 @@ class KycCreditMainNavigationHandler with ErrorHandler {
       "",
       "",
       [KYCDataModel(title: "", isSelected: false)],
+      false
     );
 
     await _navigationManager.navigateTo(

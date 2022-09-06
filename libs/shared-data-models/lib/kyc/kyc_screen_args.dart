@@ -9,6 +9,7 @@ class KycScreenArgs {
   final String subTitle;
   final String destinationPath;
   final List<KYCDataModel> kycDataModelList;
+  final bool kycCheckSuccess;
 
   KycScreenArgs(
     this.kycFieldType,
@@ -17,5 +18,6 @@ class KycScreenArgs {
     this.subTitle,
     this.destinationPath,
     this.kycDataModelList,
+      this.kycCheckSuccess
   );
 }
