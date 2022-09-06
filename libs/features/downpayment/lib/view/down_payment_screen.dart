@@ -420,7 +420,7 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> with TickerProvid
 
   _listenToStateChanges(BuildContext context, DownPaymentStateReady newState) {
     //kyc done
-    if (newState.waitForPayment == 1 && newState.paymentReceived==0) {
+    if (newState.waitForPayment == 1 && newState.paymentReceived == 0) {
 
       Future.delayed(const Duration(seconds: 25), () {
 
