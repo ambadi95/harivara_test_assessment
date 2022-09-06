@@ -40,6 +40,13 @@ class VerifyOtpUseCase extends BaseDataProvider {
     return '';
   }
 
+  Future<void> saveOnBordStatus(String id) async {
+    return await setValueToSecureStorage({'OnBoardStatus': id});
+  }
+
+  Future<String> getAgentId() async {
+    return await getValueFromSecureStorage('agentId', defaultValue: '');
+  }
   Future<OtpResponse?> otpGen(
       String id, UserType userType,String event ,Function(String) onErrorCallback) async {
     OtpRequest otpRequest = OtpRequest(
@@ -102,7 +109,7 @@ class VerifyOtpUseCase extends BaseDataProvider {
   Future<OtpVerificationResponse?> otpVerifyCustomerByAgent(String id,
       String otp, String userType, Function(String) onErrorCallback) async {
     OtpVerificationRequest otpRequest =
-    OtpVerificationRequest(id: id, type: userType, otp: otp,event: OTPEvent.Customer_Registration.toShortString());
+        OtpVerificationRequest(id: id, type: userType, otp: otp,event: OTPEvent.Customer_Registration.toShortString());
     CrayonPaymentLogger.logInfo(otpRequest.toJson().toString());
 
     return await executeApiRequest<OtpVerificationResponse?>(

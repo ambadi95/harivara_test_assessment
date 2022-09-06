@@ -5,10 +5,10 @@ part 'data.g.dart';
 
 @JsonSerializable()
 class Data extends Equatable {
-  final int? dailyRepaymentAmount;
-  final int? deviceId;
+  final num? dailyRepaymentAmount;
+  final num? deviceId;
   final String? finalPaymentDate;
-  final int? joiningFee;
+  final num? joiningFee;
   final String? totalAmountToBeRepaid;
 
   const Data({

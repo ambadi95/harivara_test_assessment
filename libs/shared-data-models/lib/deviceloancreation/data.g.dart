@@ -7,10 +7,10 @@ part of 'data.dart';
 // **************************************************************************
 
 Data _$DataFromJson(Map<String, dynamic> json) => Data(
-      dailyRepaymentAmount: json['dailyRepaymentAmount'] as int?,
-      deviceId: json['deviceId'] as int?,
+      dailyRepaymentAmount: json['dailyRepaymentAmount'] as num?,
+      deviceId: json['deviceId'] as num?,
       finalPaymentDate: json['finalPaymentDate'] as String?,
-      joiningFee: json['joiningFee'] as int?,
+      joiningFee: json['joiningFee'] as num?,
       totalAmountToBeRepaid: json['totalAmountToBeRepaid'] as String?,
     );
 
