@@ -28,7 +28,7 @@
   "SU_carrier_message" : "Huenda ukatozwa ada za mtoa huduma za SMS.",
   "SU_button_text" : "Endelea",
   "SU_title_hint_agent" : "Weka Nambari ya NIDA",
-  "SU_title_hint" : "Weka Nambari ya NIDA",
+  "SU_title_hint" : "Weka Nambari ya NIDA kwa Mteja",
   "SU_subtitle_hint" : "Weka Nambari ya Simu",
   "SU_title_error_text" : "Nambari ya NIDA si sahihi",
   "SU_subtitle_error_text" : "Nambari ya Simu batili",
@@ -38,8 +38,8 @@
   "SU_reset_subtitle" : "Unaweza Kuweka upya nambari ya siri hapa kwa kutumia OTP iliyotumwa kwa nambari yako ya simu iliyosajiliwa",
   "SU_update_passcode" : "Sasisha nambari ya siri",
   "SU_update_subtitle" : "Unaweza kusasisha nambari ya siri hapa kwa kutumia OTP iliyotumwa kwa nambari yako ya simu iliyosajiliwa",
-  "SU_valid_IMEI1" : "IMEI-1 si sahihi",
-  "SU_valid_IMEI2" : "IMEI-2 si sahihi",
+  "SU_valid_IMEI1" : "IMEI batili tafadhali weka nambari sahihi",
+  "SU_valid_IMEI2" : "IMEI batili tafadhali weka nambari sahihi",
   "SU_enter_IMEI2_button" : "Weka nambari ya IMEI-2",
   "SU_enter_IMEI1_button" : "Weka nambari ya IMEI-1",
   "SU_close" : "Funga",
@@ -268,7 +268,8 @@
   "PC_alert_title" : "Maelezo ya Kutolingana",
   "PC_button_close" : "Funga",
   "FORGET_PASSCODE": "Sahau nambari ya siri ?",
-  "RESET_NOW": "Weka Upya Sasa"
+  "RESET_NOW": "Weka Upya Sasa",
+  "ERROR_MESSAGE" : "Hitilafu fulani imetokea, Tafadhali jaribu tena baadaye!"
 
 
 

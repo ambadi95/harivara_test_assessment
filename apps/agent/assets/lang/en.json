@@ -38,8 +38,8 @@
   "SU_reset_subtitle" : "You can Reset the passcode here using OTP sent to your registered mobile number",
   "SU_update_passcode" : "Update Passcode",
   "SU_update_subtitle" : "You can Update the passcode here using OTP sent to your registered mobile number",
-  "SU_valid_IMEI1" : "Invalid IMEI-1",
-  "SU_valid_IMEI2" : "Invalid IMEI-2",
+  "SU_valid_IMEI1" : "Invalid IMEI please input correct number",
+  "SU_valid_IMEI2" : "Invalid IMEI please input correct number",
   "SU_enter_IMEI1_button" : "Enter IMEI-1 number",
   "SU_enter_IMEI2_button" : "Enter IMEI-2 number",
   "SU_close" : "Close",
@@ -183,7 +183,6 @@
   "DD_WaterResistanceLevel" : "Water Resistance Level",
   "DD_Color" : "Colour",
   "DD_Price" : "Pricing",
-
   "DD_EMIMonth" : "EMI/ Month",
   "DD_Interest" : "Interest %",
   "DD_TotalAmountPaid" : "Total Amount to be Paid",
@@ -270,6 +269,7 @@
   "PC_alert_title" : "Details Mismatch",
   "PC_button_close" : "Close",
   "FORGET_PASSCODE": "Forget Passcode ?",
-  "RESET_NOW": "Reset Now"
+  "RESET_NOW": "Reset Now",
+  "ERROR_MESSAGE" :  "Something went wrong,Please try again later!"
 
 }

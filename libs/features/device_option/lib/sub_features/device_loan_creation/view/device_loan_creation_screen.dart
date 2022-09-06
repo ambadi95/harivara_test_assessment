@@ -159,9 +159,9 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
           dynamicHSpacer(10),
           loanPreviewResponseModel == null
               ? CrayonPaymentText(
-                  key: Key('${_identifier}_ERROR_API'),
+                  key: Key('${_identifier}_ERROR_MESSAGE'),
                   text: TextUIDataModel(
-                      'Something went wrong,Please try again later!',
+                      'ERROR_MESSAGE'.tr,
                       styleVariant: CrayonPaymentTextStyleVariant.headline4,
                       color: AN_TitleColor,
                       fontWeight: FontWeight.w600),
