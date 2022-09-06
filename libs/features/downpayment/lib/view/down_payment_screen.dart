@@ -371,9 +371,9 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
 
   _listenToStateChanges(BuildContext context, DownPaymentStateReady newState) {
     //kyc done
-    if (newState.waitForPayment == 1) {
+    if (newState.waitForPayment == 1 && newState.paymentReceived==0) {
 
-      Future.delayed(const Duration(seconds: 3), () {
+      Future.delayed(const Duration(seconds: 25), () {
 
         downPaymentCoordinator!.checkPaymentStatus(context);
 
@@ -382,7 +382,7 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
 
     }if (newState.paymentReceived == 1) {
 
-      downPaymentCoordinator!.createLoan(widget.downPaymentScreenArgs.deviceId.toString());
+      downPaymentCoordinator!.createLoan(context,widget.downPaymentScreenArgs.deviceId.toString());
     }
   }
 }

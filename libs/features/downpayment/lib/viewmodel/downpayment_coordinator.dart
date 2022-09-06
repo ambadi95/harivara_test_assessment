@@ -30,9 +30,27 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
     await _navigationHandler.navigateToScanQrCode(deviceId);
   }
 
-  Future<void> createLoan(String deviceId) async {
+  Future<void> createLoan(BuildContext context,String deviceId) async {
+    state = DownPaymentState.ready(
+        context: context,
+        error: '',
+        isLoading: true,
+        loanActivated: 0,
+        paymentRequested: 1,
+        waitForPayment: 1,
+        loanApproved: 0,
+        paymentReceived: 1);
     var createLoan = await _downPaymentUseCase.createLoan(deviceId, (p0) => null);
     if (createLoan?.status == true) {
+      state = DownPaymentState.ready(
+          context: context,
+          error: '',
+          isLoading: false,
+          loanActivated: 0,
+          paymentRequested: 1,
+          waitForPayment: 1,
+          loanApproved: 0,
+          paymentReceived: 1);
       print("Success ${createLoan}");
     } else {
       print("Failed");
