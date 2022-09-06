@@ -3,6 +3,7 @@ import 'package:config/Colors.dart';
 import 'package:config/Styles.dart';
 import 'package:core/view/base_view.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:shared_data_models/downpayment/downpayment_screen_args.dart';
 import 'package:widget_library/utils/app_utils.dart';
 import 'package:downpayment/downpayment_module.dart';
 import 'package:flutter/material.dart';
@@ -22,10 +23,9 @@ class DownPaymentScreen extends StatefulWidget {
   static const viewPath =
       '${DownPaymentModule.moduleIdentifier}/downpaymetnscreen';
 
-  //final DownPaymentScreenArgs downPaymentScreenArgs;
-  final int deviceId;
+  final DownPaymentScreenArgs downPaymentScreenArgs;
 
-  const DownPaymentScreen({Key? key, required this.deviceId}) : super(key: key);
+  const DownPaymentScreen({Key? key, required this.downPaymentScreenArgs}) : super(key: key);
 
   @override
   State<DownPaymentScreen> createState() => _DownPaymentScreenState();
@@ -46,6 +46,9 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
             setState(() {
               username;
             });
+            coordinator.setData(context,widget.downPaymentScreenArgs);
+
+
             // coordinator.makePayment(context);
           },
           onStateListenCallback: (preState, newState) => {
@@ -192,7 +195,7 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
                         .getPercentageSize(percentage: 10)),
                 _rowWidget(
                   context,
-                  icon:  _getIcon(context,0),
+                  icon:  _getIcon(context,state.waitForPayment),
 
                   text: _textWidget(context, 'DP_WaitingForPayment'.tr),
                 ),
@@ -202,7 +205,7 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
                         .getPercentageSize(percentage: 10)),
                 _rowWidget(
                   context,
-                  icon:  _getIcon(context,0),
+                  icon:  _getIcon(context,state.paymentReceived),
 
                   text: _textWidget(context, 'DP_PaymentReceived'.tr),
                 ),
@@ -212,7 +215,7 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
                         .getPercentageSize(percentage: 10)),
                 _rowWidget(
                   context,
-                  icon:  _getIcon(context,0),
+                  icon:  _getIcon(context,state.loanApproved),
 
                   text: _textWidget(context, 'DP_LoanApproved'.tr),
                 ),
@@ -272,7 +275,7 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
         onTap: () async {
-          await coordinator.navigateToScanCodeScreen(widget.deviceId);
+          await coordinator.navigateToScanCodeScreen(widget.downPaymentScreenArgs.deviceId);
         },
         child: Container(
           width: double.infinity,
