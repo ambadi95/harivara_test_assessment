@@ -2,6 +2,7 @@ import 'package:core/mobile_core.dart';
 import 'package:core/view/analytics_state_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shared_data_models/downpayment/downpayment_screen_args.dart';
 
 import '../navigation_handler/down_payment_navigation_handler.dart';
 import '../state/downpayment_state.dart';
@@ -67,6 +68,11 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
 
       print("Failed");
     }
+  }
+
+  void setData(BuildContext context,DownPaymentScreenArgs downPaymentScreenArgs) {
+    state= DownPaymentState.ready(context: context,error: '',isLoading: false,loanActivated:downPaymentScreenArgs.loanActivated ,paymentRequested:downPaymentScreenArgs.paymentRequested, waitForPayment:downPaymentScreenArgs.waitForPayment,loanApproved: downPaymentScreenArgs.loanApproved,paymentReceived: downPaymentScreenArgs.paymentReceived);
+
   }
 
 
