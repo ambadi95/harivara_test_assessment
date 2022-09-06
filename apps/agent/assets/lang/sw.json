@@ -266,7 +266,9 @@
   "PC_fetch_details" : "Pata Maelezo",
   "PC_alert_message" : "Kitambulisho cha Marejeleo ya Mteja Aliyetolewa na Nambari ya Simu ya Mkononi hailingani na rekodi zetu.",
   "PC_alert_title" : "Maelezo ya Kutolingana",
-  "PC_button_close" : "Funga"
+  "PC_button_close" : "Funga",
+  "FORGET_PASSCODE": "Sahau nambari ya siri ?",
+  "RESET_NOW": "Weka Upya Sasa"
 
 
 

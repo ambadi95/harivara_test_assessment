@@ -268,6 +268,8 @@
   "PC_fetch_details" : "Fetch Details",
   "PC_alert_message" : "Provided Customer Reference ID and Mobile Number doesn't match with our record.",
   "PC_alert_title" : "Details Mismatch",
-  "PC_button_close" : "Close"
+  "PC_button_close" : "Close",
+  "FORGET_PASSCODE": "Forget Passcode ?",
+  "RESET_NOW": "Reset Now"
 
 }

@@ -77,7 +77,7 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
             widget.otpScreenArgs.description,
             widget.otpScreenArgs.destinationPath,
             widget.otpScreenArgs.otpVerificationType,
-            '',
+            widget.otpScreenArgs.event,
           );
         },
         builder: (context, state, coordinator) => Scaffold(

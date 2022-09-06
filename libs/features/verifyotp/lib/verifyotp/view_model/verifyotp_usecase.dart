@@ -41,9 +41,9 @@ class VerifyOtpUseCase extends BaseDataProvider {
   }
 
   Future<OtpResponse?> otpGen(
-      String id, UserType userType, Function(String) onErrorCallback) async {
+      String id, UserType userType,String event ,Function(String) onErrorCallback) async {
     OtpRequest otpRequest = OtpRequest(
-        id: id, type: (userType == UserType.Customer ? "Customer" : "Agent"));
+        id: id, type: (userType == UserType.Customer ? "Customer" : "Agent"),event: event);
 
     print(otpRequest.toJson().toString());
     return await executeApiRequest<OtpResponse?>(

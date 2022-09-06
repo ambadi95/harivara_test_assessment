@@ -54,7 +54,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         response = await _verifyOtpUseCase.otpGenCustomerByAgent(
             id, 'Customer',event, (p0) => null);
       } else {
-        response = await _verifyOtpUseCase.otpGen(id, userType, (p0) => null);
+        response = await _verifyOtpUseCase.otpGen(id, userType,event, (p0) => null);
       }
       if (response?.status == true) {
         int otp1 = response?.data?.token as int;

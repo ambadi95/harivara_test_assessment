@@ -259,5 +259,7 @@
   "CA_custom_amount" : "Lipa Kiasi Maalum",
 
   "RP_success_message": "Nambari ya siri imesasishwa kwa mafanikio",
-  "PR_message" : "Utaondolewa kwenye programu, tafadhali tumia nambari mpya ya siri Kuingia tena"
+  "PR_message" : "Utaondolewa kwenye programu, tafadhali tumia nambari mpya ya siri Kuingia tena",
+  "FORGET_PASSCODE": "Sahau nambari ya siri ?",
+  "RESET_NOW": "Weka Upya Sasa"
 }

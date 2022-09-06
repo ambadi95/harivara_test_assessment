@@ -88,7 +88,7 @@ class HomeNavigationHandler with ErrorHandler {
               _selectedAmount = "Paying Custom Amount";
             },
 
-            outstandingAmount: outstandingAmount ?? "");
+            outstandingAmount:outstandingAmount ?? "");
 
     _navigationManager.navigateTo(
       'bottomSheet/crayonPaymentBottomSheet',
