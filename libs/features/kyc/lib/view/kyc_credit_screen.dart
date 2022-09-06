@@ -91,11 +91,8 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
 
   Widget _createLoading(KycCreditStateReady state) {
     if (state.isLoading) {
-      return Container(
-        color: Colors.black.withOpacity(0.4),
-        child: const CenteredCircularProgressBar(
-            color: config_colors.PRIMARY_COLOR),
-      );
+      return const CenteredCircularProgressBar(color: PRIMARY_COLOR);
+
     } else {
       return Container();
     }
@@ -132,7 +129,7 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
                  _getVerticalDivider(
                      context,
                      AppUtils.appUtilsInstance
-                         .getPercentageSize(percentage: 41)),
+                         .getPercentageSize(percentage: 46)),
                ],)),
            Expanded(
              flex: 8,
@@ -166,13 +163,13 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
                     _getVerticalDivider(
                         context,
                         AppUtils.appUtilsInstance
-                            .getPercentageSize(percentage: 13)),
+                            .getPercentageSize(percentage: 10)),
                   ],)),
               Expanded(
                 flex: 8,
                 child: SizedBox(
                   height: AppUtils.appUtilsInstance
-                      .getPercentageSize(percentage: 13),
+                      .getPercentageSize(percentage: 10),
                 ),
               ),
             ],
@@ -205,7 +202,7 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
               Expanded(
                   flex: 8,
                   child: Container(
-                    margin: EdgeInsets.only(left: 10),
+                    margin: const EdgeInsets.only(left: 10),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [

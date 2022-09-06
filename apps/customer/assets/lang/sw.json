@@ -6,6 +6,8 @@
   "OB_SignUp" : "Jisajili",
   "OB_Lang" : "SW",
   "OB_ni_bora" : "ni %{Bora|click}%",
+  "ST_view_profile": "Tazama Wasifu",
+  "ST_my_profile": "Wasifu Wangu",
 
   "DO_Title": "Chaguo za Kifaa",
   "DO_Search": "Tafuta kwa Jina / Chapa / bei / hifadhi / nk.",
@@ -35,7 +37,7 @@
   "DV_name_hint_text" : "Ingiza Jina",
   "DV_dob_label" : "Tarehe ya kuzaliwa",
   "DV_dob_error_text" : "DoB batili",
-  "DV_invalid_dob_error_text" : "Please enter a valid date of birth",
+  "DV_invalid_dob_error_text" : "Tafadhali weka tarehe halali ya kuzaliwa",
   "DV_dob_hint_text" : "Ingiza DoB",
   "DV_gender_label" : "Jinsia",
   "DV_gender_error_text" : "Jinsia Batili",
@@ -59,10 +61,12 @@
   "DV_district_label" : "Wilaya",
   "DV_district_error_text" : "Wilaya Batili",
   "DV_district_hint_text" : "Ingiza Wilaya",
+  "DV_button_text" : "Endelea",
   "Y9_DEVICE_LOAN": "Mkopo wa Kifaa cha Y9",
   "DAILY_EMI": "Emi ya kila siku",
   "MONTHLY_EMI": "Emi ya kila mwezi",
   "Save_Text": "Hifadhi",
+
   "HS_GoodMorning": "Habari za asubuhi",
   "HS_GoodAfternoon": "Mchana Mwema",
   "HS_GoodEvening": "Habari za jioni",
@@ -77,8 +81,6 @@
   "HS_ReferalCode": "Msimbo wa Rufaa",
   "HS_Invite": "Alika",
 
-  "DV_button_text" : "Endelea",
-
   "PC_create_passcode" : "Unda nambari mpya ya siri",
   "PC_passcode_message" : "Hii itatumika kuingia",
   "PC_re_enter_passcode" : "Ingiza tena nambari mpya ya siri",
@@ -88,30 +90,26 @@
   "PC_passcode_tip" : "Kidokezo: Epuka siku za kuzaliwa, na nambari zinazojirudia au zinazofuatana.",
 
   "ES_welcome_Text" : "HII %{_name_ | click}% ",
-  "ES_success_text" : "You have successfully\nregistered on Y9 and your\ninterest on Membership device",
-  "ES_enrolled_success_text" : "Congratulations! You have successfully selected your Membership with Y9",
-  "ES_enroll_id" : "Your Reference ID\n %{_id_ | click}%",
+  "ES_success_text" : "Umefanikiwa\niliyosajiliwa kwenye Y9 na yako\nmaslahi kwenye kifaa cha Uanachama",
+  "ES_enrolled_success_text" : "Hongera! Umefanikiwa kuchagua Uanachama wako na Y9",
+  "ES_enroll_id" : "Kitambulisho chako cha Marejeleo\n  %{_id_ | bonyeza}%",
   "ES_near_agent_button" : "Tazama karibu na Wakala (inakuja hivi karibuni)",
   "ES_select_membership" : "Chagua Uanachama Wako",
-  "ES_view_membership" : "View Your Membership",
-  "ES_agent_contact_text" : "Y9 agent will contact you shortly on your Membership",
-  "ES_need_help_contact" : "Need Help Contact Us at +255 677-039-999",
-
-
+  "ES_view_membership" : "Tazama Uanachama Wako",
+  "ES_agent_contact_text" : "Wakala wa Y9 atawasiliana nawe baada ya muda mfupi kuhusu Uanachama wako",
+  "ES_need_help_contact" : "Unahitaji Usaidizi Wasiliana Nasi kwa +255 677-039-999",
 
   "WB_WelcomeBack": "Karibu tena Y9",
   "WB_EnterPassCode": "Weka Nambari ya siri",
-
-
 
   "AN_Title" : "Wakala wa karibu",
   "AN_Search" : "Tafuta kwa Jina Mkoa / Wilaya",
   "AN_AgentName" : "Y9 Kitambulisho cha wakala: ",
   "AN_Call" : "Wito",
 
-  "D0_JoiningFee": "Joining Fee (one off)",
-  "D0_DailyFee": "Daily Fee",
-  "D0_ViewDetails": "View Details",
+  "D0_JoiningFee": "Ada ya Kujiunga (punguzo moja)",
+  "D0_DailyFee": "Ada ya Kila Siku",
+  "D0_ViewDetails": "Tazama Maelezo",
 
   "DD_product" : "Maelezo ya bidhaa",
   "DD_Brand" : "Chapa",
@@ -130,7 +128,6 @@
   "DD_SelectDevice" : "Chagua Kifaa",
   "DD_MembershipTerms" : "Masharti ya Uanachama",
   "DD_MembershipBenefits" : "Faida za Uanachama wa Y9",
-
   "DD_MemberBenefit1": "Mkopo wa Kufadhili Kifaa chako cha Smartphone",
   "DD_MemberBenefit2": "Majukwaa ya Dijiti yaliyobinafsishwa kulingana na mahitaji ya Wateja",
   "DD_MemberBenefit3": "Upatikanaji wa Huduma za Kifedha",
@@ -151,9 +148,6 @@
   "VO_resend_otp" : "Tuma tena baada ya sekunde %s.",
   "VO_verify_button" : "Thibitisha",
 
-
-
-
   "SP_ni": "ni",
   "SP_bora": " Bora",
   "SP_is": "is",
@@ -168,26 +162,13 @@
   "HS_Agent_Id" : "Kitambulisho cha wakala wa Y9",
   "HS_TotalOnBoarderCustomers" : "Jumla ya Wateja \nImesajiliwa ",
   "HS_PendingCustomerRequests" : "Mteja Anayesubiri \nOmbi",
+  "HS_TotalCustomerBoarding" : "Jumla ya Wateja\nImeingia",
   "HS_Customer_OnBoarding" : "Mteja \nKupanda",
   "HS_Customer_DeviceSwap" : "Kubadilisha kifaa\n/ ukarabati",
   "HS_Customer_AgentSupport" : "Wakala \nMsaada",
   "HS_Agent_Refer_Text": "Rejelea Marafiki zako wajiandikishe kwa Uanachama wa Y9 na utashinda Bonasi ya Rufaa",
   "HS_Agent_Refer_Program": "Mpango wa Rufaa -",
   "HS_Agent_Stay_Tunned": " Endelea kufuatilia !",
-
-
-
-  "TC_Title": "Masharti ya Matumizi ya Y9's Mobile App",
-  "TC_LastUpdated": "Ilisasishwa mwisho: 2 Agosti 2022",
-  "TC_Description": "Tovuti ya www.y9bank.com na Y9 Customer App mobile application (“App”) inamilikiwa na kuendeshwa na Y9 Microfinance Tanzania Limited (“Y9”) kampuni iliyojumuishwa kihalali chini ya masharti ya Sheria ya Makampuni, 2002 na The Banking and Financial. Taasisi Sheria ya 2006, na kuwa na ofisi zake zilizosajiliwa katika P.O. BOX 20787 Dar es Salaam iliyopo 180 Msasani Bay, Kinondoni Dar es Salaam. Ili kufikia au kutumia Programu kwenye kifaa chochote kinachooana na kupata Huduma, unahitajika ukubali Sheria na Masharti haya (“T&Cs”). Kwa kukubali Makubaliano haya, unaashiria kuwa umesoma, umeelewa na unakubali kufuata Sheria na Kanuni hizi na sheria nyingine yoyote inayotumika, iwe wewe ni mwanachama aliyesajiliwa wa Programu au la. Kama inavyotumika hapa, \"Mtumiaji\" itamaanisha mtu yeyote anayetumia au kufikia Programu kwenye kompyuta yoyote, simu ya mkononi, kompyuta ya mkononi, kiweko, au kifaa kingine (kwa pamoja, \"Kifaa\") na/au anayetumia Huduma. Kuendelea kwako kutumia Programu na/au kupata Huduma kutafanywa kuwa kukubali kwako kwa T&Cs. Ikiwa hukubaliani na T&Cs hizi, tafadhali usifikie na utumie Programu au upate Huduma kama hizo. Kwa madhumuni ya T&Cs hizi, “Y9” itamaanisha Y9, na/au watoa huduma wengine wanaoshirikishwa na Y9 kutoa Huduma fulani kwenye Programu na 'wewe' na 'yako' itamaanisha Mtumiaji anayetimiza vigezo vya ustahiki vilivyowekwa. nje chini.",
-  "TC_TermsCondition_Subtitle":"1. VIGEZO NA MASHARTI ",
-  "TC_Terms_Conditons_Desc": "1.1. T&Cs hizi huchukua nafasi ya sheria na masharti yote ya awali (ikiwa yapo) isipokuwa pale tunapokushauri vinginevyo. Ufikiaji na matumizi yako ya Programu kufuatia mabadiliko yoyote kama haya hujumuisha makubaliano yako ya kufuata na kufungwa na T&Cs hizi. Kwa sababu hii, Y9 inakuhimiza kukagua T&C hizi kila wakati unapofikia na kutumia Programu na/au kupata Huduma za Y9.",
-  "TC_Purpose_title":"2. KUSUDI",
-  "TC_Purpose_Desc": "2.1. Y9 ni mtoa huduma wa huduma ndogo za kidijitali inayolenga kusaidia kuendeleza mtindo wa maisha wa watu wa Tanzania na bara la Afrika kwa ujumla kwa kutoa huduma za kifedha kwa watu wasio na benki na wasio na benki kwa kutoa fursa ya kupata elimu ya kidijitali, afya ya kidijitali n.k. kwa kutoa simu mahiri za 4G. kwa masharti ya haki sana ili kuifanya ipatikane kwa wananchi wote kwa kuwezesha ushirikishwaji wa maana wa kifedha na kidijitali.",
-
-
-
-
   "HS_CardList1Title" : "Mkopo wa Kifaa cha Y9",
   "HS_CardList2Title" : "Kiasi Kinachodaiwa",
   "HS_CardList3Title" : "Jumla ya Kiasi kitakachokuwa Kulipwa",
@@ -198,9 +179,15 @@
   "HS_explore" : "Chunguza",
   "HS_Daily_Repayment_amount" : "Malipo Bora\nKiasi",
 
+  "TC_Title": "Masharti ya Matumizi ya Y9's Mobile App",
+  "TC_LastUpdated": "Ilisasishwa mwisho: 2 Agosti 2022",
+  "TC_Description": "Tovuti ya www.y9bank.com na Y9 Customer App mobile application (“App”) inamilikiwa na kuendeshwa na Y9 Microfinance Tanzania Limited (“Y9”) kampuni iliyojumuishwa kihalali chini ya masharti ya Sheria ya Makampuni, 2002 na The Banking and Financial. Taasisi Sheria ya 2006, na kuwa na ofisi zake zilizosajiliwa katika P.O. BOX 20787 Dar es Salaam iliyopo 180 Msasani Bay, Kinondoni Dar es Salaam. Ili kufikia au kutumia Programu kwenye kifaa chochote kinachooana na kupata Huduma, unahitajika ukubali Sheria na Masharti haya (“T&Cs”). Kwa kukubali Makubaliano haya, unaashiria kuwa umesoma, umeelewa na unakubali kufuata Sheria na Kanuni hizi na sheria nyingine yoyote inayotumika, iwe wewe ni mwanachama aliyesajiliwa wa Programu au la. Kama inavyotumika hapa, \"Mtumiaji\" itamaanisha mtu yeyote anayetumia au kufikia Programu kwenye kompyuta yoyote, simu ya mkononi, kompyuta ya mkononi, kiweko, au kifaa kingine (kwa pamoja, \"Kifaa\") na/au anayetumia Huduma. Kuendelea kwako kutumia Programu na/au kupata Huduma kutafanywa kuwa kukubali kwako kwa T&Cs. Ikiwa hukubaliani na T&Cs hizi, tafadhali usifikie na utumie Programu au upate Huduma kama hizo. Kwa madhumuni ya T&Cs hizi, “Y9” itamaanisha Y9, na/au watoa huduma wengine wanaoshirikishwa na Y9 kutoa Huduma fulani kwenye Programu na 'wewe' na 'yako' itamaanisha Mtumiaji anayetimiza vigezo vya ustahiki vilivyowekwa. nje chini.",
+  "TC_TermsCondition_Subtitle":"1. VIGEZO NA MASHARTI ",
+  "TC_Terms_Conditons_Desc": "1.1. T&Cs hizi huchukua nafasi ya sheria na masharti yote ya awali (ikiwa yapo) isipokuwa pale tunapokushauri vinginevyo. Ufikiaji na matumizi yako ya Programu kufuatia mabadiliko yoyote kama haya hujumuisha makubaliano yako ya kufuata na kufungwa na T&Cs hizi. Kwa sababu hii, Y9 inakuhimiza kukagua T&C hizi kila wakati unapofikia na kutumia Programu na/au kupata Huduma za Y9.",
+  "TC_Purpose_title":"2. KUSUDI",
+  "TC_Purpose_Desc": "2.1. Y9 ni mtoa huduma wa huduma ndogo za kidijitali inayolenga kusaidia kuendeleza mtindo wa maisha wa watu wa Tanzania na bara la Afrika kwa ujumla kwa kutoa huduma za kifedha kwa watu wasio na benki na wasio na benki kwa kutoa fursa ya kupata elimu ya kidijitali, afya ya kidijitali n.k. kwa kutoa simu mahiri za 4G. kwa masharti ya haki sana ili kuifanya ipatikane kwa wananchi wote kwa kuwezesha ushirikishwaji wa maana wa kifedha na kidijitali.",
+
   "ST_my_profile": "Wasifu wangu",
-
-
   "ST_title" : "Mipangilio",
   "ST_subTitle" : "Usimamizi wa Wasifu",
   "ST_view_profile" : "Tazama Wasifu",
@@ -212,9 +199,7 @@
   "ST_faq" : "Maswali Yanayoulizwa Mara Kwa Mara",
   "ST_term_condition" : "Sheria na Masharti",
   "ST_call_support" : "Wito Msaada",
-
   "ST_contact_text" : "Unahitaji Msaada au Ikiwa Una Swali Lolote Wasiliana Nasi kwa +255 677-039-999",
-
 
   "PP_Daily_Repayment_Title" : "Malipo ya Kila Siku",
   "PP_Airtel_Pay" : "Airtel Pay",
@@ -252,11 +237,11 @@
   "LR_payment_label" : "Malipo ya {} yatarekebishwa kwa jumla\nKiasi kinacholipwa",
   "LR_proceed" : "Endelea",
 
-
   "CA_custom_amount" : "Lipa Kiasi Maalum",
 
   "RP_success_message": "Nambari ya siri imesasishwa kwa mafanikio",
   "PR_message" : "Utaondolewa kwenye programu, tafadhali tumia nambari mpya ya siri Kuingia tena",
   "FORGET_PASSCODE": "Sahau nambari ya siri ?",
-  "RESET_NOW": "Weka Upya Sasa"
+  "RESET_NOW": "Weka Upya Sasa",
+  "ERROR_MESSAGE" : "Hitilafu fulani imetokea, Tafadhali jaribu tena baadaye!"
 }

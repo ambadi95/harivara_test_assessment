@@ -202,6 +202,9 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
             //TODO Workflow Navigation
             navigationToWorkFlow(getWorkFlowStatus.data!.status!);
             //_navigationHandler.navigateToDetailScreen();
+          }else{
+
+            _showAlertForErrorMessage(getWorkFlowStatus.message!);
           }
         }
       } else if (otpScreenArgs.otpVerificationType ==

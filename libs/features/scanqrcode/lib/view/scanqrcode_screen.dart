@@ -41,6 +41,7 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
   String imei2NumberError = '';
   bool _isBtnEnabled = false;
   String username = "";
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
 
   void _validateForm(ScanQRCodeCoordinator coordinator) {
     coordinator.validateForm(
@@ -77,11 +78,15 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
       BaseView<ScanQRCodeCoordinator, ScanQRCodeState>(
         onStateListenCallback: (preState, newState) =>
         {_listenToStateChanges(context, newState)},
-        setupViewModel: (coordinator) async{
-          customerId = await coordinator.getCustomerID();
+        setupViewModel: (coordinator) async {
+            customerId = await coordinator.getCustomerID();
+            setState(() {
+              customerId;
+            });
           },
         builder: (context, state, coordinator) {
-          return state.maybeWhen(
+          return
+            state.maybeWhen(
               loading: () => _buildMainUIWithLoading(context, coordinator),
               orElse: () => _buildMainUI(context, coordinator));
         },
@@ -92,6 +97,7 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
       ScanQRCodeCoordinator coordinator,
       ) {
     return Scaffold(
+      key: _scaffoldKey,
       body: Stack(
         children: [
           _buildMainUI(context, coordinator),
@@ -250,13 +256,13 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
           coordinator.isImei1numberValid(imei1Number.text);
           coordinator.isImei2numberValid(imei2Number.text);
           if(imei1Number.text.trim() != "" && imei2Number.text.trim() !="") {
-              _isBtnEnabled = true;
+            _isBtnEnabled = true;
             if (_isBtnEnabled) {
               coordinator.deviceRegister(
-                context,widget.deviceId,  imei1Number.text, imei2Number.text);
+                  context, widget.deviceId, imei1Number.text, imei2Number.text);
             }
-          }
-        },
+          }},
+
         child: Container(
           width: double.infinity,
           height: 50,

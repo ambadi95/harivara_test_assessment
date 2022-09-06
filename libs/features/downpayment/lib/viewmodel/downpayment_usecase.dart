@@ -33,6 +33,12 @@ class DownPaymentUseCase extends BaseDataProvider {
     return await getValueFromSecureStorage('paymentId', defaultValue: '');
   }
 
+  Future<String> getNewCustomerName() async {
+    return await getValueFromSecureStorage('newCustomerName', defaultValue: '');
+  }
+
+
+
   Future<CreateLoanResponse?> createLoan(
       String deviceId, Function(String) onErrorCallback) async {
     String agentId = await getAgentId();
@@ -43,7 +49,7 @@ class DownPaymentUseCase extends BaseDataProvider {
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
         moduleIdentifier: DownPaymentModule.moduleIdentifier,
-        requestData: {"agentId": agentId, "customerId": customerId, "deviceId": int.parse(deviceId)},
+        requestData: {"agentId": agentId, "customerId": customerId, "deviceId": int.parse(deviceId),"clientId":"Y9C100167"},
         serviceIdentifier: DownPaymentService.createLoanIdentifier,
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {
