@@ -73,12 +73,7 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
   }
 
   Widget _createLoading() {
-    return Center(
-      child: Container(
-        color: Colors.white,
-        child: const CenteredCircularProgressBar(color: PRIMARY_COLOR),
-      ),
-    );
+    return  const CenteredCircularProgressBar(color: PRIMARY_COLOR);
   }
 
   void _listenToStateChanges(
