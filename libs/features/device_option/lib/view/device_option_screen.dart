@@ -376,11 +376,13 @@ class _DeviceOptionState extends State<DeviceOption> {
                   dynamicHSpacer(6),
                   Row(
                     children: [
-                      priceButton(context, 'D0_JoiningFee'.tr,
-                          deviceList[index].joiningFees.toString()),
-                      dynamicWSpacer(18),
-                      priceButton(context, 'D0_DailyFee'.tr,
-                          deviceList[index].dailyFees.toString()),
+                      Expanded(
+                        child: priceButton(context, 'D0_JoiningFee'.tr,
+                            deviceList[index].joiningFees.toString()),
+                      ),
+                      //Expanded(child:dynamicWSpacer(10)),
+                      Expanded(child:priceButton(context, 'D0_DailyFee'.tr,
+                          deviceList[index].dailyFees.toString())),
                     ],
                   ),
                   dynamicHSpacer(20),
