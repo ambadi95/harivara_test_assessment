@@ -81,9 +81,13 @@ class AgentNearBy extends StatelessWidget {
     );
   }
 
+
   Widget _buildSearchField(context, AgentNearbyCoordinator coordinator) {
+
     return SearchBarWidget(
-      onSearch: (value) {},
+      onSearch: (value) {
+        print(value);
+      },
       onTextChanged: (v) {
         coordinator.search(v);
       },
