@@ -1,6 +1,7 @@
 import 'package:core/mobile_core.dart';
 import 'package:core/view/analytics_state_notifier.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../navigation_handler/down_payment_navigation_handler.dart';
 import '../state/downpayment_state.dart';
@@ -43,5 +44,37 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
       print("Failed");
     }
   }
+
+  Future<void> makePayment(BuildContext context) async {
+    var mkePayment = await _downPaymentUseCase.makePayment( (p0) => null);
+    if (mkePayment?.status == true) {
+      print("Success");
+
+      state= DownPaymentState.ready(context: context,error: '',isLoading: false,loanActivated: 0,paymentRequested:1, waitForPayment:0,loanApproved: 0,paymentReceived: 0);
+      checkPaymentStatus(context);
+
+    } else {
+      state= DownPaymentState.ready(context: context,error: '',isLoading: false,loanActivated: 0,paymentRequested:2, waitForPayment:0,loanApproved: 0,paymentReceived: 0);
+
+      print("Failed");
+    }
+  }
+
+   Future<void> checkPaymentStatus(BuildContext context) async {
+    var mkePayment = await _downPaymentUseCase.checkPaymentStatus(1, (p0) => null);
+    if (mkePayment?.status == true) {
+      print("Success");
+
+      state= DownPaymentState.ready(context: context,error: '',isLoading: false,loanActivated: 0,paymentRequested:1, waitForPayment:1,loanApproved: 0,paymentReceived: 0);
+
+    } else {
+      state= DownPaymentState.ready(context: context,error: '',isLoading: false,loanActivated: 0,paymentRequested:1, waitForPayment:2,loanApproved: 0,paymentReceived: 0);
+
+      print("Failed");
+    }
+  }
+
+
+
 
 }

@@ -10,6 +10,7 @@ import 'package:welcome/sub_features/signup/view/signup.dart';
 import 'package:widget_library/helpers/error/helper/error_helper.dart';
 import 'package:config/Config.dart';
 
+
 class LoginNavigationHandler with ErrorHandler {
   final NavigationManager _navigationManager;
 
@@ -37,7 +38,7 @@ class LoginNavigationHandler with ErrorHandler {
         6,
         mobileNumber,
         false,
-        userType);
+        userType,userType==UserType.Agent?OTPEvent.Agent_Login.toString().replaceAll("_", " "):OTPEvent.Customer_Login.toString().replaceAll("_", " "));
 
     _navigationManager.navigateTo(
       CrayonVerifyOtpScreen.viewPath,
@@ -60,7 +61,7 @@ class LoginNavigationHandler with ErrorHandler {
       6,
       mobileNumber,
       false,
-      userType,
+      userType, OTPEvent.Agent_Login.toString().replaceAll("_", " ")
     );
 
     _navigationManager.navigateTo(

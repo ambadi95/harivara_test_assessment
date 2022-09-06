@@ -134,6 +134,7 @@ class CustomerDetailsUseCase extends BaseDataProvider {
         requestData: {
           'data': customerDetailsRequest.toJson(),
           'userType': userType,
+          'postType' : "PUT"
         },
         serviceIdentifier: ICustomerDetailsService.updateCustomerDetails,
         onError: onErrorCallback,

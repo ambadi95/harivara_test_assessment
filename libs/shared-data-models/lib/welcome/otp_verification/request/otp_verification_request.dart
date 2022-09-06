@@ -8,8 +8,9 @@ class OtpVerificationRequest extends Equatable {
   final String? id;
   final String? type;
   final String? otp;
+  final String? event;
 
-  const OtpVerificationRequest({this.id, this.type, this.otp});
+  const OtpVerificationRequest({this.id, this.type, this.otp,this.event});
 
   factory OtpVerificationRequest.fromJson(Map<String, dynamic> json) {
     return _$OtpVerificationRequestFromJson(json);
@@ -21,11 +22,13 @@ class OtpVerificationRequest extends Equatable {
     String? id,
     String? type,
     String? otp,
+    String? event
   }) {
     return OtpVerificationRequest(
       id: id ?? this.id,
       type: type ?? this.type,
       otp: otp ?? this.otp,
+      event: event??this.event
     );
   }
 

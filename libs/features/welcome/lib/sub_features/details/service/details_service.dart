@@ -55,6 +55,7 @@ class DetailsService implements IDetailsService {
   @override
   Future<StandardRequest> submitCustomerDetails(
       Map<String, dynamic> requestData, UserType userType) async {
+    print("calling on board customer");
     var request = StandardRequest();
     request.requestType = RequestType.POST;
     request.endpoint = (userType == UserType.AgentCustomer)

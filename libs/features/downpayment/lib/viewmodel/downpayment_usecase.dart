@@ -61,17 +61,23 @@ class DownPaymentUseCase extends BaseDataProvider {
 
 
  Future<CommonResponse?> makePayment(
-      int deviceId, Function(String) onErrorCallback) async {
+       Function(String) onErrorCallback) async {
     String mobileNumber = await getMobileNumber();
     String customerId = await getCustomerId();
     return await executeApiRequest<CommonResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
         moduleIdentifier: DownPaymentModule.moduleIdentifier,
-        requestData: {
+        requestData: /*{
           "amountPaid": "2000",
           "customerId": "86",
           "mobileNumber": "686531710",
+          "paymentType": "Downpayment"
+        }*/
+        {
+          "amountPaid": "2000",
+          "customerId": customerId,
+          "mobileNumber": mobileNumber.substring(4),
           "paymentType": "Downpayment"
         },
         serviceIdentifier: DownPaymentService.makePaymentIdentifier,

@@ -10,6 +10,7 @@ import 'package:core/session_management/inactivity_service.dart';
 import 'package:core/session_management/inactivity_watcher.dart';
 import 'package:core/translation/crayon_payment_transaltions_loader.dart';
 import 'package:core/translation/crayon_payment_translations.dart';
+import 'package:downpayment/view/down_payment_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
