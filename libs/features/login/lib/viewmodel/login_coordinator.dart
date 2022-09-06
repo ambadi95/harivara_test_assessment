@@ -109,6 +109,7 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
           '+255' + mobileNumber, passcode, (p0) => null);
       if (response?.status == true) {
         state = LoginState.successState();
+        AppUtils.appUtilsInstance.saveUserType(UserType.Customer) ;
         _navigationHandler.navigateToOtpScreen(
             userType, mobileNumber, response!.data!.id!);
       } else {
@@ -167,6 +168,8 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
         state = LoginState.successState();
         await _loginUseCase.saveAgentId(agentId);
         await _loginUseCase.saveMobileNumber(response!.data!.mobileNo!);
+        AppUtils.appUtilsInstance.saveUserType(UserType.Agent) ;
+
         await _loginUseCase.saveAgentName(
             response.data!.firstName! + ' ' + response.data!.lastName!);
         await _loginUseCase.saveOnBordStatus(agentId);

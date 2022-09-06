@@ -70,14 +70,14 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
           coordinator.generateOtp(
               widget.otpScreenArgs.refId,
               widget.otpScreenArgs.userType,
-              widget.otpScreenArgs.otpVerificationType);
+              widget.otpScreenArgs.otpVerificationType,widget.otpScreenArgs.event);
           coordinator.initialiseState(
             context,
             widget.otpScreenArgs.title,
             widget.otpScreenArgs.description,
             widget.otpScreenArgs.destinationPath,
             widget.otpScreenArgs.otpVerificationType,
-            '',
+            widget.otpScreenArgs.event,
           );
         },
         builder: (context, state, coordinator) => Scaffold(
@@ -184,7 +184,7 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
               widget.otpScreenArgs.userType,
               widget.otpScreenArgs,
               coordinator.otpController.text.toString(),
-              widget.otpScreenArgs.otpVerificationType,
+                widget.otpScreenArgs.event
             );
           } else {
          //   _showAlertForOTPAttempts(coordinator);
@@ -465,7 +465,7 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
                       await coordinator.generateOtp(
                           widget.otpScreenArgs.refId,
                           widget.otpScreenArgs.userType,
-                          widget.otpScreenArgs.otpVerificationType);
+                          widget.otpScreenArgs.otpVerificationType,widget.otpScreenArgs.event);
                     },
                     child: CrayonPaymentText(
                       key: const Key('verifyOtp Resend Now'),

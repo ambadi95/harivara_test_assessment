@@ -246,5 +246,7 @@
   "CA_custom_amount" : "Pay Custom Amount",
 
   "RP_success_message": "Passcode has been updated successfully",
-  "PR_message" : "You will be Signed out of the app, please use the new passcode to Sign-in again"
+  "PR_message" : "You will be Signed out of the app, please use the new passcode to Sign-in again",
+  "FORGET_PASSCODE": "Forget Passcode ?",
+  "RESET_NOW": "Reset Now"
 }

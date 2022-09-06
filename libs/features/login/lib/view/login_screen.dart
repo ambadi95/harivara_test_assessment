@@ -311,16 +311,16 @@ class _LoginState extends State<Login> {
           },
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: const [
+            children: [
               Text(
-                'Forget Passcode?',
+                'FORGET_PASSCODE'.tr,
                 style: WB_forget_passcode_text_style,
               ),
               SizedBox(
                 height: 5,
               ),
               Text(
-                'Reset Now',
+                'RESET_NOW'.tr,
                 style: WB_reset_passcode_text_style,
               )
             ],

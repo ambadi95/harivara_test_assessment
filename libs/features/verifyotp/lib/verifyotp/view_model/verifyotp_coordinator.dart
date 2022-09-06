@@ -47,14 +47,14 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
   String otp = '';
 
   Future<void> generateOtp(String id, UserType userType,
-      OtpVerificationType otpVerificationType) async {
+      OtpVerificationType otpVerificationType,String event) async {
     try {
       var response;
       if (otpVerificationType == OtpVerificationType.customerSignUpAgent) {
         response = await _verifyOtpUseCase.otpGenCustomerByAgent(
-            id, 'Customer', (p0) => null);
+            id, 'Customer',event, (p0) => null);
       } else {
-        response = await _verifyOtpUseCase.otpGen(id, userType, otpVerificationType,(p0) => null);
+        response = await _verifyOtpUseCase.otpGen(id, userType,event, (p0) => null);
       }
       if (response?.status == true) {
         int otp1 = response?.data?.token as int;
@@ -63,6 +63,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         CrayonPaymentLogger.logInfo(otp);
       }
     }  catch (e) {
+      print(e.toString());
       AppUtils.appUtilsInstance.showErrorBottomSheet(
         title: e.toString(),
         onClose: () {goBack();},
@@ -153,13 +154,13 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
   }
 
   Future<void> navigateToDestinationPath(String destinationPath,
-      UserType userType, OtpScreenArgs otpScreenArgs, String enterOtp, OtpVerificationType otpVerificationType) async {
+      UserType userType, OtpScreenArgs otpScreenArgs, String enterOtp,String event) async {
     try {
       var currentState = state as VerifyOtpStateReady;
       int attempts = currentState.attemptsRemain;
-      if (otpScreenArgs.otpVerificationType == OtpVerificationType.customerSignIn) {
+      if (otpScreenArgs.otpVerificationType == OtpVerificationType.customerSign) {
         var responseSignin = await _verifyOtpUseCase.otpVerify(
-            otpScreenArgs.refId, enterOtp, otpScreenArgs.userType, (p0) => null);
+            otpScreenArgs.refId, enterOtp, otpScreenArgs.userType,event, (p0) => null);
         if (responseSignin!.status == true) {
           _navigationHandler.navigateToHomeScreen(userType);
         } else {
@@ -184,7 +185,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         if (userType == UserType.Customer) {
           state = currentState.copyWith(isLoading: true);
           var response = await _verifyOtpUseCase.otpVerify(otpScreenArgs.refId,
-              enterOtp, otpScreenArgs.userType, (p0) => null);
+              enterOtp, otpScreenArgs.userType,event, (p0) => null);
           if (response!.data!.status == "success") {
             state = currentState.copyWith(isLoading: false);
             _navigationHandler.navigateToDestinationPath(
@@ -203,7 +204,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         } else {
           state = currentState.copyWith(isLoading: true);
           var response = await _verifyOtpUseCase.otpVerify(otpScreenArgs.refId,
-              enterOtp, otpScreenArgs.userType, (p0) => null);
+              enterOtp, otpScreenArgs.userType, event,(p0) => null);
           if (response!.status == true) {
             state = currentState.copyWith(isLoading: false);
             _navigationHandler.openForNewPasscode(userType);
@@ -222,7 +223,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
       } else if (otpScreenArgs.otpVerificationType ==
           OtpVerificationType.agentSignIn) {
         var responseSignin = await _verifyOtpUseCase.otpVerify(
-            otpScreenArgs.refId, enterOtp, otpScreenArgs.userType, (p0) => null);
+            otpScreenArgs.refId, enterOtp, otpScreenArgs.userType,event, (p0) => null);
         if (responseSignin?.status == true) {
           _navigationHandler.navigateToAgentWelcomeBack(userType);
         }
@@ -315,6 +316,8 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         break;
       case "Credit_Check_Success":
         //TODO Navigate to Credit_Check_Success Screen
+        _navigationHandler.navigateToKYCScreen();
+
         break;
       case "Device_Selection":
         _navigationHandler.navigateToDeviceOption(false,UserType.AgentCustomer);
