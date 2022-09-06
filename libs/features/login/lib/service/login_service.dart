@@ -9,6 +9,7 @@ abstract class ILoginService {
   static const loginAgentIdentifier = 'loginAgent';
   static const agentDetailIdentifier = 'getAgent';
   static const checkPasscodeIdentifier = 'checkPasscode';
+  static const customerDetailsIdentifier = 'getCustomerDetails';
 
 
 
@@ -26,6 +27,10 @@ abstract class ILoginService {
   Future<StandardRequest> getAgentDetails(String agentId, String mobileNumber);
 
   Future<StandardRequest> checkPasscode(String mobileNumber);
+
+  Future<StandardRequest> getCustomerDetailByMobileNo(
+      String phoneNo,
+      );
 
 }
 
@@ -85,6 +90,19 @@ class LoginService implements ILoginService {
     var request = StandardRequest();
     request.requestType = RequestType.GET;
     request.endpoint = 'check/passcode/$mobileNumber';
+    return request;
+  }
+
+  @override
+  Future<StandardRequest> getCustomerDetailByMobileNo(
+      String phoneNo,
+      ) async {
+    var request = StandardRequest();
+    request.requestType = RequestType.GET;
+    request.endpoint =  'customer-details-by-mobile/$phoneNo';
+    request.customHeaders = {
+      'Content-Type': 'application/json',
+    };
     return request;
   }
 }

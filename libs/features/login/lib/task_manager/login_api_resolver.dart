@@ -20,6 +20,8 @@ class LoginApiResolver extends TaskResolver {
             requestData['agentId'], requestData['mobileNumber']);
       case ILoginService.checkPasscodeIdentifier:
         return _loginService.checkPasscode(requestData['mobileNumber']);
+      case ILoginService.customerDetailsIdentifier:
+        return _loginService.getCustomerDetailByMobileNo(requestData['mobileNumber']);
       default:
         throw UnimplementedError();
     }

@@ -233,7 +233,7 @@ class _LoginState extends State<Login> {
             coordinator.login(mobileNumber.text, passcodeController.text,
                 widget.userType, agentIdController.text);
           } else {
-            coordinator.checkPasscode(mobileNumber.text,context);
+            coordinator.checkPasscode(mobileNumber.text,widget.userType,);
           }
 
         }

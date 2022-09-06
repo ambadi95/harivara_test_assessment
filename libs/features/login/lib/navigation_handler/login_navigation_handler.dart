@@ -41,7 +41,7 @@ class LoginNavigationHandler with ErrorHandler {
         'homemodule/CrayonHomeScreen',
         false,
         2,
-        OtpVerificationType.customerSignIn,
+        OtpVerificationType.customerSign,
         id,
         6,
         mobileNumber,
@@ -82,6 +82,8 @@ class LoginNavigationHandler with ErrorHandler {
     );
   }
 
+
+
   Future<void> navigateToResetPasscode(UserType userType) async {
     var arguments = SignUpArguments(
       'SU_reset_passcode',
@@ -98,13 +100,13 @@ class LoginNavigationHandler with ErrorHandler {
   }
 
   Future<void> navigateToOtpBottomSheet(String title, String message,
-      String buttonLabel, BuildContext context) async {
+      String buttonLabel, UserType userType,String mobileNumber, String customerId) async {
     final CrayonPaymentBottomSheetIcon icon = CrayonPaymentBottomSheetY9Logo();
     final CrayonPaymentBottomSheetState infoState =
         CrayonPaymentBottomSheetState.infoState(
             buttonOptions: [
-              ButtonOptions(PRIMARY_COLOR, buttonLabel, () => () {
-
+              ButtonOptions(PRIMARY_COLOR, buttonLabel, () {
+                navigateToOtpScreenAgentCustomer(userType,mobileNumber,customerId);
               }, false)
             ],
             subtitle: message,
@@ -116,10 +118,30 @@ class LoginNavigationHandler with ErrorHandler {
     _navigationManager.navigateTo(
       'bottomSheet/crayonPaymentBottomSheet',
       const NavigationType.bottomSheet(),
-      modalBottomSheet: ModalBottomSheet(
-        isDismissible: false,
-          context: context, height: MediaQuery.of(context).size.height * 0.30),
       arguments: infoState,
+    );
+  }
+
+  Future<void> navigateToOtpScreenAgentCustomer(
+      UserType userType, String mobileNumber, String id) async {
+    var arguments = OtpScreenArgs(
+        'OTP Verification',
+        'VO_otp_verification_description',
+        'passcodeModule/passcode',
+        false,
+        2,
+        OtpVerificationType.customerPasscodeSet,
+        id,
+        6,
+        mobileNumber,
+        false,
+        userType,userType==UserType.Agent?OTPEvent.Agent_Login.toShortString():OTPEvent.Customer_Login.toShortString());
+
+    _navigationManager.navigateTo(
+      CrayonVerifyOtpScreen.viewPath,
+      const NavigationType.push(),
+      preventDuplicates: false,
+      arguments: arguments,
     );
   }
 }
