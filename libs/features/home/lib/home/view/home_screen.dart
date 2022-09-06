@@ -204,7 +204,8 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'HS_PendingCustomerRequests'.tr,
+                          'HS_TotalCustomerBoarding'.tr,
+                          //'HS_PendingCustomerRequests'.tr,
                           style: HS_title_style,
                         ),
                         const SizedBox(

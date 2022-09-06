@@ -188,7 +188,7 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
   Widget selectButton(DeviceLoanCreationCoordinator coordinator) {
     return CrayonPaymentDockedButton(
       key:  Key('Select'),
-      title: 'Pay Now ${loanPreviewResponseModel!.data!.totalAmountToBeRepaid}TZHS',
+      title: "${'DLC_pay_now'.tr} ${loanPreviewResponseModel!.data!.totalAmountToBeRepaid} TZSHS",
       // title: 'Pay Now 2000 TZHS',
       borderRadius: 8,
       height: CrayonPaymentDimensions.marginFortyEight,

@@ -111,12 +111,15 @@ class _KycCreditMainScreenState extends State<KycCreditMainScreen> {
           ),
           const Image(image: AssetImage(AN_Kyc_Credit_Main)),
           Container(
-            margin: const EdgeInsets.only(bottom: 40),
+            margin: const EdgeInsets.only(bottom: 20),
             child: Column(
               children: [
-                _getTermsCheckBox(context, coordinator),
                 const SizedBox(
                   height: 50,
+                ),
+                _getTermsCheckBox(context, coordinator),
+                const SizedBox(
+                  height: 30,
                 ),
                 _buildCheckNowButton(context, coordinator, state),
               ],
@@ -328,13 +331,19 @@ class _KycCreditMainScreenState extends State<KycCreditMainScreen> {
       onTap: () {
         coordinator.navigateToTermsCondtionsScreen();
       },
-      child: CrayonPaymentText(
-        key: Key('${_identifier}_KYC_Terms_and_Condition'),
-        text: const TextUIDataModel('KYC_Terms_and_Condition',
-            styleVariant: CrayonPaymentTextStyleVariant.headline4,
-            color: SU_subtitle_terms_color,
-            fontWeight: FontWeight.w500),
-      ),
+      child: Text('KYC_Terms_and_Condition'.tr, style: const TextStyle(
+        decoration: TextDecoration.underline,
+        fontFamily: 'Montserrat',
+        fontSize: 16,
+        color: SU_subtitle_terms_color
+      ))
+      // CrayonPaymentText(
+      //   key: Key('${_identifier}_KYC_Terms_and_Condition'),
+      //   text: const TextUIDataModel('KYC_Terms_and_Condition',
+      //       styleVariant: CrayonPaymentTextStyleVariant.headline4,
+      //       color: SU_subtitle_terms_color,
+      //       fontWeight: FontWeight.w500),
+      // ),
     );
   }
 
