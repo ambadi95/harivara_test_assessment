@@ -66,6 +66,7 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
                     ___,
                     ____,
                     _____,
+                      _______,
                   ) =>
                       _buildMainUIWithLoading(
                     context,

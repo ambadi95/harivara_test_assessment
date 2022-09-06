@@ -192,6 +192,8 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         var responseSignin = await _verifyOtpUseCase.otpVerifyCustomerByAgent(
             otpScreenArgs.refId, enterOtp, 'Customer', (p0) => null);
         if (responseSignin!.data!.status == "success") {
+          print('###############');
+          print(otpScreenArgs.refId);
           var getWorkFlowStatus = await _verifyOtpUseCase.workFlowCustomerByAgent(
               otpScreenArgs.refId, (p0) => null);
           if (getWorkFlowStatus!.status!) {
@@ -322,6 +324,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
   }
 
   navigationToWorkFlow(String status) {
+
     switch (status) {
       case "Initiated":
         _navigationHandler.navigateToDetailScreen();
@@ -330,17 +333,17 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
      _navigationHandler.navigateToDetailScreen();
         break;
       case "KYC_Initiated":
-        _navigationHandler.navigateToKYCScreen();
+        _navigationHandler.navigateToKYCScreen(false);
         break;
       case "KYC_Success":
-        _navigationHandler.navigateToKYCScreen();
+        _navigationHandler.navigateToKYCScreen(true);
         break;
       case "Credit_Check_Requested":
-        _navigationHandler.navigateToKYCScreen();
+        _navigationHandler.navigateToKYCScreen(true);
         break;
       case "Credit_Check_Success":
         //TODO Navigate to Credit_Check_Success Screen
-        _navigationHandler.navigateToKYCScreen();
+        _navigationHandler.navigateToDeviceOption(false, UserType.AgentCustomer);
 
         break;
       case "Device_Selection":

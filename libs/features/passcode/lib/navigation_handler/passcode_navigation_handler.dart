@@ -134,6 +134,7 @@ class PasscodeNavigationHandler with ErrorHandler {
       "",
       "",
       [KYCDataModel(title: "", isSelected: false)],
+      false
     );
     await _navigationManager.navigateTo(
         KycCreditMainScreen.viewPath, const NavigationType.push(),
