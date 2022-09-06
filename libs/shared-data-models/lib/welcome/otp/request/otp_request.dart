@@ -33,5 +33,5 @@ class OtpRequest extends Equatable {
   bool get stringify => true;
 
   @override
-  List<Object?> get props => [id, type];
+  List<Object?> get props => [id, type,event];
 }

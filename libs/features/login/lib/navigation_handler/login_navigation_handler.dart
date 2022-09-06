@@ -38,7 +38,7 @@ class LoginNavigationHandler with ErrorHandler {
         6,
         mobileNumber,
         false,
-        userType,userType==UserType.Agent?OTPEvent.Agent_Login.toString().replaceAll("_", " "):OTPEvent.Customer_Login.toString().replaceAll("_", " "));
+        userType,userType==UserType.Agent?OTPEvent.Agent_Login.toShortString():OTPEvent.Customer_Login.toShortString());
 
     _navigationManager.navigateTo(
       CrayonVerifyOtpScreen.viewPath,
@@ -61,7 +61,7 @@ class LoginNavigationHandler with ErrorHandler {
       6,
       mobileNumber,
       false,
-      userType, OTPEvent.Agent_Login.toString().replaceAll("_", " ")
+      userType, OTPEvent.Agent_Login.toShortString()
     );
 
     _navigationManager.navigateTo(

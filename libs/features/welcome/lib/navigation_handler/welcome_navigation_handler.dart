@@ -213,7 +213,7 @@ class WelcomeNavigationHandler with ErrorHandler {
       mobileNumber,
       false,
       userType,
-        OTPEvent.Customer_Registration.toString().replaceAll("_", " ")
+        OTPEvent.Customer_Registration.toShortString()
     );
     _navigationManager.navigateTo(
       CrayonVerifyOtpScreen.viewPath,
@@ -239,7 +239,7 @@ class WelcomeNavigationHandler with ErrorHandler {
       6,
       mobileNumber,
       false,
-      userType, OTPEvent.Customer_Registration.toString().replaceAll("_", " ")
+      userType, OTPEvent.Customer_Registration.toShortString()
     );
     _navigationManager.navigateTo(
       CrayonVerifyOtpScreen.viewPath,
@@ -262,7 +262,7 @@ class WelcomeNavigationHandler with ErrorHandler {
       mobileNumber,
       false,
       userType,
-        OTPEvent.Reset_Passcode.toString().replaceAll("_", " ")
+        OTPEvent.Reset_Passcode.toShortString()
     );
 
     _navigationManager.navigateTo(
@@ -289,7 +289,7 @@ class WelcomeNavigationHandler with ErrorHandler {
       mobileNumber,
       false,
       userType,
-        userType==UserType.Customer?OTPEvent.Customer_Login.toString().replaceAll("_", " "):OTPEvent.Agent_Login.toString().replaceAll("_", " ")
+        userType==UserType.Customer?OTPEvent.Customer_Login.toShortString():OTPEvent.Agent_Login.toShortString()
     );
 
     _navigationManager.navigateTo(
@@ -370,7 +370,7 @@ class WelcomeNavigationHandler with ErrorHandler {
       6,
       mobileNumber,
       false,
-      UserType.Customer, OTPEvent.Reset_Passcode.toString().replaceAll("_", " ")
+      UserType.Customer, OTPEvent.Reset_Passcode.toShortString()
     );
 
     _navigationManager.navigateTo(
