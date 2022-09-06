@@ -3,6 +3,7 @@ import 'package:config/Colors.dart';
 import 'package:config/Styles.dart';
 import 'package:core/view/base_view.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:widget_library/spacers/crayon_payment_spacers.dart';
 import 'package:widget_library/utils/app_utils.dart';
 import 'package:downpayment/downpayment_module.dart';
 import 'package:flutter/material.dart';
@@ -13,8 +14,6 @@ import 'package:widget_library/page_header/text_ui_data_model.dart';
 import 'package:widget_library/progress_bar/centered_circular_progress_bar.dart';
 import 'package:widget_library/scaffold/crayon_payment_scaffold.dart';
 import 'package:widget_library/static_text/crayon_payment_text.dart';
-import 'package:widget_library/utils/icon_utils.dart';
-
 import '../state/downpayment_state.dart';
 import '../viewmodel/downpayment_coordinator.dart';
 
