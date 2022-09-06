@@ -216,11 +216,12 @@ class _LoginState extends State<Login> {
       textColor: White,
       textStyleVariant: CrayonPaymentTextStyleVariant.headline5,
       onPressed: () {
-        coordinator.isMobileNumberValid(mobileNumber.text);
-        coordinator.isAgentIdValid(agentIdController.text);
+        /*coordinator.isMobileNumberValid(mobileNumber.text);
+        coordinator.isAgentIdValid(agentIdController.text);*/
         if (isBtnEnabled) {
           // coordinator.navigateToWelcomeBackScreen(userType, mobileNumber.text);
-
+          coordinator.isMobileNumberValid(mobileNumber.text);
+          coordinator.isAgentIdValid(agentIdController.text);
           coordinator.login(mobileNumber.text, passcodeController.text,
               widget.userType, agentIdController.text);
         }

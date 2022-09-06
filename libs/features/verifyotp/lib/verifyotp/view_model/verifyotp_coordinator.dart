@@ -155,8 +155,9 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
 
   Future<void> navigateToDestinationPath(String destinationPath,
       UserType userType, OtpScreenArgs otpScreenArgs, String enterOtp,String event) async {
+    var currentState = state as VerifyOtpStateReady;
     try {
-      var currentState = state as VerifyOtpStateReady;
+
       int attempts = currentState.attemptsRemain;
       if (otpScreenArgs.otpVerificationType == OtpVerificationType.customerSign) {
         var responseSignin = await _verifyOtpUseCase.otpVerify(
@@ -235,6 +236,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         _navigationHandler.openForUpdateNewPasscodeAgent(userType);
       }
     }  catch (e) {
+      state = currentState.copyWith(isLoading: false);
       AppUtils.appUtilsInstance.showErrorBottomSheet(
         title: e.toString(),
         onClose: () {goBack();},

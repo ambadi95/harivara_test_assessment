@@ -48,8 +48,9 @@ class DownPaymentUseCase extends BaseDataProvider {
           try {
             checkResponse = CreateLoanResponse.fromMap(responseData);
           } catch (e) {
-            checkResponse = const CreateLoanResponse(
-                status: false, code: "400", message: "Something went wrong");
+
+            checkResponse =  CreateLoanResponse(
+                status: false, code: "400", message: e.toString());
           }
           return checkResponse;
         });
@@ -83,8 +84,8 @@ class DownPaymentUseCase extends BaseDataProvider {
           try {
             checkResponse = CommonResponse.fromMap(responseData);
           } catch (e) {
-            checkResponse = const CommonResponse(
-                status: false, code: "400", message: "Something went wrong");
+            checkResponse =  CommonResponse(
+                status: false, code: "400", message: e.toString()/*"Something went wrong"*/);
           }
           return checkResponse;
         });
@@ -113,8 +114,8 @@ class DownPaymentUseCase extends BaseDataProvider {
           try {
             checkResponse = CommonResponse.fromMap(responseData);
           } catch (e) {
-            checkResponse = const CommonResponse(
-                status: false, code: "400", message: "Something went wrong");
+            checkResponse =  CommonResponse(
+                status: false, code: "400", message: e.toString()/*"Something went wrong"*/);
           }
           return checkResponse;
         });
@@ -134,8 +135,8 @@ class DownPaymentUseCase extends BaseDataProvider {
           try {
             checkResponse = LoanApprovalResponse.fromMap(responseData);
           } catch (e) {
-            checkResponse = const LoanApprovalResponse(
-                status: false, code: "400", message: "Something went wrong");
+            checkResponse =  LoanApprovalResponse(
+                status: false, code: "400", message: e.toString()/*"Something went wrong"*/);
           }
           return checkResponse;
         });
