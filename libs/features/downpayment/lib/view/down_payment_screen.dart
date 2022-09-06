@@ -2,31 +2,29 @@ import 'package:config/Colors.dart' as config_colors;
 import 'package:config/Colors.dart';
 import 'package:config/Styles.dart';
 import 'package:core/view/base_view.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:widget_library/spacers/crayon_payment_spacers.dart';
 import 'package:widget_library/utils/app_utils.dart';
 import 'package:downpayment/downpayment_module.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shared_data_models/downpayment/downpayment_screen_args.dart';
 import 'package:widget_library/app_bars/crayon_payment_app_bar_attributes.dart';
 import 'package:widget_library/app_bars/crayon_payment_app_bar_button_type.dart';
 import 'package:widget_library/page_header/text_ui_data_model.dart';
 import 'package:widget_library/progress_bar/centered_circular_progress_bar.dart';
 import 'package:widget_library/scaffold/crayon_payment_scaffold.dart';
 import 'package:widget_library/static_text/crayon_payment_text.dart';
-import 'package:widget_library/utils/icon_utils.dart';
-
 import '../state/downpayment_state.dart';
 import '../viewmodel/downpayment_coordinator.dart';
 
 class DownPaymentScreen extends StatefulWidget {
   static const viewPath =
       '${DownPaymentModule.moduleIdentifier}/downpaymetnscreen';
+
   //final DownPaymentScreenArgs downPaymentScreenArgs;
   final int deviceId;
 
-  const DownPaymentScreen({Key? key, required this.deviceId})
-      : super(key: key);
+  const DownPaymentScreen({Key? key, required this.deviceId}) : super(key: key);
 
   @override
   State<DownPaymentScreen> createState() => _DownPaymentScreenState();
@@ -70,7 +68,12 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> { //with TickerPr
             setState(() {
               username;
             });
+            // coordinator.makePayment(context);
           },
+          onStateListenCallback: (preState, newState) => {
+                _listenToStateChanges(
+                    context, newState as DownPaymentStateReady)
+              },
           builder: (context, state, coordinator) => CrayonPaymentScaffold(
                 appBarAttributes: CrayonPaymentAppBarAttributes(
                   key: const Key('CardDetailsScreen_AppBarBackButton'),
@@ -86,12 +89,11 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> { //with TickerPr
                     _,
                     __,
                     ___,
-                      ____,
-                      _____,
-                      ______,
-                      _______,
-                      ________,
-
+                    ____,
+                    _____,
+                    ______,
+                    _______,
+                    ________,
                   ) =>
                       _buildMainUIWithLoading(
                     context,
@@ -203,10 +205,7 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> { //with TickerPr
               children: [
                 _rowWidget(
                   context,
-                  icon: _getCheckedIcon(
-                    context,
-                    Colors.green,
-                  ),
+                  icon:  _getIcon(context,state.paymentRequested),
                   text: _textWidget(context, 'DP_RequestPayment'.tr),
                 ),
                 _getVerticalDivider(
@@ -215,10 +214,8 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> { //with TickerPr
                         .getPercentageSize(percentage: 8)),
                 _rowWidget(
                   context,
-                  icon: _getCheckedIcon(
-                    context,
-                    Colors.grey,
-                  ),
+                  icon:  _getIcon(context,0),
+
                   text: _textWidget(context, 'DP_WaitingForPayment'.tr),
                 ),
                 _getVerticalDivider(
@@ -227,10 +224,8 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> { //with TickerPr
                         .getPercentageSize(percentage: 8)),
                 _rowWidget(
                   context,
-                  icon: _getCheckedIcon(
-                    context,
-                    Colors.grey,
-                  ),
+                  icon:  _getIcon(context,0),
+
                   text: _textWidget(context, 'DP_PaymentReceived'.tr),
                 ),
                 _getVerticalDivider(
@@ -239,10 +234,8 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> { //with TickerPr
                         .getPercentageSize(percentage: 8)),
                 _rowWidget(
                   context,
-                  icon: _getCheckedIcon(
-                    context,
-                    Colors.grey,
-                  ),
+                  icon:  _getIcon(context,0),
+
                   text: _textWidget(context, 'DP_LoanApproved'.tr),
                 ),
                 SizedBox(
@@ -277,6 +270,10 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> { //with TickerPr
     );
   }
 
+  Widget _getIcon(BuildContext context, num status) {
+    return SvgPicture.asset(status == 0  ? "assets/images/circular_grey.svg" : (status == 1) ? "assets/images/circular_tick.svg" : "assets/images/circular_cross.svg",height: 20,width: 20,);
+  }
+
   Widget _getVerticalDivider(BuildContext context, double height) {
     return Padding(
       padding: const EdgeInsets.only(left: 9.0),
@@ -297,8 +294,7 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> { //with TickerPr
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
         onTap: () async {
-          await coordinator
-              .navigateToScanCodeScreen(widget.deviceId);
+          await coordinator.navigateToScanCodeScreen(widget.deviceId);
         },
         child: Container(
           width: double.infinity,
@@ -436,6 +432,13 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> { //with TickerPr
         text!
       ],
     );
+  }
+
+  _listenToStateChanges(BuildContext context, DownPaymentStateReady newState) {
+    //kyc done
+    if (newState.paymentRequested == true) {
+
+    }
   }
 }
 
