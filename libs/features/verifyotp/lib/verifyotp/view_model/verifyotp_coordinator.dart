@@ -61,6 +61,8 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         otp = otp1.toString();
         //otpController.text = otp;
         CrayonPaymentLogger.logInfo(otp);
+      }else{
+        _showAlertForErrorMessage(response.message);
       }
     }  catch (e) {
       print(e.toString());
@@ -69,6 +71,25 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         onClose: () {goBack();},
       );
     }
+
+
+
+  }
+
+
+  _showAlertForErrorMessage(String errorMessage) {
+    Get.bottomSheet(
+      AlertBottomSheet(
+          alertMessage: errorMessage,
+          alertTitle: 'Error',
+          alertIcon: "assets/images/alert_icon.png",
+          onClose: () {
+            goBack();
+          },
+          packageName: ""),
+      isScrollControlled: false,
+      isDismissible: true,
+    );
   }
 
   Future<void> verifyOTP(
