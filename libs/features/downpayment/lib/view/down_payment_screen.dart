@@ -99,11 +99,8 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
 
   Widget _createLoading(DownPaymentStateReady state) {
     if (state.isLoading) {
-      return Container(
-        color: Colors.black.withOpacity(0.4),
-        child: const CenteredCircularProgressBar(
-            color: config_colors.PRIMARY_COLOR),
-      );
+      return const CenteredCircularProgressBar(color: PRIMARY_COLOR);
+
     } else {
       return Container();
     }
@@ -375,6 +372,15 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
   _listenToStateChanges(BuildContext context, DownPaymentStateReady newState) {
     //kyc done
     if (newState.waitForPayment == 1) {
+
+      Future.delayed(const Duration(seconds: 3), () {
+
+        downPaymentCoordinator!.checkPaymentStatus(context);
+
+
+      });
+
+    }if (newState.paymentReceived == 1) {
 
       downPaymentCoordinator!.createLoan(widget.downPaymentScreenArgs.deviceId.toString());
     }

@@ -1,7 +1,5 @@
-import 'package:core/mobile_core.dart';
 import 'package:core/view/analytics_state_notifier.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_data_models/downpayment/downpayment_screen_args.dart';
 
 import '../navigation_handler/down_payment_navigation_handler.dart';
@@ -42,6 +40,15 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
   }
 
   Future<void> makePayment(BuildContext context, String amount) async {
+    state = DownPaymentState.ready(
+        context: context,
+        error: '',
+        isLoading: true,
+        loanActivated: 0,
+        paymentRequested: 1,
+        waitForPayment: 0,
+        loanApproved: 0,
+        paymentReceived: 0);
     var mkePayment =
         await _downPaymentUseCase.makePayment(amount, (p0) => null);
     if (mkePayment?.status == true) {
@@ -57,7 +64,7 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
 
       await _downPaymentUseCase.setPaymentId(mkePayment!.data!.id.toString());
 
-      checkPaymentStatus(context, mkePayment.data!.id.toString());
+      checkPaymentStatus(context);
     } else {
       state = DownPaymentState.ready(
           context: context,
@@ -74,11 +81,21 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
   }
 
   Future<void> checkPaymentStatus(
-      BuildContext context, String paymentId) async {
+      BuildContext context, ) async {
+
+    String paymentId= await _downPaymentUseCase.getPaymentID();
+    state = DownPaymentState.ready(
+        context: context,
+        error: '',
+        isLoading: true,
+        loanActivated: 0,
+        paymentRequested: 1,
+        waitForPayment: 1,
+        loanApproved: 0,
+        paymentReceived: 0);
     var mkePayment =
         await _downPaymentUseCase.checkPaymentStatus(paymentId, (p0) => null);
-    if (mkePayment?.status == true) {
-      print("Success");
+    if (mkePayment?.status == true ) {
 
       state = DownPaymentState.ready(
           context: context,
@@ -88,7 +105,11 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
           paymentRequested: 1,
           waitForPayment: 1,
           loanApproved: 0,
-          paymentReceived: 0);
+          paymentReceived: mkePayment!.data!=null ? mkePayment.data!.status == "Downpayment_Success" ? 1 : 0 : 0);
+
+
+
+
     } else {
       state = DownPaymentState.ready(
           context: context,

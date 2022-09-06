@@ -43,7 +43,7 @@ class DownPaymentUseCase extends BaseDataProvider {
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
         moduleIdentifier: DownPaymentModule.moduleIdentifier,
-        requestData: {"agentId": agentId, "customerId": customerId, "deviceId": int.parse(deviceId)},
+        requestData: {"agentId": agentId, "customerId": customerId, "deviceId": int.parse(deviceId),"clientId":"Y9C100167"},
         serviceIdentifier: DownPaymentService.createLoanIdentifier,
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {
