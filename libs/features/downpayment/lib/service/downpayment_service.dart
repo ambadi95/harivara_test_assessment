@@ -64,8 +64,8 @@ class IDownPaymentService implements DownPaymentService {
     Map<String, dynamic> requestData,
   ) async {
     var request = StandardRequest();
-    request.requestType = RequestType.POST;
-    request.endpoint = customerEndpoint + 'payment/airtel/pay-status[customer]';
+    request.requestType = RequestType.GET;
+    request.endpoint = customerEndpoint + 'payment/payment-status/${requestData["paymentId"]}[customer]';
     request.jsonBody = json.encode(requestData);
     return request;
   }

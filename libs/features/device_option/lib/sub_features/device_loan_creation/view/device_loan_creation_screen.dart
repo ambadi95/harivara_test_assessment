@@ -92,8 +92,10 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
           const CrayonPaymentAppBarButtonType.back(),
         ],
       ),
-      bottomNavigationBar: loanPreviewResponseModel != null
-          ? Padding(
+      bottomNavigationBar:
+      loanPreviewResponseModel != null
+          ?
+      Padding(
               padding: const EdgeInsets.only(left: 16, right: 16, bottom: 18),
               child: selectButton(coordinator),
             )
@@ -158,14 +160,7 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
           Divider(),
           dynamicHSpacer(10),
           loanPreviewResponseModel == null
-              ? CrayonPaymentText(
-                  key: Key('${_identifier}_ERROR_API'),
-                  text: TextUIDataModel(
-                      'Something went wrong,Please try again later!',
-                      styleVariant: CrayonPaymentTextStyleVariant.headline4,
-                      color: AN_TitleColor,
-                      fontWeight: FontWeight.w600),
-                )
+              ? SizedBox()
               : _loanDetails(context),
           dynamicHSpacer(20),
         ],
@@ -195,26 +190,27 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
 
   Widget selectButton(DeviceLoanCreationCoordinator coordinator) {
     return CrayonPaymentDockedButton(
-      key: const Key('Select'),
-      title:
-          'Pay Now ${loanPreviewResponseModel!.data!.totalAmountToBeRepaid}TZHS',
+      key:  Key('Select'),
+      title: 'Pay Now ${loanPreviewResponseModel!.data!.totalAmountToBeRepaid}TZHS',
+      // title: 'Pay Now 2000 TZHS',
       borderRadius: 8,
       height: CrayonPaymentDimensions.marginFortyEight,
       buttonColor: LS_ButtonColor,
       textColor: White,
       textStyleVariant: CrayonPaymentTextStyleVariant.headline4,
       onPressed: () {
-        coordinator.navigateToDownPayment(detailDetail?.deviceId);
+        coordinator.navigateToDownPayment(loanPreviewResponseModel!.data!.totalAmountToBeRepaid!.toString(),detailDetail!.deviceId);
       },
     );
   }
 
   _loanDetails(context) {
+    print(loanPreviewResponseModel!.data!.toJson());
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         CrayonPaymentText(
-          key: Key(''),
+          key: Key('loan details'),
           text: TextUIDataModel('DLC_Loan_Details'.tr,
               styleVariant: CrayonPaymentTextStyleVariant.headline4,
               color: AN_CardTitle,
@@ -235,7 +231,7 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
             loanPreviewResponseModel!.data!.finalPaymentDate.toString()),
         dynamicHSpacer(40),
         CrayonPaymentText(
-          key: Key(''),
+          key: Key('paymnet date'),
           text: TextUIDataModel('DLC_Wallets_Title'.tr,
               styleVariant: CrayonPaymentTextStyleVariant.headline4,
               color: AN_CardTitle,
@@ -257,7 +253,7 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
             Expanded(
               flex: 1,
               child: CrayonPaymentText(
-                key: Key(''),
+                key: Key('key value'),
                 text: TextUIDataModel(key,
                     styleVariant: CrayonPaymentTextStyleVariant.headline5,
                     color: AN_CardTitle,
@@ -267,7 +263,7 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
             Expanded(
               flex: 1,
               child: CrayonPaymentText(
-                key: Key(''),
+                key: Key('data value'),
                 text: TextUIDataModel(value,
                     styleVariant: CrayonPaymentTextStyleVariant.headline5,
                     color: AN_CardTitle,

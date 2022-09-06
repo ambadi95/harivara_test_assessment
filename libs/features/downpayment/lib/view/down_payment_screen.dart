@@ -36,20 +36,20 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
   bool _isBtnEnabled = false;
 
   String username = "";
+  DownPaymentCoordinator? downPaymentCoordinator;
 
   @override
   Widget build(BuildContext context) =>
       BaseView<DownPaymentCoordinator, DownPaymentState>(
           setupViewModel: (coordinator) async {
+            downPaymentCoordinator=coordinator;
             coordinator.initialiseState(context);
             username = await coordinator.getAgentName();
             setState(() {
               username;
             });
             coordinator.setData(context,widget.downPaymentScreenArgs);
-
-
-            // coordinator.makePayment(context);
+            coordinator.makePayment(context,widget.downPaymentScreenArgs.amount);
           },
           onStateListenCallback: (preState, newState) => {
                 _listenToStateChanges(
@@ -330,8 +330,8 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
   _title(BuildContext context) {
     return CrayonPaymentText(
       key: Key('${_identifier}_Payment_Request'),
-      text: const TextUIDataModel(
-          '70,000 TZSHS\npayment request has\nbeen sent to Y9',
+      text:  TextUIDataModel(
+          '${widget.downPaymentScreenArgs.amount.toString()} TZSHS\npayment request has\nbeen sent to Y9',
           styleVariant: CrayonPaymentTextStyleVariant.headline6,
           color: AN_TitleColor,
           fontWeight: FontWeight.w600),
@@ -374,8 +374,9 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
 
   _listenToStateChanges(BuildContext context, DownPaymentStateReady newState) {
     //kyc done
-    if (newState.paymentRequested == true) {
+    if (newState.waitForPayment == 1) {
 
+      downPaymentCoordinator!.createLoan(widget.downPaymentScreenArgs.deviceId.toString());
     }
   }
 }
