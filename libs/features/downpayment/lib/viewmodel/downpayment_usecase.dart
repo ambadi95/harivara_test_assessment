@@ -10,8 +10,8 @@ import 'downpayment_viewmodel.dart';
 
 class DownPaymentUseCase extends BaseDataProvider {
   final DownPaymentViewModel _downpaymentviewmodel;
-
-  DownPaymentUseCase(this._downpaymentviewmodel, TaskManager taskManager)
+  final TaskManager taskManager;
+  DownPaymentUseCase(this._downpaymentviewmodel, this.taskManager)
       : super(taskManager);
 
   Future<String> getAgentName() async {
@@ -29,9 +29,12 @@ class DownPaymentUseCase extends BaseDataProvider {
   Future<String> getMobileNumber() async {
     return await getValueFromSecureStorage('mobileNumber', defaultValue: '');
   }
+  Future<String> getPaymentID() async {
+    return await getValueFromSecureStorage('paymentId', defaultValue: '');
+  }
 
   Future<CreateLoanResponse?> createLoan(
-      int deviceId, Function(String) onErrorCallback) async {
+      String deviceId, Function(String) onErrorCallback) async {
     String agentId = await getAgentId();
     print(agentId);
     String customerId = await getCustomerId();
@@ -40,7 +43,7 @@ class DownPaymentUseCase extends BaseDataProvider {
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
         moduleIdentifier: DownPaymentModule.moduleIdentifier,
-        requestData: {"agentId": '356HYT6581', "customerId": 86, "deviceId": 1},
+        requestData: {"agentId": agentId, "customerId": customerId, "deviceId": int.parse(deviceId)},
         serviceIdentifier: DownPaymentService.createLoanIdentifier,
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {
@@ -56,7 +59,7 @@ class DownPaymentUseCase extends BaseDataProvider {
   }
 
 
- Future<CommonResponse?> makePayment(
+ Future<CommonResponse?> makePayment(String amount ,
        Function(String) onErrorCallback) async {
     String mobileNumber = await getMobileNumber();
     String customerId = await getCustomerId();
@@ -71,7 +74,7 @@ class DownPaymentUseCase extends BaseDataProvider {
           "paymentType": "Downpayment"
         }*/
         {
-          "amountPaid": "2000",
+          "amountPaid": amount,
           "customerId": customerId,
           "mobileNumber": mobileNumber.substring(4),
           "paymentType": "Downpayment"
@@ -91,7 +94,7 @@ class DownPaymentUseCase extends BaseDataProvider {
   }
 
  Future<CommonResponse?> checkPaymentStatus(
-      int deviceId, Function(String) onErrorCallback) async {
+      String paymentId, Function(String) onErrorCallback) async {
     String mobileNumber = await getMobileNumber();
     String customerId = await getCustomerId();
     return await executeApiRequest<CommonResponse?>(
@@ -99,12 +102,7 @@ class DownPaymentUseCase extends BaseDataProvider {
         taskSubType: TaskSubType.REST,
         moduleIdentifier: DownPaymentModule.moduleIdentifier,
         requestData: {
-          "transaction": {
-            "airtel_money_id": "",
-            "id": "",
-            "message": "",
-            "status_code": ""
-          }
+          "paymentId":paymentId
         },
         serviceIdentifier: DownPaymentService.paymentStatusIdentifier,
         onError: onErrorCallback,
@@ -139,5 +137,23 @@ class DownPaymentUseCase extends BaseDataProvider {
           }
           return checkResponse;
         });
+  }
+  @override
+  Future<void> setValueToSecureStorage(Map<String, dynamic> keyValueMap) async {
+    await taskManager.execute(
+      Task(
+        requestData: {
+          CACHE_TYPE: TaskManagerCacheType.SECURE_SET,
+          DATA_KEY: keyValueMap,
+        },
+        taskType: TaskType.CACHE_OPERATION,
+      ),
+    );
+    return;
+  }
+
+  Future<void> setPaymentId(String paymentId) async {
+      return await setValueToSecureStorage({'paymentId': paymentId});
+
   }
 }

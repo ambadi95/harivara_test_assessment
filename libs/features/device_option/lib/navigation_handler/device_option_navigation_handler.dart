@@ -46,10 +46,10 @@ class DeviceOptionNavigationHandler with ErrorHandler {
         arguments: argument);
   }
 
-  navigateToDownPaymentScreen(int? deviceId) {
-    // var arguments = DownPaymentScreenArgs(
-    //     "", "", "", "", [DownPaymentDataModel(title: "", isSelected: false)]);
-    var arguments = deviceId;
+  navigateToDownPaymentScreen(String amount,int? deviceId) {
+    var arguments = DownPaymentScreenArgs(
+        deviceId ?? 1, amount, "", "",0,0,0,0,0);
+    // var arguments = deviceId;
     _navigationManager.navigateTo(
         DownPaymentScreen.viewPath, const NavigationType.push(),
         arguments: arguments);

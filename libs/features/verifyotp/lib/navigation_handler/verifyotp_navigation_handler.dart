@@ -167,7 +167,7 @@ class VerifyOtpNavigationHandler with ErrorHandler {
 
   navigateToDownPaymentScreen() {
     var arguments = DownPaymentScreenArgs(
-        0, "", "", "", "", [DownPaymentDataModel(title: "", isSelected: false)]);
+        0, "", "", "",0,0,0,0,0);
     _navigationManager.navigateTo(
         DownPaymentScreen.viewPath, const NavigationType.push(),
         arguments: arguments);

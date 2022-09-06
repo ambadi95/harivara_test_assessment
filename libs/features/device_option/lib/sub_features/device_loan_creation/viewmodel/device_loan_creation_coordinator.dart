@@ -16,8 +16,8 @@ class DeviceLoanCreationCoordinator
     this._DeviceOptionUseCase,
   ) : super(const DeviceLoanCreationState.initialState());
 
-  void navigateToDownPayment(int? deviceId) async {
-    await _navigationHandler.navigateToDownPaymentScreen(deviceId!);
+  void navigateToDownPayment(String amount,int? deviceId) async {
+    await _navigationHandler.navigateToDownPaymentScreen(amount,deviceId!);
   }
 
   Future getLoanPreview(int deviceId) async {
@@ -25,7 +25,7 @@ class DeviceLoanCreationCoordinator
     await _DeviceOptionUseCase.getLoanPreview(deviceId, (p0) => null);
     print(response);
     if (response!.status == true) {
-      return response.data;
+      return response;
     }else{
       _showAlertForErrorMessage(response.message!);
     }
