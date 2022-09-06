@@ -2,18 +2,24 @@ import 'package:shared_data_models/downpayment/downpayment_data_model.dart';
 
 class DownPaymentScreenArgs {
   final int deviceId;
-  final String image;
+  final String amount;
   final String title;
   final String subTitle;
-  final String destinationPath;
-  final List<DownPaymentDataModel> downPaymentModelList;
+  final num paymentRequested;
+  final num waitForPayment;
+  final num paymentReceived;
+  final num loanApproved;
+  final num loanActivated;
 
   DownPaymentScreenArgs(
     this.deviceId,
-    this.image,
+    this.amount,
     this.title,
     this.subTitle,
-    this.destinationPath,
-    this.downPaymentModelList,
+    this.paymentRequested,
+    this.waitForPayment,
+    this.paymentReceived,
+    this.loanApproved,
+    this.loanActivated,
   );
 }

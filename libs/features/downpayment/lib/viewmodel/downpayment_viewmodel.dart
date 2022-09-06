@@ -1,1 +1,5 @@
-class DownPaymentViewModel {}
+class DownPaymentViewModel {
+
+
+
+}

@@ -61,6 +61,8 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         otp = otp1.toString();
         //otpController.text = otp;
         CrayonPaymentLogger.logInfo(otp);
+      }else{
+        _showAlertForErrorMessage(response.message);
       }
     }  catch (e) {
       print(e.toString());
@@ -69,6 +71,25 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         onClose: () {goBack();},
       );
     }
+
+
+
+  }
+
+
+  _showAlertForErrorMessage(String errorMessage) {
+    Get.bottomSheet(
+      AlertBottomSheet(
+          alertMessage: errorMessage,
+          alertTitle: 'Error',
+          alertIcon: "assets/images/alert_icon.png",
+          onClose: () {
+            goBack();
+          },
+          packageName: ""),
+      isScrollControlled: false,
+      isDismissible: true,
+    );
   }
 
   Future<void> verifyOTP(
@@ -225,6 +246,9 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         var responseSignin = await _verifyOtpUseCase.otpVerify(
             otpScreenArgs.refId, enterOtp, otpScreenArgs.userType,event, (p0) => null);
         if (responseSignin?.status == true) {
+          String agentId = await _verifyOtpUseCase.getAgentId();
+          await _verifyOtpUseCase.saveOnBordStatus(agentId);
+
           _navigationHandler.navigateToAgentWelcomeBack(userType);
         }
       } else if (otpScreenArgs.otpVerificationType ==

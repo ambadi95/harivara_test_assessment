@@ -19,9 +19,17 @@ class LoanPreviewResponseModel extends Equatable {
     this.status,
   });
 
-  factory LoanPreviewResponseModel.fromJson(Map<String, dynamic> json) {
-    return _$LoanPreviewResponseModelFromJson(json);
+  factory LoanPreviewResponseModel.fromMap(Map<String, dynamic> data) {
+    return LoanPreviewResponseModel(
+      code: data['code'] as String?,
+      data: data['data'] == null
+          ? null
+          : Data.fromJson(data['data'] as Map<String, dynamic>),
+      message: data['message'] as String?,
+      status: data['status'] as bool?,
+    );
   }
+
 
   Map<String, dynamic> toJson() => _$LoanPreviewResponseModelToJson(this);
 
