@@ -3,6 +3,7 @@ import 'package:config/Colors.dart';
 import 'package:config/Styles.dart';
 import 'package:core/view/base_view.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:shared_data_models/downpayment/downpayment_screen_args.dart';
 import 'package:widget_library/spacers/crayon_payment_spacers.dart';
 import 'package:widget_library/utils/app_utils.dart';
 import 'package:downpayment/downpayment_module.dart';
@@ -21,54 +22,55 @@ class DownPaymentScreen extends StatefulWidget {
   static const viewPath =
       '${DownPaymentModule.moduleIdentifier}/downpaymetnscreen';
 
-  //final DownPaymentScreenArgs downPaymentScreenArgs;
-  final int deviceId;
+  final DownPaymentScreenArgs downPaymentScreenArgs;
 
-  const DownPaymentScreen({Key? key, required this.deviceId}) : super(key: key);
+  const DownPaymentScreen({Key? key, required this.downPaymentScreenArgs}) : super(key: key);
 
   @override
   State<DownPaymentScreen> createState() => _DownPaymentScreenState();
 }
 
-class _DownPaymentScreenState extends State<DownPaymentScreen> { //with TickerProviderStateMixin{
+class _DownPaymentScreenState extends State<DownPaymentScreen> with TickerProviderStateMixin{
   final String _identifier = 'downpayment-screen';
   bool _isBtnEnabled = false;
-  int _counter = 0;
   late AnimationController _controller;
   int levelClock = 180;
   String username = "";
+  DownPaymentCoordinator? downPaymentCoordinator;
 
 
-  // @override
-  // void dispose() {
-  //   _controller.dispose();
-  //   super.dispose();
-  // }
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  //
-  //   _controller = AnimationController(
-  //       vsync: this,
-  //       duration: Duration(
-  //           seconds:
-  //           levelClock)
-  //   );
-  //   _controller.forward();
-  // }
+  @override
+  void initState() {
+    super.initState();
+
+    _controller = AnimationController(
+        vsync: this,
+        duration: Duration(
+            seconds:
+            levelClock)
+    );
+    _controller.forward();
+  }
 
 
   @override
   Widget build(BuildContext context) =>
       BaseView<DownPaymentCoordinator, DownPaymentState>(
           setupViewModel: (coordinator) async {
+            downPaymentCoordinator=coordinator;
             coordinator.initialiseState(context);
             username = await coordinator.getNewCustomerName(); //getAgentName();
             setState(() {
               username;
             });
-            // coordinator.makePayment(context);
+            coordinator.setData(context,widget.downPaymentScreenArgs);
+            coordinator.makePayment(context,widget.downPaymentScreenArgs.amount);
           },
           onStateListenCallback: (preState, newState) => {
                 _listenToStateChanges(
@@ -206,7 +208,7 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> { //with TickerPr
                 _rowWidget(
                   context,
                   icon:  _getIcon(context,state.paymentRequested),
-                  text: _textWidget(context, 'DP_RequestPayment'.tr),
+                  text: _textWidget(context, 'DP_RequestPayment'.tr, true),
                 ),
                 _getVerticalDivider(
                     context,
@@ -214,9 +216,9 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> { //with TickerPr
                         .getPercentageSize(percentage: 8)),
                 _rowWidget(
                   context,
-                  icon:  _getIcon(context,0),
+                  icon:  _getIcon(context,state.waitForPayment),
 
-                  text: _textWidget(context, 'DP_WaitingForPayment'.tr),
+                  text: _textWidget(context, 'DP_WaitingForPayment'.tr, false),
                 ),
                 _getVerticalDivider(
                     context,
@@ -224,9 +226,9 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> { //with TickerPr
                         .getPercentageSize(percentage: 8)),
                 _rowWidget(
                   context,
-                  icon:  _getIcon(context,0),
+                  icon:  _getIcon(context,state.paymentReceived),
 
-                  text: _textWidget(context, 'DP_PaymentReceived'.tr),
+                  text: _textWidget(context, 'DP_PaymentReceived'.tr, false),
                 ),
                 _getVerticalDivider(
                     context,
@@ -234,9 +236,9 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> { //with TickerPr
                         .getPercentageSize(percentage: 8)),
                 _rowWidget(
                   context,
-                  icon:  _getIcon(context,0),
+                  icon:  _getIcon(context,state.loanApproved),
 
-                  text: _textWidget(context, 'DP_LoanApproved'.tr),
+                  text: _textWidget(context, 'DP_LoanApproved'.tr, false),
                 ),
                 SizedBox(
                   height: AppUtils.appUtilsInstance
@@ -294,7 +296,7 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> { //with TickerPr
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
         onTap: () async {
-          await coordinator.navigateToScanCodeScreen(widget.deviceId);
+          await coordinator.navigateToScanCodeScreen(widget.downPaymentScreenArgs.deviceId);
         },
         child: Container(
           width: double.infinity,
@@ -348,16 +350,16 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> { //with TickerPr
 
   _title(BuildContext context) {
     return CrayonPaymentText(
-      key: Key('${_identifier}_Payment_Request'),
-      text: const TextUIDataModel(
-          '70,000 TZSHS payment\nrequest has been sent\nto Y9',
+      key: Key('${_identifier}_DLC_payment_text'),
+      text: TextUIDataModel(
+          '${widget.downPaymentScreenArgs.amount.toString()} ${'DLC_payment_text'.tr}',
           styleVariant: CrayonPaymentTextStyleVariant.headline6,
           color: AN_TitleColor,
-          fontWeight: FontWeight.w600),
-    );
+          fontWeight: FontWeight.w600,
+    ));
   }
 
-  _textWidget(BuildContext context, String? text) {
+  _textWidget(BuildContext context, String? text, bool isResend) {
     return Row(
       children: [
         CrayonPaymentText(
@@ -368,57 +370,42 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> { //with TickerPr
               fontWeight: FontWeight.w500),
         ),
         dynamicWSpacer(30),
+        isResend ?
         Text('DLC_resend'.tr,style: const TextStyle(
           decoration: TextDecoration.underline,
           fontFamily: 'Montserrat',
           fontSize: 12,
           color: SU_subtitle_terms_color
-          ))
+          )) : Text("")
       ],
     );
   }
 
   _subTitle(BuildContext context){
     return
-      Row(
-        children: [
-          CrayonPaymentText(
-          key: Key('${_identifier}_DLC_Down_Payment_Subtitle'),
-          text: const TextUIDataModel(
-              'DLC_Down_Payment_Subtitle',
-              styleVariant: CrayonPaymentTextStyleVariant.subtitle2,
-              color: VO_ResendTextColor,
-              fontWeight: FontWeight.w400),
-    ),
-    // Countdown(
-    //         animation: StepTween(
-    //           begin: levelClock * 60, // THIS IS A USER ENTERED NUMBER
-    //           end: 0,
-    //         ).animate(_controller),
-    //       ),
-        ],
-      );
-    // RichText(
-    //   text: TextSpan(
-    //     text: 'DLC_Down_Payment_Subtitle'.tr,
-    //     style: const TextStyle(
-    //         fontFamily: 'Montserrat',
-    //         fontSize: 14, color: DD_TextLabel, fontWeight: FontWeight.w600
-    //     ),
-    //     children: <TextSpan>[
-    //       Countdown(
-    //         animation: StepTween(
-    //           begin: levelClock, // THIS IS A USER ENTERED NUMBER
-    //           end: 0,
-    //         ).animate(_controller),
-    //       ),
-    //       TextSpan(
-    //           text: '15 mins',
-    //           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 9, color : Color(0xFFDA2228))),
-    //
-    //     ],
-    //   ),
+    //       CrayonPaymentText(
+    //       key: Key('${_identifier}_DLC_Down_Payment_Subtitle'),
+    //       text: const TextUIDataModel(
+    //           'DLC_Down_Payment_Subtitle',
+    //           styleVariant: CrayonPaymentTextStyleVariant.subtitle2,
+    //           color: VO_ResendTextColor,
+    //           fontWeight: FontWeight.w400),
     // );
+    RichText(
+      text: TextSpan(
+        text: 'DLC_Down_Payment_Subtitle'.tr,
+        style: const TextStyle(
+            fontFamily: 'Montserrat',
+            fontSize: 14, color: DD_TextLabel, fontWeight: FontWeight.w600
+        ),
+        children: <TextSpan>[
+          TextSpan(
+              text: ' 15 mins',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12, color : Color(0xFFDA2228))),
+
+        ],
+      ),
+    );
   }
 
   _rowWidget(BuildContext context, {Widget? icon, Widget? text}) {
@@ -436,35 +423,10 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> { //with TickerPr
 
   _listenToStateChanges(BuildContext context, DownPaymentStateReady newState) {
     //kyc done
-    if (newState.paymentRequested == true) {
+    if (newState.waitForPayment == 1) {
 
+      downPaymentCoordinator!.createLoan(widget.downPaymentScreenArgs.deviceId.toString());
     }
   }
 }
 
-
-// class Countdown extends AnimatedWidget {
-//   Countdown({Key? key, required this.animation}) : super(key: key, listenable: animation);
-//   Animation<int> animation;
-//
-//   @override
-//   build(BuildContext context) {
-//     Duration clockTimer = Duration(seconds: animation.value);
-//
-//     String timerText =
-//         '${clockTimer.inMinutes.remainder(60).toString()}:${clockTimer.inSeconds.remainder(60).toString().padLeft(2, '0')}';
-//
-//     print('animation.value  ${animation.value} ');
-//     print('inMinutes ${clockTimer.inMinutes.toString()}');
-//     print('inSeconds ${clockTimer.inSeconds.toString()}');
-//     print('inSeconds.remainder ${clockTimer.inSeconds.remainder(60).toString()}');
-//
-//     return Text(
-//       "$timerText",
-//       style: TextStyle(
-//         fontSize: 110,
-//         color: Theme.of(context).primaryColor,
-//       ),
-//     );
-//   }
-// }
