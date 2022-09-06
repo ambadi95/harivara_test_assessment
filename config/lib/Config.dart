@@ -50,8 +50,10 @@ const ST_scan_icon = 'assets/images/scan_image.svg';
 
 const y9TermsCondition = 'https://y9bank.com/term-of-services/';
 
+
 // USERTYPE
 enum UserType { Customer, Agent, AgentCustomer }
+enum OTPEvent{Customer_Registration,Reset_Passcode,Agent_Login,Update_Passcode,Agent_Registration,Customer_Login}
 
 //DEV CUSTOMER INSTANCE
 const customerEndpoint = 'https://y9-dev-capi.testmaya.com/customers/v1/';
