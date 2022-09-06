@@ -251,6 +251,8 @@
   "DLC_Down_Payment" : "Malipo ya chini",
   "DLC_Down_Payment_Subtitle": "Lango la muamala litafungwa katika dakika 15 zijazo",
   "DLC_resend" : "Tuma tena",
+  "DLC_pay_now" : "LIPA sasa",
+  "DLC_payment_text" : "ombi la malipo limetumwa kwa Y9",
 
   "RC_agent_new_customer" : "Mteja Mpya\nKupanda",
   "RC_customer_approval" : "Mteja Anayesubiri\nKupanda",

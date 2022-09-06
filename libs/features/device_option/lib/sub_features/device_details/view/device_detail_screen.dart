@@ -423,7 +423,7 @@ class _DeviceDetailScreenState extends State<DeviceDetailScreen> {
   Widget selectButton(DeviceDetailCoordinator coordinator) {
     return CrayonPaymentDockedButton(
       key: const Key('Select'),
-      title: 'Select Device',
+      title: 'DD_SelectDevice'.tr,
       borderRadius: 8,
       height: CrayonPaymentDimensions.marginFortyEight,
       buttonColor: LS_ButtonColor,
