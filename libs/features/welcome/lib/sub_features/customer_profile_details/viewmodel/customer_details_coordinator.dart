@@ -1,5 +1,6 @@
 import 'package:config/Config.dart';
 import 'package:core/mobile_core.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/src/widgets/focus_manager.dart';
 import 'package:shared_data_models/customer_onboard/region_district/region_response/datum.dart';
@@ -12,6 +13,7 @@ import 'package:welcome/sub_features/details/state/details_state.dart';
 import 'package:welcome/sub_features/details/viewmodel/details_usecase.dart';
 import '../../../navigation_handler/welcome_navigation_handler.dart';
 import 'customer_details_usecase.dart';
+import 'package:widget_library/utils/app_utils.dart';
 
 class CustomerDetailsCoordinator extends BaseViewModel<CustomerDetailsState> {
   final CustomerDetailsUseCase _customerDetailsUseCase;
@@ -45,15 +47,28 @@ class CustomerDetailsCoordinator extends BaseViewModel<CustomerDetailsState> {
   }
 
   Future getCustomerDetails() async {
-    var response =
-        await _customerDetailsUseCase.getCustomerDetails((p0) => null);
-    if (response?.status == true) {
-      CrayonPaymentLogger.logInfo(response!.data!.referenceId!.toString());
-      state = CustomerDetailsState.getRegion(response.data!.region!);
-      state = CustomerDetailsState.getDistrict(response.data!.district!);
-      return response;
-    } else {
-      CrayonPaymentLogger.logInfo(response!.message!);
+    //state = const CustomerDetailsState.LoadingState();
+    try {
+      var response =
+          await _customerDetailsUseCase.getCustomerDetails((p0) => null);
+      if (response?.status == true) {
+        //    state = const CustomerDetailsState.initialState();
+        CrayonPaymentLogger.logInfo(response!.data!.referenceId!.toString());
+        state = CustomerDetailsState.getRegion(response.data!.region!);
+        state = CustomerDetailsState.getDistrict(response.data!.district!);
+        return response;
+      } else {
+        //     state = const CustomerDetailsState.initialState();
+        CrayonPaymentLogger.logInfo(response!.message!);
+      }
+    } catch (e) {
+      //  state = const CustomerDetailsState.initialState();
+      AppUtils.appUtilsInstance.showErrorBottomSheet(
+        title: e.toString(),
+        onClose: () {
+          goBack();
+        },
+      );
     }
   }
 
@@ -240,41 +255,54 @@ class CustomerDetailsCoordinator extends BaseViewModel<CustomerDetailsState> {
   }
 
   Future updateDetails(
-    String name,
-    String dob,
-    String gender,
-    String address,
-    String district,
-    String emailId,
-    String poBox,
-    String profession,
-    String region,
-    UserType userType,
-  ) async {
-    state = const CustomerDetailsState.LoadingState();
-    var response = await _customerDetailsUseCase.updateCustomerDetails(
-        name,
-        dob,
-        gender,
-        address,
-        profession,
-        emailId,
-        poBox,
-        region,
-        district,
-        (p0) => null,
-        userType);
-    if (response?.status == true) {
-      state = const CustomerDetailsState.initialState();
-      if (kDebugMode) {
-        print(response?.message);
+      String name,
+      String dob,
+      String gender,
+      String address,
+      String district,
+      String emailId,
+      String poBox,
+      String profession,
+      String region,
+      UserType userType,
+      BuildContext context) async {
+    try {
+      AppUtils.appUtilsInstance.showCircularDialog(context);
+
+      var response = await _customerDetailsUseCase.updateCustomerDetails(
+          name,
+          dob,
+          gender,
+          address,
+          profession,
+          emailId,
+          poBox,
+          region,
+          district,
+          (p0) => null,
+          userType);
+      if (response?.status == true) {
+        goBack();
+        AppUtils.appUtilsInstance.showSuccess(
+            title: "Updated", message: "Profile update successfully");
+        if (kDebugMode) {
+          print(response?.message);
+        }
+        //   navigateToCreatePasscodeScreen(userType);
+      } else {
+        goBack();
+        if (kDebugMode) {
+          print(response?.message);
+        }
       }
-      //   navigateToCreatePasscodeScreen(userType);
-    } else {
-      state = const CustomerDetailsState.initialState();
-      if (kDebugMode) {
-        print(response?.message);
-      }
+    } catch (e) {
+      goBack();
+      AppUtils.appUtilsInstance.showErrorBottomSheet(
+        title: e.toString(),
+        onClose: () {
+          goBack();
+        },
+      );
     }
   }
 }

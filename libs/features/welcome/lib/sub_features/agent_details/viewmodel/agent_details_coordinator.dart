@@ -4,7 +4,7 @@ import 'package:task_manager/base_classes/base_view_model.dart';
 import '../../../navigation_handler/welcome_navigation_handler.dart';
 import '../state/agent_details_state.dart';
 import 'agent_details_usecase.dart';
-
+import 'package:widget_library/utils/app_utils.dart';
 class AgentDetailsCoordinator extends BaseViewModel<AgentDetailsState> {
   final AgentDetailsUseCase _agentDetailsUseCase;
   final WelcomeNavigationHandler _navigationHandler;
@@ -19,13 +19,20 @@ class AgentDetailsCoordinator extends BaseViewModel<AgentDetailsState> {
   }
 
   Future getAgentDetail() async {
-    var response = await _agentDetailsUseCase.getAgentDetail((p0) => null);
-    if (response?.status == true) {
-      await _agentDetailsUseCase
-          .saveAgentMobileNumber(response!.data!.mobileNo!);
-      return response.data;
+    try {
+      var response = await _agentDetailsUseCase.getAgentDetail((p0) => null);
+      if (response?.status == true) {
+        await _agentDetailsUseCase
+            .saveAgentMobileNumber(response!.data!.mobileNo!);
+        return response.data;
+      }
+      return null;
+    }  catch (e) {
+      AppUtils.appUtilsInstance.showErrorBottomSheet(
+        title: e.toString(),
+        onClose: () {goBack();},
+      );
     }
-    return null;
   }
 
   Future submitAgentDetail(
@@ -38,22 +45,30 @@ class AgentDetailsCoordinator extends BaseViewModel<AgentDetailsState> {
       String? gender,
       String mobileNo,
       String emailId) async {
-    var submitResponse = await _agentDetailsUseCase.submitCustomerDetails(
-        agentId,
-        firstName,
-        lastName,
-        middleName ?? ' ',
-        nidaNo,
-        dob ?? ' ',
-        gender!,
-        mobileNo,
-        emailId,
-        (p0) => null);
-    if (submitResponse?.status == true) {
-      navigateToOtpScreen(mobileNo, firstName + ' ' + lastName);
-      // _navigationHandler.navigateToOtpScreen('Agent', agentId, mobileNo);
-    } else {
-      CrayonPaymentLogger.logError(submitResponse!.message!);
+    try {
+      var submitResponse = await _agentDetailsUseCase.submitCustomerDetails(
+          agentId,
+          firstName,
+          lastName,
+          middleName ?? ' ',
+          nidaNo,
+          dob ?? ' ',
+          gender!,
+          mobileNo,
+          emailId,
+          (p0) => null);
+      if (submitResponse?.status == true) {
+        navigateToOtpScreen(mobileNo, firstName + ' ' + lastName);
+        // _navigationHandler.navigateToOtpScreen('Agent', agentId, mobileNo);
+      } else {
+        CrayonPaymentLogger.logError(submitResponse!.message!);
+      }
+    }  catch (e) {
+      print(e.toString());
+      AppUtils.appUtilsInstance.showErrorBottomSheet(
+        title: e.toString(),
+        onClose: () {goBack();},
+      );
     }
   }
 

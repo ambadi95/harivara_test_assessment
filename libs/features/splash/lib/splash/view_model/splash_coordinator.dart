@@ -1,10 +1,13 @@
+import 'package:config/Config.dart';
 import 'package:flutter/material.dart';
 import 'package:splash/navigation_handler/splash_navigation_handler.dart';
 import 'package:splash/splash/state/splash_state.dart';
 import 'package:splash/splash/view_model/splash_usecase.dart';
 import 'package:task_manager/base_classes/base_view_model.dart';
 import 'package:welcome/sub_features/welcome/data_model/welcome_model.dart';
-import 'package:config/Config.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
+import 'package:intl/intl.dart';
 
 class SplashCoordinator extends BaseViewModel<SplashState> {
   final SplashNavigationHandler _navigationHandler;
@@ -34,9 +37,26 @@ class SplashCoordinator extends BaseViewModel<SplashState> {
     }
   }
 
+  Future<String> getCurrentLocale() async {
+   String currentLanguageCode = await _splashUseCase.getLocale();
+    return currentLanguageCode;
+
+  }
+
+  Future<void> setCurrentLocale(String currentLanguageCode) async{
+    String currentLang = await getCurrentLocale();
+    if(currentLang == ''){
+    var currentLocale = Locale(currentLanguageCode);
+    Get.updateLocale(currentLocale);
+    Intl.defaultLocale = currentLocale.languageCode;
+    _splashUseCase.saveLocale(currentLanguageCode);
+    }
+  }
+
   Future<void> navigateToDestinationPath(
       UserType userType, bool isSignedin) async {
     _navigationHandler.navigateToDestinationPath(
         WelcomeScreenArgs('', '', userType, isSignedin));
   }
+
 }

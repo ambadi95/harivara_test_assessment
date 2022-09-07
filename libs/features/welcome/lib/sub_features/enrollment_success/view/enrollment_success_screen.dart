@@ -3,7 +3,7 @@ import 'package:config/Config.dart';
 import 'package:config/Styles.dart';
 import 'package:core/mobile_core.dart';
 import 'package:core/view/base_view.dart';
-import 'package:crayon_payment_customer/util/app_utils.dart';
+import 'package:widget_library/utils/app_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_data_models/customer_details/response/get_customer_details_response/get_customer_details_response.dart';
 import 'package:widget_library/html/rich_text_description.dart';
@@ -257,7 +257,8 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
         child: Center(
           child: Text(
             'ES_near_agent_button'.tr,
-            style: const TextStyle(color: config_color.SECONDARY_COLOR),
+            textAlign: TextAlign.center,
+            style: const TextStyle(color: config_color.White),
           ),
         ),
       ),

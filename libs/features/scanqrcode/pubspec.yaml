@@ -41,6 +41,7 @@ dependencies:
   network_image_mock: ^2.0.1
   flutter_riverpod: ^1.0.3
   flutter_svg:
+  flutter_barcode_scanner: ^2.0.0
 
   core:
     path: ../../core

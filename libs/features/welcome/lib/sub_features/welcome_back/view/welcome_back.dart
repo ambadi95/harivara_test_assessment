@@ -9,7 +9,7 @@ import 'package:widget_library/progress_bar/centered_circular_progress_bar.dart'
 import '../../../welcome_module.dart';
 import '../../welcome/state/welcome_screen_state.dart';
 import '../viewmodel/welcome_back_coordinatior.dart';
-import 'package:crayon_payment_customer/util/app_utils.dart';
+import 'package:widget_library/utils/app_utils.dart';
 
 class CrayonWelcomBackScreen extends StatefulWidget {
   static const viewPath = '${WelcomeModule.moduleIdentifier}/welcomeback';
@@ -127,16 +127,7 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
                   height: AppUtils.appUtilsInstance
                       .getPercentageSize(ofWidth: false, percentage: 2)),
               Text(state.error, style: label_input_error_style),
-              // const SizedBox(height: 57),
-              // Image.asset(
-              //   WB_OrIcon,
-              // ),
-              // const SizedBox(height: 15),
-              // Image.asset(
-              //   WB_touchIdIcon,
-              //   scale: 2.0,
-              // ),
-              //  _buildResetPasscode(welcomeCoordinator)
+               _buildResetPasscode(welcomeCoordinator)
             ],
           ),
         ),
@@ -147,19 +138,37 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
   Widget _buildSizedBox() {
     return const SizedBox(height: 32);
   }
-
-  _userImage() {
+  String _getUserInitials() {
+    if (username != null && username.contains(" ")) {
+      var details = username.split(" ");
+      return "${details[0].substring(0, 1).toString().toUpperCase()}${details[1].substring(0, 1).toString().toUpperCase()}";
+    } else {
+      if (username != null && username.length > 2) {
+        return username.substring(0, 2).toUpperCase();
+      } else {
+        return "";
+      }
+    }
+  }
+  Widget _userImage() {
+    String initial = _getUserInitials();
     return Container(
-      height: 40,
-      width: 40,
+      height: 70,
+      width: 70,
       clipBehavior: Clip.antiAliasWithSaveLayer,
       decoration: const BoxDecoration(
-        color: Colors.grey,
         shape: BoxShape.circle,
+        color: profilePicHolderYellowColor,
       ),
-      child: Image.network('https://picsum.photos/id/237/50/50'),
+      child: Center(
+          child: Text(
+            initial,
+            style: AN_CardTitle_FF,
+          )),
     );
   }
+
+
 
   Widget _buildLogo(BuildContext context) {
     return Image.asset(
@@ -237,16 +246,16 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
           },
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: const [
+            children: [
               Text(
-                'Forget Passcode?',
+                'FORGET_PASSCODE'.tr,
                 style: WB_forget_passcode_text_style,
               ),
               SizedBox(
                 height: 5,
               ),
               Text(
-                'Reset Now',
+                'RESET_NOW'.tr,
                 style: WB_reset_passcode_text_style,
               )
             ],

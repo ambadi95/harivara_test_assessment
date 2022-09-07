@@ -1,3 +1,4 @@
+import 'package:config/Colors.dart';
 import 'package:core/sheets/coordinator/crayon_payment_bottom_sheet_coordinator.dart';
 import 'package:core/sheets/data_model/button_options.dart';
 import 'package:core/sheets/data_model/loading_bottom_sheet_options.dart';
@@ -36,7 +37,7 @@ class BottomSheetInfoColumn extends StatelessWidget {
           CloseButtonTopRow(
             onClose: () => coordinator.goBack(),
           ),
-        _buildImage,
+        _sheetState.isSvg ? _buildImage  : _buildImagePng,
         SizedBox(
           height: 38,
         ),
@@ -86,13 +87,22 @@ class BottomSheetInfoColumn extends StatelessWidget {
     );
   }
 
+  Widget get _buildImagePng {
+    return Image.asset(
+      _sheetState.bottomSheetIcon.svgAssetPath,
+      width: 72,
+      height: 72,
+      key: const Key('statusImagePng'),
+    );
+  }
+
   CrayonPaymentText get _buildTitle {
     return CrayonPaymentText(
       text: TextUIDataModel(
         _sheetState.title!,
         textAlign: TextAlign.center,
         styleVariant: CrayonPaymentTextStyleVariant.bodyText1,
-        color: CrayonPaymentColors.boxDecColor,
+        color: CrayonPaymentColors.crayonPaymentBlack,
       ),
       key: const Key('title'),
     );
@@ -105,7 +115,7 @@ class BottomSheetInfoColumn extends StatelessWidget {
         _sheetState.subtitle!,
         textAlign: TextAlign.center,
         styleVariant: CrayonPaymentTextStyleVariant.headline5,
-        color: Colors.grey,
+        color: CrayonPaymentColors.crayonPaymentDimGray,
       ),
     );
   }
@@ -135,6 +145,8 @@ class BottomSheetInfoColumn extends StatelessWidget {
         key: const Key('bottomButtonDocked'),
         title: buttonOptions.text,
         onPressed: callback,
+        borderRadius: 8,
+        buttonColor: PRIMARY_COLOR,
       );
     } else {
       return Container(

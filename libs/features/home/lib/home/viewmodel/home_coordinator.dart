@@ -6,10 +6,12 @@ import 'package:shared_data_models/home/customerCount/customer_count_response/da
 import '../navigation_handler/home_navigation_handler.dart';
 import '../state/home_screen_state.dart';
 import 'home_usecase.dart';
+import 'package:widget_library/utils/app_utils.dart';
 
 class HomeCoordinator extends BaseViewModel<HomeScreenState> {
   final HomeUserCase _customerHomeUseCase;
   final HomeNavigationHandler _navigationHandler;
+
   HomeCoordinator(this._navigationHandler, this._customerHomeUseCase)
       : super(const HomeScreenState.initialState());
 
@@ -23,6 +25,11 @@ class HomeCoordinator extends BaseViewModel<HomeScreenState> {
     _navigationHandler.navigateToSignUpScreen(UserType.Customer);
   }
 
+  void devicereg() {
+    _navigationHandler.navigateTodevice(UserType.Customer);
+  }
+
+
   void goBack() async {
     _navigationHandler.goBack();
   }
@@ -32,13 +39,30 @@ class HomeCoordinator extends BaseViewModel<HomeScreenState> {
   }
 
   void navigateToLoanDetailScreen(LoanDetailResponse loanDetailResponse) {
-
-    _navigationHandler.navigateToLoanDetailScreen(loanDetailResponse);
+    if(loanDetailResponse.data == null){
+      _navigationHandler.navigateToLoanDetailsSheetCustomer();
+    }else {
+      _navigationHandler.navigateToLoanDetailScreen(loanDetailResponse);
+    }
   }
 
-  void navigationToBottomSheet() {
-    _navigationHandler.navigateToLoanRepaymentBottomSheet(
-        "message", "buttonLabel");
+  void navigationToBottomSheet(BuildContext context,LoanDetailResponse loanDetailResponse) {
+    if(loanDetailResponse.data == null){
+
+     _navigationHandler.navigateToLoanDetailsSheetCustomer();
+    }else {
+      _navigationHandler.navigateToLoanRepaymentBottomSheet(
+          "message", "buttonLabel",context,loanDetailResponse);
+    }
+
+  }
+
+  void navigationToReaderBrowser(){
+    _navigationHandler.navigateToBrowser('dd','https://readnow.world/5yee');
+  }
+
+  void navigateToBrowser(){
+    _navigationHandler.navigateToTermsCondition();
   }
 
   Future<String> getAgentId() async {
@@ -63,19 +87,39 @@ class HomeCoordinator extends BaseViewModel<HomeScreenState> {
 
   Future<Data> getCustomerCount() async {
     print('jhgsdjahgsdjgsa');
-    var response = await _customerHomeUseCase.getCustomerCount((p0) => null);
-    if (response?.status == true) {
-      print(response);
-      return response!.data!;
-    } else {
-      return const Data(enrolledCustomer: '0', initiatedCustomer: '0');
+    try {
+      var response = await _customerHomeUseCase.getCustomerCount((p0) => null);
+      if (response?.status == true) {
+        print(response);
+        return response!.data!;
+      } else {
+        return const Data(enrolledCustomer: '0', initiatedCustomer: '0');
+      }
+    } catch (e) {
+      AppUtils.appUtilsInstance.showErrorBottomSheet(
+        title: e.toString(),
+        onClose: () {
+          goBack();
+        },
+      );
+      throw null!;
     }
   }
 
   Future<LoanDetailResponse?> getLoanDetails() async {
-    var response = await _customerHomeUseCase.getLoanDetails((p0) => null);
-    if (response?.status == true) {
-      return response;
+    try {
+      var response = await _customerHomeUseCase.getLoanDetails((p0) => null);
+      if (response?.status == true) {
+        return response;
+      }
+    } catch (e) {
+      print(e.toString());
+      AppUtils.appUtilsInstance.showErrorBottomSheet(
+        title: e.toString(),
+        onClose: () {
+          goBack();
+        },
+      );
     }
   }
 }

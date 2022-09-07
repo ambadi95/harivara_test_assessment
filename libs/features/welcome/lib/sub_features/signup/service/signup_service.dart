@@ -11,6 +11,9 @@ abstract class ISignupService {
   static const signUpAgentIdentifier = 'signUpAgent';
   static const signUpCustomerByAgent = 'signUpCustomerByAgent';
   static const getCustomerDetailIdentifier = 'getCustomerDetail';
+  static const getCustomerDetailByMobileNumberIdentifier = 'getCustomerDetailByMobileNumber';
+  static const agentDetailIdentifier = 'getAgent';
+
 
   Future<StandardRequest> jwttoken(
     Map<String, dynamic> requestData,
@@ -27,17 +30,25 @@ abstract class ISignupService {
   );
 
   Future<StandardRequest> getCustomerDetail(
-      String nindaNumber,
+    String nindaNumber,
+    String phoneNo,
+  );
+
+  Future<StandardRequest> getCustomerDetailByMobileNo(
       String phoneNo,
       );
-
 
   Future<StandardRequest> signupCustomerByAgent(
       {required String nidaNumber,
       required String agentId,
       required String customerMobileNumber,
       required String token});
+
+
+  Future<StandardRequest> getAgentDetails(Map<String, dynamic> requestData);
 }
+
+
 
 class SignupService implements ISignupService {
   @override
@@ -56,6 +67,10 @@ class SignupService implements ISignupService {
     String nindaNumber,
     String phoneNo,
   ) async {
+    print(json.encode({
+      'nidaNo': nindaNumber,
+      'mobileNo': '+255' + phoneNo,
+    }));
     var request = StandardRequest();
     request.requestType = RequestType.POST;
     request.endpoint = 'register-customer';
@@ -89,23 +104,21 @@ class SignupService implements ISignupService {
       required String token}) async {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
-    request.endpoint = 'register-customer';
+    request.endpoint = customerEndpoint +  'register-customer-by-agent[customer]';
     request.jsonBody = json.encode({
       'nidaNo': nidaNumber,
       'mobileNo': customerMobileNumber,
       'y9AgentId': agentId,
     });
     CrayonPaymentLogger.logInfo(request.jsonBody.toString());
-    CrayonPaymentLogger.logInfo(token);
-
     return request;
   }
 
   @override
   Future<StandardRequest> getCustomerDetail(
-      String nindaNumber,
-      String phoneNo,
-      ) async {
+    String nindaNumber,
+    String phoneNo,
+  ) async {
     var request = StandardRequest();
     request.requestType = RequestType.GET;
     request.endpoint = 'customer-details';
@@ -116,6 +129,31 @@ class SignupService implements ISignupService {
       'nidaNo': nindaNumber,
       'mobileNo': '+255' + phoneNo,
     });
+    return request;
+  }
+
+  @override
+  Future<StandardRequest> getCustomerDetailByMobileNo(
+      String phoneNo,
+      ) async {
+    var request = StandardRequest();
+    request.requestType = RequestType.GET;
+    request.endpoint = customerEndpoint +  'customer-details-by-mobile/$phoneNo[customer]';
+    request.customHeaders = {
+      'Content-Type': 'application/json',
+    };
+    return request;
+  }
+
+  @override
+  Future<StandardRequest> getAgentDetails(
+      Map<String, dynamic> requestData) async {
+    var request = StandardRequest();
+    request.requestType = RequestType.GET;
+    request.endpoint = 'agent-details';
+    request.jsonBody =
+        json.encode({"nidaNo": requestData["nidaNumber"], "y9AgentId": requestData["agentId"]});
+    print(requestData);
     return request;
   }
 }

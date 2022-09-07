@@ -3,13 +3,13 @@ import 'package:config/Colors.dart';
 import 'package:config/Config.dart';
 import 'package:config/Styles.dart';
 import 'package:core/view/base_view.dart';
-import 'package:crayon_payment_customer/util/app_utils.dart';
+import 'package:widget_library/utils/app_utils.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:loan_details/loan_detail_module.dart';
 import 'package:loan_details/state/loan_detail_state.dart';
 import 'package:loan_details/viewmodel/loan_detail_coordinator.dart';
-
+import 'package:intl/intl.dart';
 import 'package:shared_data_models/loan_detail/loan_detail_screen_args.dart';
 import 'package:widget_library/app_bars/crayon_payment_app_bar_attributes.dart';
 import 'package:widget_library/app_bars/crayon_payment_app_bar_button_type.dart';
@@ -25,7 +25,7 @@ class LoanDetailScreen extends StatefulWidget {
   static const viewPath = '${LoanDetailModule.moduleIdentifier}/loandetail';
   final LoanDetailArgs loanDetailArgs;
 
-  const LoanDetailScreen({Key? key,required this.loanDetailArgs })
+  const LoanDetailScreen({Key? key, required this.loanDetailArgs})
       : super(key: key);
 
   @override
@@ -102,42 +102,67 @@ class _LoanDetailScreenState extends State<LoanDetailScreen> {
           height: AppUtils.appUtilsInstance.getPercentageSize(percentage: 10),
         ),
         _getLoanDetailBanner(
-            title: "Y9 Device Loan",
-            deviceName: "Samsung - A13",
-            deviceStats: "8GB, 128GB Storage| Exynos 2100 |\nAndroid12",
-            deviceImage: LD_loan_detail_banner_image,
-            loanId: widget.loanDetailArgs.loanDetailResponse.data?.loanId??"-"),
+            title: 'Y9_DEVICE_LOAN'.tr,
+            deviceName:  widget.loanDetailArgs.loanDetailResponse.data?.brand ?? "-",
+            deviceStats: widget.loanDetailArgs.loanDetailResponse.data?.modelNumber ?? "-",
+            deviceImage: widget.loanDetailArgs.loanDetailResponse.data?.modelNumber=="A03 Core"?LD_loan_detail_banner_image2:LD_loan_detail_banner_image,
+            loanId:
+                widget.loanDetailArgs.loanDetailResponse.data?.loanId ?? "-"),
         _getSpaceBetweenWidget(4),
         _getLoanDetailWithCurrencyWidget(
-            title: 'LD_Loan_Detail_Amount', value: widget.loanDetailArgs.loanDetailResponse.data?.loanAmount??"-"),
+            title: 'LD_Loan_Detail_Amount'.tr,
+            value: widget.loanDetailArgs.loanDetailResponse.data?.loanAmount ??
+                "-"),
         _getSpaceBetweenWidget(4),
         _getLoanDetailWithCurrencyWidget(
-            title: 'LD_Loan_Detail_Down_Payment', value: widget.loanDetailArgs.loanDetailResponse.data?.joiningFee??"-"),
+            title: 'LD_Loan_Detail_Down_Payment'.tr,
+            value: widget.loanDetailArgs.loanDetailResponse.data?.joiningFee ??
+                "-"),
         _getSpaceBetweenWidget(4),
         _getLoanDetailWidget(
-            title: 'LD_Loan_Detail_Repayment', value: widget.loanDetailArgs.loanDetailResponse.data?.repaymentType??"-"),
+            title: 'LD_Loan_Detail_Repayment'.tr,
+            value:
+            getEmiString(widget.loanDetailArgs.loanDetailResponse.data?.repaymentType) ),
         _getSpaceBetweenWidget(4),
         _getLoanDetailWithCurrencyWidget(
-            title: 'LD_Loan__Detail_Daily_Repayment_Amount', value: widget.loanDetailArgs.loanDetailResponse.data?.repaymentFee??"-"),
+            title: 'LD_Loan__Detail_Daily_Repayment_Amount'.tr,
+            value:
+                widget.loanDetailArgs.loanDetailResponse.data?.repaymentFee ??
+                    "-"),
         _getSpaceBetweenWidget(4),
         _getLoanDetailWithCurrencyWidget(
-            title: 'LD_Loan_Detail_Total_Repayed_Amount', value: widget.loanDetailArgs.loanDetailResponse.data?.totalAmountToBeRepaid??"-"),
+            title: 'LD_Loan_Detail_Total_Repayed_Amount'.tr,
+            value: widget.loanDetailArgs.loanDetailResponse.data
+                    ?.totalAmountToBeRepaid ??
+                "-"),
         _getSpaceBetweenWidget(4),
         _getLoanDetailWidget(
-            title: 'LD_Loan_Detail_Loan_Tenure', value: widget.loanDetailArgs.loanDetailResponse.data?.loanTenure??"-"),
+            title: 'LD_Loan_Detail_Loan_Tenure'.tr,
+            value: widget.loanDetailArgs.loanDetailResponse.data?.loanTenure ??
+                "-"),
         _getSpaceBetweenWidget(4),
         _getLoanDetailWidget(
-            title: 'LD_Loan_Detail_Start_Date', value: widget.loanDetailArgs.loanDetailResponse.data?.loanStartDate??"-"),
+            title: 'LD_Loan_Detail_Start_Date'.tr,
+            value:
+            formattDate(widget.loanDetailArgs.loanDetailResponse.data?.loanStartDate)),
         _getSpaceBetweenWidget(4),
         _getLoanDetailWidget(
-            title: 'LD_Loan_Detail_Final_Date', value: widget.loanDetailArgs.loanDetailResponse.data?.finalPaymentDate??"-"),
+            title: 'LD_Loan_Detail_Final_Date'.tr,
+            value: widget
+                    .loanDetailArgs.loanDetailResponse.data?.finalPaymentDate ??
+                "-"),
         _getSpaceBetweenWidget(4),
         _getLoanDetailWidget(
-            title: 'LD_Loan_Detail_Device_Insurance', value: widget.loanDetailArgs.loanDetailResponse.data?.deviceInsurance??"-"),
+            title: 'LD_Loan_Detail_Device_Insurance'.tr,
+            value: widget
+                    .loanDetailArgs.loanDetailResponse.data?.deviceInsurance ??
+                "-"),
         _getSpaceBetweenWidget(4),
         _getLoanDetailWidget(
-            title: 'LD_Loan_Detail_Device_Insurance_ID',
-            value: widget.loanDetailArgs.loanDetailResponse.data?.deviceInsuranceId??"-"),
+            title: 'LD_Loan_Detail_Device_Insurance_ID'.tr,
+            value: widget.loanDetailArgs.loanDetailResponse.data
+                    ?.deviceInsuranceId ??
+                "-"),
         _getSpaceBetweenWidget(8),
         _buildTermsAndConditionWidget(context, coordinator),
         _getSpaceBetweenWidget(10),
@@ -209,11 +234,15 @@ class _LoanDetailScreenState extends State<LoanDetailScreen> {
               ),
             ],
           ),
-          const Image(
-            image: AssetImage(LD_loan_detail_banner_image),
-            width: 160,
+          Container(width: MediaQuery.of(context).size.width*0.60,
+              child:
+          Align(
+              alignment: Alignment.centerRight,
+              child: Image(
+            image: AssetImage(deviceImage),
+            width: 130,
             //fit: BoxFit.cover,
-          ),
+          ))),
         ],
       ),
     );
@@ -321,22 +350,17 @@ class _LoanDetailScreenState extends State<LoanDetailScreen> {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        CrayonPaymentText(
-          key: Key('${_identifier}_$value'),
-          text: TextUIDataModel(value,
-              textAlign: TextAlign.center,
-              styleVariant: CrayonPaymentTextStyleVariant.subtitle2,
-              color: AN_TitleColor,
-              fontWeight: FontWeight.w600),
+         Text(
+          value,
+          style: TextStyle(
+              color: Colors.black, fontSize: 18, fontWeight: FontWeight.w600),
         ),
-        const Padding(
-          padding: EdgeInsets.only(top: 5),
-          child: Text(
+        Text(
             " TZSHS",
             style: TextStyle(
                 color: Colors.black, fontSize: 10, fontWeight: FontWeight.w600),
           ),
-        ),
+
       ],
     );
   }
@@ -360,5 +384,20 @@ class _LoanDetailScreenState extends State<LoanDetailScreen> {
           color: AN_TitleColor,
           fontWeight: FontWeight.w400),
     );
+  }
+
+  String formattDate(String? date) {
+    DateTime dateTime = DateTime.parse(date!);
+    return DateFormat('dd/mm/yyyy').format(dateTime).toString();
+  }
+
+  String getEmiString(String? key) {
+    if (key == 'DAILY_EMI') {
+      return 'DAILY_EMI'.tr ;
+    } else if (key == 'MONTHLY_EMI') {
+      return 'MONTHLY_EMI'.tr ;
+    } else {
+      return key!;
+    }
   }
 }

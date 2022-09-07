@@ -13,6 +13,7 @@ import 'package:widget_library/scaffold/crayon_payment_scaffold.dart';
 import 'package:widget_library/search_bar/search_bar_widget_model.dart';
 import 'package:widget_library/spacers/crayon_payment_spacers.dart';
 import 'package:widget_library/static_text/crayon_payment_text.dart';
+import 'package:widget_library/utils/app_utils.dart';
 import 'package:widget_library/utils/launcher_utils.dart';
 import 'package:widget_library/widget_library.dart';
 import '../agent_nearby_module.dart';
@@ -37,7 +38,10 @@ class AgentNearBy extends StatelessWidget {
         return Stack(
           children: [
             _buildMainUI(context, coordinator, state),
-            state.isLoading == true ? _createLoading() : SizedBox()
+            state.isLoading == true ? _createLoading() : SizedBox(),
+            state.isFetchingLocation == true
+                ? _createLocationFetchingLoader()
+                : SizedBox()
           ],
         );
       },
@@ -81,12 +85,17 @@ class AgentNearBy extends StatelessWidget {
   Widget _buildSearchField(context, AgentNearbyCoordinator coordinator) {
     return SearchBarWidget(
       onSearch: (value) {
+        AppUtils.appUtilsInstance.removeFocusFromEditText(context: context);
       },
+      textInputType: TextInputType.text,
+
       onTextChanged: (v) {
-        coordinator.agentNearbyList(v);
+        coordinator.search(v);
       },
       attributes: SearchBarAttributes(
+
           appearance: SearchBarAppearance(
+
             cornerRadius: 20,
             backgroundColor: AN_TextFieldBackground,
             prefixIcon: Padding(
@@ -98,6 +107,7 @@ class AgentNearBy extends StatelessWidget {
               ),
             ),
           ),
+
           dataModel: const SearchBarDataModel(
               hint: 'AN_Search',
               variant: CrayonPaymentTextStyleVariant.headline5)),
@@ -120,7 +130,7 @@ class AgentNearBy extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _userImage(agent.firstName!,agent.lastName!),
+        _userImage(agent.firstName!, agent.lastName!),
         dynamicWSpacer(8),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -141,7 +151,6 @@ class AgentNearBy extends StatelessWidget {
                       color: AN_CardSubTitle,
                       fontWeight: FontWeight.w500),
                 ),
-
                 CrayonPaymentText(
                   key: Key('${_identifier}_' + agent.y9AgentId!),
                   text: TextUIDataModel(agent.y9AgentId!,
@@ -153,7 +162,7 @@ class AgentNearBy extends StatelessWidget {
             ),
             dynamicHSpacer(4),
             SizedBox(
-              width: MediaQuery.of(context).size.width * .55,
+              width: MediaQuery.of(context).size.width * .53,
               child: CrayonPaymentText(
                 key: Key('${_identifier}_' + agent.address!),
                 text: TextUIDataModel(
@@ -173,9 +182,16 @@ class AgentNearBy extends StatelessWidget {
                     .makePhoneCall(phoneNumber: agent.mobileNo);
               }),
               dynamicWSpacer(10),
-              actionButton(context, AN_MapDirection,
-                  agent.distance!.toStringAsFixed(2) + 'Km', () {
-                coordinator.navigateToMap(agent.lat!, agent.long!);
+              actionButton(
+                  context,
+                  AN_MapDirection,
+                  agent.distance == 0.0
+                      ? 'N/A'
+                      : agent.distance!.toStringAsFixed(2) + 'Km', () {
+                if (agent.distance == 0.0) {
+                } else {
+                  coordinator.navigateToMap(agent.lat!, agent.long!);
+                }
               }),
             ],
           ),
@@ -215,6 +231,20 @@ class AgentNearBy extends StatelessWidget {
     );
   }
 
+  Widget _createLocationFetchingLoader() {
+    return Center(
+      child: Material(
+        child: Container(
+          child: const Text('Fetching your location..',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 16,
+              )),
+        ),
+      ),
+    );
+  }
+
   _userImage(String firstName, String lastName) {
     return Container(
       height: 40,
@@ -224,11 +254,11 @@ class AgentNearBy extends StatelessWidget {
         shape: BoxShape.circle,
         color: profilePicHolderYellowColor,
       ),
-      child:  Center(
+      child: Center(
           child: Text(
-            '${firstName[0]}' +'${lastName[0]}',
-            style: AN_TextFieldLabel_FF,
-          )),
+        '${firstName[0]}' + '${lastName[0]}',
+        style: AN_TextFieldLabel_FF,
+      )),
     );
   }
 

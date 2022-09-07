@@ -8,6 +8,7 @@ import 'package:core/sheets/view/widgets/top_bars.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:task_manager/task.dart';
 import 'package:widget_library/buttons/docked_button.dart';
 import 'package:widget_library/buttons/text_button.dart';
 import 'package:widget_library/colors/crayon_payment_colors.dart';
@@ -19,8 +20,11 @@ import 'package:widget_library/page_header/spannable_text_widget.dart';
 import 'package:widget_library/page_header/text_ui_data_model.dart';
 import 'package:widget_library/static_text/crayon_payment_text.dart';
 
+import '../../../logging/logger.dart';
+
 class BottomSheetCustomAmount extends StatelessWidget {
   static final String _identifier = 'BottomSheetCustomAmount';
+
   final CustomAmountBottomSheet _sheetState;
   final CrayonPaymentBottomSheetCoordinator coordinator;
 
@@ -41,13 +45,14 @@ class BottomSheetCustomAmount extends StatelessWidget {
         _onTabContainer(context),
         SizedBox(height: 50),
         _buildTitle,
-        _buildTextField(mobileNumber),
+        _buildTextField(mobileNumber,),
         SizedBox(height: 45),
         ..._sheetState.buttonOptions!
             .map(
               (buttonOption) => Padding(
                 padding: const EdgeInsets.all(4.0),
-                child: _buildBottomButton(context, buttonOption),
+                child: _buildBottomButton(
+                    context, buttonOption,),
               ),
             )
             .toList(),
@@ -71,17 +76,21 @@ class BottomSheetCustomAmount extends StatelessWidget {
     );
   }
 
-  Widget _buildTextField(TextEditingController amount) {
+  Widget _buildTextField(TextEditingController amount,) {
     return InputFieldWithLabel(
       label: '',
-      controller: amount,
+      // controller: amount,
       hintText: 'Enter the amount',
       key: const Key('mobileNumberTextField'),
-      inputFormatters: <TextInputFormatter>[
-        //NIDAInputFormatter(mask: 'xxx xxx xxx', separator: ' ')
-      ],
+      // inputFormatters: <TextInputFormatter>[
+      //   //NIDAInputFormatter(mask: 'xxx xxx xxx', separator: ' ')
+      // ],
       keyboardType: TextInputType.number,
-      onChanged: (value) {},
+      onChanged: (value) {
+        coordinator.checkAmount(value);
+        //  CrayonPaymentLogger.logInfo(_selectedAmount);
+        CrayonPaymentLogger.logInfo(_sheetState.outstandingAmount);
+      },
     );
   }
 
@@ -97,12 +106,15 @@ class BottomSheetCustomAmount extends StatelessWidget {
     );
   }
 
-  Widget _buildBottomButton(BuildContext context, ButtonOptions buttonOptions) {
+
+
+
+  Widget _buildBottomButton(BuildContext context, ButtonOptions buttonOptions,) {
     VoidCallback callback = buttonOptions.onPressed;
     if (buttonOptions is LoadingBottomSheetOptions) {
       callback = () {
-        coordinator.forceLoading();
-        buttonOptions.onPressed();
+          coordinator.forceLoading();
+          buttonOptions.onPressed();
       };
     }
     if (!buttonOptions.textButton) {
@@ -110,7 +122,7 @@ class BottomSheetCustomAmount extends StatelessWidget {
         key: const Key('bottomButtonDocked'),
         title: buttonOptions.text,
         borderRadius: 8,
-        onPressed: callback,
+        onPressed: _sheetState.isAmountValidated ? callback  :(){},
         buttonColor: PRIMARY_COLOR,
         textStyleVariant: CrayonPaymentTextStyleVariant.headline4,
       );

@@ -1,5 +1,9 @@
 import 'package:config/Config.dart';
 import 'package:core/mobile_core.dart';
+import 'package:flutter/material.dart';
+import 'package:shared_data_models/customer_details/response/get_customer_details_response/get_customer_details_response.dart';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/src/widgets/focus_manager.dart';
 import 'package:shared_data_models/customer_onboard/region_district/region_response/datum.dart';
 import 'package:shared_data_models/customer_onboard/region_district/district_response/datum.dart'
@@ -9,6 +13,7 @@ import 'package:welcome/data_model/gender_type.dart';
 import 'package:welcome/sub_features/details/state/details_state.dart';
 import 'package:welcome/sub_features/details/viewmodel/details_usecase.dart';
 import '../../../navigation_handler/welcome_navigation_handler.dart';
+import 'package:widget_library/utils/app_utils.dart';
 
 class DetailsCoordinator extends BaseViewModel<DetailsState> {
   final DetailsUseCase _detailsUseCase;
@@ -29,7 +34,38 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
         const GenderType(3, 'Prefer not to say'),
       ];
 
+  Future<GetCustomerDetailsResponse> getCustomerDetail(List<DropdownMenuItem<Datum>> regionDropDown, userType)async{
+    state = const DetailsState.LoadingState();
+    var customerResponse = await _detailsUseCase.getCustomerDetailsByMobileNumber( (p0) => null);
+    if(customerResponse!.status == true ){
+      state = const DetailsState.successState();
+      if(customerResponse.data !=null) {
+
+        if(customerResponse.data!.gender?.isEmptyOrNull==false){
+          state =
+              DetailsState.onGenderTypeFetched(customerResponse.data!.gender!);
+        }else if(customerResponse.data!.region?.isEmptyOrNull==false){
+          state = DetailsState.onRegionFetched(customerResponse.data!.region!);
+
+        }
+
+      }
+      return customerResponse;
+    }else{
+      state = const DetailsState.successState();
+     print('failed');
+     return customerResponse;
+    }
+  }
+
+  void fetchDistrictState(String district) {
+    state = DetailsState.onDistrictFetched(district);
+  }
+
+
+
   Future getRegion(UserType userType) async {
+
     var response = await _detailsUseCase.getRegion((p0) => null, userType);
     return response?.data;
   }
@@ -41,6 +77,7 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
   }
 
   void setGenderType(GenderType genderType) {
+
     state = DetailsState.onGenderTypeChoosen(genderType);
   }
 
@@ -68,7 +105,9 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
       String poBox,
       String region,
       String district) {
-    print("dfgfg${gender}");
+    if (kDebugMode) {
+      print("dfgfg$gender");
+    }
     var isnNameValid = _detailsUseCase.isValidName(name);
     var isMobileNoValid = mobNumber.isNotEmpty;
     var isDobValid = dob.isNotEmpty;
@@ -111,7 +150,12 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
   }
 
   Future navigateToCreatePasscodeScreen(UserType userType) async {
-    _navigationHandler.openForNewPasscode(userType);
+    //for agent customer onboarding we are not creating customer passcode
+    if (userType == UserType.AgentCustomer) {
+      _navigationHandler.navigateToKycScreen();
+    } else {
+      _navigationHandler.openForNewPasscode(userType);
+    }
   }
 
   bool isValidName(String name) {
@@ -223,26 +267,41 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
     String region,
     String district,
     UserType userType,
+      String postType
   ) async {
-    state = const DetailsState.LoadingState();
-    var response = await _detailsUseCase.submitCustomerDetails(
-        name,
-        dob,
-        gender,
-        address,
-        profession,
-        emailId,
-        poBox,
-        region,
-        district,
-        (p0) => null,
-        userType);
-    if (response?.status == true) {
+    try {
+      state = const DetailsState.LoadingState();
+      var response = await _detailsUseCase.submitCustomerDetails(
+          name,
+          dob,
+          gender,
+          address,
+          profession,
+          emailId,
+          poBox,
+          region,
+          district,
+          (p0) => null,
+          userType,postType);
+      if (response?.status == true) {
+        state = const DetailsState.initialState();
+        _detailsUseCase.saveCustomerId(response!.data!.customerId.toString());
+        _detailsUseCase
+            .saveCustomerMobileNumber(response.data!.mobileNo.toString());
+        _detailsUseCase.saveNewCustomerName(response.data!.firstName.toString() + " " + response.data!.lastName.toString());
+        navigateToCreatePasscodeScreen(userType);
+      } else {
+        state = const DetailsState.initialState();
+        print(response?.message);
+      }
+    } catch (e) {
       state = const DetailsState.initialState();
-      navigateToCreatePasscodeScreen(userType);
-    } else {
-      state = const DetailsState.initialState();
-      print(response?.message);
+      AppUtils.appUtilsInstance.showErrorBottomSheet(
+        title: e.toString(),
+        onClose: () {
+          goBack();
+        },
+      );
     }
   }
 }

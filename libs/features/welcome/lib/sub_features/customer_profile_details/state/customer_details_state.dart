@@ -55,13 +55,10 @@ class CustomerDetailsState with _$CustomerDetailsState {
       DistrictChoosen;
 
   const factory CustomerDetailsState.getRegion(
-      String selectedRegion,
-      ) = GetSelectedRegion;
+    String selectedRegion,
+  ) = GetSelectedRegion;
 
   const factory CustomerDetailsState.getDistrict(
-      String selectedDistrict,
-      ) = GetSelectedDistrict;
-
-
-
+    String selectedDistrict,
+  ) = GetSelectedDistrict;
 }

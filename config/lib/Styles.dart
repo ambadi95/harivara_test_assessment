@@ -107,7 +107,7 @@ const SU_subtitle_terms_style = TextStyle(
 
 const SU_label_style = TextStyle(
   fontSize: 14,
-  fontWeight: FontWeight.w600,
+  fontWeight: FontWeight.w500,
   fontFamily: 'Montserrat',
   color: SU_label_color,
 );
@@ -222,11 +222,19 @@ const ES_success_text = TextStyle(
   color: SECONDARY_COLOR,
 );
 
+const ES_bottom_success_text = TextStyle(
+  fontSize: 14,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Montserrat',
+  color: WB_EnterPassCodeTitleColor,
+);
+
+
 
 
 const ES_bold_text = TextStyle(
   fontSize: 20,
-  fontWeight: FontWeight.bold,
+  fontWeight: FontWeight.w600,
   fontFamily: 'Montserrat',
   color: SECONDARY_COLOR,
 );

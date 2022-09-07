@@ -35,6 +35,9 @@ mixin _$DetailsState {
     required TResult Function(GenderType genderType) onGenderTypeChoosen,
     required TResult Function(Datum region) onRegionChoosen,
     required TResult Function(b.Datum district) onDistrictChoosen,
+    required TResult Function(String genderType) onGenderTypeFetched,
+    required TResult Function(String genderType) onRegionFetched,
+    required TResult Function(String genderType) onDistrictFetched,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,6 +59,9 @@ mixin _$DetailsState {
     TResult Function(GenderType genderType)? onGenderTypeChoosen,
     TResult Function(Datum region)? onRegionChoosen,
     TResult Function(b.Datum district)? onDistrictChoosen,
+    TResult Function(String genderType)? onGenderTypeFetched,
+    TResult Function(String genderType)? onRegionFetched,
+    TResult Function(String genderType)? onDistrictFetched,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -77,6 +83,9 @@ mixin _$DetailsState {
     TResult Function(GenderType genderType)? onGenderTypeChoosen,
     TResult Function(Datum region)? onRegionChoosen,
     TResult Function(b.Datum district)? onDistrictChoosen,
+    TResult Function(String genderType)? onGenderTypeFetched,
+    TResult Function(String genderType)? onRegionFetched,
+    TResult Function(String genderType)? onDistrictFetched,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -99,6 +108,9 @@ mixin _$DetailsState {
     required TResult Function(GenderTypeChoosen value) onGenderTypeChoosen,
     required TResult Function(RegionChoosen value) onRegionChoosen,
     required TResult Function(DistrictChoosen value) onDistrictChoosen,
+    required TResult Function(OnGenderTypeFetched value) onGenderTypeFetched,
+    required TResult Function(OnRegionFetched value) onRegionFetched,
+    required TResult Function(OnDistrictFetched value) onDistrictFetched,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -120,6 +132,9 @@ mixin _$DetailsState {
     TResult Function(GenderTypeChoosen value)? onGenderTypeChoosen,
     TResult Function(RegionChoosen value)? onRegionChoosen,
     TResult Function(DistrictChoosen value)? onDistrictChoosen,
+    TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
+    TResult Function(OnRegionFetched value)? onRegionFetched,
+    TResult Function(OnDistrictFetched value)? onDistrictFetched,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -141,6 +156,9 @@ mixin _$DetailsState {
     TResult Function(GenderTypeChoosen value)? onGenderTypeChoosen,
     TResult Function(RegionChoosen value)? onRegionChoosen,
     TResult Function(DistrictChoosen value)? onDistrictChoosen,
+    TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
+    TResult Function(OnRegionFetched value)? onRegionFetched,
+    TResult Function(OnDistrictFetched value)? onDistrictFetched,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -220,6 +238,9 @@ class _$InitialState implements InitialState {
     required TResult Function(GenderType genderType) onGenderTypeChoosen,
     required TResult Function(Datum region) onRegionChoosen,
     required TResult Function(b.Datum district) onDistrictChoosen,
+    required TResult Function(String genderType) onGenderTypeFetched,
+    required TResult Function(String genderType) onRegionFetched,
+    required TResult Function(String genderType) onDistrictFetched,
   }) {
     return initialState();
   }
@@ -244,6 +265,9 @@ class _$InitialState implements InitialState {
     TResult Function(GenderType genderType)? onGenderTypeChoosen,
     TResult Function(Datum region)? onRegionChoosen,
     TResult Function(b.Datum district)? onDistrictChoosen,
+    TResult Function(String genderType)? onGenderTypeFetched,
+    TResult Function(String genderType)? onRegionFetched,
+    TResult Function(String genderType)? onDistrictFetched,
   }) {
     return initialState?.call();
   }
@@ -268,6 +292,9 @@ class _$InitialState implements InitialState {
     TResult Function(GenderType genderType)? onGenderTypeChoosen,
     TResult Function(Datum region)? onRegionChoosen,
     TResult Function(b.Datum district)? onDistrictChoosen,
+    TResult Function(String genderType)? onGenderTypeFetched,
+    TResult Function(String genderType)? onRegionFetched,
+    TResult Function(String genderType)? onDistrictFetched,
     required TResult orElse(),
   }) {
     if (initialState != null) {
@@ -296,6 +323,9 @@ class _$InitialState implements InitialState {
     required TResult Function(GenderTypeChoosen value) onGenderTypeChoosen,
     required TResult Function(RegionChoosen value) onRegionChoosen,
     required TResult Function(DistrictChoosen value) onDistrictChoosen,
+    required TResult Function(OnGenderTypeFetched value) onGenderTypeFetched,
+    required TResult Function(OnRegionFetched value) onRegionFetched,
+    required TResult Function(OnDistrictFetched value) onDistrictFetched,
   }) {
     return initialState(this);
   }
@@ -320,6 +350,9 @@ class _$InitialState implements InitialState {
     TResult Function(GenderTypeChoosen value)? onGenderTypeChoosen,
     TResult Function(RegionChoosen value)? onRegionChoosen,
     TResult Function(DistrictChoosen value)? onDistrictChoosen,
+    TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
+    TResult Function(OnRegionFetched value)? onRegionFetched,
+    TResult Function(OnDistrictFetched value)? onDistrictFetched,
   }) {
     return initialState?.call(this);
   }
@@ -344,6 +377,9 @@ class _$InitialState implements InitialState {
     TResult Function(GenderTypeChoosen value)? onGenderTypeChoosen,
     TResult Function(RegionChoosen value)? onRegionChoosen,
     TResult Function(DistrictChoosen value)? onDistrictChoosen,
+    TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
+    TResult Function(OnRegionFetched value)? onRegionFetched,
+    TResult Function(OnDistrictFetched value)? onDistrictFetched,
     required TResult orElse(),
   }) {
     if (initialState != null) {
@@ -415,6 +451,9 @@ class _$SuccessState implements SuccessState {
     required TResult Function(GenderType genderType) onGenderTypeChoosen,
     required TResult Function(Datum region) onRegionChoosen,
     required TResult Function(b.Datum district) onDistrictChoosen,
+    required TResult Function(String genderType) onGenderTypeFetched,
+    required TResult Function(String genderType) onRegionFetched,
+    required TResult Function(String genderType) onDistrictFetched,
   }) {
     return successState();
   }
@@ -439,6 +478,9 @@ class _$SuccessState implements SuccessState {
     TResult Function(GenderType genderType)? onGenderTypeChoosen,
     TResult Function(Datum region)? onRegionChoosen,
     TResult Function(b.Datum district)? onDistrictChoosen,
+    TResult Function(String genderType)? onGenderTypeFetched,
+    TResult Function(String genderType)? onRegionFetched,
+    TResult Function(String genderType)? onDistrictFetched,
   }) {
     return successState?.call();
   }
@@ -463,6 +505,9 @@ class _$SuccessState implements SuccessState {
     TResult Function(GenderType genderType)? onGenderTypeChoosen,
     TResult Function(Datum region)? onRegionChoosen,
     TResult Function(b.Datum district)? onDistrictChoosen,
+    TResult Function(String genderType)? onGenderTypeFetched,
+    TResult Function(String genderType)? onRegionFetched,
+    TResult Function(String genderType)? onDistrictFetched,
     required TResult orElse(),
   }) {
     if (successState != null) {
@@ -491,6 +536,9 @@ class _$SuccessState implements SuccessState {
     required TResult Function(GenderTypeChoosen value) onGenderTypeChoosen,
     required TResult Function(RegionChoosen value) onRegionChoosen,
     required TResult Function(DistrictChoosen value) onDistrictChoosen,
+    required TResult Function(OnGenderTypeFetched value) onGenderTypeFetched,
+    required TResult Function(OnRegionFetched value) onRegionFetched,
+    required TResult Function(OnDistrictFetched value) onDistrictFetched,
   }) {
     return successState(this);
   }
@@ -515,6 +563,9 @@ class _$SuccessState implements SuccessState {
     TResult Function(GenderTypeChoosen value)? onGenderTypeChoosen,
     TResult Function(RegionChoosen value)? onRegionChoosen,
     TResult Function(DistrictChoosen value)? onDistrictChoosen,
+    TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
+    TResult Function(OnRegionFetched value)? onRegionFetched,
+    TResult Function(OnDistrictFetched value)? onDistrictFetched,
   }) {
     return successState?.call(this);
   }
@@ -539,6 +590,9 @@ class _$SuccessState implements SuccessState {
     TResult Function(GenderTypeChoosen value)? onGenderTypeChoosen,
     TResult Function(RegionChoosen value)? onRegionChoosen,
     TResult Function(DistrictChoosen value)? onDistrictChoosen,
+    TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
+    TResult Function(OnRegionFetched value)? onRegionFetched,
+    TResult Function(OnDistrictFetched value)? onDistrictFetched,
     required TResult orElse(),
   }) {
     if (successState != null) {
@@ -634,6 +688,9 @@ class _$DetailsFormState implements DetailsFormState {
     required TResult Function(GenderType genderType) onGenderTypeChoosen,
     required TResult Function(Datum region) onRegionChoosen,
     required TResult Function(b.Datum district) onDistrictChoosen,
+    required TResult Function(String genderType) onGenderTypeFetched,
+    required TResult Function(String genderType) onRegionFetched,
+    required TResult Function(String genderType) onDistrictFetched,
   }) {
     return DetailsFormState(isValid);
   }
@@ -658,6 +715,9 @@ class _$DetailsFormState implements DetailsFormState {
     TResult Function(GenderType genderType)? onGenderTypeChoosen,
     TResult Function(Datum region)? onRegionChoosen,
     TResult Function(b.Datum district)? onDistrictChoosen,
+    TResult Function(String genderType)? onGenderTypeFetched,
+    TResult Function(String genderType)? onRegionFetched,
+    TResult Function(String genderType)? onDistrictFetched,
   }) {
     return DetailsFormState?.call(isValid);
   }
@@ -682,6 +742,9 @@ class _$DetailsFormState implements DetailsFormState {
     TResult Function(GenderType genderType)? onGenderTypeChoosen,
     TResult Function(Datum region)? onRegionChoosen,
     TResult Function(b.Datum district)? onDistrictChoosen,
+    TResult Function(String genderType)? onGenderTypeFetched,
+    TResult Function(String genderType)? onRegionFetched,
+    TResult Function(String genderType)? onDistrictFetched,
     required TResult orElse(),
   }) {
     if (DetailsFormState != null) {
@@ -710,6 +773,9 @@ class _$DetailsFormState implements DetailsFormState {
     required TResult Function(GenderTypeChoosen value) onGenderTypeChoosen,
     required TResult Function(RegionChoosen value) onRegionChoosen,
     required TResult Function(DistrictChoosen value) onDistrictChoosen,
+    required TResult Function(OnGenderTypeFetched value) onGenderTypeFetched,
+    required TResult Function(OnRegionFetched value) onRegionFetched,
+    required TResult Function(OnDistrictFetched value) onDistrictFetched,
   }) {
     return DetailsFormState(this);
   }
@@ -734,6 +800,9 @@ class _$DetailsFormState implements DetailsFormState {
     TResult Function(GenderTypeChoosen value)? onGenderTypeChoosen,
     TResult Function(RegionChoosen value)? onRegionChoosen,
     TResult Function(DistrictChoosen value)? onDistrictChoosen,
+    TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
+    TResult Function(OnRegionFetched value)? onRegionFetched,
+    TResult Function(OnDistrictFetched value)? onDistrictFetched,
   }) {
     return DetailsFormState?.call(this);
   }
@@ -758,6 +827,9 @@ class _$DetailsFormState implements DetailsFormState {
     TResult Function(GenderTypeChoosen value)? onGenderTypeChoosen,
     TResult Function(RegionChoosen value)? onRegionChoosen,
     TResult Function(DistrictChoosen value)? onDistrictChoosen,
+    TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
+    TResult Function(OnRegionFetched value)? onRegionFetched,
+    TResult Function(OnDistrictFetched value)? onDistrictFetched,
     required TResult orElse(),
   }) {
     if (DetailsFormState != null) {
@@ -834,6 +906,9 @@ class _$LoadingState implements LoadingState {
     required TResult Function(GenderType genderType) onGenderTypeChoosen,
     required TResult Function(Datum region) onRegionChoosen,
     required TResult Function(b.Datum district) onDistrictChoosen,
+    required TResult Function(String genderType) onGenderTypeFetched,
+    required TResult Function(String genderType) onRegionFetched,
+    required TResult Function(String genderType) onDistrictFetched,
   }) {
     return LoadingState();
   }
@@ -858,6 +933,9 @@ class _$LoadingState implements LoadingState {
     TResult Function(GenderType genderType)? onGenderTypeChoosen,
     TResult Function(Datum region)? onRegionChoosen,
     TResult Function(b.Datum district)? onDistrictChoosen,
+    TResult Function(String genderType)? onGenderTypeFetched,
+    TResult Function(String genderType)? onRegionFetched,
+    TResult Function(String genderType)? onDistrictFetched,
   }) {
     return LoadingState?.call();
   }
@@ -882,6 +960,9 @@ class _$LoadingState implements LoadingState {
     TResult Function(GenderType genderType)? onGenderTypeChoosen,
     TResult Function(Datum region)? onRegionChoosen,
     TResult Function(b.Datum district)? onDistrictChoosen,
+    TResult Function(String genderType)? onGenderTypeFetched,
+    TResult Function(String genderType)? onRegionFetched,
+    TResult Function(String genderType)? onDistrictFetched,
     required TResult orElse(),
   }) {
     if (LoadingState != null) {
@@ -910,6 +991,9 @@ class _$LoadingState implements LoadingState {
     required TResult Function(GenderTypeChoosen value) onGenderTypeChoosen,
     required TResult Function(RegionChoosen value) onRegionChoosen,
     required TResult Function(DistrictChoosen value) onDistrictChoosen,
+    required TResult Function(OnGenderTypeFetched value) onGenderTypeFetched,
+    required TResult Function(OnRegionFetched value) onRegionFetched,
+    required TResult Function(OnDistrictFetched value) onDistrictFetched,
   }) {
     return LoadingState(this);
   }
@@ -934,6 +1018,9 @@ class _$LoadingState implements LoadingState {
     TResult Function(GenderTypeChoosen value)? onGenderTypeChoosen,
     TResult Function(RegionChoosen value)? onRegionChoosen,
     TResult Function(DistrictChoosen value)? onDistrictChoosen,
+    TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
+    TResult Function(OnRegionFetched value)? onRegionFetched,
+    TResult Function(OnDistrictFetched value)? onDistrictFetched,
   }) {
     return LoadingState?.call(this);
   }
@@ -958,6 +1045,9 @@ class _$LoadingState implements LoadingState {
     TResult Function(GenderTypeChoosen value)? onGenderTypeChoosen,
     TResult Function(RegionChoosen value)? onRegionChoosen,
     TResult Function(DistrictChoosen value)? onDistrictChoosen,
+    TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
+    TResult Function(OnRegionFetched value)? onRegionFetched,
+    TResult Function(OnDistrictFetched value)? onDistrictFetched,
     required TResult orElse(),
   }) {
     if (LoadingState != null) {
@@ -1052,6 +1142,9 @@ class _$NameError implements NameError {
     required TResult Function(GenderType genderType) onGenderTypeChoosen,
     required TResult Function(Datum region) onRegionChoosen,
     required TResult Function(b.Datum district) onDistrictChoosen,
+    required TResult Function(String genderType) onGenderTypeFetched,
+    required TResult Function(String genderType) onRegionFetched,
+    required TResult Function(String genderType) onDistrictFetched,
   }) {
     return nameError(this.nameError);
   }
@@ -1076,6 +1169,9 @@ class _$NameError implements NameError {
     TResult Function(GenderType genderType)? onGenderTypeChoosen,
     TResult Function(Datum region)? onRegionChoosen,
     TResult Function(b.Datum district)? onDistrictChoosen,
+    TResult Function(String genderType)? onGenderTypeFetched,
+    TResult Function(String genderType)? onRegionFetched,
+    TResult Function(String genderType)? onDistrictFetched,
   }) {
     return nameError?.call(this.nameError);
   }
@@ -1100,6 +1196,9 @@ class _$NameError implements NameError {
     TResult Function(GenderType genderType)? onGenderTypeChoosen,
     TResult Function(Datum region)? onRegionChoosen,
     TResult Function(b.Datum district)? onDistrictChoosen,
+    TResult Function(String genderType)? onGenderTypeFetched,
+    TResult Function(String genderType)? onRegionFetched,
+    TResult Function(String genderType)? onDistrictFetched,
     required TResult orElse(),
   }) {
     if (nameError != null) {
@@ -1128,6 +1227,9 @@ class _$NameError implements NameError {
     required TResult Function(GenderTypeChoosen value) onGenderTypeChoosen,
     required TResult Function(RegionChoosen value) onRegionChoosen,
     required TResult Function(DistrictChoosen value) onDistrictChoosen,
+    required TResult Function(OnGenderTypeFetched value) onGenderTypeFetched,
+    required TResult Function(OnRegionFetched value) onRegionFetched,
+    required TResult Function(OnDistrictFetched value) onDistrictFetched,
   }) {
     return nameError(this);
   }
@@ -1152,6 +1254,9 @@ class _$NameError implements NameError {
     TResult Function(GenderTypeChoosen value)? onGenderTypeChoosen,
     TResult Function(RegionChoosen value)? onRegionChoosen,
     TResult Function(DistrictChoosen value)? onDistrictChoosen,
+    TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
+    TResult Function(OnRegionFetched value)? onRegionFetched,
+    TResult Function(OnDistrictFetched value)? onDistrictFetched,
   }) {
     return nameError?.call(this);
   }
@@ -1176,6 +1281,9 @@ class _$NameError implements NameError {
     TResult Function(GenderTypeChoosen value)? onGenderTypeChoosen,
     TResult Function(RegionChoosen value)? onRegionChoosen,
     TResult Function(DistrictChoosen value)? onDistrictChoosen,
+    TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
+    TResult Function(OnRegionFetched value)? onRegionFetched,
+    TResult Function(OnDistrictFetched value)? onDistrictFetched,
     required TResult orElse(),
   }) {
     if (nameError != null) {
@@ -1277,6 +1385,9 @@ class _$GetMobileNumber implements GetMobileNumber {
     required TResult Function(GenderType genderType) onGenderTypeChoosen,
     required TResult Function(Datum region) onRegionChoosen,
     required TResult Function(b.Datum district) onDistrictChoosen,
+    required TResult Function(String genderType) onGenderTypeFetched,
+    required TResult Function(String genderType) onRegionFetched,
+    required TResult Function(String genderType) onDistrictFetched,
   }) {
     return getMobileNumber(mobileNumber);
   }
@@ -1301,6 +1412,9 @@ class _$GetMobileNumber implements GetMobileNumber {
     TResult Function(GenderType genderType)? onGenderTypeChoosen,
     TResult Function(Datum region)? onRegionChoosen,
     TResult Function(b.Datum district)? onDistrictChoosen,
+    TResult Function(String genderType)? onGenderTypeFetched,
+    TResult Function(String genderType)? onRegionFetched,
+    TResult Function(String genderType)? onDistrictFetched,
   }) {
     return getMobileNumber?.call(mobileNumber);
   }
@@ -1325,6 +1439,9 @@ class _$GetMobileNumber implements GetMobileNumber {
     TResult Function(GenderType genderType)? onGenderTypeChoosen,
     TResult Function(Datum region)? onRegionChoosen,
     TResult Function(b.Datum district)? onDistrictChoosen,
+    TResult Function(String genderType)? onGenderTypeFetched,
+    TResult Function(String genderType)? onRegionFetched,
+    TResult Function(String genderType)? onDistrictFetched,
     required TResult orElse(),
   }) {
     if (getMobileNumber != null) {
@@ -1353,6 +1470,9 @@ class _$GetMobileNumber implements GetMobileNumber {
     required TResult Function(GenderTypeChoosen value) onGenderTypeChoosen,
     required TResult Function(RegionChoosen value) onRegionChoosen,
     required TResult Function(DistrictChoosen value) onDistrictChoosen,
+    required TResult Function(OnGenderTypeFetched value) onGenderTypeFetched,
+    required TResult Function(OnRegionFetched value) onRegionFetched,
+    required TResult Function(OnDistrictFetched value) onDistrictFetched,
   }) {
     return getMobileNumber(this);
   }
@@ -1377,6 +1497,9 @@ class _$GetMobileNumber implements GetMobileNumber {
     TResult Function(GenderTypeChoosen value)? onGenderTypeChoosen,
     TResult Function(RegionChoosen value)? onRegionChoosen,
     TResult Function(DistrictChoosen value)? onDistrictChoosen,
+    TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
+    TResult Function(OnRegionFetched value)? onRegionFetched,
+    TResult Function(OnDistrictFetched value)? onDistrictFetched,
   }) {
     return getMobileNumber?.call(this);
   }
@@ -1401,6 +1524,9 @@ class _$GetMobileNumber implements GetMobileNumber {
     TResult Function(GenderTypeChoosen value)? onGenderTypeChoosen,
     TResult Function(RegionChoosen value)? onRegionChoosen,
     TResult Function(DistrictChoosen value)? onDistrictChoosen,
+    TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
+    TResult Function(OnRegionFetched value)? onRegionFetched,
+    TResult Function(OnDistrictFetched value)? onDistrictFetched,
     required TResult orElse(),
   }) {
     if (getMobileNumber != null) {
@@ -1501,6 +1627,9 @@ class _$EmailError implements EmailError {
     required TResult Function(GenderType genderType) onGenderTypeChoosen,
     required TResult Function(Datum region) onRegionChoosen,
     required TResult Function(b.Datum district) onDistrictChoosen,
+    required TResult Function(String genderType) onGenderTypeFetched,
+    required TResult Function(String genderType) onRegionFetched,
+    required TResult Function(String genderType) onDistrictFetched,
   }) {
     return emailError(this.emailError);
   }
@@ -1525,6 +1654,9 @@ class _$EmailError implements EmailError {
     TResult Function(GenderType genderType)? onGenderTypeChoosen,
     TResult Function(Datum region)? onRegionChoosen,
     TResult Function(b.Datum district)? onDistrictChoosen,
+    TResult Function(String genderType)? onGenderTypeFetched,
+    TResult Function(String genderType)? onRegionFetched,
+    TResult Function(String genderType)? onDistrictFetched,
   }) {
     return emailError?.call(this.emailError);
   }
@@ -1549,6 +1681,9 @@ class _$EmailError implements EmailError {
     TResult Function(GenderType genderType)? onGenderTypeChoosen,
     TResult Function(Datum region)? onRegionChoosen,
     TResult Function(b.Datum district)? onDistrictChoosen,
+    TResult Function(String genderType)? onGenderTypeFetched,
+    TResult Function(String genderType)? onRegionFetched,
+    TResult Function(String genderType)? onDistrictFetched,
     required TResult orElse(),
   }) {
     if (emailError != null) {
@@ -1577,6 +1712,9 @@ class _$EmailError implements EmailError {
     required TResult Function(GenderTypeChoosen value) onGenderTypeChoosen,
     required TResult Function(RegionChoosen value) onRegionChoosen,
     required TResult Function(DistrictChoosen value) onDistrictChoosen,
+    required TResult Function(OnGenderTypeFetched value) onGenderTypeFetched,
+    required TResult Function(OnRegionFetched value) onRegionFetched,
+    required TResult Function(OnDistrictFetched value) onDistrictFetched,
   }) {
     return emailError(this);
   }
@@ -1601,6 +1739,9 @@ class _$EmailError implements EmailError {
     TResult Function(GenderTypeChoosen value)? onGenderTypeChoosen,
     TResult Function(RegionChoosen value)? onRegionChoosen,
     TResult Function(DistrictChoosen value)? onDistrictChoosen,
+    TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
+    TResult Function(OnRegionFetched value)? onRegionFetched,
+    TResult Function(OnDistrictFetched value)? onDistrictFetched,
   }) {
     return emailError?.call(this);
   }
@@ -1625,6 +1766,9 @@ class _$EmailError implements EmailError {
     TResult Function(GenderTypeChoosen value)? onGenderTypeChoosen,
     TResult Function(RegionChoosen value)? onRegionChoosen,
     TResult Function(DistrictChoosen value)? onDistrictChoosen,
+    TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
+    TResult Function(OnRegionFetched value)? onRegionFetched,
+    TResult Function(OnDistrictFetched value)? onDistrictFetched,
     required TResult orElse(),
   }) {
     if (emailError != null) {
@@ -1725,6 +1869,9 @@ class _$PoBoxError implements PoBoxError {
     required TResult Function(GenderType genderType) onGenderTypeChoosen,
     required TResult Function(Datum region) onRegionChoosen,
     required TResult Function(b.Datum district) onDistrictChoosen,
+    required TResult Function(String genderType) onGenderTypeFetched,
+    required TResult Function(String genderType) onRegionFetched,
+    required TResult Function(String genderType) onDistrictFetched,
   }) {
     return poBoxError(this.poBoxError);
   }
@@ -1749,6 +1896,9 @@ class _$PoBoxError implements PoBoxError {
     TResult Function(GenderType genderType)? onGenderTypeChoosen,
     TResult Function(Datum region)? onRegionChoosen,
     TResult Function(b.Datum district)? onDistrictChoosen,
+    TResult Function(String genderType)? onGenderTypeFetched,
+    TResult Function(String genderType)? onRegionFetched,
+    TResult Function(String genderType)? onDistrictFetched,
   }) {
     return poBoxError?.call(this.poBoxError);
   }
@@ -1773,6 +1923,9 @@ class _$PoBoxError implements PoBoxError {
     TResult Function(GenderType genderType)? onGenderTypeChoosen,
     TResult Function(Datum region)? onRegionChoosen,
     TResult Function(b.Datum district)? onDistrictChoosen,
+    TResult Function(String genderType)? onGenderTypeFetched,
+    TResult Function(String genderType)? onRegionFetched,
+    TResult Function(String genderType)? onDistrictFetched,
     required TResult orElse(),
   }) {
     if (poBoxError != null) {
@@ -1801,6 +1954,9 @@ class _$PoBoxError implements PoBoxError {
     required TResult Function(GenderTypeChoosen value) onGenderTypeChoosen,
     required TResult Function(RegionChoosen value) onRegionChoosen,
     required TResult Function(DistrictChoosen value) onDistrictChoosen,
+    required TResult Function(OnGenderTypeFetched value) onGenderTypeFetched,
+    required TResult Function(OnRegionFetched value) onRegionFetched,
+    required TResult Function(OnDistrictFetched value) onDistrictFetched,
   }) {
     return poBoxError(this);
   }
@@ -1825,6 +1981,9 @@ class _$PoBoxError implements PoBoxError {
     TResult Function(GenderTypeChoosen value)? onGenderTypeChoosen,
     TResult Function(RegionChoosen value)? onRegionChoosen,
     TResult Function(DistrictChoosen value)? onDistrictChoosen,
+    TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
+    TResult Function(OnRegionFetched value)? onRegionFetched,
+    TResult Function(OnDistrictFetched value)? onDistrictFetched,
   }) {
     return poBoxError?.call(this);
   }
@@ -1849,6 +2008,9 @@ class _$PoBoxError implements PoBoxError {
     TResult Function(GenderTypeChoosen value)? onGenderTypeChoosen,
     TResult Function(RegionChoosen value)? onRegionChoosen,
     TResult Function(DistrictChoosen value)? onDistrictChoosen,
+    TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
+    TResult Function(OnRegionFetched value)? onRegionFetched,
+    TResult Function(OnDistrictFetched value)? onDistrictFetched,
     required TResult orElse(),
   }) {
     if (poBoxError != null) {
@@ -1947,6 +2109,9 @@ class _$DobError implements DobError {
     required TResult Function(GenderType genderType) onGenderTypeChoosen,
     required TResult Function(Datum region) onRegionChoosen,
     required TResult Function(b.Datum district) onDistrictChoosen,
+    required TResult Function(String genderType) onGenderTypeFetched,
+    required TResult Function(String genderType) onRegionFetched,
+    required TResult Function(String genderType) onDistrictFetched,
   }) {
     return dobError(this.dobError);
   }
@@ -1971,6 +2136,9 @@ class _$DobError implements DobError {
     TResult Function(GenderType genderType)? onGenderTypeChoosen,
     TResult Function(Datum region)? onRegionChoosen,
     TResult Function(b.Datum district)? onDistrictChoosen,
+    TResult Function(String genderType)? onGenderTypeFetched,
+    TResult Function(String genderType)? onRegionFetched,
+    TResult Function(String genderType)? onDistrictFetched,
   }) {
     return dobError?.call(this.dobError);
   }
@@ -1995,6 +2163,9 @@ class _$DobError implements DobError {
     TResult Function(GenderType genderType)? onGenderTypeChoosen,
     TResult Function(Datum region)? onRegionChoosen,
     TResult Function(b.Datum district)? onDistrictChoosen,
+    TResult Function(String genderType)? onGenderTypeFetched,
+    TResult Function(String genderType)? onRegionFetched,
+    TResult Function(String genderType)? onDistrictFetched,
     required TResult orElse(),
   }) {
     if (dobError != null) {
@@ -2023,6 +2194,9 @@ class _$DobError implements DobError {
     required TResult Function(GenderTypeChoosen value) onGenderTypeChoosen,
     required TResult Function(RegionChoosen value) onRegionChoosen,
     required TResult Function(DistrictChoosen value) onDistrictChoosen,
+    required TResult Function(OnGenderTypeFetched value) onGenderTypeFetched,
+    required TResult Function(OnRegionFetched value) onRegionFetched,
+    required TResult Function(OnDistrictFetched value) onDistrictFetched,
   }) {
     return dobError(this);
   }
@@ -2047,6 +2221,9 @@ class _$DobError implements DobError {
     TResult Function(GenderTypeChoosen value)? onGenderTypeChoosen,
     TResult Function(RegionChoosen value)? onRegionChoosen,
     TResult Function(DistrictChoosen value)? onDistrictChoosen,
+    TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
+    TResult Function(OnRegionFetched value)? onRegionFetched,
+    TResult Function(OnDistrictFetched value)? onDistrictFetched,
   }) {
     return dobError?.call(this);
   }
@@ -2071,6 +2248,9 @@ class _$DobError implements DobError {
     TResult Function(GenderTypeChoosen value)? onGenderTypeChoosen,
     TResult Function(RegionChoosen value)? onRegionChoosen,
     TResult Function(DistrictChoosen value)? onDistrictChoosen,
+    TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
+    TResult Function(OnRegionFetched value)? onRegionFetched,
+    TResult Function(OnDistrictFetched value)? onDistrictFetched,
     required TResult orElse(),
   }) {
     if (dobError != null) {
@@ -2171,6 +2351,9 @@ class _$GenderError implements GenderError {
     required TResult Function(GenderType genderType) onGenderTypeChoosen,
     required TResult Function(Datum region) onRegionChoosen,
     required TResult Function(b.Datum district) onDistrictChoosen,
+    required TResult Function(String genderType) onGenderTypeFetched,
+    required TResult Function(String genderType) onRegionFetched,
+    required TResult Function(String genderType) onDistrictFetched,
   }) {
     return genderError(this.genderError);
   }
@@ -2195,6 +2378,9 @@ class _$GenderError implements GenderError {
     TResult Function(GenderType genderType)? onGenderTypeChoosen,
     TResult Function(Datum region)? onRegionChoosen,
     TResult Function(b.Datum district)? onDistrictChoosen,
+    TResult Function(String genderType)? onGenderTypeFetched,
+    TResult Function(String genderType)? onRegionFetched,
+    TResult Function(String genderType)? onDistrictFetched,
   }) {
     return genderError?.call(this.genderError);
   }
@@ -2219,6 +2405,9 @@ class _$GenderError implements GenderError {
     TResult Function(GenderType genderType)? onGenderTypeChoosen,
     TResult Function(Datum region)? onRegionChoosen,
     TResult Function(b.Datum district)? onDistrictChoosen,
+    TResult Function(String genderType)? onGenderTypeFetched,
+    TResult Function(String genderType)? onRegionFetched,
+    TResult Function(String genderType)? onDistrictFetched,
     required TResult orElse(),
   }) {
     if (genderError != null) {
@@ -2247,6 +2436,9 @@ class _$GenderError implements GenderError {
     required TResult Function(GenderTypeChoosen value) onGenderTypeChoosen,
     required TResult Function(RegionChoosen value) onRegionChoosen,
     required TResult Function(DistrictChoosen value) onDistrictChoosen,
+    required TResult Function(OnGenderTypeFetched value) onGenderTypeFetched,
+    required TResult Function(OnRegionFetched value) onRegionFetched,
+    required TResult Function(OnDistrictFetched value) onDistrictFetched,
   }) {
     return genderError(this);
   }
@@ -2271,6 +2463,9 @@ class _$GenderError implements GenderError {
     TResult Function(GenderTypeChoosen value)? onGenderTypeChoosen,
     TResult Function(RegionChoosen value)? onRegionChoosen,
     TResult Function(DistrictChoosen value)? onDistrictChoosen,
+    TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
+    TResult Function(OnRegionFetched value)? onRegionFetched,
+    TResult Function(OnDistrictFetched value)? onDistrictFetched,
   }) {
     return genderError?.call(this);
   }
@@ -2295,6 +2490,9 @@ class _$GenderError implements GenderError {
     TResult Function(GenderTypeChoosen value)? onGenderTypeChoosen,
     TResult Function(RegionChoosen value)? onRegionChoosen,
     TResult Function(DistrictChoosen value)? onDistrictChoosen,
+    TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
+    TResult Function(OnRegionFetched value)? onRegionFetched,
+    TResult Function(OnDistrictFetched value)? onDistrictFetched,
     required TResult orElse(),
   }) {
     if (genderError != null) {
@@ -2396,6 +2594,9 @@ class _$ProfessionError implements ProfessionError {
     required TResult Function(GenderType genderType) onGenderTypeChoosen,
     required TResult Function(Datum region) onRegionChoosen,
     required TResult Function(b.Datum district) onDistrictChoosen,
+    required TResult Function(String genderType) onGenderTypeFetched,
+    required TResult Function(String genderType) onRegionFetched,
+    required TResult Function(String genderType) onDistrictFetched,
   }) {
     return professionError(this.professionError);
   }
@@ -2420,6 +2621,9 @@ class _$ProfessionError implements ProfessionError {
     TResult Function(GenderType genderType)? onGenderTypeChoosen,
     TResult Function(Datum region)? onRegionChoosen,
     TResult Function(b.Datum district)? onDistrictChoosen,
+    TResult Function(String genderType)? onGenderTypeFetched,
+    TResult Function(String genderType)? onRegionFetched,
+    TResult Function(String genderType)? onDistrictFetched,
   }) {
     return professionError?.call(this.professionError);
   }
@@ -2444,6 +2648,9 @@ class _$ProfessionError implements ProfessionError {
     TResult Function(GenderType genderType)? onGenderTypeChoosen,
     TResult Function(Datum region)? onRegionChoosen,
     TResult Function(b.Datum district)? onDistrictChoosen,
+    TResult Function(String genderType)? onGenderTypeFetched,
+    TResult Function(String genderType)? onRegionFetched,
+    TResult Function(String genderType)? onDistrictFetched,
     required TResult orElse(),
   }) {
     if (professionError != null) {
@@ -2472,6 +2679,9 @@ class _$ProfessionError implements ProfessionError {
     required TResult Function(GenderTypeChoosen value) onGenderTypeChoosen,
     required TResult Function(RegionChoosen value) onRegionChoosen,
     required TResult Function(DistrictChoosen value) onDistrictChoosen,
+    required TResult Function(OnGenderTypeFetched value) onGenderTypeFetched,
+    required TResult Function(OnRegionFetched value) onRegionFetched,
+    required TResult Function(OnDistrictFetched value) onDistrictFetched,
   }) {
     return professionError(this);
   }
@@ -2496,6 +2706,9 @@ class _$ProfessionError implements ProfessionError {
     TResult Function(GenderTypeChoosen value)? onGenderTypeChoosen,
     TResult Function(RegionChoosen value)? onRegionChoosen,
     TResult Function(DistrictChoosen value)? onDistrictChoosen,
+    TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
+    TResult Function(OnRegionFetched value)? onRegionFetched,
+    TResult Function(OnDistrictFetched value)? onDistrictFetched,
   }) {
     return professionError?.call(this);
   }
@@ -2520,6 +2733,9 @@ class _$ProfessionError implements ProfessionError {
     TResult Function(GenderTypeChoosen value)? onGenderTypeChoosen,
     TResult Function(RegionChoosen value)? onRegionChoosen,
     TResult Function(DistrictChoosen value)? onDistrictChoosen,
+    TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
+    TResult Function(OnRegionFetched value)? onRegionFetched,
+    TResult Function(OnDistrictFetched value)? onDistrictFetched,
     required TResult orElse(),
   }) {
     if (professionError != null) {
@@ -2622,6 +2838,9 @@ class _$AddressError implements AddressError {
     required TResult Function(GenderType genderType) onGenderTypeChoosen,
     required TResult Function(Datum region) onRegionChoosen,
     required TResult Function(b.Datum district) onDistrictChoosen,
+    required TResult Function(String genderType) onGenderTypeFetched,
+    required TResult Function(String genderType) onRegionFetched,
+    required TResult Function(String genderType) onDistrictFetched,
   }) {
     return addressError(this.addressError);
   }
@@ -2646,6 +2865,9 @@ class _$AddressError implements AddressError {
     TResult Function(GenderType genderType)? onGenderTypeChoosen,
     TResult Function(Datum region)? onRegionChoosen,
     TResult Function(b.Datum district)? onDistrictChoosen,
+    TResult Function(String genderType)? onGenderTypeFetched,
+    TResult Function(String genderType)? onRegionFetched,
+    TResult Function(String genderType)? onDistrictFetched,
   }) {
     return addressError?.call(this.addressError);
   }
@@ -2670,6 +2892,9 @@ class _$AddressError implements AddressError {
     TResult Function(GenderType genderType)? onGenderTypeChoosen,
     TResult Function(Datum region)? onRegionChoosen,
     TResult Function(b.Datum district)? onDistrictChoosen,
+    TResult Function(String genderType)? onGenderTypeFetched,
+    TResult Function(String genderType)? onRegionFetched,
+    TResult Function(String genderType)? onDistrictFetched,
     required TResult orElse(),
   }) {
     if (addressError != null) {
@@ -2698,6 +2923,9 @@ class _$AddressError implements AddressError {
     required TResult Function(GenderTypeChoosen value) onGenderTypeChoosen,
     required TResult Function(RegionChoosen value) onRegionChoosen,
     required TResult Function(DistrictChoosen value) onDistrictChoosen,
+    required TResult Function(OnGenderTypeFetched value) onGenderTypeFetched,
+    required TResult Function(OnRegionFetched value) onRegionFetched,
+    required TResult Function(OnDistrictFetched value) onDistrictFetched,
   }) {
     return addressError(this);
   }
@@ -2722,6 +2950,9 @@ class _$AddressError implements AddressError {
     TResult Function(GenderTypeChoosen value)? onGenderTypeChoosen,
     TResult Function(RegionChoosen value)? onRegionChoosen,
     TResult Function(DistrictChoosen value)? onDistrictChoosen,
+    TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
+    TResult Function(OnRegionFetched value)? onRegionFetched,
+    TResult Function(OnDistrictFetched value)? onDistrictFetched,
   }) {
     return addressError?.call(this);
   }
@@ -2746,6 +2977,9 @@ class _$AddressError implements AddressError {
     TResult Function(GenderTypeChoosen value)? onGenderTypeChoosen,
     TResult Function(RegionChoosen value)? onRegionChoosen,
     TResult Function(DistrictChoosen value)? onDistrictChoosen,
+    TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
+    TResult Function(OnRegionFetched value)? onRegionFetched,
+    TResult Function(OnDistrictFetched value)? onDistrictFetched,
     required TResult orElse(),
   }) {
     if (addressError != null) {
@@ -2846,6 +3080,9 @@ class _$RegionError implements RegionError {
     required TResult Function(GenderType genderType) onGenderTypeChoosen,
     required TResult Function(Datum region) onRegionChoosen,
     required TResult Function(b.Datum district) onDistrictChoosen,
+    required TResult Function(String genderType) onGenderTypeFetched,
+    required TResult Function(String genderType) onRegionFetched,
+    required TResult Function(String genderType) onDistrictFetched,
   }) {
     return regionError(this.addressError);
   }
@@ -2870,6 +3107,9 @@ class _$RegionError implements RegionError {
     TResult Function(GenderType genderType)? onGenderTypeChoosen,
     TResult Function(Datum region)? onRegionChoosen,
     TResult Function(b.Datum district)? onDistrictChoosen,
+    TResult Function(String genderType)? onGenderTypeFetched,
+    TResult Function(String genderType)? onRegionFetched,
+    TResult Function(String genderType)? onDistrictFetched,
   }) {
     return regionError?.call(this.addressError);
   }
@@ -2894,6 +3134,9 @@ class _$RegionError implements RegionError {
     TResult Function(GenderType genderType)? onGenderTypeChoosen,
     TResult Function(Datum region)? onRegionChoosen,
     TResult Function(b.Datum district)? onDistrictChoosen,
+    TResult Function(String genderType)? onGenderTypeFetched,
+    TResult Function(String genderType)? onRegionFetched,
+    TResult Function(String genderType)? onDistrictFetched,
     required TResult orElse(),
   }) {
     if (regionError != null) {
@@ -2922,6 +3165,9 @@ class _$RegionError implements RegionError {
     required TResult Function(GenderTypeChoosen value) onGenderTypeChoosen,
     required TResult Function(RegionChoosen value) onRegionChoosen,
     required TResult Function(DistrictChoosen value) onDistrictChoosen,
+    required TResult Function(OnGenderTypeFetched value) onGenderTypeFetched,
+    required TResult Function(OnRegionFetched value) onRegionFetched,
+    required TResult Function(OnDistrictFetched value) onDistrictFetched,
   }) {
     return regionError(this);
   }
@@ -2946,6 +3192,9 @@ class _$RegionError implements RegionError {
     TResult Function(GenderTypeChoosen value)? onGenderTypeChoosen,
     TResult Function(RegionChoosen value)? onRegionChoosen,
     TResult Function(DistrictChoosen value)? onDistrictChoosen,
+    TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
+    TResult Function(OnRegionFetched value)? onRegionFetched,
+    TResult Function(OnDistrictFetched value)? onDistrictFetched,
   }) {
     return regionError?.call(this);
   }
@@ -2970,6 +3219,9 @@ class _$RegionError implements RegionError {
     TResult Function(GenderTypeChoosen value)? onGenderTypeChoosen,
     TResult Function(RegionChoosen value)? onRegionChoosen,
     TResult Function(DistrictChoosen value)? onDistrictChoosen,
+    TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
+    TResult Function(OnRegionFetched value)? onRegionFetched,
+    TResult Function(OnDistrictFetched value)? onDistrictFetched,
     required TResult orElse(),
   }) {
     if (regionError != null) {
@@ -3071,6 +3323,9 @@ class _$DistrictError implements DistrictError {
     required TResult Function(GenderType genderType) onGenderTypeChoosen,
     required TResult Function(Datum region) onRegionChoosen,
     required TResult Function(b.Datum district) onDistrictChoosen,
+    required TResult Function(String genderType) onGenderTypeFetched,
+    required TResult Function(String genderType) onRegionFetched,
+    required TResult Function(String genderType) onDistrictFetched,
   }) {
     return districtError(this.districtError);
   }
@@ -3095,6 +3350,9 @@ class _$DistrictError implements DistrictError {
     TResult Function(GenderType genderType)? onGenderTypeChoosen,
     TResult Function(Datum region)? onRegionChoosen,
     TResult Function(b.Datum district)? onDistrictChoosen,
+    TResult Function(String genderType)? onGenderTypeFetched,
+    TResult Function(String genderType)? onRegionFetched,
+    TResult Function(String genderType)? onDistrictFetched,
   }) {
     return districtError?.call(this.districtError);
   }
@@ -3119,6 +3377,9 @@ class _$DistrictError implements DistrictError {
     TResult Function(GenderType genderType)? onGenderTypeChoosen,
     TResult Function(Datum region)? onRegionChoosen,
     TResult Function(b.Datum district)? onDistrictChoosen,
+    TResult Function(String genderType)? onGenderTypeFetched,
+    TResult Function(String genderType)? onRegionFetched,
+    TResult Function(String genderType)? onDistrictFetched,
     required TResult orElse(),
   }) {
     if (districtError != null) {
@@ -3147,6 +3408,9 @@ class _$DistrictError implements DistrictError {
     required TResult Function(GenderTypeChoosen value) onGenderTypeChoosen,
     required TResult Function(RegionChoosen value) onRegionChoosen,
     required TResult Function(DistrictChoosen value) onDistrictChoosen,
+    required TResult Function(OnGenderTypeFetched value) onGenderTypeFetched,
+    required TResult Function(OnRegionFetched value) onRegionFetched,
+    required TResult Function(OnDistrictFetched value) onDistrictFetched,
   }) {
     return districtError(this);
   }
@@ -3171,6 +3435,9 @@ class _$DistrictError implements DistrictError {
     TResult Function(GenderTypeChoosen value)? onGenderTypeChoosen,
     TResult Function(RegionChoosen value)? onRegionChoosen,
     TResult Function(DistrictChoosen value)? onDistrictChoosen,
+    TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
+    TResult Function(OnRegionFetched value)? onRegionFetched,
+    TResult Function(OnDistrictFetched value)? onDistrictFetched,
   }) {
     return districtError?.call(this);
   }
@@ -3195,6 +3462,9 @@ class _$DistrictError implements DistrictError {
     TResult Function(GenderTypeChoosen value)? onGenderTypeChoosen,
     TResult Function(RegionChoosen value)? onRegionChoosen,
     TResult Function(DistrictChoosen value)? onDistrictChoosen,
+    TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
+    TResult Function(OnRegionFetched value)? onRegionFetched,
+    TResult Function(OnDistrictFetched value)? onDistrictFetched,
     required TResult orElse(),
   }) {
     if (districtError != null) {
@@ -3296,6 +3566,9 @@ class _$GenderTypeChoosen implements GenderTypeChoosen {
     required TResult Function(GenderType genderType) onGenderTypeChoosen,
     required TResult Function(Datum region) onRegionChoosen,
     required TResult Function(b.Datum district) onDistrictChoosen,
+    required TResult Function(String genderType) onGenderTypeFetched,
+    required TResult Function(String genderType) onRegionFetched,
+    required TResult Function(String genderType) onDistrictFetched,
   }) {
     return onGenderTypeChoosen(genderType);
   }
@@ -3320,6 +3593,9 @@ class _$GenderTypeChoosen implements GenderTypeChoosen {
     TResult Function(GenderType genderType)? onGenderTypeChoosen,
     TResult Function(Datum region)? onRegionChoosen,
     TResult Function(b.Datum district)? onDistrictChoosen,
+    TResult Function(String genderType)? onGenderTypeFetched,
+    TResult Function(String genderType)? onRegionFetched,
+    TResult Function(String genderType)? onDistrictFetched,
   }) {
     return onGenderTypeChoosen?.call(genderType);
   }
@@ -3344,6 +3620,9 @@ class _$GenderTypeChoosen implements GenderTypeChoosen {
     TResult Function(GenderType genderType)? onGenderTypeChoosen,
     TResult Function(Datum region)? onRegionChoosen,
     TResult Function(b.Datum district)? onDistrictChoosen,
+    TResult Function(String genderType)? onGenderTypeFetched,
+    TResult Function(String genderType)? onRegionFetched,
+    TResult Function(String genderType)? onDistrictFetched,
     required TResult orElse(),
   }) {
     if (onGenderTypeChoosen != null) {
@@ -3372,6 +3651,9 @@ class _$GenderTypeChoosen implements GenderTypeChoosen {
     required TResult Function(GenderTypeChoosen value) onGenderTypeChoosen,
     required TResult Function(RegionChoosen value) onRegionChoosen,
     required TResult Function(DistrictChoosen value) onDistrictChoosen,
+    required TResult Function(OnGenderTypeFetched value) onGenderTypeFetched,
+    required TResult Function(OnRegionFetched value) onRegionFetched,
+    required TResult Function(OnDistrictFetched value) onDistrictFetched,
   }) {
     return onGenderTypeChoosen(this);
   }
@@ -3396,6 +3678,9 @@ class _$GenderTypeChoosen implements GenderTypeChoosen {
     TResult Function(GenderTypeChoosen value)? onGenderTypeChoosen,
     TResult Function(RegionChoosen value)? onRegionChoosen,
     TResult Function(DistrictChoosen value)? onDistrictChoosen,
+    TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
+    TResult Function(OnRegionFetched value)? onRegionFetched,
+    TResult Function(OnDistrictFetched value)? onDistrictFetched,
   }) {
     return onGenderTypeChoosen?.call(this);
   }
@@ -3420,6 +3705,9 @@ class _$GenderTypeChoosen implements GenderTypeChoosen {
     TResult Function(GenderTypeChoosen value)? onGenderTypeChoosen,
     TResult Function(RegionChoosen value)? onRegionChoosen,
     TResult Function(DistrictChoosen value)? onDistrictChoosen,
+    TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
+    TResult Function(OnRegionFetched value)? onRegionFetched,
+    TResult Function(OnDistrictFetched value)? onDistrictFetched,
     required TResult orElse(),
   }) {
     if (onGenderTypeChoosen != null) {
@@ -3521,6 +3809,9 @@ class _$RegionChoosen implements RegionChoosen {
     required TResult Function(GenderType genderType) onGenderTypeChoosen,
     required TResult Function(Datum region) onRegionChoosen,
     required TResult Function(b.Datum district) onDistrictChoosen,
+    required TResult Function(String genderType) onGenderTypeFetched,
+    required TResult Function(String genderType) onRegionFetched,
+    required TResult Function(String genderType) onDistrictFetched,
   }) {
     return onRegionChoosen(region);
   }
@@ -3545,6 +3836,9 @@ class _$RegionChoosen implements RegionChoosen {
     TResult Function(GenderType genderType)? onGenderTypeChoosen,
     TResult Function(Datum region)? onRegionChoosen,
     TResult Function(b.Datum district)? onDistrictChoosen,
+    TResult Function(String genderType)? onGenderTypeFetched,
+    TResult Function(String genderType)? onRegionFetched,
+    TResult Function(String genderType)? onDistrictFetched,
   }) {
     return onRegionChoosen?.call(region);
   }
@@ -3569,6 +3863,9 @@ class _$RegionChoosen implements RegionChoosen {
     TResult Function(GenderType genderType)? onGenderTypeChoosen,
     TResult Function(Datum region)? onRegionChoosen,
     TResult Function(b.Datum district)? onDistrictChoosen,
+    TResult Function(String genderType)? onGenderTypeFetched,
+    TResult Function(String genderType)? onRegionFetched,
+    TResult Function(String genderType)? onDistrictFetched,
     required TResult orElse(),
   }) {
     if (onRegionChoosen != null) {
@@ -3597,6 +3894,9 @@ class _$RegionChoosen implements RegionChoosen {
     required TResult Function(GenderTypeChoosen value) onGenderTypeChoosen,
     required TResult Function(RegionChoosen value) onRegionChoosen,
     required TResult Function(DistrictChoosen value) onDistrictChoosen,
+    required TResult Function(OnGenderTypeFetched value) onGenderTypeFetched,
+    required TResult Function(OnRegionFetched value) onRegionFetched,
+    required TResult Function(OnDistrictFetched value) onDistrictFetched,
   }) {
     return onRegionChoosen(this);
   }
@@ -3621,6 +3921,9 @@ class _$RegionChoosen implements RegionChoosen {
     TResult Function(GenderTypeChoosen value)? onGenderTypeChoosen,
     TResult Function(RegionChoosen value)? onRegionChoosen,
     TResult Function(DistrictChoosen value)? onDistrictChoosen,
+    TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
+    TResult Function(OnRegionFetched value)? onRegionFetched,
+    TResult Function(OnDistrictFetched value)? onDistrictFetched,
   }) {
     return onRegionChoosen?.call(this);
   }
@@ -3645,6 +3948,9 @@ class _$RegionChoosen implements RegionChoosen {
     TResult Function(GenderTypeChoosen value)? onGenderTypeChoosen,
     TResult Function(RegionChoosen value)? onRegionChoosen,
     TResult Function(DistrictChoosen value)? onDistrictChoosen,
+    TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
+    TResult Function(OnRegionFetched value)? onRegionFetched,
+    TResult Function(OnDistrictFetched value)? onDistrictFetched,
     required TResult orElse(),
   }) {
     if (onRegionChoosen != null) {
@@ -3745,6 +4051,9 @@ class _$DistrictChoosen implements DistrictChoosen {
     required TResult Function(GenderType genderType) onGenderTypeChoosen,
     required TResult Function(Datum region) onRegionChoosen,
     required TResult Function(b.Datum district) onDistrictChoosen,
+    required TResult Function(String genderType) onGenderTypeFetched,
+    required TResult Function(String genderType) onRegionFetched,
+    required TResult Function(String genderType) onDistrictFetched,
   }) {
     return onDistrictChoosen(district);
   }
@@ -3769,6 +4078,9 @@ class _$DistrictChoosen implements DistrictChoosen {
     TResult Function(GenderType genderType)? onGenderTypeChoosen,
     TResult Function(Datum region)? onRegionChoosen,
     TResult Function(b.Datum district)? onDistrictChoosen,
+    TResult Function(String genderType)? onGenderTypeFetched,
+    TResult Function(String genderType)? onRegionFetched,
+    TResult Function(String genderType)? onDistrictFetched,
   }) {
     return onDistrictChoosen?.call(district);
   }
@@ -3793,6 +4105,9 @@ class _$DistrictChoosen implements DistrictChoosen {
     TResult Function(GenderType genderType)? onGenderTypeChoosen,
     TResult Function(Datum region)? onRegionChoosen,
     TResult Function(b.Datum district)? onDistrictChoosen,
+    TResult Function(String genderType)? onGenderTypeFetched,
+    TResult Function(String genderType)? onRegionFetched,
+    TResult Function(String genderType)? onDistrictFetched,
     required TResult orElse(),
   }) {
     if (onDistrictChoosen != null) {
@@ -3821,6 +4136,9 @@ class _$DistrictChoosen implements DistrictChoosen {
     required TResult Function(GenderTypeChoosen value) onGenderTypeChoosen,
     required TResult Function(RegionChoosen value) onRegionChoosen,
     required TResult Function(DistrictChoosen value) onDistrictChoosen,
+    required TResult Function(OnGenderTypeFetched value) onGenderTypeFetched,
+    required TResult Function(OnRegionFetched value) onRegionFetched,
+    required TResult Function(OnDistrictFetched value) onDistrictFetched,
   }) {
     return onDistrictChoosen(this);
   }
@@ -3845,6 +4163,9 @@ class _$DistrictChoosen implements DistrictChoosen {
     TResult Function(GenderTypeChoosen value)? onGenderTypeChoosen,
     TResult Function(RegionChoosen value)? onRegionChoosen,
     TResult Function(DistrictChoosen value)? onDistrictChoosen,
+    TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
+    TResult Function(OnRegionFetched value)? onRegionFetched,
+    TResult Function(OnDistrictFetched value)? onDistrictFetched,
   }) {
     return onDistrictChoosen?.call(this);
   }
@@ -3869,6 +4190,9 @@ class _$DistrictChoosen implements DistrictChoosen {
     TResult Function(GenderTypeChoosen value)? onGenderTypeChoosen,
     TResult Function(RegionChoosen value)? onRegionChoosen,
     TResult Function(DistrictChoosen value)? onDistrictChoosen,
+    TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
+    TResult Function(OnRegionFetched value)? onRegionFetched,
+    TResult Function(OnDistrictFetched value)? onDistrictFetched,
     required TResult orElse(),
   }) {
     if (onDistrictChoosen != null) {
@@ -3884,5 +4208,737 @@ abstract class DistrictChoosen implements DetailsState {
   b.Datum get district;
   @JsonKey(ignore: true)
   _$$DistrictChoosenCopyWith<_$DistrictChoosen> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$OnGenderTypeFetchedCopyWith<$Res> {
+  factory _$$OnGenderTypeFetchedCopyWith(_$OnGenderTypeFetched value,
+          $Res Function(_$OnGenderTypeFetched) then) =
+      __$$OnGenderTypeFetchedCopyWithImpl<$Res>;
+  $Res call({String genderType});
+}
+
+/// @nodoc
+class __$$OnGenderTypeFetchedCopyWithImpl<$Res>
+    extends _$DetailsStateCopyWithImpl<$Res>
+    implements _$$OnGenderTypeFetchedCopyWith<$Res> {
+  __$$OnGenderTypeFetchedCopyWithImpl(
+      _$OnGenderTypeFetched _value, $Res Function(_$OnGenderTypeFetched) _then)
+      : super(_value, (v) => _then(v as _$OnGenderTypeFetched));
+
+  @override
+  _$OnGenderTypeFetched get _value => super._value as _$OnGenderTypeFetched;
+
+  @override
+  $Res call({
+    Object? genderType = freezed,
+  }) {
+    return _then(_$OnGenderTypeFetched(
+      genderType == freezed
+          ? _value.genderType
+          : genderType // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$OnGenderTypeFetched implements OnGenderTypeFetched {
+  const _$OnGenderTypeFetched(this.genderType);
+
+  @override
+  final String genderType;
+
+  @override
+  String toString() {
+    return 'DetailsState.onGenderTypeFetched(genderType: $genderType)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OnGenderTypeFetched &&
+            const DeepCollectionEquality()
+                .equals(other.genderType, genderType));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(genderType));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$OnGenderTypeFetchedCopyWith<_$OnGenderTypeFetched> get copyWith =>
+      __$$OnGenderTypeFetchedCopyWithImpl<_$OnGenderTypeFetched>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialState,
+    required TResult Function() successState,
+    required TResult Function(bool isValid) DetailsFormState,
+    required TResult Function() LoadingState,
+    required TResult Function(String nameError) nameError,
+    required TResult Function(String mobileNumber) getMobileNumber,
+    required TResult Function(String emailError) emailError,
+    required TResult Function(String poBoxError) poBoxError,
+    required TResult Function(String dobError) dobError,
+    required TResult Function(String genderError) genderError,
+    required TResult Function(String professionError) professionError,
+    required TResult Function(String addressError) addressError,
+    required TResult Function(String addressError) regionError,
+    required TResult Function(String districtError) districtError,
+    required TResult Function(GenderType genderType) onGenderTypeChoosen,
+    required TResult Function(Datum region) onRegionChoosen,
+    required TResult Function(b.Datum district) onDistrictChoosen,
+    required TResult Function(String genderType) onGenderTypeFetched,
+    required TResult Function(String genderType) onRegionFetched,
+    required TResult Function(String genderType) onDistrictFetched,
+  }) {
+    return onGenderTypeFetched(genderType);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initialState,
+    TResult Function()? successState,
+    TResult Function(bool isValid)? DetailsFormState,
+    TResult Function()? LoadingState,
+    TResult Function(String nameError)? nameError,
+    TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String emailError)? emailError,
+    TResult Function(String poBoxError)? poBoxError,
+    TResult Function(String dobError)? dobError,
+    TResult Function(String genderError)? genderError,
+    TResult Function(String professionError)? professionError,
+    TResult Function(String addressError)? addressError,
+    TResult Function(String addressError)? regionError,
+    TResult Function(String districtError)? districtError,
+    TResult Function(GenderType genderType)? onGenderTypeChoosen,
+    TResult Function(Datum region)? onRegionChoosen,
+    TResult Function(b.Datum district)? onDistrictChoosen,
+    TResult Function(String genderType)? onGenderTypeFetched,
+    TResult Function(String genderType)? onRegionFetched,
+    TResult Function(String genderType)? onDistrictFetched,
+  }) {
+    return onGenderTypeFetched?.call(genderType);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialState,
+    TResult Function()? successState,
+    TResult Function(bool isValid)? DetailsFormState,
+    TResult Function()? LoadingState,
+    TResult Function(String nameError)? nameError,
+    TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String emailError)? emailError,
+    TResult Function(String poBoxError)? poBoxError,
+    TResult Function(String dobError)? dobError,
+    TResult Function(String genderError)? genderError,
+    TResult Function(String professionError)? professionError,
+    TResult Function(String addressError)? addressError,
+    TResult Function(String addressError)? regionError,
+    TResult Function(String districtError)? districtError,
+    TResult Function(GenderType genderType)? onGenderTypeChoosen,
+    TResult Function(Datum region)? onRegionChoosen,
+    TResult Function(b.Datum district)? onDistrictChoosen,
+    TResult Function(String genderType)? onGenderTypeFetched,
+    TResult Function(String genderType)? onRegionFetched,
+    TResult Function(String genderType)? onDistrictFetched,
+    required TResult orElse(),
+  }) {
+    if (onGenderTypeFetched != null) {
+      return onGenderTypeFetched(genderType);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialState value) initialState,
+    required TResult Function(SuccessState value) successState,
+    required TResult Function(DetailsFormState value) DetailsFormState,
+    required TResult Function(LoadingState value) LoadingState,
+    required TResult Function(NameError value) nameError,
+    required TResult Function(GetMobileNumber value) getMobileNumber,
+    required TResult Function(EmailError value) emailError,
+    required TResult Function(PoBoxError value) poBoxError,
+    required TResult Function(DobError value) dobError,
+    required TResult Function(GenderError value) genderError,
+    required TResult Function(ProfessionError value) professionError,
+    required TResult Function(AddressError value) addressError,
+    required TResult Function(RegionError value) regionError,
+    required TResult Function(DistrictError value) districtError,
+    required TResult Function(GenderTypeChoosen value) onGenderTypeChoosen,
+    required TResult Function(RegionChoosen value) onRegionChoosen,
+    required TResult Function(DistrictChoosen value) onDistrictChoosen,
+    required TResult Function(OnGenderTypeFetched value) onGenderTypeFetched,
+    required TResult Function(OnRegionFetched value) onRegionFetched,
+    required TResult Function(OnDistrictFetched value) onDistrictFetched,
+  }) {
+    return onGenderTypeFetched(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InitialState value)? initialState,
+    TResult Function(SuccessState value)? successState,
+    TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(LoadingState value)? LoadingState,
+    TResult Function(NameError value)? nameError,
+    TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(EmailError value)? emailError,
+    TResult Function(PoBoxError value)? poBoxError,
+    TResult Function(DobError value)? dobError,
+    TResult Function(GenderError value)? genderError,
+    TResult Function(ProfessionError value)? professionError,
+    TResult Function(AddressError value)? addressError,
+    TResult Function(RegionError value)? regionError,
+    TResult Function(DistrictError value)? districtError,
+    TResult Function(GenderTypeChoosen value)? onGenderTypeChoosen,
+    TResult Function(RegionChoosen value)? onRegionChoosen,
+    TResult Function(DistrictChoosen value)? onDistrictChoosen,
+    TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
+    TResult Function(OnRegionFetched value)? onRegionFetched,
+    TResult Function(OnDistrictFetched value)? onDistrictFetched,
+  }) {
+    return onGenderTypeFetched?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialState value)? initialState,
+    TResult Function(SuccessState value)? successState,
+    TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(LoadingState value)? LoadingState,
+    TResult Function(NameError value)? nameError,
+    TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(EmailError value)? emailError,
+    TResult Function(PoBoxError value)? poBoxError,
+    TResult Function(DobError value)? dobError,
+    TResult Function(GenderError value)? genderError,
+    TResult Function(ProfessionError value)? professionError,
+    TResult Function(AddressError value)? addressError,
+    TResult Function(RegionError value)? regionError,
+    TResult Function(DistrictError value)? districtError,
+    TResult Function(GenderTypeChoosen value)? onGenderTypeChoosen,
+    TResult Function(RegionChoosen value)? onRegionChoosen,
+    TResult Function(DistrictChoosen value)? onDistrictChoosen,
+    TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
+    TResult Function(OnRegionFetched value)? onRegionFetched,
+    TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    required TResult orElse(),
+  }) {
+    if (onGenderTypeFetched != null) {
+      return onGenderTypeFetched(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class OnGenderTypeFetched implements DetailsState {
+  const factory OnGenderTypeFetched(final String genderType) =
+      _$OnGenderTypeFetched;
+
+  String get genderType;
+  @JsonKey(ignore: true)
+  _$$OnGenderTypeFetchedCopyWith<_$OnGenderTypeFetched> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$OnRegionFetchedCopyWith<$Res> {
+  factory _$$OnRegionFetchedCopyWith(
+          _$OnRegionFetched value, $Res Function(_$OnRegionFetched) then) =
+      __$$OnRegionFetchedCopyWithImpl<$Res>;
+  $Res call({String genderType});
+}
+
+/// @nodoc
+class __$$OnRegionFetchedCopyWithImpl<$Res>
+    extends _$DetailsStateCopyWithImpl<$Res>
+    implements _$$OnRegionFetchedCopyWith<$Res> {
+  __$$OnRegionFetchedCopyWithImpl(
+      _$OnRegionFetched _value, $Res Function(_$OnRegionFetched) _then)
+      : super(_value, (v) => _then(v as _$OnRegionFetched));
+
+  @override
+  _$OnRegionFetched get _value => super._value as _$OnRegionFetched;
+
+  @override
+  $Res call({
+    Object? genderType = freezed,
+  }) {
+    return _then(_$OnRegionFetched(
+      genderType == freezed
+          ? _value.genderType
+          : genderType // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$OnRegionFetched implements OnRegionFetched {
+  const _$OnRegionFetched(this.genderType);
+
+  @override
+  final String genderType;
+
+  @override
+  String toString() {
+    return 'DetailsState.onRegionFetched(genderType: $genderType)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OnRegionFetched &&
+            const DeepCollectionEquality()
+                .equals(other.genderType, genderType));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(genderType));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$OnRegionFetchedCopyWith<_$OnRegionFetched> get copyWith =>
+      __$$OnRegionFetchedCopyWithImpl<_$OnRegionFetched>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialState,
+    required TResult Function() successState,
+    required TResult Function(bool isValid) DetailsFormState,
+    required TResult Function() LoadingState,
+    required TResult Function(String nameError) nameError,
+    required TResult Function(String mobileNumber) getMobileNumber,
+    required TResult Function(String emailError) emailError,
+    required TResult Function(String poBoxError) poBoxError,
+    required TResult Function(String dobError) dobError,
+    required TResult Function(String genderError) genderError,
+    required TResult Function(String professionError) professionError,
+    required TResult Function(String addressError) addressError,
+    required TResult Function(String addressError) regionError,
+    required TResult Function(String districtError) districtError,
+    required TResult Function(GenderType genderType) onGenderTypeChoosen,
+    required TResult Function(Datum region) onRegionChoosen,
+    required TResult Function(b.Datum district) onDistrictChoosen,
+    required TResult Function(String genderType) onGenderTypeFetched,
+    required TResult Function(String genderType) onRegionFetched,
+    required TResult Function(String genderType) onDistrictFetched,
+  }) {
+    return onRegionFetched(genderType);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initialState,
+    TResult Function()? successState,
+    TResult Function(bool isValid)? DetailsFormState,
+    TResult Function()? LoadingState,
+    TResult Function(String nameError)? nameError,
+    TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String emailError)? emailError,
+    TResult Function(String poBoxError)? poBoxError,
+    TResult Function(String dobError)? dobError,
+    TResult Function(String genderError)? genderError,
+    TResult Function(String professionError)? professionError,
+    TResult Function(String addressError)? addressError,
+    TResult Function(String addressError)? regionError,
+    TResult Function(String districtError)? districtError,
+    TResult Function(GenderType genderType)? onGenderTypeChoosen,
+    TResult Function(Datum region)? onRegionChoosen,
+    TResult Function(b.Datum district)? onDistrictChoosen,
+    TResult Function(String genderType)? onGenderTypeFetched,
+    TResult Function(String genderType)? onRegionFetched,
+    TResult Function(String genderType)? onDistrictFetched,
+  }) {
+    return onRegionFetched?.call(genderType);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialState,
+    TResult Function()? successState,
+    TResult Function(bool isValid)? DetailsFormState,
+    TResult Function()? LoadingState,
+    TResult Function(String nameError)? nameError,
+    TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String emailError)? emailError,
+    TResult Function(String poBoxError)? poBoxError,
+    TResult Function(String dobError)? dobError,
+    TResult Function(String genderError)? genderError,
+    TResult Function(String professionError)? professionError,
+    TResult Function(String addressError)? addressError,
+    TResult Function(String addressError)? regionError,
+    TResult Function(String districtError)? districtError,
+    TResult Function(GenderType genderType)? onGenderTypeChoosen,
+    TResult Function(Datum region)? onRegionChoosen,
+    TResult Function(b.Datum district)? onDistrictChoosen,
+    TResult Function(String genderType)? onGenderTypeFetched,
+    TResult Function(String genderType)? onRegionFetched,
+    TResult Function(String genderType)? onDistrictFetched,
+    required TResult orElse(),
+  }) {
+    if (onRegionFetched != null) {
+      return onRegionFetched(genderType);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialState value) initialState,
+    required TResult Function(SuccessState value) successState,
+    required TResult Function(DetailsFormState value) DetailsFormState,
+    required TResult Function(LoadingState value) LoadingState,
+    required TResult Function(NameError value) nameError,
+    required TResult Function(GetMobileNumber value) getMobileNumber,
+    required TResult Function(EmailError value) emailError,
+    required TResult Function(PoBoxError value) poBoxError,
+    required TResult Function(DobError value) dobError,
+    required TResult Function(GenderError value) genderError,
+    required TResult Function(ProfessionError value) professionError,
+    required TResult Function(AddressError value) addressError,
+    required TResult Function(RegionError value) regionError,
+    required TResult Function(DistrictError value) districtError,
+    required TResult Function(GenderTypeChoosen value) onGenderTypeChoosen,
+    required TResult Function(RegionChoosen value) onRegionChoosen,
+    required TResult Function(DistrictChoosen value) onDistrictChoosen,
+    required TResult Function(OnGenderTypeFetched value) onGenderTypeFetched,
+    required TResult Function(OnRegionFetched value) onRegionFetched,
+    required TResult Function(OnDistrictFetched value) onDistrictFetched,
+  }) {
+    return onRegionFetched(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InitialState value)? initialState,
+    TResult Function(SuccessState value)? successState,
+    TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(LoadingState value)? LoadingState,
+    TResult Function(NameError value)? nameError,
+    TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(EmailError value)? emailError,
+    TResult Function(PoBoxError value)? poBoxError,
+    TResult Function(DobError value)? dobError,
+    TResult Function(GenderError value)? genderError,
+    TResult Function(ProfessionError value)? professionError,
+    TResult Function(AddressError value)? addressError,
+    TResult Function(RegionError value)? regionError,
+    TResult Function(DistrictError value)? districtError,
+    TResult Function(GenderTypeChoosen value)? onGenderTypeChoosen,
+    TResult Function(RegionChoosen value)? onRegionChoosen,
+    TResult Function(DistrictChoosen value)? onDistrictChoosen,
+    TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
+    TResult Function(OnRegionFetched value)? onRegionFetched,
+    TResult Function(OnDistrictFetched value)? onDistrictFetched,
+  }) {
+    return onRegionFetched?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialState value)? initialState,
+    TResult Function(SuccessState value)? successState,
+    TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(LoadingState value)? LoadingState,
+    TResult Function(NameError value)? nameError,
+    TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(EmailError value)? emailError,
+    TResult Function(PoBoxError value)? poBoxError,
+    TResult Function(DobError value)? dobError,
+    TResult Function(GenderError value)? genderError,
+    TResult Function(ProfessionError value)? professionError,
+    TResult Function(AddressError value)? addressError,
+    TResult Function(RegionError value)? regionError,
+    TResult Function(DistrictError value)? districtError,
+    TResult Function(GenderTypeChoosen value)? onGenderTypeChoosen,
+    TResult Function(RegionChoosen value)? onRegionChoosen,
+    TResult Function(DistrictChoosen value)? onDistrictChoosen,
+    TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
+    TResult Function(OnRegionFetched value)? onRegionFetched,
+    TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    required TResult orElse(),
+  }) {
+    if (onRegionFetched != null) {
+      return onRegionFetched(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class OnRegionFetched implements DetailsState {
+  const factory OnRegionFetched(final String genderType) = _$OnRegionFetched;
+
+  String get genderType;
+  @JsonKey(ignore: true)
+  _$$OnRegionFetchedCopyWith<_$OnRegionFetched> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$OnDistrictFetchedCopyWith<$Res> {
+  factory _$$OnDistrictFetchedCopyWith(
+          _$OnDistrictFetched value, $Res Function(_$OnDistrictFetched) then) =
+      __$$OnDistrictFetchedCopyWithImpl<$Res>;
+  $Res call({String genderType});
+}
+
+/// @nodoc
+class __$$OnDistrictFetchedCopyWithImpl<$Res>
+    extends _$DetailsStateCopyWithImpl<$Res>
+    implements _$$OnDistrictFetchedCopyWith<$Res> {
+  __$$OnDistrictFetchedCopyWithImpl(
+      _$OnDistrictFetched _value, $Res Function(_$OnDistrictFetched) _then)
+      : super(_value, (v) => _then(v as _$OnDistrictFetched));
+
+  @override
+  _$OnDistrictFetched get _value => super._value as _$OnDistrictFetched;
+
+  @override
+  $Res call({
+    Object? genderType = freezed,
+  }) {
+    return _then(_$OnDistrictFetched(
+      genderType == freezed
+          ? _value.genderType
+          : genderType // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$OnDistrictFetched implements OnDistrictFetched {
+  const _$OnDistrictFetched(this.genderType);
+
+  @override
+  final String genderType;
+
+  @override
+  String toString() {
+    return 'DetailsState.onDistrictFetched(genderType: $genderType)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OnDistrictFetched &&
+            const DeepCollectionEquality()
+                .equals(other.genderType, genderType));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(genderType));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$OnDistrictFetchedCopyWith<_$OnDistrictFetched> get copyWith =>
+      __$$OnDistrictFetchedCopyWithImpl<_$OnDistrictFetched>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialState,
+    required TResult Function() successState,
+    required TResult Function(bool isValid) DetailsFormState,
+    required TResult Function() LoadingState,
+    required TResult Function(String nameError) nameError,
+    required TResult Function(String mobileNumber) getMobileNumber,
+    required TResult Function(String emailError) emailError,
+    required TResult Function(String poBoxError) poBoxError,
+    required TResult Function(String dobError) dobError,
+    required TResult Function(String genderError) genderError,
+    required TResult Function(String professionError) professionError,
+    required TResult Function(String addressError) addressError,
+    required TResult Function(String addressError) regionError,
+    required TResult Function(String districtError) districtError,
+    required TResult Function(GenderType genderType) onGenderTypeChoosen,
+    required TResult Function(Datum region) onRegionChoosen,
+    required TResult Function(b.Datum district) onDistrictChoosen,
+    required TResult Function(String genderType) onGenderTypeFetched,
+    required TResult Function(String genderType) onRegionFetched,
+    required TResult Function(String genderType) onDistrictFetched,
+  }) {
+    return onDistrictFetched(genderType);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initialState,
+    TResult Function()? successState,
+    TResult Function(bool isValid)? DetailsFormState,
+    TResult Function()? LoadingState,
+    TResult Function(String nameError)? nameError,
+    TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String emailError)? emailError,
+    TResult Function(String poBoxError)? poBoxError,
+    TResult Function(String dobError)? dobError,
+    TResult Function(String genderError)? genderError,
+    TResult Function(String professionError)? professionError,
+    TResult Function(String addressError)? addressError,
+    TResult Function(String addressError)? regionError,
+    TResult Function(String districtError)? districtError,
+    TResult Function(GenderType genderType)? onGenderTypeChoosen,
+    TResult Function(Datum region)? onRegionChoosen,
+    TResult Function(b.Datum district)? onDistrictChoosen,
+    TResult Function(String genderType)? onGenderTypeFetched,
+    TResult Function(String genderType)? onRegionFetched,
+    TResult Function(String genderType)? onDistrictFetched,
+  }) {
+    return onDistrictFetched?.call(genderType);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialState,
+    TResult Function()? successState,
+    TResult Function(bool isValid)? DetailsFormState,
+    TResult Function()? LoadingState,
+    TResult Function(String nameError)? nameError,
+    TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String emailError)? emailError,
+    TResult Function(String poBoxError)? poBoxError,
+    TResult Function(String dobError)? dobError,
+    TResult Function(String genderError)? genderError,
+    TResult Function(String professionError)? professionError,
+    TResult Function(String addressError)? addressError,
+    TResult Function(String addressError)? regionError,
+    TResult Function(String districtError)? districtError,
+    TResult Function(GenderType genderType)? onGenderTypeChoosen,
+    TResult Function(Datum region)? onRegionChoosen,
+    TResult Function(b.Datum district)? onDistrictChoosen,
+    TResult Function(String genderType)? onGenderTypeFetched,
+    TResult Function(String genderType)? onRegionFetched,
+    TResult Function(String genderType)? onDistrictFetched,
+    required TResult orElse(),
+  }) {
+    if (onDistrictFetched != null) {
+      return onDistrictFetched(genderType);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialState value) initialState,
+    required TResult Function(SuccessState value) successState,
+    required TResult Function(DetailsFormState value) DetailsFormState,
+    required TResult Function(LoadingState value) LoadingState,
+    required TResult Function(NameError value) nameError,
+    required TResult Function(GetMobileNumber value) getMobileNumber,
+    required TResult Function(EmailError value) emailError,
+    required TResult Function(PoBoxError value) poBoxError,
+    required TResult Function(DobError value) dobError,
+    required TResult Function(GenderError value) genderError,
+    required TResult Function(ProfessionError value) professionError,
+    required TResult Function(AddressError value) addressError,
+    required TResult Function(RegionError value) regionError,
+    required TResult Function(DistrictError value) districtError,
+    required TResult Function(GenderTypeChoosen value) onGenderTypeChoosen,
+    required TResult Function(RegionChoosen value) onRegionChoosen,
+    required TResult Function(DistrictChoosen value) onDistrictChoosen,
+    required TResult Function(OnGenderTypeFetched value) onGenderTypeFetched,
+    required TResult Function(OnRegionFetched value) onRegionFetched,
+    required TResult Function(OnDistrictFetched value) onDistrictFetched,
+  }) {
+    return onDistrictFetched(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InitialState value)? initialState,
+    TResult Function(SuccessState value)? successState,
+    TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(LoadingState value)? LoadingState,
+    TResult Function(NameError value)? nameError,
+    TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(EmailError value)? emailError,
+    TResult Function(PoBoxError value)? poBoxError,
+    TResult Function(DobError value)? dobError,
+    TResult Function(GenderError value)? genderError,
+    TResult Function(ProfessionError value)? professionError,
+    TResult Function(AddressError value)? addressError,
+    TResult Function(RegionError value)? regionError,
+    TResult Function(DistrictError value)? districtError,
+    TResult Function(GenderTypeChoosen value)? onGenderTypeChoosen,
+    TResult Function(RegionChoosen value)? onRegionChoosen,
+    TResult Function(DistrictChoosen value)? onDistrictChoosen,
+    TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
+    TResult Function(OnRegionFetched value)? onRegionFetched,
+    TResult Function(OnDistrictFetched value)? onDistrictFetched,
+  }) {
+    return onDistrictFetched?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialState value)? initialState,
+    TResult Function(SuccessState value)? successState,
+    TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(LoadingState value)? LoadingState,
+    TResult Function(NameError value)? nameError,
+    TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(EmailError value)? emailError,
+    TResult Function(PoBoxError value)? poBoxError,
+    TResult Function(DobError value)? dobError,
+    TResult Function(GenderError value)? genderError,
+    TResult Function(ProfessionError value)? professionError,
+    TResult Function(AddressError value)? addressError,
+    TResult Function(RegionError value)? regionError,
+    TResult Function(DistrictError value)? districtError,
+    TResult Function(GenderTypeChoosen value)? onGenderTypeChoosen,
+    TResult Function(RegionChoosen value)? onRegionChoosen,
+    TResult Function(DistrictChoosen value)? onDistrictChoosen,
+    TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
+    TResult Function(OnRegionFetched value)? onRegionFetched,
+    TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    required TResult orElse(),
+  }) {
+    if (onDistrictFetched != null) {
+      return onDistrictFetched(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class OnDistrictFetched implements DetailsState {
+  const factory OnDistrictFetched(final String genderType) =
+      _$OnDistrictFetched;
+
+  String get genderType;
+  @JsonKey(ignore: true)
+  _$$OnDistrictFetchedCopyWith<_$OnDistrictFetched> get copyWith =>
       throw _privateConstructorUsedError;
 }

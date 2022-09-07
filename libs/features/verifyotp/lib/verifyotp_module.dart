@@ -12,6 +12,7 @@ import 'package:verifyotp/verifyotp/view_model/verifyotp_viewmodel.dart';
 class VerifyOtpModule {
   static const moduleIdentifier = 'VerifyOtpModule';
 
+
   static void registerDependencies() {
     ModuleResolver.registerResolver(
       moduleIdentifier,

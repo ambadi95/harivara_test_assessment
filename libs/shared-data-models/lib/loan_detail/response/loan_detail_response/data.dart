@@ -18,6 +18,9 @@ class Data extends Equatable {
   final String? repaymentFee;
   final String? repaymentType;
   final String? totalAmountToBeRepaid;
+  final String? brand;
+  final String? modelNumber;
+  final int? deviceId;
 
   const Data({
     this.dailyRepaymentAmount,
@@ -33,6 +36,9 @@ class Data extends Equatable {
     this.repaymentFee,
     this.repaymentType,
     this.totalAmountToBeRepaid,
+    this.brand,
+    this.modelNumber,
+    this.deviceId,
   });
 
   factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
@@ -53,6 +59,9 @@ class Data extends Equatable {
     String? repaymentFee,
     String? repaymentType,
     String? totalAmountToBeRepaid,
+    String? brand,
+    String? modelNumber,
+    int? deviceId,
   }) {
     return Data(
       dailyRepaymentAmount: dailyRepaymentAmount ?? this.dailyRepaymentAmount,
@@ -69,6 +78,9 @@ class Data extends Equatable {
       repaymentType: repaymentType ?? this.repaymentType,
       totalAmountToBeRepaid:
           totalAmountToBeRepaid ?? this.totalAmountToBeRepaid,
+        brand:brand??this.brand,
+        modelNumber:modelNumber??this.modelNumber,
+      deviceId:deviceId??this.deviceId,
     );
   }
 
@@ -91,6 +103,10 @@ class Data extends Equatable {
       repaymentFee,
       repaymentType,
       totalAmountToBeRepaid,
+      brand,
+      modelNumber,
+      deviceId
+
     ];
   }
 }

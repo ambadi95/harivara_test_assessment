@@ -2,7 +2,7 @@ import 'package:config/Colors.dart' as config_colors;
 import 'package:config/Colors.dart';
 import 'package:config/Styles.dart';
 import 'package:core/view/base_view.dart';
-import 'package:crayon_payment_customer/util/app_utils.dart';
+import 'package:widget_library/utils/app_utils.dart';
 import 'package:downpayment/downpayment_module.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -32,12 +32,14 @@ class PaymentsScreen extends StatefulWidget {
 
 class _PaymentsScreenState extends State<PaymentsScreen> {
   final String _identifier = 'payments-screen';
+  String paymentAmount = "";
 
   @override
   Widget build(BuildContext context) =>
       BaseView<PaymentsCoordinator, PaymentsState>(
           setupViewModel: (coordinator) async {
             coordinator.initialiseState(context);
+            paymentAmount = widget.paymentsScreenArgs.price;
           },
           builder: (context, state, coordinator) => CrayonPaymentScaffold(
                 appBarAttributes: CrayonPaymentAppBarAttributes(
@@ -78,7 +80,7 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
   Widget _createLoading(PaymentsStateReady state) {
     if (state.isLoading) {
       return Container(
-        color: Colors.black.withOpacity(0.4),
+        color: Colors.transparent,
         child: const CenteredCircularProgressBar(
             color: config_colors.PRIMARY_COLOR),
       );
@@ -99,7 +101,7 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
         SizedBox(
           height: AppUtils.appUtilsInstance.getPercentageSize(percentage: 10),
         ),
-        _dailyRepaymentWidget(),
+        _dailyRepaymentWidget(coordinator),
         SizedBox(
           height: AppUtils.appUtilsInstance.getPercentageSize(percentage: 15),
         ),
@@ -108,7 +110,7 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
     );
   }
 
-  _dailyRepaymentWidget() {
+  _dailyRepaymentWidget(PaymentsCoordinator coordinator) {
     return Container(
         height: 80,
         width: double.infinity,
@@ -137,7 +139,7 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
                 children: [
                   CrayonPaymentText(
                     key: Key('${_identifier}_daily_Repayment'),
-                    text: TextUIDataModel(widget.paymentsScreenArgs.title.tr,
+                    text: TextUIDataModel(widget.paymentsScreenArgs.title.tr.replaceAll("\n", ""),
                         styleVariant: CrayonPaymentTextStyleVariant.headline5,
                         color: VO_ResendTextColor,
                         fontWeight: FontWeight.w400),
@@ -148,7 +150,7 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
                   ),
                   CrayonPaymentText(
                     key: Key('${_identifier}_daily_repayment_price'),
-                    text: const TextUIDataModel('2,000 TZSHS',
+                    text: TextUIDataModel(paymentAmount,
                         styleVariant: CrayonPaymentTextStyleVariant.headline6,
                         color: SECONDARY_COLOR,
                         fontWeight: FontWeight.w600),
@@ -218,13 +220,11 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
         onTap: () async {
-          try {
-            await coordinator.paymentApi(
-              widget.paymentsScreenArgs.price,
-              "Airtel",
-            );
-            coordinator.navigateToPaymentSuccessBottomSheet();
-          } catch (e) {}
+          await coordinator.paymentApi(
+            "2000" /*widget.paymentsScreenArgs.price*/,
+            "Repayment",
+            context,
+          );
         },
         child: Container(
           width: double.infinity,
@@ -233,7 +233,7 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
               color: SU_button_color, borderRadius: BorderRadius.circular(8.0)),
           child: Center(
             child: Text(
-              'PP_PayNow'.tr + " " + widget.paymentsScreenArgs.price,
+              'PP_PayNow'.tr + " " + paymentAmount,
               style: SU_button_text_style,
             ),
           ),

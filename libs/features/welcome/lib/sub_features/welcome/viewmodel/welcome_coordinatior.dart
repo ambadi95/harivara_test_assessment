@@ -17,7 +17,7 @@ class WelcomeCoordinator extends BaseViewModel<WelcomeScreenState> {
     this._navigationHandler,
     this._welcomeUseCase,
   ) : super(const WelcomeScreenState(
-          currentLanguageCode: 'en',
+          currentLanguageCode: '',
         ));
 
   Future<void> getCurrentLocale() async {
@@ -31,7 +31,7 @@ class WelcomeCoordinator extends BaseViewModel<WelcomeScreenState> {
     );
   }
 
-  void setCurrentLocale(String currentLanguageCode) {
+  Future<void> setCurrentLocale(String currentLanguageCode) async{
     var currentLocale = Locale(currentLanguageCode);
     Get.updateLocale(currentLocale);
     Intl.defaultLocale = currentLocale.languageCode;

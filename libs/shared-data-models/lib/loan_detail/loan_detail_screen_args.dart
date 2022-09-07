@@ -4,7 +4,7 @@ import 'package:shared_data_models/loan_detail/response/loan_detail_response/loa
 import 'package:shared_data_models/passcode/passcode_verification_type.dart';
 
 class LoanDetailArgs {
- final  LoanDetailResponse loanDetailResponse;
+  final LoanDetailResponse loanDetailResponse;
 
   LoanDetailArgs(
     /*this.kycFieldType,*/

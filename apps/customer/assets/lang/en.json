@@ -2,26 +2,30 @@
   "OB_WelcomeTitle" : "Welcome to Y9",
   "OB_WelcomeSubTitle" : "Your Dream Digital Microfinance",
   "OB_WelcomeThirdTitle" : "y9bank.com",
-  "OB_SignIn" : "Sign-In",
-  "OB_SignUp" : "Sign-Up",
-  "OB_Lang" : "EN",
+  "OB_SignIn" : "Sign in",
+  "OB_SignUp" : "Sign up",
+  "OB_Lang" : "Weka Lugha",
   "OB_ni_bora" : "ni %{Bora|click}%",
 
 
-  "DO_Title": "Membership Options",
+  "DO_Title": "Membership\nOptions",
   "DO_Search": "Search by Name / Brand / price / storage / etc..",
+  "DO_Storage": " Storage",
 
 
-  "LS_Login" : "Sign-in to Y9",
+  "LS_Login" : "Sign in to Y9",
   "LS_Mobile" : "Mobile number",
   "LS_mobile_error_text" : "Invalid Mobile number",
   "LS_mobile_hint_text" : "Enter Mobile Number",
   "LS_Passcode" : "Passcode",
-  "LS_SignIn" : "Sign-In",
+  "LS_SignIn" : "Sign in",
+  "LS_Passcode_message" : "As this is your first Login to your Y9 App, \nwe will be doing an OTP verification after \nwhich you can set your personalised \nPasscodefor your Y9 App",
+
+
 
 
   "SU_title" : "Enter NIDA Number",
-  "SU_subtitle" : "By signing up to Y9, you here by agree to the \n%{Terms & Conditions|https://www.google.com}%.",
+  "SU_subtitle" : "By signing up to Y9, you hereby agree to\nthe %{Terms & Conditions|https://www.google.com}%.",
   "SU_ID_no_label" : "NIDA Number",
   "SU_mobile_no_label" : "Mobile Number",
   "SU_carrier_message" : "Carrier SMS charges may apply.",
@@ -61,10 +65,18 @@
   "DV_district_label" : "District",
   "DV_district_error_text" : "Invalid District",
   "DV_district_hint_text" : "Select District",
+  "DV_button_text" : "Continue",
+  "Save_Text": "Save",
+  "Y9_DEVICE_LOAN": "Y9 Device Loan",
+  "DAILY_EMI": "Daily Emi",
+  "MONTHLY_EMI": "Monthly Emi",
+
 
   "HS_GoodMorning": "Good Morning",
+  "HS_GoodAfternoon": "Good Afternoon",
+  "HS_GoodEvening": "Good Evening",
   "HS_YourBalance": "Your Balance",
-  "HS_AccountId": "Y9 Account Id",
+  "HS_AccountId": "Y9 Account ID",
   "HS_LoadWallet": "Load Wallet",
   "HS_SendMoney": "Send Money",
   "HS_CollectMoney": "Collect Money",
@@ -74,10 +86,8 @@
   "HS_ReferalCode": "Referal Code",
   "HS_Invite": "Invite",
 
-  "DV_button_text" : "Continue",
-
   "PC_create_passcode" : "Create new passcode",
-  "PC_passcode_message" : "This will be used to sign-in",
+  "PC_passcode_message" : "This will be used to sign in",
   "PC_re_enter_passcode" : "Re-enter new passcode",
   "PC_confirm_passcode" : "Confirm passcode",
   "PC_passcode_does_not_match" : "Passcode does not match.",
@@ -93,19 +103,16 @@
   "ES_view_membership" : "View Your Membership",
   "ES_agent_contact_text" : "Y9 agent will contact you shortly on your Membership",
   "ES_need_help_contact" : "Need Help Contact Us at +255 677-039-999",
-
+  "ES_choose_product_message" : "Thank you for choosing our product, we will get in touch with you soon",
+  "ES_done" : "Done",
 
   "WB_WelcomeBack": "Welcome back to Y9",
   "WB_EnterPassCode": "Enter Passcode",
+
   "AN_Title": "Agents Near by",
   "AN_Search": "Search by Region / District",
-  "AN_AgentName": "Y9 Agent id: ",
+  "AN_AgentName": "Y9 Agent ID: ",
   "AN_Call": "Call",
-
-
-
-
-
 
   "D0_JoiningFee": "Joining Fee (one off)",
   "D0_DailyFee": "Daily Fee",
@@ -128,7 +135,6 @@
   "DD_SelectDevice" : "Select Device",
   "DD_MembershipTerms" : "Membership Terms",
   "DD_MembershipBenefits" : "Y9 Membership Benefits",
-
   "DD_MemberBenefit1": "Loan to Finance your Smartphone Device",
   "DD_MemberBenefit2": "Customised Digital Platforms as per Customer needs",
   "DD_MemberBenefit3": "Access to Financial Services",
@@ -137,6 +143,7 @@
   "DD_MemberBenefit6": "Membership and Loyalty Benefits",
   "DD_MemberBenefit7": "Huge incentives for referrals of family and friends",
   "DD_MemberBenefit8": "Access to your Y9 Account",
+
   "VO_OtpVerification": "OTP Verification",
   "VO_otp_verification_description": "An OTP will be sent to your Mobile Number (ending with xxx{})",
   "VO_DidNotGetCode": "Didn't get a code?",
@@ -146,6 +153,7 @@
   "VO_Incorrect_OTP_Alert_Msg": "You have used all your attempts. Please sign up again.",
   "VO_resend_otp": "Resend in %s seconds.",
   "VO_verify_button": "Verify",
+
   "SP_ni": "ni",
   "SP_bora": " Bora",
   "SP_is": "is",
@@ -156,23 +164,13 @@
   "SU_update_passcode" : "Update Passcode",
   "SU_update_subtitle" : "You can Update the passcode here using OTP sent to your registered mobile number",
 
-
   "HS_Agent_Id" : "Y9 Agent ID",
   "HS_TotalOnBoarderCustomers" : "Total Onboarded\nCustomers",
   "HS_PendingCustomerRequests" : "Pending Customer\nRequest",
+  "HS_TotalCustomerBoarding" : "Total Customers \nOnboarded",
   "HS_Customer_OnBoarding" : "Customer Onboarding",
   "HS_Customer_DeviceSwap" : "Device swap",
   "HS_Customer_AgentSupport" : "Agent Support",
-
-
-  "TC_Title": "Y9’s Mobile App Terms of Use",
-  "TC_LastUpdated": "Last updated : 2 Aug, 2022",
-  "TC_Description": "The www.y9bank.com website and Y9 Customer App mobile application (“App”) are owned and operated by Y9 Microfinance Tanzania Limited (“Y9”) a company duly incorporated under the provisions of the Companies Act, 2002 and The Banking and Financial Institutions Act 2006, and having its registered offices at P.O. BOX 20787 Dar es Salaam located at 180 Msasani Bay, Kinondoni Dar es Salaam. To access or use the App on any compatible device and avail Services you are required to accept these Terms and Conditions (“T&Cs”). By accepting these T&Cs, you signify that you have read, understood, and agree to be bound by these T&Cs and any other applicable law, whether or not you are a registered member of the App. As used herein, “User” shall mean anyone who uses or accesses the App on any computer, mobile phone, tablet, console, or other device (collectively, “Device”) and/or avails the Services. Your continued use of the App and/or availing of the Services shall be constituted as your acceptance to the T&Cs. If you do not agree with these T&Cs, please do not access and use the App or avail such Services. For the purposes of these T&Cs, “Y9” shall mean Y9, and/or third-party service providers engaged by Y9 to render certain Services on the App and ‘you’ and ‘your’ shall mean a User who meets the eligibility criteria set out below.",
-  "TC_TermsCondition_Subtitle":"1. TERMS AND CONDITIONS ",
-  "TC_Terms_Conditons_Desc": "1.1. These T&Cs replace all earlier terms and conditions (if any) except where we advise you otherwise. Your access and use of the App following any such change constitutes your agreement to follow and be bound by these T&Cs. For this reason, Y9 encourage you to review these T&Cs each time you access and use the App and/or avail Y9 Services.",
-  "TC_Purpose_title":"2. PURPOSE",
-  "TC_Purpose_Desc": "2.1. Y9 is a digital Microfinance provider aiming to help develop the lifestyle of the people of Tanzania and the African continent as a whole by providing financial services to the unbanked and under banked by creating access to digital education, digital healthcare, etc. by offering 4G smartphones on very fair terms to make it accessible to all citizens by enabling meaningful financial and digital inclusion.",
-
   "HS_CardList1Title" : "Y9 Device Loan",
   "HS_CardList2Title" : "Outstanding Due Amount",
   "HS_CardList3Title" : "Total Amount to be \nRepaid",
@@ -183,19 +181,34 @@
   "HS_explore" : "Explore",
   "HS_Daily_Repayment_amount" : "Outstanding Due\nAmount",
 
-  "ST_my_profile": "My Profile",
+  "TC_Title": "Y9’s Mobile App Terms of Use",
+  "TC_LastUpdated": "Last updated : 2 Aug, 2022",
+  "TC_Description": "The www.y9bank.com website and Y9 Customer App mobile application (“App”) are owned and operated by Y9 Microfinance Tanzania Limited (“Y9”) a company duly incorporated under the provisions of the Companies Act, 2002 and The Banking and Financial Institutions Act 2006, and having its registered offices at P.O. BOX 20787 Dar es Salaam located at 180 Msasani Bay, Kinondoni Dar es Salaam. To access or use the App on any compatible device and avail Services you are required to accept these Terms and Conditions (“T&Cs”). By accepting these T&Cs, you signify that you have read, understood, and agree to be bound by these T&Cs and any other applicable law, whether or not you are a registered member of the App. As used herein, “User” shall mean anyone who uses or accesses the App on any computer, mobile phone, tablet, console, or other device (collectively, “Device”) and/or avails the Services. Your continued use of the App and/or availing of the Services shall be constituted as your acceptance to the T&Cs. If you do not agree with these T&Cs, please do not access and use the App or avail such Services. For the purposes of these T&Cs, “Y9” shall mean Y9, and/or third-party service providers engaged by Y9 to render certain Services on the App and ‘you’ and ‘your’ shall mean a User who meets the eligibility criteria set out below.",
+  "TC_TermsCondition_Subtitle":"1. TERMS AND CONDITIONS ",
+  "TC_Terms_Conditons_Desc": "1.1. These T&Cs replace all earlier terms and conditions (if any) except where we advise you otherwise. Your access and use of the App following any such change constitutes your agreement to follow and be bound by these T&Cs. For this reason, Y9 encourage you to review these T&Cs each time you access and use the App and/or avail Y9 Services.",
+  "TC_Purpose_title":"2. PURPOSE",
+  "TC_Purpose_Desc": "2.1. Y9 is a digital Microfinance provider aiming to help develop the lifestyle of the people of Tanzania and the African continent as a whole by providing financial services to the unbanked and under banked by creating access to digital education, digital healthcare, etc. by offering 4G smartphones on very fair terms to make it accessible to all citizens by enabling meaningful financial and digital inclusion.",
 
+  "ST_my_profile": "My Profile",
   "ST_title" : "Settings",
   "ST_subTitle" : "Profile Management",
   "ST_view_profile" : "View Profile",
   "ST_update_passcode" : "Update Passcode",
-  "ST_App_Language" : "App Language",
+  "ST_App_Language" : "Set Language",
   "ST_sign_out" : "Sign Out",
-  "ST_support": "Support",
-  "ST_agents" : "Agents",
-  "ST_faq" : "Frequently Asked Queries",
+  "ST_support": "Call Customer Support",
+  "ST_agents" : "Agents Nearby",
+  "ST_faq" : "Frequently Asked Questions",
   "ST_term_condition" : "Terms & Conditions",
   "ST_call_support" : "Call Support",
+  "ST_contact_text" : "Need Help or If You Have Any Query \n Contact Us at +255 677-039-999",
+
+  "PP_Daily_Repayment_Title" : "Daily Repayment",
+  "PP_Airtel_Pay" : "Airtel Pay",
+  "PP_PayNow" : "Pay Now",
+  "PP_Wallets_Title" : "Wallets",
+
+  "FAQ_Title": "FAQ",
 
   "LD_Loan_Detail": "Loan Details",
   "LD_Loan_Detail_Amount": "Loan Amount",
@@ -214,16 +227,6 @@
 
   "Profile_Title": "Profile",
   "Profile_Sub_Title": "Your Personal details are shown as per your NIDA records",
-  "ST_contact_text" : "Need Help or If You Have Any Query \n Contact Us at +255 677-039-999",
-
-
-  "PP_Daily_Repayment_Title" : "Daily Repayment",
-  "PP_Airtel_Pay" : "Airtel Pay",
-  "PP_PayNow" : "Pay Now",
-  "PP_Wallets_Title" : "Wallets",
-
-
-  "FAQ_Title": "FAQ",
 
   "LR_paying_for" : "You are paying for",
   "LR_device_loan" : "Y9 Device Loan",
@@ -236,7 +239,65 @@
   "LR_payment_label" : "Payment of {} will be adjusted in total \nPayable amount",
   "LR_proceed" : "Proceed",
 
+  "CA_custom_amount" : "Pay Custom Amount",
 
+  "RP_success_message": "Passcode has been updated successfully",
+  "PR_message" : "You will be Signed out of the app, please use the new passcode to Sign-in again",
 
-  "CA_custom_amount" : "Pay Custom Amount"
+  "FORGET_PASSCODE": "Forget Passcode ?",
+  "RESET_NOW": "Reset Now",
+  "ERROR_MESSAGE" :  "Something went wrong,Please try again later!",
+  "faq_question_1": "How do I download the Y9 App?",
+  "faq_answer_1": "If Android\n· Launch Google Play Store.\n· Tap on Google Play and type Y9.\n· Select the Y9 application to download.\n· Tap on Install (for no-charge ).",
+  "faq_question_2": "What is Y9 Membership?",
+  "faq_answer_2": "Is a subscription that allows you to enjoy Y9 financial services and the current service are device financing., in which you get a loan to buy a phone on credit with an initial down payment and equal daily repayments for a period of one year.",
+  "faq_question_3": "How can I select which Device I purchase?",
+  "faq_answer_3": "You can login into the Y9 customer app, click on ‘'Select Your Membership'/'View Your Membership’ option and from there you will be able to access the ‘Device Details view’ and change your interest selection",
+  "faq_question_4": "When will I be getting the other Membership benefits listed during the Registration?",
+  "faq_answer_4": "Once the device financing process kick starts, the rest of the Membership benefits will be rolled out in a phased manner. Keep looking for the announcements from Y9.",
+  "faq_question_5": "What are the other Membership benefits?",
+  "faq_answer_5": "1. Here let's show all the benefits which we display under the 'Membership Benefits' screen during Device option selection\n· Incentives for referrals\n· Y9 financial services\n· Loyalty benefits\n· Instant loans",
+  "faq_question_6": "How do I get Incentive for referrals?",
+  "faq_answer_6": "Use your Y9 membership ID to refer the customers using the Y9 App.",
+  "faq_question_7": "How do I get Y9 financial services?",
+  "faq_answer_7": "To be available soon",
+  "faq_question_8": "How do I get loyalty benefits?",
+  "faq_answer_8": "Keep transacting using the Y9 App.",
+  "faq_question_9": "How do I get Instant loans?",
+  "faq_answer_9": "Keep transacting using the Y9 App to enjoy better financial services",
+  "faq_question_10": "How much do I pay for the device?",
+  "faq_answer_10": "Click on 'Loan Details' option from your Y9 App HomePage screen, you will be able to see your Loan Details",
+  "faq_question_11": "where do I go to get my phone?",
+  "faq_answer_11": "Go to the nearest shop for the operator you use for calls/mobile money and you will be assisted by an agent who is Y9 registered Agent.",
+  "faq_question_12": "How do I find an Agent?",
+  "faq_answer_12": "Using ‘Agents Near by' option you can find an Agent",
+  "faq_question_13": "What is an E-book?",
+  "faq_answer_13": "Is a book publication made available in digital form, consisting of text, images, or both, readable on the flat panel display electronic device. This includes academic and fiction books",
+  "faq_question_14": "I am unable to make a payment what do I do?",
+  "faq_answer_14": "Go to the nearest Agent and you will be assisted further to do the Payment transactions",
+  "faq_question_15": "How do I pay early?",
+  "faq_answer_15": "Click on 'Loan Repayment' option from your Y9 App Home Page screen, and you can choose from the different Payment options.",
+  "faq_question_16": "What happens if I change my mind about taking out Device finance after I have device",
+  "faq_answer_16": "You will have to pay the full amount of the device except the interest rate. (This can be done up to 3 days after taking out a credit to buy the device)",
+  "faq_question_17": "What is Device Financing?",
+  "faq_answer_17": "Y9 device financing is a service that provides devices on credit to customers. That’s to say you get a loan to buy a phone on credit with an initial down payment and equal daily repayments for a period of one year.",
+  "faq_question_18": "What are the devices available from Y9 Device financing?",
+  "faq_answer_18": "Devices available currently is Samsung A03core",
+  "faq_question_19": "How do I unlock my phone?",
+  "faq_answer_19": "By going to your nearest Y9 registered Agent and make your pending Payments",
+  "faq_question_20": "What does the total value of the loan include?",
+  "faq_answer_20": "The loan is made up of principal, interest, and fees (to cover, for example, insurance costs).",
+  "faq_question_21": "If I have a previous default with Y9 Device Financing, can I get a new device?",
+  "faq_answer_21": "Each customer will be individually accessed for future credit.",
+  "faq_question_22": "Where can I register for device financing?",
+  "faq_answer_22": "Go to your nearest Y9 registered agent with your National ID Number and active mobile number",
+  "faq_question_23": "How do I find my nearest Y9 registered agent",
+  "faq_answer_23": "Using ‘Agents Near by' option in the app you can find an Agent",
+  "faq_question_24": "Is their warranty for the Devices?",
+  "faq_answer_24": "Yes, there is 12 months Warranty for the Devices – This depends on the manufacturer of the Device for Samsung it is 24 months.",
+  "faq_question_25": "What if I forget to make my payment?",
+  "faq_answer_25": "Day-1 of non-payment-Send Reminder\nDay-2 of non-payment-Send Reminder\nDay-3 of non-payment-Send Reminder\nDay-4 of non-payment- Send Reminder Initiate Auto Debit Request\nDay-5 of non-payment- Send Reminder Stop Outgoing calls\nDay-6 of non-payment-Send Reminder Block Mobile Data (Block Access to Mobile APP except Y9 APPs & Mobile Money APP by Telco)\nDay-7 of non-payment- Send Reminder Phone Locking & Initiate Auto Debit Request\nDay-8 of non-payment- Send Reminder Add to Defaulters list & Initiate Auto Debit Request\nDay-9 of non-payment - Send Reminder Default and Plan for recovery\nDay 10 of non-plan- Send Reminder Initiate Auto Debit Request and Lock the Phone Completely\nYour device will be fully locked on the Tenth day.",
+  "faq_question_26": "How do I complete my payment when there is an unfortunate case of phone theft/lost?",
+  "faq_answer_26": "In a situation where our customer phone is stolen or lost. The customer is expected to report to the nearest shop for the operator you use for calls/mobile with the following.\n· Police report\n· Valid National Identification number.\nConfirm details to agent including biometric check\nAnd if approved by insurance company will be issued a replacement device immediately",
+  "FAQ_Title_2": "Frequently Asked Questions"
 }

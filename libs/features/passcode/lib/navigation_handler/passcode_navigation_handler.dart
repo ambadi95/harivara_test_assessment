@@ -9,6 +9,8 @@ import 'package:home/home/view/home_screen.dart';
 import 'package:shared_data_models/kyc/kyc_data_model.dart';
 import 'package:shared_data_models/kyc/kyc_type.dart';
 import 'package:welcome/sub_features/enrollment_success/view/enrollment_success_screen.dart';
+import 'package:welcome/sub_features/welcome/data_model/welcome_model.dart';
+import 'package:welcome/sub_features/welcome/view/welcome_screen.dart';
 import 'package:widget_library/helpers/error/helper/error_helper.dart';
 import 'package:widget_library/icons/crayon_payment_bottom_sheet_icon.dart';
 import 'package:get/get.dart';
@@ -26,6 +28,9 @@ class PasscodeNavigationHandler with ErrorHandler {
       const NavigationType.replace(),
     );
   }
+  Future<void> goBack() async {
+    _navigationManager.goBack();
+  }
 
   Future<void> navigateToCustomerEnrollmentScreen(
       String destinationPath, bool isEnrolled, UserType userType) async {
@@ -33,6 +38,13 @@ class PasscodeNavigationHandler with ErrorHandler {
     _navigationManager.navigateTo(
         destinationPath, const NavigationType.replace(),
         arguments: argument);
+  }
+
+  Future<void> navigateToCustomerHomeScreen(String destinationPath) async {
+    var arguments = HomeScreenArgs(isAgent: false, userType: UserType.Customer);
+    _navigationManager.navigateTo(
+        destinationPath, const NavigationType.replace(),
+        arguments: arguments);
   }
 
   Future<void> navigateToAgentHomeScreen(String destinationPath) async {
@@ -63,15 +75,22 @@ class PasscodeNavigationHandler with ErrorHandler {
     );
   }
 
+  Future<void> signOut(UserType userType) async {
+    var arguments = WelcomeScreenArgs('', '', userType, false);
+    _navigationManager.navigateTo(
+        CrayonWelcomScreen.viewPath, const NavigationType.replace(),
+        arguments: arguments);
+  }
+
   Future<void> navigateToResetPasscodeBottomSheet(
-      String message, String buttonLabel, String description) async {
+      String message, String buttonLabel, String description, UserType userType) async {
     final CrayonPaymentBottomSheetIcon icon =
         CrayonPaymentBottomSheetSuccessIcon();
     final CrayonPaymentBottomSheetState infoState =
         CrayonPaymentBottomSheetState.agentEnrollment(
             buttonOptions: [
               ButtonOptions(
-                  Black, buttonLabel, () => navigateToAgentHome(), false)
+                  Black, buttonLabel, () {  signOut(userType) ;}, false)
             ],
             disableCloseButton: true,
             bottomSheetIcon: icon,
@@ -122,6 +141,7 @@ class PasscodeNavigationHandler with ErrorHandler {
       "",
       "",
       [KYCDataModel(title: "", isSelected: false)],
+      false
     );
     await _navigationManager.navigateTo(
         KycCreditMainScreen.viewPath, const NavigationType.push(),
