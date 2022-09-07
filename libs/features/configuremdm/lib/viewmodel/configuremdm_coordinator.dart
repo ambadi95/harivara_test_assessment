@@ -26,4 +26,8 @@ class ConfigureMdmCoordinator
   void configureMdmSuccessFulScreen(){
     _navigationHandler.navigateToConfigureMdmSuccessScreen();
   }
+
+  void successFulScreen(){
+    _navigationHandler.navigateToSuccessScreen();
+  }
 }

@@ -12,6 +12,8 @@ import 'package:widget_library/page_header/text_ui_data_model.dart';
 import 'package:widget_library/static_text/crayon_payment_text.dart';
 import 'package:widget_library/utils/app_utils.dart';
 import '../configuremdm_module.dart';
+import '../state/configuremdm_state.dart';
+import '../viewmodel/configuremdm_coordinator.dart';
 
 class ConfigureMdmSuccessScreen extends StatefulWidget {
   static const viewPath =
@@ -28,7 +30,7 @@ class _SuccessScreenState extends State<ConfigureMdmSuccessScreen> {
 
   @override
   Widget build(BuildContext context) =>
-      BaseView<ScanQRCodeCoordinator, ScanQRCodeState>(
+      BaseView<ConfigureMdmCoordinator, ConfigureMdmState>(
         setupViewModel: (coordinator) async { },
         builder: (context, state, coordinator) => SafeArea(
           child: Scaffold(
@@ -37,7 +39,7 @@ class _SuccessScreenState extends State<ConfigureMdmSuccessScreen> {
         ),
       );
 
-  Widget _buildMainUI(ScanQRCodeCoordinator coordinator){
+  Widget _buildMainUI(ConfigureMdmCoordinator coordinator){
     return Padding(
       padding: const EdgeInsets.all(16),
       child: Column(
@@ -130,10 +132,10 @@ class _SuccessScreenState extends State<ConfigureMdmSuccessScreen> {
 
 
 
-  Widget _buildAgentHomeButton(ScanQRCodeCoordinator coordinator) {
+  Widget _buildAgentHomeButton(ConfigureMdmCoordinator coordinator) {
     return InkWell(
       onTap: () {
-        coordinator.goBackToAgentHomeScreen();
+        coordinator.successFulScreen();
       },
       child: Container(
         width: double.infinity,

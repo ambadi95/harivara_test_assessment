@@ -1,3 +1,4 @@
+import 'package:configuremdm/view/configuremdm_screen.dart';
 import 'package:core/navigation/i_route_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:scanqrcode/view/successful_screen.dart';
@@ -14,6 +15,12 @@ class ScanQRCodeRouteManager extends IRouteManager {
        return ScanQrCodeScreen (
          deviceId: arguments,
        );
+
+      case ConfigureMdmScreen.viewPath:
+        var arguments = settings.arguments as String;
+        return const ConfigureMdmScreen(
+         // screenScreenArgs : arguments,
+        );
 
         case SuccessScreen.viewPath:
           var arguments = settings.arguments as String;

@@ -68,6 +68,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
   final TextEditingController poBox = TextEditingController();
   final TextEditingController region = TextEditingController();
   final TextEditingController district = TextEditingController();
+  final TextEditingController nidaNumber = TextEditingController();
 
   final FocusNode genderFocusNode = FocusNode();
 
@@ -126,6 +127,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
               {_listenToStateChanges(context, newState)},
           setupViewModel: (coordinator) async {
             await coordinator.getMobileNumber();
+            await coordinator.getNIDANumber();
             List<Datum> regions = await coordinator.getRegion(widget.userType);
             genderTypeDropDown = getDropDownData(coordinator.genderType);
             regionDropDown = getRegionDropDownData(regions);
@@ -258,6 +260,15 @@ class _DetailsScreenState extends State<DetailsScreen> {
           const SizedBox(
             height: 39,
           ),
+          _buildLabelTextField(
+              'nidaNumber',
+              'DV_nida_no_label'.tr,
+              nidaNumber,
+              TextInputType.number,
+              coordinator,
+              '',
+              'LS_nida_hint_text',
+              false),
           _buildLabelTextField(
               'name',
               'DV_name_label'.tr,
@@ -818,6 +829,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
         getMobileNumber: (value) {
           mobileNumber.text = value;
         },
+        getNIDANumber: (value) {
+          nidaNumber.text = value;
+        },
         onGenderTypeChoosen: (value) {
           _genderType = value;
         },
@@ -858,6 +872,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
         _genderType.toString(),
         profession.text,
         mobileNumber.text,
+        nidaNumber.text,
         emailId.text,
         address.text,
         poBox.text,

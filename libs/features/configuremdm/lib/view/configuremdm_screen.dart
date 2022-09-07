@@ -41,9 +41,9 @@ class _ConfigureMdmScreenState extends State<ConfigureMdmScreen> {
           builder: (context, state, coordinator) => CrayonPaymentScaffold(
                 appBarAttributes: CrayonPaymentAppBarAttributes(
                   key: const Key('CardDetailsScreen_AppBarBackButton'),
-                  // left: [
-                  //   const CrayonPaymentAppBarButtonType.back(),
-                  // ],
+                  left: [
+                    const CrayonPaymentAppBarButtonType.back(),
+                  ],
                 ),
                 // bottomNavigationBar:
                 //     _buildContinueButton(context, coordinator, state),
