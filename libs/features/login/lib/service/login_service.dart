@@ -8,6 +8,10 @@ abstract class ILoginService {
   static const loginIdentifier = 'login';
   static const loginAgentIdentifier = 'loginAgent';
   static const agentDetailIdentifier = 'getAgent';
+  static const checkPasscodeIdentifier = 'checkPasscode';
+  static const customerDetailsIdentifier = 'getCustomerDetails';
+
+
 
   Future<StandardRequest> jwttoken(
     Map<String, dynamic> requestData,
@@ -21,6 +25,13 @@ abstract class ILoginService {
   );
 
   Future<StandardRequest> getAgentDetails(String agentId, String mobileNumber);
+
+  Future<StandardRequest> checkPasscode(String mobileNumber);
+
+  Future<StandardRequest> getCustomerDetailByMobileNo(
+      String phoneNo,
+      );
+
 }
 
 class LoginService implements ILoginService {
@@ -69,6 +80,29 @@ class LoginService implements ILoginService {
     request.requestType = RequestType.POST;
     request.endpoint = 'agent-login';
     request.jsonBody = json.encode(requestData);
+    return request;
+  }
+
+  @override
+  Future<StandardRequest> checkPasscode(
+      String mobileNumber
+      ) async {
+    var request = StandardRequest();
+    request.requestType = RequestType.GET;
+    request.endpoint = 'check/passcode/$mobileNumber';
+    return request;
+  }
+
+  @override
+  Future<StandardRequest> getCustomerDetailByMobileNo(
+      String phoneNo,
+      ) async {
+    var request = StandardRequest();
+    request.requestType = RequestType.GET;
+    request.endpoint =  'customer-details-by-mobile/$phoneNo';
+    request.customHeaders = {
+      'Content-Type': 'application/json',
+    };
     return request;
   }
 }

@@ -93,6 +93,27 @@ class VerifyOtpNavigationHandler with ErrorHandler {
     );
   }
 
+  Future<void> openForNewPasscodeAgentCustomer(UserType userType) async {
+    var arguments = PasscodeScreenArgs(
+      'PC_create_passcode',
+      'PC_passcode_message',
+      'homemodule/CrayonHomeScreen',
+      false,
+      3,
+      PassCodeVerificationType.create,
+      false,
+      '',
+      userType,
+    );
+
+    _navigationManager.navigateTo(
+      CrayonPasscodeScreen.viewPath,
+      NavigationType.push(),
+      preventDuplicates: false,
+      arguments: arguments,
+    );
+  }
+
   Future<void> openForUpdateNewPasscode(UserType userType) async {
     var arguments = PasscodeScreenArgs(
       'PC_create_passcode',

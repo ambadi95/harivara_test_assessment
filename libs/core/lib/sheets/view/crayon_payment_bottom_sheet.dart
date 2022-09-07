@@ -49,7 +49,7 @@ class CrayonPaymentBottomSheet extends StatelessWidget {
       key: const Key('bottomSheet'),
       decoration: _buildBoxDecoration,
       child: state.maybeWhen(
-        infoState: (_, __, ___, additionalText, ____, _____, ______) =>
+        infoState: (_,isSvg, __, ___, additionalText, ____, _____, ______) =>
             BottomSheetInfoColumn(
           coordinator,
           state as SheetInfo,

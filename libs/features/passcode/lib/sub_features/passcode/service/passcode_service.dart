@@ -89,7 +89,7 @@ class PasscodeService implements IPasscodeService {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
     request.endpoint = 'customer-login';
-    request.jsonBody = json.encode(requestData);
+    request.jsonBody =  json.encode({"mobileNumber": requestData["mobileNumber"], "passcode": requestData["passcode"]});
     return request;
   }
 

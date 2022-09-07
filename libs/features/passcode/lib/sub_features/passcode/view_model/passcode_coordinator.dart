@@ -129,6 +129,7 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
         case PassCodeVerificationType.customerSign:
         // TODO: Handle this case.
           break;
+
         case PassCodeVerificationType.agentCustomerPasscode:
         // TODO: Handle this case.
           break;
@@ -222,8 +223,12 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
             await _passcodeUseCase.login(newPasscode, (p0) => null);
             if (loginResponse?.status == true) {
               state = currentState.copyWith(isLoading: false);
-              _navigationHandler.navigateToCustomerEnrollmentScreen(
-                  destinationPath, false, UserType.Customer);
+              if(destinationPath.contains('homemodule/CrayonHomeScreen')){
+                _navigationHandler.navigateToCustomerHomeScreen(destinationPath);
+              }else{
+                _navigationHandler.navigateToCustomerEnrollmentScreen(
+                    destinationPath, false, UserType.Customer);
+              }
             }
           }
         } else if (userType == UserType.Agent) {

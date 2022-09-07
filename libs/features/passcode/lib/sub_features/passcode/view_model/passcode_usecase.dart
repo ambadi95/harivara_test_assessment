@@ -1,4 +1,5 @@
 import 'package:config/Config.dart';
+import 'package:core/logging/logger.dart';
 import 'package:network_manager/auth/auth_manager.dart';
 import 'package:passcode/sub_features/passcode/service/passcode_service.dart';
 import 'package:passcode/sub_features/passcode/view_model/passcode_viewmodel.dart';
@@ -147,6 +148,7 @@ class PasscodeUseCase extends BaseDataProvider {
     String mobileNumber = await getNumber();
     SignInRequest signInRequest = SignInRequest(
         mobileNumber: mobileNumber.replaceAll(" ", ''), passcode: passcode);
+    CrayonPaymentLogger.logInfo(signInRequest.toString());
     return await executeApiRequest<CustomerSignInResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,

@@ -8,5 +8,6 @@ enum OtpVerificationType {
   customerSign,
   updatePasscodeAgent,
   customerSignUpAgent,
-  resetPasscodeCustomer
+  resetPasscodeCustomer,
+  customerPasscodeSet
 }

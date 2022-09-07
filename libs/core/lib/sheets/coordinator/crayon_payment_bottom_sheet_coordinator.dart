@@ -29,7 +29,7 @@ class CrayonPaymentBottomSheetCoordinator
           await _executeCallback(immediateCallback);
         }
       },
-      infoState: (_, __, ___, additionalText, ____, autoCloseAfter, _____) {
+      infoState: (_,isSvg, __, ___, additionalText, ____, autoCloseAfter, _____) {
         state = sheetState;
         if (autoCloseAfter != null) {
           _startTimerToClose(autoCloseAfter);

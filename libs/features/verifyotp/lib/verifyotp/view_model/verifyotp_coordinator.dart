@@ -263,6 +263,27 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
       } else if (otpScreenArgs.otpVerificationType ==
           OtpVerificationType.updatePasscodeAgent) {
         _navigationHandler.openForUpdateNewPasscodeAgent(userType);
+      } else if(otpScreenArgs.otpVerificationType == OtpVerificationType.customerPasscodeSet){
+
+          state = currentState.copyWith(isLoading: true);
+          var response = await _verifyOtpUseCase.otpVerify(otpScreenArgs.refId,
+              enterOtp, otpScreenArgs.userType,event, (p0) => null);
+          if (response!.data!.status == "success") {
+            state = currentState.copyWith(isLoading: false);
+            _navigationHandler.openForNewPasscodeAgentCustomer(userType);
+
+          } else {
+            otpController.text = "";
+            state = currentState.copyWith(isLoading: false);
+            // state =  currentState.copyWith(attemptsRemainFlag: true);
+            if (attempts > 1) {
+              state = currentState.copyWith(attemptsRemain: attempts - 1);
+            } else {
+              state = currentState.copyWith(attemptsRemain: 3);
+              _showAlertForOTPAttempts();
+            }
+          }
+
       }
     }  catch (e) {
       state = currentState.copyWith(isLoading: false);
