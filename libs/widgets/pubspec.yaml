@@ -50,6 +50,9 @@ dependencies:
   login:
    path : ../features/login/
 
+  welcome:
+    path: ../features/welcome
+
 
 
 dev_dependencies:

@@ -4,7 +4,7 @@
   "OB_WelcomeThirdTitle" : "y9bank.com",
   "OB_SignIn" : "Sign in",
   "OB_SignUp" : "Sign up",
-  "OB_Lang" : "Set Language",
+  "OB_Lang" : "Weka Lugha",
   "OB_ni_bora" : "ni %{Bora|click}%",
 
 
@@ -272,6 +272,7 @@
   "PC_button_close" : "Close",
   "FORGET_PASSCODE": "Forget Passcode ?",
   "RESET_NOW": "Reset Now",
-  "ERROR_MESSAGE" :  "Something went wrong,Please try again later!"
+  "ERROR_MESSAGE" :  "Something went wrong,Please try again later!",
+  "FAQ_Title_2": "Maswali Yanayoulizwa Mara kwa Mara"
 
 }

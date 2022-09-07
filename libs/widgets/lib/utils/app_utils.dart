@@ -11,7 +11,9 @@ import 'package:intl/intl.dart';
 import 'package:login/view/login_screen.dart';
 import 'package:task_manager/cache_task_resolver.dart';
 import 'package:task_manager/task.dart';
+import 'package:welcome/sub_features/welcome/view/welcome_screen.dart';
 import 'package:widget_library/bottom_sheet/alert_bottom_sheet.dart';
+import 'package:welcome/sub_features/welcome/data_model/welcome_model.dart';
 
 class AppUtils {
   static final AppUtils _appUtils = AppUtils();
@@ -64,8 +66,8 @@ class AppUtils {
     }
     if (_navigationManager != null) {
       await _navigationManager!.navigateTo(
-          Login.viewPath, const NavigationType.replace(),
-          arguments: this.userType ?? UserType.Customer);
+          CrayonWelcomScreen.viewPath, const NavigationType.replace(),
+          arguments:WelcomeScreenArgs('', '', this.userType ?? UserType.Customer, false));
     }
   }
 
