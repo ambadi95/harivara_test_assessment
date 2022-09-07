@@ -16,7 +16,6 @@ import 'package:widget_library/helpers/error/helper/error_helper.dart';
 import 'package:config/Config.dart';
 import 'package:widget_library/icons/crayon_payment_bottom_sheet_icon.dart';
 
-
 class LoginNavigationHandler with ErrorHandler {
   final NavigationManager _navigationManager;
 
@@ -46,7 +45,10 @@ class LoginNavigationHandler with ErrorHandler {
         6,
         mobileNumber,
         false,
-        userType,userType==UserType.Agent?OTPEvent.Agent_Login.toShortString():OTPEvent.Customer_Login.toShortString());
+        userType,
+        userType == UserType.Agent
+            ? OTPEvent.Agent_Login.toShortString()
+            : OTPEvent.Customer_Login.toShortString());
 
     _navigationManager.navigateTo(
       CrayonVerifyOtpScreen.viewPath,
@@ -61,18 +63,18 @@ class LoginNavigationHandler with ErrorHandler {
   Future<void> navigateToOtpScreenForAgent(
       UserType userType, String mobileNumber, String agentId) async {
     var arguments = OtpScreenArgs(
-      'OTP Verification',
-      'VO_otp_verification_description',
-      'welcomeModule/welcomeback',
-      false,
-      2,
-      OtpVerificationType.agentSignIn,
-      agentId,
-      6,
-      mobileNumber,
-      false,
-      userType, OTPEvent.Agent_Login.toShortString()
-    );
+        'OTP Verification',
+        'VO_otp_verification_description',
+        'welcomeModule/welcomeback',
+        false,
+        2,
+        OtpVerificationType.agentSignIn,
+        agentId,
+        6,
+        mobileNumber,
+        false,
+        userType,
+        OTPEvent.Agent_Login.toShortString());
 
     _navigationManager.navigateTo(
       CrayonVerifyOtpScreen.viewPath,

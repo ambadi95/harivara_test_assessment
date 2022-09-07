@@ -225,10 +225,10 @@ class _LoginState extends State<Login> {
       textColor: White,
       textStyleVariant: CrayonPaymentTextStyleVariant.headline5,
       onPressed: () {
-        coordinator.isMobileNumberValid(mobileNumber.text);
-        coordinator.isAgentIdValid(agentIdController.text);
-        if (isBtnEnabled) {
-          // coordinator.navigateToWelcomeBackScreen(userType, mobileNumber.text);
+         if (isBtnEnabled) {
+           coordinator.isMobileNumberValid(mobileNumber.text);
+           coordinator.isAgentIdValid(agentIdController.text);
+           // coordinator.navigateToWelcomeBackScreen(userType, mobileNumber.text);
           if(havePasscode){
             coordinator.login(mobileNumber.text, passcodeController.text,
                 widget.userType, agentIdController.text);
@@ -236,7 +236,7 @@ class _LoginState extends State<Login> {
             coordinator.checkPasscode(mobileNumber.text,widget.userType,);
           }
 
-        }
+          }
       },
     );
   }

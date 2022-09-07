@@ -59,8 +59,8 @@ class KycCreditUseCase extends BaseDataProvider {
           try {
             checkResponse = KycCheckResponse.fromJson(responseData);
           } catch (e) {
-            checkResponse = const KycCheckResponse(
-                status: false, code: "400", message: "Something went wrong");
+            checkResponse =  KycCheckResponse(
+                status: false, code: "400", message: e.toString()/*"Something went wrong"*/);
           }
           return checkResponse;
         });
@@ -84,8 +84,8 @@ class KycCreditUseCase extends BaseDataProvider {
           try {
             checkResponse = KycCheckResponse.fromJson(responseData);
           } catch (e) {
-            checkResponse = const KycCheckResponse(
-                status: false, code: "400", message: "Something went wrong");
+            checkResponse =  KycCheckResponse(
+                status: false, code: "400", message: e.toString()/*"Something went wrong"*/);
           }
           return checkResponse;
         });

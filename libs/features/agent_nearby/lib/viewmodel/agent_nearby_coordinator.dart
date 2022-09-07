@@ -40,9 +40,13 @@ class AgentNearbyCoordinator extends AnalyticsStateNotifier<AgentNearByState> {
   }
 
   distance(double lat, double long) {
-    double distance = _agentNearbyUseCase.calculateDistance(
-        _currentLocation.latitude, _currentLocation.longitude, lat, long);
-    return distance;
+    if(_currentLocation !=null) {
+      double distance = _agentNearbyUseCase.calculateDistance(
+          _currentLocation.latitude, _currentLocation.longitude, lat, long);
+      return distance;
+    }else{
+      return 0.0;
+    }
   }
 
   void navigateToMap(double lat, double lng) async {

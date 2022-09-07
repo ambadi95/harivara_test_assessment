@@ -1,5 +1,3 @@
-
-
 const OB_AppLogo = 'assets/images/logo.png';
 const OB_Background = 'assets/images/bgLogo.png';
 
@@ -50,15 +48,24 @@ const ST_scan_icon = 'assets/images/scan_image.svg';
 
 const y9TermsCondition = 'https://y9bank.com/term-of-services/';
 
-
 // USERTYPE
 enum UserType { Customer, Agent, AgentCustomer }
-enum OTPEvent{Customer_Registration,Reset_Passcode,Agent_Login,Update_Passcode,Agent_Registration,Customer_Login}
+
+enum OTPEvent {
+  Customer_Registration,
+  Reset_Passcode,
+  Agent_Login,
+  Update_Passcode,
+  Agent_Registration,
+  Customer_Login
+}
+
 extension toString on OTPEvent {
   String toShortString() {
     return this.toString().split('.').last.replaceAll("_", " ");
   }
 }
+
 //DEV CUSTOMER INSTANCE
 const customerEndpoint = 'https://y9-dev-capi.testmaya.com/customers/v1/';
 
@@ -66,7 +73,8 @@ const customerEndpoint = 'https://y9-dev-capi.testmaya.com/customers/v1/';
 const LD_loan_detail = 'assets/images/loan_detail.png';
 const LD_loan_detail_banner_image =
     'assets/images/loan_detail_banner_image.png';
-const LD_loan_detail_banner_image2 = 'assets/images/loan_detail_banner_image_2.png';
+const LD_loan_detail_banner_image2 =
+    'assets/images/loan_detail_banner_image_2.png';
 
 enum WorkFlowStatus {
   Initiated,

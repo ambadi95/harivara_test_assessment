@@ -67,6 +67,10 @@ class SignupService implements ISignupService {
     String nindaNumber,
     String phoneNo,
   ) async {
+    print(json.encode({
+      'nidaNo': nindaNumber,
+      'mobileNo': '+255' + phoneNo,
+    }));
     var request = StandardRequest();
     request.requestType = RequestType.POST;
     request.endpoint = 'register-customer';

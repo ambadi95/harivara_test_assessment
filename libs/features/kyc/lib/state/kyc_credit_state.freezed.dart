@@ -19,24 +19,29 @@ mixin _$KycCreditState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
-    required TResult Function(BuildContext context, String error,
-            bool isKycError, bool isCreditCheckError, bool isLoading)
+    required TResult Function(
+            BuildContext context,
+            String error,
+            bool isKycCheckSuccess,
+            bool isKycError,
+            bool isCreditCheckError,
+            bool isLoading)
         ready,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialState,
-    TResult Function(BuildContext context, String error, bool isKycError,
-            bool isCreditCheckError, bool isLoading)?
+    TResult Function(BuildContext context, String error, bool isKycCheckSuccess,
+            bool isKycError, bool isCreditCheckError, bool isLoading)?
         ready,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
-    TResult Function(BuildContext context, String error, bool isKycError,
-            bool isCreditCheckError, bool isLoading)?
+    TResult Function(BuildContext context, String error, bool isKycCheckSuccess,
+            bool isKycError, bool isCreditCheckError, bool isLoading)?
         ready,
     required TResult orElse(),
   }) =>
@@ -121,8 +126,13 @@ class _$InitialState implements InitialState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
-    required TResult Function(BuildContext context, String error,
-            bool isKycError, bool isCreditCheckError, bool isLoading)
+    required TResult Function(
+            BuildContext context,
+            String error,
+            bool isKycCheckSuccess,
+            bool isKycError,
+            bool isCreditCheckError,
+            bool isLoading)
         ready,
   }) {
     return initialState();
@@ -132,8 +142,8 @@ class _$InitialState implements InitialState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialState,
-    TResult Function(BuildContext context, String error, bool isKycError,
-            bool isCreditCheckError, bool isLoading)?
+    TResult Function(BuildContext context, String error, bool isKycCheckSuccess,
+            bool isKycError, bool isCreditCheckError, bool isLoading)?
         ready,
   }) {
     return initialState?.call();
@@ -143,8 +153,8 @@ class _$InitialState implements InitialState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
-    TResult Function(BuildContext context, String error, bool isKycError,
-            bool isCreditCheckError, bool isLoading)?
+    TResult Function(BuildContext context, String error, bool isKycCheckSuccess,
+            bool isKycError, bool isCreditCheckError, bool isLoading)?
         ready,
     required TResult orElse(),
   }) {
@@ -198,6 +208,7 @@ abstract class _$$KycCreditStateReadyCopyWith<$Res> {
   $Res call(
       {BuildContext context,
       String error,
+      bool isKycCheckSuccess,
       bool isKycError,
       bool isCreditCheckError,
       bool isLoading});
@@ -218,6 +229,7 @@ class __$$KycCreditStateReadyCopyWithImpl<$Res>
   $Res call({
     Object? context = freezed,
     Object? error = freezed,
+    Object? isKycCheckSuccess = freezed,
     Object? isKycError = freezed,
     Object? isCreditCheckError = freezed,
     Object? isLoading = freezed,
@@ -231,6 +243,10 @@ class __$$KycCreditStateReadyCopyWithImpl<$Res>
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as String,
+      isKycCheckSuccess: isKycCheckSuccess == freezed
+          ? _value.isKycCheckSuccess
+          : isKycCheckSuccess // ignore: cast_nullable_to_non_nullable
+              as bool,
       isKycError: isKycError == freezed
           ? _value.isKycError
           : isKycError // ignore: cast_nullable_to_non_nullable
@@ -253,6 +269,7 @@ class _$KycCreditStateReady implements KycCreditStateReady {
   const _$KycCreditStateReady(
       {required this.context,
       this.error = '',
+      this.isKycCheckSuccess = false,
       this.isKycError = false,
       this.isCreditCheckError = false,
       this.isLoading = false});
@@ -262,6 +279,9 @@ class _$KycCreditStateReady implements KycCreditStateReady {
   @override
   @JsonKey()
   final String error;
+  @override
+  @JsonKey()
+  final bool isKycCheckSuccess;
   @override
   @JsonKey()
   final bool isKycError;
@@ -274,7 +294,7 @@ class _$KycCreditStateReady implements KycCreditStateReady {
 
   @override
   String toString() {
-    return 'KycCreditState.ready(context: $context, error: $error, isKycError: $isKycError, isCreditCheckError: $isCreditCheckError, isLoading: $isLoading)';
+    return 'KycCreditState.ready(context: $context, error: $error, isKycCheckSuccess: $isKycCheckSuccess, isKycError: $isKycError, isCreditCheckError: $isCreditCheckError, isLoading: $isLoading)';
   }
 
   @override
@@ -284,6 +304,8 @@ class _$KycCreditStateReady implements KycCreditStateReady {
             other is _$KycCreditStateReady &&
             const DeepCollectionEquality().equals(other.context, context) &&
             const DeepCollectionEquality().equals(other.error, error) &&
+            const DeepCollectionEquality()
+                .equals(other.isKycCheckSuccess, isKycCheckSuccess) &&
             const DeepCollectionEquality()
                 .equals(other.isKycError, isKycError) &&
             const DeepCollectionEquality()
@@ -296,6 +318,7 @@ class _$KycCreditStateReady implements KycCreditStateReady {
       runtimeType,
       const DeepCollectionEquality().hash(context),
       const DeepCollectionEquality().hash(error),
+      const DeepCollectionEquality().hash(isKycCheckSuccess),
       const DeepCollectionEquality().hash(isKycError),
       const DeepCollectionEquality().hash(isCreditCheckError),
       const DeepCollectionEquality().hash(isLoading));
@@ -310,36 +333,43 @@ class _$KycCreditStateReady implements KycCreditStateReady {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
-    required TResult Function(BuildContext context, String error,
-            bool isKycError, bool isCreditCheckError, bool isLoading)
+    required TResult Function(
+            BuildContext context,
+            String error,
+            bool isKycCheckSuccess,
+            bool isKycError,
+            bool isCreditCheckError,
+            bool isLoading)
         ready,
   }) {
-    return ready(context, error, isKycError, isCreditCheckError, isLoading);
+    return ready(context, error, isKycCheckSuccess, isKycError,
+        isCreditCheckError, isLoading);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialState,
-    TResult Function(BuildContext context, String error, bool isKycError,
-            bool isCreditCheckError, bool isLoading)?
+    TResult Function(BuildContext context, String error, bool isKycCheckSuccess,
+            bool isKycError, bool isCreditCheckError, bool isLoading)?
         ready,
   }) {
-    return ready?.call(
-        context, error, isKycError, isCreditCheckError, isLoading);
+    return ready?.call(context, error, isKycCheckSuccess, isKycError,
+        isCreditCheckError, isLoading);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
-    TResult Function(BuildContext context, String error, bool isKycError,
-            bool isCreditCheckError, bool isLoading)?
+    TResult Function(BuildContext context, String error, bool isKycCheckSuccess,
+            bool isKycError, bool isCreditCheckError, bool isLoading)?
         ready,
     required TResult orElse(),
   }) {
     if (ready != null) {
-      return ready(context, error, isKycError, isCreditCheckError, isLoading);
+      return ready(context, error, isKycCheckSuccess, isKycError,
+          isCreditCheckError, isLoading);
     }
     return orElse();
   }
@@ -380,12 +410,14 @@ abstract class KycCreditStateReady implements KycCreditState {
   const factory KycCreditStateReady(
       {required final BuildContext context,
       final String error,
+      final bool isKycCheckSuccess,
       final bool isKycError,
       final bool isCreditCheckError,
       final bool isLoading}) = _$KycCreditStateReady;
 
   BuildContext get context;
   String get error;
+  bool get isKycCheckSuccess;
   bool get isKycError;
   bool get isCreditCheckError;
   bool get isLoading;

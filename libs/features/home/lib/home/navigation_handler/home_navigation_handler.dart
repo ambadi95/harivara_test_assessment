@@ -50,7 +50,7 @@ class HomeNavigationHandler with ErrorHandler {
     var arguments = SignUpArguments('SU_title', 'SU_subtitle',
         UserType.Customer, SignupType.agentAidedCustomerOnBoarding, true);
     await _navigationManager.navigateTo(
-        RegistrationApproval.viewPath, const NavigationType.push(),
+        SignUp.viewPath, const NavigationType.push(),
         arguments: arguments);
   }
 

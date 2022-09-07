@@ -13,6 +13,7 @@ import 'package:widget_library/scaffold/crayon_payment_scaffold.dart';
 import 'package:widget_library/search_bar/search_bar_widget_model.dart';
 import 'package:widget_library/spacers/crayon_payment_spacers.dart';
 import 'package:widget_library/static_text/crayon_payment_text.dart';
+import 'package:widget_library/utils/app_utils.dart';
 import 'package:widget_library/utils/launcher_utils.dart';
 import 'package:widget_library/widget_library.dart';
 import '../agent_nearby_module.dart';
@@ -83,12 +84,18 @@ class AgentNearBy extends StatelessWidget {
 
   Widget _buildSearchField(context, AgentNearbyCoordinator coordinator) {
     return SearchBarWidget(
-      onSearch: (value) {},
+      onSearch: (value) {
+        AppUtils.appUtilsInstance.removeFocusFromEditText(context: context);
+      },
+      textInputType: TextInputType.text,
+
       onTextChanged: (v) {
         coordinator.search(v);
       },
       attributes: SearchBarAttributes(
+
           appearance: SearchBarAppearance(
+
             cornerRadius: 20,
             backgroundColor: AN_TextFieldBackground,
             prefixIcon: Padding(
@@ -100,6 +107,7 @@ class AgentNearBy extends StatelessWidget {
               ),
             ),
           ),
+
           dataModel: const SearchBarDataModel(
               hint: 'AN_Search',
               variant: CrayonPaymentTextStyleVariant.headline5)),
