@@ -106,12 +106,16 @@ class LoginUseCase extends BaseDataProvider {
         modelBuilderCallback: (responseData) {
           final data = responseData;
 
-          JwtTokenResponse jwtTokenResponse = JwtTokenResponse.fromJson(data);
-
-          if (jwtTokenResponse.status == true) {
-            _authManager.storeJWTToken(
-              jwtTokenResponse.data!.jwttoken!,
-            );
+          JwtTokenResponse jwtTokenResponse ;
+          try {
+            jwtTokenResponse = JwtTokenResponse.fromJson(data);
+            if (jwtTokenResponse.status == true) {
+              _authManager.storeJWTToken(
+                jwtTokenResponse.data!.jwttoken!,
+              );
+            }
+          }catch(e){
+            jwtTokenResponse = JwtTokenResponse(status: false,data: JwtTokenResponseData(jwttoken: ""));
           }
 
           return jwtTokenResponse;

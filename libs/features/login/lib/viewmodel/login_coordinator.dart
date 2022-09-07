@@ -1,11 +1,14 @@
 import 'package:core/mobile_core.dart';
 import 'package:core/view/analytics_state_notifier.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:widget_library/bottom_sheet/alert_bottom_sheet.dart';
 import '../navigation_handler/login_navigation_handler.dart';
 import '../state/login_state.dart';
 import 'login_usecase.dart';
 import 'package:config/Config.dart';
 import 'package:widget_library/utils/app_utils.dart';
+import 'package:get/get.dart';
+
 
 class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
   final LoginNavigationHandler _navigationHandler;
@@ -76,26 +79,35 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
   }
 
   Future calljwttoken() async {
-    try {
+
       state = LoginState.loading();
       var response = await _loginUseCase.callJWTToken((p0) => null);
       if (response?.status == true) {
         state = LoginState.successState();
       } else {
-        state = LoginState.initialState();
-
+        state = LoginState.successState();
+        _showAlertForErrorMessage("Something went wrong,Please try again later!");
         // calljwttoken();
         print(response?.message);
-      }
-    } catch (e) {
-      state = LoginState.initialState();
-      AppUtils.appUtilsInstance.showErrorBottomSheet(
-        title: e.toString(),
-        onClose: () {
-          goBack();
-        },
-      );
+
+
+
     }
+  }
+
+  _showAlertForErrorMessage(String errorMessage) {
+    Get.bottomSheet(
+      AlertBottomSheet(
+          alertMessage: errorMessage,
+          alertTitle: 'Error',
+          alertIcon: "assets/images/alert_icon.png",
+          onClose: () {
+            goBack();
+          },
+          packageName: ""),
+      isScrollControlled: false,
+      isDismissible: true,
+    );
   }
 
   Future customerLogin(
