@@ -116,6 +116,7 @@ class CrayonPaymentBottomSheetState with _$CrayonPaymentBottomSheetState {
     required Function(String) enteredAmount,
     List<ButtonOptions>? buttonOptions,
     @Default(false) bool isAmountValidated,
+    @Default(false) bool showError,
     required Function(String) onSelectedLabel,
 
   }) = CustomAmountBottomSheet;

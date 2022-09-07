@@ -46,7 +46,6 @@ class DeviceOptionNavigationHandler with ErrorHandler {
         arguments: argument);
   }
 
-
   navigateToDownPaymentScreen(String amount,int? deviceId) {
     var arguments = DownPaymentScreenArgs(
         deviceId ?? 1, amount, "", "",0,0,0,0,0);

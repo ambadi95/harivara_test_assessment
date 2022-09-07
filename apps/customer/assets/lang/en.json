@@ -240,6 +240,9 @@
   "LR_proceed" : "Proceed",
 
   "CA_custom_amount" : "Pay Custom Amount",
+  "CA_amount" : "Enter the amount",
+  "CA_Warning"  : "Enter Amount Need to below Outstanding Amount",
+
 
   "RP_success_message": "Passcode has been updated successfully",
   "PR_message" : "You will be Signed out of the app, please use the new passcode to Sign-in again",
@@ -299,5 +302,20 @@
   "faq_answer_25": "Day-1 of non-payment-Send Reminder\nDay-2 of non-payment-Send Reminder\nDay-3 of non-payment-Send Reminder\nDay-4 of non-payment- Send Reminder Initiate Auto Debit Request\nDay-5 of non-payment- Send Reminder Stop Outgoing calls\nDay-6 of non-payment-Send Reminder Block Mobile Data (Block Access to Mobile APP except Y9 APPs & Mobile Money APP by Telco)\nDay-7 of non-payment- Send Reminder Phone Locking & Initiate Auto Debit Request\nDay-8 of non-payment- Send Reminder Add to Defaulters list & Initiate Auto Debit Request\nDay-9 of non-payment - Send Reminder Default and Plan for recovery\nDay 10 of non-plan- Send Reminder Initiate Auto Debit Request and Lock the Phone Completely\nYour device will be fully locked on the Tenth day.",
   "faq_question_26": "How do I complete my payment when there is an unfortunate case of phone theft/lost?",
   "faq_answer_26": "In a situation where our customer phone is stolen or lost. The customer is expected to report to the nearest shop for the operator you use for calls/mobile with the following.\n· Police report\n· Valid National Identification number.\nConfirm details to agent including biometric check\nAnd if approved by insurance company will be issued a replacement device immediately",
-  "FAQ_Title_2": "Frequently Asked Questions"
+  "FAQ_Title_2": "Frequently Asked Questions",
+
+  "PS_title" : "{amount} TZSHS Payment request has been sent to “{mobile}”",
+  "PS_notification" : "Click on the USSD notification and Authenticate the Payment",
+  "PS_refresh" : "To check the payment status, click \n%{Refresh|https://www.google.com}%.",
+  "PS_note"  : "Note: ",
+  "PS_note1" : "You will be redirected to another page \nones your payment is porcessed.",
+  "PS_note2" : "Do not close this page/app or press back \nwhile payment is processing.",
+  "PS_success_title" : "Payment Successful\n{} TZSHS",
+  "PS_reference" : "Ref: {}",
+  "PS_thank_note" : "Thank you for your Payment. An automated Payment Receipt will be sent to your registered Mobile Number",
+  "PS_success_note" : "Successfully paid your Total Amount to be Repaid. Your Loan account will be closed within next 48 hours ",
+  "PS_customer_support" : "For Customer Support Please Call +255 677-039-999",
+  "PS_close" : "Close",
+  "PF_title"  : "Payment Transaction Error",
+  "PF_desc"  : "Sorry for the inconvenience, we are facing an unexpected Error. Please try again after sometime"
 }

@@ -6,8 +6,7 @@
   "OB_SignUp" : "Jisajili",
   "OB_Lang" : "Set Language",
   "OB_ni_bora" : "ni %{Bora|click}%",
-  "ST_view_profile": "Tazama Wasifu",
-  "ST_my_profile": "Wasifu Wangu",
+
 
 
   "DO_Title": "Chaguo za Kifaa",
@@ -243,6 +242,10 @@
   "LR_proceed" : "Endelea",
 
   "CA_custom_amount" : "Lipa Kiasi Maalum",
+  "CA_Warning"  : "Enter Amount Need to below Outstanding Amount",
+  "CA_amount" : "Enter the amount",
+
+
 
   "RP_success_message": "Nambari ya siri imesasishwa kwa mafanikio",
   "PR_message" : "Utaondolewa kwenye programu, tafadhali tumia nambari mpya ya siri Kuingia tena",
@@ -260,7 +263,7 @@
   "faq_question_5": "Je, ni faida gani nyingine za Uanachama?",
   "faq_answer_5": "Hebu hapa tuonyeshe manufaa yote tunayoonyesha chini ya skrini ya 'Faida za Uanachama' wakati wa kuchagua chaguo la Kifaa.\n\nMotisha kwa rufaa\n\nY9 huduma za kifedha\n\nFaida za uaminifu\nMikopo ya papo hapo",
   "faq_question_6": "Je, ninapataje motisha kwa rufaa?",
-  "faq_answer_6": "Tumia kitambulisho chako cha uanachama wa Y9 kurejelea wateja wanaotumia Programu ya Y9.",  "faq_question_7": "How do I get Y9 financial services?",
+  "faq_answer_6": "Tumia kitambulisho chako cha uanachama wa Y9 kurejelea wateja wanaotumia Programu ya Y9.",
   "faq_question_7":"Je, ninapataje huduma za kifedha za Y9?",
   "faq_answer_7": "Ili kupatikana hivi karibuni",
   "faq_question_8": "Je, ninapataje manufaa ya uaminifu?",
@@ -301,5 +304,20 @@
   "faq_answer_25": "Siku ya 1 ya kutolipa-Tuma Kikumbusho\nSiku ya 2 ya kutolipa-Tuma Kikumbusho\nSiku ya 3 ya kutolipa-Tuma Kikumbusho\nSiku ya 4 ya kutolipa- Tuma Kikumbusho Anzisha Ombi la Utozaji Kiotomatiki\nSiku ya 5 ya kutolipa- Tuma Kikumbusho Acha Simu Zinazotoka\nSiku ya 6 ya kutolipa-Tuma Kikumbusho Zuia Data ya Simu (Zuia Ufikiaji wa APP ya Simu isipokuwa Y9 APPs & Mobile Money APP na Telco)\nSiku ya 7 ya kutolipa- Tuma Kikumbusho Kufunga Simu na Uanzishe Ombi la Utozaji Kiotomatiki\nSiku ya 8 ya kutolipa- Tuma Kikumbusho Ongeza kwenye orodha ya Watumiaji Chaguomsingi na Uanzishe Ombi la Utozaji Kiotomatiki\nSiku ya 9 ya kutolipa - Tuma Kikumbusho Chaguomsingi na Mpango wa kurejesha\nSiku ya 10 ya kutokuwa na mpango- Tuma Kikumbusho Anzisha Ombi la Utozaji Kiotomatiki na Ufunge Simu Kabisa.\nKifaa chako kitafungwa kikamilifu siku ya Kumi.",
   "faq_question_26": "Je, nitakamilishaje malipo yangu wakati kuna kisa cha bahati mbaya cha wizi wa simu/kupotea?",
   "faq_answer_26": "Katika hali ambapo simu ya mteja wetu inaibiwa au kupotea. Mteja anatarajiwa kuripoti kwa duka la karibu kwa opereta unayemtumia kwa simu/simu ya rununu na yafuatayo.\nRipoti ya polisi\nNambari halali ya Kitambulisho cha Taifa.\nThibitisha maelezo kwa wakala ikijumuisha ukaguzi wa kibayometriki\nNa kama kupitishwa na kampuni ya bima itatolewa kifaa badala mara moja",
-  "FAQ_Title_2": "maswali yanayoulizwa mara kwa mara"
+  "FAQ_Title_2": "maswali yanayoulizwa mara kwa mara",
+
+  "PS_title" : "{amount} TZSHS Payment request has been sent to “{mobile}”",
+  "PS_notification" : "Click on the USSD notification and Authenticate the Payment",
+  "PS_refresh" : "To check the payment status, click \n%{Refresh|https://www.google.com}%.",
+  "PS_note"  : "Note: ",
+  "PS_note1" : "You will be redirected to another page \nones your payment is porcessed.",
+  "PS_note2" : "Do not close this page/app or press back \nwhile payment is processing.",
+  "PS_success_title" : "Payment Successful\n{} TZSHS",
+  "PS_reference" : "Ref: {}",
+  "PS_thank_note" : "Thank you for your Payment. An automated Payment Receipt will be sent to your registered Mobile Number",
+  "PS_success_note" : "Successfully paid your Total Amount to be Repaid. Your Loan account will be closed within next 48 hours ",
+  "PS_customer_support" : "For Customer Support Please Call +255 677-039-999",
+  "PS_close" : "Close",
+  "PF_title"  : "Payment Transaction Error",
+  "PF_desc"  : "Sorry for the inconvenience, we are facing an unexpected Error. Please try again after sometime"
 }

@@ -107,7 +107,7 @@ const SU_subtitle_terms_style = TextStyle(
 
 const SU_label_style = TextStyle(
   fontSize: 14,
-  fontWeight: FontWeight.w500,
+  fontWeight: FontWeight.w600,
   fontFamily: 'Montserrat',
   color: SU_label_color,
 );
@@ -234,9 +234,22 @@ const ES_bottom_success_text = TextStyle(
 
 const ES_bold_text = TextStyle(
   fontSize: 20,
-  fontWeight: FontWeight.w600,
+  fontWeight: FontWeight.bold,
   fontFamily: 'Montserrat',
   color: SECONDARY_COLOR,
+);
+
+const PS_Refresh_text = TextStyle(
+  fontSize: 14,
+  fontWeight: FontWeight.bold,
+  fontFamily: 'Montserrat',
+  color: Color(0xFF2F80ED),
+);
+
+const PS_Notification_text = TextStyle(
+  fontSize: 14,
+  fontFamily: 'Montserrat',
+  color: Black,
 );
 
 

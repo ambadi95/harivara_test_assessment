@@ -282,10 +282,12 @@ class CrayonPaymentBottomSheetCoordinator
       currentState.enteredAmount(amount);
       state = currentState.copyWith(
         isAmountValidated: true,
+        showError: false
       );
     }else{
       state = currentState.copyWith(
         isAmountValidated: false,
+        showError: true
       );
     }
   }
