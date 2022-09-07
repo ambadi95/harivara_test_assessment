@@ -3,6 +3,7 @@
     {
       "name": "test",
       "host": "https://y9-dev-capi.testmaya.com/customers/v1/"
+
     },
     {
       "name": "Local",
@@ -12,7 +13,8 @@
   "gqlEnvironments": [
     {
       "name": "default",
-      "host" : "https://y9-dev-capi.testmaya.com//customers/v1/"
+      "host": "https://y9-dev-capi.testmaya.com/customers/v1/"
+
     },
     {
       "name": "mock",
