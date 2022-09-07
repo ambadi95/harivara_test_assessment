@@ -22,7 +22,7 @@ class AppUtils {
 
   NavigationManager? _navigationManager;
 
-  UserType? userType;
+   UserType? userType;
 
   // hide keyboard
   hideKeyboard() {
@@ -111,7 +111,7 @@ class AppUtils {
           Container(
             width: double.infinity,
             padding:
-            const EdgeInsets.only(left: 30, right: 30, top: 47, bottom: 33),
+                const EdgeInsets.only(left: 30, right: 30, top: 47, bottom: 33),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.only(

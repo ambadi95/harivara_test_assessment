@@ -41,8 +41,6 @@ dependencies:
   welcome:
     path:  ../welcome
 
-
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
