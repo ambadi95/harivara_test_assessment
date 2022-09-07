@@ -101,7 +101,7 @@ class CrayonPaymentBottomSheet extends StatelessWidget {
           coordinator,
           state as LoanRepaymentBottomSheet,
         ),
-        customAmount: (_, __,___,____,_____,______) => BottomSheetCustomAmount(
+        customAmount: (_, __,___,____,_____,______,_______) => BottomSheetCustomAmount(
             coordinator, state as CustomAmountBottomSheet),
         orElse: () => const Center(
           key: Key('ErrorBottomSheet'),

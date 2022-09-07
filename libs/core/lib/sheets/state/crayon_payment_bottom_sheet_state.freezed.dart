@@ -96,6 +96,7 @@ mixin _$CrayonPaymentBottomSheetState {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)
         customAmount,
   }) =>
@@ -179,6 +180,7 @@ mixin _$CrayonPaymentBottomSheetState {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) =>
@@ -262,6 +264,7 @@ mixin _$CrayonPaymentBottomSheetState {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
@@ -586,6 +589,7 @@ class _$SheetInfo extends SheetInfo {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)
         customAmount,
   }) {
@@ -673,6 +677,7 @@ class _$SheetInfo extends SheetInfo {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) {
@@ -760,6 +765,7 @@ class _$SheetInfo extends SheetInfo {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
@@ -1086,6 +1092,7 @@ class _$SheetInfoWrap extends SheetInfoWrap {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)
         customAmount,
   }) {
@@ -1173,6 +1180,7 @@ class _$SheetInfoWrap extends SheetInfoWrap {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) {
@@ -1260,6 +1268,7 @@ class _$SheetInfoWrap extends SheetInfoWrap {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
@@ -1524,6 +1533,7 @@ class _$SheetSelection extends SheetSelection {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)
         customAmount,
   }) {
@@ -1610,6 +1620,7 @@ class _$SheetSelection extends SheetSelection {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) {
@@ -1696,6 +1707,7 @@ class _$SheetSelection extends SheetSelection {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
@@ -1983,6 +1995,7 @@ class _$SheetWaiting extends SheetWaiting {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)
         customAmount,
   }) {
@@ -2070,6 +2083,7 @@ class _$SheetWaiting extends SheetWaiting {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) {
@@ -2157,6 +2171,7 @@ class _$SheetWaiting extends SheetWaiting {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
@@ -2399,6 +2414,7 @@ class _$SheetSimpleWaiting extends SheetSimpleWaiting {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)
         customAmount,
   }) {
@@ -2485,6 +2501,7 @@ class _$SheetSimpleWaiting extends SheetSimpleWaiting {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) {
@@ -2571,6 +2588,7 @@ class _$SheetSimpleWaiting extends SheetSimpleWaiting {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
@@ -2819,6 +2837,7 @@ class _$SheetMultipleSelection extends SheetMultipleSelection {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)
         customAmount,
   }) {
@@ -2905,6 +2924,7 @@ class _$SheetMultipleSelection extends SheetMultipleSelection {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) {
@@ -2991,6 +3011,7 @@ class _$SheetMultipleSelection extends SheetMultipleSelection {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
@@ -3249,6 +3270,7 @@ class _$SheetDatePicker extends SheetDatePicker {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)
         customAmount,
   }) {
@@ -3335,6 +3357,7 @@ class _$SheetDatePicker extends SheetDatePicker {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) {
@@ -3422,6 +3445,7 @@ class _$SheetDatePicker extends SheetDatePicker {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
@@ -3744,6 +3768,7 @@ class _$SheetMultiFilters extends SheetMultiFilters {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)
         customAmount,
   }) {
@@ -3831,6 +3856,7 @@ class _$SheetMultiFilters extends SheetMultiFilters {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) {
@@ -3918,6 +3944,7 @@ class _$SheetMultiFilters extends SheetMultiFilters {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
@@ -4182,6 +4209,7 @@ class _$CloseBottomSheet extends CloseBottomSheet {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)
         customAmount,
   }) {
@@ -4268,6 +4296,7 @@ class _$CloseBottomSheet extends CloseBottomSheet {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) {
@@ -4355,6 +4384,7 @@ class _$CloseBottomSheet extends CloseBottomSheet {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
@@ -4680,6 +4710,7 @@ class _$AgentEnrollmentSheet extends AgentEnrollmentSheet {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)
         customAmount,
   }) {
@@ -4767,6 +4798,7 @@ class _$AgentEnrollmentSheet extends AgentEnrollmentSheet {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) {
@@ -4854,6 +4886,7 @@ class _$AgentEnrollmentSheet extends AgentEnrollmentSheet {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
@@ -5211,6 +5244,7 @@ class _$ChangeLanguageBottomSheet extends ChangeLanguageBottomSheet {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)
         customAmount,
   }) {
@@ -5298,6 +5332,7 @@ class _$ChangeLanguageBottomSheet extends ChangeLanguageBottomSheet {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) {
@@ -5392,6 +5427,7 @@ class _$ChangeLanguageBottomSheet extends ChangeLanguageBottomSheet {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
@@ -5640,6 +5676,7 @@ class _$LoanRepaymentBottomSheet extends LoanRepaymentBottomSheet {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)
         customAmount,
   }) {
@@ -5726,6 +5763,7 @@ class _$LoanRepaymentBottomSheet extends LoanRepaymentBottomSheet {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) {
@@ -5812,6 +5850,7 @@ class _$LoanRepaymentBottomSheet extends LoanRepaymentBottomSheet {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
@@ -5910,6 +5949,7 @@ abstract class _$$CustomAmountBottomSheetCopyWith<$Res> {
       dynamic Function(String) enteredAmount,
       List<ButtonOptions>? buttonOptions,
       bool isAmountValidated,
+      bool showError,
       dynamic Function(String) onSelectedLabel});
 }
 
@@ -5932,6 +5972,7 @@ class __$$CustomAmountBottomSheetCopyWithImpl<$Res>
     Object? enteredAmount = freezed,
     Object? buttonOptions = freezed,
     Object? isAmountValidated = freezed,
+    Object? showError = freezed,
     Object? onSelectedLabel = freezed,
   }) {
     return _then(_$CustomAmountBottomSheet(
@@ -5955,6 +5996,10 @@ class __$$CustomAmountBottomSheetCopyWithImpl<$Res>
           ? _value.isAmountValidated
           : isAmountValidated // ignore: cast_nullable_to_non_nullable
               as bool,
+      showError: showError == freezed
+          ? _value.showError
+          : showError // ignore: cast_nullable_to_non_nullable
+              as bool,
       onSelectedLabel: onSelectedLabel == freezed
           ? _value.onSelectedLabel
           : onSelectedLabel // ignore: cast_nullable_to_non_nullable
@@ -5972,6 +6017,7 @@ class _$CustomAmountBottomSheet extends CustomAmountBottomSheet {
       required this.enteredAmount,
       final List<ButtonOptions>? buttonOptions,
       this.isAmountValidated = false,
+      this.showError = false,
       required this.onSelectedLabel})
       : _buttonOptions = buttonOptions,
         super._();
@@ -5995,11 +6041,14 @@ class _$CustomAmountBottomSheet extends CustomAmountBottomSheet {
   @JsonKey()
   final bool isAmountValidated;
   @override
+  @JsonKey()
+  final bool showError;
+  @override
   final dynamic Function(String) onSelectedLabel;
 
   @override
   String toString() {
-    return 'CrayonPaymentBottomSheetState.customAmount(title: $title, outstandingAmount: $outstandingAmount, enteredAmount: $enteredAmount, buttonOptions: $buttonOptions, isAmountValidated: $isAmountValidated, onSelectedLabel: $onSelectedLabel)';
+    return 'CrayonPaymentBottomSheetState.customAmount(title: $title, outstandingAmount: $outstandingAmount, enteredAmount: $enteredAmount, buttonOptions: $buttonOptions, isAmountValidated: $isAmountValidated, showError: $showError, onSelectedLabel: $onSelectedLabel)';
   }
 
   @override
@@ -6016,6 +6065,7 @@ class _$CustomAmountBottomSheet extends CustomAmountBottomSheet {
                 .equals(other._buttonOptions, _buttonOptions) &&
             const DeepCollectionEquality()
                 .equals(other.isAmountValidated, isAmountValidated) &&
+            const DeepCollectionEquality().equals(other.showError, showError) &&
             (identical(other.onSelectedLabel, onSelectedLabel) ||
                 other.onSelectedLabel == onSelectedLabel));
   }
@@ -6028,6 +6078,7 @@ class _$CustomAmountBottomSheet extends CustomAmountBottomSheet {
       enteredAmount,
       const DeepCollectionEquality().hash(_buttonOptions),
       const DeepCollectionEquality().hash(isAmountValidated),
+      const DeepCollectionEquality().hash(showError),
       onSelectedLabel);
 
   @JsonKey(ignore: true)
@@ -6117,11 +6168,12 @@ class _$CustomAmountBottomSheet extends CustomAmountBottomSheet {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)
         customAmount,
   }) {
     return customAmount(title, outstandingAmount, enteredAmount, buttonOptions,
-        isAmountValidated, onSelectedLabel);
+        isAmountValidated, showError, onSelectedLabel);
   }
 
   @override
@@ -6204,11 +6256,12 @@ class _$CustomAmountBottomSheet extends CustomAmountBottomSheet {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) {
     return customAmount?.call(title, outstandingAmount, enteredAmount,
-        buttonOptions, isAmountValidated, onSelectedLabel);
+        buttonOptions, isAmountValidated, showError, onSelectedLabel);
   }
 
   @override
@@ -6291,13 +6344,14 @@ class _$CustomAmountBottomSheet extends CustomAmountBottomSheet {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
   }) {
     if (customAmount != null) {
       return customAmount(title, outstandingAmount, enteredAmount,
-          buttonOptions, isAmountValidated, onSelectedLabel);
+          buttonOptions, isAmountValidated, showError, onSelectedLabel);
     }
     return orElse();
   }
@@ -6374,6 +6428,7 @@ abstract class CustomAmountBottomSheet extends CrayonPaymentBottomSheetState {
           required final dynamic Function(String) enteredAmount,
           final List<ButtonOptions>? buttonOptions,
           final bool isAmountValidated,
+          final bool showError,
           required final dynamic Function(String) onSelectedLabel}) =
       _$CustomAmountBottomSheet;
   const CustomAmountBottomSheet._() : super._();
@@ -6383,6 +6438,7 @@ abstract class CustomAmountBottomSheet extends CrayonPaymentBottomSheetState {
   dynamic Function(String) get enteredAmount;
   List<ButtonOptions>? get buttonOptions;
   bool get isAmountValidated;
+  bool get showError;
   dynamic Function(String) get onSelectedLabel;
   @JsonKey(ignore: true)
   _$$CustomAmountBottomSheetCopyWith<_$CustomAmountBottomSheet> get copyWith =>
