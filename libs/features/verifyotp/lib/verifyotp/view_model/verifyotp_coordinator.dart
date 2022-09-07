@@ -1,6 +1,7 @@
 import 'package:config/Config.dart';
 import 'package:core/logging/logger.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_data_models/customer_onboard/Customer_onboarding_status/customer_onboarding_status.dart';
 import 'package:shared_data_models/otp/otp_screen_args.dart';
 import 'package:shared_data_models/otp/otp_verification_type.dart';
 import 'package:task_manager/base_classes/base_view_model.dart';
@@ -11,7 +12,7 @@ import 'package:widget_library/bottom_sheet/alert_bottom_sheet.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
-import 'package:crayon_payment_customer/util/app_utils.dart';
+import 'package:widget_library/utils/app_utils.dart';
 class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
   final VerifyOtpNavigationHandler _navigationHandler;
   final VerifyOtpUseCase _verifyOtpUseCase;
@@ -45,31 +46,50 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
 
   String otp = '';
 
-  Future<void> generateOtp(String id, String userType,
-      OtpVerificationType otpVerificationType, isLoaderVisible) async {
-    var currentState = state as VerifyOtpStateReady;
-    if(isLoaderVisible == true) {
-      state = currentState.copyWith(isLoading: true);
+  Future<void> generateOtp(String id, UserType userType,
+      OtpVerificationType otpVerificationType,String event) async {
+    try {
+      var response;
+      if (otpVerificationType == OtpVerificationType.customerSignUpAgent) {
+        response = await _verifyOtpUseCase.otpGenCustomerByAgent(
+            id, 'Customer',event, (p0) => null);
+      } else {
+        response = await _verifyOtpUseCase.otpGen(id, userType,event, (p0) => null);
+      }
+      if (response?.status == true) {
+        int otp1 = response?.data?.token as int;
+        otp = otp1.toString();
+        //otpController.text = otp;
+        CrayonPaymentLogger.logInfo(otp);
+      }else{
+        _showAlertForErrorMessage(response.message);
+      }
+    }  catch (e) {
+      print(e.toString());
+      AppUtils.appUtilsInstance.showErrorBottomSheet(
+        title: e.toString(),
+        onClose: () {goBack();},
+      );
     }
-    bool internetStatus = await AppUtils.appUtilsInstance.checkInternet();
-    if (!internetStatus) {
-      return;
-    }
-    var response;
-    if (otpVerificationType == OtpVerificationType.customerSignUpAgent) {
-      response = await _verifyOtpUseCase.otpGenCustomerByAgent(
-          id, 'Customer', (p0) => null);
-    } else {
-      response = await _verifyOtpUseCase.otpGen(id, userType, (p0) => null);
-    }
-    if (response?.status == true) {
-      state = currentState.copyWith(isLoading: false);
-      state = currentState.copyWith(attemptsRemain: 3);
-      int otp1 = response?.data?.token as int;
-      otp = otp1.toString();
-      //otpController.text = otp;
-      CrayonPaymentLogger.logInfo(otp);
-    }
+
+
+
+  }
+
+
+  _showAlertForErrorMessage(String errorMessage) {
+    Get.bottomSheet(
+      AlertBottomSheet(
+          alertMessage: errorMessage,
+          alertTitle: 'Error',
+          alertIcon: "assets/images/alert_icon.png",
+          onClose: () {
+            goBack();
+          },
+          packageName: ""),
+      isScrollControlled: false,
+      isDismissible: true,
+    );
   }
 
   Future<void> verifyOTP(
@@ -84,10 +104,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
     String? mobileNum,
     isResetPasscode = false,
   }) async {
-    bool internetStatus = await AppUtils.appUtilsInstance.checkInternet();
-    if (!internetStatus) {
-      return;
-    }
+
     if (otpVerificationType == OtpVerificationType.mobile) {
       //state = const VerifyOtpState.loadingState();
       // try {
@@ -159,78 +176,122 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
   }
 
   Future<void> navigateToDestinationPath(String destinationPath,
-      String userType, OtpScreenArgs otpScreenArgs, String enterOtp) async {
-    bool internetStatus = await AppUtils.appUtilsInstance.checkInternet();
-    if (!internetStatus) {
-      return;
-    }
+      UserType userType, OtpScreenArgs otpScreenArgs, String enterOtp,String event) async {
     var currentState = state as VerifyOtpStateReady;
-    int attempts = currentState.attemptsRemain;
-    if (otpScreenArgs.otpVerificationType == OtpVerificationType.customerSign) {
-      state = currentState.copyWith(isLoading: true);
-      var responseSignin = await _verifyOtpUseCase.otpVerify(
-          otpScreenArgs.refId, enterOtp,otpScreenArgs.userType, (p0) => null);
-      if (responseSignin!.status == true) {
-        state = currentState.copyWith(isLoading: false);
-        _navigationHandler.navigateToCustomerEnrollmentScreen();
-      } else {
-        state = currentState.copyWith(isLoading: false);
-        otpAttempts(attempts);
-      }
-    } else if (otpScreenArgs.otpVerificationType ==
-        OtpVerificationType.customerSignUpAgent) {
-      state = currentState.copyWith(isLoading: true);
-      var responseSignin = await _verifyOtpUseCase.otpVerifyCustomerByAgent(
-          otpScreenArgs.refId, enterOtp, 'Customer', (p0) => null);
-      if (responseSignin!.status == true) {
-        state = currentState.copyWith(isLoading: false);
-        _navigationHandler.navigateToDestinationPath(
-            destinationPath, 'AgentCustomer');
-      }else{
-        state = currentState.copyWith(isLoading: false);
-        otpAttempts(attempts);
-      }
-    } else if (otpScreenArgs.otpVerificationType ==
-        OtpVerificationType.mobile) {
-      if (userType == 'Customer') {
-        state = currentState.copyWith(isLoading: true);
-        var response = await _verifyOtpUseCase.otpVerify(otpScreenArgs.refId,
-            enterOtp, otpScreenArgs.userType, (p0) => null);
-        if (response!.status == true) {
-          state = currentState.copyWith(isLoading: false);
-          _navigationHandler.navigateToDestinationPath(
-              destinationPath, userType);
+    try {
+
+      int attempts = currentState.attemptsRemain;
+      if (otpScreenArgs.otpVerificationType == OtpVerificationType.customerSign) {
+        var responseSignin = await _verifyOtpUseCase.otpVerify(
+            otpScreenArgs.refId, enterOtp, otpScreenArgs.userType,event, (p0) => null);
+        if (responseSignin!.status == true) {
+          _navigationHandler.navigateToHomeScreen(userType);
         } else {
-          state = currentState.copyWith(isLoading: false);
-          otpAttempts(attempts);
+          print('error');
         }
-      } else {
-        state = currentState.copyWith(isLoading: true);
-        var response = await _verifyOtpUseCase.otpVerify(otpScreenArgs.refId,
-            enterOtp, otpScreenArgs.userType, (p0) => null);
-        if (response!.status == true) {
-          state = currentState.copyWith(isLoading: false);
-          _navigationHandler.openForNewPasscode(userType);
+      } else if (otpScreenArgs.otpVerificationType ==
+          OtpVerificationType.customerSignUpAgent) {
+        var responseSignin = await _verifyOtpUseCase.otpVerifyCustomerByAgent(
+            otpScreenArgs.refId, enterOtp, 'Customer', (p0) => null);
+        if (responseSignin!.data!.status == "success") {
+          print('###############');
+          print(otpScreenArgs.refId);
+          var getWorkFlowStatus = await _verifyOtpUseCase.workFlowCustomerByAgent(
+              otpScreenArgs.refId, (p0) => null);
+          if (getWorkFlowStatus!.status!) {
+            CrayonPaymentLogger.logInfo('I am in WorkFlow Status');
+            //TODO Workflow Navigation
+            navigationToWorkFlow(getWorkFlowStatus.data!.status!);
+            //_navigationHandler.navigateToDetailScreen();
+          }else{
+
+            _showAlertForErrorMessage(getWorkFlowStatus.message!);
+          }
+        }
+      } else if (otpScreenArgs.otpVerificationType ==
+          OtpVerificationType.mobile) {
+        if (userType == UserType.Customer) {
+          state = currentState.copyWith(isLoading: true);
+          var response = await _verifyOtpUseCase.otpVerify(otpScreenArgs.refId,
+              enterOtp, otpScreenArgs.userType,event, (p0) => null);
+          if (response!.data!.status == "success") {
+            state = currentState.copyWith(isLoading: false);
+            _navigationHandler.navigateToDestinationPath(
+                destinationPath, userType);
+          } else {
+            otpController.text = "";
+            state = currentState.copyWith(isLoading: false);
+            // state =  currentState.copyWith(attemptsRemainFlag: true);
+            if (attempts > 1) {
+              state = currentState.copyWith(attemptsRemain: attempts - 1);
+            } else {
+              state = currentState.copyWith(attemptsRemain: 3);
+              _showAlertForOTPAttempts();
+            }
+          }
         } else {
-          state = currentState.copyWith(isLoading: false);
-          otpAttempts(attempts);
+          state = currentState.copyWith(isLoading: true);
+          var response = await _verifyOtpUseCase.otpVerify(otpScreenArgs.refId,
+              enterOtp, otpScreenArgs.userType, event,(p0) => null);
+          if (response!.status == true) {
+            state = currentState.copyWith(isLoading: false);
+            _navigationHandler.openForNewPasscode(userType);
+          } else {
+            otpController.text = "";
+            state = currentState.copyWith(isLoading: false);
+            // state =  currentState.copyWith(attemptsRemainFlag: true);
+            if (attempts > 1) {
+              state = currentState.copyWith(attemptsRemain: attempts - 1);
+            } else {
+              state = currentState.copyWith(attemptsRemain: 3);
+              _showAlertForOTPAttempts();
+            }
+          }
         }
+      } else if (otpScreenArgs.otpVerificationType ==
+          OtpVerificationType.agentSignIn) {
+        var responseSignin = await _verifyOtpUseCase.otpVerify(
+            otpScreenArgs.refId, enterOtp, otpScreenArgs.userType,event, (p0) => null);
+        if (responseSignin?.status == true) {
+          String agentId = await _verifyOtpUseCase.getAgentId();
+          await _verifyOtpUseCase.saveOnBordStatus(agentId);
+
+          _navigationHandler.navigateToAgentWelcomeBack(userType);
+        }
+      } else if (otpScreenArgs.otpVerificationType ==
+          OtpVerificationType.resetPasscodeCustomer) {
+        _navigationHandler.openForUpdateNewPasscode(userType);
+      } else if (otpScreenArgs.otpVerificationType ==
+          OtpVerificationType.updatePasscodeAgent) {
+        _navigationHandler.openForUpdateNewPasscodeAgent(userType);
+      } else if(otpScreenArgs.otpVerificationType == OtpVerificationType.customerPasscodeSet){
+
+          state = currentState.copyWith(isLoading: true);
+          var response = await _verifyOtpUseCase.otpVerify(otpScreenArgs.refId,
+              enterOtp, otpScreenArgs.userType,event, (p0) => null);
+          if (response!.data!.status == "success") {
+            state = currentState.copyWith(isLoading: false);
+            _navigationHandler.openForNewPasscodeAgentCustomer(userType);
+
+          } else {
+            otpController.text = "";
+            state = currentState.copyWith(isLoading: false);
+            // state =  currentState.copyWith(attemptsRemainFlag: true);
+            if (attempts > 1) {
+              state = currentState.copyWith(attemptsRemain: attempts - 1);
+            } else {
+              state = currentState.copyWith(attemptsRemain: 3);
+              _showAlertForOTPAttempts();
+            }
+          }
+
       }
-    } else if (otpScreenArgs.otpVerificationType ==
-        OtpVerificationType.agentSignIn) {
-      state = currentState.copyWith(isLoading: true);
-      var responseSignin = await _verifyOtpUseCase.otpVerify(
-          otpScreenArgs.refId, enterOtp, otpScreenArgs.userType, (p0) => null);
-      if (responseSignin?.status == true) {
-        state = currentState.copyWith(isLoading: false);
-        _navigationHandler.navigateToAgentWelcomeBack(userType);
-      }else{
-        state = currentState.copyWith(isLoading: false);
-        otpAttempts(attempts);
-      }
-    } else if (otpScreenArgs.otpVerificationType ==
-        OtpVerificationType.updatePasscodeAgent) {
-      _navigationHandler.openForUpdateNewPasscode(userType);
+    }  catch (e) {
+      state = currentState.copyWith(isLoading: false);
+      AppUtils.appUtilsInstance.showErrorBottomSheet(
+        title: e.toString(),
+        onClose: () {goBack();},
+      );
     }
   }
 
@@ -302,4 +363,68 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
     );
   }
 
+  navigationToWorkFlow(String status) {
+
+    switch (status) {
+      case "Initiated":
+        _navigationHandler.navigateToDetailScreen();
+        break;
+      case "Enrolled":
+     _navigationHandler.navigateToDetailScreen();
+        break;
+      case "KYC_Initiated":
+        _navigationHandler.navigateToKYCScreen(false);
+        break;
+      case "KYC_Success":
+        _navigationHandler.navigateToKYCScreen(true);
+        break;
+      case "Credit_Check_Requested":
+        _navigationHandler.navigateToKYCScreen(true);
+        break;
+      case "Credit_Check_Success":
+        //TODO Navigate to Credit_Check_Success Screen
+        _navigationHandler.navigateToDeviceOption(false, UserType.AgentCustomer);
+
+        break;
+      case "Device_Selection":
+        _navigationHandler.navigateToDeviceOption(false,UserType.AgentCustomer);
+        break;
+      case "Device_Selected":
+        _navigationHandler.navigateToDeviceOption(true,UserType.AgentCustomer);
+        break;
+      case "Downpayment_Initiated":
+        _navigationHandler.navigateToDownPaymentScreen();
+        break;
+      case "Downpayment_Scuccess":
+        _navigationHandler.navigateToDownPaymentScreen();
+        break;
+      case "Downpayment_Failed":
+        _navigationHandler.navigateToDownPaymentScreen();
+        break;
+      case "Loan_Initiated":
+        //_navigationHandler.navigateToDeviceLoanCreation();
+        break;
+      case "Loan_Approved":
+        //TODO Navigate to Loan_Approved Screen
+        break;
+      case "Device_Reg_Initiated":
+        //TODO Navigate to Device_Reg_Initiated Screen
+        break;
+      case "Device_Reg_Success":
+        //TODO Navigate to Device_Reg_Success Screen
+        break;
+      case "MDM_Reg_Initiated":
+        //TODO Navigate to MDM_Reg_Initiated Screen
+        break;
+      case "MDM_Reg_Success":
+        //TODO Navigate to MDM_Reg_Success Screen
+        break;
+      case "Repayment_Initiated":
+        //TODO Navigate to Repayment_Initiated Screen
+        break;
+      case "Repayment_Success":
+        //TODO Navigate to Repayment_Success Screen
+        break;
+    }
+  }
 }

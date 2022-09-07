@@ -20,9 +20,10 @@ import '../login_module.dart';
 import '../state/login_state.dart';
 import '../viewmodel/login_coordinator.dart';
 import 'package:get/get.dart';
+import 'package:config/Config.dart';
 
 class Login extends StatefulWidget {
-  final String userType;
+  final UserType userType;
   static const String viewPath = '${LoginModule.moduleIdentifier}/login';
 
   Login({Key? key, required this.userType}) : super(key: key);
@@ -35,6 +36,8 @@ class _LoginState extends State<Login> {
   final String _identifier = 'login';
 
   bool isBtnEnabled = false;
+
+  bool havePasscode = false;
 
   String mobileNumberError = '';
 
@@ -55,8 +58,8 @@ class _LoginState extends State<Login> {
     return BaseView<LoginCoordinator, LoginState>(
       onStateListenCallback: (preState, newState) =>
           {_listenToStateChanges(context, newState)},
-      setupViewModel: (coordinator) {
-
+      setupViewModel: (coordinator) async {
+        await coordinator.calljwttoken();
       },
       builder: (context, state, coordinator) {
         return state.maybeWhen(
@@ -132,8 +135,10 @@ class _LoginState extends State<Login> {
               SizedBox(
                 height: 48,
               ),
-              widget.userType == 'Customer'
-                  ? _passcodeWidget(context, coordinator)
+              widget.userType == UserType.Customer
+                  ? havePasscode
+                      ? _passcodeWidget(context, coordinator)
+                      : SizedBox()
                   : _buildLabelTextField(
                       'LS_agent_id'.tr,
                       agentIdController,
@@ -145,7 +150,11 @@ class _LoginState extends State<Login> {
               const SizedBox(
                 height: 46,
               ),
-              // _buildResetPasscode(coordinator),
+              widget.userType == UserType.Customer
+                  ? havePasscode
+                      ? _buildResetPasscode(coordinator)
+                      : SizedBox()
+                  : _buildResetPasscode(coordinator),
             ],
           ),
         ));
@@ -174,6 +183,7 @@ class _LoginState extends State<Login> {
       ],
       keyboardType: TextInputType.number,
       onChanged: (value) {
+        _validateForm(coordinator);
         if (mobileNumberError.isNotEmpty || mobileNumber.text.length > 11) {
           coordinator.isMobileNumberValid(mobileNumber.text);
         }
@@ -219,14 +229,18 @@ class _LoginState extends State<Login> {
       textColor: White,
       textStyleVariant: CrayonPaymentTextStyleVariant.headline5,
       onPressed: () {
-        coordinator.isMobileNumberValid(mobileNumber.text);
-        coordinator.isAgentIdValid(agentIdController.text);
-        if (isBtnEnabled) {
-          // coordinator.navigateToWelcomeBackScreen(userType, mobileNumber.text);
+         if (isBtnEnabled) {
+           coordinator.isMobileNumberValid(mobileNumber.text);
+           coordinator.isAgentIdValid(agentIdController.text);
+           // coordinator.navigateToWelcomeBackScreen(userType, mobileNumber.text);
+          if(havePasscode){
+            coordinator.login(mobileNumber.text, passcodeController.text,
+                widget.userType, agentIdController.text);
+          } else {
+            coordinator.checkPasscode(mobileNumber.text,widget.userType,);
+          }
 
-          coordinator.login(mobileNumber.text, passcodeController.text,
-              widget.userType, agentIdController.text);
-        }
+          }
       },
     );
   }
@@ -303,16 +317,16 @@ class _LoginState extends State<Login> {
           },
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: const [
+            children: [
               Text(
-                'Forget Passcode?',
+                'FORGET_PASSCODE'.tr,
                 style: WB_forget_passcode_text_style,
               ),
               SizedBox(
                 height: 5,
               ),
               Text(
-                'Reset Now',
+                'RESET_NOW'.tr,
                 style: WB_reset_passcode_text_style,
               )
             ],
@@ -341,21 +355,21 @@ class _LoginState extends State<Login> {
         mobileNumberError: (message) {
           mobileNumberError = message;
         },
-        passCodeError: (message) {
-          passCodeError = message;
-          _showSnackBar(context,message);
-        },
+
         loginFormState: (isValid) {
           isBtnEnabled = isValid;
         },
         agentIdError: (message) {
           agentIdError = message;
         },
+        showPasscode: (hasPasscode) {
+          havePasscode = hasPasscode;
+        },
         orElse: () => null);
   }
 
   void _validateForm(LoginCoordinator coordinator) {
     coordinator.validateForm(mobileNumber.text, passcodeController.text,
-        agentIdController.text, widget.userType);
+        agentIdController.text, widget.userType, havePasscode);
   }
 }

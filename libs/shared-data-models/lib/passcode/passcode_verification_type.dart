@@ -5,5 +5,7 @@ enum PassCodeVerificationType {
   agentResetPasscode,
   agentVerifyResetPasscode,
   agentSignIn,
-  agentCustomerPasscode
+  agentCustomerPasscode,
+  customerResetPasscode,
+  verifyResetCustomerPasscode
 }

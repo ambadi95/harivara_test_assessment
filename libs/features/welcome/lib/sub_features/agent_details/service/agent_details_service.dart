@@ -20,9 +20,6 @@ class AgentDetailsService implements IAgentDetailsService {
     var request = StandardRequest();
     request.requestType = RequestType.GET;
     request.endpoint = 'agent-details/$agentId';
-    request.customHeaders = {
-      'Content-Type': 'application/json',
-    };
     return request;
   }
 
@@ -33,9 +30,6 @@ class AgentDetailsService implements IAgentDetailsService {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
     request.endpoint = 'agent-details';
-    request.customHeaders = {
-      'Content-Type': 'application/json',
-    };
     request.jsonBody = json.encode(requestData);
     return request;
   }

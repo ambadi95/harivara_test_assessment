@@ -14,6 +14,7 @@ import 'package:network_manager/model/response/network_standard_response.dart';
 import 'package:network_manager/model/response/token/token_response.dart';
 import 'package:network_manager/model/status/http_status.dart';
 import '../fake_models/fake_storage.dart';
+import 'package:config/Config.dart';
 
 class MockAuthManager extends Mock implements IAuthManager {}
 
@@ -71,7 +72,7 @@ void main() {
       );
 
       final authClient = AuthorizationClient(
-        'CUSTOMER',
+        UserType.Customer,
         networkClient,
         authManager,
         userManager,
@@ -110,7 +111,7 @@ void main() {
       );
 
       final authClient = AuthorizationClient(
-        'CUSTOMER',
+        UserType.Customer,
         networkClient,
         authManager,
         userManager,
@@ -146,7 +147,7 @@ void main() {
       );
 
       final authClient = AuthorizationClient(
-        'MERCHANT',
+        UserType.Agent,
         networkClient,
         authManager,
         userManager,
@@ -185,7 +186,7 @@ void main() {
       );
 
       final authClient = AuthorizationClient(
-        'MERCHANT',
+        UserType.Agent,
         networkClient,
         authManager,
         userManager,

@@ -1,0 +1,62 @@
+name: kyc
+description: kyc
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.17.6 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  mocktail: ^0.2.0
+  freezed:
+  build_runner:
+  json_serializable:
+  network_image_mock: ^2.0.1
+  flutter_riverpod: ^1.0.3
+  cupertino_icons: ^1.0.2
+  flutter_svg:
+
+  core:
+    path: ../../core
+
+  network_manager:
+    path: ../../network-manager/
+
+  task_manager:
+    path: ../../task-manager/
+
+  widget_library:
+    path: ../../widgets/
+
+  shared_data_models:
+    path: ../../shared-data-models/
+
+  config:
+    path: ../../../config/
+
+  welcome:
+    path: ../welcome/
+
+  crayon_payment_customer:
+    path: ../../../apps/customer
+
+  verifyotp:
+    path: ../verifyotp
+
+  termscondition:
+    path: ../termscondition
+
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^1.0.0
+
+
+
+flutter:
+  uses-material-design: true
+

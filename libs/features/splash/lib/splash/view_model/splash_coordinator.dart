@@ -1,3 +1,4 @@
+import 'package:config/Config.dart';
 import 'package:flutter/material.dart';
 import 'package:splash/navigation_handler/splash_navigation_handler.dart';
 import 'package:splash/splash/state/splash_state.dart';
@@ -53,8 +54,9 @@ class SplashCoordinator extends BaseViewModel<SplashState> {
   }
 
   Future<void> navigateToDestinationPath(
-      String userType, bool isSignedin) async {
+      UserType userType, bool isSignedin) async {
     _navigationHandler.navigateToDestinationPath(
         WelcomeScreenArgs('', '', userType, isSignedin));
   }
+
 }

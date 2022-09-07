@@ -26,13 +26,13 @@ class CrayonSplashScreen extends StatefulWidget {
         welcomeScreenArgs: WelcomeScreenArgs(
           '',
           '',
-          'Customer',
+          UserType.Customer,
           false,
         ),
       );
 
   factory CrayonSplashScreen.forMerchantApp() => CrayonSplashScreen(
-        welcomeScreenArgs: WelcomeScreenArgs('', '', 'Agent', false),
+        welcomeScreenArgs: WelcomeScreenArgs('', '', UserType.Agent, false),
       );
 }
 
@@ -299,9 +299,11 @@ class _CrayonSplashScreenState extends State<CrayonSplashScreen>
   }
 
   void _moveToDestinationPath() {
-    Future.delayed(const Duration(seconds: 8), () {
+    Future.delayed(const Duration(seconds: 7), () {
       _splashCoordinator!.navigateToDestinationPath(
-          widget.welcomeScreenArgs.userType, isSigned);
+        widget.welcomeScreenArgs.userType,
+        isSigned,
+      );
     });
   }
 

@@ -4,14 +4,17 @@ import 'package:core/navigation/i_route_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:welcome/data_model/agent_detail_arguments.dart';
 import 'package:welcome/data_model/sign_up_arguments.dart';
+import 'package:welcome/sub_features/customer_profile_details/view/customer_details_screen.dart';
 import 'package:welcome/sub_features/details/view/details.dart';
 import 'package:welcome/sub_features/enrollment_success/view/enrollment_success_screen.dart';
+import 'package:welcome/sub_features/signup/sub_features/customer_onboarding_approval/view/customer_onboarding_approval.dart';
 import 'package:welcome/sub_features/signup/view/signup.dart';
 
 import 'package:welcome/sub_features/welcome/view/welcome_screen.dart';
 import 'package:welcome/sub_features/welcome_back/view/welcome_back.dart';
 
 import '../sub_features/agent_details/view/agent_details.dart';
+import '../sub_features/signup/sub_features/customer_registration_options/view/registration_approval.dart';
 import '../sub_features/welcome/data_model/welcome_model.dart';
 
 class WelcomeRouteManager extends IRouteManager {
@@ -29,21 +32,15 @@ class WelcomeRouteManager extends IRouteManager {
           signUpArguments: arguments,
         );
       case DetailsScreen.viewPath:
-        var arguments = settings.arguments as String;
-        CrayonPaymentLogger.logInfo(arguments);
+        var arguments = settings.arguments as UserType;
         UserType type = UserType.Customer;
-        switch (arguments) {
-          case 'AgentCustomer':
-            type = UserType.AgentCustomer;
-            break;
-          case 'Customer':
-            type = UserType.Customer;
-            break;
-          case 'Agent':
-            type = UserType.Agent;
-            break;
-        }
         return DetailsScreen(
+          userType: arguments,
+        );
+      case CustomerDetailsScreen.viewPath:
+        var arguments = settings.arguments as UserType;
+        UserType type = UserType.Customer;
+        return CustomerDetailsScreen(
           userType: type,
         );
       case EnrollmentSuccessScreen.viewPath:
@@ -52,7 +49,7 @@ class WelcomeRouteManager extends IRouteManager {
           userType: argument,
         );
       case CrayonWelcomBackScreen.viewPath:
-        String arguments = settings.arguments as String;
+        var arguments = settings.arguments as UserType;
         return CrayonWelcomBackScreen(
           userType: arguments,
         );
@@ -60,6 +57,16 @@ class WelcomeRouteManager extends IRouteManager {
         var arguments = settings.arguments as AgentDetailScreenArguments;
         return AgentDetailsScreen(
           agentDetailScreenArguments: arguments,
+        );
+      case RegistrationApproval.viewPath:
+        var arguments = settings.arguments as SignUpArguments;
+        return RegistrationApproval(
+          signUpArguments: arguments,
+        );
+      case CustomerOnBoardingApproval.viewPath:
+        var arguments = settings.arguments as SignUpArguments;
+        return CustomerOnBoardingApproval(
+          signUpArguments: arguments,
         );
       default:
         throw UnimplementedError();

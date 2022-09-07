@@ -21,10 +21,7 @@ class EnrollmentService implements IEnrollmentService {
     request.endpoint = userType == UserType.AgentCustomer
         ? customerEndpoint + 'customer-details/${customerId}[customer]'
         : 'customer-details/${customerId}';
-    request.customHeaders = {
-      'Content-Type': 'application/json',
-      'Authorization': token,
-    };
+
     return request;
   }
 }

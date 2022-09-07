@@ -11,13 +11,16 @@ class DeviceDetailApiResolver extends TaskResolver {
     switch (identifier) {
       case IDeviceOptionService.deviceOptionIdentifier:
         return _deviceDetailService.deviceList(
-            int.parse(requestData['customerId']), requestData['token']);
+          int.parse(requestData['customerId']),
+        );
       case IDeviceOptionService.deviceDetailIdentifier:
         return _deviceDetailService.deviceDetail(
             requestData['deviceId'], requestData['token']);
       case IDeviceOptionService.selectDeviceIdentifier:
         return _deviceDetailService.selectDevice(requestData['customerId'],
             requestData['deviceId'], requestData['token']);
+      case IDeviceOptionService.loanPreviewIdentifier:
+        return _deviceDetailService.loanPreview(requestData['deviceId']);
       default:
         throw UnimplementedError();
     }

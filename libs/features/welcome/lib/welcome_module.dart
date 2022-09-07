@@ -2,9 +2,6 @@ import 'package:core/ioc/di_container.dart';
 import 'package:core/navigation/navigation_manager.dart';
 
 import 'package:network_manager/auth/auth_manager.dart';
-import 'package:network_manager/auth/authorization_client.dart';
-import 'package:network_manager/auth/user_client.dart';
-import 'package:network_manager/auth/user_manager.dart';
 import 'package:task_manager/cache_task_resolver.dart';
 import 'package:task_manager/module_resolver.dart';
 import 'package:task_manager/task_manager_impl.dart';
@@ -13,11 +10,17 @@ import 'package:welcome/sub_features/agent_details/viewmodel/agent_details_coord
 import 'package:welcome/sub_features/agent_details/viewmodel/agent_details_usecase.dart';
 import 'package:welcome/sub_features/agent_details/viewmodel/agent_details_view_model.dart';
 import 'package:welcome/sub_features/agent_enrollment/viewmodel/agent_enrollment_coordinator.dart';
+import 'package:welcome/sub_features/customer_profile_details/service/customer_details_service.dart';
+import 'package:welcome/sub_features/customer_profile_details/viewmodel/customer_details_coordinator.dart';
+import 'package:welcome/sub_features/customer_profile_details/viewmodel/customer_details_usecase.dart';
+import 'package:welcome/sub_features/customer_profile_details/viewmodel/customer_details_view_model.dart';
 import 'package:welcome/sub_features/details/viewmodel/details_usecase.dart';
 import 'package:welcome/sub_features/enrollment_success/service/enrollment_service.dart';
 import 'package:welcome/sub_features/enrollment_success/viewmodel/enrollment_success_coordinator.dart';
 import 'package:welcome/sub_features/enrollment_success/viewmodel/enrollment_success_usecase.dart';
 import 'package:welcome/sub_features/signup/service/signup_service.dart';
+import 'package:welcome/sub_features/signup/sub_features/customer_onboarding_approval/viewmodel/customer_onboarding_approval_coordinator.dart';
+import 'package:welcome/sub_features/signup/sub_features/customer_registration_options/viewmodel/registration_approval_coordinator.dart';
 import 'package:welcome/sub_features/signup/viewmodel/signup_usecase.dart';
 import 'package:welcome/sub_features/signup/viewmodel/signup_viewmodel.dart';
 import 'package:welcome/sub_features/welcome/viewmodel/welcome_usecase.dart';
@@ -42,8 +45,13 @@ class WelcomeModule {
     ModuleResolver.registerResolver(
       moduleIdentifier,
       SignupModuleResolver(
-        SignupApiResolver(SignupService(), DetailsService(),
-            EnrollmentService(), AgentDetailsService(), WelcomeBackService()),
+        SignupApiResolver(
+            SignupService(),
+            DetailsService(),
+            EnrollmentService(),
+            AgentDetailsService(),
+            WelcomeBackService(),
+            CustomerDetailsService()),
       ),
     );
 
@@ -68,11 +76,39 @@ class WelcomeModule {
       ),
     );
 
+    DIContainer.container.registerFactory<RegistrationApprovalCoordinator>(
+      (container) => RegistrationApprovalCoordinator(
+        WelcomeNavigationHandler(container.resolve<NavigationManager>()),
+      ),
+    );
+
+    DIContainer.container
+        .registerFactory<CustomerOnBoardingApprovalCoordinator>(
+      (container) => CustomerOnBoardingApprovalCoordinator(
+        WelcomeNavigationHandler(container.resolve<NavigationManager>()),
+          SignupUseCase(
+            SignupViewModel(),
+            container.resolve<IAuthManager>(),
+            container.resolve<TaskManager>(),
+          ),
+        ),
+    );
+
     DIContainer.container.registerFactory<DetailsCoordinator>(
       (container) => DetailsCoordinator(
         WelcomeNavigationHandler(container.resolve<NavigationManager>()),
         DetailsUseCase(
           DetailsViewModel(),
+          container.resolve<TaskManager>(),
+        ),
+      ),
+    );
+
+    DIContainer.container.registerFactory<CustomerDetailsCoordinator>(
+      (container) => CustomerDetailsCoordinator(
+        WelcomeNavigationHandler(container.resolve<NavigationManager>()),
+        CustomerDetailsUseCase(
+          CustomerDetailsViewModel(),
           container.resolve<TaskManager>(),
         ),
       ),

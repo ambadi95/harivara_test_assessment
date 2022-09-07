@@ -12,6 +12,7 @@ OtpVerificationRequest _$OtpVerificationRequestFromJson(
       id: json['id'] as String?,
       type: json['type'] as String?,
       otp: json['otp'] as String?,
+      event: json['event'] as String?,
     );
 
 Map<String, dynamic> _$OtpVerificationRequestToJson(
@@ -20,4 +21,5 @@ Map<String, dynamic> _$OtpVerificationRequestToJson(
       'id': instance.id,
       'type': instance.type,
       'otp': instance.otp,
+      'event': instance.event,
     };

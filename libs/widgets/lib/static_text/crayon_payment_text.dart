@@ -15,6 +15,7 @@ enum CrayonPaymentTextStyleVariant {
   subtitle2,
   bodyText1,
   bodyText2,
+  headline18,
   hints,
   amount,
   otp,
@@ -55,6 +56,7 @@ TextStyle buildTextStyle({
   final bool _isArabic = (Get.locale == const Locale('ar')) ? true : false;
 
   String _fontFamily() {
+    //return 'Montserrat';
     return _isArabic ? 'Zarid-Medium' : 'Montserrat';
   }
 
@@ -83,6 +85,12 @@ TextStyle buildTextStyle({
             height: lineHeight,
             fontFamily: _fontFamily(),
             fontSize: _isArabic ? 18 : 16,
+          );
+    case CrayonPaymentTextStyleVariant.headline18:
+      return Theme.of(context).textTheme.headline4!.copyWith(
+            height: lineHeight,
+            fontFamily: _fontFamily(),
+            fontSize: _isArabic ? 18 : 18,
           );
 
     case CrayonPaymentTextStyleVariant.headline5:
@@ -121,13 +129,13 @@ TextStyle buildTextStyle({
     case CrayonPaymentTextStyleVariant.subtitle2:
       return Theme.of(context)
           .textTheme
-          .subtitle2!
-          .copyWith(height: lineHeight);
+          .subtitle2!.copyWith(height: lineHeight, fontFamily: _fontFamily());
 
     case CrayonPaymentTextStyleVariant.bodyText1:
       return Theme.of(context).textTheme.bodyText1!.copyWith(
             height: lineHeight,
             fontFamily: _fontFamily(),
+            fontWeight: FontWeight.bold,
             fontSize: _isArabic ? 22 : 20,
           );
 

@@ -26,6 +26,10 @@ class OtpApiResolver extends TaskResolver {
         return _otpService.otpVerifyCustomerByAgent(
           requestData,
         );
+      case IOtpService.workFlowCustomerByAgentIdentifier:
+        return _otpService.workFlowCustomerByAgent(
+          requestData['customerId'],
+        );
       default:
         throw UnimplementedError();
     }

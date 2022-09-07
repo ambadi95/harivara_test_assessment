@@ -13,6 +13,8 @@ dependencies:
   flutter_riverpod: ^1.0.3
   carousel_slider: ^4.0.0
   get: ^4.6.1
+  firebase_core: ^1.21.1
+  firebase_crashlytics: ^2.8.9
   sqflite:
 
   config:
@@ -63,6 +65,15 @@ dependencies:
 
   termscondition:
     path: ../../libs/features/termscondition
+
+  settings:
+    path: ../../libs/features/settings
+
+  loan_details:
+    path: ../../libs/features/loan_details
+
+  payments:
+    path: ../../libs/features/payments
 
 
 dev_dependencies:

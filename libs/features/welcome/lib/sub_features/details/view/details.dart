@@ -4,6 +4,7 @@ import 'package:config/Styles.dart';
 import 'package:core/view/base_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:shared_data_models/customer_details/response/get_customer_details_response/get_customer_details_response.dart';
 import 'package:shared_data_models/customer_onboard/region_district/region_response/datum.dart';
 import 'package:shared_data_models/customer_onboard/region_district/district_response/datum.dart'
     as b;
@@ -15,13 +16,13 @@ import 'package:widget_library/alert_dialogue/crayon_payment_alert_dialogue.dart
 import 'package:widget_library/buttons/crayon_back_button.dart';
 import 'package:widget_library/dropdown/crayon_drop_down.dart';
 import 'package:widget_library/input_fields/input_field_with_label.dart';
+import 'package:widget_library/page_header/text_ui_data_model.dart';
 import 'package:widget_library/progress_bar/centered_circular_progress_bar.dart';
 import 'package:widget_library/progress_bar/onboarding_progress_bar.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:config/Colors.dart' as config_color;
-
-import '../../../data_model/district.dart';
+import 'package:widget_library/static_text/crayon_payment_text.dart';
 import '../../../data_model/gender_type.dart';
 
 class DetailsScreen extends StatefulWidget {
@@ -49,6 +50,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
   List<DropdownMenuItem<GenderType>> genderTypeDropDown = [];
   List<DropdownMenuItem<Datum>> regionDropDown = [];
   List<DropdownMenuItem<b.Datum>> districtDropDown = [];
+  GetCustomerDetailsResponse? customerDetail;
 
   GenderType? _genderType;
   Datum? _region;
@@ -123,10 +125,40 @@ class _DetailsScreenState extends State<DetailsScreen> {
           onStateListenCallback: (preState, newState) =>
               {_listenToStateChanges(context, newState)},
           setupViewModel: (coordinator) async {
-            coordinator.getMobileNumber();
+            await coordinator.getMobileNumber();
             List<Datum> regions = await coordinator.getRegion(widget.userType);
             genderTypeDropDown = getDropDownData(coordinator.genderType);
             regionDropDown = getRegionDropDownData(regions);
+            customerDetail = await coordinator.getCustomerDetail(
+                regionDropDown, widget.userType);
+            if(customerDetail!.data!=null && customerDetail!.data!.firstName!=null) {
+              name.text = customerDetail!.data!.firstName! +
+                  ' ' +
+                  customerDetail!.data!.lastName!;
+              dob.text = customerDetail!.data!.birthdate!;
+              selectedDate = DateFormat('dd/MM/yyyy')
+                  .parse(customerDetail!.data!.birthdate.toString());
+              profession.text = customerDetail!.data!.profession!;
+              emailId.text = customerDetail!.data!.emailId!;
+              address.text = customerDetail!.data!.address!;
+              poBox.text = customerDetail!.data!.poBoxNumber!;
+              district.text = customerDetail!.data!.district!;
+              region.text = customerDetail!.data!.region!;
+              gender.text = customerDetail!.data!.gender!;
+
+              if (customerDetail!.data != null) {
+                coordinator.isValidDob(dob.text);
+
+                coordinator.isValidDistrict(district.text);
+                coordinator.isValidRegion(region.text);
+              }
+              if (_region != null) {
+                dis =
+                await coordinator.getDistrict(_region!.id!, widget.userType);
+                districtDropDown = getDistrictDropDownData(dis);
+                coordinator.fetchDistrictState(customerDetail!.data!.district!);
+              }
+            }
           },
           builder: (context, state, coordinator) => SafeArea(
                 child: state.maybeWhen(
@@ -134,7 +166,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
                       _buildMainUIWithLoading(context, coordinator),
                   orElse: () => Scaffold(
                     appBar: PreferredSize(
-                      preferredSize: const Size(double.infinity, 102),
+                      preferredSize: Size(double.infinity,
+                          widget.userType == UserType.AgentCustomer ? 58 : 102),
                       child: _buildTopContainer(context, coordinator),
                     ),
                     body: SingleChildScrollView(
@@ -155,7 +188,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
   ) {
     return Column(
       children: [
-        _onBoardingProgressBar(),
+        widget.userType == UserType.AgentCustomer
+            ? const SizedBox()
+            : _onBoardingProgressBar(),
         _buildBackBtn(context, coordinator),
       ],
     );
@@ -219,8 +254,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _title(),
+          _subtitle(),
           const SizedBox(
-            height: 30,
+            height: 39,
           ),
           _buildLabelTextField(
               'name',
@@ -281,9 +317,36 @@ class _DetailsScreenState extends State<DetailsScreen> {
 
   Widget _title() {
     return Text(
-      'DV_title'.tr,
+      widget.userType == UserType.AgentCustomer
+          ? 'DV_agent_aided_title'.tr
+          : 'DV_title'.tr,
       style: SU_title_style,
     );
+  }
+
+  Widget _subtitle() {
+    return widget.userType == UserType.AgentCustomer
+        ? Container(
+            padding: const EdgeInsets.only(
+              right: 16,
+              top: 16,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CrayonPaymentText(
+                  key: const Key('DV_subTitle'),
+                  text: TextUIDataModel(
+                    'DV_agent_aided_subtitle'.tr,
+                    styleVariant: CrayonPaymentTextStyleVariant.headline4,
+                    color: VO_DescriptionColor,
+                    textAlign: TextAlign.left,
+                  ),
+                ),
+              ],
+            ),
+          )
+        : const SizedBox();
   }
 
   Widget _buildLabelTextField(
@@ -589,7 +652,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
               poBox.text,
               region.text,
               district.text,
-              widget.userType);
+              widget.userType,
+              customerDetail!.data==null || customerDetail!.data!.firstName==null ? "POST" :" PUT");
         }
       },
       child: Container(
@@ -763,6 +827,27 @@ class _DetailsScreenState extends State<DetailsScreen> {
         onDistrictChoosen: (value) {
           _district = value;
         },
+        onGenderTypeFetched: (genderType) {
+          var item = genderTypeDropDown.firstWhereOrNull((element) =>
+              element.value != null && element.value!.gender == genderType);
+          if (item != null) {
+            _genderType = item.value;
+          }
+        },
+        onRegionFetched: (region) {
+          var regionItem = regionDropDown.firstWhereOrNull((element) =>
+              element.value != null && element.value!.name == region);
+          if (regionItem != null) {
+            _region = regionItem.value;
+          }
+        },
+        onDistrictFetched: (district) {
+          var districtItem = districtDropDown.firstWhereOrNull((element) =>
+              element.value != null && element.value!.name == district);
+          if (districtItem != null) {
+            _district = districtItem.value;
+          }
+        },
         orElse: () => null);
   }
 
@@ -808,6 +893,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
       coordinator.isValidDob(dob.text);
     }
     final DateFormat inputFormat = DateFormat('yyyy-MM-dd');
+
     if (inputFormat
             .parse(DateTime.now().toString())
             .difference(inputFormat.parse(selectedDate.toString()))

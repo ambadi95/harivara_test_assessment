@@ -44,6 +44,14 @@ dependencies:
   settings:
     path: ../../features/settings
 
+  payments:
+    path: ../../features/payments
+
+  loan_details:
+    path: ../../features/loan_details
+
+  scanqrcode:
+    path: ../../features/scanqrcode
 
 
 
@@ -56,6 +64,7 @@ dev_dependencies:
   freezed:
   build_runner:
   json_serializable:
+
 
 
 flutter:

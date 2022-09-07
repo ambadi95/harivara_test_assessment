@@ -16,6 +16,8 @@ dependencies:
   network_image_mock: ^2.0.1
   flutter_riverpod: ^1.0.3
   cupertino_icons: ^1.0.2
+  location:
+  geocoding:
 
   core:
     path: ../../core

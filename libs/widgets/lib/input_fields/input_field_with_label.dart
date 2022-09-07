@@ -99,7 +99,7 @@ class InputFieldWithLabel extends StatelessWidget {
               ),
             ),
             hintText: hintText,
-            hintStyle: TextStyle(),
+            hintStyle: const  TextStyle(color: Color(0xFFA3A3A3), fontFamily: 'Montserrat' , fontSize:14),
           ),
           onChanged: onChanged,
           textCapitalization: textCapitalization,

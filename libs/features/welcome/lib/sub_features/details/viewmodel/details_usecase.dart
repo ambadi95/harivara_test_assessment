@@ -1,4 +1,5 @@
 import 'package:config/Config.dart';
+import 'package:shared_data_models/customer_details/response/get_customer_details_response/get_customer_details_response.dart';
 import 'package:shared_data_models/customer_onboard/customer_details/request/customer_details_request.dart';
 import 'package:shared_data_models/customer_onboard/customer_details/response/customer_detail_response.dart';
 import 'package:shared_data_models/customer_onboard/region_district/district_response/district_response.dart';
@@ -42,6 +43,20 @@ class DetailsUseCase extends BaseDataProvider {
     return await getValueFromSecureStorage('customerId', defaultValue: '');
   }
 
+  Future<void> saveCustomerId(String? customerId) async {
+    return await setValueToSecureStorage({'customerId': customerId});
+  }
+
+  Future<void> saveCustomerMobileNumber(String mobileNumber) async {
+    return await setValueToSecureStorage({'mobileNumber': mobileNumber});
+  }
+
+  Future<void> saveNewCustomerName(String fullName) async {
+    print("fullname===> $fullName");
+    return await setValueToSecureStorage({'newCustomerName': fullName});
+  }
+
+
   Future<RegionDetails?> getRegion(
       Function(String) onErrorCallback, UserType userType) async {
     return await executeApiRequest<RegionDetails?>(
@@ -71,6 +86,25 @@ class DetailsUseCase extends BaseDataProvider {
           return DistrictResponse.fromJson(data);
         });
   }
+  Future<GetCustomerDetailsResponse?> getCustomerDetailsByMobileNumber(
+      Function(String) onErrorCallback) async {
+      String phoneNo = await getMobileNumber();
+    return await executeApiRequest<GetCustomerDetailsResponse?>(
+        taskType: TaskType.DATA_OPERATION,
+        taskSubType: TaskSubType.REST,
+        moduleIdentifier: WelcomeModule.moduleIdentifier,
+        requestData: {
+          "mobileNo": phoneNo.replaceAll(" ", "")
+        },
+        serviceIdentifier: IDetailsService.getCustomerDetailIdentifier,
+        onError: onErrorCallback,
+        modelBuilderCallback: (responseData) {
+          final data = responseData;
+          GetCustomerDetailsResponse detailResponse =
+          GetCustomerDetailsResponse.fromJson(data);
+          return detailResponse;
+        });
+  }
 
   Future<CustomerDetailResponse?> submitCustomerDetails(
       String name,
@@ -83,7 +117,7 @@ class DetailsUseCase extends BaseDataProvider {
       String region,
       String district,
       Function(String) onErrorCallback,
-      UserType userType) async {
+      UserType userType,String postType) async {
     String mobileNO = await getMobileNumber();
     String nidaNo = await getnidaNumber();
     int customerId = int.parse(await getCustomerId());
@@ -108,7 +142,8 @@ class DetailsUseCase extends BaseDataProvider {
         moduleIdentifier: WelcomeModule.moduleIdentifier,
         requestData: {
           'data': customerDetailsRequest.toJson(),
-          'userType': userType
+          'userType': userType,
+           "postType" : postType
         },
         serviceIdentifier: IDetailsService.submitCustomerDetailIdentifier,
         onError: onErrorCallback,

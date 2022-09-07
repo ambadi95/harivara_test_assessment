@@ -1,4 +1,5 @@
 import 'package:config/Config.dart';
+import 'package:core/logging/logger.dart';
 import 'package:network_manager/auth/auth_manager.dart';
 import 'package:passcode/sub_features/passcode/service/passcode_service.dart';
 import 'package:passcode/sub_features/passcode/view_model/passcode_viewmodel.dart';
@@ -10,6 +11,7 @@ import 'package:shared_data_models/welcome/signin/request/sign_in_request.dart';
 import 'package:shared_data_models/welcome/signin/response/customer_sign_in_response.dart';
 import 'package:shared_data_models/agent_onboard/agent_save_passcode_request/passcode_request_agent.dart';
 import 'package:task_manager/base_classes/base_data_provider.dart';
+import 'package:task_manager/cache_task_resolver.dart';
 import 'package:task_manager/task.dart';
 import 'package:task_manager/task_manager_impl.dart';
 import 'package:widget_library/keypad/keypad_button_type.dart';
@@ -19,9 +21,10 @@ import '../../../passcode_module.dart';
 class PasscodeUseCase extends BaseDataProvider {
   final PassCodeViewModel _passCodeViewModel;
   final IAuthManager _authManager;
+  final CacheTaskResolver _cacheTaskResolver;
 
   PasscodeUseCase(
-      this._passCodeViewModel, this._authManager, TaskManager taskManager)
+      this._passCodeViewModel, this._authManager, TaskManager taskManager,this._cacheTaskResolver)
       : super(taskManager);
 
   String updateCurrentPasscode(
@@ -100,7 +103,7 @@ class PasscodeUseCase extends BaseDataProvider {
   }
 
   Future<PasscodeResponse?> savePasscodeAgentCustomer(String passcode,
-      String userType, Function(String) onErrorCallback) async {
+      UserType userType, Function(String) onErrorCallback) async {
     String custmerId = await getCustomerId();
 
     PasscodeRequest passcodeRequest = PasscodeRequest(
@@ -110,10 +113,7 @@ class PasscodeUseCase extends BaseDataProvider {
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
         moduleIdentifier: PasscodeModule.moduleIdentifier,
-        requestData: {
-          'data': passcodeRequest.toJson(),
-          'userType': UserType.AgentCustomer
-        },
+        requestData: {'data': passcodeRequest.toJson(), 'userType': userType},
         serviceIdentifier: IPasscodeService.agentCustomerSignUpIdentifier,
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {
@@ -148,6 +148,7 @@ class PasscodeUseCase extends BaseDataProvider {
     String mobileNumber = await getNumber();
     SignInRequest signInRequest = SignInRequest(
         mobileNumber: mobileNumber.replaceAll(" ", ''), passcode: passcode);
+    CrayonPaymentLogger.logInfo(signInRequest.toString());
     return await executeApiRequest<CustomerSignInResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
@@ -190,4 +191,49 @@ class PasscodeUseCase extends BaseDataProvider {
           return AgentSignInResponse.fromJson(data);
         });
   }
+
+  Future<PasscodeResponse?> resetPasscodeCustomer(String passcode,
+      UserType userType, Function(String) onErrorCallback) async {
+    String custmerId = await getCustomerId();
+    PasscodeRequest passcodeRequest = PasscodeRequest(
+        id: int.parse(custmerId), type: (userType== UserType.AgentCustomer ? 'AgentCustomer' : (userType == UserType.Agent ? "Agent" : "Customer")), passcode: passcode);
+
+    return await executeApiRequest<PasscodeResponse?>(
+        taskType: TaskType.DATA_OPERATION,
+        taskSubType: TaskSubType.REST,
+        moduleIdentifier: PasscodeModule.moduleIdentifier,
+        requestData: passcodeRequest.toJson(),
+        serviceIdentifier: IPasscodeService.resetPasscodeIdentifier,
+        onError: onErrorCallback,
+        modelBuilderCallback: (responseData) {
+          final data = responseData;
+          return PasscodeResponse.fromJson(data);
+        });
+  }
+
+  Future<PasscodeResponse?> resetPasscodeAgent(String passcode,
+      Function(String) onErrorCallback) async {
+    String agentId = await getAgentId();
+    PasscodeRequestAgent passcodeRequest = PasscodeRequestAgent(
+        y9AgentId: agentId, type: 'Agent', passcode: passcode);
+
+    return await executeApiRequest<PasscodeResponse?>(
+        taskType: TaskType.DATA_OPERATION,
+        taskSubType: TaskSubType.REST,
+        moduleIdentifier: PasscodeModule.moduleIdentifier,
+        requestData: passcodeRequest.toMap(),
+        serviceIdentifier: IPasscodeService.resetPasscodeAgentIdentifier,
+        onError: onErrorCallback,
+        modelBuilderCallback: (responseData) {
+          final data = responseData;
+          return PasscodeResponse.fromJson(data);
+        });
+  }
+
+  Future logout() async {
+    _cacheTaskResolver
+        .execute("", {CACHE_TYPE: TaskManagerCacheType.DELETE_ALL});
+  }
+
+
 }

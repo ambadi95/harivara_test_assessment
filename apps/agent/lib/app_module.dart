@@ -1,4 +1,3 @@
-
 import 'dart:convert';
 
 import 'package:agent_nearby/agent_nearby_module.dart';
@@ -28,6 +27,11 @@ import 'package:device_option/navigation_handler/device_option_route_manager.dar
 import 'package:flutter/services.dart';
 import 'package:home/home/home_module.dart';
 import 'package:home/home/navigation_handler/home_route_manager.dart';
+import 'package:kyc/kyc_credit_module.dart';
+import 'package:downpayment/downpayment_module.dart';
+import 'package:kyc/navigation_handler/kyc_credit_route_manager.dart';
+import 'package:loan_details/loan_detail_module.dart';
+import 'package:loan_details/navigation_handler/loan_detail_route_manager.dart';
 import 'package:login/login_module.dart';
 import 'package:login/navigation_handler/login_route_manager.dart';
 import 'package:network_manager/auth/auth_manager.dart';
@@ -38,6 +42,8 @@ import 'package:network_manager/network_manager.dart';
 import 'package:network_manager/utils/connectivity/i_connectivity.dart';
 import 'package:passcode/navigation_handler/passcode_route_manager.dart';
 import 'package:passcode/passcode_module.dart';
+import 'package:scanqrcode/navigation_handler/scanqrcode_route_manager.dart';
+import 'package:scanqrcode/scanqrcode_module.dart';
 import 'package:settings/navigation_handler/settings_route_manager.dart';
 import 'package:splash/splash_module.dart';
 import 'package:task_manager/cache_manager/storage/file_storage/file_storage_service_impl.dart';
@@ -55,11 +61,12 @@ import 'package:welcome/welcome_module.dart';
 import 'package:widget_library/app_mobile_widgets.dart';
 import 'package:widget_library/keypad/utils/keypad_button_pressed_value_updater.dart';
 import 'package:settings/settings_model.dart';
-
+import 'package:kyc/subfeatures/kycmain/kyccreditmain_module.dart';
+import 'package:kyc/subfeatures/kycmain/navigation_handler/kyc_main_route_manager.dart';
+import 'package:downpayment/navigation_handler/downpayment_route_manager.dart';
+import 'package:widget_library/utils/app_utils.dart';
 
 class AppModule {
-
-
   // ignore: long-method
   static Future<void> registerDependencies() async {
     DefaultTrackerCollection collection = DefaultTrackerCollection();
@@ -83,8 +90,6 @@ class AppModule {
       ),
     );
 
-
-
     DIContainer.container.registerSingleton(
       (container) => CacheTaskResolver(
         secureStorageService: DIContainer.container<StorageService>(),
@@ -93,9 +98,19 @@ class AppModule {
         memoryStorageService: MemoryStorageServiceImpl(),
       ),
     );
+
+    AppUtils.appUtilsInstance.updateCacheTaskResolverInstance( CacheTaskResolver(
+      secureStorageService: DIContainer.container<StorageService>(),
+      fileStorageService: FileStorageServiceImpl(),
+      unsecureStorageService: UnsecureStorageServiceImpl(),
+      memoryStorageService: MemoryStorageServiceImpl(),
+    ),);
+
     DIContainer.container.registerSingleton<NavigationManager>(
       (container) => NavigationManagerImpl(),
     );
+    AppUtils.appUtilsInstance.updateNavigationHandlerInstance(NavigationManagerImpl());
+
     DIContainer.container.registerSingleton<WidgetsModule>(
       (container) => WidgetsModuleImpl(container.resolve<NavigationManager>()),
     );
@@ -118,15 +133,18 @@ class AppModule {
 
     SettingsModule.registerDependencies();
 
+    KycCreditModule.registerDependencies();
+
+    DownPaymentModule.registerDependencies();
+
+    ScanQRCodeModule.registerDependencies();
+
+    KycCreditMainModule.registerDependencies();
+
     TermsConditionModule.registerDependencies();
 
 
-
-
     DIContainer.container.resolve<WidgetsModule>().registerDependencies();
-
-
-
   }
 }
 
@@ -137,7 +155,7 @@ void _registerUtils() {
   );
 
   DIContainer.container.registerSingleton<CrayonPaymentTranslationsLoader>(
-        (container) => CrayonPaymentTranslationsLoaderImpl(),
+    (container) => CrayonPaymentTranslationsLoaderImpl(),
   );
 
   DIContainer.container.registerSingleton<GetContacts>(
@@ -148,8 +166,6 @@ void _registerUtils() {
     (container) => InputEntryValidatorImpl.forCustomerApp(),
   );
 
-
-
   DIContainer.container.registerSingleton<LengthTextFormatter>(
     (container) => LengthTextFormatterImpl.forCustomerApp(),
   );
@@ -157,12 +173,13 @@ void _registerUtils() {
   DIContainer.container.registerSingleton<KeyPadButtonPressedValueUpdater>(
     (container) => KeyPadButtonPressedValueUpdaterImpl(),
   );
-
 }
 
 // ignore: long-method
 void _registerRouteManagers() {
   final navigationManagerContainer = DIContainer.container<NavigationManager>();
+
+
 
   navigationManagerContainer.registerRouteManager(
     WelcomeModule.moduleIdentifier,
@@ -179,7 +196,6 @@ void _registerRouteManagers() {
     DeviceOptionRouteManager(),
   );
 
-
   navigationManagerContainer.registerRouteManager(
     LoginModule.moduleIdentifier,
     LoginRouteManager(),
@@ -190,12 +206,10 @@ void _registerRouteManagers() {
     HomeRouteManager(),
   );
 
-
   navigationManagerContainer.registerRouteManager(
     PasscodeModule.moduleIdentifier,
     PasscodeRouteManager(),
   );
-
 
   navigationManagerContainer.registerRouteManager(
     VerifyOtpModule.moduleIdentifier,
@@ -208,11 +222,29 @@ void _registerRouteManagers() {
   );
 
   navigationManagerContainer.registerRouteManager(
+    KycCreditModule.moduleIdentifier,
+    KycCreditRouteManager(),
+  );
+
+ navigationManagerContainer.registerRouteManager(
+    DownPaymentModule.moduleIdentifier,
+   DownPaymentRouteManager(),
+  );
+
+  navigationManagerContainer.registerRouteManager(
+    ScanQRCodeModule.moduleIdentifier,
+    ScanQRCodeRouteManager(),
+  );
+
+  navigationManagerContainer.registerRouteManager(
+    KycCreditMainModule.moduleIdentifier,
+    KycCreditMainRouteManager(),
+  );
+
+  navigationManagerContainer.registerRouteManager(
     TermsConditionModule.moduleIdentifier,
     TermsConditionRouteManager(),
   );
-
-
 
   DIContainer.container.registerSingleton<NativeDocumentDirectory>(
     (container) => NativeDocumentDirectoryImpl(),
@@ -225,7 +257,6 @@ void _registerRouteManagers() {
     ),
   );
 
-
   _registerBottomSheetFeature();
   _registerToolTipFeature();
 }
@@ -237,20 +268,18 @@ void _registerBottomSheetFeature() {
     CrayonPaymentBottomSheetRouteManager(),
   );
   DIContainer.container.registerFactory<CrayonPaymentBottomSheetCoordinator>(
-        (container) => CrayonPaymentBottomSheetCoordinator(
+    (container) => CrayonPaymentBottomSheetCoordinator(
       CrayonPaymentBottomSheetNavigationHandler(
         container.resolve<NavigationManager>(),
       ),
     ),
   );
-
-
 }
 
 void _registerToolTipFeature() {
   final navigationManagerContainer = DIContainer.container<NavigationManager>();
-
 }
+
 Future registerNetworkModule({
   String? environment,
 }) async {
@@ -258,24 +287,23 @@ Future registerNetworkModule({
   final networkConfigJson = await rootBundle
       .loadString('assets/configuration/network_configuration_dev.json');
   final networkConfig =
-  Config.fromJson(jsonDecode(networkConfigJson) as Map<String, dynamic>);
+      Config.fromJson(jsonDecode(networkConfigJson) as Map<String, dynamic>);
   final mockNetworkClient = networkConfig.useMockNetworkClient ?? false;
   NetworkManager.registerDependencies(useMockNetworkClient: mockNetworkClient);
 
   await DIContainer.container.resolve<IConnectivity>().initialize();
   DIContainer.container.registerSingleton<IInactivityService>(
-        (container) => InactivityService(
+    (container) => InactivityService(
       taskManager: container.resolve(),
       authManager: container.resolve<IAuthManager>(),
-      navigationManager: container.resolve<NavigationManager>(),),
+      navigationManager: container.resolve<NavigationManager>(),
+    ),
   );
   DIContainer.container.registerSingleton<IAppLocalizationService>(
-        (container) => AppLocalizationService(),
+    (container) => AppLocalizationService(),
   );
 // initialise dependencies
-  DIContainer.container
-      .resolve<GlobalControlNotifier>(NetworkManager.globalControlNotifierKey)
-      .initialise(networkConfig);
+  DIContainer.container.resolve<GlobalControlNotifier>(NetworkManager.globalControlNotifierKey).initialise(networkConfig);
   initializeGraphQLClient(networkConfig);
 }
 

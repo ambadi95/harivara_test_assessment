@@ -15,7 +15,8 @@ dependencies:
   carousel_slider: ^4.0.0
   syncfusion_flutter_datepicker: ^19.4.53
   get: ^4.6.1
-
+  firebase_core: ^1.21.1
+  firebase_crashlytics: ^2.8.9
 
 
 
@@ -64,6 +65,18 @@ dependencies:
 
   termscondition:
     path: ../../libs/features/termscondition
+
+  kyc:
+    path: ../../libs/features/kyc
+
+  loan_details:
+    path: ../../libs/features/loan_details
+
+  scanqrcode:
+    path: ../../libs/features/scanqrcode
+
+  downpayment:
+    path: ../../libs/features/downpayment
 
 
 

@@ -14,6 +14,7 @@ class DetailsApiResolver extends TaskResolver {
       case IDetailsService.districtIdentifier:
         return _detailsService.getDistrict(
             requestData['regionId'], requestData['userType']);
+
       case IDetailsService.submitCustomerDetailIdentifier:
         return _detailsService.submitCustomerDetails(
             requestData['data'], requestData['userType']);
