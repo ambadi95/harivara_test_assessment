@@ -9,7 +9,7 @@ import 'package:widget_library/progress_bar/centered_circular_progress_bar.dart'
 import '../../../welcome_module.dart';
 import '../../welcome/state/welcome_screen_state.dart';
 import '../viewmodel/welcome_back_coordinatior.dart';
-import 'package:crayon_payment_customer/util/app_utils.dart';
+import 'package:widget_library/utils/app_utils.dart';
 
 class CrayonWelcomBackScreen extends StatefulWidget {
   static const viewPath = '${WelcomeModule.moduleIdentifier}/welcomeback';
@@ -136,7 +136,7 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
               //   WB_touchIdIcon,
               //   scale: 2.0,
               // ),
-              //  _buildResetPasscode(welcomeCoordinator)
+               _buildResetPasscode(welcomeCoordinator)
             ],
           ),
         ),
@@ -237,16 +237,16 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
           },
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: const [
+            children: [
               Text(
-                'Forget Passcode?',
+                'FORGET_PASSCODE'.tr,
                 style: WB_forget_passcode_text_style,
               ),
               SizedBox(
                 height: 5,
               ),
               Text(
-                'Reset Now',
+                'RESET_NOW'.tr,
                 style: WB_reset_passcode_text_style,
               )
             ],

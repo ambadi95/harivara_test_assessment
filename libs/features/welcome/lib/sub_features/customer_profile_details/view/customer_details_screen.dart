@@ -2,6 +2,7 @@ import 'package:config/Colors.dart';
 import 'package:config/Config.dart';
 import 'package:config/Styles.dart';
 import 'package:core/view/base_view.dart';
+import 'package:widget_library/utils/app_utils.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -156,10 +157,10 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
             for (var element in regions) {
               if (element.name! == region.text) {
                 _region = element;
-                dis = await coordinator.getDistrict(_region!.id!, widget.userType);
+                dis = await coordinator.getDistrict(
+                    _region!.id!, widget.userType);
                 districtDropDown = getDistrictDropDownData(dis);
                 for (var disElement in dis) {
-
                   if (disElement.name! == district.text) {
                     _district = disElement;
                   }
@@ -167,9 +168,7 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
               }
             }
 
-            setState(() {
-
-            });
+            setState(() {});
           },
           builder: (context, state, coordinator) => SafeArea(
                 child: Scaffold(
@@ -329,7 +328,7 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
               coordinator,
               emailError,
               'DV_email_hint_text',
-              true),
+              false),
           _buildLabelTextFieldAddress('DV_address_label'.tr, address,
               coordinator, 'DV_address_hint_text', true),
           _buildLabelTextField(
@@ -399,6 +398,7 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
         if (coordinator.isValidPoBox(poBox.text) &&
             coordinator.isValidEmail(emailId.text) &&
             coordinator.isValidName(name.text)) {
+          AppUtils.appUtilsInstance.removeFocusFromEditText(context: context);
           await coordinator.updateDetails(
               name.text,
               dob.text,
@@ -409,7 +409,7 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
               poBox.text,
               profession.text,
               region.text,
-              widget.userType);
+              widget.userType,context);
         }
       },
       child: Container(
@@ -588,9 +588,7 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
             color: ES_grey_button_color,
           ),
           hint: Text(
-            _region.isEmptyOrNull
-                ? 'DV_region_hint_text'.tr
-                :  _region!.name!,
+            _region.isEmptyOrNull ? 'DV_region_hint_text'.tr : _region!.name!,
           ),
           boxHeight: 60,
           isDense: false,
@@ -604,8 +602,15 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
             coordinator.isValidRegion(value.name!);
             dis.clear();
             district.clear();
+            AppUtils.appUtilsInstance.showCircularDialog(context);
             dis = await coordinator.getDistrict(value.id!, widget.userType);
+            Navigator.pop(context);
+            districtDropDown.clear();
             districtDropDown = getDistrictDropDownData(dis);
+            _district = districtDropDown.elementAt(0).value;
+            setState(() {
+
+            });
           },
         ),
         const SizedBox(

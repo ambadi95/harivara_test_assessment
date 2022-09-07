@@ -25,6 +25,11 @@ class DeviceOptionNavigationHandler with ErrorHandler {
         arguments: arguments);
   }
 
+  Future<void> goBack() async {
+    _navigationManager.goBack();
+  }
+
+
   Future<void> navigateToDeviceLoanCreation(
       String image, Data deviceDetailData) async {
     var arguments = DeviceLoanCreationArgs(deviceDetailData, image);
@@ -41,9 +46,10 @@ class DeviceOptionNavigationHandler with ErrorHandler {
         arguments: argument);
   }
 
-  navigateToDownPaymentScreen(Data? detailDetail) {
+  navigateToDownPaymentScreen(String amount,int? deviceId) {
     var arguments = DownPaymentScreenArgs(
-        "", "", "", "", [DownPaymentDataModel(title: "", isSelected: false)]);
+        deviceId ?? 1, amount, "", "",0,0,0,0,0);
+    // var arguments = deviceId;
     _navigationManager.navigateTo(
         DownPaymentScreen.viewPath, const NavigationType.push(),
         arguments: arguments);

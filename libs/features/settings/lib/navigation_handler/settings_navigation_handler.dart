@@ -20,6 +20,7 @@ import 'package:core/sheets/state/crayon_payment_bottom_sheet_state.dart';
 import 'package:welcome/sub_features/app_language/view/app_language.dart';
 import 'package:config/Config.dart';
 import 'package:termscondition/termscondition/view/terms_condition_view.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SettingsNavigationHandler with ErrorHandler {
   final NavigationManager _navigationManager;
@@ -29,12 +30,12 @@ class SettingsNavigationHandler with ErrorHandler {
     _navigationManager.goBack();
   }
 
-  Future<void> navigateToSignUpScreen(UserType userType) async {
+  Future<void> navigateToResetPasscode(UserType userType) async {
     var arguments = SignUpArguments(
       'SU_update_passcode',
       'SU_update_subtitle',
       userType,
-      SignupType.resetPasscodeAgent,
+      userType == UserType.Agent ?  SignupType.resetPasscodeAgent :  SignupType.resetPasscodeCustomer,
       false,
     );
     await _navigationManager.navigateTo(
@@ -80,8 +81,8 @@ class SettingsNavigationHandler with ErrorHandler {
         arguments: arguments);
   }
 
-  Future<void> signOut() async {
-    var arguments = WelcomeScreenArgs('', '', UserType.Agent, false);
+  Future<void> signOut(UserType userType) async {
+    var arguments = WelcomeScreenArgs('', '', userType, false);
     _navigationManager.navigateTo(
         CrayonWelcomScreen.viewPath, const NavigationType.replace(),
         arguments: arguments);
@@ -99,5 +100,14 @@ class SettingsNavigationHandler with ErrorHandler {
       AgentNearBy.viewPath,
       const NavigationType.push(),
     );
+  }
+
+  void navigateToTermsCondition() async {
+    var uri = Uri.parse(y9TermsCondition);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
+    } else {
+      throw 'Could not launch ${uri.toString()}';
+    }
   }
 }

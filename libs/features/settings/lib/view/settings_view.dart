@@ -110,7 +110,7 @@ class _SettingsState extends State<Settings> {
           text: TextUIDataModel('ST_subTitle'.tr,
               styleVariant: CrayonPaymentTextStyleVariant.bodyText2,
               color: AN_TitleColor,
-              fontWeight: FontWeight.w800),
+              fontWeight: FontWeight.w900),
         ),
         const SizedBox(
           height: 20,
@@ -118,13 +118,8 @@ class _SettingsState extends State<Settings> {
         _buildOptions(context, 'ST_my_profile', ST_view_profile, () async {
           widget.screenArgs.isAgent
               ? await coordinator.navigateToUpdateProfile()
-              : await coordinator.navigateToCustomerProfileScreen();  }),/*() {}*/
-        _buildOptions(context, 'ST_view_profile', ST_view_profile, () async {
-          widget.screenArgs.isAgent
-              ? await coordinator.navigateToUpdateProfile()
-              : () {};
+              : await coordinator.navigateToCustomerProfileScreen();
         }),
-        /*() {}*/
         // _buildOptions(context, 'ST_view_profile', ST_view_profile, () async {
         //   widget.screenArgs.isAgent
         //       ? await coordinator.navigateToUpdateProfile()
@@ -153,7 +148,7 @@ class _SettingsState extends State<Settings> {
           text: TextUIDataModel('ST_support'.tr,
               styleVariant: CrayonPaymentTextStyleVariant.bodyText2,
               color: AN_TitleColor,
-              fontWeight: FontWeight.w800),
+              fontWeight: FontWeight.w900),
         ),
         const SizedBox(
           height: 20,
@@ -167,7 +162,7 @@ class _SettingsState extends State<Settings> {
         _buildOptions(context, 'ST_term_condition', ST_TermsCondition,
             () async {
           LauncherUtils.launcherUtilsInstance
-              .launchInBrowser(url: LauncherUtils.Y9_BANK_URL);
+              .launchInBrowser(url: y9TermsCondition);
         }),
         _buildOptions(context, 'ST_call_support', ST_CallSupport, () async {
           LauncherUtils.launcherUtilsInstance
@@ -179,7 +174,7 @@ class _SettingsState extends State<Settings> {
 
   Widget _buildSignout(coordinator) {
     return _buildOptions(context, 'ST_sign_out', ST_sign_out, () async {
-      await coordinator.signOut();
+      await coordinator.signOut(widget.screenArgs.userType);
     });
   }
 
@@ -205,7 +200,7 @@ class _SettingsState extends State<Settings> {
                 text: TextUIDataModel(label.tr,
                     styleVariant: CrayonPaymentTextStyleVariant.bodyText2,
                     color: AN_TitleColor,
-                    fontWeight: FontWeight.w800),
+                    fontWeight: FontWeight.w600),
               ),
             ),
             const Icon(

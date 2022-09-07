@@ -1,24 +1,19 @@
-import 'package:config/Colors.dart';
-import 'package:config/Config.dart';
+
 import 'package:config/Styles.dart';
 import 'package:core/view/base_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_data_models/signup/sign_up_type.dart';
-import 'package:welcome/sub_features/signup/state/signup_state.dart';
-import 'package:welcome/sub_features/signup/viewmodel/signup_coordinator.dart';
 import 'package:welcome/welcome_module.dart';
 import 'package:widget_library/formatter/nida_input_formatter.dart';
 import 'package:widget_library/html/rich_text_description.dart';
 import 'package:widget_library/input_fields/input_field_with_label.dart';
 import 'package:widget_library/input_fields/input_number_field_with_label.dart';
-import 'package:widget_library/page_header/text_ui_data_model.dart';
 import 'package:widget_library/progress_bar/centered_circular_progress_bar.dart';
 import 'package:widget_library/progress_bar/onboarding_progress_bar.dart';
 import 'package:widget_library/buttons/crayon_back_button.dart';
 import 'package:config/Colors.dart' as config_color;
 import 'package:get/get.dart';
-import 'package:widget_library/static_text/crayon_payment_text.dart';
 
 import '../../../../../data_model/sign_up_arguments.dart';
 import '../state/onboarding_approval_state.dart';
@@ -37,67 +32,78 @@ class CustomerOnBoardingApproval extends StatefulWidget {
 }
 
 class _SignUpState extends State<CustomerOnBoardingApproval> {
-  bool _isBtnEnabled = false;
   String mobileNumberError = '';
   TextEditingController referenceID = TextEditingController();
   TextEditingController mobileNumber = TextEditingController();
 
-  @override
-  Widget build(BuildContext context) =>
-      BaseView<CustomerOnBoardingApprovalCoordinator, OnBoardingApprovalState>(
-          onStateListenCallback: (preState, newState) =>
-              {
-                //_listenToStateChanges(context, newState)
-              },
-          setupViewModel: (coordinator) async {},
-          builder: (context, state, coordinator) => SafeArea(
-                child: Scaffold(
-                  bottomNavigationBar:
-                         SizedBox(
-                      height: 120,
-                      child: Column(
-                        children: [
-                          const SizedBox(
-                            height: 23,
-                          ),
-                          _buildContinueButton(context, coordinator, state)
-                        ],
-                      ),
-                    ),
-                  body: SingleChildScrollView(
-                        child: SafeArea(
-                      child: _UI(coordinator, state),
-                    )),
-                  ),
-                ),
-              );
+  double height = 0.0;
 
-  Widget _UI(CustomerOnBoardingApprovalCoordinator coordinator, OnBoardingApprovalState state) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        _buildTopContainer(context, coordinator),
-        _buildMainUI(coordinator,state),
-      ],
+  @override
+  Widget build(BuildContext context) {
+    height = MediaQuery.of(context).size.height;
+    return BaseView<
+        CustomerOnBoardingApprovalCoordinator,
+        OnBoardingApprovalState>(
+      onStateListenCallback: (preState, newState) =>
+      {
+        referenceID.text = newState.referenceId
+      },
+      setupViewModel: (coordinator) async {},
+      builder: (context, state, coordinator) =>
+          Stack(
+            children: [
+              SafeArea(
+                child: Scaffold(
+                  bottomNavigationBar: SizedBox(
+                    height: 120,
+                    child: Column(
+                      children: [
+                        const SizedBox(
+                          height: 23,
+                        ),
+                        _buildContinueButton(context, coordinator, state)
+                      ],
+                    ),
+                  ),
+                  body: SingleChildScrollView(
+                      child: SafeArea(
+                        child: _UI(coordinator, state),
+                      )),
+                ),
+              ),
+             state.isLoading == true ? _createLoading() : const SizedBox()
+            ],
+          ),
     );
   }
 
+    Widget _UI(CustomerOnBoardingApprovalCoordinator coordinator,
+        OnBoardingApprovalState state) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _buildTopContainer(context, coordinator),
+          _buildMainUI( coordinator, state),
+        ],
+      );
+    }
+
+
   Widget _buildMainUIWithLoading(
-    BuildContext context,
+      BuildContext context,
       CustomerOnBoardingApprovalCoordinator coordinator,
-      OnBoardingApprovalState state
-  ) {
+      OnBoardingApprovalState state) {
     return Stack(
       children: [
-        _UI(coordinator, state),
-        _createLoading(),
+        _buildMainUI(coordinator, state),
+       state.isLoading == true ? _createLoading() : SizedBox(),
       ],
     );
   }
 
   Widget _buildTopContainer(
     BuildContext context,
-      CustomerOnBoardingApprovalCoordinator coordinator,
+    CustomerOnBoardingApprovalCoordinator coordinator,
   ) {
     return Column(
       children: [
@@ -111,16 +117,18 @@ class _SignUpState extends State<CustomerOnBoardingApproval> {
   }
 
   Widget _createLoading() {
-    return Center(
-      child: Container(
-        color: Colors.black.withOpacity(0.4),
-        child: const CenteredCircularProgressBar(
+    return Container(
+      height: height,
+      color: Colors.black.withOpacity(0.4),
+      child: const Center(
+        child: CenteredCircularProgressBar(
             color: config_color.PRIMARY_COLOR),
       ),
     );
   }
 
-  Widget _buildMainUI(CustomerOnBoardingApprovalCoordinator coordinator, OnBoardingApprovalState state) {
+  Widget _buildMainUI(CustomerOnBoardingApprovalCoordinator coordinator,
+      OnBoardingApprovalState state) {
     return Padding(
       padding: const EdgeInsets.only(right: 16, left: 16),
       child: Column(
@@ -134,13 +142,24 @@ class _SignUpState extends State<CustomerOnBoardingApproval> {
           const SizedBox(
             height: 94,
           ),
-          _buildLabelTextField('PC_customer_ref_id', referenceID,
-              coordinator, 'PC_customer_ref_id_hint', state.referenceIdError, TextInputType.number),
+          _buildLabelTextFieldMobNumber(
+              'SU_mobile_no_label',
+              state.mobileNumberError,
+              mobileNumber,
+              coordinator,
+              'SU_subtitle_hint'),
           const SizedBox(
             height: 64,
           ),
-          _buildLabelTextFieldMobNumber('SU_mobile_no_label',state.mobileNumberError,
-              mobileNumber, coordinator, 'SU_subtitle_hint')
+          state.isCustomerExist
+              ? _buildLabelTextField(
+                  'PC_customer_ref_id',
+                  referenceID,
+                  coordinator,
+                  'PC_customer_ref_id_hint',
+                  state.referenceIdError,
+                  TextInputType.number)
+              : const SizedBox(),
         ],
       ),
     );
@@ -161,7 +180,7 @@ class _SignUpState extends State<CustomerOnBoardingApproval> {
 
   Widget _buildBackBtn(
     BuildContext context,
-      CustomerOnBoardingApprovalCoordinator coordinator,
+    CustomerOnBoardingApprovalCoordinator coordinator,
   ) {
     return Align(
       alignment: Alignment.topLeft,
@@ -209,6 +228,7 @@ class _SignUpState extends State<CustomerOnBoardingApproval> {
           hintText: hint.tr,
           controller: controller,
           errorText: errorText.tr,
+          enabled: false,
           keyboardType: textInputType,
           textCapitalization: TextCapitalization.characters,
           onChanged: (value) {
@@ -247,7 +267,7 @@ class _SignUpState extends State<CustomerOnBoardingApproval> {
           onChanged: (value) {
             if (mobileNumberError.isNotEmpty || mobileNumber.text.length > 11) {
               coordinator.validateMobileNumber(mobileNumber.text);
-             }
+            }
             _validateForm(coordinator);
           },
         ),
@@ -257,14 +277,18 @@ class _SignUpState extends State<CustomerOnBoardingApproval> {
 
   Widget _buildContinueButton(
     BuildContext context,
-      CustomerOnBoardingApprovalCoordinator coordinator,
-      OnBoardingApprovalState state,
+    CustomerOnBoardingApprovalCoordinator coordinator,
+    OnBoardingApprovalState state,
   ) {
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
         onTap: () async {
-          coordinator.getCustomerDetails(mobileNumber.text,referenceID.text);
+          state.isCustomerExist
+              ? coordinator.navigateToOtpScreen(
+                  mobileNumber.text, state.customerId)
+              : coordinator.getCustomerDetails(
+                  mobileNumber.text, referenceID.text);
         },
         child: Container(
           width: double.infinity,
@@ -276,7 +300,7 @@ class _SignUpState extends State<CustomerOnBoardingApproval> {
               borderRadius: BorderRadius.circular(8.0)),
           child: Center(
             child: Text(
-              'PC_fetch_details'.tr,
+              state.isCustomerExist? 'SU_button_text'.tr:  'PC_fetch_details'.tr,
               style: SU_button_text_style,
             ),
           ),
@@ -286,8 +310,6 @@ class _SignUpState extends State<CustomerOnBoardingApproval> {
   }
 
   void _validateForm(CustomerOnBoardingApprovalCoordinator coordinator) {
-    coordinator.validateForm( mobileNumber.text,referenceID.text);
+    coordinator.validateForm(mobileNumber.text, referenceID.text);
   }
-
-
 }

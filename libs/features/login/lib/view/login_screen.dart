@@ -142,7 +142,7 @@ class _LoginState extends State<Login> {
               const SizedBox(
                 height: 46,
               ),
-              // _buildResetPasscode(coordinator),
+               _buildResetPasscode(coordinator),
             ],
           ),
         ));
@@ -216,11 +216,12 @@ class _LoginState extends State<Login> {
       textColor: White,
       textStyleVariant: CrayonPaymentTextStyleVariant.headline5,
       onPressed: () {
-        coordinator.isMobileNumberValid(mobileNumber.text);
-        coordinator.isAgentIdValid(agentIdController.text);
+        /*coordinator.isMobileNumberValid(mobileNumber.text);
+        coordinator.isAgentIdValid(agentIdController.text);*/
         if (isBtnEnabled) {
           // coordinator.navigateToWelcomeBackScreen(userType, mobileNumber.text);
-
+          coordinator.isMobileNumberValid(mobileNumber.text);
+          coordinator.isAgentIdValid(agentIdController.text);
           coordinator.login(mobileNumber.text, passcodeController.text,
               widget.userType, agentIdController.text);
         }
@@ -298,16 +299,16 @@ class _LoginState extends State<Login> {
           },
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: const [
+            children: [
               Text(
-                'Forget Passcode?',
+                'FORGET_PASSCODE'.tr,
                 style: WB_forget_passcode_text_style,
               ),
               SizedBox(
                 height: 5,
               ),
               Text(
-                'Reset Now',
+                'RESET_NOW'.tr,
                 style: WB_reset_passcode_text_style,
               )
             ],

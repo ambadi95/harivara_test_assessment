@@ -52,7 +52,7 @@ class AuthorizationClient {
       request.jsonBody = json.encode({
         'username': 'y9dev',
         'password': 'P@ssw0rd',
-        'clientId':'7dcd46ae-5f2f-4b14-a9a2-c48796180517'
+        'clientId': '7dcd46ae-5f2f-4b14-a9a2-c48796180517'
       });
       request.customHeaders = {'Content-Type': 'application/json'};
 
@@ -161,13 +161,11 @@ class CrayonPaymentAuthManager extends IAuthManager {
 
   @override
   Future<String?> getJWTToken() async {
-
     return 'Bearer ${await _secureStorageService.get(_jwtTokenKey)}';
-
   }
 
   @override
   Future storeJWTToken(String jwtToken) async {
-    await _secureStorageService.set(_jwtTokenKey,jwtToken);
+    await _secureStorageService.set(_jwtTokenKey, jwtToken);
   }
 }

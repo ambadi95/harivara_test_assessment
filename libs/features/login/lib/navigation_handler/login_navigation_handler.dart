@@ -22,6 +22,10 @@ class LoginNavigationHandler with ErrorHandler {
     );
   }
 
+  Future<void> goBack() async {
+    _navigationManager.goBack();
+  }
+
   Future<void> navigateToOtpScreen(
       UserType userType, String mobileNumber, String id) async {
     var arguments = OtpScreenArgs(
@@ -35,7 +39,10 @@ class LoginNavigationHandler with ErrorHandler {
         6,
         mobileNumber,
         false,
-        userType);
+        userType,
+        userType == UserType.Agent
+            ? OTPEvent.Agent_Login.toShortString()
+            : OTPEvent.Customer_Login.toShortString());
 
     _navigationManager.navigateTo(
       CrayonVerifyOtpScreen.viewPath,
@@ -48,18 +55,18 @@ class LoginNavigationHandler with ErrorHandler {
   Future<void> navigateToOtpScreenForAgent(
       UserType userType, String mobileNumber, String agentId) async {
     var arguments = OtpScreenArgs(
-      'OTP Verification',
-      'VO_otp_verification_description',
-      'welcomeModule/welcomeback',
-      false,
-      2,
-      OtpVerificationType.agentSignIn,
-      agentId,
-      6,
-      mobileNumber,
-      false,
-      userType,
-    );
+        'OTP Verification',
+        'VO_otp_verification_description',
+        'welcomeModule/welcomeback',
+        false,
+        2,
+        OtpVerificationType.agentSignIn,
+        agentId,
+        6,
+        mobileNumber,
+        false,
+        userType,
+        OTPEvent.Agent_Login.toShortString());
 
     _navigationManager.navigateTo(
       CrayonVerifyOtpScreen.viewPath,

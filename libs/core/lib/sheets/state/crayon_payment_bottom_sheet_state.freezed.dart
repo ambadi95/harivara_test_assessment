@@ -89,7 +89,13 @@ mixin _$CrayonPaymentBottomSheetState {
             bool disableCloseButton)
         changeLanguage,
     required TResult Function(LoanRepayment loanRepayment) loanRepayment,
-    required TResult Function(String? title, List<ButtonOptions>? buttonOptions)
+    required TResult Function(
+            String? title,
+            String outstandingAmount,
+            dynamic Function(String) enteredAmount,
+            List<ButtonOptions>? buttonOptions,
+            bool isAmountValidated,
+            dynamic Function(String) onSelectedLabel)
         customAmount,
   }) =>
       throw _privateConstructorUsedError;
@@ -165,7 +171,13 @@ mixin _$CrayonPaymentBottomSheetState {
             bool disableCloseButton)?
         changeLanguage,
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
-    TResult Function(String? title, List<ButtonOptions>? buttonOptions)?
+    TResult Function(
+            String? title,
+            String outstandingAmount,
+            dynamic Function(String) enteredAmount,
+            List<ButtonOptions>? buttonOptions,
+            bool isAmountValidated,
+            dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) =>
       throw _privateConstructorUsedError;
@@ -241,7 +253,13 @@ mixin _$CrayonPaymentBottomSheetState {
             bool disableCloseButton)?
         changeLanguage,
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
-    TResult Function(String? title, List<ButtonOptions>? buttonOptions)?
+    TResult Function(
+            String? title,
+            String outstandingAmount,
+            dynamic Function(String) enteredAmount,
+            List<ButtonOptions>? buttonOptions,
+            bool isAmountValidated,
+            dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
   }) =>
@@ -546,7 +564,13 @@ class _$SheetInfo extends SheetInfo {
             bool disableCloseButton)
         changeLanguage,
     required TResult Function(LoanRepayment loanRepayment) loanRepayment,
-    required TResult Function(String? title, List<ButtonOptions>? buttonOptions)
+    required TResult Function(
+            String? title,
+            String outstandingAmount,
+            dynamic Function(String) enteredAmount,
+            List<ButtonOptions>? buttonOptions,
+            bool isAmountValidated,
+            dynamic Function(String) onSelectedLabel)
         customAmount,
   }) {
     return infoState(bottomSheetIcon, title, subtitle, additionalText,
@@ -626,7 +650,13 @@ class _$SheetInfo extends SheetInfo {
             bool disableCloseButton)?
         changeLanguage,
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
-    TResult Function(String? title, List<ButtonOptions>? buttonOptions)?
+    TResult Function(
+            String? title,
+            String outstandingAmount,
+            dynamic Function(String) enteredAmount,
+            List<ButtonOptions>? buttonOptions,
+            bool isAmountValidated,
+            dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) {
     return infoState?.call(bottomSheetIcon, title, subtitle, additionalText,
@@ -706,7 +736,13 @@ class _$SheetInfo extends SheetInfo {
             bool disableCloseButton)?
         changeLanguage,
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
-    TResult Function(String? title, List<ButtonOptions>? buttonOptions)?
+    TResult Function(
+            String? title,
+            String outstandingAmount,
+            dynamic Function(String) enteredAmount,
+            List<ButtonOptions>? buttonOptions,
+            bool isAmountValidated,
+            dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
   }) {
@@ -1023,7 +1059,13 @@ class _$SheetInfoWrap extends SheetInfoWrap {
             bool disableCloseButton)
         changeLanguage,
     required TResult Function(LoanRepayment loanRepayment) loanRepayment,
-    required TResult Function(String? title, List<ButtonOptions>? buttonOptions)
+    required TResult Function(
+            String? title,
+            String outstandingAmount,
+            dynamic Function(String) enteredAmount,
+            List<ButtonOptions>? buttonOptions,
+            bool isAmountValidated,
+            dynamic Function(String) onSelectedLabel)
         customAmount,
   }) {
     return infoStateWrap(bottomSheetIcon, title, subtitle, buttonOptions,
@@ -1103,7 +1145,13 @@ class _$SheetInfoWrap extends SheetInfoWrap {
             bool disableCloseButton)?
         changeLanguage,
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
-    TResult Function(String? title, List<ButtonOptions>? buttonOptions)?
+    TResult Function(
+            String? title,
+            String outstandingAmount,
+            dynamic Function(String) enteredAmount,
+            List<ButtonOptions>? buttonOptions,
+            bool isAmountValidated,
+            dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) {
     return infoStateWrap?.call(bottomSheetIcon, title, subtitle, buttonOptions,
@@ -1183,7 +1231,13 @@ class _$SheetInfoWrap extends SheetInfoWrap {
             bool disableCloseButton)?
         changeLanguage,
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
-    TResult Function(String? title, List<ButtonOptions>? buttonOptions)?
+    TResult Function(
+            String? title,
+            String outstandingAmount,
+            dynamic Function(String) enteredAmount,
+            List<ButtonOptions>? buttonOptions,
+            bool isAmountValidated,
+            dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
   }) {
@@ -1440,7 +1494,13 @@ class _$SheetSelection extends SheetSelection {
             bool disableCloseButton)
         changeLanguage,
     required TResult Function(LoanRepayment loanRepayment) loanRepayment,
-    required TResult Function(String? title, List<ButtonOptions>? buttonOptions)
+    required TResult Function(
+            String? title,
+            String outstandingAmount,
+            dynamic Function(String) enteredAmount,
+            List<ButtonOptions>? buttonOptions,
+            bool isAmountValidated,
+            dynamic Function(String) onSelectedLabel)
         customAmount,
   }) {
     return selectionState(buttonOptions, callback);
@@ -1519,7 +1579,13 @@ class _$SheetSelection extends SheetSelection {
             bool disableCloseButton)?
         changeLanguage,
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
-    TResult Function(String? title, List<ButtonOptions>? buttonOptions)?
+    TResult Function(
+            String? title,
+            String outstandingAmount,
+            dynamic Function(String) enteredAmount,
+            List<ButtonOptions>? buttonOptions,
+            bool isAmountValidated,
+            dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) {
     return selectionState?.call(buttonOptions, callback);
@@ -1598,7 +1664,13 @@ class _$SheetSelection extends SheetSelection {
             bool disableCloseButton)?
         changeLanguage,
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
-    TResult Function(String? title, List<ButtonOptions>? buttonOptions)?
+    TResult Function(
+            String? title,
+            String outstandingAmount,
+            dynamic Function(String) enteredAmount,
+            List<ButtonOptions>? buttonOptions,
+            bool isAmountValidated,
+            dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
   }) {
@@ -1878,7 +1950,13 @@ class _$SheetWaiting extends SheetWaiting {
             bool disableCloseButton)
         changeLanguage,
     required TResult Function(LoanRepayment loanRepayment) loanRepayment,
-    required TResult Function(String? title, List<ButtonOptions>? buttonOptions)
+    required TResult Function(
+            String? title,
+            String outstandingAmount,
+            dynamic Function(String) enteredAmount,
+            List<ButtonOptions>? buttonOptions,
+            bool isAmountValidated,
+            dynamic Function(String) onSelectedLabel)
         customAmount,
   }) {
     return waitingState(immediateCallback, waitingText, disableIcon,
@@ -1958,7 +2036,13 @@ class _$SheetWaiting extends SheetWaiting {
             bool disableCloseButton)?
         changeLanguage,
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
-    TResult Function(String? title, List<ButtonOptions>? buttonOptions)?
+    TResult Function(
+            String? title,
+            String outstandingAmount,
+            dynamic Function(String) enteredAmount,
+            List<ButtonOptions>? buttonOptions,
+            bool isAmountValidated,
+            dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) {
     return waitingState?.call(immediateCallback, waitingText, disableIcon,
@@ -2038,7 +2122,13 @@ class _$SheetWaiting extends SheetWaiting {
             bool disableCloseButton)?
         changeLanguage,
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
-    TResult Function(String? title, List<ButtonOptions>? buttonOptions)?
+    TResult Function(
+            String? title,
+            String outstandingAmount,
+            dynamic Function(String) enteredAmount,
+            List<ButtonOptions>? buttonOptions,
+            bool isAmountValidated,
+            dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
   }) {
@@ -2273,7 +2363,13 @@ class _$SheetSimpleWaiting extends SheetSimpleWaiting {
             bool disableCloseButton)
         changeLanguage,
     required TResult Function(LoanRepayment loanRepayment) loanRepayment,
-    required TResult Function(String? title, List<ButtonOptions>? buttonOptions)
+    required TResult Function(
+            String? title,
+            String outstandingAmount,
+            dynamic Function(String) enteredAmount,
+            List<ButtonOptions>? buttonOptions,
+            bool isAmountValidated,
+            dynamic Function(String) onSelectedLabel)
         customAmount,
   }) {
     return simpleWatingState(waitingText);
@@ -2352,7 +2448,13 @@ class _$SheetSimpleWaiting extends SheetSimpleWaiting {
             bool disableCloseButton)?
         changeLanguage,
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
-    TResult Function(String? title, List<ButtonOptions>? buttonOptions)?
+    TResult Function(
+            String? title,
+            String outstandingAmount,
+            dynamic Function(String) enteredAmount,
+            List<ButtonOptions>? buttonOptions,
+            bool isAmountValidated,
+            dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) {
     return simpleWatingState?.call(waitingText);
@@ -2431,7 +2533,13 @@ class _$SheetSimpleWaiting extends SheetSimpleWaiting {
             bool disableCloseButton)?
         changeLanguage,
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
-    TResult Function(String? title, List<ButtonOptions>? buttonOptions)?
+    TResult Function(
+            String? title,
+            String outstandingAmount,
+            dynamic Function(String) enteredAmount,
+            List<ButtonOptions>? buttonOptions,
+            bool isAmountValidated,
+            dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
   }) {
@@ -2672,7 +2780,13 @@ class _$SheetMultipleSelection extends SheetMultipleSelection {
             bool disableCloseButton)
         changeLanguage,
     required TResult Function(LoanRepayment loanRepayment) loanRepayment,
-    required TResult Function(String? title, List<ButtonOptions>? buttonOptions)
+    required TResult Function(
+            String? title,
+            String outstandingAmount,
+            dynamic Function(String) enteredAmount,
+            List<ButtonOptions>? buttonOptions,
+            bool isAmountValidated,
+            dynamic Function(String) onSelectedLabel)
         customAmount,
   }) {
     return multipleSelection(title, options);
@@ -2751,7 +2865,13 @@ class _$SheetMultipleSelection extends SheetMultipleSelection {
             bool disableCloseButton)?
         changeLanguage,
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
-    TResult Function(String? title, List<ButtonOptions>? buttonOptions)?
+    TResult Function(
+            String? title,
+            String outstandingAmount,
+            dynamic Function(String) enteredAmount,
+            List<ButtonOptions>? buttonOptions,
+            bool isAmountValidated,
+            dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) {
     return multipleSelection?.call(title, options);
@@ -2830,7 +2950,13 @@ class _$SheetMultipleSelection extends SheetMultipleSelection {
             bool disableCloseButton)?
         changeLanguage,
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
-    TResult Function(String? title, List<ButtonOptions>? buttonOptions)?
+    TResult Function(
+            String? title,
+            String outstandingAmount,
+            dynamic Function(String) enteredAmount,
+            List<ButtonOptions>? buttonOptions,
+            bool isAmountValidated,
+            dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
   }) {
@@ -3081,7 +3207,13 @@ class _$SheetDatePicker extends SheetDatePicker {
             bool disableCloseButton)
         changeLanguage,
     required TResult Function(LoanRepayment loanRepayment) loanRepayment,
-    required TResult Function(String? title, List<ButtonOptions>? buttonOptions)
+    required TResult Function(
+            String? title,
+            String outstandingAmount,
+            dynamic Function(String) enteredAmount,
+            List<ButtonOptions>? buttonOptions,
+            bool isAmountValidated,
+            dynamic Function(String) onSelectedLabel)
         customAmount,
   }) {
     return datePickerState(startDate, endDate, callbackAfterDateIsSelected);
@@ -3160,7 +3292,13 @@ class _$SheetDatePicker extends SheetDatePicker {
             bool disableCloseButton)?
         changeLanguage,
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
-    TResult Function(String? title, List<ButtonOptions>? buttonOptions)?
+    TResult Function(
+            String? title,
+            String outstandingAmount,
+            dynamic Function(String) enteredAmount,
+            List<ButtonOptions>? buttonOptions,
+            bool isAmountValidated,
+            dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) {
     return datePickerState?.call(
@@ -3240,7 +3378,13 @@ class _$SheetDatePicker extends SheetDatePicker {
             bool disableCloseButton)?
         changeLanguage,
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
-    TResult Function(String? title, List<ButtonOptions>? buttonOptions)?
+    TResult Function(
+            String? title,
+            String outstandingAmount,
+            dynamic Function(String) enteredAmount,
+            List<ButtonOptions>? buttonOptions,
+            bool isAmountValidated,
+            dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
   }) {
@@ -3555,7 +3699,13 @@ class _$SheetMultiFilters extends SheetMultiFilters {
             bool disableCloseButton)
         changeLanguage,
     required TResult Function(LoanRepayment loanRepayment) loanRepayment,
-    required TResult Function(String? title, List<ButtonOptions>? buttonOptions)
+    required TResult Function(
+            String? title,
+            String outstandingAmount,
+            dynamic Function(String) enteredAmount,
+            List<ButtonOptions>? buttonOptions,
+            bool isAmountValidated,
+            dynamic Function(String) onSelectedLabel)
         customAmount,
   }) {
     return multiFilterState(title, categories, leftActionButton,
@@ -3635,7 +3785,13 @@ class _$SheetMultiFilters extends SheetMultiFilters {
             bool disableCloseButton)?
         changeLanguage,
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
-    TResult Function(String? title, List<ButtonOptions>? buttonOptions)?
+    TResult Function(
+            String? title,
+            String outstandingAmount,
+            dynamic Function(String) enteredAmount,
+            List<ButtonOptions>? buttonOptions,
+            bool isAmountValidated,
+            dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) {
     return multiFilterState?.call(title, categories, leftActionButton,
@@ -3715,7 +3871,13 @@ class _$SheetMultiFilters extends SheetMultiFilters {
             bool disableCloseButton)?
         changeLanguage,
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
-    TResult Function(String? title, List<ButtonOptions>? buttonOptions)?
+    TResult Function(
+            String? title,
+            String outstandingAmount,
+            dynamic Function(String) enteredAmount,
+            List<ButtonOptions>? buttonOptions,
+            bool isAmountValidated,
+            dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
   }) {
@@ -3972,7 +4134,13 @@ class _$CloseBottomSheet extends CloseBottomSheet {
             bool disableCloseButton)
         changeLanguage,
     required TResult Function(LoanRepayment loanRepayment) loanRepayment,
-    required TResult Function(String? title, List<ButtonOptions>? buttonOptions)
+    required TResult Function(
+            String? title,
+            String outstandingAmount,
+            dynamic Function(String) enteredAmount,
+            List<ButtonOptions>? buttonOptions,
+            bool isAmountValidated,
+            dynamic Function(String) onSelectedLabel)
         customAmount,
   }) {
     return closeSheet(callbackBeforeClosingSheet, callbackAfterClosingSheet);
@@ -4051,7 +4219,13 @@ class _$CloseBottomSheet extends CloseBottomSheet {
             bool disableCloseButton)?
         changeLanguage,
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
-    TResult Function(String? title, List<ButtonOptions>? buttonOptions)?
+    TResult Function(
+            String? title,
+            String outstandingAmount,
+            dynamic Function(String) enteredAmount,
+            List<ButtonOptions>? buttonOptions,
+            bool isAmountValidated,
+            dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) {
     return closeSheet?.call(
@@ -4131,7 +4305,13 @@ class _$CloseBottomSheet extends CloseBottomSheet {
             bool disableCloseButton)?
         changeLanguage,
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
-    TResult Function(String? title, List<ButtonOptions>? buttonOptions)?
+    TResult Function(
+            String? title,
+            String outstandingAmount,
+            dynamic Function(String) enteredAmount,
+            List<ButtonOptions>? buttonOptions,
+            bool isAmountValidated,
+            dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
   }) {
@@ -4449,7 +4629,13 @@ class _$AgentEnrollmentSheet extends AgentEnrollmentSheet {
             bool disableCloseButton)
         changeLanguage,
     required TResult Function(LoanRepayment loanRepayment) loanRepayment,
-    required TResult Function(String? title, List<ButtonOptions>? buttonOptions)
+    required TResult Function(
+            String? title,
+            String outstandingAmount,
+            dynamic Function(String) enteredAmount,
+            List<ButtonOptions>? buttonOptions,
+            bool isAmountValidated,
+            dynamic Function(String) onSelectedLabel)
         customAmount,
   }) {
     return agentEnrollment(bottomSheetIcon, title, subtitle, additionalText,
@@ -4529,7 +4715,13 @@ class _$AgentEnrollmentSheet extends AgentEnrollmentSheet {
             bool disableCloseButton)?
         changeLanguage,
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
-    TResult Function(String? title, List<ButtonOptions>? buttonOptions)?
+    TResult Function(
+            String? title,
+            String outstandingAmount,
+            dynamic Function(String) enteredAmount,
+            List<ButtonOptions>? buttonOptions,
+            bool isAmountValidated,
+            dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) {
     return agentEnrollment?.call(bottomSheetIcon, title, subtitle,
@@ -4609,7 +4801,13 @@ class _$AgentEnrollmentSheet extends AgentEnrollmentSheet {
             bool disableCloseButton)?
         changeLanguage,
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
-    TResult Function(String? title, List<ButtonOptions>? buttonOptions)?
+    TResult Function(
+            String? title,
+            String outstandingAmount,
+            dynamic Function(String) enteredAmount,
+            List<ButtonOptions>? buttonOptions,
+            bool isAmountValidated,
+            dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
   }) {
@@ -4959,7 +5157,13 @@ class _$ChangeLanguageBottomSheet extends ChangeLanguageBottomSheet {
             bool disableCloseButton)
         changeLanguage,
     required TResult Function(LoanRepayment loanRepayment) loanRepayment,
-    required TResult Function(String? title, List<ButtonOptions>? buttonOptions)
+    required TResult Function(
+            String? title,
+            String outstandingAmount,
+            dynamic Function(String) enteredAmount,
+            List<ButtonOptions>? buttonOptions,
+            bool isAmountValidated,
+            dynamic Function(String) onSelectedLabel)
         customAmount,
   }) {
     return changeLanguage(bottomSheetIcon, title, subtitle, additionalText,
@@ -5039,7 +5243,13 @@ class _$ChangeLanguageBottomSheet extends ChangeLanguageBottomSheet {
             bool disableCloseButton)?
         changeLanguage,
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
-    TResult Function(String? title, List<ButtonOptions>? buttonOptions)?
+    TResult Function(
+            String? title,
+            String outstandingAmount,
+            dynamic Function(String) enteredAmount,
+            List<ButtonOptions>? buttonOptions,
+            bool isAmountValidated,
+            dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) {
     return changeLanguage?.call(
@@ -5126,7 +5336,13 @@ class _$ChangeLanguageBottomSheet extends ChangeLanguageBottomSheet {
             bool disableCloseButton)?
         changeLanguage,
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
-    TResult Function(String? title, List<ButtonOptions>? buttonOptions)?
+    TResult Function(
+            String? title,
+            String outstandingAmount,
+            dynamic Function(String) enteredAmount,
+            List<ButtonOptions>? buttonOptions,
+            bool isAmountValidated,
+            dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
   }) {
@@ -5367,7 +5583,13 @@ class _$LoanRepaymentBottomSheet extends LoanRepaymentBottomSheet {
             bool disableCloseButton)
         changeLanguage,
     required TResult Function(LoanRepayment loanRepayment) loanRepayment,
-    required TResult Function(String? title, List<ButtonOptions>? buttonOptions)
+    required TResult Function(
+            String? title,
+            String outstandingAmount,
+            dynamic Function(String) enteredAmount,
+            List<ButtonOptions>? buttonOptions,
+            bool isAmountValidated,
+            dynamic Function(String) onSelectedLabel)
         customAmount,
   }) {
     return loanRepayment(this.loanRepayment);
@@ -5446,7 +5668,13 @@ class _$LoanRepaymentBottomSheet extends LoanRepaymentBottomSheet {
             bool disableCloseButton)?
         changeLanguage,
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
-    TResult Function(String? title, List<ButtonOptions>? buttonOptions)?
+    TResult Function(
+            String? title,
+            String outstandingAmount,
+            dynamic Function(String) enteredAmount,
+            List<ButtonOptions>? buttonOptions,
+            bool isAmountValidated,
+            dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) {
     return loanRepayment?.call(this.loanRepayment);
@@ -5525,7 +5753,13 @@ class _$LoanRepaymentBottomSheet extends LoanRepaymentBottomSheet {
             bool disableCloseButton)?
         changeLanguage,
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
-    TResult Function(String? title, List<ButtonOptions>? buttonOptions)?
+    TResult Function(
+            String? title,
+            String outstandingAmount,
+            dynamic Function(String) enteredAmount,
+            List<ButtonOptions>? buttonOptions,
+            bool isAmountValidated,
+            dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
   }) {
@@ -5617,7 +5851,13 @@ abstract class _$$CustomAmountBottomSheetCopyWith<$Res> {
   factory _$$CustomAmountBottomSheetCopyWith(_$CustomAmountBottomSheet value,
           $Res Function(_$CustomAmountBottomSheet) then) =
       __$$CustomAmountBottomSheetCopyWithImpl<$Res>;
-  $Res call({String? title, List<ButtonOptions>? buttonOptions});
+  $Res call(
+      {String? title,
+      String outstandingAmount,
+      dynamic Function(String) enteredAmount,
+      List<ButtonOptions>? buttonOptions,
+      bool isAmountValidated,
+      dynamic Function(String) onSelectedLabel});
 }
 
 /// @nodoc
@@ -5635,17 +5875,37 @@ class __$$CustomAmountBottomSheetCopyWithImpl<$Res>
   @override
   $Res call({
     Object? title = freezed,
+    Object? outstandingAmount = freezed,
+    Object? enteredAmount = freezed,
     Object? buttonOptions = freezed,
+    Object? isAmountValidated = freezed,
+    Object? onSelectedLabel = freezed,
   }) {
     return _then(_$CustomAmountBottomSheet(
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String?,
+      outstandingAmount: outstandingAmount == freezed
+          ? _value.outstandingAmount
+          : outstandingAmount // ignore: cast_nullable_to_non_nullable
+              as String,
+      enteredAmount: enteredAmount == freezed
+          ? _value.enteredAmount
+          : enteredAmount // ignore: cast_nullable_to_non_nullable
+              as dynamic Function(String),
       buttonOptions: buttonOptions == freezed
           ? _value._buttonOptions
           : buttonOptions // ignore: cast_nullable_to_non_nullable
               as List<ButtonOptions>?,
+      isAmountValidated: isAmountValidated == freezed
+          ? _value.isAmountValidated
+          : isAmountValidated // ignore: cast_nullable_to_non_nullable
+              as bool,
+      onSelectedLabel: onSelectedLabel == freezed
+          ? _value.onSelectedLabel
+          : onSelectedLabel // ignore: cast_nullable_to_non_nullable
+              as dynamic Function(String),
     ));
   }
 }
@@ -5654,12 +5914,21 @@ class __$$CustomAmountBottomSheetCopyWithImpl<$Res>
 
 class _$CustomAmountBottomSheet extends CustomAmountBottomSheet {
   const _$CustomAmountBottomSheet(
-      {required this.title, final List<ButtonOptions>? buttonOptions})
+      {required this.title,
+      required this.outstandingAmount,
+      required this.enteredAmount,
+      final List<ButtonOptions>? buttonOptions,
+      this.isAmountValidated = false,
+      required this.onSelectedLabel})
       : _buttonOptions = buttonOptions,
         super._();
 
   @override
   final String? title;
+  @override
+  final String outstandingAmount;
+  @override
+  final dynamic Function(String) enteredAmount;
   final List<ButtonOptions>? _buttonOptions;
   @override
   List<ButtonOptions>? get buttonOptions {
@@ -5670,8 +5939,14 @@ class _$CustomAmountBottomSheet extends CustomAmountBottomSheet {
   }
 
   @override
+  @JsonKey()
+  final bool isAmountValidated;
+  @override
+  final dynamic Function(String) onSelectedLabel;
+
+  @override
   String toString() {
-    return 'CrayonPaymentBottomSheetState.customAmount(title: $title, buttonOptions: $buttonOptions)';
+    return 'CrayonPaymentBottomSheetState.customAmount(title: $title, outstandingAmount: $outstandingAmount, enteredAmount: $enteredAmount, buttonOptions: $buttonOptions, isAmountValidated: $isAmountValidated, onSelectedLabel: $onSelectedLabel)';
   }
 
   @override
@@ -5681,14 +5956,26 @@ class _$CustomAmountBottomSheet extends CustomAmountBottomSheet {
             other is _$CustomAmountBottomSheet &&
             const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality()
-                .equals(other._buttonOptions, _buttonOptions));
+                .equals(other.outstandingAmount, outstandingAmount) &&
+            (identical(other.enteredAmount, enteredAmount) ||
+                other.enteredAmount == enteredAmount) &&
+            const DeepCollectionEquality()
+                .equals(other._buttonOptions, _buttonOptions) &&
+            const DeepCollectionEquality()
+                .equals(other.isAmountValidated, isAmountValidated) &&
+            (identical(other.onSelectedLabel, onSelectedLabel) ||
+                other.onSelectedLabel == onSelectedLabel));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(title),
-      const DeepCollectionEquality().hash(_buttonOptions));
+      const DeepCollectionEquality().hash(outstandingAmount),
+      enteredAmount,
+      const DeepCollectionEquality().hash(_buttonOptions),
+      const DeepCollectionEquality().hash(isAmountValidated),
+      onSelectedLabel);
 
   @JsonKey(ignore: true)
   @override
@@ -5770,10 +6057,17 @@ class _$CustomAmountBottomSheet extends CustomAmountBottomSheet {
             bool disableCloseButton)
         changeLanguage,
     required TResult Function(LoanRepayment loanRepayment) loanRepayment,
-    required TResult Function(String? title, List<ButtonOptions>? buttonOptions)
+    required TResult Function(
+            String? title,
+            String outstandingAmount,
+            dynamic Function(String) enteredAmount,
+            List<ButtonOptions>? buttonOptions,
+            bool isAmountValidated,
+            dynamic Function(String) onSelectedLabel)
         customAmount,
   }) {
-    return customAmount(title, buttonOptions);
+    return customAmount(title, outstandingAmount, enteredAmount, buttonOptions,
+        isAmountValidated, onSelectedLabel);
   }
 
   @override
@@ -5849,10 +6143,17 @@ class _$CustomAmountBottomSheet extends CustomAmountBottomSheet {
             bool disableCloseButton)?
         changeLanguage,
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
-    TResult Function(String? title, List<ButtonOptions>? buttonOptions)?
+    TResult Function(
+            String? title,
+            String outstandingAmount,
+            dynamic Function(String) enteredAmount,
+            List<ButtonOptions>? buttonOptions,
+            bool isAmountValidated,
+            dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) {
-    return customAmount?.call(title, buttonOptions);
+    return customAmount?.call(title, outstandingAmount, enteredAmount,
+        buttonOptions, isAmountValidated, onSelectedLabel);
   }
 
   @override
@@ -5928,12 +6229,19 @@ class _$CustomAmountBottomSheet extends CustomAmountBottomSheet {
             bool disableCloseButton)?
         changeLanguage,
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
-    TResult Function(String? title, List<ButtonOptions>? buttonOptions)?
+    TResult Function(
+            String? title,
+            String outstandingAmount,
+            dynamic Function(String) enteredAmount,
+            List<ButtonOptions>? buttonOptions,
+            bool isAmountValidated,
+            dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
   }) {
     if (customAmount != null) {
-      return customAmount(title, buttonOptions);
+      return customAmount(title, outstandingAmount, enteredAmount,
+          buttonOptions, isAmountValidated, onSelectedLabel);
     }
     return orElse();
   }
@@ -6005,12 +6313,21 @@ class _$CustomAmountBottomSheet extends CustomAmountBottomSheet {
 
 abstract class CustomAmountBottomSheet extends CrayonPaymentBottomSheetState {
   const factory CustomAmountBottomSheet(
-      {required final String? title,
-      final List<ButtonOptions>? buttonOptions}) = _$CustomAmountBottomSheet;
+          {required final String? title,
+          required final String outstandingAmount,
+          required final dynamic Function(String) enteredAmount,
+          final List<ButtonOptions>? buttonOptions,
+          final bool isAmountValidated,
+          required final dynamic Function(String) onSelectedLabel}) =
+      _$CustomAmountBottomSheet;
   const CustomAmountBottomSheet._() : super._();
 
   String? get title;
+  String get outstandingAmount;
+  dynamic Function(String) get enteredAmount;
   List<ButtonOptions>? get buttonOptions;
+  bool get isAmountValidated;
+  dynamic Function(String) get onSelectedLabel;
   @JsonKey(ignore: true)
   _$$CustomAmountBottomSheetCopyWith<_$CustomAmountBottomSheet> get copyWith =>
       throw _privateConstructorUsedError;

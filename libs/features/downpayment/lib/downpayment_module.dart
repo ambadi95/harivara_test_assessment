@@ -1,5 +1,8 @@
 import 'package:core/ioc/di_container.dart';
 import 'package:core/navigation/navigation_manager.dart';
+import 'package:downpayment/service/downpayment_service.dart';
+import 'package:downpayment/task_manager/downpayment_api_resolver.dart';
+import 'package:downpayment/task_manager/downpayment_module_resolver.dart';
 import 'package:downpayment/viewmodel/downpayment_coordinator.dart';
 import 'package:downpayment/viewmodel/downpayment_usecase.dart';
 import 'package:downpayment/viewmodel/downpayment_viewmodel.dart';
@@ -14,6 +17,16 @@ class DownPaymentModule {
   static const moduleIdentifier = 'downpaymentmodule';
 
   static void registerDependencies() {
+
+
+    ModuleResolver.registerResolver(
+      moduleIdentifier,
+      DownPaymentModuleResolver(
+        DownPaymentApiResolver(
+          IDownPaymentService(),
+        ),
+      ),
+    );
     DIContainer.container.registerFactory<DownPaymentCoordinator>(
       (container) => DownPaymentCoordinator(
         DownPaymentNavigationHandler(container.resolve<NavigationManager>()),
