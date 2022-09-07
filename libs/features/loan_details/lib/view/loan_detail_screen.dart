@@ -105,7 +105,7 @@ class _LoanDetailScreenState extends State<LoanDetailScreen> {
             title: 'Y9_DEVICE_LOAN'.tr,
             deviceName:  widget.loanDetailArgs.loanDetailResponse.data?.brand ?? "-",
             deviceStats: widget.loanDetailArgs.loanDetailResponse.data?.modelNumber ?? "-",
-            deviceImage: widget.loanDetailArgs.loanDetailResponse.data?.modelNumber=="A03 Core"?LD_loan_detail_banner_image2:LD_loan_detail_banner_image,
+            deviceImage: widget.loanDetailArgs.loanDetailResponse.data?.modelNumber=="A03 Core" ? LD_loan_detail_banner_image2:LD_loan_detail_banner_image,
             loanId:
                 widget.loanDetailArgs.loanDetailResponse.data?.loanId ?? "-"),
         _getSpaceBetweenWidget(4),
