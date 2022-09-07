@@ -45,6 +45,7 @@ class DeviceOptionModule {
           container.resolve<TaskManager>(),
           container.resolve<IAuthManager>(),
         ),
+        container.resolve<NavigationManager>(),
       ),
     );
     DIContainer.container.registerFactory<DeviceLoanCreationCoordinator>(

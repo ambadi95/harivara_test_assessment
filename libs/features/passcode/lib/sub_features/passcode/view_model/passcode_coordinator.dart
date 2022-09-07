@@ -158,6 +158,10 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
   }
 
   Future<void> createPassCode(String passcode) async {
+    // bool internetStatus = await AppUtils.appUtilsInstance.checkInternet();
+    // if (!internetStatus) {
+    //   return;
+    // }
     var currentState = state as CreatePasscodeReady;
     try {
       var error = await _passcodeUseCase.validateCustomerPasscode(passcode);
@@ -181,6 +185,10 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
   }
 
   Future<void> createResetPassCode(String passcode) async {
+    // bool internetStatus = await AppUtils.appUtilsInstance.checkInternet();
+    // if (!internetStatus) {
+    //   return;
+    // }
     var currentState = state as CreatePasscodeReady;
     try {
       var error = await _passcodeUseCase.validateCustomerPasscode(passcode);

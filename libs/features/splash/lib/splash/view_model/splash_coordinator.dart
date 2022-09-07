@@ -37,13 +37,8 @@ class SplashCoordinator extends BaseViewModel<SplashState> {
     }
   }
 
-  Future<void> navigateToDestinationPath(
-      UserType userType, bool isSignedin) async {
-    _navigationHandler.navigateToDestinationPath(
-        WelcomeScreenArgs('', '', userType, isSignedin));
-  }
   Future<String> getCurrentLocale() async {
-    String currentLanguageCode = await _splashUseCase.getLocale();
+   String currentLanguageCode = await _splashUseCase.getLocale();
     return currentLanguageCode;
 
   }
@@ -51,10 +46,17 @@ class SplashCoordinator extends BaseViewModel<SplashState> {
   Future<void> setCurrentLocale(String currentLanguageCode) async{
     String currentLang = await getCurrentLocale();
     if(currentLang == ''){
-      var currentLocale = Locale(currentLanguageCode);
-      Get.updateLocale(currentLocale);
-      Intl.defaultLocale = currentLocale.languageCode;
-      _splashUseCase.saveLocale(currentLanguageCode);
+    var currentLocale = Locale(currentLanguageCode);
+    Get.updateLocale(currentLocale);
+    Intl.defaultLocale = currentLocale.languageCode;
+    _splashUseCase.saveLocale(currentLanguageCode);
     }
   }
+
+  Future<void> navigateToDestinationPath(
+      UserType userType, bool isSignedin) async {
+    _navigationHandler.navigateToDestinationPath(
+        WelcomeScreenArgs('', '', userType, isSignedin));
+  }
+
 }

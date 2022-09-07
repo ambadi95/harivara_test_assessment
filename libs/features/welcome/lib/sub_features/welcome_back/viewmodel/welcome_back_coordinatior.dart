@@ -59,6 +59,7 @@ class WelcomeBackCoordinator extends BaseViewModel<WelcomeScreenState> {
     }
   }
 
+
   Future agentLogin(String passcode) async {
     try {
       state = state.copyWith(isLoading: true);

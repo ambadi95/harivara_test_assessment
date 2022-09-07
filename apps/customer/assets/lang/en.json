@@ -2,23 +2,26 @@
   "OB_WelcomeTitle" : "Welcome to Y9",
   "OB_WelcomeSubTitle" : "Your Dream Digital Microfinance",
   "OB_WelcomeThirdTitle" : "y9bank.com",
-  "OB_SignIn" : "Sign-In",
-  "OB_SignUp" : "Sign-Up",
-  "OB_Lang" : "EN",
+  "OB_SignIn" : "Sign in",
+  "OB_SignUp" : "Sign up",
+  "OB_Lang" : "Set Language",
   "OB_ni_bora" : "ni %{Bora|click}%",
 
 
   "DO_Title": "Membership\nOptions",
   "DO_Search": "Search by Name / Brand / price / storage / etc..",
+  "DO_Storage": " Storage",
 
 
-  "LS_Login" : "Sign-in to Y9",
+  "LS_Login" : "Sign in to Y9",
   "LS_Mobile" : "Mobile number",
   "LS_mobile_error_text" : "Invalid Mobile number",
   "LS_mobile_hint_text" : "Enter Mobile Number",
   "LS_Passcode" : "Passcode",
-  "LS_SignIn" : "Sign-In",
+  "LS_SignIn" : "Sign in",
   "LS_Passcode_message" : "As this is your first Login to your Y9 App, \nwe will be doing an OTP verification after \nwhich you can set your personalised \nPasscodefor your Y9 App",
+
+
 
 
   "SU_title" : "Enter NIDA Number",
@@ -84,7 +87,7 @@
   "HS_Invite": "Invite",
 
   "PC_create_passcode" : "Create new passcode",
-  "PC_passcode_message" : "This will be used to sign-in",
+  "PC_passcode_message" : "This will be used to sign in",
   "PC_re_enter_passcode" : "Re-enter new passcode",
   "PC_confirm_passcode" : "Confirm passcode",
   "PC_passcode_does_not_match" : "Passcode does not match.",
@@ -100,6 +103,8 @@
   "ES_view_membership" : "View Your Membership",
   "ES_agent_contact_text" : "Y9 agent will contact you shortly on your Membership",
   "ES_need_help_contact" : "Need Help Contact Us at +255 677-039-999",
+  "ES_choose_product_message" : "Thank you for choosing our product, we will get in touch with you soon",
+  "ES_done" : "Done",
 
   "WB_WelcomeBack": "Welcome back to Y9",
   "WB_EnterPassCode": "Enter Passcode",

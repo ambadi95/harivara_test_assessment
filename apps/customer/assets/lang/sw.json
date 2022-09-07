@@ -4,7 +4,7 @@
   "OB_WelcomeThirdTitle" : "y9bank.com",
   "OB_SignIn" : "Weka sahihi",
   "OB_SignUp" : "Jisajili",
-  "OB_Lang" : "SW",
+  "OB_Lang" : "Weka Lugha",
   "OB_ni_bora" : "ni %{Bora|click}%",
   "ST_view_profile": "Tazama Wasifu",
   "ST_my_profile": "Wasifu Wangu",
@@ -12,6 +12,7 @@
 
   "DO_Title": "Chaguo za Kifaa",
   "DO_Search": "Tafuta kwa Jina / Chapa / bei / hifadhi / nk.",
+  "DO_Storage": " Storage",
 
   "LS_Login" : "Ingia kwa yako Y9 \nprogramu",
   "LS_Mobile" : "Namba ya simu ya mkononi",
@@ -100,6 +101,8 @@
   "ES_view_membership" : "Tazama Uanachama Wako",
   "ES_agent_contact_text" : "Wakala wa Y9 atawasiliana nawe baada ya muda mfupi kuhusu Uanachama wako",
   "ES_need_help_contact" : "Unahitaji Usaidizi Wasiliana Nasi kwa +255 677-039-999",
+  "ES_choose_product_message" : "Asante kwa kuchagua bidhaa zetu, tutawasiliana nawe hivi karibuni",
+  "ES_done" : "Imekamilika",
 
   "WB_WelcomeBack": "Karibu tena Y9",
   "WB_EnterPassCode": "Weka Nambari ya siri",

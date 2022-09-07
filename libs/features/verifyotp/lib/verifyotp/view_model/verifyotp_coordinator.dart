@@ -104,6 +104,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
     String? mobileNum,
     isResetPasscode = false,
   }) async {
+
     if (otpVerificationType == OtpVerificationType.mobile) {
       //state = const VerifyOtpState.loadingState();
       // try {
@@ -298,6 +299,17 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
     _navigationHandler.goBack();
   }
 
+  otpAttempts(int attempts ){
+    var currentState = state as VerifyOtpStateReady;
+    otpController.text = "";
+    if (attempts > 1) {
+      state = currentState.copyWith(attemptsRemain: attempts - 1);
+    } else {
+      state = currentState.copyWith(attemptsRemain: 3);
+      _showAlertForOTPAttempts();
+    }
+}
+
 //
 // Future<void> _handleOtpError(
 //     BuildContext context,
@@ -341,6 +353,8 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
           alertTitle: 'VO_Incorrect_OTP_Title'.tr,
           alertIcon: "assets/images/incorrect_otp.png",
           onClose: () {
+            goBack();
+            goBack();
             goBack();
           },
           packageName: ""),

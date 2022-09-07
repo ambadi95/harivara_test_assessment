@@ -107,7 +107,7 @@ const SU_subtitle_terms_style = TextStyle(
 
 const SU_label_style = TextStyle(
   fontSize: 14,
-  fontWeight: FontWeight.w600,
+  fontWeight: FontWeight.w500,
   fontFamily: 'Montserrat',
   color: SU_label_color,
 );

@@ -2,20 +2,20 @@
   "OB_WelcomeTitle" : "Welcome to the Y9 Agent",
   "OB_WelcomeSubTitle" : "Your Dream Digital Microfinance",
   "OB_WelcomeThirdTitle" : "y9bank.com",
-  "OB_SignIn" : "Sign-In",
-  "OB_SignUp" : "Sign-Up",
-  "OB_Lang" : "EN",
+  "OB_SignIn" : "Sign in",
+  "OB_SignUp" : "Sign up",
+  "OB_Lang" : "Set Language",
   "OB_ni_bora" : "ni %{Bora|click}%",
 
 
   "LS_Login" : "Login to Your Y9 \nAgent",
-  "LS_Mobile" : "Mobile number",
-  "LS_mobile_error_text" : "Invalid Mobile number",
+  "LS_Mobile" : "Mobile Number",
+  "LS_mobile_error_text" : "Invalid Mobile Number",
   "LS_mobile_hint_text" : "Enter Mobile Number",
   "LS_agent_id" : "Agent ID",
   "LS_agent_id_error" : "Invalid Agent ID",
   "LS_Passcode" : "Passcode",
-  "LS_SignIn" : "Sign-In",
+  "LS_SignIn" : "Sign in",
 
 
   "SU_title" : "Y9 Customer Registration",
@@ -116,7 +116,7 @@
   "HS_Agent_Stay_Tunned": " Stay Tuned!",
 
   "PC_create_passcode" : "Create new passcode",
-  "PC_passcode_message" : "This will be used to sign-in",
+  "PC_passcode_message" : "This will be used to sign in",
   "PC_re_enter_passcode" : "Re-enter new passcode",
   "PC_confirm_passcode" : "Confirm passcode",
   "PC_passcode_does_not_match" : "Passcode does not match.",
@@ -132,6 +132,8 @@
   "ES_view_membership" : "View Your Membership",
   "ES_agent_contact_text" : "Y9 will contact you shortly on your Membership",
   "ES_need_help_contact" : "Need Help Contact Us at +255 677-039-999",
+  "ES_choose_product_message" : "Thank you for choosing our product, we will get in touch with you soon",
+  "ES_done" : "Done",
 
   "WB_WelcomeBack": "Welcome back to Y9 \nAgent login",
   "WB_EnterPassCode": "Enter Passcode",
@@ -197,7 +199,7 @@
   "DD_MemberBenefit8": "Access to your Y9 Account",
 
   "RP_Passcode_Reset" : "Passcode has been Reset successfully",
-  "RP_Passcode_Desc" : "Please use the new passcode to Sign-in and proceed further",
+  "RP_Passcode_Desc" : "Please use the new passcode to Sign in and proceed further",
   "RP_Continue" : "Continue",
   "RP_success_message": "Passcode has been updated successfully",
   "PR_message" : "You will be Signed out of the app, please use the new passcode to Sign-in again",

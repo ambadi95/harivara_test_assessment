@@ -113,7 +113,7 @@ class __$$_WelcomeScreenStateCopyWithImpl<$Res>
 
 class _$_WelcomeScreenState implements _WelcomeScreenState {
   const _$_WelcomeScreenState(
-      {this.currentLanguageCode = 'en',
+      {this.currentLanguageCode = 'sw',
       this.error = ' ',
       this.isLoading = false});
 
