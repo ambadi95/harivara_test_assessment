@@ -26,7 +26,7 @@ const AN_Title_FF = TextStyle(
 
 const AN_TextFieldLabel_FF = TextStyle(
   fontSize: 12,
-  fontWeight: FontWeight.w500,
+  fontWeight: FontWeight.w600,
   fontFamily: 'Montserrat',
   color: AN_TextFieldLabel,
 );
@@ -272,7 +272,7 @@ const HS_account_id_style = TextStyle(
 
 const HS_card_items_style = TextStyle(
   fontSize: 12,
-  fontWeight: FontWeight.w500,
+  fontWeight: FontWeight.w600,
   fontFamily: 'Montserrat',
   fontStyle: FontStyle.normal,
   color: Colors.black,

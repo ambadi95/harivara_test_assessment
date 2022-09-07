@@ -18,7 +18,7 @@
   "LS_SignIn" : "Sign-In",
 
 
-  "SU_title" : "Y9 Customer Registration",
+  "SU_title" : "Y9 Customer Onboarding",
   "SU_title_agent" : "Enter your NIDA Number & Agent ID",
   "SU_subtitle" : "By signing up to Y9, you hereby agree to\nthe %{Terms & Conditions|https://www.google.com}%.",
   "SU_ID_no_label" : "NIDA Number",
@@ -105,13 +105,13 @@
   "HS_ReferalCode": "Referal Code",
   "HS_Invite": "Invite",
   "HS_Agent_Id" : "Y9 Agent ID",
-  "HS_TotalOnBoarderCustomers" : "Total Customers \nRegistered ",
+  "HS_TotalOnBoarderCustomers" : "Total Customer \nRegistered ",
   "HS_PendingCustomerRequests" : "Pending Customer \nRequest",
   "HS_TotalCustomerBoarding" : "Total Customers \nOnboarded",
-  "HS_Customer_OnBoarding" : "Customer \nRegistration",
+  "HS_Customer_OnBoarding" : "Customer \nOnboarding",
   "HS_Customer_DeviceSwap" : "Device swap \n/ repair",
   "HS_Customer_AgentSupport" : "Agent \nSupport",
-  "HS_Agent_Refer_Text": "Refer your Friends to register for Y9 \n Membership and you will win a Referral Bonus",
+  "HS_Agent_Refer_Text": " Refer your Friends to register for Y9\n Membership and you will win a\n Referral Bonus",
   "HS_Agent_Refer_Program": "Referral Program -",
   "HS_Agent_Stay_Tunned": " Stay Tuned!",
 
@@ -202,7 +202,7 @@
   "RP_success_message": "Passcode has been updated successfully",
   "PR_message" : "You will be Signed out of the app, please use the new passcode to Sign-in again",
 
-  "ST_my_profile": "View Profile",
+  "ST_my_profile": "My Profile",
   "ST_title" : "Settings",
   "ST_subTitle" : "Profile Management",
   "ST_view_profile" : "View Profile",
@@ -225,7 +225,7 @@
   "KYC_Validation_With_Airtel_Subtitle" : "Y9 checks your Telco records matching\nyour NIDA Number and Mobile Number",
   "KYC_Validation_With_Airtel_Pass_Check" : "KYC Checked with Telco",
   "KYC_Validation_With_Airtel_Loan_Check" : "Credit Checked for Loan",
-  "KYC_Validation_With_Main_CheckBox" : "I hereby agree to check my credit\nscore and provide the eligible\nmembership plan accodring to Y9",
+  "KYC_Validation_With_Main_CheckBox" : "I hereby agree for Y9 to check my credit\nscore and provide the eligible\nmembership plan according to Y9",
   "KYC_Terms_and_Condition" : "Terms & Conditions",
   "Credit_Score_With_Telco": "Credit Check with\nTelco for Device Loan",
   "KYC_Verification_Failed": "KYC Validation Failed",

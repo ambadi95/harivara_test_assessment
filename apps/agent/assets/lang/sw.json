@@ -18,7 +18,7 @@
   "LS_SignIn" : "Weka sahihi",
 
 
-  "SU_title" : "Weka Nambari yako ya NIDA & Kitambulisho cha Wakala",
+  "SU_title" : "Y9 Kuingia kwa Wateja",
   "SU_title_agent" : "Weka Nambari yako ya NIDA & Kitambulisho cha Wakala",
   "SU_subtitle" : "Kwa kujisajili kwenye Y9 Pay, unakubali \n%{Sheria na Masharti. | https://www.google.com}%.",
   "SU_ID_no_label" : "Namba ya NIDA",
@@ -113,7 +113,7 @@
   "HS_Customer_OnBoarding": "Mteja \nKupanda",
   "HS_Customer_DeviceSwap": "Kubadilisha kifaa\n/ ukarabati",
   "HS_Customer_AgentSupport": "Wakala \nMsaada",
-  "HS_Agent_Refer_Text": "Rejelea Marafiki zako wajiandikishe kwa Uanachama wa Y9 na utashinda Bonasi ya Rufaa",
+  "HS_Agent_Refer_Text": "Rejelea Marafiki zako wajisajili kwa Y9\nUanachama na utashinda a\nBonasi ya Rufaa",
   "HS_Agent_Refer_Program": "Mpango wa Rufaa -",
   "HS_Agent_Stay_Tunned": " Endelea kufuatilia !",
 
@@ -204,7 +204,7 @@
   "RP_success_message": "Nambari ya siri imesasishwa kwa mafanikio",
   "PR_message" : "Utaondolewa kwenye programu, tafadhali tumia nambari mpya ya siri Kuingia tena",
 
-  "ST_my_profile": "View Profile",
+  "ST_my_profile": "Wasifu Wangu",
   "ST_title": "Mipangilio",
   "ST_subTitle": "Usimamizi wa Wasifu",
   "ST_view_profile": "Tazama Wasifu",
@@ -226,7 +226,7 @@
   "KYC_Validation_With_Airtel_Subtitle" : "Y9 hukagua rekodi zako za Telco zinazolingana\nNambari yako ya NIDA na Nambari ya Simu",
   "KYC_Validation_With_Airtel_Pass_Check" : "KYC Imeingia kwenye Telco",
   "KYC_Validation_With_Airtel_Loan_Check" : "Mikopo Imeangaliwa kwa Mkopo ",
-  "KYC_Validation_With_Main_CheckBox" : "Ninakubali kuangalia mkopo wangu\nalama na kutoa wanaostahiki\nmpango wa uanachama kulingana na 9",
+  "KYC_Validation_With_Main_CheckBox" : "Ninakubali kwa Y9 kuangalia mkopo wangu\nalama na kutoa wanaostahiki\nmpango wa uanachama kulingana na Y9",
   "KYC_Terms_and_Condition" : "Sheria na Masharti",
   "Credit_Score_With_Telco": "Cheki cha Mikopo na\ntelco kwa mkopo wa kifaa",
   "KYC_Verification_Failed": "Uthibitishaji wa KYC Umeshindwa",
