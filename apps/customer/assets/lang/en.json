@@ -298,6 +298,6 @@
   "faq_question_25": "What if I forget to make my payment?",
   "faq_answer_25": "Day-1 of non-payment-Send Reminder\nDay-2 of non-payment-Send Reminder\nDay-3 of non-payment-Send Reminder\nDay-4 of non-payment- Send Reminder Initiate Auto Debit Request\nDay-5 of non-payment- Send Reminder Stop Outgoing calls\nDay-6 of non-payment-Send Reminder Block Mobile Data (Block Access to Mobile APP except Y9 APPs & Mobile Money APP by Telco)\nDay-7 of non-payment- Send Reminder Phone Locking & Initiate Auto Debit Request\nDay-8 of non-payment- Send Reminder Add to Defaulters list & Initiate Auto Debit Request\nDay-9 of non-payment - Send Reminder Default and Plan for recovery\nDay 10 of non-plan- Send Reminder Initiate Auto Debit Request and Lock the Phone Completely\nYour device will be fully locked on the Tenth day.",
   "faq_question_26": "How do I complete my payment when there is an unfortunate case of phone theft/lost?",
-  "faq_answer_26": "In a situation where our customer phone is stolen or lost. The customer is expected to report to the nearest shop for the operator you use for calls/mobile with the following.\n· Police report\n· Valid National Identification number.\nConfirm details to agent including biometric check\nAnd if approved by insurance company will be issued a replacement device immediately"
-
+  "faq_answer_26": "In a situation where our customer phone is stolen or lost. The customer is expected to report to the nearest shop for the operator you use for calls/mobile with the following.\n· Police report\n· Valid National Identification number.\nConfirm details to agent including biometric check\nAnd if approved by insurance company will be issued a replacement device immediately",
+  "FAQ_Title_2": "Frequently Asked Questions"
 }
