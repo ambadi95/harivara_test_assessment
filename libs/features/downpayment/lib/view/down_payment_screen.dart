@@ -396,9 +396,9 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> with TickerProvid
             fontFamily: 'Montserrat',
             fontSize: 14, color: DD_TextLabel, fontWeight: FontWeight.w600
         ),
-        children: <TextSpan>[
+        children: const <TextSpan>[
           TextSpan(
-              text: ' 15 mins',
+              text: '   15 mins',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12, color : Color(0xFFDA2228))),
 
         ],

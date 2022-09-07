@@ -287,7 +287,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                       ),
                       InkWell(
                           onTap: () {
-                            // coordinator.devicereg();
+                            coordinator.configureMDM();
                           },
                           child: _actionCommonView(
                               'HS_Customer_DeviceSwap'.tr, HS_DeviceSwapIcon)),

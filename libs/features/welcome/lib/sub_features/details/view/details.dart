@@ -285,7 +285,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
               TextInputType.number,
               coordinator,
               '',
-              'Enter Your Mobile Number',
+              'LS_mobile_hint_text',
               false),
           _buildLabelTextField(
               'email',

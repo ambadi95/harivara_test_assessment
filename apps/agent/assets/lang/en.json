@@ -247,11 +247,11 @@
   "DLC_Final_Payment_Date": "Final Payment Date",
   "DLC_Airtel_Pay": "Airtel Pay",
   "DLC_Loan_Details": "Loan Details",
-  "DLC_Down_Payment" : "Down Payment",
+  "DLC_Down_Payment" : "Joining fee\nPayment",
   "DLC_Down_Payment_Subtitle" : "Transaction gateway will be closed in next",
   "DLC_resend" : "Resend",
   "DLC_pay_now" : "Pay Now",
-  "DLC_payment_text" : "TZSHS\\npayment request has\\nbeen sent to Y9",
+  "DLC_payment_text" : "TZSHS payment\nrequest has been sent to Y9",
 
   "RC_agent_new_customer" : "New Customer \nOnboarding",
   "RC_customer_approval" : "Existing Customer \nOnboarding",
@@ -270,6 +270,15 @@
   "PC_button_close" : "Close",
   "FORGET_PASSCODE": "Forget Passcode ?",
   "RESET_NOW": "Reset Now",
-  "ERROR_MESSAGE" :  "Something went wrong,Please try again later!"
+  "ERROR_MESSAGE" :  "Something went wrong,Please try again later!",
+
+  "MDM_button_text" : "Setup MDM configuration",
+  "MDM_subheading" : "Mobile Security Software that protects\nthe Mobile Devices of Customers.",
+  "MDM_input_label" : "Device UID / IMEI -1",
+  "MDM_input_hint_text" : "Enter Device UID / IMEI -1",
+  "MDM_agree_text" : "I hearby agree to configure MDM\nfor Managing the Device by Y9\nMicrofinance Tanzania",
+  "MDM_successful_text" : "Successful",
+  "MDM_finish_text": "Finish",
+  "MDM_successful_heading" : "MDM Configuration Successfully\nCompleted. Waiting for the Device to\nbe activated for Monitoring"
 
 }

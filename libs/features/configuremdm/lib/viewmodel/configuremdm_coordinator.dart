@@ -21,4 +21,9 @@ class ConfigureMdmCoordinator
     state =
         ConfigureMdmState.ready(context: context, error: "", isLoading: false);
   }
+
+
+  void configureMdmSuccessFulScreen(){
+    _navigationHandler.navigateToConfigureMdmSuccessScreen();
+  }
 }

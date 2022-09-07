@@ -248,11 +248,11 @@
   "DLC_Final_Payment_Date": "Tarehe ya Mwisho ya Malipo",
   "DLC_Airtel_Pay": "Airtel Pay",
   "DLC_Loan_Details": "Maelezo ya Mkopo",
-  "DLC_Down_Payment" : "Malipo ya chini",
+  "DLC_Down_Payment" : "Ada ya kujiunga\nMalipo",
   "DLC_Down_Payment_Subtitle": "Lango la muamala litafungwa katika dakika 15 zijazo",
   "DLC_resend" : "Tuma tena",
   "DLC_pay_now" : "LIPA sasa",
-  "DLC_payment_text" : "ombi la malipo limetumwa kwa Y9",
+  "DLC_payment_text" : "malipo ya TZSH\nombi limetumwa kwa Y9",
 
   "RC_agent_new_customer" : "Mteja Mpya\nKupanda",
   "RC_customer_approval" : "Mteja Anayesubiri\nKupanda",
@@ -272,8 +272,16 @@
 
   "FORGET_PASSCODE": "Sahau nambari ya siri ?",
   "RESET_NOW": "Weka Upya Sasa",
-  "ERROR_MESSAGE" : "Hitilafu fulani imetokea, Tafadhali jaribu tena baadaye!"
+  "ERROR_MESSAGE" : "Hitilafu fulani imetokea, Tafadhali jaribu tena baadaye!",
 
+  "MDM_button_text" : "Sanidi usanidi wa MDM",
+  "MDM_subheading" : "Programu ya Usalama ya Simu inayolinda\nVifaa vya Simu za Wateja.",
+  "MDM_input_label" : "Kifaa cha UID / IMEI -1",
+  "MDM_input_hint_text" : "Weka Kitambulisho cha Kifaa / IMEI -1",
+  "MDM_agree_text" : "Ninakubali kusanidi MDM\nkwa Kusimamia Kifaa kwa Y9\nMicrofinance Tanzania",
+  "MDM_successful_text" : "Imefanikiwa",
+  "MDM_finish_text": "Maliza",
+  "MDM_successful_heading" : "Usanidi wa MDM Umefaulu\nImekamilika. Inasubiri Kifaa\niamilishwe kwa Ufuatiliaji"
 
 
 }
