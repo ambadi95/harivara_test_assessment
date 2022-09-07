@@ -187,7 +187,7 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
                 widget.otpScreenArgs.event
             );
           } else {
-            _showAlertForOTPAttempts(coordinator);
+         //   _showAlertForOTPAttempts(coordinator);
           }
         },
         child: Padding(

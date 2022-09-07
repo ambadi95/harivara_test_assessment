@@ -30,7 +30,7 @@ class SettingsUseCase extends BaseDataProvider {
   }
 
   Future logout() async {
-     String currentLocale = await getLocale();
+    String currentLocale = await getLocale();
     _cacheTaskResolver.execute("", {CACHE_TYPE: TaskManagerCacheType.values});
     await saveLocale(currentLocale);
   }

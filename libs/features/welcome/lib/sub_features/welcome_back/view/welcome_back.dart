@@ -18,8 +18,8 @@ class CrayonWelcomBackScreen extends StatefulWidget {
   // final WelcomeScreenArgs welcomeScreenArgs;
 
   const CrayonWelcomBackScreen({Key? key, required this.userType
-      // required this.welcomeScreenArgs,
-      })
+    // required this.welcomeScreenArgs,
+  })
       : super(key: key);
 
   @override
@@ -127,7 +127,7 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
                   height: AppUtils.appUtilsInstance
                       .getPercentageSize(ofWidth: false, percentage: 2)),
               Text(state.error, style: label_input_error_style),
-               _buildResetPasscode(welcomeCoordinator)
+              _buildResetPasscode(welcomeCoordinator)
             ],
           ),
         ),

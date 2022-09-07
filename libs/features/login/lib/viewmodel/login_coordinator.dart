@@ -15,9 +15,9 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
   final LoginUseCase _loginUseCase;
 
   LoginCoordinator(
-    this._navigationHandler,
-    this._loginUseCase,
-  ) : super(const LoginState.initialState());
+      this._navigationHandler,
+      this._loginUseCase,
+      ) : super(const LoginState.initialState());
 
   void validateForm(String mobNumber, String passcode, String agentId,
       UserType userType, bool havePasscode) {
@@ -80,15 +80,15 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
 
   Future calljwttoken() async {
 
-      state = LoginState.loading();
-      var response = await _loginUseCase.callJWTToken((p0) => null);
-      if (response?.status == true) {
-        state = LoginState.successState();
-      } else {
-        state = LoginState.successState();
-        _showAlertForErrorMessage("Something went wrong,Please try again later!");
-        // calljwttoken();
-        print(response?.message);
+    state = LoginState.loading();
+    var response = await _loginUseCase.callJWTToken((p0) => null);
+    if (response?.status == true) {
+      state = LoginState.successState();
+    } else {
+      state = LoginState.successState();
+      _showAlertForErrorMessage("Something went wrong,Please try again later!");
+      // calljwttoken();
+      print(response?.message);
 
 
 
@@ -111,10 +111,10 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
   }
 
   Future customerLogin(
-    String mobileNumber,
-    String passcode,
-    UserType userType,
-  ) async {
+      String mobileNumber,
+      String passcode,
+      UserType userType,
+      ) async {
     state = LoginState.loading();
     try {
       var response = await _loginUseCase.login(
@@ -140,14 +140,14 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
   }
 
   Future checkPasscode(
-    String mobileNumber,
-    UserType userType,
-  ) async {
+      String mobileNumber,
+      UserType userType,
+      ) async {
     mobileNumber = '+255' + mobileNumber.trim().replaceAll(" ", "");
     state = LoginState.loading();
     try {
       var response =
-          await _loginUseCase.getPasscodeCheck(mobileNumber, (p0) => null);
+      await _loginUseCase.getPasscodeCheck(mobileNumber, (p0) => null);
       if (response?.status == true) {
         if (response?.data?.passcodeSet == true) {
           state = LoginState.showPasscode(true);

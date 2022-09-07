@@ -22,13 +22,13 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
       : super(const VerifyOtpState.initialState());
 
   void initialiseState(
-    BuildContext context,
-    String pageTitle,
-    String pageDescription,
-    String destinationPath,
-    OtpVerificationType otpVerificationType,
-    String initialPasscode,
-  ) async {
+      BuildContext context,
+      String pageTitle,
+      String pageDescription,
+      String destinationPath,
+      OtpVerificationType otpVerificationType,
+      String initialPasscode,
+      ) async {
     state = VerifyOtpState.ready(
       context: context,
       initialPasscode: initialPasscode,
@@ -93,17 +93,17 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
   }
 
   Future<void> verifyOTP(
-    BuildContext context,
-    OtpVerificationType otpVerificationType,
-    String? refId,
-    String otp,
-    String destination,
-    int attemptRemaining,
-    int verifyAttempt,
-    Future<void> Function()? onPasscodeVerifiedCallback, {
-    String? mobileNum,
-    isResetPasscode = false,
-  }) async {
+      BuildContext context,
+      OtpVerificationType otpVerificationType,
+      String? refId,
+      String otp,
+      String destination,
+      int attemptRemaining,
+      int verifyAttempt,
+      Future<void> Function()? onPasscodeVerifiedCallback, {
+        String? mobileNum,
+        isResetPasscode = false,
+      }) async {
 
     if (otpVerificationType == OtpVerificationType.mobile) {
       //state = const VerifyOtpState.loadingState();
@@ -266,24 +266,24 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         _navigationHandler.openForUpdateNewPasscodeAgent(userType);
       } else if(otpScreenArgs.otpVerificationType == OtpVerificationType.customerPasscodeSet){
 
-          state = currentState.copyWith(isLoading: true);
-          var response = await _verifyOtpUseCase.otpVerify(otpScreenArgs.refId,
-              enterOtp, otpScreenArgs.userType,event, (p0) => null);
-          if (response!.data!.status == "success") {
-            state = currentState.copyWith(isLoading: false);
-            _navigationHandler.openForNewPasscodeAgentCustomer(userType);
+        state = currentState.copyWith(isLoading: true);
+        var response = await _verifyOtpUseCase.otpVerify(otpScreenArgs.refId,
+            enterOtp, otpScreenArgs.userType,event, (p0) => null);
+        if (response!.data!.status == "success") {
+          state = currentState.copyWith(isLoading: false);
+          _navigationHandler.openForNewPasscodeAgentCustomer(userType);
 
+        } else {
+          otpController.text = "";
+          state = currentState.copyWith(isLoading: false);
+          // state =  currentState.copyWith(attemptsRemainFlag: true);
+          if (attempts > 1) {
+            state = currentState.copyWith(attemptsRemain: attempts - 1);
           } else {
-            otpController.text = "";
-            state = currentState.copyWith(isLoading: false);
-            // state =  currentState.copyWith(attemptsRemainFlag: true);
-            if (attempts > 1) {
-              state = currentState.copyWith(attemptsRemain: attempts - 1);
-            } else {
-              state = currentState.copyWith(attemptsRemain: 3);
-              _showAlertForOTPAttempts();
-            }
+            state = currentState.copyWith(attemptsRemain: 3);
+            _showAlertForOTPAttempts();
           }
+        }
 
       }
     }  catch (e) {
@@ -308,7 +308,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
       state = currentState.copyWith(attemptsRemain: 3);
       _showAlertForOTPAttempts();
     }
-}
+  }
 
 //
 // Future<void> _handleOtpError(
@@ -370,7 +370,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         _navigationHandler.navigateToDetailScreen();
         break;
       case "Enrolled":
-     _navigationHandler.navigateToDetailScreen();
+        _navigationHandler.navigateToDetailScreen();
         break;
       case "KYC_Initiated":
         _navigationHandler.navigateToKYCScreen(false);
@@ -382,7 +382,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         _navigationHandler.navigateToKYCScreen(true);
         break;
       case "Credit_Check_Success":
-        //TODO Navigate to Credit_Check_Success Screen
+      //TODO Navigate to Credit_Check_Success Screen
         _navigationHandler.navigateToDeviceOption(false, UserType.AgentCustomer);
 
         break;
@@ -402,28 +402,28 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         _navigationHandler.navigateToDownPaymentScreen();
         break;
       case "Loan_Initiated":
-        //_navigationHandler.navigateToDeviceLoanCreation();
+      //_navigationHandler.navigateToDeviceLoanCreation();
         break;
       case "Loan_Approved":
-        //TODO Navigate to Loan_Approved Screen
+      //TODO Navigate to Loan_Approved Screen
         break;
       case "Device_Reg_Initiated":
-        //TODO Navigate to Device_Reg_Initiated Screen
+      //TODO Navigate to Device_Reg_Initiated Screen
         break;
       case "Device_Reg_Success":
-        //TODO Navigate to Device_Reg_Success Screen
+      //TODO Navigate to Device_Reg_Success Screen
         break;
       case "MDM_Reg_Initiated":
-        //TODO Navigate to MDM_Reg_Initiated Screen
+      //TODO Navigate to MDM_Reg_Initiated Screen
         break;
       case "MDM_Reg_Success":
-        //TODO Navigate to MDM_Reg_Success Screen
+      //TODO Navigate to MDM_Reg_Success Screen
         break;
       case "Repayment_Initiated":
-        //TODO Navigate to Repayment_Initiated Screen
+      //TODO Navigate to Repayment_Initiated Screen
         break;
       case "Repayment_Success":
-        //TODO Navigate to Repayment_Success Screen
+      //TODO Navigate to Repayment_Success Screen
         break;
     }
   }

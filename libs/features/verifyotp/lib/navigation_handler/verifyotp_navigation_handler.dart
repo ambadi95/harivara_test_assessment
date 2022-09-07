@@ -52,13 +52,13 @@ class VerifyOtpNavigationHandler with ErrorHandler {
 
   Future<void> navigateToKycScreen() async {
     var argument = KycScreenArgs(
-      KycFieldType.KYC_VALIDATION,
-      "",
-      "",
-      "",
-      "",
-      [KYCDataModel(title: "", isSelected: false)],
-      false
+        KycFieldType.KYC_VALIDATION,
+        "",
+        "",
+        "",
+        "",
+        [KYCDataModel(title: "", isSelected: false)],
+        false
     );
     _navigationManager.navigateTo(
         KycCreditScreen.viewPath, const NavigationType.replace(),
@@ -197,12 +197,12 @@ class VerifyOtpNavigationHandler with ErrorHandler {
 
   void navigateToKYCScreen(bool kycCheck) async {
     var argument = KycScreenArgs(
-      KycFieldType.KYC_VALIDATION,
-      "",
-      "",
-      "",
-      "",
-      [KYCDataModel(title: "", isSelected: false)],
+        KycFieldType.KYC_VALIDATION,
+        "",
+        "",
+        "",
+        "",
+        [KYCDataModel(title: "", isSelected: false)],
         kycCheck
     );
     await _navigationManager.navigateTo(
