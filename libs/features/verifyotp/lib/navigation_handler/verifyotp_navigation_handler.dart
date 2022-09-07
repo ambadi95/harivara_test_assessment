@@ -58,6 +58,7 @@ class VerifyOtpNavigationHandler with ErrorHandler {
       "",
       "",
       [KYCDataModel(title: "", isSelected: false)],
+      false
     );
     _navigationManager.navigateTo(
         KycCreditScreen.viewPath, const NavigationType.replace(),
@@ -77,6 +78,27 @@ class VerifyOtpNavigationHandler with ErrorHandler {
       'PC_passcode_message',
       'welcomeModule/enrollmentSuccess',
       true,
+      3,
+      PassCodeVerificationType.create,
+      false,
+      '',
+      userType,
+    );
+
+    _navigationManager.navigateTo(
+      CrayonPasscodeScreen.viewPath,
+      NavigationType.push(),
+      preventDuplicates: false,
+      arguments: arguments,
+    );
+  }
+
+  Future<void> openForNewPasscodeAgentCustomer(UserType userType) async {
+    var arguments = PasscodeScreenArgs(
+      'PC_create_passcode',
+      'PC_passcode_message',
+      'homemodule/CrayonHomeScreen',
+      false,
       3,
       PassCodeVerificationType.create,
       false,
@@ -167,13 +189,13 @@ class VerifyOtpNavigationHandler with ErrorHandler {
 
   navigateToDownPaymentScreen() {
     var arguments = DownPaymentScreenArgs(
-        0, "", "", "", "", [DownPaymentDataModel(title: "", isSelected: false)]);
+        0, "", "", "",0,0,0,0,0);
     _navigationManager.navigateTo(
         DownPaymentScreen.viewPath, const NavigationType.push(),
         arguments: arguments);
   }
 
-  void navigateToKYCScreen() async {
+  void navigateToKYCScreen(bool kycCheck) async {
     var argument = KycScreenArgs(
       KycFieldType.KYC_VALIDATION,
       "",
@@ -181,6 +203,7 @@ class VerifyOtpNavigationHandler with ErrorHandler {
       "",
       "",
       [KYCDataModel(title: "", isSelected: false)],
+        kycCheck
     );
     await _navigationManager.navigateTo(
         KycCreditMainScreen.viewPath, const NavigationType.push(),

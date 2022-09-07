@@ -79,6 +79,7 @@ class WelcomeNavigationHandler with ErrorHandler {
       "",
       "",
       [KYCDataModel(title: "", isSelected: false)],
+      false
     );
     _navigationManager.navigateTo(
         KycCreditMainScreen.viewPath, const NavigationType.replace(),
@@ -213,6 +214,7 @@ class WelcomeNavigationHandler with ErrorHandler {
       mobileNumber,
       false,
       userType,
+        OTPEvent.Customer_Registration.toShortString()
     );
     _navigationManager.navigateTo(
       CrayonVerifyOtpScreen.viewPath,
@@ -238,7 +240,7 @@ class WelcomeNavigationHandler with ErrorHandler {
       6,
       mobileNumber,
       false,
-      userType,
+      userType, OTPEvent.Customer_Registration.toShortString()
     );
     _navigationManager.navigateTo(
       CrayonVerifyOtpScreen.viewPath,
@@ -261,6 +263,7 @@ class WelcomeNavigationHandler with ErrorHandler {
       mobileNumber,
       false,
       userType,
+        OTPEvent.Reset_Passcode.toShortString()
     );
 
     _navigationManager.navigateTo(
@@ -287,6 +290,7 @@ class WelcomeNavigationHandler with ErrorHandler {
       mobileNumber,
       false,
       userType,
+        userType==UserType.Customer?OTPEvent.Customer_Login.toShortString():OTPEvent.Agent_Login.toShortString()
     );
 
     _navigationManager.navigateTo(
@@ -367,7 +371,7 @@ class WelcomeNavigationHandler with ErrorHandler {
       6,
       mobileNumber,
       false,
-      UserType.Customer,
+      UserType.Customer, OTPEvent.Reset_Passcode.toShortString()
     );
 
     _navigationManager.navigateTo(
@@ -386,6 +390,7 @@ class WelcomeNavigationHandler with ErrorHandler {
       "",
       "",
       [KYCDataModel(title: "", isSelected: false)],
+      false
     );
     await _navigationManager.navigateTo(
         KycCreditMainScreen.viewPath, const NavigationType.push(),

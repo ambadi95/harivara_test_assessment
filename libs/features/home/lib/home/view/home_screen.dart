@@ -35,7 +35,6 @@ class CrayonHomeScreen extends StatefulWidget {
 }
 
 class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
-
   int selectedIndex = 0;
   String username = '';
   String userId = '';
@@ -204,7 +203,8 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'HS_PendingCustomerRequests'.tr,
+                          'HS_TotalCustomerBoarding'.tr,
+                          //'HS_PendingCustomerRequests'.tr,
                           style: HS_title_style,
                         ),
                         const SizedBox(
@@ -217,43 +217,48 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                 )
               : Row(
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'HS_Daily_Repayment_amount'.tr,
-                          style: HS_title_style,
-                        ),
-                        const SizedBox(
-                          height: 5,
-                        ),
-                        Row(
-                          children: [
-                            Text(outstandingAmount ?? '-',
-                                style: HS_account_id_style),
-                            const Text(" TZSHS", style: HS_card_items_style_w)
-                          ],
-                        )
-                      ],
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'HS_Daily_Repayment_amount'.tr,
+                            style: HS_title_style,
+                          ),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          Row(
+                            children: [
+                              Text(outstandingAmount ?? '-',
+                                  style: HS_account_id_style),
+                              const Text(" TZSHS", style: HS_card_items_style_w)
+                            ],
+                          )
+                        ],
+                      ),
                     ),
                     const SizedBox(
                       width: 20,
                     ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'HS_CardList3Title'.tr,
-                          style: HS_title_style,
-                        ),
-                        const SizedBox(
-                          height: 5,
-                        ),
-                        Row(children: [
-                          Text(repaidAmount ?? "-", style: HS_account_id_style),
-                          const Text(" TZSHS", style: HS_card_items_style_w)
-                        ]),
-                      ],
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'HS_CardList3Title'.tr,
+                            style: HS_title_style,
+                          ),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          Row(children: [
+                            Text(repaidAmount ?? "-",
+                                style: HS_account_id_style),
+                            const Text(" TZSHS", style: HS_card_items_style_w)
+                          ]),
+                        ],
+                      ),
                     ),
                   ],
                 ),
@@ -279,11 +284,12 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                         child: _actionCommonView(
                             'HS_Customer_OnBoarding'.tr, HS_CustomerMangIcon),
                       ),
-                      InkWell(onTap:()  {
-                       // coordinator.devicereg();
-                      },
-                     child: _actionCommonView(
-                          'HS_Customer_DeviceSwap'.tr, HS_DeviceSwapIcon)),
+                      InkWell(
+                          onTap: () {
+                            // coordinator.devicereg();
+                          },
+                          child: _actionCommonView(
+                              'HS_Customer_DeviceSwap'.tr, HS_DeviceSwapIcon)),
                       _actionCommonView(
                           'HS_Customer_AgentSupport'.tr, HS_AgentSupportIcon),
                     ],
@@ -294,7 +300,8 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                     children: [
                       InkWell(
                         onTap: () {
-                          coordinator.navigationToBottomSheet(context,loanDetailResponse);
+                          coordinator.navigationToBottomSheet(
+                              context, loanDetailResponse);
                         },
                         child: _actionCommonView(
                             'HS_LoanRepayment'.tr, HS_LoanRepayment),
@@ -452,30 +459,34 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'HS_Widget1Description'.tr,
-                      style: HS_invite_friends_y9_style,
-                    ),
-                    const SizedBox(
-                      height: 24,
-                    ),
-                    InkWell(
-                      onTap: (){
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const ReadingInAppBrowser()),
-                        );
-                      //  coordinator.navigationToReaderBrowser();
-                      },
-                      child: Text(
-                        'HS_explore'.tr,
-                        style: HS_explore_title_style,
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'HS_Widget1Description'.tr,
+                        style: HS_invite_friends_y9_style,
                       ),
-                    ),
-                  ],
+                      const SizedBox(
+                        height: 24,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const ReadingInAppBrowser()),
+                          );
+                          //  coordinator.navigationToReaderBrowser();
+                        },
+                        child: Text(
+                          'HS_explore'.tr,
+                          style: HS_explore_title_style,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
                 Image.asset(
                   HS_Reading,
@@ -523,7 +534,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
   String greeting() {
     var hour = DateTime.now().hour;
     if (hour < 12) {
-      return  'HS_GoodMorning'.tr;
+      return 'HS_GoodMorning'.tr;
     }
     if (hour < 17) {
       return 'HS_GoodAfternoon'.tr;
@@ -550,42 +561,101 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
         backgroundColor: Colors.white,
         floatingActionButtonLocation:
             FloatingActionButtonLocation.miniCenterDocked,
-        bottomNavigationBar: SizedBox(
-          height: 55,
-          child: BottomNavigationBar(
-            currentIndex: selectedIndex,
-            type: BottomNavigationBarType.fixed,
-            items: [
-              BottomNavigationBarItem(
-                  icon: getSvg(HS_HomeIcon,
-                      color: selectedIndex == 0
-                          ? const Color(0xFFDA2228)
-                          : const Color(0xFF000000)),
-                  // Image.asset(
-                  //   HS_HomeIcon,
-                  //   scale: 2.0,
-                  // ),
-                  label: ''),
-              BottomNavigationBarItem(
-                  icon: getSvg(HS_SettingIcon,
-                      color: selectedIndex == 1
-                          ? const Color(0xFFDA2228)
-                          : const Color(0xFF000000)),
+        bottomNavigationBar: Material(
+          elevation: 2,
+          child: SizedBox(
+            height: 55,
 
-                  //   HS_SettingIcon,
-                  //   scale: 2.0,
-                  // ),
-                  label: '')
-            ],
-            onTap: (index) {
-              // Image.asset(
-              setState(() {
-                selectedIndex = index;
-              });
-              // if(index == 1){
-              // coordinator.navigateToSettingsScreen();
-              // }
-            },
+            child: Row(
+              children: [
+                Expanded(
+                  child: InkWell(
+                    onTap: (){
+                      setState(() {
+                        selectedIndex = 0;
+                      });
+                    },
+                    child: Column(
+                      children: [
+                        Container(
+                          height: 2,
+
+                          color: selectedIndex == 0 ?Color(0xFFDA2228):Colors.white,
+                          width: 60,
+
+                        ),
+                        Expanded(
+                          child: getSvg(HS_HomeIcon,
+                              color: selectedIndex == 0
+                                  ? const Color(0xFFDA2228)
+                                  : const Color(0xFF000000)),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: InkWell(
+                    onTap: (){
+                      setState(() {
+                        selectedIndex = 1;
+                      });
+                    },
+                    child: Column(
+                      children: [
+                        Container(
+                          height: 2,
+                          color: selectedIndex == 1 ?Color(0xFFDA2228):Colors.white,
+                          width: 60,
+
+                        ),
+                        Expanded(
+                          child: getSvg(HS_SettingIcon,
+                              color: selectedIndex == 1
+                                  ? const Color(0xFFDA2228)
+                                  : const Color(0xFF000000)),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ) /*BottomNavigationBar(
+              currentIndex: selectedIndex,
+              type: BottomNavigationBarType.fixed,
+              items: [
+                BottomNavigationBarItem(
+                    icon: getSvg(HS_HomeIcon,
+                        color: selectedIndex == 0
+                            ? const Color(0xFFDA2228)
+                            : const Color(0xFF000000)),
+                    // Image.asset(
+                    //   HS_HomeIcon,
+                    //   scale: 2.0,
+                    // ),
+                    label: ''),
+                BottomNavigationBarItem(
+                    icon: getSvg(HS_SettingIcon,
+                        color: selectedIndex == 1
+                            ? const Color(0xFFDA2228)
+                            : const Color(0xFF000000)),
+
+                    //   HS_SettingIcon,
+                    //   scale: 2.0,
+                    // ),
+                    label: '')
+              ],
+              onTap: (index) {
+                // Image.asset(
+                setState(() {
+                  selectedIndex = index;
+                });
+                // if(index == 1){
+                // coordinator.navigateToSettingsScreen();
+                // }
+              },
+            )*/
+            ,
           ),
         ),
         body: selectedIndex == 0

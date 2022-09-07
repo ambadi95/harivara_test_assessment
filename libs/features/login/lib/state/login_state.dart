@@ -17,4 +17,7 @@ class LoginState with _$LoginState {
   const factory LoginState.agentIdError(String agentIdError) = AgentIdError;
 
   const factory LoginState.loginFormState(bool isValid) = LoginFormState;
+
+  const factory LoginState.showPasscode(bool havePasscode) = ShowPasscode;
+
 }

@@ -340,12 +340,15 @@ class _SignUpState extends State<SignUp> {
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
         onTap: () async {
-          coordinator.isValidNidaNumber(nidaNumber.text);
-          coordinator.isValidMobileNumber(mobileNumber.text);
-          coordinator.isValidAgentId(agentId.text);
-          if (_isBtnEnabled && coordinator.isValidNidaNumber(nidaNumber.text)) {
-            coordinator.signup(widget.signUpArguments, mobileNumber.text,
-                nidaNumber.text, agentId.text);
+          if(_isBtnEnabled) {
+            coordinator.isValidNidaNumber(nidaNumber.text);
+            coordinator.isValidMobileNumber(mobileNumber.text);
+            coordinator.isValidAgentId(agentId.text);
+            if (_isBtnEnabled &&
+                coordinator.isValidNidaNumber(nidaNumber.text)) {
+              coordinator.signup(widget.signUpArguments, mobileNumber.text,
+                  nidaNumber.text, agentId.text);
+            }
           }
         },
         child: Container(

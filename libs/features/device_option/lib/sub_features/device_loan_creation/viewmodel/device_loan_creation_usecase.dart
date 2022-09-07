@@ -26,11 +26,12 @@ class DeviceLoanCreationUseCase extends BaseDataProvider {
         serviceIdentifier: IDeviceOptionService.loanPreviewIdentifier,
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {
-          final data = responseData;
           LoanPreviewResponseModel loanPreviewResponseModel;
+
           try {
              loanPreviewResponseModel =
-            LoanPreviewResponseModel.fromJson(data);
+            LoanPreviewResponseModel.fromMap(responseData);
+             return loanPreviewResponseModel;
           }catch(e){
             loanPreviewResponseModel = LoanPreviewResponseModel(status: false,message: "Something went wrong,Please try again later");
           }

@@ -138,18 +138,18 @@
             },
             "inputDecorationTheme": {
                 "hintStyle": {
-                    "fontFamily": "Brown",
+                    "fontFamily": "Montserrat",
                     "fontSize": 14,
                     "color": "0xFF0F1A38",
                     "opacity": 0.64
                 },
                 "errorStyle": {
-                    "fontFamily": "Brown",
+                    "fontFamily": "Montserrat",
                     "fontSize": 11,
                     "color": "0xFFF90069"
                 },
                 "labelStyle": {
-                    "fontFamily": "Brown",
+                    "fontFamily":"Montserrat",
                     "fontSize": 18,
                     "color": "0xFF0F1A38",
                     "opacity": 0.64

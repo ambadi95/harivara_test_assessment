@@ -56,8 +56,8 @@ class ScanQRCodeUseCase extends BaseDataProvider {
           try {
             checkResponse = ScanQRCodeResponse.fromJson(responseData);
           } catch (e) {
-            checkResponse = const ScanQRCodeResponse(
-                status: false, code: "400", message: "Something went wrong");
+            checkResponse =  ScanQRCodeResponse(
+                status: false, code: "400", message: e.toString()/*"Something went wrong"*/);
           }
           return checkResponse;
         });

@@ -40,6 +40,13 @@ class PasscodeNavigationHandler with ErrorHandler {
         arguments: argument);
   }
 
+  Future<void> navigateToCustomerHomeScreen(String destinationPath) async {
+    var arguments = HomeScreenArgs(isAgent: false, userType: UserType.Customer);
+    _navigationManager.navigateTo(
+        destinationPath, const NavigationType.replace(),
+        arguments: arguments);
+  }
+
   Future<void> navigateToAgentHomeScreen(String destinationPath) async {
     var arguments = HomeScreenArgs(isAgent: true, userType: UserType.Agent);
     _navigationManager.navigateTo(
@@ -134,6 +141,7 @@ class PasscodeNavigationHandler with ErrorHandler {
       "",
       "",
       [KYCDataModel(title: "", isSelected: false)],
+      false
     );
     await _navigationManager.navigateTo(
         KycCreditMainScreen.viewPath, const NavigationType.push(),

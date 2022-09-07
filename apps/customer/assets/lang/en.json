@@ -18,10 +18,11 @@
   "LS_mobile_hint_text" : "Enter Mobile Number",
   "LS_Passcode" : "Passcode",
   "LS_SignIn" : "Sign-In",
+  "LS_Passcode_message" : "As this is your first Login to your Y9 App, \nwe will be doing an OTP verification after \nwhich you can set your personalised \nPasscodefor your Y9 App",
 
 
   "SU_title" : "Enter NIDA Number",
-  "SU_subtitle" : "By signing up to Y9, you here by agree to the \n%{Terms & Conditions|https://www.google.com}%.",
+  "SU_subtitle" : "By signing up to Y9, you hereby agree to\nthe %{Terms & Conditions|https://www.google.com}%.",
   "SU_ID_no_label" : "NIDA Number",
   "SU_mobile_no_label" : "Mobile Number",
   "SU_carrier_message" : "Carrier SMS charges may apply.",
@@ -61,15 +62,18 @@
   "DV_district_label" : "District",
   "DV_district_error_text" : "Invalid District",
   "DV_district_hint_text" : "Select District",
+  "DV_button_text" : "Continue",
   "Save_Text": "Save",
   "Y9_DEVICE_LOAN": "Y9 Device Loan",
   "DAILY_EMI": "Daily Emi",
   "MONTHLY_EMI": "Monthly Emi",
+
+
   "HS_GoodMorning": "Good Morning",
   "HS_GoodAfternoon": "Good Afternoon",
   "HS_GoodEvening": "Good Evening",
   "HS_YourBalance": "Your Balance",
-  "HS_AccountId": "Y9 Account Id",
+  "HS_AccountId": "Y9 Account ID",
   "HS_LoadWallet": "Load Wallet",
   "HS_SendMoney": "Send Money",
   "HS_CollectMoney": "Collect Money",
@@ -78,8 +82,6 @@
   "HS_InviteFriends": "Invite Friends to Y9 and get rewards when your friend sends their first payment.",
   "HS_ReferalCode": "Referal Code",
   "HS_Invite": "Invite",
-
-  "DV_button_text" : "Continue",
 
   "PC_create_passcode" : "Create new passcode",
   "PC_passcode_message" : "This will be used to sign-in",
@@ -99,18 +101,13 @@
   "ES_agent_contact_text" : "Y9 agent will contact you shortly on your Membership",
   "ES_need_help_contact" : "Need Help Contact Us at +255 677-039-999",
 
-
   "WB_WelcomeBack": "Welcome back to Y9",
   "WB_EnterPassCode": "Enter Passcode",
+
   "AN_Title": "Agents Near by",
   "AN_Search": "Search by Region / District",
-  "AN_AgentName": "Y9 Agent id: ",
+  "AN_AgentName": "Y9 Agent ID: ",
   "AN_Call": "Call",
-
-
-
-
-
 
   "D0_JoiningFee": "Joining Fee (one off)",
   "D0_DailyFee": "Daily Fee",
@@ -133,7 +130,6 @@
   "DD_SelectDevice" : "Select Device",
   "DD_MembershipTerms" : "Membership Terms",
   "DD_MembershipBenefits" : "Y9 Membership Benefits",
-
   "DD_MemberBenefit1": "Loan to Finance your Smartphone Device",
   "DD_MemberBenefit2": "Customised Digital Platforms as per Customer needs",
   "DD_MemberBenefit3": "Access to Financial Services",
@@ -142,6 +138,7 @@
   "DD_MemberBenefit6": "Membership and Loyalty Benefits",
   "DD_MemberBenefit7": "Huge incentives for referrals of family and friends",
   "DD_MemberBenefit8": "Access to your Y9 Account",
+
   "VO_OtpVerification": "OTP Verification",
   "VO_otp_verification_description": "An OTP will be sent to your Mobile Number (ending with xxx{})",
   "VO_DidNotGetCode": "Didn't get a code?",
@@ -151,6 +148,7 @@
   "VO_Incorrect_OTP_Alert_Msg": "You have used all your attempts. Please sign up again.",
   "VO_resend_otp": "Resend in %s seconds.",
   "VO_verify_button": "Verify",
+
   "SP_ni": "ni",
   "SP_bora": " Bora",
   "SP_is": "is",
@@ -161,23 +159,13 @@
   "SU_update_passcode" : "Update Passcode",
   "SU_update_subtitle" : "You can Update the passcode here using OTP sent to your registered mobile number",
 
-
   "HS_Agent_Id" : "Y9 Agent ID",
   "HS_TotalOnBoarderCustomers" : "Total Onboarded\nCustomers",
   "HS_PendingCustomerRequests" : "Pending Customer\nRequest",
+  "HS_TotalCustomerBoarding" : "Total Customers \nOnboarded",
   "HS_Customer_OnBoarding" : "Customer Onboarding",
   "HS_Customer_DeviceSwap" : "Device swap",
   "HS_Customer_AgentSupport" : "Agent Support",
-
-
-  "TC_Title": "Y9’s Mobile App Terms of Use",
-  "TC_LastUpdated": "Last updated : 2 Aug, 2022",
-  "TC_Description": "The www.y9bank.com website and Y9 Customer App mobile application (“App”) are owned and operated by Y9 Microfinance Tanzania Limited (“Y9”) a company duly incorporated under the provisions of the Companies Act, 2002 and The Banking and Financial Institutions Act 2006, and having its registered offices at P.O. BOX 20787 Dar es Salaam located at 180 Msasani Bay, Kinondoni Dar es Salaam. To access or use the App on any compatible device and avail Services you are required to accept these Terms and Conditions (“T&Cs”). By accepting these T&Cs, you signify that you have read, understood, and agree to be bound by these T&Cs and any other applicable law, whether or not you are a registered member of the App. As used herein, “User” shall mean anyone who uses or accesses the App on any computer, mobile phone, tablet, console, or other device (collectively, “Device”) and/or avails the Services. Your continued use of the App and/or availing of the Services shall be constituted as your acceptance to the T&Cs. If you do not agree with these T&Cs, please do not access and use the App or avail such Services. For the purposes of these T&Cs, “Y9” shall mean Y9, and/or third-party service providers engaged by Y9 to render certain Services on the App and ‘you’ and ‘your’ shall mean a User who meets the eligibility criteria set out below.",
-  "TC_TermsCondition_Subtitle":"1. TERMS AND CONDITIONS ",
-  "TC_Terms_Conditons_Desc": "1.1. These T&Cs replace all earlier terms and conditions (if any) except where we advise you otherwise. Your access and use of the App following any such change constitutes your agreement to follow and be bound by these T&Cs. For this reason, Y9 encourage you to review these T&Cs each time you access and use the App and/or avail Y9 Services.",
-  "TC_Purpose_title":"2. PURPOSE",
-  "TC_Purpose_Desc": "2.1. Y9 is a digital Microfinance provider aiming to help develop the lifestyle of the people of Tanzania and the African continent as a whole by providing financial services to the unbanked and under banked by creating access to digital education, digital healthcare, etc. by offering 4G smartphones on very fair terms to make it accessible to all citizens by enabling meaningful financial and digital inclusion.",
-
   "HS_CardList1Title" : "Y9 Device Loan",
   "HS_CardList2Title" : "Outstanding Due Amount",
   "HS_CardList3Title" : "Total Amount to be \nRepaid",
@@ -188,8 +176,15 @@
   "HS_explore" : "Explore",
   "HS_Daily_Repayment_amount" : "Outstanding Due\nAmount",
 
-  "ST_my_profile": "My Profile",
+  "TC_Title": "Y9’s Mobile App Terms of Use",
+  "TC_LastUpdated": "Last updated : 2 Aug, 2022",
+  "TC_Description": "The www.y9bank.com website and Y9 Customer App mobile application (“App”) are owned and operated by Y9 Microfinance Tanzania Limited (“Y9”) a company duly incorporated under the provisions of the Companies Act, 2002 and The Banking and Financial Institutions Act 2006, and having its registered offices at P.O. BOX 20787 Dar es Salaam located at 180 Msasani Bay, Kinondoni Dar es Salaam. To access or use the App on any compatible device and avail Services you are required to accept these Terms and Conditions (“T&Cs”). By accepting these T&Cs, you signify that you have read, understood, and agree to be bound by these T&Cs and any other applicable law, whether or not you are a registered member of the App. As used herein, “User” shall mean anyone who uses or accesses the App on any computer, mobile phone, tablet, console, or other device (collectively, “Device”) and/or avails the Services. Your continued use of the App and/or availing of the Services shall be constituted as your acceptance to the T&Cs. If you do not agree with these T&Cs, please do not access and use the App or avail such Services. For the purposes of these T&Cs, “Y9” shall mean Y9, and/or third-party service providers engaged by Y9 to render certain Services on the App and ‘you’ and ‘your’ shall mean a User who meets the eligibility criteria set out below.",
+  "TC_TermsCondition_Subtitle":"1. TERMS AND CONDITIONS ",
+  "TC_Terms_Conditons_Desc": "1.1. These T&Cs replace all earlier terms and conditions (if any) except where we advise you otherwise. Your access and use of the App following any such change constitutes your agreement to follow and be bound by these T&Cs. For this reason, Y9 encourage you to review these T&Cs each time you access and use the App and/or avail Y9 Services.",
+  "TC_Purpose_title":"2. PURPOSE",
+  "TC_Purpose_Desc": "2.1. Y9 is a digital Microfinance provider aiming to help develop the lifestyle of the people of Tanzania and the African continent as a whole by providing financial services to the unbanked and under banked by creating access to digital education, digital healthcare, etc. by offering 4G smartphones on very fair terms to make it accessible to all citizens by enabling meaningful financial and digital inclusion.",
 
+  "ST_my_profile": "My Profile",
   "ST_title" : "Settings",
   "ST_subTitle" : "Profile Management",
   "ST_view_profile" : "View Profile",
@@ -228,7 +223,6 @@
   "Profile_Title": "Profile",
   "Profile_Sub_Title": "Your Personal details are shown as per your NIDA records",
 
-
   "LR_paying_for" : "You are paying for",
   "LR_device_loan" : "Y9 Device Loan",
   "LR_amount_to_pay" : "Choose the amount to pay",
@@ -240,10 +234,12 @@
   "LR_payment_label" : "Payment of {} will be adjusted in total \nPayable amount",
   "LR_proceed" : "Proceed",
 
-
-
   "CA_custom_amount" : "Pay Custom Amount",
 
   "RP_success_message": "Passcode has been updated successfully",
-  "PR_message" : "You will be Signed out of the app, please use the new passcode to Sign-in again"
+  "PR_message" : "You will be Signed out of the app, please use the new passcode to Sign-in again",
+
+  "FORGET_PASSCODE": "Forget Passcode ?",
+  "RESET_NOW": "Reset Now",
+  "ERROR_MESSAGE" :  "Something went wrong,Please try again later!"
 }

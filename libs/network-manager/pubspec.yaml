@@ -12,6 +12,7 @@ dependencies:
   connectivity_plus: ^2.2.1
   json_annotation: ^4.4.0
   graphql_flutter: ^5.0.1
+  pretty_http_logger: any
 
   core:
     path: ../core/

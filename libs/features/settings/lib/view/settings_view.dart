@@ -110,7 +110,7 @@ class _SettingsState extends State<Settings> {
           text: TextUIDataModel('ST_subTitle'.tr,
               styleVariant: CrayonPaymentTextStyleVariant.bodyText2,
               color: AN_TitleColor,
-              fontWeight: FontWeight.w800),
+              fontWeight: FontWeight.w900),
         ),
         const SizedBox(
           height: 20,
@@ -148,7 +148,7 @@ class _SettingsState extends State<Settings> {
           text: TextUIDataModel('ST_support'.tr,
               styleVariant: CrayonPaymentTextStyleVariant.bodyText2,
               color: AN_TitleColor,
-              fontWeight: FontWeight.w800),
+              fontWeight: FontWeight.w900),
         ),
         const SizedBox(
           height: 20,
@@ -200,7 +200,7 @@ class _SettingsState extends State<Settings> {
                 text: TextUIDataModel(label.tr,
                     styleVariant: CrayonPaymentTextStyleVariant.bodyText2,
                     color: AN_TitleColor,
-                    fontWeight: FontWeight.w800),
+                    fontWeight: FontWeight.w600),
               ),
             ),
             const Icon(
