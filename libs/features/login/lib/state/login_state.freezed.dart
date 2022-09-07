@@ -89,8 +89,8 @@ mixin _$LoginState {
 /// @nodoc
 abstract class $LoginStateCopyWith<$Res> {
   factory $LoginStateCopyWith(
-      LoginState value, $Res Function(LoginState) then) =
-  _$LoginStateCopyWithImpl<$Res>;
+          LoginState value, $Res Function(LoginState) then) =
+      _$LoginStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -105,8 +105,8 @@ class _$LoginStateCopyWithImpl<$Res> implements $LoginStateCopyWith<$Res> {
 /// @nodoc
 abstract class _$$MobileNumberErrorCopyWith<$Res> {
   factory _$$MobileNumberErrorCopyWith(
-      _$MobileNumberError value, $Res Function(_$MobileNumberError) then) =
-  __$$MobileNumberErrorCopyWithImpl<$Res>;
+          _$MobileNumberError value, $Res Function(_$MobileNumberError) then) =
+      __$$MobileNumberErrorCopyWithImpl<$Res>;
   $Res call({String mobileNumberError});
 }
 
@@ -129,7 +129,7 @@ class __$$MobileNumberErrorCopyWithImpl<$Res>
       mobileNumberError == freezed
           ? _value.mobileNumberError
           : mobileNumberError // ignore: cast_nullable_to_non_nullable
-      as String,
+              as String,
     ));
   }
 }
@@ -260,7 +260,7 @@ class _$MobileNumberError implements MobileNumberError {
 
 abstract class MobileNumberError implements LoginState {
   const factory MobileNumberError(final String mobileNumberError) =
-  _$MobileNumberError;
+      _$MobileNumberError;
 
   String get mobileNumberError;
   @JsonKey(ignore: true)
@@ -271,8 +271,8 @@ abstract class MobileNumberError implements LoginState {
 /// @nodoc
 abstract class _$$LoadingStateCopyWith<$Res> {
   factory _$$LoadingStateCopyWith(
-      _$LoadingState value, $Res Function(_$LoadingState) then) =
-  __$$LoadingStateCopyWithImpl<$Res>;
+          _$LoadingState value, $Res Function(_$LoadingState) then) =
+      __$$LoadingStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -405,8 +405,8 @@ abstract class LoadingState implements LoginState {
 /// @nodoc
 abstract class _$$InitialStateCopyWith<$Res> {
   factory _$$InitialStateCopyWith(
-      _$InitialState value, $Res Function(_$InitialState) then) =
-  __$$InitialStateCopyWithImpl<$Res>;
+          _$InitialState value, $Res Function(_$InitialState) then) =
+      __$$InitialStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -539,8 +539,8 @@ abstract class InitialState implements LoginState {
 /// @nodoc
 abstract class _$$SuccessStateCopyWith<$Res> {
   factory _$$SuccessStateCopyWith(
-      _$SuccessState value, $Res Function(_$SuccessState) then) =
-  __$$SuccessStateCopyWithImpl<$Res>;
+          _$SuccessState value, $Res Function(_$SuccessState) then) =
+      __$$SuccessStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -673,8 +673,8 @@ abstract class SuccessState implements LoginState {
 /// @nodoc
 abstract class _$$AgentIdErrorCopyWith<$Res> {
   factory _$$AgentIdErrorCopyWith(
-      _$AgentIdError value, $Res Function(_$AgentIdError) then) =
-  __$$AgentIdErrorCopyWithImpl<$Res>;
+          _$AgentIdError value, $Res Function(_$AgentIdError) then) =
+      __$$AgentIdErrorCopyWithImpl<$Res>;
   $Res call({String agentIdError});
 }
 
@@ -696,7 +696,7 @@ class __$$AgentIdErrorCopyWithImpl<$Res> extends _$LoginStateCopyWithImpl<$Res>
       agentIdError == freezed
           ? _value.agentIdError
           : agentIdError // ignore: cast_nullable_to_non_nullable
-      as String,
+              as String,
     ));
   }
 }
@@ -837,8 +837,8 @@ abstract class AgentIdError implements LoginState {
 /// @nodoc
 abstract class _$$LoginFormStateCopyWith<$Res> {
   factory _$$LoginFormStateCopyWith(
-      _$LoginFormState value, $Res Function(_$LoginFormState) then) =
-  __$$LoginFormStateCopyWithImpl<$Res>;
+          _$LoginFormState value, $Res Function(_$LoginFormState) then) =
+      __$$LoginFormStateCopyWithImpl<$Res>;
   $Res call({bool isValid});
 }
 
@@ -861,7 +861,7 @@ class __$$LoginFormStateCopyWithImpl<$Res>
       isValid == freezed
           ? _value.isValid
           : isValid // ignore: cast_nullable_to_non_nullable
-      as bool,
+              as bool,
     ));
   }
 }
@@ -1001,8 +1001,8 @@ abstract class LoginFormState implements LoginState {
 /// @nodoc
 abstract class _$$ShowPasscodeCopyWith<$Res> {
   factory _$$ShowPasscodeCopyWith(
-      _$ShowPasscode value, $Res Function(_$ShowPasscode) then) =
-  __$$ShowPasscodeCopyWithImpl<$Res>;
+          _$ShowPasscode value, $Res Function(_$ShowPasscode) then) =
+      __$$ShowPasscodeCopyWithImpl<$Res>;
   $Res call({bool havePasscode});
 }
 
@@ -1024,7 +1024,7 @@ class __$$ShowPasscodeCopyWithImpl<$Res> extends _$LoginStateCopyWithImpl<$Res>
       havePasscode == freezed
           ? _value.havePasscode
           : havePasscode // ignore: cast_nullable_to_non_nullable
-      as bool,
+              as bool,
     ));
   }
 }
