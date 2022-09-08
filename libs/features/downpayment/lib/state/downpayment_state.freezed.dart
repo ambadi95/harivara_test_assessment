@@ -24,6 +24,7 @@ mixin _$DownPaymentState {
             String error,
             bool isLoading,
             num paymentRequested,
+            num createLoan,
             num waitForPayment,
             num paymentReceived,
             num loanApproved,
@@ -39,6 +40,7 @@ mixin _$DownPaymentState {
             String error,
             bool isLoading,
             num paymentRequested,
+            num createLoan,
             num waitForPayment,
             num paymentReceived,
             num loanApproved,
@@ -54,6 +56,7 @@ mixin _$DownPaymentState {
             String error,
             bool isLoading,
             num paymentRequested,
+            num createLoan,
             num waitForPayment,
             num paymentReceived,
             num loanApproved,
@@ -147,6 +150,7 @@ class _$InitialState implements InitialState {
             String error,
             bool isLoading,
             num paymentRequested,
+            num createLoan,
             num waitForPayment,
             num paymentReceived,
             num loanApproved,
@@ -165,6 +169,7 @@ class _$InitialState implements InitialState {
             String error,
             bool isLoading,
             num paymentRequested,
+            num createLoan,
             num waitForPayment,
             num paymentReceived,
             num loanApproved,
@@ -183,6 +188,7 @@ class _$InitialState implements InitialState {
             String error,
             bool isLoading,
             num paymentRequested,
+            num createLoan,
             num waitForPayment,
             num paymentReceived,
             num loanApproved,
@@ -242,6 +248,7 @@ abstract class _$$DownPaymentStateReadyCopyWith<$Res> {
       String error,
       bool isLoading,
       num paymentRequested,
+      num createLoan,
       num waitForPayment,
       num paymentReceived,
       num loanApproved,
@@ -265,6 +272,7 @@ class __$$DownPaymentStateReadyCopyWithImpl<$Res>
     Object? error = freezed,
     Object? isLoading = freezed,
     Object? paymentRequested = freezed,
+    Object? createLoan = freezed,
     Object? waitForPayment = freezed,
     Object? paymentReceived = freezed,
     Object? loanApproved = freezed,
@@ -286,6 +294,10 @@ class __$$DownPaymentStateReadyCopyWithImpl<$Res>
       paymentRequested: paymentRequested == freezed
           ? _value.paymentRequested
           : paymentRequested // ignore: cast_nullable_to_non_nullable
+              as num,
+      createLoan: createLoan == freezed
+          ? _value.createLoan
+          : createLoan // ignore: cast_nullable_to_non_nullable
               as num,
       waitForPayment: waitForPayment == freezed
           ? _value.waitForPayment
@@ -315,6 +327,7 @@ class _$DownPaymentStateReady implements DownPaymentStateReady {
       this.error = '',
       this.isLoading = false,
       this.paymentRequested = 0,
+      this.createLoan = 0,
       this.waitForPayment = 0,
       this.paymentReceived = 0,
       this.loanApproved = 0,
@@ -333,6 +346,9 @@ class _$DownPaymentStateReady implements DownPaymentStateReady {
   final num paymentRequested;
   @override
   @JsonKey()
+  final num createLoan;
+  @override
+  @JsonKey()
   final num waitForPayment;
   @override
   @JsonKey()
@@ -346,7 +362,7 @@ class _$DownPaymentStateReady implements DownPaymentStateReady {
 
   @override
   String toString() {
-    return 'DownPaymentState.ready(context: $context, error: $error, isLoading: $isLoading, paymentRequested: $paymentRequested, waitForPayment: $waitForPayment, paymentReceived: $paymentReceived, loanApproved: $loanApproved, loanActivated: $loanActivated)';
+    return 'DownPaymentState.ready(context: $context, error: $error, isLoading: $isLoading, paymentRequested: $paymentRequested, createLoan: $createLoan, waitForPayment: $waitForPayment, paymentReceived: $paymentReceived, loanApproved: $loanApproved, loanActivated: $loanActivated)';
   }
 
   @override
@@ -359,6 +375,8 @@ class _$DownPaymentStateReady implements DownPaymentStateReady {
             const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
             const DeepCollectionEquality()
                 .equals(other.paymentRequested, paymentRequested) &&
+            const DeepCollectionEquality()
+                .equals(other.createLoan, createLoan) &&
             const DeepCollectionEquality()
                 .equals(other.waitForPayment, waitForPayment) &&
             const DeepCollectionEquality()
@@ -376,6 +394,7 @@ class _$DownPaymentStateReady implements DownPaymentStateReady {
       const DeepCollectionEquality().hash(error),
       const DeepCollectionEquality().hash(isLoading),
       const DeepCollectionEquality().hash(paymentRequested),
+      const DeepCollectionEquality().hash(createLoan),
       const DeepCollectionEquality().hash(waitForPayment),
       const DeepCollectionEquality().hash(paymentReceived),
       const DeepCollectionEquality().hash(loanApproved),
@@ -396,14 +415,15 @@ class _$DownPaymentStateReady implements DownPaymentStateReady {
             String error,
             bool isLoading,
             num paymentRequested,
+            num createLoan,
             num waitForPayment,
             num paymentReceived,
             num loanApproved,
             num loanActivated)
         ready,
   }) {
-    return ready(context, error, isLoading, paymentRequested, waitForPayment,
-        paymentReceived, loanApproved, loanActivated);
+    return ready(context, error, isLoading, paymentRequested, createLoan,
+        waitForPayment, paymentReceived, loanApproved, loanActivated);
   }
 
   @override
@@ -415,13 +435,14 @@ class _$DownPaymentStateReady implements DownPaymentStateReady {
             String error,
             bool isLoading,
             num paymentRequested,
+            num createLoan,
             num waitForPayment,
             num paymentReceived,
             num loanApproved,
             num loanActivated)?
         ready,
   }) {
-    return ready?.call(context, error, isLoading, paymentRequested,
+    return ready?.call(context, error, isLoading, paymentRequested, createLoan,
         waitForPayment, paymentReceived, loanApproved, loanActivated);
   }
 
@@ -434,6 +455,7 @@ class _$DownPaymentStateReady implements DownPaymentStateReady {
             String error,
             bool isLoading,
             num paymentRequested,
+            num createLoan,
             num waitForPayment,
             num paymentReceived,
             num loanApproved,
@@ -442,8 +464,8 @@ class _$DownPaymentStateReady implements DownPaymentStateReady {
     required TResult orElse(),
   }) {
     if (ready != null) {
-      return ready(context, error, isLoading, paymentRequested, waitForPayment,
-          paymentReceived, loanApproved, loanActivated);
+      return ready(context, error, isLoading, paymentRequested, createLoan,
+          waitForPayment, paymentReceived, loanApproved, loanActivated);
     }
     return orElse();
   }
@@ -486,6 +508,7 @@ abstract class DownPaymentStateReady implements DownPaymentState {
       final String error,
       final bool isLoading,
       final num paymentRequested,
+      final num createLoan,
       final num waitForPayment,
       final num paymentReceived,
       final num loanApproved,
@@ -495,6 +518,7 @@ abstract class DownPaymentStateReady implements DownPaymentState {
   String get error;
   bool get isLoading;
   num get paymentRequested;
+  num get createLoan;
   num get waitForPayment;
   num get paymentReceived;
   num get loanApproved;

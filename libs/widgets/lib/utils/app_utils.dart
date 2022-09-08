@@ -57,9 +57,6 @@ class AppUtils {
   }
 
   Future<void> logoutUser(UserType userType) async {
-
-
-
     if (_cacheTaskResolver != null) {
       _cacheTaskResolver!
           .execute("", {CACHE_TYPE: TaskManagerCacheType.DELETE_ALL});
