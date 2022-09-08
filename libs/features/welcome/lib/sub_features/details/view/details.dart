@@ -178,6 +178,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                         children: [
                           _buildMainUI(context, coordinator),
                         ],
+
                       ),
                     ),
                   ),
@@ -250,6 +251,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
   }
 
   Widget _buildMainUI(BuildContext context, DetailsCoordinator coordinator) {
+    print("widget user type====> ${widget.userType}");
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
@@ -260,7 +262,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
           const SizedBox(
             height: 39,
           ),
-          _buildLabelTextField(
+          widget.userType == UserType.AgentCustomer
+              ? _buildLabelTextField(
               'nidaNumber',
               'DV_nida_no_label'.tr,
               nidaNumber,
@@ -268,7 +271,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
               coordinator,
               '',
               'LS_nida_hint_text',
-              false),
+              false): const SizedBox(),
           _buildLabelTextField(
               'name',
               'DV_name_label'.tr,

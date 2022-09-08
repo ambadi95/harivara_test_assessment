@@ -228,6 +228,20 @@
   "Profile_Title": "Profile",
   "Profile_Sub_Title": "Your Personal details are shown as per your NIDA records",
 
+  "DLC_Device_Loan": "Device Loan\nCreation",
+  "DLC_Device_Title": "Device",
+  "DLC_Wallets_Title": "Wallets",
+  "DLC_Daily_Repayment": "Daily Repayment",
+  "DLC_Total_Amount_Repaid": "Total Amount to be Repaid",
+  "DLC_Final_Payment_Date": "Final Payment Date",
+  "DLC_Airtel_Pay": "Airtel Pay",
+  "DLC_Loan_Details": "Loan Details",
+  "DLC_Down_Payment" : "Joining fee\nPayment",
+  "DLC_Down_Payment_Subtitle" : "Transaction gateway will be closed in\nnext",
+  "DLC_resend" : "Resend",
+  "DLC_pay_now" : "Pay Now",
+  "DLC_payment_text" : "TZSHS payment\nrequest has been sent to Y9",
+
   "LR_paying_for" : "You are paying for",
   "LR_device_loan" : "Y9 Device Loan",
   "LR_amount_to_pay" : "Choose the amount to pay",
@@ -238,6 +252,7 @@
   "LR_pay_now" : "Pay Now",
   "LR_payment_label" : "Payment of {} will be adjusted in total \nPayable amount",
   "LR_proceed" : "Proceed",
+  "LR_NO_LOAN_FOUND" : "No Loan Details available for this user",
 
   "CA_custom_amount" : "Pay Custom Amount",
   "CA_amount" : "Enter the amount",

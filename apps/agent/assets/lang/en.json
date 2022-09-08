@@ -7,7 +7,6 @@
   "OB_Lang" : "EN",
   "OB_ni_bora" : "ni %{Bora|click}%",
 
-
   "LS_Login" : "Login to Your Y9 \nAgent",
   "LS_Mobile" : "Mobile Number",
   "LS_mobile_error_text" : "Invalid Mobile Number",
@@ -17,7 +16,6 @@
   "LS_agent_id_error" : "Invalid Agent ID",
   "LS_Passcode" : "Passcode",
   "LS_SignIn" : "Sign in",
-
 
   "SU_title" : "Y9 Customer Onboarding",
   "SU_title_agent" : "Enter your NIDA Number & Agent ID",
@@ -53,9 +51,9 @@
   "SU_register_device_button" : "Register Device",
 
   "DV_title" : "Enter Personal Details",
+  "DV_profile" : "Profile",
   "DV_agent_aided_title" : "Customer Details",
   "DV_agent_aided_subtitle" : "Your Personal details are shown as per your\nNIDA records",
-  "DV_profile" : "Profile",
   "DV_subtitle" : "Displaying your Personal details as per ERP",
   "DV_name_label" : "Name",
   "DV_name_error_text" : "Enter First Name & Last Name",
@@ -224,7 +222,6 @@
   "TC_Purpose_title":"2. PURPOSE",
   "TC_Purpose_Desc": "2.1. Y9 is a digital Microfinance provider aiming to help develop the lifestyle of the people of Tanzania and the African continent as a whole by providing financial services to the unbanked and under banked by creating access to digital education, digital healthcare, etc. by offering 4G smartphones on very fair terms to make it accessible to all citizens by enabling meaningful financial and digital inclusion.",
 
-
   "KYC_Title": "KYC & Credit Check with Telco's ",
   "KYC_Validation_With_Airtel" : "KYC Validation With\nAirtel Telco’s Record",
   "KYC_Validation_With_Airtel_Subtitle" : "Y9 checks your Telco records matching\nyour NIDA Number and Mobile Number",
@@ -273,10 +270,11 @@
   "PC_alert_message" : "Provided Customer Reference ID and Mobile Number doesn't match with our record.",
   "PC_alert_title" : "Details Mismatch",
   "PC_button_close" : "Close",
+
   "FORGET_PASSCODE": "Forget Passcode ?",
   "RESET_NOW": "Reset Now",
   "ERROR_MESSAGE" :  "Something went wrong,Please try again later!",
-  "FAQ_Title_2": "Maswali Yanayoulizwa Mara kwa Mara",
+  "FAQ_Title_2": "Frequently Asked Questions",
 
   "MDM_button_text" : "Setup MDM configuration",
   "MDM_subheading" : "Mobile Security Software that protects\nthe Mobile Devices of Customers.",

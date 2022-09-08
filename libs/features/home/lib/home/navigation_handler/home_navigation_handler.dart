@@ -227,7 +227,7 @@ class HomeNavigationHandler with ErrorHandler {
       buttonOptions: [ButtonOptions(Black, "Close", () => goBack(), false)],
       disableCloseButton: true,
       bottomSheetIcon: icon,
-      subtitle: "No Loan Details available for this user",
+      subtitle: 'LR_NO_LOAN_FOUND',
     );
 
     _navigationManager.navigateTo(

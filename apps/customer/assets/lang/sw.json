@@ -230,6 +230,20 @@
   "Profile_Title": "Wasifu",
   "Profile_Sub_Title": "Maelezo yako ya kibinafsi yanaonyeshwa kulingana na rekodi zako za NIDA",
 
+  "DLC_Device_Loan": "Mkopo wa Kifaa\nUumbaji",
+  "DLC_Device_Title": "Kifaa",
+  "DLC_Wallets_Title": "Pochi",
+  "DLC_Daily_Repayment": "Malipo ya Kila Siku",
+  "DLC_Total_Amount_Repaid": "Jumla ya Kiasi cha Kulipwa",
+  "DLC_Final_Payment_Date": "Tarehe ya Mwisho ya Malipo",
+  "DLC_Airtel_Pay": "Airtel Pay",
+  "DLC_Loan_Details": "Maelezo ya Mkopo",
+  "DLC_Down_Payment" : "Ada ya kujiunga\nMalipo",
+  "DLC_Down_Payment_Subtitle": "Lango la muamala litafungwa katika dakika 15 zijazo",
+  "DLC_resend" : "Tuma tena",
+  "DLC_pay_now" : "LIPA sasa",
+  "DLC_payment_text" : "malipo ya TZSH\nombi limetumwa kwa Y9",
+
   "LR_paying_for" : "Unalipa",
   "LR_device_loan" : "Mkopo wa Kifaa cha Y9",
   "LR_amount_to_pay" : "Chagua kiasi cha kulipa",
@@ -240,6 +254,7 @@
   "LR_pay_now" : "LIPA sasa",
   "LR_payment_label" : "Malipo ya {} yatarekebishwa kwa jumla\nKiasi kinacholipwa",
   "LR_proceed" : "Endelea",
+  "LR_NO_LOAN_FOUND" : "Hakuna Maelezo ya Mkopo yanayopatikana kwa mtumiaji huyu",
 
   "CA_custom_amount" : "Lipa Kiasi Maalum",
   "CA_Warning"  : "Enter Amount Need to below Outstanding Amount",
