@@ -130,51 +130,63 @@ class AgentNearBy extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _userImage(agent.firstName!, agent.lastName!),
+        Expanded(
+          flex: 2,
+            child: _userImage(agent.firstName!, agent.lastName!)),
         dynamicWSpacer(8),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CrayonPaymentText(
-              key: Key('${_identifier}_' + agent.firstName!),
-              text: TextUIDataModel(agent.firstName! + ' ' + agent.lastName!,
-                  styleVariant: CrayonPaymentTextStyleVariant.headline18,
-                  color: AN_CardTitle,
-                  fontWeight: FontWeight.bold),
-            ),
-            Row(
-              children: [
-                CrayonPaymentText(
-                  key: Key('${_identifier}_Id_label'),
-                  text: const TextUIDataModel('AN_AgentName',
-                      styleVariant: CrayonPaymentTextStyleVariant.headline4,
-                      color: AN_CardSubTitle,
-                      fontWeight: FontWeight.w500),
-                ),
-                CrayonPaymentText(
-                  key: Key('${_identifier}_' + agent.y9AgentId!),
-                  text: TextUIDataModel(agent.y9AgentId!,
-                      styleVariant: CrayonPaymentTextStyleVariant.headline4,
-                      color: AN_CardSubTitle,
-                      fontWeight: FontWeight.w500),
-                ),
-              ],
-            ),
-            dynamicHSpacer(4),
-            SizedBox(
-              width: MediaQuery.of(context).size.width * .53,
-              child: CrayonPaymentText(
-                key: Key('${_identifier}_' + agent.address!),
-                text: TextUIDataModel(
-                  agent.address!,
-                  styleVariant: CrayonPaymentTextStyleVariant.headline4,
-                  color: AN_CardDescription,
-                ),
+        Expanded(
+          flex: 11,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CrayonPaymentText(
+                key: Key('${_identifier}_' + agent.firstName!),
+                text: TextUIDataModel(agent.firstName! + ' ' + agent.lastName!,
+                    styleVariant: CrayonPaymentTextStyleVariant.headline18,
+                    color: AN_CardTitle,
+                    fontWeight: FontWeight.bold),
               ),
-            )
-          ],
+              Row(
+                children: [
+                  Expanded(
+                    flex: 4,
+                    child: CrayonPaymentText(
+                      key: Key('${_identifier}_Id_label'),
+                      text: const TextUIDataModel('AN_AgentName',
+                          styleVariant: CrayonPaymentTextStyleVariant.headline4,
+                          color: AN_CardSubTitle,
+                          fontWeight: FontWeight.w500),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 5,
+                    child: CrayonPaymentText(
+                      key: Key('${_identifier}_' + agent.y9AgentId!),
+                      text: TextUIDataModel(": "+agent.y9AgentId!,
+                          styleVariant: CrayonPaymentTextStyleVariant.headline4,
+                          color: AN_CardSubTitle,
+                          fontWeight: FontWeight.w500),
+                    ),
+                  ),
+                ],
+              ),
+              dynamicHSpacer(4),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * .53,
+                child: CrayonPaymentText(
+                  key: Key('${_identifier}_' + agent.address!),
+                  text: TextUIDataModel(
+                    agent.address!,
+                    styleVariant: CrayonPaymentTextStyleVariant.headline4,
+                    color: AN_CardDescription,
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
         Expanded(
+          flex: 5,
           child: Row(
             children: [
               actionButton(context, AN_Call, 'Call', () {
@@ -187,7 +199,7 @@ class AgentNearBy extends StatelessWidget {
                   AN_MapDirection,
                   agent.distance == 0.0
                       ? 'N/A'
-                      : agent.distance!.toStringAsFixed(2) + 'Km', () {
+                      : agent.distance!.toStringAsFixed(2) + ' Km', () {
                 if (agent.distance == 0.0) {
                 } else {
                   coordinator.navigateToMap(agent.lat!, agent.long!);
@@ -245,7 +257,7 @@ class AgentNearBy extends StatelessWidget {
     );
   }
 
-  _userImage(String firstName, String lastName) {
+ Widget _userImage(String firstName, String lastName) {
     return Container(
       height: 40,
       width: 40,
