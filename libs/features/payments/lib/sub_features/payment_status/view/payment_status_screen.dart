@@ -4,6 +4,7 @@ import 'package:config/Colors.dart';
 import 'package:config/Styles.dart';
 import 'package:core/logging/logger.dart';
 import 'package:core/view/base_view.dart';
+import 'package:crayon_payment_customer/util/app_utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
@@ -12,9 +13,11 @@ import 'package:widget_library/html/rich_text_description.dart';
 import 'package:widget_library/page_header/text_ui_data_model.dart';
 import 'package:widget_library/static_text/crayon_payment_text.dart';
 import 'package:get/get.dart';
+
 import '../../../payments_module.dart';
 import '../state/payment_status_state.dart';
 import '../view_model/payment_status_coordinator.dart';
+import 'package:widget_library/utils/app_utils.dart' as utill;
 
 class PaymentStatusScreen extends StatefulWidget {
   static const viewPath = '${PaymentsModule.moduleIdentifier}/paymentStatus';
@@ -48,7 +51,8 @@ class _PaymentStatusScreenState extends State<PaymentStatusScreen> {
     _timer = new Timer.periodic(
       fiveSec,
       (Timer timer) {
-        coordinator.paymentCheckStatus(widget.paymentsStatusScreenArgs.paymentId,"100");
+        coordinator.paymentCheckStatus(
+            widget.paymentsStatusScreenArgs.paymentId, "100");
       },
     );
   }
@@ -56,9 +60,7 @@ class _PaymentStatusScreenState extends State<PaymentStatusScreen> {
   @override
   Widget build(BuildContext context) =>
       BaseView<PaymentStatusCoordinator, PaymentStatusState>(
-        setupViewModel: (coordinator) => {
-          startTimer(coordinator)
-        },
+        setupViewModel: (coordinator) => {startTimer(coordinator)},
         builder: (context, state, coordinator) =>
             _buildMainUi(coordinator, state, context),
       );
@@ -141,17 +143,20 @@ class _PaymentStatusScreenState extends State<PaymentStatusScreen> {
       widgetBuilder: (_, time) {
         if (time == null) {
           _timer.cancel();
-          coordinator.navigateToPaymentFailure();
+          Future.delayed(const Duration(milliseconds: 500), () {
+            coordinator.navigateToPaymentFailure();
+          });
+
           return Text('Time Expired');
         }
         String timeMinute = '';
         String timeSeconds = '';
         timeMinute = time.min.toString();
         timeSeconds = time.sec.toString();
-        if(timeMinute == "null"){
+        if (timeMinute == "null") {
           timeMinute = "0";
         }
-        if(timeSeconds.length == 1){
+        if (timeSeconds.length == 1) {
           timeSeconds = "0${timeSeconds}";
         }
         return Text('0${timeMinute}:${timeSeconds}',
@@ -171,8 +176,8 @@ class _PaymentStatusScreenState extends State<PaymentStatusScreen> {
       child: RichTextDescription(
         onLinkClicked: (text, link) {
           // coordinator.navigateToPaymentSuccess();
-          coordinator
-              .paymentCheckStatus(widget.paymentsStatusScreenArgs.paymentId,"100");
+          coordinator.paymentCheckStatus(
+              widget.paymentsStatusScreenArgs.paymentId, "100");
         },
         textAlign: TextAlign.center,
         description: 'PS_refresh'.tr,
