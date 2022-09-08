@@ -37,6 +37,7 @@ const ST_scan_icon = 'assets/images/scan_image.svg';
 
 //Static Link
 // const customerEndpoint = 'https://customerapi.y9bank.com/customers/v1/';
+//const customerEndpoint = 'https://customerapi-stage.y9bank.com/customers/v1/';
 const customerEndpoint = 'https://y9-dev-capi.testmaya.com/customers/v1/';
 
 const y9TermsCondition = 'https://y9bank.com/term-of-services/';
