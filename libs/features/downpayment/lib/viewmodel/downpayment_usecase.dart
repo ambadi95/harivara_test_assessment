@@ -26,6 +26,10 @@ class DownPaymentUseCase extends BaseDataProvider {
     return await getValueFromSecureStorage('customerId', defaultValue: '');
   }
 
+  Future<String> getClientId() async {
+    return await getValueFromSecureStorage('clientId', defaultValue: '');
+  }
+
   Future<String> getMobileNumber() async {
     return await getValueFromSecureStorage('mobileNumber', defaultValue: '');
   }
@@ -37,6 +41,10 @@ class DownPaymentUseCase extends BaseDataProvider {
     return await getValueFromSecureStorage('newCustomerName', defaultValue: '');
   }
 
+  Future<String> getDeviceId() async {
+    return await getValueFromSecureStorage('deviceId', defaultValue: '');
+  }
+
 
 
   Future<CreateLoanResponse?> createLoan(
@@ -45,11 +53,16 @@ class DownPaymentUseCase extends BaseDataProvider {
     print(agentId);
     String customerId = await getCustomerId();
     print(customerId);
+
+    String clientId= await getClientId();
+    print(clientId);
+
+
     return await executeApiRequest<CreateLoanResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
         moduleIdentifier: DownPaymentModule.moduleIdentifier,
-        requestData: {"agentId": agentId, "customerId": customerId, "deviceId": int.parse(deviceId),"clientId":"Y9C100167"},
+        requestData: {"agentId": agentId, "customerId": customerId, "deviceId": int.parse(deviceId),"clientId":clientId},
         serviceIdentifier: DownPaymentService.createLoanIdentifier,
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {
@@ -83,7 +96,7 @@ class DownPaymentUseCase extends BaseDataProvider {
         {
           "amountPaid": amount,
           "customerId": customerId,
-          "mobileNumber": mobileNumber.substring(4),
+          "mobileNumber": mobileNumber,
           "paymentType": "Downpayment"
         },
         serviceIdentifier: DownPaymentService.makePaymentIdentifier,
@@ -161,6 +174,10 @@ class DownPaymentUseCase extends BaseDataProvider {
 
   Future<void> setPaymentId(String paymentId) async {
       return await setValueToSecureStorage({'paymentId': paymentId});
+
+  }
+  Future<void> setDeviceId(String deviceId) async {
+      return await setValueToSecureStorage({'deviceId': deviceId});
 
   }
 }

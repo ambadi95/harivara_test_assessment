@@ -76,7 +76,8 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> with TickerProvid
                 _listenToStateChanges(
                     context, newState as DownPaymentStateReady)
               },
-          builder: (context, state, coordinator) => CrayonPaymentScaffold(
+          builder: (context, state, coordinator) =>
+              CrayonPaymentScaffold(
                 appBarAttributes: CrayonPaymentAppBarAttributes(
                   key: const Key('CardDetailsScreen_AppBarBackButton'),
                   left: [
@@ -429,9 +430,6 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> with TickerProvid
 
       });
 
-    }if (newState.paymentReceived == 1) {
-
-      downPaymentCoordinator!.createLoan(context,widget.downPaymentScreenArgs.deviceId.toString());
     }
   }
 }
