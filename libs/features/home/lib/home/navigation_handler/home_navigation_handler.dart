@@ -148,8 +148,8 @@ class HomeNavigationHandler with ErrorHandler {
           : "648960359535569",
       onPressedCustomAmount: () => navigateToCustomPayBottomSheet(
           outstandingAmount: loanDetailResponse.data != null
-              ? loanDetailResponse.data!.outStandingAmount! + " TZSHS"
-              : "4,500 TZSHS",),
+              ? loanDetailResponse.data!.repaymentFee! + " TZSHS"
+              : "0 TZSHS",),
       onPressedPayNow: () {
         navigateToPaymentScreen(_selectedAmount,_selectedMethod);
       },
@@ -157,22 +157,22 @@ class HomeNavigationHandler with ErrorHandler {
         LoanPaymentMethod(
             name: 'LR_due_amount',
             amount: loanDetailResponse.data != null
-                ? loanDetailResponse.data!.outStandingAmount! + " TZSHS"
-                : "4,500 TZSHS",
+                ? loanDetailResponse.data!.repaymentFee! + " TZSHS"
+                : "0 TZSHS",
             isSelected: false,
             selectedOption: 'LR_due_amount'),
         LoanPaymentMethod(
             name: 'LR_daily_repayment',
             amount: loanDetailResponse.data != null
                 ? loanDetailResponse.data!.dailyRepaymentAmount! + " TZSHS"
-                : "2,000 TZSHS",
+                : "0 TZSHS",
             isSelected: false,
             selectedOption: 'LR_daily_repayment'),
         LoanPaymentMethod(
             name: 'LR_loan_amount',
             amount: loanDetailResponse.data != null
                 ? loanDetailResponse.data!.totalAmountToBeRepaid! + " TZSHS"
-                : "7,70,000 TZSHS",
+                : "0 TZSHS",
             isSelected: false,
             selectedOption: 'LR_loan_amount'),
         LoanPaymentMethod(

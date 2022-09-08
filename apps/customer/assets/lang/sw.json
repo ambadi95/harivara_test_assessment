@@ -198,11 +198,11 @@
   "ST_update_passcode" : "Sasisha nambari ya siri",
   "ST_App_Language" : "Weka Lugha",
   "ST_sign_out" : "Toka",
-  "ST_support": "Piga simu kwa Usaidizi wa Wateja",
+  "ST_support": "Msaada",
   "ST_agents" : "Mawakala wa Karibu",
   "ST_faq" : "Maswali Yanayoulizwa Mara Kwa Mara",
   "ST_term_condition" : "Sheria na Masharti",
-  "ST_call_support" : "Wito Msaada",
+  "ST_call_support" : "Piga simu kwa Usaidizi wa Wateja",
   "ST_contact_text" : "Unahitaji Msaada au Ikiwa Una Swali Lolote Wasiliana Nasi kwa +255 677-039-999",
 
   "PP_Daily_Repayment_Title" : "Malipo ya Kila Siku",

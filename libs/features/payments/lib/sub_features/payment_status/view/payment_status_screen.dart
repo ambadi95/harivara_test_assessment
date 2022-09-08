@@ -28,7 +28,7 @@ class PaymentStatusScreen extends StatefulWidget {
 }
 
 class _PaymentStatusScreenState extends State<PaymentStatusScreen> {
-  int endTime = DateTime.now().millisecondsSinceEpoch + 1000 * 300;
+  int endTime = DateTime.now().millisecondsSinceEpoch + 1000 * 30;
   late Timer _timer;
 
   @override
@@ -44,11 +44,11 @@ class _PaymentStatusScreenState extends State<PaymentStatusScreen> {
   }
 
   void startTimer(PaymentStatusCoordinator coordinator) {
-    const fiveSec = const Duration(seconds: 5);
+    const fiveSec = const Duration(seconds: 10);
     _timer = new Timer.periodic(
       fiveSec,
       (Timer timer) {
-        coordinator.paymentCheckStatus(widget.paymentsStatusScreenArgs.paymentId);
+        coordinator.paymentCheckStatus(widget.paymentsStatusScreenArgs.paymentId,"100");
       },
     );
   }
@@ -139,6 +139,7 @@ class _PaymentStatusScreenState extends State<PaymentStatusScreen> {
       widgetBuilder: (_, time) {
         if (time == null) {
           _timer.cancel();
+          coordinator.navigateToPaymentFailure();
           return Text('Time Expired');
         }
         String timeMinute = '';
@@ -169,7 +170,7 @@ class _PaymentStatusScreenState extends State<PaymentStatusScreen> {
         onLinkClicked: (text, link) {
           // coordinator.navigateToPaymentSuccess();
           coordinator
-              .paymentCheckStatus(widget.paymentsStatusScreenArgs.paymentId);
+              .paymentCheckStatus(widget.paymentsStatusScreenArgs.paymentId,"100");
         },
         textAlign: TextAlign.center,
         description: 'PS_refresh'.tr,
