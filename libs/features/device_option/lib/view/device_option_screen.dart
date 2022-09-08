@@ -373,13 +373,17 @@ class _DeviceOptionState extends State<DeviceOption> {
                       dynamicHSpacer(10),
                       IntrinsicHeight(child:Row(
                         children: [
-                          priceButton(context, 'D0_JoiningFee'.tr,
-                              deviceList[index].joiningFees.toString()),
+                          Expanded(
+                            child: priceButton(context, 'D0_JoiningFee'.tr,
+                                deviceList[index].joiningFees.toString()),
+                          ),
                           dynamicWSpacer(8),
                           VerticalDivider(thickness: 1),
                           dynamicWSpacer(8),
-                          priceButton(context, 'D0_DailyFee'.tr,
-                              deviceList[index].dailyFees.toString()),
+                          Expanded(
+                            child: priceButton(context, 'D0_DailyFee'.tr,
+                                deviceList[index].dailyFees.toString()),
+                          ),
                         ],
                       )),
                       dynamicHSpacer(20),
