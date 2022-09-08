@@ -67,21 +67,23 @@ class _PaymentStatusScreenState extends State<PaymentStatusScreen> {
       PaymentStatusState state, BuildContext context) {
     return Scaffold(
       body: Container(
-        child: Column(
-          children: [
-            SizedBox(height: MediaQuery.of(context).size.height * 0.18),
-            _buildImage(coordinator),
-            SizedBox(height: 28),
-            _buildTitle(coordinator, context),
-            SizedBox(height: 60),
-            _buildNotificationDesc(context),
-            SizedBox(height: 24),
-            _buildTimer(coordinator),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.10),
-            _buildPaymentStatus(coordinator, context),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.10),
-            _buildNotes(),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(height: MediaQuery.of(context).size.height * 0.18),
+              _buildImage(coordinator),
+              SizedBox(height: 28),
+              _buildTitle(coordinator, context),
+              SizedBox(height: 60),
+              _buildNotificationDesc(context),
+              SizedBox(height: 24),
+              _buildTimer(coordinator),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.10),
+              _buildPaymentStatus(coordinator, context),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.10),
+              _buildNotes(),
+            ],
+          ),
         ),
       ),
     );
