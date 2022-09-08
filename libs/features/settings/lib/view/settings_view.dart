@@ -108,7 +108,7 @@ class _SettingsState extends State<Settings> {
         CrayonPaymentText(
           key: Key('${widget._identifier}_ST_Description'),
           text: TextUIDataModel('ST_subTitle'.tr,
-              styleVariant: CrayonPaymentTextStyleVariant.bodyText2,
+              styleVariant: CrayonPaymentTextStyleVariant.headline3,
               color: AN_TitleColor,
               fontWeight: FontWeight.w900),
         ),
@@ -146,7 +146,7 @@ class _SettingsState extends State<Settings> {
         CrayonPaymentText(
           key: Key('${widget._identifier}_ST_support'),
           text: TextUIDataModel('ST_support'.tr,
-              styleVariant: CrayonPaymentTextStyleVariant.bodyText2,
+              styleVariant: CrayonPaymentTextStyleVariant.headline3,
               color: AN_TitleColor,
               fontWeight: FontWeight.w900),
         ),
@@ -163,7 +163,7 @@ class _SettingsState extends State<Settings> {
             () async {
           coordinator.navigateToBrowser();
         }),
-        _buildOptions(context, 'ST_call_support', ST_CallSupport, () async {
+        _buildOptionsWithoutArrow(context, 'ST_call_support', ST_CallSupport, () async {
           LauncherUtils.launcherUtilsInstance
               .makePhoneCall(phoneNumber: LauncherUtils.CONTACT_NUMBER);
         }),
@@ -175,6 +175,37 @@ class _SettingsState extends State<Settings> {
     return _buildOptions(context, 'ST_sign_out', ST_sign_out, () async {
       await coordinator.signOut(widget.screenArgs.userType);
     });
+  }
+
+  Widget _buildOptionsWithoutArrow(context, String label, String image, Function() onTap) {
+    return InkWell(
+      onTap: onTap,
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 20, top: 20),
+        child: Row(
+          children: [
+            getSvg(image),
+            // Image.asset(
+            //   image,
+            //   width: 28,
+            //   height: 28,
+            // ),
+            const SizedBox(
+              width: 30,
+            ),
+            Expanded(
+              child: CrayonPaymentText(
+                key: Key('${widget._identifier}_ST_Description'),
+                text: TextUIDataModel(label.tr,
+                    styleVariant: CrayonPaymentTextStyleVariant.bodyText2,
+                    color: AN_TitleColor,
+                    fontWeight: FontWeight.w600),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
   Widget _buildOptions(context, String label, String image, Function() onTap) {

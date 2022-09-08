@@ -196,11 +196,11 @@
   "ST_update_passcode" : "Update Passcode",
   "ST_App_Language" : "Set Language",
   "ST_sign_out" : "Sign Out",
-  "ST_support": "Call Customer Support",
+  "ST_support": "Support",
   "ST_agents" : "Agents Nearby",
   "ST_faq" : "Frequently Asked Questions",
   "ST_term_condition" : "Terms & Conditions",
-  "ST_call_support" : "Call Support",
+  "ST_call_support" : "Call Customer Support",
   "ST_contact_text" : "Need Help or If You Have Any Query \n Contact Us at +255 677-039-999",
 
   "PP_Daily_Repayment_Title" : "Daily Repayment",
