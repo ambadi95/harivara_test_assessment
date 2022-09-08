@@ -1,3 +1,4 @@
+import 'package:configuremdm/service/configure_mdm_service.dart';
 import 'package:configuremdm/task_manager/configuremdm_api_resolver.dart';
 import 'package:configuremdm/task_manager/configuremdm_module_resolver.dart';
 import 'package:configuremdm/viewmodel/configuremdm_coordinator.dart';
@@ -19,6 +20,7 @@ class ConfigureMdmModule {
       moduleIdentifier,
       ConfigureMdmModuleResolver(
         ConfigureMdmApiResolver(
+          ConfigureMdmService()
           //IDownPaymentService(),
         ),
       ),

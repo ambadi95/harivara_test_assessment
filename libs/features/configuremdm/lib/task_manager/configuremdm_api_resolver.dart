@@ -1,26 +1,22 @@
 import 'package:task_manager/task_manager.dart';
 
+import '../service/configure_mdm_service.dart';
+
 
 class ConfigureMdmApiResolver extends TaskResolver {
+
+  final IConfigureMdmService _iConfigureMdmService;
+
+  ConfigureMdmApiResolver(this._iConfigureMdmService);
+
   @override
   Future execute(String identifier, Map<String, dynamic> requestData) {
-    // TODO: implement execute
-    throw UnimplementedError();
+    switch (identifier) {
+      case IConfigureMdmService.mdmRegistrationIdentifier:
+        return _iConfigureMdmService.mdmRegistration(requestData['customerId'],requestData['imei']);
+      default:
+        throw UnimplementedError();
+    }
   }
-  // final IScanQRCodeService _scanQRCodeService;
-  //
-  // ScanQrCodeApiResolver(this._scanQRCodeService);
-  //
-  // @override
-  // Future execute(String identifier, Map<String, dynamic> requestData) {
-  //   switch (identifier) {
-  //
-  //     case IScanQRCodeService.deviceRegisterIdentifier:
-  //       return _scanQRCodeService.deviceRegister(requestData);
-  //
-  //     default:
-  //       throw UnimplementedError();
-  //   }
-  // }
 }
 
