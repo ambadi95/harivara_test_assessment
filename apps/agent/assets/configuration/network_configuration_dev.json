@@ -2,17 +2,17 @@
   "environments": [
     {
       "name": "test",
-      "host": "https://y9-dev-aapi.testmaya.com/agents/v1/"
+      "host": "https://agentapi-stage.y9bank.com/agents/v1/"
     },
     {
       "name": "Local",
-      "host": "https://y9-dev-aapi.testmaya.com/agents/v1/"
+      "host": "https://agentapi-stage.y9bank.com/agents/v1/"
     }
   ],
   "gqlEnvironments": [
     {
       "name": "default",
-      "host": "https://y9-dev-aapi.testmaya.com/agents/v1/"
+      "host": "https://agentapi-stage.y9bank.com/agents/v1/"
     },
     {
       "name": "mock",
