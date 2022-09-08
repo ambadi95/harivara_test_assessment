@@ -101,5 +101,3 @@ const DP_CircleColor=Color(0xFFFFBEBE);
 
 const PS_AirtelPayContainerColor=Color(0xFFF5F7FB);
 const PS_DailyRepaymentContainerColor=Color(0xFFF4EEEB);
-
-const DD_DEVICE_REGISTER = Color(0xFF160304);
