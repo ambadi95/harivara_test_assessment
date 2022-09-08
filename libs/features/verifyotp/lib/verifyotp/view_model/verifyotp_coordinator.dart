@@ -395,7 +395,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
       case "Downpayment_Initiated":
         _navigationHandler.navigateToDownPaymentScreen();
         break;
-      case "Downpayment_Scuccess":
+      case "Downpayment_Success":
         _navigationHandler.navigateToDownPaymentScreen();
         break;
       case "Downpayment_Failed":

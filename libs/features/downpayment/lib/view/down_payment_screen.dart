@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:config/Colors.dart' as config_colors;
 import 'package:config/Colors.dart';
 import 'package:config/Styles.dart';
+import 'package:core/mobile_core.dart';
 import 'package:core/view/base_view.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shared_data_models/downpayment/downpayment_screen_args.dart';
@@ -115,6 +116,7 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
                     ______,
                     _______,
                     ________,
+                    _________,
                   ) =>
                       _buildMainUIWithLoading(
                     context,
@@ -387,12 +389,18 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
         ),
         dynamicWSpacer(30),
         isResend ?
-        Text('DLC_resend'.tr,style: const TextStyle(
-          decoration: TextDecoration.underline,
-          fontFamily: 'Montserrat',
-          fontSize: 12,
-          color: SU_subtitle_terms_color
-          )) : Text("")
+        InkWell(
+          onTap: (){
+            downPaymentCoordinator!.makePayment(context,widget.downPaymentScreenArgs.amount);
+
+          },
+          child: Text('DLC_resend'.tr,style: const TextStyle(
+            decoration: TextDecoration.underline,
+            fontFamily: 'Montserrat',
+            fontSize: 12,
+            color: SU_subtitle_terms_color
+            )),
+        ) : Text("")
       ],
     );
   }
@@ -448,18 +456,19 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
     );
   }
 
-  _listenToStateChanges(BuildContext context, DownPaymentStateReady newState) {
-    //kyc done
-    if (newState.waitForPayment == 1 && newState.paymentReceived == 0) {
+  _listenToStateChanges(BuildContext context, DownPaymentStateReady newState) async{
 
-      Future.delayed(const Duration(seconds: 25), () {
+       if(newState.createLoan == 2){
+         return;
+       }else {
+         if (newState.waitForPayment == 1 && newState.paymentRequested == 1 &&
+             newState.createLoan == 0) {
+           Future.delayed(const Duration(seconds: 10), () {
+             downPaymentCoordinator!.checkPaymentStatus(context);
+           });
+         }
+       }
 
-        downPaymentCoordinator!.checkPaymentStatus(context);
-
-
-      });
-
-    }
   }
 }
 

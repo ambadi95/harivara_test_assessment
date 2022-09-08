@@ -189,7 +189,7 @@ class VerifyOtpNavigationHandler with ErrorHandler {
 
   navigateToDownPaymentScreen() {
     var arguments = DownPaymentScreenArgs(
-        0, "", "", "",0,0,0,0,0);
+        1, "730000.0", "", "",0,0,0,0,0);
     _navigationManager.navigateTo(
         DownPaymentScreen.viewPath, const NavigationType.push(),
         arguments: arguments);

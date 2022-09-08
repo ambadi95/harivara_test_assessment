@@ -16,4 +16,8 @@ class DownPaymentNavigationHandler with ErrorHandler {
         arguments: arguments
         );
   }
+
+  Future<void> goBack() async {
+    _navigationManager.goBack();
+  }
 }

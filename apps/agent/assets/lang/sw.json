@@ -1,10 +1,11 @@
 {
+
   "OB_WelcomeTitle" : "Karibu kwa Y9 Agent",
   "OB_WelcomeSubTitle" : "Ndoto yako ya benki ya kidijitali",
   "OB_WelcomeThirdTitle" : "y9bank.com",
   "OB_SignIn" : "Weka sahihi",
   "OB_SignUp" : "Jisajili",
-  "OB_Lang" : "SW",
+  "OB_Lang" : "Set Language",
   "OB_ni_bora" : "ni %{Bora|click}%",
 
   "LS_Login" : "Ingia kwa Y9 Yako \nWakala",
