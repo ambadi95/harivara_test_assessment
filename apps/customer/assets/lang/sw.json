@@ -305,7 +305,7 @@
   "faq_question_26": "Je, nitakamilishaje malipo yangu wakati kuna kisa cha bahati mbaya cha wizi wa simu/kupotea?",
   "faq_answer_26": "Katika hali ambapo simu ya mteja wetu inaibiwa au kupotea. Mteja anatarajiwa kuripoti kwa duka la karibu kwa opereta unayemtumia kwa simu/simu ya rununu na yafuatayo.\nRipoti ya polisi\nNambari halali ya Kitambulisho cha Taifa.\nThibitisha maelezo kwa wakala ikijumuisha ukaguzi wa kibayometriki\nNa kama kupitishwa na kampuni ya bima itatolewa kifaa badala mara moja",
   "FAQ_Title_2": "maswali yanayoulizwa mara kwa mara",
-
+  "Back_To_Home": "Rudi Nyumbani",
   "PS_title" : "{amount} TZSHS Payment request has been sent to “{mobile}”",
   "PS_notification" : "Click on the USSD notification and Authenticate the Payment",
   "PS_refresh" : "To check the payment status, click \n%{Refresh|https://www.google.com}%.",
