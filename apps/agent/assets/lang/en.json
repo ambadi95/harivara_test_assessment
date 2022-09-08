@@ -4,21 +4,20 @@
   "OB_WelcomeThirdTitle" : "y9bank.com",
   "OB_SignIn" : "Sign in",
   "OB_SignUp" : "Sign up",
-  "OB_Lang" : "Weka Lugha",
+  "OB_Lang" : "EN",
   "OB_ni_bora" : "ni %{Bora|click}%",
-
 
   "LS_Login" : "Login to Your Y9 \nAgent",
   "LS_Mobile" : "Mobile Number",
   "LS_mobile_error_text" : "Invalid Mobile Number",
   "LS_mobile_hint_text" : "Enter Mobile Number",
+  "LS_nida_hint_text" : "Enter NIDA Number",
   "LS_agent_id" : "Agent ID",
   "LS_agent_id_error" : "Invalid Agent ID",
   "LS_Passcode" : "Passcode",
   "LS_SignIn" : "Sign in",
 
-
-  "SU_title" : "Y9 Customer Registration",
+  "SU_title" : "Y9 Customer Onboarding",
   "SU_title_agent" : "Enter your NIDA Number & Agent ID",
   "SU_subtitle" : "By signing up to Y9, you hereby agree to\nthe %{Terms & Conditions|https://www.google.com}%.",
   "SU_ID_no_label" : "NIDA Number",
@@ -52,9 +51,9 @@
   "SU_register_device_button" : "Register Device",
 
   "DV_title" : "Enter Personal Details",
+  "DV_profile" : "Profile",
   "DV_agent_aided_title" : "Customer Details",
   "DV_agent_aided_subtitle" : "Your Personal details are shown as per your\nNIDA records",
-  "DV_profile" : "Profile",
   "DV_subtitle" : "Displaying your Personal details as per ERP",
   "DV_name_label" : "Name",
   "DV_name_error_text" : "Enter First Name & Last Name",
@@ -69,6 +68,8 @@
   "DV_profession_label" : "Profession",
   "DV_profession_error_text" : "Invalid Profession",
   "DV_profession_hint_text" : "Enter Profession",
+  "DV_nida_no_label" : "NIDA Number",
+  "DV_nida_no_error_text" : "Invalid NIDA Number",
   "DV_contact_no_label" : "Mobile Number",
   "DV_contact_no_error_text" : "Invalid Mobile Number",
   "DV_email_label" : "Email Id",
@@ -105,13 +106,13 @@
   "HS_ReferalCode": "Referal Code",
   "HS_Invite": "Invite",
   "HS_Agent_Id" : "Y9 Agent ID",
-  "HS_TotalOnBoarderCustomers" : "Total Customers \nRegistered ",
+  "HS_TotalOnBoarderCustomers" : "Total Customer \nRegistered ",
   "HS_PendingCustomerRequests" : "Pending Customer \nRequest",
   "HS_TotalCustomerBoarding" : "Total Customers \nOnboarded",
-  "HS_Customer_OnBoarding" : "Customer \nRegistration",
+  "HS_Customer_OnBoarding" : "Customer \nOnboarding",
   "HS_Customer_DeviceSwap" : "Device swap \n/ repair",
   "HS_Customer_AgentSupport" : "Agent \nSupport",
-  "HS_Agent_Refer_Text": "Refer your Friends to register for Y9 \n Membership and you will win a Referral Bonus",
+  "HS_Agent_Refer_Text": " Refer your Friends to register for Y9\n Membership and you will win a\n Referral Bonus",
   "HS_Agent_Refer_Program": "Referral Program -",
   "HS_Agent_Stay_Tunned": " Stay Tuned!",
 
@@ -204,7 +205,7 @@
   "RP_success_message": "Passcode has been updated successfully",
   "PR_message" : "You will be Signed out of the app, please use the new passcode to Sign-in again",
 
-  "ST_my_profile": "View Profile",
+  "ST_my_profile": "My Profile",
   "ST_title" : "Settings",
   "ST_subTitle" : "Profile Management",
   "ST_view_profile" : "View Profile",
@@ -221,13 +222,12 @@
   "TC_Purpose_title":"2. PURPOSE",
   "TC_Purpose_Desc": "2.1. Y9 is a digital Microfinance provider aiming to help develop the lifestyle of the people of Tanzania and the African continent as a whole by providing financial services to the unbanked and under banked by creating access to digital education, digital healthcare, etc. by offering 4G smartphones on very fair terms to make it accessible to all citizens by enabling meaningful financial and digital inclusion.",
 
-
   "KYC_Title": "KYC & Credit Check with Telco's ",
   "KYC_Validation_With_Airtel" : "KYC Validation With\nAirtel Telco’s Record",
   "KYC_Validation_With_Airtel_Subtitle" : "Y9 checks your Telco records matching\nyour NIDA Number and Mobile Number",
   "KYC_Validation_With_Airtel_Pass_Check" : "KYC Checked with Telco",
   "KYC_Validation_With_Airtel_Loan_Check" : "Credit Checked for Loan",
-  "KYC_Validation_With_Main_CheckBox" : "I hereby agree to check my credit\nscore and provide the eligible\nmembership plan accodring to Y9",
+  "KYC_Validation_With_Main_CheckBox" : "I hereby agree for Y9 to check my credit\nscore and provide the eligible\nmembership plan according to Y9",
   "KYC_Terms_and_Condition" : "Terms & Conditions",
   "Credit_Score_With_Telco": "Credit Check with\nTelco for Device Loan",
   "KYC_Verification_Failed": "KYC Validation Failed",
@@ -249,11 +249,11 @@
   "DLC_Final_Payment_Date": "Final Payment Date",
   "DLC_Airtel_Pay": "Airtel Pay",
   "DLC_Loan_Details": "Loan Details",
-  "DLC_Down_Payment" : "Down Payment",
-  "DLC_Down_Payment_Subtitle" : "Transaction gateway will be closed in next",
+  "DLC_Down_Payment" : "Joining fee\nPayment",
+  "DLC_Down_Payment_Subtitle" : "Transaction gateway will be closed in\nnext",
   "DLC_resend" : "Resend",
   "DLC_pay_now" : "Pay Now",
-  "DLC_payment_text" : "TZSHS\\npayment request has\\nbeen sent to Y9",
+  "DLC_payment_text" : "TZSHS payment\nrequest has been sent to Y9",
 
   "RC_agent_new_customer" : "New Customer \nOnboarding",
   "RC_customer_approval" : "Existing Customer \nOnboarding",
@@ -270,9 +270,19 @@
   "PC_alert_message" : "Provided Customer Reference ID and Mobile Number doesn't match with our record.",
   "PC_alert_title" : "Details Mismatch",
   "PC_button_close" : "Close",
+
   "FORGET_PASSCODE": "Forget Passcode ?",
   "RESET_NOW": "Reset Now",
   "ERROR_MESSAGE" :  "Something went wrong,Please try again later!",
-  "FAQ_Title_2": "Maswali Yanayoulizwa Mara kwa Mara"
+  "FAQ_Title_2": "Frequently Asked Questions",
+
+  "MDM_button_text" : "Setup MDM configuration",
+  "MDM_subheading" : "Mobile Security Software that protects\nthe Mobile Devices of Customers.",
+  "MDM_input_label" : "Device UID / IMEI -1",
+  "MDM_input_hint_text" : "Enter Device UID / IMEI -1",
+  "MDM_agree_text" : "I hearby agree to configure MDM\nfor Managing the Device by Y9\nMicrofinance Tanzania",
+  "MDM_successful_text" : "Successful",
+  "MDM_finish_text": "Finish",
+  "MDM_successful_heading" : "MDM Configuration Successfully\nCompleted. Waiting for the Device to\nbe activated for Monitoring"
 
 }

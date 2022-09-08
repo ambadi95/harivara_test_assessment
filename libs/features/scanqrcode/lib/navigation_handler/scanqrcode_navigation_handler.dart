@@ -1,6 +1,7 @@
 
 
 import 'package:config/Config.dart';
+import 'package:configuremdm/view/configuremdm_screen.dart';
 import 'package:core/navigation/navigation_manager.dart';
 import 'package:core/navigation/navigation_type.dart';
 import 'package:crayon_payment_customer/home/view/home_screen.dart';
@@ -40,6 +41,15 @@ class ScanQRCodeNavigationHandler with ErrorHandler {
       SuccessScreen.viewPath,
       const NavigationType.push(),
       arguments: argument
+    );
+  }
+
+  Future<void> navigateToConfigureMdmScreen() async {
+    var argument = "Bharti";
+    await _navigationManager.navigateTo(
+        ConfigureMdmScreen.viewPath,
+        const NavigationType.push(),
+        //arguments: argument
     );
   }
 

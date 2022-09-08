@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:config/Colors.dart' as config_colors;
 import 'package:config/Colors.dart';
 import 'package:config/Styles.dart';
@@ -18,6 +20,7 @@ import 'package:widget_library/scaffold/crayon_payment_scaffold.dart';
 import 'package:widget_library/static_text/crayon_payment_text.dart';
 import '../state/downpayment_state.dart';
 import '../viewmodel/downpayment_coordinator.dart';
+import 'package:sprintf/sprintf.dart';
 
 class DownPaymentScreen extends StatefulWidget {
   static const viewPath =
@@ -31,33 +34,48 @@ class DownPaymentScreen extends StatefulWidget {
   State<DownPaymentScreen> createState() => _DownPaymentScreenState();
 }
 
-class _DownPaymentScreenState extends State<DownPaymentScreen> with TickerProviderStateMixin{
+class _DownPaymentScreenState extends State<DownPaymentScreen> {
   final String _identifier = 'downpayment-screen';
   bool _isBtnEnabled = false;
-  late AnimationController _controller;
-  int levelClock = 180;
   String username = "";
   DownPaymentCoordinator? downPaymentCoordinator;
+  late Timer _timer;
+  final ValueNotifier<int> _startValue = ValueNotifier<int>(15);
 
 
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
+  void startTimer() {
+    const oneMintue = Duration(minutes: 15);
+    _timer = Timer.periodic(
+      oneMintue,
+          (Timer timer) {
+        if (_startValue.value == 0) {
+          if (mounted) {
+            setState(() {
+              timer.cancel();
+            });
+          }
+        } else {
+          if (mounted) {
+            _startValue.value--;
+          }
+        }
+      },
+    );
   }
 
   @override
   void initState() {
+    // TODO: implement initState
     super.initState();
-
-    _controller = AnimationController(
-        vsync: this,
-        duration: Duration(
-            seconds:
-            levelClock)
-    );
-    _controller.forward();
+    startTimer();
   }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    _timer.cancel();
+  }
+
 
 
   @override
@@ -397,21 +415,32 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> with TickerProvid
     //           color: VO_ResendTextColor,
     //           fontWeight: FontWeight.w400),
     // );
-    RichText(
-      text: TextSpan(
-        text: 'DLC_Down_Payment_Subtitle'.tr,
-        style: const TextStyle(
-            fontFamily: 'Montserrat',
-            fontSize: 14, color: DD_TextLabel, fontWeight: FontWeight.w600
-        ),
-        children: <TextSpan>[
-          TextSpan(
-              text: ' 15 mins',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12, color : Color(0xFFDA2228))),
 
-        ],
-      ),
-    );
+      ValueListenableBuilder<int>(
+          valueListenable: _startValue,
+          builder: (BuildContext context, int value, Widget? child) {
+            return Align(
+              alignment: Alignment.topLeft,
+              child:  RichText(
+                text: TextSpan(
+                  text: 'DLC_Down_Payment_Subtitle'.tr,
+                  style: const TextStyle(
+                      fontFamily: 'Montserrat',
+                      fontSize: 14, color: DD_TextLabel, fontWeight: FontWeight.w600
+                  ),
+                  children: <TextSpan>[
+                   const  TextSpan(
+                    text: "  ",
+                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12, color : Color(0xFFDA2228))),
+                    TextSpan(
+                        text: "${value.toString()} min",
+                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12, color : Color(0xFFDA2228))),
+
+                  ],
+                ),
+              ));
+          });
+
   }
 
   _rowWidget(BuildContext context, {Widget? icon, Widget? text}) {

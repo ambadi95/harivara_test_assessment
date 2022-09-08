@@ -161,8 +161,7 @@ class _SettingsState extends State<Settings> {
         }),
         _buildOptions(context, 'ST_term_condition', ST_TermsCondition,
             () async {
-          LauncherUtils.launcherUtilsInstance
-              .launchInBrowser(url: y9TermsCondition);
+          coordinator.navigateToBrowser();
         }),
         _buildOptions(context, 'ST_call_support', ST_CallSupport, () async {
           LauncherUtils.launcherUtilsInstance

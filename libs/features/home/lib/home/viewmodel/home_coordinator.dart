@@ -25,7 +25,7 @@ class HomeCoordinator extends BaseViewModel<HomeScreenState> {
     _navigationHandler.navigateToSignUpScreen(UserType.Customer);
   }
 
-  void devicereg() {
+  void configureMDM() {
     _navigationHandler.navigateTodevice(UserType.Customer);
   }
 
@@ -48,9 +48,9 @@ class HomeCoordinator extends BaseViewModel<HomeScreenState> {
 
   void navigationToBottomSheet(BuildContext context,LoanDetailResponse loanDetailResponse) {
     if(loanDetailResponse.data == null){
-      _navigationHandler.navigateToLoanRepaymentBottomSheet(
-          "message", "buttonLabel",context,loanDetailResponse);
-    // _navigationHandler.navigateToLoanDetailsSheetCustomer();
+      // _navigationHandler.navigateToLoanRepaymentBottomSheet(
+      //     "message", "buttonLabel",context,loanDetailResponse);
+     _navigationHandler.navigateToLoanDetailsSheetCustomer();
     }else {
       _navigationHandler.navigateToLoanRepaymentBottomSheet(
           "message", "buttonLabel",context,loanDetailResponse);

@@ -229,14 +229,17 @@ class _LoginState extends State<Login> {
           coordinator.isMobileNumberValid(mobileNumber.text);
           coordinator.isAgentIdValid(agentIdController.text);
           // coordinator.navigateToWelcomeBackScreen(userType, mobileNumber.text);
-          if(UserType.Customer == widget.userType){
-            if(havePasscode){
+          if (UserType.Customer == widget.userType) {
+            if (havePasscode) {
               coordinator.login(mobileNumber.text, passcodeController.text,
                   widget.userType, agentIdController.text);
             } else {
-              coordinator.checkPasscode(mobileNumber.text,widget.userType,);
+              coordinator.checkPasscode(
+                mobileNumber.text,
+                widget.userType,
+              );
             }
-          } else{
+          } else {
             coordinator.login(mobileNumber.text, passcodeController.text,
                 widget.userType, agentIdController.text);
           }

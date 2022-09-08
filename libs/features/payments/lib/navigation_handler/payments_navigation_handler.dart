@@ -1,9 +1,12 @@
 import 'package:config/Colors.dart';
+import 'package:config/Config.dart';
 import 'package:core/navigation/navigation_manager.dart';
 import 'package:core/navigation/navigation_type.dart';
 import 'package:core/sheets/data_model/button_options.dart';
 import 'package:core/sheets/state/crayon_payment_bottom_sheet_state.dart';
 import 'package:crayon_payment_customer/home/view/home_screen.dart';
+import 'package:home/home/home_screen_arguments.dart';
+import 'package:home/home/view/home_screen.dart';
 import 'package:shared_data_models/payments/payment_status_screen_args.dart';
 import 'package:shared_data_models/payments/payment_sucess_screen_args.dart';
 import 'package:widget_library/helpers/error/helper/error_helper.dart';
@@ -25,9 +28,11 @@ class PaymentsNavigationHandler with ErrorHandler {
   }
 
   Future<void> navigateToHomeScreen() async {
+    var argument = HomeScreenArgs(isAgent: false, userType: UserType.Customer);
     await _navigationManager.navigateTo(
-      CrayonCustomerHomeScreen.viewPath,
+      CrayonHomeScreen.viewPath,
       NavigationType.replace(),
+      arguments: argument
     );
   }
 

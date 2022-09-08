@@ -16,6 +16,8 @@ dependencies:
   firebase_core: ^1.21.1
   firebase_crashlytics: ^2.8.9
   flutter_countdown_timer: ^4.1.0
+  pretty_http_logger: ^0.2.1
+  url_launcher: ^6.1.5
   sqflite:
 
   config:
@@ -75,6 +77,9 @@ dependencies:
 
   payments:
     path: ../../libs/features/payments
+
+  configuremdm:
+    path: ../../libs/features/configuremdm
 
 
 dev_dependencies:

@@ -64,6 +64,8 @@ import 'package:settings/settings_model.dart';
 import 'package:kyc/subfeatures/kycmain/kyccreditmain_module.dart';
 import 'package:kyc/subfeatures/kycmain/navigation_handler/kyc_main_route_manager.dart';
 import 'package:downpayment/navigation_handler/downpayment_route_manager.dart';
+import 'package:configuremdm/configuremdm_module.dart';
+import 'package:configuremdm/navigation_handler/configuremdm_route_manager.dart';
 import 'package:widget_library/utils/app_utils.dart';
 
 class AppModule {
@@ -142,6 +144,8 @@ class AppModule {
     KycCreditMainModule.registerDependencies();
 
     TermsConditionModule.registerDependencies();
+
+    ConfigureMdmModule.registerDependencies();
 
 
     DIContainer.container.resolve<WidgetsModule>().registerDependencies();
@@ -244,6 +248,11 @@ void _registerRouteManagers() {
   navigationManagerContainer.registerRouteManager(
     TermsConditionModule.moduleIdentifier,
     TermsConditionRouteManager(),
+  );
+
+  navigationManagerContainer.registerRouteManager(
+    ConfigureMdmModule.moduleIdentifier,
+    ConfigureMdmRouteManager(),
   );
 
   DIContainer.container.registerSingleton<NativeDocumentDirectory>(

@@ -1,7 +1,8 @@
 import 'package:core/navigation/i_route_manager.dart';
 import 'package:flutter/material.dart';
-
+import 'package:scanqrcode/view/successful_screen.dart';
 import '../view/configuremdm_screen.dart';
+import '../view/configuremdm_successful_screen.dart';
 
 class ConfigureMdmRouteManager extends IRouteManager {
   @override
@@ -9,6 +10,13 @@ class ConfigureMdmRouteManager extends IRouteManager {
     switch (settings.name) {
       case ConfigureMdmScreen.viewPath:
         return const ConfigureMdmScreen();
+      case ConfigureMdmSuccessScreen.viewPath:
+        return const ConfigureMdmSuccessScreen();
+      case SuccessScreen.viewPath:
+        var arguments = settings.arguments as String;
+        return SuccessScreen(
+          screenScreenArgs : arguments,
+        );
       default:
         // TODO: implement getView
         throw Exception('Route ${settings.name} not found');

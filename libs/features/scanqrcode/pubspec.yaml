@@ -70,6 +70,11 @@ dependencies:
   verifyotp:
     path: ../verifyotp
 
+  configuremdm:
+    path: ../configuremdm
+
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

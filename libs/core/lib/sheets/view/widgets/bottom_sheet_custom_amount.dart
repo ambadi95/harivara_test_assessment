@@ -106,9 +106,8 @@ class BottomSheetCustomAmount extends StatelessWidget {
       // controller: amount,
       hintText: 'CA_amount'.tr,
       key: const Key('mobileNumberTextField'),
-      // inputFormatters: <TextInputFormatter>[
-      //   //NIDAInputFormatter(mask: 'xxx xxx xxx', separator: ' ')
-      // ],
+      inputFormatters: <TextInputFormatter>[
+        LengthLimitingTextInputFormatter(10),      ],
       keyboardType: TextInputType.number,
       onChanged: (value) {
         coordinator.checkAmount(value);
