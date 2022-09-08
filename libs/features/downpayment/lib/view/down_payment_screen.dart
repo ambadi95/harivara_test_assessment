@@ -429,7 +429,12 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> with TickerProvid
 
   _listenToStateChanges(BuildContext context, DownPaymentStateReady newState) async{
 
-       if(newState.createLoan == 2){
+       if(newState.loanApproved == 1){
+
+         setState(() {
+           _isBtnEnabled=true;
+         });
+       }else if(newState.loanApproved == 2){
          return;
        }else {
          if (newState.waitForPayment == 1 && newState.paymentRequested == 1 &&

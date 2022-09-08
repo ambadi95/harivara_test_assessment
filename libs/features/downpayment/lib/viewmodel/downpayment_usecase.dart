@@ -147,7 +147,7 @@ class DownPaymentUseCase extends BaseDataProvider {
         });
   }
 
-  Future<LoanApprovalResponse?> activateLoan(
+  Future<LoanApprovalResponse?> loanApproval(
       String deviceId,String loanId, Function(String) onErrorCallback) async {
     return await executeApiRequest<LoanApprovalResponse?>(
         taskType: TaskType.DATA_OPERATION,

@@ -106,7 +106,7 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
         loanApproved: 0,
         paymentReceived: 1);
     var loanApprovalResponse =
-        await _downPaymentUseCase.activateLoan(deviceId, loanId, (p0) => null);
+        await _downPaymentUseCase.loanApproval(deviceId, loanId, (p0) => null);
     if (loanApprovalResponse?.status == true) {
       state = DownPaymentState.ready(
           context: context,
@@ -119,7 +119,6 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
           loanApproved: 1,
           paymentReceived: 1);
 
-      _navigationHandler.navigateToScanQrCode(int.parse(deviceId));
     } else {
       print("Failed");
       state = DownPaymentState.ready(
