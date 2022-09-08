@@ -1,7 +1,6 @@
 import 'package:core/view/analytics_state_notifier.dart';
 import 'package:device_option/sub_features/device_loan_creation/state/device_loan_creation_state.dart';
 import 'package:device_option/sub_features/device_loan_creation/viewmodel/device_loan_creation_usecase.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:widget_library/bottom_sheet/alert_bottom_sheet.dart';
 
@@ -21,20 +20,13 @@ class DeviceLoanCreationCoordinator
     await _navigationHandler.navigateToDownPaymentScreen(amount,deviceId!);
   }
 
-  Future getLoanPreview(BuildContext context,int deviceId) async {
-    state =
-        DeviceLoanCreationState.ready(context: context, error: "", isLoading: true);
+  Future getLoanPreview(int deviceId) async {
     var response =
     await _DeviceOptionUseCase.getLoanPreview(deviceId, (p0) => null);
     print(response);
     if (response!.status == true) {
-      state =
-          DeviceLoanCreationState.ready(context: context, error: "", isLoading: false);
       return response;
-
     }else{
-      state =
-          DeviceLoanCreationState.ready(context: context, error: "", isLoading: false);
       _showAlertForErrorMessage(response.message!);
     }
   }

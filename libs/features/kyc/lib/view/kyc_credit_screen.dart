@@ -600,8 +600,9 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
 
 //showing kyc error
     } else if (state.isKycError == true && state.error.isNotEmpty == true) {
-
-      kycCreditCoordinator!.showErrorBottomSheet(_getKycValidationFailedUi(context, kycCreditCoordinator!, state),context);
+      kycCreditCoordinator!.showErrorBottomSheet(
+          _getKycValidationFailedUi(context, kycCreditCoordinator!, state),
+          context);
       return;
     } else if (state.isCreditCheckError == false &&
         state.error == 'Credit Eligible') {

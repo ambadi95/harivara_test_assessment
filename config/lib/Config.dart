@@ -23,15 +23,6 @@ const agentMock = 'assets/images/agent_mock.png';
 const WB_or_icon = 'assets/images/orIcon.png';
 const MO_credit_info_icon = 'assets/images/credit_info.png';
 
-// const ST_view_profile = 'assets/images/view_profile_icon.png';
-// const ST_update_passcode = 'assets/images/update_passcode_icon.png';
-// const ST_language = 'assets/images/language_icon.png';
-// const ST_sign_out = 'assets/images/sign_out_icon.png';
-// const ST_CallSupport = 'assets/images/call_support.png';
-// const ST_TermsCondition = 'assets/images/terms_condition.png';
-// const ST_faq = 'assets/images/faq.png';
-// const ST_agent = 'assets/images/agent.png';
-
 //  SETTINGS SVG IMAGES
 const ST_view_profile = 'assets/images/profile.svg';
 const ST_update_passcode = 'assets/images/updatePasscode.svg';
@@ -45,6 +36,8 @@ const ST_agent = 'assets/images/agent.svg';
 const ST_scan_icon = 'assets/images/scan_image.svg';
 
 //Static Link
+// const customerEndpoint = 'https://customerapi.y9bank.com/customers/v1/';
+const customerEndpoint = 'https://y9-dev-capi.testmaya.com/customers/v1/';
 
 const y9TermsCondition = 'https://y9bank.com/term-of-services/';
 
@@ -66,8 +59,6 @@ extension toString on OTPEvent {
   }
 }
 
-//DEV CUSTOMER INSTANCE
-const customerEndpoint = 'https://y9-dev-capi.testmaya.com/customers/v1/';
 
 //PROD CUSTOMER INSTANCE
 const LD_loan_detail = 'assets/images/loan_detail.png';

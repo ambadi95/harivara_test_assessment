@@ -51,10 +51,6 @@ class DetailsUseCase extends BaseDataProvider {
     return await setValueToSecureStorage({'mobileNumber': mobileNumber});
   }
 
-  Future<void> saveClientId(String mobileNumber) async {
-    return await setValueToSecureStorage({'clientId': mobileNumber});
-  }
-
   Future<void> saveNewCustomerName(String fullName) async {
     print("fullname===> $fullName");
     return await setValueToSecureStorage({'newCustomerName': fullName});

@@ -19,7 +19,6 @@ class Data extends Equatable {
   final String? poBoxNumber;
   final String? region;
   final String? district;
-  final String? clientId;
 
   const Data({
     this.customerId,
@@ -36,7 +35,6 @@ class Data extends Equatable {
     this.poBoxNumber,
     this.region,
     this.district,
-    this.clientId,
   });
 
   factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
@@ -58,7 +56,6 @@ class Data extends Equatable {
     String? poBoxNumber,
     String? region,
     String? district,
-    String? clientId,
   }) {
     return Data(
       customerId: customerId ?? this.customerId,
@@ -75,7 +72,6 @@ class Data extends Equatable {
       poBoxNumber: poBoxNumber ?? this.poBoxNumber,
       region: region ?? this.region,
       district: district ?? this.district,
-      clientId: clientId ?? this.clientId,
     );
   }
 
@@ -99,7 +95,6 @@ class Data extends Equatable {
       poBoxNumber,
       region,
       district,
-      clientId
     ];
   }
 }

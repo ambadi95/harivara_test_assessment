@@ -220,11 +220,13 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
         onTap: () async {
+
           await coordinator.paymentApi(
-            "2000" /*widget.paymentsScreenArgs.price*/,
+            widget.paymentsScreenArgs.price.replaceAll(",", "").replaceAll("TZSHS", ""),
             "Repayment",
             context,
           );
+
         },
         child: Container(
           width: double.infinity,

@@ -104,6 +104,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
     String? mobileNum,
     isResetPasscode = false,
   }) async {
+
     if (otpVerificationType == OtpVerificationType.mobile) {
       //state = const VerifyOtpState.loadingState();
       // try {
@@ -193,24 +194,20 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         var responseSignin = await _verifyOtpUseCase.otpVerifyCustomerByAgent(
             otpScreenArgs.refId, enterOtp, 'Customer', (p0) => null);
         if (responseSignin!.data!.status == "success") {
-          _navigationHandler.navigateToDetailScreen();
+          print('###############');
+          print(otpScreenArgs.refId);
+          var getWorkFlowStatus = await _verifyOtpUseCase.workFlowCustomerByAgent(
+              otpScreenArgs.refId, (p0) => null);
+          if (getWorkFlowStatus!.status!) {
+            CrayonPaymentLogger.logInfo('I am in WorkFlow Status');
+            //TODO Workflow Navigation
+            navigationToWorkFlow(getWorkFlowStatus.data!.status!);
+            //_navigationHandler.navigateToDetailScreen();
+          }else{
 
-        }else{
-          _showAlertForErrorMessage(responseSignin.message ?? "Something went wrong");
+            _showAlertForErrorMessage(getWorkFlowStatus.message!);
+          }
         }
-        // print('###############');
-        // print(otpScreenArgs.refId);
-        // var getWorkFlowStatus = await _verifyOtpUseCase.workFlowCustomerByAgent(
-        //     otpScreenArgs.refId, (p0) => null);
-        // if (getWorkFlowStatus!.status!) {
-        //   CrayonPaymentLogger.logInfo('I am in WorkFlow Status');
-        //   //TODO Workflow Navigation
-        //   navigationToWorkFlow(getWorkFlowStatus.data!.status!);
-        //   //_navigationHandler.navigateToDetailScreen();
-        // }else{
-        //
-        //   _showAlertForErrorMessage(getWorkFlowStatus.message!);
-        // }
       } else if (otpScreenArgs.otpVerificationType ==
           OtpVerificationType.mobile) {
         if (userType == UserType.Customer) {
@@ -267,6 +264,27 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
       } else if (otpScreenArgs.otpVerificationType ==
           OtpVerificationType.updatePasscodeAgent) {
         _navigationHandler.openForUpdateNewPasscodeAgent(userType);
+      } else if(otpScreenArgs.otpVerificationType == OtpVerificationType.customerPasscodeSet){
+
+          state = currentState.copyWith(isLoading: true);
+          var response = await _verifyOtpUseCase.otpVerify(otpScreenArgs.refId,
+              enterOtp, otpScreenArgs.userType,event, (p0) => null);
+          if (response!.data!.status == "success") {
+            state = currentState.copyWith(isLoading: false);
+            _navigationHandler.openForNewPasscodeAgentCustomer(userType);
+
+          } else {
+            otpController.text = "";
+            state = currentState.copyWith(isLoading: false);
+            // state =  currentState.copyWith(attemptsRemainFlag: true);
+            if (attempts > 1) {
+              state = currentState.copyWith(attemptsRemain: attempts - 1);
+            } else {
+              state = currentState.copyWith(attemptsRemain: 3);
+              _showAlertForOTPAttempts();
+            }
+          }
+
       }
     }  catch (e) {
       state = currentState.copyWith(isLoading: false);
@@ -280,6 +298,17 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
   Future<void> goBack() async {
     _navigationHandler.goBack();
   }
+
+  otpAttempts(int attempts ){
+    var currentState = state as VerifyOtpStateReady;
+    otpController.text = "";
+    if (attempts > 1) {
+      state = currentState.copyWith(attemptsRemain: attempts - 1);
+    } else {
+      state = currentState.copyWith(attemptsRemain: 3);
+      _showAlertForOTPAttempts();
+    }
+}
 
 //
 // Future<void> _handleOtpError(
@@ -324,6 +353,8 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
           alertTitle: 'VO_Incorrect_OTP_Title'.tr,
           alertIcon: "assets/images/incorrect_otp.png",
           onClose: () {
+            goBack();
+            goBack();
             goBack();
           },
           packageName: ""),

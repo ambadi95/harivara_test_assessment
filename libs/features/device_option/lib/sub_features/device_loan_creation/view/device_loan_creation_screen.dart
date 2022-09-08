@@ -51,126 +51,120 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
   @override
   Widget build(BuildContext context) {
     return BaseView<DeviceLoanCreationCoordinator, DeviceLoanCreationState>(
-        setupViewModel: (coordinator) async {
-          detailDetail = widget.deviceLoanCreationArgs.deviceDetailData;
-          if (detailDetail != null && detailDetail!.deviceId != 0) {
-            loanPreviewResponseModel = await coordinator.getLoanPreview(
-                context, detailDetail!.deviceId!);
-            print("loanPreviewResponse${loanPreviewResponseModel}");
-            setState(() {
-              loanPreviewResponseModel;
-            });
-          }
-        },
-        onStateListenCallback: (preState, newState) =>
-            {_listenToStateChanges(context, newState)},
-        builder: (context, state, coordinator) => CrayonPaymentScaffold(
-              appBarAttributes: CrayonPaymentAppBarAttributes(
-                key: const Key('CardDetailsScreen_AppBarBackButton'),
-                left: [
-                  const CrayonPaymentAppBarButtonType.back(),
-                ],
-              ),
-            /*  bottomNavigationBar: loanPreviewResponseModel != null
-                  ? Padding(
-                      padding: const EdgeInsets.only(
-                          left: 16, right: 16, bottom: 18),
-                      child: selectButton(coordinator),
-                    )
-                  : SizedBox(),*/
-              body: state.when(
-                initialState: () => const SizedBox(),
-                ready: (_, __, ___) => _buildMainUIWithLoading(
-                  context,
-                  coordinator,
-                  (state as DeviceLoanCreationStateReady),
-                ),
-              ),
-            ));
-  }
-
-  Widget _buildMainUIWithLoading(
-    BuildContext context,
-    DeviceLoanCreationCoordinator coordinator,
-    DeviceLoanCreationStateReady state,
-  ) {
-    return Stack(
-      children: [
-        _buildMainUI(context, coordinator, state),
-        if (state.isLoading) _createLoading(state),
-      ],
+      setupViewModel: (coordinator) async {
+        detailDetail = widget.deviceLoanCreationArgs.deviceDetailData;
+        if (detailDetail != null && detailDetail!.deviceId != 0) {
+          loanPreviewResponseModel =
+              await coordinator.getLoanPreview(detailDetail!.deviceId!);
+          print("loanPreviewResponse${loanPreviewResponseModel}");
+          setState(() {
+            loanPreviewResponseModel;
+          });
+        }
+      },
+      onStateListenCallback: (preState, newState) =>
+          {_listenToStateChanges(context, newState)},
+      builder: (context, state, coordinator) {
+        return detailDetail.isNotEmptyOrNull
+            ? _buildMainUI(context, coordinator)
+            : _createLoading();
+      },
     );
   }
 
-  Widget _createLoading(DeviceLoanCreationStateReady stateReady) {
-    return const CenteredCircularProgressBar(color: PRIMARY_COLOR);
+  Widget _createLoading() {
+    return Center(
+      child: Container(
+        color: Colors.white,
+        child: const CenteredCircularProgressBar(color: PRIMARY_COLOR),
+      ),
+    );
   }
 
   void _listenToStateChanges(
       BuildContext context, DeviceLoanCreationState state) {}
 
-  Widget _buildMainUI(context, DeviceLoanCreationCoordinator coordinator,
-      DeviceLoanCreationStateReady stateReady) {
-    return ListView(
-      children: [
-        _buildOptionTitle(context),
-        dynamicHSpacer(30),
-        _buildTitle(context),
-        dynamicHSpacer(10),
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Image.asset(
-              widget.deviceLoanCreationArgs.image,
-              width: 95,
-              height: 132,
-              package: 'shared_data_models',
-            ),
-            SizedBox(
-              width: 10,
-            ),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  dynamicHSpacer(10),
-                  CrayonPaymentText(
-                    key: Key('${_identifier}_' + detailDetail!.brand!),
-                    text: TextUIDataModel(
-                        detailDetail!.brand! + "-" + detailDetail!.modelNumber!,
-                        styleVariant: CrayonPaymentTextStyleVariant.overline1,
-                        color: AN_CardTitle,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  dynamicHSpacer(6),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * .6,
-                    child: CrayonPaymentText(
-                      key: Key('${_identifier}_' + detailDetail!.memory!),
+  Widget _buildMainUI(context, DeviceLoanCreationCoordinator coordinator) {
+    return CrayonPaymentScaffold(
+      appBarAttributes: CrayonPaymentAppBarAttributes(
+        key: const Key('CardDetailsScreen_AppBarBackButton'),
+        left: [
+          const CrayonPaymentAppBarButtonType.back(),
+        ],
+      ),
+      bottomNavigationBar:
+      loanPreviewResponseModel != null
+          ?
+      Padding(
+              padding: const EdgeInsets.only(left: 16, right: 16, bottom: 18),
+              child: selectButton(coordinator),
+            )
+          : SizedBox(),
+      body: ListView(
+        children: [
+          _buildOptionTitle(context),
+          dynamicHSpacer(30),
+          _buildTitle(context),
+          dynamicHSpacer(10),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Image.asset(
+                widget.deviceLoanCreationArgs.image,
+                width: 95,
+                height: 132,
+                package: 'shared_data_models',
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    dynamicHSpacer(10),
+                    CrayonPaymentText(
+                      key: Key('${_identifier}_' + detailDetail!.brand!),
                       text: TextUIDataModel(
-                        detailDetail!.memory! +
-                            "|" +
-                            detailDetail!.processor! +
-                            "|" +
-                            detailDetail!.operatingSystem!,
-                        styleVariant: CrayonPaymentTextStyleVariant.overline1,
-                        color: SU_carrier_message_color,
+                          detailDetail!.brand! +
+                              "-" +
+                              detailDetail!.modelNumber!,
+                          styleVariant: CrayonPaymentTextStyleVariant.overline1,
+                          color: AN_CardTitle,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    dynamicHSpacer(6),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * .6,
+                      child: CrayonPaymentText(
+                        key: Key('${_identifier}_' + detailDetail!.memory!),
+                        text: TextUIDataModel(
+                          detailDetail!.memory! +
+                              "|" +
+                              detailDetail!.processor! +
+                              "|" +
+                              detailDetail!.operatingSystem!,
+                          styleVariant: CrayonPaymentTextStyleVariant.overline1,
+                          color: SU_carrier_message_color,
+                        ),
                       ),
                     ),
-                  ),
-                  dynamicHSpacer(20),
-                ],
+                    dynamicHSpacer(20),
+                  ],
+                ),
               ),
-            ),
-          ],
-        ),
-        dynamicHSpacer(10),
-        Divider(),
-        dynamicHSpacer(10),
-        loanPreviewResponseModel == null ? SizedBox() : _loanDetails(context),
-        dynamicHSpacer(20),
-      ],
+            ],
+          ),
+          dynamicHSpacer(10),
+          Divider(),
+          dynamicHSpacer(10),
+          loanPreviewResponseModel == null
+              ? SizedBox()
+              : _loanDetails(context),
+          dynamicHSpacer(20),
+        ],
+      ),
     );
   }
 
@@ -196,9 +190,8 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
 
   Widget selectButton(DeviceLoanCreationCoordinator coordinator) {
     return CrayonPaymentDockedButton(
-      key: Key('Select'),
-      title:
-          "${'DLC_pay_now'.tr} ${loanPreviewResponseModel!.data!.totalAmountToBeRepaid} TZSHS",
+      key:  Key('Select'),
+      title: "${'DLC_pay_now'.tr} ${loanPreviewResponseModel!.data!.totalAmountToBeRepaid} TZSHS",
       // title: 'Pay Now 2000 TZHS',
       borderRadius: 8,
       height: CrayonPaymentDimensions.marginFortyEight,
@@ -206,9 +199,7 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
       textColor: White,
       textStyleVariant: CrayonPaymentTextStyleVariant.headline4,
       onPressed: () {
-        coordinator.navigateToDownPayment(
-            loanPreviewResponseModel!.data!.totalAmountToBeRepaid!.toString(),
-            detailDetail!.deviceId);
+        coordinator.navigateToDownPayment(loanPreviewResponseModel!.data!.totalAmountToBeRepaid!.toString(),detailDetail!.deviceId);
       },
     );
   }

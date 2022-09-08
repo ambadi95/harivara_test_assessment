@@ -3,6 +3,8 @@ import 'package:core/mobile_core.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_data_models/customer_details/response/get_customer_details_response/get_customer_details_response.dart';
 
+import 'package:flutter/foundation.dart';
+import 'package:flutter/src/widgets/focus_manager.dart';
 import 'package:shared_data_models/customer_onboard/region_district/region_response/datum.dart';
 import 'package:shared_data_models/customer_onboard/region_district/district_response/datum.dart'
     as b;
@@ -63,6 +65,7 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
 
 
   Future getRegion(UserType userType) async {
+
     var response = await _detailsUseCase.getRegion((p0) => null, userType);
     return response?.data;
   }
@@ -74,6 +77,7 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
   }
 
   void setGenderType(GenderType genderType) {
+
     state = DetailsState.onGenderTypeChoosen(genderType);
   }
 
@@ -101,7 +105,9 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
       String poBox,
       String region,
       String district) {
-    print("dfgfg${gender}");
+    if (kDebugMode) {
+      print("dfgfg$gender");
+    }
     var isnNameValid = _detailsUseCase.isValidName(name);
     var isMobileNoValid = mobNumber.isNotEmpty;
     var isDobValid = dob.isNotEmpty;
@@ -283,10 +289,6 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
         _detailsUseCase
             .saveCustomerMobileNumber(response.data!.mobileNo.toString());
         _detailsUseCase.saveNewCustomerName(response.data!.firstName.toString() + " " + response.data!.lastName.toString());
-      
-        
-        _detailsUseCase.saveClientId(response.data!.clientId.toString());
-      
         navigateToCreatePasscodeScreen(userType);
       } else {
         state = const DetailsState.initialState();

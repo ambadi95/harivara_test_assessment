@@ -20,6 +20,7 @@ mixin _$CrayonPaymentBottomSheetState {
   TResult when<TResult extends Object?>({
     required TResult Function(
             CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            bool isSvg,
             String? title,
             String? subtitle,
             List<String>? additionalText,
@@ -95,6 +96,7 @@ mixin _$CrayonPaymentBottomSheetState {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)
         customAmount,
   }) =>
@@ -103,6 +105,7 @@ mixin _$CrayonPaymentBottomSheetState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(
             CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            bool isSvg,
             String? title,
             String? subtitle,
             List<String>? additionalText,
@@ -177,6 +180,7 @@ mixin _$CrayonPaymentBottomSheetState {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) =>
@@ -185,6 +189,7 @@ mixin _$CrayonPaymentBottomSheetState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            bool isSvg,
             String? title,
             String? subtitle,
             List<String>? additionalText,
@@ -259,6 +264,7 @@ mixin _$CrayonPaymentBottomSheetState {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
@@ -343,6 +349,7 @@ abstract class _$$SheetInfoCopyWith<$Res> {
       __$$SheetInfoCopyWithImpl<$Res>;
   $Res call(
       {CrayonPaymentBottomSheetIcon bottomSheetIcon,
+      bool isSvg,
       String? title,
       String? subtitle,
       List<String>? additionalText,
@@ -365,6 +372,7 @@ class __$$SheetInfoCopyWithImpl<$Res>
   @override
   $Res call({
     Object? bottomSheetIcon = freezed,
+    Object? isSvg = freezed,
     Object? title = freezed,
     Object? subtitle = freezed,
     Object? additionalText = freezed,
@@ -377,6 +385,10 @@ class __$$SheetInfoCopyWithImpl<$Res>
           ? _value.bottomSheetIcon
           : bottomSheetIcon // ignore: cast_nullable_to_non_nullable
               as CrayonPaymentBottomSheetIcon,
+      isSvg: isSvg == freezed
+          ? _value.isSvg
+          : isSvg // ignore: cast_nullable_to_non_nullable
+              as bool,
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -410,6 +422,7 @@ class __$$SheetInfoCopyWithImpl<$Res>
 class _$SheetInfo extends SheetInfo {
   const _$SheetInfo(
       {required this.bottomSheetIcon,
+      this.isSvg = true,
       this.title,
       this.subtitle,
       final List<String>? additionalText,
@@ -422,6 +435,9 @@ class _$SheetInfo extends SheetInfo {
 
   @override
   final CrayonPaymentBottomSheetIcon bottomSheetIcon;
+  @override
+  @JsonKey()
+  final bool isSvg;
   @override
   final String? title;
   @override
@@ -452,7 +468,7 @@ class _$SheetInfo extends SheetInfo {
 
   @override
   String toString() {
-    return 'CrayonPaymentBottomSheetState.infoState(bottomSheetIcon: $bottomSheetIcon, title: $title, subtitle: $subtitle, additionalText: $additionalText, buttonOptions: $buttonOptions, autoCloseAfter: $autoCloseAfter, disableCloseButton: $disableCloseButton)';
+    return 'CrayonPaymentBottomSheetState.infoState(bottomSheetIcon: $bottomSheetIcon, isSvg: $isSvg, title: $title, subtitle: $subtitle, additionalText: $additionalText, buttonOptions: $buttonOptions, autoCloseAfter: $autoCloseAfter, disableCloseButton: $disableCloseButton)';
   }
 
   @override
@@ -462,6 +478,7 @@ class _$SheetInfo extends SheetInfo {
             other is _$SheetInfo &&
             const DeepCollectionEquality()
                 .equals(other.bottomSheetIcon, bottomSheetIcon) &&
+            const DeepCollectionEquality().equals(other.isSvg, isSvg) &&
             const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality().equals(other.subtitle, subtitle) &&
             const DeepCollectionEquality()
@@ -478,6 +495,7 @@ class _$SheetInfo extends SheetInfo {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(bottomSheetIcon),
+      const DeepCollectionEquality().hash(isSvg),
       const DeepCollectionEquality().hash(title),
       const DeepCollectionEquality().hash(subtitle),
       const DeepCollectionEquality().hash(_additionalText),
@@ -495,6 +513,7 @@ class _$SheetInfo extends SheetInfo {
   TResult when<TResult extends Object?>({
     required TResult Function(
             CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            bool isSvg,
             String? title,
             String? subtitle,
             List<String>? additionalText,
@@ -570,10 +589,11 @@ class _$SheetInfo extends SheetInfo {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)
         customAmount,
   }) {
-    return infoState(bottomSheetIcon, title, subtitle, additionalText,
+    return infoState(bottomSheetIcon, isSvg, title, subtitle, additionalText,
         buttonOptions, autoCloseAfter, disableCloseButton);
   }
 
@@ -582,6 +602,7 @@ class _$SheetInfo extends SheetInfo {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(
             CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            bool isSvg,
             String? title,
             String? subtitle,
             List<String>? additionalText,
@@ -656,11 +677,12 @@ class _$SheetInfo extends SheetInfo {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) {
-    return infoState?.call(bottomSheetIcon, title, subtitle, additionalText,
-        buttonOptions, autoCloseAfter, disableCloseButton);
+    return infoState?.call(bottomSheetIcon, isSvg, title, subtitle,
+        additionalText, buttonOptions, autoCloseAfter, disableCloseButton);
   }
 
   @override
@@ -668,6 +690,7 @@ class _$SheetInfo extends SheetInfo {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            bool isSvg,
             String? title,
             String? subtitle,
             List<String>? additionalText,
@@ -742,12 +765,13 @@ class _$SheetInfo extends SheetInfo {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
   }) {
     if (infoState != null) {
-      return infoState(bottomSheetIcon, title, subtitle, additionalText,
+      return infoState(bottomSheetIcon, isSvg, title, subtitle, additionalText,
           buttonOptions, autoCloseAfter, disableCloseButton);
     }
     return orElse();
@@ -821,6 +845,7 @@ class _$SheetInfo extends SheetInfo {
 abstract class SheetInfo extends CrayonPaymentBottomSheetState {
   const factory SheetInfo(
       {required final CrayonPaymentBottomSheetIcon bottomSheetIcon,
+      final bool isSvg,
       final String? title,
       final String? subtitle,
       final List<String>? additionalText,
@@ -830,6 +855,7 @@ abstract class SheetInfo extends CrayonPaymentBottomSheetState {
   const SheetInfo._() : super._();
 
   CrayonPaymentBottomSheetIcon get bottomSheetIcon;
+  bool get isSvg;
   String? get title;
   String? get subtitle;
   List<String>? get additionalText;
@@ -990,6 +1016,7 @@ class _$SheetInfoWrap extends SheetInfoWrap {
   TResult when<TResult extends Object?>({
     required TResult Function(
             CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            bool isSvg,
             String? title,
             String? subtitle,
             List<String>? additionalText,
@@ -1065,6 +1092,7 @@ class _$SheetInfoWrap extends SheetInfoWrap {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)
         customAmount,
   }) {
@@ -1077,6 +1105,7 @@ class _$SheetInfoWrap extends SheetInfoWrap {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(
             CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            bool isSvg,
             String? title,
             String? subtitle,
             List<String>? additionalText,
@@ -1151,6 +1180,7 @@ class _$SheetInfoWrap extends SheetInfoWrap {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) {
@@ -1163,6 +1193,7 @@ class _$SheetInfoWrap extends SheetInfoWrap {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            bool isSvg,
             String? title,
             String? subtitle,
             List<String>? additionalText,
@@ -1237,6 +1268,7 @@ class _$SheetInfoWrap extends SheetInfoWrap {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
@@ -1425,6 +1457,7 @@ class _$SheetSelection extends SheetSelection {
   TResult when<TResult extends Object?>({
     required TResult Function(
             CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            bool isSvg,
             String? title,
             String? subtitle,
             List<String>? additionalText,
@@ -1500,6 +1533,7 @@ class _$SheetSelection extends SheetSelection {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)
         customAmount,
   }) {
@@ -1511,6 +1545,7 @@ class _$SheetSelection extends SheetSelection {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(
             CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            bool isSvg,
             String? title,
             String? subtitle,
             List<String>? additionalText,
@@ -1585,6 +1620,7 @@ class _$SheetSelection extends SheetSelection {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) {
@@ -1596,6 +1632,7 @@ class _$SheetSelection extends SheetSelection {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            bool isSvg,
             String? title,
             String? subtitle,
             List<String>? additionalText,
@@ -1670,6 +1707,7 @@ class _$SheetSelection extends SheetSelection {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
@@ -1881,6 +1919,7 @@ class _$SheetWaiting extends SheetWaiting {
   TResult when<TResult extends Object?>({
     required TResult Function(
             CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            bool isSvg,
             String? title,
             String? subtitle,
             List<String>? additionalText,
@@ -1956,6 +1995,7 @@ class _$SheetWaiting extends SheetWaiting {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)
         customAmount,
   }) {
@@ -1968,6 +2008,7 @@ class _$SheetWaiting extends SheetWaiting {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(
             CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            bool isSvg,
             String? title,
             String? subtitle,
             List<String>? additionalText,
@@ -2042,6 +2083,7 @@ class _$SheetWaiting extends SheetWaiting {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) {
@@ -2054,6 +2096,7 @@ class _$SheetWaiting extends SheetWaiting {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            bool isSvg,
             String? title,
             String? subtitle,
             List<String>? additionalText,
@@ -2128,6 +2171,7 @@ class _$SheetWaiting extends SheetWaiting {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
@@ -2294,6 +2338,7 @@ class _$SheetSimpleWaiting extends SheetSimpleWaiting {
   TResult when<TResult extends Object?>({
     required TResult Function(
             CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            bool isSvg,
             String? title,
             String? subtitle,
             List<String>? additionalText,
@@ -2369,6 +2414,7 @@ class _$SheetSimpleWaiting extends SheetSimpleWaiting {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)
         customAmount,
   }) {
@@ -2380,6 +2426,7 @@ class _$SheetSimpleWaiting extends SheetSimpleWaiting {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(
             CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            bool isSvg,
             String? title,
             String? subtitle,
             List<String>? additionalText,
@@ -2454,6 +2501,7 @@ class _$SheetSimpleWaiting extends SheetSimpleWaiting {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) {
@@ -2465,6 +2513,7 @@ class _$SheetSimpleWaiting extends SheetSimpleWaiting {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            bool isSvg,
             String? title,
             String? subtitle,
             List<String>? additionalText,
@@ -2539,6 +2588,7 @@ class _$SheetSimpleWaiting extends SheetSimpleWaiting {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
@@ -2711,6 +2761,7 @@ class _$SheetMultipleSelection extends SheetMultipleSelection {
   TResult when<TResult extends Object?>({
     required TResult Function(
             CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            bool isSvg,
             String? title,
             String? subtitle,
             List<String>? additionalText,
@@ -2786,6 +2837,7 @@ class _$SheetMultipleSelection extends SheetMultipleSelection {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)
         customAmount,
   }) {
@@ -2797,6 +2849,7 @@ class _$SheetMultipleSelection extends SheetMultipleSelection {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(
             CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            bool isSvg,
             String? title,
             String? subtitle,
             List<String>? additionalText,
@@ -2871,6 +2924,7 @@ class _$SheetMultipleSelection extends SheetMultipleSelection {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) {
@@ -2882,6 +2936,7 @@ class _$SheetMultipleSelection extends SheetMultipleSelection {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            bool isSvg,
             String? title,
             String? subtitle,
             List<String>? additionalText,
@@ -2956,6 +3011,7 @@ class _$SheetMultipleSelection extends SheetMultipleSelection {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
@@ -3138,6 +3194,7 @@ class _$SheetDatePicker extends SheetDatePicker {
   TResult when<TResult extends Object?>({
     required TResult Function(
             CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            bool isSvg,
             String? title,
             String? subtitle,
             List<String>? additionalText,
@@ -3213,6 +3270,7 @@ class _$SheetDatePicker extends SheetDatePicker {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)
         customAmount,
   }) {
@@ -3224,6 +3282,7 @@ class _$SheetDatePicker extends SheetDatePicker {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(
             CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            bool isSvg,
             String? title,
             String? subtitle,
             List<String>? additionalText,
@@ -3298,6 +3357,7 @@ class _$SheetDatePicker extends SheetDatePicker {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) {
@@ -3310,6 +3370,7 @@ class _$SheetDatePicker extends SheetDatePicker {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            bool isSvg,
             String? title,
             String? subtitle,
             List<String>? additionalText,
@@ -3384,6 +3445,7 @@ class _$SheetDatePicker extends SheetDatePicker {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
@@ -3630,6 +3692,7 @@ class _$SheetMultiFilters extends SheetMultiFilters {
   TResult when<TResult extends Object?>({
     required TResult Function(
             CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            bool isSvg,
             String? title,
             String? subtitle,
             List<String>? additionalText,
@@ -3705,6 +3768,7 @@ class _$SheetMultiFilters extends SheetMultiFilters {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)
         customAmount,
   }) {
@@ -3717,6 +3781,7 @@ class _$SheetMultiFilters extends SheetMultiFilters {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(
             CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            bool isSvg,
             String? title,
             String? subtitle,
             List<String>? additionalText,
@@ -3791,6 +3856,7 @@ class _$SheetMultiFilters extends SheetMultiFilters {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) {
@@ -3803,6 +3869,7 @@ class _$SheetMultiFilters extends SheetMultiFilters {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            bool isSvg,
             String? title,
             String? subtitle,
             List<String>? additionalText,
@@ -3877,6 +3944,7 @@ class _$SheetMultiFilters extends SheetMultiFilters {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
@@ -4065,6 +4133,7 @@ class _$CloseBottomSheet extends CloseBottomSheet {
   TResult when<TResult extends Object?>({
     required TResult Function(
             CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            bool isSvg,
             String? title,
             String? subtitle,
             List<String>? additionalText,
@@ -4140,6 +4209,7 @@ class _$CloseBottomSheet extends CloseBottomSheet {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)
         customAmount,
   }) {
@@ -4151,6 +4221,7 @@ class _$CloseBottomSheet extends CloseBottomSheet {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(
             CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            bool isSvg,
             String? title,
             String? subtitle,
             List<String>? additionalText,
@@ -4225,6 +4296,7 @@ class _$CloseBottomSheet extends CloseBottomSheet {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) {
@@ -4237,6 +4309,7 @@ class _$CloseBottomSheet extends CloseBottomSheet {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            bool isSvg,
             String? title,
             String? subtitle,
             List<String>? additionalText,
@@ -4311,6 +4384,7 @@ class _$CloseBottomSheet extends CloseBottomSheet {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
@@ -4560,6 +4634,7 @@ class _$AgentEnrollmentSheet extends AgentEnrollmentSheet {
   TResult when<TResult extends Object?>({
     required TResult Function(
             CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            bool isSvg,
             String? title,
             String? subtitle,
             List<String>? additionalText,
@@ -4635,6 +4710,7 @@ class _$AgentEnrollmentSheet extends AgentEnrollmentSheet {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)
         customAmount,
   }) {
@@ -4647,6 +4723,7 @@ class _$AgentEnrollmentSheet extends AgentEnrollmentSheet {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(
             CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            bool isSvg,
             String? title,
             String? subtitle,
             List<String>? additionalText,
@@ -4721,6 +4798,7 @@ class _$AgentEnrollmentSheet extends AgentEnrollmentSheet {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) {
@@ -4733,6 +4811,7 @@ class _$AgentEnrollmentSheet extends AgentEnrollmentSheet {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            bool isSvg,
             String? title,
             String? subtitle,
             List<String>? additionalText,
@@ -4807,6 +4886,7 @@ class _$AgentEnrollmentSheet extends AgentEnrollmentSheet {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
@@ -5088,6 +5168,7 @@ class _$ChangeLanguageBottomSheet extends ChangeLanguageBottomSheet {
   TResult when<TResult extends Object?>({
     required TResult Function(
             CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            bool isSvg,
             String? title,
             String? subtitle,
             List<String>? additionalText,
@@ -5163,6 +5244,7 @@ class _$ChangeLanguageBottomSheet extends ChangeLanguageBottomSheet {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)
         customAmount,
   }) {
@@ -5175,6 +5257,7 @@ class _$ChangeLanguageBottomSheet extends ChangeLanguageBottomSheet {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(
             CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            bool isSvg,
             String? title,
             String? subtitle,
             List<String>? additionalText,
@@ -5249,6 +5332,7 @@ class _$ChangeLanguageBottomSheet extends ChangeLanguageBottomSheet {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) {
@@ -5268,6 +5352,7 @@ class _$ChangeLanguageBottomSheet extends ChangeLanguageBottomSheet {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            bool isSvg,
             String? title,
             String? subtitle,
             List<String>? additionalText,
@@ -5342,6 +5427,7 @@ class _$ChangeLanguageBottomSheet extends ChangeLanguageBottomSheet {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
@@ -5514,6 +5600,7 @@ class _$LoanRepaymentBottomSheet extends LoanRepaymentBottomSheet {
   TResult when<TResult extends Object?>({
     required TResult Function(
             CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            bool isSvg,
             String? title,
             String? subtitle,
             List<String>? additionalText,
@@ -5589,6 +5676,7 @@ class _$LoanRepaymentBottomSheet extends LoanRepaymentBottomSheet {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)
         customAmount,
   }) {
@@ -5600,6 +5688,7 @@ class _$LoanRepaymentBottomSheet extends LoanRepaymentBottomSheet {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(
             CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            bool isSvg,
             String? title,
             String? subtitle,
             List<String>? additionalText,
@@ -5674,6 +5763,7 @@ class _$LoanRepaymentBottomSheet extends LoanRepaymentBottomSheet {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) {
@@ -5685,6 +5775,7 @@ class _$LoanRepaymentBottomSheet extends LoanRepaymentBottomSheet {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            bool isSvg,
             String? title,
             String? subtitle,
             List<String>? additionalText,
@@ -5759,6 +5850,7 @@ class _$LoanRepaymentBottomSheet extends LoanRepaymentBottomSheet {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
@@ -5857,6 +5949,7 @@ abstract class _$$CustomAmountBottomSheetCopyWith<$Res> {
       dynamic Function(String) enteredAmount,
       List<ButtonOptions>? buttonOptions,
       bool isAmountValidated,
+      bool showError,
       dynamic Function(String) onSelectedLabel});
 }
 
@@ -5879,6 +5972,7 @@ class __$$CustomAmountBottomSheetCopyWithImpl<$Res>
     Object? enteredAmount = freezed,
     Object? buttonOptions = freezed,
     Object? isAmountValidated = freezed,
+    Object? showError = freezed,
     Object? onSelectedLabel = freezed,
   }) {
     return _then(_$CustomAmountBottomSheet(
@@ -5902,6 +5996,10 @@ class __$$CustomAmountBottomSheetCopyWithImpl<$Res>
           ? _value.isAmountValidated
           : isAmountValidated // ignore: cast_nullable_to_non_nullable
               as bool,
+      showError: showError == freezed
+          ? _value.showError
+          : showError // ignore: cast_nullable_to_non_nullable
+              as bool,
       onSelectedLabel: onSelectedLabel == freezed
           ? _value.onSelectedLabel
           : onSelectedLabel // ignore: cast_nullable_to_non_nullable
@@ -5919,6 +6017,7 @@ class _$CustomAmountBottomSheet extends CustomAmountBottomSheet {
       required this.enteredAmount,
       final List<ButtonOptions>? buttonOptions,
       this.isAmountValidated = false,
+      this.showError = false,
       required this.onSelectedLabel})
       : _buttonOptions = buttonOptions,
         super._();
@@ -5942,11 +6041,14 @@ class _$CustomAmountBottomSheet extends CustomAmountBottomSheet {
   @JsonKey()
   final bool isAmountValidated;
   @override
+  @JsonKey()
+  final bool showError;
+  @override
   final dynamic Function(String) onSelectedLabel;
 
   @override
   String toString() {
-    return 'CrayonPaymentBottomSheetState.customAmount(title: $title, outstandingAmount: $outstandingAmount, enteredAmount: $enteredAmount, buttonOptions: $buttonOptions, isAmountValidated: $isAmountValidated, onSelectedLabel: $onSelectedLabel)';
+    return 'CrayonPaymentBottomSheetState.customAmount(title: $title, outstandingAmount: $outstandingAmount, enteredAmount: $enteredAmount, buttonOptions: $buttonOptions, isAmountValidated: $isAmountValidated, showError: $showError, onSelectedLabel: $onSelectedLabel)';
   }
 
   @override
@@ -5963,6 +6065,7 @@ class _$CustomAmountBottomSheet extends CustomAmountBottomSheet {
                 .equals(other._buttonOptions, _buttonOptions) &&
             const DeepCollectionEquality()
                 .equals(other.isAmountValidated, isAmountValidated) &&
+            const DeepCollectionEquality().equals(other.showError, showError) &&
             (identical(other.onSelectedLabel, onSelectedLabel) ||
                 other.onSelectedLabel == onSelectedLabel));
   }
@@ -5975,6 +6078,7 @@ class _$CustomAmountBottomSheet extends CustomAmountBottomSheet {
       enteredAmount,
       const DeepCollectionEquality().hash(_buttonOptions),
       const DeepCollectionEquality().hash(isAmountValidated),
+      const DeepCollectionEquality().hash(showError),
       onSelectedLabel);
 
   @JsonKey(ignore: true)
@@ -5988,6 +6092,7 @@ class _$CustomAmountBottomSheet extends CustomAmountBottomSheet {
   TResult when<TResult extends Object?>({
     required TResult Function(
             CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            bool isSvg,
             String? title,
             String? subtitle,
             List<String>? additionalText,
@@ -6063,11 +6168,12 @@ class _$CustomAmountBottomSheet extends CustomAmountBottomSheet {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)
         customAmount,
   }) {
     return customAmount(title, outstandingAmount, enteredAmount, buttonOptions,
-        isAmountValidated, onSelectedLabel);
+        isAmountValidated, showError, onSelectedLabel);
   }
 
   @override
@@ -6075,6 +6181,7 @@ class _$CustomAmountBottomSheet extends CustomAmountBottomSheet {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(
             CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            bool isSvg,
             String? title,
             String? subtitle,
             List<String>? additionalText,
@@ -6149,11 +6256,12 @@ class _$CustomAmountBottomSheet extends CustomAmountBottomSheet {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) {
     return customAmount?.call(title, outstandingAmount, enteredAmount,
-        buttonOptions, isAmountValidated, onSelectedLabel);
+        buttonOptions, isAmountValidated, showError, onSelectedLabel);
   }
 
   @override
@@ -6161,6 +6269,7 @@ class _$CustomAmountBottomSheet extends CustomAmountBottomSheet {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             CrayonPaymentBottomSheetIcon bottomSheetIcon,
+            bool isSvg,
             String? title,
             String? subtitle,
             List<String>? additionalText,
@@ -6235,13 +6344,14 @@ class _$CustomAmountBottomSheet extends CustomAmountBottomSheet {
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
+            bool showError,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
   }) {
     if (customAmount != null) {
       return customAmount(title, outstandingAmount, enteredAmount,
-          buttonOptions, isAmountValidated, onSelectedLabel);
+          buttonOptions, isAmountValidated, showError, onSelectedLabel);
     }
     return orElse();
   }
@@ -6318,6 +6428,7 @@ abstract class CustomAmountBottomSheet extends CrayonPaymentBottomSheetState {
           required final dynamic Function(String) enteredAmount,
           final List<ButtonOptions>? buttonOptions,
           final bool isAmountValidated,
+          final bool showError,
           required final dynamic Function(String) onSelectedLabel}) =
       _$CustomAmountBottomSheet;
   const CustomAmountBottomSheet._() : super._();
@@ -6327,6 +6438,7 @@ abstract class CustomAmountBottomSheet extends CrayonPaymentBottomSheetState {
   dynamic Function(String) get enteredAmount;
   List<ButtonOptions>? get buttonOptions;
   bool get isAmountValidated;
+  bool get showError;
   dynamic Function(String) get onSelectedLabel;
   @JsonKey(ignore: true)
   _$$CustomAmountBottomSheetCopyWith<_$CustomAmountBottomSheet> get copyWith =>

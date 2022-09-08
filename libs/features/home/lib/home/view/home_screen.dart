@@ -533,7 +533,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
 
   String greeting() {
     var hour = DateTime.now().hour;
-    if (hour < 12) {
+    if (hour < 11) {
       return 'HS_GoodMorning'.tr;
     }
     if (hour < 17) {
