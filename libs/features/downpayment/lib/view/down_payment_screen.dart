@@ -89,7 +89,7 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
               username;
             });
             coordinator.setData(context,widget.downPaymentScreenArgs);
-            coordinator.makePayment(context,widget.downPaymentScreenArgs.amount);
+            // coordinator.makePayment(context,widget.downPaymentScreenArgs.amount);
           },
           onStateListenCallback: (preState, newState) => {
                 _listenToStateChanges(
@@ -471,7 +471,7 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
        }else {
          if (newState.waitForPayment == 1 && newState.paymentRequested == 1 &&
              newState.createLoan == 0) {
-           Future.delayed(const Duration(seconds: 10), () {
+           Future.delayed(const Duration(seconds: 20), () {
              downPaymentCoordinator!.checkPaymentStatus(context);
            });
          }

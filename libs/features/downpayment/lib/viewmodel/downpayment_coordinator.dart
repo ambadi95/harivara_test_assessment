@@ -259,6 +259,20 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
         waitForPayment: downPaymentScreenArgs.waitForPayment,
         loanApproved: downPaymentScreenArgs.loanApproved,
         paymentReceived: downPaymentScreenArgs.paymentReceived);
+
+
+    if(downPaymentScreenArgs.title=="WORK_FLOW"){
+          if(downPaymentScreenArgs.paymentRequested == 1){
+            checkPaymentStatus(context);
+          }else{
+            makePayment(context, downPaymentScreenArgs.amount);
+          }
+
+
+    }else{
+      makePayment(context, downPaymentScreenArgs.amount);
+
+    }
   }
 
 
