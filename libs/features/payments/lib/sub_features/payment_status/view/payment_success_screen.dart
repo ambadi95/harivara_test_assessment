@@ -32,39 +32,41 @@ class PaymentSuccessScreen extends StatelessWidget {
       PaymentStatusState state, BuildContext context) {
     return Scaffold(
       body: Container(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Column(
-              children: [
-                SizedBox(height: MediaQuery.of(context).size.height * 0.20),
-                Image.asset(ES_succes_icon, height: 90, width: 90),
-                SizedBox(height: 28),
-                _buildTitle(screenArgs.amount),
-                SizedBox(height: 16),
-                _buildReferenceId(screenArgs.paymentId),
-                SizedBox(height: 28),
-                _buildDescription(context),
-                SizedBox(height: 32),
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: MediaQuery.of(context).size.width * .12),
-                  child: Divider(),
-                ),
-                SizedBox(height: 32),
-                _buildSubTitle(context),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.15),
-              ],
-            ),
-            Column(
-              children: [
-                _buildCustomerSupport(),
-                SizedBox(height: 20),
-                _buildCloseButton(context,coordinator),
-                SizedBox(height: 20),
-              ],
-            )
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                children: [
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.20),
+                  Image.asset(ES_succes_icon, height: 90, width: 90),
+                  SizedBox(height: 28),
+                  _buildTitle(screenArgs.amount),
+                  SizedBox(height: 16),
+                  _buildReferenceId(screenArgs.paymentId),
+                  SizedBox(height: 28),
+                  _buildDescription(context),
+                  SizedBox(height: 32),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: MediaQuery.of(context).size.width * .12),
+                    child: Divider(),
+                  ),
+                  SizedBox(height: 32),
+                  _buildSubTitle(context),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.15),
+                ],
+              ),
+              Column(
+                children: [
+                  _buildCustomerSupport(),
+                  SizedBox(height: 20),
+                  _buildCloseButton(context,coordinator),
+                  SizedBox(height: 20),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );

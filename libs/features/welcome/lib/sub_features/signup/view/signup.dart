@@ -58,8 +58,8 @@ class _SignUpState extends State<SignUp> {
                           //     ? _carrierText()
                           //     :
                           const SizedBox(
-                                  height: 14,
-                                ),
+                            height: 14,
+                          ),
                           const SizedBox(
                             height: 23,
                           ),
@@ -324,6 +324,7 @@ class _SignUpState extends State<SignUp> {
     // ]
     //   );
   }
+
   //
   // Widget _carrierText() {
   //   return Text(
@@ -341,7 +342,7 @@ class _SignUpState extends State<SignUp> {
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
         onTap: () async {
-          if(_isBtnEnabled) {
+          if (_isBtnEnabled) {
             coordinator.isValidNidaNumber(nidaNumber.text);
             coordinator.isValidMobileNumber(mobileNumber.text);
             coordinator.isValidAgentId(agentId.text);

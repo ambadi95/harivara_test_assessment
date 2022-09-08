@@ -36,6 +36,13 @@ class _LoanDetailScreenState extends State<LoanDetailScreen> {
   final String _identifier = 'loan_detail-screen';
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    print(widget.loanDetailArgs.loanDetailResponse.toJson());
+  }
+
+  @override
   Widget build(BuildContext context) =>
       BaseView<LoanDetailCoordinator, LoanDetailState>(
           setupViewModel: (coordinator) {
@@ -127,7 +134,7 @@ class _LoanDetailScreenState extends State<LoanDetailScreen> {
         _getLoanDetailWithCurrencyWidget(
             title: 'LD_Loan__Detail_Daily_Repayment_Amount'.tr,
             value:
-                widget.loanDetailArgs.loanDetailResponse.data?.repaymentFee ??
+                widget.loanDetailArgs.loanDetailResponse.data?.dailyRepaymentAmount ??
                     "-"),
         _getSpaceBetweenWidget(4),
         _getLoanDetailWithCurrencyWidget(
@@ -144,7 +151,7 @@ class _LoanDetailScreenState extends State<LoanDetailScreen> {
         _getLoanDetailWidget(
             title: 'LD_Loan_Detail_Start_Date'.tr,
             value:
-            formattDate(widget.loanDetailArgs.loanDetailResponse.data?.loanStartDate)),
+            widget.loanDetailArgs.loanDetailResponse.data?.loanStartDate??"-"),
         _getSpaceBetweenWidget(4),
         _getLoanDetailWidget(
             title: 'LD_Loan_Detail_Final_Date'.tr,
@@ -166,7 +173,7 @@ class _LoanDetailScreenState extends State<LoanDetailScreen> {
         _getSpaceBetweenWidget(8),
         _buildTermsAndConditionWidget(context, coordinator),
         _getSpaceBetweenWidget(10),
-        _buildNoteWidget(context),
+      //  _buildNoteWidget(context),
         _getSpaceBetweenWidget(10),
       ],
     );
@@ -189,60 +196,60 @@ class _LoanDetailScreenState extends State<LoanDetailScreen> {
       ),
       child: Row(
         children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                title,
-                style: const TextStyle(
-                  color: White,
-                  fontSize: 12,
-                  fontWeight: FontWeight.w500,
-                  fontFamily: 'Montserrat',
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: const TextStyle(
+                    color: White,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w500,
+                    fontFamily: 'Montserrat',
+                  ),
                 ),
-              ),
-              _getSpaceBetweenWidget(2),
-              Text(
-                loanId,
-                style: const TextStyle(
-                  color: White,
-                  fontSize: 20,
-                  fontWeight: FontWeight.w600,
-                  fontFamily: 'Montserrat',
+                _getSpaceBetweenWidget(2),
+                Text(
+                  loanId,
+                  style: const TextStyle(
+                    color: White,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                    fontFamily: 'Montserrat',
+                  ),
                 ),
-              ),
-              _getSpaceBetweenWidget(4),
-              Text(
-                deviceName,
-                style: const TextStyle(
-                  color: White,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                  fontFamily: 'Montserrat',
+                _getSpaceBetweenWidget(4),
+                Text(
+                  deviceName,
+                  style: const TextStyle(
+                    color: White,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    fontFamily: 'Montserrat',
+                  ),
                 ),
-              ),
-              _getSpaceBetweenWidget(2),
-              Text(
-                deviceStats,
-                style: const TextStyle(
-                  color: White,
-                  fontSize: 10,
-                  fontWeight: FontWeight.w400,
-                  fontFamily: 'Montserrat',
+                _getSpaceBetweenWidget(2),
+                Text(
+                  deviceStats,
+                  style: const TextStyle(
+                    color: White,
+                    fontSize: 10,
+                    fontWeight: FontWeight.w400,
+                    fontFamily: 'Montserrat',
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-          Container(width: MediaQuery.of(context).size.width*0.60,
-              child:
           Align(
               alignment: Alignment.centerRight,
               child: Image(
             image: AssetImage(deviceImage),
             width: 130,
             //fit: BoxFit.cover,
-          ))),
+          )),
         ],
       ),
     );

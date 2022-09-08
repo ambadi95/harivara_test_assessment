@@ -143,8 +143,9 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
           }
         } else
         if (signUpArguments.signupType == SignupType.resetPasscodeCustomer) {
+
           var detailResponse = await _signupUseCase.getCustomerDetails(
-              nindaNumber, mobileNumber, (p0) => null);
+              nindaNumber, "+255$mobileNumber", (p0) => null);
           if (detailResponse?.status == true) {
             await _signupUseCase
                 .saveCustomerId(detailResponse!.data?.customerId.toString());
