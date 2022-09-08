@@ -7,6 +7,7 @@ import 'package:device_option/view/device_option_screen.dart';
 import 'package:downpayment/view/down_payment_screen.dart';
 import 'package:home/home/home_screen_arguments.dart';
 import 'package:home/home/view/home_screen.dart';
+import 'package:scanqrcode/view/scanqrcode_screen.dart';
 import 'package:shared_data_models/kyc/kyc_data_model.dart';
 import 'package:shared_data_models/kyc/kyc_type.dart';
 import 'package:kyc/subfeatures/kycmain/view/kyc_credit_main_screen.dart';
@@ -189,7 +190,7 @@ class VerifyOtpNavigationHandler with ErrorHandler {
 
   navigateToDownPaymentScreen({String? deviceId,String? amount,num? paymentStatus}) {
     var arguments = DownPaymentScreenArgs(
-        int.parse(deviceId!), amount!, "WORK_FLOW", "",paymentStatus!,paymentStatus!,0,0,0);
+        int.parse(deviceId!), amount!, "WORK_FLOW", "",paymentStatus!,paymentStatus,0,0,0);
     _navigationManager.navigateTo(
         DownPaymentScreen.viewPath, const NavigationType.push(),
         arguments: arguments);
@@ -223,4 +224,15 @@ class VerifyOtpNavigationHandler with ErrorHandler {
   Future<void> goBack() async {
     _navigationManager.goBack();
   }
+
+
+  Future<void> navigateToScanQrCode(int? deviceId) async {
+    var arguments = deviceId;
+    _navigationManager.navigateTo(
+        ScanQrCodeScreen.viewPath,
+        const NavigationType.push(),
+        arguments: arguments
+    );
+  }
+
 }

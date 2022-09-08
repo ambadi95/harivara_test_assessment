@@ -451,7 +451,13 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
       case "Downpayment_Success":
         try {
           _saveData(workFlowStatusResponse);
-        } catch (e) {}
+
+          await _navigationHandler.navigateToScanQrCode(
+              int.parse(workFlowStatusResponse.data!.data[2].toString()));
+        } catch (e) {
+          return _showAlertForErrorMessage(
+              "Something went wrong,Please try again later!");
+        }
         // _navigationHandler.navigateToDownPaymentScreen();
         break;
       case "Downpayment_Failed":

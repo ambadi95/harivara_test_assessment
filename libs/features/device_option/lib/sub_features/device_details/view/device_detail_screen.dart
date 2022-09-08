@@ -140,6 +140,16 @@ class _DeviceDetailScreenState extends State<DeviceDetailScreen> {
           // dynamicHSpacer(15),
           // _membershipTermButton(context),
           dynamicHSpacer(22),
+
+          CrayonPaymentText(
+              key: Key('${_identifier}_DD_TERMS'),
+              text: TextUIDataModel('T_C_NOTE'.tr,
+                  styleVariant: CrayonPaymentTextStyleVariant.headline6,
+                  color: DD_TextLabel,
+                  fontWeight: FontWeight.w600)),
+
+          dynamicHSpacer(22),
+
           widget.userType == UserType.Customer ? SizedBox() :
           selectButton(coordinator),
           dynamicHSpacer(22),
