@@ -224,7 +224,7 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
         if (userType == UserType.Customer) {
           state = currentState.copyWith(isLoading: true);
           var response = await _passcodeUseCase.savePasscode(newPasscode,
-              userType == UserType.Customer ? "Customer" : "Agnet", (
+              userType == UserType.Customer ? "Customer" : "Agent", (
                   p0) => null);
           if (response!.status == true) {
             var loginResponse =

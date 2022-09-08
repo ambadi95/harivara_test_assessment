@@ -143,14 +143,13 @@ class _DetailsScreenState extends State<DetailsScreen> {
               profession.text = customerDetail!.data!.profession!;
               emailId.text = customerDetail!.data!.emailId!;
               address.text = customerDetail!.data!.address!;
-              poBox.text = customerDetail!.data!.poBoxNumber!;
+             poBox.text = customerDetail!.data!.organization ?? "";
               district.text = customerDetail!.data!.district!;
               region.text = customerDetail!.data!.region!;
               gender.text = customerDetail!.data!.gender!;
 
               if (customerDetail!.data != null) {
                 coordinator.isValidDob(dob.text);
-
                 coordinator.isValidDistrict(district.text);
                 coordinator.isValidRegion(region.text);
               }
@@ -159,6 +158,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 await coordinator.getDistrict(_region!.id!, widget.userType);
                 districtDropDown = getDistrictDropDownData(dis);
                 coordinator.fetchDistrictState(customerDetail!.data!.district!);
+                setState(() {
+                });
               }
             }
           },

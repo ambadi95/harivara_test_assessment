@@ -120,7 +120,7 @@ class CustomerDetailsUseCase extends BaseDataProvider {
       address: address,
       profession: profession,
       emailId: emailId,
-      poBoxNumber: poBox,
+      organization: poBox,
       region: region,
       district: district,
     );

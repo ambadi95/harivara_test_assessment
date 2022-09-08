@@ -34,29 +34,24 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
         const GenderType(3, 'Prefer not to say'),
       ];
 
-  Future<GetCustomerDetailsResponse> getCustomerDetail(List<DropdownMenuItem<Datum>> regionDropDown, userType)async{
+  Future<GetCustomerDetailsResponse> getCustomerDetail(List<DropdownMenuItem<Datum>> regionDropDown, userType)async {
     state = const DetailsState.LoadingState();
-    var customerResponse = await _detailsUseCase.getCustomerDetailsByMobileNumber( (p0) => null);
-    if(customerResponse!.status == true ){
+    var customerResponse = await _detailsUseCase
+        .getCustomerDetailsByMobileNumber((p0) => null);
+    if (customerResponse!.status == true) {
       state = const DetailsState.successState();
-      if(customerResponse.data !=null) {
-
-        if(customerResponse.data!.gender?.isEmptyOrNull==false){
-          state =
-              DetailsState.onGenderTypeFetched(customerResponse.data!.gender!);
-        }else if(customerResponse.data!.region?.isEmptyOrNull==false){
-          state = DetailsState.onRegionFetched(customerResponse.data!.region!);
-
-        }
-
+      if (customerResponse.data != null) {
+        state =
+            DetailsState.onGenderTypeFetched(customerResponse.data!.gender!);
+        state = DetailsState.onRegionFetched(customerResponse.data!.region!);
       }
-      return customerResponse;
-    }else{
-      state = const DetailsState.successState();
-     print('failed');
-     return customerResponse;
+        return customerResponse;
+      } else {
+        state = const DetailsState.successState();
+        print('failed');
+        return customerResponse;
+      }
     }
-  }
 
   void fetchDistrictState(String district) {
     state = DetailsState.onDistrictFetched(district);

@@ -15,7 +15,7 @@ class CustomerDetailsRequest extends Equatable {
   final String? gender;
   final String? profession;
   final String? emailId;
-  final String? poBoxNumber;
+  final String? organization;
   final String? region;
   final String? district;
 
@@ -30,7 +30,7 @@ class CustomerDetailsRequest extends Equatable {
     this.gender,
     this.profession,
     this.emailId,
-    this.poBoxNumber,
+    this.organization,
     this.region,
     this.district,
   });
@@ -52,7 +52,7 @@ class CustomerDetailsRequest extends Equatable {
     String? gender,
     String? profession,
     String? emailId,
-    String? poBoxNumber,
+    String? organization,
     String? region,
     String? district,
   }) {
@@ -67,7 +67,7 @@ class CustomerDetailsRequest extends Equatable {
       gender: gender ?? this.gender,
       profession: profession ?? this.profession,
       emailId: emailId ?? this.emailId,
-      poBoxNumber: poBoxNumber ?? this.poBoxNumber,
+      organization: organization ?? this.organization,
       region: region ?? this.region,
       district: district ?? this.district,
     );
@@ -89,7 +89,7 @@ class CustomerDetailsRequest extends Equatable {
       gender,
       profession,
       emailId,
-      poBoxNumber,
+      organization,
       region,
       district,
     ];
