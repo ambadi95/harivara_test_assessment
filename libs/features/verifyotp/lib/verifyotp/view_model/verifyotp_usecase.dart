@@ -1,5 +1,6 @@
 import 'package:config/Config.dart';
 import 'package:core/mobile_core.dart';
+import 'package:shared_data_models/customer_details/response/get_customer_details_response/get_customer_details_response.dart';
 import 'package:shared_data_models/welcome/otp/request/otp_request.dart';
 import 'package:shared_data_models/welcome/otp/response/otp_response.dart';
 import 'package:shared_data_models/welcome/otp_verification/request/otp_verification_request.dart';
@@ -42,6 +43,16 @@ class VerifyOtpUseCase extends BaseDataProvider {
 
   Future<void> saveOnBordStatus(String id) async {
     return await setValueToSecureStorage({'OnBoardStatus': id});
+  }
+
+
+
+  Future<String> getCustomerMobileNumber() async {
+    return await getValueFromSecureStorage('mobileNumber', defaultValue: '');
+  }
+
+  Future<String> getAgentCustomerId() async {
+    return await getValueFromSecureStorage('y9AgentIDCus', defaultValue: '');
   }
 
   Future<String> getAgentId() async {
@@ -139,6 +150,24 @@ class VerifyOtpUseCase extends BaseDataProvider {
           CrayonPaymentLogger.logInfo(responseData.toString());
           final data = responseData;
           return WorkFlowStatusResponse.fromJson(data);
+        });
+  }
+
+  Future<GetCustomerDetailsResponse?> getCustomerDetailsByMobileNumber( Function(String) onErrorCallback) async {
+    String mobile = await getCustomerMobileNumber();
+    CrayonPaymentLogger.logInfo("I am in Customer Detail API $mobile");
+    return await executeApiRequest<GetCustomerDetailsResponse?>(
+        taskType: TaskType.DATA_OPERATION,
+        taskSubType: TaskSubType.REST,
+        moduleIdentifier: VerifyOtpModule.moduleIdentifier,
+        requestData: {"mobileNumber": mobile},
+        serviceIdentifier: IOtpService.customerDetailsIdentifier,
+        onError: onErrorCallback,
+        modelBuilderCallback: (responseData) {
+          final data = responseData;
+          GetCustomerDetailsResponse detailResponse =
+          GetCustomerDetailsResponse.fromJson(data);
+          return detailResponse;
         });
   }
 }

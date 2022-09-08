@@ -140,6 +140,7 @@ class _DeviceDetailScreenState extends State<DeviceDetailScreen> {
           // dynamicHSpacer(15),
           // _membershipTermButton(context),
           dynamicHSpacer(22),
+          widget.userType == UserType.Customer ? SizedBox() :
           selectButton(coordinator),
           dynamicHSpacer(22),
         ],

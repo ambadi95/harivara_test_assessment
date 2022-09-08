@@ -57,3 +57,6 @@ dependencies:
 
   crayon_payment_customer:
     path: ../../../apps/customer
+
+  home:
+    path: ../home

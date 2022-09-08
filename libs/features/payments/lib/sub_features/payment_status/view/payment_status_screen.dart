@@ -6,7 +6,6 @@ import 'package:core/logging/logger.dart';
 import 'package:core/view/base_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_countdown_timer/current_remaining_time.dart';
 import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
 import 'package:shared_data_models/payments/payment_status_screen_args.dart';
 import 'package:widget_library/html/rich_text_description.dart';
@@ -49,8 +48,7 @@ class _PaymentStatusScreenState extends State<PaymentStatusScreen> {
     _timer = new Timer.periodic(
       fiveSec,
       (Timer timer) {
-        coordinator
-            .paymentCheckStatus(widget.paymentsStatusScreenArgs.paymentId);
+        coordinator.paymentCheckStatus(widget.paymentsStatusScreenArgs.paymentId);
       },
     );
   }
@@ -140,9 +138,20 @@ class _PaymentStatusScreenState extends State<PaymentStatusScreen> {
       endTime: endTime,
       widgetBuilder: (_, time) {
         if (time == null) {
+          _timer.cancel();
           return Text('Time Expired');
         }
-        return Text('0${time.min}:${time.sec}',
+        String timeMinute = '';
+        String timeSeconds = '';
+        timeMinute = time.min.toString();
+        timeSeconds = time.sec.toString();
+        if(timeMinute == "null"){
+          timeMinute = "0";
+        }
+        if(timeSeconds.length == 1){
+          timeSeconds = "0${timeSeconds}";
+        }
+        return Text('0${timeMinute}:${timeSeconds}',
             style: TextStyle(
                 color: PRIMARY_COLOR,
                 fontSize: 24,

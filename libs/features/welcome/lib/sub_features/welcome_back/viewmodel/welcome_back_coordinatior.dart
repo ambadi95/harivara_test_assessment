@@ -114,7 +114,20 @@ class WelcomeBackCoordinator extends BaseViewModel<WelcomeScreenState> {
           await _welcomeUseCase.login(mobileNumber, passcode, (p0) => null);
       if (response?.status == true) {
         state = state.copyWith(isLoading: false);
-        _navigationHandler.navigateToHome(userType);
+        if(UserType.Customer == userType){
+          var customerAgentIdResponse = await _welcomeUseCase.getCustomerDetailsByMobileNumber( (p0) => null);
+          if(customerAgentIdResponse?.status == true){
+            String? customerAgentId = customerAgentIdResponse?.data?.y9AgentId;
+            if(customerAgentId != null && customerAgentId.isNotEmpty){
+              _navigationHandler.navigateToHome(userType);
+            }else{
+              _navigationHandler.navigateToCustomerEnrollmentScreen();
+            }
+          }
+        }else{
+          _navigationHandler.navigateToHome(userType);
+
+        }
       } else {
         state = state.copyWith(isLoading: false);
         state = state.copyWith(error: response!.message!);

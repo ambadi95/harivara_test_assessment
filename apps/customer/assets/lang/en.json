@@ -98,7 +98,7 @@
   "ES_success_text" : "Congratulations! You have successfully registered your interest with Y9 ",
   "ES_enrolled_success_text" : "Congratulations! You have successfully selected your Membership with Y9",
   "ES_enroll_id" : "Your Reference ID\n %{_id_ | click}%",
-  "ES_near_agent_button" : "View near by Agent (coming soon)",
+  "ES_near_agent_button" : "View near by Agent",
   "ES_select_membership" : "Select Your Membership",
   "ES_view_membership" : "View Your Membership",
   "ES_agent_contact_text" : "Y9 agent will contact you shortly on your Membership",
@@ -111,7 +111,7 @@
 
   "AN_Title": "Agents Near by",
   "AN_Search": "Search by Region / District",
-  "AN_AgentName": "Y9 Agent ID: ",
+  "AN_AgentName": "Y9 Agent ID",
   "AN_Call": "Call",
 
   "D0_JoiningFee": "Joining Fee (one off)",

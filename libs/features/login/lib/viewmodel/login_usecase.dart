@@ -57,6 +57,10 @@ class LoginUseCase extends BaseDataProvider {
     return await setValueToSecureStorage({'OnBoardStatus': id});
   }
 
+  Future<void> saveAgentIdForCustomer(String? id) async {
+    return await setValueToSecureStorage({'y9AgentIDCus': id});
+  }
+
   Future<String> getCustomerId() async {
     return await getValueFromSecureStorage('customerId', defaultValue: '');
   }
@@ -156,7 +160,6 @@ class LoginUseCase extends BaseDataProvider {
 
   Future<GetCustomerDetailsResponse?> getCustomerDetailsByMobileNumber(
       String phoneNo, Function(String) onErrorCallback) async {
-    CrayonPaymentLogger.logInfo("I am in Customer Detail API $phoneNo");
     return await executeApiRequest<GetCustomerDetailsResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
@@ -172,6 +175,11 @@ class LoginUseCase extends BaseDataProvider {
           _authManager.setUserDetail(
               authInfo: detailResponse.data?.customerId.toString(),
               key: 'Customer_ID');
+          if(detailResponse.data?.y9AgentId != null){
+            saveAgentIdForCustomer(detailResponse.data?.y9AgentId);
+          }else{
+            saveAgentIdForCustomer("");
+          }
           return detailResponse;
         });
   }

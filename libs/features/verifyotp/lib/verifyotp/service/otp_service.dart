@@ -11,6 +11,8 @@ abstract class IOtpService {
   static const otpGenCustomerByAgentIdentifier = 'otpGenCustomerByAgent';
   static const otpVerifyCustomerByAgentIdentifier = 'otpVerifyCustomerByAgent';
   static const workFlowCustomerByAgentIdentifier = 'workFlowCustomerByAgent';
+  static const customerDetailsIdentifier = 'getCustomerDetails';
+
 
   Future<StandardRequest> otpGen(
     Map<String, dynamic> requestData,
@@ -31,6 +33,10 @@ abstract class IOtpService {
   Future<StandardRequest> workFlowCustomerByAgent(
       String customerId
   );
+
+  Future<StandardRequest> getCustomerDetailByMobileNo(
+      String phoneNo
+      );
 }
 
 class OtpService implements IOtpService {
@@ -81,6 +87,19 @@ class OtpService implements IOtpService {
     var request = StandardRequest();
     request.requestType = RequestType.GET;
     request.endpoint = '${customerEndpoint}workflowstatus/${customerId}[customer]';
+    return request;
+  }
+
+  @override
+  Future<StandardRequest> getCustomerDetailByMobileNo(
+      String phoneNo,
+      ) async {
+    var request = StandardRequest();
+    request.requestType = RequestType.GET;
+    request.endpoint =  'customer-details-by-mobile/$phoneNo';
+    request.customHeaders = {
+      'Content-Type': 'application/json',
+    };
     return request;
   }
 }
