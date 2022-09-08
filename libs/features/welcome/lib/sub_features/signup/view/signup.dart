@@ -54,9 +54,10 @@ class _SignUpState extends State<SignUp> {
                       height: 120,
                       child: Column(
                         children: [
-                          widget.signUpArguments.userType == UserType.Customer
-                              ? _carrierText()
-                              : const SizedBox(
+                          // widget.signUpArguments.userType == UserType.Customer
+                          //     ? _carrierText()
+                          //     :
+                          const SizedBox(
                                   height: 14,
                                 ),
                           const SizedBox(
@@ -323,13 +324,13 @@ class _SignUpState extends State<SignUp> {
     // ]
     //   );
   }
-
-  Widget _carrierText() {
-    return Text(
-      'SU_carrier_message'.tr,
-      style: SU_carrier_message_style,
-    );
-  }
+  //
+  // Widget _carrierText() {
+  //   return Text(
+  //     'SU_carrier_message'.tr,
+  //     style: SU_carrier_message_style,
+  //   );
+  // }
 
   Widget _buildContinueButton(
     BuildContext context,

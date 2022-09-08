@@ -125,6 +125,7 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
         _navigationHandler.navigateToOtpScreen(
             userType, mobileNumber, response!.data!.id!);
       } else {
+
         state = LoginState.mobileNumberError(response!.message!);
       }
     } catch (e) {

@@ -177,6 +177,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
 
   Future<void> navigateToDestinationPath(String destinationPath,
       UserType userType, OtpScreenArgs otpScreenArgs, String enterOtp,String event) async {
+    CrayonPaymentLogger.logInfo("I am in OTP Verify");
     var currentState = state as VerifyOtpStateReady;
     try {
 
@@ -185,7 +186,20 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         var responseSignin = await _verifyOtpUseCase.otpVerify(
             otpScreenArgs.refId, enterOtp, otpScreenArgs.userType,event, (p0) => null);
         if (responseSignin!.status == true) {
-          _navigationHandler.navigateToHomeScreen(userType);
+          if(userType == UserType.Customer){
+            var customerAgentIdResponse = await _verifyOtpUseCase.getCustomerDetailsByMobileNumber( (p0) => null);
+            if(customerAgentIdResponse?.status == true){
+              String? customerAgentId = customerAgentIdResponse?.data?.y9AgentId;
+              if(customerAgentId != null && customerAgentId.isNotEmpty){
+                _navigationHandler.navigateToHomeScreen(userType);
+              }else{
+                _navigationHandler.navigateToCustomerEnrollmentScreen();
+              }
+            }
+          }else{
+            _navigationHandler.navigateToHomeScreen(userType);
+
+          }
         } else {
           print('error');
         }
