@@ -1,4 +1,5 @@
 import 'package:config/Colors.dart';
+import 'package:configuremdm/view/configuremdm_screen.dart';
 import 'package:core/logging/logger.dart';
 import 'package:core/navigation/modal_bottom_sheet.dart';
 import 'package:core/navigation/navigation_manager.dart';
@@ -12,7 +13,6 @@ import 'package:flutter/material.dart';
 import 'package:home/home/home_module.dart';
 import 'package:loan_details/view/loan_detail_screen.dart';
 import 'package:payments/view/payments_screen.dart';
-import 'package:scanqrcode/view/scanqrcode_screen.dart';
 import 'package:shared_data_models/loan_detail/loan_detail_screen_args.dart';
 import 'package:shared_data_models/loan_detail/response/loan_detail_response/loan_detail_response.dart';
 import 'package:shared_data_models/payments/payments_screen_args.dart';
@@ -41,7 +41,7 @@ class HomeNavigationHandler with ErrorHandler {
 
   Future<void> navigateTodevice(UserType userType) async {
     await _navigationManager.navigateTo(
-      ScanQrCodeScreen.viewPath,
+      ConfigureMdmScreen.viewPath,
       const NavigationType.push(),
     );
   }
@@ -237,3 +237,4 @@ class HomeNavigationHandler with ErrorHandler {
     );
   }
 }
+

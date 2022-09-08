@@ -4,7 +4,7 @@ import 'package:core/view/analytics_state_notifier.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-// import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:scanqrcode/viewmodel/scanqrcode_usecase.dart';
 import 'package:widget_library/bottom_sheet/alert_bottom_sheet.dart';
 import '../navigation_handler/scanqrcode_navigation_handler.dart';
@@ -45,9 +45,15 @@ void successFulScreen(){
   _navigationHandler.navigateToSuccessScreen();
 }
 
+  void configureMdmScreen(){
+    _navigationHandler.navigateToConfigureMdmScreen();
+  }
+
   void goBackToAgentHomeScreen(){
     _navigationHandler.navigateToAgentHome();
   }
+
+
 
   void validateForm(String customerId, int deviceId, String imei1, String imei2) {
       state = ScanQRCodeState.deviceRegisterFormState(
@@ -58,8 +64,8 @@ void successFulScreen(){
   Future<String> scanBarcodeImei1() async {
     String barcodeScanRes = "";
     try {
-      // barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
-      //     '#ff6666', 'Cancel', true, ScanMode.BARCODE);
+      barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
+          '#ff6666', 'Cancel', true, ScanMode.BARCODE);
       if (kDebugMode) {
         print(barcodeScanRes);
       }
@@ -73,8 +79,8 @@ void successFulScreen(){
   Future<String> scanBarcodeImei2() async {
     String barcodeScanRes="";
     try {
-      // barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
-      //     '#ff6666', 'Cancel', true, ScanMode.BARCODE);
+      barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
+          '#ff6666', 'Cancel', true, ScanMode.BARCODE);
       if (kDebugMode) {
         print(barcodeScanRes);
       }
@@ -137,7 +143,8 @@ void successFulScreen(){
     if (response?.status == true) {
     state = ScanQRCodeState.ready(context: context,isLoading:false );
       if(response?.message == "Device registration success"){
-        successFulScreen();
+        configureMdmScreen();
+        // successFulScreen();
       }
     } else {
     state = ScanQRCodeState.ready(context: context,isLoading:false,error: response!.message!);

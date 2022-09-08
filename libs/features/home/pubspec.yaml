@@ -50,8 +50,13 @@ dependencies:
   loan_details:
     path: ../../features/loan_details
 
+  configuremdm:
+    path: ../../features/configuremdm
+
   scanqrcode:
     path: ../../features/scanqrcode
+
+
 
 
 

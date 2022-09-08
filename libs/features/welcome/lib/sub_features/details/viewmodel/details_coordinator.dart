@@ -94,12 +94,18 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
     state = DetailsState.getMobileNumber(getMobileNo);
   }
 
+    Future<void> getNIDANumber() async {
+      String getNIDANo = await _detailsUseCase.getnidaNumber();
+      state = DetailsState.getNIDANumber(getNIDANo);
+    }
+
   bool _validateForm(
       String name,
       String dob,
       String gender,
       String profession,
       String mobNumber,
+      String nidaNumber,
       String emailId,
       String address,
       String poBox,
@@ -110,6 +116,7 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
     }
     var isnNameValid = _detailsUseCase.isValidName(name);
     var isMobileNoValid = mobNumber.isNotEmpty;
+    var isNidaNumberValid = nidaNumber.isNotEmpty;
     var isDobValid = dob.isNotEmpty;
     var isGenderValid = (gender == 'null') ? false : gender.isNotEmpty;
     var isProfessionValid = profession.isNotEmpty;
@@ -121,6 +128,7 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
 
     var _isValid = isnNameValid &&
         isMobileNoValid &&
+        isNidaNumberValid &&
         isDobValid &&
         isGenderValid &&
         isProfessionValid &&
@@ -139,6 +147,7 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
       String gender,
       String profession,
       String mobNumber,
+      String nidaNumber,
       String emailId,
       String address,
       String poBox,
@@ -146,7 +155,7 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
       String district) {
     print(gender);
     state = DetailsState.DetailsFormState(_validateForm(name, dob, gender,
-        profession, mobNumber, emailId, address, poBox, region, district));
+        profession, mobNumber, nidaNumber, emailId, address, poBox, region, district));
   }
 
   Future navigateToCreatePasscodeScreen(UserType userType) async {

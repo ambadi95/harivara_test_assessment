@@ -25,7 +25,7 @@ class HomeCoordinator extends BaseViewModel<HomeScreenState> {
     _navigationHandler.navigateToSignUpScreen(UserType.Customer);
   }
 
-  void devicereg() {
+  void configureMDM() {
     _navigationHandler.navigateTodevice(UserType.Customer);
   }
 

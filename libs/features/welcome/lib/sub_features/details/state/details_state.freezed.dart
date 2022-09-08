@@ -24,6 +24,7 @@ mixin _$DetailsState {
     required TResult Function() LoadingState,
     required TResult Function(String nameError) nameError,
     required TResult Function(String mobileNumber) getMobileNumber,
+    required TResult Function(String NIDANumber) getNIDANumber,
     required TResult Function(String emailError) emailError,
     required TResult Function(String poBoxError) poBoxError,
     required TResult Function(String dobError) dobError,
@@ -48,6 +49,7 @@ mixin _$DetailsState {
     TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String NIDANumber)? getNIDANumber,
     TResult Function(String emailError)? emailError,
     TResult Function(String poBoxError)? poBoxError,
     TResult Function(String dobError)? dobError,
@@ -72,6 +74,7 @@ mixin _$DetailsState {
     TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String NIDANumber)? getNIDANumber,
     TResult Function(String emailError)? emailError,
     TResult Function(String poBoxError)? poBoxError,
     TResult Function(String dobError)? dobError,
@@ -97,6 +100,7 @@ mixin _$DetailsState {
     required TResult Function(LoadingState value) LoadingState,
     required TResult Function(NameError value) nameError,
     required TResult Function(GetMobileNumber value) getMobileNumber,
+    required TResult Function(getNIDANumber value) getNIDANumber,
     required TResult Function(EmailError value) emailError,
     required TResult Function(PoBoxError value) poBoxError,
     required TResult Function(DobError value) dobError,
@@ -121,6 +125,7 @@ mixin _$DetailsState {
     TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(getNIDANumber value)? getNIDANumber,
     TResult Function(EmailError value)? emailError,
     TResult Function(PoBoxError value)? poBoxError,
     TResult Function(DobError value)? dobError,
@@ -145,6 +150,7 @@ mixin _$DetailsState {
     TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(getNIDANumber value)? getNIDANumber,
     TResult Function(EmailError value)? emailError,
     TResult Function(PoBoxError value)? poBoxError,
     TResult Function(DobError value)? dobError,
@@ -227,6 +233,7 @@ class _$InitialState implements InitialState {
     required TResult Function() LoadingState,
     required TResult Function(String nameError) nameError,
     required TResult Function(String mobileNumber) getMobileNumber,
+    required TResult Function(String NIDANumber) getNIDANumber,
     required TResult Function(String emailError) emailError,
     required TResult Function(String poBoxError) poBoxError,
     required TResult Function(String dobError) dobError,
@@ -254,6 +261,7 @@ class _$InitialState implements InitialState {
     TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String NIDANumber)? getNIDANumber,
     TResult Function(String emailError)? emailError,
     TResult Function(String poBoxError)? poBoxError,
     TResult Function(String dobError)? dobError,
@@ -281,6 +289,7 @@ class _$InitialState implements InitialState {
     TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String NIDANumber)? getNIDANumber,
     TResult Function(String emailError)? emailError,
     TResult Function(String poBoxError)? poBoxError,
     TResult Function(String dobError)? dobError,
@@ -312,6 +321,7 @@ class _$InitialState implements InitialState {
     required TResult Function(LoadingState value) LoadingState,
     required TResult Function(NameError value) nameError,
     required TResult Function(GetMobileNumber value) getMobileNumber,
+    required TResult Function(getNIDANumber value) getNIDANumber,
     required TResult Function(EmailError value) emailError,
     required TResult Function(PoBoxError value) poBoxError,
     required TResult Function(DobError value) dobError,
@@ -339,6 +349,7 @@ class _$InitialState implements InitialState {
     TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(getNIDANumber value)? getNIDANumber,
     TResult Function(EmailError value)? emailError,
     TResult Function(PoBoxError value)? poBoxError,
     TResult Function(DobError value)? dobError,
@@ -366,6 +377,7 @@ class _$InitialState implements InitialState {
     TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(getNIDANumber value)? getNIDANumber,
     TResult Function(EmailError value)? emailError,
     TResult Function(PoBoxError value)? poBoxError,
     TResult Function(DobError value)? dobError,
@@ -440,6 +452,7 @@ class _$SuccessState implements SuccessState {
     required TResult Function() LoadingState,
     required TResult Function(String nameError) nameError,
     required TResult Function(String mobileNumber) getMobileNumber,
+    required TResult Function(String NIDANumber) getNIDANumber,
     required TResult Function(String emailError) emailError,
     required TResult Function(String poBoxError) poBoxError,
     required TResult Function(String dobError) dobError,
@@ -467,6 +480,7 @@ class _$SuccessState implements SuccessState {
     TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String NIDANumber)? getNIDANumber,
     TResult Function(String emailError)? emailError,
     TResult Function(String poBoxError)? poBoxError,
     TResult Function(String dobError)? dobError,
@@ -494,6 +508,7 @@ class _$SuccessState implements SuccessState {
     TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String NIDANumber)? getNIDANumber,
     TResult Function(String emailError)? emailError,
     TResult Function(String poBoxError)? poBoxError,
     TResult Function(String dobError)? dobError,
@@ -525,6 +540,7 @@ class _$SuccessState implements SuccessState {
     required TResult Function(LoadingState value) LoadingState,
     required TResult Function(NameError value) nameError,
     required TResult Function(GetMobileNumber value) getMobileNumber,
+    required TResult Function(getNIDANumber value) getNIDANumber,
     required TResult Function(EmailError value) emailError,
     required TResult Function(PoBoxError value) poBoxError,
     required TResult Function(DobError value) dobError,
@@ -552,6 +568,7 @@ class _$SuccessState implements SuccessState {
     TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(getNIDANumber value)? getNIDANumber,
     TResult Function(EmailError value)? emailError,
     TResult Function(PoBoxError value)? poBoxError,
     TResult Function(DobError value)? dobError,
@@ -579,6 +596,7 @@ class _$SuccessState implements SuccessState {
     TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(getNIDANumber value)? getNIDANumber,
     TResult Function(EmailError value)? emailError,
     TResult Function(PoBoxError value)? poBoxError,
     TResult Function(DobError value)? dobError,
@@ -677,6 +695,7 @@ class _$DetailsFormState implements DetailsFormState {
     required TResult Function() LoadingState,
     required TResult Function(String nameError) nameError,
     required TResult Function(String mobileNumber) getMobileNumber,
+    required TResult Function(String NIDANumber) getNIDANumber,
     required TResult Function(String emailError) emailError,
     required TResult Function(String poBoxError) poBoxError,
     required TResult Function(String dobError) dobError,
@@ -704,6 +723,7 @@ class _$DetailsFormState implements DetailsFormState {
     TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String NIDANumber)? getNIDANumber,
     TResult Function(String emailError)? emailError,
     TResult Function(String poBoxError)? poBoxError,
     TResult Function(String dobError)? dobError,
@@ -731,6 +751,7 @@ class _$DetailsFormState implements DetailsFormState {
     TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String NIDANumber)? getNIDANumber,
     TResult Function(String emailError)? emailError,
     TResult Function(String poBoxError)? poBoxError,
     TResult Function(String dobError)? dobError,
@@ -762,6 +783,7 @@ class _$DetailsFormState implements DetailsFormState {
     required TResult Function(LoadingState value) LoadingState,
     required TResult Function(NameError value) nameError,
     required TResult Function(GetMobileNumber value) getMobileNumber,
+    required TResult Function(getNIDANumber value) getNIDANumber,
     required TResult Function(EmailError value) emailError,
     required TResult Function(PoBoxError value) poBoxError,
     required TResult Function(DobError value) dobError,
@@ -789,6 +811,7 @@ class _$DetailsFormState implements DetailsFormState {
     TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(getNIDANumber value)? getNIDANumber,
     TResult Function(EmailError value)? emailError,
     TResult Function(PoBoxError value)? poBoxError,
     TResult Function(DobError value)? dobError,
@@ -816,6 +839,7 @@ class _$DetailsFormState implements DetailsFormState {
     TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(getNIDANumber value)? getNIDANumber,
     TResult Function(EmailError value)? emailError,
     TResult Function(PoBoxError value)? poBoxError,
     TResult Function(DobError value)? dobError,
@@ -895,6 +919,7 @@ class _$LoadingState implements LoadingState {
     required TResult Function() LoadingState,
     required TResult Function(String nameError) nameError,
     required TResult Function(String mobileNumber) getMobileNumber,
+    required TResult Function(String NIDANumber) getNIDANumber,
     required TResult Function(String emailError) emailError,
     required TResult Function(String poBoxError) poBoxError,
     required TResult Function(String dobError) dobError,
@@ -922,6 +947,7 @@ class _$LoadingState implements LoadingState {
     TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String NIDANumber)? getNIDANumber,
     TResult Function(String emailError)? emailError,
     TResult Function(String poBoxError)? poBoxError,
     TResult Function(String dobError)? dobError,
@@ -949,6 +975,7 @@ class _$LoadingState implements LoadingState {
     TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String NIDANumber)? getNIDANumber,
     TResult Function(String emailError)? emailError,
     TResult Function(String poBoxError)? poBoxError,
     TResult Function(String dobError)? dobError,
@@ -980,6 +1007,7 @@ class _$LoadingState implements LoadingState {
     required TResult Function(LoadingState value) LoadingState,
     required TResult Function(NameError value) nameError,
     required TResult Function(GetMobileNumber value) getMobileNumber,
+    required TResult Function(getNIDANumber value) getNIDANumber,
     required TResult Function(EmailError value) emailError,
     required TResult Function(PoBoxError value) poBoxError,
     required TResult Function(DobError value) dobError,
@@ -1007,6 +1035,7 @@ class _$LoadingState implements LoadingState {
     TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(getNIDANumber value)? getNIDANumber,
     TResult Function(EmailError value)? emailError,
     TResult Function(PoBoxError value)? poBoxError,
     TResult Function(DobError value)? dobError,
@@ -1034,6 +1063,7 @@ class _$LoadingState implements LoadingState {
     TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(getNIDANumber value)? getNIDANumber,
     TResult Function(EmailError value)? emailError,
     TResult Function(PoBoxError value)? poBoxError,
     TResult Function(DobError value)? dobError,
@@ -1131,6 +1161,7 @@ class _$NameError implements NameError {
     required TResult Function() LoadingState,
     required TResult Function(String nameError) nameError,
     required TResult Function(String mobileNumber) getMobileNumber,
+    required TResult Function(String NIDANumber) getNIDANumber,
     required TResult Function(String emailError) emailError,
     required TResult Function(String poBoxError) poBoxError,
     required TResult Function(String dobError) dobError,
@@ -1158,6 +1189,7 @@ class _$NameError implements NameError {
     TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String NIDANumber)? getNIDANumber,
     TResult Function(String emailError)? emailError,
     TResult Function(String poBoxError)? poBoxError,
     TResult Function(String dobError)? dobError,
@@ -1185,6 +1217,7 @@ class _$NameError implements NameError {
     TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String NIDANumber)? getNIDANumber,
     TResult Function(String emailError)? emailError,
     TResult Function(String poBoxError)? poBoxError,
     TResult Function(String dobError)? dobError,
@@ -1216,6 +1249,7 @@ class _$NameError implements NameError {
     required TResult Function(LoadingState value) LoadingState,
     required TResult Function(NameError value) nameError,
     required TResult Function(GetMobileNumber value) getMobileNumber,
+    required TResult Function(getNIDANumber value) getNIDANumber,
     required TResult Function(EmailError value) emailError,
     required TResult Function(PoBoxError value) poBoxError,
     required TResult Function(DobError value) dobError,
@@ -1243,6 +1277,7 @@ class _$NameError implements NameError {
     TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(getNIDANumber value)? getNIDANumber,
     TResult Function(EmailError value)? emailError,
     TResult Function(PoBoxError value)? poBoxError,
     TResult Function(DobError value)? dobError,
@@ -1270,6 +1305,7 @@ class _$NameError implements NameError {
     TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(getNIDANumber value)? getNIDANumber,
     TResult Function(EmailError value)? emailError,
     TResult Function(PoBoxError value)? poBoxError,
     TResult Function(DobError value)? dobError,
@@ -1374,6 +1410,7 @@ class _$GetMobileNumber implements GetMobileNumber {
     required TResult Function() LoadingState,
     required TResult Function(String nameError) nameError,
     required TResult Function(String mobileNumber) getMobileNumber,
+    required TResult Function(String NIDANumber) getNIDANumber,
     required TResult Function(String emailError) emailError,
     required TResult Function(String poBoxError) poBoxError,
     required TResult Function(String dobError) dobError,
@@ -1401,6 +1438,7 @@ class _$GetMobileNumber implements GetMobileNumber {
     TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String NIDANumber)? getNIDANumber,
     TResult Function(String emailError)? emailError,
     TResult Function(String poBoxError)? poBoxError,
     TResult Function(String dobError)? dobError,
@@ -1428,6 +1466,7 @@ class _$GetMobileNumber implements GetMobileNumber {
     TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String NIDANumber)? getNIDANumber,
     TResult Function(String emailError)? emailError,
     TResult Function(String poBoxError)? poBoxError,
     TResult Function(String dobError)? dobError,
@@ -1459,6 +1498,7 @@ class _$GetMobileNumber implements GetMobileNumber {
     required TResult Function(LoadingState value) LoadingState,
     required TResult Function(NameError value) nameError,
     required TResult Function(GetMobileNumber value) getMobileNumber,
+    required TResult Function(getNIDANumber value) getNIDANumber,
     required TResult Function(EmailError value) emailError,
     required TResult Function(PoBoxError value) poBoxError,
     required TResult Function(DobError value) dobError,
@@ -1486,6 +1526,7 @@ class _$GetMobileNumber implements GetMobileNumber {
     TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(getNIDANumber value)? getNIDANumber,
     TResult Function(EmailError value)? emailError,
     TResult Function(PoBoxError value)? poBoxError,
     TResult Function(DobError value)? dobError,
@@ -1513,6 +1554,7 @@ class _$GetMobileNumber implements GetMobileNumber {
     TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(getNIDANumber value)? getNIDANumber,
     TResult Function(EmailError value)? emailError,
     TResult Function(PoBoxError value)? poBoxError,
     TResult Function(DobError value)? dobError,
@@ -1542,6 +1584,255 @@ abstract class GetMobileNumber implements DetailsState {
   String get mobileNumber;
   @JsonKey(ignore: true)
   _$$GetMobileNumberCopyWith<_$GetMobileNumber> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$getNIDANumberCopyWith<$Res> {
+  factory _$$getNIDANumberCopyWith(
+          _$getNIDANumber value, $Res Function(_$getNIDANumber) then) =
+      __$$getNIDANumberCopyWithImpl<$Res>;
+  $Res call({String NIDANumber});
+}
+
+/// @nodoc
+class __$$getNIDANumberCopyWithImpl<$Res>
+    extends _$DetailsStateCopyWithImpl<$Res>
+    implements _$$getNIDANumberCopyWith<$Res> {
+  __$$getNIDANumberCopyWithImpl(
+      _$getNIDANumber _value, $Res Function(_$getNIDANumber) _then)
+      : super(_value, (v) => _then(v as _$getNIDANumber));
+
+  @override
+  _$getNIDANumber get _value => super._value as _$getNIDANumber;
+
+  @override
+  $Res call({
+    Object? NIDANumber = freezed,
+  }) {
+    return _then(_$getNIDANumber(
+      NIDANumber == freezed
+          ? _value.NIDANumber
+          : NIDANumber // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$getNIDANumber implements getNIDANumber {
+  const _$getNIDANumber(this.NIDANumber);
+
+  @override
+  final String NIDANumber;
+
+  @override
+  String toString() {
+    return 'DetailsState.getNIDANumber(NIDANumber: $NIDANumber)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$getNIDANumber &&
+            const DeepCollectionEquality()
+                .equals(other.NIDANumber, NIDANumber));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(NIDANumber));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$getNIDANumberCopyWith<_$getNIDANumber> get copyWith =>
+      __$$getNIDANumberCopyWithImpl<_$getNIDANumber>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialState,
+    required TResult Function() successState,
+    required TResult Function(bool isValid) DetailsFormState,
+    required TResult Function() LoadingState,
+    required TResult Function(String nameError) nameError,
+    required TResult Function(String mobileNumber) getMobileNumber,
+    required TResult Function(String NIDANumber) getNIDANumber,
+    required TResult Function(String emailError) emailError,
+    required TResult Function(String poBoxError) poBoxError,
+    required TResult Function(String dobError) dobError,
+    required TResult Function(String genderError) genderError,
+    required TResult Function(String professionError) professionError,
+    required TResult Function(String addressError) addressError,
+    required TResult Function(String addressError) regionError,
+    required TResult Function(String districtError) districtError,
+    required TResult Function(GenderType genderType) onGenderTypeChoosen,
+    required TResult Function(Datum region) onRegionChoosen,
+    required TResult Function(b.Datum district) onDistrictChoosen,
+    required TResult Function(String genderType) onGenderTypeFetched,
+    required TResult Function(String genderType) onRegionFetched,
+    required TResult Function(String genderType) onDistrictFetched,
+  }) {
+    return getNIDANumber(NIDANumber);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initialState,
+    TResult Function()? successState,
+    TResult Function(bool isValid)? DetailsFormState,
+    TResult Function()? LoadingState,
+    TResult Function(String nameError)? nameError,
+    TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String NIDANumber)? getNIDANumber,
+    TResult Function(String emailError)? emailError,
+    TResult Function(String poBoxError)? poBoxError,
+    TResult Function(String dobError)? dobError,
+    TResult Function(String genderError)? genderError,
+    TResult Function(String professionError)? professionError,
+    TResult Function(String addressError)? addressError,
+    TResult Function(String addressError)? regionError,
+    TResult Function(String districtError)? districtError,
+    TResult Function(GenderType genderType)? onGenderTypeChoosen,
+    TResult Function(Datum region)? onRegionChoosen,
+    TResult Function(b.Datum district)? onDistrictChoosen,
+    TResult Function(String genderType)? onGenderTypeFetched,
+    TResult Function(String genderType)? onRegionFetched,
+    TResult Function(String genderType)? onDistrictFetched,
+  }) {
+    return getNIDANumber?.call(NIDANumber);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialState,
+    TResult Function()? successState,
+    TResult Function(bool isValid)? DetailsFormState,
+    TResult Function()? LoadingState,
+    TResult Function(String nameError)? nameError,
+    TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String NIDANumber)? getNIDANumber,
+    TResult Function(String emailError)? emailError,
+    TResult Function(String poBoxError)? poBoxError,
+    TResult Function(String dobError)? dobError,
+    TResult Function(String genderError)? genderError,
+    TResult Function(String professionError)? professionError,
+    TResult Function(String addressError)? addressError,
+    TResult Function(String addressError)? regionError,
+    TResult Function(String districtError)? districtError,
+    TResult Function(GenderType genderType)? onGenderTypeChoosen,
+    TResult Function(Datum region)? onRegionChoosen,
+    TResult Function(b.Datum district)? onDistrictChoosen,
+    TResult Function(String genderType)? onGenderTypeFetched,
+    TResult Function(String genderType)? onRegionFetched,
+    TResult Function(String genderType)? onDistrictFetched,
+    required TResult orElse(),
+  }) {
+    if (getNIDANumber != null) {
+      return getNIDANumber(NIDANumber);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialState value) initialState,
+    required TResult Function(SuccessState value) successState,
+    required TResult Function(DetailsFormState value) DetailsFormState,
+    required TResult Function(LoadingState value) LoadingState,
+    required TResult Function(NameError value) nameError,
+    required TResult Function(GetMobileNumber value) getMobileNumber,
+    required TResult Function(getNIDANumber value) getNIDANumber,
+    required TResult Function(EmailError value) emailError,
+    required TResult Function(PoBoxError value) poBoxError,
+    required TResult Function(DobError value) dobError,
+    required TResult Function(GenderError value) genderError,
+    required TResult Function(ProfessionError value) professionError,
+    required TResult Function(AddressError value) addressError,
+    required TResult Function(RegionError value) regionError,
+    required TResult Function(DistrictError value) districtError,
+    required TResult Function(GenderTypeChoosen value) onGenderTypeChoosen,
+    required TResult Function(RegionChoosen value) onRegionChoosen,
+    required TResult Function(DistrictChoosen value) onDistrictChoosen,
+    required TResult Function(OnGenderTypeFetched value) onGenderTypeFetched,
+    required TResult Function(OnRegionFetched value) onRegionFetched,
+    required TResult Function(OnDistrictFetched value) onDistrictFetched,
+  }) {
+    return getNIDANumber(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InitialState value)? initialState,
+    TResult Function(SuccessState value)? successState,
+    TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(LoadingState value)? LoadingState,
+    TResult Function(NameError value)? nameError,
+    TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(getNIDANumber value)? getNIDANumber,
+    TResult Function(EmailError value)? emailError,
+    TResult Function(PoBoxError value)? poBoxError,
+    TResult Function(DobError value)? dobError,
+    TResult Function(GenderError value)? genderError,
+    TResult Function(ProfessionError value)? professionError,
+    TResult Function(AddressError value)? addressError,
+    TResult Function(RegionError value)? regionError,
+    TResult Function(DistrictError value)? districtError,
+    TResult Function(GenderTypeChoosen value)? onGenderTypeChoosen,
+    TResult Function(RegionChoosen value)? onRegionChoosen,
+    TResult Function(DistrictChoosen value)? onDistrictChoosen,
+    TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
+    TResult Function(OnRegionFetched value)? onRegionFetched,
+    TResult Function(OnDistrictFetched value)? onDistrictFetched,
+  }) {
+    return getNIDANumber?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialState value)? initialState,
+    TResult Function(SuccessState value)? successState,
+    TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(LoadingState value)? LoadingState,
+    TResult Function(NameError value)? nameError,
+    TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(getNIDANumber value)? getNIDANumber,
+    TResult Function(EmailError value)? emailError,
+    TResult Function(PoBoxError value)? poBoxError,
+    TResult Function(DobError value)? dobError,
+    TResult Function(GenderError value)? genderError,
+    TResult Function(ProfessionError value)? professionError,
+    TResult Function(AddressError value)? addressError,
+    TResult Function(RegionError value)? regionError,
+    TResult Function(DistrictError value)? districtError,
+    TResult Function(GenderTypeChoosen value)? onGenderTypeChoosen,
+    TResult Function(RegionChoosen value)? onRegionChoosen,
+    TResult Function(DistrictChoosen value)? onDistrictChoosen,
+    TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
+    TResult Function(OnRegionFetched value)? onRegionFetched,
+    TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    required TResult orElse(),
+  }) {
+    if (getNIDANumber != null) {
+      return getNIDANumber(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class getNIDANumber implements DetailsState {
+  const factory getNIDANumber(final String NIDANumber) = _$getNIDANumber;
+
+  String get NIDANumber;
+  @JsonKey(ignore: true)
+  _$$getNIDANumberCopyWith<_$getNIDANumber> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1616,6 +1907,7 @@ class _$EmailError implements EmailError {
     required TResult Function() LoadingState,
     required TResult Function(String nameError) nameError,
     required TResult Function(String mobileNumber) getMobileNumber,
+    required TResult Function(String NIDANumber) getNIDANumber,
     required TResult Function(String emailError) emailError,
     required TResult Function(String poBoxError) poBoxError,
     required TResult Function(String dobError) dobError,
@@ -1643,6 +1935,7 @@ class _$EmailError implements EmailError {
     TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String NIDANumber)? getNIDANumber,
     TResult Function(String emailError)? emailError,
     TResult Function(String poBoxError)? poBoxError,
     TResult Function(String dobError)? dobError,
@@ -1670,6 +1963,7 @@ class _$EmailError implements EmailError {
     TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String NIDANumber)? getNIDANumber,
     TResult Function(String emailError)? emailError,
     TResult Function(String poBoxError)? poBoxError,
     TResult Function(String dobError)? dobError,
@@ -1701,6 +1995,7 @@ class _$EmailError implements EmailError {
     required TResult Function(LoadingState value) LoadingState,
     required TResult Function(NameError value) nameError,
     required TResult Function(GetMobileNumber value) getMobileNumber,
+    required TResult Function(getNIDANumber value) getNIDANumber,
     required TResult Function(EmailError value) emailError,
     required TResult Function(PoBoxError value) poBoxError,
     required TResult Function(DobError value) dobError,
@@ -1728,6 +2023,7 @@ class _$EmailError implements EmailError {
     TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(getNIDANumber value)? getNIDANumber,
     TResult Function(EmailError value)? emailError,
     TResult Function(PoBoxError value)? poBoxError,
     TResult Function(DobError value)? dobError,
@@ -1755,6 +2051,7 @@ class _$EmailError implements EmailError {
     TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(getNIDANumber value)? getNIDANumber,
     TResult Function(EmailError value)? emailError,
     TResult Function(PoBoxError value)? poBoxError,
     TResult Function(DobError value)? dobError,
@@ -1858,6 +2155,7 @@ class _$PoBoxError implements PoBoxError {
     required TResult Function() LoadingState,
     required TResult Function(String nameError) nameError,
     required TResult Function(String mobileNumber) getMobileNumber,
+    required TResult Function(String NIDANumber) getNIDANumber,
     required TResult Function(String emailError) emailError,
     required TResult Function(String poBoxError) poBoxError,
     required TResult Function(String dobError) dobError,
@@ -1885,6 +2183,7 @@ class _$PoBoxError implements PoBoxError {
     TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String NIDANumber)? getNIDANumber,
     TResult Function(String emailError)? emailError,
     TResult Function(String poBoxError)? poBoxError,
     TResult Function(String dobError)? dobError,
@@ -1912,6 +2211,7 @@ class _$PoBoxError implements PoBoxError {
     TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String NIDANumber)? getNIDANumber,
     TResult Function(String emailError)? emailError,
     TResult Function(String poBoxError)? poBoxError,
     TResult Function(String dobError)? dobError,
@@ -1943,6 +2243,7 @@ class _$PoBoxError implements PoBoxError {
     required TResult Function(LoadingState value) LoadingState,
     required TResult Function(NameError value) nameError,
     required TResult Function(GetMobileNumber value) getMobileNumber,
+    required TResult Function(getNIDANumber value) getNIDANumber,
     required TResult Function(EmailError value) emailError,
     required TResult Function(PoBoxError value) poBoxError,
     required TResult Function(DobError value) dobError,
@@ -1970,6 +2271,7 @@ class _$PoBoxError implements PoBoxError {
     TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(getNIDANumber value)? getNIDANumber,
     TResult Function(EmailError value)? emailError,
     TResult Function(PoBoxError value)? poBoxError,
     TResult Function(DobError value)? dobError,
@@ -1997,6 +2299,7 @@ class _$PoBoxError implements PoBoxError {
     TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(getNIDANumber value)? getNIDANumber,
     TResult Function(EmailError value)? emailError,
     TResult Function(PoBoxError value)? poBoxError,
     TResult Function(DobError value)? dobError,
@@ -2098,6 +2401,7 @@ class _$DobError implements DobError {
     required TResult Function() LoadingState,
     required TResult Function(String nameError) nameError,
     required TResult Function(String mobileNumber) getMobileNumber,
+    required TResult Function(String NIDANumber) getNIDANumber,
     required TResult Function(String emailError) emailError,
     required TResult Function(String poBoxError) poBoxError,
     required TResult Function(String dobError) dobError,
@@ -2125,6 +2429,7 @@ class _$DobError implements DobError {
     TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String NIDANumber)? getNIDANumber,
     TResult Function(String emailError)? emailError,
     TResult Function(String poBoxError)? poBoxError,
     TResult Function(String dobError)? dobError,
@@ -2152,6 +2457,7 @@ class _$DobError implements DobError {
     TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String NIDANumber)? getNIDANumber,
     TResult Function(String emailError)? emailError,
     TResult Function(String poBoxError)? poBoxError,
     TResult Function(String dobError)? dobError,
@@ -2183,6 +2489,7 @@ class _$DobError implements DobError {
     required TResult Function(LoadingState value) LoadingState,
     required TResult Function(NameError value) nameError,
     required TResult Function(GetMobileNumber value) getMobileNumber,
+    required TResult Function(getNIDANumber value) getNIDANumber,
     required TResult Function(EmailError value) emailError,
     required TResult Function(PoBoxError value) poBoxError,
     required TResult Function(DobError value) dobError,
@@ -2210,6 +2517,7 @@ class _$DobError implements DobError {
     TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(getNIDANumber value)? getNIDANumber,
     TResult Function(EmailError value)? emailError,
     TResult Function(PoBoxError value)? poBoxError,
     TResult Function(DobError value)? dobError,
@@ -2237,6 +2545,7 @@ class _$DobError implements DobError {
     TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(getNIDANumber value)? getNIDANumber,
     TResult Function(EmailError value)? emailError,
     TResult Function(PoBoxError value)? poBoxError,
     TResult Function(DobError value)? dobError,
@@ -2340,6 +2649,7 @@ class _$GenderError implements GenderError {
     required TResult Function() LoadingState,
     required TResult Function(String nameError) nameError,
     required TResult Function(String mobileNumber) getMobileNumber,
+    required TResult Function(String NIDANumber) getNIDANumber,
     required TResult Function(String emailError) emailError,
     required TResult Function(String poBoxError) poBoxError,
     required TResult Function(String dobError) dobError,
@@ -2367,6 +2677,7 @@ class _$GenderError implements GenderError {
     TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String NIDANumber)? getNIDANumber,
     TResult Function(String emailError)? emailError,
     TResult Function(String poBoxError)? poBoxError,
     TResult Function(String dobError)? dobError,
@@ -2394,6 +2705,7 @@ class _$GenderError implements GenderError {
     TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String NIDANumber)? getNIDANumber,
     TResult Function(String emailError)? emailError,
     TResult Function(String poBoxError)? poBoxError,
     TResult Function(String dobError)? dobError,
@@ -2425,6 +2737,7 @@ class _$GenderError implements GenderError {
     required TResult Function(LoadingState value) LoadingState,
     required TResult Function(NameError value) nameError,
     required TResult Function(GetMobileNumber value) getMobileNumber,
+    required TResult Function(getNIDANumber value) getNIDANumber,
     required TResult Function(EmailError value) emailError,
     required TResult Function(PoBoxError value) poBoxError,
     required TResult Function(DobError value) dobError,
@@ -2452,6 +2765,7 @@ class _$GenderError implements GenderError {
     TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(getNIDANumber value)? getNIDANumber,
     TResult Function(EmailError value)? emailError,
     TResult Function(PoBoxError value)? poBoxError,
     TResult Function(DobError value)? dobError,
@@ -2479,6 +2793,7 @@ class _$GenderError implements GenderError {
     TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(getNIDANumber value)? getNIDANumber,
     TResult Function(EmailError value)? emailError,
     TResult Function(PoBoxError value)? poBoxError,
     TResult Function(DobError value)? dobError,
@@ -2583,6 +2898,7 @@ class _$ProfessionError implements ProfessionError {
     required TResult Function() LoadingState,
     required TResult Function(String nameError) nameError,
     required TResult Function(String mobileNumber) getMobileNumber,
+    required TResult Function(String NIDANumber) getNIDANumber,
     required TResult Function(String emailError) emailError,
     required TResult Function(String poBoxError) poBoxError,
     required TResult Function(String dobError) dobError,
@@ -2610,6 +2926,7 @@ class _$ProfessionError implements ProfessionError {
     TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String NIDANumber)? getNIDANumber,
     TResult Function(String emailError)? emailError,
     TResult Function(String poBoxError)? poBoxError,
     TResult Function(String dobError)? dobError,
@@ -2637,6 +2954,7 @@ class _$ProfessionError implements ProfessionError {
     TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String NIDANumber)? getNIDANumber,
     TResult Function(String emailError)? emailError,
     TResult Function(String poBoxError)? poBoxError,
     TResult Function(String dobError)? dobError,
@@ -2668,6 +2986,7 @@ class _$ProfessionError implements ProfessionError {
     required TResult Function(LoadingState value) LoadingState,
     required TResult Function(NameError value) nameError,
     required TResult Function(GetMobileNumber value) getMobileNumber,
+    required TResult Function(getNIDANumber value) getNIDANumber,
     required TResult Function(EmailError value) emailError,
     required TResult Function(PoBoxError value) poBoxError,
     required TResult Function(DobError value) dobError,
@@ -2695,6 +3014,7 @@ class _$ProfessionError implements ProfessionError {
     TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(getNIDANumber value)? getNIDANumber,
     TResult Function(EmailError value)? emailError,
     TResult Function(PoBoxError value)? poBoxError,
     TResult Function(DobError value)? dobError,
@@ -2722,6 +3042,7 @@ class _$ProfessionError implements ProfessionError {
     TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(getNIDANumber value)? getNIDANumber,
     TResult Function(EmailError value)? emailError,
     TResult Function(PoBoxError value)? poBoxError,
     TResult Function(DobError value)? dobError,
@@ -2827,6 +3148,7 @@ class _$AddressError implements AddressError {
     required TResult Function() LoadingState,
     required TResult Function(String nameError) nameError,
     required TResult Function(String mobileNumber) getMobileNumber,
+    required TResult Function(String NIDANumber) getNIDANumber,
     required TResult Function(String emailError) emailError,
     required TResult Function(String poBoxError) poBoxError,
     required TResult Function(String dobError) dobError,
@@ -2854,6 +3176,7 @@ class _$AddressError implements AddressError {
     TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String NIDANumber)? getNIDANumber,
     TResult Function(String emailError)? emailError,
     TResult Function(String poBoxError)? poBoxError,
     TResult Function(String dobError)? dobError,
@@ -2881,6 +3204,7 @@ class _$AddressError implements AddressError {
     TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String NIDANumber)? getNIDANumber,
     TResult Function(String emailError)? emailError,
     TResult Function(String poBoxError)? poBoxError,
     TResult Function(String dobError)? dobError,
@@ -2912,6 +3236,7 @@ class _$AddressError implements AddressError {
     required TResult Function(LoadingState value) LoadingState,
     required TResult Function(NameError value) nameError,
     required TResult Function(GetMobileNumber value) getMobileNumber,
+    required TResult Function(getNIDANumber value) getNIDANumber,
     required TResult Function(EmailError value) emailError,
     required TResult Function(PoBoxError value) poBoxError,
     required TResult Function(DobError value) dobError,
@@ -2939,6 +3264,7 @@ class _$AddressError implements AddressError {
     TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(getNIDANumber value)? getNIDANumber,
     TResult Function(EmailError value)? emailError,
     TResult Function(PoBoxError value)? poBoxError,
     TResult Function(DobError value)? dobError,
@@ -2966,6 +3292,7 @@ class _$AddressError implements AddressError {
     TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(getNIDANumber value)? getNIDANumber,
     TResult Function(EmailError value)? emailError,
     TResult Function(PoBoxError value)? poBoxError,
     TResult Function(DobError value)? dobError,
@@ -3069,6 +3396,7 @@ class _$RegionError implements RegionError {
     required TResult Function() LoadingState,
     required TResult Function(String nameError) nameError,
     required TResult Function(String mobileNumber) getMobileNumber,
+    required TResult Function(String NIDANumber) getNIDANumber,
     required TResult Function(String emailError) emailError,
     required TResult Function(String poBoxError) poBoxError,
     required TResult Function(String dobError) dobError,
@@ -3096,6 +3424,7 @@ class _$RegionError implements RegionError {
     TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String NIDANumber)? getNIDANumber,
     TResult Function(String emailError)? emailError,
     TResult Function(String poBoxError)? poBoxError,
     TResult Function(String dobError)? dobError,
@@ -3123,6 +3452,7 @@ class _$RegionError implements RegionError {
     TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String NIDANumber)? getNIDANumber,
     TResult Function(String emailError)? emailError,
     TResult Function(String poBoxError)? poBoxError,
     TResult Function(String dobError)? dobError,
@@ -3154,6 +3484,7 @@ class _$RegionError implements RegionError {
     required TResult Function(LoadingState value) LoadingState,
     required TResult Function(NameError value) nameError,
     required TResult Function(GetMobileNumber value) getMobileNumber,
+    required TResult Function(getNIDANumber value) getNIDANumber,
     required TResult Function(EmailError value) emailError,
     required TResult Function(PoBoxError value) poBoxError,
     required TResult Function(DobError value) dobError,
@@ -3181,6 +3512,7 @@ class _$RegionError implements RegionError {
     TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(getNIDANumber value)? getNIDANumber,
     TResult Function(EmailError value)? emailError,
     TResult Function(PoBoxError value)? poBoxError,
     TResult Function(DobError value)? dobError,
@@ -3208,6 +3540,7 @@ class _$RegionError implements RegionError {
     TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(getNIDANumber value)? getNIDANumber,
     TResult Function(EmailError value)? emailError,
     TResult Function(PoBoxError value)? poBoxError,
     TResult Function(DobError value)? dobError,
@@ -3312,6 +3645,7 @@ class _$DistrictError implements DistrictError {
     required TResult Function() LoadingState,
     required TResult Function(String nameError) nameError,
     required TResult Function(String mobileNumber) getMobileNumber,
+    required TResult Function(String NIDANumber) getNIDANumber,
     required TResult Function(String emailError) emailError,
     required TResult Function(String poBoxError) poBoxError,
     required TResult Function(String dobError) dobError,
@@ -3339,6 +3673,7 @@ class _$DistrictError implements DistrictError {
     TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String NIDANumber)? getNIDANumber,
     TResult Function(String emailError)? emailError,
     TResult Function(String poBoxError)? poBoxError,
     TResult Function(String dobError)? dobError,
@@ -3366,6 +3701,7 @@ class _$DistrictError implements DistrictError {
     TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String NIDANumber)? getNIDANumber,
     TResult Function(String emailError)? emailError,
     TResult Function(String poBoxError)? poBoxError,
     TResult Function(String dobError)? dobError,
@@ -3397,6 +3733,7 @@ class _$DistrictError implements DistrictError {
     required TResult Function(LoadingState value) LoadingState,
     required TResult Function(NameError value) nameError,
     required TResult Function(GetMobileNumber value) getMobileNumber,
+    required TResult Function(getNIDANumber value) getNIDANumber,
     required TResult Function(EmailError value) emailError,
     required TResult Function(PoBoxError value) poBoxError,
     required TResult Function(DobError value) dobError,
@@ -3424,6 +3761,7 @@ class _$DistrictError implements DistrictError {
     TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(getNIDANumber value)? getNIDANumber,
     TResult Function(EmailError value)? emailError,
     TResult Function(PoBoxError value)? poBoxError,
     TResult Function(DobError value)? dobError,
@@ -3451,6 +3789,7 @@ class _$DistrictError implements DistrictError {
     TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(getNIDANumber value)? getNIDANumber,
     TResult Function(EmailError value)? emailError,
     TResult Function(PoBoxError value)? poBoxError,
     TResult Function(DobError value)? dobError,
@@ -3555,6 +3894,7 @@ class _$GenderTypeChoosen implements GenderTypeChoosen {
     required TResult Function() LoadingState,
     required TResult Function(String nameError) nameError,
     required TResult Function(String mobileNumber) getMobileNumber,
+    required TResult Function(String NIDANumber) getNIDANumber,
     required TResult Function(String emailError) emailError,
     required TResult Function(String poBoxError) poBoxError,
     required TResult Function(String dobError) dobError,
@@ -3582,6 +3922,7 @@ class _$GenderTypeChoosen implements GenderTypeChoosen {
     TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String NIDANumber)? getNIDANumber,
     TResult Function(String emailError)? emailError,
     TResult Function(String poBoxError)? poBoxError,
     TResult Function(String dobError)? dobError,
@@ -3609,6 +3950,7 @@ class _$GenderTypeChoosen implements GenderTypeChoosen {
     TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String NIDANumber)? getNIDANumber,
     TResult Function(String emailError)? emailError,
     TResult Function(String poBoxError)? poBoxError,
     TResult Function(String dobError)? dobError,
@@ -3640,6 +3982,7 @@ class _$GenderTypeChoosen implements GenderTypeChoosen {
     required TResult Function(LoadingState value) LoadingState,
     required TResult Function(NameError value) nameError,
     required TResult Function(GetMobileNumber value) getMobileNumber,
+    required TResult Function(getNIDANumber value) getNIDANumber,
     required TResult Function(EmailError value) emailError,
     required TResult Function(PoBoxError value) poBoxError,
     required TResult Function(DobError value) dobError,
@@ -3667,6 +4010,7 @@ class _$GenderTypeChoosen implements GenderTypeChoosen {
     TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(getNIDANumber value)? getNIDANumber,
     TResult Function(EmailError value)? emailError,
     TResult Function(PoBoxError value)? poBoxError,
     TResult Function(DobError value)? dobError,
@@ -3694,6 +4038,7 @@ class _$GenderTypeChoosen implements GenderTypeChoosen {
     TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(getNIDANumber value)? getNIDANumber,
     TResult Function(EmailError value)? emailError,
     TResult Function(PoBoxError value)? poBoxError,
     TResult Function(DobError value)? dobError,
@@ -3798,6 +4143,7 @@ class _$RegionChoosen implements RegionChoosen {
     required TResult Function() LoadingState,
     required TResult Function(String nameError) nameError,
     required TResult Function(String mobileNumber) getMobileNumber,
+    required TResult Function(String NIDANumber) getNIDANumber,
     required TResult Function(String emailError) emailError,
     required TResult Function(String poBoxError) poBoxError,
     required TResult Function(String dobError) dobError,
@@ -3825,6 +4171,7 @@ class _$RegionChoosen implements RegionChoosen {
     TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String NIDANumber)? getNIDANumber,
     TResult Function(String emailError)? emailError,
     TResult Function(String poBoxError)? poBoxError,
     TResult Function(String dobError)? dobError,
@@ -3852,6 +4199,7 @@ class _$RegionChoosen implements RegionChoosen {
     TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String NIDANumber)? getNIDANumber,
     TResult Function(String emailError)? emailError,
     TResult Function(String poBoxError)? poBoxError,
     TResult Function(String dobError)? dobError,
@@ -3883,6 +4231,7 @@ class _$RegionChoosen implements RegionChoosen {
     required TResult Function(LoadingState value) LoadingState,
     required TResult Function(NameError value) nameError,
     required TResult Function(GetMobileNumber value) getMobileNumber,
+    required TResult Function(getNIDANumber value) getNIDANumber,
     required TResult Function(EmailError value) emailError,
     required TResult Function(PoBoxError value) poBoxError,
     required TResult Function(DobError value) dobError,
@@ -3910,6 +4259,7 @@ class _$RegionChoosen implements RegionChoosen {
     TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(getNIDANumber value)? getNIDANumber,
     TResult Function(EmailError value)? emailError,
     TResult Function(PoBoxError value)? poBoxError,
     TResult Function(DobError value)? dobError,
@@ -3937,6 +4287,7 @@ class _$RegionChoosen implements RegionChoosen {
     TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(getNIDANumber value)? getNIDANumber,
     TResult Function(EmailError value)? emailError,
     TResult Function(PoBoxError value)? poBoxError,
     TResult Function(DobError value)? dobError,
@@ -4040,6 +4391,7 @@ class _$DistrictChoosen implements DistrictChoosen {
     required TResult Function() LoadingState,
     required TResult Function(String nameError) nameError,
     required TResult Function(String mobileNumber) getMobileNumber,
+    required TResult Function(String NIDANumber) getNIDANumber,
     required TResult Function(String emailError) emailError,
     required TResult Function(String poBoxError) poBoxError,
     required TResult Function(String dobError) dobError,
@@ -4067,6 +4419,7 @@ class _$DistrictChoosen implements DistrictChoosen {
     TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String NIDANumber)? getNIDANumber,
     TResult Function(String emailError)? emailError,
     TResult Function(String poBoxError)? poBoxError,
     TResult Function(String dobError)? dobError,
@@ -4094,6 +4447,7 @@ class _$DistrictChoosen implements DistrictChoosen {
     TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String NIDANumber)? getNIDANumber,
     TResult Function(String emailError)? emailError,
     TResult Function(String poBoxError)? poBoxError,
     TResult Function(String dobError)? dobError,
@@ -4125,6 +4479,7 @@ class _$DistrictChoosen implements DistrictChoosen {
     required TResult Function(LoadingState value) LoadingState,
     required TResult Function(NameError value) nameError,
     required TResult Function(GetMobileNumber value) getMobileNumber,
+    required TResult Function(getNIDANumber value) getNIDANumber,
     required TResult Function(EmailError value) emailError,
     required TResult Function(PoBoxError value) poBoxError,
     required TResult Function(DobError value) dobError,
@@ -4152,6 +4507,7 @@ class _$DistrictChoosen implements DistrictChoosen {
     TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(getNIDANumber value)? getNIDANumber,
     TResult Function(EmailError value)? emailError,
     TResult Function(PoBoxError value)? poBoxError,
     TResult Function(DobError value)? dobError,
@@ -4179,6 +4535,7 @@ class _$DistrictChoosen implements DistrictChoosen {
     TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(getNIDANumber value)? getNIDANumber,
     TResult Function(EmailError value)? emailError,
     TResult Function(PoBoxError value)? poBoxError,
     TResult Function(DobError value)? dobError,
@@ -4284,6 +4641,7 @@ class _$OnGenderTypeFetched implements OnGenderTypeFetched {
     required TResult Function() LoadingState,
     required TResult Function(String nameError) nameError,
     required TResult Function(String mobileNumber) getMobileNumber,
+    required TResult Function(String NIDANumber) getNIDANumber,
     required TResult Function(String emailError) emailError,
     required TResult Function(String poBoxError) poBoxError,
     required TResult Function(String dobError) dobError,
@@ -4311,6 +4669,7 @@ class _$OnGenderTypeFetched implements OnGenderTypeFetched {
     TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String NIDANumber)? getNIDANumber,
     TResult Function(String emailError)? emailError,
     TResult Function(String poBoxError)? poBoxError,
     TResult Function(String dobError)? dobError,
@@ -4338,6 +4697,7 @@ class _$OnGenderTypeFetched implements OnGenderTypeFetched {
     TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String NIDANumber)? getNIDANumber,
     TResult Function(String emailError)? emailError,
     TResult Function(String poBoxError)? poBoxError,
     TResult Function(String dobError)? dobError,
@@ -4369,6 +4729,7 @@ class _$OnGenderTypeFetched implements OnGenderTypeFetched {
     required TResult Function(LoadingState value) LoadingState,
     required TResult Function(NameError value) nameError,
     required TResult Function(GetMobileNumber value) getMobileNumber,
+    required TResult Function(getNIDANumber value) getNIDANumber,
     required TResult Function(EmailError value) emailError,
     required TResult Function(PoBoxError value) poBoxError,
     required TResult Function(DobError value) dobError,
@@ -4396,6 +4757,7 @@ class _$OnGenderTypeFetched implements OnGenderTypeFetched {
     TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(getNIDANumber value)? getNIDANumber,
     TResult Function(EmailError value)? emailError,
     TResult Function(PoBoxError value)? poBoxError,
     TResult Function(DobError value)? dobError,
@@ -4423,6 +4785,7 @@ class _$OnGenderTypeFetched implements OnGenderTypeFetched {
     TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(getNIDANumber value)? getNIDANumber,
     TResult Function(EmailError value)? emailError,
     TResult Function(PoBoxError value)? poBoxError,
     TResult Function(DobError value)? dobError,
@@ -4528,6 +4891,7 @@ class _$OnRegionFetched implements OnRegionFetched {
     required TResult Function() LoadingState,
     required TResult Function(String nameError) nameError,
     required TResult Function(String mobileNumber) getMobileNumber,
+    required TResult Function(String NIDANumber) getNIDANumber,
     required TResult Function(String emailError) emailError,
     required TResult Function(String poBoxError) poBoxError,
     required TResult Function(String dobError) dobError,
@@ -4555,6 +4919,7 @@ class _$OnRegionFetched implements OnRegionFetched {
     TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String NIDANumber)? getNIDANumber,
     TResult Function(String emailError)? emailError,
     TResult Function(String poBoxError)? poBoxError,
     TResult Function(String dobError)? dobError,
@@ -4582,6 +4947,7 @@ class _$OnRegionFetched implements OnRegionFetched {
     TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String NIDANumber)? getNIDANumber,
     TResult Function(String emailError)? emailError,
     TResult Function(String poBoxError)? poBoxError,
     TResult Function(String dobError)? dobError,
@@ -4613,6 +4979,7 @@ class _$OnRegionFetched implements OnRegionFetched {
     required TResult Function(LoadingState value) LoadingState,
     required TResult Function(NameError value) nameError,
     required TResult Function(GetMobileNumber value) getMobileNumber,
+    required TResult Function(getNIDANumber value) getNIDANumber,
     required TResult Function(EmailError value) emailError,
     required TResult Function(PoBoxError value) poBoxError,
     required TResult Function(DobError value) dobError,
@@ -4640,6 +5007,7 @@ class _$OnRegionFetched implements OnRegionFetched {
     TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(getNIDANumber value)? getNIDANumber,
     TResult Function(EmailError value)? emailError,
     TResult Function(PoBoxError value)? poBoxError,
     TResult Function(DobError value)? dobError,
@@ -4667,6 +5035,7 @@ class _$OnRegionFetched implements OnRegionFetched {
     TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(getNIDANumber value)? getNIDANumber,
     TResult Function(EmailError value)? emailError,
     TResult Function(PoBoxError value)? poBoxError,
     TResult Function(DobError value)? dobError,
@@ -4771,6 +5140,7 @@ class _$OnDistrictFetched implements OnDistrictFetched {
     required TResult Function() LoadingState,
     required TResult Function(String nameError) nameError,
     required TResult Function(String mobileNumber) getMobileNumber,
+    required TResult Function(String NIDANumber) getNIDANumber,
     required TResult Function(String emailError) emailError,
     required TResult Function(String poBoxError) poBoxError,
     required TResult Function(String dobError) dobError,
@@ -4798,6 +5168,7 @@ class _$OnDistrictFetched implements OnDistrictFetched {
     TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String NIDANumber)? getNIDANumber,
     TResult Function(String emailError)? emailError,
     TResult Function(String poBoxError)? poBoxError,
     TResult Function(String dobError)? dobError,
@@ -4825,6 +5196,7 @@ class _$OnDistrictFetched implements OnDistrictFetched {
     TResult Function()? LoadingState,
     TResult Function(String nameError)? nameError,
     TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String NIDANumber)? getNIDANumber,
     TResult Function(String emailError)? emailError,
     TResult Function(String poBoxError)? poBoxError,
     TResult Function(String dobError)? dobError,
@@ -4856,6 +5228,7 @@ class _$OnDistrictFetched implements OnDistrictFetched {
     required TResult Function(LoadingState value) LoadingState,
     required TResult Function(NameError value) nameError,
     required TResult Function(GetMobileNumber value) getMobileNumber,
+    required TResult Function(getNIDANumber value) getNIDANumber,
     required TResult Function(EmailError value) emailError,
     required TResult Function(PoBoxError value) poBoxError,
     required TResult Function(DobError value) dobError,
@@ -4883,6 +5256,7 @@ class _$OnDistrictFetched implements OnDistrictFetched {
     TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(getNIDANumber value)? getNIDANumber,
     TResult Function(EmailError value)? emailError,
     TResult Function(PoBoxError value)? poBoxError,
     TResult Function(DobError value)? dobError,
@@ -4910,6 +5284,7 @@ class _$OnDistrictFetched implements OnDistrictFetched {
     TResult Function(LoadingState value)? LoadingState,
     TResult Function(NameError value)? nameError,
     TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(getNIDANumber value)? getNIDANumber,
     TResult Function(EmailError value)? emailError,
     TResult Function(PoBoxError value)? poBoxError,
     TResult Function(DobError value)? dobError,
