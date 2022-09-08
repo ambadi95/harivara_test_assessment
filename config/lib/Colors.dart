@@ -20,6 +20,7 @@ const SU_button_text_color = Color(0xFFFFFFFF);
 const SU_grey_icon_bg = Color(0xFFF5F7FB);
 
 
+
 ////Agent NearBy Screen
 
 const White = Color(0xFFFFFFFF);
@@ -63,6 +64,7 @@ const DD_TitleColor = Color(0xFF040505);
 const DD_TextLabel = Color(0xFF000000);
 const DD_TextValue = Color(0xFF000000);
 const DD_BUTTON_COLOR = Color(0xFFF4EFEF);
+const DD_DEVICE_REGISTER = Color(0xFF160304);
 
 Color  Loan_Detail_Background = Color(0xFFF4EEEB);
 Color  Loan_Banner_Background = Color(0xFFC83732);
@@ -99,5 +101,3 @@ const DP_CircleColor=Color(0xFFFFBEBE);
 
 const PS_AirtelPayContainerColor=Color(0xFFF5F7FB);
 const PS_DailyRepaymentContainerColor=Color(0xFFF4EEEB);
-
-const DD_DEVICE_REGISTER = Color(0xFF160304);

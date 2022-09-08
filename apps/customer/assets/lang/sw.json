@@ -6,8 +6,8 @@
   "OB_SignUp" : "Jisajili",
   "OB_Lang" : "SW",
   "OB_ni_bora" : "ni %{Bora|click}%",
-  "ST_view_profile": "View Profile",
-  "ST_my_profile": "My Profile",
+  "ST_view_profile": "Tazama Wasifu",
+  "ST_my_profile": "Wasifu Wangu",
 
   "DO_Title": "Chaguo za Kifaa",
   "DO_Search": "Tafuta kwa Jina / Chapa / bei / hifadhi / nk.",
@@ -21,7 +21,7 @@
 
 
   "SU_title" : "Weka Nambari ya NIDA",
-  "SU_subtitle" : "Kwa kujisajili kwenye Y9 Pay, unakubali Sheria na Masharti.",
+  "SU_subtitle" : "Kwa kujisajili kwenye Y9 Pay, unakubali \n%{Sheria na Masharti|https://www.google.com}%.",
   "SU_ID_no_label" : "Namba ya NIDA",
   "SU_mobile_no_label" : "Namba ya simu ya mkononi",
   "SU_carrier_message" : "Huenda ukatozwa ada za mtoa huduma za SMS.",
@@ -37,7 +37,7 @@
   "DV_name_hint_text" : "Ingiza Jina",
   "DV_dob_label" : "Tarehe ya kuzaliwa",
   "DV_dob_error_text" : "DoB batili",
-  "DV_invalid_dob_error_text" : "Please enter a valid date of birth",
+  "DV_invalid_dob_error_text" : "Tafadhali weka tarehe halali ya kuzaliwa",
   "DV_dob_hint_text" : "Ingiza DoB",
   "DV_gender_label" : "Jinsia",
   "DV_gender_error_text" : "Jinsia Batili",
@@ -61,10 +61,15 @@
   "DV_district_label" : "Wilaya",
   "DV_district_error_text" : "Wilaya Batili",
   "DV_district_hint_text" : "Ingiza Wilaya",
-
-
+  "DV_button_text" : "Endelea",
+  "Y9_DEVICE_LOAN": "Mkopo wa Kifaa cha Y9",
+  "DAILY_EMI": "Emi ya kila siku",
+  "MONTHLY_EMI": "Emi ya kila mwezi",
+  "Save_Text": "Hifadhi",
 
   "HS_GoodMorning": "Habari za asubuhi",
+  "HS_GoodAfternoon": "Mchana Mwema",
+  "HS_GoodEvening": "Habari za jioni",
   "HS_YourBalance": "Mizani Yako",
   "HS_AccountId": "Y9 Kitambulisho cha Akaunti",
   "HS_LoadWallet": "Pakia Wallet",
@@ -76,8 +81,6 @@
   "HS_ReferalCode": "Msimbo wa Rufaa",
   "HS_Invite": "Alika",
 
-  "DV_button_text" : "Endelea",
-
   "PC_create_passcode" : "Unda nambari mpya ya siri",
   "PC_passcode_message" : "Hii itatumika kuingia",
   "PC_re_enter_passcode" : "Ingiza tena nambari mpya ya siri",
@@ -87,30 +90,26 @@
   "PC_passcode_tip" : "Kidokezo: Epuka siku za kuzaliwa, na nambari zinazojirudia au zinazofuatana.",
 
   "ES_welcome_Text" : "HII %{_name_ | click}% ",
-  "ES_success_text" : "You have successfully\nregistered on Y9 and your\ninterest on Membership device",
-  "ES_enrolled_success_text" : "Congratulations! You have successfully selected your Membership with Y9",
-  "ES_enroll_id" : "Your Reference ID\n %{_id_ | click}%",
+  "ES_success_text" : "Umefanikiwa\niliyosajiliwa kwenye Y9 na yako\nmaslahi kwenye kifaa cha Uanachama",
+  "ES_enrolled_success_text" : "Hongera! Umefanikiwa kuchagua Uanachama wako na Y9",
+  "ES_enroll_id" : "Kitambulisho chako cha Marejeleo\n  %{_id_ | bonyeza}%",
   "ES_near_agent_button" : "Tazama karibu na Wakala (inakuja hivi karibuni)",
   "ES_select_membership" : "Chagua Uanachama Wako",
-  "ES_view_membership" : "View Your Membership",
-  "ES_agent_contact_text" : "Y9 agent will contact you shortly on your Membership",
-  "ES_need_help_contact" : "Need Help Contact Us at +255 677-039-999",
-
-
+  "ES_view_membership" : "Tazama Uanachama Wako",
+  "ES_agent_contact_text" : "Wakala wa Y9 atawasiliana nawe baada ya muda mfupi kuhusu Uanachama wako",
+  "ES_need_help_contact" : "Unahitaji Usaidizi Wasiliana Nasi kwa +255 677-039-999",
 
   "WB_WelcomeBack": "Karibu tena Y9",
   "WB_EnterPassCode": "Weka Nambari ya siri",
-
-
 
   "AN_Title" : "Wakala wa karibu",
   "AN_Search" : "Tafuta kwa Jina Mkoa / Wilaya",
   "AN_AgentName" : "Y9 Kitambulisho cha wakala: ",
   "AN_Call" : "Wito",
 
-  "D0_JoiningFee": "Joining Fee (one off)",
-  "D0_DailyFee": "Daily Fee",
-  "D0_ViewDetails": "View Details",
+  "D0_JoiningFee": "Ada ya Kujiunga (punguzo moja)",
+  "D0_DailyFee": "Ada ya Kila Siku",
+  "D0_ViewDetails": "Tazama Maelezo",
 
   "DD_product" : "Maelezo ya bidhaa",
   "DD_Brand" : "Chapa",
@@ -129,7 +128,6 @@
   "DD_SelectDevice" : "Chagua Kifaa",
   "DD_MembershipTerms" : "Masharti ya Uanachama",
   "DD_MembershipBenefits" : "Faida za Uanachama wa Y9",
-
   "DD_MemberBenefit1": "Mkopo wa Kufadhili Kifaa chako cha Smartphone",
   "DD_MemberBenefit2": "Majukwaa ya Dijiti yaliyobinafsishwa kulingana na mahitaji ya Wateja",
   "DD_MemberBenefit3": "Upatikanaji wa Huduma za Kifedha",
@@ -150,9 +148,6 @@
   "VO_resend_otp" : "Tuma tena baada ya sekunde %s.",
   "VO_verify_button" : "Thibitisha",
 
-
-
-
   "SP_ni": "ni",
   "SP_bora": " Bora",
   "SP_is": "is",
@@ -167,14 +162,22 @@
   "HS_Agent_Id" : "Kitambulisho cha wakala wa Y9",
   "HS_TotalOnBoarderCustomers" : "Jumla ya Wateja \nImesajiliwa ",
   "HS_PendingCustomerRequests" : "Mteja Anayesubiri \nOmbi",
+  "HS_TotalCustomerBoarding" : "Jumla ya Wateja\nImeingia",
   "HS_Customer_OnBoarding" : "Mteja \nKupanda",
   "HS_Customer_DeviceSwap" : "Kubadilisha kifaa\n/ ukarabati",
   "HS_Customer_AgentSupport" : "Wakala \nMsaada",
   "HS_Agent_Refer_Text": "Rejelea Marafiki zako wajiandikishe kwa Uanachama wa Y9 na utashinda Bonasi ya Rufaa",
   "HS_Agent_Refer_Program": "Mpango wa Rufaa -",
   "HS_Agent_Stay_Tunned": " Endelea kufuatilia !",
-
-
+  "HS_CardList1Title" : "Mkopo wa Kifaa cha Y9",
+  "HS_CardList2Title" : "Kiasi Kinachodaiwa",
+  "HS_CardList3Title" : "Jumla ya Kiasi kitakachokuwa Kulipwa",
+  "HS_LoanDetails" : "Mkopo\nMaelezo",
+  "HS_LoanStatements" : "Mkopo\nKauli",
+  "HS_Widget1Title" : "Kusoma ni Kuvutia",
+  "HS_Widget1Description" : "Wataalamu bora wa ulimwengu, wanafanya kazi\nna kuandika kuburudisha\nfasihi kwa ajili yako",
+  "HS_explore" : "Chunguza",
+  "HS_Daily_Repayment_amount" : "Malipo Bora\nKiasi",
 
   "TC_Title": "Masharti ya Matumizi ya Y9's Mobile App",
   "TC_LastUpdated": "Ilisasishwa mwisho: 2 Agosti 2022",
@@ -184,80 +187,61 @@
   "TC_Purpose_title":"2. KUSUDI",
   "TC_Purpose_Desc": "2.1. Y9 ni mtoa huduma wa huduma ndogo za kidijitali inayolenga kusaidia kuendeleza mtindo wa maisha wa watu wa Tanzania na bara la Afrika kwa ujumla kwa kutoa huduma za kifedha kwa watu wasio na benki na wasio na benki kwa kutoa fursa ya kupata elimu ya kidijitali, afya ya kidijitali n.k. kwa kutoa simu mahiri za 4G. kwa masharti ya haki sana ili kuifanya ipatikane kwa wananchi wote kwa kuwezesha ushirikishwaji wa maana wa kifedha na kidijitali.",
 
-
-
-
-  "LR_paying_for" : "You are paying for",
-  "LR_device_loan" : "Y9 Device Loan",
-  "LR_amount_to_pay" : "Choose the amount to pay",
-  "LR_due_amount" : "Pay Due Amount",
-  "LR_daily_repayment" : "Daily Repayment",
-  "LR_loan_amount" : "Total Loan Amount",
-  "LR_custom_amount" : "Pay Custom Amount",
-  "LR_pay_now" : "Pay Now",
-
-
-  "HS_CardList1Title" : "Y9 Device Loan",
-  "HS_CardList2Title" : "Outstanding Due Amount",
-  "HS_CardList3Title" : "Total Amount to be \nRepaid",
-  "HS_LoanDetails" : "Loan \nDetails",
-  "HS_LoanStatements" : "Loan \nStatement",
-  "HS_Widget1Title" : "Reading is Fascinating",
-  "HS_Widget1Description" : "World best witters, works \nand write entertaining \nliterature for you",
-  "HS_explore" : "Explore",
-  "HS_Daily_Repayment_amount" : "Outstanding Due\nAmount",
-
+  "ST_my_profile": "Wasifu wangu",
   "ST_title" : "Mipangilio",
-  "ST_subTitle" : "Profile Management",
-  "ST_view_profile" : "View Profile",
-  "ST_update_passcode" : "Update Passcode",
-  "ST_App_Language" : "App Language",
-  "ST_sign_out" : "Sign Out",
-  "ST_support": "Support",
-  "ST_agents" : "Agents",
-  "ST_faq" : "Frequently Asked Queries",
-  "ST_term_condition" : "Terms & Conditions",
-  "ST_call_support" : "Call Support",
+  "ST_subTitle" : "Usimamizi wa Wasifu",
+  "ST_view_profile" : "Tazama Wasifu",
+  "ST_update_passcode" : "Sasisha nambari ya siri",
+  "ST_App_Language" : "Lugha ya Programu",
+  "ST_sign_out" : "Toka",
+  "ST_support": "Msaada",
+  "ST_agents" : "Mawakala",
+  "ST_faq" : "Maswali Yanayoulizwa Mara Kwa Mara",
+  "ST_term_condition" : "Sheria na Masharti",
+  "ST_call_support" : "Wito Msaada",
+  "ST_contact_text" : "Unahitaji Msaada au Ikiwa Una Swali Lolote Wasiliana Nasi kwa +255 677-039-999",
 
-  "ST_contact_text" : "Need Help or If You Have Any Query \n Contact Us at +255 677-039-999",
-
-
-  "PP_Daily_Repayment_Title" : "Daily Repayment",
+  "PP_Daily_Repayment_Title" : "Malipo ya Kila Siku",
   "PP_Airtel_Pay" : "Airtel Pay",
-  "PP_PayNow" : "Pay Now",
-  "PP_Wallets_Title" : "Wallets",
+  "PP_PayNow" : "LIPA sasa",
+  "PP_Wallets_Title" : "Pochi",
 
-  "FAQ_Title": "FAQ",
+  "FAQ_Title": "Maswali Yanayoulizwa Mara kwa Mara",
 
-  "LD_Loan_Detail": "Loan Details",
-  "LD_Loan_Detail_Amount": "Loan Amount",
-  "LD_Loan_Detail_Down_Payment": "Joining Fee / Downpayment",
-  "LD_Loan_Detail_Repayment": "Repayment Type",
-  "LD_Loan__Detail_Daily_Repayment_Amount": "Daily Repayment Amount",
-  "LD_Loan_Detail_Total_Repayed_Amount": "Total Amount to be Repaid",
-  "LD_Loan_Detail_Loan_Tenure": "Loan Tenure",
-  "LD_Loan_Detail_Start_Date": "Loan Start Date",
-  "LD_Loan_Detail_Final_Date": "Final Payment Date",
-  "LD_Loan_Detail_Device_Insurance": "Device Insurance",
-  "LD_Loan_Detail_Device_Insurance_ID": "Device Insurance ID",
-  "LD_Loan_Detail_Note": "** Note: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-  "LD_Loan_Detail_Terms_and_conditions": "By signing up to Y9, you all ready agree to the",
-  "LD_Loan_Detail_Terms": " Terms & Conditions.",
+  "LD_Loan_Detail": "Maelezo ya Mkopo",
+  "LD_Loan_Detail_Amount": "Kiasi cha Mkopo",
+  "LD_Loan_Detail_Down_Payment": "Ada ya Kujiunga / Malipo ya Chini",
+  "LD_Loan_Detail_Repayment": "Aina ya Urejeshaji",
+  "LD_Loan__Detail_Daily_Repayment_Amount": "Kiasi cha Marejesho ya Kila siku",
+  "LD_Loan_Detail_Total_Repayed_Amount": "Jumla ya Kiasi cha Kulipwa",
+  "LD_Loan_Detail_Loan_Tenure": "Muda wa Mkopo",
+  "LD_Loan_Detail_Start_Date": "Tarehe ya Kuanza kwa Mkopo",
+  "LD_Loan_Detail_Final_Date": "Tarehe ya Mwisho ya Malipo",
+  "LD_Loan_Detail_Device_Insurance": "Bima ya Kifaa",
+  "LD_Loan_Detail_Device_Insurance_ID": "Kitambulisho cha Bima ya Kifaa",
+  "LD_Loan_Detail_Note": "** Kumbuka: Lorem Ipsum ni maandishi duni ya tasnia ya uchapishaji na upangaji wa aina. Lorem Ipsum imekuwa maandishi ya kawaida ya tasnia tangu miaka ya 1500",
+  "LD_Loan_Detail_Terms_and_conditions": "Kwa kujiandikisha hadi Y9, nyote mko tayari kukubaliana na",
+  "LD_Loan_Detail_Terms": " Sheria na Masharti.",
 
-  "Profile_Title": "Profile",
-  "Profile_Sub_Title": "Your Personal details are shown as per your NIDA records",
+  "Profile_Title": "Wasifu",
+  "Profile_Sub_Title": "Maelezo yako ya kibinafsi yanaonyeshwa kulingana na rekodi zako za NIDA",
 
-  "LR_paying_for" : "You are paying for",
-  "LR_device_loan" : "Y9 Device Loan",
-  "LR_amount_to_pay" : "Choose the amount to pay",
-  "LR_due_amount" : "Pay Due \nAmount",
-  "LR_daily_repayment" : "Daily \nRepayment",
-  "LR_loan_amount" : "Total Loan \nAmount",
-  "LR_custom_amount" : "Pay Custom \nAmount",
-  "LR_pay_now" : "Pay Now",
-  "LR_payment_label" : "Payment of {} will be adjusted in total \nPayable amount",
-  "LR_proceed" : "Proceed",
+  "LR_paying_for" : "Unalipa",
+  "LR_device_loan" : "Mkopo wa Kifaa cha Y9",
+  "LR_amount_to_pay" : "Chagua kiasi cha kulipa",
+  "LR_due_amount" : "Lipa\nKiasi",
+  "LR_daily_repayment" : "Kila siku\nUlipaji",
+  "LR_loan_amount" : "Jumla ya Mkopo\nKiasi",
+  "LR_custom_amount" : "Lipa Desturi\nKiasi",
+  "LR_pay_now" : "LIPA sasa",
+  "LR_payment_label" : "Malipo ya {} yatarekebishwa kwa jumla\nKiasi kinacholipwa",
+  "LR_proceed" : "Endelea",
 
+  "CA_custom_amount" : "Lipa Kiasi Maalum",
 
-  "CA_custom_amount" : "Pay Custom Amount"
+  "RP_success_message": "Nambari ya siri imesasishwa kwa mafanikio",
+  "PR_message" : "Utaondolewa kwenye programu, tafadhali tumia nambari mpya ya siri Kuingia tena",
+  "FORGET_PASSCODE": "Sahau nambari ya siri ?",
+  "RESET_NOW": "Weka Upya Sasa",
+  "ERROR_MESSAGE" : "Hitilafu fulani imetokea, Tafadhali jaribu tena baadaye!"
 }

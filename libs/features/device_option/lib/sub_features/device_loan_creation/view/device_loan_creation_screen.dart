@@ -71,13 +71,13 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
                   const CrayonPaymentAppBarButtonType.back(),
                 ],
               ),
-              bottomNavigationBar: loanPreviewResponseModel != null
+            /*  bottomNavigationBar: loanPreviewResponseModel != null
                   ? Padding(
                       padding: const EdgeInsets.only(
                           left: 16, right: 16, bottom: 18),
                       child: selectButton(coordinator),
                     )
-                  : SizedBox(),
+                  : SizedBox(),*/
               body: state.when(
                 initialState: () => const SizedBox(),
                 ready: (_, __, ___) => _buildMainUIWithLoading(

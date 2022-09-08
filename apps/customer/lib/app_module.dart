@@ -22,6 +22,7 @@ import 'package:core/translation/crayon_payment_transaltions_loader.dart';
 import 'package:core/translation/i_app_localization_service.dart';
 import 'package:core/utils/input_formatters/length_text_formatter.dart';
 import 'package:core/validators/input_entry_validator/input_entry_validator.dart';
+import 'package:widget_library/utils/app_utils.dart';
 import 'package:device_option/device_option_module.dart';
 import 'package:device_option/navigation_handler/device_option_route_manager.dart';
 import 'package:flutter/services.dart';
@@ -93,9 +94,21 @@ class AppModule {
         memoryStorageService: MemoryStorageServiceImpl(),
       ),
     );
+
+    AppUtils.appUtilsInstance.updateCacheTaskResolverInstance( CacheTaskResolver(
+      secureStorageService: DIContainer.container<StorageService>(),
+      fileStorageService: FileStorageServiceImpl(),
+      unsecureStorageService: UnsecureStorageServiceImpl(),
+      memoryStorageService: MemoryStorageServiceImpl(),
+    ),);
+
     DIContainer.container.registerSingleton<NavigationManager>(
       (container) => NavigationManagerImpl(),
     );
+
+    AppUtils.appUtilsInstance.updateNavigationHandlerInstance(NavigationManagerImpl());
+
+
     DIContainer.container.registerSingleton<WidgetsModule>(
       (container) => WidgetsModuleImpl(container.resolve<NavigationManager>()),
     );
