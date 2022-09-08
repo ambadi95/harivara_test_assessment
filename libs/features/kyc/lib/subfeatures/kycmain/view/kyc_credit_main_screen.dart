@@ -3,7 +3,7 @@ import 'package:config/Colors.dart';
 import 'package:config/Config.dart';
 import 'package:config/Styles.dart';
 import 'package:core/view/base_view.dart';
-import 'package:crayon_payment_customer/util/app_utils.dart';
+import 'package:widget_library/utils/app_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:passcode/passcode_module.dart';
 import 'package:shared_data_models/kyc/kyc_screen_args.dart';
@@ -82,11 +82,8 @@ class _KycCreditMainScreenState extends State<KycCreditMainScreen> {
 
   Widget _createLoading(KycCreditMainStateReady state) {
     if (state.isLoading) {
-      return Container(
-        color: Colors.black.withOpacity(0.4),
-        child: const CenteredCircularProgressBar(
-            color: config_colors.PRIMARY_COLOR),
-      );
+      return const CenteredCircularProgressBar(color: PRIMARY_COLOR);
+
     } else {
       return Container();
     }
@@ -97,34 +94,125 @@ class _KycCreditMainScreenState extends State<KycCreditMainScreen> {
     KycCreditMainCoordinator coordinator,
     KycCreditMainStateReady state,
   ) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Column(
-          children: [
-            _buildTitle(context),
+        _buildTitle(context, coordinator),
             SizedBox(
               height:
                   AppUtils.appUtilsInstance.getPercentageSize(percentage: 5),
             ),
-            _subTitleMain(context),
-          ],
-        ),
-        const Image(image: AssetImage(AN_Kyc_Credit_Main)),
-        Container(
-          margin: const EdgeInsets.only(bottom: 40),
-          child: Column(
-            children: [
-              _getTermsCheckBox(context),
-              const SizedBox(
-                height: 20,
-              ),
-              _buildCheckNowButton(context, coordinator, state),
-            ],
+        _subTitleMain(context),
+          SizedBox(
+            height:
+            AppUtils.appUtilsInstance.getPercentageSize(percentage: 10),
           ),
-        )
-      ],
-      crossAxisAlignment: CrossAxisAlignment.start,
+          const Image(image: AssetImage(AN_Kyc_Credit_Main)),
+          Container(
+            margin: const EdgeInsets.only(bottom: 20),
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 50,
+                ),
+                _getTermsCheckBox(context, coordinator),
+                const SizedBox(
+                  height: 30,
+                ),
+                _buildCheckNowButton(context, coordinator, state),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget _getCheckBoxUnCheckErrorBottomSheetUi(
+    BuildContext context,
+    KycCreditMainCoordinator coordinator,
+    KycCreditMainState state,
+  ) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: ListView(
+        children: [
+          const Image(
+            image: AssetImage(AN_Kyc_Credit_ERROR),
+            width: 78,
+            height: 78,
+          ),
+          CrayonPaymentText(
+            key: Key('${_identifier}_KYC_Terms_and_Condition_ERROR'),
+            text: const TextUIDataModel('Error',
+                textAlign: TextAlign.center,
+                styleVariant: CrayonPaymentTextStyleVariant.subtitle1,
+                color: Black,
+                fontWeight: FontWeight.w600),
+          ),
+          SizedBox(
+            height: AppUtils.appUtilsInstance.getPercentageSize(
+              percentage: 8,
+            ),
+          ),
+          // CrayonPaymentText(
+          //   key: Key('${_identifier}_Terms_And_Condition_Error'),
+          //   text: const TextUIDataModel('Terms_And_Condition_Error',
+          //       textAlign: TextAlign.center,
+          //       styleVariant: CrayonPaymentTextStyleVariant.subtitle2,
+          //       color: AN_SubTitleColor,
+          //       fontWeight: FontWeight.w400),
+          // ),
+          // SizedBox(
+          //   height: AppUtils.appUtilsInstance.getPercentageSize(
+          //     percentage: 8,
+          //   ),
+          // ),
+          CrayonPaymentText(
+            key: Key('${_identifier}_KYC_Verification_Failed_SubTitle'),
+            text: TextUIDataModel('Terms_And_Condition_Error'.tr,
+                styleVariant: CrayonPaymentTextStyleVariant.subtitle2,
+                textAlign: TextAlign.center,
+                color: AN_SubTitleColor,
+                fontWeight: FontWeight.w400),
+          ),
+          SizedBox(
+            height: AppUtils.appUtilsInstance.getPercentageSize(
+              percentage: 8,
+            ),
+          ),
+          _buildGoBackButton(context, coordinator, state),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildGoBackButton(
+    BuildContext context,
+    KycCreditMainCoordinator coordinator,
+    KycCreditMainState state,
+  ) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
+      child: GestureDetector(
+        onTap: () async {
+          coordinator.goBack();
+        },
+        child: Container(
+          width: double.infinity,
+          height: 50,
+          decoration: BoxDecoration(
+              color: SU_button_color, borderRadius: BorderRadius.circular(2.0)),
+          child: Center(
+            child: Text(
+              'Back'.tr,
+              style: SU_button_text_style,
+            ),
+          ),
+        ),
+      ),
     );
   }
 
@@ -134,16 +222,26 @@ class _KycCreditMainScreenState extends State<KycCreditMainScreen> {
     KycCreditMainState state,
   ) {
     return Padding(
-      padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
+      padding: const EdgeInsets.only(left: 16, right: 16),
       child: GestureDetector(
         onTap: () async {
-          await coordinator.navigateToKycCreditAirtel();
+          // coordinator.callMnoConsent(context);
+          if (_isChecked) {
+            await coordinator.callMnoConsent(context);
+          }
+          /*  else {
+            coordinator.showErrorBottomSheet(
+                _getCheckBoxUnCheckErrorBottomSheetUi(
+                    context, coordinator, state),
+                context);
+          }*/
         },
         child: Container(
           width: double.infinity,
           height: 50,
           decoration: BoxDecoration(
-              color: SU_button_color, borderRadius: BorderRadius.circular(8.0)),
+              color: _isChecked == true ? SU_button_color : SU_grey_color,
+              borderRadius: BorderRadius.circular(2.0)),
           child: Center(
             child: Text(
               'KYC_Check_Now'.tr,
@@ -155,7 +253,10 @@ class _KycCreditMainScreenState extends State<KycCreditMainScreen> {
     );
   }
 
-  Widget _buildTitle(context) {
+  Widget _buildTitle(
+    context,
+    KycCreditMainCoordinator coordinator,
+  ) {
     return CrayonPaymentText(
       key: Key('${_identifier}_KYC_Titlee'),
       text: const TextUIDataModel('KYC_Title',
@@ -165,17 +266,20 @@ class _KycCreditMainScreenState extends State<KycCreditMainScreen> {
     );
   }
 
-  _title(BuildContext context) {
-    return CrayonPaymentText(
-      key: Key('${_identifier}_KYC_Validation_With_Airtel'),
-      text: const TextUIDataModel('KYC_Validation_With_Airtel',
-          styleVariant: CrayonPaymentTextStyleVariant.headline2,
-          color: AN_TitleColor,
-          fontWeight: FontWeight.w600),
-    );
-  }
 
-  _getTermsCheckBox(BuildContext context) {
+    _subTitleMain(BuildContext context) {
+      return Text('KYC_Validation_With_Airtel_Subtitle'.tr,
+          style: const TextStyle(
+              color: Black,
+              fontSize: 16,
+              fontFamily: 'Montserrat',
+              fontWeight: FontWeight.w400));
+    }
+
+  _getTermsCheckBox(
+    BuildContext context,
+    KycCreditMainCoordinator coordinator,
+  ) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -200,7 +304,7 @@ class _KycCreditMainScreenState extends State<KycCreditMainScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _checkBoxText(context),
-            _termsText(context),
+            _termsText(context, coordinator),
           ],
         ),
 
@@ -219,23 +323,28 @@ class _KycCreditMainScreenState extends State<KycCreditMainScreen> {
     );
   }
 
-  Widget _termsText(BuildContext context) {
-    return CrayonPaymentText(
-      key: Key('${_identifier}_KYC_Terms_and_Condition'),
-      text: const TextUIDataModel('KYC_Terms_and_Condition',
-          styleVariant: CrayonPaymentTextStyleVariant.headline4,
-          color: SU_subtitle_terms_color,
-          fontWeight: FontWeight.w500),
+  Widget _termsText(
+    BuildContext context,
+    KycCreditMainCoordinator coordinator,
+  ) {
+    return InkWell(
+      onTap: () {
+        coordinator.navigateToTermsCondtionsScreen();
+      },
+      child: Text('KYC_Terms_and_Condition'.tr, style: const TextStyle(
+        decoration: TextDecoration.underline,
+        fontFamily: 'Montserrat',
+        fontSize: 16,
+        color: SU_subtitle_terms_color
+      ))
+      // CrayonPaymentText(
+      //   key: Key('${_identifier}_KYC_Terms_and_Condition'),
+      //   text: const TextUIDataModel('KYC_Terms_and_Condition',
+      //       styleVariant: CrayonPaymentTextStyleVariant.headline4,
+      //       color: SU_subtitle_terms_color,
+      //       fontWeight: FontWeight.w500),
+      // ),
     );
   }
 
-  _subTitleMain(BuildContext context) {
-    return CrayonPaymentText(
-      key: Key('${_identifier}_KYC_Validation_With_Airtel_Subtitle'),
-      text: const TextUIDataModel('KYC_Validation_With_Airtel_Subtitle',
-          styleVariant: CrayonPaymentTextStyleVariant.headline6,
-          color: Black,
-          fontWeight: FontWeight.w400),
-    );
-  }
 }

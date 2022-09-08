@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:widget_library/icons/crayon_payment_bottom_sheet_icon.dart';
 
+import '../data_model/loan_repayment.dart';
+
 part 'crayon_payment_bottom_sheet_state.freezed.dart';
 
 @freezed
@@ -14,6 +16,7 @@ class CrayonPaymentBottomSheetState with _$CrayonPaymentBottomSheetState {
 
   const factory CrayonPaymentBottomSheetState.infoState({
     required CrayonPaymentBottomSheetIcon bottomSheetIcon,
+    @Default(true) bool isSvg,
     String? title,
     String? subtitle,
     List<String>? additionalText,
@@ -102,4 +105,21 @@ class CrayonPaymentBottomSheetState with _$CrayonPaymentBottomSheetState {
     Duration? autoCloseAfter,
     @Default(false) bool disableCloseButton,
   }) = ChangeLanguageBottomSheet;
+
+  const factory CrayonPaymentBottomSheetState.loanRepayment({
+    required LoanRepayment loanRepayment,
+  }) = LoanRepaymentBottomSheet;
+
+  const factory CrayonPaymentBottomSheetState.customAmount({
+    required String? title,
+    required String outstandingAmount,
+    required Function(String) enteredAmount,
+    List<ButtonOptions>? buttonOptions,
+    @Default(false) bool isAmountValidated,
+    @Default(false) bool showError,
+    required Function(String) onSelectedLabel,
+
+  }) = CustomAmountBottomSheet;
+
+
 }

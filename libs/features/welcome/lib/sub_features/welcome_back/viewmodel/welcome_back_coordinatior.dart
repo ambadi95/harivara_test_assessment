@@ -5,6 +5,7 @@ import 'package:welcome/sub_features/welcome/state/welcome_screen_state.dart';
 import 'package:task_manager/base_classes/base_view_model.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:widget_library/utils/app_utils.dart';
 
 import '../../../navigation_handler/welcome_navigation_handler.dart';
 import 'welcome_back_usecase.dart';
@@ -39,31 +40,42 @@ class WelcomeBackCoordinator extends BaseViewModel<WelcomeScreenState> {
   }
 
   Future<String> getAgentDetails() async {
-    state = state.copyWith(isLoading: true);
-    var response = await _welcomeUseCase.getAgentDetail((p0) => null);
-    if (response?.status == true) {
+    try {
+      state = state.copyWith(isLoading: true);
+      var response = await _welcomeUseCase.getAgentDetail((p0) => null);
+      if (response?.status == true) {
+        state = state.copyWith(isLoading: false);
+        await _welcomeUseCase.saveAgentMobileNumber(response!.data!.mobileNo!);
+        String name = response.data!.firstName! + ' ' + response.data!.lastName!;
+        return name;
+      } else {
+        state = state.copyWith(isLoading: false);
+        CrayonPaymentLogger.logError(response!.message!);
+        return '';
+      }
+    }  catch (e) {
       state = state.copyWith(isLoading: false);
-      await _welcomeUseCase.saveAgentMobileNumber(response!.data!.mobileNo!);
-      String name = response.data!.firstName! + ' ' + response.data!.lastName!;
-      return name;
-    } else {
-      state = state.copyWith(isLoading: false);
-      CrayonPaymentLogger.logError(response!.message!);
-      return '';
+      throw e.toString();
     }
   }
 
+
   Future agentLogin(String passcode) async {
-    state = state.copyWith(isLoading: true);
-    var loginResponse =
-        await _welcomeUseCase.loginAgent(passcode, (p0) => null);
-    if (loginResponse?.status == true) {
+    try {
+      state = state.copyWith(isLoading: true);
+      var loginResponse =
+          await _welcomeUseCase.loginAgent(passcode, (p0) => null);
+      if (loginResponse?.status == true) {
+        state = state.copyWith(isLoading: false);
+        _navigationHandler.navigateToAgentHome();
+      } else {
+        state = state.copyWith(isLoading: false);
+        state = state.copyWith(error: loginResponse!.message!);
+        CrayonPaymentLogger.logError(loginResponse.message!);
+      }
+    }  catch (e) {
       state = state.copyWith(isLoading: false);
-      _navigationHandler.navigateToAgentHome();
-    } else {
-      state = state.copyWith(isLoading: false);
-      state = state.copyWith(error: loginResponse!.message!);
-      CrayonPaymentLogger.logError(loginResponse.message!);
+
     }
   }
 
@@ -75,7 +87,7 @@ class WelcomeBackCoordinator extends BaseViewModel<WelcomeScreenState> {
     return await _welcomeUseCase.getAgentName();
   }
 
-  Future<String> getCustomer()async{
+  Future<String> getCustomer() async {
     return await _welcomeUseCase.getCustomerName();
   }
 
@@ -84,6 +96,8 @@ class WelcomeBackCoordinator extends BaseViewModel<WelcomeScreenState> {
   }
 
   void onPasscodeCallback(String passCode, UserType userType) {
+    AppUtils.appUtilsInstance.saveUserType(userType);
+
     if (userType == UserType.Customer) {
       customerLogin(passCode, userType);
     } else {
@@ -94,15 +108,33 @@ class WelcomeBackCoordinator extends BaseViewModel<WelcomeScreenState> {
   Future customerLogin(String passcode, UserType userType) async {
     String mobileNumber = await _welcomeUseCase.getMobileNumber();
     state = state.copyWith(isLoading: true);
-    print(mobileNumber);
-    var response =
-        await _welcomeUseCase.login(mobileNumber, passcode, (p0) => null);
-    if (response?.status == true) {
+    try {
+
+      var response =
+          await _welcomeUseCase.login(mobileNumber, passcode, (p0) => null);
+      if (response?.status == true) {
+        state = state.copyWith(isLoading: false);
+        if(UserType.Customer == userType){
+          var customerAgentIdResponse = await _welcomeUseCase.getCustomerDetailsByMobileNumber( (p0) => null);
+          if(customerAgentIdResponse?.status == true){
+            String? customerAgentId = customerAgentIdResponse?.data?.y9AgentId;
+            if(customerAgentId != null && customerAgentId.isNotEmpty){
+              _navigationHandler.navigateToHome(userType);
+            }else{
+              _navigationHandler.navigateToCustomerEnrollmentScreen();
+            }
+          }
+        }else{
+          _navigationHandler.navigateToHome(userType);
+
+        }
+      } else {
+        state = state.copyWith(isLoading: false);
+        state = state.copyWith(error: response!.message!);
+      }
+    }  catch (e) {
       state = state.copyWith(isLoading: false);
-      _navigationHandler.navigateToHome(userType);
-    } else {
-      state = state.copyWith(isLoading: false);
-      state = state.copyWith(error: response!.message!);
+      print(e.toString());
     }
   }
 }

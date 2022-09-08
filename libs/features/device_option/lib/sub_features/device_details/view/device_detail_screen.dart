@@ -99,9 +99,10 @@ class _DeviceDetailScreenState extends State<DeviceDetailScreen> {
         children: [
           _buildOptionTitle(context),
           _buildTitle(context),
+          dynamicHSpacer(25),
           Image.asset(
             widget.deviceId == 1 ? 'assets/a13.png' : 'assets/a03.png',
-            width: 222,
+            width: 200,
             height: 300,
             package: 'shared_data_models',
           ),
@@ -112,14 +113,72 @@ class _DeviceDetailScreenState extends State<DeviceDetailScreen> {
           dynamicHSpacer(20),
           _membershipList(context),
           dynamicHSpacer(22),
+          CrayonPaymentText(
+            key: Key('${_identifier}_DD_Price'),
+            text: TextUIDataModel('DD_Price',
+                styleVariant: CrayonPaymentTextStyleVariant.headline6,
+                color: DD_TextLabel,
+                fontWeight: FontWeight.w600)), dynamicHSpacer(10),
+          Row(
+
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              _productPrice(context, 'D0_JoiningFee'.tr,
+                  detailDetail!.joiningFees.toString()),
+
+              _productPrice(context, 'D0_DailyFee'.tr,
+                  detailDetail!.dailyFees.toString()),
+              dynamicWSpacer(10),
+            ],
+          ),
+          // _productPrice(context,
+          //     label: 'DD_Price',
+          //     value: detailDetail!.rretailPrice.toString() == 'null'
+          //         ? "TZS 1,87,00"
+          //         : "TZS " + detailDetail!.rretailPrice.toString()),
           // _membershipTermsTitle(context),
           // dynamicHSpacer(15),
           // _membershipTermButton(context),
           dynamicHSpacer(22),
+          widget.userType == UserType.Customer ? SizedBox() :
           selectButton(coordinator),
           dynamicHSpacer(22),
         ],
       ),
+    );
+  }
+
+
+  Widget _productPrice(context, String price, String label) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          price,
+          style: const TextStyle(
+            fontSize: 12,
+            color: DD_TextLabel,
+            fontFamily: 'Montserrat',
+          ),
+        ),
+
+        dynamicHSpacer(1),
+        RichText(
+          text: TextSpan(
+            text:  label,
+            style: const TextStyle(
+                fontFamily: 'Montserrat',
+                fontSize: 14, color: DD_TextLabel, fontWeight: FontWeight.w600
+            ),
+            children: <TextSpan>[
+              TextSpan(
+                  text: '  TZSHS',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 9)),
+
+            ],
+          ),
+        ),
+      ],
     );
   }
 
@@ -198,11 +257,11 @@ class _DeviceDetailScreenState extends State<DeviceDetailScreen> {
         divider(),
         productSpecLabel(label: 'DD_Color', value: detailDetail!.color!),
         divider(),
-        productSpecLabel(
-            label: 'DD_Price',
-            value: detailDetail!.rretailPrice.toString() == 'null'
-                ? "TZS 1,87,00"
-                : "TZS " + detailDetail!.rretailPrice.toString()),
+        // productSpecLabel(
+        //     label: 'DD_Price',
+        //     value: detailDetail!.rretailPrice.toString() == 'null'
+        //         ? "TZS 1,87,00"
+        //         : "TZS " + detailDetail!.rretailPrice.toString()),
         // divider(),
         // productSpecLabel(label: 'DD_EMIMonth', value: ''),
         // divider(),
@@ -365,7 +424,7 @@ class _DeviceDetailScreenState extends State<DeviceDetailScreen> {
   Widget selectButton(DeviceDetailCoordinator coordinator) {
     return CrayonPaymentDockedButton(
       key: const Key('Select'),
-      title: 'Select Device',
+      title: 'DD_SelectDevice'.tr,
       borderRadius: 8,
       height: CrayonPaymentDimensions.marginFortyEight,
       buttonColor: LS_ButtonColor,
@@ -374,7 +433,7 @@ class _DeviceDetailScreenState extends State<DeviceDetailScreen> {
       onPressed: () {
         // print(widget.userType);
 
-        // coordinator.navigateToEnrolledScreen(widget.deviceId, widget.userType);
+      // coordinator.navigateToDownPayment(detailDetail?.deviceId);
         coordinator.navigateToCustomerLoanCreationScreen(
             widget.deviceId == 1 ? 'assets/a13.png' : 'assets/a03.png',
             detailDetail!);

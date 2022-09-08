@@ -10,6 +10,9 @@ abstract class IDetailsService {
   static const regionIdentifier = 'getRegion';
   static const districtIdentifier = 'getDistrict';
   static const submitCustomerDetailIdentifier = 'submitCustomerDetail';
+  static const getCustomerDetailIdentifier = 'getCustomerDetail';
+
+  Future<StandardRequest> getCustomerDetail(String mobileNumber);
 
   Future<StandardRequest> getRegion(UserType type);
 
@@ -27,9 +30,14 @@ class DetailsService implements IDetailsService {
     request.endpoint = (userType == UserType.AgentCustomer)
         ? customerEndpoint + 'region-details[customer]'
         : 'region-details';
-    request.customHeaders = {
-      'Content-Type': 'application/json',
-    };
+    return request;
+  }
+
+  @override
+  Future<StandardRequest> getCustomerDetail(String mobileNumber) async {
+    var request = StandardRequest();
+    request.requestType = RequestType.GET;
+    request.endpoint = customerEndpoint + 'customer-details-by-mobile/$mobileNumber[customer]';
     return request;
   }
 
@@ -41,23 +49,18 @@ class DetailsService implements IDetailsService {
     request.endpoint = (userType == UserType.AgentCustomer)
         ? customerEndpoint + 'district-details/$regionId[customer]'
         : 'district-details/$regionId';
-    request.customHeaders = {
-      'Content-Type': 'application/json',
-    };
     return request;
   }
 
   @override
   Future<StandardRequest> submitCustomerDetails(
       Map<String, dynamic> requestData, UserType userType) async {
+    print("calling on board customer");
     var request = StandardRequest();
     request.requestType = RequestType.POST;
     request.endpoint = (userType == UserType.AgentCustomer)
         ? customerEndpoint + 'customer-details[customer]'
         : 'customer-details';
-    request.customHeaders = {
-      'Content-Type': 'application/json',
-    };
     CrayonPaymentLogger.logInfo(requestData.toString());
     request.jsonBody = json.encode(requestData);
     return request;

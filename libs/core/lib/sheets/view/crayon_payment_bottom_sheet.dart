@@ -2,8 +2,10 @@ import 'package:core/sheets/coordinator/crayon_payment_bottom_sheet_coordinator.
 import 'package:core/sheets/navigation/crayon_payment_bottom_sheet_route_manager.dart';
 import 'package:core/sheets/state/crayon_payment_bottom_sheet_state.dart';
 import 'package:core/sheets/view/widgets/bottom_sheet_app_language.dart';
+import 'package:core/sheets/view/widgets/bottom_sheet_custom_amount.dart';
 import 'package:core/sheets/view/widgets/bottom_sheet_date_picker_column.dart';
 import 'package:core/sheets/view/widgets/bottom_sheet_info_column_wrapped.dart';
+import 'package:core/sheets/view/widgets/bottom_sheet_loan_repayment.dart';
 import 'package:core/sheets/view/widgets/bottom_sheet_multi_filters.dart';
 import 'package:core/sheets/view/widgets/bottom_sheet_multiple_selection_options.dart';
 import 'package:core/sheets/view/widgets/bottom_sheet_selection_column.dart';
@@ -47,7 +49,7 @@ class CrayonPaymentBottomSheet extends StatelessWidget {
       key: const Key('bottomSheet'),
       decoration: _buildBoxDecoration,
       child: state.maybeWhen(
-        infoState: (_, __, ___, additionalText, ____, _____, ______) =>
+        infoState: (_,isSvg, __, ___, additionalText, ____, _____, ______) =>
             BottomSheetInfoColumn(
           coordinator,
           state as SheetInfo,
@@ -95,6 +97,12 @@ class CrayonPaymentBottomSheet extends StatelessWidget {
           coordinator,
           state as ChangeLanguageBottomSheet,
         ),
+        loanRepayment: (_) => BottomSheetLoanRepayment(
+          coordinator,
+          state as LoanRepaymentBottomSheet,
+        ),
+        customAmount: (_, __,___,____,_____,______,_______) => BottomSheetCustomAmount(
+            coordinator, state as CustomAmountBottomSheet),
         orElse: () => const Center(
           key: Key('ErrorBottomSheet'),
           child: Text('Error'),

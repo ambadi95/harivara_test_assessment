@@ -24,6 +24,7 @@ mixin _$LoginState {
     required TResult Function() successState,
     required TResult Function(String agentIdError) agentIdError,
     required TResult Function(bool isValid) loginFormState,
+    required TResult Function(bool havePasscode) showPasscode,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -34,6 +35,7 @@ mixin _$LoginState {
     TResult Function()? successState,
     TResult Function(String agentIdError)? agentIdError,
     TResult Function(bool isValid)? loginFormState,
+    TResult Function(bool havePasscode)? showPasscode,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -44,6 +46,7 @@ mixin _$LoginState {
     TResult Function()? successState,
     TResult Function(String agentIdError)? agentIdError,
     TResult Function(bool isValid)? loginFormState,
+    TResult Function(bool havePasscode)? showPasscode,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -55,6 +58,7 @@ mixin _$LoginState {
     required TResult Function(SuccessState value) successState,
     required TResult Function(AgentIdError value) agentIdError,
     required TResult Function(LoginFormState value) loginFormState,
+    required TResult Function(ShowPasscode value) showPasscode,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,6 +69,7 @@ mixin _$LoginState {
     TResult Function(SuccessState value)? successState,
     TResult Function(AgentIdError value)? agentIdError,
     TResult Function(LoginFormState value)? loginFormState,
+    TResult Function(ShowPasscode value)? showPasscode,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -75,6 +80,7 @@ mixin _$LoginState {
     TResult Function(SuccessState value)? successState,
     TResult Function(AgentIdError value)? agentIdError,
     TResult Function(LoginFormState value)? loginFormState,
+    TResult Function(ShowPasscode value)? showPasscode,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -168,6 +174,7 @@ class _$MobileNumberError implements MobileNumberError {
     required TResult Function() successState,
     required TResult Function(String agentIdError) agentIdError,
     required TResult Function(bool isValid) loginFormState,
+    required TResult Function(bool havePasscode) showPasscode,
   }) {
     return mobileNumberError(this.mobileNumberError);
   }
@@ -181,6 +188,7 @@ class _$MobileNumberError implements MobileNumberError {
     TResult Function()? successState,
     TResult Function(String agentIdError)? agentIdError,
     TResult Function(bool isValid)? loginFormState,
+    TResult Function(bool havePasscode)? showPasscode,
   }) {
     return mobileNumberError?.call(this.mobileNumberError);
   }
@@ -194,6 +202,7 @@ class _$MobileNumberError implements MobileNumberError {
     TResult Function()? successState,
     TResult Function(String agentIdError)? agentIdError,
     TResult Function(bool isValid)? loginFormState,
+    TResult Function(bool havePasscode)? showPasscode,
     required TResult orElse(),
   }) {
     if (mobileNumberError != null) {
@@ -211,6 +220,7 @@ class _$MobileNumberError implements MobileNumberError {
     required TResult Function(SuccessState value) successState,
     required TResult Function(AgentIdError value) agentIdError,
     required TResult Function(LoginFormState value) loginFormState,
+    required TResult Function(ShowPasscode value) showPasscode,
   }) {
     return mobileNumberError(this);
   }
@@ -224,6 +234,7 @@ class _$MobileNumberError implements MobileNumberError {
     TResult Function(SuccessState value)? successState,
     TResult Function(AgentIdError value)? agentIdError,
     TResult Function(LoginFormState value)? loginFormState,
+    TResult Function(ShowPasscode value)? showPasscode,
   }) {
     return mobileNumberError?.call(this);
   }
@@ -237,6 +248,7 @@ class _$MobileNumberError implements MobileNumberError {
     TResult Function(SuccessState value)? successState,
     TResult Function(AgentIdError value)? agentIdError,
     TResult Function(LoginFormState value)? loginFormState,
+    TResult Function(ShowPasscode value)? showPasscode,
     required TResult orElse(),
   }) {
     if (mobileNumberError != null) {
@@ -302,6 +314,7 @@ class _$LoadingState implements LoadingState {
     required TResult Function() successState,
     required TResult Function(String agentIdError) agentIdError,
     required TResult Function(bool isValid) loginFormState,
+    required TResult Function(bool havePasscode) showPasscode,
   }) {
     return loading();
   }
@@ -315,6 +328,7 @@ class _$LoadingState implements LoadingState {
     TResult Function()? successState,
     TResult Function(String agentIdError)? agentIdError,
     TResult Function(bool isValid)? loginFormState,
+    TResult Function(bool havePasscode)? showPasscode,
   }) {
     return loading?.call();
   }
@@ -328,6 +342,7 @@ class _$LoadingState implements LoadingState {
     TResult Function()? successState,
     TResult Function(String agentIdError)? agentIdError,
     TResult Function(bool isValid)? loginFormState,
+    TResult Function(bool havePasscode)? showPasscode,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -345,6 +360,7 @@ class _$LoadingState implements LoadingState {
     required TResult Function(SuccessState value) successState,
     required TResult Function(AgentIdError value) agentIdError,
     required TResult Function(LoginFormState value) loginFormState,
+    required TResult Function(ShowPasscode value) showPasscode,
   }) {
     return loading(this);
   }
@@ -358,6 +374,7 @@ class _$LoadingState implements LoadingState {
     TResult Function(SuccessState value)? successState,
     TResult Function(AgentIdError value)? agentIdError,
     TResult Function(LoginFormState value)? loginFormState,
+    TResult Function(ShowPasscode value)? showPasscode,
   }) {
     return loading?.call(this);
   }
@@ -371,6 +388,7 @@ class _$LoadingState implements LoadingState {
     TResult Function(SuccessState value)? successState,
     TResult Function(AgentIdError value)? agentIdError,
     TResult Function(LoginFormState value)? loginFormState,
+    TResult Function(ShowPasscode value)? showPasscode,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -430,6 +448,7 @@ class _$InitialState implements InitialState {
     required TResult Function() successState,
     required TResult Function(String agentIdError) agentIdError,
     required TResult Function(bool isValid) loginFormState,
+    required TResult Function(bool havePasscode) showPasscode,
   }) {
     return initialState();
   }
@@ -443,6 +462,7 @@ class _$InitialState implements InitialState {
     TResult Function()? successState,
     TResult Function(String agentIdError)? agentIdError,
     TResult Function(bool isValid)? loginFormState,
+    TResult Function(bool havePasscode)? showPasscode,
   }) {
     return initialState?.call();
   }
@@ -456,6 +476,7 @@ class _$InitialState implements InitialState {
     TResult Function()? successState,
     TResult Function(String agentIdError)? agentIdError,
     TResult Function(bool isValid)? loginFormState,
+    TResult Function(bool havePasscode)? showPasscode,
     required TResult orElse(),
   }) {
     if (initialState != null) {
@@ -473,6 +494,7 @@ class _$InitialState implements InitialState {
     required TResult Function(SuccessState value) successState,
     required TResult Function(AgentIdError value) agentIdError,
     required TResult Function(LoginFormState value) loginFormState,
+    required TResult Function(ShowPasscode value) showPasscode,
   }) {
     return initialState(this);
   }
@@ -486,6 +508,7 @@ class _$InitialState implements InitialState {
     TResult Function(SuccessState value)? successState,
     TResult Function(AgentIdError value)? agentIdError,
     TResult Function(LoginFormState value)? loginFormState,
+    TResult Function(ShowPasscode value)? showPasscode,
   }) {
     return initialState?.call(this);
   }
@@ -499,6 +522,7 @@ class _$InitialState implements InitialState {
     TResult Function(SuccessState value)? successState,
     TResult Function(AgentIdError value)? agentIdError,
     TResult Function(LoginFormState value)? loginFormState,
+    TResult Function(ShowPasscode value)? showPasscode,
     required TResult orElse(),
   }) {
     if (initialState != null) {
@@ -558,6 +582,7 @@ class _$SuccessState implements SuccessState {
     required TResult Function() successState,
     required TResult Function(String agentIdError) agentIdError,
     required TResult Function(bool isValid) loginFormState,
+    required TResult Function(bool havePasscode) showPasscode,
   }) {
     return successState();
   }
@@ -571,6 +596,7 @@ class _$SuccessState implements SuccessState {
     TResult Function()? successState,
     TResult Function(String agentIdError)? agentIdError,
     TResult Function(bool isValid)? loginFormState,
+    TResult Function(bool havePasscode)? showPasscode,
   }) {
     return successState?.call();
   }
@@ -584,6 +610,7 @@ class _$SuccessState implements SuccessState {
     TResult Function()? successState,
     TResult Function(String agentIdError)? agentIdError,
     TResult Function(bool isValid)? loginFormState,
+    TResult Function(bool havePasscode)? showPasscode,
     required TResult orElse(),
   }) {
     if (successState != null) {
@@ -601,6 +628,7 @@ class _$SuccessState implements SuccessState {
     required TResult Function(SuccessState value) successState,
     required TResult Function(AgentIdError value) agentIdError,
     required TResult Function(LoginFormState value) loginFormState,
+    required TResult Function(ShowPasscode value) showPasscode,
   }) {
     return successState(this);
   }
@@ -614,6 +642,7 @@ class _$SuccessState implements SuccessState {
     TResult Function(SuccessState value)? successState,
     TResult Function(AgentIdError value)? agentIdError,
     TResult Function(LoginFormState value)? loginFormState,
+    TResult Function(ShowPasscode value)? showPasscode,
   }) {
     return successState?.call(this);
   }
@@ -627,6 +656,7 @@ class _$SuccessState implements SuccessState {
     TResult Function(SuccessState value)? successState,
     TResult Function(AgentIdError value)? agentIdError,
     TResult Function(LoginFormState value)? loginFormState,
+    TResult Function(ShowPasscode value)? showPasscode,
     required TResult orElse(),
   }) {
     if (successState != null) {
@@ -711,6 +741,7 @@ class _$AgentIdError implements AgentIdError {
     required TResult Function() successState,
     required TResult Function(String agentIdError) agentIdError,
     required TResult Function(bool isValid) loginFormState,
+    required TResult Function(bool havePasscode) showPasscode,
   }) {
     return agentIdError(this.agentIdError);
   }
@@ -724,6 +755,7 @@ class _$AgentIdError implements AgentIdError {
     TResult Function()? successState,
     TResult Function(String agentIdError)? agentIdError,
     TResult Function(bool isValid)? loginFormState,
+    TResult Function(bool havePasscode)? showPasscode,
   }) {
     return agentIdError?.call(this.agentIdError);
   }
@@ -737,6 +769,7 @@ class _$AgentIdError implements AgentIdError {
     TResult Function()? successState,
     TResult Function(String agentIdError)? agentIdError,
     TResult Function(bool isValid)? loginFormState,
+    TResult Function(bool havePasscode)? showPasscode,
     required TResult orElse(),
   }) {
     if (agentIdError != null) {
@@ -754,6 +787,7 @@ class _$AgentIdError implements AgentIdError {
     required TResult Function(SuccessState value) successState,
     required TResult Function(AgentIdError value) agentIdError,
     required TResult Function(LoginFormState value) loginFormState,
+    required TResult Function(ShowPasscode value) showPasscode,
   }) {
     return agentIdError(this);
   }
@@ -767,6 +801,7 @@ class _$AgentIdError implements AgentIdError {
     TResult Function(SuccessState value)? successState,
     TResult Function(AgentIdError value)? agentIdError,
     TResult Function(LoginFormState value)? loginFormState,
+    TResult Function(ShowPasscode value)? showPasscode,
   }) {
     return agentIdError?.call(this);
   }
@@ -780,6 +815,7 @@ class _$AgentIdError implements AgentIdError {
     TResult Function(SuccessState value)? successState,
     TResult Function(AgentIdError value)? agentIdError,
     TResult Function(LoginFormState value)? loginFormState,
+    TResult Function(ShowPasscode value)? showPasscode,
     required TResult orElse(),
   }) {
     if (agentIdError != null) {
@@ -869,6 +905,7 @@ class _$LoginFormState implements LoginFormState {
     required TResult Function() successState,
     required TResult Function(String agentIdError) agentIdError,
     required TResult Function(bool isValid) loginFormState,
+    required TResult Function(bool havePasscode) showPasscode,
   }) {
     return loginFormState(isValid);
   }
@@ -882,6 +919,7 @@ class _$LoginFormState implements LoginFormState {
     TResult Function()? successState,
     TResult Function(String agentIdError)? agentIdError,
     TResult Function(bool isValid)? loginFormState,
+    TResult Function(bool havePasscode)? showPasscode,
   }) {
     return loginFormState?.call(isValid);
   }
@@ -895,6 +933,7 @@ class _$LoginFormState implements LoginFormState {
     TResult Function()? successState,
     TResult Function(String agentIdError)? agentIdError,
     TResult Function(bool isValid)? loginFormState,
+    TResult Function(bool havePasscode)? showPasscode,
     required TResult orElse(),
   }) {
     if (loginFormState != null) {
@@ -912,6 +951,7 @@ class _$LoginFormState implements LoginFormState {
     required TResult Function(SuccessState value) successState,
     required TResult Function(AgentIdError value) agentIdError,
     required TResult Function(LoginFormState value) loginFormState,
+    required TResult Function(ShowPasscode value) showPasscode,
   }) {
     return loginFormState(this);
   }
@@ -925,6 +965,7 @@ class _$LoginFormState implements LoginFormState {
     TResult Function(SuccessState value)? successState,
     TResult Function(AgentIdError value)? agentIdError,
     TResult Function(LoginFormState value)? loginFormState,
+    TResult Function(ShowPasscode value)? showPasscode,
   }) {
     return loginFormState?.call(this);
   }
@@ -938,6 +979,7 @@ class _$LoginFormState implements LoginFormState {
     TResult Function(SuccessState value)? successState,
     TResult Function(AgentIdError value)? agentIdError,
     TResult Function(LoginFormState value)? loginFormState,
+    TResult Function(ShowPasscode value)? showPasscode,
     required TResult orElse(),
   }) {
     if (loginFormState != null) {
@@ -953,5 +995,169 @@ abstract class LoginFormState implements LoginState {
   bool get isValid;
   @JsonKey(ignore: true)
   _$$LoginFormStateCopyWith<_$LoginFormState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ShowPasscodeCopyWith<$Res> {
+  factory _$$ShowPasscodeCopyWith(
+          _$ShowPasscode value, $Res Function(_$ShowPasscode) then) =
+      __$$ShowPasscodeCopyWithImpl<$Res>;
+  $Res call({bool havePasscode});
+}
+
+/// @nodoc
+class __$$ShowPasscodeCopyWithImpl<$Res> extends _$LoginStateCopyWithImpl<$Res>
+    implements _$$ShowPasscodeCopyWith<$Res> {
+  __$$ShowPasscodeCopyWithImpl(
+      _$ShowPasscode _value, $Res Function(_$ShowPasscode) _then)
+      : super(_value, (v) => _then(v as _$ShowPasscode));
+
+  @override
+  _$ShowPasscode get _value => super._value as _$ShowPasscode;
+
+  @override
+  $Res call({
+    Object? havePasscode = freezed,
+  }) {
+    return _then(_$ShowPasscode(
+      havePasscode == freezed
+          ? _value.havePasscode
+          : havePasscode // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ShowPasscode implements ShowPasscode {
+  const _$ShowPasscode(this.havePasscode);
+
+  @override
+  final bool havePasscode;
+
+  @override
+  String toString() {
+    return 'LoginState.showPasscode(havePasscode: $havePasscode)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ShowPasscode &&
+            const DeepCollectionEquality()
+                .equals(other.havePasscode, havePasscode));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(havePasscode));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$ShowPasscodeCopyWith<_$ShowPasscode> get copyWith =>
+      __$$ShowPasscodeCopyWithImpl<_$ShowPasscode>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String mobileNumberError) mobileNumberError,
+    required TResult Function() loading,
+    required TResult Function() initialState,
+    required TResult Function() successState,
+    required TResult Function(String agentIdError) agentIdError,
+    required TResult Function(bool isValid) loginFormState,
+    required TResult Function(bool havePasscode) showPasscode,
+  }) {
+    return showPasscode(havePasscode);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String mobileNumberError)? mobileNumberError,
+    TResult Function()? loading,
+    TResult Function()? initialState,
+    TResult Function()? successState,
+    TResult Function(String agentIdError)? agentIdError,
+    TResult Function(bool isValid)? loginFormState,
+    TResult Function(bool havePasscode)? showPasscode,
+  }) {
+    return showPasscode?.call(havePasscode);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String mobileNumberError)? mobileNumberError,
+    TResult Function()? loading,
+    TResult Function()? initialState,
+    TResult Function()? successState,
+    TResult Function(String agentIdError)? agentIdError,
+    TResult Function(bool isValid)? loginFormState,
+    TResult Function(bool havePasscode)? showPasscode,
+    required TResult orElse(),
+  }) {
+    if (showPasscode != null) {
+      return showPasscode(havePasscode);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(MobileNumberError value) mobileNumberError,
+    required TResult Function(LoadingState value) loading,
+    required TResult Function(InitialState value) initialState,
+    required TResult Function(SuccessState value) successState,
+    required TResult Function(AgentIdError value) agentIdError,
+    required TResult Function(LoginFormState value) loginFormState,
+    required TResult Function(ShowPasscode value) showPasscode,
+  }) {
+    return showPasscode(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(MobileNumberError value)? mobileNumberError,
+    TResult Function(LoadingState value)? loading,
+    TResult Function(InitialState value)? initialState,
+    TResult Function(SuccessState value)? successState,
+    TResult Function(AgentIdError value)? agentIdError,
+    TResult Function(LoginFormState value)? loginFormState,
+    TResult Function(ShowPasscode value)? showPasscode,
+  }) {
+    return showPasscode?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(MobileNumberError value)? mobileNumberError,
+    TResult Function(LoadingState value)? loading,
+    TResult Function(InitialState value)? initialState,
+    TResult Function(SuccessState value)? successState,
+    TResult Function(AgentIdError value)? agentIdError,
+    TResult Function(LoginFormState value)? loginFormState,
+    TResult Function(ShowPasscode value)? showPasscode,
+    required TResult orElse(),
+  }) {
+    if (showPasscode != null) {
+      return showPasscode(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ShowPasscode implements LoginState {
+  const factory ShowPasscode(final bool havePasscode) = _$ShowPasscode;
+
+  bool get havePasscode;
+  @JsonKey(ignore: true)
+  _$$ShowPasscodeCopyWith<_$ShowPasscode> get copyWith =>
       throw _privateConstructorUsedError;
 }

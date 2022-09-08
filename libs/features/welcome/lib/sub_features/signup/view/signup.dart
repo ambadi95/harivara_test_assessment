@@ -15,6 +15,7 @@ import 'package:widget_library/buttons/crayon_back_button.dart';
 import 'package:config/Colors.dart' as config_color;
 import 'package:get/get.dart';
 import 'package:config/Config.dart';
+import 'package:widget_library/utils/launcher_utils.dart';
 import '../../../data_model/sign_up_arguments.dart';
 
 class SignUp extends StatefulWidget {
@@ -41,7 +42,9 @@ class _SignUpState extends State<SignUp> {
       BaseView<SignUpCoordinator, SignUpState>(
           onStateListenCallback: (preState, newState) =>
               {_listenToStateChanges(context, newState)},
-          setupViewModel: (coordinator) async {},
+          setupViewModel: (coordinator) async {
+            coordinator.calljwttoken();
+          },
           builder: (context, state, coordinator) => SafeArea(
                 child: Scaffold(
                   bottomNavigationBar: state.maybeWhen(
@@ -51,9 +54,10 @@ class _SignUpState extends State<SignUp> {
                       height: 120,
                       child: Column(
                         children: [
-                          widget.signUpArguments.userType == UserType.Customer
-                              ? _carrierText()
-                              : const SizedBox(
+                          // widget.signUpArguments.userType == UserType.Customer
+                          //     ? _carrierText()
+                          //     :
+                          const SizedBox(
                                   height: 14,
                                 ),
                           const SizedBox(
@@ -101,7 +105,7 @@ class _SignUpState extends State<SignUp> {
   ) {
     return Column(
       children: [
-       // _onBoardingProgressBar(),
+        // _onBoardingProgressBar(),
         _buildBackBtn(context, coordinator),
       ],
     );
@@ -196,7 +200,8 @@ class _SignUpState extends State<SignUp> {
       linkTextStyle: SU_subtitle_terms_style,
       descriptionTextStyle: SU_subtitle_style,
       onLinkClicked: (text, link) {
-        coordinator.navigateToTermsCondition();
+        LauncherUtils.launcherUtilsInstance
+            .launchInBrowser(url: y9TermsCondition);
       },
     );
   }
@@ -319,13 +324,13 @@ class _SignUpState extends State<SignUp> {
     // ]
     //   );
   }
-
-  Widget _carrierText() {
-    return Text(
-      'SU_carrier_message'.tr,
-      style: SU_carrier_message_style,
-    );
-  }
+  //
+  // Widget _carrierText() {
+  //   return Text(
+  //     'SU_carrier_message'.tr,
+  //     style: SU_carrier_message_style,
+  //   );
+  // }
 
   Widget _buildContinueButton(
     BuildContext context,
@@ -336,12 +341,15 @@ class _SignUpState extends State<SignUp> {
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
         onTap: () async {
-          coordinator.isValidNidaNumber(nidaNumber.text);
-          coordinator.isValidMobileNumber(mobileNumber.text);
-          coordinator.isValidAgentId(agentId.text);
-          if (_isBtnEnabled && coordinator.isValidNidaNumber(nidaNumber.text)) {
-            coordinator.signup(widget.signUpArguments, mobileNumber.text,
-                nidaNumber.text, agentId.text);
+          if(_isBtnEnabled) {
+            coordinator.isValidNidaNumber(nidaNumber.text);
+            coordinator.isValidMobileNumber(mobileNumber.text);
+            coordinator.isValidAgentId(agentId.text);
+            if (_isBtnEnabled &&
+                coordinator.isValidNidaNumber(nidaNumber.text)) {
+              coordinator.signup(widget.signUpArguments, mobileNumber.text,
+                  nidaNumber.text, agentId.text);
+            }
           }
         },
         child: Container(

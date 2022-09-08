@@ -5,8 +5,11 @@ import 'package:core/view/base_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:home/home/home_screen_arguments.dart';
+import 'package:home/home/view/reading_in_app_browser.dart';
 import 'package:settings/model/settings_arguments.dart';
 import 'package:settings/view/settings_view.dart';
+import 'package:widget_library/utils/icon_utils.dart';
+import 'package:shared_data_models/loan_detail/response/loan_detail_response/loan_detail_response.dart';
 import '../constants/image_constant.dart';
 import '../home_module.dart';
 import '../state/home_screen_state.dart';
@@ -24,20 +27,24 @@ class CrayonHomeScreen extends StatefulWidget {
   State<CrayonHomeScreen> createState() => _CrayonCustomerHomeScreenState();
 
   factory CrayonHomeScreen.forCustomerApp() => CrayonHomeScreen(
-    homeScreenArgs: HomeScreenArgs(
-      userType: UserType.Customer,
-      isAgent: false,
-    ),
-  );
+        homeScreenArgs: HomeScreenArgs(
+          userType: UserType.Customer,
+          isAgent: false,
+        ),
+      );
 }
 
 class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
-  late BuildContext context;
   int selectedIndex = 0;
-  String username = 'Emmanual Jisula';
+  String username = '';
   String userId = '';
+  String? deviceLoan;
+  String? outstandingAmount;
+  String? repaidAmount;
+
   Data customerCount =
       const Data(initiatedCustomer: '0', enrolledCustomer: '0');
+  LoanDetailResponse loanDetailResponse = LoanDetailResponse();
 
   @override
   Widget build(BuildContext context) =>
@@ -46,7 +53,8 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
         setupViewModel: (coordinator) async {
           coordinator.initialiseState(
               context, '', widget.homeScreenArgs.isAgent, false);
-          if(widget.homeScreenArgs.isAgent){
+
+          if (widget.homeScreenArgs.isAgent) {
             username = await coordinator.getAgentName();
             userId = await coordinator.getAgentId();
             setState(() {
@@ -55,8 +63,20 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
             });
             customerCount = await coordinator.getCustomerCount();
             setState(() {});
+          } else {
+            username = await coordinator.getCustomerName();
+            userId = await coordinator.getCustomerId();
+            setState(() {
+              username;
+              userId;
+            });
+            loanDetailResponse = (await coordinator.getLoanDetails())!;
+            deviceLoan = loanDetailResponse.data?.loanId ?? "-";
+            outstandingAmount =
+                loanDetailResponse.data?.outStandingAmount ?? "-";
+            repaidAmount = loanDetailResponse.data?.repaymentFee ?? "-";
+            setState(() {});
           }
-
         },
         builder: (context, state, coordinator) => Scaffold(
           body: SafeArea(
@@ -80,7 +100,6 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
       );
 
   Widget _userInfoView() {
-    username = 'Emmanual Jisula';
     return Padding(
       padding: const EdgeInsets.all(10),
       child: Row(
@@ -91,7 +110,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'HS_GoodMorning'.tr,
+                greeting(),
                 style: HS_morning_text_style,
               ),
               const SizedBox(
@@ -121,31 +140,33 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
         children: [
           Row(
             children: [
-              isAgent() ? Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'HS_AccountId'.tr,
-                    style: HS_title_style,
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  Text( userId.tr, style: HS_account_id_style),
-                ],
-              ) : Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'HS_CardList1Title'.tr,
-                    style: HS_title_style,
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  const Text( "648960359535569", style: HS_account_id_style),
-                ],
-              ),
+              isAgent()
+                  ? Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'HS_AccountId'.tr,
+                          style: HS_title_style,
+                        ),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        Text(userId.tr, style: HS_account_id_style),
+                      ],
+                    )
+                  : Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'HS_CardList1Title'.tr,
+                          style: HS_title_style,
+                        ),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        Text(deviceLoan ?? "-", style: HS_account_id_style),
+                      ],
+                    ),
               const Spacer(),
               Image.asset(
                 OB_AppLogo,
@@ -182,7 +203,8 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'HS_PendingCustomerRequests'.tr,
+                          'HS_TotalCustomerBoarding'.tr,
+                          //'HS_PendingCustomerRequests'.tr,
                           style: HS_title_style,
                         ),
                         const SizedBox(
@@ -195,32 +217,48 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                 )
               : Row(
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'HS_Daily_Repayment_amount'.tr,
-                          style: HS_title_style,
-                        ),
-                        const SizedBox(
-                          height: 5,
-                        ),
-                        Row(children:[const Text("4,500", style: HS_account_id_style),const Text(" TZSHS", style: HS_card_items_style_w)],
-                        )],
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'HS_Daily_Repayment_amount'.tr,
+                            style: HS_title_style,
+                          ),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          Row(
+                            children: [
+                              Text(outstandingAmount ?? '-',
+                                  style: HS_account_id_style),
+                              const Text(" TZSHS", style: HS_card_items_style_w)
+                            ],
+                          )
+                        ],
+                      ),
                     ),
-                    const SizedBox(width: 20,),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'HS_CardList3Title'.tr,
-                          style: HS_title_style,
-                        ),
-                        const SizedBox(
-                          height: 5,
-                        ),
-    Row(children:[const Text("7,70,000", style: HS_account_id_style),const Text(" TZSHS", style: HS_card_items_style_w)]),
-                      ],
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'HS_CardList3Title'.tr,
+                            style: HS_title_style,
+                          ),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          Row(children: [
+                            Text(repaidAmount ?? "-",
+                                style: HS_account_id_style),
+                            const Text(" TZSHS", style: HS_card_items_style_w)
+                          ]),
+                        ],
+                      ),
                     ),
                   ],
                 ),
@@ -246,8 +284,12 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                         child: _actionCommonView(
                             'HS_Customer_OnBoarding'.tr, HS_CustomerMangIcon),
                       ),
-                      _actionCommonView(
-                          'HS_Customer_DeviceSwap'.tr, HS_DeviceSwapIcon),
+                      InkWell(
+                          onTap: () {
+                            // coordinator.devicereg();
+                          },
+                          child: _actionCommonView(
+                              'HS_Customer_DeviceSwap'.tr, HS_DeviceSwapIcon)),
                       _actionCommonView(
                           'HS_Customer_AgentSupport'.tr, HS_AgentSupportIcon),
                     ],
@@ -256,9 +298,22 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      _actionCommonView(
-                          'HS_LoanRepayment'.tr, HS_LoanRepayment),
-                      _actionCommonView('HS_LoanDetails'.tr, HS_LoanDetail),
+                      InkWell(
+                        onTap: () {
+                          coordinator.navigationToBottomSheet(
+                              context, loanDetailResponse);
+                        },
+                        child: _actionCommonView(
+                            'HS_LoanRepayment'.tr, HS_LoanRepayment),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          coordinator
+                              .navigateToLoanDetailScreen(loanDetailResponse);
+                        },
+                        child: _actionCommonView(
+                            'HS_LoanDetails'.tr, HS_LoanDetail),
+                      ),
                     ],
                   ),
           )
@@ -287,15 +342,22 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
           clipBehavior: Clip.antiAliasWithSaveLayer,
           decoration: const BoxDecoration(
               color: HS_RedCardIconsBackColor, shape: BoxShape.circle),
-          child: Image.asset(
+          child: getSvg(
             imagePath,
-            width: 20,
-            height: 20,
-            // color: (title == 'HS_Customer_DeviceSwap'.tr ||
-            //         title == 'HS_Customer_AgentSupport'.tr)
-            //     ? SU_border_color
-            //     : OB_WelcomeThirdTtileColor,
+            color: (title == 'HS_Customer_DeviceSwap'.tr ||
+                    title == 'HS_Customer_AgentSupport'.tr)
+                ? SU_border_color
+                : OB_WelcomeThirdTtileColor,
           ),
+          //   Image.asset(
+          //     imagePath,
+          //     width: 20,
+          //     height: 20,
+          //     // color: (title == 'HS_Customer_DeviceSwap'.tr ||
+          //     //         title == 'HS_Customer_AgentSupport'.tr)
+          //     //     ? SU_border_color
+          //     //     : OB_WelcomeThirdTtileColor,
+          //   ),
         ),
         const SizedBox(
           height: 10,
@@ -338,10 +400,10 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
               text: TextSpan(
             text: ' ',
             children: <TextSpan>[
-               TextSpan(
+              TextSpan(
                   text: 'HS_Agent_Refer_Program'.tr,
                   style: HS_invite_your_friends_style),
-               TextSpan(
+              TextSpan(
                   text: 'HS_Agent_Stay_Tunned'.tr, style: HS_stay_tunned_style),
             ],
           )),
@@ -368,7 +430,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
     );
   }
 
-  Widget _inviteBoxView() {
+  Widget _inviteBoxView(HomeCoordinator coordinator) {
     return Card(
       elevation: 20,
       child: Container(
@@ -393,26 +455,38 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
             const SizedBox(
               height: 10,
             ),
-
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'HS_Widget1Description'.tr,
-                      style: HS_invite_friends_y9_style,
-                    ),
-                    const SizedBox(
-                      height: 24,
-                    ),
-                    Text(
-                      'HS_explore'.tr,
-                      style: HS_explore_title_style,
-                    ),
-                  ],
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'HS_Widget1Description'.tr,
+                        style: HS_invite_friends_y9_style,
+                      ),
+                      const SizedBox(
+                        height: 24,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const ReadingInAppBrowser()),
+                          );
+                          //  coordinator.navigationToReaderBrowser();
+                        },
+                        child: Text(
+                          'HS_explore'.tr,
+                          style: HS_explore_title_style,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
                 Image.asset(
                   HS_Reading,
@@ -426,7 +500,21 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
     );
   }
 
-  _userImage() {
+  String _getUserInitials() {
+    if (username != null && username.contains(" ")) {
+      var details = username.split(" ");
+      return "${details[0].substring(0, 1).toString().toUpperCase()}${details[1].substring(0, 1).toString().toUpperCase()}";
+    } else {
+      if (username != null && username.length > 2) {
+        return username.substring(0, 2).toUpperCase();
+      } else {
+        return "";
+      }
+    }
+  }
+
+  Widget _userImage() {
+    String initial = _getUserInitials();
     return Container(
       height: 40,
       width: 40,
@@ -435,8 +523,23 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
         shape: BoxShape.circle,
         color: profilePicHolderYellowColor,
       ),
-      child: const Center(child:Text('EJ',style: AN_TextFieldLabel_FF,)),
+      child: Center(
+          child: Text(
+        initial,
+        style: AN_TextFieldLabel_FF,
+      )),
     );
+  }
+
+  String greeting() {
+    var hour = DateTime.now().hour;
+    if (hour < 11) {
+      return 'HS_GoodMorning'.tr;
+    }
+    if (hour < 17) {
+      return 'HS_GoodAfternoon'.tr;
+    }
+    return 'HS_GoodEvening'.tr;
   }
 
   _buildMainUIWithLoading(BuildContext context, HomeCoordinator coordinator,
@@ -449,39 +552,110 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
     );
   }
 
-  _buildMainUI(BuildContext context, HomeCoordinator coordinator,
-      HomeScreenReady state) {
+  _buildMainUI(
+    BuildContext context,
+    HomeCoordinator coordinator,
+    HomeScreenReady state,
+  ) {
     return Scaffold(
         backgroundColor: Colors.white,
         floatingActionButtonLocation:
             FloatingActionButtonLocation.miniCenterDocked,
-        bottomNavigationBar: SizedBox(
-          height: 55,
-          child: BottomNavigationBar(
-            currentIndex: selectedIndex,
-            type: BottomNavigationBarType.fixed,
-            items: [
-              BottomNavigationBarItem(
-                  icon: Image.asset(
-                    HS_HomeIcon,
-                    scale: 2.0,
+        bottomNavigationBar: Material(
+          elevation: 2,
+          child: SizedBox(
+            height: 55,
+
+            child: Row(
+              children: [
+                Expanded(
+                  child: InkWell(
+                    onTap: (){
+                      setState(() {
+                        selectedIndex = 0;
+                      });
+                    },
+                    child: Column(
+                      children: [
+                        Container(
+                          height: 2,
+
+                          color: selectedIndex == 0 ?Color(0xFFDA2228):Colors.white,
+                          width: 60,
+
+                        ),
+                        Expanded(
+                          child: getSvg(HS_HomeIcon,
+                              color: selectedIndex == 0
+                                  ? const Color(0xFFDA2228)
+                                  : const Color(0xFF000000)),
+                        ),
+                      ],
+                    ),
                   ),
-                  label: ''),
-              BottomNavigationBarItem(
-                  icon: Image.asset(
-                    HS_SettingIcon,
-                    scale: 2.0,
+                ),
+                Expanded(
+                  child: InkWell(
+                    onTap: (){
+                      setState(() {
+                        selectedIndex = 1;
+                      });
+                    },
+                    child: Column(
+                      children: [
+                        Container(
+                          height: 2,
+                          color: selectedIndex == 1 ?Color(0xFFDA2228):Colors.white,
+                          width: 60,
+
+                        ),
+                        Expanded(
+                          child: getSvg(HS_SettingIcon,
+                              color: selectedIndex == 1
+                                  ? const Color(0xFFDA2228)
+                                  : const Color(0xFF000000)),
+                        ),
+                      ],
+                    ),
                   ),
-                  label: '')
-            ],
-            onTap: (index) {
-              setState(() {
-                selectedIndex = index;
-              });
-              // if(index == 1){
-              // coordinator.navigateToSettingsScreen();
-              // }
-            },
+                ),
+              ],
+            ) /*BottomNavigationBar(
+              currentIndex: selectedIndex,
+              type: BottomNavigationBarType.fixed,
+              items: [
+                BottomNavigationBarItem(
+                    icon: getSvg(HS_HomeIcon,
+                        color: selectedIndex == 0
+                            ? const Color(0xFFDA2228)
+                            : const Color(0xFF000000)),
+                    // Image.asset(
+                    //   HS_HomeIcon,
+                    //   scale: 2.0,
+                    // ),
+                    label: ''),
+                BottomNavigationBarItem(
+                    icon: getSvg(HS_SettingIcon,
+                        color: selectedIndex == 1
+                            ? const Color(0xFFDA2228)
+                            : const Color(0xFF000000)),
+
+                    //   HS_SettingIcon,
+                    //   scale: 2.0,
+                    // ),
+                    label: '')
+              ],
+              onTap: (index) {
+                // Image.asset(
+                setState(() {
+                  selectedIndex = index;
+                });
+                // if(index == 1){
+                // coordinator.navigateToSettingsScreen();
+                // }
+              },
+            )*/
+            ,
           ),
         ),
         body: selectedIndex == 0
@@ -494,12 +668,16 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                         _redBoxView(coordinator),
                         widget.homeScreenArgs.isAgent
                             ? _inviteAgentBoxView()
-                            : _inviteBoxView(),
+                            : _inviteBoxView(coordinator),
                       ],
                     )
                   ],
                 ),
               )
-            :  Settings(screenArgs: SettingsScreenArgs(isAgent: isAgent(),userType: widget.homeScreenArgs.userType),));
+            : Settings(
+                screenArgs: SettingsScreenArgs(
+                    isAgent: isAgent(),
+                    userType: widget.homeScreenArgs.userType),
+              ));
   }
 }

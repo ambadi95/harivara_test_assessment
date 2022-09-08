@@ -13,6 +13,8 @@ class OtpScreenArgs {
   final String phoneNumber;
   final bool isResetPasscode;
   final UserType userType;
+  final String event;
+
 
   OtpScreenArgs(
     this.title,
@@ -26,5 +28,6 @@ class OtpScreenArgs {
     this.phoneNumber,
     this.isResetPasscode,
     this.userType,
+      this.event
   );
 }

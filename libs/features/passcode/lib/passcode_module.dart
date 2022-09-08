@@ -31,6 +31,7 @@ class PasscodeModule {
           PassCodeViewModel(),
           container.resolve<IAuthManager>(),
           container.resolve<TaskManager>(),
+          container.resolve<CacheTaskResolver>(),
         ),
       ),
     );

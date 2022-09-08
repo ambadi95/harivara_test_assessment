@@ -1,5 +1,7 @@
 import 'package:config/Config.dart';
 import 'package:core/logging/logger.dart';
+import 'package:crayon_payment_customer/util/app_utils.dart';
+import 'package:flutter/foundation.dart';
 import 'package:task_manager/base_classes/base_view_model.dart';
 import '../../../navigation_handler/welcome_navigation_handler.dart';
 import '../state/enrollment_success_state.dart';
@@ -33,13 +35,23 @@ class EnrollmentSuccessCoordinator
   }
 
   Future getCustomerDetails(UserType userType) async {
-    var response = await _enrollmentSuccessUseCase.getCustomerDetails(
-        userType, (p0) => null);
-    if (response?.status == true) {
-      CrayonPaymentLogger.logInfo(response!.data!.referenceId!.toString());
-      return response;
-    } else {
-      CrayonPaymentLogger.logInfo(response!.message!);
+    try {
+      var response = await _enrollmentSuccessUseCase.getCustomerDetails(
+          userType, (p0) => null);
+      if (response?.status == true) {
+        CrayonPaymentLogger.logInfo(response!.data!.referenceId!.toString());
+        return response;
+      } else {
+        CrayonPaymentLogger.logInfo(response!.message!);
+      }
+    }  catch (e) {
+      if (kDebugMode) {
+        print(e.toString());
+      }
+     /* AppUtils.appUtilsInstance.showErrorBottomSheet(
+        title: e.toString(),
+        onClose: () {goBack();},
+      );*/
     }
   }
 }

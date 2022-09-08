@@ -12,6 +12,9 @@ import 'package:core/retrievers/app_info_retriever.dart';
 import 'package:core/session_management/inactivity_service.dart';
 import 'package:core/share_download/share_download_image.dart';
 import 'package:core/share_download/share_file_manager.dart';
+import 'package:core/sheets/coordinator/crayon_payment_bottom_sheet_coordinator.dart';
+import 'package:core/sheets/navigation/crayon_payment_bottom_sheet_navigation_handler.dart';
+import 'package:core/sheets/navigation/crayon_payment_bottom_sheet_route_manager.dart';
 import 'package:core/storage/secure_storage/secure_storage_service.dart';
 import 'package:core/storage/storage_service.dart';
 import 'package:core/translation/app_localization_service.dart';
@@ -19,9 +22,13 @@ import 'package:core/translation/crayon_payment_transaltions_loader.dart';
 import 'package:core/translation/i_app_localization_service.dart';
 import 'package:core/utils/input_formatters/length_text_formatter.dart';
 import 'package:core/validators/input_entry_validator/input_entry_validator.dart';
+import 'package:widget_library/utils/app_utils.dart';
 import 'package:device_option/device_option_module.dart';
 import 'package:device_option/navigation_handler/device_option_route_manager.dart';
 import 'package:flutter/services.dart';
+import 'package:home/home/navigation_handler/home_route_manager.dart';
+import 'package:loan_details/loan_detail_module.dart';
+import 'package:loan_details/navigation_handler/loan_detail_route_manager.dart';
 import 'package:login/login_module.dart';
 import 'package:login/navigation_handler/login_route_manager.dart';
 import 'package:network_manager/auth/auth_manager.dart';
@@ -52,6 +59,8 @@ import 'home/home_module.dart';
 import 'home/navigation_handler/home_route_manager.dart';
 import 'package:termscondition/termscondition/navigation_handler/termscond_route_manager.dart';
 import 'package:termscondition/termscondition/termscondition_module.dart';
+import 'package:payments/payments_module.dart';
+import 'package:payments/navigation_handler/payments_route_manager.dart';
 
 class AppModule {
   // ignore: long-method
@@ -85,9 +94,21 @@ class AppModule {
         memoryStorageService: MemoryStorageServiceImpl(),
       ),
     );
+
+    AppUtils.appUtilsInstance.updateCacheTaskResolverInstance( CacheTaskResolver(
+      secureStorageService: DIContainer.container<StorageService>(),
+      fileStorageService: FileStorageServiceImpl(),
+      unsecureStorageService: UnsecureStorageServiceImpl(),
+      memoryStorageService: MemoryStorageServiceImpl(),
+    ),);
+
     DIContainer.container.registerSingleton<NavigationManager>(
       (container) => NavigationManagerImpl(),
     );
+
+    AppUtils.appUtilsInstance.updateNavigationHandlerInstance(NavigationManagerImpl());
+
+
     DIContainer.container.registerSingleton<WidgetsModule>(
       (container) => WidgetsModuleImpl(container.resolve<NavigationManager>()),
     );
@@ -99,23 +120,19 @@ class AppModule {
     WelcomeModule.registerDependencies();
     PasscodeModule.registerDependencies();
     HomeModule.registerDependencies();
+
     VerifyOtpModule.registerDependencies();
     AgentNearByModule.registerDependencies();
     DeviceOptionModule.registerDependencies();
     LoginModule.registerDependencies();
-
+    LoanDetailModule.registerDependencies();
     CustomerHomeModule.registerDependencies();
     TermsConditionModule.registerDependencies();
     SettingsModule.registerDependencies();
+    PaymentsModule.registerDependencies();
 
     DIContainer.container.resolve<WidgetsModule>().registerDependencies();
 
-    // DIContainer.container.registerSingleton<IInactivityService>(
-    //       (container) => InactivityService(
-    //     taskManager: container.resolve<TaskManager>(),
-    //     navigationManager: container.resolve<NavigationManager>(),
-    //   ),
-    // );
   }
 }
 
@@ -160,6 +177,11 @@ void _registerRouteManagers() {
     AgentNearByRouteManager(),
   );
 
+ navigationManagerContainer.registerRouteManager(
+    PaymentsModule.moduleIdentifier,
+   PaymentsRouteManager(),
+  );
+
   navigationManagerContainer.registerRouteManager(
     DeviceOptionModule.moduleIdentifier,
     DeviceOptionRouteManager(),
@@ -181,9 +203,16 @@ void _registerRouteManagers() {
   );
 
   navigationManagerContainer.registerRouteManager(
+    HomeModule.moduleIdentifier,
+    HomeRouteManager(),
+  );
+
+
+  navigationManagerContainer.registerRouteManager(
     VerifyOtpModule.moduleIdentifier,
     VerifyOtpRouteManager(),
   );
+
   navigationManagerContainer.registerRouteManager(
     TermsConditionModule.moduleIdentifier,
     TermsConditionRouteManager(),
@@ -192,6 +221,11 @@ void _registerRouteManagers() {
   navigationManagerContainer.registerRouteManager(
     SettingsModule.moduleIdentifier,
     SettingsRouteManager(),
+  );
+
+  navigationManagerContainer.registerRouteManager(
+    LoanDetailModule.moduleIdentifier,
+    LoanDetailRouteManager(),
   );
 
   DIContainer.container.registerSingleton<NativeDocumentDirectory>(
@@ -211,7 +245,20 @@ void _registerRouteManagers() {
 
 void _registerBottomSheetFeature() {
   final navigationManagerContainer = DIContainer.container<NavigationManager>();
+  navigationManagerContainer.registerRouteManager(
+    CrayonPaymentBottomSheetRouteManager.moduleIdentifier,
+    CrayonPaymentBottomSheetRouteManager(),
+  );
+
+  DIContainer.container.registerFactory<CrayonPaymentBottomSheetCoordinator>(
+        (container) => CrayonPaymentBottomSheetCoordinator(
+      CrayonPaymentBottomSheetNavigationHandler(
+        container.resolve<NavigationManager>(),
+      ),
+    ),
+  );
 }
+
 
 void _registerToolTipFeature() {
   final navigationManagerContainer = DIContainer.container<NavigationManager>();

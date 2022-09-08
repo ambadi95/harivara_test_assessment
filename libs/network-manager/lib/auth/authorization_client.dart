@@ -9,9 +9,11 @@ import 'package:network_manager/auth/user_manager.dart';
 import 'package:network_manager/client/i_network_client.dart';
 import 'package:network_manager/model/requests/request.dart';
 import 'package:network_manager/model/requests/standard/standard_request.dart';
+import 'package:network_manager/model/response/jwt/jwt_token_response.dart';
 import 'package:network_manager/model/response/token/token_response.dart';
 import 'package:shared_data_models/auth/auth_detail.dart';
 import 'package:config/Config.dart';
+
 class AuthorizationClient {
   final UserType _userType;
   final INetworkClient _client;
@@ -39,28 +41,29 @@ class AuthorizationClient {
   ) =>
       AuthorizationClient(UserType.Customer, client, authManager, userManager);
 
-  Future<TokenResponse?> requestToken(
+  Future<JwtTokenResponse?> requestToken(
     Function onErrorCallback,
   ) async {
     try {
-      var mobileNumber = await _userManager.getUserMobile();
+      // var mobileNumber = await _userManager.getUserMobile();
       var request = StandardRequest();
       request.requestType = RequestType.POST;
       request.endpoint = 'id-auth/v2/tokens';
       request.jsonBody = json.encode({
-        'userId': mobileNumber,
-        'userType': _userType == UserType.AgentCustomer ? "AgentCustomer" : (_userType == UserType.Customer ? "Customer": "Agent"),
+        'username': 'y9dev',
+        'password': 'P@ssw0rd',
+        'clientId': '7dcd46ae-5f2f-4b14-a9a2-c48796180517'
       });
       request.customHeaders = {'Content-Type': 'application/json'};
 
       final response = await _client.standardRequest(request);
       if (response.statusCode == 200) {
-        var tokenResponse = TokenResponse.fromJson(response.jsonResult!);
+        var tokenResponse = JwtTokenResponse.fromJson(response.jsonResult!);
         _authManager.storeTokenInformation(
-          tokenResponse.token!,
-          'refreshToken',
-          'expiresIn',
-          mobileNumber!,
+          tokenResponse.data!.jwttoken!,
+          '',
+          '',
+          '',
         );
         return tokenResponse;
       } else {
@@ -79,6 +82,7 @@ class AuthorizationClient {
 
 class CrayonPaymentAuthManager extends IAuthManager {
   static const _accessTokenKey = 'access_token';
+  static const _jwtTokenKey = 'jwt-token';
 
   final SecureStorageService _secureStorageService;
 
@@ -153,5 +157,15 @@ class CrayonPaymentAuthManager extends IAuthManager {
   @override
   Future<String?> getUserInfo(String key) async {
     await _secureStorageService.get(key);
+  }
+
+  @override
+  Future<String?> getJWTToken() async {
+    return 'Bearer ${await _secureStorageService.get(_jwtTokenKey)}';
+  }
+
+  @override
+  Future storeJWTToken(String jwtToken) async {
+    await _secureStorageService.set(_jwtTokenKey, jwtToken);
   }
 }

@@ -30,6 +30,8 @@ import 'package:home/home/navigation_handler/home_route_manager.dart';
 import 'package:kyc/kyc_credit_module.dart';
 import 'package:downpayment/downpayment_module.dart';
 import 'package:kyc/navigation_handler/kyc_credit_route_manager.dart';
+import 'package:loan_details/loan_detail_module.dart';
+import 'package:loan_details/navigation_handler/loan_detail_route_manager.dart';
 import 'package:login/login_module.dart';
 import 'package:login/navigation_handler/login_route_manager.dart';
 import 'package:network_manager/auth/auth_manager.dart';
@@ -40,6 +42,8 @@ import 'package:network_manager/network_manager.dart';
 import 'package:network_manager/utils/connectivity/i_connectivity.dart';
 import 'package:passcode/navigation_handler/passcode_route_manager.dart';
 import 'package:passcode/passcode_module.dart';
+import 'package:scanqrcode/navigation_handler/scanqrcode_route_manager.dart';
+import 'package:scanqrcode/scanqrcode_module.dart';
 import 'package:settings/navigation_handler/settings_route_manager.dart';
 import 'package:splash/splash_module.dart';
 import 'package:task_manager/cache_manager/storage/file_storage/file_storage_service_impl.dart';
@@ -60,6 +64,7 @@ import 'package:settings/settings_model.dart';
 import 'package:kyc/subfeatures/kycmain/kyccreditmain_module.dart';
 import 'package:kyc/subfeatures/kycmain/navigation_handler/kyc_main_route_manager.dart';
 import 'package:downpayment/navigation_handler/downpayment_route_manager.dart';
+import 'package:widget_library/utils/app_utils.dart';
 
 class AppModule {
   // ignore: long-method
@@ -93,9 +98,19 @@ class AppModule {
         memoryStorageService: MemoryStorageServiceImpl(),
       ),
     );
+
+    AppUtils.appUtilsInstance.updateCacheTaskResolverInstance( CacheTaskResolver(
+      secureStorageService: DIContainer.container<StorageService>(),
+      fileStorageService: FileStorageServiceImpl(),
+      unsecureStorageService: UnsecureStorageServiceImpl(),
+      memoryStorageService: MemoryStorageServiceImpl(),
+    ),);
+
     DIContainer.container.registerSingleton<NavigationManager>(
       (container) => NavigationManagerImpl(),
     );
+    AppUtils.appUtilsInstance.updateNavigationHandlerInstance(NavigationManagerImpl());
+
     DIContainer.container.registerSingleton<WidgetsModule>(
       (container) => WidgetsModuleImpl(container.resolve<NavigationManager>()),
     );
@@ -119,11 +134,15 @@ class AppModule {
     SettingsModule.registerDependencies();
 
     KycCreditModule.registerDependencies();
+
     DownPaymentModule.registerDependencies();
+
+    ScanQRCodeModule.registerDependencies();
 
     KycCreditMainModule.registerDependencies();
 
     TermsConditionModule.registerDependencies();
+
 
     DIContainer.container.resolve<WidgetsModule>().registerDependencies();
   }
@@ -159,6 +178,8 @@ void _registerUtils() {
 // ignore: long-method
 void _registerRouteManagers() {
   final navigationManagerContainer = DIContainer.container<NavigationManager>();
+
+
 
   navigationManagerContainer.registerRouteManager(
     WelcomeModule.moduleIdentifier,
@@ -204,9 +225,15 @@ void _registerRouteManagers() {
     KycCreditModule.moduleIdentifier,
     KycCreditRouteManager(),
   );
+
  navigationManagerContainer.registerRouteManager(
     DownPaymentModule.moduleIdentifier,
    DownPaymentRouteManager(),
+  );
+
+  navigationManagerContainer.registerRouteManager(
+    ScanQRCodeModule.moduleIdentifier,
+    ScanQRCodeRouteManager(),
   );
 
   navigationManagerContainer.registerRouteManager(
@@ -276,9 +303,7 @@ Future registerNetworkModule({
     (container) => AppLocalizationService(),
   );
 // initialise dependencies
-  DIContainer.container
-      .resolve<GlobalControlNotifier>(NetworkManager.globalControlNotifierKey)
-      .initialise(networkConfig);
+  DIContainer.container.resolve<GlobalControlNotifier>(NetworkManager.globalControlNotifierKey).initialise(networkConfig);
   initializeGraphQLClient(networkConfig);
 }
 

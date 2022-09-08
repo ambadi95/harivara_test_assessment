@@ -4,6 +4,7 @@ import 'package:core/mobile_core.dart';
 import 'package:core/view/base_view.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_data_models/device_option/device_detail_mockup.dart';
+import 'package:shared_data_models/deviceloancreation/loan_preview_response_model.dart';
 import 'package:widget_library/app_bars/crayon_payment_app_bar_attributes.dart';
 import 'package:widget_library/app_bars/crayon_payment_app_bar_button_type.dart';
 import 'package:widget_library/buttons/docked_button.dart';
@@ -43,13 +44,23 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
 
   Data? detailDetail;
 
-  var _value = 0;
+  LoanPreviewResponseModel? loanPreviewResponseModel;
+
+  var _value = 1;
 
   @override
   Widget build(BuildContext context) {
     return BaseView<DeviceLoanCreationCoordinator, DeviceLoanCreationState>(
       setupViewModel: (coordinator) async {
         detailDetail = widget.deviceLoanCreationArgs.deviceDetailData;
+        if (detailDetail != null && detailDetail!.deviceId != 0) {
+          loanPreviewResponseModel =
+              await coordinator.getLoanPreview(detailDetail!.deviceId!);
+          print("loanPreviewResponse${loanPreviewResponseModel}");
+          setState(() {
+            loanPreviewResponseModel;
+          });
+        }
       },
       onStateListenCallback: (preState, newState) =>
           {_listenToStateChanges(context, newState)},
@@ -81,10 +92,14 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
           const CrayonPaymentAppBarButtonType.back(),
         ],
       ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.only(left: 16, right: 16, bottom: 18),
-        child: selectButton(coordinator),
-      ),
+      bottomNavigationBar:
+      loanPreviewResponseModel != null
+          ?
+      Padding(
+              padding: const EdgeInsets.only(left: 16, right: 16, bottom: 18),
+              child: selectButton(coordinator),
+            )
+          : SizedBox(),
       body: ListView(
         children: [
           _buildOptionTitle(context),
@@ -144,17 +159,9 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
           dynamicHSpacer(10),
           Divider(),
           dynamicHSpacer(10),
-          _loanDetails(context),
-          dynamicHSpacer(40),
-          CrayonPaymentText(
-            key: Key(''),
-            text: TextUIDataModel('DLC_Wallets_Title'.tr,
-                styleVariant: CrayonPaymentTextStyleVariant.headline4,
-                color: AN_CardTitle,
-                fontWeight: FontWeight.w600),
-          ),
-          dynamicHSpacer(20),
-          _radioButton(),
+          loanPreviewResponseModel == null
+              ? SizedBox()
+              : _loanDetails(context),
           dynamicHSpacer(20),
         ],
       ),
@@ -183,33 +190,55 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
 
   Widget selectButton(DeviceLoanCreationCoordinator coordinator) {
     return CrayonPaymentDockedButton(
-      key: const Key('Select'),
-      title: 'Pay Now 40,000 TZHS',
+      key:  Key('Select'),
+      title: "${'DLC_pay_now'.tr} ${loanPreviewResponseModel!.data!.totalAmountToBeRepaid} TZSHS",
+      // title: 'Pay Now 2000 TZHS',
       borderRadius: 8,
       height: CrayonPaymentDimensions.marginFortyEight,
       buttonColor: LS_ButtonColor,
       textColor: White,
       textStyleVariant: CrayonPaymentTextStyleVariant.headline4,
-      onPressed: () {},
+      onPressed: () {
+        coordinator.navigateToDownPayment(loanPreviewResponseModel!.data!.totalAmountToBeRepaid!.toString(),detailDetail!.deviceId);
+      },
     );
   }
 
   _loanDetails(context) {
+    print(loanPreviewResponseModel!.data!.toJson());
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         CrayonPaymentText(
-          key: Key(''),
-          text: TextUIDataModel("Loan Details",
+          key: Key('loan details'),
+          text: TextUIDataModel('DLC_Loan_Details'.tr,
               styleVariant: CrayonPaymentTextStyleVariant.headline4,
               color: AN_CardTitle,
               fontWeight: FontWeight.w600),
         ),
         dynamicHSpacer(30),
-        _rowTitleValue('D0_JoiningFee'.tr, '60,000 TZSHS'),
-        _rowTitleValue('DLC_Daily_Repayment'.tr, '60,000 TZSHS'),
-        _rowTitleValue('DLC_Total_Amount_Repaid'.tr, '60,000 TZSHS'),
-        _rowTitleValue('DLC_Final_Payment_Date'.tr, '10 Aug, 2023'),
+        _rowTitleValue('D0_JoiningFee'.tr,
+            loanPreviewResponseModel!.data!.joiningFee!.toString() + " TZSHS"),
+        _rowTitleValue(
+            'DLC_Daily_Repayment'.tr,
+            loanPreviewResponseModel!.data!.dailyRepaymentAmount!.toString() +
+                " TZSHS"),
+        _rowTitleValue(
+            'DLC_Total_Amount_Repaid'.tr,
+            loanPreviewResponseModel!.data!.totalAmountToBeRepaid!.toString() +
+                " TZSHS"),
+        _rowTitleValue('DLC_Final_Payment_Date'.tr,
+            loanPreviewResponseModel!.data!.finalPaymentDate.toString()),
+        dynamicHSpacer(40),
+        CrayonPaymentText(
+          key: Key('paymnet date'),
+          text: TextUIDataModel('DLC_Wallets_Title'.tr,
+              styleVariant: CrayonPaymentTextStyleVariant.headline4,
+              color: AN_CardTitle,
+              fontWeight: FontWeight.w600),
+        ),
+        dynamicHSpacer(20),
+        _radioButton(),
       ],
     );
   }
@@ -224,7 +253,7 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
             Expanded(
               flex: 1,
               child: CrayonPaymentText(
-                key: Key(''),
+                key: Key('key value'),
                 text: TextUIDataModel(key,
                     styleVariant: CrayonPaymentTextStyleVariant.headline5,
                     color: AN_CardTitle,
@@ -234,7 +263,7 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
             Expanded(
               flex: 1,
               child: CrayonPaymentText(
-                key: Key(''),
+                key: Key('data value'),
                 text: TextUIDataModel(value,
                     styleVariant: CrayonPaymentTextStyleVariant.headline5,
                     color: AN_CardTitle,
@@ -262,24 +291,23 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
         child: Padding(
           padding: EdgeInsets.only(top: 10, right: 20, left: 20, bottom: 10),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Text(
-                "Airtel Pay",
-                style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.black),
+              Image.asset("assets/images/airtel.png"),
+              SizedBox(width: 10),
+              CrayonPaymentText(
+                key: Key('${_identifier}_Device_Loan_Airtel_Pay'),
+                text: TextUIDataModel('DLC_Airtel_Pay'.tr,
+                    styleVariant: CrayonPaymentTextStyleVariant.headline4,
+                    color: SECONDARY_COLOR,
+                    fontWeight: FontWeight.w600),
               ),
+              Spacer(),
               Radio(
                 value: 1,
-                groupValue: _value,
+                groupValue: 1,
                 activeColor: SU_button_color,
-                onChanged: (value) {
-                  setState(() {
-                    _value = value as int;
-                  });
-                },
+                onChanged: (value) {},
               )
             ],
           ),

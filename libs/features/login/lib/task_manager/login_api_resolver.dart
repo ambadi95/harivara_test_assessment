@@ -9,6 +9,8 @@ class LoginApiResolver extends TaskResolver {
   @override
   Future execute(String identifier, Map<String, dynamic> requestData) {
     switch (identifier) {
+      case ILoginService.jwtIdentifier:
+        return _loginService.jwttoken(requestData);
       case ILoginService.loginIdentifier:
         return _loginService.login(requestData);
       case ILoginService.loginAgentIdentifier:
@@ -16,6 +18,10 @@ class LoginApiResolver extends TaskResolver {
       case ILoginService.agentDetailIdentifier:
         return _loginService.getAgentDetails(
             requestData['agentId'], requestData['mobileNumber']);
+      case ILoginService.checkPasscodeIdentifier:
+        return _loginService.checkPasscode(requestData['mobileNumber']);
+      case ILoginService.customerDetailsIdentifier:
+        return _loginService.getCustomerDetailByMobileNo(requestData['mobileNumber']);
       default:
         throw UnimplementedError();
     }

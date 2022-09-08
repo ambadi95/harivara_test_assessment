@@ -38,6 +38,23 @@ dependencies:
   passcode:
     path: ../passcode
 
+  home:
+    path: ../home
+
+  kyc :
+    path: ../kyc
+
+  device_option :
+    path: ../device_option
+
+  downpayment :
+    path: ../downpayment
+
+  configuremdm :
+    path: ../configuremdm
+
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

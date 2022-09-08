@@ -1,13 +1,17 @@
 import 'dart:async';
 
 import 'package:core/formatters/date_time_formatter.dart';
+import 'package:core/logging/logger.dart';
 import 'package:core/sheets/data_model/multi_selection_category.dart';
 import 'package:core/sheets/navigation/crayon_payment_bottom_sheet_navigation_handler.dart';
 import 'package:core/sheets/state/crayon_payment_bottom_sheet_state.dart';
 import 'package:core/utils/extensions/list_extensions.dart';
 import 'package:shared_data_models/date_filter/date_filter_type.dart';
 import 'package:task_manager/base_classes/base_view_model.dart';
+import 'package:task_manager/task.dart';
 import 'package:widget_library/icons/crayon_payment_bottom_sheet_icon.dart';
+
+import '../data_model/loan_payment.dart';
 
 class CrayonPaymentBottomSheetCoordinator
     extends BaseViewModel<CrayonPaymentBottomSheetState> {
@@ -25,7 +29,7 @@ class CrayonPaymentBottomSheetCoordinator
           await _executeCallback(immediateCallback);
         }
       },
-      infoState: (_, __, ___, additionalText, ____, autoCloseAfter, _____) {
+      infoState: (_,isSvg, __, ___, additionalText, ____, autoCloseAfter, _____) {
         state = sheetState;
         if (autoCloseAfter != null) {
           _startTimerToClose(autoCloseAfter);
@@ -245,4 +249,52 @@ class CrayonPaymentBottomSheetCoordinator
       }
     });
   }
+
+  void choosePaymentMethod(LoanPaymentMethod paymentMethod,String amount) {
+    final currentState = state as LoanRepaymentBottomSheet;
+    currentState.loanRepayment.loanPaymentList.forEach((element) {
+      if (element == paymentMethod) {
+        element.isSelected = true;
+      } else {
+        element.isSelected = false;
+      }
+    });
+
+    if (paymentMethod.amount.isNotEmpty) {
+      currentState.loanRepayment.isAmountSelected = true;
+      currentState.loanRepayment.onSelectedAmount(paymentMethod.amount);
+      currentState.loanRepayment.onSelectedLabel(paymentMethod.name);
+    } else {
+      currentState.loanRepayment.isAmountSelected = false;
+      currentState.loanRepayment.isPayNowSelected = true;
+    }
+    currentState.loanRepayment.selectedAmount = paymentMethod.amount;
+    state = currentState.copyWith(
+      loanRepayment: currentState.loanRepayment,
+    );
+  }
+
+  void checkAmount(String amount,) {
+    final currentState = state as CustomAmountBottomSheet;
+    double outstandingAmount = removeCharacter(currentState.outstandingAmount);
+    double enterAmount = removeCharacter(amount);
+    if (outstandingAmount > enterAmount) {
+      currentState.enteredAmount(amount);
+      state = currentState.copyWith(
+        isAmountValidated: true,
+        showError: false
+      );
+    }else{
+      state = currentState.copyWith(
+        isAmountValidated: false,
+        showError: true
+      );
+    }
+  }
+
+  double removeCharacter(String amount) {
+    return double.parse(
+        amount.replaceAll(",", "").replaceAll("TZSHS", "").trim());
+  }
+
 }

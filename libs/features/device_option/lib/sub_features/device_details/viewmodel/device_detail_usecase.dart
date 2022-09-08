@@ -29,7 +29,8 @@ class DeviceDetailUseCase extends BaseDataProvider {
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {
           final data = responseData;
-          DetailDetailResponse deviceListResponse = DetailDetailResponse.fromMap(data);
+          DetailDetailResponse deviceListResponse =
+              DetailDetailResponse.fromMap(data);
           return DetailDetailResponse.fromMap(data);
         });
   }

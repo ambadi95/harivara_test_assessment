@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'Colors.dart';
 import 'Config.dart';
 
@@ -223,11 +222,34 @@ const ES_success_text = TextStyle(
   color: SECONDARY_COLOR,
 );
 
+const ES_bottom_success_text = TextStyle(
+  fontSize: 14,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'Montserrat',
+  color: WB_EnterPassCodeTitleColor,
+);
+
+
+
+
 const ES_bold_text = TextStyle(
   fontSize: 20,
   fontWeight: FontWeight.bold,
   fontFamily: 'Montserrat',
   color: SECONDARY_COLOR,
+);
+
+const PS_Refresh_text = TextStyle(
+  fontSize: 14,
+  fontWeight: FontWeight.bold,
+  fontFamily: 'Montserrat',
+  color: Color(0xFF2F80ED),
+);
+
+const PS_Notification_text = TextStyle(
+  fontSize: 14,
+  fontFamily: 'Montserrat',
+  color: Black,
 );
 
 
@@ -370,3 +392,80 @@ const WB_reset_passcode_text_style = TextStyle(
   color: PRIMARY_COLOR,
   decoration: TextDecoration.underline,
 );
+
+const LR_payment_label = TextStyle(
+    fontSize: 12,
+    fontFamily: 'Montserrat',
+    color: LR_Color565451
+);
+
+const LR_selected_payment_label = TextStyle(
+    fontSize: 12,
+    fontFamily: 'Montserrat',
+    color: LR_White
+);
+
+const LR_payment_amount = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.bold,
+    fontFamily: 'Montserrat',
+    color: LR_Black
+);
+
+const LR_selected_payment_amount = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.bold,
+    fontFamily: 'Montserrat',
+    color: LR_White
+);
+
+const LR_device_loan_label = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.bold,
+    fontFamily: 'Montserrat',
+    color: LR_Color676767
+);
+
+const LR_device_loan_value = TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.bold,
+    fontFamily: 'Montserrat',
+    color: LR_Black
+);
+
+const LR_title = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.bold,
+    fontFamily: 'Montserrat',
+    color: LR_Black
+);
+
+const LR_button = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.bold,
+    fontFamily: 'Montserrat',
+    color: LR_White
+);
+
+const LR_payCustom = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.bold,
+    fontFamily: 'Montserrat',
+    color: LR_Black
+);
+const LR_payCustomSelected = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.bold,
+    fontFamily: 'Montserrat',
+    color: LR_White
+);
+
+const LR_payStatusLabel = TextStyle(
+    fontSize: 10,
+    fontWeight: FontWeight.bold,
+    fontFamily: 'Montserrat',
+    color: LR_Color00384E
+);
+
+
+

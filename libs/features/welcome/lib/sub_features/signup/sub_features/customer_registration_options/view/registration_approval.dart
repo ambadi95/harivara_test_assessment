@@ -15,16 +15,18 @@ import 'package:widget_library/buttons/crayon_back_button.dart';
 import 'package:config/Colors.dart' as config_color;
 import 'package:get/get.dart';
 import 'package:widget_library/static_text/crayon_payment_text.dart';
+import 'package:widget_library/utils/icon_utils.dart';
 
 import '../../../../../data_model/sign_up_arguments.dart';
 import '../viewmodel/registration_approval_coordinator.dart';
 
-
 class RegistrationApproval extends StatefulWidget {
   final SignUpArguments signUpArguments;
-  static const viewPath = '${WelcomeModule.moduleIdentifier}/registrationApproval';
+  static const viewPath =
+      '${WelcomeModule.moduleIdentifier}/registrationApproval';
 
-  const RegistrationApproval({required this.signUpArguments, Key? key}) : super(key: key);
+  const RegistrationApproval({required this.signUpArguments, Key? key})
+      : super(key: key);
 
   @override
   State<RegistrationApproval> createState() => _SignUpState();
@@ -39,33 +41,33 @@ class _SignUpState extends State<RegistrationApproval> {
   Widget build(BuildContext context) =>
       BaseView<RegistrationApprovalCoordinator, SignUpState>(
           onStateListenCallback: (preState, newState) =>
-          {_listenToStateChanges(context, newState)},
+              {_listenToStateChanges(context, newState)},
           setupViewModel: (coordinator) async {},
           builder: (context, state, coordinator) => SafeArea(
-            child: Scaffold(
-              bottomNavigationBar: state.maybeWhen(
-                loadingState: () =>
-                    _buildMainUIWithLoading(context, coordinator),
-                orElse: () => SizedBox(
-                  height: 120,
-                  child: Column(
-                    children: [
-                      const SizedBox(
-                        height: 23,
+                child: Scaffold(
+                  bottomNavigationBar: state.maybeWhen(
+                    loadingState: () =>
+                        _buildMainUIWithLoading(context, coordinator),
+                    orElse: () => SizedBox(
+                      height: 120,
+                      child: Column(
+                        children: [
+                          const SizedBox(
+                            height: 23,
+                          ),
+                          _buildContinueButton(context, coordinator, state)
+                        ],
                       ),
-                      _buildContinueButton(context, coordinator, state)
-                    ],
+                    ),
                   ),
-                ),
-              ),
-              body: state.maybeWhen(
-                orElse: () => SingleChildScrollView(
-                    child: SafeArea(
+                  body: state.maybeWhen(
+                    orElse: () => SingleChildScrollView(
+                        child: SafeArea(
                       child: _UI(coordinator),
                     )),
-              ),
-            ),
-          ));
+                  ),
+                ),
+              ));
 
   Widget _UI(RegistrationApprovalCoordinator coordinator) {
     return Column(
@@ -78,9 +80,9 @@ class _SignUpState extends State<RegistrationApproval> {
   }
 
   Widget _buildMainUIWithLoading(
-      BuildContext context,
-      RegistrationApprovalCoordinator coordinator,
-      ) {
+    BuildContext context,
+    RegistrationApprovalCoordinator coordinator,
+  ) {
     return Stack(
       children: [
         _UI(coordinator),
@@ -90,12 +92,15 @@ class _SignUpState extends State<RegistrationApproval> {
   }
 
   Widget _buildTopContainer(
-      BuildContext context,
-      RegistrationApprovalCoordinator coordinator,
-      ) {
+    BuildContext context,
+    RegistrationApprovalCoordinator coordinator,
+  ) {
     return Column(
       children: [
-        widget.signUpArguments.signupType == SignupType.agentAidedCustomerOnBoarding ? const SizedBox() :  _onBoardingProgressBar(),
+        widget.signUpArguments.signupType ==
+                SignupType.agentAidedCustomerOnBoarding
+            ? const SizedBox()
+            : _onBoardingProgressBar(),
         _buildBackBtn(context, coordinator),
       ],
     );
@@ -134,20 +139,20 @@ class _SignUpState extends State<RegistrationApproval> {
   Widget _onBoardingProgressBar() {
     return widget.signUpArguments.isProgressBarVisible
         ? const Padding(
-      padding:
-      EdgeInsets.only(left: 20.0, right: 20.0, top: 20.0, bottom: 0),
-      child: OnBoardingProgressBar(
-        currentStep: 1,
-        totalSteps: 4,
-      ),
-    )
+            padding:
+                EdgeInsets.only(left: 20.0, right: 20.0, top: 20.0, bottom: 0),
+            child: OnBoardingProgressBar(
+              currentStep: 1,
+              totalSteps: 4,
+            ),
+          )
         : const SizedBox();
   }
 
   Widget _buildBackBtn(
-      BuildContext context,
-      RegistrationApprovalCoordinator coordinator,
-      ) {
+    BuildContext context,
+    RegistrationApprovalCoordinator coordinator,
+  ) {
     return Align(
       alignment: Alignment.topLeft,
       child: CrayonBackButton(
@@ -179,19 +184,18 @@ class _SignUpState extends State<RegistrationApproval> {
     );
   }
 
-
   Widget _buildContinueButton(
-      BuildContext context,
-      RegistrationApprovalCoordinator coordinator,
-      SignUpState state,
-      ) {
+    BuildContext context,
+    RegistrationApprovalCoordinator coordinator,
+    SignUpState state,
+  ) {
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
         onTap: () async {
-          if(_agentAidCustomerOnBoarding == true){
+          if (_agentAidCustomerOnBoarding == true) {
             coordinator.navigateToAgentAidedCustomer();
-          }else if(_customerApproval == true){
+          } else if (_customerApproval == true) {
             coordinator.navigateCustomerOnBoardingApproval();
           }
         },
@@ -214,30 +218,42 @@ class _SignUpState extends State<RegistrationApproval> {
     );
   }
 
-  Widget _selectableCard (bool selected, String image, String title, Function() onTap){
+  Widget _selectableCard(
+      bool selected, String image, String title, Function() onTap) {
     return InkWell(
       onTap: onTap,
       child: Container(
         height: 98,
         decoration: BoxDecoration(
-          border: Border.all(width:selected ? 2 : 1,color: selected ? RC_greyColor : SU_border_color),
-          borderRadius: BorderRadius.circular(8)
-        ),
+            border: Border.all(
+                width: selected ? 2 : 1,
+                color: (selected == true) ? SU_button_color : RC_greyColor),
+            borderRadius: BorderRadius.circular(8)),
         child: Center(
           child: Row(
             children: [
               const SizedBox(
                 width: 26,
               ),
-              Image.asset(image,height: 24, width: 30,),
-             const SizedBox(
+              Container(
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(6),
+                      color: SU_grey_icon_bg),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: getSvg(image, height: 24, width: 30),
+                  )),
+              //Image.asset(image,height: 24, width: 30,),
+              const SizedBox(
                 width: 26,
               ),
-              CrayonPaymentText(text: TextUIDataModel(
-                title.tr,
-                styleVariant: CrayonPaymentTextStyleVariant.bodyText2,
-                color: AN_TitleColor,
-              ),),
+              CrayonPaymentText(
+                text: TextUIDataModel(
+                  title.tr,
+                  styleVariant: CrayonPaymentTextStyleVariant.bodyText2,
+                  color: AN_TitleColor,
+                ),
+              ),
             ],
           ),
         ),
@@ -245,11 +261,12 @@ class _SignUpState extends State<RegistrationApproval> {
     );
   }
 
-  Widget selectableList(){
+  Widget selectableList() {
     return ListView(
       shrinkWrap: true,
       children: [
-        _selectableCard (_agentAidCustomerOnBoarding, RC_new_customer,'RC_agent_new_customer',() {
+        _selectableCard(_agentAidCustomerOnBoarding, RC_new_customer,
+            'RC_agent_new_customer', () {
           setState(() {
             _agentAidCustomerOnBoarding = true;
             _customerApproval = false;
@@ -259,7 +276,9 @@ class _SignUpState extends State<RegistrationApproval> {
         const SizedBox(
           height: 24,
         ),
-        _selectableCard (_customerApproval,RC_customer_approval,'RC_customer_approval',(){
+        _selectableCard(
+            _customerApproval, RC_customer_approval, 'RC_customer_approval',
+            () {
           setState(() {
             _agentAidCustomerOnBoarding = false;
             _customerApproval = true;
