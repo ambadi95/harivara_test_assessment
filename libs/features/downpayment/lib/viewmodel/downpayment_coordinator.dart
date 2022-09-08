@@ -144,7 +144,7 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
         error: '',
         isLoading: true,
         loanActivated: 0,
-        paymentRequested: 1,
+        paymentRequested: 0,
         waitForPayment: 0,
         createLoan: 0,
         loanApproved: 0,

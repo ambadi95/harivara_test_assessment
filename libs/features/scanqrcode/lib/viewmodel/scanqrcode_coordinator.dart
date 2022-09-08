@@ -144,8 +144,8 @@ void successFulScreen(){
     if (response?.status == true) {
     state = ScanQRCodeState.ready(context: context,isLoading:false );
       if(response?.message == "Device registration success"){
-        configureMdmScreen();
-        // successFulScreen();
+        // configureMdmScreen();
+        successFulScreen();
       }
     } else {
     state = ScanQRCodeState.ready(context: context,isLoading:false,error: response!.message!);

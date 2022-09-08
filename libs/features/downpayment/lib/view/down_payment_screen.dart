@@ -104,7 +104,7 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
                   ],
                 ),
                 bottomNavigationBar:
-                    _buildContinueButton(context, coordinator, state),
+                    _buildContinueButton(context, coordinator, state as DownPaymentStateReady),
                 body: state.when(
                   initialState: () => const SizedBox(),
                   ready: (
@@ -308,13 +308,16 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
   Widget _buildContinueButton(
     BuildContext context,
     DownPaymentCoordinator coordinator,
-    DownPaymentState state,
+    DownPaymentStateReady state,
   ) {
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
         onTap: () async {
-          await coordinator.navigateToScanCodeScreen(widget.downPaymentScreenArgs.deviceId);
+          if(state.loanApproved==1) {
+            await coordinator.navigateToScanCodeScreen(
+                widget.downPaymentScreenArgs.deviceId);
+          }
         },
         child: Container(
           width: double.infinity,
