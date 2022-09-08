@@ -232,6 +232,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
               state = currentState.copyWith(attemptsRemain: 3);
               _showAlertForOTPAttempts();
             }
+
           }
         } else {
           state = currentState.copyWith(isLoading: true);
