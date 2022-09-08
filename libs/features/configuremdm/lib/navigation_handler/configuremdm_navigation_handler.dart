@@ -27,4 +27,9 @@ class ConfigureMdmNavigationHandler with ErrorHandler {
         arguments: argument
     );
   }
+
+  Future<void> goBack() async {
+    _navigationManager.goBack();
+  }
+
 }

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_data_models/customer_onboard/Customer_onboarding_status/customer_onboarding_status.dart';
 import 'package:shared_data_models/otp/otp_screen_args.dart';
 import 'package:shared_data_models/otp/otp_verification_type.dart';
+import 'package:shared_data_models/workflow_status/work_flow_status_response/work_flow_status_response.dart';
 import 'package:task_manager/base_classes/base_view_model.dart';
 import 'package:verifyotp/navigation_handler/verifyotp_navigation_handler.dart';
 import 'package:verifyotp/verifyotp/state/verify_otp_state.dart';
@@ -210,20 +211,17 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         if (responseSignin!.data!.status == "success") {
           print('###############');
           print(otpScreenArgs.refId);
-          _navigationHandler.navigateToDetailScreen();
-          // var getWorkFlowStatus = await _verifyOtpUseCase.workFlowCustomerByAgent(
-          //     otpScreenArgs.refId, (p0) => null);
-          // if (getWorkFlowStatus!.status!) {
-          //   CrayonPaymentLogger.logInfo('I am in WorkFlow Status');
-          //   //TODO Workflow Navigation
-          //   navigationToWorkFlow(getWorkFlowStatus.data!.status!);
-          //   //_navigationHandler.navigateToDetailScreen();
-          // }else{
-          //
-          //   _showAlertForErrorMessage(getWorkFlowStatus.message!);
-          // }
-        }else{
-          _showAlertForErrorMessage(responseSignin.message!);
+          var getWorkFlowStatus = await _verifyOtpUseCase.workFlowCustomerByAgent(
+              otpScreenArgs.refId, (p0) => null);
+          if (getWorkFlowStatus!.status!) {
+            CrayonPaymentLogger.logInfo('I am in WorkFlow Status');
+            //TODO Workflow Navigation
+            navigationToWorkFlow(getWorkFlowStatus,getWorkFlowStatus.data!.status!);
+            //_navigationHandler.navigateToDetailScreen();
+          }else{
+
+            _showAlertForErrorMessage(getWorkFlowStatus.message!);
+          }
         }
       } else if (otpScreenArgs.otpVerificationType ==
           OtpVerificationType.mobile) {
@@ -380,7 +378,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
     );
   }
 
-  navigationToWorkFlow(String status) {
+  navigationToWorkFlow(WorkFlowStatusResponse workFlowStatusResponse,String status) {
 
     switch (status) {
       case "Initiated":
@@ -413,13 +411,16 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         _navigationHandler.navigateToDeviceOption(true,UserType.AgentCustomer);
         break;
       case "Downpayment_Initiated":
-        _navigationHandler.navigateToDownPaymentScreen();
+        print("sdjkghgh${workFlowStatusResponse.data!.data[1]["id"]}");
+        // _navigationHandler.navigateToDownPaymentScreen();
         break;
       case "Downpayment_Success":
-        _navigationHandler.navigateToDownPaymentScreen();
+        // _navigationHandler.navigateToDownPaymentScreen();
         break;
       case "Downpayment_Failed":
-        _navigationHandler.navigateToDownPaymentScreen();
+        print("sdjkghgh${workFlowStatusResponse.data!.data[1]["paymentId"]}");
+
+        // _navigationHandler.navigateToDownPaymentScreen();
         break;
       case "Loan_Initiated":
         //_navigationHandler.navigateToDeviceLoanCreation();
