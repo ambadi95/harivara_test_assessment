@@ -208,7 +208,7 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> with TickerProvid
                 _rowWidget(
                   context,
                   icon:  _getIcon(context,state.paymentRequested),
-                  text: _textWidget(context, 'DP_RequestPayment'.tr, true),
+                  text: _textWidget(context, 'DP_RequestPayment'.tr,state.paymentRequested==0 ? true : false),
                 ),
                 _getVerticalDivider(
                     context,
@@ -370,7 +370,7 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> with TickerProvid
               fontWeight: FontWeight.w500),
         ),
         dynamicWSpacer(30),
-        isResend ?
+        isResend  ?
         InkWell(
           onTap: (){
             downPaymentCoordinator!.makePayment(context,widget.downPaymentScreenArgs.amount);
