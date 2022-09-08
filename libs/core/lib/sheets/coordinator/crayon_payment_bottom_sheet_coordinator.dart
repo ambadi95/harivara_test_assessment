@@ -29,7 +29,7 @@ class CrayonPaymentBottomSheetCoordinator
           await _executeCallback(immediateCallback);
         }
       },
-      infoState: (_,isSvg, __, ___, additionalText, ____, autoCloseAfter, _____) {
+      infoState: (_, __, ___, additionalText, ____, autoCloseAfter, _____) {
         state = sheetState;
         if (autoCloseAfter != null) {
           _startTimerToClose(autoCloseAfter);
@@ -282,12 +282,10 @@ class CrayonPaymentBottomSheetCoordinator
       currentState.enteredAmount(amount);
       state = currentState.copyWith(
         isAmountValidated: true,
-        showError: false
       );
     }else{
       state = currentState.copyWith(
         isAmountValidated: false,
-        showError: true
       );
     }
   }

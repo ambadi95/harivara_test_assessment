@@ -234,7 +234,7 @@ const ES_bottom_success_text = TextStyle(
 
 const ES_bold_text = TextStyle(
   fontSize: 20,
-  fontWeight: FontWeight.bold,
+  fontWeight: FontWeight.w600,
   fontFamily: 'Montserrat',
   color: SECONDARY_COLOR,
 );

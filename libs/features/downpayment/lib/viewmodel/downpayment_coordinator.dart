@@ -35,7 +35,11 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
     await _navigationHandler.navigateToScanQrCode(deviceId);
   }
 
-  Future<void> createLoan(BuildContext context,String deviceId) async {
+  Future<void> createLoan(BuildContext context) async {
+
+    String deviceId= await _downPaymentUseCase.getDeviceId();
+
+    print(deviceId);
     state = DownPaymentState.ready(
         context: context,
         error: '',
@@ -59,6 +63,15 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
       print("Success ${createLoan}");
     } else {
       print("Failed");
+      state = DownPaymentState.ready(
+          context: context,
+          error: '',
+          isLoading: false,
+          loanActivated: 0,
+          paymentRequested: 1,
+          waitForPayment: 1,
+          loanApproved: 0,
+          paymentReceived: 1);
     }
   }
 
@@ -116,8 +129,9 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
         waitForPayment: 1,
         loanApproved: 0,
         paymentReceived: 0);
-    var mkePayment =
-    await _downPaymentUseCase.checkPaymentStatus(paymentId, (p0) => null);
+
+    var mkePayment = await _downPaymentUseCase.checkPaymentStatus(paymentId, (p0) => null);
+
     if (mkePayment?.status == true ) {
 
       state = DownPaymentState.ready(
@@ -131,6 +145,9 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
           paymentReceived: mkePayment!.data!=null ? mkePayment.data!.status == "Downpayment_Success" ? 1 : 0 : 0);
 
 
+      if(mkePayment.data!.status == "Downpayment_Success"){
+        createLoan(context);
+      }
 
 
     } else {
@@ -151,7 +168,10 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
 
 
   void setData(
-      BuildContext context, DownPaymentScreenArgs downPaymentScreenArgs) {
+      BuildContext context, DownPaymentScreenArgs downPaymentScreenArgs) async {
+
+    await _downPaymentUseCase.setDeviceId(downPaymentScreenArgs.deviceId.toString());
+
     state = DownPaymentState.ready(
         context: context,
         error: '',

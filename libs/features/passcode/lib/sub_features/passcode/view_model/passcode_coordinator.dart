@@ -129,7 +129,6 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
         case PassCodeVerificationType.customerSign:
         // TODO: Handle this case.
           break;
-
         case PassCodeVerificationType.agentCustomerPasscode:
         // TODO: Handle this case.
           break;
@@ -158,10 +157,6 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
   }
 
   Future<void> createPassCode(String passcode) async {
-    // bool internetStatus = await AppUtils.appUtilsInstance.checkInternet();
-    // if (!internetStatus) {
-    //   return;
-    // }
     var currentState = state as CreatePasscodeReady;
     try {
       var error = await _passcodeUseCase.validateCustomerPasscode(passcode);
@@ -185,10 +180,6 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
   }
 
   Future<void> createResetPassCode(String passcode) async {
-    // bool internetStatus = await AppUtils.appUtilsInstance.checkInternet();
-    // if (!internetStatus) {
-    //   return;
-    // }
     var currentState = state as CreatePasscodeReady;
     try {
       var error = await _passcodeUseCase.validateCustomerPasscode(passcode);
@@ -231,12 +222,8 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
             await _passcodeUseCase.login(newPasscode, (p0) => null);
             if (loginResponse?.status == true) {
               state = currentState.copyWith(isLoading: false);
-              if(destinationPath.contains('homemodule/CrayonHomeScreen')){
-                _navigationHandler.navigateToCustomerHomeScreen(destinationPath);
-              }else{
-                _navigationHandler.navigateToCustomerEnrollmentScreen(
-                    destinationPath, false, UserType.Customer);
-              }
+              _navigationHandler.navigateToCustomerEnrollmentScreen(
+                  destinationPath, false, UserType.Customer);
             }
           }
         } else if (userType == UserType.Agent) {

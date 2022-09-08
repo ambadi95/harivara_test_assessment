@@ -10,7 +10,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:task_manager/task.dart';
 import 'package:widget_library/buttons/docked_button.dart';
-import 'package:get/get.dart';
 import 'package:widget_library/buttons/text_button.dart';
 import 'package:widget_library/colors/crayon_payment_colors.dart';
 import 'package:widget_library/formatter/nida_input_formatter.dart';
@@ -47,12 +46,7 @@ class BottomSheetCustomAmount extends StatelessWidget {
         SizedBox(height: 50),
         _buildTitle,
         _buildTextField(mobileNumber,),
-
-
         SizedBox(height: 45),
-        _sheetState.showError?_warningText() :SizedBox(),
-        SizedBox(height: 5),
-
         ..._sheetState.buttonOptions!
             .map(
               (buttonOption) => Padding(
@@ -63,24 +57,6 @@ class BottomSheetCustomAmount extends StatelessWidget {
             )
             .toList(),
       ],
-    );
-  }
-
- Widget _warningText(){
-    return Padding(
-      padding: EdgeInsets.symmetric(
-          horizontal: 5),
-      child: Align(
-        alignment: Alignment.topLeft,
-        child: CrayonPaymentText(
-          key: Key('Warning'),
-          text: TextUIDataModel('CA_Warning',
-              textAlign: TextAlign.center,
-              styleVariant: CrayonPaymentTextStyleVariant.overline1,
-              color: PRIMARY_COLOR,
-              fontWeight: FontWeight.w600),
-        ),
-      ),
     );
   }
 
@@ -104,7 +80,7 @@ class BottomSheetCustomAmount extends StatelessWidget {
     return InputFieldWithLabel(
       label: '',
       // controller: amount,
-      hintText: 'CA_amount'.tr,
+      hintText: 'Enter the amount',
       key: const Key('mobileNumberTextField'),
       // inputFormatters: <TextInputFormatter>[
       //   //NIDAInputFormatter(mask: 'xxx xxx xxx', separator: ' ')

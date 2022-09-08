@@ -42,12 +42,12 @@ class KycCreditCoordinator extends AnalyticsStateNotifier<KycCreditState> {
         '+255686531710',
         // mobileNumber,
             (p0) => null);
+
     if (response?.status == true) {
       state = KycCreditState.ready(context: context,isLoading:false,error: 'Kyc Done' ,isKycError: false,isCreditCheckError: false);
 
     } else {
       state = KycCreditState.ready(context: context,isLoading:false,error: response!.message! ,isKycError: true,isCreditCheckError: false);
-      // _showAlertForErrorMessage(response.message!);
       print(response.message);
 
     }

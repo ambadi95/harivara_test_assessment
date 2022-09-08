@@ -18,8 +18,8 @@ class CrayonWelcomBackScreen extends StatefulWidget {
   // final WelcomeScreenArgs welcomeScreenArgs;
 
   const CrayonWelcomBackScreen({Key? key, required this.userType
-    // required this.welcomeScreenArgs,
-  })
+      // required this.welcomeScreenArgs,
+      })
       : super(key: key);
 
   @override
@@ -127,7 +127,16 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
                   height: AppUtils.appUtilsInstance
                       .getPercentageSize(ofWidth: false, percentage: 2)),
               Text(state.error, style: label_input_error_style),
-              _buildResetPasscode(welcomeCoordinator)
+              // const SizedBox(height: 57),
+              // Image.asset(
+              //   WB_OrIcon,
+              // ),
+              // const SizedBox(height: 15),
+              // Image.asset(
+              //   WB_touchIdIcon,
+              //   scale: 2.0,
+              // ),
+               _buildResetPasscode(welcomeCoordinator)
             ],
           ),
         ),
@@ -138,37 +147,19 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
   Widget _buildSizedBox() {
     return const SizedBox(height: 32);
   }
-  String _getUserInitials() {
-    if (username != null && username.contains(" ")) {
-      var details = username.split(" ");
-      return "${details[0].substring(0, 1).toString().toUpperCase()}${details[1].substring(0, 1).toString().toUpperCase()}";
-    } else {
-      if (username != null && username.length > 2) {
-        return username.substring(0, 2).toUpperCase();
-      } else {
-        return "";
-      }
-    }
-  }
-  Widget _userImage() {
-    String initial = _getUserInitials();
+
+  _userImage() {
     return Container(
-      height: 70,
-      width: 70,
+      height: 40,
+      width: 40,
       clipBehavior: Clip.antiAliasWithSaveLayer,
       decoration: const BoxDecoration(
+        color: Colors.grey,
         shape: BoxShape.circle,
-        color: profilePicHolderYellowColor,
       ),
-      child: Center(
-          child: Text(
-            initial,
-            style: AN_CardTitle_FF,
-          )),
+      child: Image.network('https://picsum.photos/id/237/50/50'),
     );
   }
-
-
 
   Widget _buildLogo(BuildContext context) {
     return Image.asset(

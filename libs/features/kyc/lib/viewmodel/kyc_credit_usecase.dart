@@ -39,7 +39,16 @@ class KycCreditUseCase extends BaseDataProvider {
         serviceIdentifier: KycCreditService.kycCheckIdentifier,
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {
-          return KycCheckResponse.fromJson(responseData);
+          KycCheckResponse checkResponse;
+          try {
+            checkResponse = KycCheckResponse.fromJson(responseData);
+          } catch (e) {
+            checkResponse = KycCheckResponse(
+                status: false,
+                code: "400",
+                message: e.toString() /*"Something went wrong"*/);
+          }
+          return checkResponse;
         });
   }
 
@@ -59,8 +68,10 @@ class KycCreditUseCase extends BaseDataProvider {
           try {
             checkResponse = KycCheckResponse.fromJson(responseData);
           } catch (e) {
-            checkResponse =  KycCheckResponse(
-                status: false, code: "400", message: e.toString()/*"Something went wrong"*/);
+            checkResponse = KycCheckResponse(
+                status: false,
+                code: "400",
+                message: e.toString() /*"Something went wrong"*/);
           }
           return checkResponse;
         });
@@ -68,13 +79,12 @@ class KycCreditUseCase extends BaseDataProvider {
 
   Future<KycCheckResponse?> callCreditScore(
       String customerId, Function(String) onErrorCallback) async {
-
     return await executeApiRequest<KycCheckResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
         moduleIdentifier: KycCreditModule.moduleIdentifier,
         requestData: {
-          "consent" : "accepted",
+          "consent": "accepted",
           "customerId": int.parse(customerId),
         },
         serviceIdentifier: KycCreditService.creditScoreIdentifier,
@@ -84,8 +94,10 @@ class KycCreditUseCase extends BaseDataProvider {
           try {
             checkResponse = KycCheckResponse.fromJson(responseData);
           } catch (e) {
-            checkResponse =  KycCheckResponse(
-                status: false, code: "400", message: e.toString()/*"Something went wrong"*/);
+            checkResponse = KycCheckResponse(
+                status: false,
+                code: "400",
+                message: e.toString() /*"Something went wrong"*/);
           }
           return checkResponse;
         });

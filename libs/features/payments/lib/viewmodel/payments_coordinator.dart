@@ -31,20 +31,9 @@ class PaymentsCoordinator extends AnalyticsStateNotifier<PaymentsState> {
     return _downPaymentUseCase.getAgentName();
   }
 
-  Future<String> getMobileNumber() async {
-    return await _downPaymentUseCase.getMobileNumber();
+  void navigateToPaymentSuccessBottomSheet() async {
+    await _navigationHandler.navigateToPaymentSuccessfullBottomSheet();
   }
-
-  void navigateToPaymentStatusScreen(String? id,String price,) async {
-    String mobileNumber = await getMobileNumber();
-
-    await _navigationHandler.navigateToPaymentStatus(
-      paymentId: id!,
-      amount: price,
-      mobile: mobileNumber
-    );
-  }
-
 
 
   Future paymentApi(
@@ -60,14 +49,9 @@ class PaymentsCoordinator extends AnalyticsStateNotifier<PaymentsState> {
         (p0) => null,
       );
       if (response?.status == true) {
-       state =
+        state =
             PaymentsState.ready(context: context, error: "", isLoading: false);
-        navigateToPaymentStatusScreen(
-            response?.data?.id,
-            amount
-        );
-
-      //  navigateToPaymentSuccessBottomSheet();
+        navigateToPaymentSuccessBottomSheet();
         if (kDebugMode) {
           print(response?.message);
         }

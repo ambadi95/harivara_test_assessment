@@ -4,7 +4,6 @@ import 'package:payments/payments_module.dart';
 import 'package:payments/service/payment_service.dart';
 import 'package:payments/viewmodel/payments_viewmodel.dart';
 import 'package:shared_data_models/agent_onboard/agent_details/response/agent_details_response.dart';
-import 'package:shared_data_models/commonresponse/common_response.dart';
 import 'package:shared_data_models/customer_onboard/customer_details/response/customer_detail_response.dart';
 import 'package:shared_data_models/welcome/signin/response/customer_sign_in_response.dart';
 import 'package:task_manager/base_classes/base_data_provider.dart';
@@ -30,7 +29,7 @@ class PaymentsUseCase extends BaseDataProvider {
   }
 
 
-  Future<CommonResponse?> hitPaymentApi(
+  Future<CustomerDetailResponse?> hitPaymentApi(
     String amount,
     String paymentType,
     Function(String) onErrorCallback,
@@ -50,7 +49,7 @@ class PaymentsUseCase extends BaseDataProvider {
     print("//////");
     print(params);
 
-    return await executeApiRequest<CommonResponse?>(
+    return await executeApiRequest<CustomerDetailResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
         moduleIdentifier: PaymentsModule.moduleIdentifier,
@@ -63,7 +62,7 @@ class PaymentsUseCase extends BaseDataProvider {
           print("RESPONSE");
           print(data.toString());
 
-          return CommonResponse.fromMap(data);
+          return CustomerDetailResponse.fromJson(data);
         });
   }
 }

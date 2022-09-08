@@ -35,16 +35,16 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
   final RequiredHeadersGenerator _requiredHeadersGenerator;
 
   NetworkClient(
-      this._httpClient,
-      IConnectivity connectivityListener,
-      GlobalControlNotifier globalControlNotifier,
-      this._authManager,
-      this._requiredHeadersGenerator,
-      ) : super(
-    _httpClient,
-    connectivityListener,
-    globalControlNotifier,
-  );
+    this._httpClient,
+    IConnectivity connectivityListener,
+    GlobalControlNotifier globalControlNotifier,
+    this._authManager,
+    this._requiredHeadersGenerator,
+  ) : super(
+          _httpClient,
+          connectivityListener,
+          globalControlNotifier,
+        );
 
   @override
   void initializeGraphQlClient({
@@ -68,7 +68,7 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
         final iocClient = IOClient(httpClient);
 
         final requiredHeadersModel =
-        await _requiredHeadersGenerator.returnRequiredHeaders();
+            await _requiredHeadersGenerator.returnRequiredHeaders();
         // create http link
         final httpLink = HttpLink(
           env.host,
@@ -97,15 +97,15 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
 
     // Check that we have a default GraphQL endpoint configured
     assert(
-    _graphQLClients.isNotEmpty &&
-        _graphQLClients.containsKey(_Constants.graphQLDefaultEndpointName),
-    'There is no "${_Constants.graphQLDefaultEndpointName} GraphQLEndpoint configured in the network config',
+      _graphQLClients.isNotEmpty &&
+          _graphQLClients.containsKey(_Constants.graphQLDefaultEndpointName),
+      'There is no "${_Constants.graphQLDefaultEndpointName} GraphQLEndpoint configured in the network config',
     );
   }
 
   Future<String> get _getStaticAuth async {
     final result =
-    await DIContainer.container.resolve<IAuthManager>().getAccessToken();
+        await DIContainer.container.resolve<IAuthManager>().getAccessToken();
     if (result == null) {
       return 'error';
     } else {
@@ -115,8 +115,8 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
 
   @override
   Future<NetworkStandardResponse> standardRequest(
-      StandardRequest request,
-      ) async {
+    StandardRequest request,
+  ) async {
     if (!hasInternet) {
       CrayonPaymentLogger.logInfo<NetworkClient>(
         'No active internet connection.',
@@ -142,11 +142,11 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
   }
 
   Future<NetworkStandardResponse> _standardGetRequest(
-      StandardRequest request,
-      ) async {
+    StandardRequest request,
+  ) async {
     CrayonPaymentLogger.logInfo<NetworkClient>(
       'Making a standard get request to the network for'
-          ' env: ${currentEnvironment.name}',
+      ' env: ${currentEnvironment.name}',
     );
     Uri uri;
     if (currentEnvironment.name == 'Local') {
@@ -195,6 +195,12 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
       }
       if (response.statusCode == 500) {
         return _internalServerMessage();
+      }if (response.statusCode == 404) {
+        return  NetworkStandardResponse(
+          response.body,
+          response.statusCode,
+          response.headers,
+        );
       }
       if (response.statusCode != 200) {
         var res = json.decode(response.body);
@@ -204,6 +210,8 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
           throw 'Something went wrong';
         }
       }
+
+
       return NetworkStandardResponse(
         response.body,
         response.statusCode,
@@ -219,11 +227,11 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
   }
 
   Future<NetworkStandardResponse> _standardPostRequest(
-      StandardRequest request,
-      ) async {
+    StandardRequest request,
+  ) async {
     CrayonPaymentLogger.logInfo<NetworkClient>(
       'Making a standard post request to the network'
-          ' for env: ${currentEnvironment.name}',
+      ' for env: ${currentEnvironment.name}',
     );
     Uri uri;
     if (currentEnvironment.name == 'Local') {
@@ -252,7 +260,7 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
       'Sending POST request to the server for url: ${uri.toString()}',
     );
     final response =
-    await _httpClient.post(uri, headers: headers, body: request.jsonBody);
+        await _httpClient.post(uri, headers: headers, body: request.jsonBody);
     print(response.body);
     if (response.statusCode == 401) {
       return _logoutUser();
@@ -276,11 +284,11 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
   }
 
   Future<NetworkStandardResponse> _standardPutRequest(
-      StandardRequest request,
-      ) async {
+    StandardRequest request,
+  ) async {
     CrayonPaymentLogger.logInfo<NetworkClient>(
       'Making a standard post request to the network'
-          ' for env: ${currentEnvironment.name}',
+      ' for env: ${currentEnvironment.name}',
     );
     Uri uri;
     if (currentEnvironment.name == 'Local') {
@@ -305,7 +313,7 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
       'Sending POST request to the server for url: ${uri.toString()}',
     );
     final response =
-    await _httpClient.put(uri, headers: headers, body: request.jsonBody);
+        await _httpClient.put(uri, headers: headers, body: request.jsonBody);
     print(response.body);
     if (response.statusCode != 200) {
       var res = json.decode(response.body);
@@ -333,9 +341,9 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
   }
 
   Future<NetworkGraphQLResponse> _executeGraphQl(
-      GraphQLRequest graphQLRequest,
-      GraphQLClient client,
-      ) async {
+    GraphQLRequest graphQLRequest,
+    GraphQLClient client,
+  ) async {
     final mutateOptions = MutationOptions(
       document: gql(graphQLRequest.request),
       variables: graphQLRequest.variables ?? {},
@@ -345,15 +353,15 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
     );
     CrayonPaymentLogger.logInfo(
       '\n\nNetwork request: ${graphQLRequest.name}, ${graphQLRequest.request}, '
-          'variables -- ${graphQLRequest.variables.toString()}'
-          '\n\n',
+      'variables -- ${graphQLRequest.variables.toString()}'
+      '\n\n',
     );
     final result = await client.mutate(mutateOptions);
     CrayonPaymentLogger.logInfo(
       '\n\nNetwork Response: ${graphQLRequest.name}, '
-          'variables -- ${graphQLRequest.variables.toString()} --- '
-          'data: ${result.data}'
-          '\n\n',
+      'variables -- ${graphQLRequest.variables.toString()} --- '
+      'data: ${result.data}'
+      '\n\n',
     );
 
     if (!result.hasException) {

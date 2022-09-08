@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:config/Colors.dart';
 import 'package:config/Config.dart';
 import 'package:core/view/base_view.dart';
@@ -91,6 +89,7 @@ class _DeviceOptionState extends State<DeviceOption> {
     );
   }
 
+  // void _listenToStateChanges(BuildContext context, DeviceOptionState state) {
   Widget _buildMainUI(context, DeviceOptionCoordinator coordinator) {
     return CrayonPaymentScaffold(
         appBarAttributes: CrayonPaymentAppBarAttributes(
@@ -210,189 +209,192 @@ class _DeviceOptionState extends State<DeviceOption> {
 
   Widget _buildDeviceCard(
       context, Datum device, int index, DeviceOptionCoordinator coordinator) {
-    return  Column(
-        children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.max,
-            children: [
-               Expanded(
-                flex:1,
-                 child:Image.asset(
-                    deviceList[index].deviceId == 1
-                        ? 'assets/a13.png'
-                        : 'assets/a03.png',
-                    fit: BoxFit.fill,
-                    package: 'shared_data_models',
-                  ),
-                ),
-              Expanded(
-                flex:3,
-                child: Container(
-                  margin: EdgeInsets.only(left: 12),
-                  child: Column(
+    return Column(
+      children: [
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Expanded(
+              flex: 1,
+              child: Image.asset(
+                deviceList[index].deviceId == 1
+                    ? 'assets/a13.png'
+                    : 'assets/a03.png',
+                width: 80,
+                package: 'shared_data_models',
+              ),
+            ),
+            SizedBox(
+              width: 11,
+            ),
+            Expanded(
+              flex:3,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.max,
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.max,
                         children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                width: MediaQuery.of(context).size.width * 0.65 ,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                  children: [
-                                    Expanded(
-                                      child: CrayonPaymentText(
-                                        key: Key('${_identifier}_' + device.brand!),
-                                        text: TextUIDataModel(
-                                            'Option ' + (index + 1).toString(),
-                                            styleVariant:
-                                                CrayonPaymentTextStyleVariant
-                                                    .overline1,
-                                            color: AN_CardTitle,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ),
-                                    deviceList[index].isSelected!
-                                        ? Row(
-                                            children: [
-                                              Icon(
-                                                Icons.check_circle_outline_outlined,
-                                                color: Green,
-                                                size: 14,
-                                              ),
-                                              SizedBox(
-                                                width: 4,
-                                              ),
-                                              SizedBox(
-                                                child: CrayonPaymentText(
-                                                  key: Key('${_identifier}_' +
-                                                      'selected_device'),
-                                                  text: TextUIDataModel('Selected',
-                                                      styleVariant:
-                                                          CrayonPaymentTextStyleVariant
-                                                              .overline1,
-                                                      color: Green,
-                                                      fontWeight: FontWeight.bold),
-                                                ),
-                                              ),
-                                            ],
-                                          )
-                                        : SizedBox(),
-                                  ],
+                          Container(
+                            width: AppUtils.appUtilsInstance.getPercentageSize(
+                                    percentage: 100, ofWidth: true) /
+                                1.5,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Expanded(
+                                  child: CrayonPaymentText(
+                                    key: Key('${_identifier}_' + device.brand!),
+                                    text: TextUIDataModel(
+                                        'Option ' + (index + 1).toString(),
+                                        styleVariant:
+                                            CrayonPaymentTextStyleVariant
+                                                .overline1,
+                                        color: AN_CardTitle,
+                                        fontWeight: FontWeight.bold),
+                                  ),
                                 ),
-                              ),
-                              dynamicHSpacer(3),
-                              CrayonPaymentText(
-                                key: Key('${_identifier}_' + device.brand!),
-                                text: TextUIDataModel(
-                                    device.brand! + ' ' + '-' + ' ' + device.modelNumber!,
-                                    styleVariant:
-                                        CrayonPaymentTextStyleVariant.headline4,
-                                    color: AN_CardTitle,
-                                    fontWeight: FontWeight.w900),
-                              ),
-                            ],
+                                deviceList[index].isSelected!
+                                    ? Row(
+                                        children: [
+                                          Icon(
+                                            Icons.check_circle_outline_outlined,
+                                            color: Green,
+                                            size: 14,
+                                          ),
+                                          SizedBox(
+                                            width: 4,
+                                          ),
+                                          SizedBox(
+                                            child: CrayonPaymentText(
+                                              key: Key('${_identifier}_' +
+                                                  'selected_device'),
+                                              text: TextUIDataModel('Selected',
+                                                  styleVariant:
+                                                      CrayonPaymentTextStyleVariant
+                                                          .overline1,
+                                                  color: Green,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ),
+                                        ],
+                                      )
+                                    : SizedBox(),
+                              ],
+                            ),
+                          ),
+                          dynamicHSpacer(4),
+                          CrayonPaymentText(
+                            key: Key('${_identifier}_' + device.brand!),
+                            text: TextUIDataModel(
+                                device.brand! + ' ' + device.modelNumber!,
+                                styleVariant:
+                                    CrayonPaymentTextStyleVariant.headline4,
+                                color: AN_CardTitle,
+                                fontWeight: FontWeight.w900),
                           ),
                         ],
                       ),
-                      dynamicHSpacer(3),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * .6,
-                        child: CrayonPaymentText(
-                          key: Key('${_identifier}_' + device.memory!),
-                          text: TextUIDataModel(
-                            device.memory! +
-                                "|" +
-                                device.processor! +
-                                "|" +
-                                device.operatingSystem!,
-                            styleVariant: CrayonPaymentTextStyleVariant.overline1,
-                            color: SU_carrier_message_color,
-                          ),
-                        ),
-                      ),
-                      // dynamicHSpacer(6),
-                      // CrayonPaymentText(
-                      //   key: Key('${_identifier}_color_label'),
-                      //   text: const TextUIDataModel(
-                      //     'Colour option - Alpine Green',
-                      //     styleVariant: CrayonPaymentTextStyleVariant.headline4,
-                      //     color: AN_CardSubTitle,
-                      //   ),
-                      // ),
-                      // dynamicHSpacer(6),
-                      // Row(
-                      //   children: [
-                      //     Container(
-                      //       height: 16,
-                      //       width: 16,
-                      //       decoration: BoxDecoration(
-                      //         color: Colors.red,
-                      //           shape: BoxShape.circle,
-                      //           border: Border.all(width: 1, color: Colors.red)
-                      //       ),
-                      //     ),
-                      //     dynamicWSpacer(6),
-                      //     Container(
-                      //       height: 16,
-                      //       width: 16,
-                      //       decoration: BoxDecoration(
-                      //           color: Colors.deepPurpleAccent,
-                      //           shape: BoxShape.circle,
-                      //           border: Border.all(width: 1, color: Colors.deepPurpleAccent)
-                      //       ),
-                      //     ),
-                      //     dynamicWSpacer(6),
-                      //     Container(
-                      //       height: 16,
-                      //       width: 16,
-                      //       decoration: BoxDecoration(
-                      //           color: Colors.black,
-                      //           shape: BoxShape.circle,
-                      //           border: Border.all(width: 1, color: Colors.black)
-                      //       ),
-                      //     ),
-                      //   ],
-                      // ),
-                      dynamicHSpacer(15),
-                      CrayonPaymentText(
-                        key: Key('${_identifier}_pricing_label'),
-                        text: const TextUIDataModel(
-                          'Pricing option',
-                          styleVariant: CrayonPaymentTextStyleVariant.headline5,
-                          color: DD_TextValue,
-                        ),
-                      ),
-                      dynamicHSpacer(10),
-                      IntrinsicHeight(child:Row(
-                        children: [
-                          priceButton(context, 'D0_JoiningFee'.tr,
-                              deviceList[index].joiningFees.toString()),
-                          dynamicWSpacer(8),
-                          VerticalDivider(thickness: 1),
-                          dynamicWSpacer(8),
-                          priceButton(context, 'D0_DailyFee'.tr,
-                              deviceList[index].dailyFees.toString()),
-                        ],
-                      )),
-                      dynamicHSpacer(20),
-                     // selectButton(coordinator, deviceList[index].deviceId!)
                     ],
                   ),
-                ),
-              ),
-            ],
-          ),
-          selectButton(coordinator, deviceList[index].deviceId!)
-        ],
+                  dynamicHSpacer(6),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * .6,
+                    child: CrayonPaymentText(
+                      key: Key('${_identifier}_' + device.memory!),
+                      text: TextUIDataModel(
+                        device.memory! +
+                            "|" +
+                            device.processor! +
+                            "|" +
+                            device.operatingSystem!,
+                        styleVariant: CrayonPaymentTextStyleVariant.overline1,
+                        color: SU_carrier_message_color,
+                      ),
+                    ),
+                  ),
+                  // dynamicHSpacer(6),
+                  // CrayonPaymentText(
+                  //   key: Key('${_identifier}_color_label'),
+                  //   text: const TextUIDataModel(
+                  //     'Colour option - Alpine Green',
+                  //     styleVariant: CrayonPaymentTextStyleVariant.headline4,
+                  //     color: AN_CardSubTitle,
+                  //   ),
+                  // ),
+                  // dynamicHSpacer(6),
+                  // Row(
+                  //   children: [
+                  //     Container(
+                  //       height: 16,
+                  //       width: 16,
+                  //       decoration: BoxDecoration(
+                  //         color: Colors.red,
+                  //           shape: BoxShape.circle,
+                  //           border: Border.all(width: 1, color: Colors.red)
+                  //       ),
+                  //     ),
+                  //     dynamicWSpacer(6),
+                  //     Container(
+                  //       height: 16,
+                  //       width: 16,
+                  //       decoration: BoxDecoration(
+                  //           color: Colors.deepPurpleAccent,
+                  //           shape: BoxShape.circle,
+                  //           border: Border.all(width: 1, color: Colors.deepPurpleAccent)
+                  //       ),
+                  //     ),
+                  //     dynamicWSpacer(6),
+                  //     Container(
+                  //       height: 16,
+                  //       width: 16,
+                  //       decoration: BoxDecoration(
+                  //           color: Colors.black,
+                  //           shape: BoxShape.circle,
+                  //           border: Border.all(width: 1, color: Colors.black)
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
+                  dynamicHSpacer(7),
+                  CrayonPaymentText(
+                    key: Key('${_identifier}_pricing_label'),
+                    text: const TextUIDataModel(
+                      'DO_Pricing_option',
+                      styleVariant: CrayonPaymentTextStyleVariant.headline5,
+                      color: DD_TextValue,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  dynamicHSpacer(6),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: priceButton(context, 'D0_JoiningFee'.tr,
+                            deviceList[index].joiningFees.toString()),
+                      ),
+                      //Expanded(child:dynamicWSpacer(10)),
+                      Expanded(child:priceButton(context, 'D0_DailyFee'.tr,
+                          deviceList[index].dailyFees.toString())),
+                    ],
+                  ),
+                  dynamicHSpacer(20),
 
+                ],
+              ),
+            ),
+          ],
+        ),
+
+        selectButton(coordinator, deviceList[index].deviceId!)
+      ],
     );
   }
 
@@ -403,10 +405,9 @@ class _DeviceOptionState extends State<DeviceOption> {
         Text(
           price,
           style: const TextStyle(
-            fontSize: 11,
+            fontSize: 12,
             color: DD_TextLabel,
-            fontWeight: FontWeight.w400,
-              fontFamily: 'Montserrat'
+            fontFamily: 'Montserrat',
           ),
         ),
 
@@ -426,7 +427,6 @@ class _DeviceOptionState extends State<DeviceOption> {
             ],
           ),
         ),
-
       ],
     );
   }

@@ -49,38 +49,38 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
             coordinator.callKycCheck(context);
           },
           onStateListenCallback: (preState, newState) =>
-          {_listenToStateChanges(context, newState as KycCreditStateReady)},
+              {_listenToStateChanges(context, newState as KycCreditStateReady)},
           builder: (context, state, coordinator) => CrayonPaymentScaffold(
-            appBarAttributes: CrayonPaymentAppBarAttributes(
-              key: const Key('CardDetailsScreen_AppBarBackButton'),
-              left: [
-                const CrayonPaymentAppBarButtonType.back(),
-              ],
-            ),
+                appBarAttributes: CrayonPaymentAppBarAttributes(
+                  key: const Key('CardDetailsScreen_AppBarBackButton'),
+                  left: [
+                    const CrayonPaymentAppBarButtonType.back(),
+                  ],
+                ),
 
-            body: state.when(
-              initialState: () => const SizedBox(),
-              ready: (
-                  _,
-                  __,
-                  ___,
-                  ____,
-                  _____,
-                  _______,
+                body: state.when(
+                  initialState: () => const SizedBox(),
+                  ready: (
+                    _,
+                    __,
+                    ___,
+                    ____,
+                    _____,
+                      _______,
                   ) =>
-                  _buildMainUIWithLoading(
+                      _buildMainUIWithLoading(
                     context,
                     coordinator,
                     (state as KycCreditStateReady),
                   ),
-            ),
-          ));
+                ),
+              ));
 
   Widget _buildMainUIWithLoading(
-      BuildContext context,
-      KycCreditCoordinator coordinator,
-      KycCreditStateReady state,
-      ) {
+    BuildContext context,
+    KycCreditCoordinator coordinator,
+    KycCreditStateReady state,
+  ) {
     return Stack(
       children: [
         _buildMainUI(context, coordinator, state),
@@ -99,10 +99,10 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
   }
 
   Widget _buildMainUI(
-      BuildContext context,
-      KycCreditCoordinator coordinator,
-      KycCreditStateReady state,
-      ) {
+    BuildContext context,
+    KycCreditCoordinator coordinator,
+    KycCreditStateReady state,
+  ) {
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -111,49 +111,49 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
           SizedBox(
             height: AppUtils.appUtilsInstance.getPercentageSize(percentage: 12),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Expanded(
-                  flex: 1,
-                  child: Column(
-                    children: [
-                      Container(
-                        width: 1,
-                        height: 10,
-                        color: Colors.white,
-                      ),
-                      _getCircularIcon(
-                        context,
-                      ),
-                      _getVerticalDivider(
-                          context,
-                          AppUtils.appUtilsInstance
-                              .getPercentageSize(percentage: 46)),
-                    ],)),
-              Expanded(
-                  flex: 8,
-                  child: Container(
-                    margin: const EdgeInsets.only(left: 10),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        _getImage(coordinator, context),
-                        SizedBox(
-                          height: AppUtils.appUtilsInstance
-                              .getPercentageSize(percentage: 5),
-                        ),
-                        (_isKycPassEnabled || _isKycCreditLoanEnabled)
-                            ? _kycCreditTitle(context)
-                            : _title(context),
-                        SizedBox(
-                          height: AppUtils.appUtilsInstance
-                              .getPercentageSize(percentage: 2),
-                        ),
-                        _subTitle(context),
-                      ],),
-                  ))
-            ],),
+         Row(
+           mainAxisAlignment: MainAxisAlignment.start,
+           children: [
+           Expanded(
+               flex: 1,
+               child: Column(
+                 children: [
+                 Container(
+                 width: 1,
+                 height: 10,
+                 color: Colors.white,
+               ),
+                 _getCircularIcon(
+                   context,
+                 ),
+                 _getVerticalDivider(
+                     context,
+                     AppUtils.appUtilsInstance
+                         .getPercentageSize(percentage: 46)),
+               ],)),
+           Expanded(
+             flex: 8,
+            child: Container(
+              margin: const EdgeInsets.only(left: 10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+               _getImage(coordinator, context),
+               SizedBox(
+                 height: AppUtils.appUtilsInstance
+                     .getPercentageSize(percentage: 5),
+               ),
+               (_isKycPassEnabled || _isKycCreditLoanEnabled)
+                   ? _kycCreditTitle(context)
+                   : _title(context),
+               SizedBox(
+                 height: AppUtils.appUtilsInstance
+                     .getPercentageSize(percentage: 2),
+               ),
+               _subTitle(context),
+           ],),
+            ))
+         ],),
 
           Row(
             children: [
@@ -206,13 +206,13 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        _kycPassCheckText(context),
-                        SizedBox(
-                          height: AppUtils.appUtilsInstance
-                              .getPercentageSize(percentage: 8),
-                        ),
-                        _kycLoanCheckText(context),
-                      ],),
+                      _kycPassCheckText(context),
+                      SizedBox(
+                        height: AppUtils.appUtilsInstance
+                            .getPercentageSize(percentage: 8),
+                      ),
+                      _kycLoanCheckText(context),
+                    ],),
                   ))
             ],),
           SizedBox(
@@ -334,10 +334,10 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
   }
 
   Widget _getKycValidationFailedUi(
-      BuildContext context,
-      KycCreditCoordinator coordinator,
-      KycCreditState state,
-      ) {
+    BuildContext context,
+    KycCreditCoordinator coordinator,
+    KycCreditState state,
+  ) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: ListView(
@@ -393,10 +393,10 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
   }
 
   Widget _getCreditCheckValidationFailedUi(
-      BuildContext context,
-      KycCreditCoordinator coordinator,
-      KycCreditState state,
-      ) {
+    BuildContext context,
+    KycCreditCoordinator coordinator,
+    KycCreditState state,
+  ) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: ListView(
@@ -452,10 +452,10 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
   }
 
   Widget _buildGoBackButton(
-      BuildContext context,
-      KycCreditCoordinator coordinator,
-      KycCreditState state,
-      ) {
+    BuildContext context,
+    KycCreditCoordinator coordinator,
+    KycCreditState state,
+  ) {
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
@@ -479,10 +479,10 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
   }
 
   Widget _buildContinueButton(
-      BuildContext context,
-      KycCreditCoordinator coordinator,
-      KycCreditStateReady state,
-      ) {
+    BuildContext context,
+    KycCreditCoordinator coordinator,
+    KycCreditStateReady state,
+  ) {
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
@@ -581,7 +581,7 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
     return Container(
       width: MediaQuery.of(context).size.width*0.6,
       child: Text('KYC_Validation_With_Airtel_Subtitle'.tr,
-        style: const TextStyle(
+            style: const TextStyle(
             color: AN_SubTitleColor,
             fontSize: 12,
             fontFamily: 'Montserrat',
@@ -600,9 +600,8 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
 
 //showing kyc error
     } else if (state.isKycError == true && state.error.isNotEmpty == true) {
-      kycCreditCoordinator!.showErrorBottomSheet(
-          _getKycValidationFailedUi(context, kycCreditCoordinator!, state),
-          context);
+
+      kycCreditCoordinator!.showErrorBottomSheet(_getKycValidationFailedUi(context, kycCreditCoordinator!, state),context);
       return;
     } else if (state.isCreditCheckError == false &&
         state.error == 'Credit Eligible') {
