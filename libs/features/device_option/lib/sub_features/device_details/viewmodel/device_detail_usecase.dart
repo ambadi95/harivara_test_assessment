@@ -54,7 +54,13 @@ class DeviceDetailUseCase extends BaseDataProvider {
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {
           final data = responseData;
-          return CustomerSelectDeviceResponse.fromMap(data);
+          try {
+            return CustomerSelectDeviceResponse.fromMap(data);
+          }catch(e) {
+
+            return CustomerSelectDeviceResponse(status: false,message: "Something went wrong,Please try again later!");
+
+          }
         });
   }
 
