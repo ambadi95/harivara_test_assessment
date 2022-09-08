@@ -108,7 +108,7 @@ class _SettingsState extends State<Settings> {
         CrayonPaymentText(
           key: Key('${widget._identifier}_ST_Description'),
           text: TextUIDataModel('ST_subTitle'.tr,
-              styleVariant: CrayonPaymentTextStyleVariant.bodyText2,
+              styleVariant: CrayonPaymentTextStyleVariant.headline3,
               color: AN_TitleColor,
               fontWeight: FontWeight.w900),
         ),
@@ -146,7 +146,7 @@ class _SettingsState extends State<Settings> {
         CrayonPaymentText(
           key: Key('${widget._identifier}_ST_support'),
           text: TextUIDataModel('ST_support'.tr,
-              styleVariant: CrayonPaymentTextStyleVariant.bodyText2,
+              styleVariant: CrayonPaymentTextStyleVariant.headline3,
               color: AN_TitleColor,
               fontWeight: FontWeight.w900),
         ),
