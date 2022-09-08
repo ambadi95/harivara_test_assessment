@@ -392,6 +392,9 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
       case "KYC_Success":
         _navigationHandler.navigateToKYCScreen(true);
         break;
+        case "KYC Failed":
+        _navigationHandler.navigateToKYCScreen(true);
+        break;
       case "Credit_Check_Requested":
         _navigationHandler.navigateToKYCScreen(true);
         break;
