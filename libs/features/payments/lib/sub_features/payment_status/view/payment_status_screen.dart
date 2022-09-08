@@ -33,6 +33,7 @@ class PaymentStatusScreen extends StatefulWidget {
 class _PaymentStatusScreenState extends State<PaymentStatusScreen> {
   int endTime = DateTime.now().millisecondsSinceEpoch + 1000 * 300;
   late Timer _timer;
+  bool timeExpired=false;
 
   @override
   void dispose() {
@@ -134,7 +135,12 @@ class _PaymentStatusScreenState extends State<PaymentStatusScreen> {
       ),
     );
   }
+  void showErrorPage(PaymentStatusCoordinator coordinator,){
+    Future.delayed(const Duration(milliseconds: 500), () {
+      coordinator.navigateToPaymentFailure();
+    });
 
+  }
   Widget _buildTimer(
     PaymentStatusCoordinator coordinator,
   ) {
@@ -143,10 +149,7 @@ class _PaymentStatusScreenState extends State<PaymentStatusScreen> {
       widgetBuilder: (_, time) {
         if (time == null) {
           _timer.cancel();
-          Future.delayed(const Duration(milliseconds: 500), () {
-            coordinator.navigateToPaymentFailure();
-          });
-
+         // showErrorPage(coordinator);
           return Text('Time Expired');
         }
         String timeMinute = '';
