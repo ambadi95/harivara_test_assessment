@@ -9,6 +9,7 @@ abstract class IDeviceOptionService {
   static const deviceDetailIdentifier = 'deviceDetail';
   static const selectDeviceIdentifier = 'selectDevice';
   static const loanPreviewIdentifier = 'loanPreview';
+  static const customerDeviceIdentifier = 'customerDevice';
 
   Future<StandardRequest> deviceList(int customerId);
 
@@ -17,7 +18,7 @@ abstract class IDeviceOptionService {
   Future<StandardRequest> loanPreview(int deviceId);
 
   Future<StandardRequest> selectDevice(
-      int customer, int deviceId, String token);
+      int customer, int deviceId); //, String token);
 }
 
 class DeviceOptionService implements IDeviceOptionService {
@@ -53,7 +54,7 @@ class DeviceOptionService implements IDeviceOptionService {
 
   @override
   Future<StandardRequest> selectDevice(
-      int customerId, int device, String token) async {
+      int customerId, int device) async {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
     request.endpoint = customerEndpoint + 'customer-device[customer]';

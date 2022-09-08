@@ -128,6 +128,7 @@ void successFulScreen(){
 
   Future deviceRegister(BuildContext context, int deviceId, String imei1,
       String imei2) async {
+
       await deviceRegisterAPI(context, deviceId , imei1, imei2);
   }
 

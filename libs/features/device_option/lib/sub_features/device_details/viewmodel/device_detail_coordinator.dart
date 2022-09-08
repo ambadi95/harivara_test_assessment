@@ -33,6 +33,20 @@ class DeviceDetailCoordinator
     }
   }
 
+  Future getSelectDevice(int deviceId, Data data) async {
+    try {
+      var response =
+      await _DeviceOptionUseCase.selectDevice(deviceId, (p0) => null);
+      if (response?.status == true) {
+        await navigateToCustomerLoanCreationScreen(
+            deviceId == 1 ? 'assets/a13.png' : 'assets/a03.png',
+            data);
+      }
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
   Future<void> navigateToEnrolledScreen(int deviceId, UserType userType) async {
     try {
       var response =

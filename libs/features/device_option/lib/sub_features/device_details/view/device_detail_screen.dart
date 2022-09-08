@@ -433,9 +433,10 @@ class _DeviceDetailScreenState extends State<DeviceDetailScreen> {
         // print(widget.userType);
 
       // coordinator.navigateToDownPayment(detailDetail?.deviceId);
-        coordinator.navigateToCustomerLoanCreationScreen(
-            widget.deviceId == 1 ? 'assets/a13.png' : 'assets/a03.png',
-            detailDetail!);
+        coordinator.getSelectDevice(widget.deviceId, detailDetail!);
+        // coordinator.navigateToCustomerLoanCreationScreen(
+        //     widget.deviceId == 1 ? 'assets/a13.png' : 'assets/a03.png',
+        //     detailDetail!);
       },
     );
   }
