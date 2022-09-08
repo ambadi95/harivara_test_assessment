@@ -24,6 +24,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 class SettingsNavigationHandler with ErrorHandler {
   final NavigationManager _navigationManager;
+
   SettingsNavigationHandler(this._navigationManager);
 
   Future<void> goBack() async {
@@ -35,7 +36,9 @@ class SettingsNavigationHandler with ErrorHandler {
       'SU_update_passcode',
       'SU_update_subtitle',
       userType,
-      userType == UserType.Agent ?  SignupType.resetPasscodeAgent :  SignupType.resetPasscodeCustomer,
+      userType == UserType.Agent
+          ? SignupType.resetPasscodeAgent
+          : SignupType.resetPasscodeCustomer,
       false,
     );
     await _navigationManager.navigateTo(
@@ -105,7 +108,7 @@ class SettingsNavigationHandler with ErrorHandler {
   void navigateToTermsCondition() async {
     var uri = Uri.parse(y9TermsCondition);
     if (await canLaunchUrl(uri)) {
-      await launchUrl(uri,mode: LaunchMode.externalApplication);
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
     } else {
       throw 'Could not launch ${uri.toString()}';
     }

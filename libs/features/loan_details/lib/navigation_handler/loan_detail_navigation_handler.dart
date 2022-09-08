@@ -6,6 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:termscondition/termscondition/view/terms_condition_view.dart';
 import 'package:widget_library/helpers/error/helper/error_helper.dart';
+import 'package:termscondition/termscondition/view/terms_condition_view.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:config/Config.dart';
 
 class LoanDetailNavigationHandler with ErrorHandler {
   final NavigationManager _navigationManager;
@@ -24,9 +27,16 @@ class LoanDetailNavigationHandler with ErrorHandler {
   }
 
   Future<void> navigateToTermsCondtionsScreen() async {
-    _navigationManager.navigateTo(
+    var uri = Uri.parse(y9TermsCondition);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    } else {
+      throw 'Could not launch ${uri.toString()}';
+    }
+
+    /*  _navigationManager.navigateTo(
       CrayonTermsCondition.viewPath,
       const NavigationType.push(),
-    );
+    );*/
   }
 }
