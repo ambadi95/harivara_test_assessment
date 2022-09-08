@@ -129,13 +129,13 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
           const SizedBox(
             height: 21,
           ),
-          _buildAgentNearByButton(coordinator),
-          const SizedBox(
-            height: 24,
-          ),
           widget.userType == UserType.AgentCustomer
               ? const SizedBox()
               : _buildExploreDeviceButton(coordinator),
+          const SizedBox(
+            height: 24,
+          ),
+          _buildAgentNearByButton(coordinator),
           widget.userType == UserType.AgentCustomer
               ? const SizedBox()
               : const SizedBox(
@@ -218,7 +218,7 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
         : const SizedBox();
   }
 
-  Widget _buildAgentNearByButton(EnrollmentSuccessCoordinator coordinator) {
+  Widget _buildExploreDeviceButton(EnrollmentSuccessCoordinator coordinator) {
     return GestureDetector(
       onTap: () {
         coordinator.navigateToDeviceOption(false, widget.userType);
@@ -231,9 +231,10 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
             borderRadius: BorderRadius.circular(8.0)),
         child: Center(
           child: Text(
-            customerDetail!.data!.deviceId.isNotEmptyOrNull
-                ? 'ES_view_membership'.tr
-                : 'ES_select_membership'.tr,
+          'ES_view_membership'.tr,
+            // customerDetail!.data!.deviceId.isNotEmptyOrNull
+            //     ? 'ES_view_membership'.tr
+            //   // : 'ES_select_membership'.tr,
             style: SU_button_text_style,
           ),
         ),
@@ -241,22 +242,22 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
     );
   }
 
-  Widget _buildExploreDeviceButton(EnrollmentSuccessCoordinator coordinator) {
+  Widget _buildAgentNearByButton(EnrollmentSuccessCoordinator coordinator) {
     return GestureDetector(
       onTap: () {
-        // coordinator.navigateToAgentNearBy();
+         coordinator.navigateToAgentNearBy();
       },
       child: Container(
         width: double.infinity,
         height: 50,
         decoration: BoxDecoration(
-            color: config_color.ES_grey_button_color,
+            color: config_color.SU_button_color,
             borderRadius: BorderRadius.circular(8.0),
             border:
-                Border.all(width: 1, color: config_color.ES_grey_button_color)),
+                Border.all(width: 1, color: config_color.SU_button_color)),
         child: Center(
           child: Text(
-            'ES_near_agent_button'.tr,
+            'AN_Title'.tr,
             textAlign: TextAlign.center,
             style: const TextStyle(color: config_color.White),
           ),

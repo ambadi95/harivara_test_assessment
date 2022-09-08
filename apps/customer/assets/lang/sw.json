@@ -95,7 +95,7 @@
   "ES_success_text" : "Umefanikiwa\niliyosajiliwa kwenye Y9 na yako\nmaslahi kwenye kifaa cha Uanachama",
   "ES_enrolled_success_text" : "Hongera! Umefanikiwa kuchagua Uanachama wako na Y9",
   "ES_enroll_id" : "Kitambulisho chako cha Marejeleo\n  %{_id_ | bonyeza}%",
-  "ES_near_agent_button" : "Tazama karibu na Wakala (inakuja hivi karibuni)",
+  "ES_near_agent_button" : "Tazama karibu na Wakala",
   "ES_select_membership" : "Chagua Uanachama Wako",
   "ES_view_membership" : "Tazama Uanachama Wako",
   "ES_agent_contact_text" : "Wakala wa Y9 atawasiliana nawe baada ya muda mfupi kuhusu Uanachama wako",

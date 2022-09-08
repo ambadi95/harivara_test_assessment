@@ -22,6 +22,7 @@ import 'package:network_manager/model/response/graphql/network_graphql_response.
 import 'package:network_manager/model/response/network_standard_response.dart';
 import 'package:network_manager/model/status/http_status.dart';
 import 'package:network_manager/utils/connectivity/i_connectivity.dart';
+import 'package:pretty_http_logger/pretty_http_logger.dart';
 import 'package:widget_library/utils/app_utils.dart';
 class _Constants {
   static const String graphQLDefaultEndpointName = 'default';
@@ -45,6 +46,10 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
           connectivityListener,
           globalControlNotifier,
         );
+
+  HttpClientWithMiddleware httpClient = HttpClientWithMiddleware.build(middlewares: [
+    HttpLogger(logLevel: LogLevel.BODY,),
+  ],);
 
   @override
   void initializeGraphQlClient({
@@ -252,7 +257,7 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
       'Sending POST request to the server for url: ${uri.toString()}',
     );
     final response =
-        await _httpClient.post(uri, headers: headers, body: request.jsonBody);
+        await httpClient .post(uri, headers: headers, body: request.jsonBody);
     print(response.body);
     if (response.statusCode == 401) {
       return _logoutUser();
@@ -305,7 +310,7 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
       'Sending POST request to the server for url: ${uri.toString()}',
     );
     final response =
-        await _httpClient.put(uri, headers: headers, body: request.jsonBody);
+        await httpClient.put(uri, headers: headers, body: request.jsonBody);
     print(response.body);
     if (response.statusCode != 200) {
       var res = json.decode(response.body);
