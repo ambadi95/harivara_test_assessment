@@ -149,7 +149,7 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
             mobileNumber.text = customerResponse!.data!.mobileNo ?? "";
             emailId.text = customerResponse!.data!.emailId ?? "";
             address.text = customerResponse!.data!.address ?? "";
-            poBox.text = customerResponse!.data!.poBoxNumber ?? "";
+            poBox.text = customerResponse!.data!.organization ?? "";
 
             region.text = customerResponse!.data!.region ?? "";
 
