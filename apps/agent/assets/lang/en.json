@@ -283,6 +283,6 @@
   "MDM_agree_text" : "I hearby agree to configure MDM\nfor Managing the Device by Y9\nMicrofinance Tanzania",
   "MDM_successful_text" : "Successful",
   "MDM_finish_text": "Finish",
-  "MDM_successful_heading" : "MDM Configuration Successfully\nCompleted. Waiting for the Device to\nbe activated for Monitoring"
-
+  "MDM_successful_heading" : "MDM Configuration Successfully\nCompleted. Waiting for the Device to\nbe activated for Monitoring",
+  "T_C_NOTE": "The borrower accepts the responsibility to be deducted the daily repayment as per the selected and allocated membership plan for the 4G Smartphone for the period of 365 days from the date of purchase and membership activation."
 }
