@@ -45,6 +45,29 @@ class VerifyOtpUseCase extends BaseDataProvider {
     return await setValueToSecureStorage({'OnBoardStatus': id});
   }
 
+  Future<void> saveCustomerId(String id) async {
+    return await setValueToSecureStorage({'customerId': id});
+  }
+
+  Future<void> saveMobileNumber(String mobileNumber) async {
+    return await setValueToSecureStorage({'mobileNumber': mobileNumber});
+  }
+
+  Future<void> setPaymentId(String paymentId) async {
+    return await setValueToSecureStorage({'paymentId': paymentId});
+
+  }
+
+  Future<void> setDeviceId(String deviceId) async {
+    return await setValueToSecureStorage({'deviceId': deviceId});
+
+  }
+
+  Future<void> loanCalled(String loanCalled) async {
+    return await setValueToSecureStorage({'loanCalled': loanCalled});
+
+  }
+
 
 
   Future<String> getCustomerMobileNumber() async {
@@ -58,10 +81,13 @@ class VerifyOtpUseCase extends BaseDataProvider {
   Future<String> getAgentId() async {
     return await getValueFromSecureStorage('agentId', defaultValue: '');
   }
-  Future<OtpResponse?> otpGen(
-      String id, UserType userType,String event ,Function(String) onErrorCallback) async {
+
+  Future<OtpResponse?> otpGen(String id, UserType userType, String event,
+      Function(String) onErrorCallback) async {
     OtpRequest otpRequest = OtpRequest(
-        id: id, type: (userType == UserType.Customer ? "Customer" : "Agent"),event: event);
+        id: id,
+        type: (userType == UserType.Customer ? "Customer" : "Agent"),
+        event: event);
 
     print(otpRequest.toJson().toString());
     return await executeApiRequest<OtpResponse?>(
@@ -77,9 +103,9 @@ class VerifyOtpUseCase extends BaseDataProvider {
         });
   }
 
-  Future<OtpResponse?> otpGenCustomerByAgent(
-      String id, String userType,String event, Function(String) onErrorCallback) async {
-    OtpRequest otpRequest = OtpRequest(id: id, type: userType,event: event);
+  Future<OtpResponse?> otpGenCustomerByAgent(String id, String userType,
+      String event, Function(String) onErrorCallback) async {
+    OtpRequest otpRequest = OtpRequest(id: id, type: userType, event: event);
 
     CrayonPaymentLogger.logInfo(otpRequest.toJson().toString());
 
@@ -98,12 +124,12 @@ class VerifyOtpUseCase extends BaseDataProvider {
   }
 
   Future<OtpVerificationResponse?> otpVerify(String id, String otp,
-      UserType userType,String event, Function(String) onErrorCallback) async {
+      UserType userType, String event, Function(String) onErrorCallback) async {
     OtpVerificationRequest otpRequest = OtpVerificationRequest(
         id: id,
         type: userType == UserType.Customer ? "Customer" : "Agent",
         otp: otp,
-        event:event);
+        event: event);
     return await executeApiRequest<OtpVerificationResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
@@ -119,8 +145,11 @@ class VerifyOtpUseCase extends BaseDataProvider {
 
   Future<OtpVerificationResponse?> otpVerifyCustomerByAgent(String id,
       String otp, String userType, Function(String) onErrorCallback) async {
-    OtpVerificationRequest otpRequest =
-        OtpVerificationRequest(id: id, type: userType, otp: otp,event: OTPEvent.Customer_Registration.toShortString());
+    OtpVerificationRequest otpRequest = OtpVerificationRequest(
+        id: id,
+        type: userType,
+        otp: otp,
+        event: OTPEvent.Customer_Registration.toShortString());
     CrayonPaymentLogger.logInfo(otpRequest.toJson().toString());
 
     return await executeApiRequest<OtpVerificationResponse?>(
@@ -143,7 +172,7 @@ class VerifyOtpUseCase extends BaseDataProvider {
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
         moduleIdentifier: VerifyOtpModule.moduleIdentifier,
-        requestData: { "customerId" : id },
+        requestData: {"customerId": id},
         serviceIdentifier: IOtpService.workFlowCustomerByAgentIdentifier,
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {
@@ -153,7 +182,8 @@ class VerifyOtpUseCase extends BaseDataProvider {
         });
   }
 
-  Future<GetCustomerDetailsResponse?> getCustomerDetailsByMobileNumber( Function(String) onErrorCallback) async {
+  Future<GetCustomerDetailsResponse?> getCustomerDetailsByMobileNumber(
+      Function(String) onErrorCallback) async {
     String mobile = await getCustomerMobileNumber();
     CrayonPaymentLogger.logInfo("I am in Customer Detail API $mobile");
     return await executeApiRequest<GetCustomerDetailsResponse?>(
@@ -166,7 +196,7 @@ class VerifyOtpUseCase extends BaseDataProvider {
         modelBuilderCallback: (responseData) {
           final data = responseData;
           GetCustomerDetailsResponse detailResponse =
-          GetCustomerDetailsResponse.fromJson(data);
+              GetCustomerDetailsResponse.fromJson(data);
           return detailResponse;
         });
   }

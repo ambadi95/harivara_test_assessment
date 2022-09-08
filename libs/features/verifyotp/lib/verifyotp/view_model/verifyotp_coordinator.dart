@@ -418,9 +418,12 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         // _navigationHandler.navigateToDownPaymentScreen();
         break;
       case "Downpayment_Failed":
+
+        _saveData(workFlowStatusResponse);
+
         print("sdjkghgh${workFlowStatusResponse.data!.data[1]["paymentId"]}");
 
-        // _navigationHandler.navigateToDownPaymentScreen();
+        _navigationHandler.navigateToDownPaymentScreen();
         break;
       case "Loan_Initiated":
         //_navigationHandler.navigateToDeviceLoanCreation();
@@ -447,5 +450,13 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         //TODO Navigate to Repayment_Success Screen
         break;
     }
+  }
+
+  void _saveData(WorkFlowStatusResponse workFlowStatusResponse) {
+
+    _verifyOtpUseCase.saveCustomerId('${workFlowStatusResponse.data!.data[1]["customerId"]}');
+    _verifyOtpUseCase.setPaymentId('${workFlowStatusResponse.data!.data[1]["paymentId"]}');
+    _verifyOtpUseCase.saveMobileNumber('${workFlowStatusResponse.data!.data[1]["mobileNumber"]}');
+    _verifyOtpUseCase.loanCalled('');
   }
 }

@@ -185,6 +185,7 @@ class DownPaymentUseCase extends BaseDataProvider {
       return await setValueToSecureStorage({'paymentId': paymentId});
 
   }
+
   Future<void> loanCalled(String loanCalled) async {
       return await setValueToSecureStorage({'loanCalled': loanCalled});
 
