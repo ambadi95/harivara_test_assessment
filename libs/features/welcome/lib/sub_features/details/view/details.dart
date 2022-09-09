@@ -294,6 +294,15 @@ class _DetailsScreenState extends State<DetailsScreen> {
               'DV_profession_hint_text',
               true),
           _buildLabelTextField(
+              'pobox',
+              'DV_po_box_label'.tr,
+              poBox,
+              TextInputType.text,
+              coordinator,
+              poBoxError,
+              'DV_poBox_hint_text',
+              true),
+          _buildLabelTextField(
               'contact',
               'DV_contact_no_label'.tr,
               mobileNumber,
@@ -313,15 +322,6 @@ class _DetailsScreenState extends State<DetailsScreen> {
               true),
           _buildLabelTextFieldAddress('DV_address_label'.tr, address,
               coordinator, 'DV_address_hint_text'),
-          _buildLabelTextField(
-              'pobox',
-              'DV_po_box_label'.tr,
-              poBox,
-              TextInputType.text,
-              coordinator,
-              poBoxError,
-              'DV_poBox_hint_text',
-              true),
           _buildRegionDropdown(coordinator),
           _buildDistrictDropdown(coordinator),
           _buildContinueButton(context, coordinator)
