@@ -471,7 +471,7 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
        }else {
          if (newState.waitForPayment == 1 && newState.paymentRequested == 1 &&
              newState.createLoan == 0) {
-           Future.delayed(const Duration(seconds: 20), () {
+           Future.delayed(const Duration(seconds: 25), () {
              downPaymentCoordinator!.checkPaymentStatus(context);
            });
          }

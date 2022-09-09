@@ -30,6 +30,10 @@ class DownPaymentUseCase extends BaseDataProvider {
     return await getValueFromSecureStorage('clientId', defaultValue: '');
   }
 
+  Future<String> getPaymentFailed() async {
+    return await getValueFromSecureStorage('paymentFailed', defaultValue: '');
+  }
+
   Future<String> getMobileNumber() async {
     return await getValueFromSecureStorage('mobileNumber', defaultValue: '');
   }
@@ -183,6 +187,10 @@ class DownPaymentUseCase extends BaseDataProvider {
 
   Future<void> setPaymentId(String paymentId) async {
       return await setValueToSecureStorage({'paymentId': paymentId});
+
+  }
+  Future<void> setPaymentFailed(String paymentFailed) async {
+      return await setValueToSecureStorage({'paymentFailed': paymentFailed});
 
   }
 

@@ -138,6 +138,7 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
 
   Future<void> makePayment(BuildContext context, String amount) async {
     await _downPaymentUseCase.loanCalled("");
+    await _downPaymentUseCase.setPaymentFailed("");
 
     state = DownPaymentState.ready(
         context: context,
@@ -177,6 +178,8 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
           loanApproved: 0,
           createLoan: 0,
           paymentReceived: 0);
+      _showAlertForErrorMessage(mkePayment!.message!);
+
 
       print("Failed");
     }
@@ -189,9 +192,13 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
   Future<void> checkPaymentStatus(
     BuildContext context,
   ) async {
+    String paymentFailed = await _downPaymentUseCase.getPaymentFailed();
     String paymentId = await _downPaymentUseCase.getPaymentID();
     String loanCalled = await getLoanCalled();
 
+    if(paymentFailed == "Payment Failed"){
+      return;
+    }
     if (loanCalled == "loanCalled") {
       return;
     }
@@ -230,6 +237,9 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
         createLoan(context);
       }
     } else {
+      await _downPaymentUseCase.setPaymentFailed("Payment Failed");
+
+
       state = DownPaymentState.ready(
           context: context,
           error: '',
@@ -241,7 +251,7 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
           loanApproved: 0,
           paymentReceived: 2);
 
-      print("Failed");
+      _showAlertForErrorMessage(mkePayment!.message!);
     }
   }
 

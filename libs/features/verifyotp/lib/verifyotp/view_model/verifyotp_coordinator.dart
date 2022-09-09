@@ -399,7 +399,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
       case "Enrolled":
         _navigationHandler.navigateToDetailScreen();
         break;
-      case "KYC_Initiated":
+      case "KYC Initiated":
         // _navigationHandler.navigateToKYCScreen(false);
         _navigationHandler.navigateToDetailScreen();
 
