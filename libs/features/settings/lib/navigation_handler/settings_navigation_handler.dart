@@ -46,13 +46,13 @@ class SettingsNavigationHandler with ErrorHandler {
         arguments: arguments);
   }
 
-  Future<void> navigateToAgentChangeLanguageBottomSheet() async {
+  Future<void> navigateToAgentChangeLanguageBottomSheet(UserType userType) async {
     final CrayonPaymentBottomSheetIcon icon =
         CrayonPaymentBottomSheetAppLanguageIconIcon();
     final CrayonPaymentBottomSheetState infoState =
         CrayonPaymentBottomSheetState.changeLanguage(
       widgetOptions: [
-        const AppLanguage(),
+         AppLanguage(userType: userType),
       ],
       buttonOptions: [
         ButtonOptions(Black, 'Continue', () => {goBack()}, false),

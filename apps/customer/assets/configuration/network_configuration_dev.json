@@ -2,7 +2,7 @@
   "environments": [
     {
       "name": "test",
-      "host": "https://y9-dev-capi.testmaya.com/customers/v1/"
+      "host": "https://customerapi-stage.y9bank.com/customers/v1/"
 
     },
     {

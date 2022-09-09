@@ -130,7 +130,7 @@ class _SettingsState extends State<Settings> {
           await coordinator.resetPasscode(widget.screenArgs.userType);
         }),
         _buildOptions(context, 'ST_App_Language', ST_language, () async {
-          await coordinator.changeLanguage();
+          await coordinator.changeLanguage(widget.screenArgs.userType);
         }),
       ],
     );
