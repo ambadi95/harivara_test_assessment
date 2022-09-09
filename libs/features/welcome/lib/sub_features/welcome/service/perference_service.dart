@@ -1,7 +1,5 @@
 import 'dart:convert';
 
-import 'package:config/Config.dart';
-import 'package:core/logging/logger.dart';
 import 'package:network_manager/model/requests/request.dart';
 import 'package:network_manager/model/requests/standard/standard_request.dart';
 
@@ -17,6 +15,9 @@ class PreferencesService implements IPreferencesService {
     var request = StandardRequest();
     request.requestType = RequestType.PUT;
     request.endpoint = 'preferences/$customerId';
+    request.customHeaders = {
+      'Content-Type': 'application/json',
+    };
     request.jsonBody = json.encode({
       'lang': lang,
     });
