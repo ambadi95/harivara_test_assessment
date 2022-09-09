@@ -438,7 +438,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
 
           _navigationHandler.navigateToDownPaymentScreen(
             deviceId: "1",
-            paymentStatus: 1,
+            paymentStatus: 0,
             amount: workFlowStatusResponse.data!.data[3]["amountPaid"],
           );
         } catch (e) {
