@@ -78,6 +78,9 @@ dependencies:
   payments:
     path: ../../libs/features/payments
 
+  configuremdm:
+    path: ../../libs/features/configuremdm
+
 
 dev_dependencies:
   flutter_test:

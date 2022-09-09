@@ -23,6 +23,9 @@ class DetailsState with _$DetailsState {
   const factory DetailsState.getMobileNumber(String mobileNumber) =
       GetMobileNumber;
 
+  const factory DetailsState.getNIDANumber(String NIDANumber) =
+    getNIDANumber;
+
   const factory DetailsState.emailError(String emailError) = EmailError;
 
   const factory DetailsState.poBoxError(String poBoxError) = PoBoxError;

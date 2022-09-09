@@ -53,6 +53,9 @@ dependencies:
   configuremdm :
     path: ../configuremdm
 
+  scanqrcode:
+    path: ../scanqrcode
+
 
 
 dev_dependencies:

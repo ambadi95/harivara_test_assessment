@@ -1,11 +1,12 @@
 import 'package:config/Colors.dart' as config_colors;
 import 'package:config/Colors.dart';
 import 'package:config/Styles.dart';
+import 'package:configuremdm/configuremdm_module.dart';
 import 'package:configuremdm/state/configuremdm_state.dart';
 import 'package:configuremdm/viewmodel/configuremdm_coordinator.dart';
 import 'package:core/view/base_view.dart';
+import 'package:widget_library/input_fields/input_field_with_label.dart';
 import 'package:widget_library/utils/app_utils.dart';
-import 'package:downpayment/downpayment_module.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:widget_library/app_bars/crayon_payment_app_bar_attributes.dart';
@@ -17,7 +18,7 @@ import 'package:widget_library/static_text/crayon_payment_text.dart';
 
 class ConfigureMdmScreen extends StatefulWidget {
   static const viewPath =
-      '${DownPaymentModule.moduleIdentifier}/configuremdmscreen';
+      '${ConfigureMdmModule.moduleIdentifier}/configuremdmscreen';
 
   const ConfigureMdmScreen({Key? key}) : super(key: key);
 
@@ -28,12 +29,16 @@ class ConfigureMdmScreen extends StatefulWidget {
 class _ConfigureMdmScreenState extends State<ConfigureMdmScreen> {
   final String _identifier = 'configure-mdm-screen';
   bool _isBtnEnabled = false;
+  bool _isChecked = false;
+  final TextEditingController imeiNumber = TextEditingController();
 
   @override
   Widget build(BuildContext context) =>
       BaseView<ConfigureMdmCoordinator, ConfigureMdmState>(
           setupViewModel: (coordinator) async {
             coordinator.initialiseState(context);
+            imeiNumber.text="351389781756236";
+
           },
           builder: (context, state, coordinator) => CrayonPaymentScaffold(
                 appBarAttributes: CrayonPaymentAppBarAttributes(
@@ -42,8 +47,8 @@ class _ConfigureMdmScreenState extends State<ConfigureMdmScreen> {
                     const CrayonPaymentAppBarButtonType.back(),
                   ],
                 ),
-                bottomNavigationBar:
-                    _buildContinueButton(context, coordinator, state),
+                // bottomNavigationBar:
+                //     _buildContinueButton(context, coordinator, state),
                 body: state.when(
                   initialState: () => const SizedBox(),
                   ready: (
@@ -74,11 +79,8 @@ class _ConfigureMdmScreenState extends State<ConfigureMdmScreen> {
 
   Widget _createLoading(ConfigureMdmStateReady state) {
     if (state.isLoading) {
-      return Container(
-        color: Colors.black.withOpacity(0.4),
-        child: const CenteredCircularProgressBar(
-            color: config_colors.PRIMARY_COLOR),
-      );
+      return const CenteredCircularProgressBar(
+          color: config_colors.PRIMARY_COLOR);
     } else {
       return Container();
     }
@@ -89,14 +91,116 @@ class _ConfigureMdmScreenState extends State<ConfigureMdmScreen> {
     ConfigureMdmCoordinator coordinator,
     ConfigureMdmStateReady state,
   ) {
-    return Column(
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _buildTitle(context),
+          SizedBox(
+            height: AppUtils.appUtilsInstance.getPercentageSize(percentage: 5),
+          ),
+          _subTitle(context),
+          SizedBox(
+            height: AppUtils.appUtilsInstance.getPercentageSize(percentage: 10),
+          ),
+          _buildLabelTextField(
+              'imeinumber',
+              'MDM_input_label'.tr,
+              imeiNumber,
+              TextInputType.number,
+              coordinator,
+              '',
+              'MDM_input_hint_text',
+              false),
+          SizedBox(
+            height: AppUtils.appUtilsInstance.getPercentageSize(percentage: 40),
+          ),
+                Container(
+                margin: const EdgeInsets.only(bottom: 20),
+                child: Column(
+                children: [
+                const SizedBox(
+                height: 50,
+                ),
+                _getTermsCheckBox(context, coordinator),
+                const SizedBox(
+                height: 30,
+                ),
+                _buildContinueButton(context, coordinator, state),              ],
+                )),
+        ],
+      ),
+    );
+  }
+
+  _getTermsCheckBox(
+      BuildContext context,
+      ConfigureMdmCoordinator coordinator,
+      ) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildTitle(context),
         SizedBox(
-          height: AppUtils.appUtilsInstance.getPercentageSize(percentage: 5),
+          height: 30,
+          width: 30,
+          child: Checkbox(
+              value: _isChecked,
+              activeColor: Black,
+              onChanged: (value) {
+                setState(() {
+                  _isChecked = value!;
+                });
+              }),
         ),
-      ],
+        const SizedBox(
+          width: 10,
+        ),
+
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _checkBoxText(context),
+          ],
+        ), ],
+    );
+  }
+
+  Widget _checkBoxText(BuildContext context) {
+    return CrayonPaymentText(
+      key: Key('${_identifier}_MDM_agree_text'),
+      text: const TextUIDataModel('MDM_agree_text',
+          styleVariant: CrayonPaymentTextStyleVariant.headline4,
+          color: Black,
+          fontWeight: FontWeight.w500),
+    );
+  }
+  Widget _buildLabelTextField(
+      String tag,
+      String label,
+      TextEditingController controller,
+      TextInputType textInputType,
+      ConfigureMdmCoordinator coordinator,
+      String errorText,
+      String hint,
+      bool enabled) {
+    return FocusScope(
+      child: Focus(
+        onFocusChange: (focus) {},
+        canRequestFocus: true,
+        child: Padding(
+            padding: const EdgeInsets.only(bottom: 34),
+            child: InputFieldWithLabel(
+              label: label,
+              controller: controller,
+              errorText: errorText.tr,
+              enabled: enabled,
+              hintText: hint.tr,
+              key: const Key('detailsTextField'),
+              keyboardType: textInputType,
+              onChanged: (value) {},
+            )),
+      ),
     );
   }
 
@@ -108,16 +212,22 @@ class _ConfigureMdmScreenState extends State<ConfigureMdmScreen> {
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
-        onTap: () async {},
+        onTap: () async {
+          if(_isChecked){
+            coordinator.callMdmRegistration(context,imeiNumber.text.toString());
+
+          }
+          // coordinator.configureMdmSuccessFulScreen();}
+        },
         child: Container(
           width: double.infinity,
           height: 50,
           decoration: BoxDecoration(
-              color: _isBtnEnabled ? SU_button_color : SU_grey_color,
+              color: _isChecked == true ? SU_button_color : SU_grey_color,
               borderRadius: BorderRadius.circular(8.0)),
           child: Center(
             child: Text(
-              'SU_button_text'.tr,
+              'MDM_button_text'.tr,
               style: SU_button_text_style,
             ),
           ),
@@ -135,21 +245,10 @@ class _ConfigureMdmScreenState extends State<ConfigureMdmScreen> {
           fontWeight: FontWeight.w800),
     );
   }
-
-  _title(BuildContext context) {
-    return CrayonPaymentText(
-      key: Key('${_identifier}_Configure_Title1'),
-      text: const TextUIDataModel('',
-          styleVariant: CrayonPaymentTextStyleVariant.headline6,
-          color: AN_TitleColor,
-          fontWeight: FontWeight.w600),
-    );
-  }
-
   _subTitle(BuildContext context) {
     return CrayonPaymentText(
       key: Key('${_identifier}_ConfigureMDM_SubTitle'),
-      text: const TextUIDataModel('',
+      text: const TextUIDataModel('MDM_subheading',
           styleVariant: CrayonPaymentTextStyleVariant.subtitle2,
           color: VO_ResendTextColor,
           fontWeight: FontWeight.w400),

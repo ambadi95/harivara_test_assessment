@@ -70,7 +70,7 @@ class BottomSheetLoanRepayment extends StatelessWidget {
           !_sheetState.loanRepayment.isPayNowSelected
               ? CrayonPaymentDockedButton(
                   key: const Key('bottomButtonDocked'),
-                  title: 'Pay Now',
+                  title: 'LR_pay_now'.tr,
                   borderRadius: 8,
                   buttonColor: _sheetState.loanRepayment.isAmountSelected
                       ? LR_ColorDA2228
@@ -79,7 +79,7 @@ class BottomSheetLoanRepayment extends StatelessWidget {
                 )
               : CrayonPaymentDockedButton(
                   key: const Key('bottomButtonDocked'),
-                  title: 'Pay Now',
+                  title: 'LR_pay_now'.tr,
                   borderRadius: 8,
                   buttonColor: LR_ColorDA2228,
                   onPressed: _sheetState.loanRepayment.onPressedCustomAmount,

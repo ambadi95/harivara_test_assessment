@@ -34,29 +34,28 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
         const GenderType(3, 'Prefer not to say'),
       ];
 
-  Future<GetCustomerDetailsResponse> getCustomerDetail(List<DropdownMenuItem<Datum>> regionDropDown, userType)async{
+  Future<GetCustomerDetailsResponse> getCustomerDetail(List<DropdownMenuItem<Datum>> regionDropDown, userType)async {
     state = const DetailsState.LoadingState();
-    var customerResponse = await _detailsUseCase.getCustomerDetailsByMobileNumber( (p0) => null);
-    if(customerResponse!.status == true ){
+    var customerResponse = await _detailsUseCase
+        .getCustomerDetailsByMobileNumber((p0) => null);
+    if (customerResponse!.status == true) {
       state = const DetailsState.successState();
-      if(customerResponse.data !=null) {
-
-        if(customerResponse.data!.gender?.isEmptyOrNull==false){
+      if (customerResponse.data != null   ) {
+        if(customerResponse.data!.gender!=null) {
           state =
               DetailsState.onGenderTypeFetched(customerResponse.data!.gender!);
-        }else if(customerResponse.data!.region?.isEmptyOrNull==false){
-          state = DetailsState.onRegionFetched(customerResponse.data!.region!);
-
         }
-
+        if(customerResponse.data!.region!=null) {
+          state = DetailsState.onRegionFetched(customerResponse.data!.region!);
+        }
       }
-      return customerResponse;
-    }else{
-      state = const DetailsState.successState();
-     print('failed');
-     return customerResponse;
+        return customerResponse;
+      } else {
+        state = const DetailsState.successState();
+        print('failed');
+        return customerResponse;
+      }
     }
-  }
 
   void fetchDistrictState(String district) {
     state = DetailsState.onDistrictFetched(district);
@@ -94,12 +93,18 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
     state = DetailsState.getMobileNumber(getMobileNo);
   }
 
+    Future<void> getNIDANumber() async {
+      String getNIDANo = await _detailsUseCase.getnidaNumber();
+      state = DetailsState.getNIDANumber(getNIDANo);
+    }
+
   bool _validateForm(
       String name,
       String dob,
       String gender,
       String profession,
       String mobNumber,
+      String nidaNumber,
       String emailId,
       String address,
       String poBox,
@@ -110,6 +115,7 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
     }
     var isnNameValid = _detailsUseCase.isValidName(name);
     var isMobileNoValid = mobNumber.isNotEmpty;
+    var isNidaNumberValid = nidaNumber.isNotEmpty;
     var isDobValid = dob.isNotEmpty;
     var isGenderValid = (gender == 'null') ? false : gender.isNotEmpty;
     var isProfessionValid = profession.isNotEmpty;
@@ -121,6 +127,7 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
 
     var _isValid = isnNameValid &&
         isMobileNoValid &&
+        isNidaNumberValid &&
         isDobValid &&
         isGenderValid &&
         isProfessionValid &&
@@ -139,6 +146,7 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
       String gender,
       String profession,
       String mobNumber,
+      String nidaNumber,
       String emailId,
       String address,
       String poBox,
@@ -146,7 +154,7 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
       String district) {
     print(gender);
     state = DetailsState.DetailsFormState(_validateForm(name, dob, gender,
-        profession, mobNumber, emailId, address, poBox, region, district));
+        profession, mobNumber, nidaNumber, emailId, address, poBox, region, district));
   }
 
   Future navigateToCreatePasscodeScreen(UserType userType) async {
@@ -286,8 +294,8 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
       if (response?.status == true) {
         state = const DetailsState.initialState();
         _detailsUseCase.saveCustomerId(response!.data!.customerId.toString());
-        _detailsUseCase
-            .saveCustomerMobileNumber(response.data!.mobileNo.toString());
+        _detailsUseCase.saveCustomerMobileNumber(response.data!.mobileNo.toString());
+        _detailsUseCase.saveClientId(response.data!.clientId.toString());
         _detailsUseCase.saveNewCustomerName(response.data!.firstName.toString() + " " + response.data!.lastName.toString());
         navigateToCreatePasscodeScreen(userType);
       } else {

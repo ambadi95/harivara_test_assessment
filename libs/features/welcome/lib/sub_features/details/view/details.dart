@@ -68,6 +68,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
   final TextEditingController poBox = TextEditingController();
   final TextEditingController region = TextEditingController();
   final TextEditingController district = TextEditingController();
+  final TextEditingController nidaNumber = TextEditingController();
 
   final FocusNode genderFocusNode = FocusNode();
 
@@ -126,6 +127,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
               {_listenToStateChanges(context, newState)},
           setupViewModel: (coordinator) async {
             await coordinator.getMobileNumber();
+            await coordinator.getNIDANumber();
             List<Datum> regions = await coordinator.getRegion(widget.userType);
             genderTypeDropDown = getDropDownData(coordinator.genderType);
             regionDropDown = getRegionDropDownData(regions);
@@ -141,14 +143,13 @@ class _DetailsScreenState extends State<DetailsScreen> {
               profession.text = customerDetail!.data!.profession!;
               emailId.text = customerDetail!.data!.emailId!;
               address.text = customerDetail!.data!.address!;
-              poBox.text = customerDetail!.data!.poBoxNumber!;
+             poBox.text = customerDetail!.data!.organization ?? "";
               district.text = customerDetail!.data!.district!;
               region.text = customerDetail!.data!.region!;
               gender.text = customerDetail!.data!.gender!;
 
               if (customerDetail!.data != null) {
                 coordinator.isValidDob(dob.text);
-
                 coordinator.isValidDistrict(district.text);
                 coordinator.isValidRegion(region.text);
               }
@@ -157,6 +158,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 await coordinator.getDistrict(_region!.id!, widget.userType);
                 districtDropDown = getDistrictDropDownData(dis);
                 coordinator.fetchDistrictState(customerDetail!.data!.district!);
+                setState(() {
+                });
               }
             }
           },
@@ -176,6 +179,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                         children: [
                           _buildMainUI(context, coordinator),
                         ],
+
                       ),
                     ),
                   ),
@@ -248,6 +252,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
   }
 
   Widget _buildMainUI(BuildContext context, DetailsCoordinator coordinator) {
+    print("widget user type====> ${widget.userType}");
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
@@ -258,6 +263,16 @@ class _DetailsScreenState extends State<DetailsScreen> {
           const SizedBox(
             height: 39,
           ),
+          widget.userType == UserType.AgentCustomer
+              ? _buildLabelTextField(
+              'nidaNumber',
+              'DV_nida_no_label'.tr,
+              nidaNumber,
+              TextInputType.number,
+              coordinator,
+              '',
+              'LS_nida_hint_text',
+              false): const SizedBox(),
           _buildLabelTextField(
               'name',
               'DV_name_label'.tr,
@@ -279,13 +294,22 @@ class _DetailsScreenState extends State<DetailsScreen> {
               'DV_profession_hint_text',
               true),
           _buildLabelTextField(
+              'pobox',
+              'DV_po_box_label'.tr,
+              poBox,
+              TextInputType.text,
+              coordinator,
+              poBoxError,
+              'DV_poBox_hint_text',
+              true),
+          _buildLabelTextField(
               'contact',
               'DV_contact_no_label'.tr,
               mobileNumber,
               TextInputType.number,
               coordinator,
               '',
-              'Enter Your Mobile Number',
+              'LS_mobile_hint_text',
               false),
           _buildLabelTextField(
               'email',
@@ -298,15 +322,6 @@ class _DetailsScreenState extends State<DetailsScreen> {
               true),
           _buildLabelTextFieldAddress('DV_address_label'.tr, address,
               coordinator, 'DV_address_hint_text'),
-          _buildLabelTextField(
-              'pobox',
-              'DV_po_box_label'.tr,
-              poBox,
-              TextInputType.text,
-              coordinator,
-              poBoxError,
-              'DV_poBox_hint_text',
-              true),
           _buildRegionDropdown(coordinator),
           _buildDistrictDropdown(coordinator),
           _buildContinueButton(context, coordinator)
@@ -818,6 +833,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
         getMobileNumber: (value) {
           mobileNumber.text = value;
         },
+        getNIDANumber: (value) {
+          nidaNumber.text = value;
+        },
         onGenderTypeChoosen: (value) {
           _genderType = value;
         },
@@ -858,6 +876,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
         _genderType.toString(),
         profession.text,
         mobileNumber.text,
+        nidaNumber.text,
         emailId.text,
         address.text,
         poBox.text,

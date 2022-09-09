@@ -13,6 +13,8 @@ import '../../../navigation_handler/device_option_navigation_handler.dart';
 import '../state/device_detail_state.dart';
 import 'device_detail_usecase.dart';
 import 'package:shared_data_models/device_option/detail_detail_response/data.dart';
+import 'package:get/get.dart';
+import 'package:widget_library/bottom_sheet/alert_bottom_sheet.dart';
 
 class DeviceDetailCoordinator
     extends AnalyticsStateNotifier<DeviceDetailState> {
@@ -31,6 +33,38 @@ class DeviceDetailCoordinator
     if (response!.status == true) {
       return response.data;
     }
+  }
+
+  Future getSelectDevice(int deviceId, Data data) async {
+    try {
+      var response =
+      await _DeviceOptionUseCase.selectDevice(deviceId, (p0) => null);
+      if (response?.status == true) {
+        await navigateToCustomerLoanCreationScreen(
+            deviceId == 1 ? 'assets/a13.png' : 'assets/a03.png',
+            data);
+      }else{
+        _showAlertForErrorMessage(response!.message!);
+      }
+    } catch (e) {
+      _showAlertForErrorMessage("Something went wrong,Please try again later!");
+
+      print(e.toString());
+    }
+  }
+  _showAlertForErrorMessage(String errorMessage) {
+    Get.bottomSheet(
+      AlertBottomSheet(
+          alertMessage: errorMessage,
+          alertTitle: 'Error',
+          alertIcon: "assets/images/alert_icon.png",
+          onClose: () {
+            _navigationHandler.goBack();
+          },
+          packageName: ""),
+      isScrollControlled: false,
+      isDismissible: true,
+    );
   }
 
   Future<void> navigateToEnrolledScreen(int deviceId, UserType userType) async {

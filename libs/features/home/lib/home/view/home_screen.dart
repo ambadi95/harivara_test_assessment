@@ -199,9 +199,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                             style: HS_account_id_style),
                       ],
                     ),
-                    const SizedBox(
-                      width: 20,
-                    ),
+
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -215,6 +213,9 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                         ),
                         const Text('-', style: HS_account_id_style),
                       ],
+                    ),
+                    const SizedBox(
+                      width: 10,
                     ),
                   ],
                 )
@@ -289,7 +290,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                       ),
                       InkWell(
                           onTap: () {
-                            // coordinator.devicereg();
+                            //coordinator.configureMDM();
                           },
                           child: _actionCommonView(
                               'HS_Customer_DeviceSwap'.tr, HS_DeviceSwapIcon)),
@@ -372,6 +373,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                   title == 'HS_Customer_AgentSupport'.tr)
               ? HS_card_items_grey_style
               : HS_card_items_style,
+
         ),
         const SizedBox(
           height: 10,
@@ -383,7 +385,6 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
   Widget _inviteAgentBoxView() {
     return Container(
       margin: const EdgeInsets.all(10.0),
-      padding: const EdgeInsets.all(20.0),
       width: double.maxFinite,
       clipBehavior: Clip.antiAliasWithSaveLayer,
       decoration: const BoxDecoration(
@@ -399,33 +400,36 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
           const SizedBox(
             height: 10,
           ),
-          RichText(
-              text: TextSpan(
-            text: ' ',
-            children: <TextSpan>[
-              TextSpan(
-                  text: 'HS_Agent_Refer_Program'.tr,
-                  style: HS_invite_your_friends_style),
-              TextSpan(
-                  text: 'HS_Agent_Stay_Tunned'.tr, style: HS_stay_tunned_style),
-            ],
-          )),
-          const SizedBox(
-            height: 10,
+          Container(
+            padding: const EdgeInsets.only(left:10.0, right: 10.0, top:10.0),
+            child: RichText(
+                text: TextSpan(
+              text: ' ',
+              children: <TextSpan>[
+                TextSpan(
+                    text: 'HS_Agent_Refer_Program'.tr,
+                    style: HS_invite_your_friends_style),
+                TextSpan(
+                    text: 'HS_Agent_Stay_Tunned'.tr, style: HS_stay_tunned_style),
+              ],
+            )),
           ),
-          Text(
-            'HS_Agent_Refer_Text'.tr,
-            style: HS_invite_friends_y9_style,
+          Container(
+            padding: const EdgeInsets.only(top:10.0, left:10.0, right: 10.0),
+            child: Text(
+              'HS_Agent_Refer_Text'.tr,
+              style: HS_invite_friends_y9_style,
+            ),
           ),
           const SizedBox(
             height: 10,
           ),
           Align(
-            alignment: Alignment.centerRight,
+            alignment: Alignment.bottomRight,
             child: Image.asset(
               HS_InviteIcon,
-              width: 180,
-              height: 110,
+              width: 200,
+              height: 120,
             ),
           )
         ],
@@ -582,8 +586,9 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                       children: [
                         Container(
                           height: 2,
-
-                          color: selectedIndex == 0 ?Color(0xFFDA2228):Colors.white,
+                          color: selectedIndex == 0
+                              ? const Color(0xFFDA2228)
+                              : Colors.white,
                           width: 60,
 
                         ),
@@ -672,6 +677,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                         widget.homeScreenArgs.isAgent
                             ? _inviteAgentBoxView()
                             : _inviteBoxView(coordinator),
+                        const SizedBox(height:30)
                       ],
                     )
                   ],

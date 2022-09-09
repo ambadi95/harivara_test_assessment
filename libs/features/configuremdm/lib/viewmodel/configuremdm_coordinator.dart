@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 
 import '../navigation_handler/configuremdm_navigation_handler.dart';
 import 'configuremdm_usecase.dart';
+import 'package:get/get.dart';
+import 'package:widget_library/bottom_sheet/alert_bottom_sheet.dart';
 
 class ConfigureMdmCoordinator
     extends AnalyticsStateNotifier<ConfigureMdmState> {
@@ -21,4 +23,53 @@ class ConfigureMdmCoordinator
     state =
         ConfigureMdmState.ready(context: context, error: "", isLoading: false);
   }
+
+
+  void configureMdmSuccessFulScreen(){
+    _navigationHandler.navigateToConfigureMdmSuccessScreen();
+  }
+
+  void successFulScreen(){
+    _navigationHandler.navigateToSuccessScreen();
+  }
+
+
+  Future callMdmRegistration(BuildContext context,String imei) async {
+
+    state =
+        ConfigureMdmState.ready(context: context, error: "", isLoading: true);
+
+    var response = await _configuremdmUseCase.mdmRegistration(imei, (p0) => null);
+    if (response?.status == true) {
+
+      state = ConfigureMdmState.ready(context: context, error: "", isLoading: false);
+
+    } else {
+      state =
+          ConfigureMdmState.ready(context: context, error: "", isLoading: false);
+
+      _showAlertForErrorMessage(response!.message!);
+    }
+  }
+
+  //showalert for error message
+  _showAlertForErrorMessage(String errorMessage) {
+    Get.bottomSheet(
+      AlertBottomSheet(
+          alertMessage: errorMessage,
+          alertTitle: 'Error',
+          alertIcon: "assets/images/alert_icon.png",
+          onClose: () {
+            goBack();
+          },
+          packageName: ""),
+      isScrollControlled: false,
+      isDismissible: true,
+    );
+  }
+
+  void goBack() async {
+    _navigationHandler.goBack();
+  }
+
 }

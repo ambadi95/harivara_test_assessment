@@ -300,12 +300,14 @@ class _KycCreditMainScreenState extends State<KycCreditMainScreen> {
           width: 10,
         ),
 
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _checkBoxText(context),
-            _termsText(context, coordinator),
-          ],
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _checkBoxText(context),
+              _termsText(context, coordinator),
+            ],
+          ),
         ),
 
 //            _buildContinueButton(context, coordinator, state)

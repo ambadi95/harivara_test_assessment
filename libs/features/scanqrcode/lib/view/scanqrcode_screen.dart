@@ -85,9 +85,33 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
             });
           },
         builder: (context, state, coordinator) {
-          return
+           return
+          //   state.when(
+          //   initialState: () => const SizedBox(),
+          //   ready: (
+          //       _,
+          //       __,
+          //       ___,
+          //       ) =>
+          //       _buildMainUIWithLoading(
+          //         context,
+          //         coordinator,
+          //         (state as ScanQRCodeStateReady),
+          //       ),
+          //     orElse: () => _buildMainUI(context, coordinator)
+          // );
             state.maybeWhen(
-              loading: () => _buildMainUIWithLoading(context, coordinator),
+              //loading: () => _buildMainUIWithLoading(context, coordinator),
+                ready: (
+                          _,
+                          __,
+                          ___,
+                          ) =>
+                          _buildMainUIWithLoading(
+                            context,
+                            coordinator,
+                            (state as ScanQRCodeStateReady),
+                          ),
               orElse: () => _buildMainUI(context, coordinator));
         },
       );
@@ -95,13 +119,14 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
   Widget _buildMainUIWithLoading(
       BuildContext context,
       ScanQRCodeCoordinator coordinator,
+      ScanQRCodeStateReady state
       ) {
     return Scaffold(
       key: _scaffoldKey,
       body: Stack(
         children: [
           _buildMainUI(context, coordinator),
-          _createLoading(),
+          state.isLoading == true ? _createLoading(): SizedBox(),
         ],
       ),
     );
@@ -200,7 +225,7 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
             hintText: hint.tr,
             key: const Key('imei1Text'),
             keyboardType: textInputType,
-            inputFormatters: [FilteringTextInputFormatter.digitsOnly, LengthLimitingTextInputFormatter(16)],
+            inputFormatters: [FilteringTextInputFormatter.digitsOnly, LengthLimitingTextInputFormatter(15)],
             onChanged: (value) {
               _validateForm(coordinator);
             },
@@ -237,7 +262,7 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
           hintText: hint.tr,
           key: const Key('imei1Text'),
           keyboardType: textInputType,
-          inputFormatters: [FilteringTextInputFormatter.digitsOnly, LengthLimitingTextInputFormatter(16)],
+          inputFormatters: [FilteringTextInputFormatter.digitsOnly, LengthLimitingTextInputFormatter(15)],
           onChanged: (value) {
             _validateForm(coordinator);
           },
@@ -259,7 +284,7 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
             _isBtnEnabled = true;
             if (_isBtnEnabled) {
               coordinator.deviceRegister(
-                  context, widget.deviceId, imei1Number.text, imei2Number.text);
+                  context, widget.deviceId, imei1Number.text, imei2Number.text, );
             }
           }},
 

@@ -1,7 +1,7 @@
 name: crayon_payment_agent
 description: CrayonPayment Agent Base App
 publish_to: 'none'
-version: 1.0.0+2
+version: 1.0.6+7
 
 environment:
   sdk: '>=2.12.0 <3.0.0'
@@ -79,6 +79,8 @@ dependencies:
   downpayment:
     path: ../../libs/features/downpayment
 
+  configuremdm:
+    path: ../../libs/features/configuremdm
 
 
 dev_dependencies:

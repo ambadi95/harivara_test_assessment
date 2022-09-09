@@ -2,6 +2,7 @@ const OB_AppLogo = 'assets/images/logo.png';
 const OB_Background = 'assets/images/bgLogo.png';
 
 const ES_succes_icon = 'assets/images/success_icon.png';
+const ES_red_succes_icon = 'assets/images/red_success.png';
 const AN_BackArrow = 'assets/images/back_arrow.png';
 const AN_Search = 'assets/images/search.png';
 const AN_Call = 'assets/images/call.png';

@@ -1,6 +1,9 @@
+import 'dart:async';
+
 import 'package:config/Colors.dart' as config_colors;
 import 'package:config/Colors.dart';
 import 'package:config/Styles.dart';
+import 'package:core/mobile_core.dart';
 import 'package:core/view/base_view.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shared_data_models/downpayment/downpayment_screen_args.dart';
@@ -17,6 +20,7 @@ import 'package:widget_library/scaffold/crayon_payment_scaffold.dart';
 import 'package:widget_library/static_text/crayon_payment_text.dart';
 import '../state/downpayment_state.dart';
 import '../viewmodel/downpayment_coordinator.dart';
+import 'package:sprintf/sprintf.dart';
 
 class DownPaymentScreen extends StatefulWidget {
   static const viewPath =
@@ -30,33 +34,48 @@ class DownPaymentScreen extends StatefulWidget {
   State<DownPaymentScreen> createState() => _DownPaymentScreenState();
 }
 
-class _DownPaymentScreenState extends State<DownPaymentScreen> with TickerProviderStateMixin{
+class _DownPaymentScreenState extends State<DownPaymentScreen> {
   final String _identifier = 'downpayment-screen';
   bool _isBtnEnabled = false;
-  late AnimationController _controller;
-  int levelClock = 180;
   String username = "";
   DownPaymentCoordinator? downPaymentCoordinator;
+  late Timer _timer;
+  final ValueNotifier<int> _startValue = ValueNotifier<int>(15);
 
 
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
+  void startTimer() {
+    const oneMintue = Duration(minutes: 15);
+    _timer = Timer.periodic(
+      oneMintue,
+          (Timer timer) {
+        if (_startValue.value == 0) {
+          if (mounted) {
+            setState(() {
+              timer.cancel();
+            });
+          }
+        } else {
+          if (mounted) {
+            _startValue.value--;
+          }
+        }
+      },
+    );
   }
 
   @override
   void initState() {
+    // TODO: implement initState
     super.initState();
-
-    _controller = AnimationController(
-        vsync: this,
-        duration: Duration(
-            seconds:
-            levelClock)
-    );
-    _controller.forward();
+    startTimer();
   }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    _timer.cancel();
+  }
+
 
 
   @override
@@ -70,7 +89,7 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> with TickerProvid
               username;
             });
             coordinator.setData(context,widget.downPaymentScreenArgs);
-            coordinator.makePayment(context,widget.downPaymentScreenArgs.amount);
+            // coordinator.makePayment(context,widget.downPaymentScreenArgs.amount);
           },
           onStateListenCallback: (preState, newState) => {
                 _listenToStateChanges(
@@ -85,7 +104,7 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> with TickerProvid
                   ],
                 ),
                 bottomNavigationBar:
-                    _buildContinueButton(context, coordinator, state),
+                    _buildContinueButton(context, coordinator, state as DownPaymentStateReady),
                 body: state.when(
                   initialState: () => const SizedBox(),
                   ready: (
@@ -97,6 +116,7 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> with TickerProvid
                     ______,
                     _______,
                     ________,
+                    _________,
                   ) =>
                       _buildMainUIWithLoading(
                     context,
@@ -206,7 +226,7 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> with TickerProvid
                 _rowWidget(
                   context,
                   icon:  _getIcon(context,state.paymentRequested),
-                  text: _textWidget(context, 'DP_RequestPayment'.tr, true),
+                  text: _textWidget(context, 'DP_RequestPayment'.tr,state.paymentRequested==0 ? true : false),
                 ),
                 _getVerticalDivider(
                     context,
@@ -288,13 +308,16 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> with TickerProvid
   Widget _buildContinueButton(
     BuildContext context,
     DownPaymentCoordinator coordinator,
-    DownPaymentState state,
+    DownPaymentStateReady state,
   ) {
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
         onTap: () async {
-          await coordinator.navigateToScanCodeScreen(widget.downPaymentScreenArgs.deviceId);
+          if(state.loanApproved==1) {
+            await coordinator.navigateToScanCodeScreen(
+                widget.downPaymentScreenArgs.deviceId);
+          }
         },
         child: Container(
           width: double.infinity,
@@ -368,13 +391,19 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> with TickerProvid
               fontWeight: FontWeight.w500),
         ),
         dynamicWSpacer(30),
-        isResend ?
-        Text('DLC_resend'.tr,style: const TextStyle(
-          decoration: TextDecoration.underline,
-          fontFamily: 'Montserrat',
-          fontSize: 12,
-          color: SU_subtitle_terms_color
-          )) : Text("")
+        isResend  ?
+        InkWell(
+          onTap: (){
+            downPaymentCoordinator!.makePayment(context,widget.downPaymentScreenArgs.amount);
+
+          },
+          child: Text('DLC_resend'.tr,style: const TextStyle(
+            decoration: TextDecoration.underline,
+            fontFamily: 'Montserrat',
+            fontSize: 12,
+            color: SU_subtitle_terms_color
+            )),
+        ) : Text("")
       ],
     );
   }
@@ -389,21 +418,32 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> with TickerProvid
     //           color: VO_ResendTextColor,
     //           fontWeight: FontWeight.w400),
     // );
-    RichText(
-      text: TextSpan(
-        text: 'DLC_Down_Payment_Subtitle'.tr,
-        style: const TextStyle(
-            fontFamily: 'Montserrat',
-            fontSize: 14, color: DD_TextLabel, fontWeight: FontWeight.w600
-        ),
-        children: <TextSpan>[
-          TextSpan(
-              text: ' 15 mins',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12, color : Color(0xFFDA2228))),
 
-        ],
-      ),
-    );
+      ValueListenableBuilder<int>(
+          valueListenable: _startValue,
+          builder: (BuildContext context, int value, Widget? child) {
+            return Align(
+              alignment: Alignment.topLeft,
+              child:  RichText(
+                text: TextSpan(
+                  text: 'DLC_Down_Payment_Subtitle'.tr,
+                  style: const TextStyle(
+                      fontFamily: 'Montserrat',
+                      fontSize: 14, color: DD_TextLabel, fontWeight: FontWeight.w600
+                  ),
+                  children: <TextSpan>[
+                   const  TextSpan(
+                    text: "  ",
+                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12, color : Color(0xFFDA2228))),
+                    TextSpan(
+                        text: "${value.toString()} min",
+                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12, color : Color(0xFFDA2228))),
+
+                  ],
+                ),
+              ));
+          });
+
   }
 
   _rowWidget(BuildContext context, {Widget? icon, Widget? text}) {
@@ -419,18 +459,24 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> with TickerProvid
     );
   }
 
-  _listenToStateChanges(BuildContext context, DownPaymentStateReady newState) {
-    //kyc done
-    if (newState.waitForPayment == 1 && newState.paymentReceived == 0) {
+  _listenToStateChanges(BuildContext context, DownPaymentStateReady newState) async{
 
-      Future.delayed(const Duration(seconds: 25), () {
+       if(newState.loanApproved == 1){
 
-        downPaymentCoordinator!.checkPaymentStatus(context);
+         setState(() {
+           _isBtnEnabled=true;
+         });
+       }else if(newState.loanApproved == 2){
+         return;
+       }else {
+         if (newState.waitForPayment == 1 && newState.paymentRequested == 1 &&
+             newState.createLoan == 0) {
+           Future.delayed(const Duration(seconds: 25), () {
+             downPaymentCoordinator!.checkPaymentStatus(context);
+           });
+         }
+       }
 
-
-      });
-
-    }
   }
 }
 

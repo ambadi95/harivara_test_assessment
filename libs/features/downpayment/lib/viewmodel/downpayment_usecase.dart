@@ -30,6 +30,10 @@ class DownPaymentUseCase extends BaseDataProvider {
     return await getValueFromSecureStorage('clientId', defaultValue: '');
   }
 
+  Future<String> getPaymentFailed() async {
+    return await getValueFromSecureStorage('paymentFailed', defaultValue: '');
+  }
+
   Future<String> getMobileNumber() async {
     return await getValueFromSecureStorage('mobileNumber', defaultValue: '');
   }
@@ -44,6 +48,9 @@ class DownPaymentUseCase extends BaseDataProvider {
   Future<String> getDeviceId() async {
     return await getValueFromSecureStorage('deviceId', defaultValue: '');
   }
+  Future<String> getLoanCalled() async {
+    return await getValueFromSecureStorage('loanCalled', defaultValue: '');
+  }
 
 
 
@@ -54,9 +61,11 @@ class DownPaymentUseCase extends BaseDataProvider {
     String customerId = await getCustomerId();
     print(customerId);
 
-    String clientId= await getClientId();
-    print(clientId);
+    String clientId= 'Y9C100'+ customerId;
 
+
+
+    print(clientId);
 
     return await executeApiRequest<CreateLoanResponse?>(
         taskType: TaskType.DATA_OPERATION,
@@ -83,6 +92,10 @@ class DownPaymentUseCase extends BaseDataProvider {
        Function(String) onErrorCallback) async {
     String mobileNumber = await getMobileNumber();
     String customerId = await getCustomerId();
+
+
+    print(mobileNumber);
+    print(customerId);
     return await executeApiRequest<CommonResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
@@ -138,13 +151,13 @@ class DownPaymentUseCase extends BaseDataProvider {
         });
   }
 
-  Future<LoanApprovalResponse?> activateLoan(
-      String customerId, Function(String) onErrorCallback) async {
+  Future<LoanApprovalResponse?> loanApproval(
+      String deviceId,String loanId, Function(String) onErrorCallback) async {
     return await executeApiRequest<LoanApprovalResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
         moduleIdentifier: DownPaymentModule.moduleIdentifier,
-        requestData: {"deviceId": 1, "loanId": "string"},
+        requestData: {"deviceId": int.parse(deviceId), "loanId": loanId},
         serviceIdentifier: DownPaymentService.activateLoanIdentifier,
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {
@@ -174,6 +187,15 @@ class DownPaymentUseCase extends BaseDataProvider {
 
   Future<void> setPaymentId(String paymentId) async {
       return await setValueToSecureStorage({'paymentId': paymentId});
+
+  }
+  Future<void> setPaymentFailed(String paymentFailed) async {
+      return await setValueToSecureStorage({'paymentFailed': paymentFailed});
+
+  }
+
+  Future<void> loanCalled(String loanCalled) async {
+      return await setValueToSecureStorage({'loanCalled': loanCalled});
 
   }
   Future<void> setDeviceId(String deviceId) async {

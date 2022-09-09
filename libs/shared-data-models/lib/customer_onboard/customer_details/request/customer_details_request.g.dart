@@ -19,7 +19,7 @@ CustomerDetailsRequest _$CustomerDetailsRequestFromJson(
       gender: json['gender'] as String?,
       profession: json['profession'] as String?,
       emailId: json['emailId'] as String?,
-      poBoxNumber: json['poBoxNumber'] as String?,
+      organization: json['organization'] as String?,
       region: json['region'] as String?,
       district: json['district'] as String?,
     );
@@ -37,7 +37,7 @@ Map<String, dynamic> _$CustomerDetailsRequestToJson(
       'gender': instance.gender,
       'profession': instance.profession,
       'emailId': instance.emailId,
-      'poBoxNumber': instance.poBoxNumber,
+      'organization': instance.organization,
       'region': instance.region,
       'district': instance.district,
     };

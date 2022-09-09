@@ -18,7 +18,7 @@ class DeviceDetailApiResolver extends TaskResolver {
             requestData['deviceId'], requestData['token']);
       case IDeviceOptionService.selectDeviceIdentifier:
         return _deviceDetailService.selectDevice(requestData['customerId'],
-            requestData['deviceId'], requestData['token']);
+            requestData['deviceId']); //, requestData['token']);
       case IDeviceOptionService.loanPreviewIdentifier:
         return _deviceDetailService.loanPreview(requestData['deviceId']);
       default:

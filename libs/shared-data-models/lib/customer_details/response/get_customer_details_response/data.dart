@@ -16,7 +16,7 @@ class Data extends Equatable {
   final String? gender;
   final dynamic profession;
   final String? emailId;
-  final String? poBoxNumber;
+  final String? organization;
   final String? region;
   final String? district;
   final int? referenceId;
@@ -35,7 +35,7 @@ class Data extends Equatable {
     this.gender,
     this.profession,
     this.emailId,
-    this.poBoxNumber,
+    this.organization,
     this.region,
     this.district,
     this.referenceId,
@@ -59,7 +59,7 @@ class Data extends Equatable {
     String? gender,
     dynamic profession,
     String? emailId,
-    String? poBoxNumber,
+    String? organization,
     String? region,
     String? district,
     int? referenceId,
@@ -78,7 +78,7 @@ class Data extends Equatable {
         gender: gender ?? this.gender,
         profession: profession ?? this.profession,
         emailId: emailId ?? this.emailId,
-        poBoxNumber: poBoxNumber ?? this.poBoxNumber,
+      organization: organization ?? this.organization,
         region: region ?? this.region,
         district: district ?? this.district,
         referenceId: referenceId ?? this.referenceId,
@@ -104,7 +104,7 @@ class Data extends Equatable {
       gender,
       profession,
       emailId,
-      poBoxNumber,
+      organization,
       region,
       district,
       referenceId,
