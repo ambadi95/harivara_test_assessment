@@ -218,6 +218,8 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
         await _downPaymentUseCase.checkPaymentStatus(paymentId, (p0) => null);
 
     if (mkePayment?.status == true) {
+
+
       state = DownPaymentState.ready(
           context: context,
           error: "",
@@ -227,12 +229,11 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
           waitForPayment: 1,
           loanApproved: 0,
           createLoan: mkePayment!.data!.status == "Downpayment_Success" ? 1 : 0,
-          paymentReceived: mkePayment.data != null
-              ? mkePayment.data!.status == "Downpayment_Success"
-                  ? 1
-                  : 0
-              : 0);
+          paymentReceived: mkePayment.data != null ? mkePayment.data!.status == "Downpayment_Success" ? 1 :  mkePayment.data!.status == "Downpayment_Initiated" ? 0 : 2 : 2);
 
+      if (mkePayment.data!.status == "Downpayment_Failed") {
+        await _downPaymentUseCase.setPaymentFailed("Payment Failed");
+      }
       if (mkePayment.data!.status == "Downpayment_Success") {
         createLoan(context);
       }
