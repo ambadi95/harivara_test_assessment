@@ -70,10 +70,7 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
           loanApproved: 0,
           paymentReceived: 1);
 
-
-      await loanApproval(createLoan!.data!.loanId!.toString(),context);
-
-
+      await loanApproval(createLoan!.data!.loanId!.toString(), context);
     } else {
       print("Failed");
       state = DownPaymentState.ready(
@@ -88,7 +85,6 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
           paymentReceived: 1);
 
       _showAlertForErrorMessage(createLoan!.message!);
-
     }
   }
 
@@ -118,7 +114,6 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
           createLoan: 1,
           loanApproved: 1,
           paymentReceived: 1);
-
     } else {
       print("Failed");
       state = DownPaymentState.ready(
@@ -132,7 +127,6 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
           loanApproved: 2,
           paymentReceived: 1);
       _showAlertForErrorMessage(loanApprovalResponse!.message!);
-
     }
   }
 
@@ -180,7 +174,6 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
           paymentReceived: 0);
       _showAlertForErrorMessage(mkePayment!.message!);
 
-
       print("Failed");
     }
   }
@@ -196,7 +189,7 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
     String paymentId = await _downPaymentUseCase.getPaymentID();
     String loanCalled = await getLoanCalled();
 
-    if(paymentFailed == "Payment Failed"){
+    if (paymentFailed == "Payment Failed") {
       return;
     }
     if (loanCalled == "loanCalled") {
@@ -218,8 +211,6 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
         await _downPaymentUseCase.checkPaymentStatus(paymentId, (p0) => null);
 
     if (mkePayment?.status == true) {
-
-
       state = DownPaymentState.ready(
           context: context,
           error: "",
@@ -229,17 +220,24 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
           waitForPayment: 1,
           loanApproved: 0,
           createLoan: mkePayment!.data!.status == "Downpayment_Success" ? 1 : 0,
-          paymentReceived: mkePayment.data != null ? mkePayment.data!.status == "Downpayment_Success" ? 1 :  mkePayment.data!.status == "Downpayment_Initiated" ? 0 : 2 : 2);
+          paymentReceived: mkePayment.data != null
+              ? mkePayment.data!.status == "Downpayment_Success"
+                  ? 1
+                  : mkePayment.data!.status == "Downpayment_Initiated"
+                      ? 0
+                      : 2
+              : 2);
 
       if (mkePayment.data!.status == "Downpayment_Failed") {
         await _downPaymentUseCase.setPaymentFailed("Payment Failed");
+
+        _showAlertForErrorMessage(mkePayment.message!);
       }
       if (mkePayment.data!.status == "Downpayment_Success") {
         createLoan(context);
       }
     } else {
       await _downPaymentUseCase.setPaymentFailed("Payment Failed");
-
 
       state = DownPaymentState.ready(
           context: context,
@@ -271,21 +269,16 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
         loanApproved: downPaymentScreenArgs.loanApproved,
         paymentReceived: downPaymentScreenArgs.paymentReceived);
 
-
-    if(downPaymentScreenArgs.title=="WORK_FLOW"){
-          if(downPaymentScreenArgs.paymentRequested == 1){
-            checkPaymentStatus(context);
-          }else{
-            makePayment(context, downPaymentScreenArgs.amount);
-          }
-
-
-    }else{
+    if (downPaymentScreenArgs.title == "WORK_FLOW") {
+      if (downPaymentScreenArgs.paymentRequested == 1) {
+        checkPaymentStatus(context);
+      } else {
+        makePayment(context, downPaymentScreenArgs.amount);
+      }
+    } else {
       makePayment(context, downPaymentScreenArgs.amount);
-
     }
   }
-
 
   _showAlertForErrorMessage(String errorMessage) {
     Get.bottomSheet(
@@ -301,5 +294,4 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
       isDismissible: true,
     );
   }
-
 }
