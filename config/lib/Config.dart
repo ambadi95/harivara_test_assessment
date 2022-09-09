@@ -37,10 +37,10 @@ const ST_agent = 'assets/images/agent.svg';
 const ST_scan_icon = 'assets/images/scan_image.svg';
 
 //pre prod Link
-const customerEndpoint = 'https://customerapi-stage.y9bank.com/customers/v1/';
+// const customerEndpoint = 'https://customerapi-stage.y9bank.com/customers/v1/';
 
 //main prod
-// const customerEndpoint = 'https://customerapi.y9bank.com/customers/v1/';
+const customerEndpoint = 'https://customerapi.y9bank.com/customers/v1/';
 
 // const customerEndpoint = 'https://y9-dev-capi.testmaya.com/customers/v1/';
 // const customerEndpoint = 'https://customerapi-stage.y9bank.com/customers/v1/';

@@ -271,6 +271,8 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
     if (downPaymentScreenArgs.title == "WORK_FLOW") {
       if (downPaymentScreenArgs.paymentRequested == 1) {
         checkPaymentStatus(context);
+      }else if (downPaymentScreenArgs.paymentReceived == 1) {
+          createLoan(context);
       } else {
         makePayment(context, downPaymentScreenArgs.amount);
       }

@@ -27,7 +27,7 @@ class ConfigureMdmUseCase extends BaseDataProvider {
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
         moduleIdentifier: ConfigureMdmModule.moduleIdentifier,
-        requestData: {'customerId': int.parse(customerId), 'imei': imei},
+        requestData: {'customerId':67, 'imei': imei},
         serviceIdentifier: IConfigureMdmService.mdmRegistrationIdentifier,
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {

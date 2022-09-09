@@ -107,7 +107,7 @@ class DownPaymentUseCase extends BaseDataProvider {
           "paymentType": "Downpayment"
         }*/
         {
-          "amountPaid": "101.0",
+          "amountPaid": amount,
           "customerId": customerId,
           "mobileNumber": mobileNumber,
           "paymentType": "Downpayment"

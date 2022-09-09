@@ -435,10 +435,9 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
       case "Downpayment_Initiated":
         try {
           await _saveData(workFlowStatusResponse);
-
           _navigationHandler.navigateToDownPaymentScreen(
-            deviceId: "1",
-            paymentStatus: 0,
+            deviceId: workFlowStatusResponse.data!.data[2].toString(),
+            paymentStatus: 1,
             amount: workFlowStatusResponse.data!.data[3]["amountPaid"],
           );
         } catch (e) {
@@ -448,36 +447,73 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
 
         // _navigationHandler.navigateToDownPaymentScreen();
         break;
+
       case "Downpayment_Success":
         try {
           _saveData(workFlowStatusResponse);
+          _navigationHandler.navigateToDownPaymentScreen(
+            deviceId: workFlowStatusResponse.data!.data[2].toString(),
+            paymentStatus: 1,
+            paymentReceived: 1,
+            amount: workFlowStatusResponse.data!.data[3]["amountPaid"],
+          );
+        } catch (e) {
+          return _showAlertForErrorMessage(
+              "Something went wrong,Please try again later!");
+        }
+        // _navigationHandler.navigateToDownPaymentScreen();
+        break;
 
+      case "Downpayment_Failed":
+        try {
+          _saveData(workFlowStatusResponse);
+          _navigationHandler.navigateToDownPaymentScreen(
+            deviceId: workFlowStatusResponse.data!.data[2].toString(),
+            paymentStatus: 0,
+            amount: workFlowStatusResponse.data!.data[3]["amountPaid"],
+          );
+        } catch (e) {
+          return _showAlertForErrorMessage(
+              "Something went wrong,Please try again later!");
+        }
+        break;
+
+      case "Loan_Initiated":
+
+        // try {
+        //   _saveData(workFlowStatusResponse);
+        //   _navigationHandler.navigateToDownPaymentScreen(
+        //     deviceId: workFlowStatusResponse.data!.data[2].toString(),
+        //     paymentStatus: 1,
+        //     amount: workFlowStatusResponse.data!.data[3]["amountPaid"],
+        //   );
+        //
+        // } catch (e) {
+        //   return _showAlertForErrorMessage(
+        //       "Something went wrong,Please try again later!");
+        // }
+      //need to be change
+        try {
+          _saveData(workFlowStatusResponse);
           await _navigationHandler.navigateToScanQrCode(
               int.parse(workFlowStatusResponse.data!.data[2].toString()));
         } catch (e) {
           return _showAlertForErrorMessage(
               "Something went wrong,Please try again later!");
         }
-        // _navigationHandler.navigateToDownPaymentScreen();
+
+        //_navigationHandler.navigateToDeviceLoanCreation();
         break;
-      case "Downpayment_Failed":
+
+      case "Loan_Approved":
         try {
           _saveData(workFlowStatusResponse);
-          _navigationHandler.navigateToDownPaymentScreen(
-            deviceId: "1",
-            paymentStatus: 0,
-            amount: workFlowStatusResponse.data!.data[3]["amountPaid"],
-          );
+          await _navigationHandler.navigateToScanQrCode(
+              int.parse(workFlowStatusResponse.data!.data[2].toString()));
         } catch (e) {
           return _showAlertForErrorMessage(
               "Something went wrong,Please try again later!");
         }
-        break;
-      case "Loan_Initiated":
-        //_navigationHandler.navigateToDeviceLoanCreation();
-        break;
-      case "Loan_Approved":
-        //TODO Navigate to Loan_Approved Screen
         break;
       case "Device_Reg_Initiated":
         //TODO Navigate to Device_Reg_Initiated Screen
