@@ -40,7 +40,9 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
   String userId = '';
   String? deviceLoan;
   String? outstandingAmount;
+  String? totalAmountToBeRepaid;
   String? repaidAmount;
+  String? dailyPaymentAmount;
 
   Data customerCount =
       const Data(initiatedCustomer: '0', enrolledCustomer: '0');
@@ -72,9 +74,10 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
             });
             loanDetailResponse = (await coordinator.getLoanDetails())!;
             deviceLoan = loanDetailResponse.data?.loanId ?? "-";
+            totalAmountToBeRepaid=loanDetailResponse.data?.totalAmountToBeRepaid??"0";
             outstandingAmount =
-                loanDetailResponse.data?.outStandingAmount ?? "-";
-            repaidAmount = loanDetailResponse.data?.repaymentFee ?? "-";
+                loanDetailResponse.data?.repaymentFee?? "-";
+            repaidAmount = loanDetailResponse.data?.repaymentFee?? "-";
             setState(() {});
           }
         },
@@ -231,7 +234,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                           ),
                           Row(
                             children: [
-                              Text(outstandingAmount ?? '-',
+                              Text(outstandingAmount?? '-',
                                   style: HS_account_id_style),
                               const Text(" TZSHS", style: HS_card_items_style_w)
                             ],
@@ -254,7 +257,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                             height: 5,
                           ),
                           Row(children: [
-                            Text(repaidAmount ?? "-",
+                            Text(totalAmountToBeRepaid ?? "-",
                                 style: HS_account_id_style),
                             const Text(" TZSHS", style: HS_card_items_style_w)
                           ]),

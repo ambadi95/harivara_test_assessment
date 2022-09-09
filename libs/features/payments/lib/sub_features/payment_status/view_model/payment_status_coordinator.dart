@@ -14,15 +14,21 @@ class PaymentStatusCoordinator extends BaseViewModel<PaymentStatusState> {
   ) : super(const PaymentStatusState.paymentStatusTimerState(
             timer: "", amount: ""));
 
-  Future paymentCheckStatus(String paymentId) async {
+  Future paymentCheckStatus(String paymentId,String timer) async {
     var response =
         await _paymentStatusUseCase.checkPaymentStatus(paymentId, (p0) => null);
     if (response?.status == true) {
-      _navigationHandler.navigateToPaymentSuccess(
-          amount: response?.data?.amountPaid,
-          paymentId: response?.data?.paymentId);
+      if(response?.data!=null && response?.data!.status=="Repayment_Success") {
+        _navigationHandler.navigateToPaymentSuccess(
+            amount: response?.data?.amountPaid,
+            paymentId: response?.data?.paymentId);
+      }else if(response?.data!=null && response?.data!.status=="Repayment_Failed"){
+        navigateToPaymentFailure();
+      }
     } else {
-      navigateToPaymentFailure();
+      if(timer==0) {
+        navigateToPaymentFailure();
+      }
     }
   }
 
