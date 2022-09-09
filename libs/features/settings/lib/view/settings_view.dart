@@ -51,7 +51,9 @@ class _SettingsState extends State<Settings> {
             height: 30,
           ),
           _buildSignout(coordinator),
-          const Spacer(),
+          const SizedBox(
+            height: 30,
+          ),
           _buildContactText(context)
         ],
       ),

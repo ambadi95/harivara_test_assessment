@@ -34,11 +34,19 @@ class ConfigureMdmCoordinator
   }
 
 
-  Future callMdmRegistration(String imei) async {
+  Future callMdmRegistration(BuildContext context,String imei) async {
+
+    state =
+        ConfigureMdmState.ready(context: context, error: "", isLoading: true);
+
     var response = await _configuremdmUseCase.mdmRegistration(imei, (p0) => null);
     if (response?.status == true) {
-     
+
+      state = ConfigureMdmState.ready(context: context, error: "", isLoading: false);
+
     } else {
+      state =
+          ConfigureMdmState.ready(context: context, error: "", isLoading: false);
 
       _showAlertForErrorMessage(response!.message!);
     }

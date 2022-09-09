@@ -37,6 +37,8 @@ class _ConfigureMdmScreenState extends State<ConfigureMdmScreen> {
       BaseView<ConfigureMdmCoordinator, ConfigureMdmState>(
           setupViewModel: (coordinator) async {
             coordinator.initialiseState(context);
+            imeiNumber.text="351389781756236";
+
           },
           builder: (context, state, coordinator) => CrayonPaymentScaffold(
                 appBarAttributes: CrayonPaymentAppBarAttributes(
@@ -77,11 +79,8 @@ class _ConfigureMdmScreenState extends State<ConfigureMdmScreen> {
 
   Widget _createLoading(ConfigureMdmStateReady state) {
     if (state.isLoading) {
-      return Container(
-        color: Colors.black.withOpacity(0.4),
-        child: const CenteredCircularProgressBar(
-            color: config_colors.PRIMARY_COLOR),
-      );
+      return const CenteredCircularProgressBar(
+          color: config_colors.PRIMARY_COLOR);
     } else {
       return Container();
     }
@@ -215,7 +214,10 @@ class _ConfigureMdmScreenState extends State<ConfigureMdmScreen> {
       child: GestureDetector(
         onTap: () async {
           if(_isChecked){
-          coordinator.configureMdmSuccessFulScreen();}
+            coordinator.callMdmRegistration(context,imeiNumber.text.toString());
+
+          }
+          // coordinator.configureMdmSuccessFulScreen();}
         },
         child: Container(
           width: double.infinity,
