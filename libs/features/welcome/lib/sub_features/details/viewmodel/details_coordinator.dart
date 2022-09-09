@@ -40,10 +40,14 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
         .getCustomerDetailsByMobileNumber((p0) => null);
     if (customerResponse!.status == true) {
       state = const DetailsState.successState();
-      if (customerResponse.data != null) {
-        state =
-            DetailsState.onGenderTypeFetched(customerResponse.data!.gender!);
-        state = DetailsState.onRegionFetched(customerResponse.data!.region!);
+      if (customerResponse.data != null   ) {
+        if(customerResponse.data!.gender!=null) {
+          state =
+              DetailsState.onGenderTypeFetched(customerResponse.data!.gender!);
+        }
+        if(customerResponse.data!.region!=null) {
+          state = DetailsState.onRegionFetched(customerResponse.data!.region!);
+        }
       }
         return customerResponse;
       } else {
