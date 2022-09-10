@@ -73,6 +73,7 @@ android {
             shrinkResources true
 //            signingConfig signingConfigs.debug
             signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro' // add this            
         }
         debug{
             signingConfig signingConfigs.debug
