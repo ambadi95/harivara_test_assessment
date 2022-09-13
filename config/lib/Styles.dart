@@ -208,6 +208,13 @@ const SU_button_text_style = TextStyle(
   color: SU_button_text_color,
 );
 
+const HO_bottom_sheet_button_text_style = TextStyle(
+  fontSize: 16,
+  fontWeight: FontWeight.w700,
+  fontFamily: 'Montserrat',
+  color: Colors.black,
+);
+
 const SU_text_input_address_style = InputDecoration(
   border: OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(8.0)),

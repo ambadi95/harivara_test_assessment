@@ -23,6 +23,7 @@ import 'package:welcome/sub_features/signup/sub_features/customer_onboarding_app
 import 'package:welcome/sub_features/signup/sub_features/customer_registration_options/viewmodel/registration_approval_coordinator.dart';
 import 'package:welcome/sub_features/signup/viewmodel/signup_usecase.dart';
 import 'package:welcome/sub_features/signup/viewmodel/signup_viewmodel.dart';
+import 'package:welcome/sub_features/welcome/service/perference_service.dart';
 import 'package:welcome/sub_features/welcome/viewmodel/welcome_usecase.dart';
 import 'package:welcome/sub_features/welcome/viewmodel/welcome_coordinatior.dart';
 import 'package:welcome/sub_features/welcome/viewmodel/welcome_view_model.dart';
@@ -51,7 +52,8 @@ class WelcomeModule {
             EnrollmentService(),
             AgentDetailsService(),
             WelcomeBackService(),
-            CustomerDetailsService()),
+            CustomerDetailsService(),
+            PreferencesService()),
       ),
     );
 
@@ -86,12 +88,12 @@ class WelcomeModule {
         .registerFactory<CustomerOnBoardingApprovalCoordinator>(
       (container) => CustomerOnBoardingApprovalCoordinator(
         WelcomeNavigationHandler(container.resolve<NavigationManager>()),
-          SignupUseCase(
-            SignupViewModel(),
-            container.resolve<IAuthManager>(),
-            container.resolve<TaskManager>(),
-          ),
+        SignupUseCase(
+          SignupViewModel(),
+          container.resolve<IAuthManager>(),
+          container.resolve<TaskManager>(),
         ),
+      ),
     );
 
     DIContainer.container.registerFactory<DetailsCoordinator>(

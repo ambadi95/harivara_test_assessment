@@ -1,10 +1,12 @@
+import 'package:config/Config.dart';
 import 'package:core/view/base_view.dart';
 import 'package:flutter/material.dart';
 import '../../welcome/state/welcome_screen_state.dart';
 import '../../welcome/viewmodel/welcome_coordinatior.dart';
 
 class AppLanguage extends StatefulWidget {
-  const AppLanguage({Key? key}) : super(key: key);
+  UserType userType;
+   AppLanguage({Key? key, required this.userType}) : super(key: key);
 
   @override
   State<AppLanguage> createState() => _AppLanguageState();
@@ -58,7 +60,7 @@ class _AppLanguageState extends State<AppLanguage> {
             selectedLanguage = 0;
             languageCode = 'en';
           }
-          welcomeCoordinator.setCurrentLocale(languageCode);
+          welcomeCoordinator.setCurrentLocale(languageCode, widget.userType);
         },
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

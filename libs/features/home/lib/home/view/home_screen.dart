@@ -382,57 +382,62 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
     );
   }
 
-  Widget _inviteAgentBoxView() {
-    return Container(
-      margin: const EdgeInsets.all(10.0),
-      width: double.maxFinite,
-      clipBehavior: Clip.antiAliasWithSaveLayer,
-      decoration: const BoxDecoration(
-        color: HS_InviteBoxBackColor,
-        borderRadius: BorderRadius.all(
-          Radius.circular(16),
+  Widget _inviteAgentBoxView(HomeCoordinator coordinator) {
+    return GestureDetector(
+      onTap: (){
+        coordinator.showReferralAlert();
+      },
+      child: Container(
+        margin: const EdgeInsets.all(10.0),
+        width: double.maxFinite,
+        clipBehavior: Clip.antiAliasWithSaveLayer,
+        decoration: const BoxDecoration(
+          color: HS_InviteBoxBackColor,
+          borderRadius: BorderRadius.all(
+            Radius.circular(16),
+          ),
         ),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const SizedBox(
-            height: 10,
-          ),
-          Container(
-            padding: const EdgeInsets.only(left:10.0, right: 10.0, top:10.0),
-            child: RichText(
-                text: TextSpan(
-              text: ' ',
-              children: <TextSpan>[
-                TextSpan(
-                    text: 'HS_Agent_Refer_Program'.tr,
-                    style: HS_invite_your_friends_style),
-                TextSpan(
-                    text: 'HS_Agent_Stay_Tunned'.tr, style: HS_stay_tunned_style),
-              ],
-            )),
-          ),
-          Container(
-            padding: const EdgeInsets.only(top:10.0, left:10.0, right: 10.0),
-            child: Text(
-              'HS_Agent_Refer_Text'.tr,
-              style: HS_invite_friends_y9_style,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const SizedBox(
+              height: 10,
             ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Align(
-            alignment: Alignment.bottomRight,
-            child: Image.asset(
-              HS_InviteIcon,
-              width: 200,
-              height: 120,
+            Container(
+              padding: const EdgeInsets.only(left:10.0, right: 10.0, top:10.0),
+              child: RichText(
+                  text: TextSpan(
+                text: ' ',
+                children: <TextSpan>[
+                  TextSpan(
+                      text: 'HS_Agent_Refer_Program'.tr,
+                      style: HS_invite_your_friends_style),
+                  TextSpan(
+                      text: 'HS_Agent_Stay_Tunned'.tr, style: HS_stay_tunned_style),
+                ],
+              )),
             ),
-          )
-        ],
+            Container(
+              padding: const EdgeInsets.only(top:10.0, left:10.0, right: 10.0),
+              child: Text(
+                'HS_Agent_Refer_Text'.tr,
+                style: HS_invite_friends_y9_style,
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Align(
+              alignment: Alignment.bottomRight,
+              child: Image.asset(
+                HS_InviteIcon,
+                width: 200,
+                height: 120,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
@@ -675,7 +680,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                         _userInfoView(),
                         _redBoxView(coordinator),
                         widget.homeScreenArgs.isAgent
-                            ? _inviteAgentBoxView()
+                            ? _inviteAgentBoxView(coordinator)
                             : _inviteBoxView(coordinator),
                         const SizedBox(height:30)
                       ],
