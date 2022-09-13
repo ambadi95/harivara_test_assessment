@@ -9,6 +9,8 @@ import 'package:widget_library/utils/app_utils.dart';
 import '../../../data_model/sign_up_arguments.dart';
 import '../../../navigation_handler/welcome_navigation_handler.dart';
 import 'package:config/Config.dart';
+import 'package:get/get.dart';
+import 'package:widget_library/bottom_sheet/alert_bottom_sheet.dart';
 
 class SignUpCoordinator extends BaseViewModel<SignUpState> {
   final SignupUseCase _signupUseCase;
@@ -103,7 +105,13 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
               userId: response.data?.customerId.toString());
         } else {
           state = const SignUpState.initialState();
-          state = SignUpState.mobileNumberError(response.message!);
+
+          if(response.message=="Internal Server Error"){
+            _showAlertForErrorMessage(response.message!);
+          }else{
+            state = SignUpState.mobileNumberError(response.message!);
+
+          }
         }
       }
         else if (signUpArguments.signupType == SignupType.customerSignUp) {
@@ -121,7 +129,14 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
                 userId: response.data?.customerId.toString());
           } else {
             state = const SignUpState.initialState();
-            state = SignUpState.mobileNumberError(response.message!);
+
+            if(response.message == "Internal Server Error"){
+              _showAlertForErrorMessage(response.message!);
+            }else{
+              state = SignUpState.mobileNumberError(response.message!);
+
+            }
+
           }
         } else
         if (signUpArguments.signupType == SignupType.resetPasscodeAgent) {
@@ -200,6 +215,22 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
         onClose: () {goBack();},
       );
     }
+  }
+
+  //showalert for error message
+  _showAlertForErrorMessage(String errorMessage) {
+    Get.bottomSheet(
+      AlertBottomSheet(
+          alertMessage: errorMessage,
+          alertTitle: 'Error',
+          alertIcon: "assets/images/alert_icon.png",
+          onClose: () {
+            goBack();
+          },
+          packageName: ""),
+      isScrollControlled: false,
+      isDismissible: true,
+    );
   }
 
 
