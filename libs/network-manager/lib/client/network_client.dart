@@ -265,9 +265,9 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
     final response =
         await httpClient .post(uri, headers: headers, body: request.jsonBody);
     print(response.body);
-    if (response.statusCode == 401) {
-      return _logoutUser();
-    }
+    // if (response.statusCode == 401) {
+    //   return _logoutUser();
+    // }
     if (response.statusCode == 500) {
       return _internalServerMessage();
     }

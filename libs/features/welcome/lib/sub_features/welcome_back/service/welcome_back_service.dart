@@ -7,6 +7,7 @@ abstract class IWelcomeBackService {
   static const getAgentDetailIdentifier = 'details';
   static const getCustomerDetailIdentifier = 'customerDetails';
   static const agentLoginIdentifier = 'agentLogin';
+  static const customerLoginIdentifier = 'customerLogin';
 
   Future<StandardRequest> getAgentDetails(String agentId);
 
@@ -15,6 +16,10 @@ abstract class IWelcomeBackService {
   Future<StandardRequest> loginAgent(
     Map<String, dynamic> requestData,
   );
+
+  Future<StandardRequest> loginCustomer(
+      Map<String, dynamic> requestData,
+      );
 }
 
 class WelcomeBackService implements IWelcomeBackService {
@@ -41,6 +46,17 @@ class WelcomeBackService implements IWelcomeBackService {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
     request.endpoint = 'agent-login';
+    request.jsonBody = json.encode(requestData);
+    return request;
+  }
+
+  @override
+  Future<StandardRequest> loginCustomer(
+      Map<String, dynamic> requestData,
+      ) async {
+    var request = StandardRequest();
+    request.requestType = RequestType.POST;
+    request.endpoint = 'customer-login';
     request.jsonBody = json.encode(requestData);
     return request;
   }

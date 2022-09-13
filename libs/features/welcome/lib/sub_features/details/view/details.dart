@@ -8,6 +8,8 @@ import 'package:shared_data_models/customer_details/response/get_customer_detail
 import 'package:shared_data_models/customer_onboard/region_district/region_response/datum.dart';
 import 'package:shared_data_models/customer_onboard/region_district/district_response/datum.dart'
     as b;
+import 'package:widget_library/utils/app_utils.dart';
+
 import 'package:welcome/data_model/details_arguments.dart';
 import 'package:welcome/sub_features/details/state/details_state.dart';
 import 'package:welcome/sub_features/details/viewmodel/details_coordinator.dart';
@@ -592,8 +594,14 @@ class _DetailsScreenState extends State<DetailsScreen> {
             coordinator.isValidRegion(value.name!);
             dis.clear();
             district.clear();
+            AppUtils.appUtilsInstance.showCircularDialog(context);
             dis = await coordinator.getDistrict(value.id!, widget.userType);
+            Navigator.pop(context);
+            districtDropDown.clear();
             districtDropDown = getDistrictDropDownData(dis);
+            _district = districtDropDown.elementAt(0).value;
+            setState(() {
+            });
           },
         ),
         const SizedBox(
