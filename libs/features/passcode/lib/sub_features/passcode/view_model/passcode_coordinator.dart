@@ -345,7 +345,7 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
             );
           } else {
             _showAlertForErrorMessage(resetResponse!.message!);
-            CrayonPaymentLogger.logError(resetResponse!.message!);
+            CrayonPaymentLogger.logError(resetResponse.message!);
           }
           // _navigationHandler.navigateToCustomerEnrollmentScreen(
           //     destinationPath, true, UserType.Customer);
