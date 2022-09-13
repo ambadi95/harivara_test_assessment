@@ -187,12 +187,16 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
       int attempts = currentState.attemptsRemain;
       if (otpScreenArgs.otpVerificationType ==
           OtpVerificationType.customerSign) {
+        state = currentState.copyWith(isLoading: true);
+
         var responseSignin = await _verifyOtpUseCase.otpVerify(
             otpScreenArgs.refId,
             enterOtp,
             otpScreenArgs.userType,
             event,
             (p0) => null);
+        state = currentState.copyWith(isLoading: false);
+
         if (responseSignin!.status == true) {
           if (userType == UserType.Customer) {
             var customerAgentIdResponse = await _verifyOtpUseCase
@@ -205,17 +209,23 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
               } else {
                 _navigationHandler.navigateToCustomerEnrollmentScreen();
               }
+            }else{
+              _showAlertForErrorMessage(customerAgentIdResponse!.message!);
             }
           } else {
             _navigationHandler.navigateToHomeScreen(userType);
           }
         } else {
-          print('error');
+          _showAlertForErrorMessage(responseSignin.message!);
         }
       } else if (otpScreenArgs.otpVerificationType ==
           OtpVerificationType.customerSignUpAgent) {
+        state = currentState.copyWith(isLoading: true);
+
         var responseSignin = await _verifyOtpUseCase.otpVerifyCustomerByAgent(
             otpScreenArgs.refId, enterOtp, 'Customer', (p0) => null);
+        state = currentState.copyWith(isLoading: false);
+
         if (responseSignin!.data!.status == "success") {
           print('###############');
           print(otpScreenArgs.refId);
@@ -230,6 +240,8 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
           } else {
             _showAlertForErrorMessage(getWorkFlowStatus.message!);
           }
+        }else{
+          _showAlertForErrorMessage(responseSignin.message!);
         }
       } else if (otpScreenArgs.otpVerificationType ==
           OtpVerificationType.mobile) {
@@ -284,6 +296,8 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
           await _verifyOtpUseCase.saveOnBordStatus(agentId);
 
           _navigationHandler.navigateToAgentWelcomeBack(userType);
+        }else{
+          _showAlertForErrorMessage(responseSignin!.message!);
         }
       } else if (otpScreenArgs.otpVerificationType ==
           OtpVerificationType.resetPasscodeCustomer) {
@@ -479,7 +493,6 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         break;
 
       case "Loan_Initiated":
-
         // try {
         //   _saveData(workFlowStatusResponse);
         //   _navigationHandler.navigateToDownPaymentScreen(
@@ -492,7 +505,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         //   return _showAlertForErrorMessage(
         //       "Something went wrong,Please try again later!");
         // }
-      //need to be change
+        //need to be change
         try {
           _saveData(workFlowStatusResponse);
           await _navigationHandler.navigateToScanQrCode(
