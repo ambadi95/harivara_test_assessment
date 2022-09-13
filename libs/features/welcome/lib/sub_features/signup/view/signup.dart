@@ -139,7 +139,7 @@ class _SignUpState extends State<SignUp> {
               'SU_ID_no_label',
               nidaNumber,
               coordinator,
-              widget.signUpArguments.userType == 'Agent'
+              widget.signUpArguments.userType == UserType.Agent
                   ? 'SU_title_hint_agent'
                   : 'SU_title_hint',
               nidaNumberError,
