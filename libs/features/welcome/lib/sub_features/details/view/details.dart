@@ -216,12 +216,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
   }
 
   Widget _createLoading() {
-    return Center(
-      child: Container(
-        color: Colors.black.withOpacity(0.4),
-        child: const CenteredCircularProgressBar(
-            color: config_color.PRIMARY_COLOR),
-      ),
+    return const Center(
+      child: CenteredCircularProgressBar(
+          color: config_color.PRIMARY_COLOR),
     );
   }
 
