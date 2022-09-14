@@ -93,7 +93,7 @@ class _SettingsState extends State<Settings> {
       child: Center(
         child: CrayonPaymentText(
           key: Key('${widget._identifier}_ST_contact'),
-          text: TextUIDataModel('ST_contact_text'.tr,
+          text: TextUIDataModel('ST_contact_text'.tr.replaceAll("{}", LauncherUtils.CONTACT_NUMBER),
               styleVariant: CrayonPaymentTextStyleVariant.headline5,
               color: VO_ResendTextColor,
               fontWeight: FontWeight.w100,
