@@ -105,7 +105,11 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
         SizedBox(
           height: AppUtils.appUtilsInstance.getPercentageSize(percentage: 15),
         ),
-        _airtlePayWidget()
+        _airtlePayWidget(),
+        _tigoPayWidget(),
+        _mPesaWidget()
+
+
       ],
     );
   }
@@ -188,7 +192,7 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Image.asset("assets/images/airtel.png"),
+                  Image.asset("assets/images/airtel_money.png"),
                   SizedBox(width: 10),
                   CrayonPaymentText(
                     key: Key('${_identifier}_Airtel_Pay'),
@@ -210,6 +214,92 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
       ],
     );
   }
+
+  _mPesaWidget() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        dynamicHSpacer(10),
+        Container(
+            height: 50,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              color: PS_AirtelPayContainerColor.withOpacity(.30),
+              borderRadius: BorderRadius.circular(5),
+              border: Border.all(color: Color(0xff263238), width: 0.1),
+            ),
+            child: Padding(
+              padding:
+              EdgeInsets.only(top: 10, right: 20, left: 20, bottom: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Image.asset("assets/images/m_pesa.png"),
+                  SizedBox(width: 10),
+                  CrayonPaymentText(
+                    key: Key('${_identifier}_Airtel_Pay'),
+                    text: TextUIDataModel('PP_M_pesa'.tr,
+                        styleVariant: CrayonPaymentTextStyleVariant.headline4,
+                        color: SECONDARY_COLOR.withOpacity(.30),
+                        fontWeight: FontWeight.w600),
+                  ),
+                  Spacer(),
+                  Radio(
+                    value: 3,
+                    groupValue: 1,
+                    activeColor: SU_button_color.withOpacity(.10),
+                    onChanged: (value) {},
+                  )
+                ],
+              ),
+            )),
+      ],
+    );
+  }
+
+
+  _tigoPayWidget() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        dynamicHSpacer(10),
+        Container(
+            height: 50,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              color: PS_AirtelPayContainerColor.withOpacity(.30),
+              borderRadius: BorderRadius.circular(5),
+              border: Border.all(color: Color(0xff263238), width: 0.1),
+            ),
+            child: Padding(
+              padding:
+              EdgeInsets.only(top: 10, right: 20, left: 20, bottom: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Image.asset("assets/images/tigo.png"),
+                  SizedBox(width: 10),
+                  CrayonPaymentText(
+                    key: Key('${_identifier}_Airtel_Pay'),
+                    text: TextUIDataModel('PP_tigo'.tr,
+                        styleVariant: CrayonPaymentTextStyleVariant.headline4,
+                        color: SECONDARY_COLOR.withOpacity(.30),
+                        fontWeight: FontWeight.w600),
+                  ),
+                  Spacer(),
+                  Radio(
+                    value: 2,
+                    groupValue: 1,
+                    activeColor: SU_button_color,
+                    onChanged: (value) {},
+                  )
+                ],
+              ),
+            )),
+      ],
+    );
+  }
+
 
   Widget _payNowButton(
     BuildContext context,
