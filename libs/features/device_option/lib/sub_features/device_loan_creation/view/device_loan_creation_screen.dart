@@ -24,6 +24,7 @@ import '../viewmodel/device_loan_creation_coordinator.dart';
 
 class DeviceLoanCreationScreen extends StatefulWidget {
   final DeviceLoanCreationArgs deviceLoanCreationArgs;
+
   static const String viewPath =
       '${DeviceOptionModule.moduleIdentifier}/device-loan-creation-screen';
 
@@ -43,6 +44,9 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
   String isDeviceSelected = "";
 
   Data? detailDetail;
+
+  bool evaluateTigo=false;
+  bool evalutaeMPesa=false;
 
   LoanPreviewResponseModel? loanPreviewResponseModel;
 
@@ -197,9 +201,9 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
   Widget selectButton(DeviceLoanCreationCoordinator coordinator) {
     return CrayonPaymentDockedButton(
       key: Key('Select'),
-      title:
-          "${'DLC_pay_now'.tr} ${loanPreviewResponseModel!.data!.totalAmountToBeRepaid} TZSHS",
-      // title: 'Pay Now 2000 TZHS',
+      // title:
+      //     "${'DLC_pay_now'.tr} ${loanPreviewResponseModel!.data!.totalAmountToBeRepaid} TZSHS",
+      title: 'Pay Now 40,000 TZSHS',
       borderRadius: 8,
       height: CrayonPaymentDimensions.marginFortyEight,
       buttonColor: LS_ButtonColor,
@@ -207,7 +211,8 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
       textStyleVariant: CrayonPaymentTextStyleVariant.headline4,
       onPressed: () {
         coordinator.navigateToDownPayment(
-            loanPreviewResponseModel!.data!.totalAmountToBeRepaid!.toString(),
+            //loanPreviewResponseModel!.data!.totalAmountToBeRepaid!.toString(),
+          "40000",
             detailDetail!.deviceId);
       },
     );
@@ -248,6 +253,10 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
         ),
         dynamicHSpacer(20),
         _radioButton(),
+        dynamicHSpacer(5),
+        _radioTigoButton(),
+        dynamicHSpacer(5),
+        _radioMPesaButton()
       ],
     );
   }
@@ -302,7 +311,7 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Image.asset("assets/images/airtel.png"),
+              Image.asset("assets/images/airtel_money.png"),
               SizedBox(width: 10),
               CrayonPaymentText(
                 key: Key('${_identifier}_Device_Loan_Airtel_Pay'),
@@ -317,6 +326,74 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
                 groupValue: 1,
                 activeColor: SU_button_color,
                 onChanged: (value) {},
+              )
+            ],
+          ),
+        ));
+  }
+  _radioTigoButton() {
+    return Container(
+        height: 50,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: Color(0xFFF5F7FB),
+          borderRadius: BorderRadius.circular(5),
+          border: Border.all(color: Color(0xff263238), width: 0.1),
+        ),
+        child: Padding(
+          padding: EdgeInsets.only(top: 10, right: 20, left: 20, bottom: 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Image.asset("assets/images/tigo.png"),
+              SizedBox(width: 10),
+              CrayonPaymentText(
+                key: Key('${_identifier}_Device_Loan_Airtel_Pay'),
+                text: TextUIDataModel('tigo pesa',
+                    styleVariant: CrayonPaymentTextStyleVariant.headline4,
+                    color: SECONDARY_COLOR,
+                    fontWeight: FontWeight.w600),
+              ),
+              Spacer(),
+              Radio(
+                value: 1,
+                groupValue: 1,
+                activeColor: SU_button_color,
+                  onChanged: (value) => evaluateTigo ? null : value = 0,
+              )
+            ],
+          ),
+        ));
+  }
+  _radioMPesaButton() {
+    return Container(
+        height: 50,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: Color(0xFFF5F7FB),
+          borderRadius: BorderRadius.circular(5),
+          border: Border.all(color: Color(0xff263238), width: 0.1),
+        ),
+        child: Padding(
+          padding: EdgeInsets.only(top: 10, right: 20, left: 20, bottom: 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Image.asset("assets/images/m_pesa.png"),
+              SizedBox(width: 10),
+              CrayonPaymentText(
+                key: Key('${_identifier}_Device_Loan_Airtel_Pay'),
+                text: TextUIDataModel('m-pesa'.tr,
+                    styleVariant: CrayonPaymentTextStyleVariant.headline4,
+                    color: SECONDARY_COLOR,
+                    fontWeight: FontWeight.w600),
+              ),
+              Spacer(),
+              Radio(
+                value: 1,
+                groupValue: 1,
+                activeColor: SU_button_color,
+                  onChanged: (value) => evalutaeMPesa ? null : value = 0,
               )
             ],
           ),

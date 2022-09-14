@@ -1,5 +1,6 @@
 import 'package:config/Config.dart';
 import 'package:core/logging/logger.dart';
+import 'package:login/state/login_state.dart';
 import 'package:network_manager/auth/auth_manager.dart';
 import 'package:network_manager/model/response/jwt/jwt_token_response.dart';
 import 'package:shared_data_models/agent_onboard/agent_details/response/agent_details_response.dart';
@@ -132,7 +133,7 @@ class LoginUseCase extends BaseDataProvider {
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
         moduleIdentifier: LoginModule.moduleIdentifier,
-        requestData: {"agentId": agentId, 'mobileNumber': mobileNumber},
+        requestData: {"agentId": agentId, 'mobileNumber': getMobileNumberWithPlus(mobileNumber)},
         serviceIdentifier: ILoginService.agentDetailIdentifier,
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {
@@ -141,13 +142,20 @@ class LoginUseCase extends BaseDataProvider {
         });
   }
 
+  String getMobileNumberWithPlus(String mobileNumber) {
+    if (!mobileNumber.contains("+")) {
+      mobileNumber = "+" + mobileNumber;
+    }
+    return mobileNumber;
+  }
+
   Future<CheckPasscodeResponse?> getPasscodeCheck(
       String mobileNumber, Function(String) onErrorCallback) async {
     return await executeApiRequest<CheckPasscodeResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
         moduleIdentifier: LoginModule.moduleIdentifier,
-        requestData: {'mobileNumber': mobileNumber},
+        requestData: {'mobileNumber': getMobileNumberWithPlus(mobileNumber)},
         serviceIdentifier: ILoginService.checkPasscodeIdentifier,
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {
