@@ -201,9 +201,8 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
   Widget selectButton(DeviceLoanCreationCoordinator coordinator) {
     return CrayonPaymentDockedButton(
       key: Key('Select'),
-      // title:
-      //     "${'DLC_pay_now'.tr} ${loanPreviewResponseModel!.data!.totalAmountToBeRepaid} TZSHS",
-      title: 'Pay Now 40,000 TZSHS',
+      title:
+          "${'DLC_pay_now'.tr} ${loanPreviewResponseModel!.data!.joiningFee} TZSHS",
       borderRadius: 8,
       height: CrayonPaymentDimensions.marginFortyEight,
       buttonColor: LS_ButtonColor,
@@ -211,8 +210,7 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
       textStyleVariant: CrayonPaymentTextStyleVariant.headline4,
       onPressed: () {
         coordinator.navigateToDownPayment(
-            //loanPreviewResponseModel!.data!.totalAmountToBeRepaid!.toString(),
-          "40000",
+            loanPreviewResponseModel!.data!.joiningFee!.toString(),
             detailDetail!.deviceId);
       },
     );
@@ -349,7 +347,7 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
               SizedBox(width: 10),
               CrayonPaymentText(
                 key: Key('${_identifier}_Device_Loan_Airtel_Pay'),
-                text: TextUIDataModel('tigo pesa',
+                text: TextUIDataModel('DC_tigo_pesa'.tr,
                     styleVariant: CrayonPaymentTextStyleVariant.headline4,
                     color: SECONDARY_COLOR.withOpacity(.30),
                     fontWeight: FontWeight.w600),
@@ -383,7 +381,7 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
               SizedBox(width: 10),
               CrayonPaymentText(
                 key: Key('${_identifier}_Device_Loan_Airtel_Pay'),
-                text: TextUIDataModel('m-pesa'.tr,
+                text: TextUIDataModel('DC_m-pesa'.tr,
                     styleVariant: CrayonPaymentTextStyleVariant.headline4,
                     color: SECONDARY_COLOR.withOpacity(.30),
                     fontWeight: FontWeight.w600),

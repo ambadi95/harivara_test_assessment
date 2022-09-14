@@ -287,7 +287,9 @@
   "MDM_successful_text" : "Imefanikiwa",
   "MDM_finish_text": "Maliza",
   "MDM_successful_heading" : "Usanidi wa MDM Umefaulu\nImekamilika. Inasubiri Kifaa\niamilishwe kwa Ufuatiliaji",
-  "T_C_NOTE": "Mkopaji anakubaliana na shauri la kukatwa deni lake la mkopo kielektroniki kulingana na makato ya mkopo kwa siku kutoka kwenye simu yake kwa kipindi cha siku mia tatu sitini na tano."
+  "T_C_NOTE": "Mkopaji anakubaliana na shauri la kukatwa deni lake la mkopo kielektroniki kulingana na makato ya mkopo kwa siku kutoka kwenye simu yake kwa kipindi cha siku mia tatu sitini na tano.",
+  "DC_m-pesa" : "m-pesa",
+  "DC_tigo_pesa": "tigo pesa"
 
 
 }
