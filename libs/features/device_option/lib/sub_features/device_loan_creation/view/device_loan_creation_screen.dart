@@ -47,6 +47,8 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
 
   bool evaluateTigo=false;
   bool evalutaeMPesa=false;
+  int radioValue = 0;
+
 
   LoanPreviewResponseModel? loanPreviewResponseModel;
 
@@ -209,9 +211,14 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
       textColor: White,
       textStyleVariant: CrayonPaymentTextStyleVariant.headline4,
       onPressed: () {
-        coordinator.navigateToDownPayment(
-            loanPreviewResponseModel!.data!.joiningFee!.toString(),
-            detailDetail!.deviceId);
+        if(radioValue == 5){
+          coordinator.navigateToOtherScreen(widget.deviceLoanCreationArgs.deviceDetailData.deviceId!, widget.deviceLoanCreationArgs.deviceDetailData.joiningFees!);
+        }else{
+          coordinator.navigateToDownPayment(
+              loanPreviewResponseModel!.data!.joiningFee!.toString(),
+              detailDetail!.deviceId);
+        }
+
       },
     );
   }
@@ -250,6 +257,8 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
               fontWeight: FontWeight.w600),
         ),
         dynamicHSpacer(20),
+        _radioOtherButton(),
+        dynamicHSpacer(5),
         _radioButton(),
         dynamicHSpacer(5),
         _radioTigoButton(),
@@ -295,6 +304,45 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
     );
   }
 
+  _radioOtherButton() {
+    return Container(
+        height: 50,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: Color(0xFFF5F7FB),
+          borderRadius: BorderRadius.circular(5),
+          border: Border.all(color: Color(0xff263238), width: 0.1),
+        ),
+        child: Padding(
+          padding: EdgeInsets.only(top: 10, right: 20, left: 20, bottom: 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Image.asset("assets/images/credit_check.png"),
+              SizedBox(width: 10),
+              CrayonPaymentText(
+                key: Key('${_identifier}_Device_Loan_Airtel_Pay'),
+                text: TextUIDataModel('Other Payment'.tr,
+                    styleVariant: CrayonPaymentTextStyleVariant.headline4,
+                    color: SECONDARY_COLOR,
+                    fontWeight: FontWeight.w600),
+              ),
+              Spacer(),
+              Radio(
+                value: 5,
+                groupValue: radioValue,
+                activeColor: SU_button_color,
+                onChanged: (value) {
+                  setState(() {
+                    radioValue = value as int;
+                  });
+                },
+              )
+            ],
+          ),
+        ));
+  }
+
   _radioButton() {
     return Container(
         height: 50,
@@ -321,9 +369,13 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
               Spacer(),
               Radio(
                 value: 1,
-                groupValue: 1,
+                groupValue: radioValue,
                 activeColor: SU_button_color,
-                onChanged: (value) {},
+                onChanged: (value) {
+                  setState(() {
+                    radioValue = value as int;
+                  });
+                },
               )
             ],
           ),

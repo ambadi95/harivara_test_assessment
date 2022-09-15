@@ -25,13 +25,14 @@ import 'package:widget_library/page_header/text_ui_data_model.dart';
 import 'package:widget_library/progress_bar/centered_circular_progress_bar.dart';
 import 'package:widget_library/scaffold/crayon_payment_scaffold.dart';
 import 'package:widget_library/static_text/crayon_payment_text.dart';
+import '../otherpayment_module.dart';
 import '../state/otherpayment_state.dart';
 import '../viewmodel/otherpayment_coordinator.dart';
 import 'package:sprintf/sprintf.dart';
 
 class OtherPaymentScreen extends StatefulWidget {
   static const viewPath =
-      '${DownPaymentModule.moduleIdentifier}/otherpaymetnscreen';
+      '${OtherPaymentModule.moduleIdentifier}/otherpaymetnscreen';
 
   final OtherPaymentScreenArgs otherPaymentScreenArgs;
 
