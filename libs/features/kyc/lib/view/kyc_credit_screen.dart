@@ -33,9 +33,13 @@ class KycCreditScreen extends StatefulWidget {
 class _KycCreditScreenState extends State<KycCreditScreen> {
   final String _identifier = 'kyc_credit-screen';
   bool _isBtnEnabled = false;
+  String agentType = '';
 
   bool _isKycCreditLoanEnabled = false;
+  bool _isKycPassEnabledByManual = false;
   bool _isKycPassEnabled = false;
+  bool _isKycCreditLoanByManual = false;
+
   bool _eligibilityFound = false;
 
   KycCreditCoordinator? kycCreditCoordinator;
@@ -43,9 +47,11 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
   @override
   Widget build(BuildContext context) =>
       BaseView<KycCreditCoordinator, KycCreditState>(
-          setupViewModel: (coordinator) {
+          setupViewModel: (coordinator) async {
             coordinator.initialiseState(context);
             kycCreditCoordinator = coordinator;
+            agentType = await coordinator.getAgentType();
+
             coordinator.callKycCheck(context, false);
           },
           onStateListenCallback: (preState, newState) =>
@@ -452,7 +458,10 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
           ),
           _buildGoBackButton(context, coordinator, state),
           const SizedBox(height: 16),
-          _buildManualApproveButton(context, coordinator, state,isKycCheck: false)
+          agentType == "SUPER_AGENT"
+              ? _buildManualApproveButton(context, coordinator, state,
+                  isKycCheck: false)
+              : const SizedBox()
         ],
       ),
     );
