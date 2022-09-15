@@ -99,7 +99,7 @@
   "ES_select_membership" : "Chagua Uanachama Wako",
   "ES_view_membership" : "Tazama Uanachama Wako",
   "ES_agent_contact_text" : "Wakala wa Y9 atawasiliana nawe baada ya muda mfupi kuhusu Uanachama wako",
-  "ES_need_help_contact" : "Unahitaji Usaidizi Wasiliana Nasi kwa +255 677-199-991",
+  "ES_need_help_contact" : "Unahitaji Usaidizi Wasiliana Nasi kwa {}",
   "ES_choose_product_message" : "Asante kwa kuchagua bidhaa zetu, tutawasiliana nawe hivi karibuni",
   "ES_done" : "Imekamilika",
 
@@ -203,7 +203,7 @@
   "ST_faq" : "Maswali Yanayoulizwa Mara Kwa Mara",
   "ST_term_condition" : "Sheria na Masharti",
   "ST_call_support" : "Piga simu kwa Usaidizi wa Wateja",
-  "ST_contact_text" : "Unahitaji Msaada au Ikiwa Una Swali Lolote Wasiliana Nasi kwa +255 677-039-999",
+  "ST_contact_text" : "Unahitaji Msaada au Ikiwa Una Swali Lolote Wasiliana Nasi kwa {}",
 
   "PP_Daily_Repayment_Title" : "Malipo ya Kila Siku",
   "PP_Airtel_Pay" : "Airtel Pay",
@@ -333,7 +333,7 @@
   "PS_reference" : "Ref: {}",
   "PS_thank_note" : "Thank you for your Payment. An automated Payment Receipt will be sent to your registered Mobile Number",
   "PS_success_note" : "Successfully paid your Total Amount to be Repaid. Your Loan account will be closed within next 48 hours ",
-  "PS_customer_support" : "For Customer Support Please Call +255 67 719 9991",
+  "PS_customer_support" : "For Customer Support Please Call {}",
   "PS_close" : "Funga",
   "PF_title"  : "Hitilafu ya Muamala wa Malipo",
   "PF_desc"  : "Samahani kwa usumbufu, tunakabiliwa na Hitilafu isiyotarajiwa. Tafadhali jaribu tena baada ya muda fulani"

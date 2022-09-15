@@ -226,7 +226,7 @@ class _CrayonWelcomBackScreenState extends State<CrayonWelcomBackScreen> {
       //errorAnimationController: errorController,
       controller: passcodeController,
       keyboardType: TextInputType.number,
-      onCompleted: (v) async {
+      onCompleted: (v)  {
         coordinator.onPasscodeCallback(
             passcodeController.text, widget.userType);
         passcodeController.clear();
