@@ -208,6 +208,13 @@ const SU_button_text_style = TextStyle(
   color: SU_button_text_color,
 );
 
+const SU_skip_otp_button_text_style = TextStyle(
+  fontSize: 16,
+  fontWeight: FontWeight.bold,
+  fontFamily: 'Montserrat',
+  color: PRIMARY_COLOR,
+);
+
 const HO_bottom_sheet_button_text_style = TextStyle(
   fontSize: 16,
   fontWeight: FontWeight.w700,
@@ -282,6 +289,12 @@ const HS_title_style = TextStyle(
   fontStyle: FontStyle.normal,
   color: Colors.white,
 );
+
+const HS_super_agent_text = TextStyle(
+    fontSize: 10,
+    color: Colors.white
+);
+
 const HS_account_id_style = TextStyle(
   fontSize: 20,
   fontWeight: FontWeight.w600,

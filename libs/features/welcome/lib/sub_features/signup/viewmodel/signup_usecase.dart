@@ -11,7 +11,7 @@ import 'package:task_manager/base_classes/base_data_provider.dart';
 import 'package:task_manager/task_manager.dart';
 import 'package:task_manager/task_manager_impl.dart';
 import 'package:welcome/sub_features/signup/viewmodel/signup_viewmodel.dart';
-
+import 'package:shared_data_models/customer_onboard/payment_mode_list_respose/payment_mode_list_response/payment_mode_list_response.dart';
 import '../../../welcome_module.dart';
 import '../service/signup_service.dart';
 
@@ -35,8 +35,16 @@ class SignupUseCase extends BaseDataProvider {
     return agentId.isNotEmptyOrNull;
   }
 
+  bool isValidPaymentMode(String paymentMode) {
+    return paymentMode.isNotEmptyOrNull;
+  }
+
   Future<String> getAgentId() async {
     return await getValueFromSecureStorage('agentId', defaultValue: '');
+  }
+
+  Future<String> getAgentType() async {
+    return await getValueFromSecureStorage('agentType', defaultValue: '');
   }
 
   Future<void> saveDetails(String nidaNumber, String mobileNumber) async {
@@ -51,6 +59,10 @@ class SignupUseCase extends BaseDataProvider {
 
   Future<void> _saveNIDANumber(String nidaNumber) async {
     return await setValueToStorage({'nidaNumber': nidaNumber});
+  }
+
+  Future<void> saveTelcoPartner(String telco) async {
+    return await setValueToStorage({'telco': telco});
   }
 
   Future<void> saveCustomerId(String? customerId) async {
@@ -237,6 +249,20 @@ class SignupUseCase extends BaseDataProvider {
         modelBuilderCallback: (responseData) {
           final data = responseData;
           return AgentDetailsResponse.fromJson(data);
+        });
+  }
+
+  Future<PaymentModeListResponse?> getPaymentMode(Function(String) onErrorCallback) async {
+    return await executeApiRequest<PaymentModeListResponse?>(
+        taskType: TaskType.DATA_OPERATION,
+        taskSubType: TaskSubType.REST,
+        moduleIdentifier: WelcomeModule.moduleIdentifier,
+        requestData: {},
+        serviceIdentifier: ISignupService.getTelcoListIdentifier,
+        onError: onErrorCallback,
+        modelBuilderCallback: (responseData) {
+          final data = responseData;
+          return PaymentModeListResponse.fromMap(data);
         });
   }
 }
