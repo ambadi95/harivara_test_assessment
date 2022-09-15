@@ -55,4 +55,8 @@ class DeviceLoanCreationCoordinator
     );
   }
 
+  Future<void> navigateToOtherScreen(int deviceId, double amount) async {
+    await _navigationHandler.navigateToOtherPaymentScreen(deviceId,amount);
+  }
+
 }

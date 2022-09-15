@@ -7,6 +7,7 @@ import 'package:home/home/home_screen_arguments.dart';
 import 'package:home/home/view/home_screen.dart';
 import 'package:core/navigation/navigation_type.dart';
 import 'package:config/Config.dart';
+import 'package:offline_payment/view/offline_payment_screen.dart';
 
 class OtherPaymentNavigationHandler with ErrorHandler {
   final NavigationManager _navigationManager;
@@ -20,6 +21,13 @@ class OtherPaymentNavigationHandler with ErrorHandler {
         const NavigationType.push(),
         arguments: arguments
         );
+  }
+
+  Future<void> navigateOfflinePaymentScreen() async {
+    _navigationManager.navigateTo(
+        OfflinePaymentScreen.viewPath,
+        const NavigationType.push(),
+    );
   }
 
   Future<void> goBack() async {

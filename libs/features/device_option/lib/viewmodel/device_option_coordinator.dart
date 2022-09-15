@@ -40,4 +40,5 @@ class DeviceOptionCoordinator
   Future<void> navigateToEnrolledScreen(UserType userType) async {
     await _navigationHandler.navigateToCustomerEnrollmentScreen('', userType);
   }
+
 }

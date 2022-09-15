@@ -41,6 +41,9 @@ dependencies:
   welcome:
     path:  ../welcome
 
+  other_payment:
+    path: ../other_payments/otherpayments
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
