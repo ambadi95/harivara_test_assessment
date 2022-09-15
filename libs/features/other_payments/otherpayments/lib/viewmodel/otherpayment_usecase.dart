@@ -114,7 +114,7 @@ class OtherPaymentUseCase extends BaseDataProvider {
             {
           "amountPaid": amountPaid,
           "customerId": customerId,
-          "mobileNo": mobileNumber,
+          "mobileNo": "+255"+ mobileNumber.replaceAll(" ", ""),
           "transactionId": transactionId
         },
         serviceIdentifier: OtherPaymentService.makePaymentIdentifier,

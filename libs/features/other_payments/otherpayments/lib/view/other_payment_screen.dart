@@ -191,12 +191,14 @@ class _OtherPaymentScreenState extends State<OtherPaymentScreen> {
                     height: 60,
                     width: 60,
                     decoration: const BoxDecoration(color: Colors.white),
-                    child: const Center(
-                        child: Image(
-                      image: AssetImage("assets/a03.png"),
-                      height: 40,
-                      width: 40,
-                    )),
+                    child:  Center(
+                      child:  Image.asset(
+                        widget.otherPaymentScreenArgs.image,
+                        width: 95,
+                        height: 132,
+                        package: 'shared_data_models',
+                      ),
+                    ),
                   ),
                   const SizedBox(
                     width: 10,
@@ -357,7 +359,7 @@ class _OtherPaymentScreenState extends State<OtherPaymentScreen> {
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
         onTap: () async {
-          if (_isBtnEnabled) {
+
             coordinator.makePayment(
               context,
                  widget.otherPaymentScreenArgs.amount,
@@ -372,15 +374,13 @@ class _OtherPaymentScreenState extends State<OtherPaymentScreen> {
               coordinator.signup(widget.signUpArguments, mobileNumber.text,
                   nidaNumber.text, agentId.text);
             }*/
-          }
+
         },
         child: Container(
           width: double.infinity,
           height: 50,
           decoration: BoxDecoration(
-              color: _isBtnEnabled
-                  ? config_color.SU_button_color
-                  : config_color.SU_grey_color,
+              color:  config_color.SU_button_color,
               borderRadius: BorderRadius.circular(8.0)),
           child: Center(
             child: Text(
@@ -402,10 +402,9 @@ class _OtherPaymentScreenState extends State<OtherPaymentScreen> {
         key: Key('${_identifier}_Other_Payments_title'),
         text: TextUIDataModel(
           'Other_Payments_title'.tr,
-          styleVariant: CrayonPaymentTextStyleVariant.headline4,
-          color: AN_TitleColor,
-
-          fontWeight: FontWeight.w600,
+            styleVariant: CrayonPaymentTextStyleVariant.headlineThirtyTwo,
+            color: AN_TitleColor,
+            fontWeight: FontWeight.w600
         ));
   }
 

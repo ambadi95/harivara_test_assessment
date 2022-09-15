@@ -53,7 +53,7 @@ class IOtherPaymentService implements OtherPaymentService {
   ) async {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
-    request.endpoint = customerEndpoint + 'payment/transaction-update';
+    request.endpoint = customerEndpoint + 'payment/transaction-update[customer]';
     request.jsonBody = json.encode(requestData);
     return request;
   }
