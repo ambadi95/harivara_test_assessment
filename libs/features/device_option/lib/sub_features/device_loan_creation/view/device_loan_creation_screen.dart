@@ -212,7 +212,7 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
       textStyleVariant: CrayonPaymentTextStyleVariant.headline4,
       onPressed: () {
         if(radioValue == 5){
-          coordinator.navigateToOtherScreen(widget.deviceLoanCreationArgs.deviceDetailData.deviceId!, widget.deviceLoanCreationArgs.deviceDetailData.joiningFees!);
+          coordinator.navigateToOtherScreen(widget.deviceLoanCreationArgs.deviceDetailData.deviceId!, widget.deviceLoanCreationArgs.deviceDetailData.joiningFees!,widget.deviceLoanCreationArgs.image);
         }else{
           coordinator.navigateToDownPayment(
               loanPreviewResponseModel!.data!.joiningFee!.toString(),

@@ -1,5 +1,6 @@
 import 'package:core/view/analytics_state_notifier.dart';
 import 'package:flutter/material.dart';
+import 'package:widget_library/utils/app_utils.dart';
 import '../navigation_handler/offline_payment_navigation_handler.dart';
 import '../state/offlinepayment_state.dart';
 import 'offlinepayment_usecase.dart';
@@ -43,28 +44,35 @@ class OfflinePaymentCoordinator extends AnalyticsStateNotifier<OfflinePaymentSta
         isLoading: true,
         paymentReceivedOffline: 1,
         loanApproved: 0,);
-    var createLoan =
-        await _offlinePaymentUseCase.createLoan(deviceId, (p0) => null);
+    try {
+      var createLoan =
+      await _offlinePaymentUseCase.createLoan(deviceId, (p0) => null);
+
     if (createLoan?.status == true) {
-      state = OfflinePaymentState.ready(
-          context: context,
-          error: '',
-          isLoading: false,
-          paymentReceivedOffline: 1,
-          loanApproved: 0,
-      );
+      dismissProgress(context);
       await loanApproval(createLoan!.data!.loanId!.toString(), context);
     } else {
-      state = OfflinePaymentState.ready(
-          context: context,
-          error: '',
-          isLoading: false,
-          paymentReceivedOffline: 1,
-          loanApproved: 2,
-          );
+      dismissProgress(context);
 
       _showAlertForErrorMessage(createLoan!.message!, false);
     }
+    }catch (e){
+
+      AppUtils.appUtilsInstance.showErrorBottomSheet(
+        title: e.toString(),
+        onClose: () {Navigator.pop(context);},
+      );
+    }
+  }
+
+  void dismissProgress(BuildContext context){
+    state = OfflinePaymentState.ready(
+      context: context,
+      error: '',
+      isLoading: false,
+      paymentReceivedOffline: 1,
+      loanApproved: 2,
+    );
   }
 
   Future<void> loanApproval(String loanId, BuildContext context) async {

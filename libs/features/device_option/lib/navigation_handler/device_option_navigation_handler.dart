@@ -57,8 +57,10 @@ class DeviceOptionNavigationHandler with ErrorHandler {
 
   Future<void> navigateToOtherPaymentScreen(
    int deviceId,
-   double amount,) async {
-    var arguments = OtherPaymentScreenArgs(deviceId,amount.toString(),'','',0,0);
+   double amount,
+      String image
+      ) async {
+    var arguments = OtherPaymentScreenArgs(deviceId,amount.toString(),'','',0,0,image);
     await _navigationManager.navigateTo(
         OtherPaymentScreen.viewPath, const NavigationType.push(),
         arguments: arguments);

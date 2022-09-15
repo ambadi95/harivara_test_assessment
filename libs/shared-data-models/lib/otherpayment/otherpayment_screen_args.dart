@@ -7,6 +7,7 @@ class OtherPaymentScreenArgs {
   final String subTitle;
   final num paymentReceivedOffline;
   final num loanApproved;
+  final String image;
 
   OtherPaymentScreenArgs(
       this.deviceId,
@@ -15,5 +16,6 @@ class OtherPaymentScreenArgs {
       this.subTitle,
       this.paymentReceivedOffline,
       this.loanApproved,
+      this.image
       );
 }

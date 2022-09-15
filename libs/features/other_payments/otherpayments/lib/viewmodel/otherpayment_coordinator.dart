@@ -1,6 +1,7 @@
 import 'package:core/view/analytics_state_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_data_models/downpayment/downpayment_screen_args.dart';
+import 'package:widget_library/utils/app_utils.dart';
 
 import '../navigation_handler/other_payment_navigation_handler.dart';
 import '../state/otherpayment_state.dart';
@@ -126,6 +127,7 @@ class OtherPaymentCoordinator
       paymentReceivedOffline: 1,
       loanApproved: 0,
     );
+    AppUtils.appUtilsInstance.showCircularDialog(context);
     var mkePayment = await _otherPaymentUseCase.makePayment(
       amountToBePaid,
       mobileNumber,
@@ -140,6 +142,8 @@ class OtherPaymentCoordinator
         paymentReceivedOffline: 1,
         loanApproved: 0,
       );
+      Navigator.pop(context);
+      _navigationHandler.navigateOfflinePaymentScreen();
     } else {
       state = OtherPaymentState.ready(
         context: context,
@@ -148,6 +152,7 @@ class OtherPaymentCoordinator
         paymentReceivedOffline: 1,
         loanApproved: 0,
       );
+      Navigator.pop(context);
       _showAlertForErrorMessage(mkePayment!.message!);
 
       print("Failed");
