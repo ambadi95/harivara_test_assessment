@@ -25,6 +25,11 @@ class KycCreditCoordinator extends AnalyticsStateNotifier<KycCreditState> {
     return agentType;
   }
 
+  Future<String> getTelcoPaetner() async {
+    String agentType = await _kycCreditUseCase.getTelcoPartner();
+    return agentType;
+  }
+
   void initialiseState(
     BuildContext context,
   ) async {
@@ -90,13 +95,15 @@ class KycCreditCoordinator extends AnalyticsStateNotifier<KycCreditState> {
     );
   }
 
+
   //call credit check
   Future callCreditCheck(BuildContext context, bool manualApprove) async {
     state = KycCreditState.ready(context: context, isLoading: true);
 
     String customerId = await _kycCreditUseCase.getCustomerId();
+    String telcoPartner = await _kycCreditUseCase.getTelcoPartner();
     var response = await _kycCreditUseCase.callCreditCheck(
-        customerId, "Airtel", manualApprove, (p0) => null);
+        customerId, telcoPartner, manualApprove, (p0) => null);
     if (response?.status == true) {
       state = KycCreditState.ready(context: context, isLoading: false);
     } else {

@@ -32,14 +32,14 @@ class KycCreditUseCase extends BaseDataProvider {
   }
 
   Future<String> getTelcoPartner() async {
-    return await getValueFromSecureStorage('telcoPartner', defaultValue: '');
+    return await getValueFromStorage('telcoPartner', defaultValue: '');
   }
 
   Future<KycCheckResponse?> callKycCheck(
       String mobileNumber,
       bool manualApproval,
       Function(String) onErrorCallback) async {
-    String telcoPartner = "Airtel";
+    String telcoPartner = await getTelcoPartner();
     return await executeApiRequest<KycCheckResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,

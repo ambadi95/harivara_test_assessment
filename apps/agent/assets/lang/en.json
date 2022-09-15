@@ -228,7 +228,7 @@
   "TC_Purpose_Desc": "2.1. Y9 is a digital Microfinance provider aiming to help develop the lifestyle of the people of Tanzania and the African continent as a whole by providing financial services to the unbanked and under banked by creating access to digital education, digital healthcare, etc. by offering 4G smartphones on very fair terms to make it accessible to all citizens by enabling meaningful financial and digital inclusion.",
 
   "KYC_Title": "KYC & Credit Check with Telco's ",
-  "KYC_Validation_With_Airtel" : "KYC Validation With\nAirtel Telco’s Record",
+  "KYC_Validation_With_Airtel" : "KYC Validation With \n{} Telco’s Record",
   "KYC_Validation_With_Airtel_Subtitle" : "Y9 checks your Telco records matching\nyour NIDA Number and Mobile Number",
   "KYC_Validation_With_Airtel_Pass_Check" : "KYC Checked with Telco",
   "KYC_Validation_With_Airtel_Loan_Check" : "Credit Checked for Loan",

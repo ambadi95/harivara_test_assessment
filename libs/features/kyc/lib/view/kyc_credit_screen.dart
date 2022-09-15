@@ -34,7 +34,7 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
   final String _identifier = 'kyc_credit-screen';
   bool _isBtnEnabled = false;
   String agentType = '';
-
+  String telcoPartner = '';
   bool _isKycCreditLoanEnabled = false;
   bool _isKycPassEnabledByManual = false;
   bool _isKycPassEnabled = false;
@@ -51,7 +51,7 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
             coordinator.initialiseState(context);
             kycCreditCoordinator = coordinator;
             agentType = await coordinator.getAgentType();
-
+            telcoPartner = await coordinator.getTelcoPaetner();
             coordinator.callKycCheck(context, false);
           },
           onStateListenCallback: (preState, newState) =>
@@ -595,7 +595,7 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
   _title(BuildContext context) {
     return CrayonPaymentText(
       key: Key('${_identifier}_KYC_Validation_With_Airtel'),
-      text: const TextUIDataModel('KYC_Validation_With_Airtel',
+      text: TextUIDataModel('KYC_Validation_With_Airtel'.tr.replaceAll("{}", telcoPartner),
           styleVariant: CrayonPaymentTextStyleVariant.headline3,
           color: AN_TitleColor,
           fontWeight: FontWeight.w600),

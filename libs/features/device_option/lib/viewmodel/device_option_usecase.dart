@@ -43,6 +43,10 @@ class DeviceOptionUseCase extends BaseDataProvider {
         });
   }
 
+  Future<void> saveDeviceId(String? deviceId) async {
+    return await setValueToSecureStorage({'deviceId': deviceId});
+  }
+
   // Future<DeviceListResponse?> getDeviceDetail(
   //     String deviceId, Function(String) onErrorCallback) async {
   //   return await executeApiRequest<DeviceListResponse?>(

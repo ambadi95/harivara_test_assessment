@@ -56,6 +56,7 @@ class OfflinePaymentUseCase extends BaseDataProvider {
 
   Future<CreateLoanResponse?> createLoan(
       String deviceId, Function(String) onErrorCallback) async {
+    print(deviceId);
     String agentId = await getAgentId();
     print(agentId);
     String customerId = await getCustomerId();

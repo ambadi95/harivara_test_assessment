@@ -34,6 +34,7 @@ class DeviceOptionCoordinator
   }
 
   Future navigateToDeviceDetailScreen(int deviceId, UserType userType) async {
+    _DeviceOptionUseCase.saveDeviceId(deviceId.toString());
     _navigationHandler.navigateToDeviceDetail(deviceId, userType);
   }
 

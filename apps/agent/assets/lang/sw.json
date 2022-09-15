@@ -231,7 +231,7 @@
   "TC_Purpose_Desc": "2.1. Y9 ni mtoa huduma wa huduma ndogo za kidijitali inayolenga kusaidia kuendeleza mtindo wa maisha wa watu wa Tanzania na bara la Afrika kwa ujumla kwa kutoa huduma za kifedha kwa watu wasio na benki na wasio na benki kwa kutoa fursa ya kupata elimu ya kidijitali, afya ya kidijitali n.k. kwa kutoa simu mahiri za 4G. kwa masharti ya haki sana ili kuifanya ipatikane kwa wananchi wote kwa kuwezesha ushirikishwaji wa maana wa kifedha na kidijitali.",
 
   "KYC_Title": "KYC & Cheki ya Mikopo na Telco's ",
-  "KYC_Validation_With_Airtel" : "Uthibitishaji wa KYC Kwa\nRekodi ya Airtel Telco",
+  "KYC_Validation_With_Airtel" : "Uthibitishaji wa KYC Kwa\nRekodi ya {} Telco",
   "KYC_Validation_With_Airtel_Subtitle" : "Y9 hukagua rekodi zako za Telco zinazolingana\nNambari yako ya NIDA na Nambari ya Simu",
   "KYC_Validation_With_Airtel_Pass_Check" : "KYC Imeingia kwenye Telco",
   "KYC_Validation_With_Airtel_Loan_Check" : "Mikopo Imeangaliwa kwa Mkopo ",
