@@ -1,6 +1,6 @@
 {
 
-  "OB_WelcomeTitle" : "Karibu kwa Y9 Agent",
+  "OB_WelcomeTitle" : "Karibu kwa Y9 Wakala",
   "OB_WelcomeSubTitle" : "Ndoto yako ya benki ya kidijitali",
   "OB_WelcomeThirdTitle" : "y9bank.com",
   "OB_SignIn" : "Weka sahihi",
@@ -135,7 +135,7 @@
   "ES_select_membership": "Chagua Uanachama Wako",
   "ES_view_membership": "Tazama Uanachama Wako",
   "ES_agent_contact_text": "Wakala wa Y9 atawasiliana nawe baada ya muda mfupi kuhusu Uanachama wako",
-  "ES_need_help_contact": "Unahitaji Usaidizi Wasiliana Nasi kwa +255 677-039-999",
+  "ES_need_help_contact": "Unahitaji Usaidizi Wasiliana Nasi kwa +255 67 719 9991",
   "ES_choose_product_message" : "Asante kwa kuchagua bidhaa zetu, tutawasiliana nawe hivi karibuni",
   "ES_done" : "Imekamilika",
 
@@ -153,7 +153,7 @@
   "AE_Continue": "Nenda kwenye Programu yako ya Y9 Agent",
 
   "VO_OtpVerification": "Uthibitishaji wa OTP",
-  "VO_otp_verification_description": "OTP itatumwa kwa nambari yako ya simu (kumalizia na XXXXX)",
+  "VO_otp_verification_description": "OTP itatumwa kwa nambari yako ya simu (kumalizia na xxx{})",
   "VO_DidNotGetCode": "Hukupata nambari ya kuthibitisha?",
   "VO_ResendNow": "Tuma Upya Sasa",
   "VO_Incorrect_OTP": "OTP si sahihi. Tafadhali jaribu tena.",
@@ -215,7 +215,7 @@
   "ST_update_passcode": "Sasisha nambari ya siri",
   "ST_App_Language": "Lugha ya Programu",
   "ST_sign_out": "Toka",
-  "ST_contact_text": "Unahitaji Usaidizi au Ikiwa Una Swali lolote \n Wasiliana Nasi kwa +255 677-039-999",
+  "ST_contact_text": "Unahitaji Usaidizi au Ikiwa Una Swali lolote \n Wasiliana Nasi kwa +255 67 719 9991",
 
   "TC_Title": "Masharti ya Matumizi ya Y9's Mobile App",
   "TC_LastUpdated": "Ilisasishwa mwisho: 2 Agosti 2022",
@@ -287,7 +287,10 @@
   "MDM_successful_text" : "Imefanikiwa",
   "MDM_finish_text": "Maliza",
   "MDM_successful_heading" : "Usanidi wa MDM Umefaulu\nImekamilika. Inasubiri Kifaa\niamilishwe kwa Ufuatiliaji",
-  "T_C_NOTE": "Mkopaji anakubaliana na shauri la kukatwa deni lake la mkopo kielektroniki kulingana na makato ya mkopo kwa siku kutoka kwenye simu yake kwa kipindi cha siku mia tatu sitini na tano."
+  "DC_m-pesa" : "m-pesa",
+  "DC_tigo_pesa": "tigo pesa",
+  "T_C_NOTE": "Mkopaji anakubaliana na shauri la kukatwa deni lake la mkopo kielektroniki kulingana na makato ya mkopo kwa siku kutoka kwenye simu yake kwa kipindi cha siku mia tatu sitini na tano.",
+  "HO_referral_alert_message" : "Inakuja hivi karibuni...\nendelea kufuatilia kwa updates"
 
 
 }

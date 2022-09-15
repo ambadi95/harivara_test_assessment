@@ -132,7 +132,7 @@
   "ES_select_membership" : "Select Your Membership",
   "ES_view_membership" : "View Your Membership",
   "ES_agent_contact_text" : "Y9 will contact you shortly on your Membership",
-  "ES_need_help_contact" : "Need Help Contact Us at +255 677-039-999",
+  "ES_need_help_contact" : "Need Help Contact Us at +255 67 719 9991",
   "ES_choose_product_message" : "Thank you for choosing our product, we will get in touch with you soon",
   "ES_done" : "Done",
 
@@ -284,5 +284,11 @@
   "MDM_successful_text" : "Successful",
   "MDM_finish_text": "Finish",
   "MDM_successful_heading" : "MDM Configuration Successfully\nCompleted. Waiting for the Device to\nbe activated for Monitoring",
-  "T_C_NOTE": "The borrower accepts the responsibility to be deducted the daily repayment as per the selected and allocated membership plan for the 4G Smartphone for the period of 365 days from the date of purchase and membership activation."
+  "T_C_NOTE": "The borrower accepts the responsibility to be deducted the daily repayment as per the selected and allocated membership plan for the 4G Smartphone for the period of 365 days from the date of purchase and membership activation.",
+  "DC_m-pesa" : "m-pesa",
+  "DC_tigo_pesa": "tigo pesa",
+  "HO_referral_alert_message" : "Coming soon...\nstay tuned for updates"
+
+
+
 }

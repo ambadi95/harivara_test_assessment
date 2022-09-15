@@ -124,10 +124,7 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
 
   Widget _createLoading(VerifyOtpStateReady state) {
     if (state.isLoading) {
-      return Container(
-        color: Colors.black.withOpacity(0.4),
-        child: const CenteredCircularProgressBar(color: PRIMARY_COLOR),
-      );
+      return const CenteredCircularProgressBar(color: PRIMARY_COLOR);
     } else {
       return Container();
     }

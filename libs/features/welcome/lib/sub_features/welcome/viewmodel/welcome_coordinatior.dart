@@ -31,7 +31,8 @@ class WelcomeCoordinator extends BaseViewModel<WelcomeScreenState> {
     );
   }
 
-  Future<void> setCurrentLocale(String currentLanguageCode) async{
+  Future<void> setCurrentLocale(String currentLanguageCode,UserType userType) async {
+    String selectedLanguage = currentLanguageCode == 'sw' ? 'SW' : 'ENG';
     var currentLocale = Locale(currentLanguageCode);
     Get.updateLocale(currentLocale);
     Intl.defaultLocale = currentLocale.languageCode;
@@ -39,6 +40,13 @@ class WelcomeCoordinator extends BaseViewModel<WelcomeScreenState> {
     state = state.copyWith(
       currentLanguageCode: currentLanguageCode,
     );
+    if(userType == UserType.Customer) {
+      String customerID = await _welcomeUseCase.getCustomerId();
+      if (customerID != '') {
+        var response = await _welcomeUseCase.setPreferences(
+            selectedLanguage, (p0) => null);
+      }
+    }
   }
 
   Future navigateToSignUpScreen(UserType userType) async {

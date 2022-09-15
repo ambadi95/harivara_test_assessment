@@ -3,10 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:shared_data_models/loan_detail/response/loan_detail_response/loan_detail_response.dart';
 import 'package:task_manager/base_classes/base_view_model.dart';
 import 'package:shared_data_models/home/customerCount/customer_count_response/data.dart';
+import 'package:widget_library/bottom_sheet/alert_bottom_sheet_out_line_button.dart';
 import '../navigation_handler/home_navigation_handler.dart';
 import '../state/home_screen_state.dart';
 import 'home_usecase.dart';
 import 'package:widget_library/utils/app_utils.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 class HomeCoordinator extends BaseViewModel<HomeScreenState> {
   final HomeUserCase _customerHomeUseCase;
@@ -122,5 +126,22 @@ class HomeCoordinator extends BaseViewModel<HomeScreenState> {
         },
       );
     }
+
+  }
+
+  showReferralAlert() {
+    Get.bottomSheet(
+      AlertBottomSheetOutlineButton(
+          alertMessage: '',
+          alertTitle: 'HO_referral_alert_message'.tr,
+          alertIcon: "assets/images/comming_soon.png",
+          bottomButtonText: 'SU_close'.tr,
+          onBottomButtonPress: (){
+            goBack();
+          },
+          packageName: ""),
+      isScrollControlled: false,
+      isDismissible: true,
+    );
   }
 }
