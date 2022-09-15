@@ -96,9 +96,9 @@ class WelcomeBackUseCase extends BaseDataProvider {
     return await executeApiRequest<CustomerSignInResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
-        moduleIdentifier: LoginModule.moduleIdentifier,
+        moduleIdentifier: WelcomeModule.moduleIdentifier,
         requestData: signInRequest.toJson(),
-        serviceIdentifier: ILoginService.loginIdentifier,
+        serviceIdentifier: IWelcomeBackService.customerLoginIdentifier,
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {
           final data = responseData;

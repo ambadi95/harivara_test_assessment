@@ -129,11 +129,10 @@ class WelcomeBackCoordinator extends BaseViewModel<WelcomeScreenState> {
 
         }
       } else {
-        state = state.copyWith(isLoading: false);
-        state = state.copyWith(error: response!.message!);
+        state = state.copyWith(isLoading: false,error:response!.message! );
       }
     }  catch (e) {
-      state = state.copyWith(isLoading: false);
+      state = state.copyWith(isLoading: false,error:e.toString() );
       print(e.toString());
     }
   }

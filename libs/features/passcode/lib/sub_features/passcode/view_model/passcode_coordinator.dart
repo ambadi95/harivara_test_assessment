@@ -238,6 +238,8 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
                     destinationPath, false, UserType.Customer);
               }
             }
+          }else{
+            _showAlertForErrorMessage(response.message!);
           }
         } else if (userType == UserType.Agent) {
           state = currentState.copyWith(isLoading: true);
@@ -259,9 +261,12 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
             } else {
               state = currentState.copyWith(isLoading: false);
               CrayonPaymentLogger.logError(loginResponse.message!);
+              _showAlertForErrorMessage(response.message!);
+
             }
           } else {
             state = currentState.copyWith(isLoading: false);
+            _showAlertForErrorMessage(response.message!);
             CrayonPaymentLogger.logError(response.message!);
           }
         } else {
@@ -273,6 +278,9 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
             _navigationHandler.navigateToKYCScreen();
             // _navigationHandler.navigateToCustomerEnrollmentScreen(
             //     destinationPath, false, UserType.AgentCustomer);
+          }else{
+            _showAlertForErrorMessage(response.message!);
+
           }
         }
       } else {
@@ -298,6 +306,23 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
   }
 
 
+  //showalert for error message
+  _showAlertForErrorMessage(String errorMessage) {
+    Get.bottomSheet(
+      AlertBottomSheet(
+          alertMessage: errorMessage,
+          alertTitle: 'Error',
+          alertIcon: "assets/images/alert_icon.png",
+          onClose: () {
+            goBack();
+          },
+          packageName: ""),
+      isScrollControlled: false,
+      isDismissible: true,
+    );
+  }
+
+
   Future<void> verifyPasscodeReset(String oldPassCode,
       String newPasscode,
       String destinationPath,
@@ -319,7 +344,8 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
                 userType
             );
           } else {
-            CrayonPaymentLogger.logError(resetResponse!.message!);
+            _showAlertForErrorMessage(resetResponse!.message!);
+            CrayonPaymentLogger.logError(resetResponse.message!);
           }
           // _navigationHandler.navigateToCustomerEnrollmentScreen(
           //     destinationPath, true, UserType.Customer);
@@ -345,6 +371,15 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
             );
           }
         }
+      }else{
+        state = currentState.copyWith(
+          pageDescription: 'PC_passcode_does_not_match',
+          passCodeVerificationType: PassCodeVerificationType
+              .agentResetPasscode,
+          pageTitle: 'PC_create_passcode',
+          initialPasscode: '',
+          currentPasscode: '',
+        );
       }
     }catch (e) {
       state = currentState.copyWith(isLoading: false);

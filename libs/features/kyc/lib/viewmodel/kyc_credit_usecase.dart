@@ -27,14 +27,27 @@ class KycCreditUseCase extends BaseDataProvider {
     return await getValueFromSecureStorage('customerId', defaultValue: '');
   }
 
+  Future<String> getAgentType() async {
+    return await getValueFromSecureStorage('AgentType', defaultValue: '');
+  }
+
+  Future<String> getTelcoPartner() async {
+    return await getValueFromSecureStorage('telcoPartner', defaultValue: '');
+  }
+
   Future<KycCheckResponse?> callKycCheck(
-      String mobileNumber, Function(String) onErrorCallback) async {
+      String mobileNumber,
+      bool manualApproval,
+      Function(String) onErrorCallback) async {
+    String telcoPartner = "Airtel";
     return await executeApiRequest<KycCheckResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
         moduleIdentifier: KycCreditModule.moduleIdentifier,
         requestData: {
-          "mobileNumber": mobileNumber,
+          "mobileNo": mobileNumber,
+          "telcoPartner": telcoPartner,
+          "manuallyApproved": manualApproval
         },
         serviceIdentifier: KycCreditService.kycCheckIdentifier,
         onError: onErrorCallback,
@@ -44,13 +57,18 @@ class KycCreditUseCase extends BaseDataProvider {
   }
 
   Future<KycCheckResponse?> callCreditCheck(
-      String customerId, Function(String) onErrorCallback) async {
+      String customerId,
+      String telcoPartner,
+      bool manualApproval,
+      Function(String) onErrorCallback) async {
     return await executeApiRequest<KycCheckResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
         moduleIdentifier: KycCreditModule.moduleIdentifier,
         requestData: {
           "customerId": int.parse(customerId),
+          "telcoPartner": telcoPartner,
+          "manuallyApproved": manualApproval
         },
         serviceIdentifier: KycCreditService.creditCheckIdentifier,
         onError: onErrorCallback,
@@ -59,8 +77,10 @@ class KycCreditUseCase extends BaseDataProvider {
           try {
             checkResponse = KycCheckResponse.fromJson(responseData);
           } catch (e) {
-            checkResponse =  KycCheckResponse(
-                status: false, code: "400", message: e.toString()/*"Something went wrong"*/);
+            checkResponse = KycCheckResponse(
+                status: false,
+                code: "400",
+                message: e.toString());
           }
           return checkResponse;
         });
@@ -68,13 +88,12 @@ class KycCreditUseCase extends BaseDataProvider {
 
   Future<KycCheckResponse?> callCreditScore(
       String customerId, Function(String) onErrorCallback) async {
-
     return await executeApiRequest<KycCheckResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
         moduleIdentifier: KycCreditModule.moduleIdentifier,
         requestData: {
-          "consent" : "accepted",
+          "consent": "accepted",
           "customerId": int.parse(customerId),
         },
         serviceIdentifier: KycCreditService.creditScoreIdentifier,
@@ -84,8 +103,10 @@ class KycCreditUseCase extends BaseDataProvider {
           try {
             checkResponse = KycCheckResponse.fromJson(responseData);
           } catch (e) {
-            checkResponse =  KycCheckResponse(
-                status: false, code: "400", message: e.toString()/*"Something went wrong"*/);
+            checkResponse = KycCheckResponse(
+                status: false,
+                code: "400",
+                message: e.toString() /*"Something went wrong"*/);
           }
           return checkResponse;
         });

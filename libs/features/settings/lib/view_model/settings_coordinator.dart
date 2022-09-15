@@ -20,8 +20,8 @@ class SettingsCoordinator extends BaseViewModel<SettingsState> {
     await _navigationHandler.navigateToResetPasscode(userType);
   }
 
-  Future<void> changeLanguage() async {
-    await _navigationHandler.navigateToAgentChangeLanguageBottomSheet();
+  Future<void> changeLanguage(UserType userType) async {
+    await _navigationHandler.navigateToAgentChangeLanguageBottomSheet(userType);
   }
 
   Future<void> navigateToUpdateProfile() async {

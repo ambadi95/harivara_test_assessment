@@ -131,7 +131,7 @@ class PaymentSuccessScreen extends StatelessWidget {
       },
       child: CrayonPaymentText(
         key: Key('PS_customer_support'),
-        text: TextUIDataModel('PS_customer_support',
+        text: TextUIDataModel('PS_customer_support'.tr.replaceAll("{}", LauncherUtils.CONTACT_NUMBER),
             styleVariant: CrayonPaymentTextStyleVariant.headline5,
             color: SU_carrier_message_color,
             fontWeight: FontWeight.w600),

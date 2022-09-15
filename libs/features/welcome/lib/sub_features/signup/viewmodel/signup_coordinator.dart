@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:core/logging/logger.dart';
+import 'package:shared_data_models/customer_onboard/payment_mode_list_respose/payment_mode_list_response/datum.dart';
 import 'package:shared_data_models/signup/sign_up_type.dart';
 import 'package:task_manager/base_classes/base_view_model.dart';
 import 'package:welcome/sub_features/signup/state/signup_state.dart';
@@ -9,6 +10,8 @@ import 'package:widget_library/utils/app_utils.dart';
 import '../../../data_model/sign_up_arguments.dart';
 import '../../../navigation_handler/welcome_navigation_handler.dart';
 import 'package:config/Config.dart';
+import 'package:get/get.dart';
+import 'package:widget_library/bottom_sheet/alert_bottom_sheet.dart';
 
 class SignUpCoordinator extends BaseViewModel<SignUpState> {
   final SignupUseCase _signupUseCase;
@@ -103,7 +106,13 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
               userId: response.data?.customerId.toString());
         } else {
           state = const SignUpState.initialState();
-          state = SignUpState.mobileNumberError(response.message!);
+
+          if(response.message=="Internal Server Error"){
+            _showAlertForErrorMessage(response.message!);
+          }else{
+            state = SignUpState.mobileNumberError(response.message!);
+
+          }
         }
       }
         else if (signUpArguments.signupType == SignupType.customerSignUp) {
@@ -121,7 +130,14 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
                 userId: response.data?.customerId.toString());
           } else {
             state = const SignUpState.initialState();
-            state = SignUpState.mobileNumberError(response.message!);
+
+            if(response.message == "Internal Server Error"){
+              _showAlertForErrorMessage(response.message!);
+            }else{
+              state = SignUpState.mobileNumberError(response.message!);
+
+            }
+
           }
         } else
         if (signUpArguments.signupType == SignupType.resetPasscodeAgent) {
@@ -202,6 +218,22 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
     }
   }
 
+  //showalert for error message
+  _showAlertForErrorMessage(String errorMessage) {
+    Get.bottomSheet(
+      AlertBottomSheet(
+          alertMessage: errorMessage,
+          alertTitle: 'Error',
+          alertIcon: "assets/images/alert_icon.png",
+          onClose: () {
+            goBack();
+          },
+          packageName: ""),
+      isScrollControlled: false,
+      isDismissible: true,
+    );
+  }
+
 
     Future navigateDestination(SignUpArguments signUpArguments,
         String mobileNumber) async {
@@ -226,23 +258,28 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
     }
 
     bool _validateForm(String nidaNo, String mobNumber, String agentId,
-        UserType userType) {
+        UserType userType, String agentType,String paymentMode) {
       var agentID = agentId.isNotEmpty;
       var isnidaNumberValid = _signupUseCase.isValidNINDAnumber(nidaNo);
       var ismobileNoValid = _signupUseCase.isValidMobileNumber(mobNumber);
+     var isPaymentModeValid = _signupUseCase.isValidPaymentMode(paymentMode);
       var _isValid;
-      if (userType == UserType.Customer) {
+      if(agentType == 'SUPER_AGENT'){
+        _isValid = isnidaNumberValid && ismobileNoValid && isPaymentModeValid;
+      }
+      else if (userType == UserType.Customer) {
         _isValid = isnidaNumberValid && ismobileNoValid;
-      } else {
+      }
+      else {
         _isValid = isnidaNumberValid && agentID;
       }
       return _isValid;
     }
 
     void validateForm(String nidaNo, String mobNumber, String agentId,
-        userType) {
+        userType, String agentType,String paymentMode) {
       state = SignUpState.SignUpFormState(
-          _validateForm(nidaNo, mobNumber, agentId, userType));
+          _validateForm(nidaNo, mobNumber, agentId, userType,agentType,paymentMode));
     }
 
     bool isValidNidaNumber(String nidaNumber) {
@@ -275,6 +312,16 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
       return result;
     }
 
+  bool isValidPaymentMode(String paymentMode) {
+    bool result = _signupUseCase.isValidPaymentMode(paymentMode);
+    if (!result) {
+      state = const SignUpState.paymentModeError('SU_telco_error');
+    } else {
+      state = const SignUpState.paymentModeError('');
+    }
+    return result;
+  }
+
     Future<void> continueToOtp(String nidaNumber, String mobileNumber) async {
       await _signupUseCase.saveDetails(
           nidaNumber, '+255' + mobileNumber.replaceAll(" ", ""));
@@ -283,4 +330,25 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
     void navigateToTermsCondition() {
       _navigationHandler.navigateToTermsCondtionsScreen();
     }
+
+  void setPaymentMode(Datum paymentMode) {
+    state = SignUpState.onPaymentModeChoosen(paymentMode);
+     _signupUseCase.saveTelcoPartner(paymentMode.name!);
   }
+
+  Future getPaymentMode() async {
+    var response = await _signupUseCase.getPaymentMode((p0) => null);
+    if(response?.status == true){
+      return response?.data;
+    }else{
+      return [];
+    }
+  }
+
+  Future<String> getAgentType ()async{
+    return await _signupUseCase.getAgentType();
+  }
+
+
+  }
+

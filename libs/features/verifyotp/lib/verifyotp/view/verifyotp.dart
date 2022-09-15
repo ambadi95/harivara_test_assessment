@@ -35,6 +35,7 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
   ValueNotifier<int> _startValue = ValueNotifier<int>(60);
 
   bool isBtnEnabled = false;
+  int attemptCount = 0 ;
 
   void startTimer() {
     const oneSec = Duration(seconds: 1);
@@ -123,10 +124,7 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
 
   Widget _createLoading(VerifyOtpStateReady state) {
     if (state.isLoading) {
-      return Container(
-        color: Colors.black.withOpacity(0.4),
-        child: const CenteredCircularProgressBar(color: PRIMARY_COLOR),
-      );
+      return const CenteredCircularProgressBar(color: PRIMARY_COLOR);
     } else {
       return Container();
     }
@@ -177,16 +175,22 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
       padding: const EdgeInsets.only(bottom: 19),
       child: InkWell(
         onTap: () {
-          if (coordinator.otpController.text.isNotEmpty &&
-              coordinator.otpController.text.length == 6) {
-            coordinator.navigateToDestinationPath(
-              widget.otpScreenArgs.destinationPath,
-              widget.otpScreenArgs.userType,
-              widget.otpScreenArgs,
-              coordinator.otpController.text.toString(),
-                widget.otpScreenArgs.event
-            );
-          } else {
+          if(attemptCount<3) {
+            if (coordinator.otpController.text.isNotEmpty &&
+                coordinator.otpController.text.length == 6) {
+              attemptCount++;
+              coordinator.navigateToDestinationPath(
+                  widget.otpScreenArgs.destinationPath,
+                  widget.otpScreenArgs.userType,
+                  widget.otpScreenArgs,
+                  coordinator.otpController.text.toString(),
+                  widget.otpScreenArgs.event
+              );
+            } else {
+              _showAlertForOTPAttempts(coordinator);
+            }
+          }
+          else{
             _showAlertForOTPAttempts(coordinator);
           }
         },

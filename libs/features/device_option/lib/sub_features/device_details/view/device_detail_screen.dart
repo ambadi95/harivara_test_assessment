@@ -144,9 +144,9 @@ class _DeviceDetailScreenState extends State<DeviceDetailScreen> {
           CrayonPaymentText(
               key: Key('${_identifier}_DD_TERMS'),
               text: TextUIDataModel('T_C_NOTE'.tr,
-                  styleVariant: CrayonPaymentTextStyleVariant.headline6,
+                  styleVariant: CrayonPaymentTextStyleVariant.overline1,
                   color: DD_TextLabel,
-                  fontWeight: FontWeight.w600)),
+                  )),
 
           dynamicHSpacer(22),
 

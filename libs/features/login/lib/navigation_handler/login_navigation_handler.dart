@@ -12,6 +12,8 @@ import 'package:shared_data_models/signup/sign_up_type.dart';
 import 'package:verifyotp/verifyotp/view/verifyotp.dart';
 import 'package:welcome/data_model/sign_up_arguments.dart';
 import 'package:welcome/sub_features/signup/view/signup.dart';
+import 'package:welcome/sub_features/welcome/data_model/welcome_model.dart';
+import 'package:welcome/sub_features/welcome/view/welcome_screen.dart';
 import 'package:widget_library/helpers/error/helper/error_helper.dart';
 import 'package:config/Config.dart';
 import 'package:widget_library/icons/crayon_payment_bottom_sheet_icon.dart';
@@ -25,6 +27,15 @@ class LoginNavigationHandler with ErrorHandler {
     await _navigationManager.navigateTo(
       CrayonCustomerHomeScreen.viewPath,
       NavigationType.push(),
+    );
+  }
+
+  Future<void> navigateToOnBoardScreen(UserType userType) async {
+    var arguments = WelcomeScreenArgs('', '', userType, false);
+    await _navigationManager.navigateTo(
+      CrayonWelcomScreen.viewPath,
+      NavigationType.replace(),
+      arguments: arguments
     );
   }
 

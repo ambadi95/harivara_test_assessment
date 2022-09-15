@@ -44,9 +44,11 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
   String? repaidAmount;
   String? dailyPaymentAmount;
 
+  String agentType = '';
+
   Data customerCount =
       const Data(initiatedCustomer: '0', enrolledCustomer: '0');
-  LoanDetailResponse loanDetailResponse = LoanDetailResponse();
+  LoanDetailResponse loanDetailResponse = const LoanDetailResponse();
 
   @override
   Widget build(BuildContext context) =>
@@ -55,6 +57,8 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
         setupViewModel: (coordinator) async {
           coordinator.initialiseState(
               context, '', widget.homeScreenArgs.isAgent, false);
+
+          agentType = await coordinator.getAgentType();
 
           if (widget.homeScreenArgs.isAgent) {
             username = await coordinator.getAgentName();
@@ -74,10 +78,10 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
             });
             loanDetailResponse = (await coordinator.getLoanDetails())!;
             deviceLoan = loanDetailResponse.data?.loanId ?? "-";
-            totalAmountToBeRepaid=loanDetailResponse.data?.totalAmountToBeRepaid??"0";
-            outstandingAmount =
-                loanDetailResponse.data?.repaymentFee?? "-";
-            repaidAmount = loanDetailResponse.data?.repaymentFee?? "-";
+            totalAmountToBeRepaid =
+                loanDetailResponse.data?.totalAmountToBeRepaid ?? "0";
+            outstandingAmount = loanDetailResponse.data?.repaymentFee ?? "-";
+            repaidAmount = loanDetailResponse.data?.repaymentFee ?? "-";
             setState(() {});
           }
         },
@@ -85,7 +89,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
           body: SafeArea(
             bottom: false,
             child: state.when(
-              initialState: () => SizedBox(),
+              initialState: () => const SizedBox(),
               ready: (
                 _,
                 __,
@@ -147,9 +151,27 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                   ? Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          'HS_AccountId'.tr,
-                          style: HS_title_style,
+                        Row(
+                          children: [
+                            Text(
+                              'HS_AccountId'.tr,
+                              style: HS_title_style,
+                            ),
+                            const SizedBox(
+                              width: 6,
+                            ),
+                            agentType == 'SUPER_AGENT' ?  Container(
+                              height: 18,
+                              width: 66,
+                              decoration: BoxDecoration(
+                                  color: Colors.black,
+                                  borderRadius: BorderRadius.circular(8)),
+                              child: Center(
+                                child: Text('HO_super_agent'.tr,
+                                    style: HS_super_agent_text),
+                              ),
+                            ) : const SizedBox()
+                          ],
                         ),
                         const SizedBox(
                           height: 5,
@@ -199,7 +221,6 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                             style: HS_account_id_style),
                       ],
                     ),
-
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -234,7 +255,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                           ),
                           Row(
                             children: [
-                              Text(outstandingAmount?? '-',
+                              Text(outstandingAmount ?? '-',
                                   style: HS_account_id_style),
                               const Text(" TZSHS", style: HS_card_items_style_w)
                             ],
@@ -290,7 +311,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                       ),
                       InkWell(
                           onTap: () {
-                            //coordinator.configureMDM();
+                            //coordinator.offlinePayment();
                           },
                           child: _actionCommonView(
                               'HS_Customer_DeviceSwap'.tr, HS_DeviceSwapIcon)),
@@ -373,7 +394,6 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                   title == 'HS_Customer_AgentSupport'.tr)
               ? HS_card_items_grey_style
               : HS_card_items_style,
-
         ),
         const SizedBox(
           height: 10,
@@ -382,57 +402,65 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
     );
   }
 
-  Widget _inviteAgentBoxView() {
-    return Container(
-      margin: const EdgeInsets.all(10.0),
-      width: double.maxFinite,
-      clipBehavior: Clip.antiAliasWithSaveLayer,
-      decoration: const BoxDecoration(
-        color: HS_InviteBoxBackColor,
-        borderRadius: BorderRadius.all(
-          Radius.circular(16),
+  Widget _inviteAgentBoxView(HomeCoordinator coordinator) {
+    return GestureDetector(
+      onTap: () {
+        coordinator.showReferralAlert();
+      },
+      child: Container(
+        margin: const EdgeInsets.all(10.0),
+        width: double.maxFinite,
+        clipBehavior: Clip.antiAliasWithSaveLayer,
+        decoration: const BoxDecoration(
+          color: HS_InviteBoxBackColor,
+          borderRadius: BorderRadius.all(
+            Radius.circular(16),
+          ),
         ),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const SizedBox(
-            height: 10,
-          ),
-          Container(
-            padding: const EdgeInsets.only(left:10.0, right: 10.0, top:10.0),
-            child: RichText(
-                text: TextSpan(
-              text: ' ',
-              children: <TextSpan>[
-                TextSpan(
-                    text: 'HS_Agent_Refer_Program'.tr,
-                    style: HS_invite_your_friends_style),
-                TextSpan(
-                    text: 'HS_Agent_Stay_Tunned'.tr, style: HS_stay_tunned_style),
-              ],
-            )),
-          ),
-          Container(
-            padding: const EdgeInsets.only(top:10.0, left:10.0, right: 10.0),
-            child: Text(
-              'HS_Agent_Refer_Text'.tr,
-              style: HS_invite_friends_y9_style,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const SizedBox(
+              height: 10,
             ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Align(
-            alignment: Alignment.bottomRight,
-            child: Image.asset(
-              HS_InviteIcon,
-              width: 200,
-              height: 120,
+            Container(
+              padding:
+                  const EdgeInsets.only(left: 10.0, right: 10.0, top: 10.0),
+              child: RichText(
+                  text: TextSpan(
+                text: ' ',
+                children: <TextSpan>[
+                  TextSpan(
+                      text: 'HS_Agent_Refer_Program'.tr,
+                      style: HS_invite_your_friends_style),
+                  TextSpan(
+                      text: 'HS_Agent_Stay_Tunned'.tr,
+                      style: HS_stay_tunned_style),
+                ],
+              )),
             ),
-          )
-        ],
+            Container(
+              padding:
+                  const EdgeInsets.only(top: 10.0, left: 10.0, right: 10.0),
+              child: Text(
+                'HS_Agent_Refer_Text'.tr,
+                style: HS_invite_friends_y9_style,
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Align(
+              alignment: Alignment.bottomRight,
+              child: Image.asset(
+                HS_InviteIcon,
+                width: 200,
+                height: 120,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
@@ -572,12 +600,11 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
           elevation: 2,
           child: SizedBox(
             height: 55,
-
             child: Row(
               children: [
                 Expanded(
                   child: InkWell(
-                    onTap: (){
+                    onTap: () {
                       setState(() {
                         selectedIndex = 0;
                       });
@@ -590,7 +617,6 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                               ? const Color(0xFFDA2228)
                               : Colors.white,
                           width: 60,
-
                         ),
                         Expanded(
                           child: getSvg(HS_HomeIcon,
@@ -604,7 +630,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                 ),
                 Expanded(
                   child: InkWell(
-                    onTap: (){
+                    onTap: () {
                       setState(() {
                         selectedIndex = 1;
                       });
@@ -613,9 +639,10 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                       children: [
                         Container(
                           height: 2,
-                          color: selectedIndex == 1 ?Color(0xFFDA2228):Colors.white,
+                          color: selectedIndex == 1
+                              ? const Color(0xFFDA2228)
+                              : Colors.white,
                           width: 60,
-
                         ),
                         Expanded(
                           child: getSvg(HS_SettingIcon,
@@ -675,9 +702,9 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                         _userInfoView(),
                         _redBoxView(coordinator),
                         widget.homeScreenArgs.isAgent
-                            ? _inviteAgentBoxView()
+                            ? _inviteAgentBoxView(coordinator)
                             : _inviteBoxView(coordinator),
-                        const SizedBox(height:30)
+                        const SizedBox(height: 30)
                       ],
                     )
                   ],

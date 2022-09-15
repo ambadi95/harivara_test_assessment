@@ -6,10 +6,10 @@ import 'package:shared_data_models/deviceloancreation/devicecreation_screen_args
 import 'package:shared_data_models/downpayment/downpayment_screen_args.dart';
 import 'package:welcome/sub_features/enrollment_success/view/enrollment_success_screen.dart';
 import 'package:widget_library/helpers/error/helper/error_helper.dart';
-
+import 'package:other_payment/view/other_payment_screen.dart';
 import '../sub_features/device_details/view/device_detail_screen.dart';
 import 'package:shared_data_models/device_option/detail_detail_response/data.dart';
-
+import 'package:shared_data_models/otherpayment/otherpayment_screen_args.dart';
 import 'package:shared_data_models/downpayment/downpayment_data_model.dart';
 import 'package:downpayment/view/down_payment_screen.dart';
 
@@ -52,6 +52,17 @@ class DeviceOptionNavigationHandler with ErrorHandler {
     // var arguments = deviceId;
     _navigationManager.navigateTo(
         DownPaymentScreen.viewPath, const NavigationType.push(),
+        arguments: arguments);
+  }
+
+  Future<void> navigateToOtherPaymentScreen(
+   int deviceId,
+   double amount,
+      String image
+      ) async {
+    var arguments = OtherPaymentScreenArgs(deviceId,amount.toString(),'','',0,0,image);
+    await _navigationManager.navigateTo(
+        OtherPaymentScreen.viewPath, const NavigationType.push(),
         arguments: arguments);
   }
 }

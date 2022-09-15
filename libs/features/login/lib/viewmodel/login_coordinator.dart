@@ -198,6 +198,7 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
 
         await _loginUseCase.saveAgentName(
             response.data!.firstName! + ' ' + response.data!.lastName!);
+        await _loginUseCase.saveAgentType(response.data!.roleName);
         // await _loginUseCase.saveOnBordStatus(agentId);
         await _navigationHandler.navigateToOtpScreenForAgent(
             UserType.Agent, response.data!.mobileNo!, agentId);
@@ -216,6 +217,10 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
         },
       );
     }
+  }
+
+  void goBackWelcomeScreen(UserType usertype) async {
+    _navigationHandler.navigateToOnBoardScreen(usertype);
   }
 
   void goBack() async {

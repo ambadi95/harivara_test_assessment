@@ -1,7 +1,7 @@
 import 'package:task_manager/task_manager.dart';
 import 'package:welcome/sub_features/details/service/details_service.dart';
 import 'package:welcome/sub_features/enrollment_success/service/enrollment_service.dart';
-
+import 'package:welcome/sub_features/welcome/service/perference_service.dart';
 import '../sub_features/agent_details/service/agent_details_service.dart';
 import '../sub_features/customer_profile_details/service/customer_details_service.dart';
 import '../sub_features/signup/service/signup_service.dart';
@@ -14,6 +14,7 @@ class SignupApiResolver extends TaskResolver {
   final IEnrollmentService _enrollmentService;
   final IAgentDetailsService _agentDetailsService;
   final IWelcomeBackService _welcomeBackService;
+  final IPreferencesService _preferencesService;
 
   SignupApiResolver(
     this._signupService,
@@ -22,6 +23,7 @@ class SignupApiResolver extends TaskResolver {
     this._agentDetailsService,
     this._welcomeBackService,
     this._customerDetailsService,
+      this._preferencesService
   );
 
   @override
@@ -80,6 +82,9 @@ class SignupApiResolver extends TaskResolver {
 
       case IWelcomeBackService.agentLoginIdentifier:
         return _welcomeBackService.loginAgent(requestData);
+
+      case IWelcomeBackService.customerLoginIdentifier:
+        return _welcomeBackService.loginCustomer(requestData);
       case ISignupService.getCustomerDetailIdentifier:
         return _signupService.getCustomerDetail(requestData['nidaNo'], requestData['mobileNo']);
       case ISignupService.agentDetailIdentifier:
@@ -87,6 +92,10 @@ class SignupApiResolver extends TaskResolver {
             requestData);
       case ISignupService.getCustomerDetailByMobileNumberIdentifier:
         return _signupService.getCustomerDetailByMobileNo(requestData['mobileNo']);
+      case IPreferencesService.preferencesIdentifier:
+        return _preferencesService.setPreferences(requestData['customerId'],requestData['lang'] );
+      case ISignupService.getTelcoListIdentifier:
+        return _signupService.getPaymentMode();
       default:
         throw UnimplementedError();
     }

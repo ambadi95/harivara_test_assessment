@@ -3,8 +3,6 @@ import 'package:config/Config.dart';
 import 'package:config/Styles.dart';
 import 'package:core/view/base_view.dart';
 import 'package:flutter/material.dart';
-import 'package:scanqrcode/state/scanqrcode_state.dart';
-import 'package:scanqrcode/viewmodel/scanqrcode_coordinator.dart';
 import 'package:widget_library/html/rich_text_description.dart';
 import 'package:get/get.dart';
 import 'package:config/Colors.dart' as config_color;

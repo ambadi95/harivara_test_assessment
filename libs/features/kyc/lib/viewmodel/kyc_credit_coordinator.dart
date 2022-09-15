@@ -20,6 +20,10 @@ class KycCreditCoordinator extends AnalyticsStateNotifier<KycCreditState> {
     this._kycCreditUseCase,
   ) : super(const KycCreditState.initialState());
 
+  Future<String> getAgentType() async {
+    String agentType = await _kycCreditUseCase.getAgentType();
+    return agentType;
+  }
 
   void initialiseState(
     BuildContext context,
@@ -32,25 +36,45 @@ class KycCreditCoordinator extends AnalyticsStateNotifier<KycCreditState> {
     await _navigationHandler.showErrorBottomSheet(errorWidget, context);
   }
 
-
   //call kyc check
-  Future callKycCheck(BuildContext context
-      ) async {
-      state = KycCreditState.ready(context: context,isLoading:true);
-      String mobileNumber = await _kycCreditUseCase.getMobileNumber();
+  Future callKycCheck(BuildContext context, bool manualApprove) async {
+    state = KycCreditState.ready(context: context, isLoading: true);
+    String mobileNumber = await _kycCreditUseCase.getMobileNumber();
     var response = await _kycCreditUseCase.callKycCheck(
-        mobileNumber,
-            (p0) => null);
+        mobileNumber, manualApprove, (p0) => null);
     if (response?.status == true) {
-      state = KycCreditState.ready(context: context,isLoading:false,error: 'Kyc Done' ,isKycError: false,isCreditCheckError: false);
-
+      if (manualApprove) {
+        state = KycCreditState.ready(
+            context: context,
+            isLoading: false,
+            error: 'Kyc Done',
+            isKycError: false,
+            isCreditCheckError: false,
+            isKycPassEnabledByManual: true);
+      } else {
+        state = KycCreditState.ready(
+            context: context,
+            isLoading: false,
+            error: 'Kyc Done',
+            isKycError: false,
+            isCreditCheckError: false,
+            isKycPassEnabledByManual: false);
+      }
     } else {
-      state = KycCreditState.ready(context: context,isLoading:false,error: response!.message! ,isKycError: true,isCreditCheckError: false);
+      state = KycCreditState.ready(
+          context: context,
+          isLoading: false,
+          error: response!.message!,
+          isKycError: true,
+          isCreditCheckError: false);
       // _showAlertForErrorMessage(response.message!);
       print(response.message);
-
+    }
+    if (manualApprove) {
+      goBack();
     }
   }
+
   _showAlertForErrorMessage(String errorMessage) {
     Get.bottomSheet(
       AlertBottomSheet(
@@ -65,18 +89,19 @@ class KycCreditCoordinator extends AnalyticsStateNotifier<KycCreditState> {
       isDismissible: true,
     );
   }
-  //call credit check
-  Future callCreditCheck(BuildContext context
-      ) async {
-      state = KycCreditState.ready(context: context,isLoading:true);
 
-      String customerId=await  _kycCreditUseCase.getCustomerId();
-    var response = await _kycCreditUseCase.callCreditCheck(customerId,
-            (p0) => null);
+  //call credit check
+  Future callCreditCheck(BuildContext context, bool manualApprove) async {
+    state = KycCreditState.ready(context: context, isLoading: true);
+
+    String customerId = await _kycCreditUseCase.getCustomerId();
+    var response = await _kycCreditUseCase.callCreditCheck(
+        customerId, "Airtel", manualApprove, (p0) => null);
     if (response?.status == true) {
-      state = KycCreditState.ready(context: context,isLoading:false );
+      state = KycCreditState.ready(context: context, isLoading: false);
     } else {
-      state = KycCreditState.ready(context: context,isLoading:false,error: response!.message!);
+      state = KycCreditState.ready(
+          context: context, isLoading: false, error: response!.message!);
       _showAlertForErrorMessage(response.message!);
 
       print(response.message);
@@ -85,24 +110,32 @@ class KycCreditCoordinator extends AnalyticsStateNotifier<KycCreditState> {
 
   //
   // call credit score
-  Future callCreditScore(BuildContext context
-      ) async {
-      state = KycCreditState.ready(context: context,isLoading:true);
-      String customerId=await  _kycCreditUseCase.getCustomerId();
-      print(customerId);
-    var response = await _kycCreditUseCase.callCreditScore(customerId,
-            (p0) => null);
+  Future callCreditScore(BuildContext context) async {
+    state = KycCreditState.ready(context: context, isLoading: true);
+    String customerId = await _kycCreditUseCase.getCustomerId();
+    print(customerId);
+    var response =
+        await _kycCreditUseCase.callCreditScore(customerId, (p0) => null);
     if (response?.status == true) {
-      state = KycCreditState.ready(context: context,isLoading:false ,isKycError: false,isCreditCheckError: false,error: 'Credit Eligible');
+      state = KycCreditState.ready(
+          context: context,
+          isLoading: false,
+          isKycError: false,
+          isCreditCheckError: false,
+          error: 'Credit Eligible');
       // await callCreditCheck(context);
     } else {
-      state = KycCreditState.ready(context: context,isLoading:false,error: response!.message ?? "Something went wrong,Please try again later",isKycError: false,isCreditCheckError: true);
-       // _showAlertForErrorMessage(response.message!);
+      state = KycCreditState.ready(
+          context: context,
+          isLoading: false,
+          error: response!.message ??
+              "Something went wrong,Please try again later",
+          isKycError: false,
+          isCreditCheckError: true);
+      // _showAlertForErrorMessage(response.message!);
       print(response.message);
     }
   }
-
-
 
   void goBack() async {
     _navigationHandler.goBack();

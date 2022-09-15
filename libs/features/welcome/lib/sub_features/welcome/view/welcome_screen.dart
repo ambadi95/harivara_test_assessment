@@ -117,7 +117,7 @@ class _CrayonWelcomScreenState extends State<CrayonWelcomScreen> {
               languageCode = 'en';
             }
 
-            welcomeCoordinator.setCurrentLocale(languageCode);
+            welcomeCoordinator.setCurrentLocale(languageCode, widget.welcomeScreenArgs.userType);
           },
           child: Text(
             'OB_Lang'.tr,

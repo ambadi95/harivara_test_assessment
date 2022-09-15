@@ -49,6 +49,11 @@
   "SU_device_reg_sub_heading" : "Find your device type in the Device Guides to get more information",
   "SU_scan_code_IMEI_button" : "(Enter or Scan IMEI from device box)",
   "SU_register_device_button" : "Register Device",
+  "SU_telco_partner" : "Telco Partner",
+  "SU_select_telco" : "Select Telco",
+  "SU_telco_error" : "Invalid Telco",
+  "SU_otp_verification" : "OTP Verification",
+  "SU_skip_otp_verification" : "Skip OTP Verification",
 
   "DV_title" : "Enter Personal Details",
   "DV_profile" : "Profile",
@@ -132,7 +137,7 @@
   "ES_select_membership" : "Select Your Membership",
   "ES_view_membership" : "View Your Membership",
   "ES_agent_contact_text" : "Y9 will contact you shortly on your Membership",
-  "ES_need_help_contact" : "Need Help Contact Us at +255 677-039-999",
+  "ES_need_help_contact" : "Need Help Contact Us at +255 67 719 9991",
   "ES_choose_product_message" : "Thank you for choosing our product, we will get in touch with you soon",
   "ES_done" : "Done",
 
@@ -231,6 +236,7 @@
   "KYC_Terms_and_Condition" : "Terms & Conditions",
   "Credit_Score_With_Telco": "Credit Check with\nTelco for Device Loan",
   "KYC_Verification_Failed": "KYC Validation Failed",
+  "KYC_Manually_Approve" : "Manually Approve",
   "KYC_Verification_Failed_Title": "Sorry for inconvenience the KYC missmatch with Airtel telco’s record  so, pls update the records and retry.",
   "KYC_Verification_Failed_SubTitle": "Details will be sent to customer registered email id and mobile number",
   "Credit_Check_Failed": "Credit Check Failed",
@@ -286,5 +292,20 @@
   "MDM_successful_heading" : "MDM Configuration Successfully\nCompleted. Waiting for the Device to\nbe activated for Monitoring",
   "T_C_NOTE": "The borrower accepts the responsibility to be deducted the daily repayment as per the selected and allocated membership plan for the 4G Smartphone for the period of 365 days from the date of purchase and membership activation.",
   "DC_m-pesa" : "m-pesa",
-  "DC_tigo_pesa": "tigo pesa"
+  "DC_tigo_pesa": "tigo pesa",
+  "HO_referral_alert_message": "Coming soon...\nstay tuned for updates",
+  "Other_Payments_title": "Other Payments",
+  "Other_payment_subtitle": "Once the Customer confirms the Payment of Joining Fee, fill in the below details",
+  "other_payment_transaction_id_title": "Transaction ID",
+  "other_payment_transaction_id_hint": "Enter Transaction ID",
+
+  "HO_super_agent" : "Super Agent",
+
+
+  "Offline_payment_title" : "Loan Approval is Under\nProcess",
+  "Offline_payment_subtitle" : "Loan approal and creadion is under\nprogress, will be done in",
+  "Offline_payment_checkboxTitle1" : "Payment Verified Offline",
+  "Offline_payment_checkboxTitle2" : "Loan Approved",
+  "Offline_loan_approval_error_msg" : "Loan Approved Failed",
+  "Offline_loan_creation_error_msg" : "Loan Creation Error"
 }

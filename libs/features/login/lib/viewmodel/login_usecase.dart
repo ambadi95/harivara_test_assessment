@@ -66,6 +66,10 @@ class LoginUseCase extends BaseDataProvider {
     return await getValueFromSecureStorage('customerId', defaultValue: '');
   }
 
+  Future<void> saveAgentType(String? AgentType) async {
+    return await setValueToSecureStorage({'agentType': AgentType});
+  }
+
   Future<CustomerSignInResponse?> login(String mobileNumber, String passcode,
       Function(String) onErrorCallback) async {
     CrayonPaymentLogger.logInfo(
