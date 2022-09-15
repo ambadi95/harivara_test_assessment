@@ -12,6 +12,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:home/home/home_module.dart';
 import 'package:loan_details/view/loan_detail_screen.dart';
+import 'package:offline_payment/view/offline_payment_screen.dart';
 import 'package:payments/view/payments_screen.dart';
 import 'package:shared_data_models/loan_detail/loan_detail_screen_args.dart';
 import 'package:shared_data_models/loan_detail/response/loan_detail_response/loan_detail_response.dart';
@@ -39,9 +40,9 @@ class HomeNavigationHandler with ErrorHandler {
     _navigationManager.goBack();
   }
 
-  Future<void> navigateTodevice(UserType userType) async {
+  Future<void> navigateToOfflinePayment(UserType userType) async {
     await _navigationManager.navigateTo(
-      ConfigureMdmScreen.viewPath,
+      OfflinePaymentScreen.viewPath,
       const NavigationType.push(),
     );
   }

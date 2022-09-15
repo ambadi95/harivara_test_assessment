@@ -40,6 +40,8 @@ import 'package:network_manager/global_control/global_control_notifier.dart';
 import 'package:network_manager/global_control/model/configuration/config.dart';
 import 'package:network_manager/network_manager.dart';
 import 'package:network_manager/utils/connectivity/i_connectivity.dart';
+import 'package:offline_payment/navigation_handler/offlinepayment_route_manager.dart';
+import 'package:offline_payment/offlinepayment_module.dart';
 import 'package:passcode/navigation_handler/passcode_route_manager.dart';
 import 'package:passcode/passcode_module.dart';
 import 'package:scanqrcode/navigation_handler/scanqrcode_route_manager.dart';
@@ -139,6 +141,8 @@ class AppModule {
 
     DownPaymentModule.registerDependencies();
 
+    OfflinePaymentModule.registerDependencies();
+
     ScanQRCodeModule.registerDependencies();
 
     KycCreditMainModule.registerDependencies();
@@ -233,6 +237,10 @@ void _registerRouteManagers() {
  navigationManagerContainer.registerRouteManager(
     DownPaymentModule.moduleIdentifier,
    DownPaymentRouteManager(),
+  );
+ navigationManagerContainer.registerRouteManager(
+    OfflinePaymentModule.moduleIdentifier,
+   OfflinePaymentRouteManager(),
   );
 
   navigationManagerContainer.registerRouteManager(

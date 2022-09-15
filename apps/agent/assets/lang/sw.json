@@ -296,7 +296,13 @@
   "DC_tigo_pesa": "tigo pesa",
   "T_C_NOTE": "Mkopaji anakubaliana na shauri la kukatwa deni lake la mkopo kielektroniki kulingana na makato ya mkopo kwa siku kutoka kwenye simu yake kwa kipindi cha siku mia tatu sitini na tano.",
   "HO_referral_alert_message" : "Inakuja hivi karibuni...\nendelea kufuatilia kwa updates",
-  "HO_super_agent" : "Wakala Mkuu"
+  "HO_super_agent" : "Wakala Mkuu",
 
+  "Offline_payment_title" : "Idhini ya Mkopo iko Chini\nMchakato",
+  "Offline_payment_subtitle" : "Idhini ya mkopo na uundaji iko chini\nmaendeleo, yatafanyika ndani",
+  "Offline_payment_checkboxTitle1" : "Malipo Yamethibitishwa Nje ya Mtandao",
+  "Offline_payment_checkboxTitle2" : "Mkopo Umeidhinishwa",
+  "Offline_loan_approval_error_msg" : "Mkopo Umeidhinishwa Umeshindwa",
+  "Offline_loan_creation_error_msg" : "Hitilafu ya Kuunda Mkopo"
 
 }
