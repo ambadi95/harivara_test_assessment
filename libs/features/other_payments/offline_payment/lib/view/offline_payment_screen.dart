@@ -18,17 +18,18 @@ import 'package:widget_library/page_header/text_ui_data_model.dart';
 import 'package:widget_library/progress_bar/centered_circular_progress_bar.dart';
 import 'package:widget_library/scaffold/crayon_payment_scaffold.dart';
 import 'package:widget_library/static_text/crayon_payment_text.dart';
+import '../offlinepayment_module.dart';
 import '../state/offlinepayment_state.dart';
 import '../viewmodel/offlinepayment_coordinator.dart';
 import 'package:sprintf/sprintf.dart';
 
 class OfflinePaymentScreen extends StatefulWidget {
   static const viewPath =
-      '${DownPaymentModule.moduleIdentifier}/downpaymetnscreen';
+      '${OfflinePaymentModule.moduleIdentifier}/offlinePaymentScreen';
 
-  final OfflinePaymentScreenArgs offlinePaymentScreenArgs;
+  //final OfflinePaymentScreenArgs offlinePaymentScreenArgs;
 
-  const OfflinePaymentScreen({Key? key, required this.offlinePaymentScreenArgs}) : super(key: key);
+  const OfflinePaymentScreen({Key? key, }) : super(key: key);
 
   @override
   State<OfflinePaymentScreen> createState() => _OfflinePaymentScreenState();
@@ -40,41 +41,22 @@ class _OfflinePaymentScreenState extends State<OfflinePaymentScreen> {
   String username = "";
   OfflinePaymentCoordinator? offlinePaymentCoordinator;
   late Timer _timer;
+  num _isPaymentReceivedOffline = 0;
   final ValueNotifier<int> _startValue = ValueNotifier<int>(15);
 
-
-  void startTimer() {
-    const oneMintue = Duration(minutes: 15);
-    _timer = Timer.periodic(
-      oneMintue,
-          (Timer timer) {
-        if (_startValue.value == 0) {
-          if (mounted) {
-            setState(() {
-              timer.cancel();
-            });
-          }
-        } else {
-          if (mounted) {
-            _startValue.value--;
-          }
-        }
-      },
-    );
-  }
-
   @override
-  void initState() {
-    // TODO: implement initState
+  void initState(){
     super.initState();
-    startTimer();
+    delayFun();
   }
 
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    _timer.cancel();
-  }
+void delayFun(){
+  Future.delayed(const Duration(milliseconds: 1000), () {
+    setState(() {
+      _isPaymentReceivedOffline = 1;
+    });
+  });
+}
 
 
 
@@ -88,7 +70,8 @@ class _OfflinePaymentScreenState extends State<OfflinePaymentScreen> {
             setState(() {
               username;
             });
-            // coordinator.makePayment(context,widget.offlinePaymentScreenArgs.amount);
+            coordinator.createLoan(context);
+            //coordinator.makePayment(context,widget.offlinePaymentScreenArgs.amount);
           },
           onStateListenCallback: (preState, newState) => {
                 _listenToStateChanges(
@@ -225,9 +208,9 @@ class _OfflinePaymentScreenState extends State<OfflinePaymentScreen> {
                         .getPercentageSize(percentage: 8)),
                 _rowWidget(
                   context,
-                  icon:  _getIcon(context,state.paymentReceivedOffline),
+                  icon:  _getIcon(context, _isPaymentReceivedOffline),
 
-                  text: _textWidget(context, 'DP_PaymentReceivedOffline'.tr, false),
+                  text: _textWidget(context, 'Offline_payment_checkboxTitle1'.tr),
                 ),
                 _getVerticalDivider(
                     context,
@@ -237,7 +220,7 @@ class _OfflinePaymentScreenState extends State<OfflinePaymentScreen> {
                   context,
                   icon:  _getIcon(context,state.loanApproved),
 
-                  text: _textWidget(context, 'DP_LoanApproved_Offline'.tr, false),
+                  text: _textWidget(context, 'Offline_payment_checkboxTitle2'.tr),
                 ),
                 SizedBox(
                   height: AppUtils.appUtilsInstance
@@ -296,8 +279,8 @@ class _OfflinePaymentScreenState extends State<OfflinePaymentScreen> {
       child: GestureDetector(
         onTap: () async {
           if(state.loanApproved==1) {
-            await coordinator.navigateToScanCodeScreen(
-                widget.offlinePaymentScreenArgs.deviceId);
+            await coordinator.navigateToScanCodeScreen(1);
+               // widget.offlinePaymentScreenArgs.deviceId);
           }
         },
         child: Container(
@@ -354,14 +337,15 @@ class _OfflinePaymentScreenState extends State<OfflinePaymentScreen> {
     return CrayonPaymentText(
       key: Key('${_identifier}_DLC_payment_text'),
       text: TextUIDataModel(
-          '${widget.offlinePaymentScreenArgs.amount.toString()} ${'DLC_payment_text'.tr}',
-          styleVariant: CrayonPaymentTextStyleVariant.headline6,
+         'Offline_payment_title'.tr,
+
+        styleVariant: CrayonPaymentTextStyleVariant.headline6,
           color: AN_TitleColor,
           fontWeight: FontWeight.w600,
     ));
   }
 
-  _textWidget(BuildContext context, String? text, bool isResend) {
+  _textWidget(BuildContext context, String? text) {
     return Row(
       children: [
         CrayonPaymentText(
@@ -371,20 +355,6 @@ class _OfflinePaymentScreenState extends State<OfflinePaymentScreen> {
               color: Black,
               fontWeight: FontWeight.w500),
         ),
-        dynamicWSpacer(30),
-        isResend  ?
-        InkWell(
-          onTap: (){
-            offlinePaymentCoordinator!.makePayment(context,widget.offlinePaymentScreenArgs.amount);
-
-          },
-          child: Text('DLC_resend'.tr,style: const TextStyle(
-            decoration: TextDecoration.underline,
-            fontFamily: 'Montserrat',
-            fontSize: 12,
-            color: SU_subtitle_terms_color
-            )),
-        ) : Text("")
       ],
     );
   }
@@ -407,18 +377,19 @@ class _OfflinePaymentScreenState extends State<OfflinePaymentScreen> {
               alignment: Alignment.topLeft,
               child:  RichText(
                 text: TextSpan(
-                  text: 'DLC_Down_Payment_Subtitle'.tr,
+                  text: 'Offline_payment_subtitle'.tr,
                   style: const TextStyle(
                       fontFamily: 'Montserrat',
                       fontSize: 14, color: DD_TextLabel, fontWeight: FontWeight.w600
                   ),
-                  children: <TextSpan>[
-                   const  TextSpan(
+                  children: const <TextSpan>[
+                   TextSpan(
                     text: "  ",
                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12, color : Color(0xFFDA2228))),
                     TextSpan(
-                        text: "${value.toString()} min",
-                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12, color : Color(0xFFDA2228))),
+                      text : "1 min 30 sec",
+                       // text: "${value.toString()} min",
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12, color : Color(0xFFDA2228))),
 
                   ],
                 ),
@@ -441,10 +412,8 @@ class _OfflinePaymentScreenState extends State<OfflinePaymentScreen> {
   }
 
   _listenToStateChanges(BuildContext context, OfflinePaymentStateReady newState) async{
-
-       if(newState.loanApproved == 1){
-
-         setState(() {
+    if(newState.loanApproved == 1){
+        setState(() {
            _isBtnEnabled=true;
          });
        }else if(newState.loanApproved == 2){

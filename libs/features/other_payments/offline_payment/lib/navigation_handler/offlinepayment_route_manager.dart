@@ -10,9 +10,9 @@ import '../view/offline_payment_screen.dart';
   Widget getView(RouteSettings settings) {
     switch (settings.name) {
       case OfflinePaymentScreen.viewPath:
-        var arguments = settings.arguments as OfflinePaymentScreenArgs;
+        //var arguments = settings.arguments as OfflinePaymentScreenArgs;
         return OfflinePaymentScreen(
-          offlinePaymentScreenArgs: arguments,
+         // offlinePaymentScreenArgs: arguments,
         );
       default:
         // TODO: implement getView
