@@ -293,7 +293,12 @@
   "T_C_NOTE": "The borrower accepts the responsibility to be deducted the daily repayment as per the selected and allocated membership plan for the 4G Smartphone for the period of 365 days from the date of purchase and membership activation.",
   "DC_m-pesa" : "m-pesa",
   "DC_tigo_pesa": "tigo pesa",
-  "HO_referral_alert_message" : "Coming soon...\nstay tuned for updates",
+  "HO_referral_alert_message": "Coming soon...\nstay tuned for updates",
+  "Other_Payments_title": "Other Payments",
+  "Other_payment_subtitle": "Once the Customer confirms the Payment of Joining Fee, fill in the below details",
+  "other_payment_transaction_id_title": "Transaction ID",
+  "other_payment_transaction_id_hint": "Enter Transaction ID",
+
   "HO_super_agent" : "Super Agent",
 
 

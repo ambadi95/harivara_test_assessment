@@ -299,6 +299,10 @@
   "HO_referral_alert_message" : "Inakuja hivi karibuni...\nendelea kufuatilia kwa updates",
   "HO_super_agent" : "Wakala Mkuu",
 
+  "Other_Payments_title": "Other Payments",
+  "Other_payment_subtitle": "Once the Customer confirms the Payment of Joining Fee, fill in the below details",
+  "other_payment_transaction_id_title": "Transaction ID",
+  "other_payment_transaction_id_hint": "Enter Transaction ID",
   "Offline_payment_title" : "Idhini ya Mkopo iko Chini\nMchakato",
   "Offline_payment_subtitle" : "Idhini ya mkopo na uundaji iko chini\nmaendeleo, yatafanyika ndani",
   "Offline_payment_checkboxTitle1" : "Malipo Yamethibitishwa Nje ya Mtandao",
