@@ -82,6 +82,9 @@ dependencies:
   offline_payment:
     path: ../../libs/features/other_payments/offline_payment
 
+  other_payment:
+    path: ../../libs/features/other_payments/otherpayments
+
   configuremdm:
     path: ../../libs/features/configuremdm
 
