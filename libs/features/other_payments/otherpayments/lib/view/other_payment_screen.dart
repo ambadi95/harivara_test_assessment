@@ -6,6 +6,7 @@ import 'package:config/Config.dart';
 import 'package:config/Styles.dart';
 import 'package:core/mobile_core.dart';
 import 'package:core/view/base_view.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shared_data_models/otherpayment/otherpayment_screen_args.dart';
@@ -180,14 +181,18 @@ class _OtherPaymentScreenState extends State<OtherPaymentScreen> {
               ),
               margin: const EdgeInsets.symmetric(horizontal: 10),
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  const SizedBox(
+                    width: 20,
+                  ),
                   Container(
                     height: 60,
                     width: 60,
                     decoration: const BoxDecoration(color: Colors.white),
                     child: const Center(
                         child: Image(
-                      image: AssetImage(LD_loan_detail_banner_image),
+                      image: AssetImage("assets/a03.png"),
                       height: 40,
                       width: 40,
                     )),
@@ -196,8 +201,10 @@ class _OtherPaymentScreenState extends State<OtherPaymentScreen> {
                     width: 10,
                   ),
                   Column(
-                    children: const [
-                      Text(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children:  [
+                      const Text(
                         "Down payment",
                         style: TextStyle(
                             color: Color(0xff676767),
@@ -205,8 +212,8 @@ class _OtherPaymentScreenState extends State<OtherPaymentScreen> {
                             fontWeight: FontWeight.w400),
                       ),
                       Text(
-                        "40,000 TZSHS",
-                        style: TextStyle(
+                        "${widget.otherPaymentScreenArgs.amount} TZSHS",
+                        style: const TextStyle(
                             color: Colors.black,
                             fontSize: 24,
                             fontWeight: FontWeight.w700),
@@ -245,10 +252,10 @@ class _OtherPaymentScreenState extends State<OtherPaymentScreen> {
     return CrayonPaymentText(
         key: Key('${_identifier}_Other_payment_subtitle'),
         text: TextUIDataModel(
-          '${widget.otherPaymentScreenArgs.amount.toString()} ${'Other_payment_subtitle'.tr}',
+          'Other_payment_subtitle'.tr,
           styleVariant: CrayonPaymentTextStyleVariant.headline6,
           color: AN_TitleColor,
-          fontWeight: FontWeight.w600,
+          fontWeight: FontWeight.w500,
         ));
   }
 
@@ -393,9 +400,10 @@ class _OtherPaymentScreenState extends State<OtherPaymentScreen> {
     return CrayonPaymentText(
         key: Key('${_identifier}_Other_Payments_title'),
         text: TextUIDataModel(
-          '${widget.otherPaymentScreenArgs.amount.toString()} ${'Other_Payments_title'.tr}',
-          styleVariant: CrayonPaymentTextStyleVariant.headline6,
+          'Other_Payments_title'.tr,
+          styleVariant: CrayonPaymentTextStyleVariant.headline4,
           color: AN_TitleColor,
+
           fontWeight: FontWeight.w600,
         ));
   }
