@@ -153,7 +153,7 @@
   "AE_Continue": "Nenda kwenye Programu yako ya Y9 Agent",
 
   "VO_OtpVerification": "Uthibitishaji wa OTP",
-  "VO_otp_verification_description": "OTP itatumwa kwa nambari yako ya simu (kumalizia na XXXXX)",
+  "VO_otp_verification_description": "OTP itatumwa kwa nambari yako ya simu (kumalizia na xxx{})",
   "VO_DidNotGetCode": "Hukupata nambari ya kuthibitisha?",
   "VO_ResendNow": "Tuma Upya Sasa",
   "VO_Incorrect_OTP": "OTP si sahihi. Tafadhali jaribu tena.",

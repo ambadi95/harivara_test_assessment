@@ -212,7 +212,7 @@
   "ST_update_passcode" : "Update Passcode",
   "ST_App_Language" : "App Language",
   "ST_sign_out" : "Sign Out",
-  "ST_contact_text" : "Need Help or If You Have Any Query \n Contact Us at +255 67 719 9991",
+  "ST_contact_text" : "Need Help or If You Have Any Query \n Contact Us at +255 677-039-999",
 
   "TC_Title": "Y9’s Mobile App Terms of Use",
   "TC_LastUpdated": "Last updated : 2 Aug, 2022",
@@ -287,7 +287,8 @@
   "T_C_NOTE": "The borrower accepts the responsibility to be deducted the daily repayment as per the selected and allocated membership plan for the 4G Smartphone for the period of 365 days from the date of purchase and membership activation.",
   "DC_m-pesa" : "m-pesa",
   "DC_tigo_pesa": "tigo pesa",
-  "HO_referral_alert_message" : "Coming soon...\nstay tuned for updates"
+  "HO_referral_alert_message" : "Coming soon...\nstay tuned for updates",
+
 
 
 }
