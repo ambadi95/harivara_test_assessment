@@ -50,6 +50,11 @@
   "SU_device_reg_sub_heading" : "Tafuta aina ya kifaa chako katika Miongozo ya Kifaa ili kupata maelezo zaidi",
   "SU_scan_code_IMEI_button" : "(Ingiza au Changanua IMEI kutoka kwa kisanduku cha kifaa)",
   "SU_register_device_button" : "Sajili Kifaa",
+  "SU_telco_partner" : "Mshirika wa Telco",
+  "SU_select_telco" : "Chagua Telco",
+  "SU_telco_error" : "Telco si sahihi",
+  "SU_otp_verification" : "Uthibitishaji wa OTP",
+  "SU_skip_otp_verification" : "Ruka Uthibitishaji wa OTP",
 
   "DV_title" : "Ingiza Maelezo ya Kibinafsi",
   "DV_profile" : "Wasifu",
@@ -291,6 +296,7 @@
   "DC_tigo_pesa": "tigo pesa",
   "T_C_NOTE": "Mkopaji anakubaliana na shauri la kukatwa deni lake la mkopo kielektroniki kulingana na makato ya mkopo kwa siku kutoka kwenye simu yake kwa kipindi cha siku mia tatu sitini na tano.",
   "HO_referral_alert_message" : "Inakuja hivi karibuni...\nendelea kufuatilia kwa updates",
+  "HO_super_agent" : "Wakala Mkuu",
 
   "Offline_payment_title" : "Idhini ya Mkopo iko Chini\nMchakato",
   "Offline_payment_subtitle" : "Idhini ya mkopo na uundaji iko chini\nmaendeleo, yatafanyika ndani",

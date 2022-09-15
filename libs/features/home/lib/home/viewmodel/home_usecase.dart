@@ -32,6 +32,10 @@ class HomeUserCase extends BaseDataProvider {
     return await getValueFromSecureStorage('CustomerName', defaultValue: '');
   }
 
+  Future<String> getAgentType() async {
+    return await getValueFromSecureStorage('agentType', defaultValue: '');
+  }
+
   Future<CustomerCountResponse?> getCustomerCount(
       Function(String) onErrorCallback) async {
     String id = await getAgentId();

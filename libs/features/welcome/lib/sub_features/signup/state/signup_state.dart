@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:shared_data_models/customer_onboard/payment_mode_list_respose/payment_mode_list_response/datum.dart';
 
 part 'signup_state.freezed.dart';
 
@@ -19,4 +20,10 @@ class SignUpState with _$SignUpState {
       MobileNumberError;
 
   const factory SignUpState.agentIdError(String agentIdError) = AgentIdError;
+
+  const factory SignUpState.paymentModeError(String paymentModeError) =
+  PaymentModeError;
+
+
+  const factory SignUpState.onPaymentModeChoosen(Datum paymentMode) = PaymentModeChoosen;
 }

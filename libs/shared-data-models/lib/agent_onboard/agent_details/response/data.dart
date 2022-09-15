@@ -8,13 +8,18 @@ class Data extends Equatable {
   final String? y9AgentId;
   final String? firstName;
   final String? lastName;
-  final dynamic middleName;
+  final String? middleName;
   final String? nidaNo;
   final String? mobileNo;
   final String? birthDate;
   final String? gender;
   final String? emailId;
   final String? address;
+  final String? district;
+  final String? region;
+  final double? latitude;
+  final double? longitude;
+  final String? roleName;
 
   const Data({
     this.y9AgentId,
@@ -27,6 +32,11 @@ class Data extends Equatable {
     this.gender,
     this.emailId,
     this.address,
+    this.district,
+    this.region,
+    this.latitude,
+    this.longitude,
+    this.roleName,
   });
 
   factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
@@ -37,13 +47,18 @@ class Data extends Equatable {
     String? y9AgentId,
     String? firstName,
     String? lastName,
-    dynamic middleName,
+    String? middleName,
     String? nidaNo,
     String? mobileNo,
     String? birthDate,
     String? gender,
     String? emailId,
     String? address,
+    String? district,
+    String? region,
+    double? latitude,
+    double? longitude,
+    String? roleName,
   }) {
     return Data(
       y9AgentId: y9AgentId ?? this.y9AgentId,
@@ -56,6 +71,11 @@ class Data extends Equatable {
       gender: gender ?? this.gender,
       emailId: emailId ?? this.emailId,
       address: address ?? this.address,
+      district: district ?? this.district,
+      region: region ?? this.region,
+      latitude: latitude ?? this.latitude,
+      longitude: longitude ?? this.longitude,
+      roleName: roleName ?? this.roleName,
     );
   }
 
@@ -75,6 +95,11 @@ class Data extends Equatable {
       gender,
       emailId,
       address,
+      district,
+      region,
+      latitude,
+      longitude,
+      roleName,
     ];
   }
 }
