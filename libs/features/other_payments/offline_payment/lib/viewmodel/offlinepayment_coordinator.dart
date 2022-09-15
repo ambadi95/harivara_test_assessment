@@ -1,7 +1,5 @@
 import 'package:core/view/analytics_state_notifier.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_data_models/downpayment/downpayment_screen_args.dart';
-
 import '../navigation_handler/offline_payment_navigation_handler.dart';
 import '../state/offlinepayment_state.dart';
 import 'offlinepayment_usecase.dart';
@@ -44,7 +42,6 @@ class OfflinePaymentCoordinator extends AnalyticsStateNotifier<OfflinePaymentSta
         error: '',
         isLoading: true,
         paymentReceivedOffline: 1,
-
         loanApproved: 0,);
     var createLoan =
         await _offlinePaymentUseCase.createLoan(deviceId, (p0) => null);
@@ -54,22 +51,19 @@ class OfflinePaymentCoordinator extends AnalyticsStateNotifier<OfflinePaymentSta
           error: '',
           isLoading: false,
           paymentReceivedOffline: 1,
-          loanApproved: 1,
+          loanApproved: 0,
       );
-
       await loanApproval(createLoan!.data!.loanId!.toString(), context);
     } else {
-      print("Failed");
       state = OfflinePaymentState.ready(
           context: context,
           error: '',
           isLoading: false,
-         paymentReceivedOffline: 1,
-
-          loanApproved: 0,
+          paymentReceivedOffline: 1,
+          loanApproved: 2,
           );
 
-      _showAlertForErrorMessage(createLoan!.message!);
+      _showAlertForErrorMessage(createLoan!.message!, false);
     }
   }
 
@@ -81,7 +75,6 @@ class OfflinePaymentCoordinator extends AnalyticsStateNotifier<OfflinePaymentSta
       error: '',
       isLoading: false,
       paymentReceivedOffline: 1,
-
       loanApproved: 0,
     );
     var loanApprovalResponse =
@@ -92,8 +85,7 @@ class OfflinePaymentCoordinator extends AnalyticsStateNotifier<OfflinePaymentSta
         error: '',
         isLoading: false,
         paymentReceivedOffline: 1,
-
-        loanApproved: 0,
+        loanApproved: 1,
       );
     } else {
       print("Failed");
@@ -103,60 +95,59 @@ class OfflinePaymentCoordinator extends AnalyticsStateNotifier<OfflinePaymentSta
         isLoading: false,
         paymentReceivedOffline: 1,
 
-        loanApproved: 0,
+        loanApproved: 2,
       );
-      _showAlertForErrorMessage(loanApprovalResponse!.message!);
+      _showAlertForErrorMessage(loanApprovalResponse!.message!, true);
     }
   }
 
-  Future<void> makePayment(BuildContext context, String amount) async {
-
-    state = OfflinePaymentState.ready(
-      context: context,
-      error: '',
-      isLoading: false,
-      paymentReceivedOffline: 1,
-
-      loanApproved: 0,
-    );
-    var mkePayment =
-        await _offlinePaymentUseCase.makePayment(amount, (p0) => null);
-    if (mkePayment?.status == true) {
-      state = OfflinePaymentState.ready(
-        context: context,
-        error: '',
-        isLoading: false,
-        paymentReceivedOffline: 1,
-
-        loanApproved: 0,
-      );
-
-
-    } else {
-      state = OfflinePaymentState.ready(
-        context: context,
-        error: '',
-        isLoading: false,
-        paymentReceivedOffline: 1,
-
-        loanApproved: 0,
-      );
-      _showAlertForErrorMessage(mkePayment!.message!);
-
-      print("Failed");
-    }
-  }
+  // Future<void> makePayment(BuildContext context, String amount) async {
+  //
+  //   state = OfflinePaymentState.ready(
+  //     context: context,
+  //     error: '',
+  //     isLoading: false,
+  //     paymentReceivedOffline: 1,
+  //
+  //     loanApproved: 0,
+  //   );
+  //   var mkePayment =
+  //       await _offlinePaymentUseCase.makePayment(amount, (p0) => null);
+  //   if (mkePayment?.status == true) {
+  //     state = OfflinePaymentState.ready(
+  //       context: context,
+  //       error: '',
+  //       isLoading: false,
+  //       paymentReceivedOffline: 1,
+  //
+  //       loanApproved: 0,
+  //     );
+  //
+  //
+  //   } else {
+  //     state = OfflinePaymentState.ready(
+  //       context: context,
+  //       error: '',
+  //       isLoading: false,
+  //       paymentReceivedOffline: 1,
+  //
+  //       loanApproved: 0,
+  //     );
+  //     _showAlertForErrorMessage(mkePayment!.message!);
+  //
+  //     print("Failed");
+  //   }
+  // }
 
   Future<String> getLoanCalled() async {
     return await _offlinePaymentUseCase.getLoanCalled();
   }
 
-
-  _showAlertForErrorMessage(String errorMessage) {
+  _showAlertForErrorMessage(String errorMessage, bool isLoanCreationTitle) {
     Get.bottomSheet(
       AlertBottomSheet(
           alertMessage: errorMessage,
-          alertTitle: 'Error',
+          alertTitle: isLoanCreationTitle ? 'Offline_loan_approval_error_msg'.tr : 'Offline_loan_creation_error_msg'.tr,
           alertIcon: "assets/images/alert_icon.png",
           onClose: () {
             _navigationHandler.goBack();

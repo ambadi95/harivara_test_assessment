@@ -13,6 +13,7 @@ abstract class ISignupService {
   static const getCustomerDetailIdentifier = 'getCustomerDetail';
   static const getCustomerDetailByMobileNumberIdentifier = 'getCustomerDetailByMobileNumber';
   static const agentDetailIdentifier = 'getAgent';
+  static const getTelcoListIdentifier = 'getTelcoList';
 
 
   Future<StandardRequest> jwttoken(
@@ -33,6 +34,9 @@ abstract class ISignupService {
     String nindaNumber,
     String phoneNo,
   );
+
+  Future<StandardRequest> getPaymentMode(
+      );
 
   Future<StandardRequest> getCustomerDetailByMobileNo(
       String phoneNo,
@@ -93,6 +97,15 @@ class SignupService implements ISignupService {
       'nidaNo': nidaNumber,
       'y9AgentId': agentId,
     });
+    return request;
+  }
+
+  @override
+  Future<StandardRequest> getPaymentMode() async {
+    var request = StandardRequest();
+    request.requestType = RequestType.GET;
+    request.endpoint =  'telco';
+    CrayonPaymentLogger.logInfo(request.jsonBody.toString());
     return request;
   }
 

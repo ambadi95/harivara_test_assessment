@@ -53,6 +53,9 @@ dependencies:
   configuremdm:
     path: ../../features/configuremdm
 
+  offline_payment:
+    path: ../../features/other_payments/offline_payment
+
   scanqrcode:
     path: ../../features/scanqrcode
 

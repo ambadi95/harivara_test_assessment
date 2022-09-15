@@ -29,8 +29,8 @@ class HomeCoordinator extends BaseViewModel<HomeScreenState> {
     _navigationHandler.navigateToSignUpScreen(UserType.Customer);
   }
 
-  void configureMDM() {
-    _navigationHandler.navigateTodevice(UserType.Customer);
+  void offlinePayment() {
+    _navigationHandler.navigateToOfflinePayment(UserType.Customer);
   }
 
 
@@ -88,6 +88,11 @@ class HomeCoordinator extends BaseViewModel<HomeScreenState> {
   Future<String> getCustomerName() async {
     String agentName = await _customerHomeUseCase.getCustomerName();
     return agentName;
+  }
+
+  Future<String> getAgentType() async {
+    String agentType = await _customerHomeUseCase.getAgentType();
+    return agentType;
   }
 
   Future<Data> getCustomerCount() async {

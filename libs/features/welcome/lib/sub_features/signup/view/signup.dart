@@ -1,3 +1,4 @@
+import 'package:config/Colors.dart';
 import 'package:config/Styles.dart';
 import 'package:core/view/base_view.dart';
 import 'package:flutter/material.dart';
@@ -5,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:welcome/sub_features/signup/state/signup_state.dart';
 import 'package:welcome/sub_features/signup/viewmodel/signup_coordinator.dart';
 import 'package:welcome/welcome_module.dart';
+import 'package:widget_library/dropdown/crayon_drop_down.dart';
 import 'package:widget_library/formatter/nida_input_formatter.dart';
 import 'package:widget_library/html/rich_text_description.dart';
 import 'package:widget_library/progress_bar/centered_circular_progress_bar.dart';
@@ -14,6 +16,7 @@ import 'package:widget_library/input_fields/input_number_field_with_label.dart';
 import 'package:widget_library/buttons/crayon_back_button.dart';
 import 'package:config/Colors.dart' as config_color;
 import 'package:get/get.dart';
+import 'package:shared_data_models/customer_onboard/payment_mode_list_respose/payment_mode_list_response/datum.dart';
 import 'package:config/Config.dart';
 import 'package:widget_library/utils/launcher_utils.dart';
 import '../../../data_model/sign_up_arguments.dart';
@@ -33,9 +36,18 @@ class _SignUpState extends State<SignUp> {
   String nidaNumberError = '';
   String mobileNumberError = '';
   String agentIdError = '';
+  String paymentModeError = '';
   TextEditingController nidaNumber = TextEditingController();
   TextEditingController mobileNumber = TextEditingController();
   TextEditingController agentId = TextEditingController();
+  TextEditingController paymentMode = TextEditingController();
+
+  Datum? _paymentMode;
+  String agentType = '';
+
+  List<DropdownMenuItem<Datum>> paymentModeDropDowm = [];
+
+  List<Datum> telcoList= [];
 
   @override
   Widget build(BuildContext context) =>
@@ -43,7 +55,10 @@ class _SignUpState extends State<SignUp> {
           onStateListenCallback: (preState, newState) =>
               {_listenToStateChanges(context, newState)},
           setupViewModel: (coordinator) async {
-            coordinator.calljwttoken();
+            agentType =  await coordinator.getAgentType();
+            await coordinator.calljwttoken();
+            telcoList = await coordinator.getPaymentMode();
+            paymentModeDropDowm = getPaymentModeDropDownData(telcoList);
           },
           builder: (context, state, coordinator) => SafeArea(
                 child: Scaffold(
@@ -63,7 +78,7 @@ class _SignUpState extends State<SignUp> {
                           const SizedBox(
                             height: 23,
                           ),
-                          _buildContinueButton(context, coordinator, state)
+                          _buildContinueButton(context, coordinator, state),
                         ],
                       ),
                     ),
@@ -152,6 +167,12 @@ class _SignUpState extends State<SignUp> {
                   mobileNumber, coordinator, 'SU_subtitle_hint')
               : _buildLabelTextField('SU_agent_id_hint', agentId, coordinator,
                   'SU_agent_id_hint', agentIdError, TextInputType.text),
+         const SizedBox(
+            height: 36,
+          ),
+          agentType == 'SUPER_AGENT' ?
+          _buildPaymentModeDropdown(coordinator)
+              : const SizedBox()
         ],
       ),
     );
@@ -346,6 +367,7 @@ class _SignUpState extends State<SignUp> {
             coordinator.isValidNidaNumber(nidaNumber.text);
             coordinator.isValidMobileNumber(mobileNumber.text);
             coordinator.isValidAgentId(agentId.text);
+            coordinator.isValidPaymentMode(paymentMode.text);
             if (_isBtnEnabled &&
                 coordinator.isValidNidaNumber(nidaNumber.text)) {
               coordinator.signup(widget.signUpArguments, mobileNumber.text,
@@ -363,13 +385,123 @@ class _SignUpState extends State<SignUp> {
               borderRadius: BorderRadius.circular(8.0)),
           child: Center(
             child: Text(
-              'SU_button_text'.tr,
+             agentType == 'SUPER_AGENT' ? 'SU_otp_verification'.tr : 'SU_button_text'.tr,
               style: SU_button_text_style,
             ),
           ),
         ),
       ),
     );
+  }
+
+  Widget _buildSkipOtpButton(
+      BuildContext context,
+      SignUpCoordinator coordinator,
+      SignUpState state,
+      ) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
+      child: GestureDetector(
+        onTap: () async {
+          // if (_isBtnEnabled) {
+          //   coordinator.isValidNidaNumber(nidaNumber.text);
+          //   coordinator.isValidMobileNumber(mobileNumber.text);
+          //   coordinator.isValidAgentId(agentId.text);
+          //   if (_isBtnEnabled &&
+          //       coordinator.isValidNidaNumber(nidaNumber.text)) {
+          //     coordinator.signup(widget.signUpArguments, mobileNumber.text,
+          //         nidaNumber.text, agentId.text);
+          //   }
+          // }
+        },
+        child: Container(
+          width: double.infinity,
+          height: 50,
+          decoration: BoxDecoration(
+              color:Colors.white,
+              borderRadius: BorderRadius.circular(8.0),
+            border: Border.all(width: 1,color: _isBtnEnabled ? config_color.PRIMARY_COLOR : config_color.SU_grey_color )
+          ),
+          child: Center(
+            child: Text(
+              'SU_skip_otp_verification'.tr,
+              style:  TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Montserrat',
+                color: _isBtnEnabled ? config_color.PRIMARY_COLOR : config_color.SU_grey_color,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildPaymentModeDropdown(SignUpCoordinator coordinator) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        CrayonDropDown(
+          title: 'SU_telco_partner'.tr,
+          key: const Key('telcoDropDown'),
+          icon: const Icon(
+            Icons.keyboard_arrow_down,
+            color: ES_grey_button_color,
+          ),
+          hint: Text(
+            'SU_select_telco'.tr,
+          ),
+          boxHeight: 60,
+          error: paymentModeError,
+          value: _paymentMode,
+          items: paymentModeDropDowm,
+          onChanged: (value) async {
+            onPaymentModeChoosen(value as Datum, coordinator);
+            paymentMode.text = value.name!;
+            coordinator.isValidPaymentMode(value.name!);
+            print('&&&&&&&&&&&');
+            _validateForm(coordinator);
+          },
+        ),
+        const SizedBox(
+          height: 6,
+        ),
+        Text(paymentModeError.tr, style: label_input_error_style),
+        const SizedBox(
+          height: 10,
+        ),
+      ],
+    );
+  }
+
+  List<DropdownMenuItem<Datum>> getPaymentModeDropDownData(
+      List<Datum> paymentModel,
+      ) {
+    for (var item in paymentModel) {
+      paymentModeDropDowm.add(
+        DropdownMenuItem(
+          value: item,
+          child: Text(
+            item.name.toString(),
+            style: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
+              color: Colors.black,
+              fontFamily: 'brown',
+            ),
+          ),
+        ),
+      );
+    }
+    return paymentModeDropDowm;
+  }
+
+  void onPaymentModeChoosen(
+      Datum value,
+      SignUpCoordinator coordinator,
+      ) {
+    coordinator.setPaymentMode(value);
   }
 
   void _listenToStateChanges(BuildContext context, SignUpState state) {
@@ -386,12 +518,18 @@ class _SignUpState extends State<SignUp> {
         agentIdError: (message) {
           agentIdError = message;
         },
+        paymentModeError: (message){
+          paymentModeError = message;
+        },
+        onPaymentModeChoosen: (value){
+          _paymentMode = value;
+        },
         orElse: () => null);
   }
 
   void _validateForm(SignUpCoordinator coordinator) {
     coordinator.validateForm(nidaNumber.text, mobileNumber.text, agentId.text,
-        widget.signUpArguments.userType);
+        widget.signUpArguments.userType, agentType, paymentMode.text);
   }
 
   void _checkValid(String label, SignUpCoordinator coordinator) {

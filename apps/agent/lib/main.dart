@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:isolate';
 
+import 'package:config/Config.dart';
 import 'package:core/app/crayon_payment_material_app.dart';
 import 'package:core/ioc/di_container.dart';
 import 'package:core/logging/logger.dart';
@@ -19,6 +20,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/src/framework.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/internacionalization.dart';
+import 'package:home/home/home_screen_arguments.dart';
+import 'package:home/home/view/home_screen.dart';
 import 'package:kyc/subfeatures/kycmain/view/kyc_credit_main_screen.dart';
 import 'package:splash/splash/view/splash.dart';
 import 'package:widget_library/theme/crayon_payment_theme.dart';
@@ -108,6 +111,9 @@ class HomeWidget extends StatelessWidget {
         key: Key('AppMaterialApp'),
         home: !_status
             ? CrayonSplashScreen.forMerchantApp()
+        // CrayonHomeScreen(
+        //   homeScreenArgs: HomeScreenArgs(userType: UserType.Agent,isAgent: true),
+        // )
             : CrayonSplashScreen.forMerchantApp(),
         theme: CrayonPaymentTheme().defaultTheme,
         onGenerateRoute: _navigationManager.getRoute,

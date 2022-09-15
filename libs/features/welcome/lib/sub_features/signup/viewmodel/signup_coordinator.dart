@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:core/logging/logger.dart';
+import 'package:shared_data_models/customer_onboard/payment_mode_list_respose/payment_mode_list_response/datum.dart';
 import 'package:shared_data_models/signup/sign_up_type.dart';
 import 'package:task_manager/base_classes/base_view_model.dart';
 import 'package:welcome/sub_features/signup/state/signup_state.dart';
@@ -257,23 +258,28 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
     }
 
     bool _validateForm(String nidaNo, String mobNumber, String agentId,
-        UserType userType) {
+        UserType userType, String agentType,String paymentMode) {
       var agentID = agentId.isNotEmpty;
       var isnidaNumberValid = _signupUseCase.isValidNINDAnumber(nidaNo);
       var ismobileNoValid = _signupUseCase.isValidMobileNumber(mobNumber);
+     var isPaymentModeValid = _signupUseCase.isValidPaymentMode(paymentMode);
       var _isValid;
-      if (userType == UserType.Customer) {
+      if(agentType == 'SUPER_AGENT'){
+        _isValid = isnidaNumberValid && ismobileNoValid && isPaymentModeValid;
+      }
+      else if (userType == UserType.Customer) {
         _isValid = isnidaNumberValid && ismobileNoValid;
-      } else {
+      }
+      else {
         _isValid = isnidaNumberValid && agentID;
       }
       return _isValid;
     }
 
     void validateForm(String nidaNo, String mobNumber, String agentId,
-        userType) {
+        userType, String agentType,String paymentMode) {
       state = SignUpState.SignUpFormState(
-          _validateForm(nidaNo, mobNumber, agentId, userType));
+          _validateForm(nidaNo, mobNumber, agentId, userType,agentType,paymentMode));
     }
 
     bool isValidNidaNumber(String nidaNumber) {
@@ -306,6 +312,16 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
       return result;
     }
 
+  bool isValidPaymentMode(String paymentMode) {
+    bool result = _signupUseCase.isValidPaymentMode(paymentMode);
+    if (!result) {
+      state = const SignUpState.paymentModeError('SU_telco_error');
+    } else {
+      state = const SignUpState.paymentModeError('');
+    }
+    return result;
+  }
+
     Future<void> continueToOtp(String nidaNumber, String mobileNumber) async {
       await _signupUseCase.saveDetails(
           nidaNumber, '+255' + mobileNumber.replaceAll(" ", ""));
@@ -314,4 +330,25 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
     void navigateToTermsCondition() {
       _navigationHandler.navigateToTermsCondtionsScreen();
     }
+
+  void setPaymentMode(Datum paymentMode) {
+    state = SignUpState.onPaymentModeChoosen(paymentMode);
+     _signupUseCase.saveTelcoPartner(paymentMode.name!);
   }
+
+  Future getPaymentMode() async {
+    var response = await _signupUseCase.getPaymentMode((p0) => null);
+    if(response?.status == true){
+      return response?.data;
+    }else{
+      return [];
+    }
+  }
+
+  Future<String> getAgentType ()async{
+    return await _signupUseCase.getAgentType();
+  }
+
+
+  }
+

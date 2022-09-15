@@ -21,6 +21,12 @@ class KycCreditCoordinator extends AnalyticsStateNotifier<KycCreditState> {
   ) : super(const KycCreditState.initialState());
 
 
+
+  Future<String> getAgentType() async{
+    String agentType = await _kycCreditUseCase.getAgentType();
+    return agentType;
+  }
+
   void initialiseState(
     BuildContext context,
   ) async {
@@ -34,12 +40,12 @@ class KycCreditCoordinator extends AnalyticsStateNotifier<KycCreditState> {
 
 
   //call kyc check
-  Future callKycCheck(BuildContext context
+  Future callKycCheck(BuildContext context,bool manualApprove
       ) async {
       state = KycCreditState.ready(context: context,isLoading:true);
       String mobileNumber = await _kycCreditUseCase.getMobileNumber();
     var response = await _kycCreditUseCase.callKycCheck(
-        mobileNumber,
+        mobileNumber,"Airtel",manualApprove,
             (p0) => null);
     if (response?.status == true) {
       state = KycCreditState.ready(context: context,isLoading:false,error: 'Kyc Done' ,isKycError: false,isCreditCheckError: false);
@@ -66,12 +72,12 @@ class KycCreditCoordinator extends AnalyticsStateNotifier<KycCreditState> {
     );
   }
   //call credit check
-  Future callCreditCheck(BuildContext context
+  Future callCreditCheck(BuildContext context, bool manualApprove
       ) async {
       state = KycCreditState.ready(context: context,isLoading:true);
 
       String customerId=await  _kycCreditUseCase.getCustomerId();
-    var response = await _kycCreditUseCase.callCreditCheck(customerId,
+    var response = await _kycCreditUseCase.callCreditCheck(customerId,"Airtel",manualApprove,
             (p0) => null);
     if (response?.status == true) {
       state = KycCreditState.ready(context: context,isLoading:false );
@@ -82,6 +88,7 @@ class KycCreditCoordinator extends AnalyticsStateNotifier<KycCreditState> {
       print(response.message);
     }
   }
+
 
   //
   // call credit score

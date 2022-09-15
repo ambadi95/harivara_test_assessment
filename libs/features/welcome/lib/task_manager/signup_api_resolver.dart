@@ -94,6 +94,8 @@ class SignupApiResolver extends TaskResolver {
         return _signupService.getCustomerDetailByMobileNo(requestData['mobileNo']);
       case IPreferencesService.preferencesIdentifier:
         return _preferencesService.setPreferences(requestData['customerId'],requestData['lang'] );
+      case ISignupService.getTelcoListIdentifier:
+        return _signupService.getPaymentMode();
       default:
         throw UnimplementedError();
     }
