@@ -47,15 +47,18 @@ class _SignUpState extends State<SignUp> {
 
   List<DropdownMenuItem<Datum>> paymentModeDropDowm = [];
 
+  List<Datum> telcoList= [];
+
   @override
   Widget build(BuildContext context) =>
       BaseView<SignUpCoordinator, SignUpState>(
           onStateListenCallback: (preState, newState) =>
               {_listenToStateChanges(context, newState)},
           setupViewModel: (coordinator) async {
-            coordinator.calljwttoken();
+            await coordinator.calljwttoken();
             agentType =  await coordinator.getAgentType();
-           //  paymentModeDropDowm = await coordinator.getPaymentMode();
+            telcoList = await coordinator.getPaymentMode();
+            paymentModeDropDowm = getPaymentModeDropDownData(telcoList);
           },
           builder: (context, state, coordinator) => SafeArea(
                 child: Scaffold(

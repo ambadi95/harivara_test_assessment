@@ -104,7 +104,7 @@ class SignupService implements ISignupService {
   Future<StandardRequest> getPaymentMode() async {
     var request = StandardRequest();
     request.requestType = RequestType.GET;
-    request.endpoint = customerEndpoint +  'telco';
+    request.endpoint =  'telco';
     CrayonPaymentLogger.logInfo(request.jsonBody.toString());
     return request;
   }

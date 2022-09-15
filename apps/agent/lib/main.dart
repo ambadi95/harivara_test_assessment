@@ -110,9 +110,10 @@ class HomeWidget extends StatelessWidget {
       child: CrayonPaymentMaterialApp(
         key: Key('AppMaterialApp'),
         home: !_status
-            ? CrayonHomeScreen(
-          homeScreenArgs: HomeScreenArgs(userType: UserType.Agent,isAgent: true),
-        )
+            ? CrayonSplashScreen.forMerchantApp()
+        // CrayonHomeScreen(
+        //   homeScreenArgs: HomeScreenArgs(userType: UserType.Agent,isAgent: true),
+        // )
             : CrayonSplashScreen.forMerchantApp(),
         theme: CrayonPaymentTheme().defaultTheme,
         onGenerateRoute: _navigationManager.getRoute,

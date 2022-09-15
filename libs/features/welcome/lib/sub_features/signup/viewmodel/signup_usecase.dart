@@ -62,7 +62,7 @@ class SignupUseCase extends BaseDataProvider {
   }
 
   Future<void> saveTelcoPartner(String telco) async {
-    return await setValueToStorage({'telco': telco});
+    return await setValueToStorage({'telcoPartner': telco});
   }
 
   Future<void> saveCustomerId(String? customerId) async {
