@@ -34,8 +34,8 @@ class IKycCreditService implements KycCreditService {
 
     String number = requestData['mobileNumber'];
     var request = StandardRequest();
-    request.requestType = RequestType.GET;
-    request.endpoint = customerEndpoint + 'payment/kyc-check/${number}[customer]';
+    request.requestType = RequestType.POST;
+    request.endpoint = customerEndpoint + 'payment/kyc-check/[customer]';
     request.jsonBody = json.encode(requestData);
     return request;
   }
@@ -46,7 +46,7 @@ class IKycCreditService implements KycCreditService {
   ) async {
     var request = StandardRequest();
     request.requestType = RequestType.GET;
-    request.endpoint = customerEndpoint + 'creditcheck/status/${requestData['customerId']}[customer]';
+    request.endpoint = customerEndpoint + 'creditcheck/status/[customer]';
     request.jsonBody = json.encode(requestData);
     return request;
   }

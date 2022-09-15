@@ -236,6 +236,7 @@
   "KYC_Terms_and_Condition" : "Terms & Conditions",
   "Credit_Score_With_Telco": "Credit Check with\nTelco for Device Loan",
   "KYC_Verification_Failed": "KYC Validation Failed",
+  "KYC_Manually_Approve" : "Manually Approve",
   "KYC_Verification_Failed_Title": "Sorry for inconvenience the KYC missmatch with Airtel telco’s record  so, pls update the records and retry.",
   "KYC_Verification_Failed_SubTitle": "Details will be sent to customer registered email id and mobile number",
   "Credit_Check_Failed": "Credit Check Failed",

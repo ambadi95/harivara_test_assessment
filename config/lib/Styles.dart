@@ -215,6 +215,13 @@ const SU_skip_otp_button_text_style = TextStyle(
   color: PRIMARY_COLOR,
 );
 
+const KYC_button_text_style = TextStyle(
+  fontSize: 16,
+  fontWeight: FontWeight.w500,
+  fontFamily: 'Montserrat',
+  color: PRIMARY_COLOR,
+);
+
 const HO_bottom_sheet_button_text_style = TextStyle(
   fontSize: 16,
   fontWeight: FontWeight.w700,
