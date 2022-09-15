@@ -1,12 +1,10 @@
-import 'package:core/navigation/i_route_manager.dart';
+
+  import 'package:core/navigation/i_route_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:other_payment/view/other_payment_screen.dart';
+import 'package:shared_data_models/otherpayment/otherpayment_screen_args.dart';
 
-import 'package:shared_data_models/kyc/kyc_screen_args.dart';
-import 'package:shared_data_models/otherpayments/otherpayment_screen_args.dart';
-
-import '../view/other_payment_screen.dart';
-
-  class OfflinePaymentRouteManager extends IRouteManager {
+class OtherPaymentRouteManager extends IRouteManager {
   @override
   Widget getView(RouteSettings settings) {
     switch (settings.name) {

@@ -1,12 +1,18 @@
 import 'dart:async';
-
+import 'package:config/Colors.dart' as config_color;
 import 'package:config/Colors.dart' as config_colors;
 import 'package:config/Colors.dart';
+import 'package:config/Config.dart';
 import 'package:config/Styles.dart';
 import 'package:core/mobile_core.dart';
 import 'package:core/view/base_view.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:shared_data_models/otherpayments/otherpayment_screen_args.dart';
+import 'package:shared_data_models/otherpayment/otherpayment_screen_args.dart';
+import 'package:widget_library/formatter/nida_input_formatter.dart';
+import 'package:widget_library/html/rich_text_description.dart';
+import 'package:widget_library/input_fields/input_field_with_label.dart';
+import 'package:widget_library/input_fields/input_number_field_with_label.dart';
 
 import 'package:widget_library/spacers/crayon_payment_spacers.dart';
 import 'package:widget_library/utils/app_utils.dart';
@@ -43,6 +49,12 @@ class _OtherPaymentScreenState extends State<OtherPaymentScreen> {
   OtherPaymentCoordinator? otherPaymentCoordinator;
   late Timer _timer;
   final ValueNotifier<int> _startValue = ValueNotifier<int>(15);
+
+  String transactionIdError = '';
+  String mobileNumberError = '';
+  String agentIdError = '';
+  TextEditingController transactionController = TextEditingController();
+  TextEditingController mobileController = TextEditingController();
 
   void startTimer() {
     const oneMintue = Duration(minutes: 15);
@@ -83,10 +95,10 @@ class _OtherPaymentScreenState extends State<OtherPaymentScreen> {
           setupViewModel: (coordinator) async {
             otherPaymentCoordinator = coordinator;
             coordinator.initialiseState(context);
-            username = await coordinator.getNewCustomerName(); //getAgentName();
+            /*username = await coordinator.getNewCustomerName(); //getAgentName();
             setState(() {
               username;
-            });
+            });*/
             // coordinator.makePayment(context,widget.otherPaymentScreenArgs.amount);
           },
           onStateListenCallback: (preState, newState) => {
@@ -132,7 +144,7 @@ class _OtherPaymentScreenState extends State<OtherPaymentScreen> {
     );
   }
 
-  Widget _createLoading(OfflinePaymentStateReady state) {
+  Widget _createLoading(OtherPaymentStateReady state) {
     if (state.isLoading) {
       return const CenteredCircularProgressBar(color: PRIMARY_COLOR);
     } else {
@@ -143,168 +155,224 @@ class _OtherPaymentScreenState extends State<OtherPaymentScreen> {
   Widget _buildMainUI(
     BuildContext context,
     OtherPaymentCoordinator coordinator,
-    OfflinePaymentStateReady state,
+    OtherPaymentStateReady state,
   ) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        _buildTitle(context),
-        SizedBox(
-          height: AppUtils.appUtilsInstance.getPercentageSize(percentage: 5),
-        ),
-        //_image(context)
-
-        Expanded(
-          flex: 5,
-          child: Row(
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+    return Padding(
+      padding: const EdgeInsets.only(right: 16, left: 16),
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _title(context),
+            const SizedBox(
+              height: 16,
+            ),
+            _sub_title(coordinator),
+            const SizedBox(
+              height: 50,
+            ),
+            Container(
+              height: 80,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: const Color(0xffF4EEEB),
+                borderRadius: BorderRadius.circular(4),
+              ),
+              margin: const EdgeInsets.symmetric(horizontal: 10),
+              child: Row(
                 children: [
-                  SizedBox(
-                    height: AppUtils.appUtilsInstance
-                        .getPercentageSize(percentage: 5),
+                  Container(
+                    height: 60,
+                    width: 60,
+                    decoration: const BoxDecoration(color: Colors.white),
+                    child: const Center(
+                        child: Image(
+                      image: AssetImage(LD_loan_detail_banner_image),
+                      height: 40,
+                      width: 40,
+                    )),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 7.0),
-                    child: _getCircularIcon(
-                      context,
-                    ),
+                  const SizedBox(
+                    width: 10,
                   ),
-                  Expanded(
-                    flex: 1,
-                    child: _getVerticalDivider(context, 100),
-                  ),
+                  Column(
+                    children: const [
+                      Text(
+                        "Down payment",
+                        style: TextStyle(
+                            color: Color(0xff676767),
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400),
+                      ),
+                      Text(
+                        "40,000 TZSHS",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 24,
+                            fontWeight: FontWeight.w700),
+                      ),
+                    ],
+                  )
                 ],
               ),
-              Expanded(
-                flex: 1,
-                child: Padding(
-                  padding: EdgeInsets.only(
-                      left: AppUtils.appUtilsInstance
-                          .getPercentageSize(percentage: 9)),
-                  child: SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        _image(context),
-                        // FlutterLogo(),
-                        SizedBox(
-                          height: AppUtils.appUtilsInstance
-                              .getPercentageSize(percentage: 8),
-                        ),
-                        _title(context),
-                        SizedBox(
-                          height: AppUtils.appUtilsInstance
-                              .getPercentageSize(percentage: 5),
-                        ),
-                        _subTitle(context),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ],
-            crossAxisAlignment: CrossAxisAlignment.start,
-          ),
-        ),
-
-        Expanded(
-          flex: 5,
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _getVerticalDivider(context,
-                    AppUtils.appUtilsInstance.getPercentageSize(percentage: 8)),
-                _rowWidget(
-                  context,
-                  icon: _getIcon(context, state.paymentReceivedOffline),
-                  text: _textWidget(
-                      context, 'DP_PaymentReceivedOffline'.tr, false),
-                ),
-                _getVerticalDivider(context,
-                    AppUtils.appUtilsInstance.getPercentageSize(percentage: 8)),
-                _rowWidget(
-                  context,
-                  icon: _getIcon(context, state.loanApproved),
-                  text:
-                      _textWidget(context, 'DP_LoanApproved_Offline'.tr, false),
-                ),
-                SizedBox(
-                  height: AppUtils.appUtilsInstance
-                      .getPercentageSize(percentage: 8),
-                ),
-              ],
             ),
-          ),
+            const SizedBox(
+              height: 50,
+            ),
+            _buildLabelTextField(
+                'other_payment_transaction_id_title',
+                transactionController,
+                coordinator,
+                'other_payment_transaction_id_hint',
+                transactionIdError,
+                TextInputType.number),
+            const SizedBox(
+              height: 48,
+            ),
+            _buildLabelTextFieldMobNumber(
+              'SU_mobile_no_label',
+              mobileController,
+              coordinator,
+              'SU_subtitle_hint',
+            )
+          ],
         ),
-      ],
-    );
-  }
-
-  Widget _getCircularIcon(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        shape: BoxShape.circle,
-        color: AN_VerticalDivider,
-      ),
-      margin: EdgeInsets.only(top: 20),
-      height: 5,
-      width: 5,
-    );
-  }
-
-  Widget _getCheckedIcon(BuildContext context, Color color) {
-    return Icon(
-      Icons.check_circle,
-      color: color,
-      size: 20,
-    );
-  }
-
-  Widget _getIcon(BuildContext context, num status) {
-    return SvgPicture.asset(
-      status == 0
-          ? "assets/images/circular_grey.svg"
-          : (status == 1)
-              ? "assets/images/circular_tick.svg"
-              : "assets/images/circular_cross.svg",
-      height: 20,
-      width: 20,
-    );
-  }
-
-  Widget _getVerticalDivider(BuildContext context, double height) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 9.0),
-      child: Container(
-        width: 1,
-        height: height,
-        color: AN_VerticalDivider,
       ),
     );
+  }
+
+  Widget _sub_title(OtherPaymentCoordinator coordinator) {
+    return CrayonPaymentText(
+        key: Key('${_identifier}_Other_payment_subtitle'),
+        text: TextUIDataModel(
+          '${widget.otherPaymentScreenArgs.amount.toString()} ${'Other_payment_subtitle'.tr}',
+          styleVariant: CrayonPaymentTextStyleVariant.headline6,
+          color: AN_TitleColor,
+          fontWeight: FontWeight.w600,
+        ));
+  }
+
+  Widget _buildLabelTextField(
+      String label,
+      TextEditingController controller,
+      OtherPaymentCoordinator coordinator,
+      String hint,
+      String errorText,
+      TextInputType textInputType) {
+    return FocusScope(
+      child: Focus(
+        onFocusChange: (focus) {
+          _checkValid(
+            label,
+            coordinator,
+          );
+        },
+        child: InputFieldWithLabel(
+          label: label.tr,
+          hintText: hint.tr,
+          controller: controller,
+          errorText: errorText.tr,
+          keyboardType: textInputType,
+          textCapitalization: TextCapitalization.characters,
+          onChanged: (value) {
+            /*   _validateForm(coordinator);
+            if (nidaNumberError.isNotEmpty || nidaNumber.text.length > 23) {
+              coordinator.isValidNidaNumber(nidaNumber.text);
+            }
+            if (agentIdError.isNotEmpty) {
+              coordinator.isValidAgentId(agentId.text);
+            }*/
+          },
+        ),
+      ),
+    );
+  }
+
+  Widget _buildLabelTextFieldMobNumber(
+      String label,
+      TextEditingController controller,
+      OtherPaymentCoordinator coordinator,
+      String hint) {
+    return FocusScope(
+      child: Focus(
+        onFocusChange: (focus) {
+          _checkValid(
+            label,
+            coordinator,
+          );
+        },
+        child: InputNumberFieldWithLabel(
+          label: label.tr,
+          controller: controller,
+          errorText: mobileNumberError.tr,
+          hintText: hint.tr,
+          key: const Key('mobileNumberTextField'),
+          inputFormatters: <TextInputFormatter>[
+            NIDAInputFormatter(mask: 'xxx xxx xxx', separator: ' ')
+          ],
+          keyboardType: TextInputType.number,
+          onChanged: (value) {
+            /*_validateForm(coordinator);
+            if (mobileNumberError.isNotEmpty || mobileNumber.text.length > 11) {
+              coordinator.isValidMobileNumber(mobileNumber.text);
+            }*/
+          },
+        ),
+      ),
+    );
+  }
+
+  void _checkValid(String label, OtherPaymentCoordinator coordinator) {
+    switch (label) {
+      case 'SU_ID_no_label':
+        if (transactionIdError.isNotEmpty ||
+            transactionController.text.isNotEmpty == true) {
+          //coordinator.isValidNidaNumber(nidaNumber.text);
+        }
+        break;
+      case 'SU_mobile_no_label':
+        if (mobileNumberError.isNotEmpty ||
+            mobileController.text.isNotEmpty == true) {
+          print("ffg");
+          //coordinator.isValidMobileNumber(mobileNumber.text);
+        }
+        break;
+    }
   }
 
   Widget _buildContinueButton(
     BuildContext context,
     OtherPaymentCoordinator coordinator,
-    OtherPaymentStateReady state,
+    OtherPaymentState state,
   ) {
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
         onTap: () async {
-          if (state.loanApproved == 1) {
-            await coordinator.navigateToScanCodeScreen(
-                widget.otherPaymentScreenArgs.deviceId);
+          if (_isBtnEnabled) {
+            coordinator.makePayment(
+              context,
+                 widget.otherPaymentScreenArgs.amount,
+              mobileController.text.trim(),
+              transactionController.text.trim(),
+            );
+            /* coordinator.isValidNidaNumber(nidaNumber.text);
+            coordinator.isValidMobileNumber(mobileNumber.text);
+            coordinator.isValidAgentId(agentId.text);
+            if (_isBtnEnabled &&
+                coordinator.isValidNidaNumber(nidaNumber.text)) {
+              coordinator.signup(widget.signUpArguments, mobileNumber.text,
+                  nidaNumber.text, agentId.text);
+            }*/
           }
         },
         child: Container(
           width: double.infinity,
           height: 50,
           decoration: BoxDecoration(
-              color: _isBtnEnabled ? SU_button_color : SU_grey_color,
+              color: _isBtnEnabled
+                  ? config_color.SU_button_color
+                  : config_color.SU_grey_color,
               borderRadius: BorderRadius.circular(8.0)),
           child: Center(
             child: Text(
@@ -317,44 +385,15 @@ class _OtherPaymentScreenState extends State<OtherPaymentScreen> {
     );
   }
 
-  Widget _buildTitle(context) {
-    return CrayonPaymentText(
-      key: Key('${_identifier}_DLC_Down_Payment'),
-      text: const TextUIDataModel('DLC_Down_Payment',
-          styleVariant: CrayonPaymentTextStyleVariant.headlineThirtyTwo,
-          color: AN_TitleColor,
-          fontWeight: FontWeight.w800),
-    );
-  }
-
-  Widget _image(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        shape: BoxShape.circle,
-        color: DP_CircleColor,
-      ),
-      height: 70,
-      width: 70,
-      child: Center(
-          child: CrayonPaymentText(
-        key: Key('${_identifier}_Agent_Name'),
-        text: TextUIDataModel(_getCaptialUserName(username),
-            styleVariant: CrayonPaymentTextStyleVariant.headline6,
-            color: AN_TitleColor,
-            fontWeight: FontWeight.w600),
-      )),
-    );
-  }
-
   String _getCaptialUserName(String letter) => letter.isNotEmpty
       ? letter.trim().split(' ').map((l) => l[0]).take(2).join()
       : '';
 
   _title(BuildContext context) {
     return CrayonPaymentText(
-        key: Key('${_identifier}_DLC_payment_text'),
+        key: Key('${_identifier}_Other_Payments_title'),
         text: TextUIDataModel(
-          '${widget.otherPaymentScreenArgs.amount.toString()} ${'DLC_payment_text'.tr}',
+          '${widget.otherPaymentScreenArgs.amount.toString()} ${'Other_Payments_title'.tr}',
           styleVariant: CrayonPaymentTextStyleVariant.headline6,
           color: AN_TitleColor,
           fontWeight: FontWeight.w600,
@@ -375,8 +414,8 @@ class _OtherPaymentScreenState extends State<OtherPaymentScreen> {
         isResend
             ? InkWell(
                 onTap: () {
-                  otherPaymentCoordinator!.makePayment(
-                      context, widget.otherPaymentScreenArgs.amount);
+                  /*otherPaymentCoordinator!.makePayment(
+                      context, widget.otherPaymentScreenArgs.amount);*/
                 },
                 child: Text('DLC_resend'.tr,
                     style: const TextStyle(

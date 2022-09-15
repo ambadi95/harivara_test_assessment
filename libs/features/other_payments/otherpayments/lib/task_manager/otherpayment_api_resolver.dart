@@ -10,10 +10,12 @@ class OtherPaymentApiResolver extends TaskResolver {
   @override
   Future execute(String identifier, Map<String, dynamic> requestData) {
     switch (identifier) {
-     case OtherPaymentService.createLoanIdentifier:
+      case OtherPaymentService.createLoanIdentifier:
         return _otherPaymentService.createLoan(requestData);
       case OtherPaymentService.activateLoanIdentifier:
         return _otherPaymentService.activateLoan(requestData);
+      case OtherPaymentService.makePaymentIdentifier:
+        return _otherPaymentService.makePayment(requestData);
       default:
         throw UnimplementedError();
     }

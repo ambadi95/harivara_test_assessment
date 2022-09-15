@@ -290,7 +290,10 @@
   "DC_m-pesa" : "m-pesa",
   "DC_tigo_pesa": "tigo pesa",
   "T_C_NOTE": "Mkopaji anakubaliana na shauri la kukatwa deni lake la mkopo kielektroniki kulingana na makato ya mkopo kwa siku kutoka kwenye simu yake kwa kipindi cha siku mia tatu sitini na tano.",
-  "HO_referral_alert_message" : "Inakuja hivi karibuni...\nendelea kufuatilia kwa updates"
+  "HO_referral_alert_message" : "Inakuja hivi karibuni...\nendelea kufuatilia kwa updates",
 
-
+  "Other_Payments_title": "Other Payments",
+  "Other_payment_subtitle": "Once the Customer confirms the Payment of Joining Fee, fill in the below details",
+  "other_payment_transaction_id_title": "Transaction ID",
+  "other_payment_transaction_id_hint": "Enter Transaction ID"
 }

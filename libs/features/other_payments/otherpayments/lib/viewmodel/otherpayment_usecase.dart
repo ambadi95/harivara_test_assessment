@@ -12,6 +12,7 @@ import 'otherpayment_viewmodel.dart';
 class OtherPaymentUseCase extends BaseDataProvider {
   final OtherPaymentViewModel _otherPaymentViewModel;
   final TaskManager taskManager;
+
   OtherPaymentUseCase(this._otherPaymentViewModel, this.taskManager)
       : super(taskManager);
 
@@ -38,6 +39,7 @@ class OtherPaymentUseCase extends BaseDataProvider {
   Future<String> getMobileNumber() async {
     return await getValueFromSecureStorage('mobileNumber', defaultValue: '');
   }
+
   Future<String> getPaymentID() async {
     return await getValueFromSecureStorage('paymentId', defaultValue: '');
   }
@@ -49,51 +51,53 @@ class OtherPaymentUseCase extends BaseDataProvider {
   Future<String> getDeviceId() async {
     return await getValueFromSecureStorage('deviceId', defaultValue: '');
   }
+
   Future<String> getLoanCalled() async {
     return await getValueFromSecureStorage('loanCalled', defaultValue: '');
   }
 
-
-
   Future<CreateLoanResponse?> createLoan(
-      String deviceId, Function(String) onErrorCallback) async {
-    String agentId = await getAgentId();
-    print(agentId);
+    String amountPaid,
+    String mobileNumber,
+    String transactionId,
+    Function(String) onErrorCallback,
+  ) async {
     String customerId = await getCustomerId();
-    print(customerId);
 
-    String clientId= 'Y9C100'+ customerId;
-
-
-
-    print(clientId);
+    String clientId = 'Y9C100' + customerId;
 
     return await executeApiRequest<CreateLoanResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
         moduleIdentifier: OtherPaymentModule.moduleIdentifier,
-        requestData: {"agentId": agentId, "customerId": customerId, "deviceId": int.parse(deviceId),"clientId":clientId},
+        requestData: {
+          "amountPaid": amountPaid,
+          "customerId": customerId,
+          "mobileNo": mobileNumber,
+          "transactionId": transactionId
+        },
         serviceIdentifier: OtherPaymentService.createLoanIdentifier,
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {
-          CreateLoanResponse checkResponse;
+          /*  CreateLoanResponse checkResponse;
           try {
             checkResponse = CreateLoanResponse.fromMap(responseData);
           } catch (e) {
-
-            checkResponse =  CreateLoanResponse(
+            checkResponse = CreateLoanResponse(
                 status: false, code: "400", message: e.toString());
           }
-          return checkResponse;
+          return checkResponse;*/
         });
   }
 
-
- Future<CommonResponse?> makePayment(String amount ,
-       Function(String) onErrorCallback) async {
-    String mobileNumber = await getMobileNumber();
+  Future<CommonResponse?> makePayment(
+      String amountPaid,
+      String mobileNumber,
+      String transactionId,
+    Function(String) onErrorCallback,
+  ) async {
+    //String mobileNumber = await getMobileNumber();
     String customerId = await getCustomerId();
-
 
     print(mobileNumber);
     print(customerId);
@@ -107,11 +111,11 @@ class OtherPaymentUseCase extends BaseDataProvider {
           "mobileNumber": "686531710",
           "paymentType": "Downpayment"
         }*/
-        {
-          "amountPaid": amount,
+            {
+          "amountPaid": amountPaid,
           "customerId": customerId,
-          "mobileNumber": mobileNumber,
-          "paymentType": "Downpayment"
+          "mobileNo": mobileNumber,
+          "transactionId": transactionId
         },
         serviceIdentifier: OtherPaymentService.makePaymentIdentifier,
         onError: onErrorCallback,
@@ -120,16 +124,17 @@ class OtherPaymentUseCase extends BaseDataProvider {
           try {
             checkResponse = CommonResponse.fromMap(responseData);
           } catch (e) {
-            checkResponse =  CommonResponse(
-                status: false, code: "400", message: e.toString()/*"Something went wrong"*/);
+            checkResponse = CommonResponse(
+                status: false,
+                code: "400",
+                message: e.toString() /*"Something went wrong"*/);
           }
           return checkResponse;
         });
   }
 
-
   Future<LoanApprovalResponse?> loanApproval(
-      String deviceId,String loanId, Function(String) onErrorCallback) async {
+      String deviceId, String loanId, Function(String) onErrorCallback) async {
     return await executeApiRequest<LoanApprovalResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
@@ -142,12 +147,15 @@ class OtherPaymentUseCase extends BaseDataProvider {
           try {
             checkResponse = LoanApprovalResponse.fromMap(responseData);
           } catch (e) {
-            checkResponse =  LoanApprovalResponse(
-                status: false, code: "400", message: e.toString()/*"Something went wrong"*/);
+            checkResponse = LoanApprovalResponse(
+                status: false,
+                code: "400",
+                message: e.toString() /*"Something went wrong"*/);
           }
           return checkResponse;
         });
   }
+
   @override
   Future<void> setValueToSecureStorage(Map<String, dynamic> keyValueMap) async {
     await taskManager.execute(
@@ -161,5 +169,4 @@ class OtherPaymentUseCase extends BaseDataProvider {
     );
     return;
   }
-
 }

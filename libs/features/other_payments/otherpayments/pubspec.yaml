@@ -1,5 +1,5 @@
-name: offline_payment
-description: offline payment.
+name: other_payment
+description: Other payment.
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1

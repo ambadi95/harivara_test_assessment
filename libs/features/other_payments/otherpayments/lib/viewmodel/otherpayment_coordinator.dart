@@ -8,7 +8,8 @@ import 'otherpayment_usecase.dart';
 import 'package:get/get.dart';
 import 'package:widget_library/bottom_sheet/alert_bottom_sheet.dart';
 
-class OtherPaymentCoordinator extends AnalyticsStateNotifier<OtherPaymentState> {
+class OtherPaymentCoordinator
+    extends AnalyticsStateNotifier<OtherPaymentState> {
   final OtherPaymentNavigationHandler _navigationHandler;
   final OtherPaymentUseCase _otherPaymentUseCase;
 
@@ -36,38 +37,44 @@ class OtherPaymentCoordinator extends AnalyticsStateNotifier<OtherPaymentState> 
     await _navigationHandler.navigateToScanQrCode(deviceId);
   }
 
-  Future<void> createLoan(BuildContext context) async {
-    String deviceId = await _otherPaymentUseCase.getDeviceId();
-
+  Future<void> createLoan(
+    BuildContext context,
+    String amountToBePaid,
+    String mobileNumber,
+    String transactionId,
+  ) async {
     state = OtherPaymentState.ready(
-        context: context,
-        error: '',
-        isLoading: true,
-        paymentReceivedOffline: 1,
-
-        loanApproved: 0,);
-    var createLoan =
-        await _otherPaymentUseCase.createLoan(deviceId, (p0) => null);
+      context: context,
+      error: '',
+      isLoading: true,
+      paymentReceivedOffline: 1,
+      loanApproved: 0,
+    );
+    var createLoan = await _otherPaymentUseCase.createLoan(
+      amountToBePaid,
+      mobileNumber,
+      transactionId,
+      (p0) => null,
+    );
     if (createLoan?.status == true) {
       state = OtherPaymentState.ready(
-          context: context,
-          error: '',
-          isLoading: false,
-          paymentReceivedOffline: 1,
-          loanApproved: 1,
+        context: context,
+        error: '',
+        isLoading: false,
+        paymentReceivedOffline: 1,
+        loanApproved: 1,
       );
 
-      await loanApproval(createLoan!.data!.loanId!.toString(), context);
+      //await loanApproval(createLoan!.data!.loanId!.toString(), context);
     } else {
       print("Failed");
       state = OtherPaymentState.ready(
-          context: context,
-          error: '',
-          isLoading: false,
-         paymentReceivedOffline: 1,
-
-          loanApproved: 0,
-          );
+        context: context,
+        error: '',
+        isLoading: false,
+        paymentReceivedOffline: 1,
+        loanApproved: 0,
+      );
 
       _showAlertForErrorMessage(createLoan!.message!);
     }
@@ -81,7 +88,6 @@ class OtherPaymentCoordinator extends AnalyticsStateNotifier<OtherPaymentState> 
       error: '',
       isLoading: false,
       paymentReceivedOffline: 1,
-
       loanApproved: 0,
     );
     var loanApprovalResponse =
@@ -92,7 +98,6 @@ class OtherPaymentCoordinator extends AnalyticsStateNotifier<OtherPaymentState> 
         error: '',
         isLoading: false,
         paymentReceivedOffline: 1,
-
         loanApproved: 0,
       );
     } else {
@@ -102,43 +107,45 @@ class OtherPaymentCoordinator extends AnalyticsStateNotifier<OtherPaymentState> 
         error: '',
         isLoading: false,
         paymentReceivedOffline: 1,
-
         loanApproved: 0,
       );
       _showAlertForErrorMessage(loanApprovalResponse!.message!);
     }
   }
 
-  Future<void> makePayment(BuildContext context, String amount) async {
-
+  Future<void> makePayment(
+    BuildContext context,
+    String amountToBePaid,
+    String mobileNumber,
+    String transactionId,
+  ) async {
     state = OtherPaymentState.ready(
       context: context,
       error: '',
       isLoading: false,
       paymentReceivedOffline: 1,
-
       loanApproved: 0,
     );
-    var mkePayment =
-        await _otherPaymentUseCase.makePayment(amount, (p0) => null);
+    var mkePayment = await _otherPaymentUseCase.makePayment(
+      amountToBePaid,
+      mobileNumber,
+      transactionId,
+      (p0) => null,
+    );
     if (mkePayment?.status == true) {
       state = OtherPaymentState.ready(
         context: context,
         error: '',
         isLoading: false,
         paymentReceivedOffline: 1,
-
         loanApproved: 0,
       );
-
-
     } else {
       state = OtherPaymentState.ready(
         context: context,
         error: '',
         isLoading: false,
         paymentReceivedOffline: 1,
-
         loanApproved: 0,
       );
       _showAlertForErrorMessage(mkePayment!.message!);
@@ -147,10 +154,18 @@ class OtherPaymentCoordinator extends AnalyticsStateNotifier<OtherPaymentState> 
     }
   }
 
+/*  bool isValidMobileNumber(String mobileNumber) {
+    bool result = _otherPaymentUseCase.isValidMobileNumber(mobileNumber);
+    if (!result) {
+      state = const OtherPaymentState.mobileNumberError('SU_subtitle_error_text');
+    } else {
+      state = const OtherPaymentState.mobileNumberError('');
+    }
+    return result;
+  }*/
   Future<String> getLoanCalled() async {
     return await _otherPaymentUseCase.getLoanCalled();
   }
-
 
   _showAlertForErrorMessage(String errorMessage) {
     Get.bottomSheet(
