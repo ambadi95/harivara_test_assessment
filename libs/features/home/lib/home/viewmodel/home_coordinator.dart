@@ -29,8 +29,8 @@ class HomeCoordinator extends BaseViewModel<HomeScreenState> {
     _navigationHandler.navigateToSignUpScreen(UserType.Customer);
   }
 
-  void configureMDM() {
-    _navigationHandler.navigateTodevice(UserType.Customer);
+  void offlinePayment() {
+    _navigationHandler.navigateToOfflinePayment(UserType.Customer);
   }
 
 

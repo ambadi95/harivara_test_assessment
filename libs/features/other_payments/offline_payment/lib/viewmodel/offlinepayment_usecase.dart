@@ -88,44 +88,44 @@ class OfflinePaymentUseCase extends BaseDataProvider {
   }
 
 
- Future<CommonResponse?> makePayment(String amount ,
-       Function(String) onErrorCallback) async {
-    String mobileNumber = await getMobileNumber();
-    String customerId = await getCustomerId();
-
-
-    print(mobileNumber);
-    print(customerId);
-    return await executeApiRequest<CommonResponse?>(
-        taskType: TaskType.DATA_OPERATION,
-        taskSubType: TaskSubType.REST,
-        moduleIdentifier: OfflinePaymentModule.moduleIdentifier,
-        requestData: /*{
-          "amountPaid": "2000",
-          "customerId": "86",
-          "mobileNumber": "686531710",
-          "paymentType": "Downpayment"
-        }*/
-        {
-          "amountPaid": amount,
-          "customerId": customerId,
-          "mobileNumber": mobileNumber,
-          "paymentType": "Downpayment"
-        },
-        serviceIdentifier: OfflinePaymentService.makePaymentIdentifier,
-        onError: onErrorCallback,
-        modelBuilderCallback: (responseData) {
-          CommonResponse checkResponse;
-          try {
-            checkResponse = CommonResponse.fromMap(responseData);
-          } catch (e) {
-            checkResponse =  CommonResponse(
-                status: false, code: "400", message: e.toString()/*"Something went wrong"*/);
-          }
-          return checkResponse;
-        });
-  }
-
+ // Future<CommonResponse?> makePayment(String amount ,
+ //       Function(String) onErrorCallback) async {
+ //    String mobileNumber = await getMobileNumber();
+ //    String customerId = await getCustomerId();
+ //
+ //
+ //    print(mobileNumber);
+ //    print(customerId);
+ //    return await executeApiRequest<CommonResponse?>(
+ //        taskType: TaskType.DATA_OPERATION,
+ //        taskSubType: TaskSubType.REST,
+ //        moduleIdentifier: OfflinePaymentModule.moduleIdentifier,
+ //        requestData: /*{
+ //          "amountPaid": "2000",
+ //          "customerId": "86",
+ //          "mobileNumber": "686531710",
+ //          "paymentType": "Downpayment"
+ //        }*/
+ //        {
+ //          "amountPaid": amount,
+ //          "customerId": customerId,
+ //          "mobileNumber": mobileNumber,
+ //          "paymentType": "Downpayment"
+ //        },
+ //        serviceIdentifier: OfflinePaymentService.makePaymentIdentifier,
+ //        onError: onErrorCallback,
+ //        modelBuilderCallback: (responseData) {
+ //          CommonResponse checkResponse;
+ //          try {
+ //            checkResponse = CommonResponse.fromMap(responseData);
+ //          } catch (e) {
+ //            checkResponse =  CommonResponse(
+ //                status: false, code: "400", message: e.toString()/*"Something went wrong"*/);
+ //          }
+ //          return checkResponse;
+ //        });
+ //  }
+ //
 
   Future<LoanApprovalResponse?> loanApproval(
       String deviceId,String loanId, Function(String) onErrorCallback) async {

@@ -45,8 +45,8 @@ void successFulScreen(){
   _navigationHandler.navigateToSuccessScreen();
 }
 
-  void configureMdmScreen(){
-    _navigationHandler.navigateToConfigureMdmScreen();
+  void configureMdmScreen(String imei1, String imei2){
+    _navigationHandler.navigateToConfigureMdmScreen(imei1, imei2);
   }
 
   void goBackToAgentHomeScreen(){
@@ -144,8 +144,8 @@ void successFulScreen(){
     if (response?.status == true) {
     state = ScanQRCodeState.ready(context: context,isLoading:false );
       if(response?.message == "Device registration success"){
-        // configureMdmScreen();
-        successFulScreen();
+        configureMdmScreen(imei1, imei2);
+        //successFulScreen();
       }
     } else {
     state = ScanQRCodeState.ready(context: context,isLoading:false,error: response!.message!);
