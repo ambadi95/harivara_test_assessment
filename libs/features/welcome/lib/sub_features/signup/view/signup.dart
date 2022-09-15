@@ -55,8 +55,8 @@ class _SignUpState extends State<SignUp> {
           onStateListenCallback: (preState, newState) =>
               {_listenToStateChanges(context, newState)},
           setupViewModel: (coordinator) async {
-            await coordinator.calljwttoken();
             agentType =  await coordinator.getAgentType();
+            await coordinator.calljwttoken();
             telcoList = await coordinator.getPaymentMode();
             paymentModeDropDowm = getPaymentModeDropDownData(telcoList);
           },
@@ -170,9 +170,9 @@ class _SignUpState extends State<SignUp> {
          const SizedBox(
             height: 36,
           ),
-        //  agentType == 'SUPER_AGENT' ?
+          agentType == 'SUPER_AGENT' ?
           _buildPaymentModeDropdown(coordinator)
-              //: const SizedBox()
+              : const SizedBox()
         ],
       ),
     );
@@ -367,6 +367,7 @@ class _SignUpState extends State<SignUp> {
             coordinator.isValidNidaNumber(nidaNumber.text);
             coordinator.isValidMobileNumber(mobileNumber.text);
             coordinator.isValidAgentId(agentId.text);
+            coordinator.isValidPaymentMode(paymentMode.text);
             if (_isBtnEnabled &&
                 coordinator.isValidNidaNumber(nidaNumber.text)) {
               coordinator.signup(widget.signUpArguments, mobileNumber.text,
@@ -457,8 +458,10 @@ class _SignUpState extends State<SignUp> {
           items: paymentModeDropDowm,
           onChanged: (value) async {
             onPaymentModeChoosen(value as Datum, coordinator);
-             coordinator.isValidPaymentMode(value.name!);
             paymentMode.text = value.name!;
+            coordinator.isValidPaymentMode(value.name!);
+            print('&&&&&&&&&&&');
+            _validateForm(coordinator);
           },
         ),
         const SizedBox(
