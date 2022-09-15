@@ -45,7 +45,7 @@ class KycCreditCoordinator extends AnalyticsStateNotifier<KycCreditState> {
       state = KycCreditState.ready(context: context,isLoading:true);
       String mobileNumber = await _kycCreditUseCase.getMobileNumber();
     var response = await _kycCreditUseCase.callKycCheck(
-        mobileNumber,"Airtel",manualApprove,
+        mobileNumber,manualApprove,
             (p0) => null);
     if (response?.status == true) {
       state = KycCreditState.ready(context: context,isLoading:false,error: 'Kyc Done' ,isKycError: false,isCreditCheckError: false);
@@ -55,6 +55,9 @@ class KycCreditCoordinator extends AnalyticsStateNotifier<KycCreditState> {
       // _showAlertForErrorMessage(response.message!);
       print(response.message);
 
+    }
+    if(manualApprove){
+      goBack();
     }
   }
   _showAlertForErrorMessage(String errorMessage) {

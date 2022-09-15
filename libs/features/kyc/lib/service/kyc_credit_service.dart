@@ -32,7 +32,6 @@ class IKycCreditService implements KycCreditService {
     Map<String, dynamic> requestData,
   ) async {
 
-    String number = requestData['mobileNumber'];
     var request = StandardRequest();
     request.requestType = RequestType.POST;
     request.endpoint = customerEndpoint + 'payment/kyc-check/[customer]';
