@@ -271,6 +271,13 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
     if (response.statusCode == 500) {
       return _internalServerMessage();
     }
+    if (response.statusCode == 404) {
+      return NetworkStandardResponse(
+        response.body,
+        response.statusCode,
+        response.headers,
+      );
+    }
     if (response.statusCode != 200) {
       var res = json.decode(response.body);
       if (res['message'] != null) {
@@ -410,6 +417,14 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
   NetworkStandardResponse _internalServerMessage() {
     return NetworkStandardResponse(
       '{"status":false,"code":"Server Error","message":"Internal Server Error","data":{"status":"error","data":null}}',
+      500,
+      {},
+    );
+  }
+
+  NetworkStandardResponse _internal404ServerMessage(String message) {
+    return NetworkStandardResponse(
+      '{"status":false,"code":"Server Error","message":${message},"data":{"status":"error","data":null}}',
       500,
       {},
     );
