@@ -218,6 +218,10 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
     }
   }
 
+  void goBackWelcomeScreen(UserType usertype) async {
+    _navigationHandler.navigateToOnBoardScreen(usertype);
+  }
+
   void goBack() async {
     _navigationHandler.goBack();
   }

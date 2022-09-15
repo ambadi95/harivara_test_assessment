@@ -275,7 +275,7 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
       child: Center(
         child: CrayonPaymentText(
           key: const Key('_ST_contact'),
-          text: TextUIDataModel('ES_need_help_contact'.tr,
+          text: TextUIDataModel('ES_need_help_contact'.tr.replaceAll("{}", LauncherUtils.CONTACT_NUMBER),
               styleVariant: CrayonPaymentTextStyleVariant.headline5,
               color: VO_ResendTextColor,
               fontWeight: FontWeight.w100,

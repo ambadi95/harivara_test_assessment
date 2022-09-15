@@ -82,6 +82,9 @@ class SignupApiResolver extends TaskResolver {
 
       case IWelcomeBackService.agentLoginIdentifier:
         return _welcomeBackService.loginAgent(requestData);
+
+      case IWelcomeBackService.customerLoginIdentifier:
+        return _welcomeBackService.loginCustomer(requestData);
       case ISignupService.getCustomerDetailIdentifier:
         return _signupService.getCustomerDetail(requestData['nidaNo'], requestData['mobileNo']);
       case ISignupService.agentDetailIdentifier:

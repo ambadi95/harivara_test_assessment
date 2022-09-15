@@ -101,7 +101,10 @@ class _LoginState extends State<Login> {
         appBarAttributes: CrayonPaymentAppBarAttributes(
           key: const Key('CardDetailsScreen_AppBarBackButton'),
           left: [
-            const CrayonPaymentAppBarButtonType.back(),
+
+             CrayonPaymentAppBarButtonType.back(onPressed:(){
+               coordinator.goBackWelcomeScreen(widget.userType);
+    } ),
           ],
         ),
         bottomNavigationBar: Padding(
