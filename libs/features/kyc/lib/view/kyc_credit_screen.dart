@@ -72,6 +72,8 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
                     ____,
                     _____,
                     _______,
+                    ________,
+                    _________,
                   ) =>
                       _buildMainUIWithLoading(
                     context,
@@ -196,7 +198,9 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
                         context,
                         !_isKycPassEnabled
                             ? Colors.grey
-                            : SU_telco_green_checkbox_color,
+                            : _isKycPassEnabledByManual
+                                ? SU_telco_yellow_checkbox_color
+                                : SU_telco_green_checkbox_color,
                       ),
                       _getVerticalDivider(
                           context,
@@ -206,7 +210,9 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
                         context,
                         !_isKycCreditLoanEnabled
                             ? Colors.grey
-                            : SU_telco_green_checkbox_color,
+                            : _isKycCreditLoanByManual
+                                ? SU_telco_yellow_checkbox_color
+                                : SU_telco_green_checkbox_color,
                       ),
                     ],
                   )),
@@ -642,9 +648,17 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
 
   _listenToStateChanges(BuildContext context, KycCreditStateReady state) async {
     //kyc done
-    if (state.isKycError == false && state.error == "Kyc Done") {
+    if (state.isKycError == false && state.error == "Kyc Done"&& !state.isKycPassEnabledByManual) {
       setState(() {
         _isKycPassEnabled = true;
+      });
+      await kycCreditCoordinator!.callCreditScore(context);
+
+//showing kyc error
+    } else if (state.isKycError == false && state.error == "Kyc Done" && state.isKycPassEnabledByManual) {
+      setState(() {
+        _isKycPassEnabled = true;
+        _isKycPassEnabledByManual = true;
       });
       await kycCreditCoordinator!.callCreditScore(context);
 

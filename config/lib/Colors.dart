@@ -18,6 +18,7 @@ const SU_telco_green_checkbox_color = Color(0xFF00A43C);
 const SU_button_color = Color(0xFFDA2228);
 const SU_button_text_color = Color(0xFFFFFFFF);
 const SU_grey_icon_bg = Color(0xFFF5F7FB);
+const SU_telco_yellow_checkbox_color = Color(0xFFE3AF4C);
 
 
 

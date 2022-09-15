@@ -13,5 +13,7 @@ class KycCreditState with _$KycCreditState {
     @Default(false) bool isKycError,
     @Default(false) bool isCreditCheckError,
     @Default(false) bool isLoading,
+    @Default(false) bool isKycPassEnabledByManual,
+    @Default(false) bool isCreditCheckEnabledByManual
   }) = KycCreditStateReady;
 }
