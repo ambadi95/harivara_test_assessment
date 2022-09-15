@@ -41,13 +41,11 @@ class ConfigureMdmCoordinator
 
     var response = await _configuremdmUseCase.mdmRegistration(imei, (p0) => null);
     if (response?.status == true) {
-
       state = ConfigureMdmState.ready(context: context, error: "", isLoading: false);
-
+      configureMdmSuccessFulScreen();
     } else {
       state =
           ConfigureMdmState.ready(context: context, error: "", isLoading: false);
-
       _showAlertForErrorMessage(response!.message!);
     }
   }

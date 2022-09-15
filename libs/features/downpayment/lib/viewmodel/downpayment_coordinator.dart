@@ -84,7 +84,7 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
           loanApproved: 0,
           paymentReceived: 1);
 
-      _showAlertForErrorMessage(createLoan!.message!);
+      _showAlertForErrorMessage(createLoan!.message!, false);
     }
   }
 
@@ -126,7 +126,7 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
           waitForPayment: 1,
           loanApproved: 2,
           paymentReceived: 1);
-      _showAlertForErrorMessage(loanApprovalResponse!.message!);
+      _showAlertForErrorMessage(loanApprovalResponse!.message!, true);
     }
   }
 
@@ -172,7 +172,7 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
           loanApproved: 0,
           createLoan: 0,
           paymentReceived: 0);
-      _showAlertForErrorMessage(mkePayment!.message!);
+      _showAlertForErrorMessage(mkePayment!.message!, false);
 
       print("Failed");
     }
@@ -230,7 +230,7 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
 
       if (mkePayment.data!.status == "Downpayment_Failed") {
         await _downPaymentUseCase.setPaymentFailed("Payment Failed");
-        _showAlertForErrorMessage(mkePayment.message!);
+        _showAlertForErrorMessage(mkePayment.message!, false);
       }
       if (mkePayment.data!.status == "Downpayment_Success") {
         createLoan(context);
@@ -249,7 +249,7 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
           loanApproved: 0,
           paymentReceived: 2);
 
-      _showAlertForErrorMessage(mkePayment!.message!);
+      _showAlertForErrorMessage(mkePayment!.message!, false);
     }
   }
 
@@ -281,11 +281,11 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
     }
   }
 
-  _showAlertForErrorMessage(String errorMessage) {
+  _showAlertForErrorMessage(String errorMessage, bool isLoanCreationTitle ) {
     Get.bottomSheet(
       AlertBottomSheet(
           alertMessage: errorMessage,
-          alertTitle: 'Error',
+          alertTitle: isLoanCreationTitle ? 'Offline_loan_approval_error_msg'.tr : 'Offline_loan_creation_error_msg'.tr,
           alertIcon: "assets/images/alert_icon.png",
           onClose: () {
             _navigationHandler.goBack();

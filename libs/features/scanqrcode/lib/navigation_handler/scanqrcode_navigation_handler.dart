@@ -1,6 +1,7 @@
 
 
 import 'package:config/Config.dart';
+import 'package:configuremdm/configuremdm_argument.dart';
 import 'package:configuremdm/view/configuremdm_screen.dart';
 import 'package:core/navigation/navigation_manager.dart';
 import 'package:core/navigation/navigation_type.dart';
@@ -44,12 +45,12 @@ class ScanQRCodeNavigationHandler with ErrorHandler {
     );
   }
 
-  Future<void> navigateToConfigureMdmScreen() async {
-    var argument = "Bharti";
+  Future<void> navigateToConfigureMdmScreen(String imei1, String imei2) async {
+    var argument = ConfigureMdmArgs(imei1 : imei1, imei2 : imei2);
     await _navigationManager.navigateTo(
         ConfigureMdmScreen.viewPath,
         const NavigationType.push(),
-        //arguments: argument
+        arguments: argument
     );
   }
 

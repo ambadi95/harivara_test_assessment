@@ -16,11 +16,15 @@ import 'package:widget_library/progress_bar/centered_circular_progress_bar.dart'
 import 'package:widget_library/scaffold/crayon_payment_scaffold.dart';
 import 'package:widget_library/static_text/crayon_payment_text.dart';
 
+import '../configuremdm_argument.dart';
+
 class ConfigureMdmScreen extends StatefulWidget {
   static const viewPath =
       '${ConfigureMdmModule.moduleIdentifier}/configuremdmscreen';
+  final ConfigureMdmArgs configureMdmArgs;
 
-  const ConfigureMdmScreen({Key? key}) : super(key: key);
+
+  const ConfigureMdmScreen({Key? key, required this.configureMdmArgs}) : super(key: key);
 
   @override
   State<ConfigureMdmScreen> createState() => _ConfigureMdmScreenState();
@@ -28,7 +32,6 @@ class ConfigureMdmScreen extends StatefulWidget {
 
 class _ConfigureMdmScreenState extends State<ConfigureMdmScreen> {
   final String _identifier = 'configure-mdm-screen';
-  bool _isBtnEnabled = false;
   bool _isChecked = false;
   final TextEditingController imeiNumber = TextEditingController();
 
@@ -37,7 +40,7 @@ class _ConfigureMdmScreenState extends State<ConfigureMdmScreen> {
       BaseView<ConfigureMdmCoordinator, ConfigureMdmState>(
           setupViewModel: (coordinator) async {
             coordinator.initialiseState(context);
-            imeiNumber.text="351389781756236";
+            imeiNumber.text=  widget.configureMdmArgs.imei1;//"351389781756236";
 
           },
           builder: (context, state, coordinator) => CrayonPaymentScaffold(
@@ -214,8 +217,8 @@ class _ConfigureMdmScreenState extends State<ConfigureMdmScreen> {
       child: GestureDetector(
         onTap: () async {
           if(_isChecked){
-            coordinator.callMdmRegistration(context,imeiNumber.text.toString());
-
+            //coordinator.callMdmRegistration(context,imeiNumber.text.toString());
+            coordinator.callMdmRegistration(context, widget.configureMdmArgs.imei1);
           }
           // coordinator.configureMdmSuccessFulScreen();}
         },

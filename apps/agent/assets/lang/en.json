@@ -49,6 +49,11 @@
   "SU_device_reg_sub_heading" : "Find your device type in the Device Guides to get more information",
   "SU_scan_code_IMEI_button" : "(Enter or Scan IMEI from device box)",
   "SU_register_device_button" : "Register Device",
+  "SU_telco_partner" : "Telco Partner",
+  "SU_select_telco" : "Select Telco",
+  "SU_telco_error" : "Invalid Telco",
+  "SU_otp_verification" : "OTP Verification",
+  "SU_skip_otp_verification" : "Skip OTP Verification",
 
   "DV_title" : "Enter Personal Details",
   "DV_profile" : "Profile",
@@ -288,8 +293,14 @@
   "T_C_NOTE": "The borrower accepts the responsibility to be deducted the daily repayment as per the selected and allocated membership plan for the 4G Smartphone for the period of 365 days from the date of purchase and membership activation.",
   "DC_m-pesa" : "m-pesa",
   "DC_tigo_pesa": "tigo pesa",
-  "HO_referral_alert_message" : "Coming soon...\nstay tuned for updates"
+  "HO_referral_alert_message" : "Coming soon...\nstay tuned for updates",
+  "HO_super_agent" : "Super Agent",
 
 
-
+  "Offline_payment_title" : "Loan Approval is Under\nProcess",
+  "Offline_payment_subtitle" : "Loan approal and creadion is under\nprogress, will be done in",
+  "Offline_payment_checkboxTitle1" : "Payment Verified Offline",
+  "Offline_payment_checkboxTitle2" : "Loan Approved",
+  "Offline_loan_approval_error_msg" : "Loan Approved Failed",
+  "Offline_loan_creation_error_msg" : "Loan Creation Error"
 }

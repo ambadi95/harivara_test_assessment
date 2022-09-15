@@ -24,6 +24,8 @@ mixin _$SignUpState {
     required TResult Function(String nindaNumberError) nindaNumberError,
     required TResult Function(String nindaNumberError) mobileNumberError,
     required TResult Function(String agentIdError) agentIdError,
+    required TResult Function(String paymentModeError) paymentModeError,
+    required TResult Function(Datum paymentMode) onPaymentModeChoosen,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -34,6 +36,8 @@ mixin _$SignUpState {
     TResult Function(String nindaNumberError)? nindaNumberError,
     TResult Function(String nindaNumberError)? mobileNumberError,
     TResult Function(String agentIdError)? agentIdError,
+    TResult Function(String paymentModeError)? paymentModeError,
+    TResult Function(Datum paymentMode)? onPaymentModeChoosen,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -44,6 +48,8 @@ mixin _$SignUpState {
     TResult Function(String nindaNumberError)? nindaNumberError,
     TResult Function(String nindaNumberError)? mobileNumberError,
     TResult Function(String agentIdError)? agentIdError,
+    TResult Function(String paymentModeError)? paymentModeError,
+    TResult Function(Datum paymentMode)? onPaymentModeChoosen,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -55,6 +61,8 @@ mixin _$SignUpState {
     required TResult Function(NindaNumberError value) nindaNumberError,
     required TResult Function(MobileNumberError value) mobileNumberError,
     required TResult Function(AgentIdError value) agentIdError,
+    required TResult Function(PaymentModeError value) paymentModeError,
+    required TResult Function(PaymentModeChoosen value) onPaymentModeChoosen,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,6 +73,8 @@ mixin _$SignUpState {
     TResult Function(NindaNumberError value)? nindaNumberError,
     TResult Function(MobileNumberError value)? mobileNumberError,
     TResult Function(AgentIdError value)? agentIdError,
+    TResult Function(PaymentModeError value)? paymentModeError,
+    TResult Function(PaymentModeChoosen value)? onPaymentModeChoosen,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -75,6 +85,8 @@ mixin _$SignUpState {
     TResult Function(NindaNumberError value)? nindaNumberError,
     TResult Function(MobileNumberError value)? mobileNumberError,
     TResult Function(AgentIdError value)? agentIdError,
+    TResult Function(PaymentModeError value)? paymentModeError,
+    TResult Function(PaymentModeChoosen value)? onPaymentModeChoosen,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -142,6 +154,8 @@ class _$InitialState implements InitialState {
     required TResult Function(String nindaNumberError) nindaNumberError,
     required TResult Function(String nindaNumberError) mobileNumberError,
     required TResult Function(String agentIdError) agentIdError,
+    required TResult Function(String paymentModeError) paymentModeError,
+    required TResult Function(Datum paymentMode) onPaymentModeChoosen,
   }) {
     return initialState();
   }
@@ -155,6 +169,8 @@ class _$InitialState implements InitialState {
     TResult Function(String nindaNumberError)? nindaNumberError,
     TResult Function(String nindaNumberError)? mobileNumberError,
     TResult Function(String agentIdError)? agentIdError,
+    TResult Function(String paymentModeError)? paymentModeError,
+    TResult Function(Datum paymentMode)? onPaymentModeChoosen,
   }) {
     return initialState?.call();
   }
@@ -168,6 +184,8 @@ class _$InitialState implements InitialState {
     TResult Function(String nindaNumberError)? nindaNumberError,
     TResult Function(String nindaNumberError)? mobileNumberError,
     TResult Function(String agentIdError)? agentIdError,
+    TResult Function(String paymentModeError)? paymentModeError,
+    TResult Function(Datum paymentMode)? onPaymentModeChoosen,
     required TResult orElse(),
   }) {
     if (initialState != null) {
@@ -185,6 +203,8 @@ class _$InitialState implements InitialState {
     required TResult Function(NindaNumberError value) nindaNumberError,
     required TResult Function(MobileNumberError value) mobileNumberError,
     required TResult Function(AgentIdError value) agentIdError,
+    required TResult Function(PaymentModeError value) paymentModeError,
+    required TResult Function(PaymentModeChoosen value) onPaymentModeChoosen,
   }) {
     return initialState(this);
   }
@@ -198,6 +218,8 @@ class _$InitialState implements InitialState {
     TResult Function(NindaNumberError value)? nindaNumberError,
     TResult Function(MobileNumberError value)? mobileNumberError,
     TResult Function(AgentIdError value)? agentIdError,
+    TResult Function(PaymentModeError value)? paymentModeError,
+    TResult Function(PaymentModeChoosen value)? onPaymentModeChoosen,
   }) {
     return initialState?.call(this);
   }
@@ -211,6 +233,8 @@ class _$InitialState implements InitialState {
     TResult Function(NindaNumberError value)? nindaNumberError,
     TResult Function(MobileNumberError value)? mobileNumberError,
     TResult Function(AgentIdError value)? agentIdError,
+    TResult Function(PaymentModeError value)? paymentModeError,
+    TResult Function(PaymentModeChoosen value)? onPaymentModeChoosen,
     required TResult orElse(),
   }) {
     if (initialState != null) {
@@ -270,6 +294,8 @@ class _$LoadingState implements LoadingState {
     required TResult Function(String nindaNumberError) nindaNumberError,
     required TResult Function(String nindaNumberError) mobileNumberError,
     required TResult Function(String agentIdError) agentIdError,
+    required TResult Function(String paymentModeError) paymentModeError,
+    required TResult Function(Datum paymentMode) onPaymentModeChoosen,
   }) {
     return loadingState();
   }
@@ -283,6 +309,8 @@ class _$LoadingState implements LoadingState {
     TResult Function(String nindaNumberError)? nindaNumberError,
     TResult Function(String nindaNumberError)? mobileNumberError,
     TResult Function(String agentIdError)? agentIdError,
+    TResult Function(String paymentModeError)? paymentModeError,
+    TResult Function(Datum paymentMode)? onPaymentModeChoosen,
   }) {
     return loadingState?.call();
   }
@@ -296,6 +324,8 @@ class _$LoadingState implements LoadingState {
     TResult Function(String nindaNumberError)? nindaNumberError,
     TResult Function(String nindaNumberError)? mobileNumberError,
     TResult Function(String agentIdError)? agentIdError,
+    TResult Function(String paymentModeError)? paymentModeError,
+    TResult Function(Datum paymentMode)? onPaymentModeChoosen,
     required TResult orElse(),
   }) {
     if (loadingState != null) {
@@ -313,6 +343,8 @@ class _$LoadingState implements LoadingState {
     required TResult Function(NindaNumberError value) nindaNumberError,
     required TResult Function(MobileNumberError value) mobileNumberError,
     required TResult Function(AgentIdError value) agentIdError,
+    required TResult Function(PaymentModeError value) paymentModeError,
+    required TResult Function(PaymentModeChoosen value) onPaymentModeChoosen,
   }) {
     return loadingState(this);
   }
@@ -326,6 +358,8 @@ class _$LoadingState implements LoadingState {
     TResult Function(NindaNumberError value)? nindaNumberError,
     TResult Function(MobileNumberError value)? mobileNumberError,
     TResult Function(AgentIdError value)? agentIdError,
+    TResult Function(PaymentModeError value)? paymentModeError,
+    TResult Function(PaymentModeChoosen value)? onPaymentModeChoosen,
   }) {
     return loadingState?.call(this);
   }
@@ -339,6 +373,8 @@ class _$LoadingState implements LoadingState {
     TResult Function(NindaNumberError value)? nindaNumberError,
     TResult Function(MobileNumberError value)? mobileNumberError,
     TResult Function(AgentIdError value)? agentIdError,
+    TResult Function(PaymentModeError value)? paymentModeError,
+    TResult Function(PaymentModeChoosen value)? onPaymentModeChoosen,
     required TResult orElse(),
   }) {
     if (loadingState != null) {
@@ -423,6 +459,8 @@ class _$SignUpFormState implements SignUpFormState {
     required TResult Function(String nindaNumberError) nindaNumberError,
     required TResult Function(String nindaNumberError) mobileNumberError,
     required TResult Function(String agentIdError) agentIdError,
+    required TResult Function(String paymentModeError) paymentModeError,
+    required TResult Function(Datum paymentMode) onPaymentModeChoosen,
   }) {
     return SignUpFormState(isValid);
   }
@@ -436,6 +474,8 @@ class _$SignUpFormState implements SignUpFormState {
     TResult Function(String nindaNumberError)? nindaNumberError,
     TResult Function(String nindaNumberError)? mobileNumberError,
     TResult Function(String agentIdError)? agentIdError,
+    TResult Function(String paymentModeError)? paymentModeError,
+    TResult Function(Datum paymentMode)? onPaymentModeChoosen,
   }) {
     return SignUpFormState?.call(isValid);
   }
@@ -449,6 +489,8 @@ class _$SignUpFormState implements SignUpFormState {
     TResult Function(String nindaNumberError)? nindaNumberError,
     TResult Function(String nindaNumberError)? mobileNumberError,
     TResult Function(String agentIdError)? agentIdError,
+    TResult Function(String paymentModeError)? paymentModeError,
+    TResult Function(Datum paymentMode)? onPaymentModeChoosen,
     required TResult orElse(),
   }) {
     if (SignUpFormState != null) {
@@ -466,6 +508,8 @@ class _$SignUpFormState implements SignUpFormState {
     required TResult Function(NindaNumberError value) nindaNumberError,
     required TResult Function(MobileNumberError value) mobileNumberError,
     required TResult Function(AgentIdError value) agentIdError,
+    required TResult Function(PaymentModeError value) paymentModeError,
+    required TResult Function(PaymentModeChoosen value) onPaymentModeChoosen,
   }) {
     return SignUpFormState(this);
   }
@@ -479,6 +523,8 @@ class _$SignUpFormState implements SignUpFormState {
     TResult Function(NindaNumberError value)? nindaNumberError,
     TResult Function(MobileNumberError value)? mobileNumberError,
     TResult Function(AgentIdError value)? agentIdError,
+    TResult Function(PaymentModeError value)? paymentModeError,
+    TResult Function(PaymentModeChoosen value)? onPaymentModeChoosen,
   }) {
     return SignUpFormState?.call(this);
   }
@@ -492,6 +538,8 @@ class _$SignUpFormState implements SignUpFormState {
     TResult Function(NindaNumberError value)? nindaNumberError,
     TResult Function(MobileNumberError value)? mobileNumberError,
     TResult Function(AgentIdError value)? agentIdError,
+    TResult Function(PaymentModeError value)? paymentModeError,
+    TResult Function(PaymentModeChoosen value)? onPaymentModeChoosen,
     required TResult orElse(),
   }) {
     if (SignUpFormState != null) {
@@ -582,6 +630,8 @@ class _$NindaNumberError implements NindaNumberError {
     required TResult Function(String nindaNumberError) nindaNumberError,
     required TResult Function(String nindaNumberError) mobileNumberError,
     required TResult Function(String agentIdError) agentIdError,
+    required TResult Function(String paymentModeError) paymentModeError,
+    required TResult Function(Datum paymentMode) onPaymentModeChoosen,
   }) {
     return nindaNumberError(this.nindaNumberError);
   }
@@ -595,6 +645,8 @@ class _$NindaNumberError implements NindaNumberError {
     TResult Function(String nindaNumberError)? nindaNumberError,
     TResult Function(String nindaNumberError)? mobileNumberError,
     TResult Function(String agentIdError)? agentIdError,
+    TResult Function(String paymentModeError)? paymentModeError,
+    TResult Function(Datum paymentMode)? onPaymentModeChoosen,
   }) {
     return nindaNumberError?.call(this.nindaNumberError);
   }
@@ -608,6 +660,8 @@ class _$NindaNumberError implements NindaNumberError {
     TResult Function(String nindaNumberError)? nindaNumberError,
     TResult Function(String nindaNumberError)? mobileNumberError,
     TResult Function(String agentIdError)? agentIdError,
+    TResult Function(String paymentModeError)? paymentModeError,
+    TResult Function(Datum paymentMode)? onPaymentModeChoosen,
     required TResult orElse(),
   }) {
     if (nindaNumberError != null) {
@@ -625,6 +679,8 @@ class _$NindaNumberError implements NindaNumberError {
     required TResult Function(NindaNumberError value) nindaNumberError,
     required TResult Function(MobileNumberError value) mobileNumberError,
     required TResult Function(AgentIdError value) agentIdError,
+    required TResult Function(PaymentModeError value) paymentModeError,
+    required TResult Function(PaymentModeChoosen value) onPaymentModeChoosen,
   }) {
     return nindaNumberError(this);
   }
@@ -638,6 +694,8 @@ class _$NindaNumberError implements NindaNumberError {
     TResult Function(NindaNumberError value)? nindaNumberError,
     TResult Function(MobileNumberError value)? mobileNumberError,
     TResult Function(AgentIdError value)? agentIdError,
+    TResult Function(PaymentModeError value)? paymentModeError,
+    TResult Function(PaymentModeChoosen value)? onPaymentModeChoosen,
   }) {
     return nindaNumberError?.call(this);
   }
@@ -651,6 +709,8 @@ class _$NindaNumberError implements NindaNumberError {
     TResult Function(NindaNumberError value)? nindaNumberError,
     TResult Function(MobileNumberError value)? mobileNumberError,
     TResult Function(AgentIdError value)? agentIdError,
+    TResult Function(PaymentModeError value)? paymentModeError,
+    TResult Function(PaymentModeChoosen value)? onPaymentModeChoosen,
     required TResult orElse(),
   }) {
     if (nindaNumberError != null) {
@@ -742,6 +802,8 @@ class _$MobileNumberError implements MobileNumberError {
     required TResult Function(String nindaNumberError) nindaNumberError,
     required TResult Function(String nindaNumberError) mobileNumberError,
     required TResult Function(String agentIdError) agentIdError,
+    required TResult Function(String paymentModeError) paymentModeError,
+    required TResult Function(Datum paymentMode) onPaymentModeChoosen,
   }) {
     return mobileNumberError(this.nindaNumberError);
   }
@@ -755,6 +817,8 @@ class _$MobileNumberError implements MobileNumberError {
     TResult Function(String nindaNumberError)? nindaNumberError,
     TResult Function(String nindaNumberError)? mobileNumberError,
     TResult Function(String agentIdError)? agentIdError,
+    TResult Function(String paymentModeError)? paymentModeError,
+    TResult Function(Datum paymentMode)? onPaymentModeChoosen,
   }) {
     return mobileNumberError?.call(this.nindaNumberError);
   }
@@ -768,6 +832,8 @@ class _$MobileNumberError implements MobileNumberError {
     TResult Function(String nindaNumberError)? nindaNumberError,
     TResult Function(String nindaNumberError)? mobileNumberError,
     TResult Function(String agentIdError)? agentIdError,
+    TResult Function(String paymentModeError)? paymentModeError,
+    TResult Function(Datum paymentMode)? onPaymentModeChoosen,
     required TResult orElse(),
   }) {
     if (mobileNumberError != null) {
@@ -785,6 +851,8 @@ class _$MobileNumberError implements MobileNumberError {
     required TResult Function(NindaNumberError value) nindaNumberError,
     required TResult Function(MobileNumberError value) mobileNumberError,
     required TResult Function(AgentIdError value) agentIdError,
+    required TResult Function(PaymentModeError value) paymentModeError,
+    required TResult Function(PaymentModeChoosen value) onPaymentModeChoosen,
   }) {
     return mobileNumberError(this);
   }
@@ -798,6 +866,8 @@ class _$MobileNumberError implements MobileNumberError {
     TResult Function(NindaNumberError value)? nindaNumberError,
     TResult Function(MobileNumberError value)? mobileNumberError,
     TResult Function(AgentIdError value)? agentIdError,
+    TResult Function(PaymentModeError value)? paymentModeError,
+    TResult Function(PaymentModeChoosen value)? onPaymentModeChoosen,
   }) {
     return mobileNumberError?.call(this);
   }
@@ -811,6 +881,8 @@ class _$MobileNumberError implements MobileNumberError {
     TResult Function(NindaNumberError value)? nindaNumberError,
     TResult Function(MobileNumberError value)? mobileNumberError,
     TResult Function(AgentIdError value)? agentIdError,
+    TResult Function(PaymentModeError value)? paymentModeError,
+    TResult Function(PaymentModeChoosen value)? onPaymentModeChoosen,
     required TResult orElse(),
   }) {
     if (mobileNumberError != null) {
@@ -901,6 +973,8 @@ class _$AgentIdError implements AgentIdError {
     required TResult Function(String nindaNumberError) nindaNumberError,
     required TResult Function(String nindaNumberError) mobileNumberError,
     required TResult Function(String agentIdError) agentIdError,
+    required TResult Function(String paymentModeError) paymentModeError,
+    required TResult Function(Datum paymentMode) onPaymentModeChoosen,
   }) {
     return agentIdError(this.agentIdError);
   }
@@ -914,6 +988,8 @@ class _$AgentIdError implements AgentIdError {
     TResult Function(String nindaNumberError)? nindaNumberError,
     TResult Function(String nindaNumberError)? mobileNumberError,
     TResult Function(String agentIdError)? agentIdError,
+    TResult Function(String paymentModeError)? paymentModeError,
+    TResult Function(Datum paymentMode)? onPaymentModeChoosen,
   }) {
     return agentIdError?.call(this.agentIdError);
   }
@@ -927,6 +1003,8 @@ class _$AgentIdError implements AgentIdError {
     TResult Function(String nindaNumberError)? nindaNumberError,
     TResult Function(String nindaNumberError)? mobileNumberError,
     TResult Function(String agentIdError)? agentIdError,
+    TResult Function(String paymentModeError)? paymentModeError,
+    TResult Function(Datum paymentMode)? onPaymentModeChoosen,
     required TResult orElse(),
   }) {
     if (agentIdError != null) {
@@ -944,6 +1022,8 @@ class _$AgentIdError implements AgentIdError {
     required TResult Function(NindaNumberError value) nindaNumberError,
     required TResult Function(MobileNumberError value) mobileNumberError,
     required TResult Function(AgentIdError value) agentIdError,
+    required TResult Function(PaymentModeError value) paymentModeError,
+    required TResult Function(PaymentModeChoosen value) onPaymentModeChoosen,
   }) {
     return agentIdError(this);
   }
@@ -957,6 +1037,8 @@ class _$AgentIdError implements AgentIdError {
     TResult Function(NindaNumberError value)? nindaNumberError,
     TResult Function(MobileNumberError value)? mobileNumberError,
     TResult Function(AgentIdError value)? agentIdError,
+    TResult Function(PaymentModeError value)? paymentModeError,
+    TResult Function(PaymentModeChoosen value)? onPaymentModeChoosen,
   }) {
     return agentIdError?.call(this);
   }
@@ -970,6 +1052,8 @@ class _$AgentIdError implements AgentIdError {
     TResult Function(NindaNumberError value)? nindaNumberError,
     TResult Function(MobileNumberError value)? mobileNumberError,
     TResult Function(AgentIdError value)? agentIdError,
+    TResult Function(PaymentModeError value)? paymentModeError,
+    TResult Function(PaymentModeChoosen value)? onPaymentModeChoosen,
     required TResult orElse(),
   }) {
     if (agentIdError != null) {
@@ -985,5 +1069,350 @@ abstract class AgentIdError implements SignUpState {
   String get agentIdError;
   @JsonKey(ignore: true)
   _$$AgentIdErrorCopyWith<_$AgentIdError> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PaymentModeErrorCopyWith<$Res> {
+  factory _$$PaymentModeErrorCopyWith(
+          _$PaymentModeError value, $Res Function(_$PaymentModeError) then) =
+      __$$PaymentModeErrorCopyWithImpl<$Res>;
+  $Res call({String paymentModeError});
+}
+
+/// @nodoc
+class __$$PaymentModeErrorCopyWithImpl<$Res>
+    extends _$SignUpStateCopyWithImpl<$Res>
+    implements _$$PaymentModeErrorCopyWith<$Res> {
+  __$$PaymentModeErrorCopyWithImpl(
+      _$PaymentModeError _value, $Res Function(_$PaymentModeError) _then)
+      : super(_value, (v) => _then(v as _$PaymentModeError));
+
+  @override
+  _$PaymentModeError get _value => super._value as _$PaymentModeError;
+
+  @override
+  $Res call({
+    Object? paymentModeError = freezed,
+  }) {
+    return _then(_$PaymentModeError(
+      paymentModeError == freezed
+          ? _value.paymentModeError
+          : paymentModeError // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PaymentModeError implements PaymentModeError {
+  const _$PaymentModeError(this.paymentModeError);
+
+  @override
+  final String paymentModeError;
+
+  @override
+  String toString() {
+    return 'SignUpState.paymentModeError(paymentModeError: $paymentModeError)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PaymentModeError &&
+            const DeepCollectionEquality()
+                .equals(other.paymentModeError, paymentModeError));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(paymentModeError));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$PaymentModeErrorCopyWith<_$PaymentModeError> get copyWith =>
+      __$$PaymentModeErrorCopyWithImpl<_$PaymentModeError>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialState,
+    required TResult Function() loadingState,
+    required TResult Function(bool isValid) SignUpFormState,
+    required TResult Function(String nindaNumberError) nindaNumberError,
+    required TResult Function(String nindaNumberError) mobileNumberError,
+    required TResult Function(String agentIdError) agentIdError,
+    required TResult Function(String paymentModeError) paymentModeError,
+    required TResult Function(Datum paymentMode) onPaymentModeChoosen,
+  }) {
+    return paymentModeError(this.paymentModeError);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initialState,
+    TResult Function()? loadingState,
+    TResult Function(bool isValid)? SignUpFormState,
+    TResult Function(String nindaNumberError)? nindaNumberError,
+    TResult Function(String nindaNumberError)? mobileNumberError,
+    TResult Function(String agentIdError)? agentIdError,
+    TResult Function(String paymentModeError)? paymentModeError,
+    TResult Function(Datum paymentMode)? onPaymentModeChoosen,
+  }) {
+    return paymentModeError?.call(this.paymentModeError);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialState,
+    TResult Function()? loadingState,
+    TResult Function(bool isValid)? SignUpFormState,
+    TResult Function(String nindaNumberError)? nindaNumberError,
+    TResult Function(String nindaNumberError)? mobileNumberError,
+    TResult Function(String agentIdError)? agentIdError,
+    TResult Function(String paymentModeError)? paymentModeError,
+    TResult Function(Datum paymentMode)? onPaymentModeChoosen,
+    required TResult orElse(),
+  }) {
+    if (paymentModeError != null) {
+      return paymentModeError(this.paymentModeError);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialState value) initialState,
+    required TResult Function(LoadingState value) loadingState,
+    required TResult Function(SignUpFormState value) SignUpFormState,
+    required TResult Function(NindaNumberError value) nindaNumberError,
+    required TResult Function(MobileNumberError value) mobileNumberError,
+    required TResult Function(AgentIdError value) agentIdError,
+    required TResult Function(PaymentModeError value) paymentModeError,
+    required TResult Function(PaymentModeChoosen value) onPaymentModeChoosen,
+  }) {
+    return paymentModeError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InitialState value)? initialState,
+    TResult Function(LoadingState value)? loadingState,
+    TResult Function(SignUpFormState value)? SignUpFormState,
+    TResult Function(NindaNumberError value)? nindaNumberError,
+    TResult Function(MobileNumberError value)? mobileNumberError,
+    TResult Function(AgentIdError value)? agentIdError,
+    TResult Function(PaymentModeError value)? paymentModeError,
+    TResult Function(PaymentModeChoosen value)? onPaymentModeChoosen,
+  }) {
+    return paymentModeError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialState value)? initialState,
+    TResult Function(LoadingState value)? loadingState,
+    TResult Function(SignUpFormState value)? SignUpFormState,
+    TResult Function(NindaNumberError value)? nindaNumberError,
+    TResult Function(MobileNumberError value)? mobileNumberError,
+    TResult Function(AgentIdError value)? agentIdError,
+    TResult Function(PaymentModeError value)? paymentModeError,
+    TResult Function(PaymentModeChoosen value)? onPaymentModeChoosen,
+    required TResult orElse(),
+  }) {
+    if (paymentModeError != null) {
+      return paymentModeError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PaymentModeError implements SignUpState {
+  const factory PaymentModeError(final String paymentModeError) =
+      _$PaymentModeError;
+
+  String get paymentModeError;
+  @JsonKey(ignore: true)
+  _$$PaymentModeErrorCopyWith<_$PaymentModeError> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PaymentModeChoosenCopyWith<$Res> {
+  factory _$$PaymentModeChoosenCopyWith(_$PaymentModeChoosen value,
+          $Res Function(_$PaymentModeChoosen) then) =
+      __$$PaymentModeChoosenCopyWithImpl<$Res>;
+  $Res call({Datum paymentMode});
+}
+
+/// @nodoc
+class __$$PaymentModeChoosenCopyWithImpl<$Res>
+    extends _$SignUpStateCopyWithImpl<$Res>
+    implements _$$PaymentModeChoosenCopyWith<$Res> {
+  __$$PaymentModeChoosenCopyWithImpl(
+      _$PaymentModeChoosen _value, $Res Function(_$PaymentModeChoosen) _then)
+      : super(_value, (v) => _then(v as _$PaymentModeChoosen));
+
+  @override
+  _$PaymentModeChoosen get _value => super._value as _$PaymentModeChoosen;
+
+  @override
+  $Res call({
+    Object? paymentMode = freezed,
+  }) {
+    return _then(_$PaymentModeChoosen(
+      paymentMode == freezed
+          ? _value.paymentMode
+          : paymentMode // ignore: cast_nullable_to_non_nullable
+              as Datum,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PaymentModeChoosen implements PaymentModeChoosen {
+  const _$PaymentModeChoosen(this.paymentMode);
+
+  @override
+  final Datum paymentMode;
+
+  @override
+  String toString() {
+    return 'SignUpState.onPaymentModeChoosen(paymentMode: $paymentMode)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PaymentModeChoosen &&
+            const DeepCollectionEquality()
+                .equals(other.paymentMode, paymentMode));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(paymentMode));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$PaymentModeChoosenCopyWith<_$PaymentModeChoosen> get copyWith =>
+      __$$PaymentModeChoosenCopyWithImpl<_$PaymentModeChoosen>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialState,
+    required TResult Function() loadingState,
+    required TResult Function(bool isValid) SignUpFormState,
+    required TResult Function(String nindaNumberError) nindaNumberError,
+    required TResult Function(String nindaNumberError) mobileNumberError,
+    required TResult Function(String agentIdError) agentIdError,
+    required TResult Function(String paymentModeError) paymentModeError,
+    required TResult Function(Datum paymentMode) onPaymentModeChoosen,
+  }) {
+    return onPaymentModeChoosen(paymentMode);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initialState,
+    TResult Function()? loadingState,
+    TResult Function(bool isValid)? SignUpFormState,
+    TResult Function(String nindaNumberError)? nindaNumberError,
+    TResult Function(String nindaNumberError)? mobileNumberError,
+    TResult Function(String agentIdError)? agentIdError,
+    TResult Function(String paymentModeError)? paymentModeError,
+    TResult Function(Datum paymentMode)? onPaymentModeChoosen,
+  }) {
+    return onPaymentModeChoosen?.call(paymentMode);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialState,
+    TResult Function()? loadingState,
+    TResult Function(bool isValid)? SignUpFormState,
+    TResult Function(String nindaNumberError)? nindaNumberError,
+    TResult Function(String nindaNumberError)? mobileNumberError,
+    TResult Function(String agentIdError)? agentIdError,
+    TResult Function(String paymentModeError)? paymentModeError,
+    TResult Function(Datum paymentMode)? onPaymentModeChoosen,
+    required TResult orElse(),
+  }) {
+    if (onPaymentModeChoosen != null) {
+      return onPaymentModeChoosen(paymentMode);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialState value) initialState,
+    required TResult Function(LoadingState value) loadingState,
+    required TResult Function(SignUpFormState value) SignUpFormState,
+    required TResult Function(NindaNumberError value) nindaNumberError,
+    required TResult Function(MobileNumberError value) mobileNumberError,
+    required TResult Function(AgentIdError value) agentIdError,
+    required TResult Function(PaymentModeError value) paymentModeError,
+    required TResult Function(PaymentModeChoosen value) onPaymentModeChoosen,
+  }) {
+    return onPaymentModeChoosen(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InitialState value)? initialState,
+    TResult Function(LoadingState value)? loadingState,
+    TResult Function(SignUpFormState value)? SignUpFormState,
+    TResult Function(NindaNumberError value)? nindaNumberError,
+    TResult Function(MobileNumberError value)? mobileNumberError,
+    TResult Function(AgentIdError value)? agentIdError,
+    TResult Function(PaymentModeError value)? paymentModeError,
+    TResult Function(PaymentModeChoosen value)? onPaymentModeChoosen,
+  }) {
+    return onPaymentModeChoosen?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialState value)? initialState,
+    TResult Function(LoadingState value)? loadingState,
+    TResult Function(SignUpFormState value)? SignUpFormState,
+    TResult Function(NindaNumberError value)? nindaNumberError,
+    TResult Function(MobileNumberError value)? mobileNumberError,
+    TResult Function(AgentIdError value)? agentIdError,
+    TResult Function(PaymentModeError value)? paymentModeError,
+    TResult Function(PaymentModeChoosen value)? onPaymentModeChoosen,
+    required TResult orElse(),
+  }) {
+    if (onPaymentModeChoosen != null) {
+      return onPaymentModeChoosen(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PaymentModeChoosen implements SignUpState {
+  const factory PaymentModeChoosen(final Datum paymentMode) =
+      _$PaymentModeChoosen;
+
+  Datum get paymentMode;
+  @JsonKey(ignore: true)
+  _$$PaymentModeChoosenCopyWith<_$PaymentModeChoosen> get copyWith =>
       throw _privateConstructorUsedError;
 }
