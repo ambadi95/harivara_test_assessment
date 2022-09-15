@@ -43,6 +43,7 @@ class KycCreditNavigationHandler with ErrorHandler {
           return BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
             child: Container(
+              height: MediaQuery.of(context).size.height * .55,
               decoration: const BoxDecoration(
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(24),

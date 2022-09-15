@@ -208,6 +208,13 @@ const SU_button_text_style = TextStyle(
   color: SU_button_text_color,
 );
 
+const KYC_button_text_style = TextStyle(
+  fontSize: 16,
+  fontWeight: FontWeight.w500,
+  fontFamily: 'Montserrat',
+  color: PRIMARY_COLOR,
+);
+
 const HO_bottom_sheet_button_text_style = TextStyle(
   fontSize: 16,
   fontWeight: FontWeight.w700,
