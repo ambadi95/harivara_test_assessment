@@ -264,7 +264,7 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
       var ismobileNoValid = _signupUseCase.isValidMobileNumber(mobNumber);
      var isPaymentModeValid = _signupUseCase.isValidPaymentMode(paymentMode);
       var _isValid;
-      if(agentType == 'SUPER_AGENT'){
+      if(agentType.isNotEmpty){
         _isValid = isnidaNumberValid && ismobileNoValid && isPaymentModeValid;
       }
       else if (userType == UserType.Customer) {
