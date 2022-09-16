@@ -212,18 +212,19 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
           "${'DLC_pay_now'.tr} ${payNowTotal} TZSHS",
       borderRadius: 8,
       height: CrayonPaymentDimensions.marginFortyEight,
-      buttonColor: LS_ButtonColor,
+      buttonColor: radioValue != 0 ? LS_ButtonColor : ES_grey_button_color,
       textColor: White,
       textStyleVariant: CrayonPaymentTextStyleVariant.headline4,
       onPressed: () {
-        if(radioValue == 5){
-          coordinator.navigateToOtherScreen(widget.deviceLoanCreationArgs.deviceDetailData.deviceId!, double.parse(payNowTotal.toString()),widget.deviceLoanCreationArgs.image);
-        }else{
-          coordinator.navigateToDownPayment(
-              payNowTotal.toString(),
-              detailDetail!.deviceId);
+        if(radioValue != 0){
+          if(radioValue == 5){
+            coordinator.navigateToOtherScreen(widget.deviceLoanCreationArgs.deviceDetailData.deviceId!, double.parse(payNowTotal.toString()),widget.deviceLoanCreationArgs.image);
+          }else{
+            coordinator.navigateToDownPayment(
+                payNowTotal.toString(),
+                detailDetail!.deviceId);
+          }
         }
-
       },
     );
   }
