@@ -278,21 +278,27 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
         onTap: ()  {
-          coordinator.isImei1numberValid(imei1Number.text);
-          coordinator.isImei2numberValid(imei2Number.text);
           if(imei1Number.text.trim() != "" && imei2Number.text.trim() !="") {
+          if(  coordinator.isImei1numberValid(imei1Number.text) &&
+          coordinator.isImei2numberValid(imei2Number.text)){
             _isBtnEnabled = true;
             if (_isBtnEnabled) {
               coordinator.deviceRegister(
-                  context, widget.deviceId, imei1Number.text, imei2Number.text, );
+                context, widget.deviceId, imei1Number.text, imei2Number.text, );
             }
-          }},
+          }else{
+            _isBtnEnabled = false;
+          }
+          }else{
+            _isBtnEnabled = false;
+          }
+          },
 
         child: Container(
           width: double.infinity,
           height: 50,
           decoration: BoxDecoration(
-              color: imei1Number.text.trim() != "" && imei2Number.text.trim() !="" ? LS_ButtonColor : SU_grey_color,
+              color: _isBtnEnabled ? LS_ButtonColor : SU_grey_color,
               borderRadius: BorderRadius.circular(8.0)),
           child: Center(
             child: Text(

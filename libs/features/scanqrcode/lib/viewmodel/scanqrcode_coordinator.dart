@@ -95,8 +95,8 @@ void successFulScreen(){
   bool _validateForm(String customerId, int deviceId, String imei1, String imei2) {
     var isCustomerIdValid = customerId.isNotEmpty;
     var isDeviceIdValid = deviceId != 0;
-    var isImei1Valid = imei1.length.isNotEmptyOrNull;
-    var isImei2Valid = imei2.length.isNotEmptyOrNull;
+    var isImei1Valid = imei1.length == 15;
+    var isImei2Valid = imei2.length == 15;
     var isValid = isCustomerIdValid &&
         isDeviceIdValid &&
         isImei1Valid &&
