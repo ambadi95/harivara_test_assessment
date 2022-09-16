@@ -38,7 +38,13 @@ class KycCreditCoordinator extends AnalyticsStateNotifier<KycCreditState> {
 
   Future<void> showErrorBottomSheet(
       Widget errorWidget, BuildContext context) async {
-    await _navigationHandler.showErrorBottomSheet(errorWidget, context);
+    String agentType = await getAgentType();
+    if(agentType == "SUPER_AGENT"){
+      await _navigationHandler.showErrorBottomSheet(errorWidget, context,true);
+    } else {
+      await _navigationHandler.showErrorBottomSheet(errorWidget, context,false);
+
+    }
   }
 
   //call kyc check
@@ -97,13 +103,12 @@ class KycCreditCoordinator extends AnalyticsStateNotifier<KycCreditState> {
 
 
   //call credit check
-  Future callCreditCheck(BuildContext context, bool manualApprove) async {
+  Future callCreditCheck(BuildContext context,) async {
     state = KycCreditState.ready(context: context, isLoading: true);
 
     String customerId = await _kycCreditUseCase.getCustomerId();
-    String telcoPartner = await _kycCreditUseCase.getTelcoPartner();
     var response = await _kycCreditUseCase.callCreditCheck(
-        customerId, telcoPartner, manualApprove, (p0) => null);
+        customerId, (p0) => null);
     if (response?.status == true) {
       state = KycCreditState.ready(context: context, isLoading: false);
     } else {
@@ -117,13 +122,14 @@ class KycCreditCoordinator extends AnalyticsStateNotifier<KycCreditState> {
 
   //
   // call credit score
-  Future callCreditScore(BuildContext context) async {
+  Future callCreditScore(BuildContext context,bool manualApprove) async {
     state = KycCreditState.ready(context: context, isLoading: true);
     String customerId = await _kycCreditUseCase.getCustomerId();
     print(customerId);
     var response =
-        await _kycCreditUseCase.callCreditScore(customerId, (p0) => null);
+        await _kycCreditUseCase.callCreditScore(customerId,manualApprove, (p0) => null);
     if (response?.status == true) {
+      await callCreditCheck(context);
       state = KycCreditState.ready(
           context: context,
           isLoading: false,
@@ -142,6 +148,10 @@ class KycCreditCoordinator extends AnalyticsStateNotifier<KycCreditState> {
       // _showAlertForErrorMessage(response.message!);
       print(response.message);
     }
+  }
+
+  void goHomeScreen(){
+    _navigationHandler.navigateToAgentHomeScreen();
   }
 
   void goBack() async {

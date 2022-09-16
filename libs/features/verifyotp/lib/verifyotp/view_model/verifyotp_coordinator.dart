@@ -429,6 +429,9 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         _navigationHandler.navigateToDetailScreen();
 
         break;
+      case "KYC Success Manually Approved":
+       _navigationHandler.navigateToKYCScreen(true);
+        break;
       case "KYC Failed":
         // _navigationHandler.navigateToKYCScreen(true);
         _navigationHandler.navigateToDetailScreen();

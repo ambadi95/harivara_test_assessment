@@ -2,6 +2,7 @@ import 'package:config/Colors.dart' as config_colors;
 import 'package:config/Colors.dart';
 import 'package:config/Config.dart';
 import 'package:config/Styles.dart';
+import 'package:core/logging/logger.dart';
 import 'package:core/view/base_view.dart';
 import 'package:widget_library/utils/app_utils.dart';
 import 'package:flutter/material.dart';
@@ -51,8 +52,9 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
             coordinator.initialiseState(context);
             kycCreditCoordinator = coordinator;
             agentType = await coordinator.getAgentType();
+            CrayonPaymentLogger.logInfo("Agent Typeee : ${agentType}");
             telcoPartner = await coordinator.getTelcoPaetner();
-            coordinator.callKycCheck(context, false);
+            await coordinator.callKycCheck(context, false);
           },
           onStateListenCallback: (preState, newState) =>
               {_listenToStateChanges(context, newState as KycCreditStateReady)},
@@ -380,7 +382,7 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
           ),
           CrayonPaymentText(
             key: Key('${_identifier}_KYC_Verification_Failed_Title'),
-            text: const TextUIDataModel('KYC_Verification_Failed_Title',
+            text:  TextUIDataModel('KYC_Verification_Failed_Title'.tr.replaceAll("{}", telcoPartner),
                 textAlign: TextAlign.center,
                 styleVariant: CrayonPaymentTextStyleVariant.subtitle2,
                 color: AN_SubTitleColor,
@@ -403,7 +405,8 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
             height: 14,
           ),
           _buildGoBackButton(context, coordinator, state),
-          _buildManualApproveButton(context, coordinator, state)
+          agentType == "SUPER_AGENT"
+              ? _buildManualApproveButton(context, coordinator, state) : const SizedBox()
         ],
       ),
     );
@@ -482,7 +485,7 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
         onTap: () async {
-          coordinator.goBack();
+          coordinator.goHomeScreen();
         },
         child: Container(
           width: double.infinity,
@@ -509,7 +512,7 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
         onTap: () async {
           isKycCheck
               ? coordinator.callKycCheck(context, true)
-              : coordinator.callCreditCheck(context, true);
+              : coordinator.callCreditScore(context, true);
         },
         child: Container(
           width: double.infinity,
@@ -652,7 +655,7 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
       setState(() {
         _isKycPassEnabled = true;
       });
-      await kycCreditCoordinator!.callCreditScore(context);
+      await kycCreditCoordinator!.callCreditScore(context,false);
 
 //showing kyc error
     } else if (state.isKycError == false && state.error == "Kyc Done" && state.isKycPassEnabledByManual) {
@@ -660,7 +663,7 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
         _isKycPassEnabled = true;
         _isKycPassEnabledByManual = true;
       });
-      await kycCreditCoordinator!.callCreditScore(context);
+      await kycCreditCoordinator!.callCreditScore(context,false);
 
 //showing kyc error
     } else if (state.isKycError == true && state.error.isNotEmpty == true) {

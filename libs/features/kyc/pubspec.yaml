@@ -48,6 +48,9 @@ dependencies:
   termscondition:
     path: ../termscondition
 
+  home:
+    path: ../home
+
 
 
 dev_dependencies:
