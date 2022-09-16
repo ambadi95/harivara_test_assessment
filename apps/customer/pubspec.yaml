@@ -81,6 +81,13 @@ dependencies:
   configuremdm:
     path: ../../libs/features/configuremdm
 
+  offline_payment:
+    path: ../../libs/features/other_payments/offline_payment
+
+  other_payment:
+    path: ../../libs/features/other_payments/otherpayments
+
+
 
 dev_dependencies:
   flutter_test:
