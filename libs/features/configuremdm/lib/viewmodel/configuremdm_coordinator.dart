@@ -52,6 +52,10 @@ class ConfigureMdmCoordinator
     }
   }
 
+  navigateToHome() {
+    _navigationHandler.navigateToHomeScreen();
+  }
+
   //showalert for error message
   _showAlertForErrorMessage(String errorMessage) {
     Get.bottomSheet(
@@ -61,6 +65,10 @@ class ConfigureMdmCoordinator
           alertIcon: "assets/images/alert_icon.png",
           onClose: () {
             goBack();
+          },
+          bottomButtonText: 'ES_done'.tr,
+          onBottomButtonPress: () {
+            navigateToHome();
           },
           packageName: ""),
       isScrollControlled: false,

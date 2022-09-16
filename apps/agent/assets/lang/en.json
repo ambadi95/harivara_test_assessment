@@ -305,7 +305,7 @@
 
 
   "Offline_payment_title" : "Loan Approval is Under\nProcess",
-  "Offline_payment_subtitle" : "Loan approal and creadion is under\nprogress, will be done in",
+  "Offline_payment_subtitle" : "This Loan approval might take sometime, please hold on",
   "Offline_payment_checkboxTitle1" : "Payment Verified Offline",
   "Offline_payment_checkboxTitle2" : "Loan Approved",
   "Offline_loan_approval_error_msg" : "Loan Approved Failed",
