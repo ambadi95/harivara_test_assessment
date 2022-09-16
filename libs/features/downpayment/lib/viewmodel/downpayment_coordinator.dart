@@ -172,7 +172,7 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
           loanApproved: 0,
           createLoan: 0,
           paymentReceived: 0);
-      _showAlertForErrorMessage(mkePayment!.message!, false);
+      _showAlertForErrorMessage(mkePayment!.message!, false,isPaymentError: true);
 
       print("Failed");
     }
@@ -230,7 +230,7 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
 
       if (mkePayment.data!.status == "Downpayment_Failed") {
         await _downPaymentUseCase.setPaymentFailed("Payment Failed");
-        _showAlertForErrorMessage(mkePayment.message!, false);
+        _showAlertForErrorMessage(mkePayment.message!, false,isPaymentError: true);
       }
       if (mkePayment.data!.status == "Downpayment_Success") {
         createLoan(context);
@@ -249,7 +249,7 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
           loanApproved: 0,
           paymentReceived: 2);
 
-      _showAlertForErrorMessage(mkePayment!.message!, false);
+      _showAlertForErrorMessage(mkePayment!.message!, false,isPaymentError: true);
     }
   }
 
@@ -281,11 +281,12 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
     }
   }
 
-  _showAlertForErrorMessage(String errorMessage, bool isLoanCreationTitle ) {
+  _showAlertForErrorMessage(String errorMessage, bool isLoanCreationTitle,{bool? isPaymentError = false} ) {
+
     Get.bottomSheet(
       AlertBottomSheet(
           alertMessage: errorMessage,
-          alertTitle: isLoanCreationTitle ? 'Offline_loan_approval_error_msg'.tr : 'Offline_loan_creation_error_msg'.tr,
+          alertTitle: isPaymentError == true ? 'Error' : isLoanCreationTitle ? 'Offline_loan_approval_error_msg'.tr : 'Offline_loan_creation_error_msg'.tr,
           alertIcon: "assets/images/alert_icon.png",
           onClose: () {
             _navigationHandler.goBack();
