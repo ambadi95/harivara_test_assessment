@@ -10,8 +10,8 @@ class ConfigureMdmNavigationHandler with ErrorHandler {
 
   ConfigureMdmNavigationHandler(this._navigationManager);
 
-  Future<void> navigateToConfigureMdmSuccessScreen() async {
-    var argument = "Text";
+  Future<void> navigateToConfigureMdmSuccessScreen(String imei) async {
+    var argument = imei;
     await _navigationManager.navigateTo(
         ConfigureMdmSuccessScreen.viewPath,
         const NavigationType.push(),

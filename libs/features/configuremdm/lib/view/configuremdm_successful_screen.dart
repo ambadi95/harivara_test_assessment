@@ -14,10 +14,11 @@ import '../state/configuremdm_state.dart';
 import '../viewmodel/configuremdm_coordinator.dart';
 
 class ConfigureMdmSuccessScreen extends StatefulWidget {
+  String imei;
   static const viewPath =
       '${ConfigureMdmModule.moduleIdentifier}/configuremdmsuccessScreen';
 
-  const ConfigureMdmSuccessScreen({Key? key}) : super(key: key);
+   ConfigureMdmSuccessScreen({Key? key,required this.imei}) : super(key: key);
 
   @override
   State<ConfigureMdmSuccessScreen> createState() => _SuccessScreenState();
@@ -79,7 +80,7 @@ class _SuccessScreenState extends State<ConfigureMdmSuccessScreen> {
   Widget _buildTitle(context) {
     return CrayonPaymentText(
       key: Key('${_identifier}_ConfigureMDM_Title'),
-      text: const TextUIDataModel('Configure MDM',
+      text: const TextUIDataModel('MDM_title',
           styleVariant: CrayonPaymentTextStyleVariant.headlineThirtyTwo,
           color: AN_TitleColor,
           fontWeight: FontWeight.w800),
@@ -133,7 +134,7 @@ class _SuccessScreenState extends State<ConfigureMdmSuccessScreen> {
   Widget _buildAgentHomeButton(ConfigureMdmCoordinator coordinator) {
     return InkWell(
       onTap: () {
-        coordinator.successFulScreen();
+        coordinator.successFulScreen(widget.imei);
       },
       child: Container(
         width: double.infinity,

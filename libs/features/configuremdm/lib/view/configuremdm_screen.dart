@@ -15,7 +15,7 @@ import 'package:widget_library/page_header/text_ui_data_model.dart';
 import 'package:widget_library/progress_bar/centered_circular_progress_bar.dart';
 import 'package:widget_library/scaffold/crayon_payment_scaffold.dart';
 import 'package:widget_library/static_text/crayon_payment_text.dart';
-
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import '../configuremdm_argument.dart';
 
 class ConfigureMdmScreen extends StatefulWidget {
@@ -50,8 +50,20 @@ class _ConfigureMdmScreenState extends State<ConfigureMdmScreen> {
                     const CrayonPaymentAppBarButtonType.back(),
                   ],
                 ),
-                // bottomNavigationBar:
-                //     _buildContinueButton(context, coordinator, state),
+                bottomNavigationBar:
+                Container(
+                  height: MediaQuery.of(context).size.height * 0.28,
+                    child: Column(
+                      children: [
+                        const SizedBox(
+                          height: 50,
+                        ),
+                        _getTermsCheckBox(context, coordinator),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        _buildContinueButton(context, coordinator, state),              ],
+                    )),
                 body: state.when(
                   initialState: () => const SizedBox(),
                   ready: (
@@ -118,19 +130,7 @@ class _ConfigureMdmScreenState extends State<ConfigureMdmScreen> {
           SizedBox(
             height: AppUtils.appUtilsInstance.getPercentageSize(percentage: 40),
           ),
-                Container(
-                margin: const EdgeInsets.only(bottom: 20),
-                child: Column(
-                children: [
-                const SizedBox(
-                height: 50,
-                ),
-                _getTermsCheckBox(context, coordinator),
-                const SizedBox(
-                height: 30,
-                ),
-                _buildContinueButton(context, coordinator, state),              ],
-                )),
+
         ],
       ),
     );
@@ -140,32 +140,35 @@ class _ConfigureMdmScreenState extends State<ConfigureMdmScreen> {
       BuildContext context,
       ConfigureMdmCoordinator coordinator,
       ) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(
-          height: 30,
-          width: 30,
-          child: Checkbox(
-              value: _isChecked,
-              activeColor: Black,
-              onChanged: (value) {
-                setState(() {
-                  _isChecked = value!;
-                });
-              }),
-        ),
-        const SizedBox(
-          width: 10,
-        ),
+    return Padding(
+      padding: const EdgeInsets.only(left: 10),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            height: 30,
+            width: 30,
+            child: Checkbox(
+                value: _isChecked,
+                activeColor: Black,
+                onChanged: (value) {
+                  setState(() {
+                    _isChecked = value!;
+                  });
+                }),
+          ),
+          const SizedBox(
+            width: 10,
+          ),
 
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _checkBoxText(context),
-          ],
-        ), ],
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _checkBoxText(context),
+            ],
+          ), ],
+      ),
     );
   }
 
@@ -242,7 +245,7 @@ class _ConfigureMdmScreenState extends State<ConfigureMdmScreen> {
   Widget _buildTitle(context) {
     return CrayonPaymentText(
       key: Key('${_identifier}_ConfigureMDM_Title'),
-      text: const TextUIDataModel('Configure MDM',
+      text:  TextUIDataModel('MDM_title'.tr,
           styleVariant: CrayonPaymentTextStyleVariant.headlineThirtyTwo,
           color: AN_TitleColor,
           fontWeight: FontWeight.w800),

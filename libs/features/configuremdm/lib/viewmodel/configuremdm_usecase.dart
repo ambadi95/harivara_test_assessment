@@ -27,8 +27,33 @@ class ConfigureMdmUseCase extends BaseDataProvider {
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
         moduleIdentifier: ConfigureMdmModule.moduleIdentifier,
-        requestData: {'customerId':67, 'imei': imei},
+        requestData: {'customerId': int.parse(customerId), 'imei': imei},
         serviceIdentifier: IConfigureMdmService.mdmRegistrationIdentifier,
+        onError: onErrorCallback,
+        modelBuilderCallback: (responseData) {
+          final data = responseData;
+          CommonResponse commonResponse;
+          try {
+            commonResponse = CommonResponse.fromMap(data);
+            return commonResponse;
+          } catch (e) {
+            commonResponse = const CommonResponse(
+                status: false,
+                message: "Something went wrong,Please try again later!");
+            return commonResponse;
+          }
+        });
+  }
+
+  Future<CommonResponse?> mdmUpdateStatus(
+      String imei, Function(String) onErrorCallback) async {
+    String customerId = await getCustomerId();
+    return await executeApiRequest<CommonResponse?>(
+        taskType: TaskType.DATA_OPERATION,
+        taskSubType: TaskSubType.REST,
+        moduleIdentifier: ConfigureMdmModule.moduleIdentifier,
+        requestData: {'customerId':  int.parse(customerId), 'imei': imei},
+        serviceIdentifier: IConfigureMdmService.mdmStatusUpdateIdentifier,
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {
           final data = responseData;

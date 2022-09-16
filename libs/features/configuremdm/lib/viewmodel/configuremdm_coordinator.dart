@@ -25,11 +25,13 @@ class ConfigureMdmCoordinator
   }
 
 
-  void configureMdmSuccessFulScreen(){
-    _navigationHandler.navigateToConfigureMdmSuccessScreen();
+  void configureMdmSuccessFulScreen(String imei){
+    _navigationHandler.navigateToConfigureMdmSuccessScreen(imei);
   }
 
-  void successFulScreen(){
+  void successFulScreen(String imei){
+    var response = _configuremdmUseCase.mdmUpdateStatus(imei, (p0) => null);
+    print(response);
     _navigationHandler.navigateToSuccessScreen();
   }
 
@@ -42,7 +44,7 @@ class ConfigureMdmCoordinator
     var response = await _configuremdmUseCase.mdmRegistration(imei, (p0) => null);
     if (response?.status == true) {
       state = ConfigureMdmState.ready(context: context, error: "", isLoading: false);
-      configureMdmSuccessFulScreen();
+      configureMdmSuccessFulScreen(imei);
     } else {
       state =
           ConfigureMdmState.ready(context: context, error: "", isLoading: false);

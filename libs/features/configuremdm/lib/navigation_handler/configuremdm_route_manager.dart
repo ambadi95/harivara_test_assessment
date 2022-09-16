@@ -16,7 +16,10 @@ class ConfigureMdmRouteManager extends IRouteManager {
         );
 
       case ConfigureMdmSuccessScreen.viewPath:
-        return const ConfigureMdmSuccessScreen();
+        var arguments = settings.arguments as String;
+        return ConfigureMdmSuccessScreen(
+          imei: arguments,
+        );
       case SuccessScreen.viewPath:
         var arguments = settings.arguments as String;
         return SuccessScreen(

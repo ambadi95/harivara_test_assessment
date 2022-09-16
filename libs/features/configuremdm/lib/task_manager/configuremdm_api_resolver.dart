@@ -14,6 +14,8 @@ class ConfigureMdmApiResolver extends TaskResolver {
     switch (identifier) {
       case IConfigureMdmService.mdmRegistrationIdentifier:
         return _iConfigureMdmService.mdmRegistration(requestData['customerId'],requestData['imei']);
+      case IConfigureMdmService.mdmStatusUpdateIdentifier:
+        return _iConfigureMdmService.mdmStatusUpdate(requestData['customerId'],requestData['imei']);
       default:
         throw UnimplementedError();
     }
