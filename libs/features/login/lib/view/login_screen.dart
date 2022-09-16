@@ -207,6 +207,9 @@ class _LoginState extends State<Login> {
           enabled: enabled,
           hintText: hint.tr,
           key: const Key('detailsTextField'),
+          inputFormatters: [
+            LengthLimitingTextInputFormatter(12),
+          ],
           keyboardType: textInputType,
           textCapitalization: TextCapitalization.characters,
           onChanged: (value) {
