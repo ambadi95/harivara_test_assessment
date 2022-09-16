@@ -549,11 +549,14 @@ class _DetailsScreenState extends State<DetailsScreen> {
           value: _district,
           items: districtDropDown,
           onChanged: (value) {
-            onDistrictChosen(value as b.Datum, coordinator);
-            district.text = value.name!;
-            _validateForm(coordinator);
-            coordinator.isValidDistrict(value.name!);
-          },
+            value as b.Datum;
+            if (value.name != 'Select District') {
+              onDistrictChosen(value as b.Datum, coordinator);
+              district.text = value.name!;
+              _validateForm(coordinator);
+              coordinator.isValidDistrict(value.name!);
+            }
+          }
         ),
         const SizedBox(
           height: 6,
@@ -595,6 +598,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
             dis = await coordinator.getDistrict(value.id!, widget.userType);
             Navigator.pop(context);
             districtDropDown.clear();
+            districtDropDown = getDistrictDropDownData([const b.Datum(id: 0,name: 'Select District')]);
             districtDropDown = getDistrictDropDownData(dis);
             _district = districtDropDown.elementAt(0).value;
             setState(() {
@@ -767,7 +771,18 @@ class _DetailsScreenState extends State<DetailsScreen> {
       districtDropDown.add(
         DropdownMenuItem(
           value: item,
-          child: Text(
+          child:
+              item.name.toString() == 'Select District' ?
+              Text(
+                item.name.toString(),
+                style: const TextStyle(
+                  fontFamily: 'Montserrat',
+                  fontSize: 12,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black54,
+                ),
+              ):
+          Text(
             item.name.toString(),
             style: const TextStyle(
               fontSize: 16,
