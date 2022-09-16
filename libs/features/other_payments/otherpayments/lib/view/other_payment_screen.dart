@@ -283,7 +283,9 @@ class _OtherPaymentScreenState extends State<OtherPaymentScreen> {
           controller: controller,
           errorText: errorText.tr,
           keyboardType: textInputType,
-          maxLines: 20,
+          inputFormatters: [
+            LengthLimitingTextInputFormatter(20),
+          ],
           textCapitalization: TextCapitalization.characters,
           onChanged: (value) {
             /*   _validateForm(coordinator);
