@@ -225,7 +225,7 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        _kycPassCheckText(context),
+                        _kycPassCheckText(context, _isKycPassEnabledByManual),
                         SizedBox(
                           height: AppUtils.appUtilsInstance
                               .getPercentageSize(percentage: 8),
@@ -382,7 +382,10 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
           ),
           CrayonPaymentText(
             key: Key('${_identifier}_KYC_Verification_Failed_Title'),
-            text:  TextUIDataModel('KYC_Verification_Failed_Title'.tr.replaceAll("{}", telcoPartner),
+            text: TextUIDataModel(
+                'KYC_Verification_Failed_Title'
+                    .tr
+                    .replaceAll("{}", telcoPartner),
                 textAlign: TextAlign.center,
                 styleVariant: CrayonPaymentTextStyleVariant.subtitle2,
                 color: AN_SubTitleColor,
@@ -406,7 +409,8 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
           ),
           _buildGoBackButton(context, coordinator, state),
           agentType == "SUPER_AGENT"
-              ? _buildManualApproveButton(context, coordinator, state) : const SizedBox()
+              ? _buildManualApproveButton(context, coordinator, state)
+              : const SizedBox()
         ],
       ),
     );
@@ -598,7 +602,8 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
   _title(BuildContext context) {
     return CrayonPaymentText(
       key: Key('${_identifier}_KYC_Validation_With_Airtel'),
-      text: TextUIDataModel('KYC_Validation_With_Airtel'.tr.replaceAll("{}", telcoPartner),
+      text: TextUIDataModel(
+          'KYC_Validation_With_Airtel'.tr.replaceAll("{}", telcoPartner),
           styleVariant: CrayonPaymentTextStyleVariant.headline3,
           color: AN_TitleColor,
           fontWeight: FontWeight.w600),
@@ -625,10 +630,13 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
     );
   }
 
-  _kycPassCheckText(BuildContext context) {
+  _kycPassCheckText(BuildContext context, bool _isKycPassEnabledByManual) {
     return CrayonPaymentText(
       key: Key('${_identifier}_KYC_Validation_With_Airtel_Pass_Check'),
-      text: const TextUIDataModel('KYC_Validation_With_Airtel_Pass_Check',
+      text: TextUIDataModel(
+          _isKycPassEnabledByManual
+              ? 'KYC_Approved_manual'
+              : 'KYC_Validation_With_Airtel_Pass_Check',
           styleVariant: CrayonPaymentTextStyleVariant.subtitle2,
           color: Black,
           fontWeight: FontWeight.w600),
@@ -651,19 +659,23 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
 
   _listenToStateChanges(BuildContext context, KycCreditStateReady state) async {
     //kyc done
-    if (state.isKycError == false && state.error == "Kyc Done"&& !state.isKycPassEnabledByManual) {
+    if (state.isKycError == false &&
+        state.error == "Kyc Done" &&
+        !state.isKycPassEnabledByManual) {
       setState(() {
         _isKycPassEnabled = true;
       });
-      await kycCreditCoordinator!.callCreditScore(context,false);
+      await kycCreditCoordinator!.callCreditScore(context, false);
 
 //showing kyc error
-    } else if (state.isKycError == false && state.error == "Kyc Done" && state.isKycPassEnabledByManual) {
+    } else if (state.isKycError == false &&
+        state.error == "Kyc Done" &&
+        state.isKycPassEnabledByManual) {
       setState(() {
         _isKycPassEnabled = true;
         _isKycPassEnabledByManual = true;
       });
-      await kycCreditCoordinator!.callCreditScore(context,false);
+      await kycCreditCoordinator!.callCreditScore(context, false);
 
 //showing kyc error
     } else if (state.isKycError == true && state.error.isNotEmpty == true) {
