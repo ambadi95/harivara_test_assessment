@@ -259,7 +259,7 @@
   "DLC_Airtel_Pay": "Airtel Pay",
   "DLC_Loan_Details": "Maelezo ya Mkopo",
   "DLC_Down_Payment" : "Ada ya kujiunga\nMalipo",
-  "DLC_Down_Payment_Subtitle": "Lango la muamala litafungwa katika dakika 15 zijazo",
+  "DLC_Down_Payment_Subtitle": "Muamala huu unaweza kuchukua muda, tafadhali subiri",
   "DLC_resend" : "Tuma tena",
   "DLC_pay_now" : "LIPA sasa",
   "DLC_payment_text" : "malipo ya TZSH\nombi limetumwa kwa Y9",
@@ -300,7 +300,7 @@
   "HO_super_agent" : "Wakala Mkuu",
 
   "Other_Payments_title": "Other Payments",
-  "Other_payment_subtitle": "Once the Customer confirms the Payment of Joining Fee, fill in the below details",
+  "Other_payment_subtitle": "Once the Customer confirms the Payment, fill in the below details",
   "other_payment_transaction_id_title": "Transaction ID",
   "other_payment_transaction_id_hint": "Enter Transaction ID",
   "Offline_payment_title" : "Idhini ya Mkopo iko Chini\nMchakato",

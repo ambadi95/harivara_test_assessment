@@ -235,7 +235,7 @@ class _OtherPaymentScreenState extends State<OtherPaymentScreen> {
                 coordinator,
                 'other_payment_transaction_id_hint',
                 transactionIdError,
-                TextInputType.number),
+                TextInputType.text),
             const SizedBox(
               height: 48,
             ),

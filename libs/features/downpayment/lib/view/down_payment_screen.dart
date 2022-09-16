@@ -434,15 +434,16 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
                       fontFamily: 'Montserrat',
                       fontSize: 14, color: DD_TextLabel, fontWeight: FontWeight.w600
                   ),
-                  children: <TextSpan>[
-                   const  TextSpan(
-                    text: "  ",
-                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12, color : Color(0xFFDA2228))),
-                    TextSpan(
-                        text: "${value.toString()} min",
-                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12, color : Color(0xFFDA2228))),
 
-                  ],
+                  // children: <TextSpan>[
+                  //  const  TextSpan(
+                  //   text: "  ",
+                  //  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12, color : Color(0xFFDA2228))),
+                  //   TextSpan(
+                  //       text: "${value.toString()} min",
+                  //       style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12, color : Color(0xFFDA2228))),
+                  //
+                  // ],
                 ),
               ));
           });
