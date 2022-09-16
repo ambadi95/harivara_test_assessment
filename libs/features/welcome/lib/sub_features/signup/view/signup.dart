@@ -56,6 +56,8 @@ class _SignUpState extends State<SignUp> {
               {_listenToStateChanges(context, newState)},
           setupViewModel: (coordinator) async {
             agentType =  await coordinator.getAgentType();
+            print('&&&&&&&&&&&&&&');
+            print(agentType);
             await coordinator.calljwttoken();
             telcoList = await coordinator.getPaymentMode();
             paymentModeDropDowm = getPaymentModeDropDownData(telcoList);
@@ -170,7 +172,7 @@ class _SignUpState extends State<SignUp> {
          const SizedBox(
             height: 36,
           ),
-          agentType == 'SUPER_AGENT' ?
+          agentType.isNotEmpty ?
           _buildPaymentModeDropdown(coordinator)
               : const SizedBox()
         ],

@@ -49,6 +49,8 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
   bool evalutaeMPesa=false;
   int radioValue = 0;
 
+  num payNowTotal = 0.0;
+
 
   LoanPreviewResponseModel? loanPreviewResponseModel;
 
@@ -67,6 +69,9 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
               loanPreviewResponseModel;
             });
           }
+          num joiningFee = loanPreviewResponseModel!.data!.joiningFee!;
+          num dailyRepaymentAmount = loanPreviewResponseModel!.data!.dailyRepaymentAmount!;
+          payNowTotal = joiningFee + dailyRepaymentAmount;
         },
         onStateListenCallback: (preState, newState) =>
             {_listenToStateChanges(context, newState)},
@@ -204,7 +209,7 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
     return CrayonPaymentDockedButton(
       key: Key('Select'),
       title:
-          "${'DLC_pay_now'.tr} ${loanPreviewResponseModel!.data!.joiningFee} TZSHS",
+          "${'DLC_pay_now'.tr} ${payNowTotal} TZSHS",
       borderRadius: 8,
       height: CrayonPaymentDimensions.marginFortyEight,
       buttonColor: LS_ButtonColor,
@@ -212,10 +217,10 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
       textStyleVariant: CrayonPaymentTextStyleVariant.headline4,
       onPressed: () {
         if(radioValue == 5){
-          coordinator.navigateToOtherScreen(widget.deviceLoanCreationArgs.deviceDetailData.deviceId!, widget.deviceLoanCreationArgs.deviceDetailData.joiningFees!,widget.deviceLoanCreationArgs.image);
+          coordinator.navigateToOtherScreen(widget.deviceLoanCreationArgs.deviceDetailData.deviceId!, double.parse(payNowTotal.toString()),widget.deviceLoanCreationArgs.image);
         }else{
           coordinator.navigateToDownPayment(
-              loanPreviewResponseModel!.data!.joiningFee!.toString(),
+              payNowTotal.toString(),
               detailDetail!.deviceId);
         }
 

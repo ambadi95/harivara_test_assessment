@@ -81,7 +81,7 @@ class OfflinePaymentCoordinator extends AnalyticsStateNotifier<OfflinePaymentSta
     state = OfflinePaymentState.ready(
       context: context,
       error: '',
-      isLoading: false,
+      isLoading: true,
       paymentReceivedOffline: 1,
       loanApproved: 0,
     );
