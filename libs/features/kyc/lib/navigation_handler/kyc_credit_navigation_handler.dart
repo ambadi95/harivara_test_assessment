@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:config/Colors.dart';
+import 'package:config/Config.dart';
 import 'package:core/navigation/modal_bottom_sheet.dart';
 import 'package:core/navigation/navigation_manager.dart';
 import 'package:core/navigation/navigation_type.dart';
@@ -8,6 +9,8 @@ import 'package:core/sheets/data_model/button_options.dart';
 import 'package:core/sheets/state/crayon_payment_bottom_sheet_state.dart';
 import 'package:crayon_payment_customer/home/view/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:home/home/home_screen_arguments.dart';
+import 'package:home/home/view/home_screen.dart';
 import 'package:shared_data_models/device_option/device_option_args.dart';
 import 'package:welcome/sub_features/app_language/view/app_language.dart';
 import 'package:get/get.dart';
@@ -27,23 +30,34 @@ class KycCreditNavigationHandler with ErrorHandler {
     );
   }
 
+  Future<void> navigateToAgentHomeScreen() async {
+    var args = HomeScreenArgs(userType: UserType.Agent, isAgent: true);
+    _navigationManager.navigateTo(
+        CrayonHomeScreen.viewPath, const NavigationType.replace(),
+        arguments: args);
+  }
+
   Future<void> goBack() async {
     _navigationManager.goBack();
   }
 
-  Future<void> showErrorBottomSheet(Widget widget, BuildContext context) async {
+  Future<void> showErrorBottomSheet(
+      Widget widget, BuildContext context, bool isSuperAgent) async {
     showModalBottomSheet(
         barrierColor: const Color(0xFF9B9B9B).withOpacity(0.3),
         backgroundColor: Colors.transparent,
-        isDismissible: true,
+        isDismissible: false,
         isScrollControlled: true,
+        enableDrag: false,
         context: context,
         elevation: 15,
         builder: (BuildContext bc) {
           return BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
             child: Container(
-              height: MediaQuery.of(context).size.height * .55,
+              height: isSuperAgent
+                  ? MediaQuery.of(context).size.height * .55
+                  : MediaQuery.of(context).size.height * .45,
               decoration: const BoxDecoration(
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(24),

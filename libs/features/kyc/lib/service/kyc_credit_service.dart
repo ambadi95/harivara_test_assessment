@@ -45,7 +45,7 @@ class IKycCreditService implements KycCreditService {
   ) async {
     var request = StandardRequest();
     request.requestType = RequestType.GET;
-    request.endpoint = customerEndpoint + 'creditcheck/status/[customer]';
+    request.endpoint = customerEndpoint + 'creditcheck/status/${requestData['customerId']}[customer]';
     request.jsonBody = json.encode(requestData);
     return request;
   }
