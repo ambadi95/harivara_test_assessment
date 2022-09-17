@@ -172,7 +172,7 @@ class _SignUpState extends State<SignUp> {
          const SizedBox(
             height: 36,
           ),
-          agentType.isNotEmpty ?(widget.signUpArguments.title=="ST_update_passcode"||widget.signUpArguments.title=="SU_reset_passcode")?Container():_buildPaymentModeDropdown(coordinator)
+          agentType.isNotEmpty ?(widget.signUpArguments.title=="ST_update_passcode"||widget.signUpArguments.title=="SU_reset_passcode"||widget.signUpArguments.title == "ST_update_passcode")?Container():_buildPaymentModeDropdown(coordinator)
               : const SizedBox ()
         ],
       ),

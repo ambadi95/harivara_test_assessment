@@ -275,12 +275,14 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
       }
       return _isValid;
     }
+
   bool handlePaymentValidation(SignUpArguments signUpArguments) {
-    if (signUpArguments.title == "ST_update_passcode" || signUpArguments.title == "SU_reset_passcode") {
+    if (signUpArguments.title == "ST_update_passcode" || signUpArguments.title == "SU_reset_passcode"|| signUpArguments.title == "ST_update_passcode") {
       return true;
     }
     return false;
   }
+
     void validateForm(String nidaNo, String mobNumber, String agentId,
       userType, String agentType,String paymentMode) {
       state = SignUpState.SignUpFormState(
