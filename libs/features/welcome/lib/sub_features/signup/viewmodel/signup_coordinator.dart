@@ -258,16 +258,16 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
     }
 
     bool _validateForm(String nidaNo, String mobNumber, String agentId,
-        UserType userType, String agentType,String paymentMode) {
+       SignUpArguments arguments, String agentType,String paymentMode) {
       var agentID = agentId.isNotEmpty;
       var isnidaNumberValid = _signupUseCase.isValidNINDAnumber(nidaNo);
       var ismobileNoValid = _signupUseCase.isValidMobileNumber(mobNumber);
-     var isPaymentModeValid = _signupUseCase.isValidPaymentMode(paymentMode);
+     var isPaymentModeValid = handlePaymentValidation(arguments)?true:_signupUseCase.isValidPaymentMode(paymentMode);
       var _isValid;
-      if(agentType.isNotEmpty){
+      if(agentType.isNotEmpty&&!handlePaymentValidation(arguments)){
         _isValid = isnidaNumberValid && ismobileNoValid && isPaymentModeValid;
       }
-      else if (userType == UserType.Customer) {
+      else if (arguments.userType == UserType.Customer) {
         _isValid = isnidaNumberValid && ismobileNoValid;
       }
       else {
@@ -275,9 +275,14 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
       }
       return _isValid;
     }
-
+  bool handlePaymentValidation(SignUpArguments signUpArguments) {
+    if (signUpArguments.title == "ST_update_passcode" || signUpArguments.title == "SU_reset_passcode") {
+      return true;
+    }
+    return false;
+  }
     void validateForm(String nidaNo, String mobNumber, String agentId,
-        userType, String agentType,String paymentMode) {
+      userType, String agentType,String paymentMode) {
       state = SignUpState.SignUpFormState(
           _validateForm(nidaNo, mobNumber, agentId, userType,agentType,paymentMode));
     }

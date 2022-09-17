@@ -22,7 +22,7 @@ class ConfigureMdmNavigationHandler with ErrorHandler {
   }
 
   Future<void> navigateToHomeScreen() async {
-    var argument = HomeScreenArgs(isAgent: false, userType: UserType.Agent);
+    var argument = HomeScreenArgs(isAgent: true, userType: UserType.Agent);
     await _navigationManager.navigateTo(
         CrayonHomeScreen.viewPath,
         NavigationType.replace(),

@@ -172,9 +172,8 @@ class _SignUpState extends State<SignUp> {
          const SizedBox(
             height: 36,
           ),
-          agentType.isNotEmpty ?
-          _buildPaymentModeDropdown(coordinator)
-              : const SizedBox()
+          agentType.isNotEmpty ?(widget.signUpArguments.title=="ST_update_passcode"||widget.signUpArguments.title=="SU_reset_passcode")?Container():_buildPaymentModeDropdown(coordinator)
+              : const SizedBox ()
         ],
       ),
     );
@@ -387,7 +386,7 @@ class _SignUpState extends State<SignUp> {
               borderRadius: BorderRadius.circular(8.0)),
           child: Center(
             child: Text(
-             agentType == 'SUPER_AGENT' ? 'SU_otp_verification'.tr : 'SU_button_text'.tr,
+              'SU_button_text'.tr,
               style: SU_button_text_style,
             ),
           ),
@@ -529,9 +528,12 @@ class _SignUpState extends State<SignUp> {
         orElse: () => null);
   }
 
+
+
+
   void _validateForm(SignUpCoordinator coordinator) {
     coordinator.validateForm(nidaNumber.text, mobileNumber.text, agentId.text,
-        widget.signUpArguments.userType, agentType, paymentMode.text);
+        widget.signUpArguments, agentType, paymentMode.text);
   }
 
   void _checkValid(String label, SignUpCoordinator coordinator) {
