@@ -211,7 +211,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'HS_TotalOnBoarderCustomers'.tr,
+                          'HS_TotalCustomerBoarding'.tr,
                           style: HS_title_style,
                         ),
                         const SizedBox(
@@ -221,20 +221,20 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                             style: HS_account_id_style),
                       ],
                     ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'HS_TotalCustomerBoarding'.tr,
-                          //'HS_PendingCustomerRequests'.tr,
-                          style: HS_title_style,
-                        ),
-                        const SizedBox(
-                          height: 5,
-                        ),
-                        const Text('-', style: HS_account_id_style),
-                      ],
-                    ),
+                    // Column(
+                    //   crossAxisAlignment: CrossAxisAlignment.start,
+                    //   children: [
+                    //     Text(
+                    //       'HS_TotalCustomerBoarding'.tr,
+                    //       //'HS_PendingCustomerRequests'.tr,
+                    //       style: HS_title_style,
+                    //     ),
+                    //     const SizedBox(
+                    //       height: 5,
+                    //     ),
+                    //     const Text('-', style: HS_account_id_style),
+                    //   ],
+                    // ),
                     const SizedBox(
                       width: 10,
                     ),

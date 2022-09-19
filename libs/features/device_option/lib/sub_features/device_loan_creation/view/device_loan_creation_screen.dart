@@ -51,6 +51,8 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
 
   num payNowTotal = 0.0;
 
+  String telcoPartner= '';
+
 
   LoanPreviewResponseModel? loanPreviewResponseModel;
 
@@ -60,6 +62,7 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
   Widget build(BuildContext context) {
     return BaseView<DeviceLoanCreationCoordinator, DeviceLoanCreationState>(
         setupViewModel: (coordinator) async {
+          telcoPartner = await coordinator.getTelcoPartner();
           detailDetail = widget.deviceLoanCreationArgs.deviceDetailData;
           if (detailDetail != null && detailDetail!.deviceId != 0) {
             loanPreviewResponseModel = await coordinator.getLoanPreview(
@@ -263,16 +266,12 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
               fontWeight: FontWeight.w600),
         ),
         dynamicHSpacer(20),
-        _radioOtherButton(),
-        dynamicHSpacer(5),
-        _radioButton(),
-        dynamicHSpacer(5),
-        _radioTigoButton(),
-        dynamicHSpacer(5),
-        _radioMPesaButton()
+        radioCase()
       ],
     );
   }
+
+
 
   _rowTitleValue(String key, String value) {
     return Column(
@@ -310,7 +309,7 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
     );
   }
 
-  _radioOtherButton() {
+  _radioOtherButton(bool isEnabled) {
     return Container(
         height: 50,
         width: double.infinity,
@@ -324,24 +323,26 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Image.asset("assets/images/credit_check.png"),
+              Image.asset("assets/images/other_payments.png"),
               SizedBox(width: 10),
               CrayonPaymentText(
                 key: Key('${_identifier}_Device_Loan_Airtel_Pay'),
                 text: TextUIDataModel('Other Payment'.tr,
                     styleVariant: CrayonPaymentTextStyleVariant.headline4,
-                    color: SECONDARY_COLOR,
+                    color: isEnabled ? SECONDARY_COLOR : SECONDARY_COLOR.withOpacity(.30),
                     fontWeight: FontWeight.w600),
               ),
               Spacer(),
               Radio(
                 value: 5,
                 groupValue: radioValue,
-                activeColor: SU_button_color,
+                activeColor: isEnabled? SU_button_color : SU_button_color.withOpacity(.30),
                 onChanged: (value) {
-                  setState(() {
-                    radioValue = value as int;
-                  });
+                  if(isEnabled) {
+                    setState(() {
+                      radioValue = value as int;
+                    });
+                  }
                 },
               )
             ],
@@ -349,7 +350,7 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
         ));
   }
 
-  _radioButton() {
+  _radioButton(bool isEnabled) {
     return Container(
         height: 50,
         width: double.infinity,
@@ -369,17 +370,19 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
                 key: Key('${_identifier}_Device_Loan_Airtel_Pay'),
                 text: TextUIDataModel('DLC_Airtel_Pay'.tr,
                     styleVariant: CrayonPaymentTextStyleVariant.headline4,
-                    color: SECONDARY_COLOR,
+                    color: isEnabled ? SECONDARY_COLOR : SECONDARY_COLOR.withOpacity(.30),
                     fontWeight: FontWeight.w600),
               ),
               Spacer(),
               Radio(
                 value: 1,
                 groupValue: radioValue,
-                activeColor: SU_button_color,
+                activeColor: isEnabled? SU_button_color : SU_button_color.withOpacity(.30),
                 onChanged: (value) {
                   setState(() {
-                    radioValue = value as int;
+                    if(isEnabled) {
+                      radioValue = value as int;
+                    }
                   });
                 },
               )
@@ -387,7 +390,7 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
           ),
         ));
   }
-  _radioTigoButton() {
+  _radioTigoButton(bool isEnabled) {
     return Container(
         height: 50,
         width: double.infinity,
@@ -407,21 +410,21 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
                 key: Key('${_identifier}_Device_Loan_Airtel_Pay'),
                 text: TextUIDataModel('DC_tigo_pesa'.tr,
                     styleVariant: CrayonPaymentTextStyleVariant.headline4,
-                    color: SECONDARY_COLOR.withOpacity(.30),
+                    color: isEnabled ? SECONDARY_COLOR : SECONDARY_COLOR.withOpacity(.30),
                     fontWeight: FontWeight.w600),
               ),
               Spacer(),
               Radio(
                 value: 2,
                 groupValue: 1,
-                activeColor: SU_button_color.withOpacity(.30),
+                activeColor:isEnabled? SU_button_color : SU_button_color.withOpacity(.30),
                   onChanged: (value) => evaluateTigo ? null : value = 0,
               )
             ],
           ),
         ));
   }
-  _radioMPesaButton() {
+  _radioMPesaButton(bool isEnabled) {
     return Container(
         height: 50,
         width: double.infinity,
@@ -441,18 +444,63 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
                 key: Key('${_identifier}_Device_Loan_Airtel_Pay'),
                 text: TextUIDataModel('DC_m-pesa'.tr,
                     styleVariant: CrayonPaymentTextStyleVariant.headline4,
-                    color: SECONDARY_COLOR.withOpacity(.30),
+                    color: isEnabled ? SECONDARY_COLOR : SECONDARY_COLOR.withOpacity(.30),
                     fontWeight: FontWeight.w600),
               ),
               Spacer(),
               Radio(
                 value: 3,
                 groupValue: 1,
-                activeColor: SU_button_color.withOpacity(.30),
+                activeColor: isEnabled? SU_button_color : SU_button_color.withOpacity(.30),
                   onChanged: (value) => evalutaeMPesa ? null : value = 0,
               )
             ],
           ),
         ));
   }
+
+  Widget radioCase(){
+    switch(telcoPartner){
+      case  'Airtel':
+        return Column(
+          children: [
+            _radioButton(true),
+            dynamicHSpacer(5),
+            _radioOtherButton(true),
+            dynamicHSpacer(5),
+            _radioTigoButton(false),
+            dynamicHSpacer(5),
+            _radioMPesaButton(false)
+          ],
+        );
+      case 'TIGO':
+        return Column(
+          children: [
+            _radioButton(false),
+            dynamicHSpacer(5),
+            _radioOtherButton(true),
+            dynamicHSpacer(5),
+            _radioTigoButton(false),
+            dynamicHSpacer(5),
+            _radioMPesaButton(false)
+          ],
+        );
+      case 'Vodacom':
+        return Column(
+          children: [
+            _radioButton(false),
+            _radioOtherButton(true),
+            dynamicHSpacer(5),
+            dynamicHSpacer(5),
+            _radioTigoButton(false),
+            dynamicHSpacer(5),
+            _radioMPesaButton(false)
+          ],
+        );
+       default:
+         return SizedBox();
+    }
+
+  }
+
 }

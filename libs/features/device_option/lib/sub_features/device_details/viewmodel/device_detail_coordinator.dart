@@ -41,7 +41,7 @@ class DeviceDetailCoordinator
       await _DeviceOptionUseCase.selectDevice(deviceId, (p0) => null);
       if (response?.status == true) {
         await navigateToCustomerLoanCreationScreen(
-            deviceId == 1 ? 'assets/a13.png' : 'assets/a03.png',
+            deviceId == 1 ? 'assets/a03.png' : 'assets/a13.png',
             data);
       }else{
         _showAlertForErrorMessage(response!.message!);

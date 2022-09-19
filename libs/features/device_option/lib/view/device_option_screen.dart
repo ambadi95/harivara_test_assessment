@@ -220,8 +220,8 @@ class _DeviceOptionState extends State<DeviceOption> {
                 flex:1,
                  child:Image.asset(
                     deviceList[index].deviceId == 1
-                        ? 'assets/a13.png'
-                        : 'assets/a03.png',
+                        ? 'assets/a03.png'
+                        : 'assets/a13.png',
                     fit: BoxFit.fill,
                     package: 'shared_data_models',
                   ),

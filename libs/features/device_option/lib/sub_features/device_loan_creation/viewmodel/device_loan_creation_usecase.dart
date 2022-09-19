@@ -14,6 +14,10 @@ class DeviceLoanCreationUseCase extends BaseDataProvider {
       : super(taskManager);
   final IAuthManager _authManager;
 
+  Future<String> getTelcoPartner() async {
+    return await getValueFromStorage('telcoPartner', defaultValue: '');
+  }
+
 
   Future<LoanPreviewResponseModel?> getLoanPreview(
       int deviceId, Function(String) onErrorCallback) async {

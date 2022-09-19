@@ -21,6 +21,10 @@ class DeviceLoanCreationCoordinator
     await _navigationHandler.navigateToDownPaymentScreen(amount,deviceId!);
   }
 
+  Future<String> getTelcoPartner()async{
+    return await _DeviceOptionUseCase.getTelcoPartner();
+  }
+
   Future getLoanPreview(BuildContext context,int deviceId) async {
     state =
         DeviceLoanCreationState.ready(context: context, error: "", isLoading: true);
