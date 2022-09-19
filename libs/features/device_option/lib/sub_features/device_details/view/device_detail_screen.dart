@@ -140,13 +140,13 @@ class _DeviceDetailScreenState extends State<DeviceDetailScreen> {
           // dynamicHSpacer(15),
           // _membershipTermButton(context),
           dynamicHSpacer(22),
-
-          CrayonPaymentText(
-              key: Key('${_identifier}_DD_TERMS'),
-              text: TextUIDataModel('T_C_NOTE'.tr,
-                  styleVariant: CrayonPaymentTextStyleVariant.overline1,
-                  color: DD_TextLabel,
-                  )),
+          //
+          // CrayonPaymentText(
+          //     key: Key('${_identifier}_DD_TERMS'),
+          //     text: TextUIDataModel('T_C_NOTE'.tr,
+          //         styleVariant: CrayonPaymentTextStyleVariant.overline1,
+          //         color: DD_TextLabel,
+          //         )),
 
           dynamicHSpacer(22),
 
@@ -259,7 +259,7 @@ class _DeviceDetailScreenState extends State<DeviceDetailScreen> {
             label: 'DD_OperatingSystem', value: detailDetail!.operatingSystem!),
         divider(),
         productSpecLabel(
-            label: 'DD_MemoryStorage', value: detailDetail!.modelNumber!),
+            label: 'DD_MemoryStorage', value: detailDetail!.memory!),
         divider(),
         productSpecLabel(
             label: 'DD_WaterResistanceLevel',
