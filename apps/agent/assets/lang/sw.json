@@ -68,6 +68,8 @@
   "DV_dob_error_text" : "DoB batili",
   "DV_invalid_dob_error_text" : "Tafadhali weka tarehe halali ya kuzaliwa",
   "DV_dob_hint_text" : "Ingiza DoB",
+  "DV_select_dob" : "Chagua Tarehe ya Kuzaliwa",
+
   "DV_gender_label" : "Jinsia",
   "DV_gender_error_text" : "Jinsia Batili",
   "DV_gender_hint_text" : "Ingiza Jinsia",

@@ -75,17 +75,19 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
 
   final FocusNode genderFocusNode = FocusNode();
 
-  DateTime selectedDate = DateTime.now();
+  DateTime selectedDate = DateTime.now().subtract(const Duration(days: 8035));
   final _scaffoldKey = GlobalKey<ScaffoldState>();
 
   Future<void> _selectDate(
       BuildContext context, CustomerDetailsCoordinator coordinator) async {
     final DateTime? picked = await showDatePicker(
         context: context,
-        helpText: 'Select Date of Birth',
+        helpText: 'DV_select_dob'.tr,
         initialDate: selectedDate,
         firstDate: DateTime(1900, 1),
         lastDate: DateTime(2101),
+        initialDatePickerMode: DatePickerMode.year,
+
         builder: (context, child) {
           return Theme(
             data: Theme.of(context).copyWith(
