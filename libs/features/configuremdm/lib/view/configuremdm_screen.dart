@@ -52,7 +52,7 @@ class _ConfigureMdmScreenState extends State<ConfigureMdmScreen> {
                 ),
                 bottomNavigationBar:
                 Container(
-                  height: MediaQuery.of(context).size.height * 0.28,
+                  height: MediaQuery.of(context).size.height * 0.32,
                     child: Column(
                       children: [
                         const SizedBox(

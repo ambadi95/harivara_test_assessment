@@ -251,7 +251,7 @@ class _DeviceOptionState extends State<DeviceOption> {
                                       child: CrayonPaymentText(
                                         key: Key('${_identifier}_' + device.brand!),
                                         text: TextUIDataModel(
-                                            'Option ' + (index + 1).toString(),
+                                            'DD_option'.tr + " " + (index + 1).toString(),
                                             styleVariant:
                                                 CrayonPaymentTextStyleVariant
                                                     .overline1,
@@ -363,9 +363,9 @@ class _DeviceOptionState extends State<DeviceOption> {
                       // ),
                       dynamicHSpacer(15),
                       CrayonPaymentText(
-                        key: Key('${_identifier}_pricing_label'),
+                        key: Key('${_identifier}_DO_Pricing_option'),
                         text: const TextUIDataModel(
-                          'Pricing option',
+                          'DO_Pricing_option',
                           styleVariant: CrayonPaymentTextStyleVariant.headline5,
                           color: DD_TextValue,
                         ),

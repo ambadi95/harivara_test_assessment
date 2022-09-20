@@ -207,9 +207,9 @@ class _OtherPaymentScreenState extends State<OtherPaymentScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children:  [
-                      const Text(
-                        "Down payment",
-                        style: TextStyle(
+                      Text(
+                        'other_down_payment'.tr,
+                        style: const TextStyle(
                             color: Color(0xff676767),
                             fontSize: 16,
                             fontWeight: FontWeight.w400),
@@ -244,7 +244,10 @@ class _OtherPaymentScreenState extends State<OtherPaymentScreen> {
               mobileController,
               coordinator,
               'SU_subtitle_hint',
-            )
+            ),
+            const SizedBox(
+              height: 28,
+            ),
           ],
         ),
       ),
@@ -402,9 +405,9 @@ class _OtherPaymentScreenState extends State<OtherPaymentScreen> {
 
   _title(BuildContext context) {
     return CrayonPaymentText(
-        key: Key('${_identifier}_Other_Payments_title'),
+        key: Key('${_identifier}_Other_payment_title_heading'),
         text: TextUIDataModel(
-          'Other_Payments_title'.tr,
+          'Other_payment_title_heading'.tr,
             styleVariant: CrayonPaymentTextStyleVariant.headlineThirtyTwo,
             color: AN_TitleColor,
             fontWeight: FontWeight.w600

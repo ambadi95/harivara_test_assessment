@@ -61,7 +61,7 @@ class ConfigureMdmCoordinator
     Get.bottomSheet(
       AlertBottomSheet(
           alertMessage: errorMessage,
-          alertTitle: 'Error',
+          alertTitle: 'error_word'.tr,
           alertIcon: "assets/images/alert_icon.png",
           onClose: () {
             goBack();

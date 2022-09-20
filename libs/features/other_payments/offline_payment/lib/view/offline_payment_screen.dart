@@ -330,7 +330,7 @@ void delayFun(){
   }
 
   String _getCaptialUserName(String letter) => letter.isNotEmpty
-      ? letter.trim().split(' ').map((l) => l[0]).take(2).join()
+      ? letter.trim().split(' ').map((l) => l[0]).take(2).join().toUpperCase()
       : '';
 
   _title(BuildContext context) {

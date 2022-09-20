@@ -232,7 +232,7 @@
   "KYC_Validation_With_Airtel" : "KYC Validation With \n{} Telco’s Record",
   "KYC_Validation_With_Airtel_Subtitle" : "Y9 checks your Telco records matching\nyour NIDA Number and Mobile Number",
   "KYC_Validation_With_Airtel_Pass_Check" : "KYC Checked with Telco",
-  "KYC_Validation_With_Airtel_Loan_Check" : "Credit Checked for Loan",
+  "KYC_Validation_With_Airtel_Loan_Check" : "Credit Score Checked for Loan",
   "KYC_Approved_manual" : "KYC Manually Approved",
   "KYC_Validation_With_Main_CheckBox" : "I hereby agree for Y9 to check my credit\nscore and provide the eligible\nmembership plan according to Y9",
   "KYC_Terms_and_Condition" : "Terms & Conditions",
@@ -299,17 +299,21 @@
   "DC_tigo_pesa": "tigo pesa",
   "HO_referral_alert_message": "Coming soon...\nstay tuned for updates",
   "Other_Payments_title": "Other Payments",
+  "Other_payment_title_heading" : "Other Payments",
   "Other_payment_subtitle": "Once the Customer confirms the Payment, fill in the below details",
   "other_payment_transaction_id_title": "Transaction ID",
   "other_payment_transaction_id_hint": "Enter Transaction ID",
+  "other_down_payment" : "Down Payment",
 
   "HO_super_agent" : "Super Agent",
-
 
   "Offline_payment_title" : "Loan Approval is Under\nProcess",
   "Offline_payment_subtitle" : "This Loan approval might take sometime, please hold on",
   "Offline_payment_checkboxTitle1" : "Payment Verified Offline",
   "Offline_payment_checkboxTitle2" : "Loan Approved",
   "Offline_loan_approval_error_msg" : "Loan Approved Failed",
-  "Offline_loan_creation_error_msg" : "Loan Creation Error"
+  "Offline_loan_creation_error_msg" : "Loan Creation Error",
+  "DD_option" : "Option",
+  "error_word" : "Error"
+
 }

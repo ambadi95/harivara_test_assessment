@@ -195,7 +195,7 @@ class _DeviceDetailScreenState extends State<DeviceDetailScreen> {
   Widget _buildOptionTitle(context) {
     return CrayonPaymentText(
       key: Key('${_identifier}_DD_option_Title'),
-      text: TextUIDataModel('Option ' + widget.deviceId.toString(),
+      text: TextUIDataModel('DD_option'.tr + " "  + widget.deviceId.toString(),
           styleVariant: CrayonPaymentTextStyleVariant.headline6,
           color: AN_TitleColor,
           fontWeight: FontWeight.w600),
