@@ -598,7 +598,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
             dis = await coordinator.getDistrict(value.id!, widget.userType);
             Navigator.pop(context);
             districtDropDown.clear();
-            districtDropDown = getDistrictDropDownData([const b.Datum(id: 0,name: 'Select District')]);
+            districtDropDown = getDistrictDropDownData([b.Datum(id: 0,name: 'DV_district_hint_text'.tr)]);
             districtDropDown = getDistrictDropDownData(dis);
             _district = districtDropDown.elementAt(0).value;
             setState(() {
@@ -772,7 +772,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
         DropdownMenuItem(
           value: item,
           child:
-              item.name.toString() == 'Select District' ?
+              item.name.toString() == 'DV_district_hint_text'.tr ?
               Text(
                 item.name.toString(),
                 style: const TextStyle(
