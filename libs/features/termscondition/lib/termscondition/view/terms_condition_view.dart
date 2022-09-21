@@ -25,134 +25,138 @@ class CrayonTermsCondition extends StatefulWidget {
 }
 
 class _CrayonTermsConditionState extends State<CrayonTermsCondition> {
-
   final List<Map<String, dynamic>> customerFaqList = [
     {
       "title": 'faq_question_1'.tr,
-      "content":'faq_answer_1'.tr,
-        "isExpanded": false
+      "content": 'faq_answer_1'.tr,
+      "isExpanded": false
     },
     {
       "title": 'faq_question_2'.tr,
-      "content":'faq_answer_2'.tr,
+      "content": 'faq_answer_2'.tr,
       "isExpanded": false
     },
     {
       "title": 'faq_question_3'.tr,
-      "content":'faq_answer_3'.tr,
+      "content": 'faq_answer_3'.tr,
       "isExpanded": false
-    },{
+    },
+    {
       "title": 'faq_question_4'.tr,
-      "content":'faq_answer_4'.tr,
+      "content": 'faq_answer_4'.tr,
       "isExpanded": false
     },
     {
       "title": 'faq_question_5'.tr,
-      "content":'faq_answer_5'.tr,
+      "content": 'faq_answer_5'.tr,
       "isExpanded": false
     },
     {
       "title": 'faq_question_6'.tr,
-      "content":'faq_answer_6'.tr,
+      "content": 'faq_answer_6'.tr,
       "isExpanded": false
-    },   {
+    },
+    {
       "title": 'faq_question_7'.tr,
-      "content":'faq_answer_7'.tr,
+      "content": 'faq_answer_7'.tr,
       "isExpanded": false
-    },{
+    },
+    {
       "title": 'faq_question_8'.tr,
-      "content":'faq_answer_8'.tr,
+      "content": 'faq_answer_8'.tr,
       "isExpanded": false
     },
     {
       "title": 'faq_question_9'.tr,
-      "content":'faq_answer_9'.tr,
+      "content": 'faq_answer_9'.tr,
       "isExpanded": false
     },
     {
       "title": 'faq_question_10'.tr,
-      "content":'faq_answer_10'.tr,
+      "content": 'faq_answer_10'.tr,
       "isExpanded": false
     },
     {
       "title": 'faq_question_11'.tr,
-      "content":'faq_answer_11'.tr,
+      "content": 'faq_answer_11'.tr,
       "isExpanded": false
     },
     {
       "title": 'faq_question_12'.tr,
-      "content":'faq_answer_12'.tr,
+      "content": 'faq_answer_12'.tr,
       "isExpanded": false
     },
     {
       "title": 'faq_question_13'.tr,
-      "content":'faq_answer_13'.tr,
+      "content": 'faq_answer_13'.tr,
       "isExpanded": false
-    },{
+    },
+    {
       "title": 'faq_question_14'.tr,
-      "content":'faq_answer_14'.tr,
+      "content": 'faq_answer_14'.tr,
       "isExpanded": false
     },
     {
       "title": 'faq_question_15'.tr,
-      "content":'faq_answer_15'.tr,
+      "content": 'faq_answer_15'.tr,
       "isExpanded": false
     },
     {
       "title": 'faq_question_16'.tr,
-      "content":'faq_answer_16'.tr,
+      "content": 'faq_answer_16'.tr,
       "isExpanded": false
-    },   {
+    },
+    {
       "title": 'faq_question_17'.tr,
-      "content":'faq_answer_17'.tr,
+      "content": 'faq_answer_17'.tr,
       "isExpanded": false
-    },{
+    },
+    {
       "title": 'faq_question_18'.tr,
-      "content":'faq_answer_18'.tr,
+      "content": 'faq_answer_18'.tr,
       "isExpanded": false
     },
     {
       "title": 'faq_question_19'.tr,
-      "content":'faq_answer_19'.tr,
+      "content": 'faq_answer_19'.tr,
       "isExpanded": false
     },
     {
       "title": 'faq_question_20'.tr,
-      "content":'faq_answer_20'.tr,
+      "content": 'faq_answer_20'.tr,
       "isExpanded": false
-    },{
+    },
+    {
       "title": 'faq_question_21'.tr,
-      "content":'faq_answer_21'.tr,
+      "content": 'faq_answer_21'.tr,
       "isExpanded": false
     },
     {
       "title": 'faq_question_22'.tr,
-      "content":'faq_answer_22'.tr,
+      "content": 'faq_answer_22'.tr,
       "isExpanded": false
     },
     {
       "title": 'faq_question_23'.tr,
-      "content":'faq_answer_23'.tr,
+      "content": 'faq_answer_23'.tr,
       "isExpanded": false
-    },{
+    },
+    {
       "title": 'faq_question_24'.tr,
-      "content":'faq_answer_24'.tr,
+      "content": 'faq_answer_24'.tr,
       "isExpanded": false
     },
     {
       "title": 'faq_question_25'.tr,
-      "content":'faq_answer_25'.tr,
+      "content": 'faq_answer_25'.tr,
       "isExpanded": false
     },
     {
       "title": 'faq_question_26'.tr,
-      "content":'faq_answer_26'.tr,
+      "content": 'faq_answer_26'.tr,
       "isExpanded": false
     }
-
   ];
-
-
 
   void changeExpandedState(int index, bool expandedStatus) {
     if (expandedStatus) {
@@ -207,7 +211,7 @@ class _CrayonTermsConditionState extends State<CrayonTermsCondition> {
                         index, customerFaqList.elementAt(index)["isExpanded"]);
                   },
                   child: Container(
-                    height: 50,
+
                     decoration: const BoxDecoration(
                       color: Colors.white,
                       boxShadow: [
@@ -218,14 +222,14 @@ class _CrayonTermsConditionState extends State<CrayonTermsCondition> {
                         ),
                       ],
                     ),
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Expanded(
                           child: Text(
                             customerFaqList.elementAt(index)['title'] ?? "",
-                            maxLines: 1,
+                            maxLines: 3,
                             textAlign: TextAlign.start,
                             style: const TextStyle(
                                 color: Colors.black,
@@ -288,14 +292,16 @@ class _CrayonTermsConditionState extends State<CrayonTermsCondition> {
         const SizedBox(
           height: 20,
         ),
-       widget.termsConditionAndFaqScreenArgs.isFAQ?Container(): CrayonPaymentText(
-          key: Key('${widget._identifier}_TC_Last_Updated'),
-          text: TextUIDataModel('TC_LastUpdated'.tr,
-              styleVariant: CrayonPaymentTextStyleVariant.headline4,
-              color: SU_title_color,
-              fontWeight: FontWeight.normal,
-              textAlign: TextAlign.left),
-        ),
+        widget.termsConditionAndFaqScreenArgs.isFAQ
+            ? Container()
+            : CrayonPaymentText(
+                key: Key('${widget._identifier}_TC_Last_Updated'),
+                text: TextUIDataModel('TC_LastUpdated'.tr,
+                    styleVariant: CrayonPaymentTextStyleVariant.headline4,
+                    color: SU_title_color,
+                    fontWeight: FontWeight.normal,
+                    textAlign: TextAlign.left),
+              ),
       ],
     );
   }
