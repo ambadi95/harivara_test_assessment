@@ -93,6 +93,7 @@
   "DV_district_label" : "District",
   "DV_district_error_text" : "Invalid District",
   "DV_district_hint_text" : "Select District",
+  "DV_title_agent" : "Your Details",
   "Save_Text": "Save",
   "DAILY_EMI": "Daily Emi",
   "MONTHLY_EMI": "Monthly Emi",

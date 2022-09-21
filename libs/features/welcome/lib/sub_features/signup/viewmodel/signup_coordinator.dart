@@ -264,9 +264,10 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
       var ismobileNoValid = _signupUseCase.isValidMobileNumber(mobNumber);
      var isPaymentModeValid = handlePaymentValidation(arguments)?true:_signupUseCase.isValidPaymentMode(paymentMode);
       var _isValid;
-      if(agentType.isNotEmpty&&!handlePaymentValidation(arguments)){
-        _isValid = isnidaNumberValid && ismobileNoValid && isPaymentModeValid;
-      }
+          if (agentType.isNotEmpty && !handlePaymentValidation(arguments) && arguments.signupType == SignupType.agentAidedCustomerOnBoarding) {
+            _isValid =
+                isnidaNumberValid && ismobileNoValid && isPaymentModeValid;
+          }
       else if (arguments.userType == UserType.Customer) {
         _isValid = isnidaNumberValid && ismobileNoValid;
       }
@@ -277,7 +278,7 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
     }
 
   bool handlePaymentValidation(SignUpArguments signUpArguments) {
-    if (signUpArguments.title == "ST_update_passcode" || signUpArguments.title == "SU_reset_passcode"|| signUpArguments.title == "ST_update_passcode") {
+    if (signUpArguments.title == "ST_update_passcode" || signUpArguments.title == "SU_reset_passcode") {
       return true;
     }
     return false;
