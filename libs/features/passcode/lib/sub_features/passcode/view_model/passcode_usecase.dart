@@ -230,9 +230,25 @@ class PasscodeUseCase extends BaseDataProvider {
         });
   }
 
+  Future<String> getLocale() async {
+    String defaultLocale = 'en';
+    String savedLocale =
+    await getValueFromStorage('current_locale', defaultValue: '');
+    if (savedLocale.isEmpty) {
+      savedLocale = defaultLocale;
+    }
+    return savedLocale;
+  }
+
+  Future<void> saveLocale(String currentLocale) async {
+    await setValueToStorage({'current_locale': currentLocale});
+  }
+
   Future logout() async {
+    String currentLocale = await getLocale();
     _cacheTaskResolver
         .execute("", {CACHE_TYPE: TaskManagerCacheType.DELETE_ALL});
+    await saveLocale(currentLocale);
   }
 
 
