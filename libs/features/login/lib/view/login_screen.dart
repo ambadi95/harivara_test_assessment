@@ -208,14 +208,16 @@ class _LoginState extends State<Login> {
           hintText: hint.tr,
           key: const Key('detailsTextField'),
           inputFormatters: [
-            LengthLimitingTextInputFormatter(12),
+              FilteringTextInputFormatter(new RegExp(r"\s\b|\b\s"), allow: false),
+              LengthLimitingTextInputFormatter(12),
           ],
           keyboardType: textInputType,
           textCapitalization: TextCapitalization.characters,
           onChanged: (value) {
+            controller.text.trim();
             _validateForm(coordinator);
             if (errorText.isNotEmpty) {
-              coordinator.isAgentIdValid(agentIdController.text);
+              coordinator.isAgentIdValid(agentIdController.text.trim());
             }
           },
         ));
