@@ -18,6 +18,7 @@ import 'package:widget_library/utils/launcher_utils.dart';
 import 'package:widget_library/widget_library.dart';
 import '../agent_nearby_module.dart';
 import '../state/agent_nearby_state.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 class AgentNearBy extends StatelessWidget {
   final String _identifier = 'agent-nearby-screen';
@@ -247,7 +248,7 @@ class AgentNearBy extends StatelessWidget {
     return Center(
       child: Material(
         child: Container(
-          child: const Text('Fetching your location..',
+          child:  Text('AN_fetching_location'.tr,
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 16,

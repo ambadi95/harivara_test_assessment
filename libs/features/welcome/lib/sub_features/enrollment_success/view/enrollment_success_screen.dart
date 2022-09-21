@@ -99,9 +99,9 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
               child: Text(
                 widget.userType == UserType.AgentCustomer
                     ? customerDetail!.data!.deviceId != null
-                        ? 'Home'
+                        ? 'ES_home'.tr
                         : ''
-                    : 'Logout',
+                    : 'ES_logout'.tr,
                 style: const TextStyle(color: PRIMARY_COLOR),
               ),
             ),
