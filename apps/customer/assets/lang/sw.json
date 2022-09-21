@@ -124,6 +124,9 @@
   "D0_ViewDetails": "Tazama Maelezo",
 
   "DD_product" : "Maelezo ya bidhaa",
+  "DD_option" : "Chaguo",
+  "DO_Pricing_option" : "Chaguo lab ei",
+
   "DD_Brand" : "Chapa",
   "DD_ModelNumber" : "Nambari ya Mfano",
   "DD_HumanInterfaceInput" : "Ingizo la Kiolesura cha Binadamu",

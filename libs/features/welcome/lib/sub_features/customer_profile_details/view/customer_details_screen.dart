@@ -611,6 +611,10 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
             districtDropDown.clear();
             districtDropDown = getDistrictDropDownData(dis);
             _district = districtDropDown.elementAt(0).value;
+            onDistrictChosen(_district as b.Datum, coordinator);
+              district.text  = districtDropDown.elementAt(0).value?.name as String;
+
+
             setState(() {
 
             });
@@ -692,7 +696,6 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
             onDistrictChosen(value as b.Datum, coordinator);
             district.text = value.name!;
             _validateForm(coordinator);
-            coordinator.isValidDistrict(value.name!);
           },
         ),
         const SizedBox(

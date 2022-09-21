@@ -22,13 +22,15 @@ class DeviceDetailCoordinator
   final DeviceDetailUseCase _DeviceOptionUseCase;
   final NavigationManager _navigationManager;
 
-  DeviceDetailCoordinator(this._navigationHandler,
-      this._DeviceOptionUseCase,
-      this._navigationManager,) : super(const DeviceDetailState());
+  DeviceDetailCoordinator(
+    this._navigationHandler,
+    this._DeviceOptionUseCase,
+    this._navigationManager,
+  ) : super(const DeviceDetailState());
 
   Future getDeviceDetail(int deviceId) async {
     var response =
-    await _DeviceOptionUseCase.getDeviceDetail(deviceId, (p0) => null);
+        await _DeviceOptionUseCase.getDeviceDetail(deviceId, (p0) => null);
     print(response);
     if (response!.status == true) {
       return response.data;
@@ -38,12 +40,11 @@ class DeviceDetailCoordinator
   Future getSelectDevice(int deviceId, Data data) async {
     try {
       var response =
-      await _DeviceOptionUseCase.selectDevice(deviceId, (p0) => null);
+          await _DeviceOptionUseCase.selectDevice(deviceId, (p0) => null);
       if (response?.status == true) {
         await navigateToCustomerLoanCreationScreen(
-            deviceId == 1 ? 'assets/a03.png' : 'assets/a13.png',
-            data);
-      }else{
+            deviceId == 1 ? 'assets/a03.png' : 'assets/a13.png', data);
+      } else {
         _showAlertForErrorMessage(response!.message!);
       }
     } catch (e) {
@@ -52,6 +53,7 @@ class DeviceDetailCoordinator
       print(e.toString());
     }
   }
+
   _showAlertForErrorMessage(String errorMessage) {
     Get.bottomSheet(
       AlertBottomSheet(
@@ -70,7 +72,7 @@ class DeviceDetailCoordinator
   Future<void> navigateToEnrolledScreen(int deviceId, UserType userType) async {
     try {
       var response =
-      await _DeviceOptionUseCase.selectDevice(deviceId, (p0) => null);
+          await _DeviceOptionUseCase.selectDevice(deviceId, (p0) => null);
       if (response?.status == true) {
         await _navigationHandler.navigateToCustomerEnrollmentScreen(
             '', userType);
@@ -80,8 +82,8 @@ class DeviceDetailCoordinator
     }
   }
 
-  Future<void> navigateToCustomerLoanCreationScreen(String image,
-      Data deviceDetailData) async {
+  Future<void> navigateToCustomerLoanCreationScreen(
+      String image, Data deviceDetailData) async {
     await _navigationHandler.navigateToDeviceLoanCreation(
         image, deviceDetailData);
   }
@@ -89,9 +91,13 @@ class DeviceDetailCoordinator
   void navigateToDownPayment(String amount, int? deviceId) async {
     await _navigationHandler.navigateToDownPaymentScreen(amount, deviceId!);
   }
+
+  Future<void> selectDevice(String message, String buttonLabel, int deviceId,
+      UserType userType) async {
+    var response =
+        await _DeviceOptionUseCase.selectDevice(deviceId, (p0) => null);
+    if (response?.status == true) {
+      _navigationHandler.navigateToCustomerEnrollmentScreen('', userType);
+    }
+  }
 }
-
-
-
-
-
