@@ -2,7 +2,7 @@
   "environments": [
     {
       "name": "test",
-      "host": "https://agentapi.y9bank.com/agents/v1/"
+        "host": "https://agentapi-stage.y9bank.com/agents/v1/"
     },
     {
       "name": "Local",

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:config/Config.dart';
 import 'package:core/logging/logger.dart';
 import 'package:flutter/material.dart';
@@ -231,6 +233,10 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
           print(otpScreenArgs.refId);
           var getWorkFlowStatus = await _verifyOtpUseCase
               .workFlowCustomerByAgent(otpScreenArgs.refId, (p0) => null);
+
+          getWorkFlowStatus = WorkFlowStatusResponse.fromJson(json.decode(
+              '{"status":true,"code":"OK","message":"SUCCESS","data":{"status":"Downpayment_Success","data":[125,"Y9C100125",1,{"id":41,"paymentId":"9IL97VY9FTT","customerId":"125","amountPaid":"42000.0","currencyCode":"TZS","countryCode":"TZ","mobileNumber":"+255759661025","status":"Downpayment_Success","loanId":null,"paymentType":"Downpayment","request":"NA","response":"NA","callbackResponse":"NA","paymentMode":"Other Payments"}]}}'
+          ));
           if (getWorkFlowStatus!.status!) {
             CrayonPaymentLogger.logInfo('I am in WorkFlow Status');
             //TODO Workflow Navigation
@@ -406,6 +412,9 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
 
   navigationToWorkFlow(
       WorkFlowStatusResponse workFlowStatusResponse, String status) async {
+
+    print('&&&&&&&&&&&&&&&&&&&&');
+    print(status);
     switch (status) {
       case "Initiated":
         _navigationHandler.navigateToDetailScreen();
