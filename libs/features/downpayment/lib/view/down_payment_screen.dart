@@ -29,7 +29,8 @@ class DownPaymentScreen extends StatefulWidget {
 
   final DownPaymentScreenArgs downPaymentScreenArgs;
 
-  const DownPaymentScreen({Key? key, required this.downPaymentScreenArgs}) : super(key: key);
+  const DownPaymentScreen({Key? key, required this.downPaymentScreenArgs})
+      : super(key: key);
 
   @override
   State<DownPaymentScreen> createState() => _DownPaymentScreenState();
@@ -43,12 +44,11 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
   late Timer _timer;
   final ValueNotifier<int> _startValue = ValueNotifier<int>(15);
 
-
   void startTimer() {
     const oneMintue = Duration(minutes: 15);
     _timer = Timer.periodic(
       oneMintue,
-          (Timer timer) {
+      (Timer timer) {
         if (_startValue.value == 0) {
           if (mounted) {
             setState(() {
@@ -77,34 +77,32 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
     _timer.cancel();
   }
 
-
-
   @override
   Widget build(BuildContext context) =>
       BaseView<DownPaymentCoordinator, DownPaymentState>(
           setupViewModel: (coordinator) async {
-            downPaymentCoordinator=coordinator;
+            downPaymentCoordinator = coordinator;
             coordinator.initialiseState(context);
             username = await coordinator.getNewCustomerName(); //getAgentName();
             setState(() {
               username;
             });
-            coordinator.setData(context,widget.downPaymentScreenArgs);
+            coordinator.setData(context, widget.downPaymentScreenArgs);
             // coordinator.makePayment(context,widget.downPaymentScreenArgs.amount);
           },
           onStateListenCallback: (preState, newState) => {
                 _listenToStateChanges(
                     context, newState as DownPaymentStateReady)
               },
-          builder: (context, state, coordinator) =>
-              SafeArea(
+          builder: (context, state, coordinator) => SafeArea(
                 child: Scaffold(
                   appBar: PreferredSize(
                     preferredSize: Size(double.infinity, 102),
-                    child: _buildAppBarAttributes(context, state as DownPaymentStateReady,coordinator),
+                    child: _buildAppBarAttributes(
+                        context, state as DownPaymentStateReady, coordinator),
                   ),
-                  bottomNavigationBar:
-                      _buildContinueButton(context, coordinator, state as DownPaymentStateReady),
+                  bottomNavigationBar: _buildContinueButton(
+                      context, coordinator, state as DownPaymentStateReady),
                   body: state.when(
                     initialState: () => const SizedBox(),
                     ready: (
@@ -127,35 +125,26 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
                 ),
               ));
 
-
-
-   _buildAppBarAttributes(
-      BuildContext context,
-      DownPaymentStateReady state,
-       DownPaymentCoordinator coordinator
-      ) {
-    return  _buildBackBtn(context,state,coordinator);
+  _buildAppBarAttributes(BuildContext context, DownPaymentStateReady state,
+      DownPaymentCoordinator coordinator) {
+    return _buildBackBtn(context, state, coordinator);
   }
 
-  Widget _buildBackBtn(
-      BuildContext context,
-      DownPaymentStateReady state,
-      DownPaymentCoordinator coordinator
-      ) {
+  Widget _buildBackBtn(BuildContext context, DownPaymentStateReady state,
+      DownPaymentCoordinator coordinator) {
     return Align(
       alignment: Alignment.topLeft,
       child: CrayonBackButton(
         key: const Key('signup_backButton'),
         color: Colors.black,
         onPressed: () {
-          if(!state.isLoading){
-          coordinator.pop();
+          if (!state.isLoading) {
+            coordinator.pop();
           }
         },
       ),
     );
   }
-
 
   Widget _buildMainUIWithLoading(
     BuildContext context,
@@ -165,7 +154,7 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
     return Stack(
       children: [
         Padding(
-          padding: const EdgeInsets.only(left: 20,right: 20),
+          padding: const EdgeInsets.only(left: 20, right: 20),
           child: _buildMainUI(context, coordinator, state),
         ),
         if (state.isLoading) _createLoading(state),
@@ -176,7 +165,6 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
   Widget _createLoading(DownPaymentStateReady state) {
     if (state.isLoading) {
       return const CenteredCircularProgressBar(color: PRIMARY_COLOR);
-
     } else {
       return Container();
     }
@@ -259,37 +247,29 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
               children: [
                 _rowWidget(
                   context,
-                  icon:  _getIcon(context,state.paymentRequested),
-                  text: _textWidget(context, 'DP_RequestPayment'.tr,state.paymentRequested==0 ? true : false),
+                  icon: _getIcon(context, state.paymentRequested),
+                  text: _textWidget(context, 'DP_RequestPayment'.tr,
+                      state.paymentRequested == 0 ? true : false),
                 ),
-                _getVerticalDivider(
-                    context,
-                    AppUtils.appUtilsInstance
-                        .getPercentageSize(percentage: 8)),
+                _getVerticalDivider(context,
+                    AppUtils.appUtilsInstance.getPercentageSize(percentage: 8)),
                 _rowWidget(
                   context,
-                  icon:  _getIcon(context,state.waitForPayment),
-
+                  icon: _getIcon(context, state.waitForPayment),
                   text: _textWidget(context, 'DP_WaitingForPayment'.tr, false),
                 ),
-                _getVerticalDivider(
-                    context,
-                    AppUtils.appUtilsInstance
-                        .getPercentageSize(percentage: 8)),
+                _getVerticalDivider(context,
+                    AppUtils.appUtilsInstance.getPercentageSize(percentage: 8)),
                 _rowWidget(
                   context,
-                  icon:  _getIcon(context,state.paymentReceived),
-
+                  icon: _getIcon(context, state.paymentReceived),
                   text: _textWidget(context, 'DP_PaymentReceived'.tr, false),
                 ),
-                _getVerticalDivider(
-                    context,
-                    AppUtils.appUtilsInstance
-                        .getPercentageSize(percentage: 8)),
+                _getVerticalDivider(context,
+                    AppUtils.appUtilsInstance.getPercentageSize(percentage: 8)),
                 _rowWidget(
                   context,
-                  icon:  _getIcon(context,state.loanApproved),
-
+                  icon: _getIcon(context, state.loanApproved),
                   text: _textWidget(context, 'DP_LoanApproved'.tr, false),
                 ),
                 SizedBox(
@@ -325,7 +305,15 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
   }
 
   Widget _getIcon(BuildContext context, num status) {
-    return SvgPicture.asset(status == 0  ? "assets/images/circular_grey.svg" : (status == 1) ? "assets/images/circular_tick.svg" : "assets/images/circular_cross.svg",height: 20,width: 20,);
+    return SvgPicture.asset(
+      status == 0
+          ? "assets/images/circular_grey.svg"
+          : (status == 1)
+              ? "assets/images/circular_tick.svg"
+              : "assets/images/circular_cross.svg",
+      height: 20,
+      width: 20,
+    );
   }
 
   Widget _getVerticalDivider(BuildContext context, double height) {
@@ -354,7 +342,8 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
           //       widget.downPaymentScreenArgs.deviceId);
           // }
           await coordinator.navigateToScanCodeScreen(
-              widget.downPaymentScreenArgs.deviceId, widget.downPaymentScreenArgs.modelName);
+              widget.downPaymentScreenArgs.deviceId,
+              widget.downPaymentScreenArgs.modelName);
         },
         child: Container(
           width: double.infinity,
@@ -408,13 +397,13 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
 
   _title(BuildContext context) {
     return CrayonPaymentText(
-      key: Key('${_identifier}_DLC_payment_text'),
-      text: TextUIDataModel(
+        key: Key('${_identifier}_DLC_payment_text'),
+        text: TextUIDataModel(
           '${widget.downPaymentScreenArgs.amount.toString()} ${'DLC_payment_text'.tr}',
           styleVariant: CrayonPaymentTextStyleVariant.headline6,
           color: AN_TitleColor,
           fontWeight: FontWeight.w600,
-    ));
+        ));
   }
 
   _textWidget(BuildContext context, String? text, bool isResend) {
@@ -428,60 +417,61 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
               fontWeight: FontWeight.w500),
         ),
         dynamicWSpacer(30),
-        isResend  ?
-        InkWell(
-          onTap: (){
-            downPaymentCoordinator!.makePayment(context,widget.downPaymentScreenArgs.amount);
-
-          },
-          child: Text('DLC_resend'.tr,style: const TextStyle(
-            decoration: TextDecoration.underline,
-            fontFamily: 'Montserrat',
-            fontSize: 12,
-            color: SU_subtitle_terms_color
-            )),
-        ) : Text("")
+        isResend
+            ? InkWell(
+                onTap: () {
+                  downPaymentCoordinator!.makePayment(
+                      context, widget.downPaymentScreenArgs.amount);
+                },
+                child: Text('DLC_resend'.tr,
+                    style: const TextStyle(
+                        decoration: TextDecoration.underline,
+                        fontFamily: 'Montserrat',
+                        fontSize: 12,
+                        color: SU_subtitle_terms_color)),
+              )
+            : Text("")
       ],
     );
   }
 
-  _subTitle(BuildContext context){
+  _subTitle(BuildContext context) {
     return
-    //       CrayonPaymentText(
-    //       key: Key('${_identifier}_DLC_Down_Payment_Subtitle'),
-    //       text: const TextUIDataModel(
-    //           'DLC_Down_Payment_Subtitle',
-    //           styleVariant: CrayonPaymentTextStyleVariant.subtitle2,
-    //           color: VO_ResendTextColor,
-    //           fontWeight: FontWeight.w400),
-    // );
+        //       CrayonPaymentText(
+        //       key: Key('${_identifier}_DLC_Down_Payment_Subtitle'),
+        //       text: const TextUIDataModel(
+        //           'DLC_Down_Payment_Subtitle',
+        //           styleVariant: CrayonPaymentTextStyleVariant.subtitle2,
+        //           color: VO_ResendTextColor,
+        //           fontWeight: FontWeight.w400),
+        // );
 
-      ValueListenableBuilder<int>(
-          valueListenable: _startValue,
-          builder: (BuildContext context, int value, Widget? child) {
-            return Align(
-              alignment: Alignment.topLeft,
-              child:  RichText(
-                text: TextSpan(
-                  text: 'DLC_Down_Payment_Subtitle'.tr,
-                  style: const TextStyle(
-                      fontFamily: 'Montserrat',
-                      fontSize: 14, color: DD_TextLabel, fontWeight: FontWeight.w600
-                  ),
-                  //
-                  // children: const <TextSpan>[
-                  //  TextSpan(
-                  //   text: "  ",
-                  //  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12, color : Color(0xFFDA2228))),
-                  //   TextSpan(
-                  //       text: "1 min 34 sec",
-                  //       style:  TextStyle(fontWeight: FontWeight.bold, fontSize: 12, color : Color(0xFFDA2228))),
-                  //
-                  // ],
-                ),
-              ));
-          });
-
+        ValueListenableBuilder<int>(
+            valueListenable: _startValue,
+            builder: (BuildContext context, int value, Widget? child) {
+              return Align(
+                  alignment: Alignment.topLeft,
+                  child: RichText(
+                    text: TextSpan(
+                      text: 'DLC_Down_Payment_Subtitle'.tr,
+                      style: const TextStyle(
+                          fontFamily: 'Montserrat',
+                          fontSize: 14,
+                          color: DD_TextLabel,
+                          fontWeight: FontWeight.w600),
+                      //
+                      // children: const <TextSpan>[
+                      //  TextSpan(
+                      //   text: "  ",
+                      //  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12, color : Color(0xFFDA2228))),
+                      //   TextSpan(
+                      //       text: "1 min 34 sec",
+                      //       style:  TextStyle(fontWeight: FontWeight.bold, fontSize: 12, color : Color(0xFFDA2228))),
+                      //
+                      // ],
+                    ),
+                  ));
+            });
   }
 
   _rowWidget(BuildContext context, {Widget? icon, Widget? text}) {
@@ -497,24 +487,35 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
     );
   }
 
-  _listenToStateChanges(BuildContext context, DownPaymentStateReady newState) async{
+  _listenToStateChanges(
+      BuildContext context, DownPaymentStateReady newState) async {
+    Timer? mytimer;
+    String paymentFailed = await downPaymentCoordinator!.checkPaymentFailed();
 
-       if(newState.loanApproved == 1){
+    if (paymentFailed == "Payment Failed") {
+      mytimer!.cancel();
+      return;
+    }
 
-         setState(() {
-           _isBtnEnabled=true;
-         });
-       }else if(newState.loanApproved == 2){
-         return;
-       }else {
-         if (newState.waitForPayment == 1 && newState.paymentRequested == 1 &&
-             newState.createLoan == 0) {
-           Future.delayed(const Duration(seconds: 25), () {
-             downPaymentCoordinator!.checkPaymentStatus(context);
-           });
-         }
-       }
-
+    if (newState.loanApproved == 1) {
+      setState(() {
+        _isBtnEnabled = true;
+      });
+    } else if (newState.loanApproved == 2) {
+      return;
+    } else {
+      if (newState.waitForPayment == 1 &&
+          newState.paymentRequested == 1 &&
+          newState.createLoan == 0) {
+         mytimer =
+            Timer.periodic(const Duration(minutes: 0, seconds: 10), (timer) {
+          downPaymentCoordinator!.checkPaymentStatus(context);
+        });
+        // Future.delayed(const Duration(seconds: 25), () {
+        //   downPaymentCoordinator!.checkPaymentStatus(context);
+        //
+        // });
+      }
+    }
   }
 }
-

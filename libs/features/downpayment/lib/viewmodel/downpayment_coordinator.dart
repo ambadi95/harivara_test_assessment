@@ -187,6 +187,12 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
     return await _downPaymentUseCase.getLoanCalled();
   }
 
+
+  Future<String> checkPaymentFailed() async{
+    String paymentFailed = await _downPaymentUseCase.getPaymentFailed();
+    return paymentFailed;
+
+  }
   Future<void> checkPaymentStatus(
     BuildContext context,
   ) async {
