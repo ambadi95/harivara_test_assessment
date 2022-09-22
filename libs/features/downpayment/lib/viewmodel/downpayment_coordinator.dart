@@ -292,7 +292,21 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
         makePayment(context, downPaymentScreenArgs.amount);
       }
     } else {
-      await loanApproval(downPaymentScreenArgs.subTitle, context);
+      if(downPaymentScreenArgs.loanApproved == 2){
+        state = DownPaymentState.ready(
+            context: context,
+            error: '',
+            isLoading: false,
+            loanActivated: 0,
+            createLoan: 1,
+            paymentRequested: 1,
+            waitForPayment: 1,
+            loanApproved: 2,
+            paymentReceived: 1);
+        _showAlertForErrorMessage("Loan Rejected", true);
+      }else {
+        await loanApproval(downPaymentScreenArgs.subTitle, context);
+      }
     }
   }
 
