@@ -188,9 +188,9 @@ class VerifyOtpNavigationHandler with ErrorHandler {
 
 
 
-  navigateToDownPaymentScreen({String? deviceId,String? amount, num? paymentStatus,num? paymentReceived}) {
+  navigateToDownPaymentScreen({String? deviceId,String? amount, num? paymentStatus,num? paymentReceived,String? loanId=""}) {
     var arguments = DownPaymentScreenArgs(
-        int.parse(deviceId!), amount!, "WORK_FLOW", "", "", paymentStatus ?? 0,paymentStatus ?? 0,paymentReceived ?? 0,0,0);
+        int.parse(deviceId!), amount!, "WORK_FLOW", loanId ?? "", "", paymentStatus ?? 0,paymentStatus ?? 0,paymentReceived ?? 0,0,0);
     _navigationManager.navigateTo(
         DownPaymentScreen.viewPath, const NavigationType.push(),
         arguments: arguments);

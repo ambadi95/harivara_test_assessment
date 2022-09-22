@@ -279,16 +279,20 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
         loanApproved: downPaymentScreenArgs.loanApproved,
         paymentReceived: downPaymentScreenArgs.paymentReceived);
 
-    if (downPaymentScreenArgs.title == "WORK_FLOW") {
-      if (downPaymentScreenArgs.paymentRequested == 1) {
-        checkPaymentStatus(context);
-      }else if (downPaymentScreenArgs.paymentReceived == 1) {
+    if (downPaymentScreenArgs.subTitle.isEmpty == true) {
+      if (downPaymentScreenArgs.title == "WORK_FLOW") {
+        if (downPaymentScreenArgs.paymentRequested == 1) {
+          checkPaymentStatus(context);
+        } else if (downPaymentScreenArgs.paymentReceived == 1) {
           createLoan(context);
+        } else {
+          makePayment(context, downPaymentScreenArgs.amount);
+        }
       } else {
         makePayment(context, downPaymentScreenArgs.amount);
       }
     } else {
-      makePayment(context, downPaymentScreenArgs.amount);
+      await loanApproval(downPaymentScreenArgs.subTitle, context);
     }
   }
 

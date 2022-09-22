@@ -230,8 +230,12 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
           print(otpScreenArgs.refId);
           var getWorkFlowStatus = await _verifyOtpUseCase
               .workFlowCustomerByAgent(otpScreenArgs.refId, (p0) => null);
+
+
           if (getWorkFlowStatus!.status!) {
             CrayonPaymentLogger.logInfo('I am in WorkFlow Status');
+
+
             //TODO Workflow Navigation
             navigationToWorkFlow(
                 getWorkFlowStatus, getWorkFlowStatus.data!.status!);
@@ -517,8 +521,13 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         //need to be change
         try {
           _saveData(workFlowStatusResponse);
-          await _navigationHandler.navigateToScanQrCode(
-              int.parse(workFlowStatusResponse.data!.data[2].toString()));
+          _navigationHandler.navigateToDownPaymentScreen(
+            deviceId: workFlowStatusResponse.data!.data[2].toString(),
+            paymentStatus: 0,
+            paymentReceived: 1,
+            loanId: workFlowStatusResponse.data!.data[3]["loanId"],
+            amount: workFlowStatusResponse.data!.data[3]["amountPaid"],
+          );
         } catch (e) {
           return _showAlertForErrorMessage(
               "Something went wrong,Please try again later!");
