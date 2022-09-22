@@ -57,10 +57,10 @@ class _SignUpState extends State<SignUp> {
               {_listenToStateChanges(context, newState)},
           setupViewModel: (coordinator) async {
             agentType =  await coordinator.getAgentType();
-            print('&&&&&&&&&&&&&&');
-            print(agentType);
             await coordinator.calljwttoken();
-            telcoList = await coordinator.getPaymentMode();
+            if(widget.signUpArguments.signupType == SignupType.agentAidedCustomerOnBoarding) {
+              telcoList = await coordinator.getPaymentMode();
+            }
             paymentModeDropDowm = getPaymentModeDropDownData(telcoList);
           },
           builder: (context, state, coordinator) => SafeArea(
