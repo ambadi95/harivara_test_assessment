@@ -135,9 +135,9 @@ void successFulScreen(){
   }
 
   Future deviceRegister(BuildContext context, int deviceId, String imei1,
-      String imei2) async {
+      String imei2, String modelName) async {
 
-      await deviceRegisterAPI(context, deviceId , imei1, imei2);
+      await deviceRegisterAPI(context, deviceId , imei1, imei2, modelName);
   }
 
 
@@ -145,14 +145,16 @@ void successFulScreen(){
       BuildContext context,
        int deviceId,
       String imei1,
-      String imei2
+      String imei2,
+      String modelName
       ) async {
     state = ScanQRCodeState.ready(context: context,isLoading:true);
     var response = await _scanQRCodeUseCase.deviceRegistrationAPI(deviceId, imei1, imei2, (p0) => null);
     if (response?.status == true) {
     state = ScanQRCodeState.ready(context: context,isLoading:false );
       if(response?.message == "Device registration success"){
-        configureMdmScreen(imei1, imei2);
+        showAlertForSuccessMessage(imei1, imei2, modelName, context);
+        //configureMdmScreen(imei1, imei2);
         //successFulScreen();
       }
     } else {
@@ -179,6 +181,10 @@ void successFulScreen(){
     );
   }
 
+  Future<void> showAlertForSuccessMessage(
+      String imei1, String imei2, String modelName, BuildContext context) async {
+    await _navigationHandler.showSuccessBottomSheet(imei1, imei2, modelName, context);
+  }
 
 
   void goBack() async {

@@ -42,9 +42,9 @@
   "SU_enter_IMEI1_button" : "Enter IMEI-1 number",
   "SU_enter_IMEI2_button" : "Enter IMEI-2 number",
   "SU_close" : "Close",
-  "SU_success_msg_1" : "Congratulations! Enjoy your experience with Y9.",
+  "SU_success_msg_1" : "Congratulations! Enjoy your experience with Y9!",
   "SU_success_msg_2" : "Please Sign In to your Y9 App in\nyour new Device to experience\nall your amazing benefits as a\nY9 Member",
-  "SU_success_msg_3" : "All details are successfully sent to\nyour mobile number",
+  "SU_success_msg_3" : "All details have been successfully sent to\nthe Customer's registered Mobile Number",
   "SU_device_registration" : "Device Registration",
   "SU_device_reg_sub_heading" : "Find your device type in the Device Guides to get more information",
   "SU_scan_code_IMEI_button" : "(Enter or Scan IMEI from device box)",
@@ -139,7 +139,7 @@
   "ES_select_membership" : "Select Your Membership",
   "ES_view_membership" : "View Your Membership",
   "ES_agent_contact_text" : "Y9 will contact you shortly on your Membership",
-  "ES_need_help_contact" : "Need Help Contact Us at +255 67 719 9991",
+  "ES_need_help_contact" : "Need Help Contact Us at +255 677-039-999",
   "ES_choose_product_message" : "Thank you for choosing our product, we will get in touch with you soon",
   "ES_done" : "Done",
 
@@ -316,6 +316,11 @@
   "Offline_loan_approval_error_msg" : "Loan Approved Failed",
   "Offline_loan_creation_error_msg" : "Loan Creation Error",
   "DD_option" : "Option",
-  "error_word" : "Error"
+  "error_word" : "Error",
+  "success_hi" : "Hi,",
+  "otp_validation_failed" : "Otp Validation Failed",
+  "scan_success_msg_1" : "Congratulations\nYour device ",
+  "scan_success_msg_2" : " has been Successfully Registered",
+  "configure_mdm_btn" : "Configure MDM"
 
 }

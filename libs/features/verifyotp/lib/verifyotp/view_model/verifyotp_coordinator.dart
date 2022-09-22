@@ -196,7 +196,6 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
             event,
             (p0) => null);
         state = currentState.copyWith(isLoading: false);
-
         if (responseSignin!.status == true) {
           if (userType == UserType.Customer) {
             var customerAgentIdResponse = await _verifyOtpUseCase
@@ -328,7 +327,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
     } catch (e) {
       state = currentState.copyWith(isLoading: false);
       AppUtils.appUtilsInstance.showErrorBottomSheet(
-        title: e.toString(),
+        title: 'otp_validation_failed'.tr, //e.toString(),
         onClose: () {
           goBack();
         },

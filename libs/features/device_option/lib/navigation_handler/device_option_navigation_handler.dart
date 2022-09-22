@@ -46,9 +46,9 @@ class DeviceOptionNavigationHandler with ErrorHandler {
         arguments: argument);
   }
 
-  navigateToDownPaymentScreen(String amount,int? deviceId) {
+  navigateToDownPaymentScreen(String amount,int? deviceId, String modelName) {
     var arguments = DownPaymentScreenArgs(
-        deviceId ?? 1, amount, "", "",0,0,0,0,0);
+        deviceId ?? 1, amount, "", "", modelName, 0,0,0,0,0);
     // var arguments = deviceId;
     _navigationManager.navigateTo(
         DownPaymentScreen.viewPath, const NavigationType.push(),
@@ -57,10 +57,11 @@ class DeviceOptionNavigationHandler with ErrorHandler {
 
   Future<void> navigateToOtherPaymentScreen(
    int deviceId,
+   String modelName,
    double amount,
       String image
       ) async {
-    var arguments = OtherPaymentScreenArgs(deviceId,amount.toString(),'','',0,0,image);
+    var arguments = OtherPaymentScreenArgs(deviceId,modelName, amount.toString(),'','',0,0,image);
     await _navigationManager.navigateTo(
         OtherPaymentScreen.viewPath, const NavigationType.push(),
         arguments: arguments);

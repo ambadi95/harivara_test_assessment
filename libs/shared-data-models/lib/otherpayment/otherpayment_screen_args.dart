@@ -1,7 +1,7 @@
-import 'package:shared_data_models/downpayment/downpayment_data_model.dart';
 
 class OtherPaymentScreenArgs {
   final int deviceId;
+  final String modelName;
   final String amount;
   final String title;
   final String subTitle;
@@ -11,6 +11,7 @@ class OtherPaymentScreenArgs {
 
   OtherPaymentScreenArgs(
       this.deviceId,
+      this.modelName,
       this.amount,
       this.title,
       this.subTitle,
@@ -19,3 +20,4 @@ class OtherPaymentScreenArgs {
       this.image
       );
 }
+

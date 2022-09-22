@@ -114,18 +114,21 @@ class _SuccessScreenState extends State<ConfigureMdmSuccessScreen> {
   }
 
   Widget _buildEnrollmentIDText() {
-    return Center(
-      child:  Text(
-        key: const Key('MDM_successful_heading'),
-       'MDM_successful_heading'.tr,
-        textAlign: TextAlign.center,
-        style:const TextStyle(
-          fontSize: 14,
-          fontWeight: FontWeight.w500,
-          fontFamily: 'Montserrat',
-          fontStyle: FontStyle.normal,
-          color: Color(0xFF676767))),
-          );
+    return Padding(
+      padding: const EdgeInsets.only(left:20.0, right: 20),
+      child: Center(
+        child:  Text(
+          key: const Key('MDM_successful_heading'),
+         'MDM_successful_heading'.tr,
+          textAlign: TextAlign.center,
+          style:const TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+            fontFamily: 'Montserrat',
+            fontStyle: FontStyle.normal,
+            color: Color(0xFF676767))),
+            ),
+    );
   }
 
 
