@@ -31,8 +31,8 @@ class OfflinePaymentCoordinator extends AnalyticsStateNotifier<OfflinePaymentSta
     return _offlinePaymentUseCase.getNewCustomerName();
   }
 
-  Future<void> navigateToScanCodeScreen(int? deviceId) async {
-    await _navigationHandler.navigateToScanQrCode(deviceId);
+  Future<void> navigateToScanCodeScreen(int? deviceId, String modelName) async {
+    await _navigationHandler.navigateToScanQrCode(deviceId, modelName);
   }
 
   Future<void> createLoan(BuildContext context) async {

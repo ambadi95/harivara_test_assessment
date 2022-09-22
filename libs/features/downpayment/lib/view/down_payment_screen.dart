@@ -320,7 +320,7 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
           //       widget.downPaymentScreenArgs.deviceId);
           // }
           await coordinator.navigateToScanCodeScreen(
-              widget.downPaymentScreenArgs.deviceId);
+              widget.downPaymentScreenArgs.deviceId, widget.downPaymentScreenArgs.modelName);
         },
         child: Container(
           width: double.infinity,
@@ -434,14 +434,14 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
                       fontFamily: 'Montserrat',
                       fontSize: 14, color: DD_TextLabel, fontWeight: FontWeight.w600
                   ),
-
-                  // children: <TextSpan>[
-                  //  const  TextSpan(
+                  //
+                  // children: const <TextSpan>[
+                  //  TextSpan(
                   //   text: "  ",
                   //  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12, color : Color(0xFFDA2228))),
                   //   TextSpan(
-                  //       text: "${value.toString()} min",
-                  //       style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12, color : Color(0xFFDA2228))),
+                  //       text: "1 min 34 sec",
+                  //       style:  TextStyle(fontWeight: FontWeight.bold, fontSize: 12, color : Color(0xFFDA2228))),
                   //
                   // ],
                 ),

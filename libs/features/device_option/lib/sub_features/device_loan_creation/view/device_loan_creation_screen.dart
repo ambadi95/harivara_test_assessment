@@ -221,11 +221,16 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
       onPressed: () {
         if(radioValue != 0){
           if(radioValue == 5){
-            coordinator.navigateToOtherScreen(widget.deviceLoanCreationArgs.deviceDetailData.deviceId!, double.parse(payNowTotal.toString()),widget.deviceLoanCreationArgs.image);
+            coordinator.navigateToOtherScreen(
+                widget.deviceLoanCreationArgs.deviceDetailData.deviceId!,
+                "${detailDetail!.brand!}" + ' ' + '-' + ' ' + "${detailDetail!.modelNumber}",
+                double.parse(payNowTotal.toString()),
+                widget.deviceLoanCreationArgs.image);
           }else{
             coordinator.navigateToDownPayment(
                 payNowTotal.toString(),
-                detailDetail!.deviceId);
+                detailDetail!.deviceId,
+                "${detailDetail!.brand!}" + ' ' + '-' + ' ' + "${detailDetail!.modelNumber}");
           }
         }
       },

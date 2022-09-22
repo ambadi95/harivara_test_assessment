@@ -119,7 +119,9 @@ class OtherPaymentCoordinator
     String amountToBePaid,
     String mobileNumber,
     String transactionId,
-  ) async {
+      int deviceId,
+      String modelName
+      ) async {
     state = OtherPaymentState.ready(
       context: context,
       error: '',
@@ -143,7 +145,7 @@ class OtherPaymentCoordinator
         loanApproved: 0,
       );
       Navigator.pop(context);
-      _navigationHandler.navigateOfflinePaymentScreen();
+      _navigationHandler.navigateOfflinePaymentScreen(deviceId, modelName);
     } else {
       state = OtherPaymentState.ready(
         context: context,

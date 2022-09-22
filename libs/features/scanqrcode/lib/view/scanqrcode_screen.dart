@@ -1,5 +1,6 @@
 import 'package:config/Colors.dart' as config_colors;
 import 'package:config/Colors.dart';
+import 'package:config/Config.dart';
 import 'package:config/Styles.dart';
 import 'package:core/mobile_core.dart';
 import 'package:core/view/base_view.dart';
@@ -25,8 +26,8 @@ class ScanQrCodeScreen extends StatefulWidget {
   static const viewPath =
       '${ScanQRCodeModule.moduleIdentifier}/scanqrcodescreen';
 
-  final int deviceId;
-  const ScanQrCodeScreen({Key? key, required this.deviceId}) : super(key: key);
+  final ScanQRCodeArgs scanQrcodeAgrs;
+  const ScanQrCodeScreen({Key? key, required this.scanQrcodeAgrs}) : super(key: key);
 
   @override
   State<ScanQrCodeScreen> createState() => _ScanQrCodeScreenState();
@@ -46,7 +47,7 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
   void _validateForm(ScanQRCodeCoordinator coordinator) {
     coordinator.validateForm(
         customerId, // ADD CUSTOMER ID
-        widget.deviceId,
+        widget.scanQrcodeAgrs.deviceId,
         imei1Number.text,
         imei2Number.text
     );
@@ -284,7 +285,7 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
             _isBtnEnabled = true;
             if (_isBtnEnabled) {
               coordinator.deviceRegister(
-                context, widget.deviceId, imei1Number.text, imei2Number.text, );
+                context, widget.scanQrcodeAgrs.deviceId, imei1Number.text, imei2Number.text, widget.scanQrcodeAgrs.modelName);
             }
           }else{
             _isBtnEnabled = false;
@@ -307,6 +308,64 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _getSuccessUI(
+      BuildContext context,
+      ScanQRCodeCoordinator coordinator,
+      ScanQRCodeState state,
+      ) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: ListView(
+        children: [
+          const Image(
+            image: AssetImage(ES_succes_icon),
+            width: 78,
+            height: 78,
+          ),
+          SizedBox(
+            height: AppUtils.appUtilsInstance.getPercentageSize(
+              percentage: 8,
+            ),
+          ),
+          CrayonPaymentText(
+            key: Key('${_identifier}_scan_success_msg'),
+            text: TextUIDataModel(
+            'scan_success_msg'.tr.replaceAll('_name_', "Sumsang"),
+                textAlign: TextAlign.center,
+                styleVariant: CrayonPaymentTextStyleVariant.subtitle2,
+                color: AN_SubTitleColor,
+                fontWeight: FontWeight.w400),
+          ),
+          SizedBox(
+            height: AppUtils.appUtilsInstance.getPercentageSize(
+              percentage: 8,
+            ),
+          ),
+        Padding(
+          padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
+          child: GestureDetector(
+          onTap: () async {
+          coordinator.configureMdmScreen(imei1Number.text, imei2Number.text);
+          },
+          child: Container(
+          width: double.infinity,
+          height: 50,
+          decoration: BoxDecoration(
+          color: SU_button_color, borderRadius: BorderRadius.circular(2.0)),
+          child: Center(
+          child: Text(
+          'configure_mdm_btn'.tr,
+          style: SU_button_text_style,
+          ),
+          ),
+          ),
+          ),
+          )
+        ],
       ),
     );
   }

@@ -1,7 +1,7 @@
 class ScanQRCodeArgs {
   final int deviceId;
-
-  ScanQRCodeArgs(this.deviceId);
+  final String modelName;
+  ScanQRCodeArgs(this.deviceId, this.modelName);
 }
 
 

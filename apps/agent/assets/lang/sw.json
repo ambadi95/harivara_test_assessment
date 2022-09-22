@@ -43,9 +43,9 @@
   "SU_enter_IMEI2_button" : "Weka nambari ya IMEI-2",
   "SU_enter_IMEI1_button" : "Weka nambari ya IMEI-1",
   "SU_close" : "Funga",
-  "SU_success_msg_1" : "Hongera! Furahia matumizi yako na Y9.",
+  "SU_success_msg_1" : "Hongera! Furahia matumizi yako na Y9",
   "SU_success_msg_2" : "Tafadhali Ingia kwenye Programu yako ya Y9\nKifaa chako kipya cha kutumia\nfaida zako zote za ajabu kama a\nMwanachama wa Y9",
-  "SU_success_msg_3" : "Maelezo yote yametumwa kwa mafanikio\nnambari yako ya simu",
+  "SU_success_msg_3" : "Maelezo yote yametumwa kwa mafanikio\nNambari ya Simu iliyosajiliwa ya Mteja",
   "SU_device_registration" : "Usajili wa Kifaa",
   "SU_device_reg_sub_heading" : "Tafuta aina ya kifaa chako katika Miongozo ya Kifaa ili kupata maelezo zaidi",
   "SU_scan_code_IMEI_button" : "(Ingiza au Changanua IMEI kutoka kwa kisanduku cha kifaa)",
@@ -142,7 +142,7 @@
   "ES_select_membership": "Chagua Uanachama Wako",
   "ES_view_membership": "Tazama Uanachama Wako",
   "ES_agent_contact_text": "Wakala wa Y9 atawasiliana nawe baada ya muda mfupi kuhusu Uanachama wako",
-  "ES_need_help_contact": "Unahitaji Usaidizi Wasiliana Nasi kwa +255 67 719 9991",
+  "ES_need_help_contact": "Unahitaji Usaidizi Wasiliana Nasi kwa +255 677-039-999",
   "ES_choose_product_message" : "Asante kwa kuchagua bidhaa zetu, tutawasiliana nawe hivi karibuni",
   "ES_done" : "Imekamilika",
 
@@ -317,6 +317,11 @@
   "Offline_loan_approval_error_msg" : "Mkopo Umeidhinishwa Umeshindwa",
   "Offline_loan_creation_error_msg" : "Hitilafu ya Kuunda Mkopo",
   "DD_option" : "Chaguo",
-  "error_word" : "Hitilafu"
+  "error_word" : "Hitilafu",
+  "success_hi" : "Habari,",
+  "otp_validation_failed" : "Uthibitishaji wa Otp Umeshindwa",
+  "scan_success_msg_1" : "Hongera sana\nKifaa chako ",
+  "scan_success_msg_2" : " Imesajiliwa kwa Mafanikio",
+  "configure_mdm_btn" : "Sanidi MDM"
 
 }

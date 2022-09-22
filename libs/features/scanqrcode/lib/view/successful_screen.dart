@@ -50,12 +50,24 @@ class _SuccessScreenState extends State<SuccessScreen> {
           const SizedBox(
             height: 120,
           ),
-
           _buildSuccessIcon(),
+
           const SizedBox(
-            height: 24,
+            height: 20,
           ),
-          Text("Hi $username", style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600, fontFamily: 'Montserrat')),
+          // RichText(
+          //   textAlign: TextAlign.center,
+          //   text: TextSpan(
+          //     text: 'success_hi'.tr ,
+          //     children: <TextSpan>[
+          //       TextSpan(text: "$username", style: const TextStyle(
+          //           fontSize: 20,
+          //           fontWeight: FontWeight.w600,
+          //           fontFamily: 'Montserrat',
+          //           height: 20)),
+          //     ],
+          //   ),
+          // ),
           _buildEnrollmentText(),
           const SizedBox(
             height: 24,
@@ -76,14 +88,42 @@ class _SuccessScreenState extends State<SuccessScreen> {
 
   Widget _buildEnrollmentText() {
     return Center(
-      child: SizedBox(
-          width: 280,
-          child: RichTextDescription(
-              textAlign: TextAlign.center,
-              key: const Key('welcome'),
-              description: 'SU_success_msg_1'.tr,
-              linkTextStyle: ES_bold_text,
-              descriptionTextStyle: ES_success_text)),
+      child: Column(
+        children: [
+          RichText(
+            textAlign: TextAlign.center,
+            text: TextSpan(
+              text: 'success_hi'.tr,
+              style:  const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w500,
+                fontFamily: 'Montserrat',
+                color: Colors.black,
+              ),
+              children: <TextSpan>[
+                TextSpan(text: ' ${username}', style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Montserrat',
+                  color: Colors.black,
+                )),
+              ],
+            ),
+          ),
+
+          const SizedBox(
+            height: 2,
+          ),
+          SizedBox(
+              width: 280,
+              child: RichTextDescription(
+                  textAlign: TextAlign.center,
+                  key: const Key('welcome'),
+                  description: 'SU_success_msg_1'.tr,
+                  linkTextStyle: ES_bold_text,
+                  descriptionTextStyle: ES_success_text)),
+        ],
+      ),
     );
   }
 
@@ -101,7 +141,7 @@ class _SuccessScreenState extends State<SuccessScreen> {
   Widget _buildBottomEnrollmentIDText() {
     return Center(
       child: SizedBox(
-          width: 280,
+          width: 310,
           child: RichTextDescription(
               textAlign: TextAlign.center,
               key: const Key('enID'),
