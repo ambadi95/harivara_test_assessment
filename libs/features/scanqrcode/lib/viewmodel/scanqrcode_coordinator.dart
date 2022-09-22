@@ -73,7 +73,11 @@ void successFulScreen(){
     } on PlatformException {
       barcodeScanRes = 'Failed to get platform version.';
     }
-    return barcodeScanRes;
+    if(barcodeScanRes == '-1'){
+      return '';
+    }else {
+      return barcodeScanRes;
+    }
   }
 
   Future<String> scanBarcodeImei2() async {
@@ -82,12 +86,16 @@ void successFulScreen(){
       barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
           '#ff6666', 'Cancel', true, ScanMode.BARCODE);
       if (kDebugMode) {
+        print('^^^^^^^^^^^^^^^');
         print(barcodeScanRes);
       }
     } on PlatformException {
       barcodeScanRes = 'Failed to get platform version.';
+    }if(barcodeScanRes == '-1'){
+      return '';
+    }else {
+      return barcodeScanRes;
     }
-    return barcodeScanRes;
   }
 
 

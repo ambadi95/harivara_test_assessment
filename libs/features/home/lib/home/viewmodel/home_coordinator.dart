@@ -25,8 +25,8 @@ class HomeCoordinator extends BaseViewModel<HomeScreenState> {
         context: context, error: error, isAgent: isAgent, isLoading: isLoading);
   }
 
-  void navigateToCustomerRegister() {
-    _navigationHandler.navigateToSignUpScreen(UserType.Customer);
+  Future<void> navigateToCustomerRegister() async{
+   await _navigationHandler.navigateToSignUpScreen(UserType.Customer);
   }
 
   void offlinePayment() {

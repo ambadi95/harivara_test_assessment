@@ -7,6 +7,7 @@ import 'package:core/mobile_core.dart';
 import 'package:core/view/base_view.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shared_data_models/downpayment/downpayment_screen_args.dart';
+import 'package:widget_library/buttons/crayon_back_button.dart';
 import 'package:widget_library/spacers/crayon_payment_spacers.dart';
 import 'package:widget_library/utils/app_utils.dart';
 import 'package:downpayment/downpayment_module.dart';
@@ -96,35 +97,65 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
                     context, newState as DownPaymentStateReady)
               },
           builder: (context, state, coordinator) =>
-              CrayonPaymentScaffold(
-                appBarAttributes: CrayonPaymentAppBarAttributes(
-                  key: const Key('CardDetailsScreen_AppBarBackButton'),
-                  left: [
-                    const CrayonPaymentAppBarButtonType.back(),
-                  ],
-                ),
-                bottomNavigationBar:
-                    _buildContinueButton(context, coordinator, state as DownPaymentStateReady),
-                body: state.when(
-                  initialState: () => const SizedBox(),
-                  ready: (
-                    _,
-                    __,
-                    ___,
-                    ____,
-                    _____,
-                    ______,
-                    _______,
-                    ________,
-                    _________,
-                  ) =>
-                      _buildMainUIWithLoading(
-                    context,
-                    coordinator,
-                    (state as DownPaymentStateReady),
+              SafeArea(
+                child: Scaffold(
+                  appBar: PreferredSize(
+                    preferredSize: Size(double.infinity, 102),
+                    child: _buildAppBarAttributes(context, state as DownPaymentStateReady,coordinator),
+                  ),
+                  bottomNavigationBar:
+                      _buildContinueButton(context, coordinator, state as DownPaymentStateReady),
+                  body: state.when(
+                    initialState: () => const SizedBox(),
+                    ready: (
+                      _,
+                      __,
+                      ___,
+                      ____,
+                      _____,
+                      ______,
+                      _______,
+                      ________,
+                      _________,
+                    ) =>
+                        _buildMainUIWithLoading(
+                      context,
+                      coordinator,
+                      (state as DownPaymentStateReady),
+                    ),
                   ),
                 ),
               ));
+
+
+
+   _buildAppBarAttributes(
+      BuildContext context,
+      DownPaymentStateReady state,
+       DownPaymentCoordinator coordinator
+      ) {
+    return  _buildBackBtn(context,state,coordinator);
+  }
+
+  Widget _buildBackBtn(
+      BuildContext context,
+      DownPaymentStateReady state,
+      DownPaymentCoordinator coordinator
+      ) {
+    return Align(
+      alignment: Alignment.topLeft,
+      child: CrayonBackButton(
+        key: const Key('signup_backButton'),
+        color: Colors.black,
+        onPressed: () {
+          if(!state.isLoading){
+          coordinator.pop();
+          }
+        },
+      ),
+    );
+  }
+
 
   Widget _buildMainUIWithLoading(
     BuildContext context,
@@ -133,7 +164,10 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
   ) {
     return Stack(
       children: [
-        _buildMainUI(context, coordinator, state),
+        Padding(
+          padding: const EdgeInsets.only(left: 20,right: 20),
+          child: _buildMainUI(context, coordinator, state),
+        ),
         if (state.isLoading) _createLoading(state),
       ],
     );

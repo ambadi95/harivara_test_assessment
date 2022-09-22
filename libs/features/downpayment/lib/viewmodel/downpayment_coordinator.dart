@@ -36,6 +36,11 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
     await _navigationHandler.navigateToScanQrCode(deviceId);
   }
 
+  Future<void> pop() async {
+    await _navigationHandler.pop();
+  }
+
+
   Future<void> createLoan(BuildContext context) async {
     String deviceId = await _downPaymentUseCase.getDeviceId();
 

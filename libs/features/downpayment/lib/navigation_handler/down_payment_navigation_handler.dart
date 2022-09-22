@@ -13,6 +13,10 @@ class DownPaymentNavigationHandler with ErrorHandler {
 
   DownPaymentNavigationHandler(this._navigationManager);
 
+  Future<void> pop() async {
+    _navigationManager.goBack();
+  }
+
   Future<void> navigateToScanQrCode(int? deviceId) async {
     var arguments = deviceId;
     _navigationManager.navigateTo(
