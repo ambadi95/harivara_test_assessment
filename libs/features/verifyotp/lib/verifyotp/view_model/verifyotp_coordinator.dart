@@ -208,7 +208,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
               } else {
                 _navigationHandler.navigateToCustomerEnrollmentScreen();
               }
-            }else{
+            } else {
               _showAlertForErrorMessage(customerAgentIdResponse!.message!);
             }
           } else {
@@ -230,8 +230,10 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
           print(otpScreenArgs.refId);
           var getWorkFlowStatus = await _verifyOtpUseCase
               .workFlowCustomerByAgent(otpScreenArgs.refId, (p0) => null);
+
           if (getWorkFlowStatus!.status!) {
             CrayonPaymentLogger.logInfo('I am in WorkFlow Status');
+
             //TODO Workflow Navigation
             navigationToWorkFlow(
                 getWorkFlowStatus, getWorkFlowStatus.data!.status!);
@@ -239,7 +241,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
           } else {
             _showAlertForErrorMessage(getWorkFlowStatus.message!);
           }
-        }else{
+        } else {
           _showAlertForErrorMessage(responseSignin.message!);
         }
       } else if (otpScreenArgs.otpVerificationType ==
@@ -295,7 +297,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
           await _verifyOtpUseCase.saveOnBordStatus(agentId);
 
           _navigationHandler.navigateToAgentWelcomeBack(userType);
-        }else{
+        } else {
           _showAlertForErrorMessage(responseSignin!.message!);
         }
       } else if (otpScreenArgs.otpVerificationType ==
@@ -429,7 +431,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
 
         break;
       case "KYC Success Manually Approved":
-       _navigationHandler.navigateToKYCScreen(true);
+        _navigationHandler.navigateToKYCScreen(true);
         break;
       case "KYC Failed":
         // _navigationHandler.navigateToKYCScreen(true);
@@ -517,8 +519,45 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         //need to be change
         try {
           _saveData(workFlowStatusResponse);
-          await _navigationHandler.navigateToScanQrCode(
-              int.parse(workFlowStatusResponse.data!.data[2].toString()));
+          _navigationHandler.navigateToDownPaymentScreen(
+            deviceId: workFlowStatusResponse.data!.data[2].toString(),
+            paymentStatus: 0,
+            paymentReceived: 1,
+            loanId: workFlowStatusResponse.data!.data[3]["loanId"] ?? "",
+            amount: workFlowStatusResponse.data!.data[3]["amountPaid"] ?? "",
+          );
+        } catch (e) {
+          return _showAlertForErrorMessage(
+              "Something went wrong,Please try again later!");
+        }
+
+        //_navigationHandler.navigateToDeviceLoanCreation();
+        break;
+
+      case "Loan_Rejected":
+        // try {
+        //   _saveData(workFlowStatusResponse);
+        //   _navigationHandler.navigateToDownPaymentScreen(
+        //     deviceId: workFlowStatusResponse.data!.data[2].toString(),
+        //     paymentStatus: 1,
+        //     amount: workFlowStatusResponse.data!.data[3]["amountPaid"],
+        //   );
+        //
+        // } catch (e) {
+        //   return _showAlertForErrorMessage(
+        //       "Something went wrong,Please try again later!");
+        // }
+        //need to be change
+        try {
+          _saveData(workFlowStatusResponse);
+          _navigationHandler.navigateToDownPaymentScreen(
+            deviceId: workFlowStatusResponse.data!.data[2].toString(),
+            paymentStatus: 0,
+            paymentReceived: 1,
+            loanApproval:2,
+            loanId: workFlowStatusResponse.data!.data[3]["loanId"] ?? "",
+            amount: workFlowStatusResponse.data!.data[3]["amountPaid"] ?? "",
+          );
         } catch (e) {
           return _showAlertForErrorMessage(
               "Something went wrong,Please try again later!");
