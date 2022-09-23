@@ -2,7 +2,7 @@
   "environments": [
     {
       "name": "test",
-      "host": "https://customerapi.y9bank.com/customers/v1/"
+      "host": "https://customerapi-stage.y9bank.com/customers/v1/"
 
     },
     {
@@ -13,7 +13,7 @@
   "gqlEnvironments": [
     {
       "name": "default",
-      "host": "https://customerapi.y9bank.com/customers/v1/"
+      "host": "https://customerapi-stage.y9bank.com/customers/v1/"
 
     },
     {
