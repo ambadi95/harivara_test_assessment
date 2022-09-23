@@ -9,9 +9,7 @@ class KycCreditMainRouteManager extends IRouteManager {
   Widget getView(RouteSettings settings) {
     switch (settings.name) {
       case KycCreditMainScreen.viewPath:
-        var arguments = settings.arguments as KycScreenArgs;
         return KycCreditMainScreen(
-          kycScreenArgs: arguments,
         );
       default:
         // TODO: implement getView

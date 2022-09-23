@@ -230,10 +230,8 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
           print(otpScreenArgs.refId);
           var getWorkFlowStatus = await _verifyOtpUseCase
               .workFlowCustomerByAgent(otpScreenArgs.refId, (p0) => null);
-
           if (getWorkFlowStatus!.status!) {
             CrayonPaymentLogger.logInfo('I am in WorkFlow Status');
-
             //TODO Workflow Navigation
             navigationToWorkFlow(
                 getWorkFlowStatus, getWorkFlowStatus.data!.status!);
@@ -241,7 +239,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
           } else {
             _showAlertForErrorMessage(getWorkFlowStatus.message!);
           }
-        } else {
+        }else{
           _showAlertForErrorMessage(responseSignin.message!);
         }
       } else if (otpScreenArgs.otpVerificationType ==
@@ -297,7 +295,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
           await _verifyOtpUseCase.saveOnBordStatus(agentId);
 
           _navigationHandler.navigateToAgentWelcomeBack(userType);
-        } else {
+        }else{
           _showAlertForErrorMessage(responseSignin!.message!);
         }
       } else if (otpScreenArgs.otpVerificationType ==
@@ -329,7 +327,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
     } catch (e) {
       state = currentState.copyWith(isLoading: false);
       AppUtils.appUtilsInstance.showErrorBottomSheet(
-        title: 'otp_validation_failed'.tr, //e.toString(),
+        title: e.toString(),
         onClose: () {
           goBack();
         },
@@ -415,23 +413,21 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         _navigationHandler.navigateToDetailScreen();
         break;
 
-      case "KYC Initiated":
-        // _navigationHandler.navigateToKYCScreen(false);
-        _navigationHandler.navigateToDetailScreen();
-
+      case "KYC Initiated" :
+         _navigationHandler.navigateToKYCScreen(false);
         break;
 
-      case "MNO_Consent":
-        _navigationHandler.navigateToKYCScreen(false);
+      case "MNO_Consent" :
+        _navigationHandler.navigateToMNOConsentScreen(false);
         break;
 
-      case "KYC Success":
-        // _navigationHandler.navigateToKYCScreen(true);
-        _navigationHandler.navigateToDetailScreen();
-
+      case "KYC Success" :
+         _navigationHandler.navigateToKYCScreen(true);
+       // _navigationHandler.navigateToDetailScreen();
         break;
+
       case "KYC Success Manually Approved":
-        _navigationHandler.navigateToKYCScreen(true);
+       _navigationHandler.navigateToKYCScreen(true,isKycManualApprove: true);
         break;
       case "KYC Failed":
         // _navigationHandler.navigateToKYCScreen(true);
@@ -444,11 +440,9 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
 
         break;
       case "Credit_Check_Success":
-        //TODO Navigate to Credit_Check_Success Screen
-        // _navigationHandler.navigateToDeviceOption(false, UserType.AgentCustomer);
-        _navigationHandler.navigateToDetailScreen();
-
+        _navigationHandler.navigateToDeviceOption(false, UserType.AgentCustomer);
         break;
+
       case "Device_Selection":
         _navigationHandler.navigateToDeviceOption(
             false, UserType.AgentCustomer);
@@ -577,16 +571,19 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         }
         break;
       case "Device_Reg_Initiated":
-        //TODO Navigate to Device_Reg_Initiated Screen
+        _saveData(workFlowStatusResponse);
+        await _navigationHandler.navigateToScanQrCode(
+            int.parse(workFlowStatusResponse.data!.data[2].toString()));
         break;
       case "Device_Reg_Success":
-        //TODO Navigate to Device_Reg_Success Screen
+        //TODO Need TO Pass IMEI Number
+        _navigationHandler.navigateToMDM();
         break;
       case "MDM_Reg_Initiated":
-        //TODO Navigate to MDM_Reg_Initiated Screen
+        _navigationHandler.navigateToMDMSuccess("");
         break;
       case "MDM_Reg_Success":
-        //TODO Navigate to MDM_Reg_Success Screen
+        _navigationHandler.navigateToFinalSuccess();
         break;
       case "Repayment_Initiated":
         //TODO Navigate to Repayment_Initiated Screen
