@@ -5,6 +5,7 @@ class DownPaymentScreenArgs {
   final String amount;
   final String title;
   final String subTitle;
+  final String modelName;
   final num paymentRequested;
   final num waitForPayment;
   final num paymentReceived;
@@ -16,6 +17,7 @@ class DownPaymentScreenArgs {
     this.amount,
     this.title,
     this.subTitle,
+    this.modelName,
     this.paymentRequested,
     this.waitForPayment,
     this.paymentReceived,

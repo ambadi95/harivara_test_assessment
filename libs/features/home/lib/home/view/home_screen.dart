@@ -303,8 +303,9 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       InkWell(
-                        onTap: () {
-                          coordinator.navigateToCustomerRegister();
+                        onTap: () async{
+                          await coordinator.navigateToCustomerRegister();
+                          await coordinator.getCustomerCount();
                         },
                         child: _actionCommonView(
                             'HS_Customer_OnBoarding'.tr, HS_CustomerMangIcon),

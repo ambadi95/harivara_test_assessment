@@ -74,17 +74,18 @@ class _DetailsScreenState extends State<DetailsScreen> {
 
   final FocusNode genderFocusNode = FocusNode();
 
-  DateTime selectedDate = DateTime.now();
+  DateTime selectedDate = DateTime.now().subtract(const Duration(days: 8035));
   final _scaffoldKey = GlobalKey<ScaffoldState>();
 
   Future<void> _selectDate(
       BuildContext context, DetailsCoordinator coordinator) async {
     final DateTime? picked = await showDatePicker(
         context: context,
-        helpText: 'Select Date of Birth',
+        helpText: 'DV_select_dob'.tr,
         initialDate: selectedDate,
         firstDate: DateTime(1900, 1),
         lastDate: DateTime(2101),
+        initialDatePickerMode: DatePickerMode.year,
         builder: (context, child) {
           return Theme(
             data: Theme.of(context).copyWith(
@@ -598,7 +599,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
             dis = await coordinator.getDistrict(value.id!, widget.userType);
             Navigator.pop(context);
             districtDropDown.clear();
-            districtDropDown = getDistrictDropDownData([const b.Datum(id: 0,name: 'Select District')]);
+            districtDropDown = getDistrictDropDownData([b.Datum(id: 0,name: 'DV_district_hint_text'.tr)]);
             districtDropDown = getDistrictDropDownData(dis);
             _district = districtDropDown.elementAt(0).value;
             setState(() {
@@ -772,7 +773,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
         DropdownMenuItem(
           value: item,
           child:
-              item.name.toString() == 'Select District' ?
+              item.name.toString() == 'DV_district_hint_text'.tr ?
               Text(
                 item.name.toString(),
                 style: const TextStyle(

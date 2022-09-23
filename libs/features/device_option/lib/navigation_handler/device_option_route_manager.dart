@@ -23,6 +23,7 @@ class DeviceOptionRouteManager extends IRouteManager {
         return DeviceDetailScreen(
           deviceId: arguments['id'],
           userType: arguments['userType'],
+          isSelected: arguments['isSelected'],
         );
 
       case DeviceLoanCreationScreen.viewPath:

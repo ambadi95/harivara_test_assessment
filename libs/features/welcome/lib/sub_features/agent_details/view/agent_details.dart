@@ -46,14 +46,17 @@ class _AgentDetailsScreenState extends State<AgentDetailsScreen> {
   final TextEditingController mobileNumber = TextEditingController();
   final TextEditingController emailId = TextEditingController();
 
-  DateTime selectedDate = DateTime.now();
+  DateTime selectedDate = DateTime.now().subtract(const Duration(days: 8035));
 
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
         context: context,
         initialDate: selectedDate,
+        helpText: 'DV_select_dob'.tr,
+        initialDatePickerMode: DatePickerMode.year,
         firstDate: DateTime(1900, 1),
         lastDate: DateTime(2101));
+
     if (picked != null && picked != selectedDate) {
       final DateFormat inputFormat = DateFormat('yyyy-MM-dd');
       setState(() {

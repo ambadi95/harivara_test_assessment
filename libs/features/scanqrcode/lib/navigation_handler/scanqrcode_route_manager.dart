@@ -3,6 +3,7 @@ import 'package:configuremdm/view/configuremdm_screen.dart';
 import 'package:core/navigation/i_route_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:scanqrcode/view/successful_screen.dart';
+import 'package:shared_data_models/scan_qr_code/scan_qrcode_args.dart';
 import '../view/scanqrcode_screen.dart';
 
 
@@ -11,9 +12,9 @@ class ScanQRCodeRouteManager extends IRouteManager {
   Widget getView(RouteSettings settings) {
     switch (settings.name) {
       case ScanQrCodeScreen.viewPath:
-       var arguments = settings.arguments as int;
+       var arguments = settings.arguments as ScanQRCodeArgs;
        return ScanQrCodeScreen (
-         deviceId: arguments,
+         scanQrcodeAgrs: arguments,
        );
 
       case ConfigureMdmScreen.viewPath:

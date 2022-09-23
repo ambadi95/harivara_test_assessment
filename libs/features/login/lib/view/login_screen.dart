@@ -16,6 +16,7 @@ import 'package:widget_library/progress_bar/centered_circular_progress_bar.dart'
 import 'package:widget_library/scaffold/crayon_payment_scaffold.dart';
 import 'package:widget_library/spacers/crayon_payment_spacers.dart';
 import 'package:widget_library/static_text/crayon_payment_text.dart';
+import 'package:widget_library/utils/app_utils.dart';
 import '../login_module.dart';
 import '../state/login_state.dart';
 import '../viewmodel/login_coordinator.dart';
@@ -101,10 +102,9 @@ class _LoginState extends State<Login> {
         appBarAttributes: CrayonPaymentAppBarAttributes(
           key: const Key('CardDetailsScreen_AppBarBackButton'),
           left: [
-
-             CrayonPaymentAppBarButtonType.back(onPressed:(){
-               coordinator.goBackWelcomeScreen(widget.userType);
-    } ),
+            CrayonPaymentAppBarButtonType.back(onPressed: () {
+              coordinator.goBackWelcomeScreen(widget.userType);
+            }),
           ],
         ),
         bottomNavigationBar: Padding(
@@ -208,14 +208,16 @@ class _LoginState extends State<Login> {
           hintText: hint.tr,
           key: const Key('detailsTextField'),
           inputFormatters: [
-            LengthLimitingTextInputFormatter(12),
+              FilteringTextInputFormatter(new RegExp(r"\s\b|\b\s"), allow: false),
+              LengthLimitingTextInputFormatter(12),
           ],
           keyboardType: textInputType,
           textCapitalization: TextCapitalization.characters,
           onChanged: (value) {
+            controller.text.trim();
             _validateForm(coordinator);
             if (errorText.isNotEmpty) {
-              coordinator.isAgentIdValid(agentIdController.text);
+              coordinator.isAgentIdValid(agentIdController.text.trim());
             }
           },
         ));
@@ -237,15 +239,31 @@ class _LoginState extends State<Login> {
           // coordinator.navigateToWelcomeBackScreen(userType, mobileNumber.text);
           if (UserType.Customer == widget.userType) {
             if (havePasscode) {
-              coordinator.login(mobileNumber.text, passcodeController.text,
-                  widget.userType, agentIdController.text);
+              if(passcodeController.text.length!=6){
+                AppUtils.appUtilsInstance.showErrorBottomSheet(
+                  title: "Invalid Passcode",
+                  onClose: () {
+                    Navigator.pop(context);
+                  },
+                );
+                return ;
+              }
+              coordinator.login(
+                mobileNumber.text,
+                passcodeController.text,
+                widget.userType,
+                agentIdController.text,
+              );
+
             } else {
+
               coordinator.checkPasscode(
                 mobileNumber.text,
                 widget.userType,
               );
             }
           } else {
+
             coordinator.login(mobileNumber.text, passcodeController.text,
                 widget.userType, agentIdController.text);
           }

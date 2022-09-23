@@ -220,7 +220,7 @@ class HomeNavigationHandler with ErrorHandler {
     );
   }
 
-  Future<void> navigateToLoanDetailsSheetCustomer() async {
+  Future<void> navigateToLoanDetailsSheetCustomer(String message) async {
     final CrayonPaymentBottomSheetIcon icon =
         CrayonPaymentBottomSheetExclamatoryIcon();
     final CrayonPaymentBottomSheetState infoState =
@@ -228,7 +228,7 @@ class HomeNavigationHandler with ErrorHandler {
       buttonOptions: [ButtonOptions(Black, "Close", () => goBack(), false)],
       disableCloseButton: true,
       bottomSheetIcon: icon,
-      subtitle: 'LR_NO_LOAN_FOUND',
+      subtitle: message,
     );
 
     _navigationManager.navigateTo(

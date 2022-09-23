@@ -33,9 +33,9 @@ class DeviceOptionCoordinator
     }
   }
 
-  Future navigateToDeviceDetailScreen(int deviceId, UserType userType) async {
+  Future navigateToDeviceDetailScreen(int deviceId, UserType userType,bool isSelected) async {
     _DeviceOptionUseCase.saveDeviceId(deviceId.toString());
-    _navigationHandler.navigateToDeviceDetail(deviceId, userType);
+    _navigationHandler.navigateToDeviceDetail(deviceId, userType,isSelected);
   }
 
   Future<void> navigateToEnrolledScreen(UserType userType) async {

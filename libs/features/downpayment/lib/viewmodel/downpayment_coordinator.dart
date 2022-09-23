@@ -32,9 +32,14 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
     return _downPaymentUseCase.getNewCustomerName();
   }
 
-  Future<void> navigateToScanCodeScreen(int? deviceId) async {
-    await _navigationHandler.navigateToScanQrCode(deviceId);
+  Future<void> navigateToScanCodeScreen(int? deviceId, String modelName) async {
+    await _navigationHandler.navigateToScanQrCode(deviceId, modelName);
   }
+
+  Future<void> pop() async {
+    await _navigationHandler.pop();
+  }
+
 
   Future<void> createLoan(BuildContext context) async {
     String deviceId = await _downPaymentUseCase.getDeviceId();
@@ -182,6 +187,12 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
     return await _downPaymentUseCase.getLoanCalled();
   }
 
+
+  Future<String> checkPaymentFailed() async{
+    String paymentFailed = await _downPaymentUseCase.getPaymentFailed();
+    return paymentFailed;
+
+  }
   Future<void> checkPaymentStatus(
     BuildContext context,
   ) async {
@@ -268,16 +279,34 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
         loanApproved: downPaymentScreenArgs.loanApproved,
         paymentReceived: downPaymentScreenArgs.paymentReceived);
 
-    if (downPaymentScreenArgs.title == "WORK_FLOW") {
-      if (downPaymentScreenArgs.paymentRequested == 1) {
-        checkPaymentStatus(context);
-      }else if (downPaymentScreenArgs.paymentReceived == 1) {
+    if (downPaymentScreenArgs.subTitle.isEmpty == true) {
+      if (downPaymentScreenArgs.title == "WORK_FLOW") {
+        if (downPaymentScreenArgs.paymentRequested == 1) {
+          checkPaymentStatus(context);
+        } else if (downPaymentScreenArgs.paymentReceived == 1) {
           createLoan(context);
+        } else {
+          makePayment(context, downPaymentScreenArgs.amount);
+        }
       } else {
         makePayment(context, downPaymentScreenArgs.amount);
       }
     } else {
-      makePayment(context, downPaymentScreenArgs.amount);
+      if(downPaymentScreenArgs.loanApproved == 2){
+        state = DownPaymentState.ready(
+            context: context,
+            error: '',
+            isLoading: false,
+            loanActivated: 0,
+            createLoan: 1,
+            paymentRequested: 1,
+            waitForPayment: 1,
+            loanApproved: 2,
+            paymentReceived: 1);
+        _showAlertForErrorMessage("Loan Rejected", true);
+      }else {
+        await loanApproval(downPaymentScreenArgs.subTitle, context);
+      }
     }
   }
 

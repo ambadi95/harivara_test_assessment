@@ -73,7 +73,11 @@ void successFulScreen(){
     } on PlatformException {
       barcodeScanRes = 'Failed to get platform version.';
     }
-    return barcodeScanRes;
+    if(barcodeScanRes == '-1'){
+      return '';
+    }else {
+      return barcodeScanRes;
+    }
   }
 
   Future<String> scanBarcodeImei2() async {
@@ -82,12 +86,16 @@ void successFulScreen(){
       barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
           '#ff6666', 'Cancel', true, ScanMode.BARCODE);
       if (kDebugMode) {
+        print('^^^^^^^^^^^^^^^');
         print(barcodeScanRes);
       }
     } on PlatformException {
       barcodeScanRes = 'Failed to get platform version.';
+    }if(barcodeScanRes == '-1'){
+      return '';
+    }else {
+      return barcodeScanRes;
     }
-    return barcodeScanRes;
   }
 
 
@@ -127,9 +135,9 @@ void successFulScreen(){
   }
 
   Future deviceRegister(BuildContext context, int deviceId, String imei1,
-      String imei2) async {
+      String imei2, String modelName) async {
 
-      await deviceRegisterAPI(context, deviceId , imei1, imei2);
+      await deviceRegisterAPI(context, deviceId , imei1, imei2, modelName);
   }
 
 
@@ -137,14 +145,16 @@ void successFulScreen(){
       BuildContext context,
        int deviceId,
       String imei1,
-      String imei2
+      String imei2,
+      String modelName
       ) async {
     state = ScanQRCodeState.ready(context: context,isLoading:true);
     var response = await _scanQRCodeUseCase.deviceRegistrationAPI(deviceId, imei1, imei2, (p0) => null);
     if (response?.status == true) {
     state = ScanQRCodeState.ready(context: context,isLoading:false );
       if(response?.message == "Device registration success"){
-        configureMdmScreen(imei1, imei2);
+        showAlertForSuccessMessage(imei1, imei2, modelName, context);
+        //configureMdmScreen(imei1, imei2);
         //successFulScreen();
       }
     } else {
@@ -171,6 +181,10 @@ void successFulScreen(){
     );
   }
 
+  Future<void> showAlertForSuccessMessage(
+      String imei1, String imei2, String modelName, BuildContext context) async {
+    await _navigationHandler.showSuccessBottomSheet(imei1, imei2, modelName, context);
+  }
 
 
   void goBack() async {

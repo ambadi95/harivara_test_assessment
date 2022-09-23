@@ -27,9 +27,9 @@ class OfflinePaymentScreen extends StatefulWidget {
   static const viewPath =
       '${OfflinePaymentModule.moduleIdentifier}/offlinePaymentScreen';
 
-  //final OfflinePaymentScreenArgs offlinePaymentScreenArgs;
+  final OfflinePaymentScreenArgs offlinePaymentScreenArgs;
 
-  const OfflinePaymentScreen({Key? key, }) : super(key: key);
+  const OfflinePaymentScreen({Key? key, required this.offlinePaymentScreenArgs}) : super(key: key);
 
   @override
   State<OfflinePaymentScreen> createState() => _OfflinePaymentScreenState();
@@ -279,8 +279,10 @@ void delayFun(){
       child: GestureDetector(
         onTap: () async {
           if(state.loanApproved==1) {
-            await coordinator.navigateToScanCodeScreen(1);
-               // widget.offlinePaymentScreenArgs.deviceId);
+           // await coordinator.navigateToScanCodeScreen(1, "Samsung - A03 Core");
+               await coordinator.navigateToScanCodeScreen(
+                   widget.offlinePaymentScreenArgs.deviceId,
+                   widget.offlinePaymentScreenArgs.modelName);
           }
         },
         child: Container(
@@ -330,7 +332,7 @@ void delayFun(){
   }
 
   String _getCaptialUserName(String letter) => letter.isNotEmpty
-      ? letter.trim().split(' ').map((l) => l[0]).take(2).join()
+      ? letter.trim().split(' ').map((l) => l[0]).take(2).join().toUpperCase()
       : '';
 
   _title(BuildContext context) {

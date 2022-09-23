@@ -17,8 +17,8 @@ class DeviceLoanCreationCoordinator
     this._DeviceOptionUseCase,
   ) : super(const DeviceLoanCreationState.initialState());
 
-  void navigateToDownPayment(String amount,int? deviceId) async {
-    await _navigationHandler.navigateToDownPaymentScreen(amount,deviceId!);
+  void navigateToDownPayment(String amount,int? deviceId, String modelName) async {
+    await _navigationHandler.navigateToDownPaymentScreen(amount,deviceId!, modelName);
   }
 
   Future<String> getTelcoPartner()async{
@@ -59,8 +59,8 @@ class DeviceLoanCreationCoordinator
     );
   }
 
-  Future<void> navigateToOtherScreen(int deviceId, double amount, String image) async {
-    await _navigationHandler.navigateToOtherPaymentScreen(deviceId,amount,image);
+  Future<void> navigateToOtherScreen(int deviceId, String modelName, double amount, String image) async {
+    await _navigationHandler.navigateToOtherPaymentScreen(deviceId, modelName, amount,image);
   }
 
 }

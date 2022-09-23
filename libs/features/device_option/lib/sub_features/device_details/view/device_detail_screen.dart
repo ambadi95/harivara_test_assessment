@@ -22,10 +22,15 @@ import 'package:get/get.dart';
 class DeviceDetailScreen extends StatefulWidget {
   final int deviceId;
   final UserType userType;
+  final bool isSelected;
   static const String viewPath =
       '${DeviceOptionModule.moduleIdentifier}/device-detail-screen';
 
-  DeviceDetailScreen({Key? key, required this.deviceId, required this.userType})
+  DeviceDetailScreen(
+      {Key? key,
+      required this.deviceId,
+      required this.userType,
+      this.isSelected = false})
       : super(key: key);
 
   @override
@@ -114,18 +119,17 @@ class _DeviceDetailScreenState extends State<DeviceDetailScreen> {
           _membershipList(context),
           dynamicHSpacer(22),
           CrayonPaymentText(
-            key: Key('${_identifier}_DD_Price'),
-            text: TextUIDataModel('DD_Price',
-                styleVariant: CrayonPaymentTextStyleVariant.headline6,
-                color: DD_TextLabel,
-                fontWeight: FontWeight.w600)), dynamicHSpacer(10),
+              key: Key('${_identifier}_DD_Price'),
+              text: TextUIDataModel('DD_Price',
+                  styleVariant: CrayonPaymentTextStyleVariant.headline6,
+                  color: DD_TextLabel,
+                  fontWeight: FontWeight.w600)),
+          dynamicHSpacer(10),
           Row(
-
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               _productPrice(context, 'D0_JoiningFee'.tr,
                   detailDetail!.joiningFees.toString()),
-
               _productPrice(context, 'D0_DailyFee'.tr,
                   detailDetail!.dailyFees.toString()),
               dynamicWSpacer(10),
@@ -149,15 +153,13 @@ class _DeviceDetailScreenState extends State<DeviceDetailScreen> {
           //         )),
 
           dynamicHSpacer(22),
-
-          widget.userType == UserType.Customer ? SizedBox() :
-          selectButton(coordinator),
+          widget.userType == UserType.Customer ? widget.isSelected ? SizedBox()
+           : selectButton(coordinator) : selectButton(coordinator),
           dynamicHSpacer(22),
         ],
       ),
     );
   }
-
 
   Widget _productPrice(context, String price, String label) {
     return Column(
@@ -171,20 +173,19 @@ class _DeviceDetailScreenState extends State<DeviceDetailScreen> {
             fontFamily: 'Montserrat',
           ),
         ),
-
         dynamicHSpacer(1),
         RichText(
           text: TextSpan(
-            text:  label,
+            text: label,
             style: const TextStyle(
                 fontFamily: 'Montserrat',
-                fontSize: 14, color: DD_TextLabel, fontWeight: FontWeight.w600
-            ),
+                fontSize: 14,
+                color: DD_TextLabel,
+                fontWeight: FontWeight.w600),
             children: <TextSpan>[
               TextSpan(
                   text: '  TZSHS',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 9)),
-
             ],
           ),
         ),
@@ -195,7 +196,7 @@ class _DeviceDetailScreenState extends State<DeviceDetailScreen> {
   Widget _buildOptionTitle(context) {
     return CrayonPaymentText(
       key: Key('${_identifier}_DD_option_Title'),
-      text: TextUIDataModel('Option ' + widget.deviceId.toString(),
+      text: TextUIDataModel('DD_option'.tr + " " + widget.deviceId.toString(),
           styleVariant: CrayonPaymentTextStyleVariant.headline6,
           color: AN_TitleColor,
           fontWeight: FontWeight.w600),
@@ -215,7 +216,7 @@ class _DeviceDetailScreenState extends State<DeviceDetailScreen> {
 
   Widget actionButton() {
     return CrayonPaymentDockedButton(
-      key: const Key('SignInButton'),
+      key: const Key('DD_SelectDevice'),
       title: 'DD_SelectDevice'.tr,
       borderRadius: 8,
       height: CrayonPaymentDimensions.marginFortyEight,
@@ -441,13 +442,10 @@ class _DeviceDetailScreenState extends State<DeviceDetailScreen> {
       textColor: White,
       textStyleVariant: CrayonPaymentTextStyleVariant.headline4,
       onPressed: () {
-        // print(widget.userType);
-
-      // coordinator.navigateToDownPayment(detailDetail?.deviceId);
-        coordinator.getSelectDevice(widget.deviceId, detailDetail!);
-        // coordinator.navigateToCustomerLoanCreationScreen(
-        //     widget.deviceId == 1 ? 'assets/a13.png' : 'assets/a03.png',
-        //     detailDetail!);
+        widget.userType == UserType.Customer
+            ? coordinator.navigateToEnrolledScreen(
+                widget.deviceId, widget.userType)
+            : coordinator.getSelectDevice(widget.deviceId, detailDetail!);
       },
     );
   }

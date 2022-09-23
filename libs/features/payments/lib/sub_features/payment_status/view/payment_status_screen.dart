@@ -51,9 +51,12 @@ class _PaymentStatusScreenState extends State<PaymentStatusScreen> {
     const fiveSec = const Duration(seconds: 10);
     _timer = new Timer.periodic(
       fiveSec,
-      (Timer timer) {
-        coordinator.paymentCheckStatus(
+      (Timer timer) async {
+        var response = await coordinator.paymentCheckStatus(
             widget.paymentsStatusScreenArgs.paymentId, "100");
+        if(response == 0){
+          _timer.cancel();
+        }
       },
     );
   }
@@ -177,10 +180,13 @@ class _PaymentStatusScreenState extends State<PaymentStatusScreen> {
       padding: EdgeInsets.symmetric(
           horizontal: MediaQuery.of(context).size.width * .12),
       child: RichTextDescription(
-        onLinkClicked: (text, link) {
+        onLinkClicked: (text, link) async {
           // coordinator.navigateToPaymentSuccess();
-          coordinator.paymentCheckStatus(
+          var response = await coordinator.paymentCheckStatus(
               widget.paymentsStatusScreenArgs.paymentId, "100");
+          if(response == 0){
+            _timer.cancel();
+          }
         },
         textAlign: TextAlign.center,
         description: 'PS_refresh'.tr,

@@ -3,6 +3,7 @@ import 'package:config/Styles.dart';
 import 'package:core/view/base_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:shared_data_models/signup/sign_up_type.dart';
 import 'package:welcome/sub_features/signup/state/signup_state.dart';
 import 'package:welcome/sub_features/signup/viewmodel/signup_coordinator.dart';
 import 'package:welcome/welcome_module.dart';
@@ -56,10 +57,10 @@ class _SignUpState extends State<SignUp> {
               {_listenToStateChanges(context, newState)},
           setupViewModel: (coordinator) async {
             agentType =  await coordinator.getAgentType();
-            print('&&&&&&&&&&&&&&');
-            print(agentType);
             await coordinator.calljwttoken();
-            telcoList = await coordinator.getPaymentMode();
+            if(widget.signUpArguments.signupType == SignupType.agentAidedCustomerOnBoarding) {
+              telcoList = await coordinator.getPaymentMode();
+            }
             paymentModeDropDowm = getPaymentModeDropDownData(telcoList);
           },
           builder: (context, state, coordinator) => SafeArea(
@@ -172,12 +173,13 @@ class _SignUpState extends State<SignUp> {
          const SizedBox(
             height: 36,
           ),
-          agentType.isNotEmpty ?(widget.signUpArguments.title=="ST_update_passcode"||widget.signUpArguments.title=="SU_reset_passcode"||widget.signUpArguments.title == "ST_update_passcode")?Container():_buildPaymentModeDropdown(coordinator)
-              : const SizedBox ()
+           agentType.isNotEmpty ? _buildPaymentModeDropdown(coordinator) : SizedBox()
         ],
       ),
     );
   }
+
+
 
   Widget _onBoardingProgressBar() {
     return widget.signUpArguments.isProgressBarVisible
@@ -440,7 +442,10 @@ class _SignUpState extends State<SignUp> {
   }
 
   Widget _buildPaymentModeDropdown(SignUpCoordinator coordinator) {
-    return Column(
+    return
+      widget.signUpArguments.signupType == SignupType.resetPasscodeAgent ||  widget.signUpArguments.signupType == SignupType.agentSignUp?
+        SizedBox():
+    Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         CrayonDropDown(
