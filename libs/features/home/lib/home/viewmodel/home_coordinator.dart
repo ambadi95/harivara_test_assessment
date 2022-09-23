@@ -33,7 +33,6 @@ class HomeCoordinator extends BaseViewModel<HomeScreenState> {
     _navigationHandler.navigateToOfflinePayment(UserType.Customer);
   }
 
-
   void goBack() async {
     _navigationHandler.goBack();
   }
@@ -43,30 +42,33 @@ class HomeCoordinator extends BaseViewModel<HomeScreenState> {
   }
 
   void navigateToLoanDetailScreen(LoanDetailResponse loanDetailResponse) {
-    if(loanDetailResponse.data == null){
-      _navigationHandler.navigateToLoanDetailsSheetCustomer();
-    }else {
+    if (loanDetailResponse.data == null) {
+      _navigationHandler.navigateToLoanDetailsSheetCustomer('LR_NO_LOAN_FOUND');
+    } else {
       _navigationHandler.navigateToLoanDetailScreen(loanDetailResponse);
     }
   }
 
-  void navigationToBottomSheet(BuildContext context,LoanDetailResponse loanDetailResponse) {
-    if(loanDetailResponse.data == null){
-      // _navigationHandler.navigateToLoanRepaymentBottomSheet(
-      //     "message", "buttonLabel",context,loanDetailResponse);
-     _navigationHandler.navigateToLoanDetailsSheetCustomer();
-    }else {
-      _navigationHandler.navigateToLoanRepaymentBottomSheet(
-          "message", "buttonLabel",context,loanDetailResponse);
+  void navigationToBottomSheet(
+      BuildContext context, LoanDetailResponse loanDetailResponse) {
+    if (loanDetailResponse.data == null) {
+      _navigationHandler.navigateToLoanDetailsSheetCustomer('LR_NO_LOAN_FOUND');
+    } else {
+      if (loanDetailResponse.data?.repaymentFee == "0.0") {
+        _navigationHandler
+            .navigateToLoanDetailsSheetCustomer('LR_NO_Outstanding_amount');
+      } else {
+        _navigationHandler.navigateToLoanRepaymentBottomSheet(
+            "message", "buttonLabel", context, loanDetailResponse);
+      }
     }
-
   }
 
-  void navigationToReaderBrowser(){
-    _navigationHandler.navigateToBrowser('dd','https://readnow.world/5yee');
+  void navigationToReaderBrowser() {
+    _navigationHandler.navigateToBrowser('dd', 'https://readnow.world/5yee');
   }
 
-  void navigateToBrowser(){
+  void navigateToBrowser() {
     _navigationHandler.navigateToTermsCondition();
   }
 
@@ -131,7 +133,6 @@ class HomeCoordinator extends BaseViewModel<HomeScreenState> {
         },
       );
     }
-
   }
 
   showReferralAlert() {
@@ -141,7 +142,7 @@ class HomeCoordinator extends BaseViewModel<HomeScreenState> {
           alertTitle: 'HO_referral_alert_message'.tr,
           alertIcon: "assets/images/comming_soon.png",
           bottomButtonText: 'SU_close'.tr,
-          onBottomButtonPress: (){
+          onBottomButtonPress: () {
             goBack();
           },
           packageName: ""),

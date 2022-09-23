@@ -196,7 +196,10 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
       var response = await http.Response.fromStream(streamedResponse);
       print(response.body);
       if (response.statusCode == 401) {
-        return _logoutUser();
+        var res = json.decode(response.body);
+        if(res['message'].contains("session")){
+          return _logoutUser();
+        }
       }
       if (response.statusCode == 500) {
         return _internalServerMessage();
@@ -266,7 +269,10 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
         await httpClient .post(uri, headers: headers, body: request.jsonBody);
     print(response.body);
     if (response.statusCode == 401) {
-      return _logoutUser();
+      var res = json.decode(response.body);
+      if(res['message'].contains("session")){
+        return _logoutUser();
+      }
     }
     if (response.statusCode == 500) {
       return _internalServerMessage();

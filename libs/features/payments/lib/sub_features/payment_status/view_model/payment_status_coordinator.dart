@@ -24,10 +24,12 @@ class PaymentStatusCoordinator extends BaseViewModel<PaymentStatusState> {
             paymentId: response?.data?.paymentId);
       }else if(response?.data!=null && response?.data!.status=="Repayment_Failed"){
         navigateToPaymentFailure();
+        return 0;
       }
     } else {
       if(timer==0) {
         navigateToPaymentFailure();
+        return 0;
       }
     }
   }

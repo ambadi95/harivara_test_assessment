@@ -266,6 +266,7 @@
   "LR_payment_label" : "Payment of {} will be adjusted in total \nPayable amount",
   "LR_proceed" : "Proceed",
   "LR_NO_LOAN_FOUND" : "No Loan Details available for this user",
+  "LR_NO_Outstanding_amount" : "No Outstanding Amount to Pay",
 
   "CA_custom_amount" : "Pay Custom Amount",
   "CA_amount" : "Enter the amount",

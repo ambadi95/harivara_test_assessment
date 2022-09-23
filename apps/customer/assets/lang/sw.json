@@ -269,10 +269,11 @@
   "LR_payment_label" : "Malipo ya {} yatarekebishwa kwa jumla\nKiasi kinacholipwa",
   "LR_proceed" : "Endelea",
   "LR_NO_LOAN_FOUND" : "Hakuna Maelezo ya Mkopo yanayopatikana kwa mtumiaji huyu",
+  "LR_NO_Outstanding_amount" : "Hakuna Kiasi Kinachodaiwa Kulipa",
 
   "CA_custom_amount" : "Lipa Kiasi Maalum",
-  "CA_Warning"  : "Enter Amount Need to below Outstanding Amount",
-  "CA_amount" : "Enter the amount",
+  "CA_Warning"  : "Weka Kiasi Unachohitaji ili Chini ya Kiasi Kinachodaiwa",
+  "CA_amount" : "Weka kiasi",
 
 
 
