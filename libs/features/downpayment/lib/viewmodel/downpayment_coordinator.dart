@@ -32,6 +32,10 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
     return _downPaymentUseCase.getNewCustomerName();
   }
 
+  Future<String> getTelcoPartner() async {
+    return _downPaymentUseCase.getTelcoPartner();
+  }
+
   Future<void> navigateToScanCodeScreen(int? deviceId, String modelName) async {
     await _navigationHandler.navigateToScanQrCode(deviceId, modelName);
   }
@@ -149,8 +153,19 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
         createLoan: 0,
         loanApproved: 0,
         paymentReceived: 0);
-    var mkePayment =
-        await _downPaymentUseCase.makePayment(amount, (p0) => null);
+    String telcoPartner = await getTelcoPartner();
+    var mkePayment;
+    switch(telcoPartner){
+      case 'Airtel' : mkePayment =
+      await _downPaymentUseCase.makePayment(amount, (p0) => null);
+      break;
+      case 'Vodacom' : mkePayment =
+      await _downPaymentUseCase.makePaymentMpesa(amount, (p0) => null);
+      break;
+      default : _downPaymentUseCase.makePayment(amount, (p0) => null);
+    }
+    // var mkePayment =
+    //     await _downPaymentUseCase.makePayment(amount, (p0) => null);
     if (mkePayment?.status == true) {
       state = DownPaymentState.ready(
           context: context,
@@ -217,9 +232,20 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
         loanApproved: 0,
         createLoan: 0,
         paymentReceived: 0);
+    String telcoPartner = await getTelcoPartner();
+    var mkePayment;
+    switch(telcoPartner){
+      case 'Airtel' : mkePayment =
+      await _downPaymentUseCase.checkPaymentStatus(paymentId, (p0) => null);
+      break;
+      case 'Vodacom' : mkePayment =
+      await _downPaymentUseCase.checkPaymentStatusMpesa(paymentId, (p0) => null);
+      break;
+      default : _downPaymentUseCase.checkPaymentStatus(paymentId, (p0) => null);
+    }
 
-    var mkePayment =
-        await _downPaymentUseCase.checkPaymentStatus(paymentId, (p0) => null);
+    // var mkePayment =
+    //     await _downPaymentUseCase.checkPaymentStatus(paymentId, (p0) => null);
 
     if (mkePayment?.status == true) {
       state = DownPaymentState.ready(

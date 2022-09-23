@@ -404,7 +404,7 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
                 color: AN_SubTitleColor,
                 fontWeight: FontWeight.w400),
           ),
-          SizedBox(
+          const SizedBox(
             height: 14,
           ),
           _buildGoBackButton(context, coordinator, state),
@@ -589,14 +589,43 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
   Widget _getImage(KycCreditCoordinator coordinator, BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(75.0),
-      child: Image(
-        image: AssetImage((_isKycPassEnabled || _isKycCreditLoanEnabled)
-            ? AN_Kyc_Credit_Check
-            : AN_Kyc_Airtel),
-        height: 90,
-        width: 90,
-      ),
+      child: (_isKycPassEnabled || _isKycCreditLoanEnabled)
+          ? const Image(
+              image: AssetImage(AN_Kyc_Credit_Check),
+              height: 90,
+              width: 90,
+            )
+          : getKycPaymentPartnerImage()
     );
+  }
+
+  Widget getKycPaymentPartnerImage() {
+    switch (telcoPartner) {
+      case 'Airtel':
+      return const Image(
+          image: AssetImage(AN_Kyc_Airtel),
+          height: 90,
+          width: 90,
+        );
+      case 'Vodacom':
+        return const Image(
+          image: AssetImage(AN_Kyc_Vodacom),
+          height: 90,
+          width: 90,
+        );
+      case 'TIGO':
+        return const Image(
+          image: AssetImage(AN_Kyc_Tigo),
+          height: 90,
+          width: 90,
+        );
+      default:
+        return const Image(
+          image: AssetImage(AN_Kyc_Airtel),
+          height: 90,
+          width: 90,
+        );
+    }
   }
 
   _title(BuildContext context) {
