@@ -234,9 +234,9 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
           var getWorkFlowStatus = await _verifyOtpUseCase
               .workFlowCustomerByAgent(otpScreenArgs.refId, (p0) => null);
 
-          getWorkFlowStatus = WorkFlowStatusResponse.fromJson(json.decode(
-              '{"status":true,"code":"OK","message":"SUCCESS","data":{"status":"Downpayment_Success","data":[125,"Y9C100125",1,{"id":41,"paymentId":"9IL97VY9FTT","customerId":"125","amountPaid":"42000.0","currencyCode":"TZS","countryCode":"TZ","mobileNumber":"+255759661025","status":"Downpayment_Success","loanId":null,"paymentType":"Downpayment","request":"NA","response":"NA","callbackResponse":"NA","paymentMode":"Other Payments"}]}}'
-          ));
+          // getWorkFlowStatus = WorkFlowStatusResponse.fromJson(json.decode(
+          //     '{"status":true,"code":"OK","message":"SUCCESS","data":{"status":"KYC Success","data":[125,"Y9C100125",1,{"id":41,"paymentId":"9IL97VY9FTT","customerId":"125","amountPaid":"42000.0","currencyCode":"TZS","countryCode":"TZ","mobileNumber":"+255759661025","status":"Downpayment_Success","loanId":null,"paymentType":"Downpayment","request":"NA","response":"NA","callbackResponse":"NA","paymentMode":"Other Payments"}]}}'
+          // ));
           if (getWorkFlowStatus!.status!) {
             CrayonPaymentLogger.logInfo('I am in WorkFlow Status');
             //TODO Workflow Navigation
@@ -423,23 +423,21 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         _navigationHandler.navigateToDetailScreen();
         break;
 
-      case "KYC Initiated":
-        // _navigationHandler.navigateToKYCScreen(false);
-        _navigationHandler.navigateToDetailScreen();
-
+      case "KYC Initiated" :
+         _navigationHandler.navigateToKYCScreen(false);
         break;
 
-      case "MNO_Consent":
-        _navigationHandler.navigateToKYCScreen(false);
+      case "MNO_Consent" :
+        _navigationHandler.navigateToMNOConsentScreen(false);
         break;
 
-      case "KYC Success":
-        // _navigationHandler.navigateToKYCScreen(true);
-        _navigationHandler.navigateToDetailScreen();
-
+      case "KYC Success" :
+         _navigationHandler.navigateToKYCScreen(true);
+       // _navigationHandler.navigateToDetailScreen();
         break;
+
       case "KYC Success Manually Approved":
-       _navigationHandler.navigateToKYCScreen(true);
+       _navigationHandler.navigateToKYCScreen(true,isKycManualApprove: true);
         break;
       case "KYC Failed":
         // _navigationHandler.navigateToKYCScreen(true);
@@ -452,11 +450,9 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
 
         break;
       case "Credit_Check_Success":
-        //TODO Navigate to Credit_Check_Success Screen
-        // _navigationHandler.navigateToDeviceOption(false, UserType.AgentCustomer);
-        _navigationHandler.navigateToDetailScreen();
-
+        _navigationHandler.navigateToDeviceOption(false, UserType.AgentCustomer);
         break;
+
       case "Device_Selection":
         _navigationHandler.navigateToDeviceOption(
             false, UserType.AgentCustomer);
@@ -547,16 +543,19 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         }
         break;
       case "Device_Reg_Initiated":
-        //TODO Navigate to Device_Reg_Initiated Screen
+        _saveData(workFlowStatusResponse);
+        await _navigationHandler.navigateToScanQrCode(
+            int.parse(workFlowStatusResponse.data!.data[2].toString()));
         break;
       case "Device_Reg_Success":
-        //TODO Navigate to Device_Reg_Success Screen
+        //TODO Need TO Pass IMEI Number
+        _navigationHandler.navigateToMDM();
         break;
       case "MDM_Reg_Initiated":
-        //TODO Navigate to MDM_Reg_Initiated Screen
+        _navigationHandler.navigateToMDMSuccess("");
         break;
       case "MDM_Reg_Success":
-        //TODO Navigate to MDM_Reg_Success Screen
+        _navigationHandler.navigateToFinalSuccess();
         break;
       case "Repayment_Initiated":
         //TODO Navigate to Repayment_Initiated Screen

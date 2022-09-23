@@ -1,4 +1,7 @@
 import 'package:config/Config.dart';
+import 'package:configuremdm/configuremdm_argument.dart';
+import 'package:configuremdm/view/configuremdm_screen.dart';
+import 'package:configuremdm/view/configuremdm_successful_screen.dart';
 import 'package:core/navigation/navigation_manager.dart';
 import 'package:core/navigation/navigation_type.dart';
 import 'package:device_option/sub_features/device_details/view/device_detail_screen.dart';
@@ -8,6 +11,7 @@ import 'package:downpayment/view/down_payment_screen.dart';
 import 'package:home/home/home_screen_arguments.dart';
 import 'package:home/home/view/home_screen.dart';
 import 'package:scanqrcode/view/scanqrcode_screen.dart';
+import 'package:scanqrcode/view/successful_screen.dart';
 import 'package:shared_data_models/kyc/kyc_data_model.dart';
 import 'package:shared_data_models/kyc/kyc_type.dart';
 import 'package:kyc/subfeatures/kycmain/view/kyc_credit_main_screen.dart';
@@ -52,15 +56,8 @@ class VerifyOtpNavigationHandler with ErrorHandler {
   }
 
   Future<void> navigateToKycScreen() async {
-    var argument = KycScreenArgs(
-      KycFieldType.KYC_VALIDATION,
-      "",
-      "",
-      "",
-      "",
-      [KYCDataModel(title: "", isSelected: false)],
-      false
-    );
+    var argument = KycScreenArgs(KycFieldType.KYC_VALIDATION, "", "", "", "",
+        [KYCDataModel(title: "", isSelected: false)], false);
     _navigationManager.navigateTo(
         KycCreditScreen.viewPath, const NavigationType.replace(),
         arguments: argument);
@@ -186,29 +183,41 @@ class VerifyOtpNavigationHandler with ErrorHandler {
         arguments: arguments);
   }
 
-
-
-  navigateToDownPaymentScreen({String? deviceId,String? amount,num? paymentStatus,num? paymentReceived}) {
+  navigateToDownPaymentScreen(
+      {String? deviceId,
+      String? amount,
+      num? paymentStatus,
+      num? paymentReceived}) {
     var arguments = DownPaymentScreenArgs(
-        int.parse(deviceId!), amount!, "WORK_FLOW", "",paymentStatus ?? 0,paymentStatus ?? 0,paymentReceived ?? 0,0,0);
+        int.parse(deviceId!),
+        amount!,
+        "WORK_FLOW",
+        "",
+        paymentStatus ?? 0,
+        paymentStatus ?? 0,
+        paymentReceived ?? 0,
+        0,
+        0);
     _navigationManager.navigateTo(
         DownPaymentScreen.viewPath, const NavigationType.push(),
         arguments: arguments);
   }
 
-  void navigateToKYCScreen(bool kycCheck) async {
-    var argument = KycScreenArgs(
-      KycFieldType.KYC_VALIDATION,
-      "",
-      "",
-      "",
-      "",
-      [KYCDataModel(title: "", isSelected: false)],
-        kycCheck
-    );
+  void navigateToKYCScreen(bool kycCheck,
+      {bool isKycManualApprove = false}) async {
+    var argument = KycScreenArgs(KycFieldType.KYC_VALIDATION, "", "", "", "",
+        [KYCDataModel(title: "", isSelected: false)], kycCheck,
+        kycManualCheckSuccess: isKycManualApprove);
     await _navigationManager.navigateTo(
-        KycCreditMainScreen.viewPath, const NavigationType.push(),
+        KycCreditScreen.viewPath, const NavigationType.replaceCurrent(),
         arguments: argument);
+  }
+
+  void navigateToMNOConsentScreen(bool kycCheck) async {
+    await _navigationManager.navigateTo(
+      KycCreditMainScreen.viewPath,
+      const NavigationType.replaceCurrent(),
+    );
   }
 
   Future<void> navigateToDeviceOption(
@@ -219,20 +228,36 @@ class VerifyOtpNavigationHandler with ErrorHandler {
         arguments: argument);
   }
 
-
-
   Future<void> goBack() async {
     _navigationManager.goBack();
   }
 
-
   Future<void> navigateToScanQrCode(int? deviceId) async {
     var arguments = deviceId;
     _navigationManager.navigateTo(
-        ScanQrCodeScreen.viewPath,
-        const NavigationType.push(),
-        arguments: arguments
-    );
+        ScanQrCodeScreen.viewPath, const NavigationType.push(),
+        arguments: arguments);
   }
 
+  Future<void> navigateToMDMSuccess(String imei) async {
+    var argument = imei;
+    await _navigationManager.navigateTo(
+        ConfigureMdmSuccessScreen.viewPath, const NavigationType.push(),
+        arguments: argument);
+  }
+
+  Future<void> navigateToMDM({String imei1 = "", String imei2 = ""}) async {
+    ConfigureMdmArgs configureMdmArgs =
+        ConfigureMdmArgs(imei1: imei1, imei2: imei2);
+    await _navigationManager.navigateTo(
+        ConfigureMdmScreen.viewPath, const NavigationType.push(),
+        arguments: configureMdmArgs);
+  }
+
+  Future<void> navigateToFinalSuccess() async {
+    await _navigationManager.navigateTo(
+      SuccessScreen.viewPath,
+      const NavigationType.push(),
+    );
+  }
 }

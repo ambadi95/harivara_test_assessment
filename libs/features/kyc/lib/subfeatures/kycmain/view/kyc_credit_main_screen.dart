@@ -26,9 +26,8 @@ import '../viewmodel/kyc_credit_main_coordinator.dart';
 class KycCreditMainScreen extends StatefulWidget {
   static const viewPath =
       '${KycCreditMainModule.moduleIdentifier}/kyccreditmainscreen';
-  final KycScreenArgs kycScreenArgs;
 
-  const KycCreditMainScreen({Key? key, required this.kycScreenArgs})
+  const KycCreditMainScreen({Key? key,})
       : super(key: key);
 
   @override
