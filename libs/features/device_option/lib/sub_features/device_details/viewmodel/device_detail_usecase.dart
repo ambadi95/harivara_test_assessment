@@ -38,7 +38,7 @@ class DeviceDetailUseCase extends BaseDataProvider {
               DetailDetailResponse.fromMap(data);
           String? brand = deviceListResponse.data?.brand;
           String? model = deviceListResponse.data?.modelNumber;
-          saveModelName(brand! + "-" + model!);
+          saveModelName(brand! + ' ' + '-' + ' ' + model!);
           return DetailDetailResponse.fromMap(data);
         });
   }
