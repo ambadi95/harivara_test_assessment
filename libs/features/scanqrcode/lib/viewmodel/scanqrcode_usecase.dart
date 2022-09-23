@@ -28,6 +28,10 @@ class ScanQRCodeUseCase extends BaseDataProvider {
     return await getValueFromSecureStorage('deviceId', defaultValue: '');
   }
 
+  Future<String> getModelName() async {
+    return await getValueFromSecureStorage('ModelName', defaultValue: '');
+  }
+
   bool isValidIMEINumber(String imeiNumber) {
     return _scanQRCodeViewModel.isValidIMEINumber(imeiNumber);
   }
