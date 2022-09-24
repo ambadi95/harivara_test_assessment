@@ -577,7 +577,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         break;
       case "Device_Reg_Success":
         //TODO Need TO Pass IMEI Number
-        _navigationHandler.navigateToMDM();
+        _navigationHandler.navigateToMDM(imei1:workFlowStatusResponse.data!.data[2]["imei1"],imei2: workFlowStatusResponse.data!.data[2]["imei2"]);
         break;
       case "MDM_Reg_Initiated":
         _navigationHandler.navigateToMDMSuccess("");
