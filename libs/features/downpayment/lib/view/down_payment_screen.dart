@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:config/Colors.dart' as config_colors;
 import 'package:config/Colors.dart';
 import 'package:config/Styles.dart';
@@ -341,9 +340,19 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
           //   await coordinator.navigateToScanCodeScreen(
           //       widget.downPaymentScreenArgs.deviceId);
           // }
-          await coordinator.navigateToScanCodeScreen(
-              widget.downPaymentScreenArgs.deviceId,
-              widget.downPaymentScreenArgs.modelName);
+          if(state.loanApproved==1) {
+            _isBtnEnabled = true;
+              if(_isBtnEnabled){
+              await coordinator.navigateToScanCodeScreen(
+                  widget.downPaymentScreenArgs.deviceId,
+                  widget.downPaymentScreenArgs.modelName);
+            } else {
+                _isBtnEnabled = false;
+              }
+          }
+          else {
+            _isBtnEnabled = false;
+          }
         },
         child: Container(
           width: double.infinity,

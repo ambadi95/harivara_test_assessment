@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:core/view/analytics_state_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_data_models/downpayment/downpayment_screen_args.dart';
@@ -37,6 +35,10 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
 
   Future<void> setPaymentStatusCalled() async {
     await _downPaymentUseCase.setPaymentStatusCalled('called');
+  }
+
+  Future<String> getTelcoPartner() async {
+    return _downPaymentUseCase.getTelcoPartner();
   }
 
   Future<void> navigateToScanCodeScreen(int? deviceId, String modelName) async {
@@ -156,8 +158,19 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
         createLoan: 0,
         loanApproved: 0,
         paymentReceived: 0);
-    var mkePayment =
-    await _downPaymentUseCase.makePayment(amount, (p0) => null);
+    String telcoPartner = await getTelcoPartner();
+    var mkePayment;
+    switch(telcoPartner){
+      case 'Airtel' : mkePayment =
+      await _downPaymentUseCase.makePayment(amount, (p0) => null);
+      break;
+      case 'Vodacom' : mkePayment =
+      await _downPaymentUseCase.makePaymentMpesa(amount, (p0) => null);
+      break;
+      default : _downPaymentUseCase.makePayment(amount, (p0) => null);
+    }
+    // var mkePayment =
+    //     await _downPaymentUseCase.makePayment(amount, (p0) => null);
     if (mkePayment?.status == true) {
       state = DownPaymentState.ready(
           context: context,
@@ -228,10 +241,23 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
 
     setPaymentStatusCalled();
 
-    var mkePayment = await _downPaymentUseCase.checkPaymentStatus(paymentId, (p0) => null);
 
-    if (mkePayment!.status == true) {
+    String telcoPartner = await getTelcoPartner();
+    var mkePayment;
+    switch(telcoPartner){
+      case 'Airtel' : mkePayment =
+      await _downPaymentUseCase.checkPaymentStatus(paymentId, (p0) => null);
+      break;
+      case 'Vodacom' : mkePayment =
+      await _downPaymentUseCase.checkPaymentStatusMpesa(paymentId, (p0) => null);
+      break;
+      default : _downPaymentUseCase.checkPaymentStatus(paymentId, (p0) => null);
+    }
 
+    // var mkePayment =
+    //     await _downPaymentUseCase.checkPaymentStatus(paymentId, (p0) => null);
+
+    if (mkePayment?.status == true) {
       state = DownPaymentState.ready(
           context: context,
           error: "",
@@ -299,7 +325,6 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
       if (downPaymentScreenArgs.title == "WORK_FLOW") {
         if (downPaymentScreenArgs.paymentRequested == 1) {
           checkPaymentStatus(context);
-          print('check **********');
         } else if (downPaymentScreenArgs.paymentReceived == 1) {
           createLoan(context);
         } else {
@@ -309,7 +334,7 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
         makePayment(context, downPaymentScreenArgs.amount);
       }
     } else {
-      if (downPaymentScreenArgs.loanApproved == 2) {
+      if(downPaymentScreenArgs.loanApproved == 2){
         state = DownPaymentState.ready(
             context: context,
             error: '',
@@ -321,7 +346,7 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
             loanApproved: 2,
             paymentReceived: 1);
         _showAlertForErrorMessage("Loan Rejected", true);
-      } else {
+      }else {
         await loanApproval(downPaymentScreenArgs.subTitle, context);
       }
     }

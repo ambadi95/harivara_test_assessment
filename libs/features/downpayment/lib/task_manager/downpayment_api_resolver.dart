@@ -12,8 +12,12 @@ class DownPaymentApiResolver extends TaskResolver {
     switch (identifier) {
       case DownPaymentService.makePaymentIdentifier:
         return _downPaymentService.makePayment(requestData);
+      case DownPaymentService.makePaymentMpesaIdentifier:
+        return _downPaymentService.makePaymentMpesa(requestData);
       case DownPaymentService.paymentStatusIdentifier:
         return _downPaymentService.checkPaymentStatus(requestData);
+      case DownPaymentService.paymentStatusMpesaIdentifier:
+        return _downPaymentService.checkPaymentStatusMpesa(requestData);
       case DownPaymentService.createLoanIdentifier:
         return _downPaymentService.createLoan(requestData);
       case DownPaymentService.activateLoanIdentifier:

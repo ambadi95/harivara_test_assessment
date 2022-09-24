@@ -327,7 +327,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
     } catch (e) {
       state = currentState.copyWith(isLoading: false);
       AppUtils.appUtilsInstance.showErrorBottomSheet(
-        title: e.toString(),
+        title: 'otp_validation_failed'.tr, //e.toString(),
         onClose: () {
           goBack();
         },

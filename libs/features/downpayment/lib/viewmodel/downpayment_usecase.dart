@@ -57,6 +57,10 @@ class DownPaymentUseCase extends BaseDataProvider {
   }
 
 
+  Future<String> getTelcoPartner() async {
+    return await getValueFromStorage('telcoPartner', defaultValue: '');
+  }
+
 
 
   Future<CreateLoanResponse?> createLoan(
@@ -131,6 +135,44 @@ class DownPaymentUseCase extends BaseDataProvider {
         });
   }
 
+  Future<CommonResponse?> makePaymentMpesa(String amount ,
+      Function(String) onErrorCallback) async {
+    String mobileNumber = await getMobileNumber();
+    String customerId = await getCustomerId();
+
+
+    print(mobileNumber);
+    print(customerId);
+    return await executeApiRequest<CommonResponse?>(
+        taskType: TaskType.DATA_OPERATION,
+        taskSubType: TaskSubType.REST,
+        moduleIdentifier: DownPaymentModule.moduleIdentifier,
+        requestData: /*{
+          "amountPaid": "2000",
+          "customerId": "86",
+          "mobileNumber": "686531710",
+          "paymentType": "Downpayment"
+        }*/
+        {
+          "amountPaid": amount,
+          "customerId": customerId,
+          "mobileNumber": mobileNumber,
+          "paymentType": "Downpayment"
+        },
+        serviceIdentifier: DownPaymentService.makePaymentMpesaIdentifier,
+        onError: onErrorCallback,
+        modelBuilderCallback: (responseData) {
+          CommonResponse checkResponse;
+          try {
+            checkResponse = CommonResponse.fromMap(responseData);
+          } catch (e) {
+            checkResponse =  CommonResponse(
+                status: false, code: "400", message: e.toString()/*"Something went wrong"*/);
+          }
+          return checkResponse;
+        });
+  }
+
  Future<CommonResponse?> checkPaymentStatus(
       String paymentId, Function(String) onErrorCallback) async {
     String mobileNumber = await getMobileNumber();
@@ -143,6 +185,31 @@ class DownPaymentUseCase extends BaseDataProvider {
           "paymentId":paymentId
         },
         serviceIdentifier: DownPaymentService.paymentStatusIdentifier,
+        onError: onErrorCallback,
+        modelBuilderCallback: (responseData) {
+          CommonResponse checkResponse;
+          try {
+            checkResponse = CommonResponse.fromMap(responseData);
+          } catch (e) {
+            checkResponse =  CommonResponse(
+                status: false, code: "400", message: e.toString()/*"Something went wrong"*/);
+          }
+          return checkResponse;
+        });
+  }
+
+  Future<CommonResponse?> checkPaymentStatusMpesa(
+      String paymentId, Function(String) onErrorCallback) async {
+    String mobileNumber = await getMobileNumber();
+    String customerId = await getCustomerId();
+    return await executeApiRequest<CommonResponse?>(
+        taskType: TaskType.DATA_OPERATION,
+        taskSubType: TaskSubType.REST,
+        moduleIdentifier: DownPaymentModule.moduleIdentifier,
+        requestData: {
+          "paymentId":paymentId
+        },
+        serviceIdentifier: DownPaymentService.paymentStatusMpesaIdentifier,
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {
           CommonResponse checkResponse;

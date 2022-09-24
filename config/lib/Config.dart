@@ -16,6 +16,8 @@ const RC_new_customer = 'assets/images/new_customer_icon.svg';
 const RC_customer_approval = 'assets/images/customer_approval_icon.svg';
 
 const AN_Kyc_Airtel = 'assets/images/kyc_airtel.png';
+const AN_Kyc_Vodacom = 'assets/images/vodacom.png';
+const AN_Kyc_Tigo = 'assets/images/tigo_pay.png';
 const AN_Kyc_Credit_Check = 'assets/images/credit_check.png';
 const AN_Kyc_Credit_Main = 'assets/images/kyc_credit_main.png';
 const AN_Kyc_Credit_ERROR = 'assets/images/kyc_and_credit_error.png';
@@ -39,10 +41,10 @@ const ST_scan_icon = 'assets/images/scan_image.svg';
 //live Link
 // const customerEndpoint = 'https://customerapi.y9bank.com/customers/v1/';
 //pre prod
-const customerEndpoint = 'https://customerapi-stage.y9bank.com/customers/v1/';
+//const customerEndpoint = 'https://customerapi-stage.y9bank.com/customers/v1/';
 // const customerEndpoint = 'https://y9-dev-capi.testmaya.com/customers/v1/';
 //dev
-// const customerEndpoint = 'https://y9-dev-capi.testmaya.com/customers/v1/';
+ const customerEndpoint = 'https://y9-dev-capi.testmaya.com/customers/v1/';
 
 const y9TermsCondition = 'https://y9bank.com/term-of-services/';
 
