@@ -10,14 +10,9 @@ class KycScreenArgs {
   final String destinationPath;
   final List<KYCDataModel> kycDataModelList;
   final bool kycCheckSuccess;
+  final bool kycManualCheckSuccess;
 
-  KycScreenArgs(
-    this.kycFieldType,
-    this.image,
-    this.title,
-    this.subTitle,
-    this.destinationPath,
-    this.kycDataModelList,
-      this.kycCheckSuccess
-  );
+  KycScreenArgs(this.kycFieldType, this.image, this.title, this.subTitle,
+      this.destinationPath, this.kycDataModelList, this.kycCheckSuccess,
+      {this.kycManualCheckSuccess = false,});
 }

@@ -40,6 +40,10 @@ class ScanQRCodeCoordinator extends AnalyticsStateNotifier<ScanQRCodeState> {
     return _scanQRCodeUseCase.getDeviceId();
   }
 
+  Future<String> getModelName() async {
+    return _scanQRCodeUseCase.getModelName();
+  }
+
 
 void successFulScreen(){
   _navigationHandler.navigateToSuccessScreen();
@@ -148,12 +152,14 @@ void successFulScreen(){
       String imei2,
       String modelName
       ) async {
+    String model = await getModelName();
+    print("model name from preference====> $model");
     state = ScanQRCodeState.ready(context: context,isLoading:true);
     var response = await _scanQRCodeUseCase.deviceRegistrationAPI(deviceId, imei1, imei2, (p0) => null);
     if (response?.status == true) {
     state = ScanQRCodeState.ready(context: context,isLoading:false );
       if(response?.message == "Device registration success"){
-        showAlertForSuccessMessage(imei1, imei2, modelName, context);
+        showAlertForSuccessMessage(imei1, imei2, model, context);
         //configureMdmScreen(imei1, imei2);
         //successFulScreen();
       }

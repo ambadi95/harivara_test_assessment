@@ -18,6 +18,10 @@ class DeviceDetailUseCase extends BaseDataProvider {
     return await getValueFromSecureStorage('customerId', defaultValue: '');
   }
 
+  Future<void> saveModelName(String? modelName) async {
+    return await setValueToSecureStorage({'ModelName': modelName});
+  }
+
   Future<DetailDetailResponse?> getDeviceDetail(
       int deviceId, Function(String) onErrorCallback) async {
     String? token = await _authManager.getAccessToken();
@@ -32,6 +36,9 @@ class DeviceDetailUseCase extends BaseDataProvider {
           final data = responseData;
           DetailDetailResponse deviceListResponse =
               DetailDetailResponse.fromMap(data);
+          String? brand = deviceListResponse.data?.brand;
+          String? model = deviceListResponse.data?.modelNumber;
+          saveModelName(brand! + ' ' + '-' + ' ' + model!);
           return DetailDetailResponse.fromMap(data);
         });
   }

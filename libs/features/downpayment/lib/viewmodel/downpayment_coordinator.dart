@@ -267,7 +267,7 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
 
       if (mkePayment.data!.status == "Downpayment_Failed") {
         await _downPaymentUseCase.setPaymentFailed("Payment Failed");
-        _showAlertForErrorMessage(mkePayment.message!, false,isPaymentError: true);
+        _navigationHandler.navigateToPaymentFailureBottomSheet();
       }
       if (mkePayment.data!.status == "Downpayment_Success") {
         createLoan(context);
@@ -335,6 +335,8 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
       }
     }
   }
+
+
 
   _showAlertForErrorMessage(String errorMessage, bool isLoanCreationTitle,{bool? isPaymentError = false} ) {
 

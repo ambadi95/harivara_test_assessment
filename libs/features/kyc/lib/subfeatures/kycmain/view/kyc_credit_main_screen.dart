@@ -18,6 +18,7 @@ import 'package:widget_library/utils/icon_utils.dart';
 
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:widget_library/utils/launcher_utils.dart';
 
 import '../kyccreditmain_module.dart';
 import '../state/kyc_credit_main_state.dart';
@@ -26,9 +27,8 @@ import '../viewmodel/kyc_credit_main_coordinator.dart';
 class KycCreditMainScreen extends StatefulWidget {
   static const viewPath =
       '${KycCreditMainModule.moduleIdentifier}/kyccreditmainscreen';
-  final KycScreenArgs kycScreenArgs;
 
-  const KycCreditMainScreen({Key? key, required this.kycScreenArgs})
+  const KycCreditMainScreen({Key? key,})
       : super(key: key);
 
   @override
@@ -331,7 +331,9 @@ class _KycCreditMainScreenState extends State<KycCreditMainScreen> {
   ) {
     return InkWell(
       onTap: () {
-        coordinator.navigateToTermsCondtionsScreen();
+        LauncherUtils.launcherUtilsInstance
+            .launchInBrowser(url: y9TermsCondition);
+        //coordinator.navigateToTermsCondtionsScreen();
       },
       child: Text('KYC_Terms_and_Condition'.tr, style: const TextStyle(
         decoration: TextDecoration.underline,
