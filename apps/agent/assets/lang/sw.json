@@ -322,6 +322,8 @@
   "otp_validation_failed" : "Uthibitishaji wa Otp Umeshindwa",
   "scan_success_msg_1" : "Hongera sana\nKifaa chako ",
   "scan_success_msg_2" : " Imesajiliwa kwa Mafanikio",
-  "configure_mdm_btn" : "Sanidi MDM"
-
+  "configure_mdm_btn" : "Sanidi MDM",
+  "PF_title"  : "Hitilafu ya Muamala wa Malipo",
+  "PF_desc"  : "Samahani kwa usumbufu, tunakabiliwa na Hitilafu isiyotarajiwa. Tafadhali jaribu tena baada ya muda fulani"
+}
 }

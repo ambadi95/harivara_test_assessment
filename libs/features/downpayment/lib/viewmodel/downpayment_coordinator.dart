@@ -299,8 +299,11 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
           loanApproved: 0,
           paymentReceived: 2);
 
-      _showAlertForErrorMessage(
-          mkePayment!.message!, false, isPaymentError: true);
+      // _showAlertForErrorMessage(
+      //     mkePayment!.message!, false, isPaymentError: true);
+
+      _navigationHandler.navigateToPaymentFailureBottomSheet();
+
     }
   }
 

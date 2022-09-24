@@ -321,6 +321,9 @@
   "otp_validation_failed" : "Otp Validation Failed",
   "scan_success_msg_1" : "Congratulations\nYour device ",
   "scan_success_msg_2" : " has been Successfully Registered",
-  "configure_mdm_btn" : "Configure MDM"
+  "configure_mdm_btn" : "Configure MDM",
+  "PF_title"  : "Payment Transaction Error",
+  "PF_desc"  : "Sorry for the inconvenience, we are facing an unexpected Error. Please try again after sometime"
+}
 
 }
