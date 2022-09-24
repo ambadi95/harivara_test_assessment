@@ -32,8 +32,7 @@ const ST_update_passcode = 'assets/images/updatePasscode.svg';
 const ST_language = 'assets/images/language.svg';
 const ST_sign_out = 'assets/images/logout.svg';
 const ST_CallSupport = 'assets/images/call.svg';
-const ST_TermsCondition = 'assets/images/term'
-    'Condition.svg';
+const ST_TermsCondition = 'assets/images/termCondition.svg';
 const ST_faq = 'assets/images/faq.svg';
 const ST_agent = 'assets/images/agent.svg';
 const ST_scan_icon = 'assets/images/scan_image.svg';
