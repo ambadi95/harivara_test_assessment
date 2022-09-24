@@ -24,12 +24,21 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
         DownPaymentState.ready(context: context, error: "", isLoading: false);
   }
 
+
   Future<String> getAgentName() async {
     return _downPaymentUseCase.getAgentName();
   }
 
   Future<String> getNewCustomerName() async {
     return _downPaymentUseCase.getNewCustomerName();
+  }
+
+  Future<String> getPaymentStatus() async {
+    return _downPaymentUseCase.getPaymentCalledStatus();
+  }
+
+  Future<void> setPaymentStatusCalled() async{
+    _downPaymentUseCase.setPaymentStatusCalled('called');
   }
 
   Future<void> navigateToScanCodeScreen(int? deviceId, String modelName) async {
@@ -283,6 +292,7 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
       if (downPaymentScreenArgs.title == "WORK_FLOW") {
         if (downPaymentScreenArgs.paymentRequested == 1) {
           checkPaymentStatus(context);
+          print('check **********');
         } else if (downPaymentScreenArgs.paymentReceived == 1) {
           createLoan(context);
         } else {

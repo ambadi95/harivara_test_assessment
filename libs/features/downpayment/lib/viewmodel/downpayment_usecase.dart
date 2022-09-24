@@ -52,6 +52,11 @@ class DownPaymentUseCase extends BaseDataProvider {
     return await getValueFromSecureStorage('loanCalled', defaultValue: '');
   }
 
+  Future<String> getPaymentCalledStatus() async {
+    return await getValueFromSecureStorage('statusCalled', defaultValue: '');
+  }
+
+
 
 
   Future<CreateLoanResponse?> createLoan(
@@ -200,6 +205,11 @@ class DownPaymentUseCase extends BaseDataProvider {
   }
   Future<void> setDeviceId(String deviceId) async {
       return await setValueToSecureStorage({'deviceId': deviceId});
+
+  }
+
+  Future<void> setPaymentStatusCalled(String status) async {
+    return await setValueToSecureStorage({'statusCalled': status});
 
   }
 }

@@ -491,6 +491,8 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
       BuildContext context, DownPaymentStateReady newState) async {
     Timer? mytimer;
     String paymentFailed = await downPaymentCoordinator!.checkPaymentFailed();
+    String paymentCalled = await downPaymentCoordinator!.getPaymentStatus();
+
 
     if (paymentFailed == "Payment Failed") {
       mytimer!.cancel();
@@ -506,14 +508,19 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
     } else {
       if (newState.waitForPayment == 1 &&
           newState.paymentRequested == 1 &&
-          newState.createLoan == 0) {
+          newState.createLoan == 0 && paymentCalled != 'called') {
+        // if (mytimer != null){
+        //   return;
+        // }
          mytimer =
             Timer.periodic(const Duration(minutes: 0, seconds: 10), (timer) {
-          downPaymentCoordinator!.checkPaymentStatus(context);
+              print('Ambadi '+ DateTime.now().toString());
+              downPaymentCoordinator!.setPaymentStatusCalled();
+          //downPaymentCoordinator!.checkPaymentStatus(context);
         });
-        // Future.delayed(const Duration(seconds: 25), () {
-        //   downPaymentCoordinator!.checkPaymentStatus(context);
-        //
+        // Future.delayed(const Duration(seconds: 10), () {
+        //   print('Ambadi '+ DateTime.now().toString());
+        //   //downPaymentCoordinator!.checkPaymentStatus(context);
         // });
       }
     }
