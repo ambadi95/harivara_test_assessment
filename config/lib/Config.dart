@@ -39,10 +39,10 @@ const ST_scan_icon = 'assets/images/scan_image.svg';
 //live Link
 // const customerEndpoint = 'https://customerapi.y9bank.com/customers/v1/';
 //pre prod
-//const customerEndpoint = 'https://customerapi-stage.y9bank.com/customers/v1/';
+const customerEndpoint = 'https://customerapi-stage.y9bank.com/customers/v1/';
 // const customerEndpoint = 'https://y9-dev-capi.testmaya.com/customers/v1/';
 //dev
-const customerEndpoint = 'https://y9-dev-capi.testmaya.com/customers/v1/';
+// const customerEndpoint = 'https://y9-dev-capi.testmaya.com/customers/v1/';
 
 const y9TermsCondition = 'https://y9bank.com/term-of-services/';
 
@@ -71,6 +71,31 @@ const LD_loan_detail_banner_image =
     'assets/images/loan_detail_banner_image.png';
 const LD_loan_detail_banner_image2 =
     'assets/images/loan_detail_banner_image_2.png';
+
+const String Initiated = "Initiated";
+const String Enrolled = "Enrolled";
+const String KYCInitiated = "KYC Initiated";
+const String MNOConsent = "MNO_Consent";
+const String KYCSuccess = "KYC Success";
+const String KYCSuccessManuallyApproved = "KYC Success Manually Approved";
+const String KYCFailed = "KYC Failed";
+const String CreditCheckRequested = "Credit_Check_Requested";
+const String CreditCheckSuccess = "Credit_Check_Success";
+const String DeviceSelection = "Device_Selection";
+const String DeviceSelected = "Device_Selected";
+const String DownpaymentInitiated = "Downpayment_Initiated";
+const String DownpaymentSuccess = "Downpayment_Success";
+const String DownpaymentFailed = "Downpayment_Failed";
+const String LoanInitiated = "Loan_Initiated";
+const String LoanRejected = "Loan_Rejected";
+const String LoanApproved = "Loan_Approved";
+const String DeviceRegInitiated = "Device_Reg_Initiated";
+const String DeviceRegSuccess = "Device_Reg_Success";
+const String MDMRegInitiated = "MDM_Reg_Initiated";
+const String MDMRegSuccess = "MDM_Reg_Success";
+const String RepaymentInitiated = "Repayment_Initiated";
+const String RepaymentSuccess = "Repayment_Success";
+
 
 enum WorkFlowStatus {
   Initiated,

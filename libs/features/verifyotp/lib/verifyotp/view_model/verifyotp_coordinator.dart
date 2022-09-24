@@ -406,51 +406,51 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
   navigationToWorkFlow(
       WorkFlowStatusResponse workFlowStatusResponse, String status) async {
     switch (status) {
-      case "Initiated":
+      case Initiated :
         _navigationHandler.navigateToDetailScreen();
         break;
-      case "Enrolled":
+      case Enrolled :
         _navigationHandler.navigateToDetailScreen();
         break;
 
-      case "KYC Initiated" :
+      case KYCInitiated :
          _navigationHandler.navigateToKYCScreen(false);
         break;
 
-      case "MNO_Consent" :
+      case MNOConsent :
         _navigationHandler.navigateToMNOConsentScreen(false);
         break;
 
-      case "KYC Success" :
+      case KYCSuccess :
          _navigationHandler.navigateToKYCScreen(true);
        // _navigationHandler.navigateToDetailScreen();
         break;
 
-      case "KYC Success Manually Approved":
+      case KYCSuccessManuallyApproved :
        _navigationHandler.navigateToKYCScreen(true,isKycManualApprove: true);
         break;
-      case "KYC Failed":
+      case KYCFailed :
         // _navigationHandler.navigateToKYCScreen(true);
         _navigationHandler.navigateToDetailScreen();
-
         break;
-      case "Credit_Check_Requested":
+
+      case CreditCheckRequested :
         // _navigationHandler.navigateToKYCScreen(true);
         _navigationHandler.navigateToDetailScreen();
-
         break;
-      case "Credit_Check_Success":
+
+      case CreditCheckSuccess :
         _navigationHandler.navigateToDeviceOption(false, UserType.AgentCustomer);
         break;
 
-      case "Device_Selection":
+      case DeviceSelection :
         _navigationHandler.navigateToDeviceOption(
             false, UserType.AgentCustomer);
         break;
-      case "Device_Selected":
+      case DeviceSelected :
         _navigationHandler.navigateToDeviceOption(true, UserType.AgentCustomer);
         break;
-      case "Downpayment_Initiated":
+      case DownpaymentInitiated :
         try {
           await _saveData(workFlowStatusResponse);
           _navigationHandler.navigateToDownPaymentScreen(
@@ -466,7 +466,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         // _navigationHandler.navigateToDownPaymentScreen();
         break;
 
-      case "Downpayment_Success":
+      case DownpaymentSuccess :
         try {
           _saveData(workFlowStatusResponse);
           _navigationHandler.navigateToDownPaymentScreen(
@@ -482,7 +482,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         // _navigationHandler.navigateToDownPaymentScreen();
         break;
 
-      case "Downpayment_Failed":
+      case DownpaymentFailed :
         try {
           _saveData(workFlowStatusResponse);
           _navigationHandler.navigateToDownPaymentScreen(
@@ -497,7 +497,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         }
         break;
 
-      case "Loan_Initiated":
+      case LoanInitiated :
         // try {
         //   _saveData(workFlowStatusResponse);
         //   _navigationHandler.navigateToDownPaymentScreen(
@@ -528,7 +528,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         //_navigationHandler.navigateToDeviceLoanCreation();
         break;
 
-      case "Loan_Rejected":
+      case LoanRejected :
         // try {
         //   _saveData(workFlowStatusResponse);
         //   _navigationHandler.navigateToDownPaymentScreen(
@@ -560,7 +560,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         //_navigationHandler.navigateToDeviceLoanCreation();
         break;
 
-      case "Loan_Approved":
+      case LoanApproved :
         try {
           _saveData(workFlowStatusResponse);
           await _navigationHandler.navigateToScanQrCode(
@@ -570,25 +570,25 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
               "Something went wrong,Please try again later!");
         }
         break;
-      case "Device_Reg_Initiated":
+      case DeviceRegInitiated :
         _saveData(workFlowStatusResponse);
         await _navigationHandler.navigateToScanQrCode(
             int.parse(workFlowStatusResponse.data!.data[2].toString()));
         break;
-      case "Device_Reg_Success":
+      case DeviceRegSuccess :
         //TODO Need TO Pass IMEI Number
         _navigationHandler.navigateToMDM();
         break;
-      case "MDM_Reg_Initiated":
+      case MDMRegInitiated :
         _navigationHandler.navigateToMDMSuccess("");
         break;
-      case "MDM_Reg_Success":
+      case MDMRegSuccess :
         _navigationHandler.navigateToFinalSuccess();
         break;
-      case "Repayment_Initiated":
+      case RepaymentInitiated :
         //TODO Navigate to Repayment_Initiated Screen
         break;
-      case "Repayment_Success":
+      case RepaymentSuccess :
         //TODO Navigate to Repayment_Success Screen
         break;
     }
