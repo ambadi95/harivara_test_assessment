@@ -257,7 +257,12 @@ class _SignUpState extends State<SignUp> {
                   NIDAInputFormatter(
                       mask: 'xxxxxxxx-xxxxx-xxxxx-xx', separator: '-')
                 ]
-              : [],
+              :
+          //[],
+            [
+              FilteringTextInputFormatter(new RegExp(r"\s\b|\b\s"), allow: false),
+              LengthLimitingTextInputFormatter(12),
+            ],
           onChanged: (value) {
             _validateForm(coordinator);
             if (nidaNumberError.isNotEmpty || nidaNumber.text.length > 23) {
