@@ -233,7 +233,8 @@ class _ConfigureMdmScreenState extends State<ConfigureMdmScreen> {
               borderRadius: BorderRadius.circular(8.0)),
           child: Center(
             child: Text(
-              'MDM_button_text'.tr,
+              'SU_button_text'.tr,
+              //'MDM_button_text'.tr,
               style: SU_button_text_style,
             ),
           ),

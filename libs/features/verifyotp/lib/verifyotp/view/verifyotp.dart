@@ -136,7 +136,7 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
     VerifyOtpStateReady state,
   ) {
     return Scaffold(
-      bottomNavigationBar: _buildContinueButton(coordinator),
+      bottomNavigationBar: _buildContinueButton(coordinator , state),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -152,7 +152,8 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
               const SizedBox(
                 height: 5,
               ),
-              state.attemptsRemain != 3
+              /*state.attemptsRemain != 3*/
+            attemptCount> 0 && attemptCount <3
                   ? _errorAndAttemptLeft(context, coordinator, state)
                   : const SizedBox(),
               const SizedBox(
@@ -170,22 +171,28 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
     );
   }
 
-  Widget _buildContinueButton(VerifyOtpCoordinator coordinator) {
+  Widget _buildContinueButton(VerifyOtpCoordinator coordinator,VerifyOtpStateReady state ) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 19),
       child: InkWell(
-        onTap: () {
+        onTap: () async {
           if(attemptCount<3) {
             if (coordinator.otpController.text.isNotEmpty &&
                 coordinator.otpController.text.length == 6) {
-              attemptCount++;
-              coordinator.navigateToDestinationPath(
+
+
+            await  coordinator.navigateToDestinationPath(
                   widget.otpScreenArgs.destinationPath,
                   widget.otpScreenArgs.userType,
                   widget.otpScreenArgs,
                   coordinator.otpController.text.toString(),
                   widget.otpScreenArgs.event
               );
+
+              setState(() {
+                attemptCount++;
+              });
+              print(attemptCount);
             }
             // else {
             //   _showAlertForOTPAttempts(coordinator);
@@ -431,9 +438,9 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
           CrayonPaymentText(
             key: const Key('verifyOtp incorrect otp'),
             text: TextUIDataModel(
-              state.attemptsRemain == 3
+              /*state.attemptsRemain*/ attemptCount == 3
                   ? 'VO_Incorrect_OTP'.tr
-                  : '${state.attemptsRemain} attempts remaining',
+                  : '${'VO_Incorrect_OTP_Title'.tr}. ${3-attemptCount} attempts remaining',
               styleVariant: CrayonPaymentTextStyleVariant.headline5,
               color: HS_NotificationCountColor,
               textAlign: TextAlign.center,
