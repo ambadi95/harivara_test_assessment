@@ -182,6 +182,9 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
       String enterOtp,
       String event) async {
     CrayonPaymentLogger.logInfo("I am in OTP Verify");
+    print(otpScreenArgs.otpVerificationType);
+    print(OtpVerificationType.customerSign);
+    print(OtpVerificationType.customerSignUpAgent);
     var currentState = state as VerifyOtpStateReady;
     try {
       int attempts = currentState.attemptsRemain;
@@ -215,7 +218,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
             _navigationHandler.navigateToHomeScreen(userType);
           }
         } else {
-          _showAlertForErrorMessage(responseSignin.message!);
+         // _showAlertForErrorMessage(responseSignin.message!);
         }
       } else if (otpScreenArgs.otpVerificationType ==
           OtpVerificationType.customerSignUpAgent) {
@@ -239,7 +242,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
           } else {
             _showAlertForErrorMessage(getWorkFlowStatus.message!);
           }
-        }else{
+        } else {
           _showAlertForErrorMessage(responseSignin.message!);
         }
       } else if (otpScreenArgs.otpVerificationType ==
@@ -295,7 +298,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
           await _verifyOtpUseCase.saveOnBordStatus(agentId);
 
           _navigationHandler.navigateToAgentWelcomeBack(userType);
-        }else{
+        } else {
           _showAlertForErrorMessage(responseSignin!.message!);
         }
       } else if (otpScreenArgs.otpVerificationType ==
@@ -326,12 +329,19 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
       }
     } catch (e) {
       state = currentState.copyWith(isLoading: false);
-      AppUtils.appUtilsInstance.showErrorBottomSheet(
-        title: 'otp_validation_failed'.tr, //e.toString(),
-        onClose: () {
-          goBack();
-        },
-      );
+      if (otpScreenArgs.otpVerificationType ==
+          OtpVerificationType.customerSign ||
+          otpScreenArgs.otpVerificationType ==
+              OtpVerificationType.customerPasscodeSet) {
+        print(e.toString());
+      } else {
+        AppUtils.appUtilsInstance.showErrorBottomSheet(
+          title: 'otp_validation_failed'.tr, //e.toString(),
+          onClose: () {
+            goBack();
+          },
+        );
+      }
     }
   }
 
@@ -406,51 +416,52 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
   navigationToWorkFlow(
       WorkFlowStatusResponse workFlowStatusResponse, String status) async {
     switch (status) {
-      case Initiated :
+      case Initiated:
         _navigationHandler.navigateToDetailScreen();
         break;
-      case Enrolled :
+      case Enrolled:
         _navigationHandler.navigateToDetailScreen();
         break;
 
-      case KYCInitiated :
-         _navigationHandler.navigateToKYCScreen(false);
+      case KYCInitiated:
+        _navigationHandler.navigateToKYCScreen(false);
         break;
 
-      case MNOConsent :
+      case MNOConsent:
         _navigationHandler.navigateToMNOConsentScreen(false);
         break;
 
-      case KYCSuccess :
-         _navigationHandler.navigateToKYCScreen(true);
-       // _navigationHandler.navigateToDetailScreen();
+      case KYCSuccess:
+        _navigationHandler.navigateToKYCScreen(true);
+        // _navigationHandler.navigateToDetailScreen();
         break;
 
-      case KYCSuccessManuallyApproved :
-       _navigationHandler.navigateToKYCScreen(true,isKycManualApprove: true);
+      case KYCSuccessManuallyApproved:
+        _navigationHandler.navigateToKYCScreen(true, isKycManualApprove: true);
         break;
-      case KYCFailed :
+      case KYCFailed:
         // _navigationHandler.navigateToKYCScreen(true);
         _navigationHandler.navigateToDetailScreen();
         break;
 
-      case CreditCheckRequested :
+      case CreditCheckRequested:
         // _navigationHandler.navigateToKYCScreen(true);
         _navigationHandler.navigateToDetailScreen();
         break;
 
-      case CreditCheckSuccess :
-        _navigationHandler.navigateToDeviceOption(false, UserType.AgentCustomer);
-        break;
-
-      case DeviceSelection :
+      case CreditCheckSuccess:
         _navigationHandler.navigateToDeviceOption(
             false, UserType.AgentCustomer);
         break;
-      case DeviceSelected :
+
+      case DeviceSelection:
+        _navigationHandler.navigateToDeviceOption(
+            false, UserType.AgentCustomer);
+        break;
+      case DeviceSelected:
         _navigationHandler.navigateToDeviceOption(true, UserType.AgentCustomer);
         break;
-      case DownpaymentInitiated :
+      case DownpaymentInitiated:
         try {
           await _saveData(workFlowStatusResponse);
           _navigationHandler.navigateToDownPaymentScreen(
@@ -466,7 +477,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         // _navigationHandler.navigateToDownPaymentScreen();
         break;
 
-      case DownpaymentSuccess :
+      case DownpaymentSuccess:
         try {
           _saveData(workFlowStatusResponse);
           _navigationHandler.navigateToDownPaymentScreen(
@@ -482,7 +493,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         // _navigationHandler.navigateToDownPaymentScreen();
         break;
 
-      case DownpaymentFailed :
+      case DownpaymentFailed:
         try {
           _saveData(workFlowStatusResponse);
           _navigationHandler.navigateToDownPaymentScreen(
@@ -497,7 +508,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         }
         break;
 
-      case LoanInitiated :
+      case LoanInitiated:
         // try {
         //   _saveData(workFlowStatusResponse);
         //   _navigationHandler.navigateToDownPaymentScreen(
@@ -528,7 +539,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         //_navigationHandler.navigateToDeviceLoanCreation();
         break;
 
-      case LoanRejected :
+      case LoanRejected:
         // try {
         //   _saveData(workFlowStatusResponse);
         //   _navigationHandler.navigateToDownPaymentScreen(
@@ -548,7 +559,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
             deviceId: workFlowStatusResponse.data!.data[2].toString(),
             paymentStatus: 0,
             paymentReceived: 1,
-            loanApproval:2,
+            loanApproval: 2,
             loanId: workFlowStatusResponse.data!.data[3]["loanId"] ?? "",
             amount: workFlowStatusResponse.data!.data[3]["amountPaid"] ?? "",
           );
@@ -560,7 +571,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         //_navigationHandler.navigateToDeviceLoanCreation();
         break;
 
-      case LoanApproved :
+      case LoanApproved:
         try {
           _saveData(workFlowStatusResponse);
           await _navigationHandler.navigateToScanQrCode(
@@ -570,25 +581,27 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
               "Something went wrong,Please try again later!");
         }
         break;
-      case DeviceRegInitiated :
+      case DeviceRegInitiated:
         _saveData(workFlowStatusResponse);
         await _navigationHandler.navigateToScanQrCode(
             int.parse(workFlowStatusResponse.data!.data[2].toString()));
         break;
-      case DeviceRegSuccess :
+      case DeviceRegSuccess:
         //TODO Need TO Pass IMEI Number
-        _navigationHandler.navigateToMDM(imei1:workFlowStatusResponse.data!.data[2]["imei1"],imei2: workFlowStatusResponse.data!.data[2]["imei2"]);
+        _navigationHandler.navigateToMDM(
+            imei1: workFlowStatusResponse.data!.data[2]["imei1"],
+            imei2: workFlowStatusResponse.data!.data[2]["imei2"]);
         break;
-      case MDMRegInitiated :
+      case MDMRegInitiated:
         _navigationHandler.navigateToMDMSuccess("");
         break;
-      case MDMRegSuccess :
+      case MDMRegSuccess:
         _navigationHandler.navigateToFinalSuccess();
         break;
-      case RepaymentInitiated :
+      case RepaymentInitiated:
         //TODO Navigate to Repayment_Initiated Screen
         break;
-      case RepaymentSuccess :
+      case RepaymentSuccess:
         //TODO Navigate to Repayment_Success Screen
         break;
     }
