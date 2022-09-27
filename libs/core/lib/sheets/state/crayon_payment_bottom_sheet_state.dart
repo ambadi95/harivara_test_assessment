@@ -112,11 +112,13 @@ class CrayonPaymentBottomSheetState with _$CrayonPaymentBottomSheetState {
 
   const factory CrayonPaymentBottomSheetState.customAmount({
     required String? title,
-    required String outstandingAmount,
+    required String totalLoanAmount,
+    required String dailyRepayment,
     required Function(String) enteredAmount,
     List<ButtonOptions>? buttonOptions,
     @Default(false) bool isAmountValidated,
     @Default(false) bool showError,
+    @Default(false) bool isMinimumAmount,
     required Function(String) onSelectedLabel,
 
   }) = CustomAmountBottomSheet;

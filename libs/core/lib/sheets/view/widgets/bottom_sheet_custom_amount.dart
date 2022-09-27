@@ -50,7 +50,8 @@ class BottomSheetCustomAmount extends StatelessWidget {
 
 
         SizedBox(height: 45),
-        _sheetState.showError?_warningText() :SizedBox(),
+        _sheetState.showError ? _warningText('CA_Warning') : _sheetState.isMinimumAmount ?
+        _warningText('CA_Min_Warning'.tr.replaceAll("{}", _sheetState.dailyRepayment)) : SizedBox(),
         SizedBox(height: 5),
 
         ..._sheetState.buttonOptions!
@@ -66,7 +67,7 @@ class BottomSheetCustomAmount extends StatelessWidget {
     );
   }
 
- Widget _warningText(){
+ Widget _warningText(String warningText){
     return Padding(
       padding: EdgeInsets.symmetric(
           horizontal: 5),
@@ -74,7 +75,7 @@ class BottomSheetCustomAmount extends StatelessWidget {
         alignment: Alignment.topLeft,
         child: CrayonPaymentText(
           key: Key('Warning'),
-          text: TextUIDataModel('CA_Warning',
+          text: TextUIDataModel(warningText,
               textAlign: TextAlign.center,
               styleVariant: CrayonPaymentTextStyleVariant.overline1,
               color: PRIMARY_COLOR,
@@ -110,9 +111,8 @@ class BottomSheetCustomAmount extends StatelessWidget {
         LengthLimitingTextInputFormatter(10),      ],
       keyboardType: TextInputType.number,
       onChanged: (value) {
-        coordinator.checkAmount(value);
+          coordinator.checkAmount(value);
         //  CrayonPaymentLogger.logInfo(_selectedAmount);
-        CrayonPaymentLogger.logInfo(_sheetState.outstandingAmount);
       },
     );
   }

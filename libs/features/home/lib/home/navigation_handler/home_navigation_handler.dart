@@ -55,7 +55,6 @@ class HomeNavigationHandler with ErrorHandler {
         arguments: arguments);
   }
 
-
   Future<void> navigateToSettingsScreen() async {
     await _navigationManager.navigateTo(
       Settings.viewPath,
@@ -64,7 +63,8 @@ class HomeNavigationHandler with ErrorHandler {
   }
 
   Future<void> navigateToCustomPayBottomSheet({
-    String outstandingAmount = '',
+    String totalLoanAmount = '',
+    String dailyRepaymentAmount = '',
   }) async {
     await goBack();
     String _selectedAmount = "";
@@ -76,7 +76,8 @@ class HomeNavigationHandler with ErrorHandler {
           ButtonOptions(
             Black,
             'LR_proceed',
-            () =>  navigateToPaymentScreen(_selectedAmount,_selectedPaymentMethod),
+            () => navigateToPaymentScreen(
+                _selectedAmount, _selectedPaymentMethod),
             false,
           ),
         ],
@@ -88,8 +89,8 @@ class HomeNavigationHandler with ErrorHandler {
             onSelectedLabel: (String value) {
               _selectedAmount = "Paying Custom Amount";
             },
-
-            outstandingAmount:outstandingAmount ?? "");
+            dailyRepayment: dailyRepaymentAmount ?? "0",
+            totalLoanAmount: totalLoanAmount ?? "0");
 
     _navigationManager.navigateTo(
       'bottomSheet/crayonPaymentBottomSheet',
@@ -98,11 +99,12 @@ class HomeNavigationHandler with ErrorHandler {
     );
   }
 
-  int removeCharacter(String amount){
+  int removeCharacter(String amount) {
     return int.parse(amount.replaceAll(",", "").replaceAll("TZSHS", "").trim());
   }
 
-  Future<void> navigateToPaymentScreen(String paymentPrice, String paymentMethod) async {
+  Future<void> navigateToPaymentScreen(
+      String paymentPrice, String paymentMethod) async {
     PaymentsScreenArgs paymentsScreenArgs = PaymentsScreenArgs(
       HS_LoanRepaymentMock,
       paymentMethod,
@@ -136,60 +138,65 @@ class HomeNavigationHandler with ErrorHandler {
     final CrayonPaymentBottomSheetState infoState =
         CrayonPaymentBottomSheetState.loanRepayment(
             loanRepayment: LoanRepayment(
-      label1: 'LR_paying_for',
-      label2: 'LR_device_loan',
-      label3: 'LR_amount_to_pay',
-      imageUrl: loanDetailResponse.data?.modelNumber == "A03 Core"
-          ? LD_loan_detail_banner_image2
-          : LD_loan_detail_banner_image,
-      infoMessage: '',
-      selectedAmount: _selectedAmount,
-      loanId: loanDetailResponse.data != null
-          ? loanDetailResponse.data?.loanId ?? "-"
-          : "648960359535569",
-      onPressedCustomAmount: () => navigateToCustomPayBottomSheet(
-          outstandingAmount: loanDetailResponse.data != null
-              ? loanDetailResponse.data!.repaymentFee! + " TZSHS"
-              : "0 TZSHS",),
-      onPressedPayNow: () {
-        navigateToPaymentScreen(_selectedAmount,_selectedMethod);
-      },
-      loanPaymentList: [
-        LoanPaymentMethod(
-            name: 'LR_due_amount',
-            amount: loanDetailResponse.data != null
-                ? loanDetailResponse.data!.repaymentFee! + " TZSHS"
-                : "0 TZSHS",
-            isSelected: false,
-            selectedOption: 'LR_due_amount'),
-        LoanPaymentMethod(
-            name: 'LR_daily_repayment',
-            amount: loanDetailResponse.data != null
-                ? loanDetailResponse.data!.dailyRepaymentAmount! + " TZSHS"
-                : "0 TZSHS",
-            isSelected: false,
-            selectedOption: 'LR_daily_repayment'),
-        LoanPaymentMethod(
-            name: 'LR_loan_amount',
-            amount: loanDetailResponse.data != null
-                ? loanDetailResponse.data!.totalAmountToBeRepaid! + " TZSHS"
-                : "0 TZSHS",
-            isSelected: false,
-            selectedOption: 'LR_loan_amount'),
-        LoanPaymentMethod(
-            name: 'LR_custom_amount',
-            amount: "",
-            isSelected: false,
-            selectedOption: 'LR_custom_amount'),
-      ],
-      onSelectedAmount: (String value) {
-        _selectedAmount = value;
-        CrayonPaymentLogger.logInfo(_selectedAmount);
-      },
-      onSelectedLabel: (String value) {
-        _selectedMethod = value;
-      }
-    ));
+                label1: 'LR_paying_for',
+                label2: 'LR_device_loan',
+                label3: 'LR_amount_to_pay',
+                imageUrl: loanDetailResponse.data?.modelNumber == "A03 Core"
+                    ? LD_loan_detail_banner_image2
+                    : LD_loan_detail_banner_image,
+                infoMessage: '',
+                selectedAmount: _selectedAmount,
+                loanId: loanDetailResponse.data != null
+                    ? loanDetailResponse.data?.loanId ?? "-"
+                    : "",
+                onPressedCustomAmount: () => navigateToCustomPayBottomSheet(
+                      totalLoanAmount: loanDetailResponse.data != null
+                          ? "${loanDetailResponse.data!.totalAmountToBeRepaid!} TZSHS"
+                          : "0 TZSHS",
+                      dailyRepaymentAmount: loanDetailResponse.data != null
+                          ? "${loanDetailResponse.data!.dailyRepaymentAmount!} TZSHS"
+                          : "0 TZSHS",
+                    ),
+                onPressedPayNow: () {
+                  navigateToPaymentScreen(_selectedAmount, _selectedMethod);
+                },
+                loanPaymentList: [
+                  LoanPaymentMethod(
+                      name: 'LR_due_amount',
+                      amount: loanDetailResponse.data != null
+                          ? loanDetailResponse.data!.repaymentFee! + " TZSHS"
+                          : "0 TZSHS",
+                      isSelected: false,
+                      selectedOption: 'LR_due_amount'),
+                  LoanPaymentMethod(
+                      name: 'LR_daily_repayment',
+                      amount: loanDetailResponse.data != null
+                          ? loanDetailResponse.data!.dailyRepaymentAmount! +
+                              " TZSHS"
+                          : "0 TZSHS",
+                      isSelected: false,
+                      selectedOption: 'LR_daily_repayment'),
+                  LoanPaymentMethod(
+                      name: 'LR_loan_amount',
+                      amount: loanDetailResponse.data != null
+                          ? loanDetailResponse.data!.totalAmountToBeRepaid! +
+                              " TZSHS"
+                          : "0 TZSHS",
+                      isSelected: false,
+                      selectedOption: 'LR_loan_amount'),
+                  LoanPaymentMethod(
+                      name: 'LR_custom_amount',
+                      amount: "",
+                      isSelected: false,
+                      selectedOption: 'LR_custom_amount'),
+                ],
+                onSelectedAmount: (String value) {
+                  _selectedAmount = value;
+                  CrayonPaymentLogger.logInfo(_selectedAmount);
+                },
+                onSelectedLabel: (String value) {
+                  _selectedMethod = value;
+                }));
 
     _navigationManager.navigateTo('bottomSheet/crayonPaymentBottomSheet',
         const NavigationType.bottomSheet(),
@@ -238,4 +245,3 @@ class HomeNavigationHandler with ErrorHandler {
     );
   }
 }
-
