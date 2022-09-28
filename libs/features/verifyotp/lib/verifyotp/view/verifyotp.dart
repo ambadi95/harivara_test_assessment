@@ -153,7 +153,7 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
                 height: 5,
               ),
               /*state.attemptsRemain != 3*/
-            attemptCount> 0 && attemptCount <3
+            attemptCount> 0 && attemptCount < 4  //3
                   ? _errorAndAttemptLeft(context, coordinator, state)
                   : const SizedBox(),
               const SizedBox(
@@ -228,12 +228,17 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
           alertMessage: 'VO_Incorrect_OTP_Alert_Msg'.tr,
           alertTitle: 'VO_Incorrect_OTP_Title'.tr,
           alertIcon: "assets/images/incorrect_otp.png",
+          onBottomButtonPress: (){
+            coordinator.backSignUp(widget.otpScreenArgs.userType);
+          },
+          bottomButtonText : 'VO_Back_button'.tr,
           onClose: () {
             coordinator.goBack();
           },
           packageName: ""),
       isScrollControlled: false,
       isDismissible: true,
+
     );
   }
 
@@ -431,6 +436,7 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
     VerifyOtpCoordinator coordinator,
     VerifyOtpStateReady state,
   ) {
+    print("how much attempts =====> $attemptCount");
     return Align(
       alignment: Alignment.center,
       child: Column(
@@ -438,9 +444,10 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
           CrayonPaymentText(
             key: const Key('verifyOtp incorrect otp'),
             text: TextUIDataModel(
-              /*state.attemptsRemain*/ attemptCount == 3
+              /*state.attemptsRemain*/ attemptCount == 1
                   ? 'VO_Incorrect_OTP'.tr
-                  : '${'VO_Incorrect_OTP_Title'.tr}. ${3-attemptCount} attempts remaining',
+                  //: '${'VO_Incorrect_OTP_Title'.tr}. ${3 - attemptCount} attempts remaining',
+                  : '${4 - attemptCount}' + " " + 'VO_attempts_remaining'.tr,
               styleVariant: CrayonPaymentTextStyleVariant.headline5,
               color: HS_NotificationCountColor,
               textAlign: TextAlign.center,
