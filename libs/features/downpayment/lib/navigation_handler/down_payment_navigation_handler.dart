@@ -40,8 +40,8 @@ class DownPaymentNavigationHandler with ErrorHandler {
 
   Future<void> navigateToPaymentFailureBottomSheet() async {
     final CrayonPaymentBottomSheetIcon icon =
-    CrayonPaymentBottomSheetExclamatoryIcon();
-    //CrayonPaymentBottomSheetWarningIcon();
+    //CrayonPaymentBottomSheetExclamatoryIcon();
+    CrayonPaymentBottomSheetWarningYellowIcon();
     final CrayonPaymentBottomSheetState infoState =
     CrayonPaymentBottomSheetState.infoState(
       buttonOptions: [

@@ -48,6 +48,14 @@ class CrayonPaymentBottomSheetExclamatoryIcon
         );
 }
 
+class CrayonPaymentBottomSheetWarningYellowIcon
+    extends CrayonPaymentBottomSheetIcon {
+  CrayonPaymentBottomSheetWarningYellowIcon()
+      : super(
+      'packages/widget_library/assets/images/waring_yellow.svg'
+  );
+}
+
 class CrayonPaymentBottomSheetWarningIcon extends CrayonPaymentBottomSheetIcon {
   CrayonPaymentBottomSheetWarningIcon()
       : super(
