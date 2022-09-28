@@ -52,7 +52,7 @@ class AlertBottomSheet extends StatelessWidget {
                   if (alertIcon != null)
                     Image.asset(
                       '$alertIcon',
-                      scale: 1.0,
+                      scale: 1.5,
                     ),
                   SizedBox(
                     height: 36,
@@ -65,6 +65,7 @@ class AlertBottomSheet extends StatelessWidget {
                       height: 1.15,
                       letterSpacing: 0.15,
                       fontWeight: FontWeight.w500,
+                      fontFamily: 'Montserrat',
                       color: Colors.black,
                     ),
                   ),
@@ -78,6 +79,7 @@ class AlertBottomSheet extends StatelessWidget {
                       fontSize: 14.0,
                       height: 1.15,
                       letterSpacing: 0.15,
+                      fontFamily: 'Montserrat',
                       fontWeight: FontWeight.w400,
                       color: Color(0xff676767),
                     ),

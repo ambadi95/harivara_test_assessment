@@ -165,9 +165,11 @@
   "VO_ResendNow": "Tuma Upya Sasa",
   "VO_Incorrect_OTP": "OTP si sahihi. Tafadhali jaribu tena.",
   "VO_Incorrect_OTP_Title": "OTP si sahihi",
-  "VO_Incorrect_OTP_Alert_Msg": "Umetumia majaribio yako yote. Tafadhali jisajili tena.",
+  "VO_Incorrect_OTP_Alert_Msg": "Umetumia majaribio yako yote.\nTafadhali jisajili tena.",
   "VO_resend_otp": "Tuma tena baada ya sekunde %s.",
   "VO_verify_button": "Thibitisha",
+  "VO_attempts_remaining" : "majaribio yaliyosalia",
+  "VO_Back_button" : "Rudi kwa Kujisajili",
 
   "SP_ni": "ni",
   "SP_bora": " Bora",

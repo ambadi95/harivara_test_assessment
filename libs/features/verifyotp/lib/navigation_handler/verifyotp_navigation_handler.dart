@@ -251,4 +251,11 @@ class VerifyOtpNavigationHandler with ErrorHandler {
     );
   }
 
+  Future<void> backToSignUp(UserType userType) async {
+    var arguments = WelcomeScreenArgs('', '', userType, false);
+    _navigationManager.navigateTo(
+        CrayonWelcomScreen.viewPath, const NavigationType.replace(),
+        arguments: arguments);
+  }
+
 }
