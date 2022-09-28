@@ -282,6 +282,7 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
         await _downPaymentUseCase.setPaymentFailed("Payment Failed");
         _navigationHandler.navigateToPaymentFailureBottomSheet();
       }else if (mkePayment.data!.status == "Downpayment_Success") {
+        await _downPaymentUseCase.setPaymentFailed("Payment Success");
         await _downPaymentUseCase.setPaymentStatusCalled('called');
         createLoan(context);
       }
