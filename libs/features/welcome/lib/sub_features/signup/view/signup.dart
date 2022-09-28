@@ -224,8 +224,9 @@ class _SignUpState extends State<SignUp> {
       linkTextStyle: SU_subtitle_terms_style,
       descriptionTextStyle: SU_subtitle_style,
       onLinkClicked: (text, link) {
+
         LauncherUtils.launcherUtilsInstance
-            .launchInBrowser(url: y9TermsCondition);
+            .launchInBrowser(url:  widget.signUpArguments.userType == UserType.Customer ? yTermsAndConditionsCustomer : yTermsAndConditionsAgent) ;
       },
     );
   }
