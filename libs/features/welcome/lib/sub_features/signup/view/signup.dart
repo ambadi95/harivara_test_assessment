@@ -557,7 +557,6 @@ class _SignUpState extends State<SignUp> {
       case 'SU_mobile_no_label':
         if (mobileNumberError.isNotEmpty ||
             mobileNumber.text.isNotEmpty == true) {
-          print("ffg");
           coordinator.isValidMobileNumber(mobileNumber.text);
         }
         break;

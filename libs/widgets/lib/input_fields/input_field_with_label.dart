@@ -67,8 +67,10 @@ class InputFieldWithLabel extends StatelessWidget {
           inputFormatters: inputFormatters,
           enabled: enabled,
           style: textInputStyle,
+
           decoration: InputDecoration(
             filled: true,
+
             fillColor: enabled == true
                 ? SU_button_text_color
                 : SU_border_color.withOpacity(0.3),

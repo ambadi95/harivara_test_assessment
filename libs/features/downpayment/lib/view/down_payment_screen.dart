@@ -336,10 +336,10 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
         onTap: () async {
-          if(state.loanApproved==1) {
+          if (state.loanApproved == 1) {
             await coordinator.navigateToScanCodeScreen(
-                   widget.downPaymentScreenArgs.deviceId,
-                   widget.downPaymentScreenArgs.modelName);
+                widget.downPaymentScreenArgs.deviceId,
+                widget.downPaymentScreenArgs.modelName);
           } else {
             _isBtnEnabled = false;
           }
@@ -505,7 +505,7 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
     String paymentFailed = await downPaymentCoordinator!.checkPaymentFailed();
     String paymentCalled = await downPaymentCoordinator!.getPaymentStatus();
 
-    String paymentStatusAPICalled="";
+    String paymentStatusAPICalled = "";
     // if (paymentFailed == "Payment Failed") {
     //   return;
     // }
@@ -515,22 +515,21 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
         _isBtnEnabled = true;
       });
     } else if (paymentFailed == "Payment Failed") {
-        return;
-       }else if (newState.loanApproved == 2) {
+      return;
+    } else if (newState.loanApproved == 2) {
       return;
     } else {
-
       if (newState.waitForPayment == 1 &&
           newState.paymentRequested == 1 &&
-          newState.createLoan == 0 && paymentStatusAPICalled == "") {
+          newState.createLoan == 0 &&
+          paymentStatusAPICalled == "") {
         Future.delayed(const Duration(seconds: 10), () {
-          paymentStatusAPICalled="true";
-          if(paymentCalled ==""){
+          paymentStatusAPICalled = "true";
+          if (paymentCalled == "") {
             downPaymentCoordinator!.checkPaymentStatus(context);
           }
         });
       }
     }
   }
-
 }
