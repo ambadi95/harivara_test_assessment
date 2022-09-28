@@ -11,6 +11,7 @@ abstract class ISignupService {
   static const signUpAgentIdentifier = 'signUpAgent';
   static const signUpCustomerByAgent = 'signUpCustomerByAgent';
   static const getCustomerDetailIdentifier = 'getCustomerDetail';
+  static const getCustomerDetailByNidaMobileAndIdentifier = 'getCustomerDetailMobileNida';
   static const getCustomerDetailByMobileNumberIdentifier = 'getCustomerDetailByMobileNumber';
   static const agentDetailIdentifier = 'getAgent';
   static const getTelcoListIdentifier = 'getTelcoList';
@@ -140,7 +141,7 @@ class SignupService implements ISignupService {
     };
     request.jsonBody = json.encode({
       'nidaNo': nindaNumber,
-      'mobileNo': '+255' + phoneNo,
+      'mobileNo': phoneNo,
     });
     return request;
   }
