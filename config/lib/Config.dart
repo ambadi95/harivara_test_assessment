@@ -46,6 +46,8 @@ const customerEndpoint = 'https://customerapi-stage.y9bank.com/customers/v1/';
 //  const customerEndpoint = 'https://y9-dev-capi.testmaya.com/customers/v1/';
 
 const y9TermsCondition = 'https://y9bank.com/term-of-services/';
+const yTermsAndConditionsAgent = 'https://y9bank.com/agents-terms/';
+const yTermsAndConditionsCustomer = 'https://y9bank.com/customers-terms-of-use/';
 
 // USERTYPE
 enum UserType { Customer, Agent, AgentCustomer }
