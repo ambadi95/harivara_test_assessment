@@ -3,6 +3,7 @@ import 'package:config/Colors.dart';
 import 'package:config/Config.dart';
 import 'package:config/Styles.dart';
 import 'package:core/view/base_view.dart';
+import 'package:widget_library/html/rich_text_description.dart';
 import 'package:widget_library/utils/app_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:passcode/passcode_module.dart';
@@ -305,7 +306,7 @@ class _KycCreditMainScreenState extends State<KycCreditMainScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _checkBoxText(context),
-              _termsText(context, coordinator),
+              //_termsText(context, coordinator),
             ],
           ),
         ),
@@ -316,12 +317,15 @@ class _KycCreditMainScreenState extends State<KycCreditMainScreen> {
   }
 
   Widget _checkBoxText(BuildContext context) {
-    return CrayonPaymentText(
+     return RichTextDescription(
       key: Key('${_identifier}_KYC_Validation_With_Main_CheckBox'),
-      text: const TextUIDataModel('KYC_Validation_With_Main_CheckBox',
-          styleVariant: CrayonPaymentTextStyleVariant.headline4,
-          color: Black,
-          fontWeight: FontWeight.w500),
+      description: 'KYC_Validation_With_Main_CheckBox'.tr,
+      linkTextStyle: SU_subtitle_terms_style,
+      descriptionTextStyle: SU_subtitle_style,
+      onLinkClicked: (text, link) {
+        LauncherUtils.launcherUtilsInstance
+            .launchInBrowser(url: yTermsAndConditionsCustomer) ;
+      },
     );
   }
 
@@ -332,7 +336,7 @@ class _KycCreditMainScreenState extends State<KycCreditMainScreen> {
     return InkWell(
       onTap: () {
         LauncherUtils.launcherUtilsInstance
-            .launchInBrowser(url: y9TermsCondition);
+            .launchInBrowser(url: yTermsAndConditionsCustomer);
         //coordinator.navigateToTermsCondtionsScreen();
       },
       child: Text('KYC_Terms_and_Condition'.tr, style: const TextStyle(
