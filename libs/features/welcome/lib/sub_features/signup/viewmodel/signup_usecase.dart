@@ -193,7 +193,6 @@ class SignupUseCase extends BaseDataProvider {
 
   Future<CustomerDetailResponse?> getCustomerDetails(String nindaNumber, String phoneNo,
       Function(String) onErrorCallback) async {
-
     return await executeApiRequest<CustomerDetailResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
@@ -202,7 +201,7 @@ class SignupUseCase extends BaseDataProvider {
           "nidaNo": nindaNumber.replaceAll("-", ""),
           "mobileNo": phoneNo.replaceAll(" ", "")
         },
-        serviceIdentifier: ISignupService.getCustomerDetailIdentifier,
+        serviceIdentifier: ISignupService.getCustomerDetailByNidaMobileAndIdentifier,
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {
           final data = responseData;
