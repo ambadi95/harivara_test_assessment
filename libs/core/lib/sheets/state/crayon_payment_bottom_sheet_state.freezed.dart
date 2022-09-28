@@ -92,11 +92,13 @@ mixin _$CrayonPaymentBottomSheetState {
     required TResult Function(LoanRepayment loanRepayment) loanRepayment,
     required TResult Function(
             String? title,
-            String outstandingAmount,
+            String totalLoanAmount,
+            String dailyRepayment,
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
             bool showError,
+            bool isMinimumAmount,
             dynamic Function(String) onSelectedLabel)
         customAmount,
   }) =>
@@ -176,11 +178,13 @@ mixin _$CrayonPaymentBottomSheetState {
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
     TResult Function(
             String? title,
-            String outstandingAmount,
+            String totalLoanAmount,
+            String dailyRepayment,
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
             bool showError,
+            bool isMinimumAmount,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) =>
@@ -260,11 +264,13 @@ mixin _$CrayonPaymentBottomSheetState {
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
     TResult Function(
             String? title,
-            String outstandingAmount,
+            String totalLoanAmount,
+            String dailyRepayment,
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
             bool showError,
+            bool isMinimumAmount,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
@@ -585,11 +591,13 @@ class _$SheetInfo extends SheetInfo {
     required TResult Function(LoanRepayment loanRepayment) loanRepayment,
     required TResult Function(
             String? title,
-            String outstandingAmount,
+            String totalLoanAmount,
+            String dailyRepayment,
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
             bool showError,
+            bool isMinimumAmount,
             dynamic Function(String) onSelectedLabel)
         customAmount,
   }) {
@@ -673,11 +681,13 @@ class _$SheetInfo extends SheetInfo {
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
     TResult Function(
             String? title,
-            String outstandingAmount,
+            String totalLoanAmount,
+            String dailyRepayment,
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
             bool showError,
+            bool isMinimumAmount,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) {
@@ -761,11 +771,13 @@ class _$SheetInfo extends SheetInfo {
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
     TResult Function(
             String? title,
-            String outstandingAmount,
+            String totalLoanAmount,
+            String dailyRepayment,
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
             bool showError,
+            bool isMinimumAmount,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
@@ -1088,11 +1100,13 @@ class _$SheetInfoWrap extends SheetInfoWrap {
     required TResult Function(LoanRepayment loanRepayment) loanRepayment,
     required TResult Function(
             String? title,
-            String outstandingAmount,
+            String totalLoanAmount,
+            String dailyRepayment,
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
             bool showError,
+            bool isMinimumAmount,
             dynamic Function(String) onSelectedLabel)
         customAmount,
   }) {
@@ -1176,11 +1190,13 @@ class _$SheetInfoWrap extends SheetInfoWrap {
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
     TResult Function(
             String? title,
-            String outstandingAmount,
+            String totalLoanAmount,
+            String dailyRepayment,
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
             bool showError,
+            bool isMinimumAmount,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) {
@@ -1264,11 +1280,13 @@ class _$SheetInfoWrap extends SheetInfoWrap {
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
     TResult Function(
             String? title,
-            String outstandingAmount,
+            String totalLoanAmount,
+            String dailyRepayment,
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
             bool showError,
+            bool isMinimumAmount,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
@@ -1529,11 +1547,13 @@ class _$SheetSelection extends SheetSelection {
     required TResult Function(LoanRepayment loanRepayment) loanRepayment,
     required TResult Function(
             String? title,
-            String outstandingAmount,
+            String totalLoanAmount,
+            String dailyRepayment,
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
             bool showError,
+            bool isMinimumAmount,
             dynamic Function(String) onSelectedLabel)
         customAmount,
   }) {
@@ -1616,11 +1636,13 @@ class _$SheetSelection extends SheetSelection {
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
     TResult Function(
             String? title,
-            String outstandingAmount,
+            String totalLoanAmount,
+            String dailyRepayment,
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
             bool showError,
+            bool isMinimumAmount,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) {
@@ -1703,11 +1725,13 @@ class _$SheetSelection extends SheetSelection {
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
     TResult Function(
             String? title,
-            String outstandingAmount,
+            String totalLoanAmount,
+            String dailyRepayment,
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
             bool showError,
+            bool isMinimumAmount,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
@@ -1991,11 +2015,13 @@ class _$SheetWaiting extends SheetWaiting {
     required TResult Function(LoanRepayment loanRepayment) loanRepayment,
     required TResult Function(
             String? title,
-            String outstandingAmount,
+            String totalLoanAmount,
+            String dailyRepayment,
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
             bool showError,
+            bool isMinimumAmount,
             dynamic Function(String) onSelectedLabel)
         customAmount,
   }) {
@@ -2079,11 +2105,13 @@ class _$SheetWaiting extends SheetWaiting {
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
     TResult Function(
             String? title,
-            String outstandingAmount,
+            String totalLoanAmount,
+            String dailyRepayment,
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
             bool showError,
+            bool isMinimumAmount,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) {
@@ -2167,11 +2195,13 @@ class _$SheetWaiting extends SheetWaiting {
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
     TResult Function(
             String? title,
-            String outstandingAmount,
+            String totalLoanAmount,
+            String dailyRepayment,
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
             bool showError,
+            bool isMinimumAmount,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
@@ -2410,11 +2440,13 @@ class _$SheetSimpleWaiting extends SheetSimpleWaiting {
     required TResult Function(LoanRepayment loanRepayment) loanRepayment,
     required TResult Function(
             String? title,
-            String outstandingAmount,
+            String totalLoanAmount,
+            String dailyRepayment,
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
             bool showError,
+            bool isMinimumAmount,
             dynamic Function(String) onSelectedLabel)
         customAmount,
   }) {
@@ -2497,11 +2529,13 @@ class _$SheetSimpleWaiting extends SheetSimpleWaiting {
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
     TResult Function(
             String? title,
-            String outstandingAmount,
+            String totalLoanAmount,
+            String dailyRepayment,
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
             bool showError,
+            bool isMinimumAmount,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) {
@@ -2584,11 +2618,13 @@ class _$SheetSimpleWaiting extends SheetSimpleWaiting {
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
     TResult Function(
             String? title,
-            String outstandingAmount,
+            String totalLoanAmount,
+            String dailyRepayment,
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
             bool showError,
+            bool isMinimumAmount,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
@@ -2833,11 +2869,13 @@ class _$SheetMultipleSelection extends SheetMultipleSelection {
     required TResult Function(LoanRepayment loanRepayment) loanRepayment,
     required TResult Function(
             String? title,
-            String outstandingAmount,
+            String totalLoanAmount,
+            String dailyRepayment,
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
             bool showError,
+            bool isMinimumAmount,
             dynamic Function(String) onSelectedLabel)
         customAmount,
   }) {
@@ -2920,11 +2958,13 @@ class _$SheetMultipleSelection extends SheetMultipleSelection {
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
     TResult Function(
             String? title,
-            String outstandingAmount,
+            String totalLoanAmount,
+            String dailyRepayment,
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
             bool showError,
+            bool isMinimumAmount,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) {
@@ -3007,11 +3047,13 @@ class _$SheetMultipleSelection extends SheetMultipleSelection {
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
     TResult Function(
             String? title,
-            String outstandingAmount,
+            String totalLoanAmount,
+            String dailyRepayment,
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
             bool showError,
+            bool isMinimumAmount,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
@@ -3266,11 +3308,13 @@ class _$SheetDatePicker extends SheetDatePicker {
     required TResult Function(LoanRepayment loanRepayment) loanRepayment,
     required TResult Function(
             String? title,
-            String outstandingAmount,
+            String totalLoanAmount,
+            String dailyRepayment,
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
             bool showError,
+            bool isMinimumAmount,
             dynamic Function(String) onSelectedLabel)
         customAmount,
   }) {
@@ -3353,11 +3397,13 @@ class _$SheetDatePicker extends SheetDatePicker {
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
     TResult Function(
             String? title,
-            String outstandingAmount,
+            String totalLoanAmount,
+            String dailyRepayment,
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
             bool showError,
+            bool isMinimumAmount,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) {
@@ -3441,11 +3487,13 @@ class _$SheetDatePicker extends SheetDatePicker {
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
     TResult Function(
             String? title,
-            String outstandingAmount,
+            String totalLoanAmount,
+            String dailyRepayment,
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
             bool showError,
+            bool isMinimumAmount,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
@@ -3764,11 +3812,13 @@ class _$SheetMultiFilters extends SheetMultiFilters {
     required TResult Function(LoanRepayment loanRepayment) loanRepayment,
     required TResult Function(
             String? title,
-            String outstandingAmount,
+            String totalLoanAmount,
+            String dailyRepayment,
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
             bool showError,
+            bool isMinimumAmount,
             dynamic Function(String) onSelectedLabel)
         customAmount,
   }) {
@@ -3852,11 +3902,13 @@ class _$SheetMultiFilters extends SheetMultiFilters {
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
     TResult Function(
             String? title,
-            String outstandingAmount,
+            String totalLoanAmount,
+            String dailyRepayment,
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
             bool showError,
+            bool isMinimumAmount,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) {
@@ -3940,11 +3992,13 @@ class _$SheetMultiFilters extends SheetMultiFilters {
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
     TResult Function(
             String? title,
-            String outstandingAmount,
+            String totalLoanAmount,
+            String dailyRepayment,
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
             bool showError,
+            bool isMinimumAmount,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
@@ -4205,11 +4259,13 @@ class _$CloseBottomSheet extends CloseBottomSheet {
     required TResult Function(LoanRepayment loanRepayment) loanRepayment,
     required TResult Function(
             String? title,
-            String outstandingAmount,
+            String totalLoanAmount,
+            String dailyRepayment,
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
             bool showError,
+            bool isMinimumAmount,
             dynamic Function(String) onSelectedLabel)
         customAmount,
   }) {
@@ -4292,11 +4348,13 @@ class _$CloseBottomSheet extends CloseBottomSheet {
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
     TResult Function(
             String? title,
-            String outstandingAmount,
+            String totalLoanAmount,
+            String dailyRepayment,
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
             bool showError,
+            bool isMinimumAmount,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) {
@@ -4380,11 +4438,13 @@ class _$CloseBottomSheet extends CloseBottomSheet {
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
     TResult Function(
             String? title,
-            String outstandingAmount,
+            String totalLoanAmount,
+            String dailyRepayment,
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
             bool showError,
+            bool isMinimumAmount,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
@@ -4706,11 +4766,13 @@ class _$AgentEnrollmentSheet extends AgentEnrollmentSheet {
     required TResult Function(LoanRepayment loanRepayment) loanRepayment,
     required TResult Function(
             String? title,
-            String outstandingAmount,
+            String totalLoanAmount,
+            String dailyRepayment,
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
             bool showError,
+            bool isMinimumAmount,
             dynamic Function(String) onSelectedLabel)
         customAmount,
   }) {
@@ -4794,11 +4856,13 @@ class _$AgentEnrollmentSheet extends AgentEnrollmentSheet {
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
     TResult Function(
             String? title,
-            String outstandingAmount,
+            String totalLoanAmount,
+            String dailyRepayment,
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
             bool showError,
+            bool isMinimumAmount,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) {
@@ -4882,11 +4946,13 @@ class _$AgentEnrollmentSheet extends AgentEnrollmentSheet {
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
     TResult Function(
             String? title,
-            String outstandingAmount,
+            String totalLoanAmount,
+            String dailyRepayment,
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
             bool showError,
+            bool isMinimumAmount,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
@@ -5240,11 +5306,13 @@ class _$ChangeLanguageBottomSheet extends ChangeLanguageBottomSheet {
     required TResult Function(LoanRepayment loanRepayment) loanRepayment,
     required TResult Function(
             String? title,
-            String outstandingAmount,
+            String totalLoanAmount,
+            String dailyRepayment,
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
             bool showError,
+            bool isMinimumAmount,
             dynamic Function(String) onSelectedLabel)
         customAmount,
   }) {
@@ -5328,11 +5396,13 @@ class _$ChangeLanguageBottomSheet extends ChangeLanguageBottomSheet {
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
     TResult Function(
             String? title,
-            String outstandingAmount,
+            String totalLoanAmount,
+            String dailyRepayment,
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
             bool showError,
+            bool isMinimumAmount,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) {
@@ -5423,11 +5493,13 @@ class _$ChangeLanguageBottomSheet extends ChangeLanguageBottomSheet {
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
     TResult Function(
             String? title,
-            String outstandingAmount,
+            String totalLoanAmount,
+            String dailyRepayment,
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
             bool showError,
+            bool isMinimumAmount,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
@@ -5672,11 +5744,13 @@ class _$LoanRepaymentBottomSheet extends LoanRepaymentBottomSheet {
     required TResult Function(LoanRepayment loanRepayment) loanRepayment,
     required TResult Function(
             String? title,
-            String outstandingAmount,
+            String totalLoanAmount,
+            String dailyRepayment,
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
             bool showError,
+            bool isMinimumAmount,
             dynamic Function(String) onSelectedLabel)
         customAmount,
   }) {
@@ -5759,11 +5833,13 @@ class _$LoanRepaymentBottomSheet extends LoanRepaymentBottomSheet {
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
     TResult Function(
             String? title,
-            String outstandingAmount,
+            String totalLoanAmount,
+            String dailyRepayment,
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
             bool showError,
+            bool isMinimumAmount,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) {
@@ -5846,11 +5922,13 @@ class _$LoanRepaymentBottomSheet extends LoanRepaymentBottomSheet {
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
     TResult Function(
             String? title,
-            String outstandingAmount,
+            String totalLoanAmount,
+            String dailyRepayment,
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
             bool showError,
+            bool isMinimumAmount,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
@@ -5945,11 +6023,13 @@ abstract class _$$CustomAmountBottomSheetCopyWith<$Res> {
       __$$CustomAmountBottomSheetCopyWithImpl<$Res>;
   $Res call(
       {String? title,
-      String outstandingAmount,
+      String totalLoanAmount,
+      String dailyRepayment,
       dynamic Function(String) enteredAmount,
       List<ButtonOptions>? buttonOptions,
       bool isAmountValidated,
       bool showError,
+      bool isMinimumAmount,
       dynamic Function(String) onSelectedLabel});
 }
 
@@ -5968,11 +6048,13 @@ class __$$CustomAmountBottomSheetCopyWithImpl<$Res>
   @override
   $Res call({
     Object? title = freezed,
-    Object? outstandingAmount = freezed,
+    Object? totalLoanAmount = freezed,
+    Object? dailyRepayment = freezed,
     Object? enteredAmount = freezed,
     Object? buttonOptions = freezed,
     Object? isAmountValidated = freezed,
     Object? showError = freezed,
+    Object? isMinimumAmount = freezed,
     Object? onSelectedLabel = freezed,
   }) {
     return _then(_$CustomAmountBottomSheet(
@@ -5980,9 +6062,13 @@ class __$$CustomAmountBottomSheetCopyWithImpl<$Res>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String?,
-      outstandingAmount: outstandingAmount == freezed
-          ? _value.outstandingAmount
-          : outstandingAmount // ignore: cast_nullable_to_non_nullable
+      totalLoanAmount: totalLoanAmount == freezed
+          ? _value.totalLoanAmount
+          : totalLoanAmount // ignore: cast_nullable_to_non_nullable
+              as String,
+      dailyRepayment: dailyRepayment == freezed
+          ? _value.dailyRepayment
+          : dailyRepayment // ignore: cast_nullable_to_non_nullable
               as String,
       enteredAmount: enteredAmount == freezed
           ? _value.enteredAmount
@@ -6000,6 +6086,10 @@ class __$$CustomAmountBottomSheetCopyWithImpl<$Res>
           ? _value.showError
           : showError // ignore: cast_nullable_to_non_nullable
               as bool,
+      isMinimumAmount: isMinimumAmount == freezed
+          ? _value.isMinimumAmount
+          : isMinimumAmount // ignore: cast_nullable_to_non_nullable
+              as bool,
       onSelectedLabel: onSelectedLabel == freezed
           ? _value.onSelectedLabel
           : onSelectedLabel // ignore: cast_nullable_to_non_nullable
@@ -6013,11 +6103,13 @@ class __$$CustomAmountBottomSheetCopyWithImpl<$Res>
 class _$CustomAmountBottomSheet extends CustomAmountBottomSheet {
   const _$CustomAmountBottomSheet(
       {required this.title,
-      required this.outstandingAmount,
+      required this.totalLoanAmount,
+      required this.dailyRepayment,
       required this.enteredAmount,
       final List<ButtonOptions>? buttonOptions,
       this.isAmountValidated = false,
       this.showError = false,
+      this.isMinimumAmount = false,
       required this.onSelectedLabel})
       : _buttonOptions = buttonOptions,
         super._();
@@ -6025,7 +6117,9 @@ class _$CustomAmountBottomSheet extends CustomAmountBottomSheet {
   @override
   final String? title;
   @override
-  final String outstandingAmount;
+  final String totalLoanAmount;
+  @override
+  final String dailyRepayment;
   @override
   final dynamic Function(String) enteredAmount;
   final List<ButtonOptions>? _buttonOptions;
@@ -6044,11 +6138,14 @@ class _$CustomAmountBottomSheet extends CustomAmountBottomSheet {
   @JsonKey()
   final bool showError;
   @override
+  @JsonKey()
+  final bool isMinimumAmount;
+  @override
   final dynamic Function(String) onSelectedLabel;
 
   @override
   String toString() {
-    return 'CrayonPaymentBottomSheetState.customAmount(title: $title, outstandingAmount: $outstandingAmount, enteredAmount: $enteredAmount, buttonOptions: $buttonOptions, isAmountValidated: $isAmountValidated, showError: $showError, onSelectedLabel: $onSelectedLabel)';
+    return 'CrayonPaymentBottomSheetState.customAmount(title: $title, totalLoanAmount: $totalLoanAmount, dailyRepayment: $dailyRepayment, enteredAmount: $enteredAmount, buttonOptions: $buttonOptions, isAmountValidated: $isAmountValidated, showError: $showError, isMinimumAmount: $isMinimumAmount, onSelectedLabel: $onSelectedLabel)';
   }
 
   @override
@@ -6058,7 +6155,9 @@ class _$CustomAmountBottomSheet extends CustomAmountBottomSheet {
             other is _$CustomAmountBottomSheet &&
             const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality()
-                .equals(other.outstandingAmount, outstandingAmount) &&
+                .equals(other.totalLoanAmount, totalLoanAmount) &&
+            const DeepCollectionEquality()
+                .equals(other.dailyRepayment, dailyRepayment) &&
             (identical(other.enteredAmount, enteredAmount) ||
                 other.enteredAmount == enteredAmount) &&
             const DeepCollectionEquality()
@@ -6066,6 +6165,8 @@ class _$CustomAmountBottomSheet extends CustomAmountBottomSheet {
             const DeepCollectionEquality()
                 .equals(other.isAmountValidated, isAmountValidated) &&
             const DeepCollectionEquality().equals(other.showError, showError) &&
+            const DeepCollectionEquality()
+                .equals(other.isMinimumAmount, isMinimumAmount) &&
             (identical(other.onSelectedLabel, onSelectedLabel) ||
                 other.onSelectedLabel == onSelectedLabel));
   }
@@ -6074,11 +6175,13 @@ class _$CustomAmountBottomSheet extends CustomAmountBottomSheet {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(title),
-      const DeepCollectionEquality().hash(outstandingAmount),
+      const DeepCollectionEquality().hash(totalLoanAmount),
+      const DeepCollectionEquality().hash(dailyRepayment),
       enteredAmount,
       const DeepCollectionEquality().hash(_buttonOptions),
       const DeepCollectionEquality().hash(isAmountValidated),
       const DeepCollectionEquality().hash(showError),
+      const DeepCollectionEquality().hash(isMinimumAmount),
       onSelectedLabel);
 
   @JsonKey(ignore: true)
@@ -6164,16 +6267,26 @@ class _$CustomAmountBottomSheet extends CustomAmountBottomSheet {
     required TResult Function(LoanRepayment loanRepayment) loanRepayment,
     required TResult Function(
             String? title,
-            String outstandingAmount,
+            String totalLoanAmount,
+            String dailyRepayment,
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
             bool showError,
+            bool isMinimumAmount,
             dynamic Function(String) onSelectedLabel)
         customAmount,
   }) {
-    return customAmount(title, outstandingAmount, enteredAmount, buttonOptions,
-        isAmountValidated, showError, onSelectedLabel);
+    return customAmount(
+        title,
+        totalLoanAmount,
+        dailyRepayment,
+        enteredAmount,
+        buttonOptions,
+        isAmountValidated,
+        showError,
+        isMinimumAmount,
+        onSelectedLabel);
   }
 
   @override
@@ -6252,16 +6365,26 @@ class _$CustomAmountBottomSheet extends CustomAmountBottomSheet {
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
     TResult Function(
             String? title,
-            String outstandingAmount,
+            String totalLoanAmount,
+            String dailyRepayment,
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
             bool showError,
+            bool isMinimumAmount,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
   }) {
-    return customAmount?.call(title, outstandingAmount, enteredAmount,
-        buttonOptions, isAmountValidated, showError, onSelectedLabel);
+    return customAmount?.call(
+        title,
+        totalLoanAmount,
+        dailyRepayment,
+        enteredAmount,
+        buttonOptions,
+        isAmountValidated,
+        showError,
+        isMinimumAmount,
+        onSelectedLabel);
   }
 
   @override
@@ -6340,18 +6463,28 @@ class _$CustomAmountBottomSheet extends CustomAmountBottomSheet {
     TResult Function(LoanRepayment loanRepayment)? loanRepayment,
     TResult Function(
             String? title,
-            String outstandingAmount,
+            String totalLoanAmount,
+            String dailyRepayment,
             dynamic Function(String) enteredAmount,
             List<ButtonOptions>? buttonOptions,
             bool isAmountValidated,
             bool showError,
+            bool isMinimumAmount,
             dynamic Function(String) onSelectedLabel)?
         customAmount,
     required TResult orElse(),
   }) {
     if (customAmount != null) {
-      return customAmount(title, outstandingAmount, enteredAmount,
-          buttonOptions, isAmountValidated, showError, onSelectedLabel);
+      return customAmount(
+          title,
+          totalLoanAmount,
+          dailyRepayment,
+          enteredAmount,
+          buttonOptions,
+          isAmountValidated,
+          showError,
+          isMinimumAmount,
+          onSelectedLabel);
     }
     return orElse();
   }
@@ -6424,21 +6557,25 @@ class _$CustomAmountBottomSheet extends CustomAmountBottomSheet {
 abstract class CustomAmountBottomSheet extends CrayonPaymentBottomSheetState {
   const factory CustomAmountBottomSheet(
           {required final String? title,
-          required final String outstandingAmount,
+          required final String totalLoanAmount,
+          required final String dailyRepayment,
           required final dynamic Function(String) enteredAmount,
           final List<ButtonOptions>? buttonOptions,
           final bool isAmountValidated,
           final bool showError,
+          final bool isMinimumAmount,
           required final dynamic Function(String) onSelectedLabel}) =
       _$CustomAmountBottomSheet;
   const CustomAmountBottomSheet._() : super._();
 
   String? get title;
-  String get outstandingAmount;
+  String get totalLoanAmount;
+  String get dailyRepayment;
   dynamic Function(String) get enteredAmount;
   List<ButtonOptions>? get buttonOptions;
   bool get isAmountValidated;
   bool get showError;
+  bool get isMinimumAmount;
   dynamic Function(String) get onSelectedLabel;
   @JsonKey(ignore: true)
   _$$CustomAmountBottomSheetCopyWith<_$CustomAmountBottomSheet> get copyWith =>

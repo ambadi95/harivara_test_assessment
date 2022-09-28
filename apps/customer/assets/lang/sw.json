@@ -274,7 +274,9 @@
   "LR_NO_Outstanding_amount" : "Hakuna Kiasi Kinachodaiwa Kulipa",
 
   "CA_custom_amount" : "Lipa Kiasi Maalum",
-  "CA_Warning"  : "Weka Kiasi Unachohitaji ili Chini ya Kiasi Kinachodaiwa",
+  "CA_Warning"  : "Weka Kiasi Unachohitaji kiwe chini ya Jumla ya Kiasi cha Mkopo",
+  "CA_Min_Warning"  : "Thamani ya Chini Inapaswa kuwa {}",
+
   "CA_amount" : "Weka kiasi",
 
 
