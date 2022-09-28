@@ -270,7 +270,8 @@
 
   "CA_custom_amount" : "Pay Custom Amount",
   "CA_amount" : "Enter the amount",
-  "CA_Warning"  : "Enter Amount Need to below Outstanding Amount",
+  "CA_Warning"  : "Enter Amount Need to be below Total Loan Amount",
+  "CA_Min_Warning"  : "Minimum Value Should be {}",
 
 
   "RP_success_message": "Passcode has been updated successfully",

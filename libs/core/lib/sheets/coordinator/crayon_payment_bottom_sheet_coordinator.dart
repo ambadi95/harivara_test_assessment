@@ -29,7 +29,8 @@ class CrayonPaymentBottomSheetCoordinator
           await _executeCallback(immediateCallback);
         }
       },
-      infoState: (_,isSvg, __, ___, additionalText, ____, autoCloseAfter, _____) {
+      infoState:
+          (_, isSvg, __, ___, additionalText, ____, autoCloseAfter, _____) {
         state = sheetState;
         if (autoCloseAfter != null) {
           _startTimerToClose(autoCloseAfter);
@@ -250,7 +251,7 @@ class CrayonPaymentBottomSheetCoordinator
     });
   }
 
-  void choosePaymentMethod(LoanPaymentMethod paymentMethod,String amount) {
+  void choosePaymentMethod(LoanPaymentMethod paymentMethod, String amount) {
     final currentState = state as LoanRepaymentBottomSheet;
     currentState.loanRepayment.loanPaymentList.forEach((element) {
       if (element == paymentMethod) {
@@ -260,10 +261,17 @@ class CrayonPaymentBottomSheetCoordinator
       }
     });
 
+
     if (paymentMethod.amount.isNotEmpty) {
-      currentState.loanRepayment.isAmountSelected = true;
-      currentState.loanRepayment.onSelectedAmount(paymentMethod.amount);
-      currentState.loanRepayment.onSelectedLabel(paymentMethod.name);
+      if(paymentMethod.amount == '0.0 TZSHS'){
+        currentState.loanRepayment.isAmountSelected = false;
+      }else{
+        currentState.loanRepayment.isAmountSelected = true;
+        currentState.loanRepayment.isPayNowSelected = false;
+        currentState.loanRepayment.onSelectedAmount(paymentMethod.amount);
+        currentState.loanRepayment.onSelectedLabel(paymentMethod.name);
+      }
+
     } else {
       currentState.loanRepayment.isAmountSelected = false;
       currentState.loanRepayment.isPayNowSelected = true;
@@ -274,27 +282,33 @@ class CrayonPaymentBottomSheetCoordinator
     );
   }
 
-  void checkAmount(String amount,) {
+  void checkAmount(
+    String amount,
+  ) {
     final currentState = state as CustomAmountBottomSheet;
-    double outstandingAmount = removeCharacter(currentState.outstandingAmount);
-    double enterAmount = removeCharacter(amount);
-    if (outstandingAmount > enterAmount) {
+    double totalLoanAmount = removeCharacter(currentState.totalLoanAmount);
+    double enterAmount = 0;
+    if(amount.isNotEmpty){
+      enterAmount = removeCharacter(amount);
+    }
+    double limitValue = removeCharacter(currentState.dailyRepayment);;
+    if (enterAmount > totalLoanAmount) {
+      state = currentState.copyWith(
+          isAmountValidated: false, showError: true, isMinimumAmount: false);
+    } else if (enterAmount < limitValue) {
+      state = currentState.copyWith(
+          isAmountValidated: false, isMinimumAmount: true, showError: false);
+    } else {
       currentState.enteredAmount(amount);
       state = currentState.copyWith(
-        isAmountValidated: true,
-        showError: false
-      );
-    }else{
-      state = currentState.copyWith(
-        isAmountValidated: false,
-        showError: true
-      );
+          isAmountValidated: true, isMinimumAmount: false, showError: false);
     }
   }
+
+
 
   double removeCharacter(String amount) {
     return double.parse(
         amount.replaceAll(",", "").replaceAll("TZSHS", "").trim());
   }
-
 }

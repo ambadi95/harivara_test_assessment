@@ -75,7 +75,7 @@ class BottomSheetLoanRepayment extends StatelessWidget {
                   buttonColor: _sheetState.loanRepayment.isAmountSelected
                       ? LR_ColorDA2228
                       : LR_Color9CA3AF,
-                  onPressed: _sheetState.loanRepayment.onPressedPayNow,
+                  onPressed: _sheetState.loanRepayment.isAmountSelected ?_sheetState.loanRepayment.onPressedPayNow : (){},
                 )
               : CrayonPaymentDockedButton(
                   key: const Key('bottomButtonDocked'),
