@@ -13,6 +13,7 @@ import 'package:widget_library/buttons/docked_button.dart';
 import 'package:get/get.dart';
 import 'package:widget_library/buttons/text_button.dart';
 import 'package:widget_library/colors/crayon_payment_colors.dart';
+import 'package:widget_library/formatter/currency_input_formatter.dart';
 import 'package:widget_library/formatter/nida_input_formatter.dart';
 import 'package:widget_library/html/rich_text_description.dart';
 import 'package:widget_library/input_fields/input_field_with_label.dart';
@@ -108,8 +109,11 @@ class BottomSheetCustomAmount extends StatelessWidget {
       hintText: 'CA_amount'.tr,
       key: const Key('mobileNumberTextField'),
       inputFormatters: <TextInputFormatter>[
-        LengthLimitingTextInputFormatter(10),      ],
+        LengthLimitingTextInputFormatter(10),
+        CurrencyInputFormatter()
+      ],
       keyboardType: TextInputType.number,
+
       onChanged: (value) {
           coordinator.checkAmount(value);
         //  CrayonPaymentLogger.logInfo(_selectedAmount);

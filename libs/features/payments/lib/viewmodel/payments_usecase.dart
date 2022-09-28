@@ -37,11 +37,10 @@ class PaymentsUseCase extends BaseDataProvider {
   ) async {
     String mobileNO = await getMobileNumber();
     print(mobileNO);
-    mobileNO = mobileNO.substring(4, mobileNO.length);
     int customerId = int.parse(await getCustomerId());
 
     Map<String, String> params = {
-      "amountPaid": amount,
+      "amountPaid": amount.trim(),
       "customerId": customerId.toString(),
       "mobileNumber": mobileNO,
       "paymentType": paymentType
