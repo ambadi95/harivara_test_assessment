@@ -54,13 +54,8 @@ class HomeCoordinator extends BaseViewModel<HomeScreenState> {
     if (loanDetailResponse.data == null) {
       _navigationHandler.navigateToLoanDetailsSheetCustomer('LR_NO_LOAN_FOUND');
     } else {
-      if (loanDetailResponse.data?.repaymentFee == "0.0") {
-        _navigationHandler
-            .navigateToLoanDetailsSheetCustomer('LR_NO_Outstanding_amount');
-      } else {
         _navigationHandler.navigateToLoanRepaymentBottomSheet(
             "message", "buttonLabel", context, loanDetailResponse);
-      }
     }
   }
 
