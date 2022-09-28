@@ -336,23 +336,27 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
         onTap: () async {
-          // if(state.loanApproved==1) {
-          //   await coordinator.navigateToScanCodeScreen(
-          //       widget.downPaymentScreenArgs.deviceId);
-          // }
           if(state.loanApproved==1) {
-            _isBtnEnabled = true;
-              if(_isBtnEnabled){
-              await coordinator.navigateToScanCodeScreen(
-                  widget.downPaymentScreenArgs.deviceId,
-                  widget.downPaymentScreenArgs.modelName);
-            } else {
-                _isBtnEnabled = false;
-              }
-          }
-          else {
+            await coordinator.navigateToScanCodeScreen(
+                   widget.downPaymentScreenArgs.deviceId,
+                   widget.downPaymentScreenArgs.modelName);
+          } else {
             _isBtnEnabled = false;
           }
+
+          // if(state.loanApproved==1) {
+          //   _isBtnEnabled = true;
+          //     if(_isBtnEnabled){
+          //     await coordinator.navigateToScanCodeScreen(
+          //         widget.downPaymentScreenArgs.deviceId,
+          //         widget.downPaymentScreenArgs.modelName);
+          //   } else {
+          //       _isBtnEnabled = false;
+          //     }
+          // }
+          // else {
+          //   _isBtnEnabled = false;
+          // }
         },
         child: Container(
           width: double.infinity,
@@ -502,15 +506,17 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
     String paymentCalled = await downPaymentCoordinator!.getPaymentStatus();
 
     String paymentStatusAPICalled="";
-    if (paymentFailed == "Payment Failed") {
-      return;
-    }
+    // if (paymentFailed == "Payment Failed") {
+    //   return;
+    // }
 
     if (newState.loanApproved == 1) {
       setState(() {
         _isBtnEnabled = true;
       });
-    } else if (newState.loanApproved == 2) {
+    } else if (paymentFailed == "Payment Failed") {
+        return;
+       }else if (newState.loanApproved == 2) {
       return;
     } else {
 
