@@ -46,6 +46,10 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
     );
   }
 
+  Future<void> backSignUp(UserType userType) async {
+    await _navigationHandler.backToSignUp(userType);
+  }
+
   String otp = '';
 
   Future<void> generateOtp(String id, UserType userType,
