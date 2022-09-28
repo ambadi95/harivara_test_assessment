@@ -508,8 +508,9 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
                     ? SU_button_color
                     : SU_button_color.withOpacity(.30),
                 onChanged: (value) {
-                  radioValue = value as int;
-                  setState(() {});
+                  evalutaeMPesa ? null : value = 0;
+                  // radioValue = value as int;
+                  // setState(() {});
                 },
               )
             ],

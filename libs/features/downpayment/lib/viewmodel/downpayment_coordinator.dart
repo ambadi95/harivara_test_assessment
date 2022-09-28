@@ -359,13 +359,18 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
 
 
   _showAlertForErrorMessage(String errorMessage, bool isLoanCreationTitle,{bool? isPaymentError = false} ) {
-
     Get.bottomSheet(
       AlertBottomSheet(
-          alertMessage: errorMessage,
+          alertMessage: 'PF_desc'.tr,
+          //alertMessage: errorMessage,
           alertTitle: isPaymentError == true ? 'Error' : isLoanCreationTitle ? 'Offline_loan_approval_error_msg'.tr : 'Offline_loan_creation_error_msg'.tr,
           alertIcon: "assets/images/alert_icon.png",
-          onClose: () {
+          // onClose: () {
+          //   _navigationHandler.goBack();
+          // },
+          additionalText: 'PF_customer_support'.tr,
+          bottomButtonText: 'Back_To_Home'.tr,
+          onBottomButtonPress: (){
             _navigationHandler.goBack();
           },
           packageName: ""),

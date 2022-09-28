@@ -15,6 +15,7 @@ class AlertBottomSheet extends StatelessWidget {
   final Function? onClose;
   final Function? onBottomButtonPress;
   final String? bottomButtonText;
+  final String? additionalText;
 
   const AlertBottomSheet({
     Key? key,
@@ -25,6 +26,7 @@ class AlertBottomSheet extends StatelessWidget {
     this.onClose,
     this.onBottomButtonPress,
     this.bottomButtonText,
+    this.additionalText
   }) : super(key: key);
 
   @override
@@ -74,6 +76,22 @@ class AlertBottomSheet extends StatelessWidget {
                   ),
                   Text(
                     alertMessage.tr,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 14.0,
+                      height: 1.15,
+                      letterSpacing: 0.15,
+                      fontFamily: 'Montserrat',
+                      fontWeight: FontWeight.w400,
+                      color: Color(0xff676767),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  if (additionalText != null)
+                    Text(
+                    '$additionalText',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 14.0,

@@ -41,6 +41,7 @@ class DownPaymentNavigationHandler with ErrorHandler {
   Future<void> navigateToPaymentFailureBottomSheet() async {
     final CrayonPaymentBottomSheetIcon icon =
     CrayonPaymentBottomSheetExclamatoryIcon();
+    //CrayonPaymentBottomSheetWarningIcon();
     final CrayonPaymentBottomSheetState infoState =
     CrayonPaymentBottomSheetState.infoState(
       buttonOptions: [
@@ -50,10 +51,9 @@ class DownPaymentNavigationHandler with ErrorHandler {
       ],
       disableCloseButton: true,
       bottomSheetIcon: icon,
-      additionalText: [],
+      additionalText: ['PF_customer_support'.tr],
       title: 'PF_title'.tr,
-      subtitle:
-      "PF_desc".tr,
+      subtitle: "PF_desc".tr,
     );
 
     _navigationManager.navigateTo(
