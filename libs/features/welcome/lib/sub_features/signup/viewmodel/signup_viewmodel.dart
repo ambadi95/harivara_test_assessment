@@ -1,7 +1,7 @@
 class SignupViewModel {
   bool isValidNidaNumber(String nidaNumber) {
     // Actual Nida Validation is 20, Here in UI We Format the NIDA number with 3 dashes ("-"), so the length we check is 20+3 = 23.
-    var valid = nidaNumber.length == 23;
+    var valid = nidaNumber.length == 20;
     return valid;
   }
 
