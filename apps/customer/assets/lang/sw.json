@@ -218,6 +218,9 @@
   "ST_term_condition" : "Sheria na Masharti",
   "ST_call_support" : "Piga simu kwa Usaidizi wa Wateja",
   "ST_contact_text" : "Unahitaji Msaada au Ikiwa Una Swali Lolote Wasiliana Nasi kwa {}",
+  "ST_sign_out_alert" : "Je, una uhakika unataka\n toka",
+  "ST_cancel" : "Ghairi",
+
 
   "PP_Daily_Repayment_Title" : "Malipo ya Kila Siku",
   "PP_Airtel_Pay" : "Airtel Pay",

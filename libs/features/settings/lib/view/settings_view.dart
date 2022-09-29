@@ -4,6 +4,7 @@ import 'package:core/view/base_view.dart';
 import 'package:flutter/material.dart';
 import 'package:settings/settings_model.dart';
 import 'package:settings/view_model/settings_coordinator.dart';
+import 'package:widget_library/alert_dialogue/crayon_payment_alert_dialogue.dart';
 import 'package:widget_library/page_header/text_ui_data_model.dart';
 import 'package:widget_library/static_text/crayon_payment_text.dart';
 import 'package:get/get.dart';
@@ -93,7 +94,10 @@ class _SettingsState extends State<Settings> {
       child: Center(
         child: CrayonPaymentText(
           key: Key('${widget._identifier}_ST_contact'),
-          text: TextUIDataModel('ST_contact_text'.tr.replaceAll("{}", LauncherUtils.CONTACT_NUMBER),
+          text: TextUIDataModel(
+              'ST_contact_text'
+                  .tr
+                  .replaceAll("{}", LauncherUtils.CONTACT_NUMBER),
               styleVariant: CrayonPaymentTextStyleVariant.headline5,
               color: VO_ResendTextColor,
               fontWeight: FontWeight.w100,
@@ -165,7 +169,8 @@ class _SettingsState extends State<Settings> {
             () async {
           coordinator.navigateToBrowser();
         }),
-        _buildOptionsWithoutArrow(context, 'ST_call_support', ST_CallSupport, () async {
+        _buildOptionsWithoutArrow(context, 'ST_call_support', ST_CallSupport,
+            () async {
           LauncherUtils.launcherUtilsInstance
               .makePhoneCall(phoneNumber: LauncherUtils.CONTACT_NUMBER);
         }),
@@ -175,11 +180,16 @@ class _SettingsState extends State<Settings> {
 
   Widget _buildSignout(coordinator) {
     return _buildOptions(context, 'ST_sign_out', ST_sign_out, () async {
-      await coordinator.signOut(widget.screenArgs.userType);
+      coordinator.signOut(widget.screenArgs.userType);
+     // bool? isLogoutClicked =  await _showLogoutAlert();
+     // if(isLogoutClicked!=null && isLogoutClicked){
+     //   coordinator.signOut(widget.screenArgs.userType);
+     // }
     });
   }
 
-  Widget _buildOptionsWithoutArrow(context, String label, String image, Function() onTap) {
+  Widget _buildOptionsWithoutArrow(
+      context, String label, String image, Function() onTap) {
     return InkWell(
       onTap: onTap,
       child: Padding(
@@ -243,5 +253,13 @@ class _SettingsState extends State<Settings> {
         ),
       ),
     );
+  }
+
+  Future<bool?> _showLogoutAlert() {
+    return CrayonPaymentAlertDialogue.showMaterialAlert(
+        context: context,
+        content: 'ST_sign_out_alert'.tr,
+        cancelActionText: "ST_cancel".tr,
+        defaultActionText: "ST_sign_out".tr);
   }
 }
