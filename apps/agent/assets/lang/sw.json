@@ -273,6 +273,8 @@
   "DLC_pay_now" : "LIPA sasa",
   "DLC_payment_text" : "malipo ya TZSH\nombi limetumwa kwa Y9",
   "DLC_device_stock_availability" : "Device Stock Availability",
+  "DLC_please_confirm_availability" : "Please confirm the availability of",
+  "DLC_inventory_continue_joining_fee_payment" : "in your inventory to continue\n         with ' Joining Fee Payment '",
   "DLC_device_stock_availability_desc" : "Please confirm the availability of %{Samsung - A03 Core}% in your inventory to continue with 'Joining Fee Payment'",
   "DLC_stock_available" : "Stock Available",
   "DLC_out_of_stock_joining_fee"  : "Out of Stock - Joining Fee Payment",

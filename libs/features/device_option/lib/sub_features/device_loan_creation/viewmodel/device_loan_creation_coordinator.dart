@@ -62,5 +62,19 @@ class DeviceLoanCreationCoordinator
   Future<void> navigateToOtherScreen(int deviceId, String modelName, double amount, String image) async {
     await _navigationHandler.navigateToOtherPaymentScreen(deviceId, modelName, amount,image);
   }
+  Future<void> showErrorBottomSheet(
+      Widget errorWidget, BuildContext context) async {
+      await _navigationHandler.showErrorBottomSheet(errorWidget, context);
 
+
+  }
+
+  void navigateStockCheck() async {
+
+    await _navigationHandler.navigateToStockAvailability("Device Stock Availability");
+  }
+
+  void goHomeScreen(){
+    _navigationHandler.navigateToAgentHomeScreen();
+  }
 }
