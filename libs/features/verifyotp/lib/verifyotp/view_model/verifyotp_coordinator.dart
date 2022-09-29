@@ -257,8 +257,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
               enterOtp, otpScreenArgs.userType, event, (p0) => null);
           if (response!.data!.status == "success") {
             state = currentState.copyWith(isLoading: false);
-            _navigationHandler.navigateToDestinationPath(
-                destinationPath, userType);
+            _navigationHandler.navigateToTermsAndConditionsScreen(userType, false);
           } else {
             otpController.text = "";
             state = currentState.copyWith(isLoading: false);
@@ -318,7 +317,8 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
             enterOtp, otpScreenArgs.userType, event, (p0) => null);
         if (response!.data!.status == "success") {
           state = currentState.copyWith(isLoading: false);
-          _navigationHandler.openForNewPasscodeAgentCustomer(userType);
+          _navigationHandler.navigateToTermsAndConditionsScreen(userType, true);
+          //_navigationHandler.openForNewPasscodeAgentCustomer(userType);
         } else {
           otpController.text = "";
           state = currentState.copyWith(isLoading: false);
@@ -421,7 +421,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
       WorkFlowStatusResponse workFlowStatusResponse, String status) async {
     switch (status) {
       case Initiated:
-        _navigationHandler.navigateToDetailScreen();
+        _navigationHandler.navigateToTermsAndConditionsScreen(UserType.AgentCustomer, false);
         break;
       case Enrolled:
         _navigationHandler.navigateToDetailScreen();

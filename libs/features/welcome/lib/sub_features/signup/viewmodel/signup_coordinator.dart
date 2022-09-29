@@ -82,8 +82,7 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
           await _signupUseCase.saveAgentDetails(nindaNumber, agentId);
 
           state = const SignUpState.initialState();
-          _navigationHandler
-              .navigateToAgentDetailScreen(signUpArguments.userType);
+          _navigationHandler.navigateToTermsAndConditionsScreen(signUpArguments.userType);
         } else {
           state = const SignUpState.initialState();
           state = SignUpState.agentIdError(agentResponse!.message!);
