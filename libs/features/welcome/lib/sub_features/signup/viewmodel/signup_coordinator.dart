@@ -291,8 +291,7 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
     }
 
     bool isValidNidaNumber(String nidaNumber) {
-//replacing the - in order to check the valid nida number it should be of 20 character length
-      bool result = _signupUseCase.isValidNINDAnumber(nidaNumber.replaceAll("-", ""));
+      bool result = _signupUseCase.isValidNINDAnumber(nidaNumber);
       if (!result) {
         state = const SignUpState.nindaNumberError('SU_title_error_text');
       } else {
