@@ -1,6 +1,7 @@
 class SignupViewModel {
   bool isValidNidaNumber(String nidaNumber) {
-    var valid = nidaNumber.length == 20;
+    print(nidaNumber);
+    var valid = nidaNumber.length == 23;
     return valid;
   }
 

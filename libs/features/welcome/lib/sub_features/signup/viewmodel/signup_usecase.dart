@@ -94,7 +94,7 @@ class SignupUseCase extends BaseDataProvider {
         taskSubType: TaskSubType.REST,
         moduleIdentifier: WelcomeModule.moduleIdentifier,
         requestData: {
-          "nindaNumber": nindaNumber,
+          "nindaNumber": nindaNumber.replaceAll("-", ""),
           "phoneNo": phoneNo.replaceAll(" ", "")
         },
         serviceIdentifier: ISignupService.signupIdentifier,
