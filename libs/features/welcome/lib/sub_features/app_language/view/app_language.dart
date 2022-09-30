@@ -30,6 +30,7 @@ class _AppLanguageState extends State<AppLanguage> {
             selectedLanguage = 1;
           }
         },
+
         builder: (context, state, welcomeCoordinator) =>
             _buildMainUi(state, welcomeCoordinator),
       );
@@ -53,14 +54,22 @@ class _AppLanguageState extends State<AppLanguage> {
       shrinkWrap: true,
       itemBuilder: (context, index) => InkWell(
         onTap: () {
-          if (state.currentLanguageCode == 'en') {
+          // if (state.currentLanguageCode == 'en') {
+          //   selectedLanguage = 1;
+          //   languageCode = 'sw';
+          // } else {
+          //   selectedLanguage = 0;
+          //   languageCode = 'en';
+          // }
+          if (index == 1 && state.currentLanguageCode == 'en') {
             selectedLanguage = 1;
             languageCode = 'sw';
-          } else {
+          } else if(index == 0 && state.currentLanguageCode == 'sw') {
             selectedLanguage = 0;
             languageCode = 'en';
           }
           welcomeCoordinator.setCurrentLocale(languageCode, widget.userType);
+          print("Current App language is ===> $languageCode");
         },
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

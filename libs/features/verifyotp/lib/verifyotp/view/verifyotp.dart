@@ -34,7 +34,7 @@ class CrayonVerifyOtpScreen extends StatefulWidget {
 class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
   late Timer _timer;
   ValueNotifier<int> _startValue = ValueNotifier<int>(60);
-
+  bool showError = false;
   bool isBtnEnabled = false;
   int attemptCount = 0 ;
 
@@ -154,7 +154,7 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
                 height: 5,
               ),
               /*state.attemptsRemain != 3*/
-            attemptCount> 0 && attemptCount < 4  //3
+            attemptCount > 0 && attemptCount < 4 && showError//3
                   ? _errorAndAttemptLeft(context, coordinator, state)
                   : const SizedBox(),
               const SizedBox(
@@ -180,16 +180,13 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
           if(attemptCount<3) {
             if (coordinator.otpController.text.isNotEmpty &&
                 coordinator.otpController.text.length == 6) {
-
-
-            await  coordinator.navigateToDestinationPath(
+              await  coordinator.navigateToDestinationPath(
                   widget.otpScreenArgs.destinationPath,
                   widget.otpScreenArgs.userType,
                   widget.otpScreenArgs,
                   coordinator.otpController.text.toString(),
                   widget.otpScreenArgs.event
               );
-
               setState(() {
                 attemptCount++;
               });
@@ -200,8 +197,9 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
             // }
           }
           else{
-            _showAlertForOTPAttempts(coordinator);
+              _showAlertForOTPAttempts(coordinator);
           }
+          setState(() { showError = true; });
         },
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -374,14 +372,17 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
             onCompleted: (v) {
               setState(() {
                 isBtnEnabled = true;
+                showError = false;
               });
-            },
 
+            },
             onChanged: (String value) {
               setState(() {
                 isBtnEnabled = false;
+                showError = false;
               });
             },
+
           ),
         ),
         if (state.error.isNotEmpty) const SizedBox(height: 8),
