@@ -50,7 +50,12 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
     await _navigationHandler.pop();
   }
 
+  Future<void> showErrorBottomSheet(
+      Widget errorWidget, BuildContext context) async {
+    await _navigationHandler.showErrorBottomSheet(errorWidget, context);
 
+
+  }
   Future<void> createLoan(BuildContext context) async {
     String deviceId = await _downPaymentUseCase.getDeviceId();
 
@@ -403,5 +408,8 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
 
   void goHomeScreen() {
     _navigationHandler.goBack();
+  }
+  void goBack() {
+    _navigationHandler.pop();
   }
 }

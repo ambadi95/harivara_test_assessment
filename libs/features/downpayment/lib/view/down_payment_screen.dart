@@ -514,8 +514,10 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
     // }
 
     //to show the stock sheet in case of the loan created and came from work flow
-    if(widget.downPaymentScreenArgs.isBottomSheetShown==true && newState.loanCreated==1){
-      _getOutOfStockUI(context, downPaymentCoordinator!);
+    if(widget.downPaymentScreenArgs.isBottomSheetShown == true && newState.loanCreated == 1){
+      print("lucky");
+      downPaymentCoordinator!.showErrorBottomSheet(
+          _getOutOfStockUI(context, downPaymentCoordinator!), context);
       return;
     }
     //showing button enabled on loan creation and out of stock is selected from device loan screen
@@ -627,6 +629,7 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
       child: GestureDetector(
         onTap: () async {
 
+          coordinator.goBack();
           coordinator.loanApproval(widget.downPaymentScreenArgs.subTitle, context);
         },
         child: Container(
