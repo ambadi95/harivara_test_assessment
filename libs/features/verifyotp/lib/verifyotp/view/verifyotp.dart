@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:config/Colors.dart';
+import 'package:config/Config.dart';
 import 'package:config/Styles.dart';
 import 'package:core/view/base_view.dart';
 import 'package:flutter/material.dart';
@@ -229,7 +230,11 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
           alertTitle: 'VO_Incorrect_OTP_Title'.tr,
           alertIcon: "assets/images/incorrect_otp.png",
           onBottomButtonPress: (){
-            coordinator.backSignUp(widget.otpScreenArgs.userType);
+            if(widget.otpScreenArgs.userType == UserType.Agent) {
+              coordinator.backSignUp(widget.otpScreenArgs.userType);
+            } else{
+              coordinator.backAgentDashboard();
+            }
           },
           bottomButtonText : 'VO_Back_button'.tr,
           onClose: () {

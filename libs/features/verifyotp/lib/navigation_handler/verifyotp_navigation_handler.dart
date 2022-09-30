@@ -258,4 +258,12 @@ class VerifyOtpNavigationHandler with ErrorHandler {
         arguments: arguments);
   }
 
+  Future<void> backToDashboard() async {
+    var argument = HomeScreenArgs(isAgent: true, userType: UserType.Agent);
+    await _navigationManager.navigateTo(
+        CrayonHomeScreen.viewPath, const NavigationType.replace(),
+        arguments: argument);
+  }
+
+
 }
