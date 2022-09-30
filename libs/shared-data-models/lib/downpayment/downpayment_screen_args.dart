@@ -11,6 +11,8 @@ class DownPaymentScreenArgs {
   final num paymentReceived;
   final num loanApproved;
   final num loanActivated;
+  final bool isOutOfStock;
+  final bool isBottomSheetShown;
 
   DownPaymentScreenArgs(
     this.deviceId,
@@ -23,5 +25,7 @@ class DownPaymentScreenArgs {
     this.paymentReceived,
     this.loanApproved,
     this.loanActivated,
+      this.isOutOfStock,
+      this.isBottomSheetShown
   );
 }

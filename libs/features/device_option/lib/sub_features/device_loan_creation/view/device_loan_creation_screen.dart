@@ -651,6 +651,15 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
         onTap: () async {
+          if(radioValue == 1){
+            coordinator.navigateToDownPayment(payNowTotal.toString(), widget.deviceLoanCreationArgs.deviceDetailData.deviceId, widget.deviceLoanCreationArgs.deviceDetailData.modelNumber.toString(),false, true);
+          }else if (radioValue == 2){
+            coordinator.navigateToOtherScreen(widget.deviceLoanCreationArgs.deviceDetailData.deviceId!, widget.deviceLoanCreationArgs.deviceDetailData.modelNumber.toString(), double.parse(payNowTotal.toString()), widget.deviceLoanCreationArgs.image,false,true);
+          }
+    else if (radioValue == 3){
+            coordinator.navigateToDownPayment(payNowTotal.toString(), widget.deviceLoanCreationArgs.deviceDetailData.deviceId, widget.deviceLoanCreationArgs.deviceDetailData.modelNumber.toString(),false, true);
+    }
+
         },
         child: Container(
           width: double.infinity,

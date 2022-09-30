@@ -57,9 +57,9 @@ class DeviceOptionNavigationHandler with ErrorHandler {
         arguments: argument);
   }
 
-  navigateToDownPaymentScreen(String amount, int? deviceId, String modelName) {
+  navigateToDownPaymentScreen(String amount, int? deviceId, String modelName, bool isOutOfStock,bool isBottomSheetShow) {
     var arguments = DownPaymentScreenArgs(
-        deviceId ?? 1, amount, "", "", modelName, 0, 0, 0, 0, 0);
+        deviceId ?? 1, amount, "", "", modelName, 0, 0, 0, 0, 0,isOutOfStock,isBottomSheetShow );
     // var arguments = deviceId;
     _navigationManager.navigateTo(
         DownPaymentScreen.viewPath, const NavigationType.push(),
@@ -67,9 +67,9 @@ class DeviceOptionNavigationHandler with ErrorHandler {
   }
 
   Future<void> navigateToOtherPaymentScreen(
-      int deviceId, String modelName, double amount, String image) async {
+      int deviceId, String modelName, double amount, String image, bool isOutOfStock, bool isBottomSheetShown) async {
     var arguments = OtherPaymentScreenArgs(
-        deviceId, modelName, amount.toString(), '', '', 0, 0, image);
+        deviceId, modelName, amount.toString(), '', '', 0, 0, image,isOutOfStock,isBottomSheetShown);
     await _navigationManager.navigateTo(
         OtherPaymentScreen.viewPath, const NavigationType.push(),
         arguments: arguments);
