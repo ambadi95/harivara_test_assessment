@@ -2,6 +2,7 @@ import 'package:core/navigation/navigation_manager.dart';
 import 'package:core/navigation/navigation_type.dart';
 import 'package:home/home/home_screen_arguments.dart';
 import 'package:scanqrcode/view/scanqrcode_screen.dart';
+import 'package:scanqrcode/view/successful_screen.dart';
 import 'package:shared_data_models/scan_qr_code/scan_qrcode_args.dart';
 import 'package:widget_library/helpers/error/helper/error_helper.dart';
 import 'package:home/home/home_screen_arguments.dart';
@@ -29,5 +30,12 @@ class OfflinePaymentNavigationHandler with ErrorHandler {
     _navigationManager.navigateTo(
         CrayonHomeScreen.viewPath, const NavigationType.replace(),
         arguments: args);
+  }
+
+  Future<void> navigateToFinalSuccess() async {
+    await _navigationManager.navigateTo(
+      SuccessScreen.viewPath,
+      const NavigationType.push(),
+    );
   }
 }

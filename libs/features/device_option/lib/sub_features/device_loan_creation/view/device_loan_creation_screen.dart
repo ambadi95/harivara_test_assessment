@@ -700,13 +700,32 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
       child: GestureDetector(
         onTap: () async {
 
-          coordinator.navigateToDownPayment(
-              payNowTotal.toString(),
-              widget.deviceLoanCreationArgs.deviceDetailData.deviceId,
-              widget.deviceLoanCreationArgs.deviceDetailData.modelNumber
-                  .toString(),
-              true,
-              false);
+          if (radioValue == 1) {
+            coordinator.navigateToDownPayment(
+                payNowTotal.toString(),
+                widget.deviceLoanCreationArgs.deviceDetailData.deviceId,
+                widget.deviceLoanCreationArgs.deviceDetailData.modelNumber
+                    .toString(),
+                true,
+                false);
+          } else if (radioValue == 2) {
+            coordinator.navigateToOtherScreen(
+                widget.deviceLoanCreationArgs.deviceDetailData.deviceId!,
+                widget.deviceLoanCreationArgs.deviceDetailData.modelNumber
+                    .toString(),
+                double.parse(payNowTotal.toString()),
+                widget.deviceLoanCreationArgs.image,
+                true,
+                false);
+          } else if (radioValue == 3) {
+            coordinator.navigateToDownPayment(
+                payNowTotal.toString(),
+                widget.deviceLoanCreationArgs.deviceDetailData.deviceId,
+                widget.deviceLoanCreationArgs.deviceDetailData.modelNumber
+                    .toString(),
+                true,
+                false);
+          }
         },
         child: Container(
           width: double.infinity,

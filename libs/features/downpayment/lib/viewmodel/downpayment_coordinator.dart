@@ -85,6 +85,7 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
           loanApproved: 0,
           paymentReceived: 1);
 
+      //stock available
       if(cordinatorDownPaymentScreenArgs!.isOutOfStock==false){
         await loanApproval(createLoan!.data!.loanId!.toString(), context);
       }
@@ -396,8 +397,8 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
   }
 
 
-  navigatetoSuccessScreen() {
-    _navigationHandler.navigateToFinalSuccess();
+  navigatetoSuccessScreen() async {
+    await _navigationHandler.navigateToFinalSuccess();
   }
 
   void goHomeScreen() {

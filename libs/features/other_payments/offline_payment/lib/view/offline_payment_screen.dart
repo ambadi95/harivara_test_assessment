@@ -70,7 +70,7 @@ void delayFun(){
             setState(() {
               username;
             });
-            coordinator.createLoan(context);
+            coordinator.createLoan(context,widget.offlinePaymentScreenArgs);
             //coordinator.makePayment(context,widget.offlinePaymentScreenArgs.amount);
           },
           onStateListenCallback: (preState, newState) => {
@@ -95,6 +95,7 @@ void delayFun(){
                     ___,
                     ____,
                     _____,
+                    ______,
                   ) =>
                       _buildMainUIWithLoading(
                     context,
@@ -218,9 +219,9 @@ void delayFun(){
                         .getPercentageSize(percentage: 8)),
                 _rowWidget(
                   context,
-                  icon:  _getIcon(context,state.loanApproved),
+                  icon:  _getIcon(context,widget.offlinePaymentScreenArgs.isOutOfStock==true ? state.loanCreated : state.loanApproved),
 
-                  text: _textWidget(context, 'Offline_payment_checkboxTitle2'.tr),
+                  text: _textWidget(context,widget.offlinePaymentScreenArgs.isOutOfStock==true ? 'DP_LoanCreated'.tr :  'Offline_payment_checkboxTitle2'.tr),
                 ),
                 SizedBox(
                   height: AppUtils.appUtilsInstance
@@ -278,7 +279,10 @@ void delayFun(){
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
         onTap: () async {
-          if(state.loanApproved==1) {
+          if(widget.offlinePaymentScreenArgs.isOutOfStock==true && state.loanCreated==1){
+
+            await coordinator.navigatetoSuccessScreen();
+          }else if(state.loanApproved==1) {
            // await coordinator.navigateToScanCodeScreen(1, "Samsung - A03 Core");
                await coordinator.navigateToScanCodeScreen(
                    widget.offlinePaymentScreenArgs.deviceId,
@@ -414,6 +418,13 @@ void delayFun(){
   }
 
   _listenToStateChanges(BuildContext context, OfflinePaymentStateReady newState) async{
+
+    if(widget.offlinePaymentScreenArgs.isOutOfStock==true && newState.loanCreated==1){
+      setState(() {
+        _isBtnEnabled=true;
+      });
+      return ;
+    }
     if(newState.loanApproved == 1){
         setState(() {
            _isBtnEnabled=true;
