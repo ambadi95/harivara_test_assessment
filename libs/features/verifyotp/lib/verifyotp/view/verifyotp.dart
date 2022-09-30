@@ -239,7 +239,7 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
             }
 
           },
-          bottomButtonText : widget.otpScreenArgs.otpVerificationType == OtpVerificationType.customerSignUpAgent ? 'Bac' : 'VO_Back_button'.tr,
+          bottomButtonText : widget.otpScreenArgs.otpVerificationType == OtpVerificationType.customerSignUpAgent ? 'Back_To_Home'.tr : 'VO_Back_button'.tr,
           onClose: () {
 
             coordinator.goBack();
