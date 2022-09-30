@@ -588,13 +588,13 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
                     color: VO_ResendTextColor,
                     fontWeight: FontWeight.w400),
                 children: <TextSpan>[
-                  TextSpan(
+                 const TextSpan(
                       text: ' Samsung\n- A03 Core ',
                       style:
                       TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
                   TextSpan(
                       text: "DLC_inventory_continue_joining_fee_payment".tr,
-                      style: TextStyle(
+                      style: const TextStyle(
                           fontWeight: FontWeight.w400,
                           color: VO_ResendTextColor,
                           fontSize: 14)),

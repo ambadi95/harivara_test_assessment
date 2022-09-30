@@ -70,7 +70,16 @@ void delayFun(){
             setState(() {
               username;
             });
-            coordinator.createLoan(context,widget.offlinePaymentScreenArgs);
+            //coming from the work flow api and showing the stock available alert
+            if(widget.offlinePaymentScreenArgs.bottomSheetShown == true){
+                coordinator.showErrorBottomSheet(
+                    _getOutOfStockUI(context, offlinePaymentCoordinator!), context);
+                return;
+
+            }else{
+              coordinator.createLoan(context,widget.offlinePaymentScreenArgs);
+
+            }
             //coordinator.makePayment(context,widget.offlinePaymentScreenArgs.amount);
           },
           onStateListenCallback: (preState, newState) => {
@@ -259,6 +268,131 @@ void delayFun(){
     return SvgPicture.asset(status == 0  ? "assets/images/circular_grey.svg" : (status == 1) ? "assets/images/circular_tick.svg" : "assets/images/circular_cross.svg",height: 20,width: 20,);
   }
 
+  Widget _getOutOfStockUI(
+      BuildContext context, OfflinePaymentCoordinator coordinator) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: ListView(
+        children: [
+          SvgPicture.asset(
+              "packages/widget_library/assets/images/stocks_img.svg"),
+          SizedBox(
+            height: AppUtils.appUtilsInstance.getPercentageSize(
+              percentage: 4,
+            ),
+          ),
+          CrayonPaymentText(
+            key: Key('${_identifier}_Device_Stock_Availability'),
+            text: TextUIDataModel('DLC_device_stock_availability'.tr,
+                textAlign: TextAlign.center,
+                styleVariant: CrayonPaymentTextStyleVariant.bodyText1,
+                color: Black,
+                fontWeight: FontWeight.w600),
+          ),
+          SizedBox(
+            height: AppUtils.appUtilsInstance.getPercentageSize(
+              percentage: 5,
+            ),
+          ),
+
+          Center(
+            child: RichText(
+              text: TextSpan(
+                text: "DLC_please_confirm_availability".tr,
+                style: const TextStyle(
+                    fontFamily: 'Montserrat',
+                    fontSize: 14,
+                    color: VO_ResendTextColor,
+                    fontWeight: FontWeight.w400),
+                children: <TextSpan>[
+                  const TextSpan(
+                      text: ' Samsung\n- A03 Core ',
+                      style:
+                      TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
+                  TextSpan(
+                      text: "DLC_inventory_continue_joining_fee_payment".tr,
+                      style: const TextStyle(
+                          fontWeight: FontWeight.w400,
+                          color: VO_ResendTextColor,
+                          fontSize: 14)),
+                ],
+              ),
+            ),
+          ),
+          // CrayonPaymentText(
+          //   key: Key('${_identifier}_DLC_device_stock_availability_desc'),
+          //   text: TextUIDataModel('DLC_device_stock_availability_desc'.tr,
+          //       textAlign: TextAlign.center,
+          //       styleVariant: CrayonPaymentTextStyleVariant.subtitle2,
+          //       color: AN_SubTitleColor,
+          //       fontWeight: FontWeight.w400),
+          // ),
+          SizedBox(
+            height: AppUtils.appUtilsInstance.getPercentageSize(
+              percentage: 5,
+            ),
+          ),
+          _buildStockAvailableButton(context, coordinator),
+          _buildOutOfStockOnBoardLaterButton(context, coordinator)
+        ],
+      ),
+    );
+  }
+
+
+  Widget _buildStockAvailableButton(
+      BuildContext context, OfflinePaymentCoordinator coordinator) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
+      child: GestureDetector(
+        onTap: () async {
+
+          coordinator.goBack();
+          coordinator.loanApproval(widget.offlinePaymentScreenArgs.modelName, context);
+        },
+        child: Container(
+          width: double.infinity,
+          height: 50,
+          decoration: BoxDecoration(
+              color: SU_button_color, borderRadius: BorderRadius.circular(2.0)),
+          child: Center(
+            child: Text(
+              'DLC_stock_available'.tr,
+              style: SU_button_text_style,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+
+  _buildOutOfStockOnBoardLaterButton(
+      BuildContext context, OfflinePaymentCoordinator coordinator) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
+      child: GestureDetector(
+        onTap: () async {
+          coordinator.goHomeScreen();
+        },
+        child: Container(
+          width: double.infinity,
+          height: 50,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(2.0),
+            border: Border.all(color: SECONDARY_COLOR, width: 1),
+          ),
+          child: Center(
+            child: Text(
+              "DLC_out_of_stock_onboard_later".tr,
+              style: KYC_button_text_style_black,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
   Widget _getVerticalDivider(BuildContext context, double height) {
     return Padding(
       padding: const EdgeInsets.only(left: 9.0),
@@ -279,7 +413,7 @@ void delayFun(){
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
         onTap: () async {
-          if(widget.offlinePaymentScreenArgs.isOutOfStock==true && state.loanCreated==1){
+          if(widget.offlinePaymentScreenArgs.isOutOfStock == true && state.loanCreated == 1){
 
             await coordinator.navigatetoSuccessScreen();
           }else if(state.loanApproved==1) {

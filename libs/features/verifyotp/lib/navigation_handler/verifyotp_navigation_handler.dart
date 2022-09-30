@@ -22,6 +22,8 @@ import 'package:shared_data_models/downpayment/downpayment_screen_args.dart';
 import 'package:shared_data_models/kyc/kyc_data_model.dart';
 import 'package:shared_data_models/kyc/kyc_screen_args.dart';
 import 'package:shared_data_models/kyc/kyc_type.dart';
+import 'package:shared_data_models/offlinepayment/offlinepayment_screen_args.dart';
+import 'package:shared_data_models/otherpayment/otherpayment_screen_args.dart';
 import 'package:shared_data_models/passcode/passcode_screen_args.dart';
 import 'package:shared_data_models/passcode/passcode_verification_type.dart';
 import 'package:passcode/sub_features/passcode/view/passcode.dart';
@@ -33,6 +35,7 @@ import 'package:widget_library/helpers/error/helper/error_helper.dart';
 import 'package:kyc/view/kyc_credit_screen.dart';
 import 'package:shared_data_models/kyc/kyc_screen_args.dart';
 import 'package:shared_data_models/device_option/detail_detail_response/data.dart';
+import 'package:offline_payment/view/offline_payment_screen.dart';
 
 class VerifyOtpNavigationHandler with ErrorHandler {
   final NavigationManager _navigationManager;
@@ -183,7 +186,14 @@ class VerifyOtpNavigationHandler with ErrorHandler {
         arguments: arguments);
   }
 
-
+  Future<void> navigateOfflinePaymentScreen(int deviceId, String modelName,bool isOutOfStock,bool bottomSheetShown) async {
+    var arguments = OfflinePaymentScreenArgs(deviceId, modelName,isOutOfStock,bottomSheetShown);
+    _navigationManager.navigateTo(
+        OfflinePaymentScreen.viewPath,
+        const NavigationType.push(),
+        arguments: arguments
+    );
+  }
 
   navigateToDownPaymentScreen({String? deviceId,String? amount, num? paymentStatus,num? paymentReceived,String? loanId="",num? loanApproval=0,bool isShowBottomSheet=false}) {
     var arguments = DownPaymentScreenArgs(

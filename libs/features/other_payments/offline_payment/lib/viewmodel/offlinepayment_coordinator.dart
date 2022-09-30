@@ -36,6 +36,13 @@ class OfflinePaymentCoordinator extends AnalyticsStateNotifier<OfflinePaymentSta
     await _navigationHandler.navigateToScanQrCode(deviceId, modelName);
   }
 
+  Future<void> showErrorBottomSheet(
+      Widget errorWidget, BuildContext context) async {
+    await _navigationHandler.showErrorBottomSheet(errorWidget, context);
+
+
+  }
+
   Future<void> createLoan(BuildContext context, OfflinePaymentScreenArgs offlinePaymentScreenArgs) async {
     String deviceId = await _offlinePaymentUseCase.getDeviceId();
 
@@ -57,7 +64,7 @@ class OfflinePaymentCoordinator extends AnalyticsStateNotifier<OfflinePaymentSta
         loanCreated: 1,
         paymentReceivedOffline: 1,
         loanApproved: 0,);
-      if(offlinePaymentScreenArgs.isOutOfStock==false) {
+      if(offlinePaymentScreenArgs.isOutOfStock == false) {
         await loanApproval(createLoan!.data!.loanId!.toString(), context);
       }
     } else {
@@ -179,4 +186,11 @@ class OfflinePaymentCoordinator extends AnalyticsStateNotifier<OfflinePaymentSta
   navigatetoSuccessScreen() async {
     await _navigationHandler.navigateToFinalSuccess();
   }
-}
+
+  void goBack() async {
+    await _navigationHandler.pop();
+  }
+
+  void goHomeScreen() {
+    _navigationHandler.goBack();
+  }}
