@@ -287,6 +287,8 @@
   "DP_WaitingForPayment" : "Inasubiri Malipo",
   "DP_PaymentReceived" : "Malipo Yamepokelewa",
   "DP_LoanApproved" : "Mkopo Umeidhinishwa",
+  "DP_LoanCreated" : "Loan Created",
+
 
   "PC_customer_ref_id" : "Kitambulisho cha Marejeleo ya Mteja",
   "PC_customer_ref_id_hint" : "Weka Kitambulisho cha Marejeleo",

@@ -286,6 +286,7 @@
   "DP_WaitingForPayment" : "Waiting for Payment",
   "DP_PaymentReceived" : "Payment Received",
   "DP_LoanApproved" : "Loan Approved",
+  "DP_LoanCreated" : "Loan Created",
 
   "PC_customer_ref_id" : "Customer Reference ID",
   "PC_customer_ref_id_hint" : "Enter Reference ID",

@@ -10,7 +10,7 @@ class DownPaymentScreenArgs {
   final num waitForPayment;
   final num paymentReceived;
   final num loanApproved;
-  final num loanActivated;
+  final num loanCreated;
   final bool isOutOfStock;
   final bool isBottomSheetShown;
 
@@ -24,7 +24,7 @@ class DownPaymentScreenArgs {
     this.waitForPayment,
     this.paymentReceived,
     this.loanApproved,
-    this.loanActivated,
+    this.loanCreated,
       this.isOutOfStock,
       this.isBottomSheetShown
   );

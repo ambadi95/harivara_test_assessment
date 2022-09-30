@@ -611,11 +611,10 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
                 children: <TextSpan>[
                   TextSpan(
                       text: ' Samsung\n- A03 Core ',
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
                   TextSpan(
-
                       text: "DLC_inventory_continue_joining_fee_payment".tr,
-
                       style: TextStyle(
                           fontWeight: FontWeight.w400,
                           color: VO_ResendTextColor,
@@ -651,15 +650,32 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
         onTap: () async {
-          if(radioValue == 1){
-            coordinator.navigateToDownPayment(payNowTotal.toString(), widget.deviceLoanCreationArgs.deviceDetailData.deviceId, widget.deviceLoanCreationArgs.deviceDetailData.modelNumber.toString(),false, true);
-          }else if (radioValue == 2){
-            coordinator.navigateToOtherScreen(widget.deviceLoanCreationArgs.deviceDetailData.deviceId!, widget.deviceLoanCreationArgs.deviceDetailData.modelNumber.toString(), double.parse(payNowTotal.toString()), widget.deviceLoanCreationArgs.image,false,true);
+          if (radioValue == 1) {
+            coordinator.navigateToDownPayment(
+                payNowTotal.toString(),
+                widget.deviceLoanCreationArgs.deviceDetailData.deviceId,
+                widget.deviceLoanCreationArgs.deviceDetailData.modelNumber
+                    .toString(),
+                false,
+                false);
+          } else if (radioValue == 2) {
+            coordinator.navigateToOtherScreen(
+                widget.deviceLoanCreationArgs.deviceDetailData.deviceId!,
+                widget.deviceLoanCreationArgs.deviceDetailData.modelNumber
+                    .toString(),
+                double.parse(payNowTotal.toString()),
+                widget.deviceLoanCreationArgs.image,
+                false,
+                false);
+          } else if (radioValue == 3) {
+            coordinator.navigateToDownPayment(
+                payNowTotal.toString(),
+                widget.deviceLoanCreationArgs.deviceDetailData.deviceId,
+                widget.deviceLoanCreationArgs.deviceDetailData.modelNumber
+                    .toString(),
+                false,
+                false);
           }
-    else if (radioValue == 3){
-            coordinator.navigateToDownPayment(payNowTotal.toString(), widget.deviceLoanCreationArgs.deviceDetailData.deviceId, widget.deviceLoanCreationArgs.deviceDetailData.modelNumber.toString(),false, true);
-    }
-
         },
         child: Container(
           width: double.infinity,
@@ -682,7 +698,16 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
-        onTap: () async {},
+        onTap: () async {
+
+          coordinator.navigateToDownPayment(
+              payNowTotal.toString(),
+              widget.deviceLoanCreationArgs.deviceDetailData.deviceId,
+              widget.deviceLoanCreationArgs.deviceDetailData.modelNumber
+                  .toString(),
+              true,
+              false);
+        },
         child: Container(
           width: double.infinity,
           height: 50,
@@ -709,7 +734,6 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
       child: GestureDetector(
         onTap: () async {
           coordinator.goHomeScreen();
-
         },
         child: Container(
           width: double.infinity,

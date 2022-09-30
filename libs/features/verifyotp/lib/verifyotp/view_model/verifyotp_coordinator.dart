@@ -534,6 +534,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
             paymentReceived: 1,
             loanId: workFlowStatusResponse.data!.data[3]["loanId"] ?? "",
             amount: workFlowStatusResponse.data!.data[3]["amountPaid"] ?? "",
+            isShowBottomSheet: true
           );
         } catch (e) {
           return _showAlertForErrorMessage(
