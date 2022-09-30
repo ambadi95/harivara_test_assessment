@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:shared_data_models/otp/otp_screen_args.dart';
+import 'package:shared_data_models/otp/otp_verification_type.dart';
 import 'package:sprintf/sprintf.dart';
 import 'package:verifyotp/verifyotp_module.dart';
 import 'package:widget_library/bottom_sheet/alert_bottom_sheet.dart';
@@ -229,10 +230,18 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
           alertTitle: 'VO_Incorrect_OTP_Title'.tr,
           alertIcon: "assets/images/incorrect_otp.png",
           onBottomButtonPress: (){
-            coordinator.backSignUp(widget.otpScreenArgs.userType);
+            if(widget.otpScreenArgs.otpVerificationType == OtpVerificationType.customerSignUpAgent){
+              coordinator.goBack();
+              coordinator.goBack();
+              coordinator.goBack();
+            }else{
+              coordinator.backSignUp(widget.otpScreenArgs.userType);
+            }
+
           },
-          bottomButtonText : 'VO_Back_button'.tr,
+          bottomButtonText : widget.otpScreenArgs.otpVerificationType == OtpVerificationType.customerSignUpAgent ? 'Bac' : 'VO_Back_button'.tr,
           onClose: () {
+
             coordinator.goBack();
           },
           packageName: ""),
