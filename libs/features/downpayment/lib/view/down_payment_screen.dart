@@ -515,7 +515,6 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
 
     //to show the stock sheet in case of the loan created and came from work flow
     if(widget.downPaymentScreenArgs.isBottomSheetShown == true && newState.loanCreated == 1){
-      print("lucky");
       downPaymentCoordinator!.showErrorBottomSheet(
           _getOutOfStockUI(context, downPaymentCoordinator!), context);
       return;
