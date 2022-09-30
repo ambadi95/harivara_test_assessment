@@ -33,9 +33,11 @@ class OfflinePaymentNavigationHandler with ErrorHandler {
   }
 
   Future<void> navigateToFinalSuccess() async {
+    var argument = "test";
     await _navigationManager.navigateTo(
-      SuccessScreen.viewPath,
-      const NavigationType.push(),
+        SuccessScreen.viewPath,
+        const NavigationType.push(),
+        arguments: argument
     );
   }
 }
