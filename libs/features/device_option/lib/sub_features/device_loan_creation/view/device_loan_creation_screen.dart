@@ -667,7 +667,7 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
                 widget.deviceLoanCreationArgs.image,
                 false,
                 false);
-          } else if (radioValue == 3) {
+          } else if (radioValue == 4) {
             coordinator.navigateToDownPayment(
                 payNowTotal.toString(),
                 widget.deviceLoanCreationArgs.deviceDetailData.deviceId,
@@ -717,7 +717,7 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
                 widget.deviceLoanCreationArgs.image,
                 true,
                 false);
-          } else if (radioValue == 3) {
+          } else if (radioValue == 4) {
             coordinator.navigateToDownPayment(
                 payNowTotal.toString(),
                 widget.deviceLoanCreationArgs.deviceDetailData.deviceId,
