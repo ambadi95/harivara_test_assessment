@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:isolate';
 
-import 'package:config/Config.dart';
 import 'package:core/app/crayon_payment_material_app.dart';
 import 'package:core/ioc/di_container.dart';
 import 'package:core/logging/logger.dart';
@@ -11,7 +10,6 @@ import 'package:core/session_management/inactivity_service.dart';
 import 'package:core/session_management/inactivity_watcher.dart';
 import 'package:core/translation/crayon_payment_transaltions_loader.dart';
 import 'package:core/translation/crayon_payment_translations.dart';
-import 'package:downpayment/view/down_payment_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
@@ -20,15 +18,10 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/src/framework.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/internacionalization.dart';
-import 'package:home/home/home_screen_arguments.dart';
-import 'package:home/home/view/home_screen.dart';
-import 'package:kyc/subfeatures/kycmain/view/kyc_credit_main_screen.dart';
 import 'package:splash/splash/view/splash.dart';
 import 'package:widget_library/theme/crayon_payment_theme.dart';
 import 'app_module.dart';
-import 'package:shared_data_models/kyc/kyc_screen_args.dart';
-import 'package:shared_data_models/kyc/kyc_type.dart';
-import 'package:shared_data_models/kyc/kyc_data_model.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

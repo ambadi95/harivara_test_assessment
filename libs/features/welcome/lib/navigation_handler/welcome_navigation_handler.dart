@@ -35,6 +35,7 @@ import 'package:widget_library/icons/crayon_payment_bottom_sheet_icon.dart';
 import 'package:shared_data_models/kyc/agent_detail_screen_type.dart';
 import '../sub_features/enrollment_success/view/enrollment_success_screen.dart';
 import 'package:termscondition/termscondition/view/terms_condition_view.dart';
+import 'package:termscondition/termscondition/view/terms_condition_screen.dart';
 
 class WelcomeNavigationHandler with ErrorHandler {
   final NavigationManager _navigationManager;
@@ -43,6 +44,13 @@ class WelcomeNavigationHandler with ErrorHandler {
 
   Future<void> goBack() async {
     _navigationManager.goBack();
+  }
+
+  Future<void> navigateToTermsAndConditionsScreen(UserType userType) async {
+    var arguments = userType;
+    await _navigationManager.navigateTo(
+        CrayonTermsConditionScreen.viewPath, const NavigationType.push(),
+        arguments: arguments);
   }
 
   Future<void> navigateToSignUpScreen(UserType userType) async {
