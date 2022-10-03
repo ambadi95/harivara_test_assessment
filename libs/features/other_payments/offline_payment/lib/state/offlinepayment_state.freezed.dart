@@ -19,8 +19,13 @@ mixin _$OfflinePaymentState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
-    required TResult Function(BuildContext context, String error,
-            bool isLoading, num paymentReceivedOffline, num loanApproved)
+    required TResult Function(
+            BuildContext context,
+            String error,
+            bool isLoading,
+            num paymentReceivedOffline,
+            num loanApproved,
+            num loanCreated)
         ready,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +33,7 @@ mixin _$OfflinePaymentState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(BuildContext context, String error, bool isLoading,
-            num paymentReceivedOffline, num loanApproved)?
+            num paymentReceivedOffline, num loanApproved, num loanCreated)?
         ready,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +41,7 @@ mixin _$OfflinePaymentState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(BuildContext context, String error, bool isLoading,
-            num paymentReceivedOffline, num loanApproved)?
+            num paymentReceivedOffline, num loanApproved, num loanCreated)?
         ready,
     required TResult orElse(),
   }) =>
@@ -121,8 +126,13 @@ class _$InitialState implements InitialState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
-    required TResult Function(BuildContext context, String error,
-            bool isLoading, num paymentReceivedOffline, num loanApproved)
+    required TResult Function(
+            BuildContext context,
+            String error,
+            bool isLoading,
+            num paymentReceivedOffline,
+            num loanApproved,
+            num loanCreated)
         ready,
   }) {
     return initialState();
@@ -133,7 +143,7 @@ class _$InitialState implements InitialState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(BuildContext context, String error, bool isLoading,
-            num paymentReceivedOffline, num loanApproved)?
+            num paymentReceivedOffline, num loanApproved, num loanCreated)?
         ready,
   }) {
     return initialState?.call();
@@ -144,7 +154,7 @@ class _$InitialState implements InitialState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(BuildContext context, String error, bool isLoading,
-            num paymentReceivedOffline, num loanApproved)?
+            num paymentReceivedOffline, num loanApproved, num loanCreated)?
         ready,
     required TResult orElse(),
   }) {
@@ -200,7 +210,8 @@ abstract class _$$OfflinePaymentStateReadyCopyWith<$Res> {
       String error,
       bool isLoading,
       num paymentReceivedOffline,
-      num loanApproved});
+      num loanApproved,
+      num loanCreated});
 }
 
 /// @nodoc
@@ -222,6 +233,7 @@ class __$$OfflinePaymentStateReadyCopyWithImpl<$Res>
     Object? isLoading = freezed,
     Object? paymentReceivedOffline = freezed,
     Object? loanApproved = freezed,
+    Object? loanCreated = freezed,
   }) {
     return _then(_$OfflinePaymentStateReady(
       context: context == freezed
@@ -244,6 +256,10 @@ class __$$OfflinePaymentStateReadyCopyWithImpl<$Res>
           ? _value.loanApproved
           : loanApproved // ignore: cast_nullable_to_non_nullable
               as num,
+      loanCreated: loanCreated == freezed
+          ? _value.loanCreated
+          : loanCreated // ignore: cast_nullable_to_non_nullable
+              as num,
     ));
   }
 }
@@ -256,7 +272,8 @@ class _$OfflinePaymentStateReady implements OfflinePaymentStateReady {
       this.error = '',
       this.isLoading = false,
       this.paymentReceivedOffline = 0,
-      this.loanApproved = 0});
+      this.loanApproved = 0,
+      this.loanCreated = 0});
 
   @override
   final BuildContext context;
@@ -272,10 +289,13 @@ class _$OfflinePaymentStateReady implements OfflinePaymentStateReady {
   @override
   @JsonKey()
   final num loanApproved;
+  @override
+  @JsonKey()
+  final num loanCreated;
 
   @override
   String toString() {
-    return 'OfflinePaymentState.ready(context: $context, error: $error, isLoading: $isLoading, paymentReceivedOffline: $paymentReceivedOffline, loanApproved: $loanApproved)';
+    return 'OfflinePaymentState.ready(context: $context, error: $error, isLoading: $isLoading, paymentReceivedOffline: $paymentReceivedOffline, loanApproved: $loanApproved, loanCreated: $loanCreated)';
   }
 
   @override
@@ -289,7 +309,9 @@ class _$OfflinePaymentStateReady implements OfflinePaymentStateReady {
             const DeepCollectionEquality()
                 .equals(other.paymentReceivedOffline, paymentReceivedOffline) &&
             const DeepCollectionEquality()
-                .equals(other.loanApproved, loanApproved));
+                .equals(other.loanApproved, loanApproved) &&
+            const DeepCollectionEquality()
+                .equals(other.loanCreated, loanCreated));
   }
 
   @override
@@ -299,7 +321,8 @@ class _$OfflinePaymentStateReady implements OfflinePaymentStateReady {
       const DeepCollectionEquality().hash(error),
       const DeepCollectionEquality().hash(isLoading),
       const DeepCollectionEquality().hash(paymentReceivedOffline),
-      const DeepCollectionEquality().hash(loanApproved));
+      const DeepCollectionEquality().hash(loanApproved),
+      const DeepCollectionEquality().hash(loanCreated));
 
   @JsonKey(ignore: true)
   @override
@@ -312,12 +335,17 @@ class _$OfflinePaymentStateReady implements OfflinePaymentStateReady {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
-    required TResult Function(BuildContext context, String error,
-            bool isLoading, num paymentReceivedOffline, num loanApproved)
+    required TResult Function(
+            BuildContext context,
+            String error,
+            bool isLoading,
+            num paymentReceivedOffline,
+            num loanApproved,
+            num loanCreated)
         ready,
   }) {
-    return ready(
-        context, error, isLoading, paymentReceivedOffline, loanApproved);
+    return ready(context, error, isLoading, paymentReceivedOffline,
+        loanApproved, loanCreated);
   }
 
   @override
@@ -325,11 +353,11 @@ class _$OfflinePaymentStateReady implements OfflinePaymentStateReady {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(BuildContext context, String error, bool isLoading,
-            num paymentReceivedOffline, num loanApproved)?
+            num paymentReceivedOffline, num loanApproved, num loanCreated)?
         ready,
   }) {
-    return ready?.call(
-        context, error, isLoading, paymentReceivedOffline, loanApproved);
+    return ready?.call(context, error, isLoading, paymentReceivedOffline,
+        loanApproved, loanCreated);
   }
 
   @override
@@ -337,13 +365,13 @@ class _$OfflinePaymentStateReady implements OfflinePaymentStateReady {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
     TResult Function(BuildContext context, String error, bool isLoading,
-            num paymentReceivedOffline, num loanApproved)?
+            num paymentReceivedOffline, num loanApproved, num loanCreated)?
         ready,
     required TResult orElse(),
   }) {
     if (ready != null) {
-      return ready(
-          context, error, isLoading, paymentReceivedOffline, loanApproved);
+      return ready(context, error, isLoading, paymentReceivedOffline,
+          loanApproved, loanCreated);
     }
     return orElse();
   }
@@ -386,13 +414,15 @@ abstract class OfflinePaymentStateReady implements OfflinePaymentState {
       final String error,
       final bool isLoading,
       final num paymentReceivedOffline,
-      final num loanApproved}) = _$OfflinePaymentStateReady;
+      final num loanApproved,
+      final num loanCreated}) = _$OfflinePaymentStateReady;
 
   BuildContext get context;
   String get error;
   bool get isLoading;
   num get paymentReceivedOffline;
   num get loanApproved;
+  num get loanCreated;
   @JsonKey(ignore: true)
   _$$OfflinePaymentStateReadyCopyWith<_$OfflinePaymentStateReady>
       get copyWith => throw _privateConstructorUsedError;

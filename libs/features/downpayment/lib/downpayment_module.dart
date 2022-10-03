@@ -7,6 +7,7 @@ import 'package:downpayment/viewmodel/downpayment_coordinator.dart';
 import 'package:downpayment/viewmodel/downpayment_usecase.dart';
 import 'package:downpayment/viewmodel/downpayment_viewmodel.dart';
 import 'package:kyc/navigation_handler/kyc_credit_navigation_handler.dart';
+import 'package:shared_data_models/downpayment/downpayment_screen_args.dart';
 
 import 'package:task_manager/module_resolver.dart';
 import 'package:task_manager/task_manager.dart';

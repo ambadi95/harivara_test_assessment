@@ -217,6 +217,9 @@
   "ST_term_condition" : "Terms & Conditions",
   "ST_call_support" : "Call Customer Support",
   "ST_contact_text" : "Need Help or If You Have Any Query \n Contact Us at {}",
+  "ST_sign_out_alert" : "Are you sure you want to \n sign out?",
+  "ST_cancel" : "Cancel",
+
 
   "PP_Daily_Repayment_Title" : "Daily Repayment",
   "PP_Airtel_Pay" : "Airtel Pay",

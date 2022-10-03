@@ -1,6 +1,7 @@
 import 'package:core/view/analytics_state_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_data_models/downpayment/downpayment_screen_args.dart';
+import 'package:shared_data_models/otherpayment/otherpayment_screen_args.dart';
 import 'package:widget_library/utils/app_utils.dart';
 
 import '../navigation_handler/other_payment_navigation_handler.dart';
@@ -38,81 +39,6 @@ class OtherPaymentCoordinator
     await _navigationHandler.navigateToScanQrCode(deviceId);
   }
 
-  Future<void> createLoan(
-    BuildContext context,
-    String amountToBePaid,
-    String mobileNumber,
-    String transactionId,
-  ) async {
-    state = OtherPaymentState.ready(
-      context: context,
-      error: '',
-      isLoading: true,
-      paymentReceivedOffline: 1,
-      loanApproved: 0,
-    );
-    var createLoan = await _otherPaymentUseCase.createLoan(
-      amountToBePaid,
-      mobileNumber,
-      transactionId,
-      (p0) => null,
-    );
-    if (createLoan?.status == true) {
-      state = OtherPaymentState.ready(
-        context: context,
-        error: '',
-        isLoading: false,
-        paymentReceivedOffline: 1,
-        loanApproved: 1,
-      );
-
-      //await loanApproval(createLoan!.data!.loanId!.toString(), context);
-    } else {
-      print("Failed");
-      state = OtherPaymentState.ready(
-        context: context,
-        error: '',
-        isLoading: false,
-        paymentReceivedOffline: 1,
-        loanApproved: 0,
-      );
-
-      _showAlertForErrorMessage(createLoan!.message!);
-    }
-  }
-
-  Future<void> loanApproval(String loanId, BuildContext context) async {
-    String deviceId = await _otherPaymentUseCase.getDeviceId();
-
-    state = OtherPaymentState.ready(
-      context: context,
-      error: '',
-      isLoading: false,
-      paymentReceivedOffline: 1,
-      loanApproved: 0,
-    );
-    var loanApprovalResponse =
-        await _otherPaymentUseCase.loanApproval(deviceId, loanId, (p0) => null);
-    if (loanApprovalResponse?.status == true) {
-      state = OtherPaymentState.ready(
-        context: context,
-        error: '',
-        isLoading: false,
-        paymentReceivedOffline: 1,
-        loanApproved: 0,
-      );
-    } else {
-      print("Failed");
-      state = OtherPaymentState.ready(
-        context: context,
-        error: '',
-        isLoading: false,
-        paymentReceivedOffline: 1,
-        loanApproved: 0,
-      );
-      _showAlertForErrorMessage(loanApprovalResponse!.message!);
-    }
-  }
 
   Future<void> makePayment(
     BuildContext context,
@@ -120,7 +46,7 @@ class OtherPaymentCoordinator
     String mobileNumber,
     String transactionId,
       int deviceId,
-      String modelName
+      String modelName, OtherPaymentScreenArgs otherPaymentScreenArgs
       ) async {
     state = OtherPaymentState.ready(
       context: context,
@@ -145,7 +71,7 @@ class OtherPaymentCoordinator
         loanApproved: 0,
       );
       Navigator.pop(context);
-      _navigationHandler.navigateOfflinePaymentScreen(deviceId, modelName);
+      _navigationHandler.navigateOfflinePaymentScreen(deviceId, modelName,otherPaymentScreenArgs);
     } else {
       state = OtherPaymentState.ready(
         context: context,

@@ -372,7 +372,8 @@ class _OtherPaymentScreenState extends State<OtherPaymentScreen> {
               mobileController.text.trim(),
               transactionController.text.trim(),
               widget.otherPaymentScreenArgs.deviceId,
-              widget.otherPaymentScreenArgs.modelName
+              widget.otherPaymentScreenArgs.modelName,
+              widget.otherPaymentScreenArgs
             );
             /* coordinator.isValidNidaNumber(nidaNumber.text);
             coordinator.isValidMobileNumber(mobileNumber.text);

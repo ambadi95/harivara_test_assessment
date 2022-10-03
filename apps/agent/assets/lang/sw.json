@@ -226,6 +226,9 @@
   "ST_App_Language": "Lugha ya Programu",
   "ST_sign_out": "Toka",
   "ST_contact_text": "Unahitaji Usaidizi au Ikiwa Una Swali lolote \n Wasiliana Nasi kwa +255 677-039-999",
+  "ST_sign_out_alert" : "Je, una uhakika unataka\n toka",
+  "ST_cancel" : "Ghairi",
+
 
   "TC_Title": "Masharti ya Matumizi ya Y9's Mobile App",
   "TC_LastUpdated": "Ilisasishwa mwisho: 2 Agosti 2022",
@@ -271,6 +274,13 @@
   "DLC_resend" : "Tuma tena",
   "DLC_pay_now" : "LIPA sasa",
   "DLC_payment_text" : "malipo ya TZSH\nombi limetumwa kwa Y9",
+  "DLC_device_stock_availability" : "Device Stock Availability",
+  "DLC_please_confirm_availability" : "Please confirm the availability of",
+  "DLC_inventory_continue_joining_fee_payment" : "in your inventory to continue\n         with ' Joining Fee Payment '",
+  "DLC_device_stock_availability_desc" : "Please confirm the availability of %{Samsung - A03 Core}% in your inventory to continue with 'Joining Fee Payment'",
+  "DLC_stock_available" : "Stock Available",
+  "DLC_out_of_stock_joining_fee"  : "Out of Stock - Joining Fee Payment",
+  "DLC_out_of_stock_onboard_later"  : "Out of Stock - Onboard Later",
 
   "RC_agent_new_customer" : "Mteja Mpya\nKupanda",
   "RC_customer_approval" : "Mteja Anayesubiri\nKupanda",
@@ -279,6 +289,8 @@
   "DP_WaitingForPayment" : "Inasubiri Malipo",
   "DP_PaymentReceived" : "Malipo Yamepokelewa",
   "DP_LoanApproved" : "Mkopo Umeidhinishwa",
+  "DP_LoanCreated" : "Loan Created",
+
 
   "PC_customer_ref_id" : "Kitambulisho cha Marejeleo ya Mteja",
   "PC_customer_ref_id_hint" : "Weka Kitambulisho cha Marejeleo",

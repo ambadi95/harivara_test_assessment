@@ -2,6 +2,7 @@ import 'package:config/Config.dart';
 import 'package:core/logging/logger.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_data_models/customer_onboard/Customer_onboarding_status/customer_onboarding_status.dart';
+import 'package:shared_data_models/otherpayment/otherpayment_screen_args.dart';
 import 'package:shared_data_models/otp/otp_screen_args.dart';
 import 'package:shared_data_models/otp/otp_verification_type.dart';
 import 'package:shared_data_models/workflow_status/work_flow_status_response/work_flow_status_response.dart';
@@ -484,12 +485,18 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
       case DownpaymentSuccess:
         try {
           _saveData(workFlowStatusResponse);
-          _navigationHandler.navigateToDownPaymentScreen(
-            deviceId: workFlowStatusResponse.data!.data[2].toString(),
-            paymentStatus: 0,
-            paymentReceived: 1,
-            amount: workFlowStatusResponse.data!.data[3]["amountPaid"],
-          );
+
+          if(workFlowStatusResponse.data!.data[3]["partnerCode"] == OTHER_PAYMENTS){
+            _navigationHandler.navigateOfflinePaymentScreen(workFlowStatusResponse.data!.data[2], "",  false, false);
+
+          }else {
+            _navigationHandler.navigateToDownPaymentScreen(
+              deviceId: workFlowStatusResponse.data!.data[2].toString(),
+              paymentStatus: 0,
+              paymentReceived: 1,
+              amount: workFlowStatusResponse.data!.data[3]["amountPaid"],
+            );
+          }
         } catch (e) {
           return _showAlertForErrorMessage(
               "Something went wrong,Please try again later!");
@@ -528,13 +535,21 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         //need to be change
         try {
           _saveData(workFlowStatusResponse);
-          _navigationHandler.navigateToDownPaymentScreen(
-            deviceId: workFlowStatusResponse.data!.data[2].toString(),
-            paymentStatus: 0,
-            paymentReceived: 1,
-            loanId: workFlowStatusResponse.data!.data[3]["loanId"] ?? "",
-            amount: workFlowStatusResponse.data!.data[3]["amountPaid"] ?? "",
-          );
+          if(workFlowStatusResponse.data!.data[3]["partnerCode"]== OTHER_PAYMENTS) {
+            //pass loan id in the model name further using in payment screen for loan approvl part
+            _navigationHandler.navigateOfflinePaymentScreen(workFlowStatusResponse.data!.data[2], workFlowStatusResponse.data!.data[3]["loanId"] ?? "",  false, true);
+
+          }else {
+            _navigationHandler.navigateToDownPaymentScreen(
+                deviceId: workFlowStatusResponse.data!.data[2].toString(),
+                paymentStatus: 0,
+                paymentReceived: 1,
+                loanId: workFlowStatusResponse.data!.data[3]["loanId"] ?? "",
+                amount: workFlowStatusResponse.data!.data[3]["amountPaid"] ??
+                    "",
+                isShowBottomSheet: true
+            );
+          }
         } catch (e) {
           return _showAlertForErrorMessage(
               "Something went wrong,Please try again later!");

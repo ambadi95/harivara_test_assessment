@@ -88,9 +88,9 @@ class DeviceDetailCoordinator
         image, deviceDetailData);
   }
 
-  void navigateToDownPayment(String amount, int? deviceId, String modelName) async {
-    await _navigationHandler.navigateToDownPaymentScreen(amount, deviceId!, modelName );
-  }
+  // void navigateToDownPayment(String amount, int? deviceId, String modelName) async {
+  //   await _navigationHandler.navigateToDownPaymentScreen(amount, deviceId!, modelName,false, false );
+  // }
 
   Future<void> selectDevice(String message, String buttonLabel, int deviceId,
       UserType userType) async {

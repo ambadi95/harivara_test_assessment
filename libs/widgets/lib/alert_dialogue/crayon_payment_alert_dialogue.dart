@@ -1,14 +1,16 @@
 import 'dart:io';
 
+import 'package:config/Colors.dart';
 import 'package:config/Styles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:widget_library/buttons/docked_button.dart';
 
 @immutable
 class CrayonPaymentAlertDialogue {
   static Future<bool?> showNativeAlert({
     required BuildContext context,
-    required String title,
+    String? title,
     required String content,
     required String defaultActionText,
     String? cancelActionText,
@@ -41,7 +43,7 @@ class CrayonPaymentAlertDialogue {
   /// chosen or the cancel action.
   static Future<bool?> showMaterialAlert({
     required BuildContext context,
-    required String title,
+    String? title,
     required String content,
     required String defaultActionText,
     String? cancelActionText,
@@ -55,6 +57,7 @@ class CrayonPaymentAlertDialogue {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            if (title != null)
             Text(
               title,
               style: label_input_error_red_style,
@@ -69,25 +72,28 @@ class CrayonPaymentAlertDialogue {
             SizedBox(
               height: 30,
             ),
-            TextButton(
-              onPressed: () => Navigator.of(context).pop(false),
-              child: Text(
-                defaultActionText,
-                style: SU_text_input_style,
-              ),
-            ),
+            // TextButton(
+            //   onPressed: () => Navigator.of(context).pop(false),
+            //   child: Text(
+            //     defaultActionText,
+            //     style: SU_text_input_style,
+            //   ),
+            // ),
           ],
         ),
+        alignment: Alignment.center,
         actions: <Widget>[
-          // if (cancelActionText != null)
-          //   TextButton(
-          //     onPressed: () => Navigator.of(context).pop(false),
-          //     child: Text(cancelActionText),
-          //   ),
-          // TextButton(
-          //   onPressed: () => Navigator.of(context).pop(true),
-          //   child: Text(defaultActionText),
-          // ),
+          if (cancelActionText != null)
+            CrayonPaymentDockedButton(
+              title: cancelActionText,
+              buttonColor: PRIMARY_COLOR,
+              onPressed: () => Navigator.of(context).pop(false),
+            ),
+          CrayonPaymentDockedButton(
+            title: defaultActionText,
+            buttonColor: PRIMARY_COLOR,
+            onPressed: () => Navigator.of(context).pop(true),
+          ),
         ],
       ),
     );
@@ -98,7 +104,7 @@ class CrayonPaymentAlertDialogue {
   /// chosen or the cancel action.
   static Future<bool?> _showCupertinoAlert({
     required BuildContext context,
-    required String title,
+    String? title,
     required String content,
     required String defaultActionText,
     String? cancelActionText,
@@ -106,7 +112,7 @@ class CrayonPaymentAlertDialogue {
     return showCupertinoDialog<bool>(
       context: context,
       builder: (context) => CupertinoAlertDialog(
-        title: Text(title),
+        title: title != null ? Text(title)  : SizedBox(),
         content: Text(content),
         actions: <Widget>[
           if (cancelActionText != null)

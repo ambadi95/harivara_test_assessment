@@ -223,6 +223,9 @@
   "ST_App_Language" : "App Language",
   "ST_sign_out" : "Sign Out",
   "ST_contact_text" : "Need Help or If You Have Any Query \n Contact Us at +255 677-039-999",
+  "ST_sign_out_alert" : "Are you sure you want to \n sign out?",
+  "ST_cancel" : "Cancel",
+
 
   "TC_Title": "Y9’s Mobile App Terms of Use",
   "TC_LastUpdated": "Last updated : 2 Aug, 2022",
@@ -268,6 +271,15 @@
   "DLC_resend" : "Resend",
   "DLC_pay_now" : "Pay Now",
   "DLC_payment_text" : "TZSHS payment\nrequest has been sent to Y9",
+  "DLC_device_stock_availability" : "Device Stock Availability",
+  "DLC_please_confirm_availability" : "Please confirm the availability of",
+  "DLC_inventory_continue_joining_fee_payment" : "in your inventory to continue\n         with ' Joining Fee Payment '",
+  "DLC_device_stock_availability_desc" : "Please confirm the availability of %{Samsung - A03 Core}% in your inventory to continue with 'Joining Fee Payment'",
+  "DLC_stock_available" : "Stock Available",
+  "DLC_out_of_stock_joining_fee"  : "Out of Stock - Joining Fee Payment",
+  "DLC_out_of_stock_onboard_later"  : "Out of Stock - Onboard Later",
+
+
 
   "RC_agent_new_customer" : "New Customer \nOnboarding",
   "RC_customer_approval" : "Existing Customer \nOnboarding",
@@ -276,6 +288,7 @@
   "DP_WaitingForPayment" : "Waiting for Payment",
   "DP_PaymentReceived" : "Payment Received",
   "DP_LoanApproved" : "Loan Approved",
+  "DP_LoanCreated" : "Loan Created",
 
   "PC_customer_ref_id" : "Customer Reference ID",
   "PC_customer_ref_id_hint" : "Enter Reference ID",

@@ -1,5 +1,6 @@
 import 'package:config/Colors.dart';
 import 'package:config/Config.dart';
+import 'package:config/Styles.dart';
 import 'package:core/mobile_core.dart';
 import 'package:core/view/base_view.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +15,7 @@ import 'package:widget_library/progress_bar/centered_circular_progress_bar.dart'
 import 'package:widget_library/scaffold/crayon_payment_scaffold.dart';
 import 'package:widget_library/spacers/crayon_payment_spacers.dart';
 import 'package:widget_library/static_text/crayon_payment_text.dart';
+import 'package:widget_library/utils/app_utils.dart';
 import '../../../device_option_module.dart';
 import 'package:shared_data_models/device_option/detail_detail_response/data.dart';
 import 'package:shared_data_models/deviceloancreation/devicecreation_screen_args.dart';
@@ -21,6 +23,7 @@ import 'package:get/get.dart';
 
 import '../state/device_loan_creation_state.dart';
 import '../viewmodel/device_loan_creation_coordinator.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class DeviceLoanCreationScreen extends StatefulWidget {
   final DeviceLoanCreationArgs deviceLoanCreationArgs;
@@ -218,55 +221,58 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
       textColor: White,
       textStyleVariant: CrayonPaymentTextStyleVariant.headline4,
       onPressed: () {
-        if (radioValue != 0) {
-          switch (radioValue) {
-            case 1:
-              coordinator.navigateToDownPayment(
-                  payNowTotal.toString(),
-                  detailDetail!.deviceId,
-                  "${detailDetail!.brand!}" +
-                      ' ' +
-                      '-' +
-                      ' ' +
-                      "${detailDetail!.modelNumber}");
-              break;
-            case 2:
-              coordinator.navigateToOtherScreen(
-                  widget.deviceLoanCreationArgs.deviceDetailData.deviceId!,
-                  "${detailDetail!.brand!}" +
-                      ' ' +
-                      '-' +
-                      ' ' +
-                      "${detailDetail!.modelNumber}",
-                  double.parse(payNowTotal.toString()),
-                  widget.deviceLoanCreationArgs.image);
-              break;
-            case 3:
-              break;
-            case 4:
-              coordinator.navigateToDownPayment(
-                  payNowTotal.toString(),
-                  detailDetail!.deviceId,
-                  "${detailDetail!.brand!}" +
-                      ' ' +
-                      '-' +
-                      ' ' +
-                      "${detailDetail!.modelNumber}");
-          }
-          // if(radioValue == 2){
-          //   coordinator.navigateToOtherScreen(
-          //       widget.deviceLoanCreationArgs.deviceDetailData.deviceId!,
-          //       "${detailDetail!.brand!}" + ' ' + '-' + ' ' + "${detailDetail!.modelNumber}",
-          //       double.parse(payNowTotal.toString()),
-          //       widget.deviceLoanCreationArgs.image);
-          //   }
-          // }else{
-          //   coordinator.navigateToDownPayment(
-          //       payNowTotal.toString(),
-          //       detailDetail!.deviceId,
-          //       "${detailDetail!.brand!}" + ' ' + '-' + ' ' + "${detailDetail!.modelNumber}");
-          // }
-        }
+        coordinator.showErrorBottomSheet(
+            _getOutOfStockUI(context, coordinator), context);
+
+        // if (radioValue != 0) {
+        //   switch (radioValue) {
+        //     case 1:
+        //       coordinator.navigateToDownPayment(
+        //           payNowTotal.toString(),
+        //           detailDetail!.deviceId,
+        //           "${detailDetail!.brand!}" +
+        //               ' ' +
+        //               '-' +
+        //               ' ' +
+        //               "${detailDetail!.modelNumber}");
+        //       break;
+        //     case 2:
+        //       coordinator.navigateToOtherScreen(
+        //           widget.deviceLoanCreationArgs.deviceDetailData.deviceId!,
+        //           "${detailDetail!.brand!}" +
+        //               ' ' +
+        //               '-' +
+        //               ' ' +
+        //               "${detailDetail!.modelNumber}",
+        //           double.parse(payNowTotal.toString()),
+        //           widget.deviceLoanCreationArgs.image);
+        //       break;
+        //     case 3:
+        //       break;
+        //     case 4:
+        //       coordinator.navigateToDownPayment(
+        //           payNowTotal.toString(),
+        //           detailDetail!.deviceId,
+        //           "${detailDetail!.brand!}" +
+        //               ' ' +
+        //               '-' +
+        //               ' ' +
+        //               "${detailDetail!.modelNumber}");
+        //   }
+        //   // if(radioValue == 2){
+        //   //   coordinator.navigateToOtherScreen(
+        //   //       widget.deviceLoanCreationArgs.deviceDetailData.deviceId!,
+        //   //       "${detailDetail!.brand!}" + ' ' + '-' + ' ' + "${detailDetail!.modelNumber}",
+        //   //       double.parse(payNowTotal.toString()),
+        //   //       widget.deviceLoanCreationArgs.image);
+        //   //   }
+        //   // }else{
+        //   //   coordinator.navigateToDownPayment(
+        //   //       payNowTotal.toString(),
+        //   //       detailDetail!.deviceId,
+        //   //       "${detailDetail!.brand!}" + ' ' + '-' + ' ' + "${detailDetail!.modelNumber}");
+        //   // }
+        // }
       },
     );
   }
@@ -559,11 +565,211 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
             dynamicHSpacer(5),
             _radioTigoButton(false),
             dynamicHSpacer(5),
-
           ],
         );
       default:
         return SizedBox();
     }
+  }
+
+  Widget _getOutOfStockUI(
+      BuildContext context, DeviceLoanCreationCoordinator coordinator) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: ListView(
+        children: [
+          SvgPicture.asset(
+              "packages/widget_library/assets/images/stocks_img.svg"),
+          SizedBox(
+            height: AppUtils.appUtilsInstance.getPercentageSize(
+              percentage: 4,
+            ),
+          ),
+          CrayonPaymentText(
+            key: Key('${_identifier}_Device_Stock_Availability'),
+            text: TextUIDataModel('DLC_device_stock_availability'.tr,
+                textAlign: TextAlign.center,
+                styleVariant: CrayonPaymentTextStyleVariant.bodyText1,
+                color: Black,
+                fontWeight: FontWeight.w600),
+          ),
+          SizedBox(
+            height: AppUtils.appUtilsInstance.getPercentageSize(
+              percentage: 5,
+            ),
+          ),
+
+          Center(
+            child: RichText(
+              text: TextSpan(
+                text: "DLC_please_confirm_availability".tr,
+                style: const TextStyle(
+                    fontFamily: 'Montserrat',
+                    fontSize: 14,
+                    color: VO_ResendTextColor,
+                    fontWeight: FontWeight.w400),
+                children: <TextSpan>[
+                  TextSpan(
+                      text: ' Samsung\n- A03 Core ',
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
+                  TextSpan(
+                      text: "DLC_inventory_continue_joining_fee_payment".tr,
+                      style: TextStyle(
+                          fontWeight: FontWeight.w400,
+                          color: VO_ResendTextColor,
+                          fontSize: 14)),
+                ],
+              ),
+            ),
+          ),
+          // CrayonPaymentText(
+          //   key: Key('${_identifier}_DLC_device_stock_availability_desc'),
+          //   text: TextUIDataModel('DLC_device_stock_availability_desc'.tr,
+          //       textAlign: TextAlign.center,
+          //       styleVariant: CrayonPaymentTextStyleVariant.subtitle2,
+          //       color: AN_SubTitleColor,
+          //       fontWeight: FontWeight.w400),
+          // ),
+          SizedBox(
+            height: AppUtils.appUtilsInstance.getPercentageSize(
+              percentage: 5,
+            ),
+          ),
+          _buildStockAvailableButton(context, coordinator),
+          _buildOutOfStockButton(context, coordinator),
+          _buildOutOfStockOnBoardLaterButton(context, coordinator)
+        ],
+      ),
+    );
+  }
+
+  Widget _buildStockAvailableButton(
+      BuildContext context, DeviceLoanCreationCoordinator coordinator) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
+      child: GestureDetector(
+        onTap: () async {
+          if (radioValue == 1) {
+            coordinator.navigateToDownPayment(
+                payNowTotal.toString(),
+                widget.deviceLoanCreationArgs.deviceDetailData.deviceId,
+                widget.deviceLoanCreationArgs.deviceDetailData.modelNumber
+                    .toString(),
+                false,
+                false);
+          } else if (radioValue == 2) {
+            coordinator.navigateToOtherScreen(
+                widget.deviceLoanCreationArgs.deviceDetailData.deviceId!,
+                widget.deviceLoanCreationArgs.deviceDetailData.modelNumber
+                    .toString(),
+                double.parse(payNowTotal.toString()),
+                widget.deviceLoanCreationArgs.image,
+                false,
+                false);
+          } else if (radioValue == 4) {
+            coordinator.navigateToDownPayment(
+                payNowTotal.toString(),
+                widget.deviceLoanCreationArgs.deviceDetailData.deviceId,
+                widget.deviceLoanCreationArgs.deviceDetailData.modelNumber
+                    .toString(),
+                false,
+                false);
+          }
+        },
+        child: Container(
+          width: double.infinity,
+          height: 50,
+          decoration: BoxDecoration(
+              color: SU_button_color, borderRadius: BorderRadius.circular(2.0)),
+          child: Center(
+            child: Text(
+              'DLC_stock_available'.tr,
+              style: SU_button_text_style,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  _buildOutOfStockButton(
+      BuildContext context, DeviceLoanCreationCoordinator coordinator) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
+      child: GestureDetector(
+        onTap: () async {
+
+          if (radioValue == 1) {
+            coordinator.navigateToDownPayment(
+                payNowTotal.toString(),
+                widget.deviceLoanCreationArgs.deviceDetailData.deviceId,
+                widget.deviceLoanCreationArgs.deviceDetailData.modelNumber
+                    .toString(),
+                true,
+                false);
+          } else if (radioValue == 2) {
+            coordinator.navigateToOtherScreen(
+                widget.deviceLoanCreationArgs.deviceDetailData.deviceId!,
+                widget.deviceLoanCreationArgs.deviceDetailData.modelNumber
+                    .toString(),
+                double.parse(payNowTotal.toString()),
+                widget.deviceLoanCreationArgs.image,
+                true,
+                false);
+          } else if (radioValue == 4) {
+            coordinator.navigateToDownPayment(
+                payNowTotal.toString(),
+                widget.deviceLoanCreationArgs.deviceDetailData.deviceId,
+                widget.deviceLoanCreationArgs.deviceDetailData.modelNumber
+                    .toString(),
+                true,
+                false);
+          }
+        },
+        child: Container(
+          width: double.infinity,
+          height: 50,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(2.0),
+            border: Border.all(color: PRIMARY_COLOR, width: 1),
+          ),
+          child: Center(
+            child: Text(
+              'DLC_out_of_stock_joining_fee'.tr,
+              style: KYC_button_text_style,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  _buildOutOfStockOnBoardLaterButton(
+      BuildContext context, DeviceLoanCreationCoordinator coordinator) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
+      child: GestureDetector(
+        onTap: () async {
+          coordinator.goHomeScreen();
+        },
+        child: Container(
+          width: double.infinity,
+          height: 50,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(2.0),
+            border: Border.all(color: SECONDARY_COLOR, width: 1),
+          ),
+          child: Center(
+            child: Text(
+              "DLC_out_of_stock_onboard_later".tr,
+              style: KYC_button_text_style_black,
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }

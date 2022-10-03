@@ -44,6 +44,9 @@ dependencies:
   other_payment:
     path: ../other_payments/otherpayments
 
+  home:
+    path: ../home
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
