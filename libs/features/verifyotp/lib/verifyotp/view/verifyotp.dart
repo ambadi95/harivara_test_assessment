@@ -386,8 +386,6 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
                 showError = false;
               });
             },
-
-            },
             onChanged: (String value) {
               setState(() {
                 isBtnEnabled = false;
