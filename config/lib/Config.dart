@@ -99,6 +99,11 @@ const String MDMRegSuccess = "MDM_Reg_Success";
 const String RepaymentInitiated = "Repayment_Initiated";
 const String RepaymentSuccess = "Repayment_Success";
 
+const String AIRTEL = "Airtel";
+const String VODACOM = "Vodacom";
+const String TIGO = "TIGO";
+const String OTHER_PAYMENTS = "Other Payments";
+
 
 enum WorkFlowStatus {
   Initiated,

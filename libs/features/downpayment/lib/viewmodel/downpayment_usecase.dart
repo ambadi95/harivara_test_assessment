@@ -14,6 +14,8 @@ class DownPaymentUseCase extends BaseDataProvider {
   DownPaymentUseCase(this._downpaymentviewmodel, this.taskManager)
       : super(taskManager);
 
+
+
   Future<String> getAgentName() async {
     return await getValueFromSecureStorage('agentName', defaultValue: '');
   }

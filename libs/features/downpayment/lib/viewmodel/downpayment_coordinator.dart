@@ -11,9 +11,10 @@ import 'package:widget_library/bottom_sheet/alert_bottom_sheet.dart';
 class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
   final DownPaymentNavigationHandler _navigationHandler;
   final DownPaymentUseCase _downPaymentUseCase;
-
   DownPaymentCoordinator(this._navigationHandler,
       this._downPaymentUseCase,) : super(const DownPaymentState.initialState());
+
+    DownPaymentScreenArgs? cordinatorDownPaymentScreenArgs;
 
   void initialiseState(BuildContext context,) async {
     state =
@@ -49,7 +50,12 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
     await _navigationHandler.pop();
   }
 
+  Future<void> showErrorBottomSheet(
+      Widget errorWidget, BuildContext context) async {
+    await _navigationHandler.showErrorBottomSheet(errorWidget, context);
 
+
+  }
   Future<void> createLoan(BuildContext context) async {
     String deviceId = await _downPaymentUseCase.getDeviceId();
 
@@ -64,7 +70,7 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
         context: context,
         error: '',
         isLoading: true,
-        loanActivated: 0,
+        loanCreated: 0,
         paymentRequested: 1,
         waitForPayment: 1,
         createLoan: 1,
@@ -77,21 +83,24 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
           context: context,
           error: '',
           isLoading: false,
-          loanActivated: 0,
+          loanCreated: 1,
           paymentRequested: 1,
           waitForPayment: 1,
           createLoan: 1,
           loanApproved: 0,
           paymentReceived: 1);
 
-      await loanApproval(createLoan!.data!.loanId!.toString(), context);
+      //stock available
+      if(cordinatorDownPaymentScreenArgs!.isOutOfStock==false){
+        await loanApproval(createLoan!.data!.loanId!.toString(), context);
+      }
     } else {
       print("Failed");
       state = DownPaymentState.ready(
           context: context,
           error: '',
           isLoading: false,
-          loanActivated: 0,
+          loanCreated: 2,
           createLoan: 2,
           paymentRequested: 1,
           waitForPayment: 1,
@@ -109,7 +118,7 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
         context: context,
         error: '',
         isLoading: true,
-        loanActivated: 0,
+        loanCreated: 0,
         paymentRequested: 1,
         waitForPayment: 1,
         createLoan: 1,
@@ -122,7 +131,7 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
           context: context,
           error: '',
           isLoading: false,
-          loanActivated: 0,
+          loanCreated: 0,
           paymentRequested: 1,
           waitForPayment: 1,
           createLoan: 1,
@@ -134,7 +143,7 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
           context: context,
           error: '',
           isLoading: false,
-          loanActivated: 0,
+          loanCreated: 0,
           createLoan: 1,
           paymentRequested: 1,
           waitForPayment: 1,
@@ -152,7 +161,7 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
         context: context,
         error: '',
         isLoading: true,
-        loanActivated: 0,
+        loanCreated: 0,
         paymentRequested: 0,
         waitForPayment: 0,
         createLoan: 0,
@@ -176,7 +185,7 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
           context: context,
           error: '',
           isLoading: false,
-          loanActivated: 0,
+          loanCreated: 0,
           paymentRequested: 1,
           waitForPayment: 1,
           loanApproved: 0,
@@ -191,7 +200,7 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
           context: context,
           error: '',
           isLoading: false,
-          loanActivated: 0,
+          loanCreated: 0,
           paymentRequested: 2,
           waitForPayment: 0,
           loanApproved: 0,
@@ -232,7 +241,7 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
         context: context,
         error: '',
         isLoading: true,
-        loanActivated: 0,
+        loanCreated: 0,
         paymentRequested: 1,
         waitForPayment: 1,
         loanApproved: 0,
@@ -262,7 +271,7 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
           context: context,
           error: "",
           isLoading: false,
-          loanActivated: 0,
+          loanCreated: 0,
           paymentRequested: 1,
           waitForPayment: 1,
           loanApproved: 0,
@@ -293,7 +302,7 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
           context: context,
           error: '',
           isLoading: false,
-          loanActivated: 0,
+          loanCreated: 0,
           paymentRequested: 1,
           waitForPayment: 1,
           createLoan: 0,
@@ -310,6 +319,7 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
 
   void setData(BuildContext context,
       DownPaymentScreenArgs downPaymentScreenArgs) async {
+    cordinatorDownPaymentScreenArgs=downPaymentScreenArgs;
     await _downPaymentUseCase
         .setDeviceId(downPaymentScreenArgs.deviceId.toString());
     await _downPaymentUseCase.setPaymentStatusCalled('');
@@ -318,7 +328,7 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
         context: context,
         error: '',
         isLoading: false,
-        loanActivated: downPaymentScreenArgs.loanActivated,
+        loanCreated: downPaymentScreenArgs.loanCreated,
         paymentRequested: downPaymentScreenArgs.paymentRequested,
         waitForPayment: downPaymentScreenArgs.waitForPayment,
         loanApproved: downPaymentScreenArgs.loanApproved,
@@ -343,7 +353,7 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
             context: context,
             error: '',
             isLoading: false,
-            loanActivated: 0,
+            loanCreated: 0,
             createLoan: 1,
             paymentRequested: 1,
             waitForPayment: 1,
@@ -351,7 +361,18 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
             paymentReceived: 1);
         _showAlertForErrorMessage("Loan Rejected", true);
       }else {
-        await loanApproval(downPaymentScreenArgs.subTitle, context);
+
+        state = DownPaymentState.ready(
+            context: context,
+            error: '',
+            isLoading: false,
+            loanCreated: 1,
+            createLoan: 1,
+            paymentRequested: 1,
+            waitForPayment: 1,
+            loanApproved: 0,
+            paymentReceived: 1);
+        // await loanApproval(downPaymentScreenArgs.subTitle, context);
       }
     }
   }
@@ -378,5 +399,17 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
       isScrollControlled: false,
       isDismissible: true,
     );
+  }
+
+
+  navigatetoSuccessScreen() async {
+    await _navigationHandler.navigateToFinalSuccess();
+  }
+
+  void goHomeScreen() {
+    _navigationHandler.goBack();
+  }
+  void goBack() {
+    _navigationHandler.pop();
   }
 }

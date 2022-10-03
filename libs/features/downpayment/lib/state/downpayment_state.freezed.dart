@@ -28,7 +28,7 @@ mixin _$DownPaymentState {
             num waitForPayment,
             num paymentReceived,
             num loanApproved,
-            num loanActivated)
+            num loanCreated)
         ready,
   }) =>
       throw _privateConstructorUsedError;
@@ -44,7 +44,7 @@ mixin _$DownPaymentState {
             num waitForPayment,
             num paymentReceived,
             num loanApproved,
-            num loanActivated)?
+            num loanCreated)?
         ready,
   }) =>
       throw _privateConstructorUsedError;
@@ -60,7 +60,7 @@ mixin _$DownPaymentState {
             num waitForPayment,
             num paymentReceived,
             num loanApproved,
-            num loanActivated)?
+            num loanCreated)?
         ready,
     required TResult orElse(),
   }) =>
@@ -154,7 +154,7 @@ class _$InitialState implements InitialState {
             num waitForPayment,
             num paymentReceived,
             num loanApproved,
-            num loanActivated)
+            num loanCreated)
         ready,
   }) {
     return initialState();
@@ -173,7 +173,7 @@ class _$InitialState implements InitialState {
             num waitForPayment,
             num paymentReceived,
             num loanApproved,
-            num loanActivated)?
+            num loanCreated)?
         ready,
   }) {
     return initialState?.call();
@@ -192,7 +192,7 @@ class _$InitialState implements InitialState {
             num waitForPayment,
             num paymentReceived,
             num loanApproved,
-            num loanActivated)?
+            num loanCreated)?
         ready,
     required TResult orElse(),
   }) {
@@ -252,7 +252,7 @@ abstract class _$$DownPaymentStateReadyCopyWith<$Res> {
       num waitForPayment,
       num paymentReceived,
       num loanApproved,
-      num loanActivated});
+      num loanCreated});
 }
 
 /// @nodoc
@@ -276,7 +276,7 @@ class __$$DownPaymentStateReadyCopyWithImpl<$Res>
     Object? waitForPayment = freezed,
     Object? paymentReceived = freezed,
     Object? loanApproved = freezed,
-    Object? loanActivated = freezed,
+    Object? loanCreated = freezed,
   }) {
     return _then(_$DownPaymentStateReady(
       context: context == freezed
@@ -311,9 +311,9 @@ class __$$DownPaymentStateReadyCopyWithImpl<$Res>
           ? _value.loanApproved
           : loanApproved // ignore: cast_nullable_to_non_nullable
               as num,
-      loanActivated: loanActivated == freezed
-          ? _value.loanActivated
-          : loanActivated // ignore: cast_nullable_to_non_nullable
+      loanCreated: loanCreated == freezed
+          ? _value.loanCreated
+          : loanCreated // ignore: cast_nullable_to_non_nullable
               as num,
     ));
   }
@@ -331,7 +331,7 @@ class _$DownPaymentStateReady implements DownPaymentStateReady {
       this.waitForPayment = 0,
       this.paymentReceived = 0,
       this.loanApproved = 0,
-      this.loanActivated = 0});
+      this.loanCreated = 0});
 
   @override
   final BuildContext context;
@@ -358,11 +358,11 @@ class _$DownPaymentStateReady implements DownPaymentStateReady {
   final num loanApproved;
   @override
   @JsonKey()
-  final num loanActivated;
+  final num loanCreated;
 
   @override
   String toString() {
-    return 'DownPaymentState.ready(context: $context, error: $error, isLoading: $isLoading, paymentRequested: $paymentRequested, createLoan: $createLoan, waitForPayment: $waitForPayment, paymentReceived: $paymentReceived, loanApproved: $loanApproved, loanActivated: $loanActivated)';
+    return 'DownPaymentState.ready(context: $context, error: $error, isLoading: $isLoading, paymentRequested: $paymentRequested, createLoan: $createLoan, waitForPayment: $waitForPayment, paymentReceived: $paymentReceived, loanApproved: $loanApproved, loanCreated: $loanCreated)';
   }
 
   @override
@@ -384,7 +384,7 @@ class _$DownPaymentStateReady implements DownPaymentStateReady {
             const DeepCollectionEquality()
                 .equals(other.loanApproved, loanApproved) &&
             const DeepCollectionEquality()
-                .equals(other.loanActivated, loanActivated));
+                .equals(other.loanCreated, loanCreated));
   }
 
   @override
@@ -398,7 +398,7 @@ class _$DownPaymentStateReady implements DownPaymentStateReady {
       const DeepCollectionEquality().hash(waitForPayment),
       const DeepCollectionEquality().hash(paymentReceived),
       const DeepCollectionEquality().hash(loanApproved),
-      const DeepCollectionEquality().hash(loanActivated));
+      const DeepCollectionEquality().hash(loanCreated));
 
   @JsonKey(ignore: true)
   @override
@@ -419,11 +419,11 @@ class _$DownPaymentStateReady implements DownPaymentStateReady {
             num waitForPayment,
             num paymentReceived,
             num loanApproved,
-            num loanActivated)
+            num loanCreated)
         ready,
   }) {
     return ready(context, error, isLoading, paymentRequested, createLoan,
-        waitForPayment, paymentReceived, loanApproved, loanActivated);
+        waitForPayment, paymentReceived, loanApproved, loanCreated);
   }
 
   @override
@@ -439,11 +439,11 @@ class _$DownPaymentStateReady implements DownPaymentStateReady {
             num waitForPayment,
             num paymentReceived,
             num loanApproved,
-            num loanActivated)?
+            num loanCreated)?
         ready,
   }) {
     return ready?.call(context, error, isLoading, paymentRequested, createLoan,
-        waitForPayment, paymentReceived, loanApproved, loanActivated);
+        waitForPayment, paymentReceived, loanApproved, loanCreated);
   }
 
   @override
@@ -459,13 +459,13 @@ class _$DownPaymentStateReady implements DownPaymentStateReady {
             num waitForPayment,
             num paymentReceived,
             num loanApproved,
-            num loanActivated)?
+            num loanCreated)?
         ready,
     required TResult orElse(),
   }) {
     if (ready != null) {
       return ready(context, error, isLoading, paymentRequested, createLoan,
-          waitForPayment, paymentReceived, loanApproved, loanActivated);
+          waitForPayment, paymentReceived, loanApproved, loanCreated);
     }
     return orElse();
   }
@@ -512,7 +512,7 @@ abstract class DownPaymentStateReady implements DownPaymentState {
       final num waitForPayment,
       final num paymentReceived,
       final num loanApproved,
-      final num loanActivated}) = _$DownPaymentStateReady;
+      final num loanCreated}) = _$DownPaymentStateReady;
 
   BuildContext get context;
   String get error;
@@ -522,7 +522,7 @@ abstract class DownPaymentStateReady implements DownPaymentState {
   num get waitForPayment;
   num get paymentReceived;
   num get loanApproved;
-  num get loanActivated;
+  num get loanCreated;
   @JsonKey(ignore: true)
   _$$DownPaymentStateReadyCopyWith<_$DownPaymentStateReady> get copyWith =>
       throw _privateConstructorUsedError;

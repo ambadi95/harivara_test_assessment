@@ -22,6 +22,8 @@ import 'package:shared_data_models/downpayment/downpayment_screen_args.dart';
 import 'package:shared_data_models/kyc/kyc_data_model.dart';
 import 'package:shared_data_models/kyc/kyc_screen_args.dart';
 import 'package:shared_data_models/kyc/kyc_type.dart';
+import 'package:shared_data_models/offlinepayment/offlinepayment_screen_args.dart';
+import 'package:shared_data_models/otherpayment/otherpayment_screen_args.dart';
 import 'package:shared_data_models/passcode/passcode_screen_args.dart';
 import 'package:shared_data_models/passcode/passcode_verification_type.dart';
 import 'package:passcode/sub_features/passcode/view/passcode.dart';
@@ -32,7 +34,10 @@ import 'package:welcome/sub_features/welcome/view/welcome_screen.dart';
 import 'package:widget_library/helpers/error/helper/error_helper.dart';
 import 'package:kyc/view/kyc_credit_screen.dart';
 import 'package:shared_data_models/kyc/kyc_screen_args.dart';
+import 'package:shared_data_models/termscondition_faq_screen_args/termscondition_screen_args.dart';
+import 'package:termscondition/termscondition/view/terms_condition_screen.dart';
 import 'package:shared_data_models/device_option/detail_detail_response/data.dart';
+import 'package:offline_payment/view/offline_payment_screen.dart';
 
 class VerifyOtpNavigationHandler with ErrorHandler {
   final NavigationManager _navigationManager;
@@ -175,6 +180,13 @@ class VerifyOtpNavigationHandler with ErrorHandler {
         arguments: arguments);
   }
 
+  Future<void> navigateToTermsAndConditionsScreen(UserType userType, bool isPasscode) async {
+    var arguments = TermsConditionScreenArgs(userType: userType, isPasscode: isPasscode);
+    await _navigationManager.navigateTo(
+        CrayonTermsConditionScreen.viewPath, const NavigationType.push(),
+        arguments: arguments);
+  }
+
   Future<void> navigateToDeviceLoanCreation(
       String image, Data deviceDetailData) async {
     var arguments = DeviceLoanCreationArgs(deviceDetailData, image);
@@ -183,11 +195,18 @@ class VerifyOtpNavigationHandler with ErrorHandler {
         arguments: arguments);
   }
 
+  Future<void> navigateOfflinePaymentScreen(int deviceId, String modelName,bool isOutOfStock,bool bottomSheetShown) async {
+    var arguments = OfflinePaymentScreenArgs(deviceId, modelName,isOutOfStock,bottomSheetShown);
+    _navigationManager.navigateTo(
+        OfflinePaymentScreen.viewPath,
+        const NavigationType.push(),
+        arguments: arguments
+    );
+  }
 
-
-  navigateToDownPaymentScreen({String? deviceId,String? amount, num? paymentStatus,num? paymentReceived,String? loanId="",num? loanApproval=0}) {
+  navigateToDownPaymentScreen({String? deviceId,String? amount, num? paymentStatus,num? paymentReceived,String? loanId="",num? loanApproval=0,bool isShowBottomSheet=false}) {
     var arguments = DownPaymentScreenArgs(
-        int.parse(deviceId!), amount!, "WORK_FLOW", loanId ?? "", "", paymentStatus ?? 0,paymentStatus ?? 0,paymentReceived ?? 0,loanApproval ?? 0,0);
+        int.parse(deviceId!), amount!, "WORK_FLOW", loanId ?? "", "", paymentStatus ?? 0,paymentStatus ?? 0,paymentReceived ?? 0,loanApproval ?? 0,0,false,isShowBottomSheet);
     _navigationManager.navigateTo(
         DownPaymentScreen.viewPath, const NavigationType.push(),
         arguments: arguments);
@@ -244,10 +263,13 @@ class VerifyOtpNavigationHandler with ErrorHandler {
         arguments: configureMdmArgs);
   }
 
+
   Future<void> navigateToFinalSuccess() async {
+    var argument = "test";
     await _navigationManager.navigateTo(
-      SuccessScreen.viewPath,
-      const NavigationType.push(),
+        SuccessScreen.viewPath,
+        const NavigationType.push(),
+        arguments: argument
     );
   }
 

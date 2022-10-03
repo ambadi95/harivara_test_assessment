@@ -1,5 +1,6 @@
 import 'package:core/view/analytics_state_notifier.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_data_models/offlinepayment/offlinepayment_screen_args.dart';
 import 'package:widget_library/utils/app_utils.dart';
 import '../navigation_handler/offline_payment_navigation_handler.dart';
 import '../state/offlinepayment_state.dart';
@@ -35,7 +36,14 @@ class OfflinePaymentCoordinator extends AnalyticsStateNotifier<OfflinePaymentSta
     await _navigationHandler.navigateToScanQrCode(deviceId, modelName);
   }
 
-  Future<void> createLoan(BuildContext context) async {
+  Future<void> showErrorBottomSheet(
+      Widget errorWidget, BuildContext context) async {
+    await _navigationHandler.showErrorBottomSheet(errorWidget, context);
+
+
+  }
+
+  Future<void> createLoan(BuildContext context, OfflinePaymentScreenArgs offlinePaymentScreenArgs) async {
     String deviceId = await _offlinePaymentUseCase.getDeviceId();
 
     state = OfflinePaymentState.ready(
@@ -45,12 +53,20 @@ class OfflinePaymentCoordinator extends AnalyticsStateNotifier<OfflinePaymentSta
         paymentReceivedOffline: 1,
         loanApproved: 0,);
     try {
-      var createLoan =
-      await _offlinePaymentUseCase.createLoan(deviceId, (p0) => null);
+      var createLoan = await _offlinePaymentUseCase.createLoan(deviceId, (p0) => null);
 
     if (createLoan?.status == true) {
       dismissProgress(context);
-      await loanApproval(createLoan!.data!.loanId!.toString(), context);
+      state = OfflinePaymentState.ready(
+        context: context,
+        error: '',
+        isLoading: false,
+        loanCreated: 1,
+        paymentReceivedOffline: 1,
+        loanApproved: 0,);
+      if(offlinePaymentScreenArgs.isOutOfStock == false) {
+        await loanApproval(createLoan!.data!.loanId!.toString(), context);
+      }
     } else {
       dismissProgress(context);
 
@@ -165,4 +181,16 @@ class OfflinePaymentCoordinator extends AnalyticsStateNotifier<OfflinePaymentSta
       isDismissible: true,
     );
   }
-}
+
+
+  navigatetoSuccessScreen() async {
+    await _navigationHandler.navigateToFinalSuccess();
+  }
+
+  void goBack() async {
+    await _navigationHandler.pop();
+  }
+
+  void goHomeScreen() {
+    _navigationHandler.goBack();
+  }}

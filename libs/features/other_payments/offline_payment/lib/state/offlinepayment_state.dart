@@ -12,5 +12,6 @@ class OfflinePaymentState with _$OfflinePaymentState {
     @Default(false) bool isLoading,
     @Default(0) num paymentReceivedOffline,
     @Default(0) num loanApproved,
+    @Default(0) num loanCreated,
   }) = OfflinePaymentStateReady;
 }

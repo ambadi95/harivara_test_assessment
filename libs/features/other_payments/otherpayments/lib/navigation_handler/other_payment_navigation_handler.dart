@@ -3,6 +3,7 @@ import 'package:core/navigation/navigation_type.dart';
 import 'package:home/home/home_screen_arguments.dart';
 import 'package:scanqrcode/view/scanqrcode_screen.dart';
 import 'package:shared_data_models/offlinepayment/offlinepayment_screen_args.dart';
+import 'package:shared_data_models/otherpayment/otherpayment_screen_args.dart';
 import 'package:widget_library/helpers/error/helper/error_helper.dart';
 import 'package:home/home/home_screen_arguments.dart';
 import 'package:home/home/view/home_screen.dart';
@@ -24,8 +25,8 @@ class OtherPaymentNavigationHandler with ErrorHandler {
         );
   }
 
-  Future<void> navigateOfflinePaymentScreen(int deviceId, String modelName) async {
-    var arguments = OfflinePaymentScreenArgs(deviceId, modelName);
+  Future<void> navigateOfflinePaymentScreen(int deviceId, String modelName, OtherPaymentScreenArgs otherPaymentScreenArgs) async {
+    var arguments = OfflinePaymentScreenArgs(deviceId, modelName,otherPaymentScreenArgs.isOutOfStock,otherPaymentScreenArgs.bottomSheetShown);
     _navigationManager.navigateTo(
         OfflinePaymentScreen.viewPath,
         const NavigationType.push(),
