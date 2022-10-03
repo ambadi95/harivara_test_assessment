@@ -78,9 +78,15 @@ void successFulScreen(){
       barcodeScanRes = 'Failed to get platform version.';
     }
     if(barcodeScanRes == '-1'){
+      state = const ScanQRCodeState.imei1Error('SU_valid_IMEI1');
       return '';
-    }else {
+    }else if(barcodeScanRes.isNumericOnly && barcodeScanRes.length == 15){
+      state = const ScanQRCodeState.imei1Error('');
       return barcodeScanRes;
+    }
+    else {
+      state = const ScanQRCodeState.imei1Error('SU_valid_IMEI1');
+      return '';
     }
   }
 
@@ -90,15 +96,20 @@ void successFulScreen(){
       barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
           '#ff6666', 'Cancel', true, ScanMode.BARCODE);
       if (kDebugMode) {
-        print('^^^^^^^^^^^^^^^');
         print(barcodeScanRes);
       }
     } on PlatformException {
       barcodeScanRes = 'Failed to get platform version.';
     }if(barcodeScanRes == '-1'){
+      state = const ScanQRCodeState.imei2Error('SU_valid_IMEI2');
       return '';
-    }else {
+    }else if(barcodeScanRes.isNumericOnly && barcodeScanRes.length == 15){
+      state = const ScanQRCodeState.imei2Error('');
       return barcodeScanRes;
+    }
+    else {
+      state = const ScanQRCodeState.imei2Error('SU_valid_IMEI2');
+      return '';
     }
   }
 

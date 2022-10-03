@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:core/ioc/di_container.dart';
+import 'package:core/mobile_core.dart';
 import 'package:core/navigation/navigation_manager.dart';
 import 'package:core/utils/extensions/string_extensions.dart';
 import 'package:flutter/material.dart';
@@ -34,6 +35,7 @@ class WebViewPage extends StatefulWidget {
   final Function? onActionClick;
   final Color? backgroundColor;
   final bool closeOnCompletion;
+  final bool isTitleCenterd;
 
   const WebViewPage({
     Key? key,
@@ -41,6 +43,7 @@ class WebViewPage extends StatefulWidget {
     this.url,
     this.body,
     this.handler,
+    this.isTitleCenterd = true,
     required this.launchType,
     this.leadingActionIcon,
     this.trailingActionIcon,
@@ -93,7 +96,7 @@ class _WebViewPageState extends State<WebViewPage> {
 
     return Scaffold(
       key: Key('WebView_Scaffold'),
-      appBar: WebViewAppBar(),
+      appBar: widget.title.isEmptyOrNull ? null : WebViewAppBar(),
       body: WebView(
         key: Key('WebView'),
         javascriptMode: JavascriptMode.unrestricted,
@@ -149,12 +152,9 @@ class _WebViewPageState extends State<WebViewPage> {
           : Container(key: Key('PreferredSizeWidget_NullContainer')),
       elevation: 0,
       backgroundColor: widget.backgroundColor ?? Color(0xFFF7F7F4),
-      centerTitle: true,
+      centerTitle: widget.isTitleCenterd,
       title: CrayonPaymentText(
-        text: TextUIDataModel(
-          widget.title.text,
-          styleVariant: CrayonPaymentTextStyleVariant.subtitle2,
-        ),
+        text:  widget.title,
         key: Key('PreferredSizeWidget_titleText'),
       ),
     );

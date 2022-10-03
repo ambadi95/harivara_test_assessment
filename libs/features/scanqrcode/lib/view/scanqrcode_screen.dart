@@ -232,6 +232,7 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
             },
             onScanIconTap: ()  async {
               imei1Number.text = await coordinator.scanBarcodeImei1();
+              _validateForm(coordinator);
             }
           ),
       ],
@@ -267,7 +268,10 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
           onChanged: (value) {
             _validateForm(coordinator);
           },
-            onScanIconTap: () async{ imei2Number.text = await coordinator.scanBarcodeImei2();}
+            onScanIconTap: () async{ imei2Number.text = await coordinator.scanBarcodeImei2();
+            _validateForm(coordinator);
+          }
+
         ),
       ],
     );
