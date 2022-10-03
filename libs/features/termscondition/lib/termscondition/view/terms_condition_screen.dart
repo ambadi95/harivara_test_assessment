@@ -116,7 +116,7 @@ class _CrayonTermsConditionScreenState extends State<CrayonTermsConditionScreen>
                 //     widget.termsConditionScreenArgs.userType);
             }
           } else{
-            coordinator.saveConsentForCustomerPasscodeAPI(context, widget.termsConditionScreenArgs.userType);
+            coordinator.saveConsentForPasscodeAPI(context, widget.termsConditionScreenArgs.userType);
             //coordinator.naigateToPasscodeScreen(widget.termsConditionScreenArgs.userType);
           }
         },

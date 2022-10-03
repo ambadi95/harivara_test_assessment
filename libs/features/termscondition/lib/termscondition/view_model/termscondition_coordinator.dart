@@ -55,7 +55,7 @@ class TermsConditionCoordinator extends BaseViewModel<TermsConditionState> {
     }
   }
 
-  Future saveConsentForCustomerPasscodeAPI(
+  Future saveConsentForPasscodeAPI(
       BuildContext context,
       UserType userType
       ) async {
