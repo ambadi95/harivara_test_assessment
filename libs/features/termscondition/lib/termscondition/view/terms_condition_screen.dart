@@ -97,22 +97,27 @@ class _CrayonTermsConditionScreenState extends State<CrayonTermsConditionScreen>
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
         onTap: () async {
+          print("usertype=-==========%%%%%%%%%%%%%=======> ${widget.termsConditionScreenArgs.userType}, ${widget.termsConditionScreenArgs.isPasscode}");
           if(widget.termsConditionScreenArgs.isPasscode == false) {
             switch (widget.termsConditionScreenArgs.userType) {
               case UserType.Customer :
-                coordinator.naigateToDetailScreen(
-                    widget.termsConditionScreenArgs.userType);
+                coordinator.saveConsentForCustomerAPI(context, widget.termsConditionScreenArgs.userType);
+                // coordinator.naigateToDetailScreen(
+                //     widget.termsConditionScreenArgs.userType);
                 break;
               case UserType.AgentCustomer :
-                coordinator.naigateToDetailScreen(
-                    widget.termsConditionScreenArgs.userType);
+                coordinator.saveConsentForCustomerAPI(context, widget.termsConditionScreenArgs.userType);
+                // coordinator.naigateToDetailScreen(
+                //     widget.termsConditionScreenArgs.userType);
                 break;
               case UserType.Agent :
-                coordinator.naigateToAgentDetailScreen(
-                    widget.termsConditionScreenArgs.userType);
+                coordinator.saveConsentForAgentAPI(context, widget.termsConditionScreenArgs.userType);
+                // coordinator.naigateToAgentDetailScreen(
+                //     widget.termsConditionScreenArgs.userType);
             }
-          }else{
-            coordinator.naigateToPasscodeScreen(widget.termsConditionScreenArgs.userType);
+          } else{
+            coordinator.saveConsentForCustomerPasscodeAPI(context, widget.termsConditionScreenArgs.userType);
+            //coordinator.naigateToPasscodeScreen(widget.termsConditionScreenArgs.userType);
           }
         },
         child: Container(
