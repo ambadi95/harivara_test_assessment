@@ -27,6 +27,7 @@ import 'package:shared_data_models/otherpayment/otherpayment_screen_args.dart';
 import 'package:shared_data_models/passcode/passcode_screen_args.dart';
 import 'package:shared_data_models/passcode/passcode_verification_type.dart';
 import 'package:passcode/sub_features/passcode/view/passcode.dart';
+import 'package:shared_data_models/scan_qr_code/scan_qrcode_args.dart';
 import 'package:welcome/sub_features/details/view/details.dart';
 import 'package:welcome/sub_features/enrollment_success/view/enrollment_success_screen.dart';
 import 'package:welcome/sub_features/welcome/data_model/welcome_model.dart';
@@ -242,7 +243,7 @@ class VerifyOtpNavigationHandler with ErrorHandler {
   }
 
   Future<void> navigateToScanQrCode(int? deviceId) async {
-    var arguments = deviceId;
+    var arguments = ScanQRCodeArgs(deviceId!,'');
     _navigationManager.navigateTo(
         ScanQrCodeScreen.viewPath, const NavigationType.push(),
         arguments: arguments);
