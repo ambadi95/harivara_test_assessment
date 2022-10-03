@@ -259,7 +259,7 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
     bool _validateForm(String nidaNo, String mobNumber, String agentId,
        SignUpArguments arguments, String agentType,String paymentMode) {
       var agentID = agentId.isNotEmpty;
-      var isnidaNumberValid = _signupUseCase.isValidNINDAnumber(nidaNo);
+      var isnidaNumberValid = _signupUseCase.isValidNINDAnumber(nidaNo.replaceAll("-", ""));
       var ismobileNoValid = _signupUseCase.isValidMobileNumber(mobNumber);
      var isPaymentModeValid = handlePaymentValidation(arguments)?true:_signupUseCase.isValidPaymentMode(paymentMode);
       var _isValid;
@@ -290,7 +290,7 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
     }
 
     bool isValidNidaNumber(String nidaNumber) {
-      bool result = _signupUseCase.isValidNINDAnumber(nidaNumber);
+      bool result = _signupUseCase.isValidNINDAnumber(nidaNumber.replaceAll("-", ""));
       if (!result) {
         state = const SignUpState.nindaNumberError('SU_title_error_text');
       } else {
