@@ -1,5 +1,6 @@
 import 'package:config/Config.dart';
 import 'package:core/logging/logger.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_data_models/customer_onboard/Customer_onboarding_status/customer_onboarding_status.dart';
 import 'package:shared_data_models/otherpayment/otherpayment_screen_args.dart';
@@ -187,9 +188,6 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
       String enterOtp,
       String event) async {
     CrayonPaymentLogger.logInfo("I am in OTP Verify");
-    print(otpScreenArgs.otpVerificationType);
-    print(OtpVerificationType.customerSign);
-    print(OtpVerificationType.customerSignUpAgent);
     var currentState = state as VerifyOtpStateReady;
     try {
       int attempts = currentState.attemptsRemain;
@@ -223,7 +221,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
             _navigationHandler.navigateToHomeScreen(userType);
           }
         } else {
-         // _showAlertForErrorMessage(responseSignin.message!);
+          // _showAlertForErrorMessage(responseSignin.message!);
         }
       } else if (otpScreenArgs.otpVerificationType ==
           OtpVerificationType.customerSignUpAgent) {
@@ -303,7 +301,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
 
           _navigationHandler.navigateToAgentWelcomeBack(userType);
         } else {
-          _showAlertForErrorMessage(responseSignin!.message!);
+          //    _showAlertForErrorMessage(responseSignin!.message!);
         }
       } else if (otpScreenArgs.otpVerificationType ==
           OtpVerificationType.resetPasscodeCustomer) {
@@ -335,10 +333,14 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
     } catch (e) {
       state = currentState.copyWith(isLoading: false);
       if (otpScreenArgs.otpVerificationType ==
-          OtpVerificationType.customerSign ||
+              OtpVerificationType.customerSign ||
           otpScreenArgs.otpVerificationType ==
-              OtpVerificationType.customerPasscodeSet) {
-        print(e.toString());
+              OtpVerificationType.customerPasscodeSet ||
+          otpScreenArgs.otpVerificationType ==
+              OtpVerificationType.customerSignUpAgent) {
+        if (kDebugMode) {
+          print(e.toString());
+        }
       } else {
         AppUtils.appUtilsInstance.showErrorBottomSheet(
           title: 'otp_validation_failed'.tr, //e.toString(),

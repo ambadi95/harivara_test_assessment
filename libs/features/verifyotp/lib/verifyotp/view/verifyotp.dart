@@ -177,7 +177,7 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
       padding: const EdgeInsets.only(bottom: 19),
       child: InkWell(
         onTap: () async {
-          if(attemptCount<3) {
+          if(attemptCount<4) {
             if (coordinator.otpController.text.isNotEmpty &&
                 coordinator.otpController.text.length == 6) {
 
