@@ -8,6 +8,8 @@ class OtherPaymentScreenArgs {
   final num paymentReceivedOffline;
   final num loanApproved;
   final String image;
+  final bool isOutOfStock;
+  final bool bottomSheetShown;
 
   OtherPaymentScreenArgs(
       this.deviceId,
@@ -17,7 +19,9 @@ class OtherPaymentScreenArgs {
       this.subTitle,
       this.paymentReceivedOffline,
       this.loanApproved,
-      this.image
+      this.image,
+      this.isOutOfStock,
+      this.bottomSheetShown
       );
 }
 

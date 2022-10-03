@@ -17,8 +17,8 @@ class DeviceLoanCreationCoordinator
     this._DeviceOptionUseCase,
   ) : super(const DeviceLoanCreationState.initialState());
 
-  void navigateToDownPayment(String amount,int? deviceId, String modelName) async {
-    await _navigationHandler.navigateToDownPaymentScreen(amount,deviceId!, modelName);
+  void navigateToDownPayment(String amount,int? deviceId, String modelName,bool isOutOfStock, bool isBottomSheetShow) async {
+    await _navigationHandler.navigateToDownPaymentScreen(amount,deviceId!, modelName, isOutOfStock,isBottomSheetShow);
   }
 
   Future<String> getTelcoPartner()async{
@@ -59,8 +59,22 @@ class DeviceLoanCreationCoordinator
     );
   }
 
-  Future<void> navigateToOtherScreen(int deviceId, String modelName, double amount, String image) async {
-    await _navigationHandler.navigateToOtherPaymentScreen(deviceId, modelName, amount,image);
+  Future<void> navigateToOtherScreen(int deviceId, String modelName, double amount, String image, bool isOutOfScreen, bool isBottomSheetShow) async {
+    await _navigationHandler.navigateToOtherPaymentScreen(deviceId, modelName, amount,image,isOutOfScreen,isBottomSheetShow);
+  }
+  Future<void> showErrorBottomSheet(
+      Widget errorWidget, BuildContext context) async {
+      await _navigationHandler.showErrorBottomSheet(errorWidget, context);
+
+
   }
 
+  void navigateStockCheck() async {
+
+    await _navigationHandler.navigateToStockAvailability("Device Stock Availability");
+  }
+
+  void goHomeScreen(){
+    _navigationHandler.navigateToAgentHomeScreen();
+  }
 }

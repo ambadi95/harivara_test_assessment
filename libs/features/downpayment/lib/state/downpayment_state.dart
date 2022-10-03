@@ -15,6 +15,6 @@ class DownPaymentState with _$DownPaymentState {
     @Default(0) num waitForPayment,
     @Default(0) num paymentReceived,
     @Default(0) num loanApproved,
-    @Default(0) num loanActivated,
+    @Default(0) num loanCreated,
   }) = DownPaymentStateReady;
 }

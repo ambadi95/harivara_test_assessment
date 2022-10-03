@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:shared_data_models/otp/otp_screen_args.dart';
+import 'package:shared_data_models/otp/otp_verification_type.dart';
 import 'package:sprintf/sprintf.dart';
 import 'package:verifyotp/verifyotp_module.dart';
 import 'package:widget_library/bottom_sheet/alert_bottom_sheet.dart';
@@ -177,7 +178,7 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
       padding: const EdgeInsets.only(bottom: 19),
       child: InkWell(
         onTap: () async {
-          if(attemptCount<3) {
+          if(attemptCount<4) {
             if (coordinator.otpController.text.isNotEmpty &&
                 coordinator.otpController.text.length == 6) {
               await  coordinator.navigateToDestinationPath(
@@ -187,6 +188,7 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
                   coordinator.otpController.text.toString(),
                   widget.otpScreenArgs.event
               );
+
               setState(() {
                 attemptCount++;
               });
@@ -228,14 +230,23 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
           alertTitle: 'VO_Incorrect_OTP_Title'.tr,
           alertIcon: "assets/images/incorrect_otp.png",
           onBottomButtonPress: (){
-            if(widget.otpScreenArgs.userType == UserType.Agent) {
+            if(widget.otpScreenArgs.otpVerificationType == OtpVerificationType.customerSignUpAgent){
+              coordinator.goBack();
+              coordinator.goBack();
+              coordinator.goBack();
+            }else{
               coordinator.backSignUp(widget.otpScreenArgs.userType);
-            } else{
-              coordinator.backAgentDashboard();
             }
+
+            // if(widget.otpScreenArgs.userType == UserType.Agent) {
+            //   coordinator.backSignUp(widget.otpScreenArgs.userType);
+            // } else{
+            //   coordinator.backAgentDashboard();
+            // }
           },
-          bottomButtonText : 'VO_Back_button'.tr,
+          bottomButtonText : widget.otpScreenArgs.otpVerificationType == OtpVerificationType.customerSignUpAgent ? 'Back_To_Home'.tr : 'VO_Back_button'.tr,
           onClose: () {
+
             coordinator.goBack();
           },
           packageName: ""),
@@ -374,6 +385,7 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
                 isBtnEnabled = true;
                 showError = false;
               });
+            },
 
             },
             onChanged: (String value) {

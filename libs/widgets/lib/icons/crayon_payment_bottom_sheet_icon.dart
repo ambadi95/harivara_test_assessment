@@ -85,3 +85,10 @@ class CrayonPaymentBottomSheetY9Logo extends CrayonPaymentBottomSheetIcon {
   );
 
 }
+
+class CrayonPaymentBottomSheetStockLogo extends CrayonPaymentBottomSheetIcon {
+  CrayonPaymentBottomSheetStockLogo()
+      : super(
+    'packages/widget_library/assets/images/stocks_img.svg',
+  );
+}

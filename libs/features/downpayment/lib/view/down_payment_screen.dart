@@ -268,8 +268,8 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
                     AppUtils.appUtilsInstance.getPercentageSize(percentage: 8)),
                 _rowWidget(
                   context,
-                  icon: _getIcon(context, state.loanApproved),
-                  text: _textWidget(context, 'DP_LoanApproved'.tr, false),
+                  icon: _getIcon(context,widget.downPaymentScreenArgs.isOutOfStock==true ? state.loanCreated :  state.loanApproved),
+                  text: _textWidget(context,widget.downPaymentScreenArgs.isOutOfStock==true ? 'DP_LoanCreated'.tr : 'DP_LoanApproved'.tr, false),
                 ),
                 SizedBox(
                   height: AppUtils.appUtilsInstance
@@ -336,6 +336,9 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
         onTap: () async {
+          if(widget.downPaymentScreenArgs.isOutOfStock==true && state.loanCreated==1){
+            await coordinator.navigatetoSuccessScreen();
+          }
           if (state.loanApproved == 1) {
             await coordinator.navigateToScanCodeScreen(
                 widget.downPaymentScreenArgs.deviceId,
@@ -510,6 +513,20 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
     //   return;
     // }
 
+    //to show the stock sheet in case of the loan created and came from work flow
+    if(widget.downPaymentScreenArgs.isBottomSheetShown == true && newState.loanCreated == 1){
+      downPaymentCoordinator!.showErrorBottomSheet(
+          _getOutOfStockUI(context, downPaymentCoordinator!), context);
+      return;
+    }
+    //showing button enabled on loan creation and out of stock is selected from device loan screen
+    if(widget.downPaymentScreenArgs.isOutOfStock==true && newState.loanCreated==1){
+        setState(() {
+          _isBtnEnabled = true;
+        });
+
+      return;
+    }
     if (newState.loanApproved == 1) {
       setState(() {
         _isBtnEnabled = true;
@@ -531,5 +548,130 @@ class _DownPaymentScreenState extends State<DownPaymentScreen> {
         });
       }
     }
+  }
+
+  Widget _getOutOfStockUI(
+      BuildContext context, DownPaymentCoordinator coordinator) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: ListView(
+        children: [
+          SvgPicture.asset(
+              "packages/widget_library/assets/images/stocks_img.svg"),
+          SizedBox(
+            height: AppUtils.appUtilsInstance.getPercentageSize(
+              percentage: 4,
+            ),
+          ),
+          CrayonPaymentText(
+            key: Key('${_identifier}_Device_Stock_Availability'),
+            text: TextUIDataModel('DLC_device_stock_availability'.tr,
+                textAlign: TextAlign.center,
+                styleVariant: CrayonPaymentTextStyleVariant.bodyText1,
+                color: Black,
+                fontWeight: FontWeight.w600),
+          ),
+          SizedBox(
+            height: AppUtils.appUtilsInstance.getPercentageSize(
+              percentage: 5,
+            ),
+          ),
+
+          Center(
+            child: RichText(
+              text: TextSpan(
+                text: "DLC_please_confirm_availability".tr,
+                style: const TextStyle(
+                    fontFamily: 'Montserrat',
+                    fontSize: 14,
+                    color: VO_ResendTextColor,
+                    fontWeight: FontWeight.w400),
+                children: <TextSpan>[
+                 const TextSpan(
+                      text: ' Samsung\n- A03 Core ',
+                      style:
+                      TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
+                  TextSpan(
+                      text: "DLC_inventory_continue_joining_fee_payment".tr,
+                      style: const TextStyle(
+                          fontWeight: FontWeight.w400,
+                          color: VO_ResendTextColor,
+                          fontSize: 14)),
+                ],
+              ),
+            ),
+          ),
+          // CrayonPaymentText(
+          //   key: Key('${_identifier}_DLC_device_stock_availability_desc'),
+          //   text: TextUIDataModel('DLC_device_stock_availability_desc'.tr,
+          //       textAlign: TextAlign.center,
+          //       styleVariant: CrayonPaymentTextStyleVariant.subtitle2,
+          //       color: AN_SubTitleColor,
+          //       fontWeight: FontWeight.w400),
+          // ),
+          SizedBox(
+            height: AppUtils.appUtilsInstance.getPercentageSize(
+              percentage: 5,
+            ),
+          ),
+          _buildStockAvailableButton(context, coordinator),
+          _buildOutOfStockOnBoardLaterButton(context, coordinator)
+        ],
+      ),
+    );
+  }
+
+  Widget _buildStockAvailableButton(
+      BuildContext context, DownPaymentCoordinator coordinator) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
+      child: GestureDetector(
+        onTap: () async {
+
+          coordinator.goBack();
+          coordinator.loanApproval(widget.downPaymentScreenArgs.subTitle, context);
+        },
+        child: Container(
+          width: double.infinity,
+          height: 50,
+          decoration: BoxDecoration(
+              color: SU_button_color, borderRadius: BorderRadius.circular(2.0)),
+          child: Center(
+            child: Text(
+              'DLC_stock_available'.tr,
+              style: SU_button_text_style,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+
+  _buildOutOfStockOnBoardLaterButton(
+      BuildContext context, DownPaymentCoordinator coordinator) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
+      child: GestureDetector(
+        onTap: () async {
+          coordinator.goHomeScreen();
+        },
+        child: Container(
+          width: double.infinity,
+          height: 50,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(2.0),
+            border: Border.all(color: SECONDARY_COLOR, width: 1),
+          ),
+          child: Center(
+            child: Text(
+              "DLC_out_of_stock_onboard_later".tr,
+              style: KYC_button_text_style_black,
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
