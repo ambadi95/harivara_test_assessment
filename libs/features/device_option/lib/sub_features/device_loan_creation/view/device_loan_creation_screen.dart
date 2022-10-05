@@ -559,7 +559,7 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
           children: [
             _radioOtherButton(true),
             dynamicHSpacer(5),
-            _radioMPesaButton(true),
+            _radioMPesaButton(false),
             dynamicHSpacer(5),
             _radioButton(false),
             dynamicHSpacer(5),
