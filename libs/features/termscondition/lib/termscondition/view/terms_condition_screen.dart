@@ -98,26 +98,31 @@ class _CrayonTermsConditionScreenState extends State<CrayonTermsConditionScreen>
       child: GestureDetector(
         onTap: () async {
           print("usertype=-==========%%%%%%%%%%%%%=======> ${widget.termsConditionScreenArgs.userType}, ${widget.termsConditionScreenArgs.isPasscode}");
-          if(widget.termsConditionScreenArgs.isPasscode == false) {
-            switch (widget.termsConditionScreenArgs.userType) {
-              case UserType.Customer :
-                coordinator.saveConsentForCustomerAPI(context, widget.termsConditionScreenArgs.userType);
-                // coordinator.naigateToDetailScreen(
-                //     widget.termsConditionScreenArgs.userType);
-                break;
-              case UserType.AgentCustomer :
-                coordinator.saveConsentForCustomerAPI(context, widget.termsConditionScreenArgs.userType);
-                // coordinator.naigateToDetailScreen(
-                //     widget.termsConditionScreenArgs.userType);
-                break;
-              case UserType.Agent :
-                coordinator.saveConsentForAgentAPI(context, widget.termsConditionScreenArgs.userType);
-                // coordinator.naigateToAgentDetailScreen(
-                //     widget.termsConditionScreenArgs.userType);
+          if(isAgreed) {
+            if (widget.termsConditionScreenArgs.isPasscode == false) {
+              switch (widget.termsConditionScreenArgs.userType) {
+                case UserType.Customer :
+                  coordinator.saveConsentForCustomerAPI(
+                      context, widget.termsConditionScreenArgs.userType);
+                  // coordinator.naigateToDetailScreen(
+                  //     widget.termsConditionScreenArgs.userType);
+                  break;
+                case UserType.AgentCustomer :
+                //coordinator.saveConsentForCustomerAPI(context, widget.termsConditionScreenArgs.userType);
+                  coordinator.naigateToDetailScreen(
+                      widget.termsConditionScreenArgs.userType);
+                  break;
+                case UserType.Agent :
+                  coordinator.saveConsentForAgentAPI(
+                      context, widget.termsConditionScreenArgs.userType);
+              // coordinator.naigateToAgentDetailScreen(
+              //     widget.termsConditionScreenArgs.userType);
+              }
+            } else {
+              coordinator.saveConsentForPasscodeAPI(
+                  context, widget.termsConditionScreenArgs.userType);
+              //coordinator.naigateToPasscodeScreen(widget.termsConditionScreenArgs.userType);
             }
-          } else{
-            coordinator.saveConsentForPasscodeAPI(context, widget.termsConditionScreenArgs.userType);
-            //coordinator.naigateToPasscodeScreen(widget.termsConditionScreenArgs.userType);
           }
         },
         child: Container(

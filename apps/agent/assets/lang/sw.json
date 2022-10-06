@@ -341,6 +341,9 @@
   "configure_mdm_btn" : "Sanidi MDM",
   "PF_title"  : "Hitilafu ya Muamala wa Malipo",
   "PF_desc"  : "Samahani kwa usumbufu, tunakabiliwa na Hitilafu isiyotarajiwa. Tafadhali jaribu tena baada ya muda fulani",
-  "PF_customer_support" : "Kwa Usaidizi kwa Wateja Tafadhali Piga +255-67-719-9991"
+  "PF_customer_support" : "Kwa Usaidizi kwa Wateja Tafadhali Piga +255-67-719-9991",
+  "OB_NO" : "Hapana",
+  "OB_Proceed": "Endelea",
+  "OB_Confirm_text" : "Thibitisha Nambari ya NIDA na Nambari ya Simu"
 
 }

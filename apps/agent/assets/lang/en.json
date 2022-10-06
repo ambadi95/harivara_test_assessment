@@ -340,7 +340,10 @@
   "scan_success_msg_2" : " has been Successfully Registered",
   "configure_mdm_btn" : "Configure MDM",
   "PF_title"  : "Payment Transaction Error",
-  "PF_desc"  : "Sorry for the inconvenience, we have faced\nan unexpected Error. Please try\nagain after sometime",
-  "PF_customer_support" : "For Customer Support Please Call +255-67-719-9991"
+  "PF_desc"  : "Sorry for the inconvenience, we have faced\nan unexpected Technical Issue. Please try\nagain after sometime",
+  "PF_customer_support" : "For Customer Support Please Call +255-67-719-9991",
+  "OB_NO" : "NO",
+  "OB_Proceed": "Proceed",
+  "OB_Confirm_text" : "Confirm the NIDA Number and Mobile Number"
 }
 
