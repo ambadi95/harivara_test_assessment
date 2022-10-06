@@ -21,6 +21,7 @@ import 'package:shared_data_models/passcode/passcode_verification_type.dart';
 import 'package:login/view/login_screen.dart';
 import 'package:shared_data_models/signup/sign_up_type.dart';
 import 'package:shared_data_models/termscondition_faq_screen_args/termscondition_faq_screen_args.dart';
+import 'package:shared_data_models/termscondition_faq_screen_args/termscondition_screen_args.dart';
 import 'package:verifyotp/verifyotp/view/verifyotp.dart';
 import 'package:welcome/data_model/agent_detail_arguments.dart';
 import 'package:welcome/data_model/sign_up_arguments.dart';
@@ -47,7 +48,7 @@ class WelcomeNavigationHandler with ErrorHandler {
   }
 
   Future<void> navigateToTermsAndConditionsScreen(UserType userType) async {
-    var arguments = userType;
+    var arguments = TermsConditionScreenArgs(userType: userType, isPasscode: false);
     await _navigationManager.navigateTo(
         CrayonTermsConditionScreen.viewPath, const NavigationType.push(),
         arguments: arguments);

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:config/Colors.dart';
+import 'package:config/Config.dart';
 import 'package:config/Styles.dart';
 import 'package:core/view/base_view.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +35,7 @@ class CrayonVerifyOtpScreen extends StatefulWidget {
 class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
   late Timer _timer;
   ValueNotifier<int> _startValue = ValueNotifier<int>(60);
-
+  bool showError = false;
   bool isBtnEnabled = false;
   int attemptCount = 0 ;
 
@@ -154,7 +155,7 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
                 height: 5,
               ),
               /*state.attemptsRemain != 3*/
-            attemptCount> 0 && attemptCount < 4  //3
+            attemptCount > 0 && attemptCount < 4 && showError//3
                   ? _errorAndAttemptLeft(context, coordinator, state)
                   : const SizedBox(),
               const SizedBox(
@@ -180,9 +181,7 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
           if(attemptCount<4) {
             if (coordinator.otpController.text.isNotEmpty &&
                 coordinator.otpController.text.length == 6) {
-
-
-            await  coordinator.navigateToDestinationPath(
+              await  coordinator.navigateToDestinationPath(
                   widget.otpScreenArgs.destinationPath,
                   widget.otpScreenArgs.userType,
                   widget.otpScreenArgs,
@@ -200,8 +199,9 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
             // }
           }
           else{
-            _showAlertForOTPAttempts(coordinator);
+              _showAlertForOTPAttempts(coordinator);
           }
+          setState(() { showError = true; });
         },
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -238,6 +238,11 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
               coordinator.backSignUp(widget.otpScreenArgs.userType);
             }
 
+            // if(widget.otpScreenArgs.userType == UserType.Agent) {
+            //   coordinator.backSignUp(widget.otpScreenArgs.userType);
+            // } else{
+            //   coordinator.backAgentDashboard();
+            // }
           },
           bottomButtonText : widget.otpScreenArgs.otpVerificationType == OtpVerificationType.customerSignUpAgent ? 'Back_To_Home'.tr : 'VO_Back_button'.tr,
           onClose: () {
@@ -378,14 +383,16 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
             onCompleted: (v) {
               setState(() {
                 isBtnEnabled = true;
+                showError = false;
               });
             },
-
             onChanged: (String value) {
               setState(() {
                 isBtnEnabled = false;
+                showError = false;
               });
             },
+
           ),
         ),
         if (state.error.isNotEmpty) const SizedBox(height: 8),

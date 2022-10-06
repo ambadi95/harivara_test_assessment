@@ -19,32 +19,40 @@ mixin _$TermsConditionState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
+    required TResult Function(
+            BuildContext context, String error, bool isLoading)
+        ready,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialState,
+    TResult Function(BuildContext context, String error, bool isLoading)? ready,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
+    TResult Function(BuildContext context, String error, bool isLoading)? ready,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(InitialState value) initialState,
+    required TResult Function(TermsConditionStateReady value) ready,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
+    TResult Function(TermsConditionStateReady value)? ready,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
+    TResult Function(TermsConditionStateReady value)? ready,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -109,6 +117,9 @@ class _$InitialState implements InitialState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
+    required TResult Function(
+            BuildContext context, String error, bool isLoading)
+        ready,
   }) {
     return initialState();
   }
@@ -117,6 +128,7 @@ class _$InitialState implements InitialState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialState,
+    TResult Function(BuildContext context, String error, bool isLoading)? ready,
   }) {
     return initialState?.call();
   }
@@ -125,6 +137,7 @@ class _$InitialState implements InitialState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
+    TResult Function(BuildContext context, String error, bool isLoading)? ready,
     required TResult orElse(),
   }) {
     if (initialState != null) {
@@ -137,6 +150,7 @@ class _$InitialState implements InitialState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(InitialState value) initialState,
+    required TResult Function(TermsConditionStateReady value) ready,
   }) {
     return initialState(this);
   }
@@ -145,6 +159,7 @@ class _$InitialState implements InitialState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
+    TResult Function(TermsConditionStateReady value)? ready,
   }) {
     return initialState?.call(this);
   }
@@ -153,6 +168,7 @@ class _$InitialState implements InitialState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
+    TResult Function(TermsConditionStateReady value)? ready,
     required TResult orElse(),
   }) {
     if (initialState != null) {
@@ -164,4 +180,170 @@ class _$InitialState implements InitialState {
 
 abstract class InitialState implements TermsConditionState {
   const factory InitialState() = _$InitialState;
+}
+
+/// @nodoc
+abstract class _$$TermsConditionStateReadyCopyWith<$Res> {
+  factory _$$TermsConditionStateReadyCopyWith(_$TermsConditionStateReady value,
+          $Res Function(_$TermsConditionStateReady) then) =
+      __$$TermsConditionStateReadyCopyWithImpl<$Res>;
+  $Res call({BuildContext context, String error, bool isLoading});
+}
+
+/// @nodoc
+class __$$TermsConditionStateReadyCopyWithImpl<$Res>
+    extends _$TermsConditionStateCopyWithImpl<$Res>
+    implements _$$TermsConditionStateReadyCopyWith<$Res> {
+  __$$TermsConditionStateReadyCopyWithImpl(_$TermsConditionStateReady _value,
+      $Res Function(_$TermsConditionStateReady) _then)
+      : super(_value, (v) => _then(v as _$TermsConditionStateReady));
+
+  @override
+  _$TermsConditionStateReady get _value =>
+      super._value as _$TermsConditionStateReady;
+
+  @override
+  $Res call({
+    Object? context = freezed,
+    Object? error = freezed,
+    Object? isLoading = freezed,
+  }) {
+    return _then(_$TermsConditionStateReady(
+      context: context == freezed
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+      error: error == freezed
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String,
+      isLoading: isLoading == freezed
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$TermsConditionStateReady implements TermsConditionStateReady {
+  const _$TermsConditionStateReady(
+      {required this.context, this.error = '', this.isLoading = false});
+
+  @override
+  final BuildContext context;
+  @override
+  @JsonKey()
+  final String error;
+  @override
+  @JsonKey()
+  final bool isLoading;
+
+  @override
+  String toString() {
+    return 'TermsConditionState.ready(context: $context, error: $error, isLoading: $isLoading)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$TermsConditionStateReady &&
+            const DeepCollectionEquality().equals(other.context, context) &&
+            const DeepCollectionEquality().equals(other.error, error) &&
+            const DeepCollectionEquality().equals(other.isLoading, isLoading));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(context),
+      const DeepCollectionEquality().hash(error),
+      const DeepCollectionEquality().hash(isLoading));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$TermsConditionStateReadyCopyWith<_$TermsConditionStateReady>
+      get copyWith =>
+          __$$TermsConditionStateReadyCopyWithImpl<_$TermsConditionStateReady>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialState,
+    required TResult Function(
+            BuildContext context, String error, bool isLoading)
+        ready,
+  }) {
+    return ready(context, error, isLoading);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initialState,
+    TResult Function(BuildContext context, String error, bool isLoading)? ready,
+  }) {
+    return ready?.call(context, error, isLoading);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialState,
+    TResult Function(BuildContext context, String error, bool isLoading)? ready,
+    required TResult orElse(),
+  }) {
+    if (ready != null) {
+      return ready(context, error, isLoading);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialState value) initialState,
+    required TResult Function(TermsConditionStateReady value) ready,
+  }) {
+    return ready(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InitialState value)? initialState,
+    TResult Function(TermsConditionStateReady value)? ready,
+  }) {
+    return ready?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialState value)? initialState,
+    TResult Function(TermsConditionStateReady value)? ready,
+    required TResult orElse(),
+  }) {
+    if (ready != null) {
+      return ready(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class TermsConditionStateReady implements TermsConditionState {
+  const factory TermsConditionStateReady(
+      {required final BuildContext context,
+      final String error,
+      final bool isLoading}) = _$TermsConditionStateReady;
+
+  BuildContext get context;
+  String get error;
+  bool get isLoading;
+  @JsonKey(ignore: true)
+  _$$TermsConditionStateReadyCopyWith<_$TermsConditionStateReady>
+      get copyWith => throw _privateConstructorUsedError;
 }
