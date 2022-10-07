@@ -65,7 +65,7 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
 
 
   Widget _nidaNumberAlert(
-      BuildContext context,{String mobileNumber=""}
+      BuildContext context,{String mobileNumber="",bool isNidaAlert=false}
       ) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -91,7 +91,7 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
           Center(
             child: RichText(
               text: TextSpan(
-                text: "NIDA_Mobile_Alert_SubTitle".tr,
+                text:isNidaAlert? "NIDA_Alert_SubTitle".tr : "NIDA_Mobile_Alert_SubTitle".tr,
                 style: const TextStyle(
                     fontFamily: 'Montserrat',
                     fontSize: 14,
