@@ -344,6 +344,11 @@
   "PF_customer_support" : "For Customer Support Please Call +255-67-719-9991",
   "OB_NO" : "NO",
   "OB_Proceed": "Proceed",
-  "OB_Confirm_text" : "Confirm the NIDA Number and Mobile Number"
+  "OB_Confirm_text" : "Confirm the NIDA Number and Mobile Number",
+
+  "NIDA_Mobile_Alert_Title": "NIDA & Mobile Number\n conflicts",
+  "NIDA_Mobile_Alert_SubTitle": "Given Mobile Number is associated with\nNIDA Number xxxxxxxx-xxxxx-xxxxx-",
+  "NIDA_Mobile_Alert_Do_You_Want_Update": "Do you want to update?",
+  "UPDATE_AND_PROCEED": "Update & Proceed"
 }
 

@@ -344,6 +344,13 @@
   "PF_customer_support" : "Kwa Usaidizi kwa Wateja Tafadhali Piga +255-67-719-9991",
   "OB_NO" : "Hapana",
   "OB_Proceed": "Endelea",
-  "OB_Confirm_text" : "Thibitisha Nambari ya NIDA na Nambari ya Simu"
+  "OB_Confirm_text" : "Thibitisha Nambari ya NIDA na Nambari ya Simu",
+
+
+  "NIDA_Mobile_Alert_Title": "NIDA & Mobile Number\n conflicts",
+  "NIDA_Mobile_Alert_SubTitle": "Given Mobile Number is associated with\nNIDA Number xxxxxxxx-xxxxx-xxxxx-",
+  "NIDA_Mobile_Alert_Do_You_Want_Update": "Do you want to update?",
+  "UPDATE_AND_PROCEED": "Update & Proceed"
+
 
 }

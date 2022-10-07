@@ -126,6 +126,8 @@ class DeviceOptionNavigationHandler with ErrorHandler {
         });
   }
 
+
+
   Future<void> navigateToAgentHomeScreen() async {
     var args = HomeScreenArgs(userType: UserType.Agent, isAgent: true);
     _navigationManager.navigateTo(
