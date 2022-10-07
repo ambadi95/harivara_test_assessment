@@ -240,6 +240,11 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         if (responseSignin!.data!.status == "success") {
           print('###############');
           print(otpScreenArgs.refId);
+
+          if(otpScreenArgs.isForUpdate==true){
+            //here we need to update the mobile number or nida number for the customer
+            //yet api pending from backend
+          }
           var getWorkFlowStatus = await _verifyOtpUseCase
               .workFlowCustomerByAgent(otpScreenArgs.refId, (p0) => null);
           if (getWorkFlowStatus!.status!) {

@@ -240,7 +240,7 @@ class WelcomeNavigationHandler with ErrorHandler {
 
   Future<void> navigateToOtpScreenCustomerSignUp(
       UserType userType, String mobileNumber,
-      {String? userId}) async {
+      {String? userId,bool isForUpdate=false}) async {
     var arguments = OtpScreenArgs(
       'OTP Verification',
       'VO_otp_verification_description',
@@ -255,7 +255,7 @@ class WelcomeNavigationHandler with ErrorHandler {
       mobileNumber,
       false,
       userType,
-        OTPEvent.Customer_Registration.toShortString()
+        OTPEvent.Customer_Registration.toShortString(),isForUpdate
     );
     _navigationManager.navigateTo(
       CrayonVerifyOtpScreen.viewPath,
@@ -267,7 +267,7 @@ class WelcomeNavigationHandler with ErrorHandler {
 
   Future<void> navigateToOtpScreenCustomerSignUpByAgent(
       UserType userType, String mobileNumber,
-      {String? userId}) async {
+      {String? userId,bool isForUpdate=false}) async {
     var arguments = OtpScreenArgs(
       'OTP Verification',
       'VO_otp_verification_description',
@@ -281,7 +281,7 @@ class WelcomeNavigationHandler with ErrorHandler {
       6,
       mobileNumber,
       false,
-      userType, OTPEvent.Customer_Registration.toShortString()
+      userType, OTPEvent.Customer_Registration.toShortString(),isForUpdate
     );
     _navigationManager.navigateTo(
       CrayonVerifyOtpScreen.viewPath,
@@ -304,7 +304,7 @@ class WelcomeNavigationHandler with ErrorHandler {
       mobileNumber,
       false,
       userType,
-        OTPEvent.Reset_Passcode.toShortString()
+        OTPEvent.Reset_Passcode.toShortString(),false
     );
 
     _navigationManager.navigateTo(
@@ -316,7 +316,7 @@ class WelcomeNavigationHandler with ErrorHandler {
   }
 
   Future<void> navigateToOtpScreen(
-      UserType userType, String agentId, String mobileNumber) async {
+      UserType userType, String agentId, String mobileNumber,{bool isForUpdate=false}) async {
     var arguments = OtpScreenArgs(
       'OTP Verification',
       'VO_otp_verification_description',
@@ -331,7 +331,7 @@ class WelcomeNavigationHandler with ErrorHandler {
       mobileNumber,
       false,
       userType,
-        userType==UserType.Customer?OTPEvent.Customer_Login.toShortString():OTPEvent.Agent_Login.toShortString()
+        userType==UserType.Customer?OTPEvent.Customer_Login.toShortString():OTPEvent.Agent_Login.toShortString(),isForUpdate
     );
 
     _navigationManager.navigateTo(
@@ -412,7 +412,7 @@ class WelcomeNavigationHandler with ErrorHandler {
       6,
       mobileNumber,
       false,
-      UserType.Customer, OTPEvent.Reset_Passcode.toShortString()
+      UserType.Customer, OTPEvent.Reset_Passcode.toShortString(),false
     );
 
     _navigationManager.navigateTo(

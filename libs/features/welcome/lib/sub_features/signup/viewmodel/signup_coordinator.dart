@@ -65,7 +65,7 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
 
 
   Widget _nidaNumberAlert(
-      BuildContext context,
+      BuildContext context,{String mobileNumber=""}
       ) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -126,6 +126,7 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
           ),
           _updateAndProceedButton(
             context,
+            mobileNumber
           ),
           _cancelButton(
             context,
@@ -136,12 +137,16 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
   }
 
   Widget _updateAndProceedButton(
-      BuildContext context,
+      BuildContext context,String mobileNumber
       ) {
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
-        onTap: () async {},
+        onTap: () async {
+          _navigationHandler.navigateToOtpScreenCustomerSignUpByAgent(
+            UserType.Customer, mobileNumber,
+            userId: '',isForUpdate: true);
+        },
         child: Container(
           width: double.infinity,
           height: 50,
@@ -240,7 +245,7 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
               .saveCustomerId(response.data?.customerId.toString());
           _navigationHandler.navigateToOtpScreenCustomerSignUpByAgent(
               UserType.Customer, mobileNumber,
-              userId: response.data?.customerId.toString());
+              userId: response.data?.customerId.toString(),);
         } else {
           state = const SignUpState.initialState();
 
