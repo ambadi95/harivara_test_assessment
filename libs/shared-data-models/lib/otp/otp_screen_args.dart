@@ -14,6 +14,7 @@ class OtpScreenArgs {
   final bool isResetPasscode;
   final UserType userType;
   final String event;
+  final String nidaNumber;
   final bool isForUpdate;
 
 
@@ -30,6 +31,7 @@ class OtpScreenArgs {
     this.isResetPasscode,
     this.userType,
       this.event,
+      this.nidaNumber,
       this.isForUpdate
   );
 }

@@ -97,7 +97,7 @@ class AgentDetailsCoordinator extends BaseViewModel<AgentDetailsState> {
     await _agentDetailsUseCase.saveAgentName(agentName);
     String agentId = await _agentDetailsUseCase.getAgentId();
     _navigationHandler.navigateToOtpScreen(
-        UserType.Agent, agentId, mobileNumber);
+        UserType.Agent, agentId, mobileNumber,"");
   }
 
   Future navigateToBottomSheet() async {

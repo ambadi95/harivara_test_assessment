@@ -56,17 +56,15 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
     }
   }
 
-
- Future<void> callNidaAlert(
-       BuildContext context) async {
-    await _navigationHandler.showErrorBottomSheet(_nidaNumberAlert(context), context);
+  Future<void> callNidaAlert(BuildContext context,
+      {bool isNidaAlert = false, String? nidaNo, String? mobileNumber}) async {
+    await _navigationHandler.showErrorBottomSheet(
+        _nidaNumberAlert(context, isNidaAlert, mobileNumber!, nidaNo!),
+        context);
   }
 
-
-
-  Widget _nidaNumberAlert(
-      BuildContext context,{String mobileNumber="",bool isNidaAlert=false}
-      ) {
+  Widget _nidaNumberAlert(BuildContext context, bool isNidaAlert,
+      String mobileNumber, String nidaNo) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: ListView(
@@ -91,7 +89,9 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
           Center(
             child: RichText(
               text: TextSpan(
-                text:isNidaAlert? "NIDA_Alert_SubTitle".tr : "NIDA_Mobile_Alert_SubTitle".tr,
+                text: isNidaAlert
+                    ? "NIDA_Alert_SubTitle".tr
+                    : "NIDA_Mobile_Alert_SubTitle".tr,
                 style: const TextStyle(
                     fontFamily: 'Montserrat',
                     fontSize: 14,
@@ -101,7 +101,7 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
                   TextSpan(
                       text: '23',
                       style:
-                      TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
                 ],
               ),
             ),
@@ -118,16 +118,12 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
                 color: Black,
                 fontWeight: FontWeight.w600),
           ),
-
           SizedBox(
             height: AppUtils.appUtilsInstance.getPercentageSize(
               percentage: 5,
             ),
           ),
-          _updateAndProceedButton(
-            context,
-            mobileNumber
-          ),
+          _updateAndProceedButton(context, mobileNumber,nidaNo),
           _cancelButton(
             context,
           ),
@@ -136,16 +132,14 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
     );
   }
 
-  Widget _updateAndProceedButton(
-      BuildContext context,String mobileNumber
-      ) {
+  Widget _updateAndProceedButton(BuildContext context,String nidaNumber, String mobileNumber) {
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
         onTap: () async {
           _navigationHandler.navigateToOtpScreenCustomerSignUpByAgent(
-            UserType.Customer, mobileNumber,
-            userId: '',isForUpdate: true);
+              UserType.Customer, mobileNumber,
+              userId: '', nidaNumber:nidaNumber,isForUpdate: true);
         },
         child: Container(
           width: double.infinity,
@@ -164,13 +158,12 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
   }
 
   _cancelButton(
-      BuildContext context,
-      ) {
+    BuildContext context,
+  ) {
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
         onTap: () async {
-
           _navigationHandler.goBack();
         },
         child: Container(
@@ -193,7 +186,8 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
   }
 
   Future<void> signup(SignUpArguments signUpArguments, String mobileNumber,
-      String nindaNumber, String agentId) async {
+      String nindaNumber, String agentId,
+      {BuildContext? buildContext}) async {
     try {
       if (signUpArguments.signupType == SignupType.customerSignUp) {
         state = const SignUpState.loadingState();
@@ -238,16 +232,33 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
             customerMobile: '+255' + mobileNumber.replaceAll(" ", ""),
             onErrorCallback: (p0) => null,
             agentId: await _signupUseCase.getAgentId());
+
         if (response!.status == true) {
           await continueToOtp(nindaNumber, mobileNumber);
           state = const SignUpState.initialState();
           await _signupUseCase
               .saveCustomerId(response.data?.customerId.toString());
           _navigationHandler.navigateToOtpScreenCustomerSignUpByAgent(
-              UserType.Customer, mobileNumber,
-              userId: response.data?.customerId.toString(),);
+            UserType.Customer,
+            mobileNumber,
+            userId: response.data?.customerId.toString(),
+          );
         } else {
           state = const SignUpState.initialState();
+
+          if (response.code == "409") {
+            if (response.message == "Mobile Number already registered") {
+              callNidaAlert(buildContext!,
+                  isNidaAlert: false,
+                  nidaNo: nindaNumber,
+                  mobileNumber: mobileNumber);
+            } else {
+              callNidaAlert(buildContext!,
+                  isNidaAlert: true,
+                  nidaNo: nindaNumber,
+                  mobileNumber: mobileNumber);
+            }
+          }
 
           if (response.message == "Internal Server Error") {
             _showAlertForErrorMessage(response.message!);
@@ -286,7 +297,7 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
           _navigationHandler.navigateToOtpScreenAgentResetPasscode(
               signUpArguments.userType,
               agentDetailResponse!.data!.y9AgentId!,
-              agentDetailResponse.data!.mobileNo!);
+              agentDetailResponse.data!.mobileNo!,nindaNumber);
         } else {
           state = const SignUpState.initialState();
           state = SignUpState.agentIdError(agentDetailResponse!.message!);
@@ -301,7 +312,7 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
               .saveCustomerId(detailResponse!.data?.customerId.toString());
           String customerID = detailResponse.data!.customerId.toString();
           _navigationHandler.navigateToOtpScreenCustomerResetPasscode(
-              'Customer', mobileNumber, customerID);
+              'Customer', mobileNumber, customerID,nindaNumber);
         } else {
           state = SignUpState.mobileNumberError(detailResponse!.message!);
           CrayonPaymentLogger.logError(detailResponse.message!);
@@ -456,10 +467,6 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
     }
     return result;
   }
-
-
-
-
 
   bool isValidPaymentMode(String paymentMode) {
     bool result = _signupUseCase.isValidPaymentMode(paymentMode);
