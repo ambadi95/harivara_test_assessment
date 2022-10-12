@@ -64,7 +64,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
       var response;
       if (otpVerificationType == OtpVerificationType.customerSignUpAgent) {
         response = await _verifyOtpUseCase.otpGenCustomerByAgent(
-            "1", 'Customer', event, (p0) => null);
+            id, 'Customer', event, (p0) => null);
       } else {
         response =
             await _verifyOtpUseCase.otpGen(id, userType, event, (p0) => null);
@@ -232,7 +232,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         state = currentState.copyWith(isLoading: true);
 
         var responseSignin = await _verifyOtpUseCase.otpVerifyCustomerByAgent(
-            "1" , enterOtp, 'Customer', (p0) => null);
+            otpScreenArgs.refId , enterOtp, 'Customer', (p0) => null);
         state = currentState.copyWith(isLoading: false);
 
         if (responseSignin!.data!.status == "success") {
