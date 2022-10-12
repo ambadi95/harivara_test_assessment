@@ -386,7 +386,7 @@ class _SignUpState extends State<SignUp> {
             if (_isBtnEnabled &&
                 coordinator.isValidNidaNumber(nidaNumber.text)) {
               coordinator.signup(widget.signUpArguments, mobileNumber.text,
-                  nidaNumber.text, agentId.text,buildContext:context);
+                  nidaNumber.text, agentId.text,buildContext:context,telecomPartner: paymentMode.text);
             }
           }
 

@@ -56,8 +56,6 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
     await _navigationHandler.backToDashboard();
   }
 
-
-
   String otp = '';
 
   Future<void> generateOtp(String id, UserType userType,
@@ -66,7 +64,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
       var response;
       if (otpVerificationType == OtpVerificationType.customerSignUpAgent) {
         response = await _verifyOtpUseCase.otpGenCustomerByAgent(
-            id, 'Customer', event, (p0) => null);
+            "1", 'Customer', event, (p0) => null);
       } else {
         response =
             await _verifyOtpUseCase.otpGen(id, userType, event, (p0) => null);
@@ -234,27 +232,49 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         state = currentState.copyWith(isLoading: true);
 
         var responseSignin = await _verifyOtpUseCase.otpVerifyCustomerByAgent(
-            otpScreenArgs.refId, enterOtp, 'Customer', (p0) => null);
+            "1" , enterOtp, 'Customer', (p0) => null);
         state = currentState.copyWith(isLoading: false);
 
         if (responseSignin!.data!.status == "success") {
           print('###############');
           print(otpScreenArgs.refId);
 
-          if(otpScreenArgs.isForUpdate==true){
-            //here we need to update the mobile number or nida number for the customer
-            //yet api pending from backend
-          }
-          var getWorkFlowStatus = await _verifyOtpUseCase
-              .workFlowCustomerByAgent(otpScreenArgs.refId, (p0) => null);
-          if (getWorkFlowStatus!.status!) {
-            CrayonPaymentLogger.logInfo('I am in WorkFlow Status');
-            //TODO Workflow Navigation
-            navigationToWorkFlow(
-                getWorkFlowStatus, getWorkFlowStatus.data!.status!);
-            //_navigationHandler.navigateToDetailScreen();
+          if (otpScreenArgs.isForUpdate == true) {
+            CrayonPaymentLogger.logInfo('OnBoarding Update Customer Details');
+
+
+            var responseUpdateDetails =
+                await _verifyOtpUseCase.updateCustomerDetailsOnBoarding(
+                    otpScreenArgs.nidaNumber,
+                    otpScreenArgs.phoneNumber,
+                    otpScreenArgs.updateBy,
+                    (p0) => null);
+            if (responseUpdateDetails!.status == true) {
+              var getWorkFlowStatus = await _verifyOtpUseCase
+                  .workFlowCustomerByAgent(otpScreenArgs.refId, (p0) => null);
+              if (getWorkFlowStatus!.status!) {
+                CrayonPaymentLogger.logInfo('I am in WorkFlow Status');
+                navigationToWorkFlow(
+                    getWorkFlowStatus, getWorkFlowStatus.data!.status!);
+                //_navigationHandler.navigateToDetailScreen();
+              } else {
+                _showAlertForErrorMessage(getWorkFlowStatus.message!);
+              }
+            } else {
+              _showAlertForErrorMessage(responseUpdateDetails.message!);
+            }
           } else {
-            _showAlertForErrorMessage(getWorkFlowStatus.message!);
+            var getWorkFlowStatus = await _verifyOtpUseCase
+                .workFlowCustomerByAgent(otpScreenArgs.refId, (p0) => null);
+            if (getWorkFlowStatus!.status!) {
+              CrayonPaymentLogger.logInfo('I am in WorkFlow Status');
+              //TODO Workflow Navigation
+              navigationToWorkFlow(
+                  getWorkFlowStatus, getWorkFlowStatus.data!.status!);
+              //_navigationHandler.navigateToDetailScreen();
+            } else {
+              _showAlertForErrorMessage(getWorkFlowStatus.message!);
+            }
           }
         } else {
           _showAlertForErrorMessage(responseSignin.message!);
@@ -267,7 +287,8 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
               enterOtp, otpScreenArgs.userType, event, (p0) => null);
           if (response!.data!.status == "success") {
             state = currentState.copyWith(isLoading: false);
-            _navigationHandler.navigateToTermsAndConditionsScreen(userType, false);
+            _navigationHandler.navigateToTermsAndConditionsScreen(
+                userType, false);
           } else {
             otpController.text = "";
             state = currentState.copyWith(isLoading: false);
@@ -435,7 +456,8 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
       WorkFlowStatusResponse workFlowStatusResponse, String status) async {
     switch (status) {
       case Initiated:
-        _navigationHandler.navigateToTermsAndConditionsScreen(UserType.AgentCustomer, false);
+        _navigationHandler.navigateToTermsAndConditionsScreen(
+            UserType.AgentCustomer, false);
         break;
       case Enrolled:
         _navigationHandler.navigateToDetailScreen();
@@ -499,10 +521,11 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         try {
           _saveData(workFlowStatusResponse);
 
-          if(workFlowStatusResponse.data!.data[3]["partnerCode"] == OTHER_PAYMENTS){
-            _navigationHandler.navigateOfflinePaymentScreen(workFlowStatusResponse.data!.data[2], "",  false, false);
-
-          }else {
+          if (workFlowStatusResponse.data!.data[3]["partnerCode"] ==
+              OTHER_PAYMENTS) {
+            _navigationHandler.navigateOfflinePaymentScreen(
+                workFlowStatusResponse.data!.data[2], "", false, false);
+          } else {
             _navigationHandler.navigateToDownPaymentScreen(
               deviceId: workFlowStatusResponse.data!.data[2].toString(),
               paymentStatus: 0,
@@ -548,20 +571,23 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         //need to be change
         try {
           _saveData(workFlowStatusResponse);
-          if(workFlowStatusResponse.data!.data[3]["partnerCode"]== OTHER_PAYMENTS) {
+          if (workFlowStatusResponse.data!.data[3]["partnerCode"] ==
+              OTHER_PAYMENTS) {
             //pass loan id in the model name further using in payment screen for loan approvl part
-            _navigationHandler.navigateOfflinePaymentScreen(workFlowStatusResponse.data!.data[2], workFlowStatusResponse.data!.data[3]["loanId"] ?? "",  false, true);
-
-          }else {
+            _navigationHandler.navigateOfflinePaymentScreen(
+                workFlowStatusResponse.data!.data[2],
+                workFlowStatusResponse.data!.data[3]["loanId"] ?? "",
+                false,
+                true);
+          } else {
             _navigationHandler.navigateToDownPaymentScreen(
                 deviceId: workFlowStatusResponse.data!.data[2].toString(),
                 paymentStatus: 0,
                 paymentReceived: 1,
                 loanId: workFlowStatusResponse.data!.data[3]["loanId"] ?? "",
-                amount: workFlowStatusResponse.data!.data[3]["amountPaid"] ??
-                    "",
-                isShowBottomSheet: true
-            );
+                amount:
+                    workFlowStatusResponse.data!.data[3]["amountPaid"] ?? "",
+                isShowBottomSheet: true);
           }
         } catch (e) {
           return _showAlertForErrorMessage(

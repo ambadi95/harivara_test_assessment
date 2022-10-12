@@ -162,7 +162,7 @@ class SignupUseCase extends BaseDataProvider {
       {required String nindaNumber,
       required String agentId,
       required String customerMobile,
-      required Function(String) onErrorCallback}) async {
+      required Function(String) onErrorCallback, String telecomPartner=""}) async {
     String? token = await _authManager.getAccessToken();
 
     return await executeApiRequest<CustomerDetailResponse?>(
@@ -173,6 +173,7 @@ class SignupUseCase extends BaseDataProvider {
           "nidaNumber": nindaNumber.replaceAll("-", ""),
           "agentId": agentId,
           'mobileNo': customerMobile.replaceAll(" ", ""),
+          'telcoPartner' :telecomPartner,
           'token': token
         },
         serviceIdentifier: ISignupService.signUpCustomerByAgent,
@@ -180,6 +181,7 @@ class SignupUseCase extends BaseDataProvider {
         modelBuilderCallback: (responseData) {
           CrayonPaymentLogger.logInfo(responseData.toString());
           final data = responseData;
+
           CustomerDetailResponse agentSignUpResponse =
               CustomerDetailResponse.fromJson(data);
           _authManager.setUserDetail(

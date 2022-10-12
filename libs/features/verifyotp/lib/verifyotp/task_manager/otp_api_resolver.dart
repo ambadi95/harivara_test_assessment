@@ -31,7 +31,10 @@ class OtpApiResolver extends TaskResolver {
           requestData['customerId'],
         );
       case IOtpService.customerDetailsIdentifier:
-        return _otpService.getCustomerDetailByMobileNo(requestData['mobileNumber']);
+        return _otpService
+            .getCustomerDetailByMobileNo(requestData['mobileNumber']);
+      case IOtpService.updateCustomerDetailsIdentifier:
+        return _otpService.updateCustomerDetailsOnBoarding(requestData);
       default:
         throw UnimplementedError();
     }

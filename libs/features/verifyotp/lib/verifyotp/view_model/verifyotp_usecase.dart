@@ -1,5 +1,6 @@
 import 'package:config/Config.dart';
 import 'package:core/mobile_core.dart';
+import 'package:shared_data_models/commonresponse/common_response.dart';
 import 'package:shared_data_models/customer_details/response/get_customer_details_response/get_customer_details_response.dart';
 import 'package:shared_data_models/welcome/otp/request/otp_request.dart';
 import 'package:shared_data_models/welcome/otp/response/otp_response.dart';
@@ -55,22 +56,15 @@ class VerifyOtpUseCase extends BaseDataProvider {
 
   Future<void> setPaymentId(String paymentId) async {
     return await setValueToSecureStorage({'paymentId': paymentId});
-
   }
 
   Future<void> setDeviceId(String deviceId) async {
     return await setValueToSecureStorage({'deviceId': deviceId});
-
   }
-
-
 
   Future<void> loanCalled(String loanCalled) async {
     return await setValueToSecureStorage({'loanCalled': loanCalled});
-
   }
-
-
 
   Future<String> getCustomerMobileNumber() async {
     return await getValueFromSecureStorage('mobileNumber', defaultValue: '');
@@ -165,6 +159,30 @@ class VerifyOtpUseCase extends BaseDataProvider {
           CrayonPaymentLogger.logInfo(responseData.toString());
           final data = responseData;
           return OtpVerificationResponse.fromJson(data);
+        });
+  }
+
+  Future<CommonResponse?> updateCustomerDetailsOnBoarding(
+      String nidaNumber,
+      String mobileNumber,
+      String updateBy,
+      Function(String) onErrorCallback) async {
+    CrayonPaymentLogger.logInfo("onboarding/validation");
+
+    return await executeApiRequest<CommonResponse?>(
+        taskType: TaskType.DATA_OPERATION,
+        taskSubType: TaskSubType.REST,
+        moduleIdentifier: VerifyOtpModule.moduleIdentifier,
+        requestData: {
+          "mobileNo": "+255${mobileNumber.replaceAll(" ", "")}",
+          "nidaNo": nidaNumber.replaceAll("-", ""),
+          "updateBy": updateBy
+        },
+        serviceIdentifier: IOtpService.updateCustomerDetailsIdentifier,
+        onError: onErrorCallback,
+        modelBuilderCallback: (responseData) {
+          CrayonPaymentLogger.logInfo(responseData.toString());
+          return CommonResponse.fromMap(responseData);
         });
   }
 

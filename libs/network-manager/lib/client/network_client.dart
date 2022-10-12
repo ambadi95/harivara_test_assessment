@@ -291,6 +291,13 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
         response.headers,
       );
     }
+    if (response.statusCode == 409) {
+      return NetworkStandardResponse(
+        response.body,
+        response.statusCode,
+        response.headers,
+      );
+    }
     if (response.statusCode != 200) {
       var res = json.decode(response.body);
       if (res['message'] != null) {

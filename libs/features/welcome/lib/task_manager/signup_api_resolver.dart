@@ -46,6 +46,7 @@ class SignupApiResolver extends TaskResolver {
             nidaNumber: requestData['nidaNumber'] as String,
             agentId: requestData['agentId'] as String,
             customerMobileNumber: requestData['mobileNo'] as String,
+            telcoPartner:requestData['telcoPartner'],
             token: requestData['token'] as String);
       case IDetailsService.regionIdentifier:
         return _detailsService.getRegion(requestData['userType']);

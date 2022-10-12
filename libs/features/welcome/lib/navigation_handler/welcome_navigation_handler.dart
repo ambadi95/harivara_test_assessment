@@ -240,7 +240,7 @@ class WelcomeNavigationHandler with ErrorHandler {
 
   Future<void> navigateToOtpScreenCustomerSignUp(
       UserType userType, String mobileNumber,
-      {String? userId,bool isForUpdate=false,String nidaNumber=""}) async {
+      {String? userId,bool isForUpdate=false,String nidaNumber="",String updateBy=""}) async {
     var arguments = OtpScreenArgs(
       'OTP Verification',
       'VO_otp_verification_description',
@@ -255,7 +255,7 @@ class WelcomeNavigationHandler with ErrorHandler {
       mobileNumber,
       false,
       userType,
-        OTPEvent.Customer_Registration.toShortString(),nidaNumber,isForUpdate
+        OTPEvent.Customer_Registration.toShortString(),updateBy,nidaNumber,isForUpdate
     );
     _navigationManager.navigateTo(
       CrayonVerifyOtpScreen.viewPath,
@@ -267,7 +267,7 @@ class WelcomeNavigationHandler with ErrorHandler {
 
   Future<void> navigateToOtpScreenCustomerSignUpByAgent(
       UserType userType, String mobileNumber,
-      {String? userId,bool isForUpdate=false,String nidaNumber=""}) async {
+      {String? userId,bool isForUpdate=false,String nidaNumber="",String updateBy=""}) async {
     var arguments = OtpScreenArgs(
       'OTP Verification',
       'VO_otp_verification_description',
@@ -281,7 +281,7 @@ class WelcomeNavigationHandler with ErrorHandler {
       6,
       mobileNumber,
       false,
-      userType, OTPEvent.Customer_Registration.toShortString(),nidaNumber,isForUpdate
+      userType, OTPEvent.Customer_Registration.toShortString(),updateBy,nidaNumber,isForUpdate
     );
     _navigationManager.navigateTo(
       CrayonVerifyOtpScreen.viewPath,
@@ -304,7 +304,7 @@ class WelcomeNavigationHandler with ErrorHandler {
       mobileNumber,
       false,
       userType,
-        OTPEvent.Reset_Passcode.toShortString(),nidaNumber,false
+        OTPEvent.Reset_Passcode.toShortString(),"",nidaNumber,false
     );
 
     _navigationManager.navigateTo(
@@ -331,7 +331,7 @@ class WelcomeNavigationHandler with ErrorHandler {
       mobileNumber,
       false,
       userType,
-        userType==UserType.Customer?OTPEvent.Customer_Login.toShortString():OTPEvent.Agent_Login.toShortString(),nidaNumber,isForUpdate
+        userType==UserType.Customer?OTPEvent.Customer_Login.toShortString():OTPEvent.Agent_Login.toShortString(),"",nidaNumber,isForUpdate
     );
 
     _navigationManager.navigateTo(
@@ -412,7 +412,7 @@ class WelcomeNavigationHandler with ErrorHandler {
       6,
       mobileNumber,
       false,
-      UserType.Customer, OTPEvent.Reset_Passcode.toShortString(),nidaNumber,false
+      UserType.Customer, OTPEvent.Reset_Passcode.toShortString(),"",nidaNumber,false
     );
 
     _navigationManager.navigateTo(

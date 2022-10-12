@@ -47,6 +47,7 @@ abstract class ISignupService {
       {required String nidaNumber,
       required String agentId,
       required String customerMobileNumber,
+      required String telcoPartner,
       required String token});
 
 
@@ -115,6 +116,7 @@ class SignupService implements ISignupService {
       {required String nidaNumber,
       required String agentId,
       required String customerMobileNumber,
+      required String telcoPartner,
       required String token}) async {
     var request = StandardRequest();
     request.requestType = RequestType.POST;
@@ -123,6 +125,7 @@ class SignupService implements ISignupService {
       'nidaNo': nidaNumber,
       'mobileNo': customerMobileNumber,
       'y9AgentId': agentId,
+      'telcoPartner':telcoPartner
     });
     CrayonPaymentLogger.logInfo(request.jsonBody.toString());
     return request;
