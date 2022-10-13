@@ -80,54 +80,51 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
         onStateListenCallback: (preState, newState) =>
         {_listenToStateChanges(context, newState)},
         setupViewModel: (coordinator) async {
-            customerId = await coordinator.getCustomerID();
-            setState(() {
-              customerId;
-            });
-          },
+          customerId = await coordinator.getCustomerID();
+          setState(() {
+            customerId;
+          });
+        },
         builder: (context, state, coordinator) {
-           return
-          //   state.when(
-          //   initialState: () => const SizedBox(),
-          //   ready: (
-          //       _,
-          //       __,
-          //       ___,
-          //       ) =>
-          //       _buildMainUIWithLoading(
-          //         context,
-          //         coordinator,
-          //         (state as ScanQRCodeStateReady),
-          //       ),
-          //     orElse: () => _buildMainUI(context, coordinator)
-          // );
-            state.maybeWhen(
-              //loading: () => _buildMainUIWithLoading(context, coordinator),
-                ready: (
-                          _,
-                          __,
-                          ___,
-                          ) =>
-                          _buildMainUIWithLoading(
-                            context,
-                            coordinator,
-                            (state as ScanQRCodeStateReady),
-                          ),
-              orElse: () => _buildMainUI(context, coordinator));
+          return
+              //   state.when(
+              //   initialState: () => const SizedBox(),
+              //   ready: (
+              //       _,
+              //       __,
+              //       ___,
+              //       ) =>
+              //       _buildMainUIWithLoading(
+              //         context,
+              //         coordinator,
+              //         (state as ScanQRCodeStateReady),
+              //       ),
+              //     orElse: () => _buildMainUI(context, coordinator)
+              // );
+              state.maybeWhen(
+                  //loading: () => _buildMainUIWithLoading(context, coordinator),
+                  ready: (
+                    _,
+                    __,
+                    ___,
+                  ) =>
+                      _buildMainUIWithLoading(
+                        context,
+                        coordinator,
+                        (state as ScanQRCodeStateReady),
+                      ),
+                  orElse: () => _buildMainUI(context, coordinator));
         },
       );
 
-  Widget _buildMainUIWithLoading(
-      BuildContext context,
-      ScanQRCodeCoordinator coordinator,
-      ScanQRCodeStateReady state
-      ) {
+  Widget _buildMainUIWithLoading(BuildContext context,
+      ScanQRCodeCoordinator coordinator, ScanQRCodeStateReady state) {
     return Scaffold(
       key: _scaffoldKey,
       body: Stack(
         children: [
           _buildMainUI(context, coordinator),
-          state.isLoading == true ? _createLoading(): SizedBox(),
+          state.isLoading == true ? _createLoading() : SizedBox(),
         ],
       ),
     );
@@ -147,37 +144,36 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
   Widget _buildMainUI(BuildContext context, ScanQRCodeCoordinator coordinator) {
     return CrayonPaymentScaffold(
         appBarAttributes: CrayonPaymentAppBarAttributes(
-        key: const Key('CardDetailsScreen_AppBarBackButton'),
-        left: [ const CrayonPaymentAppBarButtonType.back() ],
+          key: const Key('CardDetailsScreen_AppBarBackButton'),
+          left: [const CrayonPaymentAppBarButtonType.back()],
         ),
-    bottomNavigationBar: _buildRegisterButtonButton(context, coordinator),
-    body: SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          _title(context),
-          dynamicHSpacer(8),
-          _subTitle(context),
-          dynamicHSpacer(50),
-          _buildIMEI1TextField(
-              imei1Number,
-              coordinator,
-              'SU_enter_IMEI1_button',
-              imei1NumberError,
-              TextInputType.number),
-          dynamicHSpacer(40),
-          _buildIMEI2TextField(
-              imei2Number,
-              coordinator,
-              'SU_enter_IMEI2_button',
-              imei2NumberError,
-              TextInputType.number),
-          dynamicHSpacer(30),
-        ],
-      ),
-    )
-    );
+        bottomNavigationBar: _buildRegisterButtonButton(context, coordinator),
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              _title(context),
+              dynamicHSpacer(8),
+              _subTitle(context),
+              dynamicHSpacer(50),
+              _buildIMEI1TextField(
+                  imei1Number,
+                  coordinator,
+                  'SU_enter_IMEI1_button',
+                  imei1NumberError,
+                  TextInputType.number),
+              dynamicHSpacer(40),
+              _buildIMEI2TextField(
+                  imei2Number,
+                  coordinator,
+                  'SU_enter_IMEI2_button',
+                  imei2NumberError,
+                  TextInputType.number),
+              dynamicHSpacer(30),
+            ],
+          ),
+        ));
   }
 
   _title(BuildContext context) {
@@ -193,7 +189,7 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
   _subTitle(BuildContext context) {
     return Text(
       'SU_device_reg_sub_heading'.tr,
-        style: const TextStyle(
+      style: const TextStyle(
           color: DD_DEVICE_REGISTER,
           fontFamily: 'Montserrat',
           fontSize: 16,
@@ -211,30 +207,38 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         RichText(
-        text: TextSpan(
-        text: 'IMEI - 1 ',
-          style:const  TextStyle(color: Colors.black, fontFamily: 'Montserrat' , fontSize:14),
-          children: <TextSpan>[
-            TextSpan(text: 'SU_scan_code_IMEI_button'.tr, style: const TextStyle(color: Color(0xFF676767), fontFamily: 'Montserrat' , fontSize:12)),
-          ],
+          text: TextSpan(
+            text: 'IMEI - 1 ',
+            style: const TextStyle(
+                color: Colors.black, fontFamily: 'Montserrat', fontSize: 14),
+            children: <TextSpan>[
+              TextSpan(
+                  text: 'SU_scan_code_IMEI_button'.tr,
+                  style: const TextStyle(
+                      color: Color(0xFF676767),
+                      fontFamily: 'Montserrat',
+                      fontSize: 12)),
+            ],
+          ),
         ),
-        ),
-       InputNumberDeviceFieldWithLabel(
+        InputNumberDeviceFieldWithLabel(
             label: '',
             controller: controller,
             errorText: errorText.tr,
             hintText: hint.tr,
             key: const Key('imei1Text'),
             keyboardType: textInputType,
-            inputFormatters: [FilteringTextInputFormatter.digitsOnly, LengthLimitingTextInputFormatter(15)],
+            inputFormatters: [
+              FilteringTextInputFormatter.digitsOnly,
+              LengthLimitingTextInputFormatter(15)
+            ],
             onChanged: (value) {
               _validateForm(coordinator);
             },
-            onScanIconTap: ()  async {
+            onScanIconTap: () async {
               imei1Number.text = await coordinator.scanBarcodeImei1();
               _validateForm(coordinator);
-            }
-          ),
+            }),
       ],
     );
   }
@@ -251,54 +255,74 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
         RichText(
           text: TextSpan(
             text: 'IMEI - 2 ',
-            style: const TextStyle(color: Colors.black, fontFamily:'Montserrat', fontSize:14),
+            style: const TextStyle(
+                color: Colors.black, fontFamily: 'Montserrat', fontSize: 14),
             children: <TextSpan>[
-              TextSpan(text: 'SU_scan_code_IMEI_button'.tr, style: const TextStyle(color: Color(0xFF676767), fontFamily:'Montserrat', fontSize:12)),
+              TextSpan(
+                  text: 'SU_scan_code_IMEI_button'.tr,
+                  style: const TextStyle(
+                      color: Color(0xFF676767),
+                      fontFamily: 'Montserrat',
+                      fontSize: 12)),
             ],
           ),
         ),
         InputNumberDeviceFieldWithLabel(
-          label: '',
-          controller: controller,
-          errorText: errorText.tr,
-          hintText: hint.tr,
-          key: const Key('imei1Text'),
-          keyboardType: textInputType,
-          inputFormatters: [FilteringTextInputFormatter.digitsOnly, LengthLimitingTextInputFormatter(15)],
-          onChanged: (value) {
-            _validateForm(coordinator);
-          },
-            onScanIconTap: () async{ imei2Number.text = await coordinator.scanBarcodeImei2();
-            _validateForm(coordinator);
-          }
-
-        ),
+            label: '',
+            controller: controller,
+            errorText: errorText.tr,
+            hintText: hint.tr,
+            key: const Key('imei1Text'),
+            keyboardType: textInputType,
+            inputFormatters: [
+              FilteringTextInputFormatter.digitsOnly,
+              LengthLimitingTextInputFormatter(15)
+            ],
+            onChanged: (value) {
+              _validateForm(coordinator);
+            },
+            onScanIconTap: () async {
+              imei2Number.text = await coordinator.scanBarcodeImei2();
+              _validateForm(coordinator);
+            }),
       ],
     );
   }
 
-
-  Widget _buildRegisterButtonButton(BuildContext context, ScanQRCodeCoordinator coordinator) {
+  Widget _buildRegisterButtonButton(
+      BuildContext context, ScanQRCodeCoordinator coordinator) {
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
-        onTap: ()  {
-          if(imei1Number.text.trim() != "" && imei2Number.text.trim() !="") {
-          if(  coordinator.isImei1numberValid(imei1Number.text) &&
-          coordinator.isImei2numberValid(imei2Number.text)){
-            _isBtnEnabled = true;
-            if (_isBtnEnabled) {
-              coordinator.deviceRegister(
-                context, widget.scanQrcodeAgrs.deviceId, imei1Number.text, imei2Number.text, widget.scanQrcodeAgrs.modelName);
-            }
-          }else{
-            _isBtnEnabled = false;
-          }
-          }else{
-            _isBtnEnabled = false;
-          }
-          },
+        onTap: () {
+          if (imei1Number.text.trim() != "" && imei2Number.text.trim() != "") {
+            if (coordinator.isImei1numberValid(imei1Number.text) &&
+                coordinator.isImei2numberValid(imei2Number.text)) {
+              _isBtnEnabled = true;
+              if (_isBtnEnabled) {
+                coordinator.deviceRegister(
+                  context,
+                  widget.scanQrcodeAgrs.deviceId,
+                  imei1Number.text,
+                  imei2Number.text,
+                  widget.scanQrcodeAgrs.modelName,
+                    (){
+                      imei1Number.text = "";
+                      imei2Number.text = "";
+                      _isBtnEnabled = false ;
+                      setState(() {
 
+                      });
+                    }
+                );
+              }
+            } else {
+              _isBtnEnabled = false;
+            }
+          } else {
+            _isBtnEnabled = false;
+          }
+        },
         child: Container(
           width: double.infinity,
           height: 50,
@@ -317,10 +341,10 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
   }
 
   Widget _getSuccessUI(
-      BuildContext context,
-      ScanQRCodeCoordinator coordinator,
-      ScanQRCodeState state,
-      ) {
+    BuildContext context,
+    ScanQRCodeCoordinator coordinator,
+    ScanQRCodeState state,
+  ) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: ListView(
@@ -338,7 +362,7 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
           CrayonPaymentText(
             key: Key('${_identifier}_scan_success_msg'),
             text: TextUIDataModel(
-            'scan_success_msg'.tr.replaceAll('_name_', "Sumsang"),
+                'scan_success_msg'.tr.replaceAll('_name_', "Sumsang"),
                 textAlign: TextAlign.center,
                 styleVariant: CrayonPaymentTextStyleVariant.subtitle2,
                 color: AN_SubTitleColor,
@@ -349,30 +373,30 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
               percentage: 8,
             ),
           ),
-        Padding(
-          padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
-          child: GestureDetector(
-          onTap: () async {
-          coordinator.configureMdmScreen(imei1Number.text, imei2Number.text);
-          },
-          child: Container(
-          width: double.infinity,
-          height: 50,
-          decoration: BoxDecoration(
-          color: SU_button_color, borderRadius: BorderRadius.circular(2.0)),
-          child: Center(
-          child: Text(
-          'configure_mdm_btn'.tr,
-          style: SU_button_text_style,
-          ),
-          ),
-          ),
-          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
+            child: GestureDetector(
+              onTap: () async {
+                coordinator.configureMdmScreen(
+                    imei1Number.text, imei2Number.text);
+              },
+              child: Container(
+                width: double.infinity,
+                height: 50,
+                decoration: BoxDecoration(
+                    color: SU_button_color,
+                    borderRadius: BorderRadius.circular(2.0)),
+                child: Center(
+                  child: Text(
+                    'configure_mdm_btn'.tr,
+                    style: SU_button_text_style,
+                  ),
+                ),
+              ),
+            ),
           )
         ],
       ),
     );
   }
-
-
 }

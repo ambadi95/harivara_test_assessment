@@ -8,10 +8,10 @@ import 'package:shared_data_models/signup/sign_up_type.dart';
 import 'package:welcome/sub_features/signup/state/signup_state.dart';
 import 'package:welcome/sub_features/signup/viewmodel/signup_coordinator.dart';
 import 'package:welcome/welcome_module.dart';
+import 'package:widget_library/alert_dialogue/crayon_payment_alert_dialogue.dart';
 import 'package:widget_library/dropdown/crayon_drop_down.dart';
 import 'package:widget_library/formatter/nida_input_formatter.dart';
 import 'package:widget_library/html/rich_text_description.dart';
-import 'package:widget_library/page_header/text_ui_data_model.dart';
 import 'package:widget_library/progress_bar/centered_circular_progress_bar.dart';
 import 'package:widget_library/progress_bar/onboarding_progress_bar.dart';
 import 'package:widget_library/input_fields/input_field_with_label.dart';
@@ -21,7 +21,6 @@ import 'package:config/Colors.dart' as config_color;
 import 'package:get/get.dart';
 import 'package:shared_data_models/customer_onboard/payment_mode_list_respose/payment_mode_list_response/datum.dart';
 import 'package:config/Config.dart';
-import 'package:widget_library/static_text/crayon_payment_text.dart';
 import 'package:widget_library/utils/launcher_utils.dart';
 import '../../../data_model/sign_up_arguments.dart';
 
@@ -575,5 +574,15 @@ class _SignUpState extends State<SignUp> {
         }
         break;
     }
+  }
+
+  Future<bool?> _showrReconfirmationAlert() {
+    return CrayonPaymentAlertDialogue.showMaterialAlert(
+      context: context,
+      isColumn: false,
+      content: 'OB_Confirm_text'.tr,
+      defaultActionText: "OB_Proceed".tr,
+      cancelActionText: "OB_NO".tr,
+    );
   }
 }

@@ -56,6 +56,15 @@ class OtherPaymentUseCase extends BaseDataProvider {
     return await getValueFromSecureStorage('loanCalled', defaultValue: '');
   }
 
+  bool isValidTranID(String tranID) {
+    return _otherPaymentViewModel.isValidTranID(tranID);
+  }
+
+  bool isValidMobileNumber(String mobileNumber) {
+    return _otherPaymentViewModel.isValidMobileNumber(mobileNumber);
+  }
+
+
   Future<CreateLoanResponse?> createLoan(
     String amountPaid,
     String mobileNumber,

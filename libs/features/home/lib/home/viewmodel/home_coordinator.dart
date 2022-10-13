@@ -69,6 +69,7 @@ class HomeCoordinator extends BaseViewModel<HomeScreenState> {
 
   Future<String> getAgentId() async {
     String agentId = await _customerHomeUseCase.getAgentId();
+    _customerHomeUseCase.saveOnBordStatus(agentId);
     return agentId;
   }
 
@@ -79,6 +80,7 @@ class HomeCoordinator extends BaseViewModel<HomeScreenState> {
 
   Future<String> getCustomerId() async {
     String agentId = await _customerHomeUseCase.getCustomerId();
+    _customerHomeUseCase.saveOnBordStatus(agentId);
     return agentId;
   }
 
@@ -93,7 +95,6 @@ class HomeCoordinator extends BaseViewModel<HomeScreenState> {
   }
 
   Future<Data> getCustomerCount() async {
-    print('jhgsdjahgsdjgsa');
     try {
       var response = await _customerHomeUseCase.getCustomerCount((p0) => null);
       if (response?.status == true) {

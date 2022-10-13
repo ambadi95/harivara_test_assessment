@@ -89,6 +89,18 @@ class CustomerDetailsCoordinator extends BaseViewModel<CustomerDetailsState> {
     state = CustomerDetailsState.getMobileNumber(getMobileNo);
   }
 
+  Future getOrganizationType(UserType userType) async {
+
+    var response = await _customerDetailsUseCase.getOrganizationType((p0) => null, userType);
+    CrayonPaymentLogger.logInfo(response!.data.toString());
+    return response.data;
+  }
+
+  void setOrganizationType(String organizationType) {
+
+    state = CustomerDetailsState.onOrganizationTypeChoosen(organizationType);
+  }
+
   bool _validateForm(
       String name,
       String dob,
@@ -99,7 +111,8 @@ class CustomerDetailsCoordinator extends BaseViewModel<CustomerDetailsState> {
       String address,
       String poBox,
       String region,
-      String district) {
+      String district,
+      String organizationType,) {
     var isnNameValid = _customerDetailsUseCase.isValidName(name);
     var isMobileNoValid = mobNumber.isNotEmpty;
     var isDobValid = dob.isNotEmpty;
@@ -110,12 +123,15 @@ class CustomerDetailsCoordinator extends BaseViewModel<CustomerDetailsState> {
     var isPoBoxValid = /*_customerDetailsUseCase.isValidPoBox(poBox)*/ true;
     var isRegionValid = region.isNotEmpty;
     var isDistrictValid = district.isNotEmpty;
+    var organizationTypeValid = organizationType.isNotEmpty;
+
 
     var _isValid = isnNameValid &&
         isMobileNoValid &&
         isDobValid &&
         isGenderValid &&
         isProfessionValid &&
+        organizationTypeValid &&
         isEmailIdValid &&
         isAddressValid &&
         isPoBoxValid &&
@@ -135,7 +151,8 @@ class CustomerDetailsCoordinator extends BaseViewModel<CustomerDetailsState> {
       String address,
       String poBox,
       String region,
-      String district) {
+      String district,
+      String organizationType) {
     print(gender);
     state = CustomerDetailsState.DetailsFormState(_validateForm(
         name,
@@ -147,7 +164,7 @@ class CustomerDetailsCoordinator extends BaseViewModel<CustomerDetailsState> {
         address,
         poBox,
         region,
-        district));
+        district,organizationType));
   }
 
   Future navigateToCreatePasscodeScreen(UserType userType) async {
@@ -254,6 +271,16 @@ class CustomerDetailsCoordinator extends BaseViewModel<CustomerDetailsState> {
     return result;
   }
 
+  bool isValidOrganizationType(String organizationType) {
+    var result = organizationType.isNotEmpty;
+    if (!result) {
+      state = const CustomerDetailsState.organizationTypeError('DV_select_organization_type');
+    } else {
+      state = const CustomerDetailsState.organizationTypeError('');
+    }
+    return result;
+  }
+
   Future updateDetails(
       String name,
       String dob,
@@ -264,6 +291,7 @@ class CustomerDetailsCoordinator extends BaseViewModel<CustomerDetailsState> {
       String poBox,
       String profession,
       String region,
+      String organizationType,
       UserType userType,
       BuildContext context) async {
     try {
@@ -279,6 +307,7 @@ class CustomerDetailsCoordinator extends BaseViewModel<CustomerDetailsState> {
           poBox,
           region,
           district,
+          organizationType,
           (p0) => null,
           userType);
       if (response?.status == true) {

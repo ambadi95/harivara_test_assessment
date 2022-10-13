@@ -197,7 +197,8 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
       print(response.body);
       if (response.statusCode == 401) {
         var res = json.decode(response.body);
-        if(res['message'].contains("session")){
+        if(res['message'].contains("Full authentication is required to access this resource")){
+          print("Session Expired so logout the user");
           return _logoutUser();
         }
       }
@@ -270,7 +271,8 @@ class NetworkClient extends NetworkClientBase implements INetworkClient {
     print(response.body);
     if (response.statusCode == 401) {
       var res = json.decode(response.body);
-      if(res['message'].contains("session")){
+      if(res['message'].contains("Full authentication is required to access this resource")){
+        print("Session Expired so navigate to logout");
         return _logoutUser();
       }
     }

@@ -18,6 +18,7 @@ class CustomerDetailsRequest extends Equatable {
   final String? organization;
   final String? region;
   final String? district;
+  final String? organizationType;
 
   const CustomerDetailsRequest({
     this.customerId,
@@ -33,6 +34,7 @@ class CustomerDetailsRequest extends Equatable {
     this.organization,
     this.region,
     this.district,
+    this.organizationType,
   });
 
   factory CustomerDetailsRequest.fromJson(Map<String, dynamic> json) {
@@ -55,6 +57,8 @@ class CustomerDetailsRequest extends Equatable {
     String? organization,
     String? region,
     String? district,
+    String? organizationType,
+
   }) {
     return CustomerDetailsRequest(
       customerId: customerId ?? this.customerId,
@@ -70,6 +74,7 @@ class CustomerDetailsRequest extends Equatable {
       organization: organization ?? this.organization,
       region: region ?? this.region,
       district: district ?? this.district,
+      organizationType: organizationType ?? this.organizationType,
     );
   }
 
@@ -92,6 +97,7 @@ class CustomerDetailsRequest extends Equatable {
       organization,
       region,
       district,
+      organizationType,
     ];
   }
 }

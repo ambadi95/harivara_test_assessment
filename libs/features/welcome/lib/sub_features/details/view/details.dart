@@ -48,16 +48,20 @@ class _DetailsScreenState extends State<DetailsScreen> {
   String addressError = '';
   String regionError = '';
   String districtError = '';
+  String organizationTypeError = '';
 
   List<DropdownMenuItem<GenderType>> genderTypeDropDown = [];
   List<DropdownMenuItem<Datum>> regionDropDown = [];
   List<DropdownMenuItem<b.Datum>> districtDropDown = [];
+  List<String> organisationTypeList = [];
   GetCustomerDetailsResponse? customerDetail;
+
 
   GenderType? _genderType;
   Datum? _region;
   b.Datum? _district;
   List<b.Datum> dis = [];
+  String? organizationType;
 
   final FocusNode? focusNode = FocusNode();
   final TextEditingController name = TextEditingController();
@@ -71,6 +75,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
   final TextEditingController region = TextEditingController();
   final TextEditingController district = TextEditingController();
   final TextEditingController nidaNumber = TextEditingController();
+  final TextEditingController organizationTypeController = TextEditingController();
 
   final FocusNode genderFocusNode = FocusNode();
 
@@ -132,6 +137,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
             await coordinator.getMobileNumber();
             await coordinator.getNIDANumber();
             List<Datum> regions = await coordinator.getRegion(widget.userType);
+            organisationTypeList = await coordinator.getOrganizationType(widget.userType);
             genderTypeDropDown = getDropDownData(coordinator.genderType);
             regionDropDown = getRegionDropDownData(regions);
             customerDetail = await coordinator.getCustomerDetail(
@@ -302,6 +308,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
               poBoxError,
               'DV_poBox_hint_text',
               true),
+          _buildOrganizationDropDown(organisationTypeList,coordinator),
           _buildLabelTextField(
               'contact',
               'DV_contact_no_label'.tr,
@@ -531,6 +538,52 @@ class _DetailsScreenState extends State<DetailsScreen> {
     );
   }
 
+  Widget _buildOrganizationDropDown(List<String> organizationTypeList, DetailsCoordinator coordinator){
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        CrayonDropDown(
+          items: organizationTypeList.map((String value) {
+            return DropdownMenuItem<String>(
+              value: value,
+              child: Text(value,
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.black,
+                  fontFamily: 'brown',
+                ),),
+            );
+          }).toList(),
+          key: const Key('organizationDropDown'),
+          icon: const Icon(
+            Icons.keyboard_arrow_down,
+            color: ES_grey_button_color,
+          ),
+          boxHeight: 60,
+          hint: Text(
+            'DV_select_organization_type'.tr,
+          ),
+          error: organizationTypeError,
+          value: organizationType,
+          onChanged: (value) {
+            onOrganizationTypeChosen(value.toString(),coordinator);
+           organizationTypeController.text = value.toString();
+
+          },
+          title: 'DV_organization_type'.tr,
+        ),
+        const SizedBox(
+          height: 6,
+        ),
+        Text(organizationTypeError.tr, style: label_input_error_style),
+        const SizedBox(
+          height: 10,
+        ),
+      ],
+    );
+  }
+
   Widget _buildDistrictDropdown(DetailsCoordinator coordinator) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -630,6 +683,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
         coordinator.isValidRegion(region.text);
         coordinator.isValidProfession(profession.text);
         coordinator.isValidAddress(address.text);
+        coordinator.isValidOrganizationType(organizationTypeController.text);
 
         if (nameError.tr.isNotEmpty) {
           // _showSnackBar(context,nameError.tr);
@@ -663,6 +717,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
           _showAlert(districtError.tr);
 
           return;
+        } else if (organizationTypeError.tr.isNotEmpty) {
+          _showAlert(organizationTypeError.tr);
+
+          return;
         }
         if (coordinator.isValidPoBox(poBox.text) &&
             coordinator.isValidEmail(emailId.text) &&
@@ -677,6 +735,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
               poBox.text,
               region.text,
               district.text,
+              organizationTypeController.text,
               widget.userType,
               customerDetail!.data==null || customerDetail!.data!.firstName==null ? "POST" :" PUT");
         }
@@ -700,6 +759,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
   void _showAlert(String errorMessage) {
     CrayonPaymentAlertDialogue.showMaterialAlert(
         context: context,
+        isColumn: false,
         title: "Alert!",
         content: errorMessage,
         defaultActionText: "Close");
@@ -819,6 +879,13 @@ class _DetailsScreenState extends State<DetailsScreen> {
     coordinator.setDistrict(value);
   }
 
+  void onOrganizationTypeChosen(
+      String value,
+      DetailsCoordinator coordinator,
+      ) {
+    coordinator.setOrganizationType(value);
+  }
+
   void _listenToStateChanges(BuildContext context, DetailsState state) {
     state.maybeWhen(
         DetailsFormState: (isValid) {
@@ -851,6 +918,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
         regionError: (message) {
           regionError = message;
         },
+        organizationTypeError: (value){
+          organizationTypeError = value;
+        },
         getMobileNumber: (value) {
           mobileNumber.text = value;
         },
@@ -866,6 +936,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
         onDistrictChoosen: (value) {
           _district = value;
         },
+        onOrganizationTypeChoosen: (value) {
+          organizationTypeController.text = value;
+          organizationType = value;
+        },
         onGenderTypeFetched: (genderType) {
           var item = genderTypeDropDown.firstWhereOrNull((element) =>
               element.value != null && element.value!.gender == genderType);
@@ -880,6 +954,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
             _region = regionItem.value;
           }
         },
+
         onDistrictFetched: (district) {
           var districtItem = districtDropDown.firstWhereOrNull((element) =>
               element.value != null && element.value!.name == district);
@@ -902,7 +977,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
         address.text,
         poBox.text,
         region.text,
-        district.text);
+        district.text,
+      organizationTypeController.text
+    );
   }
 
   void _checkValid(String label, DetailsCoordinator coordinator) {

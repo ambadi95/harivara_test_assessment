@@ -335,6 +335,7 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
         var agentDetailResponse = await _signupUseCase.getAgentDetail(
             agentId, nindaNumber.replaceAll("-", ""), (p0) => null);
         if (agentDetailResponse?.status == true) {
+            _signupUseCase.saveAgentId(agentId);
           state = const SignUpState.initialState();
           _navigationHandler.navigateToOtpScreenAgentResetPasscode(
               signUpArguments.userType,
@@ -424,19 +425,22 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
     );
   }
 
-  Future navigateDestination(
-      SignUpArguments signUpArguments, String mobileNumber) async {
+
+    Future navigateDestination(SignUpArguments signUpArguments,
+        String mobileNumber) async {
     if (signUpArguments.signupType == SignupType.customerSignUp) {
       _navigationHandler.navigateToOtpScreenCustomerSignUp(
           signUpArguments.userType, mobileNumber);
     } else if (signUpArguments.signupType == SignupType.resetPasscodeAgent) {
       // _navigationHandler
       //     .navigateToOtpScreenAgentResetPasscode(signUpArguments.userType);
-    } else if (signUpArguments.signupType == SignupType.resetPasscodeCustomer) {
+      } else
+      if (signUpArguments.signupType == SignupType.resetPasscodeCustomer) {
       // _navigationHandler
       //     .navigateToOtpScreenAgentResetPasscode(signUpArguments.userType);
     } else if (signUpArguments.signupType == SignupType.agentSignUp) {
-      _navigationHandler.navigateToAgentDetailScreen(signUpArguments.userType);
+        _navigationHandler.navigateToAgentDetailScreen(
+            signUpArguments.userType);
     } else if (signUpArguments.signupType ==
         SignupType.agentAidedCustomerOnBoarding) {
       _navigationHandler.navigateToOtpScreenCustomerSignUp(
@@ -447,42 +451,38 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
   bool _validateForm(String nidaNo, String mobNumber, String agentId,
       SignUpArguments arguments, String agentType, String paymentMode) {
     var agentID = agentId.isNotEmpty;
-    var isnidaNumberValid =
-        _signupUseCase.isValidNINDAnumber(nidaNo.replaceAll("-", ""));
+      var isnidaNumberValid = _signupUseCase.isValidNINDAnumber(nidaNo.replaceAll("-", ""));
     var ismobileNoValid = _signupUseCase.isValidMobileNumber(mobNumber);
-    var isPaymentModeValid = handlePaymentValidation(arguments)
-        ? true
-        : _signupUseCase.isValidPaymentMode(paymentMode);
+     var isPaymentModeValid = handlePaymentValidation(arguments)?true:_signupUseCase.isValidPaymentMode(paymentMode);
     var _isValid;
-    if (agentType.isNotEmpty &&
-        !handlePaymentValidation(arguments) &&
-        arguments.signupType == SignupType.agentAidedCustomerOnBoarding) {
-      _isValid = isnidaNumberValid && ismobileNoValid && isPaymentModeValid;
-    } else if (arguments.userType == UserType.Customer) {
+          if (agentType.isNotEmpty && !handlePaymentValidation(arguments) && arguments.signupType == SignupType.agentAidedCustomerOnBoarding) {
+            _isValid =
+                isnidaNumberValid && ismobileNoValid && isPaymentModeValid;
+          }
+      else if (arguments.userType == UserType.Customer) {
       _isValid = isnidaNumberValid && ismobileNoValid;
-    } else {
+      }
+      else {
       _isValid = isnidaNumberValid && agentID;
     }
     return _isValid;
   }
 
   bool handlePaymentValidation(SignUpArguments signUpArguments) {
-    if (signUpArguments.title == "ST_update_passcode" ||
-        signUpArguments.title == "SU_reset_passcode") {
+    if (signUpArguments.title == "ST_update_passcode" || signUpArguments.title == "SU_reset_passcode") {
       return true;
     }
     return false;
   }
 
-  void validateForm(String nidaNo, String mobNumber, String agentId, userType,
-      String agentType, String paymentMode) {
-    state = SignUpState.SignUpFormState(_validateForm(
-        nidaNo, mobNumber, agentId, userType, agentType, paymentMode));
+    void validateForm(String nidaNo, String mobNumber, String agentId,
+      userType, String agentType,String paymentMode) {
+      state = SignUpState.SignUpFormState(
+          _validateForm(nidaNo, mobNumber, agentId, userType,agentType,paymentMode));
   }
 
   bool isValidNidaNumber(String nidaNumber) {
-    bool result =
-        _signupUseCase.isValidNINDAnumber(nidaNumber.replaceAll("-", ""));
+      bool result = _signupUseCase.isValidNINDAnumber(nidaNumber.replaceAll("-", ""));
     if (!result) {
       state = const SignUpState.nindaNumberError('SU_title_error_text');
     } else {
@@ -547,4 +547,7 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
   Future<String> getAgentType() async {
     return await _signupUseCase.getAgentType();
   }
+
+
 }
+

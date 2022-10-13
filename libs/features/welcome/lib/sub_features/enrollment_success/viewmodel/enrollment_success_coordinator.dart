@@ -40,6 +40,7 @@ class EnrollmentSuccessCoordinator
           userType, (p0) => null);
       if (response?.status == true) {
         CrayonPaymentLogger.logInfo(response!.data!.referenceId!.toString());
+        _enrollmentSuccessUseCase.saveOnBordStatus(response.data!.customerId.toString());
         return response;
       } else {
         CrayonPaymentLogger.logInfo(response!.message!);

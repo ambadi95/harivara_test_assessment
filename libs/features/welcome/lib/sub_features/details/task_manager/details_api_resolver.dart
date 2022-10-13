@@ -18,6 +18,8 @@ class DetailsApiResolver extends TaskResolver {
       case IDetailsService.submitCustomerDetailIdentifier:
         return _detailsService.submitCustomerDetails(
             requestData['data'], requestData['userType']);
+      case IDetailsService.getOrganizationTypeIdentifier:
+        return _detailsService.getOrganizationType(requestData['userType']);
       default:
         throw UnimplementedError();
     }

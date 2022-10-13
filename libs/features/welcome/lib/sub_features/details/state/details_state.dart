@@ -23,8 +23,7 @@ class DetailsState with _$DetailsState {
   const factory DetailsState.getMobileNumber(String mobileNumber) =
       GetMobileNumber;
 
-  const factory DetailsState.getNIDANumber(String NIDANumber) =
-    getNIDANumber;
+  const factory DetailsState.getNIDANumber(String NIDANumber) = getNIDANumber;
 
   const factory DetailsState.emailError(String emailError) = EmailError;
 
@@ -44,6 +43,9 @@ class DetailsState with _$DetailsState {
   const factory DetailsState.districtError(String districtError) =
       DistrictError;
 
+  const factory DetailsState.organizationTypeError(
+      String organizationTypeError) = OrganizationTypeError;
+
   const factory DetailsState.onGenderTypeChoosen(GenderType genderType) =
       GenderTypeChoosen;
 
@@ -52,9 +54,15 @@ class DetailsState with _$DetailsState {
   const factory DetailsState.onDistrictChoosen(b.Datum district) =
       DistrictChoosen;
 
-  const factory  DetailsState.onGenderTypeFetched(String genderType) = OnGenderTypeFetched;
+  const factory DetailsState.onOrganizationTypeChoosen(
+      String organizationType) = onOrganizationTypeChoosen;
 
-  const factory  DetailsState.onRegionFetched(String genderType) = OnRegionFetched;
+  const factory DetailsState.onGenderTypeFetched(String genderType) =
+      OnGenderTypeFetched;
 
-  const factory  DetailsState.onDistrictFetched(String genderType) = OnDistrictFetched;
+  const factory DetailsState.onRegionFetched(String genderType) =
+      OnRegionFetched;
+
+  const factory DetailsState.onDistrictFetched(String genderType) =
+      OnDistrictFetched;
 }

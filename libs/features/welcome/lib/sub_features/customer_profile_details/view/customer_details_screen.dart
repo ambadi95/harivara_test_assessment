@@ -51,15 +51,20 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
   String addressError = '';
   String regionError = '';
   String districtError = '';
+  String organizationTypeError = '';
+
 
   List<DropdownMenuItem<GenderType>> genderTypeDropDown = [];
   List<DropdownMenuItem<Datum>> regionDropDown = [];
+  List<String> organisationTypeList = [];
   List<DropdownMenuItem<b.Datum>> districtDropDown = [];
 
   GenderType? _genderType;
   Datum? _region;
   b.Datum? _district;
   List<b.Datum> dis = [];
+  String? organizationType;
+
 
   final FocusNode? focusNode = FocusNode();
   final TextEditingController name = TextEditingController();
@@ -72,6 +77,7 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
   final TextEditingController poBox = TextEditingController();
   final TextEditingController region = TextEditingController();
   final TextEditingController district = TextEditingController();
+  final TextEditingController organizationTypeController = TextEditingController();
 
   final FocusNode genderFocusNode = FocusNode();
 
@@ -139,6 +145,7 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
             List<Datum> regions = await coordinator.getRegion(widget.userType);
             genderTypeDropDown = getDropDownData(coordinator.genderType);
             regionDropDown = getRegionDropDownData(regions);
+            organisationTypeList = await coordinator.getOrganizationType(widget.userType);
 
             customerResponse = await coordinator.getCustomerDetails();
 
@@ -322,6 +329,7 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
               poBoxError,
               'DV_poBox_hint_text',
               true),
+          _buildOrganizationDropDown(organisationTypeList,coordinator),
           _buildLabelTextField(
               'contact',
               'DV_contact_no_label'.tr,
@@ -364,6 +372,7 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
         coordinator.isValidRegion(region.text);
         coordinator.isValidProfession(profession.text);
         coordinator.isValidAddress(address.text);
+        coordinator.isValidOrganizationType(organizationTypeController.text);
 
         if (nameError.tr.isNotEmpty) {
           // _showSnackBar(context,nameError.tr);
@@ -397,6 +406,10 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
           _showAlert(districtError.tr);
 
           return;
+        } else if (organizationTypeError.tr.isNotEmpty) {
+          _showAlert(organizationTypeError.tr);
+
+          return;
         }
         if (coordinator.isValidPoBox(poBox.text) &&
             coordinator.isValidEmail(emailId.text) &&
@@ -412,6 +425,8 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
               poBox.text,
               profession.text,
               region.text,
+              organizationTypeController.text,
+
               widget.userType,context);
         }
       },
@@ -543,6 +558,53 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
           )),
     );
   }
+
+  Widget _buildOrganizationDropDown(List<String> organizationTypeList, CustomerDetailsCoordinator coordinator){
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        CrayonDropDown(
+          items: organizationTypeList.map((String value) {
+            return DropdownMenuItem<String>(
+              value: value,
+              child: Text(value,
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.black,
+                  fontFamily: 'brown',
+                ),),
+            );
+          }).toList(),
+          key: const Key('organizationDropDown'),
+          icon: const Icon(
+            Icons.keyboard_arrow_down,
+            color: ES_grey_button_color,
+          ),
+          boxHeight: 60,
+          hint: Text(
+            'DV_select_organization_type'.tr,
+          ),
+          error: organizationTypeError,
+          value: organizationType,
+          onChanged: (value) {
+            onOrganizationTypeChosen(value.toString(),coordinator);
+            organizationTypeController.text = value.toString();
+
+          },
+          title: 'DV_organization_type'.tr,
+        ),
+        const SizedBox(
+          height: 6,
+        ),
+        Text(organizationTypeError.tr, style: label_input_error_style),
+        const SizedBox(
+          height: 10,
+        ),
+      ],
+    );
+  }
+
 
   Widget _buildLabelTextFieldAddress(
       String label,
@@ -710,6 +772,7 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
         context: context,
         title: "Alert!",
         content: errorMessage,
+        isColumn: false,
         defaultActionText: "Close");
   }
 
@@ -860,6 +923,13 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
         onDistrictChoosen: (value) {
           _district = value;
         },
+        organizationTypeError: (value){
+          organizationTypeError = value;
+        },
+        onOrganizationTypeChoosen: (value) {
+          organizationTypeController.text = value;
+          organizationType = value;
+        },
         /*  getRegion: (regionValue) {
           var item = regionDropDown.firstWhereOrNull(
             (
@@ -885,7 +955,9 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
         address.text,
         poBox.text,
         region.text,
-        district.text);
+        district.text,
+        organizationTypeController.text
+    );
   }
 
   void _checkValid(String label, CustomerDetailsCoordinator coordinator) {
@@ -924,5 +996,12 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
         6575) {
       coordinator.inVaidDob();
     }
+  }
+
+  void onOrganizationTypeChosen(
+      String value,
+      CustomerDetailsCoordinator coordinator,
+      ) {
+    coordinator.setOrganizationType(value);
   }
 }

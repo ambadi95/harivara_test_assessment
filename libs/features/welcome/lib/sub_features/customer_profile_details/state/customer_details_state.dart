@@ -45,6 +45,9 @@ class CustomerDetailsState with _$CustomerDetailsState {
   const factory CustomerDetailsState.districtError(String districtError) =
       DistrictError;
 
+  const factory CustomerDetailsState.organizationTypeError(
+      String organizationTypeError) = OrganizationTypeError;
+
   const factory CustomerDetailsState.onGenderTypeChoosen(
       GenderType genderType) = GenderTypeChoosen;
 
@@ -53,6 +56,9 @@ class CustomerDetailsState with _$CustomerDetailsState {
 
   const factory CustomerDetailsState.onDistrictChoosen(b.Datum district) =
       DistrictChoosen;
+
+  const factory CustomerDetailsState.onOrganizationTypeChoosen(
+      String organizationType) = onOrganizationTypeChoosen;
 
   const factory CustomerDetailsState.getRegion(
     String selectedRegion,

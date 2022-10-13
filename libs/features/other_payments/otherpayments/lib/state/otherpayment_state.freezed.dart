@@ -19,44 +19,69 @@ mixin _$OtherPaymentState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
+    required TResult Function() loadingState,
     required TResult Function(BuildContext context, String error,
             bool isLoading, num paymentReceivedOffline, num loanApproved)
         ready,
+    required TResult Function(bool isValid) OtherPaymentFormState,
+    required TResult Function(String nindaNumberError) transIDError,
+    required TResult Function(String nindaNumberError) mobileNumberError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialState,
+    TResult Function()? loadingState,
     TResult Function(BuildContext context, String error, bool isLoading,
             num paymentReceivedOffline, num loanApproved)?
         ready,
+    TResult Function(bool isValid)? OtherPaymentFormState,
+    TResult Function(String nindaNumberError)? transIDError,
+    TResult Function(String nindaNumberError)? mobileNumberError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
+    TResult Function()? loadingState,
     TResult Function(BuildContext context, String error, bool isLoading,
             num paymentReceivedOffline, num loanApproved)?
         ready,
+    TResult Function(bool isValid)? OtherPaymentFormState,
+    TResult Function(String nindaNumberError)? transIDError,
+    TResult Function(String nindaNumberError)? mobileNumberError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(InitialState value) initialState,
+    required TResult Function(LoadingState value) loadingState,
     required TResult Function(OtherPaymentStateReady value) ready,
+    required TResult Function(OtherPaymentFormState value)
+        OtherPaymentFormState,
+    required TResult Function(transIDError value) transIDError,
+    required TResult Function(mobileNumberError value) mobileNumberError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
+    TResult Function(LoadingState value)? loadingState,
     TResult Function(OtherPaymentStateReady value)? ready,
+    TResult Function(OtherPaymentFormState value)? OtherPaymentFormState,
+    TResult Function(transIDError value)? transIDError,
+    TResult Function(mobileNumberError value)? mobileNumberError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
+    TResult Function(LoadingState value)? loadingState,
     TResult Function(OtherPaymentStateReady value)? ready,
+    TResult Function(OtherPaymentFormState value)? OtherPaymentFormState,
+    TResult Function(transIDError value)? transIDError,
+    TResult Function(mobileNumberError value)? mobileNumberError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -121,9 +146,13 @@ class _$InitialState implements InitialState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
+    required TResult Function() loadingState,
     required TResult Function(BuildContext context, String error,
             bool isLoading, num paymentReceivedOffline, num loanApproved)
         ready,
+    required TResult Function(bool isValid) OtherPaymentFormState,
+    required TResult Function(String nindaNumberError) transIDError,
+    required TResult Function(String nindaNumberError) mobileNumberError,
   }) {
     return initialState();
   }
@@ -132,9 +161,13 @@ class _$InitialState implements InitialState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialState,
+    TResult Function()? loadingState,
     TResult Function(BuildContext context, String error, bool isLoading,
             num paymentReceivedOffline, num loanApproved)?
         ready,
+    TResult Function(bool isValid)? OtherPaymentFormState,
+    TResult Function(String nindaNumberError)? transIDError,
+    TResult Function(String nindaNumberError)? mobileNumberError,
   }) {
     return initialState?.call();
   }
@@ -143,9 +176,13 @@ class _$InitialState implements InitialState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
+    TResult Function()? loadingState,
     TResult Function(BuildContext context, String error, bool isLoading,
             num paymentReceivedOffline, num loanApproved)?
         ready,
+    TResult Function(bool isValid)? OtherPaymentFormState,
+    TResult Function(String nindaNumberError)? transIDError,
+    TResult Function(String nindaNumberError)? mobileNumberError,
     required TResult orElse(),
   }) {
     if (initialState != null) {
@@ -158,7 +195,12 @@ class _$InitialState implements InitialState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(InitialState value) initialState,
+    required TResult Function(LoadingState value) loadingState,
     required TResult Function(OtherPaymentStateReady value) ready,
+    required TResult Function(OtherPaymentFormState value)
+        OtherPaymentFormState,
+    required TResult Function(transIDError value) transIDError,
+    required TResult Function(mobileNumberError value) mobileNumberError,
   }) {
     return initialState(this);
   }
@@ -167,7 +209,11 @@ class _$InitialState implements InitialState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
+    TResult Function(LoadingState value)? loadingState,
     TResult Function(OtherPaymentStateReady value)? ready,
+    TResult Function(OtherPaymentFormState value)? OtherPaymentFormState,
+    TResult Function(transIDError value)? transIDError,
+    TResult Function(mobileNumberError value)? mobileNumberError,
   }) {
     return initialState?.call(this);
   }
@@ -176,7 +222,11 @@ class _$InitialState implements InitialState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
+    TResult Function(LoadingState value)? loadingState,
     TResult Function(OtherPaymentStateReady value)? ready,
+    TResult Function(OtherPaymentFormState value)? OtherPaymentFormState,
+    TResult Function(transIDError value)? transIDError,
+    TResult Function(mobileNumberError value)? mobileNumberError,
     required TResult orElse(),
   }) {
     if (initialState != null) {
@@ -188,6 +238,142 @@ class _$InitialState implements InitialState {
 
 abstract class InitialState implements OtherPaymentState {
   const factory InitialState() = _$InitialState;
+}
+
+/// @nodoc
+abstract class _$$LoadingStateCopyWith<$Res> {
+  factory _$$LoadingStateCopyWith(
+          _$LoadingState value, $Res Function(_$LoadingState) then) =
+      __$$LoadingStateCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadingStateCopyWithImpl<$Res>
+    extends _$OtherPaymentStateCopyWithImpl<$Res>
+    implements _$$LoadingStateCopyWith<$Res> {
+  __$$LoadingStateCopyWithImpl(
+      _$LoadingState _value, $Res Function(_$LoadingState) _then)
+      : super(_value, (v) => _then(v as _$LoadingState));
+
+  @override
+  _$LoadingState get _value => super._value as _$LoadingState;
+}
+
+/// @nodoc
+
+class _$LoadingState implements LoadingState {
+  const _$LoadingState();
+
+  @override
+  String toString() {
+    return 'OtherPaymentState.loadingState()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoadingState);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialState,
+    required TResult Function() loadingState,
+    required TResult Function(BuildContext context, String error,
+            bool isLoading, num paymentReceivedOffline, num loanApproved)
+        ready,
+    required TResult Function(bool isValid) OtherPaymentFormState,
+    required TResult Function(String nindaNumberError) transIDError,
+    required TResult Function(String nindaNumberError) mobileNumberError,
+  }) {
+    return loadingState();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initialState,
+    TResult Function()? loadingState,
+    TResult Function(BuildContext context, String error, bool isLoading,
+            num paymentReceivedOffline, num loanApproved)?
+        ready,
+    TResult Function(bool isValid)? OtherPaymentFormState,
+    TResult Function(String nindaNumberError)? transIDError,
+    TResult Function(String nindaNumberError)? mobileNumberError,
+  }) {
+    return loadingState?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialState,
+    TResult Function()? loadingState,
+    TResult Function(BuildContext context, String error, bool isLoading,
+            num paymentReceivedOffline, num loanApproved)?
+        ready,
+    TResult Function(bool isValid)? OtherPaymentFormState,
+    TResult Function(String nindaNumberError)? transIDError,
+    TResult Function(String nindaNumberError)? mobileNumberError,
+    required TResult orElse(),
+  }) {
+    if (loadingState != null) {
+      return loadingState();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialState value) initialState,
+    required TResult Function(LoadingState value) loadingState,
+    required TResult Function(OtherPaymentStateReady value) ready,
+    required TResult Function(OtherPaymentFormState value)
+        OtherPaymentFormState,
+    required TResult Function(transIDError value) transIDError,
+    required TResult Function(mobileNumberError value) mobileNumberError,
+  }) {
+    return loadingState(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InitialState value)? initialState,
+    TResult Function(LoadingState value)? loadingState,
+    TResult Function(OtherPaymentStateReady value)? ready,
+    TResult Function(OtherPaymentFormState value)? OtherPaymentFormState,
+    TResult Function(transIDError value)? transIDError,
+    TResult Function(mobileNumberError value)? mobileNumberError,
+  }) {
+    return loadingState?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialState value)? initialState,
+    TResult Function(LoadingState value)? loadingState,
+    TResult Function(OtherPaymentStateReady value)? ready,
+    TResult Function(OtherPaymentFormState value)? OtherPaymentFormState,
+    TResult Function(transIDError value)? transIDError,
+    TResult Function(mobileNumberError value)? mobileNumberError,
+    required TResult orElse(),
+  }) {
+    if (loadingState != null) {
+      return loadingState(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LoadingState implements OtherPaymentState {
+  const factory LoadingState() = _$LoadingState;
 }
 
 /// @nodoc
@@ -311,9 +497,13 @@ class _$OtherPaymentStateReady implements OtherPaymentStateReady {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialState,
+    required TResult Function() loadingState,
     required TResult Function(BuildContext context, String error,
             bool isLoading, num paymentReceivedOffline, num loanApproved)
         ready,
+    required TResult Function(bool isValid) OtherPaymentFormState,
+    required TResult Function(String nindaNumberError) transIDError,
+    required TResult Function(String nindaNumberError) mobileNumberError,
   }) {
     return ready(
         context, error, isLoading, paymentReceivedOffline, loanApproved);
@@ -323,9 +513,13 @@ class _$OtherPaymentStateReady implements OtherPaymentStateReady {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initialState,
+    TResult Function()? loadingState,
     TResult Function(BuildContext context, String error, bool isLoading,
             num paymentReceivedOffline, num loanApproved)?
         ready,
+    TResult Function(bool isValid)? OtherPaymentFormState,
+    TResult Function(String nindaNumberError)? transIDError,
+    TResult Function(String nindaNumberError)? mobileNumberError,
   }) {
     return ready?.call(
         context, error, isLoading, paymentReceivedOffline, loanApproved);
@@ -335,9 +529,13 @@ class _$OtherPaymentStateReady implements OtherPaymentStateReady {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialState,
+    TResult Function()? loadingState,
     TResult Function(BuildContext context, String error, bool isLoading,
             num paymentReceivedOffline, num loanApproved)?
         ready,
+    TResult Function(bool isValid)? OtherPaymentFormState,
+    TResult Function(String nindaNumberError)? transIDError,
+    TResult Function(String nindaNumberError)? mobileNumberError,
     required TResult orElse(),
   }) {
     if (ready != null) {
@@ -351,7 +549,12 @@ class _$OtherPaymentStateReady implements OtherPaymentStateReady {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(InitialState value) initialState,
+    required TResult Function(LoadingState value) loadingState,
     required TResult Function(OtherPaymentStateReady value) ready,
+    required TResult Function(OtherPaymentFormState value)
+        OtherPaymentFormState,
+    required TResult Function(transIDError value) transIDError,
+    required TResult Function(mobileNumberError value) mobileNumberError,
   }) {
     return ready(this);
   }
@@ -360,7 +563,11 @@ class _$OtherPaymentStateReady implements OtherPaymentStateReady {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
+    TResult Function(LoadingState value)? loadingState,
     TResult Function(OtherPaymentStateReady value)? ready,
+    TResult Function(OtherPaymentFormState value)? OtherPaymentFormState,
+    TResult Function(transIDError value)? transIDError,
+    TResult Function(mobileNumberError value)? mobileNumberError,
   }) {
     return ready?.call(this);
   }
@@ -369,7 +576,11 @@ class _$OtherPaymentStateReady implements OtherPaymentStateReady {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialState value)? initialState,
+    TResult Function(LoadingState value)? loadingState,
     TResult Function(OtherPaymentStateReady value)? ready,
+    TResult Function(OtherPaymentFormState value)? OtherPaymentFormState,
+    TResult Function(transIDError value)? transIDError,
+    TResult Function(mobileNumberError value)? mobileNumberError,
     required TResult orElse(),
   }) {
     if (ready != null) {
@@ -394,5 +605,505 @@ abstract class OtherPaymentStateReady implements OtherPaymentState {
   num get loanApproved;
   @JsonKey(ignore: true)
   _$$OtherPaymentStateReadyCopyWith<_$OtherPaymentStateReady> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$OtherPaymentFormStateCopyWith<$Res> {
+  factory _$$OtherPaymentFormStateCopyWith(_$OtherPaymentFormState value,
+          $Res Function(_$OtherPaymentFormState) then) =
+      __$$OtherPaymentFormStateCopyWithImpl<$Res>;
+  $Res call({bool isValid});
+}
+
+/// @nodoc
+class __$$OtherPaymentFormStateCopyWithImpl<$Res>
+    extends _$OtherPaymentStateCopyWithImpl<$Res>
+    implements _$$OtherPaymentFormStateCopyWith<$Res> {
+  __$$OtherPaymentFormStateCopyWithImpl(_$OtherPaymentFormState _value,
+      $Res Function(_$OtherPaymentFormState) _then)
+      : super(_value, (v) => _then(v as _$OtherPaymentFormState));
+
+  @override
+  _$OtherPaymentFormState get _value => super._value as _$OtherPaymentFormState;
+
+  @override
+  $Res call({
+    Object? isValid = freezed,
+  }) {
+    return _then(_$OtherPaymentFormState(
+      isValid == freezed
+          ? _value.isValid
+          : isValid // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$OtherPaymentFormState implements OtherPaymentFormState {
+  const _$OtherPaymentFormState(this.isValid);
+
+  @override
+  final bool isValid;
+
+  @override
+  String toString() {
+    return 'OtherPaymentState.OtherPaymentFormState(isValid: $isValid)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OtherPaymentFormState &&
+            const DeepCollectionEquality().equals(other.isValid, isValid));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(isValid));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$OtherPaymentFormStateCopyWith<_$OtherPaymentFormState> get copyWith =>
+      __$$OtherPaymentFormStateCopyWithImpl<_$OtherPaymentFormState>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialState,
+    required TResult Function() loadingState,
+    required TResult Function(BuildContext context, String error,
+            bool isLoading, num paymentReceivedOffline, num loanApproved)
+        ready,
+    required TResult Function(bool isValid) OtherPaymentFormState,
+    required TResult Function(String nindaNumberError) transIDError,
+    required TResult Function(String nindaNumberError) mobileNumberError,
+  }) {
+    return OtherPaymentFormState(isValid);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initialState,
+    TResult Function()? loadingState,
+    TResult Function(BuildContext context, String error, bool isLoading,
+            num paymentReceivedOffline, num loanApproved)?
+        ready,
+    TResult Function(bool isValid)? OtherPaymentFormState,
+    TResult Function(String nindaNumberError)? transIDError,
+    TResult Function(String nindaNumberError)? mobileNumberError,
+  }) {
+    return OtherPaymentFormState?.call(isValid);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialState,
+    TResult Function()? loadingState,
+    TResult Function(BuildContext context, String error, bool isLoading,
+            num paymentReceivedOffline, num loanApproved)?
+        ready,
+    TResult Function(bool isValid)? OtherPaymentFormState,
+    TResult Function(String nindaNumberError)? transIDError,
+    TResult Function(String nindaNumberError)? mobileNumberError,
+    required TResult orElse(),
+  }) {
+    if (OtherPaymentFormState != null) {
+      return OtherPaymentFormState(isValid);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialState value) initialState,
+    required TResult Function(LoadingState value) loadingState,
+    required TResult Function(OtherPaymentStateReady value) ready,
+    required TResult Function(OtherPaymentFormState value)
+        OtherPaymentFormState,
+    required TResult Function(transIDError value) transIDError,
+    required TResult Function(mobileNumberError value) mobileNumberError,
+  }) {
+    return OtherPaymentFormState(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InitialState value)? initialState,
+    TResult Function(LoadingState value)? loadingState,
+    TResult Function(OtherPaymentStateReady value)? ready,
+    TResult Function(OtherPaymentFormState value)? OtherPaymentFormState,
+    TResult Function(transIDError value)? transIDError,
+    TResult Function(mobileNumberError value)? mobileNumberError,
+  }) {
+    return OtherPaymentFormState?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialState value)? initialState,
+    TResult Function(LoadingState value)? loadingState,
+    TResult Function(OtherPaymentStateReady value)? ready,
+    TResult Function(OtherPaymentFormState value)? OtherPaymentFormState,
+    TResult Function(transIDError value)? transIDError,
+    TResult Function(mobileNumberError value)? mobileNumberError,
+    required TResult orElse(),
+  }) {
+    if (OtherPaymentFormState != null) {
+      return OtherPaymentFormState(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class OtherPaymentFormState implements OtherPaymentState {
+  const factory OtherPaymentFormState(final bool isValid) =
+      _$OtherPaymentFormState;
+
+  bool get isValid;
+  @JsonKey(ignore: true)
+  _$$OtherPaymentFormStateCopyWith<_$OtherPaymentFormState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$transIDErrorCopyWith<$Res> {
+  factory _$$transIDErrorCopyWith(
+          _$transIDError value, $Res Function(_$transIDError) then) =
+      __$$transIDErrorCopyWithImpl<$Res>;
+  $Res call({String nindaNumberError});
+}
+
+/// @nodoc
+class __$$transIDErrorCopyWithImpl<$Res>
+    extends _$OtherPaymentStateCopyWithImpl<$Res>
+    implements _$$transIDErrorCopyWith<$Res> {
+  __$$transIDErrorCopyWithImpl(
+      _$transIDError _value, $Res Function(_$transIDError) _then)
+      : super(_value, (v) => _then(v as _$transIDError));
+
+  @override
+  _$transIDError get _value => super._value as _$transIDError;
+
+  @override
+  $Res call({
+    Object? nindaNumberError = freezed,
+  }) {
+    return _then(_$transIDError(
+      nindaNumberError == freezed
+          ? _value.nindaNumberError
+          : nindaNumberError // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$transIDError implements transIDError {
+  const _$transIDError(this.nindaNumberError);
+
+  @override
+  final String nindaNumberError;
+
+  @override
+  String toString() {
+    return 'OtherPaymentState.transIDError(nindaNumberError: $nindaNumberError)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$transIDError &&
+            const DeepCollectionEquality()
+                .equals(other.nindaNumberError, nindaNumberError));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(nindaNumberError));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$transIDErrorCopyWith<_$transIDError> get copyWith =>
+      __$$transIDErrorCopyWithImpl<_$transIDError>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialState,
+    required TResult Function() loadingState,
+    required TResult Function(BuildContext context, String error,
+            bool isLoading, num paymentReceivedOffline, num loanApproved)
+        ready,
+    required TResult Function(bool isValid) OtherPaymentFormState,
+    required TResult Function(String nindaNumberError) transIDError,
+    required TResult Function(String nindaNumberError) mobileNumberError,
+  }) {
+    return transIDError(nindaNumberError);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initialState,
+    TResult Function()? loadingState,
+    TResult Function(BuildContext context, String error, bool isLoading,
+            num paymentReceivedOffline, num loanApproved)?
+        ready,
+    TResult Function(bool isValid)? OtherPaymentFormState,
+    TResult Function(String nindaNumberError)? transIDError,
+    TResult Function(String nindaNumberError)? mobileNumberError,
+  }) {
+    return transIDError?.call(nindaNumberError);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialState,
+    TResult Function()? loadingState,
+    TResult Function(BuildContext context, String error, bool isLoading,
+            num paymentReceivedOffline, num loanApproved)?
+        ready,
+    TResult Function(bool isValid)? OtherPaymentFormState,
+    TResult Function(String nindaNumberError)? transIDError,
+    TResult Function(String nindaNumberError)? mobileNumberError,
+    required TResult orElse(),
+  }) {
+    if (transIDError != null) {
+      return transIDError(nindaNumberError);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialState value) initialState,
+    required TResult Function(LoadingState value) loadingState,
+    required TResult Function(OtherPaymentStateReady value) ready,
+    required TResult Function(OtherPaymentFormState value)
+        OtherPaymentFormState,
+    required TResult Function(transIDError value) transIDError,
+    required TResult Function(mobileNumberError value) mobileNumberError,
+  }) {
+    return transIDError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InitialState value)? initialState,
+    TResult Function(LoadingState value)? loadingState,
+    TResult Function(OtherPaymentStateReady value)? ready,
+    TResult Function(OtherPaymentFormState value)? OtherPaymentFormState,
+    TResult Function(transIDError value)? transIDError,
+    TResult Function(mobileNumberError value)? mobileNumberError,
+  }) {
+    return transIDError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialState value)? initialState,
+    TResult Function(LoadingState value)? loadingState,
+    TResult Function(OtherPaymentStateReady value)? ready,
+    TResult Function(OtherPaymentFormState value)? OtherPaymentFormState,
+    TResult Function(transIDError value)? transIDError,
+    TResult Function(mobileNumberError value)? mobileNumberError,
+    required TResult orElse(),
+  }) {
+    if (transIDError != null) {
+      return transIDError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class transIDError implements OtherPaymentState {
+  const factory transIDError(final String nindaNumberError) = _$transIDError;
+
+  String get nindaNumberError;
+  @JsonKey(ignore: true)
+  _$$transIDErrorCopyWith<_$transIDError> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$mobileNumberErrorCopyWith<$Res> {
+  factory _$$mobileNumberErrorCopyWith(
+          _$mobileNumberError value, $Res Function(_$mobileNumberError) then) =
+      __$$mobileNumberErrorCopyWithImpl<$Res>;
+  $Res call({String nindaNumberError});
+}
+
+/// @nodoc
+class __$$mobileNumberErrorCopyWithImpl<$Res>
+    extends _$OtherPaymentStateCopyWithImpl<$Res>
+    implements _$$mobileNumberErrorCopyWith<$Res> {
+  __$$mobileNumberErrorCopyWithImpl(
+      _$mobileNumberError _value, $Res Function(_$mobileNumberError) _then)
+      : super(_value, (v) => _then(v as _$mobileNumberError));
+
+  @override
+  _$mobileNumberError get _value => super._value as _$mobileNumberError;
+
+  @override
+  $Res call({
+    Object? nindaNumberError = freezed,
+  }) {
+    return _then(_$mobileNumberError(
+      nindaNumberError == freezed
+          ? _value.nindaNumberError
+          : nindaNumberError // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$mobileNumberError implements mobileNumberError {
+  const _$mobileNumberError(this.nindaNumberError);
+
+  @override
+  final String nindaNumberError;
+
+  @override
+  String toString() {
+    return 'OtherPaymentState.mobileNumberError(nindaNumberError: $nindaNumberError)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$mobileNumberError &&
+            const DeepCollectionEquality()
+                .equals(other.nindaNumberError, nindaNumberError));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(nindaNumberError));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$mobileNumberErrorCopyWith<_$mobileNumberError> get copyWith =>
+      __$$mobileNumberErrorCopyWithImpl<_$mobileNumberError>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialState,
+    required TResult Function() loadingState,
+    required TResult Function(BuildContext context, String error,
+            bool isLoading, num paymentReceivedOffline, num loanApproved)
+        ready,
+    required TResult Function(bool isValid) OtherPaymentFormState,
+    required TResult Function(String nindaNumberError) transIDError,
+    required TResult Function(String nindaNumberError) mobileNumberError,
+  }) {
+    return mobileNumberError(nindaNumberError);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initialState,
+    TResult Function()? loadingState,
+    TResult Function(BuildContext context, String error, bool isLoading,
+            num paymentReceivedOffline, num loanApproved)?
+        ready,
+    TResult Function(bool isValid)? OtherPaymentFormState,
+    TResult Function(String nindaNumberError)? transIDError,
+    TResult Function(String nindaNumberError)? mobileNumberError,
+  }) {
+    return mobileNumberError?.call(nindaNumberError);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialState,
+    TResult Function()? loadingState,
+    TResult Function(BuildContext context, String error, bool isLoading,
+            num paymentReceivedOffline, num loanApproved)?
+        ready,
+    TResult Function(bool isValid)? OtherPaymentFormState,
+    TResult Function(String nindaNumberError)? transIDError,
+    TResult Function(String nindaNumberError)? mobileNumberError,
+    required TResult orElse(),
+  }) {
+    if (mobileNumberError != null) {
+      return mobileNumberError(nindaNumberError);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialState value) initialState,
+    required TResult Function(LoadingState value) loadingState,
+    required TResult Function(OtherPaymentStateReady value) ready,
+    required TResult Function(OtherPaymentFormState value)
+        OtherPaymentFormState,
+    required TResult Function(transIDError value) transIDError,
+    required TResult Function(mobileNumberError value) mobileNumberError,
+  }) {
+    return mobileNumberError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InitialState value)? initialState,
+    TResult Function(LoadingState value)? loadingState,
+    TResult Function(OtherPaymentStateReady value)? ready,
+    TResult Function(OtherPaymentFormState value)? OtherPaymentFormState,
+    TResult Function(transIDError value)? transIDError,
+    TResult Function(mobileNumberError value)? mobileNumberError,
+  }) {
+    return mobileNumberError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialState value)? initialState,
+    TResult Function(LoadingState value)? loadingState,
+    TResult Function(OtherPaymentStateReady value)? ready,
+    TResult Function(OtherPaymentFormState value)? OtherPaymentFormState,
+    TResult Function(transIDError value)? transIDError,
+    TResult Function(mobileNumberError value)? mobileNumberError,
+    required TResult orElse(),
+  }) {
+    if (mobileNumberError != null) {
+      return mobileNumberError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class mobileNumberError implements OtherPaymentState {
+  const factory mobileNumberError(final String nindaNumberError) =
+      _$mobileNumberError;
+
+  String get nindaNumberError;
+  @JsonKey(ignore: true)
+  _$$mobileNumberErrorCopyWith<_$mobileNumberError> get copyWith =>
       throw _privateConstructorUsedError;
 }

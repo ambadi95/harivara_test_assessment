@@ -28,6 +28,10 @@ class HomeUserCase extends BaseDataProvider {
     return await getValueFromSecureStorage('agentName', defaultValue: '');
   }
 
+  Future<void> saveOnBordStatus(String id) async {
+    return await setValueToSecureStorage({'OnBoardStatus': id});
+  }
+
   Future<String> getCustomerName() async {
     return await getValueFromSecureStorage('CustomerName', defaultValue: '');
   }

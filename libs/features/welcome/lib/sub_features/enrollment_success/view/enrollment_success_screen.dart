@@ -107,7 +107,7 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
             ),
           ),
           SizedBox(
-            height: AppUtils.appUtilsInstance.getPercentageSize(percentage: 10),
+            height: AppUtils.appUtilsInstance.getPercentageSize(percentage: 30),
           ),
           _buildSucessIcon(),
           const SizedBox(
@@ -251,15 +251,15 @@ class _EnrollmentSuccessScreenState extends State<EnrollmentSuccessScreen> {
         width: double.infinity,
         height: 50,
         decoration: BoxDecoration(
-            color: config_color.SU_button_color,
+            color: White,
             borderRadius: BorderRadius.circular(8.0),
             border:
-                Border.all(width: 1, color: config_color.SU_button_color)),
+                Border.all(width: 1, color: config_color.LR_Black)),
         child: Center(
           child: Text(
             'AN_Title'.tr,
             textAlign: TextAlign.center,
-            style: const TextStyle(color: config_color.White),
+            style: const TextStyle(color: config_color.LR_Black),
           ),
         ),
       ),

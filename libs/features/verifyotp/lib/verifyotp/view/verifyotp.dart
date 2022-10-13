@@ -157,7 +157,7 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
                 height: 5,
               ),
               /*state.attemptsRemain != 3*/
-            attemptCount > 0 && attemptCount < 4 && showError//3
+            attemptCount > 0 && attemptCount <= 4 && showError//3
                   ? _errorAndAttemptLeft(context, coordinator, state)
                   : const SizedBox(),
               const SizedBox(

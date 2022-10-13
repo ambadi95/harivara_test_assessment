@@ -123,7 +123,7 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
         state = LoginState.successState();
         AppUtils.appUtilsInstance.saveUserType(UserType.Customer);
         _navigationHandler.navigateToOtpScreen(
-            userType, mobileNumber, response!.data!.id!,);
+            userType, mobileNumber, response!.data!.id!);
       } else {
 
         state = LoginState.mobileNumberError(response!.message!);

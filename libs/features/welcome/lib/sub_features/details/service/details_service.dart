@@ -11,6 +11,7 @@ abstract class IDetailsService {
   static const districtIdentifier = 'getDistrict';
   static const submitCustomerDetailIdentifier = 'submitCustomerDetail';
   static const getCustomerDetailIdentifier = 'getCustomerDetail';
+  static const getOrganizationTypeIdentifier = 'getOrganizationType';
 
   Future<StandardRequest> getCustomerDetail(String mobileNumber);
 
@@ -20,6 +21,8 @@ abstract class IDetailsService {
 
   Future<StandardRequest> submitCustomerDetails(
       Map<String, dynamic> requestData, UserType type);
+
+  Future<StandardRequest> getOrganizationType(UserType type);
 }
 
 class DetailsService implements IDetailsService {
@@ -63,6 +66,16 @@ class DetailsService implements IDetailsService {
         : 'customer-details';
     CrayonPaymentLogger.logInfo(requestData.toString());
     request.jsonBody = json.encode(requestData);
+    return request;
+  }
+
+  @override
+  Future<StandardRequest> getOrganizationType(UserType userType) async {
+    var request = StandardRequest();
+    request.requestType = RequestType.GET;
+    request.endpoint = (userType == UserType.AgentCustomer)
+        ? customerEndpoint + 'organizationtype-details[customer]'
+        : 'organizationtype-details';
     return request;
   }
 }

@@ -22,6 +22,8 @@ class CustomerDetailsApiResolver extends TaskResolver {
       case ICustomerDetailsService.updateCustomerDetails:
         return _detailsService.saveCustomerDetails(
             requestData['data'], requestData['userType']);
+      case ICustomerDetailsService.getOrganizationTypeIdentifier:
+        return _detailsService.getOrganizationType(requestData['userType']);
       default:
         throw UnimplementedError();
     }

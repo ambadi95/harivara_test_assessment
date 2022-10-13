@@ -180,11 +180,10 @@ class _SettingsState extends State<Settings> {
 
   Widget _buildSignout(coordinator) {
     return _buildOptions(context, 'ST_sign_out', ST_sign_out, () async {
+     bool? isLogoutClicked =  await _showLogoutAlert();
+     if(isLogoutClicked!=null && isLogoutClicked){
       coordinator.signOut(widget.screenArgs.userType);
-     // bool? isLogoutClicked =  await _showLogoutAlert();
-     // if(isLogoutClicked!=null && isLogoutClicked){
-     //   coordinator.signOut(widget.screenArgs.userType);
-     // }
+     }
     });
   }
 
@@ -258,6 +257,7 @@ class _SettingsState extends State<Settings> {
   Future<bool?> _showLogoutAlert() {
     return CrayonPaymentAlertDialogue.showMaterialAlert(
         context: context,
+        isColumn: false,
         content: 'ST_sign_out_alert'.tr,
         cancelActionText: "ST_cancel".tr,
         defaultActionText: "ST_sign_out".tr);

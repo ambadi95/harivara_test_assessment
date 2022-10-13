@@ -391,9 +391,16 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
           //   _navigationHandler.goBack();
           // },
           additionalText: 'PF_customer_support'.tr,
-          bottomButtonText: 'Back_To_Home'.tr,
+          bottomButtonText: isPaymentError == true ? 'PF_back_to_payment'.tr :'Back_To_Home'.tr,
           onBottomButtonPress: (){
-            _navigationHandler.goBack();
+            if(isPaymentError == true){
+              _navigationHandler.pop();
+              _navigationHandler.pop();
+              _navigationHandler.pop();
+            }else{
+              _navigationHandler.goBack();
+            }
+
           },
           packageName: ""),
       isScrollControlled: false,

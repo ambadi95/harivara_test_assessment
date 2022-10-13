@@ -116,6 +116,4 @@ class OtpService implements IOtpService {
     };
     return request;
   }
-
-
 }

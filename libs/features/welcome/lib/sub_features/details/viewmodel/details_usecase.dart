@@ -1,9 +1,11 @@
 import 'package:config/Config.dart';
+import 'package:core/logging/logger.dart';
 import 'package:shared_data_models/customer_details/response/get_customer_details_response/get_customer_details_response.dart';
 import 'package:shared_data_models/customer_onboard/customer_details/request/customer_details_request.dart';
 import 'package:shared_data_models/customer_onboard/customer_details/response/customer_detail_response.dart';
 import 'package:shared_data_models/customer_onboard/region_district/district_response/district_response.dart';
 import 'package:shared_data_models/customer_onboard/region_district/region_response/region_details.dart';
+import 'package:shared_data_models/organisation_type_list_response/organisation_type_list_response.dart';
 import 'package:task_manager/base_classes/base_data_provider.dart';
 import 'package:task_manager/task_manager.dart';
 import 'package:task_manager/task_manager_impl.dart';
@@ -121,6 +123,7 @@ class DetailsUseCase extends BaseDataProvider {
       String poBox,
       String region,
       String district,
+      String organizationType,
       Function(String) onErrorCallback,
       UserType userType,String postType) async {
     String mobileNO = await getMobileNumber();
@@ -140,6 +143,8 @@ class DetailsUseCase extends BaseDataProvider {
       organization: poBox,
       region: region,
       district: district,
+      organizationType: organizationType
+
     );
     return await executeApiRequest<CustomerDetailResponse?>(
         taskType: TaskType.DATA_OPERATION,
@@ -156,6 +161,24 @@ class DetailsUseCase extends BaseDataProvider {
           final data = responseData;
 
           return CustomerDetailResponse.fromJson(data);
+        });
+  }
+
+  Future<OrganisationTypeListResponse?> getOrganizationType(
+      Function(String) onErrorCallback, UserType userType) async {
+    return await executeApiRequest<OrganisationTypeListResponse?>(
+        taskType: TaskType.DATA_OPERATION,
+        taskSubType: TaskSubType.REST,
+        moduleIdentifier: WelcomeModule.moduleIdentifier,
+        serviceIdentifier: IDetailsService.getOrganizationTypeIdentifier,
+        onError: onErrorCallback,
+        requestData: {'userType': userType},
+        modelBuilderCallback: (responseData) {
+          final data = responseData;
+          CrayonPaymentLogger.logInfo("data.toString()");
+          CrayonPaymentLogger.logInfo(data.toString());
+
+          return OrganisationTypeListResponse.fromJson(data);
         });
   }
 }

@@ -93,7 +93,6 @@ class LoginUseCase extends BaseDataProvider {
             saveCustomerId(customerSignInResponse.data!.id);
             saveCustomerMobileNumber(mobileNumber.replaceAll(" ", ""));
             saveCustomerName(customerSignInResponse.data!.username!);
-            saveOnBordStatus(customerSignInResponse.data!.id.toString());
           }
           return CustomerSignInResponse.fromJson(data);
         });

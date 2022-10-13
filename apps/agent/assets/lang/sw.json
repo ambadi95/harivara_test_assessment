@@ -89,6 +89,9 @@
   "DV_po_box_label" : "Shirika",
   "DV_poBox_error_text" : "Shirika batili",
   "DV_poBox_hint_text" : "Ingiza Shirika",
+  "DV_organization_type" : "Aina ya Shirika",
+  "DV_select_organization_type" : "Chagua Aina ya Shirika",
+
   "DV_region_label" : "Mkoa",
   "DV_region_error_text" : "Mkoa Batili",
   "DV_region_hint_text" : "Ingiza Mkoa",
@@ -274,13 +277,16 @@
   "DLC_resend" : "Tuma tena",
   "DLC_pay_now" : "LIPA sasa",
   "DLC_payment_text" : "malipo ya TZSH\nombi limetumwa kwa Y9",
-  "DLC_device_stock_availability" : "Device Stock Availability",
-  "DLC_please_confirm_availability" : "Please confirm the availability of",
-  "DLC_inventory_continue_joining_fee_payment" : "in your inventory to continue\n         with ' Joining Fee Payment '",
-  "DLC_device_stock_availability_desc" : "Please confirm the availability of %{Samsung - A03 Core}% in your inventory to continue with 'Joining Fee Payment'",
-  "DLC_stock_available" : "Stock Available",
-  "DLC_out_of_stock_joining_fee"  : "Out of Stock - Joining Fee Payment",
-  "DLC_out_of_stock_onboard_later"  : "Out of Stock - Onboard Later",
+  "DLC_device_stock_availability" : "Upatikanaji wa Hisa wa Kifaa",
+  "DLC_please_confirm_availability" : "Tafadhali thibitisha upatikanaji wa",
+  "DLC_inventory_continue_joining_fee_payment" : "katika orodha yako ili kuendelea\n          na 'Malipo ya Ada ya Kujiunga'",
+  "DLC_device_stock_availability_desc" : "Tafadhali thibitisha upatikanaji wa %{Samsung - A03 Core}% katika orodha yako ili kuendelea na 'Malipo ya Ada ya Kujiunga'",
+  "DLC_stock_available" : "Hisa Zinapatikana",
+  "DLC_out_of_stock_joining_fee"  : "Malipo ya Malipo - Malipo ya Ada ya Kujiunga",
+  "DLC_out_of_stock_onboard_later"  : "Haina Hisa - Ndani Baadaye",
+  "DLC_congrats_text": "umefaulu kulipa 'Ada ya Kujiunga' kwa Uanachama wa Y9",
+  "DLC_second_congrats_text": "Wewe ni Mteja wa kipaumbele wa Y9 na Ajenti wa Y9 atakujulisha tarehe ya kukusanya Kifaa. Endelea Kufuatilia!",
+
 
   "RC_agent_new_customer" : "Mteja Mpya\nKupanda",
   "RC_customer_approval" : "Mteja Anayesubiri\nKupanda",
@@ -322,10 +328,16 @@
 
   "Other_Payments_title": "Other Payments",
   "Other_payment_title_heading" : "Malipo Mengine",
-  "Other_payment_subtitle": "Mara tu Mteja atakapothibitisha Malipo, jaza maelezo yaliyo hapa chini",
-  "other_payment_transaction_id_title": "Kitambulisho cha muamala",
+  "Other_payment_subtitle": "Malipo ya chini yamefanywa kupitia\nnjia nyingine hivyo, rekodi",
+  "other_payment_customer_member_id" :"Kitambulisho cha Uanachama wa Mteja",
+  "other_payment_transaction_id_title": "Nambari ya Tran",
   "other_payment_transaction_id_hint": "Weka Kitambulisho cha Muamala",
   "other_down_payment" : "Malipo ya Chini",
+  "other_down_notes" : "Kumbuka",
+  "other_down_notes_subtitle" : "Tumia/Taja \"Kitambulisho cha Uanachama wa Mteja\" unapofanya muamala",
+  "other_down_trans_error" : "Kitambulisho batili cha Muamala",
+
+
   "Offline_payment_title" : "Idhini ya Mkopo iko Chini\nMchakato",
   "Offline_payment_subtitle" : "Idhini ya mkopo na uundaji iko chini\nmaendeleo, yatafanyika ndani",
   "Offline_payment_checkboxTitle1" : "Malipo Yamethibitishwa Nje ya Mtandao",
@@ -345,7 +357,9 @@
   "OB_NO" : "Hapana",
   "OB_Proceed": "Endelea",
   "OB_Confirm_text" : "Thibitisha Nambari ya NIDA na Nambari ya Simu",
-
+  "Invalid_IMEI": "Nambari ya IMEI-1 iliyoingizwa hailingani na rekodi, tafadhali angalia thamani na ujaribu tena",
+  "re-enter_IMEI" : "Ingiza tena na Ujaribu Tena",
+  "imei_invalid" : "IMEI ni batili",
 
   "NIDA_Mobile_Alert_Title": "NIDA & Mobile Number\n conflicts",
   "NIDA_Mobile_Alert_SubTitle": "Given Mobile Number is associated with\nNIDA Number xxxxxxxx-xxxxx-xxxxx-",

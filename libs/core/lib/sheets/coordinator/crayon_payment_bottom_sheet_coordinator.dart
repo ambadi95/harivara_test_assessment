@@ -263,7 +263,7 @@ class CrayonPaymentBottomSheetCoordinator
 
 
     if (paymentMethod.amount.isNotEmpty) {
-      if(paymentMethod.amount == '0.0 TZSHS'){
+      if(paymentMethod.amount == '0.00 TZSHS'){
         currentState.loanRepayment.isAmountSelected = false;
       }else{
         currentState.loanRepayment.isAmountSelected = true;

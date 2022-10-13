@@ -9,6 +9,7 @@ import '../state/otherpayment_state.dart';
 import 'otherpayment_usecase.dart';
 import 'package:get/get.dart';
 import 'package:widget_library/bottom_sheet/alert_bottom_sheet.dart';
+import 'otherpayment_viewmodel.dart';
 
 class OtherPaymentCoordinator
     extends AnalyticsStateNotifier<OtherPaymentState> {
@@ -35,10 +36,13 @@ class OtherPaymentCoordinator
     return _otherPaymentUseCase.getNewCustomerName();
   }
 
+  Future<String> getCustomerID() async {
+    return _otherPaymentUseCase.getCustomerId();
+  }
+
   Future<void> navigateToScanCodeScreen(int? deviceId) async {
     await _navigationHandler.navigateToScanQrCode(deviceId);
   }
-
 
   Future<void> makePayment(
     BuildContext context,
@@ -87,18 +91,44 @@ class OtherPaymentCoordinator
     }
   }
 
-/*  bool isValidMobileNumber(String mobileNumber) {
+
+  Future<String> getLoanCalled() async {
+    return await _otherPaymentUseCase.getLoanCalled();
+  }
+
+  bool isValidTransID(String tranID) {
+    bool result = _otherPaymentUseCase.isValidTranID(tranID);
+    if (!result) {
+      state = const OtherPaymentState.transIDError('other_down_trans_error');
+    } else {
+      state = const OtherPaymentState.transIDError('');
+    }
+    return result;
+  }
+
+ bool isValidMobileNumber(String mobileNumber) {
     bool result = _otherPaymentUseCase.isValidMobileNumber(mobileNumber);
     if (!result) {
-      state = const OtherPaymentState.mobileNumberError('SU_subtitle_error_text');
+      state = const OtherPaymentState.mobileNumberError('LS_mobile_error_text');
     } else {
       state = const OtherPaymentState.mobileNumberError('');
     }
     return result;
-  }*/
-  Future<String> getLoanCalled() async {
-    return await _otherPaymentUseCase.getLoanCalled();
   }
+
+  void validateForm(String tranID, String mobNumber) {
+    state = OtherPaymentState.OtherPaymentFormState(
+        _validateForm(tranID, mobNumber, ));
+  }
+
+  bool _validateForm(String tranID, String mobNumber) {
+    var isTranIDValid = _otherPaymentUseCase.isValidTranID(tranID);
+    var ismobileNoValid = _otherPaymentUseCase.isValidMobileNumber(mobNumber);
+    var isValid = isTranIDValid &&
+        ismobileNoValid;
+      return isValid;
+    }
+
 
   _showAlertForErrorMessage(String errorMessage) {
     Get.bottomSheet(

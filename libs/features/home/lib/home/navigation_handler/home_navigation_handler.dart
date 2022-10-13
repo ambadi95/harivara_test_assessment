@@ -135,6 +135,13 @@ class HomeNavigationHandler with ErrorHandler {
       LoanDetailResponse loanDetailResponse) async {
     String _selectedAmount = "";
     String _selectedMethod = "";
+    String outstandingAmount = loanDetailResponse.data?.repaymentFee ?? "-";
+    double outstandingAmountDouble = double.parse(outstandingAmount);
+    outstandingAmount = outstandingAmountDouble.toStringAsFixed(2);
+
+    String repaidAmount = loanDetailResponse.data?.repaymentFee ?? "-";
+    double repaidAmountDouble = double.parse(repaidAmount);
+    repaidAmount = repaidAmountDouble.toStringAsFixed(2);
     final CrayonPaymentBottomSheetState infoState =
         CrayonPaymentBottomSheetState.loanRepayment(
             loanRepayment: LoanRepayment(
@@ -164,23 +171,21 @@ class HomeNavigationHandler with ErrorHandler {
                   LoanPaymentMethod(
                       name: 'LR_due_amount',
                       amount: loanDetailResponse.data != null
-                          ? loanDetailResponse.data!.repaymentFee! + " TZSHS"
+                          ? "$outstandingAmount TZSHS"
                           : "0 TZSHS",
                       isSelected: false,
                       selectedOption: 'LR_due_amount'),
                   LoanPaymentMethod(
                       name: 'LR_daily_repayment',
                       amount: loanDetailResponse.data != null
-                          ? loanDetailResponse.data!.dailyRepaymentAmount! +
-                              " TZSHS"
+                          ? "$repaidAmount TZSHS"
                           : "0 TZSHS",
                       isSelected: false,
                       selectedOption: 'LR_daily_repayment'),
                   LoanPaymentMethod(
                       name: 'LR_loan_amount',
                       amount: loanDetailResponse.data != null
-                          ? loanDetailResponse.data!.totalAmountToBeRepaid! +
-                              " TZSHS"
+                          ? "${loanDetailResponse.data!.totalAmountToBeRepaid!} TZSHS"
                           : "0 TZSHS",
                       isSelected: false,
                       selectedOption: 'LR_loan_amount'),

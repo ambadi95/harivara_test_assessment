@@ -11,6 +11,8 @@ abstract class ICustomerDetailsService {
   static const districtIdentifier = 'getDistrict';
   static const updateCustomerDetails = 'saveCustomerDetails';
   static const customerDetailIdentifier = 'getCustomerProfileData';
+  static const getOrganizationTypeIdentifier = 'getOrganizationType';
+
 
   Future<StandardRequest> getRegion(UserType type);
 
@@ -20,6 +22,9 @@ abstract class ICustomerDetailsService {
       Map<String, dynamic> requestData, UserType type);
 
   Future<StandardRequest> getCustomerDetails(int customerId);
+
+  Future<StandardRequest> getOrganizationType(UserType type);
+
 }
 
 class CustomerDetailsService implements ICustomerDetailsService {
@@ -66,6 +71,16 @@ class CustomerDetailsService implements ICustomerDetailsService {
     request.requestType = RequestType.GET;
     request.endpoint = 'customer-details/$customerId';
 
+    return request;
+  }
+
+  @override
+  Future<StandardRequest> getOrganizationType(UserType userType) async {
+    var request = StandardRequest();
+    request.requestType = RequestType.GET;
+    request.endpoint = (userType == UserType.AgentCustomer)
+        ? customerEndpoint + 'organizationtype-details[customer]'
+        : 'organizationtype-details';
     return request;
   }
 }

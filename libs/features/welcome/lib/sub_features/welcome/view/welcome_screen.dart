@@ -38,6 +38,7 @@ class _CrayonWelcomScreenState extends State<CrayonWelcomScreen> {
           body: _buildMainUIWithLoading(context, welcomeCoordinator, state),
         ),
       );
+
   Widget _buildMainUIWithLoading(context, WelcomeCoordinator welcomeCoordinator,
       WelcomeScreenState state) {
     return Scaffold(
@@ -83,7 +84,7 @@ class _CrayonWelcomScreenState extends State<CrayonWelcomScreen> {
         Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(height: 100),
+            const SizedBox(height: 50),
             _buildLogo(context),
             _niBoraText(),
             _buildSizedBox(),
@@ -117,11 +118,17 @@ class _CrayonWelcomScreenState extends State<CrayonWelcomScreen> {
               languageCode = 'en';
             }
 
-            welcomeCoordinator.setCurrentLocale(languageCode, widget.welcomeScreenArgs.userType);
+            welcomeCoordinator.setCurrentLocale(
+                languageCode, widget.welcomeScreenArgs.userType);
           },
           child: Text(
             'OB_Lang'.tr,
-            style: const TextStyle(color: Colors.black),
+            style: const TextStyle(
+              fontFamily: 'Montserrat',
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+            ),
           )),
     );
   }
@@ -153,7 +160,8 @@ class _CrayonWelcomScreenState extends State<CrayonWelcomScreen> {
   }
 
   Widget _buildSubTitle(BuildContext context) {
-    return Expanded(child:  Text('OB_WelcomeSubTitle'.tr, textAlign: TextAlign.center, style: WELCOME_SUBHEADING_STYLE));
+    return Text('OB_WelcomeSubTitle'.tr,
+        textAlign: TextAlign.center, style: WELCOME_SUBHEADING_STYLE);
   }
 
   Widget _buildThirdTitle(BuildContext context) {

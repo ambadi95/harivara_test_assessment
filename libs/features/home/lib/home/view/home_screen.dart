@@ -72,6 +72,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
           } else {
             username = await coordinator.getCustomerName();
             userId = await coordinator.getCustomerId();
+
             setState(() {
               username;
               userId;
@@ -81,7 +82,13 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
             totalAmountToBeRepaid =
                 loanDetailResponse.data?.totalAmountToBeRepaid ?? "0";
             outstandingAmount = loanDetailResponse.data?.repaymentFee ?? "-";
+            double outstandingAmountDouble = double.parse(outstandingAmount!);
+            outstandingAmount = outstandingAmountDouble.toStringAsFixed(2);
+
             repaidAmount = loanDetailResponse.data?.repaymentFee ?? "-";
+            double repaidAmountDouble = double.parse(repaidAmount!);
+            repaidAmount = repaidAmountDouble.toStringAsFixed(2);
+
             setState(() {});
           }
         },

@@ -11,11 +11,6 @@ class ScanQRCodeState with _$ScanQRCodeState {
     @Default(false) bool isLoading,
   }) = ScanQRCodeStateReady;
 
-  // const factory ScanQRCodeState.loading() = LoadingState;
-  //
-  //
-  // const factory ScanQRCodeState.successState() = SuccessState;
-
   const factory ScanQRCodeState.deviceRegisterFormState(bool isValid) = deviceRegisterFormState;
 
   const factory ScanQRCodeState.imei1Error(String nameError) = imei1Error;

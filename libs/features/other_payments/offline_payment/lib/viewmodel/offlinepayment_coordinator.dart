@@ -190,7 +190,8 @@ class OfflinePaymentCoordinator extends AnalyticsStateNotifier<OfflinePaymentSta
 
 
   navigatetoSuccessScreen() async {
-    await _navigationHandler.navigateToFinalSuccess();
+    print("out of stock flow");
+    await _navigationHandler.navigateToOutStockFinalSuccess();
   }
 
   void goBack() async {

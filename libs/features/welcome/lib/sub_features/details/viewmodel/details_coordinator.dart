@@ -69,6 +69,13 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
     return response?.data;
   }
 
+  Future getOrganizationType(UserType userType) async {
+
+    var response = await _detailsUseCase.getOrganizationType((p0) => null, userType);
+    CrayonPaymentLogger.logInfo(response!.data.toString());
+    return response.data;
+  }
+
   Future getDistrict(int regionId, UserType userType) async {
     var response = await _detailsUseCase.getDistrict(
         regionId.toString(), (p0) => null, userType);
@@ -86,6 +93,11 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
 
   void setDistrict(b.Datum district) {
     state = DetailsState.onDistrictChoosen(district);
+  }
+
+  void setOrganizationType(String organizationType) {
+
+    state = DetailsState.onOrganizationTypeChoosen(organizationType);
   }
 
   Future<void> getMobileNumber() async {
@@ -109,7 +121,9 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
       String address,
       String poBox,
       String region,
-      String district) {
+      String district,
+      String organizationType,
+      ) {
     if (kDebugMode) {
       print("dfgfg$gender");
     }
@@ -124,6 +138,7 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
     var isPoBoxValid = /*_detailsUseCase.isValidPoBox(poBox)*/ true;
     var isRegionValid = region.isNotEmpty;
     var isDistrictValid = district.isNotEmpty;
+    var organizationTypeValid = organizationType.isNotEmpty;
 
     var _isValid = isnNameValid &&
         isMobileNoValid &&
@@ -135,7 +150,8 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
         isAddressValid &&
         isPoBoxValid &&
         isRegionValid &&
-        isDistrictValid;
+        isDistrictValid &&
+        organizationTypeValid;
 
     return _isValid;
   }
@@ -151,10 +167,11 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
       String address,
       String poBox,
       String region,
-      String district) {
+      String district,
+      String organizationType) {
     print(gender);
     state = DetailsState.DetailsFormState(_validateForm(name, dob, gender,
-        profession, mobNumber, nidaNumber, emailId, address, poBox, region, district));
+        profession, mobNumber, nidaNumber, emailId, address, poBox, region, district,organizationType));
   }
 
   Future navigateToCreatePasscodeScreen(UserType userType) async {
@@ -264,6 +281,16 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
     return result;
   }
 
+  bool isValidOrganizationType(String organizationType) {
+    var result = organizationType.isNotEmpty;
+    if (!result) {
+      state = const DetailsState.organizationTypeError('DV_select_organization_type');
+    } else {
+      state = const DetailsState.organizationTypeError('');
+    }
+    return result;
+  }
+
   Future submitDetails(
     String name,
     String dob,
@@ -274,6 +301,7 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
     String poBox,
     String region,
     String district,
+    String organizationType,
     UserType userType,
       String postType
   ) async {
@@ -289,6 +317,7 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
           poBox,
           region,
           district,
+          organizationType,
           (p0) => null,
           userType,postType);
       if (response?.status == true) {

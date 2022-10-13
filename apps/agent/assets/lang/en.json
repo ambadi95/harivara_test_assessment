@@ -87,6 +87,8 @@
   "DV_po_box_label" : "Organization",
   "DV_poBox_error_text" : "Invalid Organization",
   "DV_poBox_hint_text" : "Enter Organization",
+  "DV_organization_type" : "Organization Type",
+  "DV_select_organization_type" : "Select Organization Type",
   "DV_region_label" : "Region",
   "DV_region_error_text" : "Invalid Region",
   "DV_region_hint_text" : "Select Region",
@@ -278,6 +280,8 @@
   "DLC_stock_available" : "Stock Available",
   "DLC_out_of_stock_joining_fee"  : "Out of Stock - Joining Fee Payment",
   "DLC_out_of_stock_onboard_later"  : "Out of Stock - Onboard Later",
+  "DLC_congrats_text": "you have successfully paid the 'Joining Fee' for the Y9 Membership",
+  "DLC_second_congrats_text": "You are Y9s priority Customer and Y9 Agent will inform you the date to collect the Device. Stay Tuned!",
 
 
 
@@ -319,10 +323,14 @@
   "HO_referral_alert_message": "Coming soon...\nstay tuned for updates",
   "Other_Payments_title": "Other Payments",
   "Other_payment_title_heading" : "Other Payments",
-  "Other_payment_subtitle": "Once the Customer confirms the Payment, fill in the below details",
-  "other_payment_transaction_id_title": "Transaction ID",
+  "Other_payment_subtitle": "Down payment has been done through other method so, record the",
+  "other_payment_customer_member_id": "Customer Membership ID",
+  "other_payment_transaction_id_title": "Tran Number",
   "other_payment_transaction_id_hint": "Enter Transaction ID",
   "other_down_payment" : "Down Payment",
+  "other_down_notes" : "Note",
+  "other_down_notes_subtitle" : "Use/Mention the “Customer Membership ID” while doing the transaction",
+  "other_down_trans_error" : "Invalid Transaction ID",
 
   "HO_super_agent" : "Super Agent",
 
@@ -340,12 +348,15 @@
   "scan_success_msg_2" : " has been Successfully Registered",
   "configure_mdm_btn" : "Configure MDM",
   "PF_title"  : "Payment Transaction Error",
+  "PF_back_to_payment" : "Back to Payment",
   "PF_desc"  : "Sorry for the inconvenience, we have faced\nan unexpected Technical Issue. Please try\nagain after sometime",
   "PF_customer_support" : "For Customer Support Please Call +255-67-719-9991",
   "OB_NO" : "NO",
   "OB_Proceed": "Proceed",
   "OB_Confirm_text" : "Confirm the NIDA Number and Mobile Number",
-
+  "Invalid_IMEI": "The entered IMEI-1 number do not match the records, please check the values and retry",
+  "re-enter_IMEI" : "Re-enter and Try Again",
+  "imei_invalid" : "IMEI Invalid",
   "NIDA_Mobile_Alert_Title": "NIDA & Mobile Number\n conflicts",
   "NIDA_Mobile_Alert_SubTitle": "Given Mobile Number is associated with\nNIDA Number xxxxxxxx-xxxxx-xxxxx-",
   "NIDA_Alert_SubTitle": "Given NIDA Number is associated with\nMobile Number xxx xxx x",

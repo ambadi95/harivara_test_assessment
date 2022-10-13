@@ -59,12 +59,13 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
   String otp = '';
 
   Future<void> generateOtp(String id, UserType userType,
-      OtpVerificationType otpVerificationType, String event, [OtpScreenArgs? otpScreenArgs]) async {
+      OtpVerificationType otpVerificationType, String event,
+      [OtpScreenArgs? otpScreenArgs]) async {
     try {
       var response;
       if (otpVerificationType == OtpVerificationType.customerSignUpAgent) {
         response = await _verifyOtpUseCase.otpGenCustomerByAgent(
-            id, 'Customer', event, (p0) => null,otpScreenArgs);
+            id, 'Customer', event, (p0) => null, otpScreenArgs);
       } else {
         response =
             await _verifyOtpUseCase.otpGen(id, userType, event, (p0) => null);
@@ -232,7 +233,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         state = currentState.copyWith(isLoading: true);
 
         var responseSignin = await _verifyOtpUseCase.otpVerifyCustomerByAgent(
-            otpScreenArgs.refId , enterOtp, 'Customer', (p0) => null);
+            otpScreenArgs.refId, enterOtp, 'Customer', (p0) => null);
         state = currentState.copyWith(isLoading: false);
 
         if (responseSignin!.data!.status == "success") {
@@ -241,7 +242,6 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
 
           if (otpScreenArgs.isForUpdate == true) {
             CrayonPaymentLogger.logInfo('OnBoarding Update Customer Details');
-
 
             var responseUpdateDetails =
                 await _verifyOtpUseCase.updateCustomerDetailsOnBoarding(
@@ -287,6 +287,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
               enterOtp, otpScreenArgs.userType, event, (p0) => null);
           if (response!.data!.status == "success") {
             state = currentState.copyWith(isLoading: false);
+
             _navigationHandler.navigateToTermsAndConditionsScreen(
                 userType, false);
           } else {
@@ -329,7 +330,6 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
             (p0) => null);
         if (responseSignin?.status == true) {
           String agentId = await _verifyOtpUseCase.getAgentId();
-          await _verifyOtpUseCase.saveOnBordStatus(agentId);
 
           _navigationHandler.navigateToAgentWelcomeBack(userType);
         } else {
@@ -337,10 +337,23 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         }
       } else if (otpScreenArgs.otpVerificationType ==
           OtpVerificationType.resetPasscodeCustomer) {
-        _navigationHandler.openForUpdateNewPasscode(userType);
+        state = currentState.copyWith(isLoading: true);
+        var response = await _verifyOtpUseCase.otpVerify(otpScreenArgs.refId,
+            enterOtp, otpScreenArgs.userType, event, (p0) => null);
+        if (response!.data!.status == "success") {
+          state = currentState.copyWith(isLoading: false);
+          _navigationHandler.openForUpdateNewPasscode(userType);
+        }
       } else if (otpScreenArgs.otpVerificationType ==
           OtpVerificationType.updatePasscodeAgent) {
-        _navigationHandler.openForUpdateNewPasscodeAgent(userType);
+        state = currentState.copyWith(isLoading: true);
+        var response = await _verifyOtpUseCase.otpVerify(otpScreenArgs.refId,
+            enterOtp, otpScreenArgs.userType, event, (p0) => null);
+        if (response!.data!.status == "success") {
+          state = currentState.copyWith(isLoading: false);
+          _navigationHandler.openForUpdateNewPasscodeAgent(userType);
+          //_navigationHandler.openForNewPasscodeAgentCustomer(userType);
+        }
       } else if (otpScreenArgs.otpVerificationType ==
           OtpVerificationType.customerPasscodeSet) {
         state = currentState.copyWith(isLoading: true);
