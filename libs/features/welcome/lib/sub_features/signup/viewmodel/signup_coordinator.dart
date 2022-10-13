@@ -105,7 +105,7 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
                     fontWeight: FontWeight.w400),
                 children: <TextSpan>[
                   TextSpan(
-                      text: dataShown ?? "XX",
+                      text: dataShown ,
                       style: const TextStyle(
                           fontWeight: FontWeight.bold, fontSize: 14)),
                 ],

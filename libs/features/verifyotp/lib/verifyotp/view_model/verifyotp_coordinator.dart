@@ -397,6 +397,8 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
     }
   }
 
+
+
   Future<void> goBack() async {
     _navigationHandler.goBack();
   }
@@ -469,8 +471,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
       WorkFlowStatusResponse workFlowStatusResponse, String status) async {
     switch (status) {
       case Initiated:
-        _navigationHandler.navigateToTermsAndConditionsScreen(
-            UserType.AgentCustomer, false);
+        _navigationHandler.navigateToTermsAndConditionsScreen(UserType.AgentCustomer, false);
         break;
       case Enrolled:
         _navigationHandler.navigateToDetailScreen();
@@ -534,10 +535,9 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         try {
           _saveData(workFlowStatusResponse);
 
-          if (workFlowStatusResponse.data!.data[3]["partnerCode"] ==
-              OTHER_PAYMENTS) {
-            _navigationHandler.navigateOfflinePaymentScreen(
-                workFlowStatusResponse.data!.data[2], "", false, false);
+          if(workFlowStatusResponse.data!.data[3]["partnerCode"] == OTHER_PAYMENTS){
+            _navigationHandler.navigateOfflinePaymentScreen(workFlowStatusResponse.data!.data[2], "",  false, false);
+
           } else {
             _navigationHandler.navigateToDownPaymentScreen(
               deviceId: workFlowStatusResponse.data!.data[2].toString(),
@@ -584,23 +584,20 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
         //need to be change
         try {
           _saveData(workFlowStatusResponse);
-          if (workFlowStatusResponse.data!.data[3]["partnerCode"] ==
-              OTHER_PAYMENTS) {
+          if(workFlowStatusResponse.data!.data[3]["partnerCode"]== OTHER_PAYMENTS) {
             //pass loan id in the model name further using in payment screen for loan approvl part
-            _navigationHandler.navigateOfflinePaymentScreen(
-                workFlowStatusResponse.data!.data[2],
-                workFlowStatusResponse.data!.data[3]["loanId"] ?? "",
-                false,
-                true);
+            _navigationHandler.navigateOfflinePaymentScreen(workFlowStatusResponse.data!.data[2], workFlowStatusResponse.data!.data[3]["loanId"] ?? "",  false, true);
+
           } else {
             _navigationHandler.navigateToDownPaymentScreen(
                 deviceId: workFlowStatusResponse.data!.data[2].toString(),
                 paymentStatus: 0,
                 paymentReceived: 1,
                 loanId: workFlowStatusResponse.data!.data[3]["loanId"] ?? "",
-                amount:
-                    workFlowStatusResponse.data!.data[3]["amountPaid"] ?? "",
-                isShowBottomSheet: true);
+                amount: workFlowStatusResponse.data!.data[3]["amountPaid"] ??
+                    "",
+                isShowBottomSheet: true
+            );
           }
         } catch (e) {
           return _showAlertForErrorMessage(

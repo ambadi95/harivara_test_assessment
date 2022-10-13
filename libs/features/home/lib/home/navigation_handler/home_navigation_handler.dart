@@ -89,8 +89,8 @@ class HomeNavigationHandler with ErrorHandler {
             onSelectedLabel: (String value) {
               _selectedAmount = "Paying Custom Amount";
             },
-            dailyRepayment: dailyRepaymentAmount ?? "0",
-            totalLoanAmount: totalLoanAmount ?? "0");
+            dailyRepayment: dailyRepaymentAmount ,
+            totalLoanAmount: totalLoanAmount );
 
     _navigationManager.navigateTo(
       'bottomSheet/crayonPaymentBottomSheet',
@@ -165,6 +165,7 @@ class HomeNavigationHandler with ErrorHandler {
                           : "0 TZSHS",
                     ),
                 onPressedPayNow: () {
+                  goBack();
                   navigateToPaymentScreen(_selectedAmount, _selectedMethod);
                 },
                 loanPaymentList: [

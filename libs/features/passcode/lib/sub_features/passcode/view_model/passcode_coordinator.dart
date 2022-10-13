@@ -20,12 +20,14 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
   PasscodeCoordinator(this._navigationHandler, this._passcodeUseCase)
       : super(const CreatePasscodeState.initialState());
 
-  void initialiseState(BuildContext context,
+  void initialiseState(
+    BuildContext context,
       String pageTitle,
       String pageDescription,
       String destinationPath,
       PassCodeVerificationType passCodeVerificationType,
-      String initialPasscode,) async {
+    String initialPasscode,
+  ) async {
     state = CreatePasscodeState.ready(
         context: context,
         initialPasscode: initialPasscode,
@@ -37,9 +39,11 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
         passCodeVerificationType: passCodeVerificationType,
         currentStep: 4);
   }
+
   Future<void> goBack() async {
     _navigationHandler.goBack();
   }
+
   // Future<void> updatePasscodeInput(KeypadButtonType keypadButtonType,) async {
   //   var currentState = state as CreatePasscodeReady;
   //   var previousPasscode = currentState.currentPasscode;
@@ -142,8 +146,8 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
     var error = await _passcodeUseCase.validateCustomerPasscode(passcode);
     if (error.isEmpty) {
       state = currentState.copyWith(
-        passCodeVerificationType: PassCodeVerificationType
-            .verifyResetCustomerPasscode,
+        passCodeVerificationType:
+            PassCodeVerificationType.verifyResetCustomerPasscode,
         pageTitle: 'PC_confirm_passcode',
         pageDescription: 'PC_re_enter_passcode',
         currentPasscode: '',
@@ -212,10 +216,12 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
     }
   }
 
-  Future<void> verifyPasscode(String oldPassCode,
+  Future<void> verifyPasscode(
+    String oldPassCode,
       String newPasscode,
       String destinationPath,
-      UserType userType,) async {
+    UserType userType,
+  ) async {
     var currentState = state as CreatePasscodeReady;
     try {
       if (oldPassCode == newPasscode) {
@@ -223,16 +229,20 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
         await _passcodeUseCase.savePassCodeLocal(newPasscode);
         if (userType == UserType.Customer) {
           state = currentState.copyWith(isLoading: true);
-          var response = await _passcodeUseCase.savePasscode(newPasscode,
-              userType == UserType.Customer ? "Customer" : "Agent", (
-                  p0) => null);
+          var response = await _passcodeUseCase.savePasscode(
+              newPasscode,
+              userType == UserType.Customer ? "Customer" : "Agent",
+              (p0) => null);
           if (response!.status == true) {
             var loginResponse =
             await _passcodeUseCase.login(newPasscode, (p0) => null);
             if (loginResponse?.status == true) {
+              String? customerId = loginResponse?.data?.id;
+              _passcodeUseCase.saveOnBordStatus(customerId!);
               state = currentState.copyWith(isLoading: false);
               if(destinationPath.contains('homemodule/CrayonHomeScreen')){
-                _navigationHandler.navigateToCustomerHomeScreen(destinationPath);
+                _navigationHandler
+                    .navigateToCustomerHomeScreen(destinationPath);
               }else{
                 _navigationHandler.navigateToCustomerEnrollmentScreen(
                     destinationPath, false, UserType.Customer);
@@ -243,9 +253,10 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
           }
         } else if (userType == UserType.Agent) {
           state = currentState.copyWith(isLoading: true);
-          var response = await _passcodeUseCase.savePasscodeAgent(newPasscode,
-              userType == UserType.Customer ? "Customer" : "Agent", (
-                  p0) => null);
+          var response = await _passcodeUseCase.savePasscodeAgent(
+              newPasscode,
+              userType == UserType.Customer ? "Customer" : "Agent",
+              (p0) => null);
           if (response!.status == true) {
             state = currentState.copyWith(currentStep: 5);
             var loginResponse =
@@ -262,7 +273,6 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
               state = currentState.copyWith(isLoading: false);
               CrayonPaymentLogger.logError(loginResponse.message!);
               _showAlertForErrorMessage(response.message!);
-
             }
           } else {
             state = currentState.copyWith(isLoading: false);
@@ -280,7 +290,6 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
             //     destinationPath, false, UserType.AgentCustomer);
           }else{
             _showAlertForErrorMessage(response.message!);
-
           }
         }
       } else {
@@ -300,11 +309,12 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
       state = currentState.copyWith(isLoading: false);
       AppUtils.appUtilsInstance.showErrorBottomSheet(
         title: e.toString(),
-        onClose: () {goBack();},
+        onClose: () {
+          goBack();
+        },
       );
     }
   }
-
 
   //showalert for error message
   _showAlertForErrorMessage(String errorMessage) {
@@ -322,11 +332,12 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
     );
   }
 
-
-  Future<void> verifyPasscodeReset(String oldPassCode,
+  Future<void> verifyPasscodeReset(
+    String oldPassCode,
       String newPasscode,
       String destinationPath,
-      UserType userType,) async {
+    UserType userType,
+  ) async {
     var currentState = state as CreatePasscodeReady;
     try {
       if (oldPassCode == newPasscode) {
@@ -341,8 +352,7 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
                 'RP_success_message'.tr,
                 'SU_button_text'.tr,
                 'PR_message'.tr,
-                userType
-            );
+                userType);
           } else {
             _showAlertForErrorMessage(resetResponse!.message!);
             CrayonPaymentLogger.logError(resetResponse.message!);
@@ -358,13 +368,12 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
                 'RP_success_message'.tr,
                 'SU_button_text'.tr,
                 'PR_message'.tr,
-                userType
-            );
+                userType);
           } else {
             state = currentState.copyWith(
               pageDescription: 'PC_passcode_does_not_match',
-              passCodeVerificationType: PassCodeVerificationType
-                  .agentResetPasscode,
+              passCodeVerificationType:
+                  PassCodeVerificationType.agentResetPasscode,
               pageTitle: 'PC_create_passcode',
               initialPasscode: '',
               currentPasscode: '',
@@ -374,8 +383,7 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
       }else{
         state = currentState.copyWith(
           pageDescription: 'PC_passcode_does_not_match',
-          passCodeVerificationType: PassCodeVerificationType
-              .agentResetPasscode,
+          passCodeVerificationType: PassCodeVerificationType.agentResetPasscode,
           pageTitle: 'PC_create_passcode',
           initialPasscode: '',
           currentPasscode: '',
@@ -385,7 +393,9 @@ class PasscodeCoordinator extends BaseViewModel<CreatePasscodeState> {
       state = currentState.copyWith(isLoading: false);
       AppUtils.appUtilsInstance.showErrorBottomSheet(
         title: e.toString(),
-        onClose: () {goBack();},
+        onClose: () {
+          goBack();
+        },
       );
     }
   }

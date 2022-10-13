@@ -182,7 +182,7 @@ class _SettingsState extends State<Settings> {
     return _buildOptions(context, 'ST_sign_out', ST_sign_out, () async {
      bool? isLogoutClicked =  await _showLogoutAlert();
      if(isLogoutClicked!=null && isLogoutClicked){
-      coordinator.signOut(widget.screenArgs.userType);
+       coordinator.signOut(widget.screenArgs.userType);
      }
     });
   }
