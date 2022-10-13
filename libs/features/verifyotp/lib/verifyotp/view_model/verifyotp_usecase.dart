@@ -102,7 +102,7 @@ class VerifyOtpUseCase extends BaseDataProvider {
 
   Future<OtpResponse?> otpGenCustomerByAgent(String id, String userType,
       String event,Function(String) onErrorCallback,[OtpScreenArgs? otpScreenArgs]) async {
-    OtpRequest otpRequest = OtpRequest(id: id, type: userType, event: event,mobile: otpScreenArgs!.updateBy=="mobile" ?  '+255${otpScreenArgs.phoneNumber.replaceAll(" ", "")}' : "");
+    OtpRequest otpRequest = OtpRequest(id: id, type: userType, event: event,mobile: otpScreenArgs!.updateBy=="nida" ?  '+255${otpScreenArgs.phoneNumber.replaceAll(" ", "")}' : "");
 
     CrayonPaymentLogger.logInfo(otpRequest.toJson().toString());
 

@@ -255,6 +255,28 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
             mobileNumber,
             userId: response.data?.customerId.toString(),
           );
+        }
+        //user already registered without loan (it should be change later)
+        else if (response.status == false &&
+            response.code == "409" &&
+            response.y9ErrorCode == LOAN_NOT_CREATED) {
+          await continueToOtp(nindaNumber, mobileNumber);
+          state = const SignUpState.initialState();
+          await _signupUseCase
+              .saveCustomerId(response.data?.customerId.toString());
+          _navigationHandler.navigateToOtpScreenCustomerSignUpByAgent(
+            UserType.Customer,
+            mobileNumber,
+            userId: response.data?.customerId.toString(),
+          );
+        } //user already registered with loan (it should be change later)
+        else if (response.status == false &&
+            response.code == "409" &&
+            response.y9ErrorCode == USER_ALREADY_EXIST_WITH_LOAN) {
+
+          _showAlertForErrorMessage(response.message!);
+
+          return;
         } else {
           state = const SignUpState.initialState();
           if (response.code == "409") {
@@ -266,7 +288,7 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
                   mobileNumber: mobileNumber,
                   dataShown: response.data!.nidaNo!
                       .substring(response.data!.nidaNo!.length - 2));
-            } else {
+            } else if (response.y9ErrorCode == NIDA_ALREADY_EXIST) {
               callNidaAlert(buildContext!,
                   isNidaAlert: true,
                   nidaNo: nindaNumber,
@@ -309,7 +331,6 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
           }
         }
       } else if (signUpArguments.signupType == SignupType.resetPasscodeAgent) {
-        print('gherer');
         state = const SignUpState.loadingState();
         var agentDetailResponse = await _signupUseCase.getAgentDetail(
             agentId, nindaNumber.replaceAll("-", ""), (p0) => null);
