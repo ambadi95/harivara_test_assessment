@@ -28,3 +28,8 @@ const String Receive_Notifications_Methods_Push =
     'receive-notifications-methods-push';
 const String PROFILE_IMAGE = 'profile-image';
 const String USER_NAME = 'user-name';
+
+const String NIDA_ALREADY_EXIST  = 'Y9E0001';
+const String MOBILE_Already_Exist  = 'Y9E0002';
+const String Customer_Completed_KYC  = 'Y9E0003';
+const String No_Update_Access  = 'Y9E0004';

@@ -8,7 +8,7 @@ part of 'data.dart';
 
 Data _$DataFromJson(Map<String, dynamic> json) => Data(
       bandId: json['bandId'] as int?,
-      creditLimit: json['creditLimit'] as double?,
+      creditLimit: (json['creditLimit'] as num?)?.toDouble(),
       creditScore: json['creditScore'] as int?,
       eligibility: json['eligibility'] as String?,
       remark: json['remark'] as String?,

@@ -9,6 +9,7 @@ import 'package:shared_data_models/signup/sign_up_type.dart';
 import 'package:task_manager/base_classes/base_view_model.dart';
 import 'package:welcome/sub_features/signup/state/signup_state.dart';
 import 'package:welcome/sub_features/signup/viewmodel/signup_usecase.dart';
+import 'package:widget_library/constants.dart';
 import 'package:widget_library/page_header/text_ui_data_model.dart';
 import 'package:widget_library/static_text/crayon_payment_text.dart';
 import 'package:widget_library/utils/app_utils.dart';
@@ -239,19 +240,8 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
             agentId: await _signupUseCase.getAgentId());
 
         if (response!.status == true) {
-          await continueToOtp(nindaNumber, mobileNumber);
-          state = const SignUpState.initialState();
-          await _signupUseCase
-              .saveCustomerId(response.data?.customerId.toString());
-          _navigationHandler.navigateToOtpScreenCustomerSignUpByAgent(
-            UserType.Customer,
-            mobileNumber,
-            userId: response.data?.customerId.toString(),
-          );
-        } else {
-          state = const SignUpState.initialState();
           if (response.code == "409") {
-            if (response.message == "Mobile Number already registered") {
+            if (response.y9ErrorCode == MOBILE_Already_Exist) {
               callNidaAlert(buildContext!,
                   isNidaAlert: false,
                   nidaNo: nindaNumber,
@@ -262,6 +252,34 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
                   nidaNo: nindaNumber,
                   mobileNumber: mobileNumber);
             }
+          }else {
+            await continueToOtp(nindaNumber, mobileNumber);
+            state = const SignUpState.initialState();
+            await _signupUseCase
+                .saveCustomerId(response.data?.customerId.toString());
+            _navigationHandler.navigateToOtpScreenCustomerSignUpByAgent(
+              UserType.Customer,
+              mobileNumber,
+              userId: response.data?.customerId.toString(),
+            );
+          }
+        } else {
+          state = const SignUpState.initialState();
+          if (response.code == "409") {
+            if (response.y9ErrorCode == MOBILE_Already_Exist) {
+              callNidaAlert(buildContext!,
+                  isNidaAlert: false,
+                  nidaNo: nindaNumber,
+                  mobileNumber: mobileNumber);
+            } else {
+              callNidaAlert(buildContext!,
+                  isNidaAlert: true,
+                  nidaNo: nindaNumber,
+                  mobileNumber: mobileNumber);
+            }
+          }else if (response.y9ErrorCode == Customer_Completed_KYC){
+            _showAlertForErrorMessage(response.message!);
+
           }
 
           if (response.message == "Internal Server Error") {

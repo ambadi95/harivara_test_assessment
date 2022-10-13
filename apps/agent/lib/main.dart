@@ -117,6 +117,7 @@ class HomeWidget extends StatelessWidget {
   }
 }
 
+
 Future<void> _setupCrashlytics() async {
   if (kDebugMode) {
     await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(false);
