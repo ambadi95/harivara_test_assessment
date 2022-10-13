@@ -8,8 +8,9 @@ class OtpRequest extends Equatable {
   final String? id;
   final String? type;
   final String? event;
+  final String? mobile;
 
-  const OtpRequest({this.id, this.type,this.event});
+  const OtpRequest({this.id, this.type,this.event,this.mobile});
 
   factory OtpRequest.fromJson(Map<String, dynamic> json) {
     return _$OtpRequestFromJson(json);
@@ -20,12 +21,14 @@ class OtpRequest extends Equatable {
   OtpRequest copyWith({
     String? id,
     String? type,
-    String? event
+    String? event,
+    String? mobile
   }) {
     return OtpRequest(
       id: id ?? this.id,
       type: type ?? this.type,
-      event: event??this.event
+      event: event??this.event,
+      mobile: mobile ?? this.mobile
     );
   }
 
@@ -33,5 +36,5 @@ class OtpRequest extends Equatable {
   bool get stringify => true;
 
   @override
-  List<Object?> get props => [id, type,event];
+  List<Object?> get props => [id, type,event,mobile];
 }

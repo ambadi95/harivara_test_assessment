@@ -73,7 +73,9 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
           coordinator.generateOtp(
               widget.otpScreenArgs.refId,
               widget.otpScreenArgs.userType,
-              widget.otpScreenArgs.otpVerificationType,widget.otpScreenArgs.event);
+              widget.otpScreenArgs.otpVerificationType,widget.otpScreenArgs.event,
+              widget.otpScreenArgs
+          );
           coordinator.initialiseState(
             context,
             widget.otpScreenArgs.title,

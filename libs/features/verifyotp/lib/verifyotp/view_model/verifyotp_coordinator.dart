@@ -59,12 +59,12 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
   String otp = '';
 
   Future<void> generateOtp(String id, UserType userType,
-      OtpVerificationType otpVerificationType, String event) async {
+      OtpVerificationType otpVerificationType, String event, [OtpScreenArgs? otpScreenArgs]) async {
     try {
       var response;
       if (otpVerificationType == OtpVerificationType.customerSignUpAgent) {
         response = await _verifyOtpUseCase.otpGenCustomerByAgent(
-            id, 'Customer', event, (p0) => null);
+            id, 'Customer', event, (p0) => null,otpScreenArgs);
       } else {
         response =
             await _verifyOtpUseCase.otpGen(id, userType, event, (p0) => null);

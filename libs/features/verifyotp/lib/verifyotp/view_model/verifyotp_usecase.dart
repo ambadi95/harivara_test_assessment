@@ -2,6 +2,7 @@ import 'package:config/Config.dart';
 import 'package:core/mobile_core.dart';
 import 'package:shared_data_models/commonresponse/common_response.dart';
 import 'package:shared_data_models/customer_details/response/get_customer_details_response/get_customer_details_response.dart';
+import 'package:shared_data_models/otp/otp_screen_args.dart';
 import 'package:shared_data_models/welcome/otp/request/otp_request.dart';
 import 'package:shared_data_models/welcome/otp/response/otp_response.dart';
 import 'package:shared_data_models/welcome/otp_verification/request/otp_verification_request.dart';
@@ -83,7 +84,7 @@ class VerifyOtpUseCase extends BaseDataProvider {
     OtpRequest otpRequest = OtpRequest(
         id: id,
         type: (userType == UserType.Customer ? "Customer" : "Agent"),
-        event: event);
+        event: event,mobile: "");
 
     print(otpRequest.toJson().toString());
     return await executeApiRequest<OtpResponse?>(
@@ -100,8 +101,8 @@ class VerifyOtpUseCase extends BaseDataProvider {
   }
 
   Future<OtpResponse?> otpGenCustomerByAgent(String id, String userType,
-      String event, Function(String) onErrorCallback) async {
-    OtpRequest otpRequest = OtpRequest(id: id, type: userType, event: event);
+      String event,Function(String) onErrorCallback,[OtpScreenArgs? otpScreenArgs]) async {
+    OtpRequest otpRequest = OtpRequest(id: id, type: userType, event: event,mobile: otpScreenArgs!.updateBy=="mobile" ?  '+255${otpScreenArgs.phoneNumber.replaceAll(" ", "")}' : "");
 
     CrayonPaymentLogger.logInfo(otpRequest.toJson().toString());
 
