@@ -269,7 +269,7 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
             mobileNumber,
             userId: response.data?.customerId.toString(),
           );
-        } //user already registered with loan (it should be change later)
+        } //user already registered with loan here as per backend user is completed with mdm success i.e full enrollment (it should be change later)
         else if (response.status == false &&
             response.code == "409" &&
             response.y9ErrorCode == USER_ALREADY_EXIST_WITH_LOAN) {
