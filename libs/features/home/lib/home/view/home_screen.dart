@@ -89,15 +89,14 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
             outstandingAmount = outstandingAmountDouble.toStringAsFixed(2);
 
 
-            coordinator.readyState(
-                context, '', widget.homeScreenArgs.isAgent, false);
+            setState(() {});
           }
         },
         builder: (context, state, coordinator) => Scaffold(
           body: SafeArea(
             bottom: false,
             child: state.when(
-              initialState: () => const CenteredCircularProgressBar(color: PRIMARY_COLOR),
+              initialState: () => const SizedBox(),
               ready: (
                 _,
                 __,
@@ -113,8 +112,6 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
           ),
         ),
       );
-
-
 
   Widget _userInfoView() {
     return Padding(
