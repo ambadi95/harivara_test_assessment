@@ -8,6 +8,7 @@ import 'package:core/sheets/state/crayon_payment_bottom_sheet_state.dart';
 import 'package:flutter/material.dart';
 import 'package:home/home/home_screen_arguments.dart';
 import 'package:scanqrcode/view/scanqrcode_screen.dart';
+import 'package:scanqrcode/view/out_of_stock_success_screen.dart';
 import 'package:scanqrcode/view/successful_screen.dart';
 import 'package:shared_data_models/scan_qr_code/scan_qrcode_args.dart';
 import 'package:widget_library/helpers/error/helper/error_helper.dart';
@@ -101,7 +102,8 @@ class DownPaymentNavigationHandler with ErrorHandler {
   Future<void> navigateToFinalSuccess() async {
     var argument = "test";
     await _navigationManager.navigateTo(
-        SuccessScreen.viewPath,
+        OutOfStockSuccessScreen.viewPath,
+        //SuccessScreen.viewPath,
         const NavigationType.push(),
         arguments: argument
     );
