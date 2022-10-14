@@ -17,6 +17,7 @@ class Data extends Equatable {
   final dynamic profession;
   final String? emailId;
   final String? organization;
+  final String? organizationType;
   final String? region;
   final String? district;
   final int? referenceId;
@@ -36,6 +37,7 @@ class Data extends Equatable {
     this.profession,
     this.emailId,
     this.organization,
+    this.organizationType,
     this.region,
     this.district,
     this.referenceId,
@@ -60,6 +62,7 @@ class Data extends Equatable {
     dynamic profession,
     String? emailId,
     String? organization,
+    String? organizationType,
     String? region,
     String? district,
     int? referenceId,
@@ -79,6 +82,7 @@ class Data extends Equatable {
         profession: profession ?? this.profession,
         emailId: emailId ?? this.emailId,
       organization: organization ?? this.organization,
+        organizationType: organizationType ?? this.organizationType,
         region: region ?? this.region,
         district: district ?? this.district,
         referenceId: referenceId ?? this.referenceId,
@@ -105,6 +109,7 @@ class Data extends Equatable {
       profession,
       emailId,
       organization,
+      organizationType,
       region,
       district,
       referenceId,

@@ -43,6 +43,8 @@ mixin _$DetailsState {
     required TResult Function(String genderType) onGenderTypeFetched,
     required TResult Function(String genderType) onRegionFetched,
     required TResult Function(String genderType) onDistrictFetched,
+    required TResult Function(String organizationType)
+        onOrganizationTypeFetched,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -70,6 +72,7 @@ mixin _$DetailsState {
     TResult Function(String genderType)? onGenderTypeFetched,
     TResult Function(String genderType)? onRegionFetched,
     TResult Function(String genderType)? onDistrictFetched,
+    TResult Function(String organizationType)? onOrganizationTypeFetched,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -97,6 +100,7 @@ mixin _$DetailsState {
     TResult Function(String genderType)? onGenderTypeFetched,
     TResult Function(String genderType)? onRegionFetched,
     TResult Function(String genderType)? onDistrictFetched,
+    TResult Function(String organizationType)? onOrganizationTypeFetched,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -127,6 +131,8 @@ mixin _$DetailsState {
     required TResult Function(OnGenderTypeFetched value) onGenderTypeFetched,
     required TResult Function(OnRegionFetched value) onRegionFetched,
     required TResult Function(OnDistrictFetched value) onDistrictFetched,
+    required TResult Function(OnOrganizationTypeFetched value)
+        onOrganizationTypeFetched,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -155,6 +161,8 @@ mixin _$DetailsState {
     TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
     TResult Function(OnRegionFetched value)? onRegionFetched,
     TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    TResult Function(OnOrganizationTypeFetched value)?
+        onOrganizationTypeFetched,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -183,6 +191,8 @@ mixin _$DetailsState {
     TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
     TResult Function(OnRegionFetched value)? onRegionFetched,
     TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    TResult Function(OnOrganizationTypeFetched value)?
+        onOrganizationTypeFetched,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -270,6 +280,8 @@ class _$InitialState implements InitialState {
     required TResult Function(String genderType) onGenderTypeFetched,
     required TResult Function(String genderType) onRegionFetched,
     required TResult Function(String genderType) onDistrictFetched,
+    required TResult Function(String organizationType)
+        onOrganizationTypeFetched,
   }) {
     return initialState();
   }
@@ -300,6 +312,7 @@ class _$InitialState implements InitialState {
     TResult Function(String genderType)? onGenderTypeFetched,
     TResult Function(String genderType)? onRegionFetched,
     TResult Function(String genderType)? onDistrictFetched,
+    TResult Function(String organizationType)? onOrganizationTypeFetched,
   }) {
     return initialState?.call();
   }
@@ -330,6 +343,7 @@ class _$InitialState implements InitialState {
     TResult Function(String genderType)? onGenderTypeFetched,
     TResult Function(String genderType)? onRegionFetched,
     TResult Function(String genderType)? onDistrictFetched,
+    TResult Function(String organizationType)? onOrganizationTypeFetched,
     required TResult orElse(),
   }) {
     if (initialState != null) {
@@ -366,6 +380,8 @@ class _$InitialState implements InitialState {
     required TResult Function(OnGenderTypeFetched value) onGenderTypeFetched,
     required TResult Function(OnRegionFetched value) onRegionFetched,
     required TResult Function(OnDistrictFetched value) onDistrictFetched,
+    required TResult Function(OnOrganizationTypeFetched value)
+        onOrganizationTypeFetched,
   }) {
     return initialState(this);
   }
@@ -397,6 +413,8 @@ class _$InitialState implements InitialState {
     TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
     TResult Function(OnRegionFetched value)? onRegionFetched,
     TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    TResult Function(OnOrganizationTypeFetched value)?
+        onOrganizationTypeFetched,
   }) {
     return initialState?.call(this);
   }
@@ -428,6 +446,8 @@ class _$InitialState implements InitialState {
     TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
     TResult Function(OnRegionFetched value)? onRegionFetched,
     TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    TResult Function(OnOrganizationTypeFetched value)?
+        onOrganizationTypeFetched,
     required TResult orElse(),
   }) {
     if (initialState != null) {
@@ -507,6 +527,8 @@ class _$SuccessState implements SuccessState {
     required TResult Function(String genderType) onGenderTypeFetched,
     required TResult Function(String genderType) onRegionFetched,
     required TResult Function(String genderType) onDistrictFetched,
+    required TResult Function(String organizationType)
+        onOrganizationTypeFetched,
   }) {
     return successState();
   }
@@ -537,6 +559,7 @@ class _$SuccessState implements SuccessState {
     TResult Function(String genderType)? onGenderTypeFetched,
     TResult Function(String genderType)? onRegionFetched,
     TResult Function(String genderType)? onDistrictFetched,
+    TResult Function(String organizationType)? onOrganizationTypeFetched,
   }) {
     return successState?.call();
   }
@@ -567,6 +590,7 @@ class _$SuccessState implements SuccessState {
     TResult Function(String genderType)? onGenderTypeFetched,
     TResult Function(String genderType)? onRegionFetched,
     TResult Function(String genderType)? onDistrictFetched,
+    TResult Function(String organizationType)? onOrganizationTypeFetched,
     required TResult orElse(),
   }) {
     if (successState != null) {
@@ -603,6 +627,8 @@ class _$SuccessState implements SuccessState {
     required TResult Function(OnGenderTypeFetched value) onGenderTypeFetched,
     required TResult Function(OnRegionFetched value) onRegionFetched,
     required TResult Function(OnDistrictFetched value) onDistrictFetched,
+    required TResult Function(OnOrganizationTypeFetched value)
+        onOrganizationTypeFetched,
   }) {
     return successState(this);
   }
@@ -634,6 +660,8 @@ class _$SuccessState implements SuccessState {
     TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
     TResult Function(OnRegionFetched value)? onRegionFetched,
     TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    TResult Function(OnOrganizationTypeFetched value)?
+        onOrganizationTypeFetched,
   }) {
     return successState?.call(this);
   }
@@ -665,6 +693,8 @@ class _$SuccessState implements SuccessState {
     TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
     TResult Function(OnRegionFetched value)? onRegionFetched,
     TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    TResult Function(OnOrganizationTypeFetched value)?
+        onOrganizationTypeFetched,
     required TResult orElse(),
   }) {
     if (successState != null) {
@@ -768,6 +798,8 @@ class _$DetailsFormState implements DetailsFormState {
     required TResult Function(String genderType) onGenderTypeFetched,
     required TResult Function(String genderType) onRegionFetched,
     required TResult Function(String genderType) onDistrictFetched,
+    required TResult Function(String organizationType)
+        onOrganizationTypeFetched,
   }) {
     return DetailsFormState(isValid);
   }
@@ -798,6 +830,7 @@ class _$DetailsFormState implements DetailsFormState {
     TResult Function(String genderType)? onGenderTypeFetched,
     TResult Function(String genderType)? onRegionFetched,
     TResult Function(String genderType)? onDistrictFetched,
+    TResult Function(String organizationType)? onOrganizationTypeFetched,
   }) {
     return DetailsFormState?.call(isValid);
   }
@@ -828,6 +861,7 @@ class _$DetailsFormState implements DetailsFormState {
     TResult Function(String genderType)? onGenderTypeFetched,
     TResult Function(String genderType)? onRegionFetched,
     TResult Function(String genderType)? onDistrictFetched,
+    TResult Function(String organizationType)? onOrganizationTypeFetched,
     required TResult orElse(),
   }) {
     if (DetailsFormState != null) {
@@ -864,6 +898,8 @@ class _$DetailsFormState implements DetailsFormState {
     required TResult Function(OnGenderTypeFetched value) onGenderTypeFetched,
     required TResult Function(OnRegionFetched value) onRegionFetched,
     required TResult Function(OnDistrictFetched value) onDistrictFetched,
+    required TResult Function(OnOrganizationTypeFetched value)
+        onOrganizationTypeFetched,
   }) {
     return DetailsFormState(this);
   }
@@ -895,6 +931,8 @@ class _$DetailsFormState implements DetailsFormState {
     TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
     TResult Function(OnRegionFetched value)? onRegionFetched,
     TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    TResult Function(OnOrganizationTypeFetched value)?
+        onOrganizationTypeFetched,
   }) {
     return DetailsFormState?.call(this);
   }
@@ -926,6 +964,8 @@ class _$DetailsFormState implements DetailsFormState {
     TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
     TResult Function(OnRegionFetched value)? onRegionFetched,
     TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    TResult Function(OnOrganizationTypeFetched value)?
+        onOrganizationTypeFetched,
     required TResult orElse(),
   }) {
     if (DetailsFormState != null) {
@@ -1010,6 +1050,8 @@ class _$LoadingState implements LoadingState {
     required TResult Function(String genderType) onGenderTypeFetched,
     required TResult Function(String genderType) onRegionFetched,
     required TResult Function(String genderType) onDistrictFetched,
+    required TResult Function(String organizationType)
+        onOrganizationTypeFetched,
   }) {
     return LoadingState();
   }
@@ -1040,6 +1082,7 @@ class _$LoadingState implements LoadingState {
     TResult Function(String genderType)? onGenderTypeFetched,
     TResult Function(String genderType)? onRegionFetched,
     TResult Function(String genderType)? onDistrictFetched,
+    TResult Function(String organizationType)? onOrganizationTypeFetched,
   }) {
     return LoadingState?.call();
   }
@@ -1070,6 +1113,7 @@ class _$LoadingState implements LoadingState {
     TResult Function(String genderType)? onGenderTypeFetched,
     TResult Function(String genderType)? onRegionFetched,
     TResult Function(String genderType)? onDistrictFetched,
+    TResult Function(String organizationType)? onOrganizationTypeFetched,
     required TResult orElse(),
   }) {
     if (LoadingState != null) {
@@ -1106,6 +1150,8 @@ class _$LoadingState implements LoadingState {
     required TResult Function(OnGenderTypeFetched value) onGenderTypeFetched,
     required TResult Function(OnRegionFetched value) onRegionFetched,
     required TResult Function(OnDistrictFetched value) onDistrictFetched,
+    required TResult Function(OnOrganizationTypeFetched value)
+        onOrganizationTypeFetched,
   }) {
     return LoadingState(this);
   }
@@ -1137,6 +1183,8 @@ class _$LoadingState implements LoadingState {
     TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
     TResult Function(OnRegionFetched value)? onRegionFetched,
     TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    TResult Function(OnOrganizationTypeFetched value)?
+        onOrganizationTypeFetched,
   }) {
     return LoadingState?.call(this);
   }
@@ -1168,6 +1216,8 @@ class _$LoadingState implements LoadingState {
     TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
     TResult Function(OnRegionFetched value)? onRegionFetched,
     TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    TResult Function(OnOrganizationTypeFetched value)?
+        onOrganizationTypeFetched,
     required TResult orElse(),
   }) {
     if (LoadingState != null) {
@@ -1270,6 +1320,8 @@ class _$NameError implements NameError {
     required TResult Function(String genderType) onGenderTypeFetched,
     required TResult Function(String genderType) onRegionFetched,
     required TResult Function(String genderType) onDistrictFetched,
+    required TResult Function(String organizationType)
+        onOrganizationTypeFetched,
   }) {
     return nameError(this.nameError);
   }
@@ -1300,6 +1352,7 @@ class _$NameError implements NameError {
     TResult Function(String genderType)? onGenderTypeFetched,
     TResult Function(String genderType)? onRegionFetched,
     TResult Function(String genderType)? onDistrictFetched,
+    TResult Function(String organizationType)? onOrganizationTypeFetched,
   }) {
     return nameError?.call(this.nameError);
   }
@@ -1330,6 +1383,7 @@ class _$NameError implements NameError {
     TResult Function(String genderType)? onGenderTypeFetched,
     TResult Function(String genderType)? onRegionFetched,
     TResult Function(String genderType)? onDistrictFetched,
+    TResult Function(String organizationType)? onOrganizationTypeFetched,
     required TResult orElse(),
   }) {
     if (nameError != null) {
@@ -1366,6 +1420,8 @@ class _$NameError implements NameError {
     required TResult Function(OnGenderTypeFetched value) onGenderTypeFetched,
     required TResult Function(OnRegionFetched value) onRegionFetched,
     required TResult Function(OnDistrictFetched value) onDistrictFetched,
+    required TResult Function(OnOrganizationTypeFetched value)
+        onOrganizationTypeFetched,
   }) {
     return nameError(this);
   }
@@ -1397,6 +1453,8 @@ class _$NameError implements NameError {
     TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
     TResult Function(OnRegionFetched value)? onRegionFetched,
     TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    TResult Function(OnOrganizationTypeFetched value)?
+        onOrganizationTypeFetched,
   }) {
     return nameError?.call(this);
   }
@@ -1428,6 +1486,8 @@ class _$NameError implements NameError {
     TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
     TResult Function(OnRegionFetched value)? onRegionFetched,
     TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    TResult Function(OnOrganizationTypeFetched value)?
+        onOrganizationTypeFetched,
     required TResult orElse(),
   }) {
     if (nameError != null) {
@@ -1537,6 +1597,8 @@ class _$GetMobileNumber implements GetMobileNumber {
     required TResult Function(String genderType) onGenderTypeFetched,
     required TResult Function(String genderType) onRegionFetched,
     required TResult Function(String genderType) onDistrictFetched,
+    required TResult Function(String organizationType)
+        onOrganizationTypeFetched,
   }) {
     return getMobileNumber(mobileNumber);
   }
@@ -1567,6 +1629,7 @@ class _$GetMobileNumber implements GetMobileNumber {
     TResult Function(String genderType)? onGenderTypeFetched,
     TResult Function(String genderType)? onRegionFetched,
     TResult Function(String genderType)? onDistrictFetched,
+    TResult Function(String organizationType)? onOrganizationTypeFetched,
   }) {
     return getMobileNumber?.call(mobileNumber);
   }
@@ -1597,6 +1660,7 @@ class _$GetMobileNumber implements GetMobileNumber {
     TResult Function(String genderType)? onGenderTypeFetched,
     TResult Function(String genderType)? onRegionFetched,
     TResult Function(String genderType)? onDistrictFetched,
+    TResult Function(String organizationType)? onOrganizationTypeFetched,
     required TResult orElse(),
   }) {
     if (getMobileNumber != null) {
@@ -1633,6 +1697,8 @@ class _$GetMobileNumber implements GetMobileNumber {
     required TResult Function(OnGenderTypeFetched value) onGenderTypeFetched,
     required TResult Function(OnRegionFetched value) onRegionFetched,
     required TResult Function(OnDistrictFetched value) onDistrictFetched,
+    required TResult Function(OnOrganizationTypeFetched value)
+        onOrganizationTypeFetched,
   }) {
     return getMobileNumber(this);
   }
@@ -1664,6 +1730,8 @@ class _$GetMobileNumber implements GetMobileNumber {
     TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
     TResult Function(OnRegionFetched value)? onRegionFetched,
     TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    TResult Function(OnOrganizationTypeFetched value)?
+        onOrganizationTypeFetched,
   }) {
     return getMobileNumber?.call(this);
   }
@@ -1695,6 +1763,8 @@ class _$GetMobileNumber implements GetMobileNumber {
     TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
     TResult Function(OnRegionFetched value)? onRegionFetched,
     TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    TResult Function(OnOrganizationTypeFetched value)?
+        onOrganizationTypeFetched,
     required TResult orElse(),
   }) {
     if (getMobileNumber != null) {
@@ -1804,6 +1874,8 @@ class _$getNIDANumber implements getNIDANumber {
     required TResult Function(String genderType) onGenderTypeFetched,
     required TResult Function(String genderType) onRegionFetched,
     required TResult Function(String genderType) onDistrictFetched,
+    required TResult Function(String organizationType)
+        onOrganizationTypeFetched,
   }) {
     return getNIDANumber(NIDANumber);
   }
@@ -1834,6 +1906,7 @@ class _$getNIDANumber implements getNIDANumber {
     TResult Function(String genderType)? onGenderTypeFetched,
     TResult Function(String genderType)? onRegionFetched,
     TResult Function(String genderType)? onDistrictFetched,
+    TResult Function(String organizationType)? onOrganizationTypeFetched,
   }) {
     return getNIDANumber?.call(NIDANumber);
   }
@@ -1864,6 +1937,7 @@ class _$getNIDANumber implements getNIDANumber {
     TResult Function(String genderType)? onGenderTypeFetched,
     TResult Function(String genderType)? onRegionFetched,
     TResult Function(String genderType)? onDistrictFetched,
+    TResult Function(String organizationType)? onOrganizationTypeFetched,
     required TResult orElse(),
   }) {
     if (getNIDANumber != null) {
@@ -1900,6 +1974,8 @@ class _$getNIDANumber implements getNIDANumber {
     required TResult Function(OnGenderTypeFetched value) onGenderTypeFetched,
     required TResult Function(OnRegionFetched value) onRegionFetched,
     required TResult Function(OnDistrictFetched value) onDistrictFetched,
+    required TResult Function(OnOrganizationTypeFetched value)
+        onOrganizationTypeFetched,
   }) {
     return getNIDANumber(this);
   }
@@ -1931,6 +2007,8 @@ class _$getNIDANumber implements getNIDANumber {
     TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
     TResult Function(OnRegionFetched value)? onRegionFetched,
     TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    TResult Function(OnOrganizationTypeFetched value)?
+        onOrganizationTypeFetched,
   }) {
     return getNIDANumber?.call(this);
   }
@@ -1962,6 +2040,8 @@ class _$getNIDANumber implements getNIDANumber {
     TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
     TResult Function(OnRegionFetched value)? onRegionFetched,
     TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    TResult Function(OnOrganizationTypeFetched value)?
+        onOrganizationTypeFetched,
     required TResult orElse(),
   }) {
     if (getNIDANumber != null) {
@@ -2070,6 +2150,8 @@ class _$EmailError implements EmailError {
     required TResult Function(String genderType) onGenderTypeFetched,
     required TResult Function(String genderType) onRegionFetched,
     required TResult Function(String genderType) onDistrictFetched,
+    required TResult Function(String organizationType)
+        onOrganizationTypeFetched,
   }) {
     return emailError(this.emailError);
   }
@@ -2100,6 +2182,7 @@ class _$EmailError implements EmailError {
     TResult Function(String genderType)? onGenderTypeFetched,
     TResult Function(String genderType)? onRegionFetched,
     TResult Function(String genderType)? onDistrictFetched,
+    TResult Function(String organizationType)? onOrganizationTypeFetched,
   }) {
     return emailError?.call(this.emailError);
   }
@@ -2130,6 +2213,7 @@ class _$EmailError implements EmailError {
     TResult Function(String genderType)? onGenderTypeFetched,
     TResult Function(String genderType)? onRegionFetched,
     TResult Function(String genderType)? onDistrictFetched,
+    TResult Function(String organizationType)? onOrganizationTypeFetched,
     required TResult orElse(),
   }) {
     if (emailError != null) {
@@ -2166,6 +2250,8 @@ class _$EmailError implements EmailError {
     required TResult Function(OnGenderTypeFetched value) onGenderTypeFetched,
     required TResult Function(OnRegionFetched value) onRegionFetched,
     required TResult Function(OnDistrictFetched value) onDistrictFetched,
+    required TResult Function(OnOrganizationTypeFetched value)
+        onOrganizationTypeFetched,
   }) {
     return emailError(this);
   }
@@ -2197,6 +2283,8 @@ class _$EmailError implements EmailError {
     TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
     TResult Function(OnRegionFetched value)? onRegionFetched,
     TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    TResult Function(OnOrganizationTypeFetched value)?
+        onOrganizationTypeFetched,
   }) {
     return emailError?.call(this);
   }
@@ -2228,6 +2316,8 @@ class _$EmailError implements EmailError {
     TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
     TResult Function(OnRegionFetched value)? onRegionFetched,
     TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    TResult Function(OnOrganizationTypeFetched value)?
+        onOrganizationTypeFetched,
     required TResult orElse(),
   }) {
     if (emailError != null) {
@@ -2336,6 +2426,8 @@ class _$PoBoxError implements PoBoxError {
     required TResult Function(String genderType) onGenderTypeFetched,
     required TResult Function(String genderType) onRegionFetched,
     required TResult Function(String genderType) onDistrictFetched,
+    required TResult Function(String organizationType)
+        onOrganizationTypeFetched,
   }) {
     return poBoxError(this.poBoxError);
   }
@@ -2366,6 +2458,7 @@ class _$PoBoxError implements PoBoxError {
     TResult Function(String genderType)? onGenderTypeFetched,
     TResult Function(String genderType)? onRegionFetched,
     TResult Function(String genderType)? onDistrictFetched,
+    TResult Function(String organizationType)? onOrganizationTypeFetched,
   }) {
     return poBoxError?.call(this.poBoxError);
   }
@@ -2396,6 +2489,7 @@ class _$PoBoxError implements PoBoxError {
     TResult Function(String genderType)? onGenderTypeFetched,
     TResult Function(String genderType)? onRegionFetched,
     TResult Function(String genderType)? onDistrictFetched,
+    TResult Function(String organizationType)? onOrganizationTypeFetched,
     required TResult orElse(),
   }) {
     if (poBoxError != null) {
@@ -2432,6 +2526,8 @@ class _$PoBoxError implements PoBoxError {
     required TResult Function(OnGenderTypeFetched value) onGenderTypeFetched,
     required TResult Function(OnRegionFetched value) onRegionFetched,
     required TResult Function(OnDistrictFetched value) onDistrictFetched,
+    required TResult Function(OnOrganizationTypeFetched value)
+        onOrganizationTypeFetched,
   }) {
     return poBoxError(this);
   }
@@ -2463,6 +2559,8 @@ class _$PoBoxError implements PoBoxError {
     TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
     TResult Function(OnRegionFetched value)? onRegionFetched,
     TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    TResult Function(OnOrganizationTypeFetched value)?
+        onOrganizationTypeFetched,
   }) {
     return poBoxError?.call(this);
   }
@@ -2494,6 +2592,8 @@ class _$PoBoxError implements PoBoxError {
     TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
     TResult Function(OnRegionFetched value)? onRegionFetched,
     TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    TResult Function(OnOrganizationTypeFetched value)?
+        onOrganizationTypeFetched,
     required TResult orElse(),
   }) {
     if (poBoxError != null) {
@@ -2600,6 +2700,8 @@ class _$DobError implements DobError {
     required TResult Function(String genderType) onGenderTypeFetched,
     required TResult Function(String genderType) onRegionFetched,
     required TResult Function(String genderType) onDistrictFetched,
+    required TResult Function(String organizationType)
+        onOrganizationTypeFetched,
   }) {
     return dobError(this.dobError);
   }
@@ -2630,6 +2732,7 @@ class _$DobError implements DobError {
     TResult Function(String genderType)? onGenderTypeFetched,
     TResult Function(String genderType)? onRegionFetched,
     TResult Function(String genderType)? onDistrictFetched,
+    TResult Function(String organizationType)? onOrganizationTypeFetched,
   }) {
     return dobError?.call(this.dobError);
   }
@@ -2660,6 +2763,7 @@ class _$DobError implements DobError {
     TResult Function(String genderType)? onGenderTypeFetched,
     TResult Function(String genderType)? onRegionFetched,
     TResult Function(String genderType)? onDistrictFetched,
+    TResult Function(String organizationType)? onOrganizationTypeFetched,
     required TResult orElse(),
   }) {
     if (dobError != null) {
@@ -2696,6 +2800,8 @@ class _$DobError implements DobError {
     required TResult Function(OnGenderTypeFetched value) onGenderTypeFetched,
     required TResult Function(OnRegionFetched value) onRegionFetched,
     required TResult Function(OnDistrictFetched value) onDistrictFetched,
+    required TResult Function(OnOrganizationTypeFetched value)
+        onOrganizationTypeFetched,
   }) {
     return dobError(this);
   }
@@ -2727,6 +2833,8 @@ class _$DobError implements DobError {
     TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
     TResult Function(OnRegionFetched value)? onRegionFetched,
     TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    TResult Function(OnOrganizationTypeFetched value)?
+        onOrganizationTypeFetched,
   }) {
     return dobError?.call(this);
   }
@@ -2758,6 +2866,8 @@ class _$DobError implements DobError {
     TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
     TResult Function(OnRegionFetched value)? onRegionFetched,
     TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    TResult Function(OnOrganizationTypeFetched value)?
+        onOrganizationTypeFetched,
     required TResult orElse(),
   }) {
     if (dobError != null) {
@@ -2866,6 +2976,8 @@ class _$GenderError implements GenderError {
     required TResult Function(String genderType) onGenderTypeFetched,
     required TResult Function(String genderType) onRegionFetched,
     required TResult Function(String genderType) onDistrictFetched,
+    required TResult Function(String organizationType)
+        onOrganizationTypeFetched,
   }) {
     return genderError(this.genderError);
   }
@@ -2896,6 +3008,7 @@ class _$GenderError implements GenderError {
     TResult Function(String genderType)? onGenderTypeFetched,
     TResult Function(String genderType)? onRegionFetched,
     TResult Function(String genderType)? onDistrictFetched,
+    TResult Function(String organizationType)? onOrganizationTypeFetched,
   }) {
     return genderError?.call(this.genderError);
   }
@@ -2926,6 +3039,7 @@ class _$GenderError implements GenderError {
     TResult Function(String genderType)? onGenderTypeFetched,
     TResult Function(String genderType)? onRegionFetched,
     TResult Function(String genderType)? onDistrictFetched,
+    TResult Function(String organizationType)? onOrganizationTypeFetched,
     required TResult orElse(),
   }) {
     if (genderError != null) {
@@ -2962,6 +3076,8 @@ class _$GenderError implements GenderError {
     required TResult Function(OnGenderTypeFetched value) onGenderTypeFetched,
     required TResult Function(OnRegionFetched value) onRegionFetched,
     required TResult Function(OnDistrictFetched value) onDistrictFetched,
+    required TResult Function(OnOrganizationTypeFetched value)
+        onOrganizationTypeFetched,
   }) {
     return genderError(this);
   }
@@ -2993,6 +3109,8 @@ class _$GenderError implements GenderError {
     TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
     TResult Function(OnRegionFetched value)? onRegionFetched,
     TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    TResult Function(OnOrganizationTypeFetched value)?
+        onOrganizationTypeFetched,
   }) {
     return genderError?.call(this);
   }
@@ -3024,6 +3142,8 @@ class _$GenderError implements GenderError {
     TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
     TResult Function(OnRegionFetched value)? onRegionFetched,
     TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    TResult Function(OnOrganizationTypeFetched value)?
+        onOrganizationTypeFetched,
     required TResult orElse(),
   }) {
     if (genderError != null) {
@@ -3133,6 +3253,8 @@ class _$ProfessionError implements ProfessionError {
     required TResult Function(String genderType) onGenderTypeFetched,
     required TResult Function(String genderType) onRegionFetched,
     required TResult Function(String genderType) onDistrictFetched,
+    required TResult Function(String organizationType)
+        onOrganizationTypeFetched,
   }) {
     return professionError(this.professionError);
   }
@@ -3163,6 +3285,7 @@ class _$ProfessionError implements ProfessionError {
     TResult Function(String genderType)? onGenderTypeFetched,
     TResult Function(String genderType)? onRegionFetched,
     TResult Function(String genderType)? onDistrictFetched,
+    TResult Function(String organizationType)? onOrganizationTypeFetched,
   }) {
     return professionError?.call(this.professionError);
   }
@@ -3193,6 +3316,7 @@ class _$ProfessionError implements ProfessionError {
     TResult Function(String genderType)? onGenderTypeFetched,
     TResult Function(String genderType)? onRegionFetched,
     TResult Function(String genderType)? onDistrictFetched,
+    TResult Function(String organizationType)? onOrganizationTypeFetched,
     required TResult orElse(),
   }) {
     if (professionError != null) {
@@ -3229,6 +3353,8 @@ class _$ProfessionError implements ProfessionError {
     required TResult Function(OnGenderTypeFetched value) onGenderTypeFetched,
     required TResult Function(OnRegionFetched value) onRegionFetched,
     required TResult Function(OnDistrictFetched value) onDistrictFetched,
+    required TResult Function(OnOrganizationTypeFetched value)
+        onOrganizationTypeFetched,
   }) {
     return professionError(this);
   }
@@ -3260,6 +3386,8 @@ class _$ProfessionError implements ProfessionError {
     TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
     TResult Function(OnRegionFetched value)? onRegionFetched,
     TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    TResult Function(OnOrganizationTypeFetched value)?
+        onOrganizationTypeFetched,
   }) {
     return professionError?.call(this);
   }
@@ -3291,6 +3419,8 @@ class _$ProfessionError implements ProfessionError {
     TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
     TResult Function(OnRegionFetched value)? onRegionFetched,
     TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    TResult Function(OnOrganizationTypeFetched value)?
+        onOrganizationTypeFetched,
     required TResult orElse(),
   }) {
     if (professionError != null) {
@@ -3401,6 +3531,8 @@ class _$AddressError implements AddressError {
     required TResult Function(String genderType) onGenderTypeFetched,
     required TResult Function(String genderType) onRegionFetched,
     required TResult Function(String genderType) onDistrictFetched,
+    required TResult Function(String organizationType)
+        onOrganizationTypeFetched,
   }) {
     return addressError(this.addressError);
   }
@@ -3431,6 +3563,7 @@ class _$AddressError implements AddressError {
     TResult Function(String genderType)? onGenderTypeFetched,
     TResult Function(String genderType)? onRegionFetched,
     TResult Function(String genderType)? onDistrictFetched,
+    TResult Function(String organizationType)? onOrganizationTypeFetched,
   }) {
     return addressError?.call(this.addressError);
   }
@@ -3461,6 +3594,7 @@ class _$AddressError implements AddressError {
     TResult Function(String genderType)? onGenderTypeFetched,
     TResult Function(String genderType)? onRegionFetched,
     TResult Function(String genderType)? onDistrictFetched,
+    TResult Function(String organizationType)? onOrganizationTypeFetched,
     required TResult orElse(),
   }) {
     if (addressError != null) {
@@ -3497,6 +3631,8 @@ class _$AddressError implements AddressError {
     required TResult Function(OnGenderTypeFetched value) onGenderTypeFetched,
     required TResult Function(OnRegionFetched value) onRegionFetched,
     required TResult Function(OnDistrictFetched value) onDistrictFetched,
+    required TResult Function(OnOrganizationTypeFetched value)
+        onOrganizationTypeFetched,
   }) {
     return addressError(this);
   }
@@ -3528,6 +3664,8 @@ class _$AddressError implements AddressError {
     TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
     TResult Function(OnRegionFetched value)? onRegionFetched,
     TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    TResult Function(OnOrganizationTypeFetched value)?
+        onOrganizationTypeFetched,
   }) {
     return addressError?.call(this);
   }
@@ -3559,6 +3697,8 @@ class _$AddressError implements AddressError {
     TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
     TResult Function(OnRegionFetched value)? onRegionFetched,
     TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    TResult Function(OnOrganizationTypeFetched value)?
+        onOrganizationTypeFetched,
     required TResult orElse(),
   }) {
     if (addressError != null) {
@@ -3667,6 +3807,8 @@ class _$RegionError implements RegionError {
     required TResult Function(String genderType) onGenderTypeFetched,
     required TResult Function(String genderType) onRegionFetched,
     required TResult Function(String genderType) onDistrictFetched,
+    required TResult Function(String organizationType)
+        onOrganizationTypeFetched,
   }) {
     return regionError(this.addressError);
   }
@@ -3697,6 +3839,7 @@ class _$RegionError implements RegionError {
     TResult Function(String genderType)? onGenderTypeFetched,
     TResult Function(String genderType)? onRegionFetched,
     TResult Function(String genderType)? onDistrictFetched,
+    TResult Function(String organizationType)? onOrganizationTypeFetched,
   }) {
     return regionError?.call(this.addressError);
   }
@@ -3727,6 +3870,7 @@ class _$RegionError implements RegionError {
     TResult Function(String genderType)? onGenderTypeFetched,
     TResult Function(String genderType)? onRegionFetched,
     TResult Function(String genderType)? onDistrictFetched,
+    TResult Function(String organizationType)? onOrganizationTypeFetched,
     required TResult orElse(),
   }) {
     if (regionError != null) {
@@ -3763,6 +3907,8 @@ class _$RegionError implements RegionError {
     required TResult Function(OnGenderTypeFetched value) onGenderTypeFetched,
     required TResult Function(OnRegionFetched value) onRegionFetched,
     required TResult Function(OnDistrictFetched value) onDistrictFetched,
+    required TResult Function(OnOrganizationTypeFetched value)
+        onOrganizationTypeFetched,
   }) {
     return regionError(this);
   }
@@ -3794,6 +3940,8 @@ class _$RegionError implements RegionError {
     TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
     TResult Function(OnRegionFetched value)? onRegionFetched,
     TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    TResult Function(OnOrganizationTypeFetched value)?
+        onOrganizationTypeFetched,
   }) {
     return regionError?.call(this);
   }
@@ -3825,6 +3973,8 @@ class _$RegionError implements RegionError {
     TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
     TResult Function(OnRegionFetched value)? onRegionFetched,
     TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    TResult Function(OnOrganizationTypeFetched value)?
+        onOrganizationTypeFetched,
     required TResult orElse(),
   }) {
     if (regionError != null) {
@@ -3934,6 +4084,8 @@ class _$DistrictError implements DistrictError {
     required TResult Function(String genderType) onGenderTypeFetched,
     required TResult Function(String genderType) onRegionFetched,
     required TResult Function(String genderType) onDistrictFetched,
+    required TResult Function(String organizationType)
+        onOrganizationTypeFetched,
   }) {
     return districtError(this.districtError);
   }
@@ -3964,6 +4116,7 @@ class _$DistrictError implements DistrictError {
     TResult Function(String genderType)? onGenderTypeFetched,
     TResult Function(String genderType)? onRegionFetched,
     TResult Function(String genderType)? onDistrictFetched,
+    TResult Function(String organizationType)? onOrganizationTypeFetched,
   }) {
     return districtError?.call(this.districtError);
   }
@@ -3994,6 +4147,7 @@ class _$DistrictError implements DistrictError {
     TResult Function(String genderType)? onGenderTypeFetched,
     TResult Function(String genderType)? onRegionFetched,
     TResult Function(String genderType)? onDistrictFetched,
+    TResult Function(String organizationType)? onOrganizationTypeFetched,
     required TResult orElse(),
   }) {
     if (districtError != null) {
@@ -4030,6 +4184,8 @@ class _$DistrictError implements DistrictError {
     required TResult Function(OnGenderTypeFetched value) onGenderTypeFetched,
     required TResult Function(OnRegionFetched value) onRegionFetched,
     required TResult Function(OnDistrictFetched value) onDistrictFetched,
+    required TResult Function(OnOrganizationTypeFetched value)
+        onOrganizationTypeFetched,
   }) {
     return districtError(this);
   }
@@ -4061,6 +4217,8 @@ class _$DistrictError implements DistrictError {
     TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
     TResult Function(OnRegionFetched value)? onRegionFetched,
     TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    TResult Function(OnOrganizationTypeFetched value)?
+        onOrganizationTypeFetched,
   }) {
     return districtError?.call(this);
   }
@@ -4092,6 +4250,8 @@ class _$DistrictError implements DistrictError {
     TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
     TResult Function(OnRegionFetched value)? onRegionFetched,
     TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    TResult Function(OnOrganizationTypeFetched value)?
+        onOrganizationTypeFetched,
     required TResult orElse(),
   }) {
     if (districtError != null) {
@@ -4202,6 +4362,8 @@ class _$OrganizationTypeError implements OrganizationTypeError {
     required TResult Function(String genderType) onGenderTypeFetched,
     required TResult Function(String genderType) onRegionFetched,
     required TResult Function(String genderType) onDistrictFetched,
+    required TResult Function(String organizationType)
+        onOrganizationTypeFetched,
   }) {
     return organizationTypeError(this.organizationTypeError);
   }
@@ -4232,6 +4394,7 @@ class _$OrganizationTypeError implements OrganizationTypeError {
     TResult Function(String genderType)? onGenderTypeFetched,
     TResult Function(String genderType)? onRegionFetched,
     TResult Function(String genderType)? onDistrictFetched,
+    TResult Function(String organizationType)? onOrganizationTypeFetched,
   }) {
     return organizationTypeError?.call(this.organizationTypeError);
   }
@@ -4262,6 +4425,7 @@ class _$OrganizationTypeError implements OrganizationTypeError {
     TResult Function(String genderType)? onGenderTypeFetched,
     TResult Function(String genderType)? onRegionFetched,
     TResult Function(String genderType)? onDistrictFetched,
+    TResult Function(String organizationType)? onOrganizationTypeFetched,
     required TResult orElse(),
   }) {
     if (organizationTypeError != null) {
@@ -4298,6 +4462,8 @@ class _$OrganizationTypeError implements OrganizationTypeError {
     required TResult Function(OnGenderTypeFetched value) onGenderTypeFetched,
     required TResult Function(OnRegionFetched value) onRegionFetched,
     required TResult Function(OnDistrictFetched value) onDistrictFetched,
+    required TResult Function(OnOrganizationTypeFetched value)
+        onOrganizationTypeFetched,
   }) {
     return organizationTypeError(this);
   }
@@ -4329,6 +4495,8 @@ class _$OrganizationTypeError implements OrganizationTypeError {
     TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
     TResult Function(OnRegionFetched value)? onRegionFetched,
     TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    TResult Function(OnOrganizationTypeFetched value)?
+        onOrganizationTypeFetched,
   }) {
     return organizationTypeError?.call(this);
   }
@@ -4360,6 +4528,8 @@ class _$OrganizationTypeError implements OrganizationTypeError {
     TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
     TResult Function(OnRegionFetched value)? onRegionFetched,
     TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    TResult Function(OnOrganizationTypeFetched value)?
+        onOrganizationTypeFetched,
     required TResult orElse(),
   }) {
     if (organizationTypeError != null) {
@@ -4470,6 +4640,8 @@ class _$GenderTypeChoosen implements GenderTypeChoosen {
     required TResult Function(String genderType) onGenderTypeFetched,
     required TResult Function(String genderType) onRegionFetched,
     required TResult Function(String genderType) onDistrictFetched,
+    required TResult Function(String organizationType)
+        onOrganizationTypeFetched,
   }) {
     return onGenderTypeChoosen(genderType);
   }
@@ -4500,6 +4672,7 @@ class _$GenderTypeChoosen implements GenderTypeChoosen {
     TResult Function(String genderType)? onGenderTypeFetched,
     TResult Function(String genderType)? onRegionFetched,
     TResult Function(String genderType)? onDistrictFetched,
+    TResult Function(String organizationType)? onOrganizationTypeFetched,
   }) {
     return onGenderTypeChoosen?.call(genderType);
   }
@@ -4530,6 +4703,7 @@ class _$GenderTypeChoosen implements GenderTypeChoosen {
     TResult Function(String genderType)? onGenderTypeFetched,
     TResult Function(String genderType)? onRegionFetched,
     TResult Function(String genderType)? onDistrictFetched,
+    TResult Function(String organizationType)? onOrganizationTypeFetched,
     required TResult orElse(),
   }) {
     if (onGenderTypeChoosen != null) {
@@ -4566,6 +4740,8 @@ class _$GenderTypeChoosen implements GenderTypeChoosen {
     required TResult Function(OnGenderTypeFetched value) onGenderTypeFetched,
     required TResult Function(OnRegionFetched value) onRegionFetched,
     required TResult Function(OnDistrictFetched value) onDistrictFetched,
+    required TResult Function(OnOrganizationTypeFetched value)
+        onOrganizationTypeFetched,
   }) {
     return onGenderTypeChoosen(this);
   }
@@ -4597,6 +4773,8 @@ class _$GenderTypeChoosen implements GenderTypeChoosen {
     TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
     TResult Function(OnRegionFetched value)? onRegionFetched,
     TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    TResult Function(OnOrganizationTypeFetched value)?
+        onOrganizationTypeFetched,
   }) {
     return onGenderTypeChoosen?.call(this);
   }
@@ -4628,6 +4806,8 @@ class _$GenderTypeChoosen implements GenderTypeChoosen {
     TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
     TResult Function(OnRegionFetched value)? onRegionFetched,
     TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    TResult Function(OnOrganizationTypeFetched value)?
+        onOrganizationTypeFetched,
     required TResult orElse(),
   }) {
     if (onGenderTypeChoosen != null) {
@@ -4737,6 +4917,8 @@ class _$RegionChoosen implements RegionChoosen {
     required TResult Function(String genderType) onGenderTypeFetched,
     required TResult Function(String genderType) onRegionFetched,
     required TResult Function(String genderType) onDistrictFetched,
+    required TResult Function(String organizationType)
+        onOrganizationTypeFetched,
   }) {
     return onRegionChoosen(region);
   }
@@ -4767,6 +4949,7 @@ class _$RegionChoosen implements RegionChoosen {
     TResult Function(String genderType)? onGenderTypeFetched,
     TResult Function(String genderType)? onRegionFetched,
     TResult Function(String genderType)? onDistrictFetched,
+    TResult Function(String organizationType)? onOrganizationTypeFetched,
   }) {
     return onRegionChoosen?.call(region);
   }
@@ -4797,6 +4980,7 @@ class _$RegionChoosen implements RegionChoosen {
     TResult Function(String genderType)? onGenderTypeFetched,
     TResult Function(String genderType)? onRegionFetched,
     TResult Function(String genderType)? onDistrictFetched,
+    TResult Function(String organizationType)? onOrganizationTypeFetched,
     required TResult orElse(),
   }) {
     if (onRegionChoosen != null) {
@@ -4833,6 +5017,8 @@ class _$RegionChoosen implements RegionChoosen {
     required TResult Function(OnGenderTypeFetched value) onGenderTypeFetched,
     required TResult Function(OnRegionFetched value) onRegionFetched,
     required TResult Function(OnDistrictFetched value) onDistrictFetched,
+    required TResult Function(OnOrganizationTypeFetched value)
+        onOrganizationTypeFetched,
   }) {
     return onRegionChoosen(this);
   }
@@ -4864,6 +5050,8 @@ class _$RegionChoosen implements RegionChoosen {
     TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
     TResult Function(OnRegionFetched value)? onRegionFetched,
     TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    TResult Function(OnOrganizationTypeFetched value)?
+        onOrganizationTypeFetched,
   }) {
     return onRegionChoosen?.call(this);
   }
@@ -4895,6 +5083,8 @@ class _$RegionChoosen implements RegionChoosen {
     TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
     TResult Function(OnRegionFetched value)? onRegionFetched,
     TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    TResult Function(OnOrganizationTypeFetched value)?
+        onOrganizationTypeFetched,
     required TResult orElse(),
   }) {
     if (onRegionChoosen != null) {
@@ -5003,6 +5193,8 @@ class _$DistrictChoosen implements DistrictChoosen {
     required TResult Function(String genderType) onGenderTypeFetched,
     required TResult Function(String genderType) onRegionFetched,
     required TResult Function(String genderType) onDistrictFetched,
+    required TResult Function(String organizationType)
+        onOrganizationTypeFetched,
   }) {
     return onDistrictChoosen(district);
   }
@@ -5033,6 +5225,7 @@ class _$DistrictChoosen implements DistrictChoosen {
     TResult Function(String genderType)? onGenderTypeFetched,
     TResult Function(String genderType)? onRegionFetched,
     TResult Function(String genderType)? onDistrictFetched,
+    TResult Function(String organizationType)? onOrganizationTypeFetched,
   }) {
     return onDistrictChoosen?.call(district);
   }
@@ -5063,6 +5256,7 @@ class _$DistrictChoosen implements DistrictChoosen {
     TResult Function(String genderType)? onGenderTypeFetched,
     TResult Function(String genderType)? onRegionFetched,
     TResult Function(String genderType)? onDistrictFetched,
+    TResult Function(String organizationType)? onOrganizationTypeFetched,
     required TResult orElse(),
   }) {
     if (onDistrictChoosen != null) {
@@ -5099,6 +5293,8 @@ class _$DistrictChoosen implements DistrictChoosen {
     required TResult Function(OnGenderTypeFetched value) onGenderTypeFetched,
     required TResult Function(OnRegionFetched value) onRegionFetched,
     required TResult Function(OnDistrictFetched value) onDistrictFetched,
+    required TResult Function(OnOrganizationTypeFetched value)
+        onOrganizationTypeFetched,
   }) {
     return onDistrictChoosen(this);
   }
@@ -5130,6 +5326,8 @@ class _$DistrictChoosen implements DistrictChoosen {
     TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
     TResult Function(OnRegionFetched value)? onRegionFetched,
     TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    TResult Function(OnOrganizationTypeFetched value)?
+        onOrganizationTypeFetched,
   }) {
     return onDistrictChoosen?.call(this);
   }
@@ -5161,6 +5359,8 @@ class _$DistrictChoosen implements DistrictChoosen {
     TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
     TResult Function(OnRegionFetched value)? onRegionFetched,
     TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    TResult Function(OnOrganizationTypeFetched value)?
+        onOrganizationTypeFetched,
     required TResult orElse(),
   }) {
     if (onDistrictChoosen != null) {
@@ -5273,6 +5473,8 @@ class _$onOrganizationTypeChoosen implements onOrganizationTypeChoosen {
     required TResult Function(String genderType) onGenderTypeFetched,
     required TResult Function(String genderType) onRegionFetched,
     required TResult Function(String genderType) onDistrictFetched,
+    required TResult Function(String organizationType)
+        onOrganizationTypeFetched,
   }) {
     return onOrganizationTypeChoosen(organizationType);
   }
@@ -5303,6 +5505,7 @@ class _$onOrganizationTypeChoosen implements onOrganizationTypeChoosen {
     TResult Function(String genderType)? onGenderTypeFetched,
     TResult Function(String genderType)? onRegionFetched,
     TResult Function(String genderType)? onDistrictFetched,
+    TResult Function(String organizationType)? onOrganizationTypeFetched,
   }) {
     return onOrganizationTypeChoosen?.call(organizationType);
   }
@@ -5333,6 +5536,7 @@ class _$onOrganizationTypeChoosen implements onOrganizationTypeChoosen {
     TResult Function(String genderType)? onGenderTypeFetched,
     TResult Function(String genderType)? onRegionFetched,
     TResult Function(String genderType)? onDistrictFetched,
+    TResult Function(String organizationType)? onOrganizationTypeFetched,
     required TResult orElse(),
   }) {
     if (onOrganizationTypeChoosen != null) {
@@ -5369,6 +5573,8 @@ class _$onOrganizationTypeChoosen implements onOrganizationTypeChoosen {
     required TResult Function(OnGenderTypeFetched value) onGenderTypeFetched,
     required TResult Function(OnRegionFetched value) onRegionFetched,
     required TResult Function(OnDistrictFetched value) onDistrictFetched,
+    required TResult Function(OnOrganizationTypeFetched value)
+        onOrganizationTypeFetched,
   }) {
     return onOrganizationTypeChoosen(this);
   }
@@ -5400,6 +5606,8 @@ class _$onOrganizationTypeChoosen implements onOrganizationTypeChoosen {
     TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
     TResult Function(OnRegionFetched value)? onRegionFetched,
     TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    TResult Function(OnOrganizationTypeFetched value)?
+        onOrganizationTypeFetched,
   }) {
     return onOrganizationTypeChoosen?.call(this);
   }
@@ -5431,6 +5639,8 @@ class _$onOrganizationTypeChoosen implements onOrganizationTypeChoosen {
     TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
     TResult Function(OnRegionFetched value)? onRegionFetched,
     TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    TResult Function(OnOrganizationTypeFetched value)?
+        onOrganizationTypeFetched,
     required TResult orElse(),
   }) {
     if (onOrganizationTypeChoosen != null) {
@@ -5542,6 +5752,8 @@ class _$OnGenderTypeFetched implements OnGenderTypeFetched {
     required TResult Function(String genderType) onGenderTypeFetched,
     required TResult Function(String genderType) onRegionFetched,
     required TResult Function(String genderType) onDistrictFetched,
+    required TResult Function(String organizationType)
+        onOrganizationTypeFetched,
   }) {
     return onGenderTypeFetched(genderType);
   }
@@ -5572,6 +5784,7 @@ class _$OnGenderTypeFetched implements OnGenderTypeFetched {
     TResult Function(String genderType)? onGenderTypeFetched,
     TResult Function(String genderType)? onRegionFetched,
     TResult Function(String genderType)? onDistrictFetched,
+    TResult Function(String organizationType)? onOrganizationTypeFetched,
   }) {
     return onGenderTypeFetched?.call(genderType);
   }
@@ -5602,6 +5815,7 @@ class _$OnGenderTypeFetched implements OnGenderTypeFetched {
     TResult Function(String genderType)? onGenderTypeFetched,
     TResult Function(String genderType)? onRegionFetched,
     TResult Function(String genderType)? onDistrictFetched,
+    TResult Function(String organizationType)? onOrganizationTypeFetched,
     required TResult orElse(),
   }) {
     if (onGenderTypeFetched != null) {
@@ -5638,6 +5852,8 @@ class _$OnGenderTypeFetched implements OnGenderTypeFetched {
     required TResult Function(OnGenderTypeFetched value) onGenderTypeFetched,
     required TResult Function(OnRegionFetched value) onRegionFetched,
     required TResult Function(OnDistrictFetched value) onDistrictFetched,
+    required TResult Function(OnOrganizationTypeFetched value)
+        onOrganizationTypeFetched,
   }) {
     return onGenderTypeFetched(this);
   }
@@ -5669,6 +5885,8 @@ class _$OnGenderTypeFetched implements OnGenderTypeFetched {
     TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
     TResult Function(OnRegionFetched value)? onRegionFetched,
     TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    TResult Function(OnOrganizationTypeFetched value)?
+        onOrganizationTypeFetched,
   }) {
     return onGenderTypeFetched?.call(this);
   }
@@ -5700,6 +5918,8 @@ class _$OnGenderTypeFetched implements OnGenderTypeFetched {
     TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
     TResult Function(OnRegionFetched value)? onRegionFetched,
     TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    TResult Function(OnOrganizationTypeFetched value)?
+        onOrganizationTypeFetched,
     required TResult orElse(),
   }) {
     if (onGenderTypeFetched != null) {
@@ -5810,6 +6030,8 @@ class _$OnRegionFetched implements OnRegionFetched {
     required TResult Function(String genderType) onGenderTypeFetched,
     required TResult Function(String genderType) onRegionFetched,
     required TResult Function(String genderType) onDistrictFetched,
+    required TResult Function(String organizationType)
+        onOrganizationTypeFetched,
   }) {
     return onRegionFetched(genderType);
   }
@@ -5840,6 +6062,7 @@ class _$OnRegionFetched implements OnRegionFetched {
     TResult Function(String genderType)? onGenderTypeFetched,
     TResult Function(String genderType)? onRegionFetched,
     TResult Function(String genderType)? onDistrictFetched,
+    TResult Function(String organizationType)? onOrganizationTypeFetched,
   }) {
     return onRegionFetched?.call(genderType);
   }
@@ -5870,6 +6093,7 @@ class _$OnRegionFetched implements OnRegionFetched {
     TResult Function(String genderType)? onGenderTypeFetched,
     TResult Function(String genderType)? onRegionFetched,
     TResult Function(String genderType)? onDistrictFetched,
+    TResult Function(String organizationType)? onOrganizationTypeFetched,
     required TResult orElse(),
   }) {
     if (onRegionFetched != null) {
@@ -5906,6 +6130,8 @@ class _$OnRegionFetched implements OnRegionFetched {
     required TResult Function(OnGenderTypeFetched value) onGenderTypeFetched,
     required TResult Function(OnRegionFetched value) onRegionFetched,
     required TResult Function(OnDistrictFetched value) onDistrictFetched,
+    required TResult Function(OnOrganizationTypeFetched value)
+        onOrganizationTypeFetched,
   }) {
     return onRegionFetched(this);
   }
@@ -5937,6 +6163,8 @@ class _$OnRegionFetched implements OnRegionFetched {
     TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
     TResult Function(OnRegionFetched value)? onRegionFetched,
     TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    TResult Function(OnOrganizationTypeFetched value)?
+        onOrganizationTypeFetched,
   }) {
     return onRegionFetched?.call(this);
   }
@@ -5968,6 +6196,8 @@ class _$OnRegionFetched implements OnRegionFetched {
     TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
     TResult Function(OnRegionFetched value)? onRegionFetched,
     TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    TResult Function(OnOrganizationTypeFetched value)?
+        onOrganizationTypeFetched,
     required TResult orElse(),
   }) {
     if (onRegionFetched != null) {
@@ -6077,6 +6307,8 @@ class _$OnDistrictFetched implements OnDistrictFetched {
     required TResult Function(String genderType) onGenderTypeFetched,
     required TResult Function(String genderType) onRegionFetched,
     required TResult Function(String genderType) onDistrictFetched,
+    required TResult Function(String organizationType)
+        onOrganizationTypeFetched,
   }) {
     return onDistrictFetched(genderType);
   }
@@ -6107,6 +6339,7 @@ class _$OnDistrictFetched implements OnDistrictFetched {
     TResult Function(String genderType)? onGenderTypeFetched,
     TResult Function(String genderType)? onRegionFetched,
     TResult Function(String genderType)? onDistrictFetched,
+    TResult Function(String organizationType)? onOrganizationTypeFetched,
   }) {
     return onDistrictFetched?.call(genderType);
   }
@@ -6137,6 +6370,7 @@ class _$OnDistrictFetched implements OnDistrictFetched {
     TResult Function(String genderType)? onGenderTypeFetched,
     TResult Function(String genderType)? onRegionFetched,
     TResult Function(String genderType)? onDistrictFetched,
+    TResult Function(String organizationType)? onOrganizationTypeFetched,
     required TResult orElse(),
   }) {
     if (onDistrictFetched != null) {
@@ -6173,6 +6407,8 @@ class _$OnDistrictFetched implements OnDistrictFetched {
     required TResult Function(OnGenderTypeFetched value) onGenderTypeFetched,
     required TResult Function(OnRegionFetched value) onRegionFetched,
     required TResult Function(OnDistrictFetched value) onDistrictFetched,
+    required TResult Function(OnOrganizationTypeFetched value)
+        onOrganizationTypeFetched,
   }) {
     return onDistrictFetched(this);
   }
@@ -6204,6 +6440,8 @@ class _$OnDistrictFetched implements OnDistrictFetched {
     TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
     TResult Function(OnRegionFetched value)? onRegionFetched,
     TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    TResult Function(OnOrganizationTypeFetched value)?
+        onOrganizationTypeFetched,
   }) {
     return onDistrictFetched?.call(this);
   }
@@ -6235,6 +6473,8 @@ class _$OnDistrictFetched implements OnDistrictFetched {
     TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
     TResult Function(OnRegionFetched value)? onRegionFetched,
     TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    TResult Function(OnOrganizationTypeFetched value)?
+        onOrganizationTypeFetched,
     required TResult orElse(),
   }) {
     if (onDistrictFetched != null) {
@@ -6252,4 +6492,285 @@ abstract class OnDistrictFetched implements DetailsState {
   @JsonKey(ignore: true)
   _$$OnDistrictFetchedCopyWith<_$OnDistrictFetched> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$OnOrganizationTypeFetchedCopyWith<$Res> {
+  factory _$$OnOrganizationTypeFetchedCopyWith(
+          _$OnOrganizationTypeFetched value,
+          $Res Function(_$OnOrganizationTypeFetched) then) =
+      __$$OnOrganizationTypeFetchedCopyWithImpl<$Res>;
+  $Res call({String organizationType});
+}
+
+/// @nodoc
+class __$$OnOrganizationTypeFetchedCopyWithImpl<$Res>
+    extends _$DetailsStateCopyWithImpl<$Res>
+    implements _$$OnOrganizationTypeFetchedCopyWith<$Res> {
+  __$$OnOrganizationTypeFetchedCopyWithImpl(_$OnOrganizationTypeFetched _value,
+      $Res Function(_$OnOrganizationTypeFetched) _then)
+      : super(_value, (v) => _then(v as _$OnOrganizationTypeFetched));
+
+  @override
+  _$OnOrganizationTypeFetched get _value =>
+      super._value as _$OnOrganizationTypeFetched;
+
+  @override
+  $Res call({
+    Object? organizationType = freezed,
+  }) {
+    return _then(_$OnOrganizationTypeFetched(
+      organizationType == freezed
+          ? _value.organizationType
+          : organizationType // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$OnOrganizationTypeFetched implements OnOrganizationTypeFetched {
+  const _$OnOrganizationTypeFetched(this.organizationType);
+
+  @override
+  final String organizationType;
+
+  @override
+  String toString() {
+    return 'DetailsState.onOrganizationTypeFetched(organizationType: $organizationType)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OnOrganizationTypeFetched &&
+            const DeepCollectionEquality()
+                .equals(other.organizationType, organizationType));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(organizationType));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$OnOrganizationTypeFetchedCopyWith<_$OnOrganizationTypeFetched>
+      get copyWith => __$$OnOrganizationTypeFetchedCopyWithImpl<
+          _$OnOrganizationTypeFetched>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialState,
+    required TResult Function() successState,
+    required TResult Function(bool isValid) DetailsFormState,
+    required TResult Function() LoadingState,
+    required TResult Function(String nameError) nameError,
+    required TResult Function(String mobileNumber) getMobileNumber,
+    required TResult Function(String NIDANumber) getNIDANumber,
+    required TResult Function(String emailError) emailError,
+    required TResult Function(String poBoxError) poBoxError,
+    required TResult Function(String dobError) dobError,
+    required TResult Function(String genderError) genderError,
+    required TResult Function(String professionError) professionError,
+    required TResult Function(String addressError) addressError,
+    required TResult Function(String addressError) regionError,
+    required TResult Function(String districtError) districtError,
+    required TResult Function(String organizationTypeError)
+        organizationTypeError,
+    required TResult Function(GenderType genderType) onGenderTypeChoosen,
+    required TResult Function(Datum region) onRegionChoosen,
+    required TResult Function(b.Datum district) onDistrictChoosen,
+    required TResult Function(String organizationType)
+        onOrganizationTypeChoosen,
+    required TResult Function(String genderType) onGenderTypeFetched,
+    required TResult Function(String genderType) onRegionFetched,
+    required TResult Function(String genderType) onDistrictFetched,
+    required TResult Function(String organizationType)
+        onOrganizationTypeFetched,
+  }) {
+    return onOrganizationTypeFetched(organizationType);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initialState,
+    TResult Function()? successState,
+    TResult Function(bool isValid)? DetailsFormState,
+    TResult Function()? LoadingState,
+    TResult Function(String nameError)? nameError,
+    TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String NIDANumber)? getNIDANumber,
+    TResult Function(String emailError)? emailError,
+    TResult Function(String poBoxError)? poBoxError,
+    TResult Function(String dobError)? dobError,
+    TResult Function(String genderError)? genderError,
+    TResult Function(String professionError)? professionError,
+    TResult Function(String addressError)? addressError,
+    TResult Function(String addressError)? regionError,
+    TResult Function(String districtError)? districtError,
+    TResult Function(String organizationTypeError)? organizationTypeError,
+    TResult Function(GenderType genderType)? onGenderTypeChoosen,
+    TResult Function(Datum region)? onRegionChoosen,
+    TResult Function(b.Datum district)? onDistrictChoosen,
+    TResult Function(String organizationType)? onOrganizationTypeChoosen,
+    TResult Function(String genderType)? onGenderTypeFetched,
+    TResult Function(String genderType)? onRegionFetched,
+    TResult Function(String genderType)? onDistrictFetched,
+    TResult Function(String organizationType)? onOrganizationTypeFetched,
+  }) {
+    return onOrganizationTypeFetched?.call(organizationType);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialState,
+    TResult Function()? successState,
+    TResult Function(bool isValid)? DetailsFormState,
+    TResult Function()? LoadingState,
+    TResult Function(String nameError)? nameError,
+    TResult Function(String mobileNumber)? getMobileNumber,
+    TResult Function(String NIDANumber)? getNIDANumber,
+    TResult Function(String emailError)? emailError,
+    TResult Function(String poBoxError)? poBoxError,
+    TResult Function(String dobError)? dobError,
+    TResult Function(String genderError)? genderError,
+    TResult Function(String professionError)? professionError,
+    TResult Function(String addressError)? addressError,
+    TResult Function(String addressError)? regionError,
+    TResult Function(String districtError)? districtError,
+    TResult Function(String organizationTypeError)? organizationTypeError,
+    TResult Function(GenderType genderType)? onGenderTypeChoosen,
+    TResult Function(Datum region)? onRegionChoosen,
+    TResult Function(b.Datum district)? onDistrictChoosen,
+    TResult Function(String organizationType)? onOrganizationTypeChoosen,
+    TResult Function(String genderType)? onGenderTypeFetched,
+    TResult Function(String genderType)? onRegionFetched,
+    TResult Function(String genderType)? onDistrictFetched,
+    TResult Function(String organizationType)? onOrganizationTypeFetched,
+    required TResult orElse(),
+  }) {
+    if (onOrganizationTypeFetched != null) {
+      return onOrganizationTypeFetched(organizationType);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialState value) initialState,
+    required TResult Function(SuccessState value) successState,
+    required TResult Function(DetailsFormState value) DetailsFormState,
+    required TResult Function(LoadingState value) LoadingState,
+    required TResult Function(NameError value) nameError,
+    required TResult Function(GetMobileNumber value) getMobileNumber,
+    required TResult Function(getNIDANumber value) getNIDANumber,
+    required TResult Function(EmailError value) emailError,
+    required TResult Function(PoBoxError value) poBoxError,
+    required TResult Function(DobError value) dobError,
+    required TResult Function(GenderError value) genderError,
+    required TResult Function(ProfessionError value) professionError,
+    required TResult Function(AddressError value) addressError,
+    required TResult Function(RegionError value) regionError,
+    required TResult Function(DistrictError value) districtError,
+    required TResult Function(OrganizationTypeError value)
+        organizationTypeError,
+    required TResult Function(GenderTypeChoosen value) onGenderTypeChoosen,
+    required TResult Function(RegionChoosen value) onRegionChoosen,
+    required TResult Function(DistrictChoosen value) onDistrictChoosen,
+    required TResult Function(onOrganizationTypeChoosen value)
+        onOrganizationTypeChoosen,
+    required TResult Function(OnGenderTypeFetched value) onGenderTypeFetched,
+    required TResult Function(OnRegionFetched value) onRegionFetched,
+    required TResult Function(OnDistrictFetched value) onDistrictFetched,
+    required TResult Function(OnOrganizationTypeFetched value)
+        onOrganizationTypeFetched,
+  }) {
+    return onOrganizationTypeFetched(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InitialState value)? initialState,
+    TResult Function(SuccessState value)? successState,
+    TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(LoadingState value)? LoadingState,
+    TResult Function(NameError value)? nameError,
+    TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(getNIDANumber value)? getNIDANumber,
+    TResult Function(EmailError value)? emailError,
+    TResult Function(PoBoxError value)? poBoxError,
+    TResult Function(DobError value)? dobError,
+    TResult Function(GenderError value)? genderError,
+    TResult Function(ProfessionError value)? professionError,
+    TResult Function(AddressError value)? addressError,
+    TResult Function(RegionError value)? regionError,
+    TResult Function(DistrictError value)? districtError,
+    TResult Function(OrganizationTypeError value)? organizationTypeError,
+    TResult Function(GenderTypeChoosen value)? onGenderTypeChoosen,
+    TResult Function(RegionChoosen value)? onRegionChoosen,
+    TResult Function(DistrictChoosen value)? onDistrictChoosen,
+    TResult Function(onOrganizationTypeChoosen value)?
+        onOrganizationTypeChoosen,
+    TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
+    TResult Function(OnRegionFetched value)? onRegionFetched,
+    TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    TResult Function(OnOrganizationTypeFetched value)?
+        onOrganizationTypeFetched,
+  }) {
+    return onOrganizationTypeFetched?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialState value)? initialState,
+    TResult Function(SuccessState value)? successState,
+    TResult Function(DetailsFormState value)? DetailsFormState,
+    TResult Function(LoadingState value)? LoadingState,
+    TResult Function(NameError value)? nameError,
+    TResult Function(GetMobileNumber value)? getMobileNumber,
+    TResult Function(getNIDANumber value)? getNIDANumber,
+    TResult Function(EmailError value)? emailError,
+    TResult Function(PoBoxError value)? poBoxError,
+    TResult Function(DobError value)? dobError,
+    TResult Function(GenderError value)? genderError,
+    TResult Function(ProfessionError value)? professionError,
+    TResult Function(AddressError value)? addressError,
+    TResult Function(RegionError value)? regionError,
+    TResult Function(DistrictError value)? districtError,
+    TResult Function(OrganizationTypeError value)? organizationTypeError,
+    TResult Function(GenderTypeChoosen value)? onGenderTypeChoosen,
+    TResult Function(RegionChoosen value)? onRegionChoosen,
+    TResult Function(DistrictChoosen value)? onDistrictChoosen,
+    TResult Function(onOrganizationTypeChoosen value)?
+        onOrganizationTypeChoosen,
+    TResult Function(OnGenderTypeFetched value)? onGenderTypeFetched,
+    TResult Function(OnRegionFetched value)? onRegionFetched,
+    TResult Function(OnDistrictFetched value)? onDistrictFetched,
+    TResult Function(OnOrganizationTypeFetched value)?
+        onOrganizationTypeFetched,
+    required TResult orElse(),
+  }) {
+    if (onOrganizationTypeFetched != null) {
+      return onOrganizationTypeFetched(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class OnOrganizationTypeFetched implements DetailsState {
+  const factory OnOrganizationTypeFetched(final String organizationType) =
+      _$OnOrganizationTypeFetched;
+
+  String get organizationType;
+  @JsonKey(ignore: true)
+  _$$OnOrganizationTypeFetchedCopyWith<_$OnOrganizationTypeFetched>
+      get copyWith => throw _privateConstructorUsedError;
 }

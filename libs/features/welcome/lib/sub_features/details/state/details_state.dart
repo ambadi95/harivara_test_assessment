@@ -65,4 +65,7 @@ class DetailsState with _$DetailsState {
 
   const factory DetailsState.onDistrictFetched(String genderType) =
       OnDistrictFetched;
+
+  const factory DetailsState.onOrganizationTypeFetched(String organizationType) =
+  OnOrganizationTypeFetched;
 }

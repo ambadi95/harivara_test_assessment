@@ -159,7 +159,7 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
             emailId.text = customerResponse!.data!.emailId ?? "";
             address.text = customerResponse!.data!.address ?? "";
             poBox.text = customerResponse!.data!.organization ?? "";
-
+            organizationTypeController.text = customerResponse!.data!.organizationType ?? "";
             region.text = customerResponse!.data!.region ?? "";
 
             district.text = customerResponse!.data!.district ?? "";
@@ -329,7 +329,14 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
               poBoxError,
               'DV_poBox_hint_text',
               true),
-          _buildOrganizationDropDown(organisationTypeList,coordinator),
+          //_buildOrganizationDropDown(organisationTypeList,coordinator),
+          organizationTypeController.text.isNotEmpty ?
+          _buildLabelTextFieldDob(
+            'DV_organization_type'.tr,
+            organizationTypeController,
+            coordinator,
+            false,
+          ) : const SizedBox(),
           _buildLabelTextField(
               'contact',
               'DV_contact_no_label'.tr,

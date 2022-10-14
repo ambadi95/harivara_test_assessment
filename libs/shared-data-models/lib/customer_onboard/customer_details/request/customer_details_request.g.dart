@@ -22,7 +22,7 @@ CustomerDetailsRequest _$CustomerDetailsRequestFromJson(
       organization: json['organization'] as String?,
       region: json['region'] as String?,
       district: json['district'] as String?,
-          organizationType:  json['organizationType'] as String?,
+      organizationType: json['organizationType'] as String?,
     );
 
 Map<String, dynamic> _$CustomerDetailsRequestToJson(
@@ -41,5 +41,5 @@ Map<String, dynamic> _$CustomerDetailsRequestToJson(
       'organization': instance.organization,
       'region': instance.region,
       'district': instance.district,
-          'organizationType' : instance.organizationType
+      'organizationType': instance.organizationType,
     };

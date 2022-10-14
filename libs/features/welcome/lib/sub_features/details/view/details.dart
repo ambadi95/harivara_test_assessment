@@ -962,6 +962,15 @@ class _DetailsScreenState extends State<DetailsScreen> {
             _district = districtItem.value;
           }
         },
+        onOrganizationTypeFetched: (organization){
+          var orgTypeItem = organisationTypeList.firstWhereOrNull((element) =>
+              element != null && element == organization
+          );
+          if(orgTypeItem !=null){
+            organizationType = orgTypeItem;
+            organizationTypeController.text = orgTypeItem;
+          }
+        },
         orElse: () => null);
   }
 

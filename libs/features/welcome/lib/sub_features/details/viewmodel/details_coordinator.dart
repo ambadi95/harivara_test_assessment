@@ -48,6 +48,9 @@ class DetailsCoordinator extends BaseViewModel<DetailsState> {
         if(customerResponse.data!.region!=null) {
           state = DetailsState.onRegionFetched(customerResponse.data!.region!);
         }
+        if(customerResponse.data!.organizationType != null){
+          state = DetailsState.onOrganizationTypeFetched(customerResponse.data!.organizationType!);
+        }
       }
         return customerResponse;
       } else {
