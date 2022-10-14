@@ -362,11 +362,11 @@
   "re-enter_IMEI" : "Ingiza tena na Ujaribu Tena",
   "imei_invalid" : "IMEI ni batili",
 
-  "NIDA_Mobile_Alert_Title": "NIDA & Mobile Number\n conflicts",
-  "NIDA_Mobile_Alert_SubTitle": "Given Mobile Number is associated with\nNIDA Number xxxxxxxx-xxxxx-xxxxx-",
-  "NIDA_Alert_SubTitle": "Given NIDA Number is associated with\nMobile Number xxx xxx x",
-  "NIDA_Mobile_Alert_Do_You_Want_Update": "Do you want to update?",
-  "UPDATE_AND_PROCEED": "Update & Proceed"
+  "NIDA_Mobile_Alert_Title": "NIDA & Nambari ya Simu\n migogoro",
+  "NIDA_Mobile_Alert_SubTitle": "Nambari ya Simu inayotolewa inahusishwa na\nNambari ya NIDA xxxxxxxx-xxxxx-xxxxx-",
+  "NIDA_Alert_SubTitle": "Kutokana na Nambari ya NIDA inahusishwa na\nNamba ya simu ya mkononi xxx xxx x",
+  "NIDA_Mobile_Alert_Do_You_Want_Update": "Je, ungependa kusasisha?",
+  "UPDATE_AND_PROCEED": "Sasisha na Uendelee"
 
 
 }
