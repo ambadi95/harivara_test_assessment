@@ -145,6 +145,8 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
         onTap: () async {
+          _navigationHandler.goBack();
+
           _navigationHandler.navigateToOtpScreenCustomerSignUpByAgent(
               UserType.Customer, mobileNumber,
               userId: customerId.toString(),

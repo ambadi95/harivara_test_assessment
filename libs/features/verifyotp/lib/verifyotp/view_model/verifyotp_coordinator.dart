@@ -97,6 +97,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
           alertTitle: 'Error',
           alertIcon: "assets/images/alert_icon.png",
           onClose: () {
+            //used to back the case of number alredy assigned to other nida
             if(statusCode==MOBILE_Already_Exist) {
               goBack();
               goBack();
@@ -267,7 +268,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
                 _showAlertForErrorMessage(getWorkFlowStatus.message!);
               }
             } else {
-              _showAlertForErrorMessage(responseUpdateDetails.message!);
+              _showAlertForErrorMessage(responseUpdateDetails.message!,statusCode: responseUpdateDetails.y9ErrorCode!);
             }
           } else {
             var getWorkFlowStatus = await _verifyOtpUseCase

@@ -2,6 +2,7 @@ import 'package:config/Config.dart';
 import 'package:core/mobile_core.dart';
 import 'package:shared_data_models/commonresponse/common_response.dart';
 import 'package:shared_data_models/customer_details/response/get_customer_details_response/get_customer_details_response.dart';
+import 'package:shared_data_models/customer_onboard/customer_details/response/customer_detail_response.dart';
 import 'package:shared_data_models/otp/otp_screen_args.dart';
 import 'package:shared_data_models/welcome/otp/request/otp_request.dart';
 import 'package:shared_data_models/welcome/otp/response/otp_response.dart';
@@ -163,14 +164,14 @@ class VerifyOtpUseCase extends BaseDataProvider {
         });
   }
 
-  Future<CommonResponse?> updateCustomerDetailsOnBoarding(
+  Future<CustomerDetailResponse?> updateCustomerDetailsOnBoarding(
       String nidaNumber,
       String mobileNumber,
       String updateBy,
       Function(String) onErrorCallback) async {
     CrayonPaymentLogger.logInfo("onboarding/validation");
 
-    return await executeApiRequest<CommonResponse?>(
+    return await executeApiRequest<CustomerDetailResponse?>(
         taskType: TaskType.DATA_OPERATION,
         taskSubType: TaskSubType.REST,
         moduleIdentifier: VerifyOtpModule.moduleIdentifier,
@@ -183,7 +184,7 @@ class VerifyOtpUseCase extends BaseDataProvider {
         onError: onErrorCallback,
         modelBuilderCallback: (responseData) {
           CrayonPaymentLogger.logInfo(responseData.toString());
-          return CommonResponse.fromMap(responseData);
+          return CustomerDetailResponse.fromJson(responseData);
         });
   }
 
