@@ -221,18 +221,28 @@ bool isCorrectOtp = false ;
             var customerAgentIdResponse = await _verifyOtpUseCase
                 .getCustomerDetailsByMobileNumber((p0) => null);
             if (customerAgentIdResponse?.status == true) {
+              isCorrectOtp = true;
+
               String? customerAgentId =
                   customerAgentIdResponse?.data?.y9AgentId;
               if (customerAgentId != null && customerAgentId.isNotEmpty) {
+
                 _navigationHandler.navigateToHomeScreen(userType);
+                //isCorrectOtp = false;
               } else {
+
                 _navigationHandler.navigateToCustomerEnrollmentScreen();
+              //  isCorrectOtp = false;
               }
             } else {
+
+            //  isCorrectOtp = false;
               _showAlertForErrorMessage(customerAgentIdResponse!.message!);
             }
           } else {
+            isCorrectOtp = true;
             _navigationHandler.navigateToHomeScreen(userType);
+          //  isCorrectOtp = false;
           }
         } else {
           // _showAlertForErrorMessage(responseSignin.message!);
@@ -341,9 +351,9 @@ bool isCorrectOtp = false ;
           String agentId = await _verifyOtpUseCase.getAgentId();
           isCorrectOtp =true ;
           _navigationHandler.navigateToAgentWelcomeBack(userType);
-          isCorrectOtp =false ;
+         // isCorrectOtp =false ;
         } else {
-          isCorrectOtp =false ;
+       //   isCorrectOtp =false ;
           //    _showAlertForErrorMessage(responseSignin!.message!);
         }
       } else if (otpScreenArgs.otpVerificationType ==
