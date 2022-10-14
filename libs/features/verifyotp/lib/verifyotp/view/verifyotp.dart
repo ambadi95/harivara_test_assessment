@@ -37,7 +37,7 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
   ValueNotifier<int> _startValue = ValueNotifier<int>(60);
   bool showError = false;
   bool isBtnEnabled = false;
-  int attemptCount = 0 ;
+  int attemptCount = 0;
 
   void startTimer() {
     const oneSec = Duration(seconds: 1);
@@ -73,9 +73,9 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
           coordinator.generateOtp(
               widget.otpScreenArgs.refId,
               widget.otpScreenArgs.userType,
-              widget.otpScreenArgs.otpVerificationType,widget.otpScreenArgs.event,
-              widget.otpScreenArgs
-          );
+              widget.otpScreenArgs.otpVerificationType,
+              widget.otpScreenArgs.event,
+              widget.otpScreenArgs);
           coordinator.initialiseState(
             context,
             widget.otpScreenArgs.title,
@@ -140,7 +140,7 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
     VerifyOtpStateReady state,
   ) {
     return Scaffold(
-      bottomNavigationBar: _buildContinueButton(coordinator , state),
+      bottomNavigationBar: _buildContinueButton(coordinator, state),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -157,7 +157,7 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
                 height: 5,
               ),
               /*state.attemptsRemain != 3*/
-            attemptCount > 0 && attemptCount <= 4 && showError//3
+              attemptCount > 0 && attemptCount < 4 && showError //3
                   ? _errorAndAttemptLeft(context, coordinator, state)
                   : const SizedBox(),
               const SizedBox(
@@ -175,35 +175,44 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
     );
   }
 
-  Widget _buildContinueButton(VerifyOtpCoordinator coordinator,VerifyOtpStateReady state ) {
+  Widget _buildContinueButton(
+      VerifyOtpCoordinator coordinator, VerifyOtpStateReady state) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 19),
       child: InkWell(
         onTap: () async {
-          if(attemptCount<4) {
+          print(attemptCount);
+          if (attemptCount <= 3) {
             if (coordinator.otpController.text.isNotEmpty &&
                 coordinator.otpController.text.length == 6) {
-              await  coordinator.navigateToDestinationPath(
+              await coordinator.navigateToDestinationPath(
                   widget.otpScreenArgs.destinationPath,
                   widget.otpScreenArgs.userType,
                   widget.otpScreenArgs,
                   coordinator.otpController.text.toString(),
-                  widget.otpScreenArgs.event
-              );
+                  widget.otpScreenArgs.event);
+              if(!coordinator.isCorrectOtp) {
+                if (attemptCount == 3) {
+                  _showAlertForOTPAttempts(coordinator);
+                  attemptCount++;
+                } else {
 
-              setState(() {
-                attemptCount++;
-              });
+                  setState(() {
+                    attemptCount++;
+                  });
+                }
+              }
               print(attemptCount);
             }
             // else {
             //   _showAlertForOTPAttempts(coordinator);
             // }
+          } else {
+            _showAlertForOTPAttempts(coordinator);
           }
-          else{
-              _showAlertForOTPAttempts(coordinator);
-          }
-          setState(() { showError = true; });
+          setState(() {
+            showError = true;
+          });
         },
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -231,12 +240,13 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
           alertMessage: 'VO_Incorrect_OTP_Alert_Msg'.tr,
           alertTitle: 'VO_Incorrect_OTP_Title'.tr,
           alertIcon: "assets/images/incorrect_otp.png",
-          onBottomButtonPress: (){
-            if(widget.otpScreenArgs.otpVerificationType == OtpVerificationType.customerSignUpAgent){
+          onBottomButtonPress: () {
+            if (widget.otpScreenArgs.otpVerificationType ==
+                OtpVerificationType.customerSignUpAgent) {
               coordinator.goBack();
               coordinator.goBack();
               coordinator.goBack();
-            }else{
+            } else {
               coordinator.backSignUp(widget.otpScreenArgs.userType);
             }
 
@@ -246,15 +256,16 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
             //   coordinator.backAgentDashboard();
             // }
           },
-          bottomButtonText : widget.otpScreenArgs.otpVerificationType == OtpVerificationType.customerSignUpAgent ? 'Back_To_Home'.tr : 'VO_Back_button'.tr,
-          onClose: () {
-
+          bottomButtonText: widget.otpScreenArgs.otpVerificationType ==
+                  OtpVerificationType.customerSignUpAgent
+              ? 'Back_To_Home'.tr
+              : 'VO_Back_button'.tr,
+          /*onClose: () {
             coordinator.goBack();
-          },
+          },*/
           packageName: ""),
       isScrollControlled: false,
-      isDismissible: true,
-
+      isDismissible: false,
     );
   }
 
@@ -394,7 +405,6 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
                 showError = false;
               });
             },
-
           ),
         ),
         if (state.error.isNotEmpty) const SizedBox(height: 8),
@@ -462,7 +472,8 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
           CrayonPaymentText(
             key: const Key('verifyOtp incorrect otp'),
             text: TextUIDataModel(
-              /*state.attemptsRemain*/ attemptCount == 1
+              /*state.attemptsRemain*/
+              attemptCount == 1
                   ? 'VO_Incorrect_OTP'.tr
                   //: '${'VO_Incorrect_OTP_Title'.tr}. ${3 - attemptCount} attempts remaining',
                   : '${4 - attemptCount}' + " " + 'VO_attempts_remaining'.tr,
@@ -502,7 +513,8 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
                       await coordinator.generateOtp(
                           widget.otpScreenArgs.refId,
                           widget.otpScreenArgs.userType,
-                          widget.otpScreenArgs.otpVerificationType,widget.otpScreenArgs.event);
+                          widget.otpScreenArgs.otpVerificationType,
+                          widget.otpScreenArgs.event);
                     },
                     child: CrayonPaymentText(
                       key: const Key('verifyOtp Resend Now'),

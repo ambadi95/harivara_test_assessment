@@ -192,13 +192,15 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
     // onVerifyPasscode(newPasscode);
     //navigateToDestinationPath(destinationPath, userType);
   }
-
+bool isCorrectOtp = false ;
   Future<void> navigateToDestinationPath(
       String destinationPath,
       UserType userType,
       OtpScreenArgs otpScreenArgs,
       String enterOtp,
       String event) async {
+    print(otpScreenArgs.otpVerificationType);
+
     CrayonPaymentLogger.logInfo("I am in OTP Verify");
     var currentState = state as VerifyOtpStateReady;
     try {
@@ -337,9 +339,11 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
             (p0) => null);
         if (responseSignin?.status == true) {
           String agentId = await _verifyOtpUseCase.getAgentId();
-
+          isCorrectOtp =true ;
           _navigationHandler.navigateToAgentWelcomeBack(userType);
+          isCorrectOtp =false ;
         } else {
+          isCorrectOtp =false ;
           //    _showAlertForErrorMessage(responseSignin!.message!);
         }
       } else if (otpScreenArgs.otpVerificationType ==
