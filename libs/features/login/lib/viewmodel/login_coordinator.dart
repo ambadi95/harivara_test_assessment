@@ -156,7 +156,7 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
           state = LoginState.loading();
           var customerDetailResponse = await _loginUseCase
               .getCustomerDetailsByMobileNumber(mobileNumber, (p0) => null);
-          if (customerDetailResponse?.status == true) {
+          if (customerDetailResponse?.status == true && customerDetailResponse?.data?.firstName != null) {
             state = LoginState.successState();
             String customerId = await _loginUseCase.getCustomerId();
             _navigationHandler.navigateToOtpBottomSheet(
@@ -166,6 +166,10 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
                 userType,
                 mobileNumber,
                 customerId);
+          } else{
+            state = LoginState.successState();
+            String customerId = await _loginUseCase.getCustomerId();
+            _navigationHandler.navigateToOtpScreenCustomerFlow(userType,mobileNumber,customerId);
           }
         }
         state = LoginState.successState();

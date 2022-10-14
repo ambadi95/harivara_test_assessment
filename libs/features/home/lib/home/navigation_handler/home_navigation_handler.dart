@@ -142,6 +142,10 @@ class HomeNavigationHandler with ErrorHandler {
     String repaidAmount = loanDetailResponse.data?.repaymentFee ?? "-";
     double repaidAmountDouble = double.parse(repaidAmount);
     repaidAmount = repaidAmountDouble.toStringAsFixed(2);
+
+    String totalLoanAmount = loanDetailResponse.data?.totalAmountToBeRepaid ?? "-";
+    double totalLoanAmountDouble = double.parse(totalLoanAmount);
+    totalLoanAmount = totalLoanAmountDouble.toStringAsFixed(2);
     final CrayonPaymentBottomSheetState infoState =
         CrayonPaymentBottomSheetState.loanRepayment(
             loanRepayment: LoanRepayment(
@@ -186,7 +190,7 @@ class HomeNavigationHandler with ErrorHandler {
                   LoanPaymentMethod(
                       name: 'LR_loan_amount',
                       amount: loanDetailResponse.data != null
-                          ? "${loanDetailResponse.data!.totalAmountToBeRepaid!} TZSHS"
+                          ? "$totalLoanAmount TZSHS"
                           : "0 TZSHS",
                       isSelected: false,
                       selectedOption: 'LR_loan_amount'),

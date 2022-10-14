@@ -34,6 +34,10 @@ class LoanDetailScreen extends StatefulWidget {
 
 class _LoanDetailScreenState extends State<LoanDetailScreen> {
   final String _identifier = 'loan_detail-screen';
+  String? loanAmount;
+  String? downPaymentAmount;
+  String? dailyRePaymentAmount;
+  String? totalAmountToBeRepaid;
 
   @override
   void initState() {
@@ -47,6 +51,25 @@ class _LoanDetailScreenState extends State<LoanDetailScreen> {
       BaseView<LoanDetailCoordinator, LoanDetailState>(
           setupViewModel: (coordinator) {
             coordinator.initialiseState(context);
+            loanAmount =
+                widget.loanDetailArgs.loanDetailResponse.data?.loanAmount ?? "0";
+            double loanAmountDouble = double.parse(loanAmount!);
+            loanAmount = loanAmountDouble.toStringAsFixed(2);
+
+            downPaymentAmount =
+                widget.loanDetailArgs.loanDetailResponse.data?.joiningFee ?? "0";
+            double downPaymentAmountDouble = double.parse(downPaymentAmount!);
+            downPaymentAmount = downPaymentAmountDouble.toStringAsFixed(2);
+
+            dailyRePaymentAmount =
+                widget.loanDetailArgs.loanDetailResponse.data?.dailyRepaymentAmount ?? "0";
+            double dailyRePaymentAmountDouble = double.parse(dailyRePaymentAmount!);
+            dailyRePaymentAmount = dailyRePaymentAmountDouble.toStringAsFixed(2);
+
+            totalAmountToBeRepaid =
+                widget.loanDetailArgs.loanDetailResponse.data?.totalAmountToBeRepaid ?? "0";
+            double repaidAmountDouble = double.parse(totalAmountToBeRepaid!);
+            totalAmountToBeRepaid = repaidAmountDouble.toStringAsFixed(2);
           },
           builder: (context, state, coordinator) => CrayonPaymentScaffold(
                 scaffoldBackgroundColor: Loan_Detail_Background,
@@ -118,13 +141,11 @@ class _LoanDetailScreenState extends State<LoanDetailScreen> {
         _getSpaceBetweenWidget(4),
         _getLoanDetailWithCurrencyWidget(
             title: 'LD_Loan_Detail_Amount'.tr,
-            value: widget.loanDetailArgs.loanDetailResponse.data?.loanAmount ??
-                "-"),
+            value: loanAmount!),
         _getSpaceBetweenWidget(4),
         _getLoanDetailWithCurrencyWidget(
             title: 'LD_Loan_Detail_Down_Payment'.tr,
-            value: widget.loanDetailArgs.loanDetailResponse.data?.joiningFee ??
-                "-"),
+            value: downPaymentAmount!),
         _getSpaceBetweenWidget(4),
         _getLoanDetailWidget(
             title: 'LD_Loan_Detail_Repayment'.tr,
@@ -133,15 +154,11 @@ class _LoanDetailScreenState extends State<LoanDetailScreen> {
         _getSpaceBetweenWidget(4),
         _getLoanDetailWithCurrencyWidget(
             title: 'LD_Loan__Detail_Daily_Repayment_Amount'.tr,
-            value:
-                widget.loanDetailArgs.loanDetailResponse.data?.dailyRepaymentAmount ??
-                    "-"),
+            value:dailyRePaymentAmount!),
         _getSpaceBetweenWidget(4),
         _getLoanDetailWithCurrencyWidget(
             title: 'LD_Loan_Detail_Total_Repayed_Amount'.tr,
-            value: widget.loanDetailArgs.loanDetailResponse.data
-                    ?.totalAmountToBeRepaid ??
-                "-"),
+            value: totalAmountToBeRepaid!),
         _getSpaceBetweenWidget(4),
         _getLoanDetailWidget(
             title: 'LD_Loan_Detail_Loan_Tenure'.tr,

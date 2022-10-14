@@ -157,4 +157,27 @@ class LoginNavigationHandler with ErrorHandler {
       arguments: arguments,
     );
   }
+
+  Future<void> navigateToOtpScreenCustomerFlow(
+      UserType userType, String mobileNumber, String id) async {
+    var arguments = OtpScreenArgs(
+        'OTP Verification',
+        'VO_otp_verification_description',
+        'welcomeModule/details',
+        false,
+        2,
+        OtpVerificationType.mobile,
+        id,
+        6,
+        mobileNumber,
+        false,
+        userType,userType==UserType.Agent?OTPEvent.Agent_Login.toShortString():OTPEvent.Customer_Login.toShortString(),"","",false);
+
+    _navigationManager.navigateTo(
+      CrayonVerifyOtpScreen.viewPath,
+      const NavigationType.push(),
+      preventDuplicates: false,
+      arguments: arguments,
+    );
+  }
 }

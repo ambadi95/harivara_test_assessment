@@ -9,7 +9,7 @@ import 'package:shared_data_models/customer_onboard/region_district/region_respo
 import 'package:shared_data_models/customer_onboard/region_district/district_response/datum.dart'
     as b;
 import 'package:widget_library/utils/app_utils.dart';
-
+import 'package:flutter/services.dart';
 import 'package:welcome/data_model/details_arguments.dart';
 import 'package:welcome/sub_features/details/state/details_state.dart';
 import 'package:welcome/sub_features/details/viewmodel/details_coordinator.dart';
@@ -278,7 +278,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
               coordinator,
               '',
               'LS_nida_hint_text',
-              false): const SizedBox(),
+              false,): const SizedBox(),
           _buildLabelTextField(
               'name',
               'DV_name_label'.tr,
@@ -287,7 +287,12 @@ class _DetailsScreenState extends State<DetailsScreen> {
               coordinator,
               nameError,
               'DV_name_hint_text',
-              true),
+              true,
+              inputFormatter: [
+                FilteringTextInputFormatter.allow(RegExp('[a-zA-Z ]')),
+                FilteringTextInputFormatter.deny(RegExp('[0-9]')),
+              ]
+          ),
           _buildLabelTextFieldDob('DV_dob_label'.tr, dob, coordinator),
           _buildGenderTypeDropdown(coordinator),
           _buildLabelTextField(
@@ -379,7 +384,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
       DetailsCoordinator coordinator,
       String errorText,
       String hint,
-      bool enabled) {
+      bool enabled,
+      {List<TextInputFormatter>? inputFormatter ,}) {
     return FocusScope(
       child: Focus(
         onFocusChange: (focus) {
@@ -399,6 +405,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
               hintText: hint.tr,
               key: const Key('detailsTextField'),
               keyboardType: textInputType,
+              inputFormatters: inputFormatter ?? [],
               onChanged: (value) {
                 _validateForm(coordinator);
                 if (errorText.isNotEmpty) {
@@ -513,6 +520,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
               ),
               hint: Text(
                 'DV_gender_hint_text'.tr,
+                style: const  TextStyle(color: Color(0xFFA3A3A3), fontFamily: 'Montserrat' , fontSize:14),
               ),
               boxHeight: 60,
               error: genderError,
@@ -563,6 +571,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
           boxHeight: 60,
           hint: Text(
             'DV_select_organization_type'.tr,
+            style: const  TextStyle(color: Color(0xFFA3A3A3), fontFamily: 'Montserrat' , fontSize:14),
+
           ),
           error: organizationTypeError,
           value: organizationType,
@@ -597,6 +607,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
           ),
           hint: Text(
             'DV_district_hint_text'.tr,
+            style: const  TextStyle(color: Color(0xFFA3A3A3), fontFamily: 'Montserrat' , fontSize:14),
           ),
           boxHeight: 60,
           error: districtError,
@@ -636,6 +647,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
           ),
           hint: Text(
             'DV_region_hint_text'.tr,
+            style: const  TextStyle(color: Color(0xFFA3A3A3), fontFamily: 'Montserrat' , fontSize:14),
           ),
           boxHeight: 60,
           error: regionError,

@@ -8,6 +8,7 @@ import 'package:home/home/home_screen_arguments.dart';
 import 'package:home/home/view/reading_in_app_browser.dart';
 import 'package:settings/model/settings_arguments.dart';
 import 'package:settings/view/settings_view.dart';
+import 'package:widget_library/progress_bar/centered_circular_progress_bar.dart';
 import 'package:widget_library/utils/icon_utils.dart';
 import 'package:shared_data_models/loan_detail/response/loan_detail_response/loan_detail_response.dart';
 import '../constants/image_constant.dart';
@@ -81,22 +82,22 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
             deviceLoan = loanDetailResponse.data?.loanId ?? "-";
             totalAmountToBeRepaid =
                 loanDetailResponse.data?.totalAmountToBeRepaid ?? "0";
+            double repaidAmountDouble = double.parse(totalAmountToBeRepaid!);
+            totalAmountToBeRepaid = repaidAmountDouble.toStringAsFixed(2);
             outstandingAmount = loanDetailResponse.data?.repaymentFee ?? "-";
             double outstandingAmountDouble = double.parse(outstandingAmount!);
             outstandingAmount = outstandingAmountDouble.toStringAsFixed(2);
 
-            repaidAmount = loanDetailResponse.data?.repaymentFee ?? "-";
-            double repaidAmountDouble = double.parse(repaidAmount!);
-            repaidAmount = repaidAmountDouble.toStringAsFixed(2);
 
-            setState(() {});
+            coordinator.readyState(
+                context, '', widget.homeScreenArgs.isAgent, false);
           }
         },
         builder: (context, state, coordinator) => Scaffold(
           body: SafeArea(
             bottom: false,
             child: state.when(
-              initialState: () => const SizedBox(),
+              initialState: () => const CenteredCircularProgressBar(color: PRIMARY_COLOR),
               ready: (
                 _,
                 __,
@@ -112,6 +113,8 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
           ),
         ),
       );
+
+
 
   Widget _userInfoView() {
     return Padding(

@@ -21,6 +21,11 @@ class HomeCoordinator extends BaseViewModel<HomeScreenState> {
 
   void initialiseState(
       BuildContext context, String error, bool isAgent, bool isLoading) async {
+    state = const HomeScreenState.initialState();
+  }
+
+  void readyState(
+      BuildContext context, String error, bool isAgent, bool isLoading) async {
     state = HomeScreenState.ready(
         context: context, error: error, isAgent: isAgent, isLoading: isLoading);
   }
