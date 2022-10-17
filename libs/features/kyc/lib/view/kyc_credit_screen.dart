@@ -53,7 +53,11 @@ class _KycCreditScreenState extends State<KycCreditScreen> {
             kycCreditCoordinator = coordinator;
             agentType = await coordinator.getAgentType();
             CrayonPaymentLogger.logInfo("Agent Typeee : ${agentType}");
-            _isKycPassEnabledByManual = widget.kycScreenArgs.kycManualCheckSuccess;
+            setState(() {
+              _isKycPassEnabled = widget.kycScreenArgs.kycManualCheckSuccess;
+              _isKycPassEnabledByManual = widget.kycScreenArgs.kycManualCheckSuccess;
+            });
+
             telcoPartner = await coordinator.getTelcoPaetner();
             if (widget.kycScreenArgs.kycCheckSuccess) {
               await kycCreditCoordinator!.callCreditScore(context, false);
