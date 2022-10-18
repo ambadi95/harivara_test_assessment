@@ -71,6 +71,8 @@
   "DV_district_label" : "District",
   "DV_district_error_text" : "Invalid District",
   "DV_district_hint_text" : "Select District",
+  "DV_alert" : "Alert!",
+  "DV_close" : "Close",
   "DV_button_text" : "Continue",
   "Save_Text": "Save",
   "Y9_DEVICE_LOAN": "Y9 Device Loan",

@@ -771,10 +771,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
   void _showAlert(String errorMessage) {
     CrayonPaymentAlertDialogue.showMaterialAlert(
         context: context,
-        isColumn: false,
-        title: "Alert!",
+        isColumn: true,
+        title: 'DV_alert'.tr,
         content: errorMessage,
-        defaultActionText: "Close");
+        defaultActionText: 'DV_close'.tr);
   }
 
   void _showSnackBar(BuildContext context, String errorMessage) {

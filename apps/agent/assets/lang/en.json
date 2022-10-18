@@ -96,6 +96,9 @@
   "DV_district_error_text" : "Invalid District",
   "DV_district_hint_text" : "Select District",
   "DV_title_agent" : "Your Details",
+  "DV_alert" : "Alert!",
+  "DV_close" : "Close",
+
   "Save_Text": "Save",
   "DAILY_EMI": "Daily Emi",
   "MONTHLY_EMI": "Monthly Emi",
@@ -325,7 +328,7 @@
   "Other_payment_title_heading" : "Other Payments",
   "Other_payment_subtitle": "Down payment has been done through other method so, record the",
   "other_payment_customer_member_id": "Customer Membership ID",
-  "other_payment_transaction_id_title": "Tran Number",
+  "other_payment_transaction_id_title": "Transaction Number",
   "other_payment_transaction_id_hint": "Enter Transaction ID",
   "other_down_payment" : "Down Payment",
   "other_down_notes" : "Note",

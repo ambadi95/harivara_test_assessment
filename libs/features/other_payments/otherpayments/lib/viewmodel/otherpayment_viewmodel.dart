@@ -1,7 +1,7 @@
 class OtherPaymentViewModel {
 
   bool isValidTranID(String nidaNumber) {
-    var valid = nidaNumber.length == 20;
+    var valid = nidaNumber.length >= 1;
     return valid;
   }
 

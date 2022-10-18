@@ -70,6 +70,8 @@
   "DV_district_label" : "Wilaya",
   "DV_district_error_text" : "Wilaya Batili",
   "DV_district_hint_text" : "Ingiza Wilaya",
+  "DV_alert" : "Tahadhari!",
+  "DV_close" : "Funga",
   "DV_button_text" : "Endelea",
   "Y9_DEVICE_LOAN": "Mkopo wa Kifaa cha Y9",
   "DAILY_EMI": "Emi ya kila siku",

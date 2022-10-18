@@ -221,8 +221,8 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
       textColor: White,
       textStyleVariant: CrayonPaymentTextStyleVariant.headline4,
       onPressed: () {
-        coordinator.showErrorBottomSheet(
-            _getOutOfStockUI(context, coordinator), context);
+        radioValue != 0 ? coordinator.showErrorBottomSheet(
+            _getOutOfStockUI(context, coordinator), context) : (){};
 
         // if (radioValue != 0) {
         //   switch (radioValue) {

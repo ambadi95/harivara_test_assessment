@@ -69,7 +69,6 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
               userId;
             });
             customerCount = await coordinator.getCustomerCount();
-            setState(() {});
           } else {
             username = await coordinator.getCustomerName();
             userId = await coordinator.getCustomerId();
@@ -87,26 +86,27 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
             outstandingAmount = loanDetailResponse.data?.repaymentFee ?? "-";
             double outstandingAmountDouble = double.parse(outstandingAmount!);
             outstandingAmount = outstandingAmountDouble.toStringAsFixed(2);
-
-
-            setState(() {});
           }
+          coordinator.readyState(
+              context, '', widget.homeScreenArgs.isAgent, false);
         },
         builder: (context, state, coordinator) => Scaffold(
           body: SafeArea(
             bottom: false,
             child: state.when(
-              initialState: () => const SizedBox(),
+              initialState: () => _buildMainUIWithLoading(
+                context,
+                coordinator,
+              ),
               ready: (
                 _,
                 __,
                 ___,
                 ____,
               ) =>
-                  _buildMainUIWithLoading(
+                  _buildMainUI(
                 context,
                 coordinator,
-                (state as HomeScreenReady),
               ),
             ),
           ),
@@ -167,17 +167,19 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                             const SizedBox(
                               width: 6,
                             ),
-                            agentType == 'SUPER_AGENT' ?  Container(
-                              height: 18,
-                              width: 66,
-                              decoration: BoxDecoration(
-                                  color: Colors.black,
-                                  borderRadius: BorderRadius.circular(8)),
-                              child: Center(
-                                child: Text('HO_super_agent'.tr,
-                                    style: HS_super_agent_text),
-                              ),
-                            ) : const SizedBox()
+                            agentType == 'SUPER_AGENT'
+                                ? Container(
+                                    height: 18,
+                                    width: 66,
+                                    decoration: BoxDecoration(
+                                        color: Colors.black,
+                                        borderRadius: BorderRadius.circular(8)),
+                                    child: Center(
+                                      child: Text('HO_super_agent'.tr,
+                                          style: HS_super_agent_text),
+                                    ),
+                                  )
+                                : const SizedBox()
                           ],
                         ),
                         const SizedBox(
@@ -310,7 +312,7 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       InkWell(
-                        onTap: () async{
+                        onTap: () async {
                           await coordinator.navigateToCustomerRegister();
                           await coordinator.getCustomerCount();
                         },
@@ -585,11 +587,19 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
     return 'HS_GoodEvening'.tr;
   }
 
-  _buildMainUIWithLoading(BuildContext context, HomeCoordinator coordinator,
-      HomeScreenReady state) {
+  _buildMainUIWithLoading(
+    BuildContext context,
+    HomeCoordinator coordinator,
+  ) {
     return Stack(
       children: [
-        _buildMainUI(context, coordinator, state),
+        _buildMainUI(context, coordinator),
+        Center(
+          child: Container(
+            color: Colors.black.withOpacity(0.4),
+            child: const CenteredCircularProgressBar(color: PRIMARY_COLOR),
+          ),
+        )
         // if (state.isLoading) _createLoading(state),
       ],
     );
@@ -598,7 +608,6 @@ class _CrayonCustomerHomeScreenState extends State<CrayonHomeScreen> {
   _buildMainUI(
     BuildContext context,
     HomeCoordinator coordinator,
-    HomeScreenReady state,
   ) {
     return Scaffold(
         backgroundColor: Colors.white,

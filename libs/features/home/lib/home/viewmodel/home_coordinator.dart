@@ -21,12 +21,17 @@ class HomeCoordinator extends BaseViewModel<HomeScreenState> {
 
   void initialiseState(
       BuildContext context, String error, bool isAgent, bool isLoading) async {
+    state = const HomeScreenState.initialState();
+  }
+
+  void readyState(
+      BuildContext context, String error, bool isAgent, bool isLoading) async {
     state = HomeScreenState.ready(
         context: context, error: error, isAgent: isAgent, isLoading: isLoading);
   }
 
-  Future<void> navigateToCustomerRegister() async{
-   await _navigationHandler.navigateToSignUpScreen(UserType.Customer);
+  Future<void> navigateToCustomerRegister() async {
+    await _navigationHandler.navigateToSignUpScreen(UserType.Customer);
   }
 
   void offlinePayment() {
@@ -54,8 +59,8 @@ class HomeCoordinator extends BaseViewModel<HomeScreenState> {
     if (loanDetailResponse.data == null) {
       _navigationHandler.navigateToLoanDetailsSheetCustomer('LR_NO_LOAN_FOUND');
     } else {
-        _navigationHandler.navigateToLoanRepaymentBottomSheet(
-            "message", "buttonLabel", context, loanDetailResponse);
+      _navigationHandler.navigateToLoanRepaymentBottomSheet(
+          "message", "buttonLabel", context, loanDetailResponse);
     }
   }
 
