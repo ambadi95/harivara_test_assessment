@@ -73,7 +73,6 @@ class OtherPaymentUseCase extends BaseDataProvider {
   ) async {
     String customerId = await getCustomerId();
 
-    String clientId = 'Y9C100' + customerId;
 
     return await executeApiRequest<CreateLoanResponse?>(
         taskType: TaskType.DATA_OPERATION,

@@ -62,11 +62,11 @@ class OfflinePaymentUseCase extends BaseDataProvider {
     String customerId = await getCustomerId();
     print(customerId);
 
-    String clientId= 'Y9C100'+ customerId;
+    // String clientId= 'Y9C100'+ customerId;
+    String clientId= await getClientId();
 
 
 
-    print(clientId);
 
     return await executeApiRequest<CreateLoanResponse?>(
         taskType: TaskType.DATA_OPERATION,
