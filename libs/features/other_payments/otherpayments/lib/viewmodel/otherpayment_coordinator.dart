@@ -40,6 +40,10 @@ class OtherPaymentCoordinator
     return _otherPaymentUseCase.getCustomerId();
   }
 
+  Future<String> getClientID() async {
+    return _otherPaymentUseCase.getClientId();
+  }
+
   Future<void> navigateToScanCodeScreen(int? deviceId) async {
     await _navigationHandler.navigateToScanQrCode(deviceId);
   }

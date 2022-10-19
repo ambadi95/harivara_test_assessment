@@ -64,6 +64,10 @@ class VerifyOtpUseCase extends BaseDataProvider {
     return await setValueToSecureStorage({'deviceId': deviceId});
   }
 
+  Future<void> setClientId(String clientId) async {
+    return await setValueToSecureStorage({'clientId': clientId});
+  }
+
   Future<void> loanCalled(String loanCalled) async {
     return await setValueToSecureStorage({'loanCalled': loanCalled});
   }

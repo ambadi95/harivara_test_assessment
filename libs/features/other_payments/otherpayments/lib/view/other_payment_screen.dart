@@ -70,7 +70,7 @@ class _OtherPaymentScreenState extends State<OtherPaymentScreen> {
             });*/
             // coordinator.makePayment(context,widget.otherPaymentScreenArgs.amount);
 
-              customerMembershipID.text = await coordinator.getCustomerID();
+              customerMembershipID.text = await coordinator.getClientID();
             setState(()  {
               customerMembershipID.text;
             });

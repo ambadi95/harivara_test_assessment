@@ -211,6 +211,8 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
           state = const SignUpState.initialState();
           await _signupUseCase
               .saveCustomerId(response.data?.customerId.toString());
+          await _signupUseCase
+              .saveClientId(response.data?.clientId.toString());
 
           AppUtils.appUtilsInstance.saveUserType(UserType.Customer);
 
@@ -252,6 +254,8 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
           state = const SignUpState.initialState();
           await _signupUseCase
               .saveCustomerId(response.data?.customerId.toString());
+          await _signupUseCase
+              .saveClientId(response.data?.clientId.toString());
           _navigationHandler.navigateToOtpScreenCustomerSignUpByAgent(
             UserType.Customer,
             mobileNumber,
@@ -266,6 +270,8 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
           state = const SignUpState.initialState();
           await _signupUseCase
               .saveCustomerId(response.data?.customerId.toString());
+          await _signupUseCase
+              .saveClientId(response.data?.clientId.toString());
           _navigationHandler.navigateToOtpScreenCustomerSignUpByAgent(
             UserType.Customer,
             mobileNumber,
@@ -320,6 +326,8 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
           state = const SignUpState.initialState();
           await _signupUseCase
               .saveCustomerId(response.data?.customerId.toString());
+          await _signupUseCase
+              .saveClientId(response.data?.clientId.toString());
           _navigationHandler.navigateToOtpScreenCustomerSignUp(
               signUpArguments.userType, mobileNumber,
               userId: response.data?.customerId.toString());

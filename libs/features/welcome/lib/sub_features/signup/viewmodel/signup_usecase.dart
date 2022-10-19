@@ -73,6 +73,9 @@ class SignupUseCase extends BaseDataProvider {
   Future<void> saveAgentId(String? agentId) async {
     return await setValueToSecureStorage({'agentId': agentId});
   }
+ Future<void> saveClientId(String? clientId) async {
+    return await setValueToSecureStorage({'clientId': clientId});
+  }
 
   Future<void> _saveMobileNumber(String mobileNumber) async {
     return await setValueToSecureStorage({'mobileNumber': mobileNumber});
