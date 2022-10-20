@@ -74,6 +74,7 @@ class PaymentsCoordinator extends AnalyticsStateNotifier<PaymentsState> {
       } else {
         state =
             PaymentsState.ready(context: context, error: "", isLoading: false);
+        navigateToPaymentFailure();
         if (kDebugMode) {
           print(response?.message);
         }
@@ -89,5 +90,9 @@ class PaymentsCoordinator extends AnalyticsStateNotifier<PaymentsState> {
         },
       );
     }
+  }
+
+  void navigateToPaymentFailure() async {
+    await _navigationHandler.navigateToPaymentFailureBottomSheet();
   }
 }
