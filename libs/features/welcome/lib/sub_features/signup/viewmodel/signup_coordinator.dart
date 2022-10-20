@@ -118,7 +118,7 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
             ),
           ),
           CrayonPaymentText(
-            text: TextUIDataModel('NIDA_Mobile_Alert_Do_You_Want_Update'.tr,
+            text: TextUIDataModel( isNidaAlert ? 'Mobile_Alert_Do_You_Want_Update'.tr : 'NIDA_Alert_Do_You_Want_Update'.tr ,
                 textAlign: TextAlign.center,
                 styleVariant: CrayonPaymentTextStyleVariant.headline4,
                 color: Black,

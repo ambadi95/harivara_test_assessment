@@ -413,11 +413,12 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
           _showAlert(districtError.tr);
 
           return;
-        } else if (organizationTypeError.tr.isNotEmpty) {
-          _showAlert(organizationTypeError.tr);
-
-          return;
         }
+        // else if (organizationTypeError.tr.isNotEmpty) {
+        //   _showAlert(organizationTypeError.tr);
+        //
+        //   return;
+        // }
         if (coordinator.isValidPoBox(poBox.text) &&
             coordinator.isValidEmail(emailId.text) &&
             coordinator.isValidName(name.text)) {
@@ -963,7 +964,7 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
         poBox.text,
         region.text,
         district.text,
-        organizationTypeController.text
+
     );
   }
 

@@ -363,7 +363,8 @@
   "NIDA_Mobile_Alert_Title": "NIDA & Mobile Number\n conflicts",
   "NIDA_Mobile_Alert_SubTitle": "Given Mobile Number is associated with\nNIDA Number xxxxxxxx-xxxxx-xxxxx-",
   "NIDA_Alert_SubTitle": "Given NIDA Number is associated with\nMobile Number xxx xxx x",
-  "NIDA_Mobile_Alert_Do_You_Want_Update": "Do you want to update?",
+  "Mobile_Alert_Do_You_Want_Update": "Do you want to update Mobile Number?",
+  "NIDA_Alert_Do_You_Want_Update": "Do you want to update NIDA Number?",
   "UPDATE_AND_PROCEED": "Update & Proceed"
 }
 

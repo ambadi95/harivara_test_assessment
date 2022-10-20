@@ -111,8 +111,7 @@ class CustomerDetailsCoordinator extends BaseViewModel<CustomerDetailsState> {
       String address,
       String poBox,
       String region,
-      String district,
-      String organizationType,) {
+      String district,) {
     var isnNameValid = _customerDetailsUseCase.isValidName(name);
     var isMobileNoValid = mobNumber.isNotEmpty;
     var isDobValid = dob.isNotEmpty;
@@ -123,7 +122,6 @@ class CustomerDetailsCoordinator extends BaseViewModel<CustomerDetailsState> {
     var isPoBoxValid = /*_customerDetailsUseCase.isValidPoBox(poBox)*/ true;
     var isRegionValid = region.isNotEmpty;
     var isDistrictValid = district.isNotEmpty;
-    var organizationTypeValid = organizationType.isNotEmpty;
 
 
     var _isValid = isnNameValid &&
@@ -131,7 +129,6 @@ class CustomerDetailsCoordinator extends BaseViewModel<CustomerDetailsState> {
         isDobValid &&
         isGenderValid &&
         isProfessionValid &&
-        organizationTypeValid &&
         isEmailIdValid &&
         isAddressValid &&
         isPoBoxValid &&
@@ -152,7 +149,7 @@ class CustomerDetailsCoordinator extends BaseViewModel<CustomerDetailsState> {
       String poBox,
       String region,
       String district,
-      String organizationType) {
+      ) {
     print(gender);
     state = CustomerDetailsState.DetailsFormState(_validateForm(
         name,
@@ -164,7 +161,7 @@ class CustomerDetailsCoordinator extends BaseViewModel<CustomerDetailsState> {
         address,
         poBox,
         region,
-        district,organizationType));
+        district));
   }
 
   Future navigateToCreatePasscodeScreen(UserType userType) async {

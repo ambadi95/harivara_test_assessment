@@ -367,7 +367,8 @@
   "NIDA_Mobile_Alert_Title": "NIDA & Nambari ya Simu\n migogoro",
   "NIDA_Mobile_Alert_SubTitle": "Nambari ya Simu inayotolewa inahusishwa na\nNambari ya NIDA xxxxxxxx-xxxxx-xxxxx-",
   "NIDA_Alert_SubTitle": "Kutokana na Nambari ya NIDA inahusishwa na\nNamba ya simu ya mkononi xxx xxx x",
-  "NIDA_Mobile_Alert_Do_You_Want_Update": "Je, ungependa kusasisha?",
+  "Mobile_Alert_Do_You_Want_Update": "Je, ungependa kusasisha Nambari ya Simu ya Mkononi?",
+  "NIDA_Alert_Do_You_Want_Update": "Je, ungependa kusasisha Nambari ya NIDA?",
   "UPDATE_AND_PROCEED": "Sasisha na Uendelee"
 
 
