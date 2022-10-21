@@ -30,11 +30,11 @@ class ReferralProgram extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseView<ReferralProgramCoordinator, ReferralProgramState>(
-
       setupViewModel: (coordinator) async {},
       builder: (context, state, coordinator) {
         return Stack(
-          children: [_buildMainUI(context, state, coordinator),
+          children: [
+            _buildMainUI(context, state, coordinator),
             state.isLoading == true ? _createLoading() : SizedBox()
           ],
         );
@@ -61,7 +61,7 @@ class ReferralProgram extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: state.selectedTab == 0
-          ? _buildContinueButton(context, coordinator)
+          ? _buildContinueButton(context, coordinator, state)
           : SizedBox(),
       body: SingleChildScrollView(
         child: Column(
@@ -82,31 +82,34 @@ class ReferralProgram extends StatelessWidget {
   Widget _buildContinueButton(
     BuildContext context,
     ReferralProgramCoordinator coordinator,
+    ReferralProgramState state,
   ) {
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
         onTap: () async {
-          if (coordinator.isMobileNumberValid(coordinator.mobileNumber.text) &&
-              coordinator.isValidName(coordinator.name.text)) {
-
-            if(coordinator.emailId.text.isNotEmpty){
-              if(coordinator.isValidEmail(coordinator.emailId.text)){
+          if (state.inviteFriendsButtonDisabled == 1) {
+            if (coordinator
+                    .isMobileNumberValid(coordinator.mobileNumber.text) &&
+                coordinator.isValidName(coordinator.name.text)) {
+              if (coordinator.emailId.text.isNotEmpty) {
+                if (coordinator.isValidEmail(coordinator.emailId.text)) {
+                  coordinator.callInviteFriends();
+                }
+              } else {
                 coordinator.callInviteFriends();
               }
-            }else{
-              coordinator.callInviteFriends();
-
             }
-
-
           }
         },
         child: Container(
           width: double.infinity,
           height: 50,
           decoration: BoxDecoration(
-              color: SU_button_color, borderRadius: BorderRadius.circular(8.0)),
+              color: state.inviteFriendsButtonDisabled == 0
+                  ? SU_grey_color
+                  : SU_button_color,
+              borderRadius: BorderRadius.circular(8.0)),
           child: Center(
             child: Text(
               'REF_Invite_Friends'.tr,
@@ -188,7 +191,7 @@ class ReferralProgram extends StatelessWidget {
           height: 18,
         ),
         Padding(
-          padding: const EdgeInsets.only(left:30.0),
+          padding: const EdgeInsets.only(left: 30.0),
           child: CrayonPaymentText(
             key: Key('${_identifier}_REFER_Title'),
             text: TextUIDataModel(
@@ -218,7 +221,8 @@ class ReferralProgram extends StatelessWidget {
         SizedBox(
           height: 25,
         ),
-        _buildLabelTextFieldMobNumber(context, 'LS_Mobile'.tr, coordinator,state),
+        _buildLabelTextFieldMobNumber(
+            context, 'LS_Mobile'.tr, coordinator, state),
         SizedBox(
           height: 18,
         ),
@@ -272,6 +276,8 @@ class ReferralProgram extends StatelessWidget {
             tag,
             coordinator,
           );
+          coordinator.checkValidation();
+
         },
         canRequestFocus: true,
         child: InputFieldWithLabel(
@@ -284,8 +290,10 @@ class ReferralProgram extends StatelessWidget {
           keyboardType: textInputType,
           inputFormatters: inputFormatter ?? [],
           onChanged: (value) {
-            if (errorText.isNotEmpty) {
+            if (coordinator.name.text.isNotEmpty) {
               coordinator.isValidName(coordinator.name.text);
+              coordinator.checkValidation();
+
             }
           },
         ),
@@ -312,26 +320,36 @@ class ReferralProgram extends StatelessWidget {
 
   Widget _buildLabelTextFieldMobNumber(BuildContext context, String label,
       ReferralProgramCoordinator coordinator, ReferralProgramState state) {
-    return InputNumberFieldWithLabel(
-      label: label,
-      controller: coordinator.mobileNumber,
-      errorText: state.mobileNumberError.tr,
-      hintText: 'LS_mobile_hint_text'.tr,
-      key: const Key('mobileNumberTextField'),
-      inputFormatters: <TextInputFormatter>[
-        NIDAInputFormatter(mask: 'xxx xxx xxx', separator: ' ')
-      ],
-      keyboardType: TextInputType.number,
-      onChanged: (value) {
-        if (coordinator.mobileNumberError.isNotEmpty ||
-            coordinator.mobileNumber.text.length > 11) {
+    return Focus(
+      onFocusChange: (focus) {
+        if (coordinator.mobileNumber.text.isNotEmpty) {
           coordinator.isMobileNumberValid(coordinator.mobileNumber.text);
+          coordinator.checkValidation();
         }
       },
+      canRequestFocus: true,
+      child: InputNumberFieldWithLabel(
+        label: label,
+        controller: coordinator.mobileNumber,
+        errorText: state.mobileNumberError.tr,
+        hintText: 'LS_mobile_hint_text'.tr,
+        key: const Key('mobileNumberTextField'),
+        inputFormatters: <TextInputFormatter>[
+          NIDAInputFormatter(mask: 'xxx xxx xxx', separator: ' ')
+        ],
+        keyboardType: TextInputType.number,
+        onChanged: (value) {
+          if (coordinator.mobileNumber.text.isNotEmpty) {
+            coordinator.isMobileNumberValid(coordinator.mobileNumber.text);
+            coordinator.checkValidation();
+
+          }
+        },
+      ),
     );
   }
 
- Widget _subTitleWidget() {
+  Widget _subTitleWidget() {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
@@ -343,7 +361,8 @@ class ReferralProgram extends StatelessWidget {
               styleVariant: CrayonPaymentTextStyleVariant.headline5,
               color: AN_TextFieldLeadingIcon,
             ),
-          ),Center(
+          ),
+          Center(
             child: CrayonPaymentText(
               key: Key('${_identifier}_REFER_SUB_Title_2'),
               text: TextUIDataModel(
@@ -357,6 +376,4 @@ class ReferralProgram extends StatelessWidget {
       ),
     );
   }
-
-
 }

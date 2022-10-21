@@ -25,6 +25,7 @@ mixin _$ReferralProgramState {
   int get yourReferral => throw _privateConstructorUsedError;
   int get onBoarded => throw _privateConstructorUsedError;
   int get yourPoints => throw _privateConstructorUsedError;
+  int get inviteFriendsButtonDisabled => throw _privateConstructorUsedError;
   String get selectedFilter => throw _privateConstructorUsedError;
   List<ReferralList> get referralList => throw _privateConstructorUsedError;
 
@@ -49,6 +50,7 @@ abstract class $ReferralProgramStateCopyWith<$Res> {
       int yourReferral,
       int onBoarded,
       int yourPoints,
+      int inviteFriendsButtonDisabled,
       String selectedFilter,
       List<ReferralList> referralList});
 }
@@ -76,6 +78,7 @@ class _$ReferralProgramStateCopyWithImpl<$Res,
     Object? yourReferral = null,
     Object? onBoarded = null,
     Object? yourPoints = null,
+    Object? inviteFriendsButtonDisabled = null,
     Object? selectedFilter = null,
     Object? referralList = null,
   }) {
@@ -116,6 +119,10 @@ class _$ReferralProgramStateCopyWithImpl<$Res,
           ? _value.yourPoints
           : yourPoints // ignore: cast_nullable_to_non_nullable
               as int,
+      inviteFriendsButtonDisabled: null == inviteFriendsButtonDisabled
+          ? _value.inviteFriendsButtonDisabled
+          : inviteFriendsButtonDisabled // ignore: cast_nullable_to_non_nullable
+              as int,
       selectedFilter: null == selectedFilter
           ? _value.selectedFilter
           : selectedFilter // ignore: cast_nullable_to_non_nullable
@@ -146,6 +153,7 @@ abstract class _$$_ReferralProgramStateCopyWith<$Res>
       int yourReferral,
       int onBoarded,
       int yourPoints,
+      int inviteFriendsButtonDisabled,
       String selectedFilter,
       List<ReferralList> referralList});
 }
@@ -170,6 +178,7 @@ class __$$_ReferralProgramStateCopyWithImpl<$Res>
     Object? yourReferral = null,
     Object? onBoarded = null,
     Object? yourPoints = null,
+    Object? inviteFriendsButtonDisabled = null,
     Object? selectedFilter = null,
     Object? referralList = null,
   }) {
@@ -210,6 +219,10 @@ class __$$_ReferralProgramStateCopyWithImpl<$Res>
           ? _value.yourPoints
           : yourPoints // ignore: cast_nullable_to_non_nullable
               as int,
+      inviteFriendsButtonDisabled: null == inviteFriendsButtonDisabled
+          ? _value.inviteFriendsButtonDisabled
+          : inviteFriendsButtonDisabled // ignore: cast_nullable_to_non_nullable
+              as int,
       selectedFilter: null == selectedFilter
           ? _value.selectedFilter
           : selectedFilter // ignore: cast_nullable_to_non_nullable
@@ -235,6 +248,7 @@ class _$_ReferralProgramState implements _ReferralProgramState {
       this.yourReferral = 0,
       this.onBoarded = 0,
       this.yourPoints = 0,
+      this.inviteFriendsButtonDisabled = 0,
       this.selectedFilter = "ALL",
       final List<ReferralList> referralList = const []})
       : _referralList = referralList;
@@ -268,6 +282,9 @@ class _$_ReferralProgramState implements _ReferralProgramState {
   final int yourPoints;
   @override
   @JsonKey()
+  final int inviteFriendsButtonDisabled;
+  @override
+  @JsonKey()
   final String selectedFilter;
   final List<ReferralList> _referralList;
   @override
@@ -279,7 +296,7 @@ class _$_ReferralProgramState implements _ReferralProgramState {
 
   @override
   String toString() {
-    return 'ReferralProgramState(isLoading: $isLoading, selectedTab: $selectedTab, mobileNumberError: $mobileNumberError, nameError: $nameError, emailError: $emailError, selectedFilterIndex: $selectedFilterIndex, yourReferral: $yourReferral, onBoarded: $onBoarded, yourPoints: $yourPoints, selectedFilter: $selectedFilter, referralList: $referralList)';
+    return 'ReferralProgramState(isLoading: $isLoading, selectedTab: $selectedTab, mobileNumberError: $mobileNumberError, nameError: $nameError, emailError: $emailError, selectedFilterIndex: $selectedFilterIndex, yourReferral: $yourReferral, onBoarded: $onBoarded, yourPoints: $yourPoints, inviteFriendsButtonDisabled: $inviteFriendsButtonDisabled, selectedFilter: $selectedFilter, referralList: $referralList)';
   }
 
   @override
@@ -305,6 +322,10 @@ class _$_ReferralProgramState implements _ReferralProgramState {
                 other.onBoarded == onBoarded) &&
             (identical(other.yourPoints, yourPoints) ||
                 other.yourPoints == yourPoints) &&
+            (identical(other.inviteFriendsButtonDisabled,
+                    inviteFriendsButtonDisabled) ||
+                other.inviteFriendsButtonDisabled ==
+                    inviteFriendsButtonDisabled) &&
             (identical(other.selectedFilter, selectedFilter) ||
                 other.selectedFilter == selectedFilter) &&
             const DeepCollectionEquality()
@@ -323,6 +344,7 @@ class _$_ReferralProgramState implements _ReferralProgramState {
       yourReferral,
       onBoarded,
       yourPoints,
+      inviteFriendsButtonDisabled,
       selectedFilter,
       const DeepCollectionEquality().hash(_referralList));
 
@@ -345,6 +367,7 @@ abstract class _ReferralProgramState implements ReferralProgramState {
       final int yourReferral,
       final int onBoarded,
       final int yourPoints,
+      final int inviteFriendsButtonDisabled,
       final String selectedFilter,
       final List<ReferralList> referralList}) = _$_ReferralProgramState;
 
@@ -366,6 +389,8 @@ abstract class _ReferralProgramState implements ReferralProgramState {
   int get onBoarded;
   @override
   int get yourPoints;
+  @override
+  int get inviteFriendsButtonDisabled;
   @override
   String get selectedFilter;
   @override

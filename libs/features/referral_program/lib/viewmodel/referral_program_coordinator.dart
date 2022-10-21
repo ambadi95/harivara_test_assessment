@@ -130,17 +130,20 @@ Future<void> navigateToSuccessReferral(BuildContext context) async {
 
   bool isMobileNumberValid(String mobileNumber) {
     if (mobileNumber.isEmpty) {
-      state =
-          const ReferralProgramState(mobileNumberError: 'LS_mobile_error_text');
+      state = const ReferralProgramState(mobileNumberError: 'LS_mobile_error_text');
+      return false;
+
+    }else {
+      var result = _referralProgramUsecase.isValidMobileNumber(mobileNumber);
+      print(result);
+      if (!result) {
+        state =
+        const ReferralProgramState(mobileNumberError: 'LS_mobile_error_text');
+      } else {
+        state = const ReferralProgramState(mobileNumberError: '');
+      }
+      return result;
     }
-    var result = _referralProgramUsecase.isValidMobileNumber(mobileNumber);
-    if (!result) {
-      state =
-          const ReferralProgramState(mobileNumberError: 'LS_mobile_error_text');
-    } else {
-      state = const ReferralProgramState(mobileNumberError: '');
-    }
-    return result;
   }
 
   Future callInviteFriends() async {
@@ -191,6 +194,23 @@ Future<void> navigateToSuccessReferral(BuildContext context) async {
       isScrollControlled: false,
       isDismissible: false,
     );
+  }
+
+  void checkValidation() {
+    if(mobileNumber.text.isNotEmpty && name.text.isNotEmpty){
+
+      if(isMobileNumberValid(mobileNumber.text) && isValidName(name.text) )
+
+      state = ReferralProgramState(isLoading: false, selectedTab: 0,inviteFriendsButtonDisabled: 1);
+
+      if(emailId.text.isNotEmpty && isValidEmail(emailId.text)){
+        state = ReferralProgramState(isLoading: false, selectedTab: 0,inviteFriendsButtonDisabled: 1);
+
+      }
+
+    }
+
+
   }
 
 

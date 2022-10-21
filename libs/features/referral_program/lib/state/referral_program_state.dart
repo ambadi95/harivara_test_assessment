@@ -15,6 +15,7 @@ class ReferralProgramState with _$ReferralProgramState {
     @Default(0) int yourReferral,
     @Default(0) int onBoarded,
     @Default(0) int yourPoints,
+    @Default(0) int inviteFriendsButtonDisabled,
     @Default("ALL") String selectedFilter,
     @Default([]) List<ReferralList> referralList,
   }) = _ReferralProgramState;
