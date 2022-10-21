@@ -90,8 +90,7 @@ class DownPaymentNavigationHandler with ErrorHandler {
       buttonOptions: [
         ButtonOptions(Black, 'PF_back_to_payment'.tr, () {
           pop();
-          pop();
-          pop();
+          navigateToDeviceLoanCreation();
         }, false)
       ],
       disableCloseButton: true,

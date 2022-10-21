@@ -166,6 +166,7 @@ class SignupUseCase extends BaseDataProvider {
       {required String nindaNumber,
       required String agentId,
       required String customerMobile,
+       required String referralCode,
       required Function(String) onErrorCallback, String telecomPartner=""}) async {
     String? token = await _authManager.getAccessToken();
 
@@ -178,6 +179,7 @@ class SignupUseCase extends BaseDataProvider {
           "agentId": agentId,
           'mobileNo': customerMobile.replaceAll(" ", ""),
           'telcoPartner' :telecomPartner,
+          'referralCode': referralCode,
           'token': token
         },
         serviceIdentifier: ISignupService.signUpCustomerByAgent,

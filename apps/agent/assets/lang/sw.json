@@ -55,6 +55,8 @@
   "SU_telco_error" : "Telco si sahihi",
   "SU_otp_verification" : "Uthibitishaji wa OTP",
   "SU_skip_otp_verification" : "Ruka Uthibitishaji wa OTP",
+  "SU_referral_code" : "Msimbo wa Rufaa (Si lazima)",
+  "SU_referral_code_hint" : "Weka Nambari yako ya Rufaa ya Marafiki",
 
   "DV_title" : "Ingiza Maelezo ya Kibinafsi",
   "DV_profile" : "Wasifu",

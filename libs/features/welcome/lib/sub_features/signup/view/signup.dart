@@ -155,7 +155,7 @@ class _SignUpState extends State<SignUp> {
           ),
           _sub_title(coordinator),
           const SizedBox(
-            height: 69,
+            height: 30,
           ),
           _buildLabelTextField(
               'SU_ID_no_label',
@@ -168,7 +168,7 @@ class _SignUpState extends State<SignUp> {
               TextInputType.number),
 
           const SizedBox(
-            height: 48,
+            height: 36,
           ),
           widget.signUpArguments.userType == UserType.Customer
               ? _buildLabelTextFieldMobNumber('SU_mobile_no_label',
@@ -178,12 +178,19 @@ class _SignUpState extends State<SignUp> {
           const SizedBox(
             height: 36,
           ),
-          widget.signUpArguments.signupType == SignupType.customerSignUp ?
-          _buildLabelTextField('SU_referral_code'.tr, referralCode, coordinator,
-              'SU_referral_code_hint'.tr, '', TextInputType.text) : const SizedBox(),
           agentType.isNotEmpty
               ? _buildPaymentModeDropdown(coordinator)
-              : SizedBox()
+              : SizedBox(),
+          widget.signUpArguments.signupType != SignupType.agentSignUp ?
+          Column(
+            children: [
+              SizedBox(height: 10,),
+              _buildLabelTextField('SU_referral_code'.tr, referralCode, coordinator,
+                  'SU_referral_code_hint'.tr, '', TextInputType.text),
+              SizedBox(height: 36,)
+            ],
+          ) : const SizedBox(),
+
         ],
       ),
     );

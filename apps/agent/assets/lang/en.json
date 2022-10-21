@@ -54,6 +54,8 @@
   "SU_telco_error" : "Invalid Telco",
   "SU_otp_verification" : "OTP Verification",
   "SU_skip_otp_verification" : "Skip OTP Verification",
+  "SU_referral_code" : "Referral Code (Optional)",
+  "SU_referral_code_hint" : "Enter your Friends Referral Code",
 
   "DV_title" : "Enter Personal Details",
   "DV_profile" : "Profile",

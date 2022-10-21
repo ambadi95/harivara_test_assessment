@@ -248,6 +248,7 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
             customerMobile: '+255' + mobileNumber.replaceAll(" ", ""),
             onErrorCallback: (p0) => null,
             telecomPartner: telecomPartner,
+            referralCode: referralCode,
             agentId: await _signupUseCase.getAgentId());
 
         if (response!.status == true) {
