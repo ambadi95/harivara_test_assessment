@@ -320,12 +320,12 @@ class _OtherPaymentScreenState extends State<OtherPaymentScreen> {
             fontSize: 16,
             color: AN_TitleColor,
             fontWeight: FontWeight.w500),
-        // children:const  <TextSpan>[
-        //    TextSpan(
-        //       text: ' TRAN',
-        //       style:
-        //       TextStyle(fontWeight: FontWeight.w600, fontSize: 16, color: Colors.black)),
-        // ],
+        children:  <TextSpan>[
+           TextSpan(
+              text: 'Other_payment_subtitle_second'.tr,
+              style:
+              TextStyle(fontWeight: FontWeight.w600, fontSize: 16, color: Colors.black)),
+        ],
       ),
     );
     // return CrayonPaymentText(

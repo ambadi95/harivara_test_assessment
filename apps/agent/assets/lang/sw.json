@@ -330,9 +330,10 @@
 
   "Other_Payments_title": "Other Payments",
   "Other_payment_title_heading" : "Malipo Mengine",
-  "Other_payment_subtitle": "Malipo ya chini yamefanywa kupitia\nnjia nyingine hivyo, rekodi \nNambari ya Muamala",
+  "Other_payment_subtitle": "Malipo ya chini yamefanywa kupitia njia nyingine hivyo,",
+  "Other_payment_subtitle_second" : " toa kitambulisho cha Muamala",
   "other_payment_customer_member_id" :"Kitambulisho cha Uanachama wa Mteja",
-  "other_payment_transaction_id_title": "Nambari ya Muamala",
+  "other_payment_transaction_id_title": "Kitambulisho cha muamala",
   "other_payment_transaction_id_hint": "Weka Kitambulisho cha Muamala",
   "other_down_payment" : "Malipo ya Chini",
   "other_down_notes" : "Kumbuka",
@@ -369,7 +370,9 @@
   "NIDA_Alert_SubTitle": "Kutokana na Nambari ya NIDA inahusishwa na\nNamba ya simu ya mkononi xxx xxx x",
   "Mobile_Alert_Do_You_Want_Update": "Je, ungependa kusasisha Nambari ya Simu ya Mkononi?",
   "NIDA_Alert_Do_You_Want_Update": "Je, ungependa kusasisha Nambari ya NIDA?",
-  "UPDATE_AND_PROCEED": "Sasisha na Uendelee"
-
+  "UPDATE_AND_PROCEED": "Sasisha na Uendelee",
+  "exit_the_app" : "Je, una uhakika unataka kuondoka kwenye programu?",
+  "go_back_to_home" : "Je, una uhakika, ungependa kurudi?",
+  "OK" : "sawa"
 
 }

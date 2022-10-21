@@ -358,5 +358,7 @@
   "PS_customer_support" : "For Customer Support Please Call {}",
   "PS_close" : "Close",
   "PF_title"  : "Payment Transaction Error",
-  "PF_desc"  : "Sorry for the inconvenience, we are facing an unexpected Error. Please try again after sometime"
+  "PF_desc"  : "Sorry for the inconvenience, we are facing an unexpected Error. Please try again after sometime",
+  "exit_the_app" : "Are you sure you want to exit the app?",
+  "OK" : "OK"
 }

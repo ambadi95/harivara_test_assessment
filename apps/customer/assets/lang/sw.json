@@ -362,5 +362,7 @@
   "PS_customer_support" : "Kwa Usaidizi kwa Wateja Tafadhali Piga simu {}",
   "PS_close" : "Funga",
   "PF_title"  : "Hitilafu ya Muamala wa Malipo",
-  "PF_desc"  : "Samahani kwa usumbufu, tunakabiliwa na Hitilafu isiyotarajiwa. Tafadhali jaribu tena baada ya muda fulani"
+  "PF_desc"  : "Samahani kwa usumbufu, tunakabiliwa na Hitilafu isiyotarajiwa. Tafadhali jaribu tena baada ya muda fulani",
+  "exit_the_app" : "Je, una uhakika unataka kuondoka kwenye programu?",
+  "OK" : "sawa"
 }

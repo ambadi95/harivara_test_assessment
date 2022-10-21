@@ -326,9 +326,10 @@
   "HO_referral_alert_message": "Coming soon...\nstay tuned for updates",
   "Other_Payments_title": "Other Payments",
   "Other_payment_title_heading" : "Other Payments",
-  "Other_payment_subtitle": "Down payment has been done through other method so, record the Transaction\nNumber",
+  "Other_payment_subtitle": "Down payment has been done through other method so,",
+  "Other_payment_subtitle_second" : " provide the Transaction ID",
   "other_payment_customer_member_id": "Customer Membership ID",
-  "other_payment_transaction_id_title": "Transaction Number",
+  "other_payment_transaction_id_title": "Transaction ID",
   "other_payment_transaction_id_hint": "Enter Transaction ID",
   "other_down_payment" : "Down Payment",
   "other_down_notes" : "Note",
@@ -365,6 +366,9 @@
   "NIDA_Alert_SubTitle": "Given NIDA Number is associated with\nMobile Number xxx xxx x",
   "Mobile_Alert_Do_You_Want_Update": "Do you want to update Mobile Number?",
   "NIDA_Alert_Do_You_Want_Update": "Do you want to update NIDA Number?",
-  "UPDATE_AND_PROCEED": "Update & Proceed"
+  "UPDATE_AND_PROCEED": "Update & Proceed",
+  "exit_the_app" : "Are you sure you want to exit from app?",
+  "go_back_to_home" : "Are you sure you wish to go back?",
+  "OK" : "OK"
 }
 

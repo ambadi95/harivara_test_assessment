@@ -4,6 +4,8 @@ import 'package:config/Config.dart';
 import 'package:config/Styles.dart';
 import 'package:core/mobile_core.dart';
 import 'package:core/view/base_view.dart';
+import 'package:widget_library/alert_dialogue/crayon_payment_alert_dialogue.dart';
+import 'package:widget_library/buttons/docked_button.dart';
 import 'package:widget_library/utils/app_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -85,24 +87,16 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
             customerId;
           });
         },
-        builder: (context, state, coordinator) {
-          return
-              //   state.when(
-              //   initialState: () => const SizedBox(),
-              //   ready: (
-              //       _,
-              //       __,
-              //       ___,
-              //       ) =>
-              //       _buildMainUIWithLoading(
-              //         context,
-              //         coordinator,
-              //         (state as ScanQRCodeStateReady),
-              //       ),
-              //     orElse: () => _buildMainUI(context, coordinator)
-              // );
-              state.maybeWhen(
-                  //loading: () => _buildMainUIWithLoading(context, coordinator),
+        builder: (context, state, coordinator){
+          return WillPopScope(
+              onWillPop: () async {
+                  bool? result= await goBackToHome();
+                  if (result != null && result) {
+                    coordinator.goBackToAgentHomeScreen();
+                  }
+                  return result!;
+                  },
+             child: state.maybeWhen(
                   ready: (
                     _,
                     __,
@@ -113,7 +107,7 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
                         coordinator,
                         (state as ScanQRCodeStateReady),
                       ),
-                  orElse: () => _buildMainUI(context, coordinator));
+                  orElse: () => _buildMainUI(context, coordinator)));
         },
       );
 
@@ -145,7 +139,11 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
     return CrayonPaymentScaffold(
         appBarAttributes: CrayonPaymentAppBarAttributes(
           key: const Key('CardDetailsScreen_AppBarBackButton'),
-          left: [const CrayonPaymentAppBarButtonType.back()],
+          left: [
+            CrayonPaymentAppBarButtonType.back(onPressed: () {
+              isGoDashboard(coordinator);
+            }),
+            ] ,
         ),
         bottomNavigationBar: _buildRegisterButtonButton(context, coordinator),
         body: SingleChildScrollView(
@@ -398,5 +396,20 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
         ],
       ),
     );
+  }
+  Future<bool?> isGoDashboard(coordinator) async {
+    bool? isText = await goBackToHome();
+    if (isText!= null && isText) {
+       coordinator.goBackToAgentHomeScreen();
+    }
+  }
+
+  Future<bool?> goBackToHome() {
+    return  CrayonPaymentAlertDialogue.showMaterialAlert(
+        context: context,
+        isColumn: false,
+        content: 'go_back_to_home'.tr,
+        cancelActionText: "ST_cancel".tr,
+        defaultActionText: "OK".tr);
   }
 }

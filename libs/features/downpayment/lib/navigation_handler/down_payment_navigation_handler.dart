@@ -77,7 +77,7 @@ class DownPaymentNavigationHandler with ErrorHandler {
     final CrayonPaymentBottomSheetState infoState =
     CrayonPaymentBottomSheetState.infoState(
       buttonOptions: [
-        ButtonOptions(Black, 'PF_back_to_payment.tr', () {
+        ButtonOptions(Black, 'PF_back_to_payment'.tr, () {
           pop();
           pop();
           pop();
