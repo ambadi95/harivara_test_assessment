@@ -199,7 +199,7 @@ Future<void> navigateToSuccessReferral(BuildContext context) async {
   void checkValidation() {
     if(mobileNumber.text.isNotEmpty && name.text.isNotEmpty){
 
-      if(isMobileNumberValid(mobileNumber.text) && isValidName(name.text) )
+      if(isMobileNumberValid(mobileNumber.text.trim().replaceAll(" ", "")) && isValidName(name.text) )
 
       state = ReferralProgramState(isLoading: false, selectedTab: 0,inviteFriendsButtonDisabled: 1);
 

@@ -89,17 +89,11 @@ class ReferralProgram extends StatelessWidget {
       child: GestureDetector(
         onTap: () async {
           if (state.inviteFriendsButtonDisabled == 1) {
-            if (coordinator
-                    .isMobileNumberValid(coordinator.mobileNumber.text) &&
-                coordinator.isValidName(coordinator.name.text)) {
-              if (coordinator.emailId.text.isNotEmpty) {
-                if (coordinator.isValidEmail(coordinator.emailId.text)) {
-                  coordinator.callInviteFriends();
-                }
-              } else {
+
+
                 coordinator.callInviteFriends();
-              }
-            }
+
+
           }
         },
         child: Container(
@@ -277,7 +271,6 @@ class ReferralProgram extends StatelessWidget {
             coordinator,
           );
           coordinator.checkValidation();
-
         },
         canRequestFocus: true,
         child: InputFieldWithLabel(
@@ -293,7 +286,6 @@ class ReferralProgram extends StatelessWidget {
             if (coordinator.name.text.isNotEmpty) {
               coordinator.isValidName(coordinator.name.text);
               coordinator.checkValidation();
-
             }
           },
         ),
@@ -323,7 +315,7 @@ class ReferralProgram extends StatelessWidget {
     return Focus(
       onFocusChange: (focus) {
         if (coordinator.mobileNumber.text.isNotEmpty) {
-          coordinator.isMobileNumberValid(coordinator.mobileNumber.text);
+          coordinator.isMobileNumberValid(coordinator.mobileNumber.text.trim().replaceAll(" ", ""));
           coordinator.checkValidation();
         }
       },
@@ -335,14 +327,14 @@ class ReferralProgram extends StatelessWidget {
         hintText: 'LS_mobile_hint_text'.tr,
         key: const Key('mobileNumberTextField'),
         inputFormatters: <TextInputFormatter>[
-          NIDAInputFormatter(mask: 'xxx xxx xxx', separator: ' ')
+          NIDAInputFormatter(mask: 'xxx xxx xxx', separator: ' '),
+          FilteringTextInputFormatter.allow(RegExp(r'[0-9 ]')),
         ],
         keyboardType: TextInputType.number,
         onChanged: (value) {
           if (coordinator.mobileNumber.text.isNotEmpty) {
-            coordinator.isMobileNumberValid(coordinator.mobileNumber.text);
+            coordinator.isMobileNumberValid(coordinator.mobileNumber.text.trim().replaceAll(" ", ""));
             coordinator.checkValidation();
-
           }
         },
       ),
