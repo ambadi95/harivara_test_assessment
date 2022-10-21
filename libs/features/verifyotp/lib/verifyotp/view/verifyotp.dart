@@ -4,6 +4,7 @@ import 'package:config/Colors.dart';
 import 'package:config/Config.dart';
 import 'package:config/Styles.dart';
 import 'package:core/view/base_view.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
@@ -181,7 +182,9 @@ class _CrayonVerifyOtpScreenState extends State<CrayonVerifyOtpScreen> {
       padding: const EdgeInsets.only(bottom: 19),
       child: InkWell(
         onTap: () async {
-          print(attemptCount);
+          if (kDebugMode) {
+            print(attemptCount);
+          }
           if (attemptCount <= 3) {
             if (coordinator.otpController.text.isNotEmpty &&
                 coordinator.otpController.text.length == 6) {

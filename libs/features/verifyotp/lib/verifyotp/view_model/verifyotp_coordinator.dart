@@ -90,7 +90,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
     }
   }
 
-  _showAlertForErrorMessage(String errorMessage,{String statusCode=""}) {
+  _showAlertForErrorMessage(String errorMessage, {String statusCode = ""}) {
     Get.bottomSheet(
       AlertBottomSheet(
           alertMessage: errorMessage,
@@ -98,10 +98,10 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
           alertIcon: "assets/images/alert_icon.png",
           onClose: () {
             //used to back the case of number alredy assigned to other nida
-            if(statusCode==MOBILE_Already_Exist) {
+            if (statusCode == MOBILE_Already_Exist) {
               goBack();
               goBack();
-            }else {
+            } else {
               goBack();
             }
           },
@@ -192,7 +192,9 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
     // onVerifyPasscode(newPasscode);
     //navigateToDestinationPath(destinationPath, userType);
   }
-bool isCorrectOtp = false ;
+
+  bool isCorrectOtp = false;
+
   Future<void> navigateToDestinationPath(
       String destinationPath,
       UserType userType,
@@ -200,7 +202,7 @@ bool isCorrectOtp = false ;
       String enterOtp,
       String event) async {
     print(otpScreenArgs.otpVerificationType);
-
+    isCorrectOtp = false;
     CrayonPaymentLogger.logInfo("I am in OTP Verify");
     var currentState = state as VerifyOtpStateReady;
     try {
@@ -226,23 +228,20 @@ bool isCorrectOtp = false ;
               String? customerAgentId =
                   customerAgentIdResponse?.data?.y9AgentId;
               if (customerAgentId != null && customerAgentId.isNotEmpty) {
-
                 _navigationHandler.navigateToHomeScreen(userType);
                 //isCorrectOtp = false;
               } else {
-
                 _navigationHandler.navigateToCustomerEnrollmentScreen();
-              //  isCorrectOtp = false;
+                //  isCorrectOtp = false;
               }
             } else {
-
-            //  isCorrectOtp = false;
+              //  isCorrectOtp = false;
               _showAlertForErrorMessage(customerAgentIdResponse!.message!);
             }
           } else {
             isCorrectOtp = true;
             _navigationHandler.navigateToHomeScreen(userType);
-          //  isCorrectOtp = false;
+            //  isCorrectOtp = false;
           }
         } else {
           // _showAlertForErrorMessage(responseSignin.message!);
@@ -268,11 +267,13 @@ bool isCorrectOtp = false ;
                     otpScreenArgs.phoneNumber,
                     otpScreenArgs.updateBy,
                     (p0) => null);
+            isCorrectOtp = true;
             if (responseUpdateDetails!.status == true) {
               var getWorkFlowStatus = await _verifyOtpUseCase
                   .workFlowCustomerByAgent(otpScreenArgs.refId, (p0) => null);
               if (getWorkFlowStatus!.status!) {
                 CrayonPaymentLogger.logInfo('I am in WorkFlow Status');
+                isCorrectOtp = true;
                 navigationToWorkFlow(
                     getWorkFlowStatus, getWorkFlowStatus.data!.status!);
                 //_navigationHandler.navigateToDetailScreen();
@@ -280,7 +281,8 @@ bool isCorrectOtp = false ;
                 _showAlertForErrorMessage(getWorkFlowStatus.message!);
               }
             } else {
-              _showAlertForErrorMessage(responseUpdateDetails.message!,statusCode: responseUpdateDetails.y9ErrorCode!);
+              _showAlertForErrorMessage(responseUpdateDetails.message!,
+                  statusCode: responseUpdateDetails.y9ErrorCode!);
             }
           } else {
             var getWorkFlowStatus = await _verifyOtpUseCase
@@ -288,6 +290,7 @@ bool isCorrectOtp = false ;
             if (getWorkFlowStatus!.status!) {
               CrayonPaymentLogger.logInfo('I am in WorkFlow Status');
               //TODO Workflow Navigation
+              isCorrectOtp = true;
               navigationToWorkFlow(
                   getWorkFlowStatus, getWorkFlowStatus.data!.status!);
               //_navigationHandler.navigateToDetailScreen();
@@ -306,7 +309,7 @@ bool isCorrectOtp = false ;
               enterOtp, otpScreenArgs.userType, event, (p0) => null);
           if (response!.data!.status == "success") {
             state = currentState.copyWith(isLoading: false);
-
+            isCorrectOtp = true;
             _navigationHandler.navigateToTermsAndConditionsScreen(
                 userType, false);
           } else {
@@ -326,6 +329,7 @@ bool isCorrectOtp = false ;
               enterOtp, otpScreenArgs.userType, event, (p0) => null);
           if (response!.status == true) {
             state = currentState.copyWith(isLoading: false);
+            isCorrectOtp = true;
             _navigationHandler.openForNewPasscode(userType);
           } else {
             otpController.text = "";
@@ -349,11 +353,11 @@ bool isCorrectOtp = false ;
             (p0) => null);
         if (responseSignin?.status == true) {
           String agentId = await _verifyOtpUseCase.getAgentId();
-          isCorrectOtp =true ;
+          isCorrectOtp = true;
           _navigationHandler.navigateToAgentWelcomeBack(userType);
-         // isCorrectOtp =false ;
+          // isCorrectOtp =false ;
         } else {
-       //   isCorrectOtp =false ;
+          //   isCorrectOtp =false ;
           //    _showAlertForErrorMessage(responseSignin!.message!);
         }
       } else if (otpScreenArgs.otpVerificationType ==
@@ -363,6 +367,7 @@ bool isCorrectOtp = false ;
             enterOtp, otpScreenArgs.userType, event, (p0) => null);
         if (response!.data!.status == "success") {
           state = currentState.copyWith(isLoading: false);
+          isCorrectOtp = true;
           _navigationHandler.openForUpdateNewPasscode(userType);
         }
       } else if (otpScreenArgs.otpVerificationType ==
@@ -372,6 +377,7 @@ bool isCorrectOtp = false ;
             enterOtp, otpScreenArgs.userType, event, (p0) => null);
         if (response!.data!.status == "success") {
           state = currentState.copyWith(isLoading: false);
+          isCorrectOtp = true;
           _navigationHandler.openForUpdateNewPasscodeAgent(userType);
           //_navigationHandler.openForNewPasscodeAgentCustomer(userType);
         }
@@ -382,6 +388,7 @@ bool isCorrectOtp = false ;
             enterOtp, otpScreenArgs.userType, event, (p0) => null);
         if (response!.data!.status == "success") {
           state = currentState.copyWith(isLoading: false);
+          isCorrectOtp = true;
           _navigationHandler.navigateToTermsAndConditionsScreen(userType, true);
           //_navigationHandler.openForNewPasscodeAgentCustomer(userType);
         } else {
@@ -403,7 +410,9 @@ bool isCorrectOtp = false ;
           otpScreenArgs.otpVerificationType ==
               OtpVerificationType.customerPasscodeSet ||
           otpScreenArgs.otpVerificationType ==
-              OtpVerificationType.customerSignUpAgent) {
+              OtpVerificationType.customerSignUpAgent ||
+          otpScreenArgs.otpVerificationType ==
+              OtpVerificationType.updatePasscodeAgent) {
         if (kDebugMode) {
           print(e.toString());
         }
@@ -417,8 +426,6 @@ bool isCorrectOtp = false ;
       }
     }
   }
-
-
 
   Future<void> goBack() async {
     _navigationHandler.goBack();
@@ -492,7 +499,8 @@ bool isCorrectOtp = false ;
       WorkFlowStatusResponse workFlowStatusResponse, String status) async {
     switch (status) {
       case Initiated:
-        _navigationHandler.navigateToTermsAndConditionsScreen(UserType.AgentCustomer, false);
+        _navigationHandler.navigateToTermsAndConditionsScreen(
+            UserType.AgentCustomer, false);
         break;
       case Enrolled:
         _navigationHandler.navigateToDetailScreen();
@@ -556,9 +564,10 @@ bool isCorrectOtp = false ;
         try {
           _saveData(workFlowStatusResponse);
 
-          if(workFlowStatusResponse.data!.data[3]["partnerCode"] == OTHER_PAYMENTS){
-            _navigationHandler.navigateOfflinePaymentScreen(workFlowStatusResponse.data!.data[2], "",  false, false);
-
+          if (workFlowStatusResponse.data!.data[3]["partnerCode"] ==
+              OTHER_PAYMENTS) {
+            _navigationHandler.navigateOfflinePaymentScreen(
+                workFlowStatusResponse.data!.data[2], "", false, false);
           } else {
             _navigationHandler.navigateToDownPaymentScreen(
               deviceId: workFlowStatusResponse.data!.data[2].toString(),
@@ -605,20 +614,23 @@ bool isCorrectOtp = false ;
         //need to be change
         try {
           _saveData(workFlowStatusResponse);
-          if(workFlowStatusResponse.data!.data[3]["partnerCode"]== OTHER_PAYMENTS) {
+          if (workFlowStatusResponse.data!.data[3]["partnerCode"] ==
+              OTHER_PAYMENTS) {
             //pass loan id in the model name further using in payment screen for loan approvl part
-            _navigationHandler.navigateOfflinePaymentScreen(workFlowStatusResponse.data!.data[2], workFlowStatusResponse.data!.data[3]["loanId"] ?? "",  false, true);
-
+            _navigationHandler.navigateOfflinePaymentScreen(
+                workFlowStatusResponse.data!.data[2],
+                workFlowStatusResponse.data!.data[3]["loanId"] ?? "",
+                false,
+                true);
           } else {
             _navigationHandler.navigateToDownPaymentScreen(
                 deviceId: workFlowStatusResponse.data!.data[2].toString(),
                 paymentStatus: 0,
                 paymentReceived: 1,
                 loanId: workFlowStatusResponse.data!.data[3]["loanId"] ?? "",
-                amount: workFlowStatusResponse.data!.data[3]["amountPaid"] ??
-                    "",
-                isShowBottomSheet: true
-            );
+                amount:
+                    workFlowStatusResponse.data!.data[3]["amountPaid"] ?? "",
+                isShowBottomSheet: true);
           }
         } catch (e) {
           return _showAlertForErrorMessage(
