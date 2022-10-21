@@ -221,7 +221,8 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
               userId: response.data?.customerId.toString());
         } else {
           state = const SignUpState.initialState();
-          state = SignUpState.mobileNumberError(response.message!);
+          //state = SignUpState.mobileNumberError(response.message!);
+          _showAlertForErrorMessage(response.message!);
         }
       } else if (signUpArguments.signupType == SignupType.agentSignUp) {
         state = const SignUpState.loadingState();
