@@ -56,6 +56,7 @@ class InputNumberFieldWithLabel extends StatelessWidget {
         ),
         TextField(
           controller: controller,
+          enableInteractiveSelection: false,
           keyboardType: keyboardType,
           textAlign: textAlign,
           autofocus: autofocus,

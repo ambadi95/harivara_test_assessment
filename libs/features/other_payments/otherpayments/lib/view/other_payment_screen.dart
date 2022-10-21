@@ -374,7 +374,7 @@ class _OtherPaymentScreenState extends State<OtherPaymentScreen> {
   }
 
   void _validateForm(OtherPaymentCoordinator coordinator) {
-    coordinator.validateForm(transactionController.text, mobileController.text);
+    coordinator.validateForm(transactionController.text, mobileController.text.trim().replaceAll(" ", ""));
   }
 
   Widget _buildLabelTextFieldMobNumber(
@@ -397,13 +397,14 @@ class _OtherPaymentScreenState extends State<OtherPaymentScreen> {
           hintText: hint.tr,
           key: const Key('mobileNumberTextField'),
           inputFormatters: <TextInputFormatter>[
-            NIDAInputFormatter(mask: 'xxx xxx xxx', separator: ' ')
+            NIDAInputFormatter(mask: 'xxx xxx xxx', separator: ' '),
+            FilteringTextInputFormatter.allow(RegExp(r'[0-9 ]')),
           ],
           keyboardType: TextInputType.number,
           onChanged: (value) {
             _validateForm(coordinator);
-            if (mobileNumberError.isNotEmpty || mobileController.text.length > 11) {
-              coordinator.isValidMobileNumber(mobileController.text);
+            if (mobileNumberError.isNotEmpty || mobileController.text.trim().replaceAll(" ", "").length > 9) {
+              coordinator.isValidMobileNumber(mobileController.text.trim().replaceAll(" ", ""));
             }
           },
         ),
@@ -420,7 +421,7 @@ class _OtherPaymentScreenState extends State<OtherPaymentScreen> {
         break;
       case 'SU_mobile_no_label':
         if (mobileNumberError.isNotEmpty ||
-            mobileController.text.isNotEmpty == true) {
+            mobileController.text.trim().replaceAll(" ", "").isNotEmpty == true) {
         }
         break;
     }
@@ -436,15 +437,15 @@ class _OtherPaymentScreenState extends State<OtherPaymentScreen> {
       child: GestureDetector(
         onTap: () async {
           if (transactionController.text.trim() != '' &&
-              mobileController.text.trim() != '') {
+              mobileController.text.trim().replaceAll(" ", "") != '') {
             if (coordinator.isValidTransID(transactionController.text) &&
-                coordinator.isValidMobileNumber(mobileController.text)) {
+                coordinator.isValidMobileNumber(mobileController.text.trim().replaceAll(" ", ""))) {
               _isBtnEnabled = true;
               if (_isBtnEnabled) {
                 coordinator.makePayment(
                     context,
                     widget.otherPaymentScreenArgs.amount,
-                    mobileController.text.trim(),
+                    mobileController.text.trim().replaceAll(" ", ""),
                     transactionController.text.trim(),
                     widget.otherPaymentScreenArgs.deviceId,
                     widget.otherPaymentScreenArgs.modelName,

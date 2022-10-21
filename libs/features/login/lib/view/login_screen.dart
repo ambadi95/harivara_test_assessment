@@ -178,13 +178,14 @@ class _LoginState extends State<Login> {
       hintText: 'LS_mobile_hint_text'.tr,
       key: const Key('mobileNumberTextField'),
       inputFormatters: <TextInputFormatter>[
-        NIDAInputFormatter(mask: 'xxx xxx xxx', separator: ' ')
+        NIDAInputFormatter(mask: 'xxx xxx xxx', separator: ' '),
+        FilteringTextInputFormatter.allow(RegExp(r'[0-9 ]')),
       ],
       keyboardType: TextInputType.number,
       onChanged: (value) {
         _validateForm(coordinator);
-        if (mobileNumberError.isNotEmpty || mobileNumber.text.length > 11) {
-          coordinator.isMobileNumberValid(mobileNumber.text);
+        if (mobileNumberError.isNotEmpty || mobileNumber.text.trim().replaceAll(" ", "").length > 9) {
+          coordinator.isMobileNumberValid(mobileNumber.text.trim().replaceAll(" ", ""));
         }
       },
     );
@@ -234,9 +235,9 @@ class _LoginState extends State<Login> {
       textStyleVariant: CrayonPaymentTextStyleVariant.headline5,
       onPressed: () {
         if (isBtnEnabled) {
-          coordinator.isMobileNumberValid(mobileNumber.text);
+          coordinator.isMobileNumberValid(mobileNumber.text.trim().replaceAll(" ", ""));
           coordinator.isAgentIdValid(agentIdController.text);
-          // coordinator.navigateToWelcomeBackScreen(userType, mobileNumber.text);
+          // coordinator.navigateToWelcomeBackScreen(userType, mobileNumber.text.trim().replaceAll(" ", ""));
           if (UserType.Customer == widget.userType) {
             if (havePasscode) {
               if(passcodeController.text.length!=6){
@@ -249,7 +250,7 @@ class _LoginState extends State<Login> {
                 return ;
               }
               coordinator.login(
-                mobileNumber.text,
+                mobileNumber.text.trim().replaceAll(" ", ""),
                 passcodeController.text,
                 widget.userType,
                 agentIdController.text,
@@ -258,13 +259,13 @@ class _LoginState extends State<Login> {
             } else {
 
               coordinator.checkPasscode(
-                mobileNumber.text,
+                mobileNumber.text.trim().replaceAll(" ", ""),
                 widget.userType,
               );
             }
           } else {
 
-            coordinator.login(mobileNumber.text, passcodeController.text,
+            coordinator.login(mobileNumber.text.trim().replaceAll(" ", ""), passcodeController.text,
                 widget.userType, agentIdController.text);
           }
         }
@@ -379,7 +380,7 @@ class _LoginState extends State<Login> {
   }
 
   void _validateForm(LoginCoordinator coordinator) {
-    coordinator.validateForm(mobileNumber.text, passcodeController.text,
+    coordinator.validateForm(mobileNumber.text.trim().replaceAll(" ", ""), passcodeController.text,
         agentIdController.text, widget.userType, havePasscode);
   }
 }

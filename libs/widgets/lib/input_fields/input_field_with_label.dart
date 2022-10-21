@@ -24,6 +24,7 @@ class InputFieldWithLabel extends StatelessWidget {
   final Function(String)? onChanged;
   final Function()? onTap;
   final Function()? onEditComplete;
+  final bool enableInteractiveSelection;
   final int maxLines;
 
   InputFieldWithLabel({
@@ -46,6 +47,7 @@ class InputFieldWithLabel extends StatelessWidget {
     this.onEditComplete,
     this.textCapitalization = TextCapitalization.words,
     this.maxLines = 1,
+    this.enableInteractiveSelection = true,
     Key? key,
   }) : super(key: key);
 
@@ -60,6 +62,7 @@ class InputFieldWithLabel extends StatelessWidget {
         ),
         TextField(
           controller: controller,
+          enableInteractiveSelection: enableInteractiveSelection,
           keyboardType: keyboardType,
           textAlign: textAlign,
           autofocus: autofocus,

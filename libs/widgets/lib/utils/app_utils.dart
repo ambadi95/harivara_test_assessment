@@ -4,6 +4,7 @@ import 'package:config/Colors.dart';
 import 'package:config/Config.dart';
 import 'package:core/navigation/navigation_manager.dart';
 import 'package:core/navigation/navigation_type.dart';
+import 'package:core/utils/extensions/iterable_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -30,6 +31,7 @@ class AppUtils {
   hideKeyboard() {
     SystemChannels.textInput.invokeMethod('TextInput.hide');
   }
+
 
 
 
@@ -97,6 +99,8 @@ class AppUtils {
       duration: Duration(milliseconds: 1500),
     );
   }
+
+
 
   void removeFocusFromEditText({required BuildContext context}) {
     FocusScope.of(context).requestFocus(FocusNode());
@@ -179,6 +183,38 @@ class AppUtils {
       isScrollControlled: false,
       isDismissible: true,
     );
+  }
+}
+
+extension NIDAString on String  {
+  String toNIDAString() {
+    String nidaNumber = this.toString();
+    List<String> result = nidaNumber.split('');
+    String formatNidaNumber = '';
+    result.forEachIndexed((element, index) {
+      if(index == 8 || index == 13 || index == 18){
+        formatNidaNumber =  formatNidaNumber+'-'+element;
+      }else{
+      formatNidaNumber = formatNidaNumber + element;
+      }
+    });
+    return formatNidaNumber;
+  }
+}
+
+extension MobileString on String  {
+  String toMobileString() {
+    String mobileNumber = this.toString();
+    List<String> result = mobileNumber.split('');
+    String formatMobileNumber = '';
+    result.forEachIndexed((element, index) {
+      if(index == 4 || index == 7 || index == 10){
+        formatMobileNumber =  formatMobileNumber+' '+element;
+      }else{
+        formatMobileNumber = formatMobileNumber + element;
+      }
+    });
+    return formatMobileNumber;
   }
 }
 

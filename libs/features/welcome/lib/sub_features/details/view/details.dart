@@ -934,10 +934,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
           organizationTypeError = value;
         },
         getMobileNumber: (value) {
-          mobileNumber.text = value;
+          mobileNumber.text = value.toMobileString();
         },
         getNIDANumber: (value) {
-          nidaNumber.text = value;
+          nidaNumber.text = value.toNIDAString();
         },
         onGenderTypeChoosen: (value) {
           _genderType = value;

@@ -256,11 +256,13 @@ class _SignUpState extends State<SignUp> {
           controller: controller,
           errorText: errorText.tr,
           keyboardType: textInputType,
+          enableInteractiveSelection:
+              textInputType == TextInputType.number ? false : true,
           textCapitalization: TextCapitalization.characters,
           inputFormatters: textInputType == TextInputType.number
               ? [
-                  NIDAInputFormatter(
-                      mask: 'xxxxxxxx-xxxxx-xxxxx-xx', separator: '-')
+                  NIDAInputFormatter(mask: 'xxxxxxxx-xxxxx-xxxxx-xx', separator: '-'),
+                  FilteringTextInputFormatter.allow(RegExp(r'[0-9-]')),
                 ]
               :
               //[],
@@ -271,8 +273,11 @@ class _SignUpState extends State<SignUp> {
                 ],
           onChanged: (value) {
             _validateForm(coordinator);
-            if (nidaNumberError.isNotEmpty || nidaNumber.text.length > 23) {
-              coordinator.isValidNidaNumber(nidaNumber.text);
+            if (nidaNumberError.isNotEmpty ||
+                nidaNumber.text.replaceAll("-", "").length >
+                    20) {
+              coordinator
+                  .isValidNidaNumber(nidaNumber.text.replaceAll("-", ""));
             }
             if (agentIdError.isNotEmpty) {
               coordinator.isValidAgentId(agentId.text);
@@ -303,13 +308,16 @@ class _SignUpState extends State<SignUp> {
           hintText: hint.tr,
           key: const Key('mobileNumberTextField'),
           inputFormatters: <TextInputFormatter>[
-            NIDAInputFormatter(mask: 'xxx xxx xxx', separator: ' ')
+            NIDAInputFormatter(mask: 'xxx xxx xxx', separator: ' '),
+            FilteringTextInputFormatter.allow(RegExp(r'[0-9 ]')),
           ],
           keyboardType: TextInputType.number,
           onChanged: (value) {
             _validateForm(coordinator);
-            if (mobileNumberError.isNotEmpty || mobileNumber.text.length > 11) {
-              coordinator.isValidMobileNumber(mobileNumber.text);
+            if (mobileNumberError.isNotEmpty ||
+                mobileNumber.text.trim().replaceAll(" ", "").length > 9) {
+              coordinator.isValidMobileNumber(
+                  mobileNumber.text.trim().replaceAll(" ", ""));
             }
           },
         ),
@@ -378,17 +386,22 @@ class _SignUpState extends State<SignUp> {
       child: GestureDetector(
         onTap: () async {
           if (_isBtnEnabled) {
-            coordinator.isValidNidaNumber(nidaNumber.text);
-            coordinator.isValidMobileNumber(mobileNumber.text);
+            coordinator.isValidNidaNumber(nidaNumber.text.replaceAll("-", ""));
+            coordinator.isValidMobileNumber(
+                mobileNumber.text.trim().replaceAll(" ", ""));
             coordinator.isValidAgentId(agentId.text);
             coordinator.isValidPaymentMode(paymentMode.text);
             if (_isBtnEnabled &&
-                coordinator.isValidNidaNumber(nidaNumber.text)) {
-              coordinator.signup(widget.signUpArguments, mobileNumber.text,
-                  nidaNumber.text, agentId.text,buildContext:context,telecomPartner: paymentMode.text);
+                coordinator.isValidNidaNumber(nidaNumber.text.replaceAll("-", ""))) {
+              coordinator.signup(
+                  widget.signUpArguments,
+                  mobileNumber.text.trim().replaceAll(" ", ""),
+                  nidaNumber.text.replaceAll("-", ""),
+                  agentId.text,
+                  buildContext: context,
+                  telecomPartner: paymentMode.text);
             }
           }
-
         },
         child: Container(
           width: double.infinity,
@@ -420,11 +433,11 @@ class _SignUpState extends State<SignUp> {
         onTap: () async {
           // if (_isBtnEnabled) {
           //   coordinator.isValidNidaNumber(nidaNumber.text);
-          //   coordinator.isValidMobileNumber(mobileNumber.text);
+          //   coordinator.isValidMobileNumber(mobileNumber.text.trim().replaceAll(" ", ""));
           //   coordinator.isValidAgentId(agentId.text);
           //   if (_isBtnEnabled &&
           //       coordinator.isValidNidaNumber(nidaNumber.text)) {
-          //     coordinator.signup(widget.signUpArguments, mobileNumber.text,
+          //     coordinator.signup(widget.signUpArguments, mobileNumber.text.trim().replaceAll(" ", ""),
           //         nidaNumber.text, agentId.text);
           //   }
           // }
@@ -551,21 +564,27 @@ class _SignUpState extends State<SignUp> {
   }
 
   void _validateForm(SignUpCoordinator coordinator) {
-    coordinator.validateForm(nidaNumber.text, mobileNumber.text, agentId.text,
-        widget.signUpArguments, agentType, paymentMode.text);
+    coordinator.validateForm(
+        nidaNumber.text.replaceAll("-", ""),
+        mobileNumber.text.trim().replaceAll(" ", ""),
+        agentId.text,
+        widget.signUpArguments,
+        agentType,
+        paymentMode.text);
   }
 
   void _checkValid(String label, SignUpCoordinator coordinator) {
     switch (label) {
       case 'SU_ID_no_label':
-        if (nidaNumberError.isNotEmpty || nidaNumber.text.isNotEmpty == true) {
-          coordinator.isValidNidaNumber(nidaNumber.text);
+        if (nidaNumberError.isNotEmpty || nidaNumber.text.replaceAll("-", "").isNotEmpty == true) {
+          coordinator.isValidNidaNumber(nidaNumber.text.replaceAll("-", ""));
         }
         break;
       case 'SU_mobile_no_label':
         if (mobileNumberError.isNotEmpty ||
-            mobileNumber.text.isNotEmpty == true) {
-          coordinator.isValidMobileNumber(mobileNumber.text);
+            mobileNumber.text.trim().replaceAll(" ", "").isNotEmpty == true) {
+          coordinator.isValidMobileNumber(
+              mobileNumber.text.trim().replaceAll(" ", ""));
         }
         break;
       case 'SU_agent_id_hint':

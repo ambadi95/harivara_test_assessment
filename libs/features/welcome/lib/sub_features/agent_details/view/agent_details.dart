@@ -76,7 +76,7 @@ class _AgentDetailsScreenState extends State<AgentDetailsScreen> {
         setupViewModel: (coordinator) async {
           agentDetails = await coordinator.getAgentDetail();
           name.text = agentDetails!.firstName! + ' ' + agentDetails!.lastName!;
-          mobileNumber.text = agentDetails!.mobileNo!;
+          mobileNumber.text = agentDetails!.mobileNo!.toMobileString();
           emailId.text = agentDetails!.emailId!;
           gender.text = agentDetails!.gender!;
           dob.text = agentDetails!.birthDate!.toString();

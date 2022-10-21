@@ -1,3 +1,4 @@
+import 'package:core/utils/extensions/iterable_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -171,6 +172,34 @@ extension StringExtensions on String? {
     if (this == null) return null;
     assert(this!.isNotEmpty);
     return DateTime.parse(toString());
+  }
+
+  String toNIDAString() {
+    String nidaNumber = this.toString();
+    List<String> result = nidaNumber.split('');
+    String formatNidaNumber = '';
+    result.forEachIndexed((element, index) {
+      if(index == 8 || index == 13 || index == 18){
+        formatNidaNumber =  formatNidaNumber+'-'+element;
+      }else{
+        formatNidaNumber = formatNidaNumber + element;
+      }
+    });
+    return formatNidaNumber;
+  }
+
+  String toMobileString() {
+    String mobileNumber = this.toString();
+    List<String> result = mobileNumber.split('');
+    String formatMobileNumber = '';
+    result.forEachIndexed((element, index) {
+      if(index == 4 || index == 7 || index == 10){
+        formatMobileNumber =  formatMobileNumber+' '+element;
+      }else{
+        formatMobileNumber = formatMobileNumber + element;
+      }
+    });
+    return formatMobileNumber;
   }
 }
 

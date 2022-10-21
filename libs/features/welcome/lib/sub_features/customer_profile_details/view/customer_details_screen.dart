@@ -155,7 +155,7 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
             dob.text = customerResponse!.data!.birthdate ?? "";
             gender.text = customerResponse!.data!.gender ?? "";
             profession.text = customerResponse!.data!.profession ?? "";
-            mobileNumber.text = customerResponse!.data!.mobileNo ?? "";
+            mobileNumber.text = customerResponse!.data!.mobileNo.toMobileString() ?? "";
             emailId.text = customerResponse!.data!.emailId ?? "";
             address.text = customerResponse!.data!.address ?? "";
             poBox.text = customerResponse!.data!.organization ?? "";
@@ -920,7 +920,7 @@ class _CustomerDetailsScreenState extends State<CustomerDetailsScreen> {
           regionError = message;
         },
         getMobileNumber: (value) {
-          mobileNumber.text = value;
+          mobileNumber.text = value.toMobileString();
         },
         onGenderTypeChoosen: (value) {
           _genderType = value;
