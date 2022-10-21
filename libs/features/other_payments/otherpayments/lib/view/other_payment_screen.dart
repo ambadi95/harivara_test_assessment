@@ -155,164 +155,158 @@ class _OtherPaymentScreenState extends State<OtherPaymentScreen> {
   Widget _buildMainUI(
     OtherPaymentCoordinator coordinator,
   ) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 16, left: 16),
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _title(context),
-            const SizedBox(
-              height: 16,
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _title(context),
+          const SizedBox(
+            height: 16,
+          ),
+          _sub_title(coordinator),
+          const SizedBox(
+            height: 50,
+          ),
+          Container(
+            height: 80,
+            decoration: BoxDecoration(
+              color: const Color(0xffF4EEEB),
+              borderRadius: BorderRadius.circular(4),
             ),
-            _sub_title(coordinator),
-            const SizedBox(
-              height: 50,
-            ),
-            Container(
-              height: 80,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: const Color(0xffF4EEEB),
-                borderRadius: BorderRadius.circular(4),
-              ),
-              margin: const EdgeInsets.symmetric(horizontal: 10),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  Container(
-                    height: 60,
-                    width: 60,
-                    decoration: const BoxDecoration(color: Colors.white),
-                    child:  Center(
-                      child:  Image.asset(
-                        widget.otherPaymentScreenArgs.image,
-                        width: 95,
-                        height: 132,
-                        package: 'shared_data_models',
-                      ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const SizedBox(
+                  width: 20,
+                ),
+                Container(
+                  height: 50,
+                  width: 50,
+                  decoration: const BoxDecoration(color: Colors.white),
+                  child:  Center(
+                    child:  Image.asset(
+                      widget.otherPaymentScreenArgs.image,
+                      height: 40,
+                      package: 'shared_data_models',
                     ),
                   ),
-                  const SizedBox(
-                    width: 10,
+                ),
+                const SizedBox(
+                  width: 15,
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children:  [
+                    Text(
+                      'other_down_payment'.tr,
+                      style: const TextStyle(
+                          color: Color(0xff676767),
+                          fontSize: 16,
+                          fontFamily: 'Montserrat',
+                          fontWeight: FontWeight.w400),
+                    ),
+                    Text(
+                      "${widget.otherPaymentScreenArgs.amount} TZSHS",
+                      style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 24,
+                          fontFamily: 'Montserrat',
+                          fontWeight: FontWeight.w700),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+          const SizedBox(
+            height: 50,
+          ),_buildLabelTextField(
+              'other_payment_customer_member_id',
+              customerMembershipID,
+              coordinator,
+              '',
+              '',
+              TextInputType.number,
+              false),
+          const SizedBox(
+            height: 25,
+          ),
+          _buildLabelTextField(
+              'other_payment_transaction_id_title',
+              transactionController,
+              coordinator,
+              'other_payment_transaction_id_hint',
+              transactionIdError,
+              TextInputType.text, true),
+          const SizedBox(
+            height: 25,
+          ),
+          _buildLabelTextFieldMobNumber(
+            'SU_mobile_no_label',
+            mobileController,
+            coordinator,
+            'SU_subtitle_hint',
+          ),
+          const SizedBox(
+            height: 48,
+          ),
+          Container(
+            height: 100,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              color: const Color(0xffF4EEEB),
+              borderRadius: BorderRadius.circular(4),
+            ),
+            margin: const EdgeInsets.symmetric(horizontal: 0),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(
+                  width: 20,
+                ),
+                  Container(
+                    margin: EdgeInsets.only(top:16),
+                    child: Image.asset(
+                        "assets/images/alert_icon.png",
+                        width: 40,
+                        height: 40,
+                      ),
                   ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children:  [
-                      Text(
-                        'other_down_payment'.tr,
+
+                const SizedBox(
+                  width: 15,
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children:  [
+                    Text(
+                      'other_down_notes'.tr,
+                      style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 18,
+                          fontFamily: 'Montserrat',
+                          fontWeight: FontWeight.w700),
+                    ),
+                    Container(
+                      width: MediaQuery.of(context).size.width*0.6,
+                      child: Text(
+                        'other_down_notes_subtitle'.tr,
                         style: const TextStyle(
                             color: Color(0xff676767),
-                            fontSize: 16,
+                            fontSize: 13,
                             fontFamily: 'Montserrat',
                             fontWeight: FontWeight.w400),
                       ),
-                      Text(
-                        "${widget.otherPaymentScreenArgs.amount} TZSHS",
-                        style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 24,
-                            fontFamily: 'Montserrat',
-                            fontWeight: FontWeight.w700),
-                      ),
-                    ],
-                  )
-                ],
-              ),
-            ),
-            const SizedBox(
-              height: 50,
-            ),_buildLabelTextField(
-                'other_payment_customer_member_id',
-                customerMembershipID,
-                coordinator,
-                '',
-                '',
-                TextInputType.number,
-                false),
-            const SizedBox(
-              height: 25,
-            ),
-            _buildLabelTextField(
-                'other_payment_transaction_id_title',
-                transactionController,
-                coordinator,
-                'other_payment_transaction_id_hint',
-                transactionIdError,
-                TextInputType.text, true),
-            const SizedBox(
-              height: 25,
-            ),
-            _buildLabelTextFieldMobNumber(
-              'SU_mobile_no_label',
-              mobileController,
-              coordinator,
-              'SU_subtitle_hint',
-            ),
-            const SizedBox(
-              height: 48,
-            ),
-            Container(
-              height: 100,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: const Color(0xffF4EEEB),
-                borderRadius: BorderRadius.circular(4),
-              ),
-              margin: const EdgeInsets.symmetric(horizontal: 0),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(
-                    width: 20,
-                  ),
-                    Container(
-                      margin: EdgeInsets.only(top:16),
-                      child: Image.asset(
-                          "assets/images/alert_icon.png",
-                          width: 40,
-                          height: 40,
-                        ),
                     ),
-
-                  const SizedBox(
-                    width: 15,
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children:  [
-                      Text(
-                        'other_down_notes'.tr,
-                        style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 18,
-                            fontFamily: 'Montserrat',
-                            fontWeight: FontWeight.w700),
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width*0.6,
-                        child: Text(
-                          'other_down_notes_subtitle'.tr,
-                          style: const TextStyle(
-                              color: Color(0xff676767),
-                              fontSize: 13,
-                              fontFamily: 'Montserrat',
-                              fontWeight: FontWeight.w400),
-                        ),
-                      ),
-                    ],
-                  )
-                ],
-              ),
+                  ],
+                )
+              ],
             ),
+          ),
 
-          ],
-        ),
+        ],
       ),
     );
   }
@@ -326,12 +320,12 @@ class _OtherPaymentScreenState extends State<OtherPaymentScreen> {
             fontSize: 16,
             color: AN_TitleColor,
             fontWeight: FontWeight.w500),
-        children:const  <TextSpan>[
-           TextSpan(
-              text: ' TRAN',
-              style:
-              TextStyle(fontWeight: FontWeight.w600, fontSize: 16, color: Colors.black)),
-        ],
+        // children:const  <TextSpan>[
+        //    TextSpan(
+        //       text: ' TRAN',
+        //       style:
+        //       TextStyle(fontWeight: FontWeight.w600, fontSize: 16, color: Colors.black)),
+        // ],
       ),
     );
     // return CrayonPaymentText(
@@ -367,13 +361,10 @@ class _OtherPaymentScreenState extends State<OtherPaymentScreen> {
           errorText: errorText.tr,
           keyboardType: textInputType,
           enabled: enabled,
-          inputFormatters: [
-            LengthLimitingTextInputFormatter(20),
-          ],
           textCapitalization: TextCapitalization.characters,
           onChanged: (value) {
              _validateForm(coordinator);
-            if (transactionIdError.isNotEmpty || transactionController.text.length > 21) {
+            if (transactionIdError.isNotEmpty || transactionController.text.isNotEmpty) {
               coordinator.isValidTransID(transactionController.text);
             }
           },

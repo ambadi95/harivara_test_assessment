@@ -326,7 +326,7 @@
   "HO_referral_alert_message": "Coming soon...\nstay tuned for updates",
   "Other_Payments_title": "Other Payments",
   "Other_payment_title_heading" : "Other Payments",
-  "Other_payment_subtitle": "Down payment has been done through other method so, record the",
+  "Other_payment_subtitle": "Down payment has been done through other method so, record the Transaction\nNumber",
   "other_payment_customer_member_id": "Customer Membership ID",
   "other_payment_transaction_id_title": "Transaction Number",
   "other_payment_transaction_id_hint": "Enter Transaction ID",
