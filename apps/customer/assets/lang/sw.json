@@ -32,6 +32,8 @@
   "SU_subtitle_hint" : "Weka Nambari ya Simu\n",
   "SU_title_error_text" : "Nambari ya NIDA si sahihi",
   "SU_subtitle_error_text" : "Nambari ya Simu batili",
+  "SU_referral_code" : "Msimbo wa Rufaa (Si lazima)",
+  "SU_referral_code_hint" : "Weka Nambari yako ya Rufaa ya Marafiki",
 
   "DV_title" : "Ingiza Maelezo ya Kibinafsi",
   "DV_name_label" : "Jina",
@@ -362,7 +364,33 @@
   "PS_customer_support" : "Kwa Usaidizi kwa Wateja Tafadhali Piga simu {}",
   "PS_close" : "Funga",
   "PF_title"  : "Hitilafu ya Muamala wa Malipo",
-  "PF_desc"  : "Samahani kwa usumbufu, tunakabiliwa na Hitilafu isiyotarajiwa. Tafadhali jaribu tena baada ya muda fulani",
   "exit_the_app" : "Je, una uhakika unataka kuondoka kwenye programu?",
-  "OK" : "sawa"
+  "OK" : "sawa",
+  "PF_desc"  : "Samahani kwa usumbufu, tunakabiliwa na Hitilafu isiyotarajiwa. Tafadhali jaribu tena baada ya muda fulani",
+
+  "RP_Title" : "Mpango wa Rufaa",
+  "RP_invite" : "Alika",
+  "RP_status" : "Hali",
+  "RPS_your_referral" : "Rufaa Yako",
+  "PRS_onboarded" : "Imeingia",
+  "RPS_your_point" : "Point yako",
+  "RPS_referral_Status" : "Marejeleo na hali",
+  "RPS_account_activated" : "Akaunti Imewashwa",
+  "PRS_waiting" : "Kusubiri",
+  "PRS_filter_by" : "Chuja Kwa",
+  "PRS_filter_all" : "Wote",
+  "PRS_filter_waiting" : "Kusubiri",
+  "PRS_filter_onboarded" : "Imeingia",
+  "PRS_filter_activated" : "Akaunti Imewashwa",
+  "PRS_apply" : "Omba",
+  "PRI_success_message" : "Mwaliko umetumwa kwa ",
+  "RPS_no_referral_found" : "Hakuna Marejeleo Yaliyopatikana",
+
+  "HS_InviteYourFriends_GetBonus": "Invite your friends and get referal",
+  "Bonus_Points": "bonus point’s",
+  "Email_Id_Optional": "Email (Optional)",
+  "REF_Invite_Friends": "Invite Friend",
+  "Share_Code_Below": "Share the code below or ask them to enter it\n  during they signup. Earn when your friend",
+  "OnBoard_Y9": "onboarded to Y9 application"
+
 }

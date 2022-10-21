@@ -24,6 +24,7 @@ class InputNumberFieldWithLabel extends StatelessWidget {
   final Function(String)? onChanged;
   final Function()? onTap;
   final int maxLines;
+  final int? maxLength;
 
   InputNumberFieldWithLabel({
     this.controller,
@@ -42,6 +43,7 @@ class InputNumberFieldWithLabel extends StatelessWidget {
     this.onTap,
     this.textCapitalization = TextCapitalization.words,
     this.maxLines = 1,
+    this.maxLength,
     Key? key,
   }) : super(key: key);
 
@@ -63,6 +65,7 @@ class InputNumberFieldWithLabel extends StatelessWidget {
           showCursor: showCursor,
           inputFormatters: inputFormatters,
           style: textInputStyle,
+          maxLength: maxLength,
           decoration: InputDecoration(
             border: OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(8.0)),

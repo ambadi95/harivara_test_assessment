@@ -24,6 +24,7 @@ abstract class ISignupService {
   Future<StandardRequest> signup(
     String nindaNumber,
     String phoneNo,
+    String referralCode
   );
 
   Future<StandardRequest> signupAgent(
@@ -72,10 +73,12 @@ class SignupService implements ISignupService {
   Future<StandardRequest> signup(
     String nindaNumber,
     String phoneNo,
+      String referralCode
   ) async {
     print(json.encode({
       'nidaNo': nindaNumber,
       'mobileNo': '+255' + phoneNo,
+      "referralCode": referralCode,
     }));
     var request = StandardRequest();
     request.requestType = RequestType.POST;
@@ -83,6 +86,7 @@ class SignupService implements ISignupService {
     request.jsonBody = json.encode({
       'nidaNo': nindaNumber,
       'mobileNo': '+255' + phoneNo,
+      "referralCode": referralCode,
     });
     return request;
   }

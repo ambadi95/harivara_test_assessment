@@ -45,6 +45,10 @@ class SettingsCoordinator extends BaseViewModel<SettingsState> {
     await _navigationHandler.navigateToAgentNearBy();
   }
 
+  Future<void> navigateToReferralProgram() async {
+    await _navigationHandler.navigateToReferralProgram();
+  }
+
   void navigateToBrowser(){
     _navigationHandler.navigateToTermsCondition();
   }

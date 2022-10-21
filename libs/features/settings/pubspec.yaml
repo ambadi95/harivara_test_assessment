@@ -52,6 +52,9 @@ dependencies:
   agent_nearby:
     path: ../agent_nearby
 
+  referral_program:
+    path: ../referral_program
+
 
 dev_dependencies:
   flutter_test:

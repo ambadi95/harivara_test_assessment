@@ -46,6 +46,7 @@ import 'package:other_payment/navigation_handler/otherpayment_route_manager.dart
 import 'package:other_payment/otherpayment_module.dart';
 import 'package:passcode/navigation_handler/passcode_route_manager.dart';
 import 'package:passcode/passcode_module.dart';
+import 'package:referral_program/referral_program_module.dart';
 import 'package:scanqrcode/navigation_handler/scanqrcode_route_manager.dart';
 import 'package:scanqrcode/scanqrcode_module.dart';
 import 'package:settings/navigation_handler/settings_route_manager.dart';
@@ -71,6 +72,7 @@ import 'package:downpayment/navigation_handler/downpayment_route_manager.dart';
 import 'package:configuremdm/configuremdm_module.dart';
 import 'package:configuremdm/navigation_handler/configuremdm_route_manager.dart';
 import 'package:widget_library/utils/app_utils.dart';
+import 'package:referral_program/navigation_handler/referral_program_route_manager.dart';
 
 class AppModule {
   // ignore: long-method
@@ -154,6 +156,8 @@ class AppModule {
     TermsConditionModule.registerDependencies();
 
     ConfigureMdmModule.registerDependencies();
+
+    ReferralProgramModule.registerDependencies();
 
 
     DIContainer.container.resolve<WidgetsModule>().registerDependencies();
@@ -271,6 +275,11 @@ void _registerRouteManagers() {
   navigationManagerContainer.registerRouteManager(
     ConfigureMdmModule.moduleIdentifier,
     ConfigureMdmRouteManager(),
+  );
+
+  navigationManagerContainer.registerRouteManager(
+    ReferralProgramModule.moduleIdentifier,
+    ReferralProgramRouteManager(),
   );
 
   DIContainer.container.registerSingleton<NativeDocumentDirectory>(

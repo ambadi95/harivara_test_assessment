@@ -21,6 +21,7 @@ import 'package:welcome/sub_features/app_language/view/app_language.dart';
 import 'package:config/Config.dart';
 import 'package:termscondition/termscondition/view/terms_condition_view.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:referral_program/view/referral_program_screen.dart';
 
 class SettingsNavigationHandler with ErrorHandler {
   final NavigationManager _navigationManager;
@@ -82,6 +83,12 @@ class SettingsNavigationHandler with ErrorHandler {
     await _navigationManager.navigateTo(
         CustomerDetailsScreen.viewPath, const NavigationType.push(),
         arguments: arguments);
+  }
+
+  Future<void> navigateToReferralProgram() async {
+    await _navigationManager.navigateTo(
+        ReferralProgram.viewPath, const NavigationType.push(),
+    );
   }
 
   Future<void> signOut(UserType userType) async {

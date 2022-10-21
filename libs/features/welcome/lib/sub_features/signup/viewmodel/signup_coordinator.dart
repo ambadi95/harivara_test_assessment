@@ -199,13 +199,13 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
   }
 
   Future<void> signup(SignUpArguments signUpArguments, String mobileNumber,
-      String nindaNumber, String agentId,
+      String nindaNumber, String agentId, String referralCode,
       {BuildContext? buildContext, String telecomPartner = ""}) async {
     try {
       if (signUpArguments.signupType == SignupType.customerSignUp) {
         state = const SignUpState.loadingState();
         var response = await _signupUseCase.signUp(
-            nindaNumber.replaceAll("-", ""), mobileNumber.trim(), (p0) => null);
+            nindaNumber.replaceAll("-", ""), mobileNumber.trim(), referralCode,(p0) => null);
         if (response!.status == true) {
           await continueToOtp(nindaNumber, mobileNumber);
           state = const SignUpState.initialState();
@@ -320,7 +320,7 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
       } else if (signUpArguments.signupType == SignupType.customerSignUp) {
         state = const SignUpState.loadingState();
         var response = await _signupUseCase.signUp(
-            nindaNumber.replaceAll("-", ""), mobileNumber.trim(), (p0) => null);
+            nindaNumber.replaceAll("-", ""), mobileNumber.trim(), referralCode, (p0) => null);
         if (response!.status == true) {
           await continueToOtp(nindaNumber, mobileNumber);
           state = const SignUpState.initialState();

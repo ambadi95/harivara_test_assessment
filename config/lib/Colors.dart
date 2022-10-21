@@ -19,6 +19,13 @@ const SU_button_color = Color(0xFFDA2228);
 const SU_button_text_color = Color(0xFFFFFFFF);
 const SU_grey_icon_bg = Color(0xFFF5F7FB);
 const SU_telco_yellow_checkbox_color = Color(0xFFE3AF4C);
+const RP_background_grey = Color(0xFFFAFAFB);
+const RP_active_green_bg =Color(0xFFECFDF3);
+const RP_non_active_red_bg =Color(0xFFFFE1E1);
+const RP_onboarded_blue_bg =Color(0xFFEEF4FF);
+const RP_active_text = Color(0xFF02753D);
+const RP_waiting_text = Color(0xFFC83732);
+const RPS_onBoarded_text = Color(0xFF004BEC);
 
 
 

@@ -2,6 +2,7 @@ import 'package:core/sheets/coordinator/crayon_payment_bottom_sheet_coordinator.
 import 'package:core/sheets/navigation/crayon_payment_bottom_sheet_route_manager.dart';
 import 'package:core/sheets/state/crayon_payment_bottom_sheet_state.dart';
 import 'package:core/sheets/view/widgets/bottom_sheet_app_language.dart';
+import 'package:core/sheets/view/widgets/bottom_sheet_apply_filter.dart';
 import 'package:core/sheets/view/widgets/bottom_sheet_custom_amount.dart';
 import 'package:core/sheets/view/widgets/bottom_sheet_date_picker_column.dart';
 import 'package:core/sheets/view/widgets/bottom_sheet_info_column_wrapped.dart';
@@ -97,6 +98,11 @@ class CrayonPaymentBottomSheet extends StatelessWidget {
           coordinator,
           state as ChangeLanguageBottomSheet,
         ),
+        referralApplyFiler:  (_, __, ___, additionalText, ____, _____, ______, ________) =>
+            BottomSheetApplyFilter(
+              coordinator,
+              state as ApplyFilterBottomSheet,
+            ),
         loanRepayment: (_) => BottomSheetLoanRepayment(
           coordinator,
           state as LoanRepaymentBottomSheet,

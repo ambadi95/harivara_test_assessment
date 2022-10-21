@@ -106,6 +106,17 @@ class CrayonPaymentBottomSheetState with _$CrayonPaymentBottomSheetState {
     @Default(false) bool disableCloseButton,
   }) = ChangeLanguageBottomSheet;
 
+  const factory CrayonPaymentBottomSheetState.referralApplyFiler({
+    required CrayonPaymentBottomSheetIcon bottomSheetIcon,
+    String? title,
+    String? subtitle,
+    List<String>? additionalText,
+    List<Widget>? widgetOptions,
+    List<ButtonOptions>? buttonOptions,
+    Duration? autoCloseAfter,
+    @Default(false) bool disableCloseButton,
+  }) = ApplyFilterBottomSheet;
+
   const factory CrayonPaymentBottomSheetState.loanRepayment({
     required LoanRepayment loanRepayment,
   }) = LoanRepaymentBottomSheet;

@@ -31,11 +31,14 @@ const ST_view_profile = 'assets/images/profile.svg';
 const ST_update_passcode = 'assets/images/updatePasscode.svg';
 const ST_language = 'assets/images/language.svg';
 const ST_sign_out = 'assets/images/logout.svg';
+const ST_referral_program = 'assets/images/referral_program_icon.svg';
 const ST_CallSupport = 'assets/images/call.svg';
 const ST_TermsCondition = 'assets/images/termCondition.svg';
 const ST_faq = 'assets/images/faq.svg';
 const ST_agent = 'assets/images/agent.svg';
 const ST_scan_icon = 'assets/images/scan_image.svg';
+const RPS_filter_icon = 'assets/images/RPS_filter_icon.svg';
+const Referral_icon = 'assets/images/referral_invite.png';
 
 //live Link
 //  const customerEndpoint = 'https://customerapi.y9bank.com/customers/v1/';

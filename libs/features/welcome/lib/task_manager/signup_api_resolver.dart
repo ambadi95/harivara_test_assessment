@@ -35,6 +35,7 @@ class SignupApiResolver extends TaskResolver {
         return _signupService.signup(
           requestData['nindaNumber'] as String,
           requestData['phoneNo'] as String,
+          requestData['referralCode'] as String,
         );
       case ISignupService.signUpAgentIdentifier:
         return _signupService.signupAgent(

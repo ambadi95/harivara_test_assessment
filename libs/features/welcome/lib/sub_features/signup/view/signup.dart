@@ -44,6 +44,7 @@ class _SignUpState extends State<SignUp> {
   TextEditingController mobileNumber = TextEditingController();
   TextEditingController agentId = TextEditingController();
   TextEditingController paymentMode = TextEditingController();
+  TextEditingController referralCode = TextEditingController();
 
   Datum? _paymentMode;
   String agentType = '';
@@ -165,6 +166,7 @@ class _SignUpState extends State<SignUp> {
                   : 'SU_title_hint',
               nidaNumberError,
               TextInputType.number),
+
           const SizedBox(
             height: 48,
           ),
@@ -176,6 +178,9 @@ class _SignUpState extends State<SignUp> {
           const SizedBox(
             height: 36,
           ),
+          widget.signUpArguments.signupType == SignupType.customerSignUp ?
+          _buildLabelTextField('SU_referral_code'.tr, referralCode, coordinator,
+              'SU_referral_code_hint'.tr, '', TextInputType.text) : const SizedBox(),
           agentType.isNotEmpty
               ? _buildPaymentModeDropdown(coordinator)
               : SizedBox()
@@ -385,24 +390,22 @@ class _SignUpState extends State<SignUp> {
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: GestureDetector(
         onTap: () async {
-          if (_isBtnEnabled) {
-            coordinator.isValidNidaNumber(nidaNumber.text.replaceAll("-", ""));
-            coordinator.isValidMobileNumber(
-                mobileNumber.text.trim().replaceAll(" ", ""));
-            coordinator.isValidAgentId(agentId.text);
-            coordinator.isValidPaymentMode(paymentMode.text);
-            if (_isBtnEnabled &&
-                coordinator.isValidNidaNumber(nidaNumber.text.replaceAll("-", ""))) {
-              coordinator.signup(
-                  widget.signUpArguments,
-                  mobileNumber.text.trim().replaceAll(" ", ""),
-                  nidaNumber.text.replaceAll("-", ""),
-                  agentId.text,
-                  buildContext: context,
-                  telecomPartner: paymentMode.text);
-            }
-          }
-        },
+      if (_isBtnEnabled) {
+        coordinator.isValidNidaNumber(nidaNumber.text.replaceAll("-", ""));
+        coordinator.isValidMobileNumber(
+            mobileNumber.text.trim().replaceAll(" ", ""));
+        coordinator.isValidAgentId(agentId.text);
+        coordinator.isValidPaymentMode(paymentMode.text);
+        if (_isBtnEnabled &&
+            coordinator.isValidNidaNumber(
+                nidaNumber.text.replaceAll("-", ""))) {
+          coordinator.isValidNidaNumber(nidaNumber.text);
+          coordinator.signup(widget.signUpArguments, mobileNumber.text,
+              nidaNumber.text, agentId.text, referralCode.text,
+              buildContext: context, telecomPartner: paymentMode.text);
+        }
+      }
+    },
         child: Container(
           width: double.infinity,
           height: 50,

@@ -89,7 +89,7 @@ class SignupUseCase extends BaseDataProvider {
     return await setValueToSecureStorage({'CustomerName': mobileNumber});
   }
 
-  Future<CustomerDetailResponse?> signUp(String nindaNumber, String phoneNo,
+  Future<CustomerDetailResponse?> signUp(String nindaNumber, String phoneNo, String referralCode,
       Function(String) onErrorCallback) async {
     CrayonPaymentLogger.logInfo(phoneNo.replaceAll(" ", ""));
     return await executeApiRequest<CustomerDetailResponse?>(
@@ -98,7 +98,8 @@ class SignupUseCase extends BaseDataProvider {
         moduleIdentifier: WelcomeModule.moduleIdentifier,
         requestData: {
           "nindaNumber": nindaNumber.replaceAll("-", ""),
-          "phoneNo": phoneNo.replaceAll(" ", "")
+          "phoneNo": phoneNo.replaceAll(" ", ""),
+          "referralCode" : referralCode,
         },
         serviceIdentifier: ISignupService.signupIdentifier,
         onError: onErrorCallback,

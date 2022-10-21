@@ -88,6 +88,9 @@ dependencies:
   configuremdm:
     path: ../../libs/features/configuremdm
 
+  referral_program:
+    path: ../../libs/features/referral_program
+
 
 dev_dependencies:
   test: any

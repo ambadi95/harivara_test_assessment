@@ -22,6 +22,7 @@ import 'package:home/home/home_screen_arguments.dart';
 import 'package:home/home/view/home_screen.dart';
 import 'package:loan_details/view/loan_detail_screen.dart';
 import 'package:payments/view/payments_screen.dart';
+import 'package:referral_program/view/referral_program_screen.dart';
 import 'package:shared_data_models/device_option/device_option_args.dart';
 import 'package:shared_data_models/payments/payments_screen_args.dart';
 import 'package:splash/splash/view/splash.dart';

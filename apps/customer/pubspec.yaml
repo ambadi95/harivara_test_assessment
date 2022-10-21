@@ -19,6 +19,8 @@ dependencies:
   pretty_http_logger: ^0.2.1
   url_launcher: ^6.1.5
   sqflite:
+  flutter_svg:
+
 
   config:
     path: ../../config
@@ -87,6 +89,8 @@ dependencies:
   other_payment:
     path: ../../libs/features/other_payments/otherpayments
 
+  referral_program:
+    path: ../../libs/features/referral_program
 
 
 dev_dependencies:

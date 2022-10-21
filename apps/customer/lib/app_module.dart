@@ -22,6 +22,8 @@ import 'package:core/translation/crayon_payment_transaltions_loader.dart';
 import 'package:core/translation/i_app_localization_service.dart';
 import 'package:core/utils/input_formatters/length_text_formatter.dart';
 import 'package:core/validators/input_entry_validator/input_entry_validator.dart';
+import 'package:referral_program/navigation_handler/referral_program_route_manager.dart';
+import 'package:referral_program/referral_program_module.dart';
 import 'package:widget_library/utils/app_utils.dart';
 import 'package:device_option/device_option_module.dart';
 import 'package:device_option/navigation_handler/device_option_route_manager.dart';
@@ -130,6 +132,7 @@ class AppModule {
     TermsConditionModule.registerDependencies();
     SettingsModule.registerDependencies();
     PaymentsModule.registerDependencies();
+    ReferralProgramModule.registerDependencies();
 
     DIContainer.container.resolve<WidgetsModule>().registerDependencies();
 
@@ -226,6 +229,11 @@ void _registerRouteManagers() {
   navigationManagerContainer.registerRouteManager(
     LoanDetailModule.moduleIdentifier,
     LoanDetailRouteManager(),
+  );
+
+  navigationManagerContainer.registerRouteManager(
+    ReferralProgramModule.moduleIdentifier,
+    ReferralProgramRouteManager(),
   );
 
   DIContainer.container.registerSingleton<NativeDocumentDirectory>(

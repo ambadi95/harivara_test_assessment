@@ -45,12 +45,18 @@ class _SettingsState extends State<Settings> {
             height: 48,
           ),
           _buildProfileOptionList(coordinator),
+          widget.screenArgs.userType == UserType.Customer ?
+          _buildReferralProgram(coordinator) : const SizedBox(),
+          const SizedBox(
+            height: 30,
+          ),
           widget.screenArgs.isAgent
               ? const SizedBox()
               : _buildSupportOptionsList(coordinator),
           const SizedBox(
             height: 30,
           ),
+
           _buildSignout(coordinator),
           const SizedBox(
             height: 30,
@@ -184,6 +190,12 @@ class _SettingsState extends State<Settings> {
      if(isLogoutClicked!=null && isLogoutClicked){
        coordinator.signOut(widget.screenArgs.userType);
      }
+    });
+  }
+
+  Widget _buildReferralProgram(coordinator) {
+    return _buildOptions(context, 'Referral Program', ST_referral_program, () async {
+      coordinator.navigateToReferralProgram();
     });
   }
 
