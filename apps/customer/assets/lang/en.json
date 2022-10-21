@@ -351,6 +351,9 @@
   "Email_Id_Optional": "Email (Optional)",
   "REF_Invite_Friends": "Invite Friend",
   "Share_Code_Below": "Share the code below or ask them to enter it\n  during they signup. Earn when your friend",
-  "OnBoard_Y9": "onboarded to Y9 application"
+  "OnBoard_Y9": "onboarded to Y9 application",
 
+  "UPDATE_AND_PROCEED": "Update & Proceed",
+  "go_back_to_home" : "Are you sure you wish to go back?",
+  "success_thanks": "Thanks"
 }

@@ -391,6 +391,9 @@
   "Email_Id_Optional": "Email (Optional)",
   "REF_Invite_Friends": "Invite Friend",
   "Share_Code_Below": "Share the code below or ask them to enter it\n  during they signup. Earn when your friend",
-  "OnBoard_Y9": "onboarded to Y9 application"
+  "OnBoard_Y9": "onboarded to Y9 application",
+
+  "go_back_to_home" : "Je, una uhakika, ungependa kurudi?",
+  "success_thanks": "Asante"
 
 }
