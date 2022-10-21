@@ -93,7 +93,7 @@ class _OutOfStockSuccessScreenState extends State<OutOfStockSuccessScreen> {
           RichText(
             textAlign: TextAlign.center,
             text: TextSpan(
-              text: 'success_hi'.tr,
+              text: 'success_thanks'.tr,
               style:  const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w500,

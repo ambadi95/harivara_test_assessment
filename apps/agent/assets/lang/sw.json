@@ -373,6 +373,7 @@
   "UPDATE_AND_PROCEED": "Sasisha na Uendelee",
   "exit_the_app" : "Je, una uhakika unataka kuondoka kwenye programu?",
   "go_back_to_home" : "Je, una uhakika, ungependa kurudi?",
-  "OK" : "sawa"
+  "OK" : "sawa",
+  "success_thanks": "Asante"
 
 }

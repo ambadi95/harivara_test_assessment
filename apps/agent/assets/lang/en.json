@@ -369,6 +369,7 @@
   "UPDATE_AND_PROCEED": "Update & Proceed",
   "exit_the_app" : "Are you sure you want to exit from app?",
   "go_back_to_home" : "Are you sure you wish to go back?",
-  "OK" : "OK"
+  "OK" : "OK",
+  "success_thanks": "Thanks"
 }
 
