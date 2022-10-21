@@ -386,12 +386,12 @@
   "PRI_success_message" : "Mwaliko umetumwa kwa ",
   "RPS_no_referral_found" : "Hakuna Marejeleo Yaliyopatikana",
 
-  "HS_InviteYourFriends_GetBonus": "Invite your friends and get referal",
-  "Bonus_Points": "bonus point’s",
-  "Email_Id_Optional": "Email (Optional)",
-  "REF_Invite_Friends": "Invite Friend",
-  "Share_Code_Below": "Share the code below or ask them to enter it\n  during they signup. Earn when your friend",
-  "OnBoard_Y9": "onboarded to Y9 application",
+  "HS_InviteYourFriends_GetBonus": "Alika marafiki zako na upate rufaa",
+  "Bonus_Points": "pointi za ziada",
+  "Email_Id_Optional": "Barua pepe (Si lazima)",
+  "REF_Invite_Friends": "Alika Rafiki",
+  "Share_Code_Below": "Shiriki msimbo ulio hapa chini au uwaombe wauweke\n  wakati wa kujiandikisha. Pata wakati rafiki yako",
+  "OnBoard_Y9": "imeingizwa kwenye programu ya Y9",
 
   "go_back_to_home" : "Je, una uhakika, ungependa kurudi?",
   "success_thanks": "Asante"
