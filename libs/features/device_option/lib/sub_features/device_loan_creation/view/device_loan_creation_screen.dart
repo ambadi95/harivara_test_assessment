@@ -55,6 +55,7 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
   num payNowTotal = 0.0;
 
   String telcoPartner = '';
+  String deviceImage = '';
 
   LoanPreviewResponseModel? loanPreviewResponseModel;
 
@@ -65,7 +66,8 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
     return BaseView<DeviceLoanCreationCoordinator, DeviceLoanCreationState>(
         setupViewModel: (coordinator) async {
           telcoPartner = await coordinator.getTelcoPartner();
-          detailDetail = widget.deviceLoanCreationArgs.deviceDetailData;
+          deviceImage = 'assets/a03.png';
+          detailDetail = await coordinator.getDeviceDetail();
           if (detailDetail != null && detailDetail!.deviceId != 0) {
             loanPreviewResponseModel = await coordinator.getLoanPreview(
                 context, detailDetail!.deviceId!);
@@ -138,7 +140,7 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Image.asset(
-              widget.deviceLoanCreationArgs.image,
+              deviceImage,
               width: 95,
               height: 132,
               package: 'shared_data_models',
@@ -653,25 +655,25 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
           if (radioValue == 1) {
             coordinator.navigateToDownPayment(
                 payNowTotal.toString(),
-                widget.deviceLoanCreationArgs.deviceDetailData.deviceId,
-                widget.deviceLoanCreationArgs.deviceDetailData.modelNumber
+                detailDetail!.deviceId,
+                detailDetail!.modelNumber
                     .toString(),
                 false,
                 false);
           } else if (radioValue == 2) {
             coordinator.navigateToOtherScreen(
-                widget.deviceLoanCreationArgs.deviceDetailData.deviceId!,
-                widget.deviceLoanCreationArgs.deviceDetailData.modelNumber
+                detailDetail!.deviceId!,
+                detailDetail!.modelNumber
                     .toString(),
                 double.parse(payNowTotal.toString()),
-                widget.deviceLoanCreationArgs.image,
+                deviceImage,
                 false,
                 false);
           } else if (radioValue == 4) {
             coordinator.navigateToDownPayment(
                 payNowTotal.toString(),
-                widget.deviceLoanCreationArgs.deviceDetailData.deviceId,
-                widget.deviceLoanCreationArgs.deviceDetailData.modelNumber
+                detailDetail!.deviceId,
+                detailDetail!.modelNumber
                     .toString(),
                 false,
                 false);
@@ -703,25 +705,25 @@ class _DeviceLoanCreationScreenState extends State<DeviceLoanCreationScreen> {
           if (radioValue == 1) {
             coordinator.navigateToDownPayment(
                 payNowTotal.toString(),
-                widget.deviceLoanCreationArgs.deviceDetailData.deviceId,
-                widget.deviceLoanCreationArgs.deviceDetailData.modelNumber
+                detailDetail!.deviceId,
+                detailDetail!.modelNumber
                     .toString(),
                 true,
                 false);
           } else if (radioValue == 2) {
             coordinator.navigateToOtherScreen(
-                widget.deviceLoanCreationArgs.deviceDetailData.deviceId!,
-                widget.deviceLoanCreationArgs.deviceDetailData.modelNumber
+                detailDetail!.deviceId!,
+                detailDetail!.modelNumber
                     .toString(),
                 double.parse(payNowTotal.toString()),
-                widget.deviceLoanCreationArgs.image,
+                deviceImage,
                 true,
                 false);
           } else if (radioValue == 4) {
             coordinator.navigateToDownPayment(
                 payNowTotal.toString(),
-                widget.deviceLoanCreationArgs.deviceDetailData.deviceId,
-                widget.deviceLoanCreationArgs.deviceDetailData.modelNumber
+                detailDetail!.deviceId,
+                detailDetail!.modelNumber
                     .toString(),
                 true,
                 false);

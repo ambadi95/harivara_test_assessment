@@ -394,9 +394,8 @@ class DownPaymentCoordinator extends AnalyticsStateNotifier<DownPaymentState> {
           bottomButtonText: isPaymentError == true ? 'PF_back_to_payment'.tr :'Back_To_Home'.tr,
           onBottomButtonPress: (){
             if(isPaymentError == true){
-              _navigationHandler.pop();
-              _navigationHandler.pop();
-              _navigationHandler.pop();
+              _navigationHandler.goBack();
+             _navigationHandler.navigateToDeviceLoanCreation();
             }else{
               _navigationHandler.goBack();
             }

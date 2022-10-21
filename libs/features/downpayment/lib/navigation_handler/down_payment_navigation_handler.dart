@@ -1,5 +1,5 @@
 import 'dart:ui';
-
+import 'package:device_option/sub_features/device_loan_creation/view/device_loan_creation_screen.dart';
 import 'package:config/Colors.dart';
 import 'package:core/navigation/navigation_manager.dart';
 import 'package:core/navigation/navigation_type.dart';
@@ -10,6 +10,8 @@ import 'package:home/home/home_screen_arguments.dart';
 import 'package:scanqrcode/view/scanqrcode_screen.dart';
 import 'package:scanqrcode/view/out_of_stock_success_screen.dart';
 import 'package:scanqrcode/view/successful_screen.dart';
+import 'package:shared_data_models/agent_onboard/agent_customer_onboard/response/data.dart';
+import 'package:shared_data_models/deviceloancreation/devicecreation_screen_args.dart';
 import 'package:shared_data_models/scan_qr_code/scan_qrcode_args.dart';
 import 'package:widget_library/helpers/error/helper/error_helper.dart';
 import 'package:home/home/home_screen_arguments.dart';
@@ -18,6 +20,7 @@ import 'package:core/navigation/navigation_type.dart';
 import 'package:get/get.dart';
 import 'package:config/Config.dart';
 import 'package:widget_library/icons/crayon_payment_bottom_sheet_icon.dart';
+import 'package:shared_data_models/device_option/detail_detail_response/data.dart' as b;
 
 class DownPaymentNavigationHandler with ErrorHandler {
   final NavigationManager _navigationManager;
@@ -42,6 +45,14 @@ class DownPaymentNavigationHandler with ErrorHandler {
         CrayonHomeScreen.viewPath, const NavigationType.replace(),
         arguments: args);
   }
+
+  Future<void> navigateToDeviceLoanCreation() async {
+    var arguments = DeviceLoanCreationArgs(b.Data(color: '',),'');
+    await _navigationManager.navigateTo(
+        DeviceLoanCreationScreen.viewPath, const NavigationType.replaceCurrent(),
+        arguments: arguments);
+  }
+
   Future<void> showErrorBottomSheet(
       Widget widget, BuildContext context,) async {
     showModalBottomSheet(

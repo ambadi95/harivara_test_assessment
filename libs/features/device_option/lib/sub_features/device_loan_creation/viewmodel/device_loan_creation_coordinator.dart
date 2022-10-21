@@ -43,6 +43,15 @@ class DeviceLoanCreationCoordinator
     }
   }
 
+  Future getDeviceDetail() async {
+    var response =
+    await _DeviceOptionUseCase.getDeviceDetail(1, (p0) => null);
+    print(response);
+    if (response!.status == true) {
+      return response.data;
+    }
+  }
+
 
   _showAlertForErrorMessage(String errorMessage) {
     Get.bottomSheet(

@@ -52,6 +52,9 @@ dependencies:
   home:
     path: ../home
 
+  device_option:
+    path: ../device_option
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
