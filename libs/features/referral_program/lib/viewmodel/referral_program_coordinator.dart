@@ -19,6 +19,7 @@ class ReferralProgramCoordinator
   final ReferralProgramUseCase _referralProgramUsecase;
 
    String mobileNumberError = '';
+   String nameError = '';
   final TextEditingController mobileNumber = TextEditingController();
   final TextEditingController name = TextEditingController();
   final TextEditingController emailId = TextEditingController();
@@ -124,6 +125,7 @@ class ReferralProgramCoordinator
     }else {
       bool result = _referralProgramUsecase.isValidName(name);
       if (!result) {
+        nameError='true';
         state = ReferralProgramState(
             nameError: 'DV_name_error_text',
             mobileNumberError: state.mobileNumberError,
@@ -275,6 +277,22 @@ class ReferralProgramCoordinator
   void disableButton() {
     if (mobileNumberError == 'true') {
       if (isMobileNumberValid(mobileNumber.text.trim().replaceAll(" ", ""))) {
+        state = ReferralProgramState(
+            isLoading: false, selectedTab: 0, inviteFriendsButtonDisabled: 1);
+      }
+    } else {
+      state = ReferralProgramState(
+          isLoading: false,
+          selectedTab: 0,
+          inviteFriendsButtonDisabled: 0,
+          nameError: state.nameError,
+          emailError: state.emailError,
+          mobileNumberError: state.mobileNumberError);
+    }
+  }
+  void checkNameConditions() {
+    if (nameError == 'true') {
+      if (isValidName(name.text)) {
         state = ReferralProgramState(
             isLoading: false, selectedTab: 0, inviteFriendsButtonDisabled: 1);
       }

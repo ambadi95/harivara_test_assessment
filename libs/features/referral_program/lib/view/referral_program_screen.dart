@@ -284,7 +284,7 @@ class ReferralProgram extends StatelessWidget {
               } else if (coordinator.isValidNameCondition(coordinator.name.text) == true) {
                 coordinator.checkValidation();
               } else {
-                coordinator.checkValidation();
+                coordinator.checkNameConditions();
               }
             } else {
               if (state!.emailError.isNotEmpty) {
