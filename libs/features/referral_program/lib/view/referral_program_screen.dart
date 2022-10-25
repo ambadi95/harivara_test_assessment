@@ -348,7 +348,7 @@ class ReferralProgram extends StatelessWidget {
         ],
         keyboardType: TextInputType.number,
         onChanged: (value) {
-          if (coordinator.mobileNumberError.isNotEmpty) {
+          if (state.mobileNumberError.isNotEmpty) {
             coordinator.isMobileNumberValid(
                 coordinator.mobileNumber.text.trim().replaceAll(" ", ""));
             coordinator.checkValidation();
@@ -359,7 +359,7 @@ class ReferralProgram extends StatelessWidget {
               9) {
             coordinator.checkValidation();
           } else {
-            coordinator.checkValidation();
+            coordinator.disableButton();
           }
         },
       ),

@@ -263,13 +263,19 @@ class ReferralProgramCoordinator
               isLoading: false, selectedTab: 0, inviteFriendsButtonDisabled: 1);
         }
       }else {
-
         if (isMobileNumberValid(mobileNumber.text.trim().replaceAll(" ", "")) && isValidName(name.text)) {
           state = ReferralProgramState(
               isLoading: false, selectedTab: 0, inviteFriendsButtonDisabled: 1);
         }
       }
     }
+  }
+
+  void disableButton(){
+
+
+    state = ReferralProgramState(
+        isLoading: false, selectedTab: 0, inviteFriendsButtonDisabled: 0,nameError: state.nameError,emailError: state.emailError,mobileNumberError: state.mobileNumberError);
   }
 
 
