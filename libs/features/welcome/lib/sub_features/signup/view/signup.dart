@@ -181,7 +181,7 @@ class _SignUpState extends State<SignUp> {
           agentType.isNotEmpty
               ? _buildPaymentModeDropdown(coordinator)
               : SizedBox(),
-          widget.signUpArguments.signupType != SignupType.agentSignUp ?
+          widget.signUpArguments.signupType == SignupType.customerSignUp || widget.signUpArguments.signupType == SignupType.agentAidedCustomerOnBoarding ?
           Column(
             children: [
               SizedBox(height: 10,),
