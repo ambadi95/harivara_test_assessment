@@ -123,39 +123,33 @@ class ReferralProgram extends StatelessWidget {
     );
   }
 
+
   Widget _buildTabBar(BuildContext context, ReferralProgramState state,
       ReferralProgramCoordinator coordinator) {
-    return Stack(
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(top: 29, left: 9, right: 9),
-          child: Divider(
-            color: Colors.grey,
-            thickness: 1,
-          ),
-        ),
-        DefaultTabController(
-            length: 2,
-            child: TabBar(
-              labelColor: Colors.red,
-              unselectedLabelColor: Colors.black,
-              indicatorColor: Colors.red,
-              indicatorWeight: 4,
-              labelPadding: EdgeInsets.only(bottom: 13),
-              padding: EdgeInsets.only(left: 10, right: 10),
-              labelStyle: TextStyle(
-                  fontSize: 16,
-                  fontFamily: 'Montserrat',
-                  fontWeight: FontWeight.bold),
-              onTap: (index) {
-                coordinator.tabSelected(index);
-              },
-              tabs: [Text('RP_invite'.tr), Text('RP_status'.tr)],
-            )),
-      ],
+    return Container(
+      decoration: BoxDecoration(
+        border: Border(bottom: BorderSide(color: Colors.grey, width: 1)),
+      ),
+      child: DefaultTabController(
+          length: 2,
+          child: TabBar(
+            labelColor: Colors.red,
+            unselectedLabelColor: Colors.black,
+            indicatorColor: Colors.red,
+            indicatorWeight: 4,
+            labelPadding: EdgeInsets.only(bottom: 13),
+            automaticIndicatorColorAdjustment: true,
+            labelStyle: TextStyle(
+                fontSize: 16,
+                fontFamily: 'Montserrat',
+                fontWeight: FontWeight.bold),
+            onTap: (index) {
+              coordinator.tabSelected(index);
+            },
+            tabs: [Text('RP_invite'.tr), Text('RP_status'.tr)],
+          )),
     );
   }
-
   _buildTabView(BuildContext context, ReferralProgramCoordinator coordinator,
       ReferralProgramState state) {
     return Container(
