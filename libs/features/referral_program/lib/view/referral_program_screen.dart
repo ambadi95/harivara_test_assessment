@@ -89,11 +89,7 @@ class ReferralProgram extends StatelessWidget {
       child: GestureDetector(
         onTap: () async {
           if (state.inviteFriendsButtonDisabled == 1) {
-
-
-                coordinator.callInviteFriends();
-
-
+            coordinator.callInviteFriends();
           }
         },
         child: Container(
@@ -232,7 +228,8 @@ class ReferralProgram extends StatelessWidget {
             inputFormatter: [
               FilteringTextInputFormatter.allow(RegExp('[a-zA-Z ]')),
               FilteringTextInputFormatter.deny(RegExp('[0-9]')),
-            ]),
+            ],
+            state: state),
         SizedBox(
           height: 18,
         ),
@@ -244,7 +241,8 @@ class ReferralProgram extends StatelessWidget {
             coordinator,
             state.emailError,
             'DV_email_hint_text',
-            true),
+            true,
+            state: state),
         SizedBox(
           height: 18,
         ),
@@ -253,16 +251,16 @@ class ReferralProgram extends StatelessWidget {
   }
 
   Widget _buildLabelTextField(
-    String tag,
-    String label,
-    TextEditingController controller,
-    TextInputType textInputType,
-    ReferralProgramCoordinator coordinator,
-    String errorText,
-    String hint,
-    bool enabled, {
-    List<TextInputFormatter>? inputFormatter,
-  }) {
+      String tag,
+      String label,
+      TextEditingController controller,
+      TextInputType textInputType,
+      ReferralProgramCoordinator coordinator,
+      String errorText,
+      String hint,
+      bool enabled,
+      {List<TextInputFormatter>? inputFormatter,
+      ReferralProgramState? state}) {
     return FocusScope(
       child: Focus(
         onFocusChange: (focus) {
@@ -283,9 +281,26 @@ class ReferralProgram extends StatelessWidget {
           keyboardType: textInputType,
           inputFormatters: inputFormatter ?? [],
           onChanged: (value) {
-            if (coordinator.name.text.isNotEmpty) {
-              coordinator.isValidName(coordinator.name.text);
-              coordinator.checkValidation();
+            if (label == 'Name') {
+
+              if (state!.nameError.isNotEmpty) {
+
+                coordinator.isValidName(coordinator.name.text);
+                coordinator.checkValidation();
+              } else if (coordinator.isValidNameCondition(coordinator.name.text) == true) {
+                coordinator.checkValidation();
+              } else {
+                coordinator.checkValidation();
+              }
+            } else {
+              if (state!.emailError.isNotEmpty) {
+                coordinator.isValidEmail(coordinator.emailId.text);
+                coordinator.checkValidation();
+              } else if (coordinator.isValidEmailIdCondition(coordinator.emailId.text) == true) {
+                coordinator.checkValidation();
+              } else {
+                coordinator.checkValidation();
+              }
             }
           },
         ),
@@ -315,7 +330,8 @@ class ReferralProgram extends StatelessWidget {
     return Focus(
       onFocusChange: (focus) {
         if (coordinator.mobileNumber.text.isNotEmpty) {
-          coordinator.isMobileNumberValid(coordinator.mobileNumber.text.trim().replaceAll(" ", ""));
+          coordinator.isMobileNumberValid(
+              coordinator.mobileNumber.text.trim().replaceAll(" ", ""));
           coordinator.checkValidation();
         }
       },
@@ -332,8 +348,17 @@ class ReferralProgram extends StatelessWidget {
         ],
         keyboardType: TextInputType.number,
         onChanged: (value) {
-          if (coordinator.mobileNumber.text.isNotEmpty) {
-            coordinator.isMobileNumberValid(coordinator.mobileNumber.text.trim().replaceAll(" ", ""));
+          if (coordinator.mobileNumberError.isNotEmpty) {
+            coordinator.isMobileNumberValid(
+                coordinator.mobileNumber.text.trim().replaceAll(" ", ""));
+            coordinator.checkValidation();
+          } else if (coordinator.mobileNumber.text
+                  .trim()
+                  .replaceAll(" ", "")
+                  .length ==
+              9) {
+            coordinator.checkValidation();
+          } else {
             coordinator.checkValidation();
           }
         },
