@@ -293,7 +293,7 @@ class ReferralProgram extends StatelessWidget {
               } else if (coordinator.isValidEmailIdCondition(coordinator.emailId.text) == true) {
                 coordinator.checkValidation();
               } else {
-                coordinator.checkValidation();
+                coordinator.emailConditions();
               }
             }
           },

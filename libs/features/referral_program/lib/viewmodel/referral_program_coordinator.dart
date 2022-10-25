@@ -20,6 +20,7 @@ class ReferralProgramCoordinator
 
    String mobileNumberError = '';
    String nameError = '';
+   String emailError = '';
   final TextEditingController mobileNumber = TextEditingController();
   final TextEditingController name = TextEditingController();
   final TextEditingController emailId = TextEditingController();
@@ -157,7 +158,9 @@ class ReferralProgramCoordinator
     }else {
       bool result = isValidEmailIdCondition(emailId);
       if (!result) {
-        state = ReferralProgramState(
+        emailError == 'true';
+
+          state = ReferralProgramState(
             emailError: 'DV_email_error_text',
             mobileNumberError: state.mobileNumberError,
             nameError: state.nameError);
@@ -293,6 +296,23 @@ class ReferralProgramCoordinator
   void checkNameConditions() {
     if (nameError == 'true') {
       if (isValidName(name.text)) {
+        state = ReferralProgramState(
+            isLoading: false, selectedTab: 0, inviteFriendsButtonDisabled: 1);
+      }
+    } else {
+      state = ReferralProgramState(
+          isLoading: false,
+          selectedTab: 0,
+          inviteFriendsButtonDisabled: 0,
+          nameError: state.nameError,
+          emailError: state.emailError,
+          mobileNumberError: state.mobileNumberError);
+    }
+  }
+
+  void emailConditions() {
+    if (emailError == 'true') {
+      if (isValidEmail(emailId.text)) {
         state = ReferralProgramState(
             isLoading: false, selectedTab: 0, inviteFriendsButtonDisabled: 1);
       }
