@@ -18,7 +18,7 @@ class ReferralProgramCoordinator
   final ReferralProgramNavigationHandler _navigationHandler;
   final ReferralProgramUseCase _referralProgramUsecase;
 
-  final String mobileNumberError = '';
+   String mobileNumberError = '';
   final TextEditingController mobileNumber = TextEditingController();
   final TextEditingController name = TextEditingController();
   final TextEditingController emailId = TextEditingController();
@@ -186,6 +186,7 @@ class ReferralProgramCoordinator
     } else {
       var result = _referralProgramUsecase.isValidMobileNumber(mobileNumber);
       if (!result) {
+        mobileNumberError="true";
         state = ReferralProgramState(
             mobileNumberError: 'LS_mobile_error_text',
             nameError: state.nameError,
@@ -271,11 +272,21 @@ class ReferralProgramCoordinator
     }
   }
 
-  void disableButton(){
-
-
-    state = ReferralProgramState(
-        isLoading: false, selectedTab: 0, inviteFriendsButtonDisabled: 0,nameError: state.nameError,emailError: state.emailError,mobileNumberError: state.mobileNumberError);
+  void disableButton() {
+    if (mobileNumberError == 'true') {
+      if (isMobileNumberValid(mobileNumber.text.trim().replaceAll(" ", ""))) {
+        state = ReferralProgramState(
+            isLoading: false, selectedTab: 0, inviteFriendsButtonDisabled: 1);
+      }
+    } else {
+      state = ReferralProgramState(
+          isLoading: false,
+          selectedTab: 0,
+          inviteFriendsButtonDisabled: 0,
+          nameError: state.nameError,
+          emailError: state.emailError,
+          mobileNumberError: state.mobileNumberError);
+    }
   }
 
 
