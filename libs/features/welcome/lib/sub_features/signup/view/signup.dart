@@ -408,7 +408,7 @@ class _SignUpState extends State<SignUp> {
                 nidaNumber.text.replaceAll("-", ""))) {
           coordinator.isValidNidaNumber(nidaNumber.text);
           coordinator.signup(widget.signUpArguments, mobileNumber.text,
-              nidaNumber.text, agentId.text, referralCode.text,
+              nidaNumber.text, agentId.text, referralCode.text.trim(),
               buildContext: context, telecomPartner: paymentMode.text);
         }
       }

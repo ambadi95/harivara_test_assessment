@@ -84,6 +84,10 @@ class VerifyOtpUseCase extends BaseDataProvider {
     return await getValueFromSecureStorage('agentId', defaultValue: '');
   }
 
+  Future<void> saveNidaNumber(String nidaNumber) async {
+    await setValueToStorage({'nidaNumber': nidaNumber});
+  }
+
   Future<OtpResponse?> otpGen(String id, UserType userType, String event,
       Function(String) onErrorCallback) async {
     OtpRequest otpRequest = OtpRequest(

@@ -274,6 +274,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
               if (getWorkFlowStatus!.status!) {
                 CrayonPaymentLogger.logInfo('I am in WorkFlow Status');
                 isCorrectOtp = true;
+                await _verifyOtpUseCase.saveNidaNumber('${getWorkFlowStatus.data!.data[3]["nidaNo"]}');
                 navigationToWorkFlow(
                     getWorkFlowStatus, getWorkFlowStatus.data!.status!);
                 //_navigationHandler.navigateToDetailScreen();
@@ -711,6 +712,7 @@ class VerifyOtpCoordinator extends BaseViewModel<VerifyOtpState> {
   Future<void> _saveData(WorkFlowStatusResponse workFlowStatusResponse) async {
     await _verifyOtpUseCase.saveCustomerId(
         '${workFlowStatusResponse.data!.data[3]["customerId"]}');
+    await _verifyOtpUseCase.saveNidaNumber('${workFlowStatusResponse.data!.data[3]["nidaNo"]}');
     await _verifyOtpUseCase
         .setPaymentId('${workFlowStatusResponse.data!.data[3]["paymentId"]}');
     await _verifyOtpUseCase.saveMobileNumber(
