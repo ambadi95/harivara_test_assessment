@@ -100,12 +100,14 @@ class _SignUpState extends State<SignUp> {
               ));
 
   Widget _UI(SignUpCoordinator coordinator) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        _buildTopContainer(context, coordinator),
-        _buildMainUI(coordinator),
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _buildTopContainer(context, coordinator),
+          _buildMainUI(coordinator),
+        ],
+      ),
     );
   }
 
