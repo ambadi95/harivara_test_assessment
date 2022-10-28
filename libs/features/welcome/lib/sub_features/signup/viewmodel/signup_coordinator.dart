@@ -341,6 +341,9 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
         if (agentResponse?.status == true) {
           AppUtils.appUtilsInstance.saveUserType(UserType.Agent);
 
+
+          await _signupUseCase.saveAgentType("Normal_Agent");
+
           await _signupUseCase.saveAgentDetails(nindaNumber, agentId);
 
           state = const SignUpState.initialState();
