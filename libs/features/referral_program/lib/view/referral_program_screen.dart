@@ -234,7 +234,7 @@ class ReferralProgram extends StatelessWidget {
             TextInputType.emailAddress,
             coordinator,
             state.emailError,
-            'DV_email_hint_text',
+            'DV_email_hint_text'.tr,
             true,
             state: state),
         SizedBox(
@@ -275,7 +275,7 @@ class ReferralProgram extends StatelessWidget {
           keyboardType: textInputType,
           inputFormatters: inputFormatter ?? [],
           onChanged: (value) {
-            if (label == 'Name') {
+            if (label == 'Name' || label == 'Jina') {
 
               if (state!.nameError.isNotEmpty) {
 
