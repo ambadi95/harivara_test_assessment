@@ -555,12 +555,14 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
 
   //showalert for error message
   _showAlertForErrorMessage(String errorMessage) {
+    state = const SignUpState.initialState();
     Get.bottomSheet(
       AlertBottomSheet(
           alertMessage: errorMessage,
           alertTitle: 'Error',
           alertIcon: "assets/images/alert_icon.png",
           onClose: () {
+
             goBack();
           },
           packageName: ""),
