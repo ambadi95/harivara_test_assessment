@@ -427,6 +427,9 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
                   mobileNumber: mobileNumber,
                   dataShown: response.data!.mobileNo!
                       .substring(response.data!.mobileNo!.length - 2));
+            }else{
+              _showAlertForErrorMessage(response.message!);
+
             }
           } else {
             _showAlertForErrorMessage(response.message!);
