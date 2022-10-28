@@ -316,6 +316,7 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
             referralCode,
             (p0) => null);
         if (response!.status == true) {
+          String selectedLanguage = await _signupUseCase.getLocale();
           await continueToOtp(nindaNumber, mobileNumber);
           state = const SignUpState.initialState();
           await _signupUseCase
@@ -323,7 +324,8 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
           await _signupUseCase.saveClientId(response.data?.clientId.toString());
 
           AppUtils.appUtilsInstance.saveUserType(UserType.Customer);
-
+          await _signupUseCase.setPreferences(
+              selectedLanguage,response.data?.customerId.toString(), (p0) => null);
           _navigationHandler.navigateToOtpScreenCustomerSignUp(
               signUpArguments.userType, mobileNumber,
               userId: response.data?.customerId.toString());
@@ -437,6 +439,8 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
         }
       } else if (signUpArguments.signupType == SignupType.customerSignUp) {
         state = const SignUpState.loadingState();
+        String selectedLanguage = await _signupUseCase.getLocale();
+
         var response = await _signupUseCase.signUp(
             nindaNumber.replaceAll("-", ""),
             mobileNumber.trim(),
@@ -447,6 +451,10 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
           state = const SignUpState.initialState();
           await _signupUseCase
               .saveCustomerId(response.data?.customerId.toString());
+          await _signupUseCase
+              .saveClientId(response.data?.clientId.toString());
+          await _signupUseCase.setPreferences(
+              selectedLanguage,response.data?.customerId.toString(), (p0) => null);
           await _signupUseCase.saveClientId(response.data?.clientId.toString());
           _navigationHandler.navigateToOtpScreenCustomerSignUp(
               signUpArguments.userType, mobileNumber,

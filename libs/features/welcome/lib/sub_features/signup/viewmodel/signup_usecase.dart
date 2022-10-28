@@ -7,12 +7,14 @@ import 'package:shared_data_models/agent_onboard/signup/response/agent_sign_up_r
 import 'package:shared_data_models/auth/auth_detail.dart';
 import 'package:shared_data_models/customer_details/response/get_customer_details_response/get_customer_details_response.dart';
 import 'package:shared_data_models/customer_onboard/customer_details/response/customer_detail_response.dart';
+import 'package:shared_data_models/preference/preference_response.dart';
 import 'package:task_manager/base_classes/base_data_provider.dart';
 import 'package:task_manager/task_manager.dart';
 import 'package:task_manager/task_manager_impl.dart';
 import 'package:welcome/sub_features/signup/viewmodel/signup_viewmodel.dart';
 import 'package:shared_data_models/customer_onboard/payment_mode_list_respose/payment_mode_list_response/payment_mode_list_response.dart';
 import '../../../welcome_module.dart';
+import '../../welcome/service/perference_service.dart';
 import '../service/signup_service.dart';
 
 class SignupUseCase extends BaseDataProvider {
@@ -87,6 +89,16 @@ class SignupUseCase extends BaseDataProvider {
 
   Future<void> _saveCustomerName(String mobileNumber) async {
     return await setValueToSecureStorage({'CustomerName': mobileNumber});
+  }
+
+  Future<String> getLocale() async {
+    String defaultLocale = 'en';
+    String savedLocale =
+    await getValueFromStorage('current_locale', defaultValue: '');
+    if (savedLocale.isEmpty) {
+      savedLocale = defaultLocale;
+    }
+    return savedLocale;
   }
 
   Future<CustomerDetailResponse?> signUp(String nindaNumber, String phoneNo, String referralCode,
@@ -271,6 +283,23 @@ class SignupUseCase extends BaseDataProvider {
         modelBuilderCallback: (responseData) {
           final data = responseData;
           return PaymentModeListResponse.fromMap(data);
+        });
+  }
+
+  Future<PreferenceResponse?> setPreferences(String lang,String? customerID,
+      Function(String) onErrorCallback) async {
+    return await executeApiRequest<PreferenceResponse?>(
+        taskType: TaskType.DATA_OPERATION,
+        taskSubType: TaskSubType.REST,
+        moduleIdentifier: WelcomeModule.moduleIdentifier,
+        requestData: {"customerId": customerID,
+          "lang" : lang
+        },
+        serviceIdentifier: IPreferencesService.preferencesIdentifier,
+        onError: onErrorCallback,
+        modelBuilderCallback: (responseData) {
+          final data = responseData;
+          return PreferenceResponse.fromMap(data);
         });
   }
 }

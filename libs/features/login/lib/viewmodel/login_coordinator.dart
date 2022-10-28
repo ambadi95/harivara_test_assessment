@@ -117,13 +117,20 @@ class LoginCoordinator extends AnalyticsStateNotifier<LoginState> {
   ) async {
     state = LoginState.loading();
     try {
+      String selectedLanguage = await _loginUseCase.getLocale();
+
       var response = await _loginUseCase.login(
           '+255' + mobileNumber, passcode, (p0) => null);
       if (response?.status == true) {
         state = LoginState.successState();
         AppUtils.appUtilsInstance.saveUserType(UserType.Customer);
-        _navigationHandler.navigateToOtpScreen(
-            userType, mobileNumber, response!.data!.id!);
+        await _loginUseCase.setPreferences(
+            selectedLanguage, (p0) => null);
+
+          _navigationHandler.navigateToOtpScreen(
+              userType, mobileNumber, response!.data!.id!);
+
+
       } else {
 
         state = LoginState.mobileNumberError(response!.message!);

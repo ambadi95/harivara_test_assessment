@@ -107,6 +107,7 @@ class WelcomeBackCoordinator extends BaseViewModel<WelcomeScreenState> {
 
   Future customerLogin(String passcode, UserType userType) async {
     String mobileNumber = await _welcomeUseCase.getMobileNumber();
+    String selectedLanguage = await _welcomeUseCase.getLocale();
     state = state.copyWith(isLoading: true);
     try {
 
@@ -118,11 +119,17 @@ class WelcomeBackCoordinator extends BaseViewModel<WelcomeScreenState> {
           var customerAgentIdResponse = await _welcomeUseCase.getCustomerDetailsByMobileNumber( (p0) => null);
           if(customerAgentIdResponse?.status == true){
             String? customerAgentId = customerAgentIdResponse?.data?.y9AgentId;
-            if(customerAgentId != null && customerAgentId.isNotEmpty){
-              _navigationHandler.navigateToHome(userType);
-            }else{
-              _navigationHandler.navigateToCustomerEnrollmentScreen();
-            }
+             await _welcomeUseCase.setPreferences(
+                selectedLanguage, (p0) => null);
+
+              if(customerAgentId != null && customerAgentId.isNotEmpty){
+                _navigationHandler.navigateToHome(userType);
+              }else{
+                _navigationHandler.navigateToCustomerEnrollmentScreen();
+              }
+
+
+
           }
         }else{
           _navigationHandler.navigateToHome(userType);

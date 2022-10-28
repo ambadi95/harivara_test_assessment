@@ -6,10 +6,13 @@ import 'package:network_manager/model/response/jwt/jwt_token_response.dart';
 import 'package:shared_data_models/agent_onboard/agent_details/response/agent_details_response.dart';
 import 'package:shared_data_models/check_passcode_response/check_passcode_response.dart';
 import 'package:shared_data_models/customer_details/response/get_customer_details_response/get_customer_details_response.dart';
+import 'package:shared_data_models/preference/preference_response.dart';
 import 'package:task_manager/base_classes/base_data_provider.dart';
 import 'package:task_manager/task.dart';
 import 'package:task_manager/task_manager_impl.dart';
 import 'package:shared_data_models/welcome/signin/response/customer_sign_in_response.dart';
+import 'package:welcome/sub_features/welcome/service/perference_service.dart';
+import 'package:welcome/welcome_module.dart';
 import '../login_module.dart';
 import '../service/login_service.dart';
 import 'package:shared_data_models/welcome/signin/request/sign_in_request.dart';
@@ -68,6 +71,16 @@ class LoginUseCase extends BaseDataProvider {
 
   Future<void> saveAgentType(String? AgentType) async {
     return await setValueToSecureStorage({'agentType': AgentType});
+  }
+
+  Future<String> getLocale() async {
+    String defaultLocale = 'en';
+    String savedLocale =
+    await getValueFromStorage('current_locale', defaultValue: '');
+    if (savedLocale.isEmpty) {
+      savedLocale = defaultLocale;
+    }
+    return savedLocale;
   }
 
   Future<CustomerSignInResponse?> login(String mobileNumber, String passcode,
@@ -192,6 +205,25 @@ class LoginUseCase extends BaseDataProvider {
             saveAgentIdForCustomer("");
           }
           return detailResponse;
+        });
+  }
+
+
+  Future<PreferenceResponse?> setPreferences(String lang,
+      Function(String) onErrorCallback) async {
+    String customerID = await getCustomerId();
+    return await executeApiRequest<PreferenceResponse?>(
+        taskType: TaskType.DATA_OPERATION,
+        taskSubType: TaskSubType.REST,
+        moduleIdentifier: WelcomeModule.moduleIdentifier,
+        requestData: {"customerId": customerID,
+          "lang" : lang
+        },
+        serviceIdentifier: IPreferencesService.preferencesIdentifier,
+        onError: onErrorCallback,
+        modelBuilderCallback: (responseData) {
+          final data = responseData;
+          return PreferenceResponse.fromMap(data);
         });
   }
 

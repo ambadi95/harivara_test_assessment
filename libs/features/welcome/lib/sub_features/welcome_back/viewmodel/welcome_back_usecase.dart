@@ -6,6 +6,7 @@ import 'package:shared_data_models/agent_onboard/agent_details/response/agent_de
 import 'package:shared_data_models/agent_onboard/signin/request/agent_sign_in.dart';
 import 'package:shared_data_models/agent_onboard/signin/response/agent_sign_in_response.dart';
 import 'package:shared_data_models/customer_details/response/get_customer_details_response/get_customer_details_response.dart';
+import 'package:shared_data_models/preference/preference_response.dart';
 import 'package:shared_data_models/welcome/signin/request/sign_in_request.dart';
 import 'package:shared_data_models/welcome/signin/response/customer_sign_in_response.dart';
 import 'package:task_manager/base_classes/base_data_provider.dart';
@@ -17,6 +18,7 @@ import 'package:welcome/sub_features/welcome_back/service/welcome_back_service.d
 import 'package:welcome/welcome_module.dart';
 
 import '../../agent_details/service/agent_details_service.dart';
+import '../../welcome/service/perference_service.dart';
 import 'welcome_back_view_model.dart';
 
 class WelcomeBackUseCase extends BaseDataProvider {
@@ -63,6 +65,10 @@ class WelcomeBackUseCase extends BaseDataProvider {
 
   Future<String> getCustomerName() async {
     return await getValueFromSecureStorage('CustomerName', defaultValue: '');
+  }
+
+  Future<String> getCustomerId() async {
+    return await getValueFromSecureStorage('customerId', defaultValue: '');
   }
 
   Future<String> getCustomerY9Id() async {
@@ -149,6 +155,24 @@ class WelcomeBackUseCase extends BaseDataProvider {
           GetCustomerDetailsResponse detailResponse =
           GetCustomerDetailsResponse.fromJson(data);
           return detailResponse;
+        });
+  }
+
+  Future<PreferenceResponse?> setPreferences(String lang,
+      Function(String) onErrorCallback) async {
+    String customerID = await getCustomerId();
+    return await executeApiRequest<PreferenceResponse?>(
+        taskType: TaskType.DATA_OPERATION,
+        taskSubType: TaskSubType.REST,
+        moduleIdentifier: WelcomeModule.moduleIdentifier,
+        requestData: {"customerId": customerID,
+          "lang" : lang
+        },
+        serviceIdentifier: IPreferencesService.preferencesIdentifier,
+        onError: onErrorCallback,
+        modelBuilderCallback: (responseData) {
+          final data = responseData;
+          return PreferenceResponse.fromMap(data);
         });
   }
 
