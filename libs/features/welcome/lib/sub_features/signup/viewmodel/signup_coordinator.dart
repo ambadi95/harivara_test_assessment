@@ -105,7 +105,7 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
                     fontWeight: FontWeight.w400),
                 children: <TextSpan>[
                   TextSpan(
-                      text: dataShown ,
+                      text: dataShown,
                       style: const TextStyle(
                           fontWeight: FontWeight.bold, fontSize: 14)),
                 ],
@@ -118,7 +118,10 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
             ),
           ),
           CrayonPaymentText(
-            text: TextUIDataModel( isNidaAlert ? 'Mobile_Alert_Do_You_Want_Update'.tr : 'NIDA_Alert_Do_You_Want_Update'.tr ,
+            text: TextUIDataModel(
+                isNidaAlert
+                    ? 'Mobile_Alert_Do_You_Want_Update'.tr
+                    : 'NIDA_Alert_Do_You_Want_Update'.tr,
                 textAlign: TextAlign.center,
                 styleVariant: CrayonPaymentTextStyleVariant.headline4,
                 color: Black,
@@ -198,6 +201,109 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
     );
   }
 
+  Future<void> callKycEnabledAlert(BuildContext context,
+      {bool isNidaAlert = false,
+      String? nidaNo,
+      String? mobileNumber,
+      String? dataShown,
+      int? customerId}) async {
+    await _navigationHandler.showErrorBottomSheet(
+        _kycEnabledAlert(context, isNidaAlert, mobileNumber!, nidaNo!,
+            dataShown!, customerId!),
+        context);
+  }
+
+  Widget _kycEnabledAlert(BuildContext context, bool isNidaAlert,
+      String mobileNumber, String nidaNo, String dataShown, int? customerId) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: ListView(
+        children: [
+          const Image(
+            image: AssetImage(AN_Kyc_Credit_ERROR),
+            width: 78,
+            height: 78,
+          ),
+          CrayonPaymentText(
+            text: TextUIDataModel('NIDA_Mobile_Alert_Title'.tr,
+                textAlign: TextAlign.center,
+                styleVariant: CrayonPaymentTextStyleVariant.bodyText1,
+                color: Black,
+                fontWeight: FontWeight.w600),
+          ),
+          SizedBox(
+            height: AppUtils.appUtilsInstance.getPercentageSize(
+              percentage: 5,
+            ),
+          ),
+          Center(
+            child: RichText(
+              textAlign: TextAlign.center,
+              text: TextSpan(
+                text: "NIDA_Alert_SubTitle".tr,
+                style: const TextStyle(
+                    fontFamily: 'Montserrat',
+                    fontSize: 14,
+                    color: VO_ResendTextColor,
+                    fontWeight: FontWeight.w400),
+                children: <TextSpan>[
+                  TextSpan(
+                      text: dataShown,
+                      style: const TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 14)),
+                ],
+              ),
+            ),
+          ),
+          SizedBox(
+            height: AppUtils.appUtilsInstance.getPercentageSize(
+              percentage: 5,
+            ),
+          ),
+          CrayonPaymentText(
+            text: TextUIDataModel(
+                'AssociateMobileNumber'.tr,
+                textAlign: TextAlign.center,
+                styleVariant: CrayonPaymentTextStyleVariant.headline4,
+                color: Black,
+                fontWeight: FontWeight.w600),
+          ),
+          SizedBox(
+            height: AppUtils.appUtilsInstance.getPercentageSize(
+              percentage: 20,
+            ),
+          ),
+          _reEnterButton(
+              context, nidaNo, mobileNumber, isNidaAlert, customerId),
+        ],
+      ),
+    );
+  }
+
+  Widget _reEnterButton(BuildContext context, String nidaNumber,
+      String mobileNumber, bool isNidaAlert, int? customerId) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
+      child: GestureDetector(
+        onTap: () async {
+          _navigationHandler.goBack();
+        },
+        child: Container(
+          width: double.infinity,
+          height: 50,
+          decoration: BoxDecoration(
+              color: SU_button_color, borderRadius: BorderRadius.circular(2.0)),
+          child: Center(
+            child: Text(
+              'ReEnter'.tr,
+              style: SU_button_text_style,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
   Future<void> signup(SignUpArguments signUpArguments, String mobileNumber,
       String nindaNumber, String agentId, String referralCode,
       {BuildContext? buildContext, String telecomPartner = ""}) async {
@@ -205,14 +311,16 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
       if (signUpArguments.signupType == SignupType.customerSignUp) {
         state = const SignUpState.loadingState();
         var response = await _signupUseCase.signUp(
-            nindaNumber.replaceAll("-", ""), mobileNumber.trim(), referralCode,(p0) => null);
+            nindaNumber.replaceAll("-", ""),
+            mobileNumber.trim(),
+            referralCode,
+            (p0) => null);
         if (response!.status == true) {
           await continueToOtp(nindaNumber, mobileNumber);
           state = const SignUpState.initialState();
           await _signupUseCase
               .saveCustomerId(response.data?.customerId.toString());
-          await _signupUseCase
-              .saveClientId(response.data?.clientId.toString());
+          await _signupUseCase.saveClientId(response.data?.clientId.toString());
 
           AppUtils.appUtilsInstance.saveUserType(UserType.Customer);
 
@@ -256,8 +364,7 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
           state = const SignUpState.initialState();
           await _signupUseCase
               .saveCustomerId(response.data?.customerId.toString());
-          await _signupUseCase
-              .saveClientId(response.data?.clientId.toString());
+          await _signupUseCase.saveClientId(response.data?.clientId.toString());
           _navigationHandler.navigateToOtpScreenCustomerSignUpByAgent(
             UserType.Customer,
             mobileNumber,
@@ -272,8 +379,7 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
           state = const SignUpState.initialState();
           await _signupUseCase
               .saveCustomerId(response.data?.customerId.toString());
-          await _signupUseCase
-              .saveClientId(response.data?.clientId.toString());
+          await _signupUseCase.saveClientId(response.data?.clientId.toString());
           _navigationHandler.navigateToOtpScreenCustomerSignUpByAgent(
             UserType.Customer,
             mobileNumber,
@@ -283,13 +389,12 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
         else if (response.status == false &&
             response.code == "409" &&
             response.y9ErrorCode == USER_ALREADY_EXIST_WITH_LOAN) {
-
           _showAlertForErrorMessage(response.message!);
 
           return;
         } else {
           state = const SignUpState.initialState();
-          if (response.code == "409") {
+          if (response.code == "409" || response.code == "400") {
             if (response.y9ErrorCode == MOBILE_Already_Exist) {
               callNidaAlert(buildContext!,
                   isNidaAlert: false,
@@ -300,6 +405,17 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
                       .substring(response.data!.nidaNo!.length - 2));
             } else if (response.y9ErrorCode == NIDA_ALREADY_EXIST) {
               callNidaAlert(buildContext!,
+                  isNidaAlert: true,
+                  nidaNo: nindaNumber,
+                  customerId: response.data!.customerId,
+                  mobileNumber: mobileNumber,
+                  dataShown: response.data!.mobileNo!
+                      .substring(response.data!.mobileNo!.length - 2));
+            } else if (response.y9ErrorCode == USER_ALREADY_EXIST_WITH_LOAN) {
+              //TODO Handle USER_ALREADY_EXIST_WITH_LOAN
+              _showAlertForErrorMessage(response.message!);
+            } else if (response.y9ErrorCode == Customer_Completed_KYC) {
+              callKycEnabledAlert(buildContext!,
                   isNidaAlert: true,
                   nidaNo: nindaNumber,
                   customerId: response.data!.customerId,
@@ -322,14 +438,16 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
       } else if (signUpArguments.signupType == SignupType.customerSignUp) {
         state = const SignUpState.loadingState();
         var response = await _signupUseCase.signUp(
-            nindaNumber.replaceAll("-", ""), mobileNumber.trim(), referralCode, (p0) => null);
+            nindaNumber.replaceAll("-", ""),
+            mobileNumber.trim(),
+            referralCode,
+            (p0) => null);
         if (response!.status == true) {
           await continueToOtp(nindaNumber, mobileNumber);
           state = const SignUpState.initialState();
           await _signupUseCase
               .saveCustomerId(response.data?.customerId.toString());
-          await _signupUseCase
-              .saveClientId(response.data?.clientId.toString());
+          await _signupUseCase.saveClientId(response.data?.clientId.toString());
           _navigationHandler.navigateToOtpScreenCustomerSignUp(
               signUpArguments.userType, mobileNumber,
               userId: response.data?.customerId.toString());
@@ -347,7 +465,7 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
         var agentDetailResponse = await _signupUseCase.getAgentDetail(
             agentId, nindaNumber.replaceAll("-", ""), (p0) => null);
         if (agentDetailResponse?.status == true) {
-            _signupUseCase.saveAgentId(agentId);
+          _signupUseCase.saveAgentId(agentId);
           state = const SignUpState.initialState();
           _navigationHandler.navigateToOtpScreenAgentResetPasscode(
               signUpArguments.userType,
@@ -437,22 +555,19 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
     );
   }
 
-
-    Future navigateDestination(SignUpArguments signUpArguments,
-        String mobileNumber) async {
+  Future navigateDestination(
+      SignUpArguments signUpArguments, String mobileNumber) async {
     if (signUpArguments.signupType == SignupType.customerSignUp) {
       _navigationHandler.navigateToOtpScreenCustomerSignUp(
           signUpArguments.userType, mobileNumber);
     } else if (signUpArguments.signupType == SignupType.resetPasscodeAgent) {
       // _navigationHandler
       //     .navigateToOtpScreenAgentResetPasscode(signUpArguments.userType);
-      } else
-      if (signUpArguments.signupType == SignupType.resetPasscodeCustomer) {
+    } else if (signUpArguments.signupType == SignupType.resetPasscodeCustomer) {
       // _navigationHandler
       //     .navigateToOtpScreenAgentResetPasscode(signUpArguments.userType);
     } else if (signUpArguments.signupType == SignupType.agentSignUp) {
-        _navigationHandler.navigateToAgentDetailScreen(
-            signUpArguments.userType);
+      _navigationHandler.navigateToAgentDetailScreen(signUpArguments.userType);
     } else if (signUpArguments.signupType ==
         SignupType.agentAidedCustomerOnBoarding) {
       _navigationHandler.navigateToOtpScreenCustomerSignUp(
@@ -463,38 +578,42 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
   bool _validateForm(String nidaNo, String mobNumber, String agentId,
       SignUpArguments arguments, String agentType, String paymentMode) {
     var agentID = agentId.isNotEmpty;
-      var isnidaNumberValid = _signupUseCase.isValidNINDAnumber(nidaNo.replaceAll("-", ""));
+    var isnidaNumberValid =
+        _signupUseCase.isValidNINDAnumber(nidaNo.replaceAll("-", ""));
     var ismobileNoValid = _signupUseCase.isValidMobileNumber(mobNumber);
-     var isPaymentModeValid = handlePaymentValidation(arguments)?true:_signupUseCase.isValidPaymentMode(paymentMode);
+    var isPaymentModeValid = handlePaymentValidation(arguments)
+        ? true
+        : _signupUseCase.isValidPaymentMode(paymentMode);
     var _isValid;
-          if (agentType.isNotEmpty && !handlePaymentValidation(arguments) && arguments.signupType == SignupType.agentAidedCustomerOnBoarding) {
-            _isValid =
-                isnidaNumberValid && ismobileNoValid && isPaymentModeValid;
-          }
-      else if (arguments.userType == UserType.Customer) {
+    if (agentType.isNotEmpty &&
+        !handlePaymentValidation(arguments) &&
+        arguments.signupType == SignupType.agentAidedCustomerOnBoarding) {
+      _isValid = isnidaNumberValid && ismobileNoValid && isPaymentModeValid;
+    } else if (arguments.userType == UserType.Customer) {
       _isValid = isnidaNumberValid && ismobileNoValid;
-      }
-      else {
+    } else {
       _isValid = isnidaNumberValid && agentID;
     }
     return _isValid;
   }
 
   bool handlePaymentValidation(SignUpArguments signUpArguments) {
-    if (signUpArguments.title == "ST_update_passcode" || signUpArguments.title == "SU_reset_passcode") {
+    if (signUpArguments.title == "ST_update_passcode" ||
+        signUpArguments.title == "SU_reset_passcode") {
       return true;
     }
     return false;
   }
 
-    void validateForm(String nidaNo, String mobNumber, String agentId,
-      userType, String agentType,String paymentMode) {
-      state = SignUpState.SignUpFormState(
-          _validateForm(nidaNo, mobNumber, agentId, userType,agentType,paymentMode));
+  void validateForm(String nidaNo, String mobNumber, String agentId, userType,
+      String agentType, String paymentMode) {
+    state = SignUpState.SignUpFormState(_validateForm(
+        nidaNo, mobNumber, agentId, userType, agentType, paymentMode));
   }
 
   bool isValidNidaNumber(String nidaNumber) {
-      bool result = _signupUseCase.isValidNINDAnumber(nidaNumber.replaceAll("-", ""));
+    bool result =
+        _signupUseCase.isValidNINDAnumber(nidaNumber.replaceAll("-", ""));
     if (!result) {
       state = const SignUpState.nindaNumberError('SU_title_error_text');
     } else {
@@ -559,7 +678,4 @@ class SignUpCoordinator extends BaseViewModel<SignUpState> {
   Future<String> getAgentType() async {
     return await _signupUseCase.getAgentType();
   }
-
-
 }
-

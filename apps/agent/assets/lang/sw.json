@@ -376,6 +376,8 @@
   "exit_the_app" : "Je, una uhakika unataka kuondoka kwenye programu?",
   "go_back_to_home" : "Je, una uhakika, ungependa kurudi?",
   "OK" : "sawa",
-  "success_thanks": "Asante"
-
+  "success_thanks": "Asante",
+  "AssociateMobileNumber": "Tafadhali weka Nambari ya Simu inayohusishwa\nna ujaribu tena",
+  "AssociateNIDANumber": "Tafadhali weka Nambari ya NIDA  inayohusishwa\nna ujaribu tena",
+  "ReEnter": "Ingiza tena"
 }
