@@ -194,7 +194,7 @@ class _SettingsState extends State<Settings> {
   }
 
   Widget _buildReferralProgram(coordinator) {
-    return _buildOptions(context, 'Referral Program', ST_referral_program, () async {
+    return _buildOptions(context, 'RP_Title', ST_referral_program, () async {
       coordinator.navigateToReferralProgram();
     });
   }
