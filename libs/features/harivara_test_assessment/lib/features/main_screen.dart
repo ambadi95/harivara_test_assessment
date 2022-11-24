@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../utils/base_view.dart';
+import '../widgets/label_checkbox.dart';
+import '../widgets/lable_textfield.dart';
+import 'main_screen_model.dart';
+
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
 
@@ -17,102 +22,54 @@ TextEditingController numLength = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return BaseView<MainScreenModel>(
+        instanceModel: MainScreenModel(),
+    onModelReady: (model) async {},
+    builder: (context, model, child) => SafeArea(
       child: Scaffold(
         body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children:  [
-                 const Text("Total No of Boxes to be displayed on each side",
-                    style: TextStyle(fontSize:15, fontWeight: FontWeight.bold),
-                  ),
-                  Container(
-                    width: 30,
-                    height: 30,
-                    decoration: BoxDecoration(
-                      border: Border.all()
-                    ),
-                      child: TextField(
-                        controller: boxLength,
-                        decoration: const InputDecoration(
-                          border: InputBorder.none
-                        ),
-                      ))
-                ],
-              ),
-              const SizedBox(height: 15,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children:  [
-                 const SizedBox(
-                   width: 320,
-                   child: Text("Max No of Total Selection allowed for selecting on both the sides",
-                     style: TextStyle(fontSize:15, fontWeight: FontWeight.bold),
+              LabelTextField(controller: boxLength, label: "Total No of Boxes to be displayed on each side",),
+              LabelTextField(controller: selectionLength, label: "Max No of Total Selection allowed for selecting on both the sides",),
+              LabelTextField(controller: alphaLength, label: "Max No of Alphabets allowed for selecting",),
+              LabelTextField(controller: numLength, label: "Max No of Numbers allowed for selecting",),
+              const SizedBox(height: 25,),
+               Row(
+                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                 children: [
+                   Expanded(
+                     flex: 1,
+                     child: Column(
+                       children: [
+                         LabelCheckBox(label: "1",
+                           value: false,
+                           onChange: (value){
+                           print(value);
+                         },)
+                       ],
+                     ),
                    ),
-                 ),
-                  Container(
-                      width: 30,
-                      height: 30,
-                      decoration: BoxDecoration(
-                          border: Border.all()
-                      ),
-                      child: TextField(
-                        controller: selectionLength,
-                        decoration: const InputDecoration(
-                            border: InputBorder.none
-                        ),
-                      ))
-                ],
-              ),
-              const SizedBox(height: 15,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children:  [
-                  const Text("Max No of Alphabets allowed for selecting",
-                    style: TextStyle(fontSize:15, fontWeight: FontWeight.bold),
-                  ),
-                  Container(
-                      width: 30,
-                      height: 30,
-                      decoration: BoxDecoration(
-                          border: Border.all()
-                      ),
-                      child: TextField(
-                        controller: alphaLength,
-                        decoration: const InputDecoration(
-                            border: InputBorder.none
-                        ),
-                      ))
-                ],
-              ),
-              const SizedBox(height: 15,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children:  [
-                  const Text("Max No of Numbers allowed for selecting",
-                    style: TextStyle(fontSize:15, fontWeight: FontWeight.bold),
-                  ),
-                  Container(
-                      width: 30,
-                      height: 30,
-                      decoration: BoxDecoration(
-                          border: Border.all()
-                      ),
-                      child: TextField(
-                        controller: numLength,
-                        decoration: const InputDecoration(
-                            border: InputBorder.none
-                        ),
-                      ))
-                ],
-              )
+                   Expanded(
+                     flex: 1,
+                     child: Column(
+                       children: [
+                         LabelCheckBox(label: "a",
+                           value: true,
+                           onChange: (value){
+                             print(value);
+                         },)
+                       ],
+                     ),
+                   )
+                 ],
+               )
             ],
           ),
         ),
       ),
+    )
     );
   }
 }
