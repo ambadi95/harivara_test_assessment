@@ -4,8 +4,8 @@ class LabelTextField extends StatelessWidget {
 
   final TextEditingController controller;
   final String label;
-
-   const LabelTextField({Key? key,required this.controller,required this.label}) : super(key: key);
+  Function(String?) onChanged;
+    LabelTextField({Key? key,required this.controller,required this.label,required this.onChanged}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,9 +27,11 @@ class LabelTextField extends StatelessWidget {
               ),
               child: TextField(
                 controller: controller,
+                keyboardType: TextInputType.number,
                 decoration: const InputDecoration(
-                    border: InputBorder.none
+                    border: InputBorder.none,
                 ),
+                onChanged: onChanged,
               ))
         ],
       ),
