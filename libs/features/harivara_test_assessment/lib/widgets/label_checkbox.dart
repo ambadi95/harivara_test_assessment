@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class LabelCheckBox extends StatelessWidget {
   final String label;
   void Function(bool?)? onChange;

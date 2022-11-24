@@ -111,7 +111,7 @@ List<bool>? _isCheckedAlpha;
                   }else{
                     setState(() {
                       error = '';
-                      totalBox = int.parse(value!);
+                      totalBox = int.parse(value);
                     });
                   }
                 },),
@@ -132,7 +132,7 @@ List<bool>? _isCheckedAlpha;
                 LabelTextField(controller: alphaLength, label: "Max No of Alphabets allowed for selecting",
                     onChanged: (value){
                       if(int.parse(value!) > totalBox){
-                        error = "You cannot enter value more than ${totalBox} in Max No of Alphabets";
+                        error = "You cannot enter value more than $totalBox in Max No of Alphabets";
                         setState(() {
 
                         });
@@ -146,7 +146,7 @@ List<bool>? _isCheckedAlpha;
                 LabelTextField(controller: numLength, label: "Max No of Numbers allowed for selecting",
                     onChanged: (value){
                       if(int.parse(value!) > totalBox){
-                        error = "You cannot enter value more than ${totalBox} in Max No of Numbers";
+                        error = "You cannot enter value more than $totalBox in Max No of Numbers";
                         setState(() {
 
                         });
@@ -166,7 +166,7 @@ List<bool>? _isCheckedAlpha;
                        flex: 1,
                        child: ListView.builder(
                          shrinkWrap : true,
-                           physics: NeverScrollableScrollPhysics(),
+                           physics: const NeverScrollableScrollPhysics(),
                            itemCount: boxLength.text.isEmpty || int.parse(boxLength.text) > 11 ? 0 : int.parse(boxLength.text),
                            itemBuilder: (BuildContext contex,index)
                            {
@@ -207,7 +207,7 @@ List<bool>? _isCheckedAlpha;
                        flex: 1,
                        child: ListView.builder(
                            shrinkWrap : true,
-                           physics: NeverScrollableScrollPhysics(),
+                           physics: const NeverScrollableScrollPhysics(),
                            itemCount: boxLength.text.isEmpty || int.parse(boxLength.text) > 11 ? 0 : int.parse(boxLength.text),
                            itemBuilder: (BuildContext contex,index)
                            {
